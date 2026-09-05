@@ -7,7 +7,7 @@ September 8 – December 1, 2026, 1–2 PM America/Los_Angeles.
 
 An exploratory quarter: the group reads its way through how experimental, observational,
 historical, and theoretical research actually proceeds, then asks what follows for the design and
-evaluation of agents for science. One proposal is tested rather than assumed — that agents let a
+evaluation of agents for science. One proposal is tested rather than assumed: that agents let a
 researcher work competently across more fields, making individual polymathy practical again.
 
 ## Contents
@@ -39,9 +39,7 @@ quarto preview      # live reload while editing
 quarto render       # writes _book/
 ```
 
-The source checks need Python 3 and PyYAML. On a system with an externally managed Python — recent
-macOS and most Linux distributions — use a virtual environment rather than `pip install` into the
-system interpreter:
+The source checks need Python 3 and PyYAML. On a system with an externally managed Python, which covers recent macOS and most Linux distributions, use a virtual environment rather than `pip install` into the system interpreter:
 
 ``` sh
 python3 -m venv .venv
@@ -81,7 +79,7 @@ texts require institutional access. No journal PDFs are redistributed here. Free
 permission to republish; check the license and preserve attribution before adding any third-party
 asset.
 
-Course content is CC BY 4.0 and `tools/` is MIT — see [LICENSE](LICENSE). Rights in the cited papers
+Course content is CC BY 4.0 and `tools/` is MIT; see [LICENSE](LICENSE). Rights in the cited papers
 remain with their holders.
 
 ## Validation status
