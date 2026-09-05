@@ -1,0 +1,57 @@
+# Prior art: agents and benchmarks for science {.unnumbered}
+
+This chapter exists so that nothing in [meeting 13](sessions/13-agent-design-and-evaluation.qmd) is specified from scratch. Systems that automate parts of research already exist, and so do benchmarks that score them. Before proposing an architecture or a test, find out whether it has been built, and what happened.
+
+Every entry carries a resolvable identifier — a DOI or an arXiv ID — so the list can be worked through by a person or by a program. Entries were checked against publisher or arXiv records; where a project has multiple versions, the identifier points at the version consulted.
+
+## How to read the last column
+
+The rightmost column is the point of the chapter. A benchmark score is a measurement, and a measurement supports a claim only about the construct it observes. This is the problem @flake2020 and @messick1995 describe for psychological measures, and it does not change when the thing being measured is an agent. "Solved 40% of the tasks" is a fact about the tasks. Whether it is evidence that a system does science depends entirely on what the tasks required, and most of these task sets deliberately supply the question, the data, and the success criterion — which is to say, they supply most of what [meetings 1 through 9](index.qmd#schedule) treated as the hard part.
+
+Read that column as an inventory of open problems rather than as criticism. Where a capability the group cares about appears in no existing evaluation, that gap is the group's opportunity.
+
+## Systems that act
+
+| Project | What it is | What it covers | What its results do not establish |
+|:--|:--|:--|:--|
+| [Coscientist](https://doi.org/10.1038/s41586-023-06792-0) — @boiko2023 | Language model with web search, documentation retrieval, code execution, and a robotic liquid handler | Planning and executing a chemical synthesis, including optimizing a catalytic cross-coupling on real hardware | That the system chose the question, or that it transfers beyond tasks with existing published protocols and a defined target |
+| [The AI Scientist](https://arxiv.org/abs/2408.06292) (arXiv:2408.06292) and [v2](https://arxiv.org/abs/2504.08066) (arXiv:2504.08066) | End-to-end pipeline: idea generation, experiment execution, paper writing, and automated review | Producing complete machine-learning papers without human intervention; v2 reports a workshop-accepted manuscript | That the findings are ones a field would retain. Automated review is not peer review, and workshop acceptance is a weak filter |
+| [AI co-scientist](https://arxiv.org/abs/2502.18864) (arXiv:2502.18864) | Multi-agent system generating, debating, and ranking hypotheses in a tournament | Proposing biomedical hypotheses, with wet-lab follow-up reported in three areas | General hypothesis quality. The validated cases were selected, and the denominator — how many proposals failed — is what a rate would require |
+| [TinyScientist](https://arxiv.org/abs/2510.06579) (arXiv:2510.06579) | An open framework for assembling research agents, not a result | Tooling: a controllable, extensible harness others can build on | Anything about scientific performance; it is infrastructure, and belongs here as a starting point rather than as evidence |
+
+## Benchmarks and evaluations
+
+| Project | What it is | What it covers | What its scores do not establish |
+|:--|:--|:--|:--|
+| [ScienceAgentBench](https://proceedings.iclr.cc/paper_files/paper/2025/hash/f12b4df26344f3be803c06b555252efe-Abstract-Conference.html) — @chen2025 | 102 executable tasks drawn from 44 peer-reviewed papers, validated by subject-matter experts | Data-driven analysis: given a question and data, produce working code and the right output | Question formation, novelty, or discovery. The task supplies what earlier meetings identified as the difficult and interesting choices |
+| [MLE-bench](https://arxiv.org/abs/2410.07095) (arXiv:2410.07095) | 75 Kaggle competitions run as machine-learning engineering tasks | Engineering competence: building a model that scores well against a defined metric | Any scientific claim. A Kaggle task arrives with the target, the metric, and the guarantee that a solution exists |
+| [Gravity-Bench-v1](https://arxiv.org/abs/2501.18411) (arXiv:2501.18411) | Simulated gravitational systems where the agent must plan its own observations | Closer to inquiry than most: the agent decides what to measure, under a budget, including out-of-distribution physics | Performance with real instruments, real noise, real calibration, or a real literature to be wrong about |
+| [LLM-SRBench](https://arxiv.org/abs/2504.10415) (arXiv:2504.10415) | Equation-discovery tasks built to resist recall of known formulas | Whether a system can find a governing relation in data rather than retrieve one it has seen | Inquiry beyond the symbolic-regression step. The data, the variables, and the goal are given |
+| [FML-bench](https://arxiv.org/abs/2510.10472) (arXiv:2510.10472) | Machine-learning research tasks scored on multiple axes | Broader research behavior than single-task benchmarks | Transfer outside machine learning, which is the field these agents were largely trained on |
+| [NovBench](https://aclanthology.org/2026.findings-acl.1607/) — @novbench2026 | Evaluation of model judgments of paper novelty | Whether a model's novelty assessment agrees with expert assessment on NLP papers | That the judgments transfer to Earth science, which is a claim to test rather than assume. See [meeting 10](sessions/10-novelty.qmd) |
+
+## Surveys and registries
+
+Two recent surveys cover this space more completely than the tables above and are the right starting point for anyone extending them.
+
+- [A Survey of AI Scientists](https://arxiv.org/abs/2510.23045) (arXiv:2510.23045). Tie and colleagues, 2025. Broad coverage of automated-scientist systems and their components.
+- [Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap](https://arxiv.org/abs/2608.05179) (arXiv:2608.05179). Ding and colleagues, 2026. Screens a large candidate set down to a coded sample of runnable systems, and organizes them around verification — which is the same concern as the last column of the tables above.
+
+A survey is a secondary source. Where a claim in one matters to a decision here, read the primary paper.
+
+## What is missing from all of them
+
+Collecting the last columns gives the group a short list of capabilities that appear in no evaluation above:
+
+1. **Choosing the question.** Every benchmark supplies it. Meetings 1, 2, and 6 treated question formation as the substance of inquiry.
+2. **Deciding what to measure, and whether the measurement can be trusted.** Only Gravity-Bench asks an agent to plan observations, and it does so in simulation with no instrument response. Compare the provenance concerns in [meeting 5](sessions/05-measurement.qmd).
+3. **Reasoning from traces of the past.** Nothing here evaluates inference about events that cannot be re-run, which is the mode of [meeting 3](sessions/03-historical-traces.qmd) and much of this group's science.
+4. **Recognizing a surprise worth following.** Anomaly detection appears; judging an anomaly interesting does not. See [meeting 8](sessions/08-serendipity.qmd).
+5. **Abstaining.** No benchmark rewards a system for concluding that the evidence is insufficient, though [meeting 9](sessions/09-model-tests.qmd) treats that as a competent outcome.
+6. **Field and marine constraint.** Ship time, weather, instrument loss, and the plan-versus-reality gap of [meeting 7](sessions/07-field-marine.qmd) have no representation at all.
+
+These six are the natural content of the benchmark drafted in meeting 13. Whether any of them can be measured well is itself uncertain, and a benchmark the group cannot actually run is not an improvement over one that exists.
+
+## Adding an entry
+
+Corrections and additions are welcome, particularly from anyone who has run one of these systems. Accuracy in the last column matters more than coverage: an entry that overstates a limitation is as much a problem as one that omits it. See [how to contribute](contributing.qmd).

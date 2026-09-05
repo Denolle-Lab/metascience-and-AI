@@ -1,0 +1,85 @@
+# Working rubrics and discussion worksheets {.unnumbered}
+
+These are **proposed design instruments**, not validated measures of scientific quality. Revise them using the seminar cases. Keep factual support, uncertainty, scientific value, and implementation quality separate. The measurement warning is central: a repeatable score can still measure the wrong thing. [@flake2020; @messick1995]
+
+## Reconstruct an inquiry trajectory
+
+Use a documented episode, not only the final paper's rhetorical structure. When the chronology is unknown, mark it as unknown rather than inventing an origin story.
+
+| Field | What the group records |
+|:--|:--|
+| Initial knowledge and question | What was available before the relevant action? Was there a specific hypothesis? |
+| Action and purpose | Observe, characterize, calibrate, change representation, compare, simulate, test, or synthesize. Why this action now? |
+| Result | The observation or output, including units, uncertainty, missingness, and provenance. |
+| Interpretation | What the result supports, competing interpretations, and assumptions. |
+| Next decision | What changed in the question, instrument, representation, or strategy? |
+| Process evidence | Notebook, dated analysis, paper, interview, retrospective recollection, or an explicitly labeled reconstruction. |
+| Agent requirement | An observable capability, the information it requires, and a test that could reveal failure. |
+
+**Exercise:** compare a proposal's intended sequence, the work actually performed, and the published narrative. Differences are not automatically misconduct or poor practice; ask which changes were disclosed and what claims remain warranted. Use the methodological contrast in Meeting 1 and the exploratory cases in Meeting 2. [@platt1964; @cleland2002; @steinle1997; @karaca2013]
+
+## Novelty Dossier v1
+
+The object of evaluation is an exact contribution claim, not how impressive its abstract sounds. Atypical combinations and semantic distance are possible indicators of particular kinds of novelty, not a complete definition. [@uzzi2013; @fontana2020]
+
+| Field | Required record |
+|:--|:--|
+| Atomic claim | One observation, method, concept, explanation, connection, or question at a time. |
+| Reference frame | Community, corpus, languages searched, publication cutoff, and search date. |
+| Closest precedent | Specific prior work and the passage or result that overlaps with the claim. |
+| Novel component | What apparently goes beyond that precedent, and which novelty dimension it belongs to. |
+| Attempted falsification | Searches and comparisons designed to find an earlier equivalent, not just supportive citations. |
+| Search limits | Inaccessible texts, older terminology, incomplete indexing, or missing disciplinary coverage. |
+| Judgment | Exact precedent, close precedent, component precedent, apparently new component, or unresolved. |
+| Separate assessments | Correctness, plausibility, feasibility, significance, and expected impact are not the novelty judgment. |
+
+Use **"no precedent located within this search"**, not **"never done before"**, when the latter cannot be justified. Preserve expert disagreement with its reasons. Human ratings are useful comparators, not infallible labels; actual grant-review research motivates that distinction. [@boudreau2016]
+
+For an agent test, use a paraphrase of an established result, an established method producing a genuinely new observation, and an apparently new claim with a concealed older precedent. Evaluate prior-art retrieval, localization of the claimed difference, false novelty claims, missed novelty, and appropriate uncertainty. A historical replay is a teaching exercise, not automatically a leakage-free test: withholding later papers from retrieval does not remove them from a model's training.
+
+## Scientific Advance Profile v1
+
+Use these **working distinctions** in discussion rather than treating them as a settled philosophical taxonomy. Novelty is about what is new; innovation about a new way inquiry can be done; advance about a warranted gain in knowledge, understanding, or scientific capability; impact about downstream uptake or consequences. Dellsén offers a position about understanding to argue with, while the Wu-Petersen pairing illustrates the risks of converting citation patterns into a general progress measure. [@dellsen2016; @wu2019; @petersen2025]
+
+| Field | Question |
+|:--|:--|
+| Before / after | What could not be known, measured, explained, or tested before the contribution? |
+| Evidence of gain | Which result supports the claimed change? Is it prospective promise or demonstrated gain? |
+| Contribution role | Incremental, corrective, enabling, integrative, transformative, or more than one. |
+| Dependencies | Which instruments, datasets, methods, people, standards, and earlier results made it possible? |
+| Users and consequences | Who could use the result, and what new question, test, or practice would it enable? |
+| Time horizon | What is visible now, what requires later uptake, and what may never be captured by citations? |
+| Uncertainty and disagreement | What evidence would change the assessment? |
+
+**Exercise:** compare a celebrated theoretical paper with a careful calibration, negative result, replication, or curated archive. Hide venue and citation counts initially. Build a contribution-dependency map and distinguish novelty from significance. Consider delayed recognition and changes in who can enter a field, without generalizing a single bibliometric study to all disciplines. [@wang2017; @azoulay2019]
+
+## Agent evaluation protocol v1
+
+A benchmark of tasks reconstructed from papers can evaluate useful analysis capabilities. It does not automatically evaluate selecting a worthwhile research question, detecting an unexpected phenomenon, or changing a field. Define the intended construct before choosing the score. [@chen2025; @flake2020]
+
+### Design before running
+
+Use a small set of nonconfidential Earth-science cases. Compare a human baseline, a hypothesis-first agent, and an inquiry-routing agent. Define whether the question concerns architecture, model capability, or end-to-end system utility. To isolate architecture, hold the model and tool access fixed as far as possible; a human comparison needs an explicit account of unequal experience and resources.
+
+Freeze the task packet, data split, permitted information, resource budget, scoring rubric, and stopping rule. Record versions, prompts, code, visible actions, tool outputs, and human interventions. Do not require access to a model's private internal reasoning; assess its observable behavior, evidence, and reproducible artifacts.
+
+### A compact test set
+
+| Test | Failure it is intended to expose |
+|:--|:--|
+| Positive control | Failure to recover a known signal or established relation. |
+| Negative control | Confidently inventing structure or causation where the case supplies none. |
+| Measurement artifact | Mistaking a processing or instrument change for a physical discovery. |
+| Missing metadata | Proceeding despite information essential to interpretation. |
+| Paraphrase and irrelevant-variable changes | Sensitivity to wording or irrelevant features rather than the scientific content. |
+| Independent period or region | Failure to generalize beyond the observations used to formulate the claim. |
+| Valuable replication or calibration | Devaluing trustworthy cumulative work because it looks less novel. |
+| Component ablation | A claimed architectural benefit that persists unchanged without the component. |
+
+Run a prespecified number of repeated trials within a fixed budget; report every run, not only the best. Separate development cases from held-out assessment cases. Reusing the holdout to tune prompts turns it into development data. Analyze failures and uncertainty before concluding that one system wins.
+
+### Report a profile, not an unexamined total score
+
+Report scientific support for the claim, reproducibility, measurement/provenance checks, usefulness of selected actions, handling of alternatives and missing information, novelty judgment, advance profile, and cost. Evaluate confidence calibration across multiple appropriately labeled cases rather than calling one cautious answer "well calibrated." Use blinded independent assessors where practical, record disagreement, and do not collapse all dimensions into a composite until its interpretation is justified.
+
+**Final deliverable:** a benchmark specification, the completed test cases, an agent architecture, a failure taxonomy, and a short statement of what the evaluation does and does not establish.

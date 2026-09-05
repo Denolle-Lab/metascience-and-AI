@@ -1,0 +1,58 @@
+# How to contribute {.unnumbered}
+
+This book is the group's shared workspace, not a finished text. Notes, readings, corrections, and disagreements are all welcome. Everything below is also in `CONTRIBUTING.md` at the repository root, which is what GitHub shows when you open a pull request.
+
+## What must never be published here
+
+The repository is public. Before committing anything, check that it contains none of the following.
+
+- **Journal PDFs or article full texts.** This book distributes links and bibliographic metadata only. Publishers' terms are not waived by course use. Put reading copies in `private/pdfs/`, which is ignored by git.
+- **Unpublished data or results**, yours or a collaborator's, including figures from work in review.
+- **Anything a collaborator, student, or reviewer has not agreed to make public.** The case exercises ask people to describe how their own projects really went, which is exactly the material that should stay in the private group notes.
+- **Anything from `private/`.** That directory holds the parallel analysis and is excluded by `.gitignore`; `tools/validate.py` fails if the ignore rule is missing or if private material is registered as a chapter. Do not defeat either guard.
+
+If you are unsure, ask before committing rather than after. A commit that reaches the public history is not fully undone by a later deletion.
+
+## Adding a meeting note
+
+Open [meeting notes](notes.qmd), find your meeting, and add a signed, dated entry. The "Edit this page" link in the right-hand margin opens the file on GitHub and turns your edit into a pull request without a local clone.
+
+Do not edit someone else's entry. If you disagree, add your own beneath it and say so. The record is more useful for keeping the disagreement than for resolving it.
+
+## Adding a reading
+
+Two files change together:
+
+1. Append a BibTeX record to `references.bib`. Give it a key of the form `author` plus year, a DOI where one exists, and a `url` that resolves.
+2. Add a bullet to [suggested readings](suggested-readings.qmd) citing that key, with one sentence on the claim and one on the meeting it bears on.
+
+`tools/validate.py` checks that the BibTeX keys and the editorial metadata in `curriculum.json` describe the same set, so a reading that is only in one of them fails the build. For a suggestion, that means adding a matching entry to the `references` object in `curriculum.json` as well.
+
+## Adding a prior-art entry
+
+[Prior art](prior-art.qmd) catalogues systems and benchmarks rather than readings, so it takes a table row rather than a bibliography entry. Include a resolvable DOI or arXiv ID and fill in the last column honestly: what the project's numbers do **not** establish. An entry that overstates a limitation is as much a problem as one that omits it. Say so in the pull request if you have actually run the system.
+
+## Changing the curriculum
+
+Session pages and `curriculum.json` hold the same prose, and `tools/validate.py` checks that the assigned citation keys agree. Change both together. The date checks are strict: thirteen sessions on consecutive Tuesdays beginning September 8, 2026.
+
+Substantive changes to what is assigned should start as an issue, and the rationale belongs in `READING-AUDIT.md` alongside the existing entries.
+
+## Checking your work before you push
+
+``` bash
+python3 -m venv .venv
+.venv/bin/pip install PyYAML
+.venv/bin/python tools/validate.py
+quarto render
+```
+
+A virtual environment rather than a plain `pip install` because recent macOS and Linux Pythons refuse to install into the system interpreter. `.venv/` is gitignored.
+
+`validate.py` checks chapter existence, local links, citation keys, the schedule, and the agreement between `references.bib` and `curriculum.json`, then runs a Pandoc citation pass that fails on any warning. The same checks run on every pull request.
+
+If you changed a reference or added a prior-art entry, also run `.venv/bin/python tools/check_links.py`. It verifies every DOI against Crossref and fetches every other URL. A handful of publisher sites answer automated requests with 403; the script reports those separately and does not treat them as failures.
+
+## Style
+
+Match the surrounding pages. The book states what a source does and does not establish, labels reconstruction as inference, and avoids treating a first-person account, a philosophical argument, and a controlled study as interchangeable evidence. Keep claims proportionate to what was actually shown, and prefer "no precedent located within this search" to "never done before".

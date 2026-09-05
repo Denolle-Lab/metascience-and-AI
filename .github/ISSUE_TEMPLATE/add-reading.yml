@@ -1,0 +1,52 @@
+name: Suggest a reading
+description: Propose a paper for the seminar, an optional extension, or the suggested-readings page.
+labels: ["reading"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No need to know Quarto or BibTeX — fill this in and someone will add it.
+        Please do not attach article PDFs. This repository distributes links and metadata only.
+  - type: input
+    id: citation
+    attributes:
+      label: Paper
+      description: Authors, year, title, and venue.
+      placeholder: Kitcher, P. (1990). The Division of Cognitive Labor. The Journal of Philosophy.
+    validations:
+      required: true
+  - type: input
+    id: doi
+    attributes:
+      label: DOI or stable link
+      placeholder: https://doi.org/10.2307/2026796
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Access
+      options:
+        - Open access
+        - Free full text via PMC, repository, or publisher
+        - Publisher record; institutional access likely needed
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs
+      description: One sentence on what it claims, one on which meeting it bears on.
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Proposed role
+      options:
+        - Suggested reading (optional, no schedule change)
+        - Optional extension on an existing session page
+        - Should replace or join an assigned pair (bigger change)
+    validations:
+      required: true

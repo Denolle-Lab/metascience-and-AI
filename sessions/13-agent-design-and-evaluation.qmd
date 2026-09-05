@@ -1,0 +1,80 @@
+# What architecture follows from practice, and what would show it worked? {#sec-session-13}
+
+**Meeting 13 | Tuesday, December 1, 2026 | 1:00-2:00 PM Pacific**
+
+## Central question
+
+Which parts of scientific inquiry are actually delegated in a working agent demonstration, and what evidence would establish that the resulting system improves inquiry rather than scores well on a particular benchmark?
+
+## The paper pair
+
+**Pairing type:** Implemented laboratory agent / concrete agent benchmark.
+
+### Paper A: Autonomous chemical research with large language models
+
+@boiko2023. **Nature (2023).** [Paper / publisher record](https://www.nature.com/articles/s41586-023-06792-0) | [DOI](https://doi.org/10.1038/s41586-023-06792-0)
+
+Read the system architecture and one experimental demonstration. Identify which steps the system performed and which a person specified for it.
+
+*Access: Open-access publisher article.*
+
+### Paper B: ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery
+
+@chen2025. **International Conference on Learning Representations (2025).** [Paper / publisher record](https://proceedings.iclr.cc/paper_files/paper/2025/hash/f12b4df26344f3be803c06b555252efe-Abstract-Conference.html)
+
+Read the task construction, evaluation, and stated limitations. The full accepted conference paper and proceedings are linked.
+
+*Access: Open conference proceedings with paper PDF and review links; no DOI invented.*
+
+### Why these papers belong together
+
+Boiko and colleagues demonstrate a tool-using system that acts in a laboratory. ScienceAgentBench specifies executable tasks drawn from published studies and scores them. Between them they cover what an agent is built to do and what a score of its behavior can mean. A demonstration does not establish autonomy across every scientific mode, and success on a supplied analysis task does not by itself evaluate question choice, unexpected discovery, or field-level scientific value. [@boiko2023; @chen2025]
+
+### Discussant-led papers
+
+This meeting merges what were separately an architecture session and an evaluation session. Two rotating discussants each take one of the following and bring its argument into the discussion; everyone else reads the abstracts.
+
+- @messeri2024: [Artificial intelligence and illusions of understanding in scientific research](https://doi.org/10.1038/s41586-024-07146-0). **Nature (2024).** The epistemic critique of the architecture in Paper A: how adopting AI across a field can narrow the questions asked and produce understanding that is felt rather than held. Publisher/DOI page; full text may require institutional access.
+- @flake2020: [Measurement Schmeasurement: Questionable Measurement Practices and How to Avoid Them](https://doi.org/10.1177/2515245920952393). **Advances in Methods and Practices in Psychological Science (2020).** The construct-validity discipline that Paper B's scores need, translated from psychological measurement to agent assessment. Publisher/DOI page; full text may require institutional access.
+
+Neither critique is an empirical refutation of the system or the benchmark it accompanies. They specify what each would have to show to support the claim being made for it.
+
+## Prepare before the meeting
+
+Bring the inquiry-action vocabulary, exploration policy, measurement-provenance checklist, Novelty Dossier, Scientific Advance Profile, and Polymathy Profile developed earlier. Also bring, if you have them, matched outputs on one task from a human researcher, a hypothesis-first agent, and an inquiry agent, recording model, benchmark, data, tool, and evaluator versions.
+
+## Discussion questions
+
+1. Who specified the objective, supplied the tools, and checked the evidence?
+2. Which construct does each proposed metric actually observe, and where could a correct final answer conceal invalid reasoning, leakage, or an unreproducible workflow?
+3. How might a shared automated workflow narrow the questions this group asks, and would our evaluation detect that?
+
+## One-hour meeting
+
+| Time | Activity |
+|:--|:--|
+| 0-10 min | Independent first judgments; surface disagreements. |
+| 10-25 min | Compare the papers: claim, evidence, assumptions, and limits. |
+| 25-45 min | Work through the case exercise below. |
+| 45-55 min | Translate the discussion into agent requirements and tests. |
+| 55-60 min | Record an output and one unresolved disagreement. |
+
+### Case exercise
+
+Draw a state machine with observation, characterization, anomaly follow-up, question formation, competing explanations, testing, and synthesis, and assign evidence requirements to the transitions. Then pick the two transitions the group considers most load-bearing and specify, for each, the test that would show it works: the construct it observes, a positive and a negative control, and the failure it is designed to catch. Note which of those tests the group could actually run this quarter.
+
+## Agent-design or evaluation output
+
+Agent Architecture v1 and Scientific Inquiry Benchmark v1, produced together as one artifact so that no capability is specified without the evidence that would check it.
+
+The architecture keeps novelty assessment separate from the decision to pursue a project; preserves exploratory, confirmatory, corrective, and infrastructure-building options; and requires traceable tool outputs, explicit uncertainty, and human escalation points. The benchmark names its constructs, tasks, controls, independent evidence, scoring rules, human baseline, run budgets, repeated-run uncertainty, ablations, failure taxonomy, and criteria for improvement. Report process and outcome metrics separately, and report a profile rather than an unexamined total score.
+
+## Optional extensions
+
+- @messick1995: [Validity of psychological assessment: Validation of inferences from persons' responses and performances as scientific inquiry into score meaning](https://doi.org/10.1037/0003-066X.50.9.741). Publisher/DOI page; full text may require institutional access.
+
+The [prior art chapter](../prior-art.qmd) lists systems and benchmarks that already exist. Consult it before specifying anything here, and record which existing work each part of the architecture builds on.
+
+## Record after the meeting
+
+Record the evidence for your main claim, what changed your mind, what remains unresolved, and one change to the agent or its evaluation. Keep confidential examples in private group notes rather than committing them to this public book.

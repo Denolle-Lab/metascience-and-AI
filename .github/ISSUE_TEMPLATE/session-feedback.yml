@@ -1,0 +1,51 @@
+name: Session feedback or correction
+description: Something on a session page is wrong, unclear, or missing — or a discussion needs to continue.
+labels: ["session"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For recording what was said at a meeting, edit `notes.qmd` instead — that is the permanent record.
+        Use this for corrections, unclear framing, or a disagreement that should shape a later session.
+        Keep unpublished results and confidential examples out of this public tracker.
+  - type: dropdown
+    id: meeting
+    attributes:
+      label: Meeting
+      options:
+        - "1 — Is there a scientific method?"
+        - "2 — Exploratory experimentation is not theory-free"
+        - "3 — From coastal traces to earthquake histories"
+        - "4 — Plate tectonics: concept formation and a discriminating test"
+        - "5 — New sensing capability versus trustworthy measurement"
+        - "6 — Explore freely; distinguish exploration from confirmation"
+        - "7 — Field and marine research under real constraints"
+        - "8 — Serendipity, anomaly, and scientific interestingness"
+        - "9 — Hypothesis testing when several models fit"
+        - "10 — Scientific novelty: new to whom, compared with what?"
+        - "11 — Scientific advance: cumulative work and field-shaping change"
+        - "12 — Scientific polymathy: breadth, specialization, and borrowed competence"
+        - "13 — What architecture follows from practice, and what would show it worked?"
+        - "Rubrics, prior art, or reading library"
+        - "The book as a whole"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Factual error (citation, date, link, attribution)
+        - A claim is stronger than the evidence supports
+        - Unclear or missing framing
+        - A disagreement that should carry into a later session
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What is wrong, and what would be right
+      description: Quote the sentence if you can.
+    validations:
+      required: true
