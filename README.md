@@ -7,8 +7,7 @@ September 8 – December 1, 2026, 1–2 PM America/Los_Angeles.
 
 An exploratory quarter: the group reads its way through how experimental, observational,
 historical, and theoretical research actually proceeds, then asks what follows for the design and
-evaluation of agents for science. One proposal is tested rather than assumed: that agents let a
-researcher work competently across more fields, making individual polymathy practical again.
+evaluation of agents for science. Meeting 12 takes up one such proposal: that agents let a researcher work competently across more fields, making individual polymathy practical again. The seminar puts it as a question and says what would count against it.
 
 ## Contents
 
