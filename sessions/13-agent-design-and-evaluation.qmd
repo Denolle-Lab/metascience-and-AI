@@ -8,6 +8,8 @@ Which parts of scientific inquiry are actually delegated in a working agent demo
 
 ## The paper pair
 
+Every citation on this page links to its full record on the [bibliography](../references.qmd) page, which is generated from `references.bib`; the [reading library](../reading-library.qmd) adds access notes and the optional extensions by meeting.
+
 **Pairing type:** Implemented laboratory agent / concrete agent benchmark.
 
 ### Paper A: Autonomous chemical research with large language models
@@ -41,7 +43,7 @@ Neither critique is an empirical refutation of the system or the benchmark it ac
 
 ## Prepare before the meeting
 
-Bring the inquiry-action vocabulary, exploration policy, measurement-provenance checklist, Novelty Dossier, Scientific Advance Profile, and Polymathy Profile developed earlier. Also bring, if you have them, matched outputs on one task from a human researcher, a hypothesis-first agent, and an inquiry agent, recording model, benchmark, data, tool, and evaluator versions.
+Bring the inquiry-action vocabulary, exploration policy, measurement-provenance checklist, Novelty Dossier, Scientific Advance Profile, and Polymathy Profile developed earlier, and the [inquiry-mode ledger](../notes.qmd#inquiry-mode-ledger) with its nine rows. Also bring, if you have them, matched outputs on one task from a human researcher, a hypothesis-first agent, and an inquiry agent, recording model, benchmark, data, tool, and evaluator versions.
 
 ## Discussion questions
 
@@ -54,7 +56,7 @@ Bring the inquiry-action vocabulary, exploration policy, measurement-provenance 
 | Time | Activity |
 |:--|:--|
 | 0-10 min | Independent first judgments; surface disagreements. |
-| 10-25 min | Compare the papers: claim, evidence, assumptions, and limits. |
+| 10-25 min | Compare the papers: claim, evidence, assumptions, and limits. The discussant presents the discussant-led paper in this block. |
 | 25-45 min | Work through the case exercise below. |
 | 45-55 min | Translate the discussion into agent requirements and tests. |
 | 55-60 min | Record an output and one unresolved disagreement. |
@@ -72,6 +74,30 @@ The architecture keeps novelty assessment separate from the decision to pursue a
 ## Optional extensions
 
 - @messick1995: [Validity of psychological assessment: Validation of inferences from persons' responses and performances as scientific inquiry into score meaning](https://doi.org/10.1037/0003-066X.50.9.741). Publisher/DOI page; full text may require institutional access.
+
+The extensions below are grouped by what they are evidence of.
+
+**Systems that predate language models.** The lineage the [prior art chapter](../prior-art.qmd) now opens with.
+
+- @langley1981: [Data-Driven Discovery of Physical Laws](https://doi.org/10.1111/j.1551-6708.1981.tb00869.x). Cognitive Science (1981). BACON recovered Kepler's third law and Ohm's law from tables of numbers by searching for invariants. The first data-driven discovery program, with no hypothesis in the loop.
+- @kulkarni1988: [The Processes of Scientific Discovery: The Strategy of Experimentation](https://doi.org/10.1207/s15516709cog1202_1). Cognitive Science (1988). KEKADA reproduces Krebs's path to the urea cycle, built from Holmes's notebook-based reconstruction; surprise is one of its control signals. The one prior system built the way this seminar proposes to build: from documented human practice.
+- @king2009: [The Automation of Science](https://doi.org/10.1126/science.1165620). Science (2009). The Robot Scientist Adam: a closed generate-and-test loop with a real laboratory, and the first discovery credited to a machine. The best-argued case for the loop. Read it before criticizing the loop.
+- @schmidt2009: [Distilling Free-Form Natural Laws from Experimental Data](https://doi.org/10.1126/science.1165893). Science (2009). Symbolic regression recovers conservation laws from motion-capture data. What "law discovery" means when the variables have already been chosen.
+
+**Current systems and their scrutiny.**
+
+- @wang2023: [Scientific discovery in the age of artificial intelligence](https://doi.org/10.1038/s41586-023-06221-2). Nature (2023). The standard review. Use it as an index; it is not evidence about any one system.
+- @kitano2021: [Nobel Turing Challenge: creating the engine for scientific discovery](https://doi.org/10.1038/s41540-021-00189-3). npj Systems Biology and Applications (2021). The explicit proposal for a closed-loop AI scientist and what it would have to do. The clearest statement of the design this seminar is questioning.
+- @gottweis2026: [Accelerating scientific discovery with Co-Scientist](https://doi.org/10.1038/s41586-026-10644-y). Nature (2026). The multi-agent hypothesis tournament, now peer reviewed. Compare the validated cases with the number of proposals generated.
+- @szymanski2023 and @leeman2024: [An autonomous laboratory for the accelerated synthesis of inorganic materials](https://doi.org/10.1038/s41586-023-06734-w), Nature (2023); [Challenges in High-Throughput Inorganic Materials Prediction and Autonomous Synthesis](https://doi.org/10.1103/PRXEnergy.3.011002), PRX Energy (2024). A closed-loop laboratory reported forty-one new compounds; the reanalysis found most were misidentified or already known. A discovery / scrutiny pair for an autonomous system, and the reason the evaluation protocol has negative controls.
+- @kapoor2023: [Leakage and the reproducibility crisis in machine-learning-based science](https://doi.org/10.1016/j.patter.2023.100804). Patterns (2023). A taxonomy of leakage with cases across fields. Read before reusing any benchmark.
+- @si2025, from [meeting 10](10-novelty.qmd), is the human-baseline study for idea generation.
+
+**Objectives other than a hypothesis test.**
+
+- @rainforth2024: [Modern Bayesian Experimental Design](https://doi.org/10.1214/23-STS915). Statistical Science (2024). Expected information gain as the rule for choosing the next experiment. The strongest formal version of a loop, and it needs a space of models rather than one hypothesis.
+- @lehman2011: [Abandoning Objectives: Evolution Through the Search for Novelty Alone](https://doi.org/10.1162/EVCO_a_00025). Evolutionary Computation (2011). Searching for behavioral novelty instead of for an objective solved problems that objective search could not, because the objective was deceptive. The machine-side argument that a gate can narrow the search, stated so it can be tested.
+- @schmidhuber2010, from [meeting 8](08-serendipity.qmd), defines interestingness as compression progress, a third candidate objective.
 
 The [prior art chapter](../prior-art.qmd) lists systems and benchmarks that already exist. Consult it before specifying anything here, and record which existing work each part of the architecture builds on.
 

@@ -7,23 +7,26 @@ September 8 – December 1, 2026, 1–2 PM America/Los_Angeles.
 
 An exploratory quarter: the group reads its way through how experimental, observational,
 historical, and theoretical research actually proceeds, then asks what follows for the design and
-evaluation of agents for science. Meeting 12 takes up one such proposal: that agents let a researcher work competently across more fields, making individual polymathy practical again. The seminar puts it as a question and says what would count against it.
+evaluation of agents for science. Meeting 11 takes up one such proposal: that agents let a researcher work competently across more fields, making individual polymathy practical again. The seminar puts it as a question and says what would count against it.
 
 ## Contents
 
 | Path | What it is |
 |:--|:--|
 | `index.qmd` | Rationale, schedule, standing questions |
+| `glossary.qmd` | Working definitions of the modes of inquiry and of the terms the quarter measures; meeting 1 revises it |
 | `sessions/` | One chapter per meeting, thirteen of them |
 | `rubrics.qmd` | Inquiry, novelty, advance, and evaluation worksheets |
 | `prior-art.qmd` | Registry of existing science agents and benchmarks, and what their scores do not establish |
+| `corpus-study.qmd` | Design for coding the mode of inquiry of published papers and relating it to impact, novelty, interdisciplinarity, and depth |
 | `reading-library.qmd` | Publisher, DOI, and proceedings links for every assigned paper |
 | `notes.qmd` | The group's meeting record — add yours |
 | `suggested-readings.qmd` | Readings the group adds during the quarter |
 | `contributing.qmd` | How to contribute, and what must never be published here |
-| `references.bib` | 39 records: 26 paired papers, 2 discussant papers, 11 optional extensions |
+| `references.bib` | 113 records: 26 paired papers, 5 discussant papers, 65 optional extensions, 17 papers cited by the glossary and the corpus study |
 | `curriculum.json` | Editorial metadata for sessions and references. Kept in step with the `.qmd` files by hand; `validate.py` checks that the citation keys agree |
 | `READING-AUDIT.md` | Why the reading selections are what they are |
+| `PLAN-AUDIT.md` | September 2026 audit of the plan against the seminar's aims, and the reasoning behind the expanded optional extensions |
 | `tools/validate.py` | Source, schedule, link, and citation checks |
 | `tools/check_links.py` | Verifies every DOI against Crossref and fetches every other URL |
 | `tools/stage_site.py` | Fallback: copies a rendered book into a subdirectory of a local Jekyll checkout. Not the current publishing path |

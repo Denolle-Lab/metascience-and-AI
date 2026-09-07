@@ -1,5 +1,51 @@
 # Validation performed
 
+## September 6, 2026, third pass: glossary and corpus study
+
+Same environment. After the glossary was added as the book's first page, the corpus-study design was
+added to the working materials, and fifteen measurement papers were entered in the bibliography.
+
+- `tools/validate.py` passes: 23 chapter files, 13 consecutive Tuesdays, 31 assigned papers, 113
+  bibliography records (the last two are the ambient-noise papers added when the instruments and
+  methods rows were split); all citation keys and local links resolve; Pandoc processes every
+  citation without warnings.
+- `tools/check_links.py`: 137 distinct URLs across 24 source files; every DOI registered on Crossref.
+  Four publisher 403s are bot mitigation. The two GitHub links to the audit files return 404 and 429
+  until the commit is pushed.
+- `quarto render` produced all 23 pages, including `glossary.html` and `corpus-study.html`.
+
+## September 6, 2026, after the plan audit and the second pass
+
+Run on macOS with Quarto 1.9.38, Pandoc 3.9.0.2, and Python 3.14 in the local virtual environment,
+after fifty-seven optional extensions were added and five audit recommendations were adopted: the
+inquiry-mode ledger, discussant-led papers in meetings 1, 6, and 9, the swap of meetings 11 and 12,
+and Cleland 2001 as Paper B of meeting 1 (see `PLAN-AUDIT.md`).
+
+**Source checks — `tools/validate.py`, passing.**
+
+- 21 chapter files, 13 consecutive Tuesdays, 31 assigned papers (26 paired, 5 discussant-led), 96
+  bibliography records.
+- BibTeX keys and `curriculum.json` metadata describe the same set.
+- New check: every key in a meeting's `optional` list exists and is cited on that meeting's page.
+- Pandoc parses the Markdown and processes all citations without warnings.
+
+**External links — `tools/check_links.py`.** 122 distinct URLs across 22 source files.
+
+- All 96 DOIs are registered, verified individually against the Crossref API. This includes the
+  Geology DOI for Cleland 2001, which contains angle brackets and is percent-encoded in the sources;
+  the checker now decodes a DOI before querying the registry.
+- Five publisher URLs answer an automated request with 403 (Wiley, SAGE, Annual Reviews, two
+  ScienceDirect). Bot mitigation, as before; the DOIs resolve.
+- One GitHub link is unresolved only because the commit has not been pushed: the link to
+  `PLAN-AUDIT.md` returns 404 until the file is on `main`. Re-run after pushing.
+
+**Quarto build.** `quarto render` completed and produced all 21 pages in `_book/`, including the
+renamed session files `11-polymathy` and `12-scientific-advance`, the discussant-led sections on
+meetings 1, 6, and 9, the ledger on the rubrics and notes pages, the new optional-extension
+sections on every session page, and the lineage section in the prior-art chapter. Stale HTML from
+the pre-swap file names was removed from the local build directory.
+
+
 ## v0.3, September 5, 2026
 
 Run on macOS with Quarto 1.9.38, Pandoc 3.9.0.2, and Python 3.14 in a local virtual environment.

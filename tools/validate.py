@@ -100,6 +100,13 @@ def main() -> int:
             text = path.read_text()
             if any('@' + key not in text for key in assigned):
                 errors.append(f'Assigned citation missing in {path.name}')
+            # Optional extensions are not required reading, but a key listed for a
+            # meeting must exist and must appear on that meeting's page.
+            for key in session.get('optional', []):
+                if key not in refs:
+                    errors.append(f'Meeting {session["n"]} lists unknown optional key: {key}')
+                elif '@' + key not in text:
+                    errors.append(f'Optional citation {key} missing in {path.name}')
     for key in required:
         if key not in refs or not urlparse(refs[key]['url']).scheme:
             errors.append(f'Missing paper link for {key}')

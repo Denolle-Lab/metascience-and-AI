@@ -1,0 +1,99 @@
+# Which modes dominate the literature? A study design {.unnumbered}
+
+The seminar reconstructs nine episodes by hand. This page designs the counterpart at scale: code the mode of inquiry of published papers, measure their impact, novelty, interdisciplinarity, and depth, and ask which modes dominate the literature, which dominate the papers that shaped a field, and how mode and impact relate. It is a design, with a feasibility check, not a result. The group decides in meeting 1 whether to run it, and the timeline below fits inside the quarter.
+
+Every citation links to its full record on the [bibliography](references.qmd) page, generated from `references.bib`. The [glossary](glossary.qmd) is the codebook. The definitions there were written before any paper was coded, and the analysis plan below is meant to be frozen before the coding starts, so that the group practises the distinction meeting 6 is about [@nosek2018] rather than only reading about it.
+
+## Questions
+
+1. What share of papers in a field presents each mode of inquiry as its decisive move, and how has that share changed since 1970?
+2. Among field-shaping papers, defined below, is the distribution of modes different from the field's baseline?
+3. How does a paper's mode relate to its impact, its novelty, its interdisciplinarity, and its depth, holding year and subfield fixed?
+4. Where a trajectory is documented, does the presented mode match the reconstructed one, and does the mismatch depend on impact?
+
+The fourth question is the one the seminar is best placed to answer and the literature cannot: it needs notebooks, retrospectives, and people in the room.
+
+## What is already measured
+
+Research strategies have been coded at scale for biomedicine, where most work is conservative, innovative work is rare and rewarded more, and careers set the balance [@foster2015]. Novelty as atypical combination predicts high impact when paired with a conventional core [@uzzi2013], and interdisciplinarity has a measured cost in output and a measured reward in citations [@leahey2017]. Disruption has been measured across the whole literature and found to decline [@park2023; @wu2019], and the measure has been shown to inflate with the growth of reference lists [@petersen2025]. Fields that grow large entrench their canon [@chu2021].
+
+What has not been measured, as far as the reading for this seminar has found, is the share of *modes of inquiry* in a literature, coded from the papers themselves against a stated taxonomy, and its relation to those outcomes. The nearest work is the debate over hypothesis-driven versus data-driven biology, which argued the question from cases rather than counts [@kell2004; @glass2008], and a survey of what ecologists count as good science in a data-rich field [@elliott2016]. Step 0 of the study is a proper search for prior work of this kind, recorded in the [Novelty Dossier](rubrics.qmd#novelty-dossier-v1) format, before anything is coded.
+
+## Units and corpus
+
+The unit is the paper. The source is OpenAlex, which is open, has an API, and supplies for each work its abstract where the publisher allows, its references, its citing works, topic assignments, and a citation percentile normalized by field and year.
+
+The home corpus is seismology, this group's field, so that the group can judge the coding. A feasibility query on September 6, 2026 found about 22,000 journal articles from 1970 to 2020 under OpenAlex's seismology topic, about 10,000 of them with an abstract, and about 290 cited more than a hundred times. Topic assignment is noisy, so the working definition of the corpus should be a journal set, for example the Bulletin of the Seismological Society of America, Journal of Geophysical Research: Solid Earth, Geophysical Journal International, Seismological Research Letters, and the seismology papers in Geophysical Research Letters and Nature Geoscience, rather than a topic label. A comparison corpus from a field Platt held up as fast, molecular biology, tests whether the mode shares are a property of the field or of science.
+
+Abstracts are enough for a first pass and are wrong often enough that the pilot codes full texts. The published abstract is the narrative at its most compressed.
+
+## Coding scheme
+
+Each paper is coded for:
+
+- **Decisive mode**, one of the ten in the glossary, as presented by the paper.
+- **Sub-mode**, where the glossary names one.
+- **Secondary modes**, any number.
+- **Hypothesis stated before the result, as presented**: yes, no, or cannot tell. This is the variable the seminar's thesis is about, separate from the mode.
+- **Intervention on the system**: yes or no.
+- **New instrument or method as the contribution**: yes or no.
+- **New data collected**: yes, reused, or none.
+- **Shared infrastructure**: yes or no, for a network, a dataset or catalog, a software package, or a standard offered for others' use.
+- **Coder confidence**, three levels, and one sentence of reason.
+
+A coder sees the title, abstract, and full text, and does not see the journal, the authors, the year, or the citation count. Blinding matters here more than usual, because the convenor's thesis is known to everyone coding, and because prestige cues are exactly what a classifier would learn from if they were left in [@kapoor2023].
+
+## Procedure
+
+**Pilot.** One hundred papers drawn at random from the home corpus, coded independently by two people, agreement reported per variable with a chance-corrected statistic, and every disagreement discussed and recorded. The glossary is revised where the disagreements show a definition failing. This is the meeting 6 case exercise if the group wants it to be.
+
+**Classifier.** A language-model classifier given the revised glossary as its instructions, applied to a further three hundred papers that two people have coded and that the classifier has not seen. Report precision and recall per mode, and the confusion between modes, not an overall accuracy; a classifier that is right about hypothesis testing and wrong about synthesis and reconstruction is useless for this question. Treat the classifier as a measurement instrument, which means asking what construct its scores observe before using them [@flake2020]. Keep the human-coded set as the standard and re-check the classifier on a fresh sample each time the glossary changes.
+
+**Scale.** The classifier applied to the full corpus, with the coder-confidence variable kept and low-confidence papers sampled for human review.
+
+## Measures
+
+**Impact.** Citation percentile normalized by field and year, which OpenAlex supplies and which follows the universal form found across fields [@radicchi2008]; top 1% and top 10% as strata; the choice of indicator justified against the review of what each measures [@waltman2016]. Citation counts are attention as well as use [@bornmann2008], so where the group can, add uptake that citations miss: data and catalogue reuse, and adoption of a method by named later papers.
+
+**Field-shaping.** Three operationalizations, reported separately, because they do not agree with one another: the disruption index computed from the OpenAlex citation graph [@funk2017; @wu2019], with the correction for citation inflation [@petersen2025]; canonical status, meaning a paper in the top of its field's citation distribution that continues to be cited a decade or more after publication [@chu2021]; and delayed recognition, the sleeping beauty [@ke2015]. A paper that scores on all three is field-shaping on any definition; the interesting cases are the ones that score on one.
+
+**Novelty.** Atypicality of the paper's pairs of cited journals against the field's expectation [@uzzi2013], and distance of its abstract from the prior literature by word embedding [@shibayama2021], with the known problems of both recorded [@fontana2020].
+
+**Interdisciplinarity.** Diversity of the fields the paper cites, counting variety, balance, and disparity together [@stirling2007], with OpenAlex fields as the taxonomy and the choice of taxonomy recorded as a limitation [@porter2009; @wagner2011].
+
+**Depth.** For the paper, the concentration of its references in one field, the low end of the diversity above. For the first author, the concentration of prior publications across topics [@teodoridis2018].
+
+## Analysis plan, to be frozen before coding
+
+- Mode shares in the home corpus with confidence intervals, by decade. Question 1.
+- Mode shares in each field-shaping stratum against a random sample matched on year and subfield. Question 2. Report the three strata separately, and keep instruments and methods apart: the citation habit of tools suggests that method papers are overrepresented among the most cited, and the split exists to test that.
+- A model of impact percentile on mode, with year and subfield as controls and novelty, interdisciplinarity, and depth as covariates, and the same model with the hypothesis-stated variable in place of mode. Question 3. The second model is the direct test of the seminar's thesis at the level of narrative.
+- For the seminar's own thirty reconstructed episodes, presented mode against reconstructed mode, and the gap against impact. Question 4.
+- Everything else is exploratory and is labelled so in the write-up [@tukey1962].
+
+## What can go wrong
+
+The paper reports the presented mode, and standing question 5 says that is not the trajectory. Abstracts follow journal templates, and Platt's touchstone has been funders' policy for sixty years [@platt1964], so a rise in "hypothesis stated" over time may measure the narrative, not the work. Question 4 is the only control on this, and it is small.
+
+The corpus is what was published, so modes that fail before publication are invisible, which is the selection problem the seminar sees in Burke and in Moore.
+
+Mode is not quality. A field-shaping paper in one mode may be field-shaping because of the problem, the timing, or the author, not the mode. The regression controls for what can be measured, and the case reconstructions are where the rest lives.
+
+The classifier reads the same literature the field wrote, and its errors will be correlated with the field's own conventions. Human coding of a held-out set, repeated after each revision, is the only check.
+
+"Field-shaping" is three constructs, not one, and the study reports all three because reducing them to one would be the mistake meeting 12 is about.
+
+## Timeline inside the quarter
+
+| By | Step |
+|:--|:--|
+| Meeting 3, September 22 | Step 0: search for prior studies that coded modes of inquiry at scale; record in Dossier format. Fix the journal set. |
+| Meeting 6, October 13 | Pilot: 100 papers, two coders, agreement reported; glossary revised. Analysis plan frozen and dated. |
+| Meeting 9, November 3 | Classifier validated on 300 held-out papers; per-mode precision and recall reported. |
+| Meeting 11, November 17 | Full corpus coded; questions 1 to 3 answered; interdisciplinarity and depth results brought to the polymathy meeting. |
+| Meeting 12, November 24 | Field-shaping strata compared; results brought to the scientific-advance meeting. |
+| Meeting 13, December 1 | Question 4 from the seminar's own reconstructions; write-up of what the study does and does not establish. |
+
+## Outputs
+
+A coded dataset with the codebook that produced it, the frozen analysis plan with its date, the classifier's validation report, and a short paper. Whatever the mode shares turn out to be, the coded corpus is the training and evaluation set for the agent the seminar designs in meeting 13, which needs to recognize a mode before it can choose one.

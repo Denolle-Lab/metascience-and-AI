@@ -14,6 +14,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -90,7 +91,8 @@ def check_doi(url: str) -> tuple[str, int | str]:
     Crossref rate-limits, so back off and retry rather than reporting 429 as
     if the record were missing.
     """
-    doi = url[len(DOI_PREFIX):]
+    # A DOI containing < or > is percent-encoded in the sources; decode before re-quoting.
+    doi = urllib.parse.unquote(url[len(DOI_PREFIX):])
     api = 'https://api.crossref.org/works/' + urllib.request.quote(doi, safe='')
     for attempt in range(4):
         try:
