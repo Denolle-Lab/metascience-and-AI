@@ -15,15 +15,18 @@ $dn-tint: #e7f0f2;
 // One color per part of the book. The first is the site's own teal; the other
 // three are derived from it at the same lightness and saturation, so the four read
 // as one family. Swap any of them here and nothing else needs to change.
-$dn-part-1: $dn-primary;   // Inquiry in practice
-$dn-part-2: #304869;       // Novelty, advance, breadth, and agents: slate blue
-$dn-part-3: #24604c;       // Working materials: deep green
-$dn-part-4: #7a4429;       // Group workspace: rust, the teal's complement
+// They sit lighter and more saturated than the body text (#153742) so colored
+// headings stand apart from it, and each keeps at least 4.5:1 contrast on the
+// off-white background.
+$dn-part-1: $dn-focus;     // Inquiry in practice: the site's focus teal
+$dn-part-2: #2f5d9e;       // Novelty, advance, breadth, and agents: blue
+$dn-part-3: #2e7a5c;       // Working materials: green
+$dn-part-4: #a1512b;       // Group workspace: rust, the teal's complement
 
 $font-family-sans-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
 $font-family-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
 $headings-font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-$headings-font-weight: 600;
+$headings-font-weight: 700;
 $font-size-root: 17px;
 $body-bg: $dn-bg;
 $body-color: $dn-text;
@@ -49,16 +52,17 @@ main p, main li { line-height: 1.6; }
 // Headings carry the part color; the deeper the heading, the more it settles
 // toward the text color.
 #title-block-header { border-top: 4px solid var(--dn-part); padding-top: 0.9rem; }
-#title-block-header h1.title, main h1 { color: var(--dn-part); font-size: 2.3rem; font-weight: 700; line-height: 1.15; }
-main h2 { color: var(--dn-part); font-size: 1.65rem; margin-top: 2rem; padding-bottom: 0.2rem; border-bottom: 1px solid $dn-border; }
-main h3 { color: color-mix(in srgb, var(--dn-part) 72%, #{$dn-text}); font-size: 1.3rem; margin-top: 1.4rem; }
-main h4 { color: $dn-text; font-size: 1.1rem; }
+#title-block-header h1.title, main h1 { color: var(--dn-part); font-size: 2.5rem; font-weight: 700; line-height: 1.12; letter-spacing: 0.005em; }
+main h2 { font-family: $font-family-sans-serif; font-weight: 700; color: var(--dn-part); font-size: 1.5rem; margin-top: 2.1rem; padding-bottom: 0.25rem; border-bottom: 2px solid var(--dn-part); }
+main h3 { font-family: $font-family-sans-serif; font-weight: 700; color: var(--dn-part); font-size: 1.2rem; margin-top: 1.5rem; }
+main h4 { font-family: $font-family-sans-serif; font-weight: 700; color: $dn-text; font-size: 1.05rem; }
+#quarto-document-content > p:first-of-type strong { font-weight: 700; }
 .quarto-title-breadcrumbs a { color: var(--dn-part); }
 #quarto-document-content > p:first-of-type strong { color: var(--dn-part); }
 
 // Tables take the part color in the header rule only.
 .table { font-size: 0.92rem; }
-.table thead th { color: var(--dn-part); border-bottom: 2px solid var(--dn-part); font-weight: 600; }
+.table thead th { color: var(--dn-part); border-bottom: 2px solid var(--dn-part); font-weight: 700; }
 .table tbody tr:nth-of-type(odd) { background: rgba($dn-surface, 0.55); }
 
 // Sidebar: part labels in their color, a colored rail beside each part's chapters,
@@ -67,13 +71,13 @@ main h4 { color: $dn-text; font-size: 1.1rem; }
 #quarto-sidebar .sidebar-link { color: $dn-text; }
 #quarto-sidebar .sidebar-link:hover { color: $dn-focus; }
 .sidebar-item-section > .sidebar-item-container > .sidebar-link .menu-text {
-  font-family: $font-family-sans-serif; font-weight: 700; font-size: 0.78rem;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  font-family: $font-family-sans-serif; font-weight: 700; font-size: 0.82rem;
+  letter-spacing: 0.07em; text-transform: uppercase;
 }
 @each $n, $c in (1: $dn-part-1, 2: $dn-part-2, 3: $dn-part-3, 4: $dn-part-4) {
   a[data-bs-target="#quarto-sidebar-section-#{$n}"] .menu-text { color: $c; }
-  ##{"quarto-sidebar-section-#{$n}"} { border-left: 3px solid rgba($c, 0.35); margin-left: 0.2rem; }
-  ##{"quarto-sidebar-section-#{$n}"} .sidebar-link.active { color: $c; font-weight: 600; }
+  ##{"quarto-sidebar-section-#{$n}"} { border-left: 3px solid rgba($c, 0.6); margin-left: 0.2rem; }
+  ##{"quarto-sidebar-section-#{$n}"} .sidebar-link.active { color: $c; font-weight: 700; }
 }
 #quarto-sidebar .sidebar-item:not(.sidebar-item-section) > .sidebar-item-container > .sidebar-link.active { color: $dn-primary-strong; font-weight: 600; }
 #TOC .nav-link.active, #TOC .nav-link:hover { color: var(--dn-part); border-left-color: var(--dn-part); }
