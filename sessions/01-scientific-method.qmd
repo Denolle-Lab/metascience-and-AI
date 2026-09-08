@@ -70,30 +70,38 @@ Observing $P_i$ does **not** deductively prove $H_i$, because another hypothesis
 Platt's strong inference is a repeating process of generating alternatives, designing an observation that distinguishes them, excluding incompatible alternatives, and refining what remains [@platt1964, p. 347].
 
 ```{mermaid}
+%%| label: fig-strong-inference
+%%| fig-cap: "Platt's strong inference as a branching loop. Each cycle generates alternatives, deduces predictions that differ between them, runs the experiment, excludes what the outcome rules out, and refines what remains. The hypotheses are contrasted, never proved."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "18px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 28, "rankSpacing": 42, "curve": "basis", "padding": 10}}}%%
 flowchart TD
-    Q["Problem or scientific question"] --> A["1. Devise alternative hypotheses"]
+    Q["Problem or<br/>scientific question"] --> A["1. Devise alternative<br/>hypotheses"]
 
     A --> H1["Hypothesis H1"]
     A --> H2["Hypothesis H2"]
     A --> H3["Hypothesis H3"]
 
-    H1 --> P["2. Deduce contrasting predictions and devise a crucial experiment"]
-    H2 --> P
-    H3 --> P
+    H1 & H2 & H3 --> P["2. Deduce contrasting predictions<br/>and devise a crucial experiment"]
 
-    P --> T["3. Carry out the experiment to obtain a clean result"]
-    T --> O{"Observed outcome: nature chooses a branch"}
+    P --> T["3. Carry out the experiment<br/>to obtain a clean result"]
+    T --> O{"Observed outcome:<br/>nature chooses a branch"}
 
-    O -- "Outcome A" --> OA["Exclude H2 and H3; H1 remains"]
-    O -- "Outcome B" --> OB["Exclude H1 and H3; H2 remains"]
-    O -- "Outcome C" --> OC["Exclude H1 and H2; H3 remains"]
-    O -- "No clear separation" --> NC["No secure exclusion: recheck or redesign the test"]
+    O -- "Outcome A" --> OA["Exclude H2 and H3;<br/>H1 remains"]
+    O -- "Outcome B" --> OB["Exclude H1 and H3;<br/>H2 remains"]
+    O -- "Outcome C" --> OC["Exclude H1 and H2;<br/>H3 remains"]
+    O -- "No clear<br/>separation" --> NC["No secure exclusion:<br/>recheck or redesign the test"]
 
-    OA --> R["1'. Refine the remaining possibility into sequential hypotheses or subhypotheses"]
-    OB --> R
-    OC --> R
+    OA & OB & OC --> R["1'. Refine the remaining possibility<br/>into sequential hypotheses<br/>or subhypotheses"]
     NC --> P
     R --> P
+
+    classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef hyp fill:#ffffff,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
+    classDef warn fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    class Q,A,P,T,R step;
+    class H1,H2,H3,OA,OB,OC hyp;
+    class O branch;
+    class NC warn;
 ```
 
 > **Exclusion** means that an observed outcome is incompatible with a prediction required by one or more hypotheses. Those hypotheses are removed from the current candidate set. The hypothesis that remains has survived this test; it has not been proved true.
