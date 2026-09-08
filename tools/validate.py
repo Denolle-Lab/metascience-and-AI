@@ -69,8 +69,10 @@ def main() -> int:
         all_text.append(text)
         body = prose(text)
         cited.update(re.findall(r'(?<![\w])@([A-Za-z][A-Za-z0-9_-]*)', body))
-        for target in re.findall(r'\]\(([^)]+)\)', body):
-            # External URLs and local fragments are not filesystem paths.
+        for target in re.findall(r'\]\(<?([^)>]+)>?\)', body):
+            # External URLs and local fragments are not filesystem paths. Pandoc
+            # also allows <angle brackets> round a destination, which is how the
+            # APA references wrap DOIs that contain parentheses.
             if urlparse(target).scheme or target.startswith('#'):
                 continue
             target = target.split('#', 1)[0]
