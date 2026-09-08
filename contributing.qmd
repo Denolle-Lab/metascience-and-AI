@@ -21,12 +21,12 @@ Do not edit someone else's entry. If you disagree, add your own beneath it and s
 
 ## Adding a reading
 
-Two files change together:
+Two files are the sources of truth, and they change together:
 
-1. Append a BibTeX record to `references.bib`. Give it a key of the form `author` plus year, a DOI where one exists, and a `url` that resolves.
-2. Add a bullet to [suggested readings](suggested-readings.qmd) citing that key, with one sentence on the claim and one on the meeting it bears on.
+1. Append a BibTeX record to `references.bib`. Give it a key of the form `author` plus year, a DOI verified against Crossref, and a `url` that resolves.
+2. Add the matching entry to the `references` object in `curriculum.json`: author, year, title, journal, DOI, volume, issue, pages, URL, and an access note.
 
-`tools/validate.py` checks that the BibTeX keys and the editorial metadata in `curriculum.json` describe the same set, so a reading that is only in one of them fails the build. For a suggestion, that means adding a matching entry to the `references` object in `curriculum.json` as well.
+Then decide where it belongs. A suggestion for the group goes as a bullet in the [bibliography](bibliography.qmd#suggested-by-the-group), citing the key, with one sentence on the claim and one on the meeting it bears on. An optional extension for a meeting goes in that meeting's `optional` list in `curriculum.json` and as a cited bullet on the session page, with a sentence or two on why it is there. In either case run `tools/build_bibliography.py`, which regenerates the reading lists on the bibliography page from `curriculum.json`; `tools/validate.py` fails if those lists are stale, if the BibTeX keys and the metadata disagree, or if an optional key is not cited on its session page.
 
 ## Adding a prior-art entry
 
@@ -49,7 +49,7 @@ quarto render
 
 A virtual environment rather than a plain `pip install` because recent macOS and Linux Pythons refuse to install into the system interpreter. `.venv/` is gitignored.
 
-`validate.py` checks chapter existence, local links, citation keys, the schedule, and the agreement between `references.bib` and `curriculum.json`, then runs a Pandoc citation pass that fails on any warning. The same checks run on every pull request.
+`validate.py` checks chapter existence, local links, citation keys, the schedule, the agreement between `references.bib` and `curriculum.json`, and that the generated reading lists in `bibliography.qmd` are current, then runs a Pandoc citation pass that fails on any warning. The same checks run on every pull request.
 
 If you changed a reference or added a prior-art entry, also run `.venv/bin/python tools/check_links.py`. It verifies every DOI against Crossref and fetches every other URL. A handful of publisher sites answer automated requests with 403; the script reports those separately and does not treat them as failures.
 

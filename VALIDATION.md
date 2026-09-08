@@ -1,5 +1,20 @@
 # Validation performed
 
+## September 8, 2026: consolidated bibliography
+
+`reading-library.qmd`, `references.qmd`, and `suggested-readings.qmd` were merged into one page,
+`bibliography.qmd`, whose reading lists are generated from `curriculum.json` by
+`tools/build_bibliography.py`. `tools/validate.py` now runs that script with `--check` and fails if
+the lists are stale.
+
+- `tools/validate.py` passes: 21 chapter files, 13 consecutive Tuesdays, 31 assigned papers, 113
+  bibliography records; generated reading lists current; Pandoc citations without warnings.
+- `quarto render` produced all 21 pages. Every citation in every chapter resolves to
+  `bibliography.html#ref-<key>`, the reference list renders once, on that page, with 113 entries,
+  and the per-chapter reference blocks Quarto emits are hidden, so nothing is listed twice.
+- No `references.html`, `reading-library.html`, or `suggested-readings.html` is produced; links
+  to the old pages inside the book were repointed, and `check_links.py` reports nothing new.
+
 ## September 6, 2026, third pass: glossary and corpus study
 
 Same environment. After the glossary was added as the book's first page, the corpus-study design was

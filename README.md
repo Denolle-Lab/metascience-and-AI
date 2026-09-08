@@ -19,15 +19,15 @@ evaluation of agents for science. Meeting 11 takes up one such proposal: that ag
 | `rubrics.qmd` | Inquiry, novelty, advance, and evaluation worksheets |
 | `prior-art.qmd` | Registry of existing science agents and benchmarks, and what their scores do not establish |
 | `corpus-study.qmd` | Design for coding the mode of inquiry of published papers and relating it to impact, novelty, interdisciplinarity, and depth |
-| `reading-library.qmd` | Publisher, DOI, and proceedings links for every assigned paper |
+| `bibliography.qmd` | Every reading by meeting with links and access notes, the group's suggestions, and the full reference list; the reading lists are generated from `curriculum.json` |
 | `notes.qmd` | The group's meeting record — add yours |
-| `suggested-readings.qmd` | Readings the group adds during the quarter |
 | `contributing.qmd` | How to contribute, and what must never be published here |
 | `references.bib` | 113 records: 26 paired papers, 5 discussant papers, 65 optional extensions, 17 papers cited by the glossary and the corpus study |
 | `curriculum.json` | Editorial metadata for sessions and references. Kept in step with the `.qmd` files by hand; `validate.py` checks that the citation keys agree |
 | `READING-AUDIT.md` | Why the reading selections are what they are |
 | `PLAN-AUDIT.md` | September 2026 audit of the plan against the seminar's aims, and the reasoning behind the expanded optional extensions |
-| `tools/validate.py` | Source, schedule, link, and citation checks |
+| `tools/validate.py` | Source, schedule, link, and citation checks, including that the generated reading lists are current |
+| `tools/build_bibliography.py` | Regenerates the reading lists in `bibliography.qmd` from `references.bib` and `curriculum.json` |
 | `tools/check_links.py` | Verifies every DOI against Crossref and fetches every other URL |
 | `tools/stage_site.py` | Fallback: copies a rendered book into a subdirectory of a local Jekyll checkout. Not the current publishing path |
 

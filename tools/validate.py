@@ -76,6 +76,11 @@ def main() -> int:
             target = target.split('#', 1)[0]
             if target and not (path.parent / target).is_file():
                 errors.append(f'Broken local link in {name}: {target}')
+    # The reading lists on the bibliography page are generated from curriculum.json;
+    # a stale page means the sources changed without the script being rerun.
+    check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'build_bibliography.py'), '--check'], capture_output=True, text=True)
+    if check.returncode:
+        errors.append(check.stderr.strip() or 'bibliography.qmd is out of date')
     unknown = cited - set(bib_keys)
     if unknown:
         errors.append('Unknown citation keys: ' + ', '.join(sorted(unknown)))

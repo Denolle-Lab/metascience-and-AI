@@ -25,7 +25,7 @@ a later deletion.
 | You want to | Edit |
 |:--|:--|
 | Record what was said at a meeting | `notes.qmd` — signed, dated, under your meeting |
-| Suggest a reading | `references.bib` **and** `curriculum.json` **and** `suggested-readings.qmd` |
+| Suggest a reading | `references.bib` **and** `curriculum.json`, then run `tools/build_bibliography.py`; the bullet goes in `bibliography.qmd` under "Suggested by the group" |
 | Add an agent system or benchmark | a table row in `prior-art.qmd`, with a DOI or arXiv ID |
 | Change what is assigned | `curriculum.json` **and** the session `.qmd` **and** `READING-AUDIT.md` — open an issue first |
 
