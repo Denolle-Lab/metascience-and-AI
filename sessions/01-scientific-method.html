@@ -458,36 +458,47 @@ window.Quarto = {
 <p>Platt’s strong inference is a repeating process of generating alternatives, designing an observation that distinguishes them, excluding incompatible alternatives, and refining what remains <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
+<div id="fig-strong-inference" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-strong-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    Q["Problem or scientific question"] --&gt; A["1. Devise alternative hypotheses"]
+<pre class="mermaid mermaid-js" data-label="fig-strong-inference">%%{init: {"theme": "base", "themeVariables": {"fontSize": "18px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 28, "rankSpacing": 42, "curve": "basis", "padding": 10}}}%%
+flowchart TD
+    Q["Problem or&lt;br/&gt;scientific question"] --&gt; A["1. Devise alternative&lt;br/&gt;hypotheses"]
 
     A --&gt; H1["Hypothesis H1"]
     A --&gt; H2["Hypothesis H2"]
     A --&gt; H3["Hypothesis H3"]
 
-    H1 --&gt; P["2. Deduce contrasting predictions and devise a crucial experiment"]
-    H2 --&gt; P
-    H3 --&gt; P
+    H1 &amp; H2 &amp; H3 --&gt; P["2. Deduce contrasting predictions&lt;br/&gt;and devise a crucial experiment"]
 
-    P --&gt; T["3. Carry out the experiment to obtain a clean result"]
-    T --&gt; O{"Observed outcome: nature chooses a branch"}
+    P --&gt; T["3. Carry out the experiment&lt;br/&gt;to obtain a clean result"]
+    T --&gt; O{"Observed outcome:&lt;br/&gt;nature chooses a branch"}
 
-    O -- "Outcome A" --&gt; OA["Exclude H2 and H3; H1 remains"]
-    O -- "Outcome B" --&gt; OB["Exclude H1 and H3; H2 remains"]
-    O -- "Outcome C" --&gt; OC["Exclude H1 and H2; H3 remains"]
-    O -- "No clear separation" --&gt; NC["No secure exclusion: recheck or redesign the test"]
+    O -- "Outcome A" --&gt; OA["Exclude H2 and H3;&lt;br/&gt;H1 remains"]
+    O -- "Outcome B" --&gt; OB["Exclude H1 and H3;&lt;br/&gt;H2 remains"]
+    O -- "Outcome C" --&gt; OC["Exclude H1 and H2;&lt;br/&gt;H3 remains"]
+    O -- "No clear&lt;br/&gt;separation" --&gt; NC["No secure exclusion:&lt;br/&gt;recheck or redesign the test"]
 
-    OA --&gt; R["1'. Refine the remaining possibility into sequential hypotheses or subhypotheses"]
-    OB --&gt; R
-    OC --&gt; R
+    OA &amp; OB &amp; OC --&gt; R["1'. Refine the remaining possibility&lt;br/&gt;into sequential hypotheses&lt;br/&gt;or subhypotheses"]
     NC --&gt; P
     R --&gt; P
+
+    classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef hyp fill:#ffffff,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
+    classDef warn fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    class Q,A,P,T,R step;
+    class H1,H2,H3,OA,OB,OC hyp;
+    class O branch;
+    class NC warn;
 </pre>
 </div>
-<p></p></figure><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-strong-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Platt’s strong inference as a branching loop. Each cycle generates alternatives, deduces predictions that differ between them, runs the experiment, excludes what the outcome rules out, and refines what remains. The hypotheses are contrasted, never proved.
+</figcaption>
+</figure>
 </div>
 </div>
 </div>
