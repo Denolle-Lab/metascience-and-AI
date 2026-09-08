@@ -1,7 +1,7 @@
 # MetaScience, Scientific Inquiry, and Agents
 
-Working Quarto book, v0.3. Thirteen one-hour Tuesday meetings for the Denolle Lab,
-September 8 – December 1, 2026, 1–2 PM America/Los_Angeles.
+Working Quarto book, v0.3. Thirteen one-hour meetings for the Denolle Lab, taken one at a
+time in the order below rather than on fixed dates.
 
 **Published at <https://denolle-lab.github.io/metascience-and-AI/>**
 
@@ -51,7 +51,7 @@ python3 -m venv .venv
 ```
 
 `.venv/` is gitignored. `validate.py` checks that every chapter exists, that local links and
-citation keys resolve, that the thirteen meetings fall on consecutive Tuesdays, that `references.bib`
+citation keys resolve, that the thirteen meetings are numbered in order, that `references.bib`
 and `curriculum.json` describe the same set of works, and that no private material is registered as a
 chapter; it then runs a Pandoc citation pass that fails on any warning. `check_links.py` is slower and
 hits the network, so run it when you have changed references rather than on every edit.

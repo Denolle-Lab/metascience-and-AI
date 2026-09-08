@@ -73,3 +73,7 @@ The reasoning, and the recommendations that were not applied, are in `PLAN-AUDIT
 The convenor adopted four of the audit's recommendations the same day. Meetings 11 and 12 were swapped, so polymathy is on November 17 and scientific advance on November 24. Cleland's 2001 Geology paper became Paper B of meeting 1, read by everyone, and the 2002 Philosophy of Science paper became discussant-led. Ioannidis (2005) became discussant-led in meeting 6 and Geller (1997) in meeting 9, so that the strongest published cases for a hypothesis gate are presented in the room. An inquiry-mode ledger, one row per reconstructed episode across meetings 1 to 9, was added to the rubrics and to the meeting notes. The record now stands at 26 paired papers, 5 discussant-led papers, and 65 optional extensions.
 
 A glossary of the modes of inquiry and the terms of assessment was added as the book's first page, and a corpus-study design was added to the working materials, with twelve measurement papers (citation normalization, disruption, sleeping beauties, interdisciplinarity diversity, and the hypothesis-driven versus data-driven debate) entered in the bibliography for them.
+
+### September 8, 2026: dates removed
+
+The convenor removed all meeting dates and times. The seminar proceeds one meeting at a time in the numbered order; the meeting-notes page records when each was held, and the validator checks order rather than a calendar.

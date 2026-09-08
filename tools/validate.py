@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Validate book sources and run Pandoc citation processing (not a Quarto build)."""
 from __future__ import annotations
-import datetime as dt
 import json
 from pathlib import Path
 import re
@@ -87,12 +86,10 @@ def main() -> int:
     if unknown:
         errors.append('Unknown citation keys: ' + ', '.join(sorted(unknown)))
     required = set()
-    start = dt.date(2026, 9, 8)
+    # Meetings are taken one at a time and carry no dates; only their order is checked.
     for index, session in enumerate(sessions):
-        expected = start + dt.timedelta(weeks=index)
-        date = dt.date.fromisoformat(session['date'])
-        if session['n'] != index + 1 or date != expected or date.weekday() != 1:
-            errors.append(f'Unexpected meeting number/date: {session["n"]}, {date}')
+        if session['n'] != index + 1:
+            errors.append(f'Unexpected meeting number: {session["n"]} at position {index + 1}')
         if len(session['pair']) != 2:
             errors.append(f'Meeting {session["n"]} does not have two required papers')
         # Discussant papers are read in depth by a rotating discussant rather than
@@ -134,7 +131,7 @@ def main() -> int:
     if errors:
         print('\n'.join('FAIL: ' + error for error in errors), file=sys.stderr)
         return 1
-    print(f'PASS: {len(order)} chapter files, 13 consecutive Tuesdays, {len(required)} assigned papers, {len(bib_keys)} bibliography records')
+    print(f'PASS: {len(order)} chapter files, 13 meetings in order, {len(required)} assigned papers, {len(bib_keys)} bibliography records')
     print('PASS: all local source links and citation keys resolve')
     print('PASS: no private material is registered as a published chapter')
     print('NOT TESTED: full Quarto render, browser layout, external full-text access, and deployed website')

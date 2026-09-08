@@ -2,7 +2,7 @@
 
 Full guidance, rendered: <https://denolle-lab.github.io/metascience-and-AI/contributing.html>
 
-This book is the Denolle Lab's shared workspace for the Fall 2026 metascience seminar. Notes,
+This book is the Denolle Lab's shared workspace for the metascience seminar. Notes,
 readings, corrections, and recorded disagreements are all welcome.
 
 ## Never publish these
@@ -44,7 +44,7 @@ quarto render
 A virtual environment rather than a plain `pip install`, because recent macOS and Linux Pythons
 refuse to install into the system interpreter. `.venv/` is gitignored.
 
-`validate.py` checks chapters, local links, citation keys, the thirteen-Tuesday schedule, and that
+`validate.py` checks chapters, local links, citation keys, the numbering of the thirteen meetings, and that
 `references.bib` and `curriculum.json` describe the same set of works, then runs a Pandoc citation
 pass that fails on any warning. The same checks run on every pull request.
 

@@ -14,6 +14,8 @@ The convenor adopted five of the eight recommendations the same day, and they ar
 4. Cleland 2001 (Geology) is Paper B of meeting 1, read by everyone; Cleland 2002 is discussant-led.
 5. The meeting-1 private analysis was rewritten from the full texts of all three papers, with page references, and the corrections to the earlier memory-based version are marked in it.
 
+On September 8, 2026 the convenor removed all meeting dates: the seminar proceeds one meeting at a time in the numbered order, and the validator checks order only. The calendar remarks in the summary and in section 7 are therefore historical.
+
 Still open: naming a maintainer for a living architecture document, settling the agent-seisbench question before November 3, and retiring the one preprint.
 
 Meeting numbers in sections 1 to 8 below follow the v0.3 order in which the audit was written. After the swap, polymathy is meeting 11 and scientific advance is meeting 12.

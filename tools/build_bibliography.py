@@ -9,7 +9,6 @@ it with --check and fails if the page is out of date.
 """
 from __future__ import annotations
 import argparse
-import datetime as dt
 import json
 import sys
 from pathlib import Path
@@ -32,9 +31,8 @@ def by_meeting(data: dict) -> str:
     refs = data['references']
     out: list[str] = []
     for s in data['sessions']:
-        date = dt.date.fromisoformat(s['date']).strftime('%B %-d, %Y')
         out.append(f"### Meeting {s['n']}: {s['title']}\n")
-        out.append(f"*{date}. [Session page](sessions/{s['n']:02}-{s['slug']}.qmd).*\n")
+        out.append(f"*[Session page](sessions/{s['n']:02}-{s['slug']}.qmd).*\n")
         out.append('**Assigned.**\n')
         out.extend(entry(k, refs) + '\n' for k in s['pair'])
         if s.get('discussant'):
