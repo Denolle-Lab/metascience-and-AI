@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fa4fee36774bac81848e18f7260a45e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2028c19be5c3fcdcaaf02066c6ed0e41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,6 +74,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;display=swap">
 
 
 </head>
@@ -118,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About this Group Meeeting</span></a>
+ <span class="menu-text">About this Group Meeting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -870,6 +873,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
 
 
 
