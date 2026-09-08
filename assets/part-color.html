@@ -1,0 +1,11 @@
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>

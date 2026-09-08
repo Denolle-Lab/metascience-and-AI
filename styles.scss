@@ -1,16 +1,91 @@
 /*-- scss:defaults --*/
-$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", sans-serif;
-$font-family-serif: Georgia, "Times New Roman", serif;
-$font-size-root: 16px;
+
+// Palette and type from denolle.ai (assets/styles.css), read on September 8, 2026.
+$dn-bg: #f5f4f2;
+$dn-bg-alt: #eceff1;
+$dn-surface: #ffffff;
+$dn-text: #153742;
+$dn-muted: #49616a;
+$dn-border: #d7dde2;
+$dn-primary: #0f4c5c;
+$dn-primary-strong: #0b3e4b;
+$dn-focus: #1c6a7f;
+$dn-tint: #e7f0f2;
+
+// One color per part of the book. The first is the site's own teal; the other
+// three are derived from it at the same lightness and saturation, so the four read
+// as one family. Swap any of them here and nothing else needs to change.
+$dn-part-1: $dn-primary;   // Inquiry in practice
+$dn-part-2: #304869;       // Novelty, advance, breadth, and agents: slate blue
+$dn-part-3: #24604c;       // Working materials: deep green
+$dn-part-4: #7a4429;       // Group workspace: rust, the teal's complement
+
+$font-family-sans-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+$font-family-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+$headings-font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 $headings-font-weight: 600;
+$font-size-root: 17px;
+$body-bg: $dn-bg;
+$body-color: $dn-text;
+$link-color: $dn-primary;
+$link-hover-color: $dn-focus;
+$primary: $dn-primary;
+$border-color: $dn-border;
+
 /*-- scss:rules --*/
+
+// The active part is stamped on <html data-part="N"> by assets/part-color.html,
+// read from the sidebar section that contains the current page. Pages outside a
+// part (the index, the glossary, the bibliography) use the site's strong teal.
+:root { --dn-part: #{$dn-primary-strong}; }
+html[data-part="1"] { --dn-part: #{$dn-part-1}; }
+html[data-part="2"] { --dn-part: #{$dn-part-2}; }
+html[data-part="3"] { --dn-part: #{$dn-part-3}; }
+html[data-part="4"] { --dn-part: #{$dn-part-4}; }
+
 #quarto-content main { max-width: 58rem; }
-main p, main li { line-height: 1.55; }
-main h1 { font-size: 1.8rem; }
-main h2 { font-size: 1.35rem; margin-top: 1.6rem; }
-main h3 { font-size: 1.1rem; }
-.table { font-size: .92rem; }
+main p, main li { line-height: 1.6; }
+
+// Headings carry the part color; the deeper the heading, the more it settles
+// toward the text color.
+#title-block-header { border-top: 4px solid var(--dn-part); padding-top: 0.9rem; }
+#title-block-header h1.title, main h1 { color: var(--dn-part); font-size: 2.3rem; font-weight: 700; line-height: 1.15; }
+main h2 { color: var(--dn-part); font-size: 1.65rem; margin-top: 2rem; padding-bottom: 0.2rem; border-bottom: 1px solid $dn-border; }
+main h3 { color: color-mix(in srgb, var(--dn-part) 72%, #{$dn-text}); font-size: 1.3rem; margin-top: 1.4rem; }
+main h4 { color: $dn-text; font-size: 1.1rem; }
+.quarto-title-breadcrumbs a { color: var(--dn-part); }
+#quarto-document-content > p:first-of-type strong { color: var(--dn-part); }
+
+// Tables take the part color in the header rule only.
+.table { font-size: 0.92rem; }
+.table thead th { color: var(--dn-part); border-bottom: 2px solid var(--dn-part); font-weight: 600; }
+.table tbody tr:nth-of-type(odd) { background: rgba($dn-surface, 0.55); }
+
+// Sidebar: part labels in their color, a colored rail beside each part's chapters,
+// and the current chapter in the part color.
+#quarto-sidebar { background: $dn-bg-alt; }
+#quarto-sidebar .sidebar-link { color: $dn-text; }
+#quarto-sidebar .sidebar-link:hover { color: $dn-focus; }
+.sidebar-item-section > .sidebar-item-container > .sidebar-link .menu-text {
+  font-family: $font-family-sans-serif; font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+@each $n, $c in (1: $dn-part-1, 2: $dn-part-2, 3: $dn-part-3, 4: $dn-part-4) {
+  a[data-bs-target="#quarto-sidebar-section-#{$n}"] .menu-text { color: $c; }
+  ##{"quarto-sidebar-section-#{$n}"} { border-left: 3px solid rgba($c, 0.35); margin-left: 0.2rem; }
+  ##{"quarto-sidebar-section-#{$n}"} .sidebar-link.active { color: $c; font-weight: 600; }
+}
+#quarto-sidebar .sidebar-item:not(.sidebar-item-section) > .sidebar-item-container > .sidebar-link.active { color: $dn-primary-strong; font-weight: 600; }
+#TOC .nav-link.active, #TOC .nav-link:hover { color: var(--dn-part); border-left-color: var(--dn-part); }
+
+// Small type and chrome.
+.sidebar-title, .sidebar-title a { font-family: $headings-font-family; font-weight: 700; color: $dn-primary-strong; }
+.nav-footer, .nav-footer a { color: $dn-muted; }
+code { color: $dn-primary-strong; background: $dn-tint; padding: 0.05em 0.3em; border-radius: 0.25rem; }
+pre code { background: transparent; padding: 0; }
+blockquote { border-left: 3px solid var(--dn-part); color: $dn-muted; }
+
 @media (max-width: 700px) {
   main table { display: block; overflow-x: auto; }
 }
-@media print { body { font-size: 11pt; } }
+@media print { body { font-size: 11pt; background: #fff; } }
