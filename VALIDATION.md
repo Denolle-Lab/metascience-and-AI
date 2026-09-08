@@ -1,5 +1,19 @@
 # Validation performed
 
+## September 8, 2026: meeting dates removed
+
+The seminar now proceeds one meeting at a time in numbered order, with no dates or times anywhere
+in the book. Session headers read "Meeting N of 13", the index lists the meetings without a date
+column, the meeting-notes page carries a "Held: date to be recorded" line per meeting, the
+corpus-study timeline is keyed to meetings, and `curriculum.json` no longer has a `date` field.
+`tools/validate.py` checks that the thirteen meetings are numbered in order and no longer checks
+a calendar. (This change was committed to the public repository as `869e6c5`, whose message
+mentions "analysis headers" by mistake; the commit itself contains the book changes.)
+
+- `tools/validate.py` passes: 21 chapter files, 13 meetings in order, 31 assigned papers, 113
+  bibliography records; generated reading lists current; Pandoc citations without warnings.
+- `quarto render` produced all 21 pages.
+
 ## September 8, 2026: consolidated bibliography
 
 `reading-library.qmd`, `references.qmd`, and `suggested-readings.qmd` were merged into one page,
