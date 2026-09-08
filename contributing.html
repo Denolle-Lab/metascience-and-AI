@@ -69,8 +69,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./suggested-readings.html" rel="prev">
+<link href="./bibliography.html" rel="next">
+<link href="./notes.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About this seminar</span></a>
+ <span class="menu-text">About this Group Meeeting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -276,12 +276,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Which modes dominate the literature? A study design</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reading-library.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading library</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -301,12 +295,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./suggested-readings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Suggested readings</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./contributing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">How to contribute</span></a>
   </div>
@@ -315,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
   </div>
 </li>
     </ul>
@@ -380,12 +368,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="adding-a-reading" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-reading">Adding a reading</h2>
-<p>Two files change together:</p>
+<p>Two files are the sources of truth, and they change together:</p>
 <ol type="1">
-<li>Append a BibTeX record to <code>references.bib</code>. Give it a key of the form <code>author</code> plus year, a DOI where one exists, and a <code>url</code> that resolves.</li>
-<li>Add a bullet to <a href="./suggested-readings.html">suggested readings</a> citing that key, with one sentence on the claim and one on the meeting it bears on.</li>
+<li>Append a BibTeX record to <code>references.bib</code>. Give it a key of the form <code>author</code> plus year, a DOI verified against Crossref, and a <code>url</code> that resolves.</li>
+<li>Add the matching entry to the <code>references</code> object in <code>curriculum.json</code>: author, year, title, journal, DOI, volume, issue, pages, URL, and an access note.</li>
 </ol>
-<p><code>tools/validate.py</code> checks that the BibTeX keys and the editorial metadata in <code>curriculum.json</code> describe the same set, so a reading that is only in one of them fails the build. For a suggestion, that means adding a matching entry to the <code>references</code> object in <code>curriculum.json</code> as well.</p>
+<p>Then decide where it belongs. A suggestion for the group goes as a bullet in the <a href="./bibliography.html#suggested-by-the-group">bibliography</a>, citing the key, with one sentence on the claim and one on the meeting it bears on. An optional extension for a meeting goes in that meeting’s <code>optional</code> list in <code>curriculum.json</code> and as a cited bullet on the session page, with a sentence or two on why it is there. In either case run <code>tools/build_bibliography.py</code>, which regenerates the reading lists on the bibliography page from <code>curriculum.json</code>; <code>tools/validate.py</code> fails if those lists are stale, if the BibTeX keys and the metadata disagree, or if an optional key is not cited on its session page.</p>
 </section>
 <section id="adding-a-prior-art-entry" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-prior-art-entry">Adding a prior-art entry</h2>
@@ -403,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> tools/validate.py</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A virtual environment rather than a plain <code>pip install</code> because recent macOS and Linux Pythons refuse to install into the system interpreter. <code>.venv/</code> is gitignored.</p>
-<p><code>validate.py</code> checks chapter existence, local links, citation keys, the schedule, and the agreement between <code>references.bib</code> and <code>curriculum.json</code>, then runs a Pandoc citation pass that fails on any warning. The same checks run on every pull request.</p>
+<p><code>validate.py</code> checks chapter existence, local links, citation keys, the schedule, the agreement between <code>references.bib</code> and <code>curriculum.json</code>, and that the generated reading lists in <code>bibliography.qmd</code> are current, then runs a Pandoc citation pass that fails on any warning. The same checks run on every pull request.</p>
 <p>If you changed a reference or added a prior-art entry, also run <code>.venv/bin/python tools/check_links.py</code>. It verifies every DOI against Crossref and fetches every other URL. A handful of publisher sites answer automated requests with 403; the script reports those separately and does not treat them as failures.</p>
 </section>
 <section id="style" class="level2">
@@ -821,13 +809,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./suggested-readings.html" class="pagination-link" aria-label="Suggested readings">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Suggested readings</span>
+      <a href="./notes.html" class="pagination-link" aria-label="Meeting notes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Meeting notes</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bibliography.html" class="pagination-link" aria-label="Bibliography and reading library">
+        <span class="nav-page-text">Bibliography and reading library</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
