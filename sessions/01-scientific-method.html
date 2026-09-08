@@ -93,10 +93,42 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -309,6 +341,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#why-these-papers-belong-together" id="toc-why-these-papers-belong-together" class="nav-link" data-scroll-target="#why-these-papers-belong-together">Why these papers belong together</a></li>
   <li><a href="#discussant-led-paper" id="toc-discussant-led-paper" class="nav-link" data-scroll-target="#discussant-led-paper">Discussant-led paper</a></li>
+  <li><a href="#reading-notes" id="toc-reading-notes" class="nav-link" data-scroll-target="#reading-notes">Reading notes</a></li>
   </ul></li>
   <li><a href="#prepare-before-the-meeting" id="toc-prepare-before-the-meeting" class="nav-link" data-scroll-target="#prepare-before-the-meeting">Prepare before the meeting</a></li>
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion questions</a></li>
@@ -368,6 +401,103 @@ div.csl-indent {
 <p>Cleland, C. E. (2002). Methodological and Epistemic Differences between Historical Science and Experimental Science. <em>Philosophy of Science, 69</em>(3), 474–496. <a href="https://doi.org/10.1086/342455">https://doi.org/10.1086/342455</a></p>
 <p>The full version of the Geology paper above: the time asymmetry that makes trace-hunting a rational strategy rather than a consolation prize, the “smoking gun”, and the reply to the charge that historical science is epistemically inferior. The discussant brings what the four-page version leaves out. <span class="citation" data-cites="cleland2002">(<a href="../bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002</a>)</span></p>
 </section>
+<section id="reading-notes" class="level3">
+<h3 class="anchored" data-anchor-id="reading-notes">Reading notes</h3>
+<p>The convenor’s notes from the two assigned papers, offered as a starting point rather than a summary of the discussion. They bear on discussion question 3 below, on whether the papers describe how ideas are generated or how claims are warranted, and the diagram is the loop the case exercise compares a real project against. Page numbers are the journals’ own.</p>
+<section id="inference-deduction-and-hypothesis-generation" class="level4">
+<h4 class="anchored" data-anchor-id="inference-deduction-and-hypothesis-generation">Inference, deduction, and hypothesis generation</h4>
+<p>Deduction is not the opposite of inference. It is one kind of inference. Platt’s workflow embeds deductive reasoning inside a broader process of inductive inference.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Term</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Role in strong inference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Inference</strong></td>
+<td style="text-align: left;">Any reasoned movement from premises or evidence to a conclusion.</td>
+<td style="text-align: left;">The general category containing deduction, induction, and other forms of reasoning.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Deduction</strong></td>
+<td style="text-align: left;">Reasoning in which the conclusion must follow if the premises are true.</td>
+<td style="text-align: left;">Derives a predicted observation from each hypothesis: if <span class="math inline">\(H_i\)</span> and its auxiliary assumptions hold, then <span class="math inline">\(P_i\)</span> should occur.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Inductive inference</strong></td>
+<td style="text-align: left;">Reasoning from observations to a broader but provisional conclusion. New evidence can revise it.</td>
+<td style="text-align: left;">Uses the observed outcome to exclude, retain, or refine hypotheses. This is what Platt calls the branching logical tree <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Hypothesis generation</strong></td>
+<td style="text-align: left;">The creative proposal of possible explanations, sometimes called abduction.</td>
+<td style="text-align: left;">Produces the alternatives at the beginning of each cycle. Platt says this step requires “intellectual inventions, which must be cleverly chosen” rather than a mechanical rule, and sends the reader to Pólya for how to make them <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The logic within one branch.</strong> For a candidate hypothesis <span class="math inline">\(H_i\)</span>, together with auxiliary assumptions <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[H_i + A \Rightarrow P_i\]</span></p>
+<p>This movement from hypothesis to prediction is <strong>deduction</strong>.</p>
+<p>If the experiment instead produces <span class="math inline">\(\neg P_i\)</span>, then:</p>
+<p><span class="math display">\[\neg P_i \Rightarrow \neg(H_i + A)\]</span></p>
+<p>This is the basis of <strong>exclusion</strong>. Strictly speaking, the test has contradicted the combination of the hypothesis and its assumptions, not the hypothesis alone. Platt does not draw that distinction; Cleland makes it the center of her case against falsificationism, with the astronomers who kept Newton and rejected an auxiliary assumption to find Neptune as the example <span class="citation" data-cites="cleland2001">(<a href="../bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 988</a>)</span>.</p>
+<p>The resulting revision of the hypothesis set is <strong>inductive inference</strong>:</p>
+<p><span class="math display">\[\{H_1, H_2, H_3\} + \text{observed outcome} \Rightarrow \text{a smaller, provisionally preferred set}\]</span></p>
+<p>Observing <span class="math inline">\(P_i\)</span> does <strong>not</strong> deductively prove <span class="math inline">\(H_i\)</span>, because another hypothesis might also predict <span class="math inline">\(P_i\)</span>. Strong inference addresses this problem by seeking observations for which the competing hypotheses make different predictions.</p>
+</section>
+<section id="platts-branching-discipline-strong-inference" class="level4">
+<h4 class="anchored" data-anchor-id="platts-branching-discipline-strong-inference">Platt’s branching discipline: strong inference</h4>
+<p>Platt’s strong inference is a repeating process of generating alternatives, designing an observation that distinguishes them, excluding incompatible alternatives, and refining what remains <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    Q["Problem or scientific question"] --&gt; A["1. Devise alternative hypotheses"]
+
+    A --&gt; H1["Hypothesis H1"]
+    A --&gt; H2["Hypothesis H2"]
+    A --&gt; H3["Hypothesis H3"]
+
+    H1 --&gt; P["2. Deduce contrasting predictions and devise a crucial experiment"]
+    H2 --&gt; P
+    H3 --&gt; P
+
+    P --&gt; T["3. Carry out the experiment to obtain a clean result"]
+    T --&gt; O{"Observed outcome: nature chooses a branch"}
+
+    O -- "Outcome A" --&gt; OA["Exclude H2 and H3; H1 remains"]
+    O -- "Outcome B" --&gt; OB["Exclude H1 and H3; H2 remains"]
+    O -- "Outcome C" --&gt; OC["Exclude H1 and H2; H3 remains"]
+    O -- "No clear separation" --&gt; NC["No secure exclusion: recheck or redesign the test"]
+
+    OA --&gt; R["1'. Refine the remaining possibility into sequential hypotheses or subhypotheses"]
+    OB --&gt; R
+    OC --&gt; R
+    NC --&gt; P
+    R --&gt; P
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exclusion</strong> means that an observed outcome is incompatible with a prediction required by one or more hypotheses. Those hypotheses are removed from the current candidate set. The hypothesis that remains has survived this test; it has not been proved true.</p>
+</blockquote>
+<p>The ideal experiment is therefore not merely one that produces information. It is one for which the possible outcomes change which explanations remain viable.</p>
+<p><strong>Is it Baconian?</strong> Platt says so himself. He traces the “conditional inductive tree” to Bacon’s <em>Novum Organum</em>, with its “Instances of the Fingerpost” that mark where roads part and its rule that induction must proceed by “proper rejections and exclusions” <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 349</a>)</span>, and he presents Chamberlin’s multiple working hypotheses as the second invention “needed to round out the Baconian scheme” <span class="citation" data-cites="platt1964 chamberlin1965">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 350</a>; <a href="../bibliography.html#ref-chamberlin1965" role="doc-biblioref">Chamberlin 1965</a>)</span>. In today’s vocabulary the exclusion step is eliminative induction, and Platt quotes Popper for the claim that science advances only by disproofs <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 350</a>)</span>. Two things in the diagram are not Baconian and not in Platt. The distinction between <span class="math inline">\(H_i\)</span> and <span class="math inline">\(A\)</span> above the exclusion arrow is Cleland’s <span class="citation" data-cites="cleland2001">(<a href="../bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 988</a>)</span>. And the box that generates <span class="math inline">\(H_1\)</span>, <span class="math inline">\(H_2\)</span>, <span class="math inline">\(H_3\)</span> has no rule inside it; Platt concedes as much, and the seminar’s question is what happens there.</p>
+</section>
+</section>
 </section>
 <section id="prepare-before-the-meeting" class="level2">
 <h2 class="anchored" data-anchor-id="prepare-before-the-meeting">Prepare before the meeting</h2>
@@ -419,7 +549,7 @@ div.csl-indent {
 </table>
 <section id="case-exercise" class="level3">
 <h3 class="anchored" data-anchor-id="case-exercise">Case exercise</h3>
-<p>Reconstruct a project as initial knowledge -&gt; observation -&gt; representation -&gt; question -&gt; proposed explanation -&gt; check. Compare that trajectory with the published narrative. Do not invent a private chronology from the article structure.</p>
+<p>Reconstruct a project as initial knowledge -&gt; observation -&gt; representation -&gt; question -&gt; proposed explanation -&gt; check. Compare that trajectory with the published narrative, and with Platt’s loop in the <a href="#reading-notes">reading notes</a>: where the project left the loop, or never entered it, is the row it contributes to the inquiry-mode ledger. Do not invent a private chronology from the article structure.</p>
 </section>
 <section id="definitions-to-fix-in-this-meeting" class="level3">
 <h3 class="anchored" data-anchor-id="definitions-to-fix-in-this-meeting">Definitions to fix in this meeting</h3>
