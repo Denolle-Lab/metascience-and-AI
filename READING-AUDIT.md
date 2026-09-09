@@ -77,3 +77,7 @@ A glossary of the modes of inquiry and the terms of assessment was added as the 
 ### September 8, 2026: dates removed
 
 The convenor removed all meeting dates and times. The seminar proceeds one meeting at a time in the numbered order; the meeting-notes page records when each was held, and the validator checks order rather than a calendar.
+
+### September 9, 2026: is the reading conclusive about a general geoscience workflow?
+
+Not yet, and the book now says so on the design-notes page. The nine cases are well-documented episodes, not a sample; the philosophy in the required pairs is about science in general; and the seminar has not reconstructed a project of its own from the inside. Sixteen readings on geoscientific method and practice were added as optional extensions: Gilbert (1896) and Johnson (1933) on geological method from within the field, Frodeman (1995), Baker (1999), Kleinhans and colleagues (2005), Bokulich and Oreskes (2017), Currie (2018), Elliott and Brook (2007), Rudwick (1985), and Schumm (1991) on how geologists reason and go wrong; Bond and colleagues (2007), Polson and Curtis (2010), Baddeley and colleagues (2004), and Kastens and colleagues (2009) on measured interpretive practice; Gil and colleagues (2016, 2018) on the geoscience research workflow. Two options are recorded for the group: a fourteenth meeting pairing Gilbert with Bond and colleagues, or folding that pair into meeting 7. Meeting 13 now specifies changes to the group's own agent family and evaluation vault rather than a new design.
