@@ -65,7 +65,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a45eb6d4cc5227dea6da638baf4cb8e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1f584d13a9800289a3a06020ebbbca48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -311,7 +311,6 @@ div.csl-indent {
    
   <ul>
   <li><a href="#how-to-read-the-last-column" id="toc-how-to-read-the-last-column" class="nav-link active" data-scroll-target="#how-to-read-the-last-column">How to read the last column</a></li>
-  <li><a href="#systems-that-act" id="toc-systems-that-act" class="nav-link" data-scroll-target="#systems-that-act">Systems that act</a></li>
   <li><a href="#the-groups-own-system" id="toc-the-groups-own-system" class="nav-link" data-scroll-target="#the-groups-own-system">The group’s own system</a></li>
   <li><a href="#systems-that-predate-language-models" id="toc-systems-that-predate-language-models" class="nav-link" data-scroll-target="#systems-that-predate-language-models">Systems that predate language models</a></li>
   <li><a href="#benchmarks-and-evaluations" id="toc-benchmarks-and-evaluations" class="nav-link" data-scroll-target="#benchmarks-and-evaluations">Benchmarks and evaluations</a></li>
@@ -343,65 +342,37 @@ div.csl-indent {
 </header>
 
 
-<p>This chapter exists so that nothing in <a href="./sessions/13-agent-design-and-evaluation.html">meeting 13</a> is specified from scratch. Systems that automate parts of research already exist, and so do benchmarks that score them. Before proposing an architecture or a test, find out whether it has been built, and what happened.</p>
-<p>Every entry carries a resolvable identifier, a DOI or an arXiv ID, so the list can be worked through by a person or by a program. Entries were checked against publisher or arXiv records; where a project has multiple versions, the identifier points at the version consulted.</p>
+<p><span class="status drafted">Drafted</span> <span class="status-line">registry · not yet discussed</span></p>
+<ul>
+<li>Systems that automate parts of research exist, and so do benchmarks that score them</li>
+<li>Before proposing an architecture or a test, find out whether it has been built, and what happened</li>
+<li>Every entry carries a DOI or an arXiv ID; entries were checked against publisher or arXiv records</li>
+</ul>
 <section id="how-to-read-the-last-column" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-read-the-last-column">How to read the last column</h2>
-<p>The rightmost column is the point of the chapter. A benchmark score is a measurement, and a measurement supports a claim only about the construct it observes. This is the problem <span class="citation" data-cites="flake2020">Flake and Fried (<a href="bibliography.html#ref-flake2020" role="doc-biblioref">2020</a>)</span> and <span class="citation" data-cites="messick1995">Messick (<a href="bibliography.html#ref-messick1995" role="doc-biblioref">1995</a>)</span> describe for psychological measures, and it does not change when the thing being measured is an agent. “Solved 40% of the tasks” is a fact about the tasks. Whether it is evidence that a system does science depends entirely on what the tasks required, and most of these task sets deliberately supply the question, the data, and the success criterion. That is to say, they supply most of what <a href="./index.html#meetings">meetings 1 through 9</a> treated as the hard part.</p>
-<p>Read that column as an inventory of open problems rather than as criticism. Where a capability the group cares about appears in no existing evaluation, that gap is the group’s opportunity.</p>
-</section>
-<section id="systems-that-act" class="level2">
-<h2 class="anchored" data-anchor-id="systems-that-act">Systems that act</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Project</th>
-<th style="text-align: left;">What it is</th>
-<th style="text-align: left;">What it covers</th>
-<th style="text-align: left;">What its results do not establish</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://doi.org/10.1038/s41586-023-06792-0">Coscientist</a> — <span class="citation" data-cites="boiko2023">Boiko et al. (<a href="bibliography.html#ref-boiko2023" role="doc-biblioref">2023</a>)</span></td>
-<td style="text-align: left;">Language model with web search, documentation retrieval, code execution, and a robotic liquid handler</td>
-<td style="text-align: left;">Planning and executing a chemical synthesis, including optimizing a catalytic cross-coupling on real hardware</td>
-<td style="text-align: left;">That the system chose the question, or that it transfers beyond tasks with existing published protocols and a defined target</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2408.06292">The AI Scientist</a> (arXiv:2408.06292) and <a href="https://arxiv.org/abs/2504.08066">v2</a> (arXiv:2504.08066)</td>
-<td style="text-align: left;">End-to-end pipeline: idea generation, experiment execution, paper writing, and automated review</td>
-<td style="text-align: left;">Producing complete machine-learning papers without human intervention; v2 reports a workshop-accepted manuscript</td>
-<td style="text-align: left;">That the findings are ones a field would retain. Automated review is not peer review, and workshop acceptance is a weak filter</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://doi.org/10.1038/s41586-026-10644-y">Co-Scientist</a> — <span class="citation" data-cites="gottweis2026"><span class="nocase">Gottweis et al.</span> (<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref">2026</a>)</span>; preprint <a href="https://arxiv.org/abs/2502.18864">arXiv:2502.18864</a></td>
-<td style="text-align: left;">Multi-agent system generating, debating, and ranking hypotheses in a tournament; the peer-reviewed report appeared in Nature in 2026</td>
-<td style="text-align: left;">Proposing biomedical hypotheses, with wet-lab follow-up reported in three areas</td>
-<td style="text-align: left;">General hypothesis quality. The validated cases were selected, and a rate would require the denominator: how many proposals failed</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2510.06579">TinyScientist</a> (arXiv:2510.06579)</td>
-<td style="text-align: left;">An open framework for assembling research agents, not a result</td>
-<td style="text-align: left;">Tooling: a controllable, extensible harness others can build on</td>
-<td style="text-align: left;">Anything about scientific performance; it is infrastructure, and belongs here as a starting point rather than as evidence</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://doi.org/10.1038/s41586-023-06734-w">A-Lab</a> — <span class="citation" data-cites="szymanski2023">Szymanski et al. (<a href="bibliography.html#ref-szymanski2023" role="doc-biblioref">2023</a>)</span>, reanalysed by <span class="citation" data-cites="leeman2024">Leeman et al. (<a href="bibliography.html#ref-leeman2024" role="doc-biblioref">2024</a>)</span></td>
-<td style="text-align: left;">Closed-loop materials synthesis: models propose targets, robots synthesize them, and a model interprets the diffraction pattern</td>
-<td style="text-align: left;">Reported 36 of 57 target compounds synthesized in 17 days, a 63% success rate</td>
-<td style="text-align: left;">That the compounds were new. The reanalysis found that most were misidentified or already known. The clearest published case of a loop scoring itself, and the reason the evaluation protocol in <a href="./sessions/13-agent-design-and-evaluation.html">meeting 13</a> carries negative controls</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>A benchmark score is a measurement of the tasks, not of “doing science” <span class="citation" data-cites="flake2020 messick1995">(<a href="bibliography.html#ref-flake2020" role="doc-biblioref">Flake and Fried 2020</a>; <a href="bibliography.html#ref-messick1995" role="doc-biblioref">Messick 1995</a>)</span></li>
+<li>Most task sets supply the question, the data, and the success criterion, which meetings 1 to 9 treat as the hard part</li>
+<li>Read the last column as an inventory of open problems, not as criticism</li>
+</ul>
 </section>
 <section id="the-groups-own-system" class="level2">
 <h2 class="anchored" data-anchor-id="the-groups-own-system">The group’s own system</h2>
-<p>The group runs an agent family of its own, GAIA: a Claude Code plugin of thirteen role-specialized subagents under one orchestrator, with a read-only auditor, a lab notebook, a provenance keeper that discloses AI use, and human gates, and beside it an evaluation vault of golden items with planted flaws and clean controls. It has no published results, so it has no row in the tables above; it is listed here because <a href="./sessions/13-agent-design-and-evaluation.html">meeting 13</a> specifies changes to it rather than a new design, and because the rule of this chapter, that nothing is specified from scratch when it already exists, applies with most force to the group’s own repositories. What its design does not yet establish is the same as for every system above: it has not been run against items that supply no question, and it has no mode label on the work it does. The roster is private and under review; the <a href="./agent-design.html">design notes</a> carry the public summary.</p>
+<ul>
+<li>GAIA: thirteen role-specialized subagents under one orchestrator; read-only auditor; lab notebook; provenance keeper that discloses AI use; human gates</li>
+<li>Beside it: an evaluation vault of golden items with planted flaws and clean controls</li>
+<li>No published results, so no row above; listed because <a href="./sessions/13-agent-design-and-evaluation.html">meeting 13</a> changes it rather than designing anew</li>
+<li>Not yet established: never run on items that supply no question; no mode label on its work</li>
+<li>Roster private and under review; public summary in the <a href="./agent-design.html">design notes</a></li>
+</ul>
 </section>
 <section id="systems-that-predate-language-models" class="level2">
 <h2 class="anchored" data-anchor-id="systems-that-predate-language-models">Systems that predate language models</h2>
-<p>The tables above start in 2023. Automated discovery did not. The systems below are the record that current ones rarely cite, and one of them was built the way this seminar proposes to build: from a historian’s reconstruction of a scientist’s notebooks. Herbert Simon’s argument that discovery has a describable logic, <span class="citation" data-cites="simon1973">Simon (<a href="bibliography.html#ref-simon1973" role="doc-biblioref">1973</a>)</span>, is the position all of them assume.</p>
+<ul>
+<li>The tables above start in 2023; automated discovery did not</li>
+<li>One of these was built the way this seminar proposes: from a historian’s reconstruction of a scientist’s notebooks</li>
+<li>All assume Simon’s position that discovery has a describable logic <span class="citation" data-cites="simon1973">(<a href="bibliography.html#ref-simon1973" role="doc-biblioref">Simon 1973</a>)</span></li>
+</ul>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -450,7 +421,9 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>Two more belong in the record as arguments rather than systems. <span class="citation" data-cites="kitano2021">Kitano (<a href="bibliography.html#ref-kitano2021" role="doc-biblioref">2021</a>)</span> states the closed-loop AI-scientist design explicitly and lists what it would have to do. <span class="citation" data-cites="wang2023"><span class="nocase">Wang et al.</span> (<a href="bibliography.html#ref-wang2023" role="doc-biblioref">2023</a>)</span> is the standard review of the field since; use it as an index, not as evidence.</p>
+<ul>
+<li>Arguments rather than systems: <span class="citation" data-cites="kitano2021">Kitano (<a href="bibliography.html#ref-kitano2021" role="doc-biblioref">2021</a>)</span> states the closed-loop design explicitly; <span class="citation" data-cites="wang2023"><span class="nocase">Wang et al.</span> (<a href="bibliography.html#ref-wang2023" role="doc-biblioref">2023</a>)</span> is the standard review, an index rather than evidence</li>
+</ul>
 </section>
 <section id="benchmarks-and-evaluations" class="level2">
 <h2 class="anchored" data-anchor-id="benchmarks-and-evaluations">Benchmarks and evaluations</h2>
@@ -517,16 +490,18 @@ div.csl-indent {
 </section>
 <section id="surveys-and-registries" class="level2">
 <h2 class="anchored" data-anchor-id="surveys-and-registries">Surveys and registries</h2>
-<p>Two recent surveys cover this space more completely than the tables above and are the right starting point for anyone extending them.</p>
 <ul>
-<li><a href="https://arxiv.org/abs/2510.23045">A Survey of AI Scientists</a> (arXiv:2510.23045). Tie and colleagues, 2025. Broad coverage of automated-scientist systems and their components.</li>
-<li><a href="https://arxiv.org/abs/2608.05179">Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap</a> (arXiv:2608.05179). Ding and colleagues, 2026. Screens a large candidate set down to a coded sample of runnable systems, and organizes them around verification, the same concern as the last column of the tables above.</li>
+<li><p>Two surveys cover the space more completely; start there when extending the tables</p></li>
+<li><p><a href="https://arxiv.org/abs/2510.23045">A Survey of AI Scientists</a> (arXiv:2510.23045). Tie and colleagues, 2025. Broad coverage of automated-scientist systems and their components.</p></li>
+<li><p><a href="https://arxiv.org/abs/2608.05179">Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap</a> (arXiv:2608.05179). Ding and colleagues, 2026. Screens a large candidate set down to a coded sample of runnable systems, and organizes them around verification, the same concern as the last column of the tables above.</p></li>
+<li><p>A survey is a secondary source; where a claim matters, read the primary paper</p></li>
 </ul>
-<p>A survey is a secondary source. Where a claim in one matters to a decision here, read the primary paper.</p>
 </section>
 <section id="what-is-missing-from-all-of-them" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-missing-from-all-of-them">What is missing from all of them</h2>
-<p>Collecting the last columns gives the group a short list of capabilities that appear in no evaluation above:</p>
+<ul>
+<li>Capabilities that appear in no evaluation above:</li>
+</ul>
 <ol type="1">
 <li><strong>Choosing the question.</strong> Every benchmark supplies it. Meetings 1, 2, and 6 treated question formation as the substance of inquiry.</li>
 <li><strong>Deciding what to measure, and whether the measurement can be trusted.</strong> Only Gravity-Bench asks an agent to plan observations, and it does so in simulation with no instrument response. Compare the provenance concerns in <a href="./sessions/05-measurement.html">meeting 5</a>.</li>
@@ -536,25 +511,25 @@ div.csl-indent {
 <li><strong>Field and marine constraint.</strong> Ship time, weather, instrument loss, and the plan-versus-reality gap of <a href="./sessions/07-field-marine.html">meeting 7</a> have no representation at all.</li>
 <li><strong>Effects on the field.</strong> <span class="citation" data-cites="hao2026">Hao et al. (<a href="bibliography.html#ref-hao2026" role="doc-biblioref">2026</a>)</span> measured, across 41 million papers, that scientists who use AI tools publish more and that the fields they work in narrow. No benchmark scores a system on what it does to the questions a field asks. See <a href="./sessions/11-polymathy.html">meeting 11</a> and <span class="citation" data-cites="messeri2024">Messeri and Crockett (<a href="bibliography.html#ref-messeri2024" role="doc-biblioref">2024</a>)</span>.</li>
 </ol>
-<p>These seven are the natural content of the benchmark drafted in meeting 13. Whether any of them can be measured well is itself uncertain, and a benchmark the group cannot actually run is not an improvement over one that exists.</p>
+<ul>
+<li>These seven are the content of the benchmark drafted in meeting 13</li>
+<li>Whether they can be measured well is itself uncertain; a benchmark the group cannot run is no improvement</li>
+</ul>
 </section>
 <section id="adding-an-entry" class="level2">
 <h2 class="anchored" data-anchor-id="adding-an-entry">Adding an entry</h2>
-<p>Corrections and additions are welcome, particularly from anyone who has run one of these systems. Accuracy in the last column matters more than coverage: an entry that overstates a limitation is as much a problem as one that omits it. See <a href="./contributing.html">how to contribute</a>.</p>
+<ul>
+<li>Corrections welcome, especially from anyone who has run one of these systems</li>
+<li>Accuracy in the last column matters more than coverage; overstating a limitation is as much a problem as omitting it · <a href="./contributing.html">how to contribute</a></li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-boiko2023" class="csl-entry" role="listitem">
-Boiko, Daniil A., Robert MacKnight, Ben Kline, and Gabe Gomes. 2023. <span>“<span class="nocase">Autonomous chemical research with large language models</span>.”</span> <em>Nature</em> 624: 570–78. <a href="https://doi.org/10.1038/s41586-023-06792-0">https://doi.org/10.1038/s41586-023-06792-0</a>.
-</div>
 <div id="ref-chen2025" class="csl-entry" role="listitem">
 Chen, Ziru, Shijie Chen, Yuting Ning, et al. 2025. <span>“<span class="nocase">ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery</span>.”</span> <em>International Conference on Learning Representations</em>. <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/f12b4df26344f3be803c06b555252efe-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2025/hash/f12b4df26344f3be803c06b555252efe-Abstract-Conference.html</a>.
 </div>
 <div id="ref-flake2020" class="csl-entry" role="listitem">
 Flake, Jessica K., and Eiko I. Fried. 2020. <span>“<span class="nocase">Measurement Schmeasurement: Questionable Measurement Practices and How to Avoid Them</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 3 (4): 456–65. <a href="https://doi.org/10.1177/2515245920952393">https://doi.org/10.1177/2515245920952393</a>.
-</div>
-<div id="ref-gottweis2026" class="csl-entry" role="listitem">
-<span class="nocase">Gottweis, Juraj, Wei-Hung Weng, Alexander Daryin, et al.</span> 2026. <span>“<span class="nocase">Accelerating scientific discovery with Co-Scientist</span>.”</span> <em>Nature</em> 655 (8122): 487–96. <a href="https://doi.org/10.1038/s41586-026-10644-y">https://doi.org/10.1038/s41586-026-10644-y</a>.
 </div>
 <div id="ref-hao2026" class="csl-entry" role="listitem">
 Hao, Qianyue, Fengli Xu, Yong Li, and James Evans. 2026. <span>“<span class="nocase">Artificial intelligence tools expand scientists’ impact but contract science’s focus</span>.”</span> <em>Nature</em> 649 (8099): 1237–43. <a href="https://doi.org/10.1038/s41586-025-09922-y">https://doi.org/10.1038/s41586-025-09922-y</a>.
@@ -570,9 +545,6 @@ Kulkarni, Deepak, and Herbert A. Simon. 1988. <span>“<span class="nocase">The 
 </div>
 <div id="ref-langley1981" class="csl-entry" role="listitem">
 Langley, Pat. 1981. <span>“<span class="nocase">Data-Driven Discovery of Physical Laws</span>.”</span> <em>Cognitive Science</em> 5 (1): 31–54. <a href="https://doi.org/10.1111/j.1551-6708.1981.tb00869.x">https://doi.org/10.1111/j.1551-6708.1981.tb00869.x</a>.
-</div>
-<div id="ref-leeman2024" class="csl-entry" role="listitem">
-Leeman, Josh, Yuhan Liu, Joseph Stiles, et al. 2024. <span>“<span class="nocase">Challenges in High-Throughput Inorganic Materials Prediction and Autonomous Synthesis</span>.”</span> <em>PRX Energy</em> 3 (1): 011002. <a href="https://doi.org/10.1103/PRXEnergy.3.011002">https://doi.org/10.1103/PRXEnergy.3.011002</a>.
 </div>
 <div id="ref-messeri2024" class="csl-entry" role="listitem">
 Messeri, Lisa, and M. J. Crockett. 2024. <span>“<span class="nocase">Artificial intelligence and illusions of understanding in scientific research</span>.”</span> <em>Nature</em> 627: 49–58. <a href="https://doi.org/10.1038/s41586-024-07146-0">https://doi.org/10.1038/s41586-024-07146-0</a>.
@@ -591,9 +563,6 @@ Simon, Herbert A. 1973. <span>“<span class="nocase">Does Scientific Discovery 
 </div>
 <div id="ref-swanson1986" class="csl-entry" role="listitem">
 Swanson, Don R. 1986. <span>“<span class="nocase">Fish Oil, Raynaud’s Syndrome, and Undiscovered Public Knowledge</span>.”</span> <em>Perspectives in Biology and Medicine</em> 30 (1): 7–18. <a href="https://doi.org/10.1353/pbm.1986.0087">https://doi.org/10.1353/pbm.1986.0087</a>.
-</div>
-<div id="ref-szymanski2023" class="csl-entry" role="listitem">
-Szymanski, Nathan J., Bernardus Rendy, Yuxing Fei, et al. 2023. <span>“<span class="nocase">An autonomous laboratory for the accelerated synthesis of inorganic materials</span>.”</span> <em>Nature</em> 624 (7990): 86–91. <a href="https://doi.org/10.1038/s41586-023-06734-w">https://doi.org/10.1038/s41586-023-06734-w</a>.
 </div>
 <div id="ref-wang2023" class="csl-entry" role="listitem">
 <span class="nocase">Wang, Hanchen, Tianfan Fu, Yuanqi Du, et al.</span> 2023. <span>“<span class="nocase">Scientific discovery in the age of artificial intelligence</span>.”</span> <em>Nature</em> 620 (7972): 47–60. <a href="https://doi.org/10.1038/s41586-023-06221-2">https://doi.org/10.1038/s41586-023-06221-2</a>.

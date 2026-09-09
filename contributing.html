@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a45eb6d4cc5227dea6da638baf4cb8e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1f584d13a9800289a3a06020ebbbca48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -327,6 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#what-must-never-be-published-here" id="toc-what-must-never-be-published-here" class="nav-link active" data-scroll-target="#what-must-never-be-published-here">What must never be published here</a></li>
+  <li><a href="#status-labels" id="toc-status-labels" class="nav-link" data-scroll-target="#status-labels">Status labels</a></li>
   <li><a href="#adding-a-meeting-note" id="toc-adding-a-meeting-note" class="nav-link" data-scroll-target="#adding-a-meeting-note">Adding a meeting note</a></li>
   <li><a href="#adding-a-reading" id="toc-adding-a-reading" class="nav-link" data-scroll-target="#adding-a-reading">Adding a reading</a></li>
   <li><a href="#adding-a-prior-art-entry" id="toc-adding-a-prior-art-entry" class="nav-link" data-scroll-target="#adding-a-prior-art-entry">Adding a prior-art entry</a></li>
@@ -369,6 +370,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Anything from <code>private/</code>.</strong> That directory holds the parallel analysis and is excluded by <code>.gitignore</code>; <code>tools/validate.py</code> fails if the ignore rule is missing or if private material is registered as a chapter. Do not defeat either guard.</li>
 </ul>
 <p>If you are unsure, ask before committing rather than after. A commit that reaches the public history is not fully undone by a later deletion.</p>
+</section>
+<section id="status-labels" class="level2">
+<h2 class="anchored" data-anchor-id="status-labels">Status labels</h2>
+<p>Every page carries one of three labels under its title, and the <a href="./index.html">front page</a> keeps the table of where things stand.</p>
+<ul>
+<li><span class="status drafted">Drafted</span> proposed by the convenor or the assistant; not yet discussed by the group</li>
+<li><span class="status discussed">Discussed</span> taken up in a meeting; the <a href="./notes.html">notes</a> say what was said</li>
+<li><span class="status adopted">Adopted</span> a group decision</li>
+</ul>
+<p>Flip a label by editing the line under the title and the row in the front-page table, in the same pull request as the meeting note. The public pages are bullet-level on purpose; the full text and analysis behind them live in the private repository under <code>text/</code>.</p>
 </section>
 <section id="adding-a-meeting-note" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-meeting-note">Adding a meeting note</h2>
