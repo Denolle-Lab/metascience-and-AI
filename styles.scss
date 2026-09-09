@@ -82,6 +82,15 @@ main h4 { font-family: $font-family-sans-serif; font-weight: 700; color: $dn-tex
 #quarto-sidebar .sidebar-item:not(.sidebar-item-section) > .sidebar-item-container > .sidebar-link.active { color: $dn-primary-strong; font-weight: 600; }
 #TOC .nav-link.active, #TOC .nav-link:hover { color: var(--dn-part); border-left-color: var(--dn-part); }
 
+// Status badges: drafted (not yet discussed), discussed (taken up in a meeting), adopted (a group decision).
+.status { display: inline-block; font-family: $font-family-sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.1rem 0.5rem; border-radius: 0.2rem; border: 1.5px solid; vertical-align: middle; margin-right: 0.3rem; }
+.status.drafted { color: $dn-part-4; border-color: $dn-part-4; background: rgba($dn-part-4, 0.08); }
+.status.discussed { color: $dn-focus; border-color: $dn-focus; background: rgba($dn-focus, 0.08); }
+.status.adopted { color: $dn-part-3; border-color: $dn-part-3; background: rgba($dn-part-3, 0.08); }
+.status-line { color: $dn-muted; font-size: 0.95rem; margin-bottom: 1.2rem; }
+main ul li, main ol li { margin-bottom: 0.3rem; }
+main ul ul li, main ol ul li { margin-bottom: 0.15rem; }
+
 // Small type and chrome.
 .sidebar-title, .sidebar-title a { font-family: $headings-font-family; font-weight: 700; color: $dn-primary-strong; }
 .nav-footer, .nav-footer a { color: $dn-muted; }

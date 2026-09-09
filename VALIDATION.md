@@ -1,5 +1,19 @@
 # Validation performed
 
+## September 9, 2026: bullet-level public pages, status labels, and the geoscience-method readings
+
+The public pages were moved to bullet level at the convenor's request, with the prose and analysis
+kept in the private repository under `text/`. Every page now carries a status label (drafted,
+discussed, adopted) and the front page a table of where things stand. Sixteen readings on
+geoscientific method and practice were added; the design notes were rewritten around one worked
+project; meeting 13 now specifies changes to the group's own agent family and evaluation vault.
+
+- `tools/validate.py` passes: 22 chapter files, 13 meetings in order, 31 assigned papers, 139
+  bibliography records; generated reading lists current; Pandoc citations without warnings.
+- `tools/check_links.py`: every DOI registered, including the percent-encoded Frodeman and Baker
+  DOIs; the same publisher pages block scripted requests as before.
+- `quarto render` produced all 22 pages; the status badges render on every page.
+
 ## September 9, 2026: design notes and reading copies
 
 Added `agent-design.qmd` to the working materials and ten references for it (Virtual Lab, FunSearch,

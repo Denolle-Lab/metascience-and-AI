@@ -1,116 +1,157 @@
 # From modes to agents: design notes {.unnumbered}
 
-Given the context for the history and philosophy of science, here are three questions we may address: what the readings in this book give us for building better scientific agents; what to do with such agents alongside the deep-research tools now built into the frontier models; and whether the full texts of the readings must be in hand first. This page answers them with one concrete project carried through from start to finish, so that every abstract term is shown on something the group actually does. It ends with what the reading does *not* yet establish, because the honest answer to "do we now know how geoscience works?" is not yet. Every citation links to its full record in the [bibliography](bibliography.qmd).
+[Drafted]{.status .drafted} [proposed for meeting 13 · not yet discussed · full text in the private repository]{.status-line}
 
-## The project used throughout
+## Three questions
 
-A student has three years of ambient-noise cross-correlations from a dense array in the Pacific Northwest. The seismic velocity between station pairs changes a little with the seasons. The student wants to know whether that seasonal change tracks groundwater. This is an ordinary lab project, and it passes through most of the ten modes in the [glossary](glossary.qmd):
+- What do the readings give us for building better scientific agents?
+- What do we do with such agents next to the deep-research tools in the frontier models?
+- Do we have to pull all the papers first?
 
-1. **Observation and description.** Compute the velocity-change time series for every pair. Nothing is claimed yet.
-2. **Methods and computation.** The velocity-change measurement is itself a method with settings (frequency band, stacking window) that shape what can be seen.
-3. **Exploratory discovery.** Look at the series. Some pairs show a clear annual cycle, some show none, one shows a jump nobody expected.
-4. **Hypothesis testing.** Groundwater is one explanation. So is thermoelastic strain, so is precipitation loading, so is a change in the noise source. Each predicts a different phase lag and a different depth sensitivity.
-5. **Simulation and prediction.** A poroelastic model turns a well-level record into a predicted velocity change to compare against.
-6. **Synthesis and reconstruction.** Well logs, rainfall, temperature, and the noise-source direction are brought together into one account.
-7. **Replication and validation.** Does the result hold on a second array, or in a second year?
+## One project to think with
 
-The student's paper, when it is written, will present step 4 as the study. Steps 1 to 3 will be one sentence. That gap between what was done and what is written is the seminar's standing question 5 [@holmes1987], and it is the first thing an agent for science has to be honest about.
+- Dense array in the Pacific Northwest; three years of ambient-noise cross-correlations
+- Seismic velocity between station pairs changes a little with the seasons
+- Question: does the seasonal change track groundwater?
+- The project passes through most of the ten [modes](glossary.qmd):
+  1. Observation and description: velocity-change series for every pair; nothing claimed
+  2. Methods and computation: the measurement has settings that shape what can be seen
+  3. Exploratory discovery: some pairs show an annual cycle, some none, one an unexpected jump
+  4. Hypothesis testing: groundwater vs thermoelastic strain vs precipitation loading vs a noise-source change; different phase lags, different depths
+  5. Simulation and prediction: a poroelastic model turns a well record into a predicted velocity change
+  6. Synthesis and reconstruction: wells, rain, temperature, noise direction, one account
+  7. Replication and validation: a second array, a second year
+- The paper will present step 4; steps 1 to 3 become one sentence [@holmes1987]
+- That gap is standing question 5, and the first thing an agent must be honest about
 
-## Two words to fix before anything else
+## Two words
 
-**Mode.** The kind of work being done, defined by what it does for knowledge. In the project above, "look at the series" and "test the groundwater explanation" are different modes, and an agent that cannot tell them apart will describe the first as if it were the second, or refuse to do the first because no hypothesis has been stated. The glossary gives ten modes with rules for recognizing each.
-
-**Gate.** A rule that stops the next step until a condition is met. The seminar's thesis concerns one particular gate, the hypothesis gate: the next action must test a stated hypothesis. There is a second gate that almost everyone accepts, the claim gate: nothing is claimed without a test the claim could have failed. In the project, a hypothesis gate at step 3 would forbid looking at the series until a hypothesis had been written down. A claim gate at step 4 would forbid saying "groundwater" until the thermoelastic and loading explanations had been ruled out, and until the result held on data not used to find it. The reading supports the second gate everywhere. It supports the first only in some modes.
+- **Mode**: the kind of work, by what it does for knowledge; ten in the glossary
+- **Gate**: a rule that stops the next step until a condition is met
+  - Action gate: no step without a stated hypothesis. The seminar's target
+  - Claim gate: no claim without a test it could have failed. Kept everywhere
+- In the project: an action gate at step 3 forbids looking; a claim gate at step 4 forbids "groundwater" until rivals are excluded and the result holds on data not used to find it
 
 ## What the readings give an agent designer
 
-Encoding how scientists work into a program is not new. The discovery programs of the 1980s were built from historians' reconstructions: one rediscovered Kepler's laws from his own tables [@langley1981; @langley1987]; another reproduced Krebs's path to the urea cycle from a study of his notebooks, with surprise as one of its control signals [@kulkarni1988]; a third catalogued the strategies geneticists used to resolve anomalies so a program could use them [@darden1991]. Thagard named the field [@thagard1988], and Klahr and Simon showed that the history, the psychology, and the programs converged on the same picture of discovery, a search in two spaces, one of hypotheses and one of experiments [@klahr1999; @klahr1988]. Sozou and colleagues review that lineage [@sozou2017]. What is new is that a language model now does the step all of those programs left to a person, proposing the hypotheses, and the one controlled measurement so far says it does that badly: ideas rated more novel than experts' before execution scored below them after (Si, Hashimoto, and Yang, 2025, arXiv:2506.20803; the ideation study is @si2025).
+- Not new: 1980s discovery programs were built from historians' reconstructions [@langley1981; @langley1987; @kulkarni1988; @darden1991; @thagard1988]; the fields converged on discovery as search in two spaces [@klahr1999; @klahr1988]; review in @sozou2017
+- New: a language model now proposes the hypotheses, and the one controlled test says it does that badly (Si, Hashimoto, and Yang, 2025, arXiv:2506.20803; @si2025)
+- Six things an agent must carry, each shown on the project:
 
-So the question is not whether history and philosophy can be encoded. It is what, from this book's readings, an agent must carry. Six things, each shown on the project.
-
-**1. A vocabulary of modes with recognition rules.** *What it is:* the ten modes, each with what to look for, what evidence it produces, and how it fails. *In the project:* the agent labels step 3 "exploratory discovery" and step 4 "hypothesis testing," and so knows that step 3 owes reproducibility on other pairs while step 4 owes a discriminating prediction. *What the agent does:* attaches a mode to every task and reports the evidence that mode owes.
-
-**2. Transition rules between modes.** *What they are:* conditions for moving from one mode to another, drawn from the readings. Explore until the phenomenon repeats, then test [@cleland2002]. Pursue an anomaly only after it reproduces, because most anomalies are errors [@fugelsang2004]. When several models fit, stop fitting and find an observable they disagree on [@beven2001; @kirchner2006]. Search the space of experiments when there is no hypothesis yet [@klahr1988]. *In the project:* the unexpected jump on one pair is not pursued until it appears on neighbouring pairs; the annual cycle becomes a hypothesis-testing problem only once it is stable across years; when groundwater and thermoelastic models both fit the amplitude, the agent looks for the phase lag that separates them. *What the agent does:* changes mode when a condition is met, and records why.
-
-**3. Stopping and abstention.** *What it is:* the readings say that a model of an open system cannot be confirmed [@oreskes1994], that an inverse problem can be falsified but not verified [@tarantola2006], and that the decisive trace may not have been found yet [@cleland2002]. *In the project:* if the phase lag cannot be resolved with three years of data, the right answer is "not decidable with this record; a fourth year, or a well within the array, would decide it." *What the agent does:* returns that as a result, not a failure. No benchmark in the [prior art](prior-art.qmd) rewards it.
-
-**4. Evidence labelled by its kind.** *What it is:* a primary measurement, a reconstruction, a retrospective, a philosophical argument, and a benchmark score are different records, and the published narrative is not the trajectory [@holmes1987]. *In the project:* the agent's report separates what the cross-correlations show, what the poroelastic model predicts, what a cited paper reports, and what the student remembers deciding. *What the agent does:* carries the label on every claim it extracts or makes.
-
-**5. A failure mode for each mode, which becomes a test.** *What it is:* the readings give each mode a characteristic way of going wrong. Controls fixed before any data can be the wrong controls [@cleland2002]. A pattern found after inspection can be reported as predicted [@ioannidis2005; @geller1997]. A fit can be mistaken for the truth [@oreskes1994]. A loop can score itself [@leeman2024]. *In the project:* the annual cycle chosen after looking at all pairs cannot be reported as a prediction; a model that fits amplitude alone is not confirmed. *What the agent does:* each failure mode becomes a negative control in the [evaluation protocol](rubrics.qmd#agent-evaluation-protocol-v1).
-
-**6. The objective, stated.** *What it is:* the design choice the seminar questions is the hypothesis gate on actions. The readings give its strongest formal version, choosing the next experiment by expected information gain over a set of models [@rainforth2024], and its alternatives, searching for novelty rather than an objective [@lehman2011] and treating what compresses well as interesting [@schmidhuber2010]. Where the objective is exact and cheap to check, gating works: program search against a verifier found new mathematical constructions [@romeraparedes2024]. *In the project:* no exact verifier exists for "groundwater causes the seasonal change." The verifier is the hard part, and the worked coding below shows what happens when it is weak.
+1. **A mode vocabulary with recognition rules**
+   - Step 3 is exploratory discovery; step 4 is hypothesis testing; each owes different evidence
+   - Agent: labels every task with a mode and reports the evidence that mode owes
+2. **Transition rules between modes**
+   - Explore until it repeats, then test [@cleland2002]
+   - Pursue an anomaly only after it reproduces [@fugelsang2004]
+   - Models tie on amplitude: find the observable they disagree on [@beven2001; @kirchner2006]
+   - No hypothesis yet: search the experiment space [@klahr1988]
+   - Agent: changes mode when a condition is met, and records why
+3. **Stopping and abstention**
+   - Open-system models cannot be confirmed [@oreskes1994]; inverse problems falsify, never verify [@tarantola2006]; the decisive trace may not exist yet [@cleland2002]
+   - Project: "not decidable with three years; a fourth year or a well inside the array would decide it"
+   - Agent: returns that as a result; no benchmark in the [prior art](prior-art.qmd) rewards it
+4. **Evidence labelled by kind**
+   - Measurement, model output, cited paper, remembered decision: different records [@holmes1987]
+   - Agent: carries the label on every claim
+5. **A failure mode per mode, which becomes a test**
+   - Wrong controls fixed before data [@cleland2002]; post-hoc pattern reported as predicted [@ioannidis2005; @geller1997]; fit mistaken for truth [@oreskes1994]; loop scoring itself [@leeman2024]
+   - Agent: each becomes a negative control in the [evaluation protocol](rubrics.qmd#agent-evaluation-protocol-v1)
+6. **The objective, stated**
+   - Strongest gate: expected information gain over a model set [@rainforth2024]
+   - Alternatives: novelty search [@lehman2011]; compression progress [@schmidhuber2010]
+   - Gating works with an exact verifier [@romeraparedes2024]; "groundwater causes the change" has none
+   - The verifier is the hard part (see the table below)
 
 ## Coding papers by mode
 
-One proposal was to take a few papers and apply a dichotomy, hypothesis-first or exploration-first, to see which mode each used. One dichotomy is not enough, because it runs the two gates together. So the coding asks three yes-or-no questions plus the mode:
-
-1. Was a hypothesis stated before the result, as the paper presents it? (The action gate.)
-2. Was there a test the claim could have failed: held-out data, an independent sensor, a rival explanation ruled out? (The claim gate.)
-3. Did the work intervene on the system, or observe it? (Cleland's line between experimental and historical science [@cleland2001].)
-
-Then the decisive mode from the glossary, who chose the question, and the basis on which the coding was made. Six papers, four coded from full text and two from abstracts, the latter to be redone in the corpus-study pilot.
+- One dichotomy is not enough: hypothesis-first vs exploration-first runs the two gates together
+- Three questions plus the mode:
+  1. Hypothesis stated before the result, as presented? (action gate)
+  2. A test the claim could have failed? (claim gate)
+  3. Intervention or observation? [@cleland2001]
+- Plus: who chose the question; basis of the coding
 
 | Paper | Decisive mode; sub-mode | Hypothesis before result | Test the claim could fail | Intervention | Who chose the question | Basis |
 |:--|:--|:--|:--|:--|:--|:--|
-| Coscientist [@boiko2023] | Methods and computation; an automated system executing tasks and optimizing a reaction | No. Six tasks were supplied as prompts ("perform multiple Suzuki reactions"); no scientific hypothesis appears | Yes for the chemistry: products confirmed by GC–MS (p. 574). No test of the system beyond the six tasks | Yes, by robot | The authors, in every task | Full text |
-| A-Lab [@szymanski2023] | Methods and computation; an automated loop testing "can this predicted-stable compound be made" | Weakly. Targets were predicted stable by computation; the active-learning step used two stated hypotheses about reaction pathways (p. 88) | Positive test only: a diffraction fit that includes the target. The paper notes this "does not necessarily imply that the target was made with high purity" (p. 88) | Yes, by robot | Computation and the authors; 57 targets from two databases | Full text |
-| Reanalysis of A-Lab [@leeman2024] | Replication and validation; re-fitting the reported diffraction data against known phases | Yes: that known phases explain the patterns | Yes: each claimed success re-fit against known compounds, errors tabulated (Table I, p. 5) | No | The authors, in response to the claim | Full text |
-| Laboratory earthquakes [@rouetleduc2017] | Exploratory discovery; a new method (random forest on continuous acoustic emission) applied to laboratory data | Partly. That precursors exist is stated (p. 3). The finding, that the continuous signal predicts failure throughout the cycle, is reported as "unexpected" (p. 6) | Yes: held-out test data against a periodicity baseline (p. 6) | The data come from a shear apparatus; the paper's move is analysis of the recording | The authors, from the forecasting problem | Full text of the accepted preprint |
-| Subsea DAS [@lindsey2019] | Instruments and observing systems | No, as presented: the paper reports what the fibre could see | Partly: comparison with a nearby seismometer for the earthquake signals | No | The authors and the cable's availability | Abstract; redo in the pilot |
-| Cascadia coastal stratigraphy [@atwater1987] | Synthesis and reconstruction; trace inference | No: the traces came first, the earthquake explanation after | Partly: rivals to sudden subsidence are named, and the discriminating traces came later [@nelson1996; @satake1996] | No | The author, from the traces | Abstract; redo in the pilot |
+| Coscientist [@boiko2023] | Methods and computation; an automated system executing tasks and optimizing a reaction | No. Six tasks were supplied as prompts; no scientific hypothesis appears | Yes for the chemistry: products confirmed by GC–MS (p. 574). No test beyond the six tasks | Yes, by robot | The authors | Full text |
+| A-Lab [@szymanski2023] | Methods and computation; an automated loop testing "can this predicted-stable compound be made" | Weakly: targets predicted stable; two stated pathway hypotheses (p. 88) | Positive test only: a diffraction fit that includes the target; the paper says this "does not necessarily imply" high purity (p. 88) | Yes, by robot | Computation and the authors | Full text |
+| Reanalysis of A-Lab [@leeman2024] | Replication and validation; re-fitting against known phases | Yes: known phases explain the patterns | Yes: each success re-fit against known compounds (Table I, p. 5) | No | The authors, in response | Full text |
+| Laboratory earthquakes [@rouetleduc2017] | Exploratory discovery; a new method on laboratory data | Partly: precursors exist (p. 3); the actual finding reported as "unexpected" (p. 6) | Yes: held-out data against a periodicity baseline (p. 6) | Apparatus produces the data; the move is analysis | The authors | Full text of the accepted preprint |
+| Subsea DAS [@lindsey2019] | Instruments and observing systems | No: reports what the fibre could see | Partly: comparison with a nearby seismometer | No | The authors and the cable | Abstract; redo in the pilot |
+| Cascadia coastal stratigraphy [@atwater1987] | Synthesis and reconstruction; trace inference | No: traces first, explanation after | Partly: rivals named; discriminating traces came later [@nelson1996; @satake1996] | No | The author | Abstract; redo in the pilot |
 
-Four things follow from even this small table.
-
-**The system never chose the question.** In both automated systems the humans supplied it; in A-Lab the computation supplied the targets. The coding makes that a column because the [prior art](prior-art.qmd) list makes it gap 1.
-
-**The loop's verifier was the weak part, not its hypothesis.** A-Lab ran a hypothesis-testing loop and reported 36 of 57 targets made in 17 days [@szymanski2023, p. 86]. The reanalysis found that most of the claimed successes were misidentified and the rest already known, and it says why in the seminar's own terms: a "positive testing strategy," looking only for evidence that confirms the target, is inadequate, and any new-material report "must be accompanied by an explanation as to why the experimental evidence is better explained by a new material, compared to one or more known materials" [@leeman2024, p. 4]. That is Chamberlin's family of hypotheses [@chamberlin1965] and Cleland's rivals, missing from the scoring step. There was a gate on the action and none on the claim. (The reanalysis quotes 41 of 58 from an earlier version of the report; the published version says 36 of 57, and this book previously repeated the larger number.)
-
-**The seminar's thesis survives the split.** In the laboratory-earthquake paper a gate on the action would have hurt: the stated hypothesis was about impulsive precursors, and the result came from features of what had been treated as noise [@rouetleduc2017, p. 1]. A gate on the claim helped: held-out data with a baseline is why the result was believed. Iterate without a hypothesis gate; do not claim without a test.
-
-**Basis has to be a column.** Two rows rest on abstracts, and the meeting-1 analysis showed what that costs: two claims written from memory were wrong in the same direction.
+- The system never chose the question; that is gap 1 of the [prior art](prior-art.qmd)
+- The loop's verifier was the weak part, not its hypothesis
+  - A-Lab: 36 of 57 targets in 17 days [@szymanski2023, p. 86]
+  - Reanalysis: most misidentified, the rest already known; a "positive testing strategy" is inadequate; a new-material claim needs rivals excluded [@leeman2024, p. 4]
+  - Chamberlin's family of hypotheses [@chamberlin1965] and Cleland's rivals, missing from the scoring step
+  - A gate on the action, none on the claim
+- The thesis survives the split: in @rouetleduc2017 an action gate would have hurt (the finding came from "noise"); the claim gate helped (held-out data)
+- Basis has to be a column: memory-based claims in meeting 1 were wrong in the same direction
 
 ## The group's own agents
 
-The group already has an agent family and an evaluation vault, and meeting 13 should specify changes to them rather than a new design. The family, GAIA, is a Claude Code plugin of thirteen role-specialized subagents: an orchestrator that decomposes a goal and assigns work; a read-only auditor that must name the decisive test for every flaw it raises; a literature scout, a study designer, a theoretician, a data engineer, a scientific coder, a debugger and tester, a run monitor, a research-impact agent, a lab notebook, a provenance keeper that discloses AI use on every record, and a courier for mechanical work. It has human gates on anything outward-facing and a design-review step before resources are spent. The evaluation vault holds golden items, each an artifact with planted flaws and a decisive test for each, plus clean controls to measure false positives. The roster is private and under review; the assessment of it against this page is in the private analysis repository.
+- GAIA: thirteen role-specialized subagents under one orchestrator; read-only auditor; lab notebook; provenance keeper; human gates; design review first
+- Evaluation vault: golden items with planted flaws, decisive tests, clean controls
+- Built already: item 3 (abstention as temperament), item 4 (the notebook records the trajectory), item 5 (planted-flaw items)
+- Absent: item 1 (no mode label; the study designer's plan format asks for hypotheses, so the project could not start at step 1), item 2 (no transition rules)
+- Item 6 decided by accident in the roster's favour: one design review, then iterate on results (a claim gate, not an action gate)
+- Change list, in order:
+  1. Mode label carried by the orchestrator
+  2. Study designer that can plan observation, exploration, and instrument work without a hypothesis
+  3. Auditor verdict fields: rivals enumerated; not decidable; was the claim gated
+  4. Ledger rows written by the lab notebook
+  5. Mode axis in the vault's item schema
+- [Meeting 13](sessions/13-agent-design-and-evaluation.qmd) carries this as its exercise; the roster stays private
 
-Read against the six items above: items 3, 4, and 5 are largely built. The auditor is a claim gate, the lab notebook records the trajectory rather than the narrative, and the vault's planted-flaw items are the failure-mode tests. Item 1 is absent: nothing in the roster names the mode of a task, and the study designer's plan format asks for hypotheses, which means the project above could not begin at step 1 without inventing one. Item 2 is absent. Item 6 is decided in the roster's favour by accident: its design review gates the plan once and then lets the orchestrator iterate on results, which is a claim gate rather than a hypothesis gate on every action. The change list, in order, is: a mode label carried by the orchestrator; a study designer that can plan observation, exploration, and instrument work without a hypothesis; three fields in the auditor's verdict (rivals enumerated, not decidable, and whether the claim was gated); ledger rows written by the lab notebook; and a mode axis in the vault's item schema. [Meeting 13](sessions/13-agent-design-and-evaluation.qmd) carries this as its exercise.
+## Next to deep research
 
-## What to do with these agents alongside deep research
-
-The deep-research features now built into the frontier models take a question, search, read, and return a cited report after minutes of iterative retrieval. The survey by Huang and colleagues (2025, arXiv:2506.18096) classifies them by workflow and by single- or multi-agent composition; a benchmark scores their reports for quality, citation accuracy, and grounding (Du and colleagues, 2025, arXiv:2506.11763). The research systems behind them include a literature agent that matched subject-matter experts on three tasks (Skarlinski and colleagues, 2024, arXiv:2409.13740), an article writer that asks questions from several perspectives before drafting [@shao2024], and open scholarly search (Asai and colleagues, 2024, arXiv:2411.14199). One caution is measured: when the agent can retrieve the benchmark's own answer during its search, scores inflate (2026, arXiv:2606.05241).
-
-In the glossary's terms these systems perform one mode, literature-based synthesis, and they do not know it. For the project above, a deep-research run on "seasonal seismic velocity changes and groundwater" would return a fluent review that treats a modelling paper, a field observation, and a retrospective as the same kind of evidence, would not say which papers stated their hypothesis before their result, and would not say that the phase-lag question is open. Four additions fix that, in the order to build them:
-
-1. **A mode-aware reader.** For each retrieved paper: the decisive mode, the three coding questions, the kind of record, and who chose the question. The output is an evidence profile, not a synthesis. For the project: which of the cited studies tested groundwater against rivals, and which only fit it.
-2. **A trajectory reconstructor.** For one discovery, assemble the dated record (preprint versions, primary reports, retrospectives, citations) and produce the ledger row with its evidence basis, flagging where narrative and trajectory diverge.
-3. **A rival enumerator.** Before any "confirmed" or "novel," list the alternatives that also explain the evidence and the observation that separates them. Platt's touchstone is the check: what hypothesis does this experiment disprove [@platt1964, p. 352]. The A-Lab reanalysis is the case that shows why.
-4. **An abstention outcome.** "Not decidable with this evidence," with the observation that would decide it, as a scored result.
-
-Two rules apply to all four. Record who chose the question. And never cite the agent's own reasoning as evidence: every claim carries the kind of record it came from, and a claim with no primary source is marked as such.
-
-Beyond reading, the readings say where an acting agent should be gated. Program search against an exact verifier works [@romeraparedes2024]. A closed laboratory loop with a positive-only verifier scored itself [@szymanski2023; @leeman2024]. A team of agents with a human giving high-level feedback designed nanobodies that were then validated at the bench, with humans choosing the problem and the validation [@swanson2025]. Tool-using models are judged by expert evaluation of the chemistry, not by their own confidence [@bran2024]. A virtual environment exists in which an agent must form and test hypotheses to score at all [@jansen2024].
+- What the deep-research tools do: take a question, search, read, return a cited report (Huang et al., 2025, arXiv:2506.18096; Du et al., 2025, arXiv:2506.11763; Skarlinski et al., 2024, arXiv:2409.13740; @shao2024; Asai et al., 2024, arXiv:2411.14199)
+- Measured caution: retrieving the benchmark's own answer inflates scores (2026, arXiv:2606.05241)
+- In the glossary's terms: one mode, literature-based synthesis, performed without knowing it
+- On the project, a generic report would treat a model, a field observation, and a retrospective as the same evidence; would not say who stated a hypothesis first; would not say the phase-lag question is open
+- Four additions, in build order:
+  1. **Mode-aware reader**: per paper, the mode, the three questions, the kind of record, who chose the question; output an evidence profile, not a synthesis
+  2. **Trajectory reconstructor**: dated record of one discovery; a ledger row with its evidence basis; flag narrative-vs-trajectory gaps
+  3. **Rival enumerator**: before "confirmed" or "novel", the alternatives and the observation that separates them; Platt's touchstone [@platt1964, p. 352]; the A-Lab case as the test
+  4. **Abstention outcome**: "not decidable with this evidence" plus what would decide it, scored as correct
+- Two rules across all four: record who chose the question; never cite the agent's own reasoning as evidence
+- Where acting agents should be gated
+  - Exact verifier: program search works [@romeraparedes2024]
+  - Positive-only verifier: the loop scores itself [@szymanski2023; @leeman2024]
+  - Humans choose the problem and the bench validation: nanobody design [@swanson2025]
+  - Expert evaluation, not the model's confidence: chemistry tools [@bran2024]
+  - An environment that requires hypotheses to score at all [@jansen2024]
 
 ## What the reading does not yet establish
 
-The seminar set out to learn how geoscience research actually proceeds and to build from that. The reading so far does not support a general account of a geoscience workflow, and it is better to say so than to build as if it did. Three reasons.
+- A general geoscience workflow. Three reasons:
+  - The cases are episodes, not a sample; the [corpus study](corpus-study.qmd) has not run
+  - The philosophy is about science in general, not geoscience
+  - No project has been reconstructed from the inside
+- Readings on geoscientific method now in the optional extensions:
+  - From within the field: @gilbert1896; @johnson1933; @frodeman1995; @baker1999; @schumm1991; @elliott2007
+  - Philosophy and history of geoscience: @kleinhans2005; @bokulich2017; @currie2018; @rudwick1985
+  - Measured practice: 412 geoscientists, one seismic section, interpretations vary by training [@bond2007]; judgment drifts and herds [@polson2010; @baddeley2004]; how geoscientists think [@kastens2009]
+  - The geoscience research workflow specified end to end [@gil2016; @gil2018]
+- Two options for the group:
+  - A fourteenth meeting on how geoscientists reason: Gilbert 1896 paired with Bond et al. 2007
+  - Or fold that pair into meeting 7
+- A tenth ledger row from one of the group's own projects, reconstructed from its notebooks, would be the first evidence about trajectory rather than narrative; the lab-notebook agent produces that record
 
-The cases are episodes, not a sample. Cascadia, transform faults, DAS, Parkfield, and a laboratory fault are well documented and well chosen, but they are the episodes that made it into print with a reconstruction attached. The [corpus study](corpus-study.qmd) is the answer to that, and it has not been run.
+## Do we have to pull the papers first?
 
-The philosophy is general, not geoscientific. Platt, Cleland, Steinle, Tukey, and Kuhn are about science. The literature on how geologists in particular reason, and on how geoscientists' interpretations vary, is not in the required pairs. That literature exists and is now in the optional extensions. From within the field: Gilbert on where geological hypotheses come from, written from the Coon Butte crater problem [@gilbert1896]; Johnson on analysis in geological investigation [@johnson1933]; Frodeman on geology as an interpretive and historical science [@frodeman1995]; Baker on geological reasoning as inference from signs [@baker1999]; Schumm on the ways an earth-science interpretation goes wrong [@schumm1991]; Elliott and Brook on Chamberlin's method today [@elliott2007]. From philosophy and history: Kleinhans and colleagues on explanation in earth science [@kleinhans2005]; Bokulich and Oreskes on what geoscience models are for [@bokulich2017]; Currie on what the historical sciences can know [@currie2018]; Rudwick's close study of how a body of geological knowledge was argued into being [@rudwick1985]. And measured practice: 412 geoscientists given the same seismic section produced interpretations that varied with their training [@bond2007]; expert judgment in interpretation drifts and herds [@polson2010; @baddeley2004]; geoscientists' thinking has its own cognitive study [@kastens2009]; and the workflow of a geoscience paper has been specified in detail, with provenance, for reproducibility [@gil2016; @gil2018].
+- For the design: no; the codebook is the glossary
+- For the sealed analyses: yes, the 31 assigned papers; memory-based analyses were wrong where it mattered
+- For the corpus study: yes, full texts of the seismology papers it codes
+- For a reading agent: yes, a retrieval corpus with page-level citations
+- About half the references have a legal open copy; `tools/fetch_open_copies.py` fetches those and lists the rest; paywalled ones go to the shared folder
+- Check every fetched file against its title: the index pointed at a wrong document once
 
-The seminar has not yet reconstructed a project from the inside. The ledger will hold nine rows from published episodes. A tenth row, one of the group's own projects reconstructed from its notebooks and its lab-meeting record, would be the first evidence about trajectory rather than narrative. The group's lab-notebook agent is built to produce exactly that record.
+## Build order
 
-Two options for the group, both compatible with proceeding one meeting at a time. Add a fourteenth meeting on how geoscientists reason, pairing Gilbert with Bond and colleagues; or fold that pair into meeting 7, whose field-practice theme is the nearest. Either way the ledger's rows should be read before the architecture is drawn.
-
-## Do the full texts have to be pulled first?
-
-For designing the agents, no: the codebook is the glossary, and the design comes from the reconstructed practice in the ledger. For three other purposes, yes. The sealed analyses need the 31 assigned papers, because the ones written from memory were wrong where it mattered. The corpus study needs full texts of the seismology papers it codes. A reading agent needs a retrieval corpus with page-level citations or it cites what it has not read. Of the references in this book, about half have a legal open copy according to OpenAlex, and `tools/fetch_open_copies.py` fetches those it can and writes a manifest of the rest; the paywalled ones belong in the shared folder. One caution from doing it: the open-access index pointed, for one paper, at an unrelated document, so every fetched file is checked against its title.
-
-## What to build first
-
-1. The mode-aware reader, as a classifier inside whatever deep-research loop the group uses, with the glossary as its instructions and the corpus study's human-coded papers as its validation set.
-2. The rival enumerator, as the verifier the reader calls before it reports any "novel" or "confirmed" claim, tested on the A-Lab case.
-3. The trajectory reconstructor, run first on the nine seminar cases and then on one of the group's own projects.
-4. Abstention, as an outcome the evaluation scores.
-
-Each is traceable to a reading and to a meeting, and each maps onto a change to the group's own agents rather than to a new system.
+1. Mode-aware reader, validated on the corpus study's human-coded papers
+2. Rival enumerator, as the reader's verifier, tested on the A-Lab case
+3. Trajectory reconstructor, on the nine seminar cases, then on one of the group's own projects
+4. Abstention, as an outcome the evaluation scores

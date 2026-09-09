@@ -1,32 +1,30 @@
 # Prior art: agents and benchmarks for science {.unnumbered}
 
-This chapter exists so that nothing in [meeting 13](sessions/13-agent-design-and-evaluation.qmd) is specified from scratch. Systems that automate parts of research already exist, and so do benchmarks that score them. Before proposing an architecture or a test, find out whether it has been built, and what happened.
+[Drafted]{.status .drafted} [registry · not yet discussed]{.status-line}
 
-Every entry carries a resolvable identifier, a DOI or an arXiv ID, so the list can be worked through by a person or by a program. Entries were checked against publisher or arXiv records; where a project has multiple versions, the identifier points at the version consulted.
+- Systems that automate parts of research exist, and so do benchmarks that score them
+- Before proposing an architecture or a test, find out whether it has been built, and what happened
+- Every entry carries a DOI or an arXiv ID; entries were checked against publisher or arXiv records
 
 ## How to read the last column
 
-The rightmost column is the point of the chapter. A benchmark score is a measurement, and a measurement supports a claim only about the construct it observes. This is the problem @flake2020 and @messick1995 describe for psychological measures, and it does not change when the thing being measured is an agent. "Solved 40% of the tasks" is a fact about the tasks. Whether it is evidence that a system does science depends entirely on what the tasks required, and most of these task sets deliberately supply the question, the data, and the success criterion. That is to say, they supply most of what [meetings 1 through 9](index.qmd#meetings) treated as the hard part.
-
-Read that column as an inventory of open problems rather than as criticism. Where a capability the group cares about appears in no existing evaluation, that gap is the group's opportunity.
-
-## Systems that act
-
-| Project | What it is | What it covers | What its results do not establish |
-|:--|:--|:--|:--|
-| [Coscientist](https://doi.org/10.1038/s41586-023-06792-0) — @boiko2023 | Language model with web search, documentation retrieval, code execution, and a robotic liquid handler | Planning and executing a chemical synthesis, including optimizing a catalytic cross-coupling on real hardware | That the system chose the question, or that it transfers beyond tasks with existing published protocols and a defined target |
-| [The AI Scientist](https://arxiv.org/abs/2408.06292) (arXiv:2408.06292) and [v2](https://arxiv.org/abs/2504.08066) (arXiv:2504.08066) | End-to-end pipeline: idea generation, experiment execution, paper writing, and automated review | Producing complete machine-learning papers without human intervention; v2 reports a workshop-accepted manuscript | That the findings are ones a field would retain. Automated review is not peer review, and workshop acceptance is a weak filter |
-| [Co-Scientist](https://doi.org/10.1038/s41586-026-10644-y) — @gottweis2026; preprint [arXiv:2502.18864](https://arxiv.org/abs/2502.18864) | Multi-agent system generating, debating, and ranking hypotheses in a tournament; the peer-reviewed report appeared in Nature in 2026 | Proposing biomedical hypotheses, with wet-lab follow-up reported in three areas | General hypothesis quality. The validated cases were selected, and a rate would require the denominator: how many proposals failed |
-| [TinyScientist](https://arxiv.org/abs/2510.06579) (arXiv:2510.06579) | An open framework for assembling research agents, not a result | Tooling: a controllable, extensible harness others can build on | Anything about scientific performance; it is infrastructure, and belongs here as a starting point rather than as evidence |
-| [A-Lab](https://doi.org/10.1038/s41586-023-06734-w) — @szymanski2023, reanalysed by @leeman2024 | Closed-loop materials synthesis: models propose targets, robots synthesize them, and a model interprets the diffraction pattern | Reported 36 of 57 target compounds synthesized in 17 days, a 63% success rate | That the compounds were new. The reanalysis found that most were misidentified or already known. The clearest published case of a loop scoring itself, and the reason the evaluation protocol in [meeting 13](sessions/13-agent-design-and-evaluation.qmd) carries negative controls |
+- A benchmark score is a measurement of the tasks, not of "doing science" [@flake2020; @messick1995]
+- Most task sets supply the question, the data, and the success criterion, which meetings 1 to 9 treat as the hard part
+- Read the last column as an inventory of open problems, not as criticism
 
 ## The group's own system
 
-The group runs an agent family of its own, GAIA: a Claude Code plugin of thirteen role-specialized subagents under one orchestrator, with a read-only auditor, a lab notebook, a provenance keeper that discloses AI use, and human gates, and beside it an evaluation vault of golden items with planted flaws and clean controls. It has no published results, so it has no row in the tables above; it is listed here because [meeting 13](sessions/13-agent-design-and-evaluation.qmd) specifies changes to it rather than a new design, and because the rule of this chapter, that nothing is specified from scratch when it already exists, applies with most force to the group's own repositories. What its design does not yet establish is the same as for every system above: it has not been run against items that supply no question, and it has no mode label on the work it does. The roster is private and under review; the [design notes](agent-design.qmd) carry the public summary.
+- GAIA: thirteen role-specialized subagents under one orchestrator; read-only auditor; lab notebook; provenance keeper that discloses AI use; human gates
+- Beside it: an evaluation vault of golden items with planted flaws and clean controls
+- No published results, so no row above; listed because [meeting 13](sessions/13-agent-design-and-evaluation.qmd) changes it rather than designing anew
+- Not yet established: never run on items that supply no question; no mode label on its work
+- Roster private and under review; public summary in the [design notes](agent-design.qmd)
 
 ## Systems that predate language models
 
-The tables above start in 2023. Automated discovery did not. The systems below are the record that current ones rarely cite, and one of them was built the way this seminar proposes to build: from a historian's reconstruction of a scientist's notebooks. Herbert Simon's argument that discovery has a describable logic, @simon1973, is the position all of them assume.
+- The tables above start in 2023; automated discovery did not
+- One of these was built the way this seminar proposes: from a historian's reconstruction of a scientist's notebooks
+- All assume Simon's position that discovery has a describable logic [@simon1973]
 
 | Project | What it is | What it covered | What its results do not establish |
 |:--|:--|:--|:--|
@@ -36,7 +34,7 @@ The tables above start in 2023. Automated discovery did not. The systems below a
 | Eureqa — @schmidt2009 | Symbolic regression over experimental time series | Recovered Lagrangians and Hamiltonians for pendulums and oscillators | Which variables to measure; the search space is fixed by the input columns |
 | Literature-based discovery — @swanson1986 | Connecting two literatures that never cite each other, first done by reading and later by program | The fish-oil and Raynaud's syndrome link, later confirmed clinically | How often the method produces false connections. The successes are what got reported |
 
-Two more belong in the record as arguments rather than systems. @kitano2021 states the closed-loop AI-scientist design explicitly and lists what it would have to do. @wang2023 is the standard review of the field since; use it as an index, not as evidence.
+- Arguments rather than systems: @kitano2021 states the closed-loop design explicitly; @wang2023 is the standard review, an index rather than evidence
 
 ## Benchmarks and evaluations
 
@@ -53,16 +51,16 @@ Two more belong in the record as arguments rather than systems. @kitano2021 stat
 
 ## Surveys and registries
 
-Two recent surveys cover this space more completely than the tables above and are the right starting point for anyone extending them.
+- Two surveys cover the space more completely; start there when extending the tables
 
 - [A Survey of AI Scientists](https://arxiv.org/abs/2510.23045) (arXiv:2510.23045). Tie and colleagues, 2025. Broad coverage of automated-scientist systems and their components.
 - [Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap](https://arxiv.org/abs/2608.05179) (arXiv:2608.05179). Ding and colleagues, 2026. Screens a large candidate set down to a coded sample of runnable systems, and organizes them around verification, the same concern as the last column of the tables above.
 
-A survey is a secondary source. Where a claim in one matters to a decision here, read the primary paper.
+- A survey is a secondary source; where a claim matters, read the primary paper
 
 ## What is missing from all of them
 
-Collecting the last columns gives the group a short list of capabilities that appear in no evaluation above:
+- Capabilities that appear in no evaluation above:
 
 1. **Choosing the question.** Every benchmark supplies it. Meetings 1, 2, and 6 treated question formation as the substance of inquiry.
 2. **Deciding what to measure, and whether the measurement can be trusted.** Only Gravity-Bench asks an agent to plan observations, and it does so in simulation with no instrument response. Compare the provenance concerns in [meeting 5](sessions/05-measurement.qmd).
@@ -72,8 +70,10 @@ Collecting the last columns gives the group a short list of capabilities that ap
 6. **Field and marine constraint.** Ship time, weather, instrument loss, and the plan-versus-reality gap of [meeting 7](sessions/07-field-marine.qmd) have no representation at all.
 7. **Effects on the field.** @hao2026 measured, across 41 million papers, that scientists who use AI tools publish more and that the fields they work in narrow. No benchmark scores a system on what it does to the questions a field asks. See [meeting 11](sessions/11-polymathy.qmd) and @messeri2024.
 
-These seven are the natural content of the benchmark drafted in meeting 13. Whether any of them can be measured well is itself uncertain, and a benchmark the group cannot actually run is not an improvement over one that exists.
+- These seven are the content of the benchmark drafted in meeting 13
+- Whether they can be measured well is itself uncertain; a benchmark the group cannot run is no improvement
 
 ## Adding an entry
 
-Corrections and additions are welcome, particularly from anyone who has run one of these systems. Accuracy in the last column matters more than coverage: an entry that overstates a limitation is as much a problem as one that omits it. See [how to contribute](contributing.qmd).
+- Corrections welcome, especially from anyone who has run one of these systems
+- Accuracy in the last column matters more than coverage; overstating a limitation is as much a problem as omitting it · [how to contribute](contributing.qmd)
