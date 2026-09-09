@@ -1,0 +1,95 @@
+# From modes to agents: design notes {.unnumbered}
+
+Three questions from the convenor, answered from the readings and from a small amount of new work: how the history and philosophy of science in this book are used to design better scientific agents; what to do with such agents in the setting of the deep-research systems now sold by the model companies; and whether the full texts of the readings have to be in hand first. Every citation links to its full record in the [bibliography](bibliography.qmd). Preprints are cited inline with their arXiv numbers and are not in the bibliography, following the [prior art](prior-art.qmd) convention.
+
+The short answers. The history and philosophy give the designer six things that a benchmark does not: a vocabulary of modes with recognition rules, transition conditions between modes, stopping and abstention rules, a labelling of evidence by kind, a failure mode per mode that becomes a test, and a way to state the objective question. Coding six papers by mode, four of them from full text, shows what the vocabulary catches that a hypothesis-first description misses, and turns up one correction to this book. Deep-research agents perform one mode, literature-based synthesis, without knowing it; a mode-aware reader, a trajectory reconstructor, a rival enumerator, and an abstention outcome are the four additions that follow. And no, the full texts are not needed to design the agents, but they are needed to write the sealed analyses and to run the corpus study, and a script now fetches the open copies and lists the rest.
+
+## What the readings give an agent designer
+
+This is not a new idea. Computational discovery began by encoding what historians had reconstructed: BACON rediscovered laws from the tables Kepler and Ohm had [@langley1981; @langley1987], KEKADA reproduced Krebs's path to the urea cycle from Holmes's notebook study, with surprise as a control signal [@kulkarni1988], and Darden catalogued the strategies geneticists used to resolve anomalies so that a program could use them [@darden1991]. Thagard called the field computational philosophy of science [@thagard1988], and Klahr and Simon showed that the historical, psychological, and computational studies of discovery converged on the same account of it as search in two spaces [@klahr1999]. The current review of that lineage is Sozou and colleagues [@sozou2017]. What has changed is that a language model now supplies the step every one of those systems left to the human, the "intellectual invention" Platt hands to Pólya [@platt1964], cheaply and, on the one controlled measurement so far, badly: ideas rated more novel than experts' ideas before execution scored below them after it (Si, Hashimoto, and Yang, 2025, arXiv:2506.20803; the ideation study itself is @si2025).
+
+So the question is not whether history and philosophy can be encoded. It is what, from this quarter's reading, an agent would have to carry. Six things.
+
+**A vocabulary of modes with recognition rules.** The [glossary](glossary.qmd) gives ten modes, each with what to look for in a paper, what evidence it produces, and how it fails. For an agent this is a classifier's codebook and a planner's action set at once: an agent that can say which mode it is in can say what evidence it owes.
+
+**Transition conditions.** The readings contain rules for moving between modes that no benchmark encodes. Explore until the phenomenon is repeatable, then test [@cleland2002]. Pursue an anomaly only after it reproduces, because the base rate is that it is an error [@fugelsang2004]. When several models fit, stop fitting and find an observable they disagree on [@beven2001; @kirchner2006]. Search the experiment space when the hypothesis space is empty [@klahr1988]. These are the edges of the state machine meeting 13 draws.
+
+**Stopping and abstention.** Validation of a model of an open system cannot confirm it [@oreskes1994]; an inverse problem can falsify and never verify [@tarantola2006]; a smoking gun that would decide the case may not have been found yet [@cleland2002]. An agent needs "not decidable with this evidence" as an outcome that scores well, and no benchmark in the [prior art](prior-art.qmd) rewards it.
+
+**Evidence labelled by kind.** The seminar's standing rule is that a philosophical argument, a retrospective, an archival history, a primary report, and a benchmark are different records, and that the published narrative is not the trajectory [@holmes1987]. An agent that reads papers must carry that label on every claim it extracts, or its synthesis mixes what was done with what was said.
+
+**A failure mode per mode, which is a test.** Controls fixed before any data can be the wrong controls [@cleland2002]; a pattern found after inspection can be reported as predicted [@ioannidis2005; @geller1997]; a fit can be mistaken for truth [@oreskes1994]; a loop can score itself [@leeman2024]. Each is a negative control for the [evaluation protocol](rubrics.qmd#agent-evaluation-protocol-v1).
+
+**The objective, stated.** The design choice the seminar questions is the hypothesis gate, the rule that the next action must test a stated hypothesis. The readings supply its strongest form, expected information gain over a model space [@rainforth2024], and its alternatives: search for novelty rather than for an objective [@lehman2011], and interestingness as compression progress [@schmidhuber2010]. Where the objective is exact and cheap to evaluate, gating works: program search against a verifier found new mathematical constructions [@romeraparedes2024]. Where the objective is a scientific claim, the verifier is the hard part, as the worked coding below shows.
+
+## The dichotomy, and a worked coding
+
+The convenor proposed taking a few papers and applying a dichotomy to see which modes were invoked. One dichotomy is not enough, and the reason is instructive. "Hypothesis-first or exploration-first" runs together two different gates: a gate on the *next action* (do not act without a hypothesis to test) and a gate on the *claim* (do not claim without a test the claim could have failed). The seminar's thesis is about the first. Almost every good paper accepts the second. So the coding uses three binary axes and the decisive mode:
+
+1. **Hypothesis stated before the result, as presented.** The action gate.
+2. **A test the claim could have failed.** The claim gate: held-out data, an independent sensor, a rival explanation ruled out.
+3. **Intervention or observation.** Cleland's line between experimental and historical work [@cleland2001].
+
+With the decisive mode and the sub-mode from the glossary, "who chose the question," and the basis on which the coding was made. Six papers, chosen because four are available in full text and two are the seminar's own cases. Where the basis is the abstract, the row is a placeholder for the pilot to redo.
+
+| Paper | Decisive mode; sub-mode | Hypothesis before result | Test the claim could fail | Intervention | Who chose the question | Basis |
+|:--|:--|:--|:--|:--|:--|:--|
+| Coscientist [@boiko2023] | Methods and computation; automated system performing task execution and reaction optimization | No. Six tasks were supplied as prompts ("perform multiple Suzuki reactions"); no scientific hypothesis appears | Yes for the chemistry: products confirmed by GC–MS (p. 574). No test of the system's generality beyond the six tasks | Yes, by robot | The authors, in every task | Full text |
+| A-Lab [@szymanski2023] | Methods and computation; automated loop performing hypothesis testing of the form "can this predicted-stable compound be made" | Yes, weakly: targets were predicted stable by computation, and the active-learning step used two stated hypotheses about reaction pathways (p. 88) | Positive test only: a Rietveld fit that includes the target. The paper itself notes this "does not necessarily imply that the target was made with high purity" (p. 88) | Yes, by robot | Computation and the authors; 57 targets from the Materials Project and GNoME | Full text |
+| Reanalysis of A-Lab [@leeman2024] | Replication and validation; reanalysis of the reported diffraction data against known phases | Yes: that known phases explain the patterns | Yes: each claimed success was re-fit against known compounds, and the errors are tabulated (Table I, p. 5) | No | The authors, in response to the claim | Full text |
+| Laboratory earthquakes [@rouetleduc2017] | Exploratory discovery; exploratory data analysis with a new method (random forest on continuous acoustic emission) | Partly. The general hypothesis that precursors exist is stated (p. 3). The finding, that the continuous signal predicts failure throughout the cycle, is reported as "unexpected" (p. 6) | Yes: held-out test data, with a periodicity baseline (p. 6) | The data come from a laboratory shear apparatus, but the paper's move is analysis of the recording | The authors, from the fault-forecasting problem | Full text of the accepted preprint |
+| Subsea DAS [@lindsey2019] | Instruments and observing systems; instrument-led observation | No, as presented: the paper reports what the fiber could see | Partly: comparison against a nearby seismometer for the earthquake signals | No | The authors and the cable's availability | Abstract and the seminar's reading instructions; redo in the pilot |
+| Cascadia coastal stratigraphy [@atwater1987] | Synthesis and reconstruction; trace inference | No: the traces came first, the earthquake explanation after | Partly: the paper enumerates rivals to sudden subsidence, and the discriminating traces came later [@nelson1996; @satake1996] | No | The author, from the traces | Abstract and the seminar's reading instructions; redo in the pilot |
+
+Four things come out of even this small table.
+
+**The question was never chosen by the system.** In both automated systems the humans supplied it, and in A-Lab the computation supplied the targets. That is gap 1 of the [prior art](prior-art.qmd) list, and the coding makes it a column.
+
+**The loop's verifier was the weak part, not its hypothesis.** A-Lab ran a hypothesis-testing loop and reported 36 of 57 targets synthesized in 17 days [@szymanski2023, p. 86]. The reanalysis found that, of the claimed successes, most were misidentified and a smaller number were correctly identified but already known, and it says why in the seminar's own terms: a "positive testing strategy," which looks only for evidence that confirms the target, is inadequate, and any report of a new material "must be accompanied by an explanation as to why the experimental evidence is better explained by a new material, compared to one or more known materials" [@leeman2024, p. 4]. That is Chamberlin's family of hypotheses [@chamberlin1965] and Cleland's rivals, missing from the loop's scoring step. The gate was on the action; the claim had no gate. (The reanalysis quotes 41 of 58 targets from an earlier version of the A-Lab report; the published version reports 36 of 57, and this book previously repeated the larger number.)
+
+**The seminar's thesis survives the split.** In the laboratory-earthquake paper, a gate on the action would have hurt: the stated hypothesis was about impulsive precursors, and the result came from features of what had been treated as noise [@rouetleduc2017, p. 1]. A gate on the claim helped: held-out data with a baseline is why the result was believed. Iterate without a hypothesis gate; do not claim without a test. Both halves are in the same four pages.
+
+**Basis has to be a column.** Two rows here rest on abstracts, and the meeting-1 analysis showed what that costs: two memory-based claims about Platt and Cleland were wrong in the same direction. The corpus study's rule that the pilot codes full text is not a nicety.
+
+For the dichotomy question, then: use the three axes and the mode, code the presented paper, and where a trajectory is documented code it too. The interesting papers are the ones where axis 1 is "no" and axis 2 is "yes."
+
+## What to do with these agents in the deep-research setting
+
+The deep-research products now offered with the frontier models take a question, search, read, and return a cited report after minutes of iterative retrieval; the survey by Huang and colleagues (2025, arXiv:2506.18096) classifies them by static or dynamic workflow and single or multi-agent composition, and a benchmark scores their reports on quality, citation accuracy, and grounding (Du and colleagues, 2025, arXiv:2506.11763). The research systems behind them are peer reviewed in part: a language agent that matched or exceeded subject-matter experts on literature tasks (Skarlinski and colleagues, 2024, arXiv:2409.13740), an article writer that asks questions from several perspectives before drafting [@shao2024], and open scholarly search (Asai and colleagues, 2024, arXiv:2411.14199). One caution is already measured: search-time contamination, where the agent retrieves the benchmark's answer during the run, inflates the scores (2026, arXiv:2606.05241).
+
+In the glossary's terms, all of these perform one mode, literature-based synthesis, and one contribution role, the review. They do it without knowing it, and that is the gap. Four additions follow from the readings, in the order they should be built.
+
+**1. A mode-aware reader.** For each source the agent retrieves, label the decisive mode, the three axes above, the kind of record it is, and who chose the question. Return an evidence profile rather than a synthesis: what in the report rests on primary experiments, what on reconstructions, what on retrospectives, what on benchmarks. This is the corpus study's classifier turned inward, and it is the cheapest of the four because it needs no new tools. The ledger is its output format.
+
+**2. A trajectory reconstructor.** For one discovery, assemble the dated record: the preprint versions, the primary reports, the retrospectives, the citations backward and forward, and any notebooks or interviews, and produce the ledger row with its evidence basis. Flag where the narrative and the trajectory diverge. This is question 4 of the [corpus study](corpus-study.qmd), and deep research is the right tool for it because it is a reading task with a rule.
+
+**3. A rival enumerator and discriminating-observation finder.** Before any "success" or "novel" verdict, enumerate the alternatives that would also explain the evidence, and name the observation that would separate them. Platt's touchstone is the check: what hypothesis does this experiment disprove [@platt1964, p. 352]. The A-Lab reanalysis is the case that shows why: known phases were the rivals nobody enumerated. This is the discrimination agent in the private backlog, and it belongs inside the deep-research loop as the verifier that the current systems lack.
+
+**4. An abstention outcome.** "Not decidable with this evidence" as a first-class result, with the observation that would decide it. The Martian meteorite is the model case [@cleland2002], and the evaluation rewards it as competent.
+
+Two design rules cut across all four. The agent records who chose the question, because in every system in the prior art that was a human, and a report that hides it overstates what was automated. And the agent's own reasoning is not evidence: what it extracts is labelled by the kind of record it came from, and a claim with no primary source behind it is marked as such rather than cited to the agent.
+
+Beyond reading, the readings say where an agent that acts should and should not be gated. Program search against an exact verifier is a loop that works [@romeraparedes2024]. A closed laboratory loop with a positive-only verifier is a loop that scored itself [@szymanski2023; @leeman2024]. A team of agents with a human giving high-level feedback designed nanobodies that were then validated at the bench, with the humans choosing the problem and the validation [@swanson2025]. Tool-augmented models are judged by expert evaluation of the chemistry, not by the model's own confidence [@bran2024]. And a virtual environment exists in which an agent must form and test hypotheses to score at all [@jansen2024], which is closer to what this seminar wants to measure than any task set that supplies the question.
+
+How to evaluate any of it is already in the [rubrics](rubrics.qmd#agent-evaluation-protocol-v1). Two tests are specific to the additions here. The Viking test, from meeting 1: give the agent results outside its prespecified controls and see whether it revises the controls or forces the interpretation. And the A-Lab test: give the agent the reported diffraction claims and see whether it enumerates the known-phase rivals before accepting a "new material."
+
+## Do the full texts have to be pulled first?
+
+For designing the agents, no. The design comes from the reconstructed practice, which is what the ledger and the glossary hold, and the agent's codebook is the glossary, not the papers.
+
+For three other purposes, yes, and each has a different corpus.
+
+- **The sealed analyses.** The two written from memory were wrong where it mattered; the one written from full text found what the memory-based version had missed. The 31 assigned papers, 26 paired and 5 discussant-led, are the ones that need to be in hand, one meeting at a time. The optional extensions can wait.
+- **The corpus study.** Its papers are the seismology journals, not the syllabus, and the pilot codes full text because the abstract is the narrative at its most compressed.
+- **A deep-research agent of the kind above.** It needs a retrieval corpus of full texts with page-level citations, or it cites what it cannot have read.
+
+What can be had legally without effort has now been measured. Of the 123 references in this book, 56 have an open copy according to OpenAlex, and `tools/fetch_open_copies.py` retrieved 15 of them as PDFs into the gitignored `private/pdfs/`; most of the rest are open at a publisher page that refuses scripted downloads and can be saved by hand from the link the manifest gives. 52 are paywalled and are the ones for the shared folder. The manifest is `private/reading-copies.md`, and one caution is recorded there: the open-access index pointed, for one paper, at an unrelated document, so a fetched file is checked against its title before it is trusted. That check is itself a small instance of what this page is about.
+
+## What to build first
+
+1. The mode-aware reader, as a classifier that runs inside whatever deep-research loop the group already uses, with the glossary as its instructions and the corpus study's 300 human-coded papers as its validation set.
+2. The rival enumerator, as the verifier the reader calls before it reports any "novel" or "confirmed" claim, tested on the A-Lab case.
+3. The trajectory reconstructor, run first on the nine seminar cases, where the group can check it.
+4. Abstention, as an outcome the evaluation scores.
+
+Each is traceable to a reading and to a meeting, which is the standing requirement in the private backlog for any proposal that borrows this seminar's authority.

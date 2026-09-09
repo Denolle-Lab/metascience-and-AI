@@ -1,5 +1,18 @@
 # Validation performed
 
+## September 9, 2026: design notes and reading copies
+
+Added `agent-design.qmd` to the working materials and ten references for it (Virtual Lab, FunSearch,
+ChemCrow, STORM, DiscoveryWorld, the Sozou review, Darden, Langley and colleagues, Thagard, Klahr
+and Simon), all verified against Crossref. Corrected the A-Lab figure from "forty-one new compounds"
+to the published 36 of 57 targets, after reading the paper. Added `tools/fetch_open_copies.py`,
+which writes the manifest `private/reading-copies.md` and fetches open copies into the gitignored
+`private/pdfs/`.
+
+- `tools/validate.py` passes: 22 chapter files, 13 meetings in order, 31 assigned papers, 123
+  bibliography records; generated reading lists current; Pandoc citations without warnings.
+- `quarto render` produced all 22 pages.
+
 ## September 8, 2026: meeting dates removed
 
 The seminar now proceeds one meeting at a time in numbered order, with no dates or times anywhere
