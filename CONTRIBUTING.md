@@ -28,6 +28,12 @@ a later deletion.
 | Suggest a reading | `references.bib` **and** `curriculum.json`, then run `tools/build_bibliography.py`; the bullet goes in `bibliography.qmd` under "Suggested by the group" |
 | Add an agent system or benchmark | a table row in `prior-art.qmd`, with a DOI or arXiv ID |
 | Change what is assigned | `curriculum.json` **and** the session `.qmd` **and** `READING-AUDIT.md` — open an issue first |
+| Revise a mode | Its authoritative `modes/*.qmd` specification; update the version for a substantive revision, then run `tools/export_modes.py` |
+
+The two `pair` entries in `curriculum.json` are ordered **anchor, companion**. Required errata
+belong in `corrections`; background readings belong in `optional`. Keep the session title,
+reading instructions, central question, exercise, and output synchronized with the metadata.
+Mode instructions in `agents/mode-instructions.json` are generated; edit the source pages.
 
 The "Edit this page" link in the right margin of any page opens it on GitHub and turns your edit into
 a pull request, with no local clone needed.
@@ -37,6 +43,8 @@ a pull request, with no local clone needed.
 ``` bash
 python3 -m venv .venv
 .venv/bin/pip install PyYAML
+.venv/bin/python tools/export_modes.py
+.venv/bin/python tools/build_bibliography.py
 .venv/bin/python tools/validate.py
 quarto render
 ```

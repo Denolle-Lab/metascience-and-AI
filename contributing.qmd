@@ -44,15 +44,24 @@ Then decide where it belongs. A suggestion for the group goes as a bullet in the
 
 ## Changing the curriculum
 
-Session pages and `curriculum.json` hold the same prose, and `tools/validate.py` checks that the assigned citation keys agree. Change both together. There are thirteen meetings, numbered in order; they are taken one at a time and carry no dates.
+Session pages and `curriculum.json` hold the same prose; validation checks the title, reading roles/instructions, question, contrast, preparation, exercise, output, and mode links. Change both together. The `pair` array is ordered anchor then companion; required errata belong in `corrections`, background in `optional`. There are thirteen meetings, numbered in order, without fixed dates.
 
 Substantive changes to what is assigned should start as an issue, and the rationale belongs in `READING-AUDIT.md` alongside the existing entries.
+
+## Revising a mode
+
+- Edit the authoritative specification in `modes/`; record the case and evidence motivating a change.
+- Update `mode_version` for a substantive revision. A drafted definition is not a record of group adoption.
+- Run `tools/export_modes.py` to regenerate `agents/mode-instructions.json`. Agents and evaluation records retain the source version and hash; do not edit the generated instructions separately.
+- New profiles need chapter registration in `_quarto.yml` and links from the glossary. The number of profiles is not fixed by the validator.
 
 ## Checking your work before you push
 
 ``` bash
 python3 -m venv .venv
 .venv/bin/pip install PyYAML
+.venv/bin/python tools/export_modes.py
+.venv/bin/python tools/build_bibliography.py
 .venv/bin/python tools/validate.py
 quarto render
 ```

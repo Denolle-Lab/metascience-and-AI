@@ -1,157 +1,71 @@
-# From modes to agents: design notes {.unnumbered}
+# From human-defined modes to scientific agents {.unnumbered}
 
-[Drafted]{.status .drafted} [proposed for meeting 13 · not yet discussed · full text in the private repository]{.status-line}
+[Drafted]{.status .drafted} [v0.4 design · exported instructions available · scientific performance untested]{.status-line}
 
-## Three questions
+## Objective and evidence chain
 
-- What do the readings give us for building better scientific agents?
-- What do we do with such agents next to the deep-research tools in the frontier models?
-- Do we have to pull all the papers first?
+- Primary objective: produce meaningful warranted gains in knowledge, understanding, or research capability under a stated budget.
+- Human scientific record → [mode specification](glossary.qmd#working-mode-specifications) → executable procedure → [historical evaluation](historical-evaluation.qmd) → assessed scientific gain.
+- Novelty characterizes what changes; correctness/warrant supports its scope; impact records later consequences. An agent can estimate expected advance for planning, but those estimates require subsequent assessment.
+- History-informed discovery systems are precedents [@langley1981; @kulkarni1988]. Their existence motivates this project; their task boundaries do not establish general agent competence.
 
-## One project to think with
+## One shared state, several procedures
 
-- Dense array in the Pacific Northwest; three years of ambient-noise cross-correlations
-- Seismic velocity between station pairs changes a little with the seasons
-- Question: does the seasonal change track groundwater?
-- The project passes through most of the ten [modes](glossary.qmd):
-  1. Observation and description: velocity-change series for every pair; nothing claimed
-  2. Methods and computation: the measurement has settings that shape what can be seen
-  3. Exploratory discovery: some pairs show an annual cycle, some none, one an unexpected jump
-  4. Hypothesis testing: groundwater vs thermoelastic strain vs precipitation loading vs a noise-source change; different phase lags, different depths
-  5. Simulation and prediction: a poroelastic model turns a well record into a predicted velocity change
-  6. Synthesis and reconstruction: wells, rain, temperature, noise direction, one account
-  7. Replication and validation: a second array, a second year
-- The paper will present step 4; steps 1 to 3 become one sentence [@holmes1987]
-- That gap is standing question 5, and the first thing an agent must be honest about
+- State: question and its origin/revisions, evidence and source kind, measurement assumptions, candidate explanations, claim dependencies, mode IDs/versions, commitments, remaining budget.
+- Each procedure changes actions and representations; mode names attached to otherwise identical behavior are insufficient.
+- Humans edit the authoritative specifications in `modes/`. The exporter creates [agent instructions](agents/mode-instructions.json) from them with source hashes; it does not translate prose into a proven reasoning algorithm.
+- Agents can suggest a new mode or revision, or mark work outside the vocabulary. They cannot silently alter the frozen rubric or redefine success during evaluation.
 
-## Two words
+| Procedure | Observable behavior | Scientific assessment |
+|:--|:--|:--|
+| Estimate with checks | Separate measured data from latent target; inspect identifiability, response, regularization, and uncertainty. | Useful estimate or consequential identified limit; misleading precision is a failure. |
+| Follow an anomaly | Generate artifact/physical possibilities; select an informative initial reliability check. | Credible candidate and justified next observation; unique events may merit investigation. |
+| Generate and assess rivals | Produce substantive alternatives, then separately choose differing evidential consequences. | Resolve a meaningful contrast or establish why current evidence cannot. |
+| Reframe a question | Revise the scientific target when uncertainty, representation, or resources demand it. | A tractable question whose answer would matter, rather than an unrelated easy task. |
+| Transfer a method/concept | Map variables, units, scales, assumptions, failure conditions, and a target-domain check. | Supported integration that contributes to gain rather than borrowed terminology. |
 
-- **Mode**: the kind of work, by what it does for knowledge; ten in the glossary
-- **Gate**: a rule that stops the next step until a condition is met
-  - Action gate: no step without a stated hypothesis. The seminar's target
-  - Claim gate: no claim without a test it could have failed. Kept everywhere
-- In the project: an action gate at step 3 forbids looking; a claim gate at step 4 forbids "groundwater" until rivals are excluded and the result holds on data not used to find it
+- The remaining profiles cover description, theory, simulation, instruments, methods, synthesis, and robustness; they can share actions while owing different evidence.
+- Require claim-appropriate evidence for a supported status, not a hypothesis before every action. Conjectures and provisional outputs are permitted.
+- Separate action restrictions, commitments before evidence access, and claim warrant in the record. Evaluate their effects rather than assuming a universal gate.
 
-## What the readings give an agent designer
+## Worked design example
 
-- Not new: 1980s discovery programs were built from historians' reconstructions [@langley1981; @langley1987; @kulkarni1988; @darden1991; @thagard1988]; the fields converged on discovery as search in two spaces [@klahr1999; @klahr1988]; review in @sozou2017
-- New: a language model now proposes the hypotheses, and the one controlled test says it does that badly (Si, Hashimoto, and Yang, 2025, arXiv:2506.20803; @si2025)
-- Six things an agent must carry, each shown on the project:
+- Illustrative question: does seasonal seismic velocity variation help constrain groundwater effects? This is a teaching scenario, not a reported result from a private project.
+- Observe the series and coverage; estimate velocity change with uncertainty and processing assumptions.
+- Explore variability; follow a jump with a measurement-chain check before attributing a cause.
+- Generate rivals such as physical changes and changes in the noise/measurement chain; identify observables with different consequences under those rivals.
+- Transfer hydrological information only after checking correspondence of target quantities, scales, and assumptions.
+- Return a bounded result, a meaningful limitation, or a proposed next observation. A causal claim needs more than a fitted seasonal association.
+- This path is illustrative; the planner may enter a different profile when the evidence requires it.
 
-1. **A mode vocabulary with recognition rules**
-   - Step 3 is exploratory discovery; step 4 is hypothesis testing; each owes different evidence
-   - Agent: labels every task with a mode and reports the evidence that mode owes
-2. **Transition rules between modes**
-   - Explore until it repeats, then test [@cleland2002]
-   - Pursue an anomaly only after it reproduces [@fugelsang2004]
-   - Models tie on amplitude: find the observable they disagree on [@beven2001; @kirchner2006]
-   - No hypothesis yet: search the experiment space [@klahr1988]
-   - Agent: changes mode when a condition is met, and records why
-3. **Stopping and abstention**
-   - Open-system models cannot be confirmed [@oreskes1994]; inverse problems falsify, never verify [@tarantola2006]; the decisive trace may not exist yet [@cleland2002]
-   - Project: "not decidable with three years; a fourth year or a well inside the array would decide it"
-   - Agent: returns that as a result; no benchmark in the [prior art](prior-art.qmd) rewards it
-4. **Evidence labelled by kind**
-   - Measurement, model output, cited paper, remembered decision: different records [@holmes1987]
-   - Agent: carries the label on every claim
-5. **A failure mode per mode, which becomes a test**
-   - Wrong controls fixed before data [@cleland2002]; post-hoc pattern reported as predicted [@ioannidis2005; @geller1997]; fit mistaken for truth [@oreskes1994]; loop scoring itself [@leeman2024]
-   - Agent: each becomes a negative control in the [evaluation protocol](rubrics.qmd#agent-evaluation-protocol-v1)
-6. **The objective, stated**
-   - Strongest gate: expected information gain over a model set [@rainforth2024]
-   - Alternatives: novelty search [@lehman2011]; compression progress [@schmidhuber2010]
-   - Gating works with an exact verifier [@romeraparedes2024]; "groundwater causes the change" has none
-   - The verifier is the hard part (see the table below)
+## What the readings support
 
-## Coding papers by mode
+- Si’s ideation study and execution study are distinct [@si2025; @si2025execution]. In the execution study, 43 researchers implemented assigned NLP ideas; model-generated ideas’ ratings fell more from ideation to execution on the reported measures. This does not show that all scientific hypothesis generation is poor.
+- @oreskes1994 permits partial confirmation while rejecting complete verification/validation of natural-system models. State the purpose and supported scope.
+- @steinle1997 and @karaca2013 motivate exploratory variation; @karaca2013erratum changes the reported chronology of Bjorken’s hypothesis. Existence of a hypothesis does not show how it guided an action.
+- @leeman2024 offers a critical materials reanalysis; attribute its conclusions and compare the original evidence. It does not establish a single failure mechanism for all scientific agents.
+- @shi2023 and @sourati2023 motivate testing cross-field connections. Neither makes a broad portfolio or an unusual reference combination sufficient for advance.
 
-- One dichotomy is not enough: hypothesis-first vs exploration-first runs the two gates together
-- Three questions plus the mode:
-  1. Hypothesis stated before the result, as presented? (action gate)
-  2. A test the claim could have failed? (claim gate)
-  3. Intervention or observation? [@cleland2001]
-- Plus: who chose the question; basis of the coding
+## Implementation state and integration
 
-| Paper | Decisive mode; sub-mode | Hypothesis before result | Test the claim could fail | Intervention | Who chose the question | Basis |
-|:--|:--|:--|:--|:--|:--|:--|
-| Coscientist [@boiko2023] | Methods and computation; an automated system executing tasks and optimizing a reaction | No. Six tasks were supplied as prompts; no scientific hypothesis appears | Yes for the chemistry: products confirmed by GC–MS (p. 574). No test beyond the six tasks | Yes, by robot | The authors | Full text |
-| A-Lab [@szymanski2023] | Methods and computation; an automated loop testing "can this predicted-stable compound be made" | Weakly: targets predicted stable; two stated pathway hypotheses (p. 88) | Positive test only: a diffraction fit that includes the target; the paper says this "does not necessarily imply" high purity (p. 88) | Yes, by robot | Computation and the authors | Full text |
-| Reanalysis of A-Lab [@leeman2024] | Replication and validation; re-fitting against known phases | Yes: known phases explain the patterns | Yes: each success re-fit against known compounds (Table I, p. 5) | No | The authors, in response | Full text |
-| Laboratory earthquakes [@rouetleduc2017] | Exploratory discovery; a new method on laboratory data | Partly: precursors exist (p. 3); the actual finding reported as "unexpected" (p. 6) | Yes: held-out data against a periodicity baseline (p. 6) | Apparatus produces the data; the move is analysis | The authors | Full text of the accepted preprint |
-| Subsea DAS [@lindsey2019] | Instruments and observing systems | No: reports what the fibre could see | Partly: comparison with a nearby seismometer | No | The authors and the cable | Abstract; redo in the pilot |
-| Cascadia coastal stratigraphy [@atwater1987] | Synthesis and reconstruction; trace inference | No: traces first, explanation after | Partly: rivals named; discriminating traces came later [@nelson1996; @satake1996] | No | The author | Abstract; redo in the pilot |
+| Component | State here | Evidence needed next |
+|:--|:--|:--|
+| Versioned mode specifications | Drafted and exported from source. | Human review on contrasting cases; revisions recorded. |
+| Claim/episode record | Templates and public worksheets. | Capture fidelity checked against actual artifacts. |
+| Historical evaluation | Three reading-based case specifications. | Permitted source packets, independent references, and frozen splits. |
+| Scientific-agent runtime | Not implemented or run in this repository. | Connect an existing runner, execute a case, and inspect artifacts. |
+| Scientific benefit | Untested. | Comparable policies on independent held-out cases; prospective evidence later. |
 
-- The system never chose the question; that is gap 1 of the [prior art](prior-art.qmd)
-- The loop's verifier was the weak part, not its hypothesis
-  - A-Lab: 36 of 57 targets in 17 days [@szymanski2023, p. 86]
-  - Reanalysis: most misidentified, the rest already known; a "positive testing strategy" is inadequate; a new-material claim needs rivals excluded [@leeman2024, p. 4]
-  - Chamberlin's family of hypotheses [@chamberlin1965] and Cleland's rivals, missing from the scoring step
-  - A gate on the action, none on the claim
-- The thesis survives the split: in @rouetleduc2017 an action gate would have hurt (the finding came from "noise"); the claim gate helped (held-out data)
-- Basis has to be a column: memory-based claims in meeting 1 were wrong in the same direction
+- The group’s existing agent family can consume these specifications without a new persona per mode. This page does not assert that its notebook, auditor, or harness has run successfully.
+- Adapter responsibilities: pass source version and mode state to the planner; let the study designer act without inventing a hypothesis; preserve action/claim records; give the assessor claim-appropriate checks; expose mode and case axes in evaluation.
+- First integration check: one nonconfidential toy task must emit a faithful action and claim record. Then complete an evidence-linked historical packet. A toy run is an engineering check, not evidence of discovery skill.
+- Correlated prompting roles are not independent expertise. A separate prompt or agent does not automatically provide independent evidence.
 
-## The group's own agents
+## Evaluation that could change the design
 
-- GAIA: thirteen role-specialized subagents under one orchestrator; read-only auditor; lab notebook; provenance keeper; human gates; design review first
-- Evaluation vault: golden items with planted flaws, decisive tests, clean controls
-- Built already: item 3 (abstention as temperament), item 4 (the notebook records the trajectory), item 5 (planted-flaw items)
-- Absent: item 1 (no mode label; the study designer's plan format asks for hypotheses, so the project could not start at step 1), item 2 (no transition rules)
-- Item 6 decided by accident in the roster's favour: one design review, then iterate on results (a claim gate, not an action gate)
-- Change list, in order:
-  1. Mode label carried by the orchestrator
-  2. Study designer that can plan observation, exploration, and instrument work without a hypothesis
-  3. Auditor verdict fields: rivals enumerated; not decidable; was the claim gated
-  4. Ledger rows written by the lab notebook
-  5. Mode axis in the vault's item schema
-- [Meeting 13](sessions/13-agent-design-and-evaluation.qmd) carries this as its exercise; the roster stays private
-
-## Next to deep research
-
-- What the deep-research tools do: take a question, search, read, return a cited report (Huang et al., 2025, arXiv:2506.18096; Du et al., 2025, arXiv:2506.11763; Skarlinski et al., 2024, arXiv:2409.13740; @shao2024; Asai et al., 2024, arXiv:2411.14199)
-- Measured caution: retrieving the benchmark's own answer inflates scores (2026, arXiv:2606.05241)
-- In the glossary's terms: one mode, literature-based synthesis, performed without knowing it
-- On the project, a generic report would treat a model, a field observation, and a retrospective as the same evidence; would not say who stated a hypothesis first; would not say the phase-lag question is open
-- Four additions, in build order:
-  1. **Mode-aware reader**: per paper, the mode, the three questions, the kind of record, who chose the question; output an evidence profile, not a synthesis
-  2. **Trajectory reconstructor**: dated record of one discovery; a ledger row with its evidence basis; flag narrative-vs-trajectory gaps
-  3. **Rival enumerator**: before "confirmed" or "novel", the alternatives and the observation that separates them; Platt's touchstone [@platt1964, p. 352]; the A-Lab case as the test
-  4. **Abstention outcome**: "not decidable with this evidence" plus what would decide it, scored as correct
-- Two rules across all four: record who chose the question; never cite the agent's own reasoning as evidence
-- Where acting agents should be gated
-  - Exact verifier: program search works [@romeraparedes2024]
-  - Positive-only verifier: the loop scores itself [@szymanski2023; @leeman2024]
-  - Humans choose the problem and the bench validation: nanobody design [@swanson2025]
-  - Expert evaluation, not the model's confidence: chemistry tools [@bran2024]
-  - An environment that requires hypotheses to score at all [@jansen2024]
-
-## What the reading does not yet establish
-
-- A general geoscience workflow. Three reasons:
-  - The cases are episodes, not a sample; the [corpus study](corpus-study.qmd) has not run
-  - The philosophy is about science in general, not geoscience
-  - No project has been reconstructed from the inside
-- Readings on geoscientific method now in the optional extensions:
-  - From within the field: @gilbert1896; @johnson1933; @frodeman1995; @baker1999; @schumm1991; @elliott2007
-  - Philosophy and history of geoscience: @kleinhans2005; @bokulich2017; @currie2018; @rudwick1985
-  - Measured practice: 412 geoscientists, one seismic section, interpretations vary by training [@bond2007]; judgment drifts and herds [@polson2010; @baddeley2004]; how geoscientists think [@kastens2009]
-  - The geoscience research workflow specified end to end [@gil2016; @gil2018]
-- Two options for the group:
-  - A fourteenth meeting on how geoscientists reason: Gilbert 1896 paired with Bond et al. 2007
-  - Or fold that pair into meeting 7
-- A tenth ledger row from one of the group's own projects, reconstructed from its notebooks, would be the first evidence about trajectory rather than narrative; the lab-notebook agent produces that record
-
-## Do we have to pull the papers first?
-
-- For the design: no; the codebook is the glossary
-- For the sealed analyses: yes, the 31 assigned papers; memory-based analyses were wrong where it mattered
-- For the corpus study: yes, full texts of the seismology papers it codes
-- For a reading agent: yes, a retrieval corpus with page-level citations
-- About half the references have a legal open copy; `tools/fetch_open_copies.py` fetches those and lists the rest; paywalled ones go to the shared folder
-- Check every fetched file against its title: the index pointed at a wrong document once
-
-## Build order
-
-1. Mode-aware reader, validated on the corpus study's human-coded papers
-2. Rival enumerator, as the reader's verifier, tested on the A-Lab case
-3. Trajectory reconstructor, on the nine seminar cases, then on one of the group's own projects
-4. Abstention, as an outcome the evaluation scores
+- Compare competent generic, hypothesis-testing, and mode-selecting planners with comparable model, tools, guidance, evidence, budgets, and assistance.
+- Test supplied-mode competence separately from selection/transitions; remove mode organization while preserving substantive guidance in an ablation.
+- Primary outcome is case-level warranted gain [the protocol](rubrics.qmd#agent-evaluation-protocol-v1); report scientific magnitude, unsupported claims, cost, novelty, and later impact separately.
+- Historical reference work is not a required path or a clean modern human-speed baseline. A remembered answer is not a newly demonstrated scientific gain.
+- Preserve failures, unknowns, and unanticipated valid gains; evaluate breadth at project, competence, and portfolio scales.
+- A broader [literature study](corpus-study.qmd) can describe reported practices and uptake. It cannot substitute for testing the procedures.

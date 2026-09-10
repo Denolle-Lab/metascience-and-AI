@@ -1,0 +1,50 @@
+---
+mode_id: simulation
+mode_version: "0.4.0"
+mode_status: drafted
+---
+
+# Simulation and prediction {.unnumbered}
+
+[Drafted]{.status .drafted} [human-editable specification · v0.4.0 · no agent-performance claim]{.status-line}
+
+## Epistemic purpose
+
+- Compute model consequences, investigate scenarios, or make assessed forecasts.
+
+## When this mode helps
+
+- Separate scenario exploration from a predictive claim. Inferring a latent parameter belongs to estimation even when a forward simulator is used.
+
+## Agent actions and representations
+
+- Specify governing assumptions and boundary conditions; check numerics; run sensitivity or scenario analysis; produce forecasts and uncertainty; freeze predictions before evaluation evidence is accessed.
+- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.
+- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.
+
+## Evidence and claim scope
+
+- Numerical verification, purpose, and uncertainty support computational claims. Predictive skill requires a suitable baseline and independent assessment; scenario calculations do not become forecasts merely by producing numbers.
+- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.
+
+## Transitions and stopping
+
+- Enter estimation for unknown parameters, hypothesis assessment for competing models, or robustness when performance depends on conditions; revise model purpose if evidence cannot support the intended claim.
+- Neighbouring profiles: [estimation](estimation.qmd), [hypothesis](hypothesis.qmd), [robustness](robustness.qmd), [theory](theory.qmd).
+
+## Characteristic failure
+
+- Treat fit as truth, simulation as a physical experiment, or agreement among related models as independent evidence.
+
+## Human evidence and borrowing
+
+- @oreskes1994 distinguishes partial confirmation from complete verification/validation of natural-system models; @beven2001 treats equifinality; @schorlemmer2018 describes earthquake-forecast evaluation.
+- Cross-field comparison: @shmueli2010 distinguishes explanatory and predictive objectives across statistical applications. Borrow the distinction while retaining domain-specific physical checks.
+- Science of process/impact: No corpus result is available for this profile. Forecast scores quantify particular predictive gains and do not measure every kind of advance.
+- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.
+
+## Evaluation against past work
+
+- Compare forecasts with a stated baseline on held-out observations; retain scenario usefulness as a separate assessment. Test a model with good fitting error and poor transfer.
+- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.
+- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)

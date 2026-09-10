@@ -4,33 +4,33 @@
 
 - Systems that automate parts of research exist, and so do benchmarks that score them
 - Before proposing an architecture or a test, find out whether it has been built, and what happened
-- Every entry carries a DOI or an arXiv ID; entries were checked against publisher or arXiv records
+- Entries carry source records; verification of identity is distinct from checking every interpretation or current system capability.
 
 ## How to read the last column
 
 - A benchmark score is a measurement of the tasks, not of "doing science" [@flake2020; @messick1995]
-- Most task sets supply the question, the data, and the success criterion, which meetings 1 to 9 treat as the hard part
+- For each task set, inspect who supplies the question, data, tools, and success criterion; the boundaries differ.
 - Read the last column as an inventory of open problems, not as criticism
 
 ## The group's own system
 
 - GAIA: thirteen role-specialized subagents under one orchestrator; read-only auditor; lab notebook; provenance keeper that discloses AI use; human gates
 - Beside it: an evaluation vault of golden items with planted flaws and clean controls
-- No published results, so no row above; listed because [meeting 13](sessions/13-agent-design-and-evaluation.qmd) changes it rather than designing anew
-- Not yet established: never run on items that supply no question; no mode label on its work
+- This book does not establish performance of the group’s runtime; [meeting 13](sessions/13-agent-design-and-evaluation.qmd) specifies a mode-based adapter and evaluation.
+- Implementation and run status must be checked against actual artifacts before claims about its capabilities.
 - Roster private and under review; public summary in the [design notes](agent-design.qmd)
 
 ## Systems that predate language models
 
-- The tables above start in 2023; automated discovery did not
+- Language-model systems have important predecessors.
 - One of these was built the way this seminar proposes: from a historian's reconstruction of a scientist's notebooks
-- All assume Simon's position that discovery has a describable logic [@simon1973]
+- Simon’s account of discovery is relevant philosophical background, not a demonstrated common commitment of every system [@simon1973].
 
 | Project | What it is | What it covered | What its results do not establish |
 |:--|:--|:--|:--|
 | BACON — @langley1981 | Heuristic search for invariants in tables of numeric data | Rediscovered Kepler's third law, Ohm's law, and others from the original data | Anything about choosing the variables or the data; both were supplied |
 | KEKADA — @kulkarni1988 | A model of Krebs's discovery of the urea cycle, built from Holmes's notebook-based reconstruction; surprise and confirmation are explicit control signals | Reproduces the sequence of experiments Krebs ran, including the exploratory phase before any hypothesis | That the strategy transfers to another scientist or problem. It is one episode, modelled after the fact |
-| Robot Scientist Adam — @king2009 | A closed loop: hypothesis generation, experiment selection, robotic execution, and analysis, in yeast functional genomics | The first discovery attributed to a machine, later confirmed by hand | That the loop generalizes beyond a domain with an enumerable hypothesis space and a fully automated assay |
+| Robot Scientist Adam — @king2009 | A closed loop: hypothesis generation, experiment selection, robotic execution, and analysis, in yeast functional genomics | Reported autonomous functional-genomics discoveries with follow-up checks | That the loop generalizes beyond a domain with an enumerable hypothesis space and a fully automated assay |
 | Eureqa — @schmidt2009 | Symbolic regression over experimental time series | Recovered Lagrangians and Hamiltonians for pendulums and oscillators | Which variables to measure; the search space is fixed by the input columns |
 | Literature-based discovery — @swanson1986 | Connecting two literatures that never cite each other, first done by reading and later by program | The fish-oil and Raynaud's syndrome link, later confirmed clinically | How often the method produces false connections. The successes are what got reported |
 
@@ -58,20 +58,14 @@
 
 - A survey is a secondary source; where a claim matters, read the primary paper
 
-## What is missing from all of them
+## Questions for the next evidence review
 
-- Capabilities that appear in no evaluation above:
-
-1. **Choosing the question.** Every benchmark supplies it. Meetings 1, 2, and 6 treated question formation as the substance of inquiry.
-2. **Deciding what to measure, and whether the measurement can be trusted.** Only Gravity-Bench asks an agent to plan observations, and it does so in simulation with no instrument response. Compare the provenance concerns in [meeting 5](sessions/05-measurement.qmd).
-3. **Reasoning from traces of the past.** Nothing here evaluates inference about events that cannot be re-run, which is the mode of [meeting 3](sessions/03-historical-traces.qmd) and much of this group's science.
-4. **Recognizing a surprise worth following.** Anomaly detection appears; judging an anomaly interesting does not. See [meeting 8](sessions/08-serendipity.qmd).
-5. **Abstaining.** No benchmark rewards a system for concluding that the evidence is insufficient, though [meeting 9](sessions/09-model-tests.qmd) treats that as a competent outcome.
-6. **Field and marine constraint.** Ship time, weather, instrument loss, and the plan-versus-reality gap of [meeting 7](sessions/07-field-marine.qmd) have no representation at all.
-7. **Effects on the field.** @hao2026 measured, across 41 million papers, that scientists who use AI tools publish more and that the fields they work in narrow. No benchmark scores a system on what it does to the questions a field asks. See [meeting 11](sessions/11-polymathy.qmd) and @messeri2024.
-
-- These seven are the content of the benchmark drafted in meeting 13
-- Whether they can be measured well is itself uncertain; a benchmark the group cannot run is no improvement
+- This registry is a starting sample, not a systematic absence search. Record a query, date, source set, and limits before claiming a capability has no precedent.
+- For each benchmark, inspect coverage of question choice, measurement response, trace inference, anomaly follow-up, justified limits, field constraints, and scientific gains.
+- Separate task execution, process adequacy, and demonstrated advance. A supplied answer target can measure a useful capability while leaving other questions open.
+- The [historical evaluation](historical-evaluation.qmd) proposes three suites and explicit evidence boundaries. Its difference from existing evaluations must be documented before any priority claim.
+- Existing geoscience resources include source-inversion exercises [@mai2016] and seismological ML data/model infrastructure [@woollam2022]. Reuse suitable components rather than claiming a blank field.
+- Assess collective topic coverage separately from individual productivity. @hao2026 is a scientific-publication study; @messeri2024 is a conceptual analysis, not a second causal demonstration of the same effect.
 
 ## Adding an entry
 

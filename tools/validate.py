@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 from urllib.parse import urlparse
+from apa import reference
 
 try:
     import yaml
@@ -39,6 +40,16 @@ def main() -> int:
     order = chapters(config['book']['chapters'])
     data = json.loads((ROOT / 'curriculum.json').read_text())
     refs, sessions = data['references'], data['sessions']
+    if data.get('reading_policy', {}).get('pair_order') != ['anchor', 'companion']:
+        errors.append('Reading policy must define pair order as anchor, companion')
+    mode_paths = sorted((ROOT / 'modes').glob('*.qmd'))
+    mode_ids = {p.stem for p in mode_paths}
+    for path in mode_paths:
+        if path.relative_to(ROOT).as_posix() not in order:
+            errors.append(f'Mode missing from book chapters: {path.name}')
+    mode_check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'export_modes.py'), '--check'], capture_output=True, text=True)
+    if mode_check.returncode:
+        errors.append(mode_check.stderr.strip() or 'Mode export is out of date')
     bib = (ROOT / 'references.bib').read_text()
     bib_keys = re.findall(r'^@\w+\{([^,]+),', bib, flags=re.M)
     if len(bib_keys) != len(set(bib_keys)):
@@ -95,13 +106,31 @@ def main() -> int:
         # Discussant papers are read in depth by a rotating discussant rather than
         # by every participant. They are cited on the page and linked like the pair.
         discussant = session.get('discussant', [])
-        assigned = list(session['pair']) + list(discussant)
+        assigned = list(session['pair']) + list(discussant) + list(session.get('corrections', []))
+        if len(session.get('reading', [])) != 2:
+            errors.append(f'Meeting {session["n"]} needs anchor and companion reading instructions')
+        if not session.get('mode_ids') or set(session['mode_ids']) - mode_ids:
+            errors.append(f'Meeting {session["n"]} has missing or unknown mode IDs')
         if len(set(assigned)) != len(assigned):
             errors.append(f'Meeting {session["n"]} repeats a paper across pair and discussant')
         required.update(assigned)
         path = ROOT / 'sessions' / f'{session["n"]:02}-{session["slug"]}.qmd'
         if path.is_file():
             text = path.read_text()
+            if f'# {session["title"]} ' not in text:
+                errors.append(f'Session title differs from metadata: {path.name}')
+            for label, key, instruction in zip(('Anchor', 'Companion'), session['pair'], session['reading']):
+                if f'### {label}\n' not in text or instruction not in text:
+                    errors.append(f'{label} role/instructions differ from metadata: {path.name}')
+                section = re.search(rf'^### {label}\n(.*?)(?=\n##|\Z)', text, re.M | re.S)
+                if key in refs and (not section or reference(refs[key]) not in section[1]):
+                    errors.append(f'{label} reference differs from metadata: {path.name}')
+            for field in ('question', 'contrast', 'prep', 'exercise', 'output'):
+                if session[field] not in text:
+                    errors.append(f'Session {field} differs from metadata: {path.name}')
+            for mid in session.get('mode_ids', []):
+                if f'../modes/{mid}.qmd' not in text:
+                    errors.append(f'Mode link {mid} missing in {path.name}')
             if any('@' + key not in text for key in assigned):
                 errors.append(f'Assigned citation missing in {path.name}')
             # Optional extensions are not required reading, but a key listed for a
@@ -131,8 +160,9 @@ def main() -> int:
     if errors:
         print('\n'.join('FAIL: ' + error for error in errors), file=sys.stderr)
         return 1
-    print(f'PASS: {len(order)} chapter files, 13 meetings in order, {len(required)} assigned papers, {len(bib_keys)} bibliography records')
+    print(f'PASS: {len(order)} chapter files, 13 meetings in order, {len(required)} assigned readings including corrections, {len(bib_keys)} bibliography records')
     print('PASS: all local source links and citation keys resolve')
+    print(f'PASS: {len(mode_ids)} mode specifications, instruction export, and session metadata agree')
     print('PASS: no private material is registered as a published chapter')
     print('NOT TESTED: full Quarto render, browser layout, external full-text access, and deployed website')
     return 0

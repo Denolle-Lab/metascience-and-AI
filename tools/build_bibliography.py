@@ -33,8 +33,12 @@ def by_meeting(data: dict) -> str:
     for s in data['sessions']:
         out.append(f"### Meeting {s['n']}: {s['title']}\n")
         out.append(f"*[Session page](sessions/{s['n']:02}-{s['slug']}.qmd).*\n")
-        out.append('**Assigned.**\n')
-        out.extend(entry(k, refs) + '\n' for k in s['pair'])
+        for role, key in zip(('Anchor', 'Companion'), s['pair']):
+            out.append(f'**{role}.**\n')
+            out.append(entry(key, refs) + '\n')
+        if s.get('corrections'):
+            out.append('**Required correction with the companion.**\n')
+            out.extend(entry(k, refs) + '\n' for k in s['corrections'])
         if s.get('discussant'):
             out.append('**Discussant-led.** Read in depth by one rotating discussant; everyone else reads the abstract.\n')
             out.extend(entry(k, refs) + '\n' for k in s['discussant'])
@@ -49,6 +53,7 @@ def outside_meetings(data: dict) -> str:
     for s in data['sessions']:
         used.update(s['pair'])
         used.update(s.get('discussant', []))
+        used.update(s.get('corrections', []))
         used.update(s.get('optional', []))
     keys = [k for k in data['references'] if k not in used]
     return '\n'.join(entry(k, data['references']) + '\n' for k in keys)

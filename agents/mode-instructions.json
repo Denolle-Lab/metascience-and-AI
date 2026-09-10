@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Human-editable epistemic modes for pursuing warranted scientific advance. Procedures are design hypotheses, not evaluated capabilities.",
+  "source_policy": "Edit modes/*.qmd and regenerate. Links are relative to each source; citation keys resolve in references.bib. Preserve version and hash with every agent run.",
+  "modes": [
+    {
+      "id": "estimation",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Inferential estimation",
+      "source": "modes/estimation.qmd",
+      "sha256": "a56d7e365db7d7a0efd4404e7dd155236f25198b0fddc37788312cbb1ca130c5",
+      "sections": {
+        "Epistemic purpose": "- Recover an unobserved quantity with uncertainty and identifiable limits.",
+        "When this mode helps": "- A structural, temporal, or physical quantity is inferred from observations through a measurement/forward model. A standard inversion with a new target is still estimation.",
+        "Agent actions and representations": "- Define target and units; specify forward relation; inspect identifiability and noise; fit or invert; assess resolution, regularization, uncertainty, and alternative assumptions.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Report what data constrain, what assumptions supply, and which quantities remain unresolved. Assess recovery on appropriate known cases and independent observations where available.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Revisit instrumentation for response errors; enter methods for a new inversion procedure; use hypothesis assessment only when the estimates can distinguish explanations.\n- Neighbouring profiles: [instruments](instruments.qmd), [methods](methods.qmd), [hypothesis](hypothesis.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Treat a regularized image as a direct photograph; report narrow uncertainty while ignoring model error; infer a causal mechanism from a resolved parameter alone.",
+        "Human evidence and borrowing": "- @tarantola2006 motivates inverse-problem limits; @bogen1988 distinguishes data and inferred phenomena. @mai2016 provides earthquake-source inversion benchmarks, not a unique reference truth for every real event.\n- Cross-field comparison: Measurement philosophy and statistical inference travel across domains; the forward model, identifiability conditions, units, and scales must be re-established in the target field.\n- Science of process/impact: @woollam2022 supplies reusable seismological benchmark infrastructure. Population distributions of estimation advances have not been measured in this project.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Improve a meaningful estimate at stated resolution and uncertainty, or establish a consequential non-identifiability. Test plausible model error and a known reference case.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "exploration",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Exploratory inquiry",
+      "source": "modes/exploration.qmd",
+      "sha256": "0e9cbad44a7fa2158d5de6a3b6cbe583f99e896e3572a18f80d7688a4eac3f8d",
+      "sections": {
+        "Epistemic purpose": "- Develop phenomena, questions, candidate relationships, and useful representations.",
+        "When this mode helps": "- The question, target phenomenon, or representation is still developing. Background theory and provisional hypotheses may be present; absence of a hypothesis is not the recognition rule.",
+        "Agent actions and representations": "- Inspect and visualize; vary conditions; compare representations; follow anomalies; generate candidates; frame or reframe questions; preserve abandoned branches and search history.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- A provisional pattern needs credible provenance and an appropriate initial reliability check. Stronger generalization needs further evidence. Record which data suggested the pattern; do not present that inspection as a prospective test.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Investigate possible artifacts through instruments or robustness; estimate a developed observable; assess rival explanations when they make distinguishable predictions. Stop or reframe when follow-up has low scientific value under the budget.\n- Neighbouring profiles: [observation](observation.qmd), [estimation](estimation.qmd), [hypothesis](hypothesis.qmd), [instruments](instruments.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Reject a unique event before investigating it; mistake a selection artifact for a finding; retrofit an exploratory outcome as a prediction.",
+        "Human evidence and borrowing": "- @steinle1997 and @karaca2013 are historical/philosophical analyses of exploratory practice; consult @karaca2013erratum. @rouetleduc2017 is a geoscience case for distinguishing discovery from subsequent assessment.\n- Cross-field comparison: The high-energy physics case informs variation and representation change. The transferable procedure is an explicit question, not a claim that all exploration is theory-free.\n- Science of process/impact: @yaqub2018 organizes serendipity; @foster2015 measures research strategies in biomedicine. Neither establishes the gain from this specific geoscience agent policy.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Produce a credible candidate and a discriminating follow-up that could advance the question. Compare a real-looking artifact with an unusual valid observation; report candidate quality and follow-up usefulness separately from confirmed advance.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "hypothesis",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Hypothesis assessment",
+      "source": "modes/hypothesis.qmd",
+      "sha256": "10a2a1e8d17a911915b50c33f79a635f58f45ac2487a10e45a0ce17e37e2a766",
+      "sections": {
+        "Epistemic purpose": "- Discriminate among explanations or stated expectations using informative evidence.",
+        "When this mode helps": "- The scientific question concerns alternatives that can have different evidential consequences. Rival generation and discrimination are separate actions.",
+        "Agent actions and representations": "- Generate substantive rivals; identify auxiliary assumptions; derive differing predictions; choose a discriminating observation; compare results; revise the rival set when needed.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- State what each outcome supports and what remains unresolved. Evidence need not exclude every imaginable rival to support a bounded claim; shared assumptions and untested alternatives limit its strength.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Reframe or return to exploration when all rivals accommodate the available evidence; acquire a new observable; use estimation to quantify the predicted contrast.\n- Neighbouring profiles: [exploration](exploration.qmd), [theory](theory.qmd), [estimation](estimation.qmd), [simulation](simulation.qmd), [synthesis](synthesis.qmd).",
+        "Characteristic failure": "- Verbal variants masquerade as rivals; all alternatives pass the proposed test; an auxiliary assumption absorbs every failure; a causal claim outruns an association.",
+        "Human evidence and borrowing": "- @platt1964 offers a methodological argument; @cleland2001 and @cleland2002 distinguish historical and experimental reasoning. @sykes1967 is the primary tectonic test case, not a controlled evaluation of agents.\n- Cross-field comparison: @king2009 illustrates executable hypothesis testing in yeast with assay constraints; borrowing requires identifying which geoscience observations can play the comparable discriminating role.\n- Science of process/impact: @si2025execution distinguishes idea ratings from executed research outcomes in NLP. Its results motivate testing rival quality through consequences rather than fluent phrasing.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Resolve a scientifically important contrast or demonstrate why current evidence cannot. Include distinguishable rivals, equifinal rivals, and a missing-data case; score gain and unsupported exclusions.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "instruments",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Instruments and observing systems",
+      "source": "modes/instruments.qmd",
+      "sha256": "cab507cc19aba96bf27ff7bfaff5798593d317662f647c173b19a4f06ae16f3c",
+      "sections": {
+        "Epistemic purpose": "- Expand what can be measured reliably and thereby enable scientific questions.",
+        "When this mode helps": "- A sensor, platform, network, or measurement chain changes the available observations. A software component may be part of that chain.",
+        "Agent actions and representations": "- Specify the target observable; model response; calibrate; compare an independent chain; diagnose artifacts; document deployment and sampling constraints.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Show capability over a specified range with response, uncertainty, and failure conditions. Independent-looking instruments can share systematic errors; agreement alone is insufficient.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Return to observation after characterizing the chain; use estimation for latent quantities; enter methods for a new extraction procedure and robustness for transfer.\n- Neighbouring profiles: [observation](observation.qmd), [estimation](estimation.qmd), [methods](methods.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Read instrument response as a physical phenomenon; generalize a capability demonstration beyond the tested conditions; count a device without scientific relevance as advance.",
+        "Human evidence and borrowing": "- @lindsey2019 and @lindsey2020 supply a sensing/calibration pair. @tal2013 and @chang2004 inform measurement and revisable standards; this is design motivation, not proof of an agent rule.\n- Cross-field comparison: Chang’s measurement history provides a comparison for revising standards together with instruments; its lesson is not simply to demand two agreeing sensors.\n- Science of process/impact: @becker2019 is an infrastructure retrospective, not a causal estimate of instrument investment. Record enabling dependencies rather than crediting every later result to one device.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Demonstrate a new reliable measurement capability and one relevant question it enables. Test a response change that mimics a new physical signal, and a genuine capability extension.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "methods",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Methods and computation",
+      "source": "modes/methods.qmd",
+      "sha256": "51691c1c3bc60e26d3663b4421655e08d5a3168cd110e3eeaf9f4b1fd1ddc242",
+      "sections": {
+        "Epistemic purpose": "- Expand what can be inferred or computed with an inspectable method.",
+        "When this mode helps": "- The contribution is an algorithm, representation, or computational procedure; using an established method for a new estimate also invokes estimation.",
+        "Agent actions and representations": "- Specify inputs and assumptions; implement or adapt a method; test known cases and failure conditions; compare baselines; preserve reproducible artifacts and costs.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Demonstrate recovery or performance on cases appropriate to the claim, separate development from evaluation, and account for relevant uncertainty and costs. Adoption alone is not correctness.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Enter estimation or observation when applying the method; use robustness for transfer; reframe the problem if the method solves the wrong target.\n- Neighbouring profiles: [estimation](estimation.qmd), [observation](observation.qmd), [robustness](robustness.qmd), [exploration](exploration.qmd).",
+        "Characteristic failure": "- Leakage produces apparent performance; synthetic recovery is presented as real-world validity; a new implementation adds no useful capability.",
+        "Human evidence and borrowing": "- @shapiro2004 and @shapiro2005 are geoscience method/application cases. @kapoor2023 discusses leakage in science; @flake2020 motivates checking what a score measures.\n- Cross-field comparison: @langley1981 and @kulkarni1988 provide historical discovery-system comparisons; their restricted tasks do not establish general scientific autonomy.\n- Science of process/impact: @chen2025 evaluates executable scientific tasks and costs. Task completion is evidence of capability, requiring further assessment to establish advance.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Show a relevant capability gain against the prior method at comparable cost or explain the tradeoff. Include a data-leakage trap and an out-of-domain failure.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "observation",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Observation and description",
+      "source": "modes/observation.qmd",
+      "sha256": "765ebbb70ce1f59996ca7ed7c2e91763c2a18bd2ef8dcb3b56266baac5614561",
+      "sections": {
+        "Epistemic purpose": "- Establish a credible record of a phenomenon, its variability, and what remains unobserved.",
+        "When this mode helps": "- A survey, catalog, map, or time series addresses a scientific uncertainty. Record detection, coverage, and missingness; do not treat a processing output as a direct observation of every inferred quantity.",
+        "Agent actions and representations": "- Inspect metadata; map coverage; characterize distributions; compare recording conditions; identify gaps; choose the next observation under a resource budget.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Coverage, completeness, measurement response, and traceable processing must support the descriptive scope. A unique event can be documented even when the event cannot recur.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- If a pattern needs characterization, enter exploration; if the target is latent, enter estimation; if the observation chain is suspect, enter instrumentation or robustness.\n- Neighbouring profiles: [exploration](exploration.qmd), [estimation](estimation.qmd), [instruments](instruments.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Coverage or detection thresholds masquerade as physical patterns; an exhaustive catalog produces no gain relevant to the question.",
+        "Human evidence and borrowing": "- Primary cases: coastal traces in @atwater1987 and observing programs in @becker2019. @bogen1988 offers the philosophical distinction between data and phenomena. These sources motivate the profile; they do not validate an agent policy.\n- Cross-field comparison: Compare catalog practices with exploratory high-energy physics in @karaca2013 and its correction @karaca2013erratum; transfer attention to observation conditions, not the physics.\n- Science of process/impact: @fortunato2018 supplies broad metascience context. Mode prevalence and gains from this procedure in geoscience have not been estimated here.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- A case gains an adequately characterized feature or resolves a consequential coverage limitation. Test a catalog with changed detection sensitivity; require a justified next observation, not a fictitious new phenomenon.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "regularities",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Statistical modeling and empirical regularities",
+      "source": "modes/regularities.qmd",
+      "sha256": "1a0febf27180a39fdd11b38877c808b62ecba314b78b68e59b4e0710dabdd933",
+      "sections": {
+        "Epistemic purpose": "- Establish useful distributions or relationships and the conditions under which they apply.",
+        "When this mode helps": "- A statistical relation, scaling law, population description, or stochastic model is central. Empirical and mechanistic interpretations may overlap with other modes.",
+        "Agent actions and representations": "- Define population and sampling; estimate parameters; compare candidate forms; check detection/selection effects; quantify uncertainty; test the claimed generalization.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Descriptive claims need appropriate sampling and uncertainty. Predictive/generalization claims need independent assessment and a stated range; catalog completeness and dependence matter for seismic laws.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Use observation for coverage gaps, estimation for latent parameters, simulation for forecasts, or hypothesis assessment for mechanistic interpretations.\n- Neighbouring profiles: [observation](observation.qmd), [estimation](estimation.qmd), [simulation](simulation.qmd), [hypothesis](hypothesis.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Extrapolate a fitted law beyond its range; treat catalog artifacts as physics; confuse predictive performance with an explanation.",
+        "Human evidence and borrowing": "- @breiman2001 distinguishes modeling cultures; @shmueli2010 distinguishes explanation and prediction. These are different distinctions. Gutenberg–Richter-type relations and earthquake forecasts are candidate geoscience cases; select a dated primary record before historical replay.\n- Cross-field comparison: Compare statistical objectives across fields using the same sampling and evaluation questions, while rechecking physical constraints and observational selection.\n- Science of process/impact: @uzzi2013 and @shi2023 are empirical metascience associations, useful examples of separating a statistical finding from a causal prescription.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Establish an informative relation with warranted range, or show why a claimed regularity fails. Test a change in detection threshold and a relation with valid held-out performance.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "robustness",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Replication and robustness assessment",
+      "source": "modes/robustness.qmd",
+      "sha256": "c2d34e79b59c9990968c520233285ece9004beaee3d2aab7caf2825bcc83582d",
+      "sections": {
+        "Epistemic purpose": "- Establish what survives repetition, perturbation, or transfer, and correct consequential errors.",
+        "When this mode helps": "- The question concerns reliability, domain of applicability, or a challenged result. Informative failures can advance knowledge.",
+        "Agent actions and representations": "- Reproduce analyses; change relevant assumptions; use independent observations; test transfer; localize disagreement; update claim scope and preserve earlier assessments.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- State what was repeated and what was independent, with sensitivity, uncertainty, and conditions of failure. Reproducible code alone does not establish empirical adequacy.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Return to the originating mode with revised scope; obtain better observations when disagreement is unresolvable; reframe after a consequential correction.\n- Neighbouring profiles: [instruments](instruments.qmd), [methods](methods.qmd), [estimation](estimation.qmd), [hypothesis](hypothesis.qmd).",
+        "Characteristic failure": "- Treat agreement as proof; repeat a shared bias; call every difference a refutation; dismiss replication as unoriginal.",
+        "Human evidence and borrowing": "- @lindsey2020 supplies measurement assessment; @beven2001 motivates sensitivity to equifinality. @nosek2018 separates planned and unplanned analyses; it does not ban exploratory actions.\n- Cross-field comparison: @leeman2024 supplies a materials-science reanalysis, whose conclusions should be attributed and compared with original evidence; it is not a blanket verdict on laboratory agents.\n- Science of process/impact: @petersen2025 challenges interpretation of an impact indicator. @flake2020 explains why measurement validity needs attention beyond a repeatable score.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Demonstrate a corrected conclusion, narrower domain, or meaningful independent support. Include shared systematic errors and a legitimate failure to transfer.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "simulation",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Simulation and prediction",
+      "source": "modes/simulation.qmd",
+      "sha256": "c7a64c1f057beb9bfc07ed1a707f51d6c27671c4dc59550304c51ba3f8b22ad2",
+      "sections": {
+        "Epistemic purpose": "- Compute model consequences, investigate scenarios, or make assessed forecasts.",
+        "When this mode helps": "- Separate scenario exploration from a predictive claim. Inferring a latent parameter belongs to estimation even when a forward simulator is used.",
+        "Agent actions and representations": "- Specify governing assumptions and boundary conditions; check numerics; run sensitivity or scenario analysis; produce forecasts and uncertainty; freeze predictions before evaluation evidence is accessed.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Numerical verification, purpose, and uncertainty support computational claims. Predictive skill requires a suitable baseline and independent assessment; scenario calculations do not become forecasts merely by producing numbers.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Enter estimation for unknown parameters, hypothesis assessment for competing models, or robustness when performance depends on conditions; revise model purpose if evidence cannot support the intended claim.\n- Neighbouring profiles: [estimation](estimation.qmd), [hypothesis](hypothesis.qmd), [robustness](robustness.qmd), [theory](theory.qmd).",
+        "Characteristic failure": "- Treat fit as truth, simulation as a physical experiment, or agreement among related models as independent evidence.",
+        "Human evidence and borrowing": "- @oreskes1994 distinguishes partial confirmation from complete verification/validation of natural-system models; @beven2001 treats equifinality; @schorlemmer2018 describes earthquake-forecast evaluation.\n- Cross-field comparison: @shmueli2010 distinguishes explanatory and predictive objectives across statistical applications. Borrow the distinction while retaining domain-specific physical checks.\n- Science of process/impact: No corpus result is available for this profile. Forecast scores quantify particular predictive gains and do not measure every kind of advance.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Compare forecasts with a stated baseline on held-out observations; retain scenario usefulness as a separate assessment. Test a model with good fitting error and poor transfer.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "synthesis",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Synthesis and reconstruction",
+      "source": "modes/synthesis.qmd",
+      "sha256": "b748ffec0d6e2af40283cba44626ef04a23a2c9f3dea16f2e6f07845fbc179ea",
+      "sections": {
+        "Epistemic purpose": "- Integrate evidence into a constrained historical account or a new scientific connection.",
+        "When this mode helps": "- Different traces, studies, or representations bear on an account. Reconstruction can involve new sampling or experiments; no-intervention is not a recognition rule.",
+        "Agent actions and representations": "- Assemble sources and dependencies; propose rival accounts; align time and scale; assess trace preservation; identify discriminating evidence; test a proposed connection.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Trace provenance, dependence, and compatibility must support the account’s scope. An event may be unique while its traces and analysis admit independent checks.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Seek a discriminating trace through hypothesis assessment; use estimation for dates or physical quantities; return to exploration when accounts remain underconstrained.\n- Neighbouring profiles: [hypothesis](hypothesis.qmd), [estimation](estimation.qmd), [exploration](exploration.qmd), [robustness](robustness.qmd).",
+        "Characteristic failure": "- Treat correlated traces as independent; replace primary records with retellings; mistake a plausible literature connection for a tested result.",
+        "Human evidence and borrowing": "- @atwater1987 and @nelson1996 provide Cascadia cases; @cleland2001 and @cleland2002 supply methodological arguments. Historical chronology must be sourced rather than inferred from article order.\n- Cross-field comparison: @swanson1986 motivates connecting separate literatures; @nersessian2022 supplies a process comparison for integration. Neither guarantees transfer to a particular Earth-science question.\n- Science of process/impact: @shi2023 associates content/context surprise with citation impact; @sourati2023 studies human-aware discovery. These motivate transfer hypotheses, not a universal breadth recipe.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Produce a better-constrained history or an independently supported connection. Include dependent traces, a plausible incompatible account, and an integration that fails an assumption check.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    },
+    {
+      "id": "theory",
+      "version": "0.4.0",
+      "status": "drafted",
+      "title": "Theory and mechanistic modeling",
+      "source": "modes/theory.qmd",
+      "sha256": "04a42b254dcce5fd3f9eb94654cb29b3415fcb19635816f894276f0d5ed3205d",
+      "sections": {
+        "Epistemic purpose": "- Create concepts, explanations, and derivations that make new relationships understandable or testable.",
+        "When this mode helps": "- A concept, mechanism, or formal representation changes what can be explained or derived. Observation may precede or motivate theory.",
+        "Agent actions and representations": "- Construct representations; propose mechanisms; derive consequences; inspect limiting cases and dimensions; compare explanatory scope; identify measurements that distinguish applications.\n- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.\n- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.",
+        "Evidence and claim scope": "- Assess mathematical validity under explicit assumptions separately from empirical adequacy. A sound derivation does not require an observation to have already occurred; its application to a system requires additional evidence.\n- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.",
+        "Transitions and stopping": "- Use simulation when consequences need computation; enter hypothesis assessment when mechanisms have distinct observable consequences; revise representation after incompatibility.\n- Neighbouring profiles: [exploration](exploration.qmd), [simulation](simulation.qmd), [hypothesis](hypothesis.qmd), [synthesis](synthesis.qmd).",
+        "Characteristic failure": "- Treat internal consistency as empirical truth; demand prospective prediction as the only route to theory; equate an elegant narrative with a derived consequence.",
+        "Human evidence and borrowing": "- @wilson1965 and @vine1963 are conceptual/physical cases; @dellsen2016 and @bird2007 supply contrasting accounts of scientific progress. The profile is a proposed operational interpretation.\n- Cross-field comparison: @nersessian2022 supplies a bioengineering comparison for building and adapting representations; record what assumptions survive the change of domain.\n- Science of process/impact: @fortunato2018 reviews metascience at broader scales. No measured geoscience benefit of this theory procedure is claimed.\n- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.",
+        "Evaluation against past work": "- Demonstrate a valid new consequence, explanatory connection, or capability relative to the task. Include a derivation with a hidden inconsistent assumption and a valid idealization with a limited empirical scope.\n- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.\n- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)"
+      }
+    }
+  ]
+}

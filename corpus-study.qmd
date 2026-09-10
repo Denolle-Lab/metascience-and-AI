@@ -1,92 +1,63 @@
-# Which modes dominate the literature? A study design {.unnumbered}
+# Scientific practice and impact: a study design {.unnumbered}
 
-[Drafted]{.status .drafted} [a design, not a result · the group decides in meeting 1 whether to run it · full text in the private repository]{.status-line}
+[Drafted]{.status .drafted} [optional population study · no corpus results reported]{.status-line}
+
+## Two scales of measurement
+
+- The [agent evaluation](historical-evaluation.qmd) needs a bounded reference sample, explicit prior-art searches, and direct case-level assessment of scientific gains.
+- A larger corpus is needed for claims about population mode shares or associations with novelty/impact. It is not a prerequisite for every quantitative comparison.
+- Literature distributions supply context, not ceilings on which unfamiliar modes an agent should pursue.
 
 ## Questions
 
-1. What share of papers in a field presents each mode as its decisive move, and how has that changed since 1970?
-2. Among field-shaping papers, is the distribution of modes different from the field's baseline?
-3. How does mode relate to impact, novelty, interdisciplinarity, and depth, holding year and subfield fixed?
-4. Where a trajectory is documented, does the presented mode match the reconstructed one?
+1. Which epistemic work is presented in a defined geoscience population, and how does it vary over time?
+2. How do measured novelty and later uptake differ across overlapping mode labels and contribution types?
+3. When does substantive interdisciplinary integration accompany a demonstrated scientific gain on a closely read subset?
+4. Where dated process records exist, how do they differ from the publication’s presented account?
 
-- Question 4 needs notebooks, retrospectives, and people in the room; the literature cannot answer it
+- Step 0: a documented prior-art search in [Novelty Dossier](rubrics.qmd#novelty-dossier-v1) form. Do not claim these questions have never been measured.
+- Starting references span strategies, combinations, interdisciplinary work, and measurement limits [@foster2015; @uzzi2013; @shi2023; @leahey2017; @fortunato2018; @petersen2025]. They study different populations and outcomes.
 
-## What is already measured
+## Population and records
 
-- Research strategies in biomedicine: mostly conservative, innovation rare and rewarded more [@foster2015]
-- Atypical combinations plus a conventional core predict impact [@uzzi2013]
-- Interdisciplinarity: less output, more citations [@leahey2017]
-- Disruption declines across the literature [@park2023; @wu2019]; the measure inflates with reference lists [@petersen2025]
-- Large fields entrench their canon [@chu2021]
-- Not measured: the share of modes of inquiry in a literature, coded against a stated taxonomy
-  - Nearest: hypothesis-driven vs data-driven biology argued from cases [@kell2004; @glass2008]; what ecologists count as good science [@elliott2016]
-- Step 0: a proper search for prior work of this kind, in [Novelty Dossier](rubrics.qmd#novelty-dossier-v1) form
+- Define the target population and time range before sampling. Begin with seismology; screen subject matter within BSSA, SRL, GJI, JGR Solid Earth, and broader journals rather than treating every article as seismology.
+- Record source/version, query, inclusion rules, topic-screen sensitivity, missing abstracts/references, and access restrictions.
+- Add a second physical-science setting after the local pilot. Bioengineering/biology process comparisons can inform modes without substituting for physical-science coverage.
+- Unit for publication analysis: paper or identified claim, explicitly stated. Unit for process analysis: a documented episode. Neither reveals unrecorded actions automatically.
+- Older feasibility counts in the v0.3 design were exploratory snapshots, not a frozen corpus definition; obtain fresh counts when specifying the sample.
 
-## Corpus
+## Coding
 
-- Unit: the paper. Source: OpenAlex (abstracts where allowed, references, citations, topics, field-normalized citation percentile)
-- Home corpus: seismology, so the group can judge the coding
-  - Feasibility, September 6, 2026: about 22,000 articles 1970 to 2020 under the seismology topic; about 10,000 with an abstract; about 290 cited more than 100 times
-  - Define the corpus by journal set, not topic label (BSSA, JGR Solid Earth, GJI, SRL, seismology papers in GRL and Nature Geoscience)
-- Comparison corpus: molecular biology, the field Platt held up as fast
-- Abstracts for a first pass; the pilot codes full text
+- Multiple [mode IDs](glossary.qmd#working-mode-specifications), actions, and context/contribution attributes; unknown, insufficient record, and outside vocabulary permitted.
+- Record direct observation versus inferential estimation, statistical objectives, question origin/reframing, evidence basis, assumptions, and shared infrastructure.
+- Hypothesis timing is “as presented” unless dated evidence exists. Commitments record what was fixed before access to which evidence, with unknown/not-applicable states.
+- Keep abstracts-only and full-text coding separate. Mask prestige/citation information where feasible, acknowledging that full texts may reveal identity and era.
+- Two readers annotate a development subset independently; report disagreements and revise rules. Compare with a simpler codebook for coverage, usefulness, and agreement.
 
-## Coding scheme
+## Sampling and validation
 
-- Decisive mode (one of the ten in the [glossary](glossary.qmd)); sub-mode; secondary modes
-- Hypothesis stated before the result, as presented: yes / no / cannot tell
-- Intervention on the system: yes / no
-- New instrument or method as the contribution: yes / no
-- New data: collected / reused / none
-- Shared infrastructure: yes / no
-- Coder confidence, three levels, one sentence
-- Coders see title, abstract, full text; not journal, authors, year, or citations [@kapoor2023]
+- Pilot a bounded sample before promising a full corpus. Include a probability-based component for population estimation and enriched rare-mode cases for diagnostic evaluation; report enrichment separately.
+- Reserve independent held-out papers/projects, stratified for period, mode coverage, and access. A fixed 300-paper holdout does not guarantee precision for rare labels.
+- Validate per-label precision/recall, calibration, coverage, and human agreement. Carry classification and sampling uncertainty into reported estimates; low agreement is a measurement problem to investigate [@flake2020].
+- Retain holdout isolation after every codebook/classifier change. Material used to tune a reader is development data, not an independent evaluation set.
 
-## Procedure
+## Measures and interpretations
 
-- **Pilot**: 100 random papers; two coders; agreement per variable; every disagreement recorded; glossary revised where a definition fails
-- **Classifier**: a language model with the revised glossary as instructions; 300 human-coded held-out papers; precision and recall per mode, and the confusion between modes; treated as a measurement instrument [@flake2020]; re-checked after every glossary change
-- **Scale**: the full corpus; low-confidence papers sampled for human review
-
-## Measures
-
-- **Impact**: field-and-year-normalized citation percentile [@radicchi2008; @waltman2016]; top 1% and 10% strata; citations are attention as well as use [@bornmann2008]; add data reuse and method adoption where possible
-- **Field-shaping**, three ways, reported separately: disruption index [@funk2017; @wu2019] with the inflation correction [@petersen2025]; canonical status [@chu2021]; sleeping beauties [@ke2015]
-- **Novelty**: atypical journal pairs [@uzzi2013]; word-embedding distance [@shibayama2021]; known problems recorded [@fontana2020]
-- **Interdisciplinarity**: diversity of cited fields (variety, balance, disparity) [@stirling2007; @porter2009; @wagner2011]
-- **Depth**: reference concentration for the paper; topic concentration for the first author [@teodoridis2018]
-
-## Analysis plan, frozen before coding
-
-- Mode shares by decade, with confidence intervals (question 1)
-- Mode shares in each field-shaping stratum vs a matched random sample; three strata separately (question 2)
-- Impact percentile on mode, with year and subfield controls and the other measures as covariates; the same with "hypothesis stated" in place of mode (question 3; the direct test of the seminar's thesis at the level of narrative)
-- The seminar's thirty reconstructed episodes: presented vs reconstructed mode, against impact (question 4)
-- Everything else labelled exploratory [@tukey1962]
-
-## What can go wrong
-
-- The paper reports the presented mode, not the trajectory; abstracts follow templates; funders have wanted hypotheses since @platt1964
-- Only published work is visible; failed modes are not
-- Mode is not quality; the regression controls for what can be measured
-- The classifier learns the field's conventions; human coding on a held-out set is the only check
-- "Field-shaping" is three constructs, not one
-
-## Timeline by meeting
-
-| By | Step |
+| Construct | Measurement and limit |
 |:--|:--|
-| Meeting 3 | Step 0 search for prior studies; fix the journal set |
-| Meeting 6 | Pilot: 100 papers, two coders, agreement; glossary revised; analysis plan frozen and dated |
-| Meeting 9 | Classifier validated on 300 held-out papers |
-| Meeting 11 | Full corpus coded; questions 1 to 3; breadth and depth results to the polymathy meeting |
-| Meeting 12 | Field-shaping strata compared |
-| Meeting 13 | Question 4 from the seminar's own reconstructions; write-up |
+| Scientific advance | Close-reading subset: evidenced before/after gain using the [profile](rubrics.qmd#scientific-advance-profile-v1). No automatic field-wide advance score. |
+| Novelty | Claim-level closest precedent at a date; citation/semantic measures as proxies, with reference-corpus and terminology limits [@fontana2020; @shibayama2021]. |
+| Correctness/warrant | Claim-specific expert assessment with explicit evidence and unknowns. Later citations, corrections, and contradictions locate reassessment; none is assumed a validated truth proxy. |
+| Impact | Comparable follow-up windows, field/time-qualified citations, documented data/method use, and missing uptake [@waltman2016; @bornmann2008]. Separate predicted from observed impact. |
+| Integration | Cited-field diversity as a proxy; direct coding of which concept/method transferred, assumptions, and contribution to the result on a subset [@wagner2011; @shi2023]. |
+| Depth/competence | Demonstrated understanding and checks on a subset. Reference concentration measures concentration; it is not an independent inverse measure of breadth or a measure of competence. |
+| Field-shaping | Citation disruption, canonical uptake, and delayed recognition separately, with limitations [@wu2019; @petersen2025; @chu2021; @ke2015]. |
 
-## Outputs
+## Analysis and decision points
 
-- A coded dataset with its codebook
-- The frozen analysis plan with its date
-- The classifier's validation report
-- A short paper
-- The coded corpus doubles as training and evaluation data for the mode-aware reader in the [design notes](agent-design.qmd)
+- Describe shares and distributions with uncertainty by field/period and accessible record type. Multi-label shares may sum above 100%.
+- State a causal question and assumptions before causal language. Field/year adjustment alone does not establish effects; distinguish confounders, mediators, selection, and unequal follow-up.
+- Include ordinary work and failed paths where records exist; published-paper samples miss much unsuccessful inquiry.
+- Freeze the analysis after development and before evaluating held-out outcomes; report later exploration as such [@tukey1962; @nosek2018].
+- Deliver a reproducible sample definition, versioned codebook, validation report, and uncertainty-qualified profiles. Populate mode pages with results only after the study runs.
+- Progress depends on record quality and measurement validity, not predetermined meeting deadlines. The reading club remains useful if the larger study is not pursued.

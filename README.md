@@ -1,13 +1,18 @@
 # MetaScience, Scientific Inquiry, and Agents
 
-Working Quarto book, v0.3. Thirteen one-hour meetings for the Denolle Lab, taken one at a
+Working Quarto book, v0.4. Thirteen one-hour meetings for the Denolle Lab, taken one at a
 time in the order below rather than on fixed dates.
 
 **Published at <https://denolle-lab.github.io/metascience-and-AI/>**
 
-An exploratory quarter: the group reads its way through how experimental, observational,
-historical, and theoretical research actually proceeds, then asks what follows for the design and
-evaluation of agents for science. Meeting 11 takes up one such proposal: that agents let a researcher work competently across more fields, making individual polymathy practical again. The seminar puts it as a question and says what would count against it.
+Scientific advance is the primary outcome: warranted gains in knowledge, understanding, and
+research capability. We study plural geoscientific inquiry through philosophy, history, and the
+science of scientific process and impact, then design agents around human-defined modes and
+evaluate them against past work. Novelty, correctness/warrant, and impact inform the assessment;
+interdisciplinary integration is a candidate contributor to advance.
+
+One anchor and one companion per meeting keep participation light. The convenor authorized the
+v0.4 revision; the mode definitions and evaluation instruments remain drafts for discussion.
 
 ## Contents
 
@@ -19,11 +24,17 @@ evaluation of agents for science. Meeting 11 takes up one such proposal: that ag
 | `rubrics.qmd` | Inquiry, novelty, advance, and evaluation worksheets |
 | `prior-art.qmd` | Registry of existing science agents and benchmarks, and what their scores do not establish |
 | `corpus-study.qmd` | Design for coding the mode of inquiry of published papers and relating it to impact, novelty, interdisciplinarity, and depth |
-| `agent-design.qmd` | From modes to agents: what the history and philosophy give an agent designer, a worked mode coding of six papers, what to do with deep-research agents, and whether full texts are needed |
+| `agent-design.qmd` | Versioned modes, procedures, claim records, implementation status, and fair agent comparisons |
 | `bibliography.qmd` | Every reading by meeting with links and access notes, the group's suggestions, and the full reference list; the reading lists are generated from `curriculum.json` |
+| `modes/` | Authoritative human-editable mode specifications, exported for agent use |
+| `historical-evaluation.qmd` | Decision reconstruction, reproduction/reassessment, and extension/transfer cases |
+| `templates/claim-record.json` | Empty claim-record template; no experimental result |
+| `agents/mode-instructions.json` | Generated mode instructions with source hashes; not an agent runtime |
+| `tools/export_modes.py` | Regenerates and checks the instruction export |
+| `review/` | Dated audits, convergence plans, and source-check evidence |
 | `notes.qmd` | The group's meeting record — add yours |
 | `contributing.qmd` | How to contribute, and what must never be published here |
-| `references.bib` | 123 records: 26 paired papers, 5 discussant papers, 65 optional extensions, 17 papers cited by the glossary and the corpus study |
+| `references.bib` | Bibliographic records; current counts are reported by the validator |
 | `curriculum.json` | Editorial metadata for sessions and references. Kept in step with the `.qmd` files by hand; `validate.py` checks that the citation keys agree |
 | `READING-AUDIT.md` | Why the reading selections are what they are |
 | `PLAN-AUDIT.md` | September 2026 audit of the plan against the seminar's aims, and the reasoning behind the expanded optional extensions |
@@ -48,6 +59,8 @@ The source checks need Python 3 and PyYAML. On a system with an externally manag
 ``` sh
 python3 -m venv .venv
 .venv/bin/pip install PyYAML
+.venv/bin/python tools/export_modes.py
+.venv/bin/python tools/build_bibliography.py
 .venv/bin/python tools/validate.py
 .venv/bin/python tools/check_links.py
 ```

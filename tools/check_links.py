@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = (sorted(ROOT.glob('*.qmd')) + sorted((ROOT / 'sessions').glob('*.qmd'))
+           + sorted((ROOT / 'modes').glob('*.qmd'))
            + [ROOT / 'references.bib'])
 AGENT = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
          '(KHTML, like Gecko) Chrome/125 Safari/537.36')
@@ -164,7 +165,8 @@ def main() -> int:
         print('\nFAIL: unresolved:', file=sys.stderr)
         print('\n'.join('  ' + line for line in failures), file=sys.stderr)
         return 1
-    print('\nPASS: every DOI is registered and every other URL resolves.')
+    print('\nPASS: DOI registration checks passed; no unresolved links beyond blocked requests listed above.'
+          if review else '\nPASS: every DOI is registered and every other URL resolves.')
     return 0
 
 

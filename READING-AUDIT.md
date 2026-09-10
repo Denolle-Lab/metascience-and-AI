@@ -1,4 +1,21 @@
-# Reading audit, v0.3
+# Reading audit, v0.4
+
+## Current revision: September 10, 2026
+
+The convenor authorized implementation of the converged plan in `review/CONVERGED-PLAN-REPORT.md`.
+This is the recorded authorization for the assignment changes below; no group meeting or consensus is implied.
+The earlier entries remain a dated history and are superseded where they describe the old reading format or gate claims.
+
+- Thirteen meetings remain, with pair order **anchor / companion**. Everyone reads selected anchor sections and the companion overview; one rotating reader presents the companion. The five former extra discussant assignments become optional.
+- Meeting 2 includes Karaca’s two-page erratum as a required correction, including the prior unpublished formulation of the scaling hypothesis. This does not determine how it guided each action.
+- Meeting 11 now pairs Nersessian’s flow-loop case (chapter 2, section 2.1.1) with Shi–Evans on content/context surprise and citation impact. Burke, Kitcher, Jones, and career studies remain background. Official OA access and excerpt identity are verified; full subsection retrieval was blocked during implementation, so detailed reconstruction requires reading the supplied section before benchmark use.
+- Meetings 7 and 13 retain their central pairs. Meeting 12 integrates advance, novelty, warrant, and impact around the retained Wu–Petersen indicator/reanalysis case.
+- Hacking, Fortunato, Chang, Bogen–Woodward, Breiman, Shmueli, Azoulay, Bird, SIV, SeisBench, the Si execution study, and contamination-detection literature have explicit optional or mode/evaluation roles.
+- Ioannidis is framed as a model of false-positive risk under assumptions, not the strongest universal hypothesis-action or claim gate. Earlier claims below about that role are historical editorial descriptions.
+- New-source identity checks and interpretation limits are in `review/audit-evidence/v0.4-reading-checks.json`. Registry checks do not certify every interpretation or full-text access.
+
+## Earlier revision history
+
 
 The required set is 13 two-paper pairs. Supplementary readings remain optional; historical publication dates are not replaced by digitization dates.
 

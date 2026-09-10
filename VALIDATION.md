@@ -1,5 +1,52 @@
 # Validation performed
 
+## v0.4 implementation, September 10, 2026
+
+Scientific advance now organizes the book, eleven versioned mode specifications, the thirteen
+anchor/companion meetings, the claim/episode records, and the historical evaluation design.
+Meeting 11 uses the integration pair; the documented citation and scope corrections are applied.
+The convenor authorized implementation of the converged plan; no group discussion or empirical
+agent benefit is asserted.
+
+Checks completed on the revised sources:
+
+- `.venv/bin/python tools/validate.py`: 34 chapters, 13 ordered meetings, 27 assigned readings
+  (26 anchor/companion readings plus the Karaca erratum), 154 reference records; citations,
+  source links, session metadata, eleven mode specifications and their generated export agree.
+- `.venv/bin/python tools/export_modes.py --check`: the export matches the authoritative source
+  versions and hashes. Isolated temporary fixtures also checked round-trip export and rejection
+  of stale source, a missing evidence section, and a mismatched mode ID.
+- `quarto render`: successful full build of all 34 chapters. A separate HTML-parser pass found
+  no broken local file or fragment links among those rendered chapters, including the exported
+  instructions and claim template.
+- `.venv/bin/python tools/check_links.py`: checked 173 distinct external URLs across 35 sources.
+  DOI registrations passed. Six publisher requests returned 403 and remain access checks for a
+  reader: AGU/Wiley (Lindsey), SAGE (Flake), MIT Press (Nersessian), Annual Reviews (Moore), and
+  ScienceDirect (Wang and Petersen). These are recorded separately from missing-link failures;
+  they do not certify accessible full text. The checker's final wording now preserves that distinction.
+- Visual inspection in isolated headless Chrome: desktop glossary, meeting 11, and bibliography;
+  actual emulated 390-pixel viewport for estimation and the claim-record table. Both mobile
+  pages reported document width equal to viewport width; headings and table contents wrapped.
+  Initial command-line screenshots used an inaccurate narrow viewport; only the subsequent
+  device-emulation captures support the mobile check.
+- `git diff --check`: no whitespace errors.
+
+Evidence and limits:
+
+- `review/audit-evidence/v0.4-reading-checks.json` records new-source identity checks, targeted
+  interpretation checks, and their limits. Nersessian's official OA status and excerpt identity
+  are verified; automated full-subsection retrieval was blocked. Read the selected section
+  before constructing a detailed historical evaluation packet from it.
+- The new case chapter provides three reading-based specifications, not executable historical
+  data packets. The JSON mode export and blank claim template are implemented artifacts;
+  they are not a scientific-agent runtime or experimental outcomes.
+- No private case material was published, no private agent implementation was modified, and
+  no historical replay, policy comparison, corpus study, or prospective evaluation was run.
+- This entry records local validation, not deployment of v0.4.
+
+Earlier entries below retain their dates and describe prior versions.
+
+
 ## September 9, 2026: bullet-level public pages, status labels, and the geoscience-method readings
 
 The public pages were moved to bullet level at the convenor's request, with the prose and analysis
