@@ -1,0 +1,146 @@
+# The unit of inquiry: reasoning, hypotheses, tests {.unnumbered}
+
+[Drafted]{.status .drafted} [module 0 · read before meeting 1 · the verbs every mode page uses · not yet discussed]{.status-line}
+
+- Read this page before meeting 1. It starts with the three things people mean by "the scientific method," then defines the words the rest of the book uses without stopping: deduction, induction, abduction, hypothesis, test, confirm, exclude, corroborate.
+- It ends with one graph, the unit of hypothesis testing drawn as a workflow. Meeting 1 places Platt and Cleland on it; every later meeting places its own case on it.
+- One-hour introduction for anyone new to the vocabulary: @okasha2016, chapter 2 of a very short introduction.
+
+## 0. Three things people mean by "the scientific method"
+
+- Asked for the method in one word, a room of earth scientists could not give one. The texts explain why: three different things go by the name, and the earth sciences fit the first badly.
+
+| | The textbook method | The AI discovery loop | The earth sciences' own account |
+|:--|:--|:--|:--|
+| Where it is stated | Science texts "from grade school through college," which Cleland says "invariably provide one (or a combination) of two accounts, scientific inductivism or falsificationism" [@cleland2001, p. 987]; the school version taken apart by @windschitl2008 | "Closed-the-loop of hypothesis generation, experimental planning, and execution" [@kitano2021, p. 1]; a system "mirroring the reasoning process underpinning the scientific method" that, "given a research goal specified in natural language," proposes hypotheses and protocols [@gottweis2026]; "active learning closes the loop by proposing improved follow-up recipes" [@szymanski2023, p. 86]; a system that "autonomously designs, plans and performs complex experiments" [@boiko2023, p. 570]; Adam, the first closed loop [@king2009] | Chamberlin's multiple working hypotheses, written by a geologist against the "ruling theory" [@chamberlin1965]; Gilbert on where a geological hypothesis comes from [@gilbert1886; @gilbert1896]; Cleland on historical science [@cleland2001; @cleland2002]; Frodeman on geology as interpretive and historical [@frodeman1995] |
+| The steps | Observe, ask, hypothesize, predict, test, conclude; one hypothesis at a time; confirmation accumulates or a failure refutes | Goal in; generate hypotheses or candidates; choose the next experiment by a score; execute; analyze; repeat until the goal is met | Observe puzzling traces; formulate incompatible rivals; hunt for the trace that discriminates; retain the best explanation; expect it to be deposed |
+| Where it starts (node Q) | An observation, then a question | A goal supplied from outside: six tasks [@boiko2023], a target list [@szymanski2023], a research goal [@gottweis2026] | Puzzling traces of a past event [@cleland2002, p. 480] |
+| Hypotheses at G | One | Many, ranked by a score; rarely incompatible rivals | Several, incompatible [@chamberlin1965; @cleland2002, pp. 483--484] |
+| Conditions at C | Set | Set, by a robot or a computation | Found, by fieldwork [@cleland2002, p. 484] |
+| The control series at V | Absent from the diagram; present in the laboratory | Mostly absent: a positive-only verifier scored itself [@leeman2024] | Absent by necessity; replaced by independent traces [@cleland2002, p. 491] |
+| Decision at X or K | Refute or confirm | A score threshold | Best explanation within the stated set [@cleland2002, pp. 481--482] |
+| What it leaves out | Auxiliaries, the series, rival generation, where questions come from [@cleland2001, pp. 987--988; @windschitl2008] | Choosing the question; enumerating rivals; abstaining [@leeman2024] | Manipulation; hence the method of difference |
+
+- The textbook version is Platt's loop with one branch: he called that "The Great Man With a Single Hypothesis" [@platt1964, p. 350]. Chamberlin's remedy is what makes it strong.
+- The AI loop is Platt's loop with node G automated and node Q supplied. Kitano's own example iterates "to verify or reject h1" against "h2, h3, and h4" [@kitano2021, p. 4], so the design has room for rivals; the published systems mostly optimize a single target.
+- The earth sciences run both patterns. Where nature repeats herself, a catalog of events supports regularities the way an experimental program would, minus the power to set the condition [@cleland2002, p. 485]; where an event is unique, the trace pattern rules. That is why one word will not do, and why the ledger records a node letter instead.
+
+### Where inquiry starts
+
+- The readings give five entry states for node Q. They are not rival theories; they are what different modes begin with, and the ledger's "question origin" column records which.
+
+| Entry state | Who says so | Example in the reading |
+|:--|:--|:--|
+| A surprising observation or anomaly | Peirce, the surprising fact [@peirce1992]; Cleland's prototype, "puzzling traces" [@cleland2002, p. 480]; Platt's own description of practice, where the logical tree on the blackboard begins with "the hot new result just up from the laboratory" [@platt1964, p. 348] | Becquerel's plate; Cech's catalytic products; the iridium layer [@cleland2002, pp. 482, 486] |
+| An unsolved problem or question | Popper, science begins with problems [@popper2005]; Platt's prescription, "every problem in science" [@platt1964, p. 347]; Gilbert's topographic problem [@gilbert1896] | Coon Butte; the origin of the dinosaurs' extinction before 1980 [@cleland2001, p. 988] |
+| A hypothesis or a theory's prediction | Dicke predicting the background radiation [@cleland2001, p. 990]; the Viking designers [@cleland2002, p. 479]; Vine and Matthews [@vine1963] | Platt's steps 1 and 2 presuppose this state |
+| A new capability | Cleland: finding attenuated traces "may require advances in technology," antennas and the cyclotron [@cleland2001, p. 990]; Hacking's playing with equipment, via @cleland2002, p. 486 | Dark-fibre sensing, meeting 5 [@lindsey2019] |
+| A goal supplied by someone else | Every AI system in the prior-art chapter; funders, in Platt's closing paragraph [@platt1964, p. 352] | Six chemistry tasks; fifty-seven target compounds [@boiko2023; @szymanski2023] |
+
+- Platt's description and his prescription start in different places: the blackboards begin with a result, the four steps begin with hypotheses already devised. The gap between them is the exploratory phase Cleland describes and Platt does not [@cleland2002, p. 486].
+
+## 1. Three cognitive tasks
+
+- Peirce's framing makes the three symmetric: each rearranges a rule, a case, and a result [@peirce1992, originally 1878].
+
+| Task | Form | What it guarantees | Geoscience example |
+|:--|:--|:--|:--|
+| Deduction | Rule + case, therefore result | The result is certain if the premises are true; nothing new is added | If ridge-ridge transforms exist (rule) and this offset is one (case), first motions on the offset segment are opposite to the ridge-offset sense (result) [@wilson1965] |
+| Induction | Case + result, therefore rule | The rule is probable, never certain; the next case can break it | Twenty catalogs (cases) each give b near 1 (results), therefore b near 1 in general (rule) |
+| Abduction | Rule + result, therefore case | The case is the best available explanation, and only that | Peat-mud couplets with sand sheets (result) and what subduction earthquakes do to coasts (rule), therefore a great earthquake (case) [@atwater1987] |
+
+- Deduction preserves truth and adds no content. Induction and abduction add content and can be wrong.
+- Aristotle named the first two. Peirce named the third and made it the logic of discovery; Hanson built the case that observation itself is shaped by it [@hanson1958].
+
+## 2. Inference, hypothesis, prediction, explanation
+
+- **Inference**: any reasoned move from premises or evidence to a conclusion. The umbrella term; the three tasks above are its kinds.
+- **Hypothesis**: a candidate claim, not yet established, with consequences that could be checked. How the word acquired that meaning: @glass2008. The working hypothesis against the ruling theory: @chamberlin1965, first printed in 1890. Where a geological hypothesis comes from, by analogy and then enumeration: @gilbert1886; @gilbert1896.
+- **Prediction** versus **explanation**: a prediction is a consequence derived before the observation; an explanation is a hypothesis fitted to an observation already in hand. Whether the order matters for how much the evidence counts is a live dispute [@musgrave1974; @douglas2013].
+
+## 3. The unit: one pass through the schema
+
+$$H + A + C \Rightarrow E$$
+
+- $H$: the hypothesis under test.
+- $A$: the auxiliary assumptions, such as the theory of the instrument, the background laws, the dating method.
+- $C$: the conditions, what the system was in, either set by the investigator or found in nature.
+- $E$: the expected observation.
+
+- The schema is in the assigned reading. Cleland writes it as a test implication inferred from $H$: if condition $C$ is brought about, event $E$ will occur [@cleland2001, p. 987]. The auxiliaries $A$ enter one page later, as the "enormous number of auxiliary assumptions about equipment and background conditions" any real test carries [@cleland2001, p. 988].
+- The verbs are defined on the schema. Each has an owner who fixed its meaning.
+
+| Verb | On the schema | Who fixed the meaning |
+|:--|:--|:--|
+| Test | Arrange or find $C$, derive $E$, observe | @hempel1945 |
+| Confirm | Observe $E$; the conjunction survives; strength depends on how unlikely $E$ was without $H$ | @hempel1945; the Bayesian form is $P(E \mid H) / P(E)$ |
+| Corroborate | Survive a test that could have failed, without calling that confirmation | @popper2005, first published 1934 |
+| Falsify | Observe $\neg E$; therefore $\neg(H + A + C)$; logic does not say which conjunct to drop | @popper2005; @duhem1954; @quine1951; stated for geologists in @cleland2001, p. 988 |
+| Control | Hold $C$ and vary $A$ after a failure, against false negatives; repeat after a success, against false positives; remove $C$ to see whether it was needed | Mill's method of difference [@mill2011]; @cleland2001, p. 988; @cleland2002, pp. 477--478 |
+| Exclude | Falsify one member of a stated set of rivals | @platt1964, after Bacon's instances of the fingerpost [@bacon2004] |
+| Infer to the best explanation | Retain the $H$ that makes $E$ least surprising among the rivals; a retention move, not an exclusion | @harman1965; @lipton2004 |
+| Severely test | A test the $H$ would probably have failed if it were false | @mayo1996; @mayo2006 |
+
+- The Bayesian line ties them together: $P(H \mid E) \propto P(E \mid H)\,P(H)$. Cleland suspects her differences between historical and experimental science can be rewritten this way [@cleland2002, p. 495]; @tarantola2006 is the geophysicist's version.
+
+## 4. The thinkers, and the node each owns
+
+- Dates are the original publications. Citations point at the editions in the bibliography.
+
+| Year | Thinker | Contribution | Node on the graph |
+|:--|:--|:--|:--|
+| 1620 | Bacon [@bacon2004] | Eliminative induction; the instance of the fingerpost that decides between roads | Design, Exclude |
+| 1840 | Whewell [@whewell2014] | Hypotheses come first; consilience when independent classes of facts agree | Generate, Retain |
+| 1843 | Mill [@mill2011] | Methods of agreement and difference: what controlling $C$ means | Conditions |
+| 1878 | Peirce [@peirce1992] | Abduction as the third task | Generate |
+| 1886 | Gilbert [@gilbert1886] | Hypotheses by analogy, in geology | Generate |
+| 1890 | Chamberlin [@chamberlin1965] | Hold a family of hypotheses at once | Generate |
+| 1906 | Duhem [@duhem1954] | No crucial experiment in physics; refutation hits the conjunction | Exclude, Protect |
+| 1934 | Popper [@popper2005] | Falsification; the asymmetry between refuting and confirming | Exclude |
+| 1945 | Hempel [@hempel1945] | The logic of confirmation and its paradoxes | Retain |
+| 1951 | Quine [@quine1951] | Duhem's holism generalized to all belief | Protect |
+| 1958 | Hanson [@hanson1958] | Discovery has a logic; observation is theory-laden | Generate, Observe |
+| 1964 | Platt [@platt1964] | Strong inference | The loop |
+| 1965 | Harman [@harman1965] | Inference to the best explanation, named | Retain |
+| 1970 | Lakatos [@lakatos1970] | Protective belt; research programmes | Protect |
+| 1996 | Mayo [@mayo1996] | Severity as the measure of a test | Design |
+| 2001 | Cleland [@cleland2001] | Historical versus experimental: the asymmetry of overdetermination | Conditions, Retain |
+
+## 5. The graph
+
+- One unit as a workflow. Ten working nodes and one escape. Every thinker above sits on one of them. The [meeting 1 page](sessions/01-scientific-method.qmd#where-the-two-papers-sit-on-the-unit-graph) places Platt and Cleland on it.
+
+```{mermaid}
+%%| label: fig-unit
+%%| fig-cap: "The unit of inquiry as a workflow. Solid arrows are one pass; V is the control series Cleland says is the real unit of experimental work, and its loop back to C is where most laboratory time goes; the dashed arrow is the Duhem escape, revising an auxiliary or a condition instead of the hypothesis. Node letters are used in the tables below and in every meeting's ledger row."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "17px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 26, "rankSpacing": 40, "curve": "basis", "padding": 10}}}%%
+flowchart TD
+    Q["Q. Question or anomaly"] --> G["G. Generate rivals H1 … Hn<br/>abduction · Peirce, Gilbert, Chamberlin"]
+    G --> D["D. Derive E_i from H_i + A + C<br/>deduction · Hempel, Cleland"]
+    D --> S["S. Design: choose the C and the observable<br/>where the E_i differ<br/>Bacon's fingerpost · Mill · Mayo"]
+    S --> C["C. Set the conditions (experiment)<br/>or find them (trace)"]
+    C --> O["O. Observe<br/>theory-laden · Hanson"]
+    O --> M{"M. Match E_i?"}
+    M --> V["V. Control the series: hold C and vary A;<br/>repeat after a success; remove C<br/>Mill · Cleland"]
+    V -- "run again" --> C
+    V -- "not E_i survives the series" --> X["X. Exclude H_i<br/>falsify · Popper, Platt"]
+    V -- "E_i survives the series" --> K["K. Retain H_i<br/>confirm, corroborate, or best explanation<br/>Hempel · Popper · Harman"]
+    X -. "or protect H_i" .-> P["P. Revise A or C instead<br/>Duhem · Quine · Lakatos"]
+    P -.-> D
+    X --> R["R. Refine the survivors<br/>into subhypotheses"]
+    K --> R
+    R --> G
+
+    classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
+    classDef escape fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    class Q,G,D,S,C,O,V,X,K,R step;
+    class M branch;
+    class P escape;
+```
+
+## 6. Using the graph
+
+- Meeting 1: place one recent paper of your own on the graph; mark the nodes it performed, the nodes it skipped, and whether $C$ was set or found. Then place Platt and Cleland.
+- Every later meeting: the ledger's "decisive move" names a node letter. The [mode specifications](glossary.qmd#working-mode-specifications) say which nodes each mode exercises; [hypothesis assessment](modes/hypothesis.qmd) is the mode that runs the whole loop.
+- Discussion question 3 of meeting 1, whether the papers describe how ideas are generated or how claims are warranted, becomes a pointing exercise: G against K.

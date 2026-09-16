@@ -1,5 +1,22 @@
 # Validation performed
 
+## September 16, 2026: meeting 1 verified against the texts
+
+All three meeting 1 papers were reread in full (Cleland 2002 from the publisher; Platt and Cleland 2001 from university course-page copies, not stored here). Every page-cited claim on the unit page and the session page checked out, with two page corrections. Twenty-six passages the notes had not recorded are listed on the session page under "Read against the texts" and in the sealed analysis. From the reading: the unit graph gained node V, the control series Cleland calls the real unit of experimental work; the verb table gained "control"; the unit page now cites Cleland 2001, p. 987, as the source of the schema; `modes/regularities.qmd` (0.4.1) gained Cleland's found-data passage and Platt's two-boxes passage.
+
+- `tools/validate.py` passes: 35 chapter files, 175 bibliography records; mode export current; Pandoc citations without warnings.
+- `quarto render` of the three changed pages is clean; the Mermaid graph renders with the new node.
+- Later the same day: `unit.qmd` gained section 0, three things people mean by "the scientific method" (textbook, AI discovery loop in the systems' own words, the earth sciences' account) mapped onto the graph's nodes, and a table of five entry states for node Q. Windschitl, Thompson, and Braaten (2008) added; 176 records; validator and render pass.
+
+## September 16, 2026: the unit of inquiry
+
+Added `unit.qmd` as the second chapter, after the glossary: three cognitive tasks, the hypothetico-deductive schema with its verbs attributed to the people who fixed their meanings, a timeline of sixteen thinkers keyed to nodes, and one Mermaid graph of the unit as a workflow with Platt's loop and Cleland's objections located on it. The meeting 1 reading notes were replaced by a section placing both papers on that graph; the strong-inference figure is kept there under the label `fig-platt-loop`. Twenty records were added (`references.bib`, `curriculum.json`, meeting 1 optional), every DOI verified on Crossref; `tools/apa.py` now recognizes Routledge as a publisher. `modes/hypothesis.qmd` moved to 0.4.1 with the Duhem problem named at its characteristic failure, and the mode export was regenerated.
+
+- `tools/validate.py` passes: 35 chapter files, 13 meetings in order, 27 assigned readings, 175 bibliography records; mode export current; Pandoc citations without warnings.
+- `quarto render` produced all 35 pages; both Mermaid figures and the KaTeX math render; the glossary and the hypothesis mode page link to the new page.
+- `tools/check_links.py` not rerun on the whole set; the 20 new DOIs were checked individually against the Crossref API on September 15 and 16.
+
+
 ## v0.4 implementation, September 10, 2026
 
 Scientific advance now organizes the book, eleven versioned mode specifications, the thirteen

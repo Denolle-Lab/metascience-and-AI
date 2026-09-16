@@ -29,6 +29,121 @@ Read Cleland’s Geology paper in full. It makes the argument in four pages, for
 
 Platt offers a prescriptive strategy; Cleland analyzes differences between experimental interventions and reconstructing past events. Neither paper directly records this group’s daily research. Test both against an actual project rather than declaring one a complete scientific method. [@platt1964; @cleland2001]
 
+## Where the two papers sit on the unit graph
+
+- Read [the unit of inquiry](../unit.qmd) first. It defines deduction, induction, abduction, hypothesis, and the verbs test, confirm, exclude, and corroborate, and draws one unit of hypothesis testing as a workflow of nine nodes, Q to R.
+- Both papers are overlays on that graph. Neither adds a node.
+
+### Platt
+
+- The path is Q, G with $n > 1$, D, S with a crucial experiment, C set, O, M, X, R, and back to G [@platt1964, p. 347].
+- What makes it strong is one property of node S: every outcome at M excludes at least one rival. The tree branches and prunes on each pass.
+- Platt's step 3, "carrying out the experiment so as to get a clean result" [@platt1964, p. 347], is where node V hides. He never describes the control series; Cleland says it is most of the work [@cleland2002, pp. 477--478].
+- Its parts are older than Platt: Bacon's eliminative induction at S and X, Chamberlin's family at G, Popper's asymmetry at X [@platt1964, pp. 349--350].
+- Platt supplies nothing at G beyond "invent" and sends the reader to Pólya [@platt1964, p. 347]. The generative step is outside the method.
+- Fifty years on: whether strong inference described practice or inspired it [@davis2006], and how it is cited now [@fudge2014].
+- Platt says the scheme is Baconian: the conditional inductive tree, the instances of the fingerpost, induction by rejections and exclusions [@platt1964, pp. 349--350; @bacon2004]; Chamberlin's multiple working hypotheses round it out [@platt1964, p. 350; @chamberlin1965]; Popper supplies the asymmetry at X [@platt1964, p. 350].
+- The exclusion step contradicts $H_i + A$, not $H_i$ alone. Platt does not draw the distinction; Cleland makes it the centre of her case, with Neptune as the example [@cleland2001, p. 988].
+
+```{mermaid}
+%%| label: fig-platt-loop
+%%| fig-cap: "Platt's strong inference as one path through the unit graph: generate several rivals, design a crucial experiment whose outcomes each exclude one, exclude, refine, repeat. The nodes are G, D, S, C, O, M, X, and R of the unit page; the loop never visits P."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "18px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 28, "rankSpacing": 42, "curve": "basis", "padding": 10}}}%%
+flowchart TD
+    Q["Problem or<br/>scientific question"] --> A["1. Devise alternative<br/>hypotheses"]
+
+    A --> H1["Hypothesis H1"]
+    A --> H2["Hypothesis H2"]
+    A --> H3["Hypothesis H3"]
+
+    H1 & H2 & H3 --> P["2. Deduce contrasting predictions<br/>and devise a crucial experiment"]
+
+    P --> T["3. Carry out the experiment<br/>to obtain a clean result"]
+    T --> O{"Observed outcome:<br/>nature chooses a branch"}
+
+    O -- "Outcome A" --> OA["Exclude H2 and H3;<br/>H1 remains"]
+    O -- "Outcome B" --> OB["Exclude H1 and H3;<br/>H2 remains"]
+    O -- "Outcome C" --> OC["Exclude H1 and H2;<br/>H3 remains"]
+    O -- "No clear<br/>separation" --> NC["No secure exclusion:<br/>recheck or redesign the test"]
+
+    OA & OB & OC --> R["1'. Refine the remaining possibility<br/>into sequential hypotheses<br/>or subhypotheses"]
+    NC --> P
+    R --> P
+
+    classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef hyp fill:#ffffff,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
+    classDef warn fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    class Q,A,P,T,R step;
+    class H1,H2,H3,OA,OB,OC hyp;
+    class O branch;
+    class NC warn;
+```
+
+### Cleland
+
+- Her thesis in one sentence: two patterns of evidential reasoning, "from causes (test conditions) to effects, with the concomitant worries about ruling out false positives and false negatives, and from effects (traces) to causes, with the concomitant worries about ruling out alternative explanations" [@cleland2002, pp. 484--485]. The first runs D, S, C, O, M, V; the second runs O, G, K.
+
+| Node | Objection | Where she says it |
+|:--|:--|:--|
+| C | Controlled experiments are impossible for past events: the time frame is too long, the conditions too complex. A smoking gun already exists; it is uncovered by fieldwork, not produced by varying conditions | @cleland2001, p. 988; @cleland2002, p. 484 |
+| V | Little in historical research resembles controlling for false positives and negatives. Generating rivals is not entertaining auxiliaries: an auxiliary is independent of $H$ and can be dropped to save it; rivals are incompatible with $H$ | @cleland2002, pp. 483--484 |
+| X | Refutation hits the conjunction; in practice $A$ is revised first. Astronomers kept Newton and found Neptune | @cleland2001, p. 988 |
+| K | The smoking gun is a retention move, inference to the best explanation within a stated set of rivals; it can be deposed later, and it need not touch the rivals: shocked quartz is "merely irrelevant" to the contagion hypothesis | @cleland2002, pp. 481--483 |
+| before G | An exploratory phase in which the phenomenon is not yet stable and no $H$ is worth deriving from; explore until it repeats, then test. Becquerel, Faraday, Cech; Viking as the case where the controls were fixed before any data | @cleland2002, pp. 479--480, 486 |
+
+- Her positive claim, the asymmetry of overdetermination, is why the found-$C$ path works: a past event leaves many independent traces, so O can be repeated on new traces without control [@cleland2001, pp. 989--990; @cleland2002, pp. 487--490]. Both papers allow that it may be probabilistic rather than strict [@cleland2001, p. 989; @cleland2002, pp. 490--491].
+- The two patterns are not tied to fields. Experimentalists reason like historians when a test fails or a phenomenon surprises them; historians reason like experimentalists when nature repeats herself, as with Cepheid variables, though without the power to set or remove the test condition [@cleland2002, pp. 485--486]. That last case is the statistical mode of this seminar: an earthquake catalog is nature's repeated experiment.
+- A smoking gun can be predicted before it is found (Dicke's background radiation) or stumbled on (the Alvarez iridium) [@cleland2001, p. 990]. Prediction versus accommodation cuts across the historical and experimental divide.
+- Cleland's answer to why the earth sciences do not recognize themselves in the textbook: their hypotheses are about particular past events, not regularities [@cleland2002, p. 480]; the evidence is traces that already exist; and the taught account and the practiced one differ. Three geologists' textbook says "hypotheses cannot be proved, only disproved," while the field's practice is a hunt for positive evidence [@cleland2001, p. 988; @cleland2002, p. 483]. Philosophers made it worse by describing historical science as narrative, which fits archaeology and not geology or astronomy [@cleland2002, p. 475]. Computer simulation does not change the historical character of the hypotheses [@cleland2001, pp. 987, 989].
+
+### Read against the texts, September 16, 2026
+
+- Basis: all three papers read in full. Cleland 2002 from the publisher's PDF at Cambridge Core; Platt and Cleland 2001 from copies posted on university course pages, not stored in this repository. Page numbers are the journals' own. What follows is what the notes above and the sealed analysis had not recorded.
+
+**In Platt, and not in the notes**
+
+- The yardstick (p. 351): surveys, taxonomy, instrument design, systematic measurement, and theoretical computation "have their proper and honored place, provided they are parts of a chain of precise induction." Platt subordinates every other mode to the loop. The assigned paper is the textual opponent of the glossary's pluralism.
+- The two boxes (pp. 351--352): "The logical box is coarse but strong. The mathematical box is fine-grained but flimsy." Five-decimal agreement excludes; one- or two-decimal fit "may be a trap"; "we substitute correlations for causal studies." Bohr and Schrödinger predict the same Rydberg constant, so agreement alone excludes nothing. Platt's position on the statistical and estimation modes, and on data-driven discovery, is here, and it is the equifinality problem of meeting 9.
+- Pasteur (p. 351): moving to a new biological problem every two or three years and beating experts who "knew a hundred times as much," which Platt attributes to method, not knowledge. The assigned paper's own breadth claim, for meeting 11.
+- When the method pays (p. 349): in "high-information" fields, where the hypothesis space is large or observations are expensive, and where leadership taught it. Platt's own contingency claim about method and field speed, testable in the corpus study.
+- The loop in hardware (p. 349): coincidence circuits that "run through a complete logical tree in a microsecond." The first automated excluder in the paper.
+- The pathologies (p. 350): the Frozen Method, the Eternal Surveyor, the Never Finished, the Great Man With a Single Hypothesis, the Little Club of Dependents, the Vendetta, the All-Encompassing Theory. The glossary uses one of the seven; the list is a ready-made failure taxonomy.
+- Platt's evidence: the published form of papers (Lederberg's "subject to denial" list, Monod and Jacob's "logical density," a 1964 paper's "our conclusions might be invalid if"), notebooks (Faraday, Fermi), and recollected meetings (Szilard at Boulder, 1958), pp. 348, 351--352. Method read off narratives: standing question 5 applied to the paper itself.
+- Footnote 14: Platt cites Kuhn 1962 and says the modified view "does not invalidate any of these conclusions." He knew the objection.
+
+**In Cleland 2001, and not in the notes**
+
+- The schema is hers (p. 987): a test implication, if $C$ then $E$, inferred from $H$; auxiliaries on p. 988. The unit page's formula comes from the assigned reading.
+- Two textbook accounts, inductivism and falsificationism, both "deeply flawed, both logically and as accounts of the actual practices of scientists" (pp. 987--988). The paper answers the question of what the original thinkers proposed, in one page.
+- Experimentalists control, they do not falsify (pp. 988, 990): after a failure they vary auxiliaries against false negatives; after a success they vary them again, and remove $C$, against false positives. "They are not trying to disprove their hypotheses or to save them from falsification."
+- A smoking gun can be predicted (Dicke) or stumbled on (Alvarez), p. 990.
+- Laboratory work in historical science sharpens traces or tests an auxiliary (Miller-Urey), p. 989. Computer models determine consequences under stated conditions and cannot say which conditions obtained: snowball Earth, p. 989. Meeting 9.
+- The probabilistic loosening of overdetermination is already in the short paper (p. 989), not only in the long one.
+
+**In Cleland 2002, and not in the notes**
+
+- The unit is the series, not the test (pp. 477--478): "The historical tendency of philosophers to take the isolated experiment as the descriptive unit of experimental research has obscured this character." Each experiment is designed in light of the last; without such a series "most researchers are reluctant to submit their work." This is the finding that added node V to the unit graph.
+- Rivals are not auxiliaries (pp. 483--484): an auxiliary is independent of $H$ and can be dropped to save it; rivals are incompatible with $H$. This is why G and P are different nodes.
+- The one-sentence thesis (pp. 484--485): causes to effects with false-positive and false-negative worries; effects to causes with rival-explanation worries.
+- Nature repeats herself (p. 485): Cepheid variables give a body of evidence "resembling what an experimental program would provide," without the power to set or remove the test condition. The statistical mode, in the assigned philosophy.
+- Experimental hypotheses "postulate regularities among event-types," which "may be statistical" and "may or may not be causal" (p. 476, note 2). Cleland places functional regularities inside experimental science's own objects.
+- Two criteria for a good historical explanation, unification (Kitcher) and a causal mechanism (Salmon); acceptance of drift waited for the mechanism (p. 481). Meeting 4.
+- Independent smoking guns (p. 491): microspherules, fullerenes, soot; "had iridium been absent" the case would stand. Convergence of independent traces, which is the evidence column of the synthesis mode.
+- Lakatos: a "superficial resemblance"; he ignored protection against misleading confirmations (p. 478 and note 4).
+- Her idealization (p. 476): "simple, idealized experiments," setting aside Franklin's complications with instruments and unrepeatable experiments. The limit of her account for meeting 5.
+
+**Corrections made to these pages from the reading**
+
+- The Bacon citation moved from p. 349 to pp. 349--350; "proper rejections and exclusions" is on 350.
+- The "conditions found, not set" objection now cites Cleland 2002, p. 484, where she says it, with 2001, p. 988, for the impossibility of controlled experiments.
+- The unit graph gained node V, the control series, and the verb table gained "control."
+
+### What to settle in the room
+
+- Are Platt's exclusion at X and Cleland's smoking gun at K one Bayesian move under two constraints, or two different moves? Cleland's last sentence says one [@cleland2002, p. 495]; the two papers read as two.
+- Both papers put the hard part before the loop: Platt at G, Cleland in the exploratory phase before it.
+
 ## Prepare and discuss
 
 Read the selected anchor sections and the companion abstract or overview. Bring one source passage or artifact relevant to the case; the rotating reader presents the companion in depth.
@@ -41,6 +156,7 @@ Read the selected anchor sections and the companion abstract or overview. Bring 
 
 Compare Platt and Cleland on one documented case. State a meaningful before/after scientific gain, then identify which proposed mode definition succeeds or fails on the case. Distinguish a normative argument from evidence of what scientists did.
 
+- First, ten minutes: place one recent paper of your own on the [unit graph](../unit.qmd#the-graph). Mark the nodes it performed, the nodes it skipped, and whether $C$ was set or found. Then place Platt and Cleland.
 - Profiles to examine: [hypothesis](../modes/hypothesis.qmd), [synthesis](../modes/synthesis.qmd), [exploration](../modes/exploration.qmd).
 - Record source kind and unknown chronology; distinguish documented practice, philosophical argument, association, and our proposed agent rule.
 - Ask what was gained, what warrants it, which action helped, and what a comparable agent would need to demonstrate.
@@ -63,6 +179,8 @@ One episode entry and three sentences: what changed scientifically; what evidenc
 - Facilitator framing: compare knowledge/understanding accounts in @dellsen2016; introduce advance now and revisit its measurement in meeting 12.
 
 ## Optional extensions
+
+**On reasoning and testing.** The sources behind [the unit of inquiry](../unit.qmd), listed there by node. Deduction, induction, and abduction: @peirce1992; @hanson1958; @okasha2016 as the one-hour introduction. The hypothesis and where it comes from: @gilbert1886; @whewell2014; @mill2011. Confirmation, falsification, and the Duhem problem: @hempel1945; @popper2005; @duhem1954; @quine1951; @lakatos1970. Eliminative induction and severity: @bacon2004; @mayo1996; @mayo2006. Inference to the best explanation: @harman1965; @lipton2004. Prediction against accommodation: @musgrave1974; @douglas2013. Strong inference fifty years on: @davis2006; @fudge2014. The school version of the method and what it leaves out, from the University of Washington's College of Education: @windschitl2008.
 
 - @chamberlin1965: [The Method of Multiple Working Hypotheses](https://doi.org/10.1126/science.148.3671.754). Science (1965). Written by a geologist, and the source Platt built on. Chamberlin's target is the single ruling hypothesis; his remedy is to hold a family of them at once. Decide whether Platt's loop and Chamberlin's family are the same practice.
 - @simon1973: [Does Scientific Discovery Have a Logic?](https://doi.org/10.1086/288559). Philosophy of Science (1973). Simon argues, against Popper, that discovery is problem solving with describable heuristics. The computer discovery programs listed in [meeting 13](13-agent-design-and-evaluation.qmd) were built on this argument.
