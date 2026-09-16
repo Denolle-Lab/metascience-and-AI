@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A thirteen-meeting reading club studying scientific advance through plural epistemic modes, and designing agents evaluated against documented scientific work.">
+
+<title>The unit of inquiry: reasoning, hypotheses, tests – MetaScience, Scientific Inquiry, and Agents</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./sessions/01-scientific-method.html" rel="next">
+<link href="./glossary.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1f584d13a9800289a3a06020ebbbca48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit.html">The unit of inquiry: reasoning, hypotheses, tests</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MetaScience, Scientific Inquiry, and Agents</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Denolle-Lab/metascience-and-AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this Group Meeting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Inquiry in practice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/02-exploratory-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploratory experimentation is not theory-free</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/03-historical-traces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">From coastal traces to earthquake histories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/04-tectonic-synthesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Plate tectonics: concept formation and a discriminating test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/05-measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">New sensing capability versus trustworthy measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/06-exploration-confirmation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Explore freely; distinguish exploration from confirmation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/07-field-marine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Field and marine research under real constraints</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/08-serendipity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Serendipity, anomaly, and scientific interestingness</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/09-model-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hypothesis testing when several models fit</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Novelty, advance, breadth, and agents</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/11-polymathy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interdisciplinary integration: breadth, competence, and scientific advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/12-scientific-advance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Assessing scientific advance: novelty, correctness, and impact</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/13-agent-design-and-evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What architecture follows from practice, and what would show it worked?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Epistemic mode specifications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/hypothesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruments and observing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods and computation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication and robustness assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Synthesis and reconstruction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Working materials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prior-art.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prior art: agents and benchmarks for science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./corpus-study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific practice and impact: a study design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agent-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">From human-defined modes to scientific agents</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./historical-evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluating scientific advance against past work</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Group workspace</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meeting notes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to contribute</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#three-things-people-mean-by-the-scientific-method" id="toc-three-things-people-mean-by-the-scientific-method" class="nav-link active" data-scroll-target="#three-things-people-mean-by-the-scientific-method">0. Three things people mean by “the scientific method”</a>
+  <ul class="collapse">
+  <li><a href="#where-inquiry-starts" id="toc-where-inquiry-starts" class="nav-link" data-scroll-target="#where-inquiry-starts">Where inquiry starts</a></li>
+  </ul></li>
+  <li><a href="#three-cognitive-tasks" id="toc-three-cognitive-tasks" class="nav-link" data-scroll-target="#three-cognitive-tasks">1. Three cognitive tasks</a></li>
+  <li><a href="#inference-hypothesis-prediction-explanation" id="toc-inference-hypothesis-prediction-explanation" class="nav-link" data-scroll-target="#inference-hypothesis-prediction-explanation">2. Inference, hypothesis, prediction, explanation</a></li>
+  <li><a href="#the-unit-one-pass-through-the-schema" id="toc-the-unit-one-pass-through-the-schema" class="nav-link" data-scroll-target="#the-unit-one-pass-through-the-schema">3. The unit: one pass through the schema</a></li>
+  <li><a href="#the-thinkers-and-the-node-each-owns" id="toc-the-thinkers-and-the-node-each-owns" class="nav-link" data-scroll-target="#the-thinkers-and-the-node-each-owns">4. The thinkers, and the node each owns</a></li>
+  <li><a href="#the-graph" id="toc-the-graph" class="nav-link" data-scroll-target="#the-graph">5. The graph</a></li>
+  <li><a href="#using-the-graph" id="toc-using-the-graph" class="nav-link" data-scroll-target="#using-the-graph">6. Using the graph</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/unit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The unit of inquiry: reasoning, hypotheses, tests</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="status drafted">Drafted</span> <span class="status-line">module 0 · read before meeting 1 · the verbs every mode page uses · not yet discussed</span></p>
+<ul>
+<li>Read this page before meeting 1. It starts with the three things people mean by “the scientific method,” then defines the words the rest of the book uses without stopping: deduction, induction, abduction, hypothesis, test, confirm, exclude, corroborate.</li>
+<li>It ends with one graph, the unit of hypothesis testing drawn as a workflow. Meeting 1 places Platt and Cleland on it; every later meeting places its own case on it.</li>
+<li>One-hour introduction for anyone new to the vocabulary: <span class="citation" data-cites="okasha2016">Okasha (<a href="bibliography.html#ref-okasha2016" role="doc-biblioref">2016</a>)</span>, chapter 2 of a very short introduction.</li>
+</ul>
+<section id="three-things-people-mean-by-the-scientific-method" class="level2">
+<h2 class="anchored" data-anchor-id="three-things-people-mean-by-the-scientific-method">0. Three things people mean by “the scientific method”</h2>
+<ul>
+<li>Asked for the method in one word, a room of earth scientists could not give one. The texts explain why: three different things go by the name, and the earth sciences fit the first badly.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">The textbook method</th>
+<th style="text-align: left;">The AI discovery loop</th>
+<th style="text-align: left;">The earth sciences’ own account</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Where it is stated</td>
+<td style="text-align: left;">Science texts “from grade school through college,” which Cleland says “invariably provide one (or a combination) of two accounts, scientific inductivism or falsificationism” <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 987</a>)</span>; the school version taken apart by <span class="citation" data-cites="windschitl2008">Windschitl et al. (<a href="bibliography.html#ref-windschitl2008" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">“Closed-the-loop of hypothesis generation, experimental planning, and execution” <span class="citation" data-cites="kitano2021">(<a href="bibliography.html#ref-kitano2021" role="doc-biblioref">Kitano 2021, 1</a>)</span>; a system “mirroring the reasoning process underpinning the scientific method” that, “given a research goal specified in natural language,” proposes hypotheses and protocols <span class="citation" data-cites="gottweis2026">(<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref"><span class="nocase">Gottweis et al.</span> 2026</a>)</span>; “active learning closes the loop by proposing improved follow-up recipes” <span class="citation" data-cites="szymanski2023">(<a href="bibliography.html#ref-szymanski2023" role="doc-biblioref">Szymanski et al. 2023, 86</a>)</span>; a system that “autonomously designs, plans and performs complex experiments” <span class="citation" data-cites="boiko2023">(<a href="bibliography.html#ref-boiko2023" role="doc-biblioref">Boiko et al. 2023, 570</a>)</span>; Adam, the first closed loop <span class="citation" data-cites="king2009">(<a href="bibliography.html#ref-king2009" role="doc-biblioref">King et al. 2009</a>)</span></td>
+<td style="text-align: left;">Chamberlin’s multiple working hypotheses, written by a geologist against the “ruling theory” <span class="citation" data-cites="chamberlin1965">(<a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">Chamberlin 1965</a>)</span>; Gilbert on where a geological hypothesis comes from <span class="citation" data-cites="gilbert1886 gilbert1896">(<a href="bibliography.html#ref-gilbert1886" role="doc-biblioref">Gilbert 1886</a>, <a href="bibliography.html#ref-gilbert1896" role="doc-biblioref">1896</a>)</span>; Cleland on historical science <span class="citation" data-cites="cleland2001 cleland2002">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001</a>, <a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>; Frodeman on geology as interpretive and historical <span class="citation" data-cites="frodeman1995">(<a href="bibliography.html#ref-frodeman1995" role="doc-biblioref">Frodeman 1995</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The steps</td>
+<td style="text-align: left;">Observe, ask, hypothesize, predict, test, conclude; one hypothesis at a time; confirmation accumulates or a failure refutes</td>
+<td style="text-align: left;">Goal in; generate hypotheses or candidates; choose the next experiment by a score; execute; analyze; repeat until the goal is met</td>
+<td style="text-align: left;">Observe puzzling traces; formulate incompatible rivals; hunt for the trace that discriminates; retain the best explanation; expect it to be deposed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Where it starts (node Q)</td>
+<td style="text-align: left;">An observation, then a question</td>
+<td style="text-align: left;">A goal supplied from outside: six tasks <span class="citation" data-cites="boiko2023">(<a href="bibliography.html#ref-boiko2023" role="doc-biblioref">Boiko et al. 2023</a>)</span>, a target list <span class="citation" data-cites="szymanski2023">(<a href="bibliography.html#ref-szymanski2023" role="doc-biblioref">Szymanski et al. 2023</a>)</span>, a research goal <span class="citation" data-cites="gottweis2026">(<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref"><span class="nocase">Gottweis et al.</span> 2026</a>)</span></td>
+<td style="text-align: left;">Puzzling traces of a past event <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 480</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hypotheses at G</td>
+<td style="text-align: left;">One</td>
+<td style="text-align: left;">Many, ranked by a score; rarely incompatible rivals</td>
+<td style="text-align: left;">Several, incompatible <span class="citation" data-cites="chamberlin1965 cleland2002">(<a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">Chamberlin 1965</a>; <a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 483–84</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Conditions at C</td>
+<td style="text-align: left;">Set</td>
+<td style="text-align: left;">Set, by a robot or a computation</td>
+<td style="text-align: left;">Found, by fieldwork <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 484</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The control series at V</td>
+<td style="text-align: left;">Absent from the diagram; present in the laboratory</td>
+<td style="text-align: left;">Mostly absent: a positive-only verifier scored itself <span class="citation" data-cites="leeman2024">(<a href="bibliography.html#ref-leeman2024" role="doc-biblioref">Leeman et al. 2024</a>)</span></td>
+<td style="text-align: left;">Absent by necessity; replaced by independent traces <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 491</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Decision at X or K</td>
+<td style="text-align: left;">Refute or confirm</td>
+<td style="text-align: left;">A score threshold</td>
+<td style="text-align: left;">Best explanation within the stated set <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 481–82</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">What it leaves out</td>
+<td style="text-align: left;">Auxiliaries, the series, rival generation, where questions come from <span class="citation" data-cites="cleland2001 windschitl2008">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 987–88</a>; <a href="bibliography.html#ref-windschitl2008" role="doc-biblioref">Windschitl et al. 2008</a>)</span></td>
+<td style="text-align: left;">Choosing the question; enumerating rivals; abstaining <span class="citation" data-cites="leeman2024">(<a href="bibliography.html#ref-leeman2024" role="doc-biblioref">Leeman et al. 2024</a>)</span></td>
+<td style="text-align: left;">Manipulation; hence the method of difference</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The textbook version is Platt’s loop with one branch: he called that “The Great Man With a Single Hypothesis” <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 350</a>)</span>. Chamberlin’s remedy is what makes it strong.</li>
+<li>The AI loop is Platt’s loop with node G automated and node Q supplied. Kitano’s own example iterates “to verify or reject h1” against “h2, h3, and h4” <span class="citation" data-cites="kitano2021">(<a href="bibliography.html#ref-kitano2021" role="doc-biblioref">Kitano 2021, 4</a>)</span>, so the design has room for rivals; the published systems mostly optimize a single target.</li>
+<li>The earth sciences run both patterns. Where nature repeats herself, a catalog of events supports regularities the way an experimental program would, minus the power to set the condition <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 485</a>)</span>; where an event is unique, the trace pattern rules. That is why one word will not do, and why the ledger records a node letter instead.</li>
+</ul>
+<section id="where-inquiry-starts" class="level3">
+<h3 class="anchored" data-anchor-id="where-inquiry-starts">Where inquiry starts</h3>
+<ul>
+<li>The readings give five entry states for node Q. They are not rival theories; they are what different modes begin with, and the ledger’s “question origin” column records which.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Entry state</th>
+<th style="text-align: left;">Who says so</th>
+<th style="text-align: left;">Example in the reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A surprising observation or anomaly</td>
+<td style="text-align: left;">Peirce, the surprising fact <span class="citation" data-cites="peirce1992">(<a href="bibliography.html#ref-peirce1992" role="doc-biblioref">Peirce 1992</a>)</span>; Cleland’s prototype, “puzzling traces” <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 480</a>)</span>; Platt’s own description of practice, where the logical tree on the blackboard begins with “the hot new result just up from the laboratory” <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 348</a>)</span></td>
+<td style="text-align: left;">Becquerel’s plate; Cech’s catalytic products; the iridium layer <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 482, 486</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">An unsolved problem or question</td>
+<td style="text-align: left;">Popper, science begins with problems <span class="citation" data-cites="popper2005">(<a href="bibliography.html#ref-popper2005" role="doc-biblioref">Popper 2005</a>)</span>; Platt’s prescription, “every problem in science” <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>; Gilbert’s topographic problem <span class="citation" data-cites="gilbert1896">(<a href="bibliography.html#ref-gilbert1896" role="doc-biblioref">Gilbert 1896</a>)</span></td>
+<td style="text-align: left;">Coon Butte; the origin of the dinosaurs’ extinction before 1980 <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 988</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A hypothesis or a theory’s prediction</td>
+<td style="text-align: left;">Dicke predicting the background radiation <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 990</a>)</span>; the Viking designers <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 479</a>)</span>; Vine and Matthews <span class="citation" data-cites="vine1963">(<a href="bibliography.html#ref-vine1963" role="doc-biblioref">Vine and Matthews 1963</a>)</span></td>
+<td style="text-align: left;">Platt’s steps 1 and 2 presuppose this state</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A new capability</td>
+<td style="text-align: left;">Cleland: finding attenuated traces “may require advances in technology,” antennas and the cyclotron <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 990</a>)</span>; Hacking’s playing with equipment, via <span class="citation" data-cites="cleland2002">Cleland (<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>, p.&nbsp;486</td>
+<td style="text-align: left;">Dark-fibre sensing, meeting 5 <span class="citation" data-cites="lindsey2019">(<a href="bibliography.html#ref-lindsey2019" role="doc-biblioref">Lindsey et al. 2019</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A goal supplied by someone else</td>
+<td style="text-align: left;">Every AI system in the prior-art chapter; funders, in Platt’s closing paragraph <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 352</a>)</span></td>
+<td style="text-align: left;">Six chemistry tasks; fifty-seven target compounds <span class="citation" data-cites="boiko2023 szymanski2023">(<a href="bibliography.html#ref-boiko2023" role="doc-biblioref">Boiko et al. 2023</a>; <a href="bibliography.html#ref-szymanski2023" role="doc-biblioref">Szymanski et al. 2023</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Platt’s description and his prescription start in different places: the blackboards begin with a result, the four steps begin with hypotheses already devised. The gap between them is the exploratory phase Cleland describes and Platt does not <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 486</a>)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="three-cognitive-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="three-cognitive-tasks">1. Three cognitive tasks</h2>
+<ul>
+<li>Peirce’s framing makes the three symmetric: each rearranges a rule, a case, and a result <span class="citation" data-cites="peirce1992">(<a href="bibliography.html#ref-peirce1992" role="doc-biblioref">Peirce 1992</a>, originally 1878)</span>.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Task</th>
+<th style="text-align: left;">Form</th>
+<th style="text-align: left;">What it guarantees</th>
+<th style="text-align: left;">Geoscience example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Deduction</td>
+<td style="text-align: left;">Rule + case, therefore result</td>
+<td style="text-align: left;">The result is certain if the premises are true; nothing new is added</td>
+<td style="text-align: left;">If ridge-ridge transforms exist (rule) and this offset is one (case), first motions on the offset segment are opposite to the ridge-offset sense (result) <span class="citation" data-cites="wilson1965">(<a href="bibliography.html#ref-wilson1965" role="doc-biblioref">Wilson 1965</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Induction</td>
+<td style="text-align: left;">Case + result, therefore rule</td>
+<td style="text-align: left;">The rule is probable, never certain; the next case can break it</td>
+<td style="text-align: left;">Twenty catalogs (cases) each give b near 1 (results), therefore b near 1 in general (rule)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abduction</td>
+<td style="text-align: left;">Rule + result, therefore case</td>
+<td style="text-align: left;">The case is the best available explanation, and only that</td>
+<td style="text-align: left;">Peat-mud couplets with sand sheets (result) and what subduction earthquakes do to coasts (rule), therefore a great earthquake (case) <span class="citation" data-cites="atwater1987">(<a href="bibliography.html#ref-atwater1987" role="doc-biblioref">Atwater 1987</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Deduction preserves truth and adds no content. Induction and abduction add content and can be wrong.</li>
+<li>Aristotle named the first two. Peirce named the third and made it the logic of discovery; Hanson built the case that observation itself is shaped by it <span class="citation" data-cites="hanson1958">(<a href="bibliography.html#ref-hanson1958" role="doc-biblioref">Hanson 1958</a>)</span>.</li>
+</ul>
+</section>
+<section id="inference-hypothesis-prediction-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="inference-hypothesis-prediction-explanation">2. Inference, hypothesis, prediction, explanation</h2>
+<ul>
+<li><strong>Inference</strong>: any reasoned move from premises or evidence to a conclusion. The umbrella term; the three tasks above are its kinds.</li>
+<li><strong>Hypothesis</strong>: a candidate claim, not yet established, with consequences that could be checked. How the word acquired that meaning: <span class="citation" data-cites="glass2008">Glass and Hall (<a href="bibliography.html#ref-glass2008" role="doc-biblioref">2008</a>)</span>. The working hypothesis against the ruling theory: <span class="citation" data-cites="chamberlin1965">Chamberlin (<a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">1965</a>)</span>, first printed in 1890. Where a geological hypothesis comes from, by analogy and then enumeration: <span class="citation" data-cites="gilbert1886">Gilbert (<a href="bibliography.html#ref-gilbert1886" role="doc-biblioref">1886</a>)</span>; <span class="citation" data-cites="gilbert1896">Gilbert (<a href="bibliography.html#ref-gilbert1896" role="doc-biblioref">1896</a>)</span>.</li>
+<li><strong>Prediction</strong> versus <strong>explanation</strong>: a prediction is a consequence derived before the observation; an explanation is a hypothesis fitted to an observation already in hand. Whether the order matters for how much the evidence counts is a live dispute <span class="citation" data-cites="musgrave1974 douglas2013">(<a href="bibliography.html#ref-musgrave1974" role="doc-biblioref">Musgrave 1974</a>; <a href="bibliography.html#ref-douglas2013" role="doc-biblioref">Douglas and Magnus 2013</a>)</span>.</li>
+</ul>
+</section>
+<section id="the-unit-one-pass-through-the-schema" class="level2">
+<h2 class="anchored" data-anchor-id="the-unit-one-pass-through-the-schema">3. The unit: one pass through the schema</h2>
+<p><span class="math display">\[H + A + C \Rightarrow E\]</span></p>
+<ul>
+<li><p><span class="math inline">\(H\)</span>: the hypothesis under test.</p></li>
+<li><p><span class="math inline">\(A\)</span>: the auxiliary assumptions, such as the theory of the instrument, the background laws, the dating method.</p></li>
+<li><p><span class="math inline">\(C\)</span>: the conditions, what the system was in, either set by the investigator or found in nature.</p></li>
+<li><p><span class="math inline">\(E\)</span>: the expected observation.</p></li>
+<li><p>The schema is in the assigned reading. Cleland writes it as a test implication inferred from <span class="math inline">\(H\)</span>: if condition <span class="math inline">\(C\)</span> is brought about, event <span class="math inline">\(E\)</span> will occur <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 987</a>)</span>. The auxiliaries <span class="math inline">\(A\)</span> enter one page later, as the “enormous number of auxiliary assumptions about equipment and background conditions” any real test carries <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 988</a>)</span>.</p></li>
+<li><p>The verbs are defined on the schema. Each has an owner who fixed its meaning.</p></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Verb</th>
+<th style="text-align: left;">On the schema</th>
+<th style="text-align: left;">Who fixed the meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Test</td>
+<td style="text-align: left;">Arrange or find <span class="math inline">\(C\)</span>, derive <span class="math inline">\(E\)</span>, observe</td>
+<td style="text-align: left;"><span class="citation" data-cites="hempel1945">Hempel (<a href="bibliography.html#ref-hempel1945" role="doc-biblioref">1945</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Confirm</td>
+<td style="text-align: left;">Observe <span class="math inline">\(E\)</span>; the conjunction survives; strength depends on how unlikely <span class="math inline">\(E\)</span> was without <span class="math inline">\(H\)</span></td>
+<td style="text-align: left;"><span class="citation" data-cites="hempel1945">Hempel (<a href="bibliography.html#ref-hempel1945" role="doc-biblioref">1945</a>)</span>; the Bayesian form is <span class="math inline">\(P(E \mid H) / P(E)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Corroborate</td>
+<td style="text-align: left;">Survive a test that could have failed, without calling that confirmation</td>
+<td style="text-align: left;"><span class="citation" data-cites="popper2005">Popper (<a href="bibliography.html#ref-popper2005" role="doc-biblioref">2005</a>)</span>, first published 1934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Falsify</td>
+<td style="text-align: left;">Observe <span class="math inline">\(\neg E\)</span>; therefore <span class="math inline">\(\neg(H + A + C)\)</span>; logic does not say which conjunct to drop</td>
+<td style="text-align: left;"><span class="citation" data-cites="popper2005">Popper (<a href="bibliography.html#ref-popper2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="duhem1954">Duhem (<a href="bibliography.html#ref-duhem1954" role="doc-biblioref">1954</a>)</span>; <span class="citation" data-cites="quine1951">Quine (<a href="bibliography.html#ref-quine1951" role="doc-biblioref">1951</a>)</span>; stated for geologists in <span class="citation" data-cites="cleland2001">Cleland (<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">2001</a>)</span>, p.&nbsp;988</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">Hold <span class="math inline">\(C\)</span> and vary <span class="math inline">\(A\)</span> after a failure, against false negatives; repeat after a success, against false positives; remove <span class="math inline">\(C\)</span> to see whether it was needed</td>
+<td style="text-align: left;">Mill’s method of difference <span class="citation" data-cites="mill2011">(<a href="bibliography.html#ref-mill2011" role="doc-biblioref">Mill 2011</a>)</span>; <span class="citation" data-cites="cleland2001">Cleland (<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">2001</a>)</span>, p.&nbsp;988; <span class="citation" data-cites="cleland2002">Cleland (<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>, pp.&nbsp;477–478</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exclude</td>
+<td style="text-align: left;">Falsify one member of a stated set of rivals</td>
+<td style="text-align: left;"><span class="citation" data-cites="platt1964">Platt (<a href="bibliography.html#ref-platt1964" role="doc-biblioref">1964</a>)</span>, after Bacon’s instances of the fingerpost <span class="citation" data-cites="bacon2004">(<a href="bibliography.html#ref-bacon2004" role="doc-biblioref">Bacon 2004</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Infer to the best explanation</td>
+<td style="text-align: left;">Retain the <span class="math inline">\(H\)</span> that makes <span class="math inline">\(E\)</span> least surprising among the rivals; a retention move, not an exclusion</td>
+<td style="text-align: left;"><span class="citation" data-cites="harman1965">Harman (<a href="bibliography.html#ref-harman1965" role="doc-biblioref">1965</a>)</span>; <span class="citation" data-cites="lipton2004">Lipton (<a href="bibliography.html#ref-lipton2004" role="doc-biblioref">2004</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Severely test</td>
+<td style="text-align: left;">A test the <span class="math inline">\(H\)</span> would probably have failed if it were false</td>
+<td style="text-align: left;"><span class="citation" data-cites="mayo1996">Mayo (<a href="bibliography.html#ref-mayo1996" role="doc-biblioref">1996</a>)</span>; <span class="citation" data-cites="mayo2006">Mayo and Spanos (<a href="bibliography.html#ref-mayo2006" role="doc-biblioref">2006</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The Bayesian line ties them together: <span class="math inline">\(P(H \mid E) \propto P(E \mid H)\,P(H)\)</span>. Cleland suspects her differences between historical and experimental science can be rewritten this way <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 495</a>)</span>; <span class="citation" data-cites="tarantola2006">Tarantola (<a href="bibliography.html#ref-tarantola2006" role="doc-biblioref">2006</a>)</span> is the geophysicist’s version.</li>
+</ul>
+</section>
+<section id="the-thinkers-and-the-node-each-owns" class="level2">
+<h2 class="anchored" data-anchor-id="the-thinkers-and-the-node-each-owns">4. The thinkers, and the node each owns</h2>
+<ul>
+<li>Dates are the original publications. Citations point at the editions in the bibliography.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Year</th>
+<th style="text-align: left;">Thinker</th>
+<th style="text-align: left;">Contribution</th>
+<th style="text-align: left;">Node on the graph</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1620</td>
+<td style="text-align: left;">Bacon <span class="citation" data-cites="bacon2004">(<a href="bibliography.html#ref-bacon2004" role="doc-biblioref">Bacon 2004</a>)</span></td>
+<td style="text-align: left;">Eliminative induction; the instance of the fingerpost that decides between roads</td>
+<td style="text-align: left;">Design, Exclude</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1840</td>
+<td style="text-align: left;">Whewell <span class="citation" data-cites="whewell2014">(<a href="bibliography.html#ref-whewell2014" role="doc-biblioref">Whewell 2014</a>)</span></td>
+<td style="text-align: left;">Hypotheses come first; consilience when independent classes of facts agree</td>
+<td style="text-align: left;">Generate, Retain</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1843</td>
+<td style="text-align: left;">Mill <span class="citation" data-cites="mill2011">(<a href="bibliography.html#ref-mill2011" role="doc-biblioref">Mill 2011</a>)</span></td>
+<td style="text-align: left;">Methods of agreement and difference: what controlling <span class="math inline">\(C\)</span> means</td>
+<td style="text-align: left;">Conditions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1878</td>
+<td style="text-align: left;">Peirce <span class="citation" data-cites="peirce1992">(<a href="bibliography.html#ref-peirce1992" role="doc-biblioref">Peirce 1992</a>)</span></td>
+<td style="text-align: left;">Abduction as the third task</td>
+<td style="text-align: left;">Generate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1886</td>
+<td style="text-align: left;">Gilbert <span class="citation" data-cites="gilbert1886">(<a href="bibliography.html#ref-gilbert1886" role="doc-biblioref">Gilbert 1886</a>)</span></td>
+<td style="text-align: left;">Hypotheses by analogy, in geology</td>
+<td style="text-align: left;">Generate</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1890</td>
+<td style="text-align: left;">Chamberlin <span class="citation" data-cites="chamberlin1965">(<a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">Chamberlin 1965</a>)</span></td>
+<td style="text-align: left;">Hold a family of hypotheses at once</td>
+<td style="text-align: left;">Generate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1906</td>
+<td style="text-align: left;">Duhem <span class="citation" data-cites="duhem1954">(<a href="bibliography.html#ref-duhem1954" role="doc-biblioref">Duhem 1954</a>)</span></td>
+<td style="text-align: left;">No crucial experiment in physics; refutation hits the conjunction</td>
+<td style="text-align: left;">Exclude, Protect</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1934</td>
+<td style="text-align: left;">Popper <span class="citation" data-cites="popper2005">(<a href="bibliography.html#ref-popper2005" role="doc-biblioref">Popper 2005</a>)</span></td>
+<td style="text-align: left;">Falsification; the asymmetry between refuting and confirming</td>
+<td style="text-align: left;">Exclude</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1945</td>
+<td style="text-align: left;">Hempel <span class="citation" data-cites="hempel1945">(<a href="bibliography.html#ref-hempel1945" role="doc-biblioref">Hempel 1945</a>)</span></td>
+<td style="text-align: left;">The logic of confirmation and its paradoxes</td>
+<td style="text-align: left;">Retain</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1951</td>
+<td style="text-align: left;">Quine <span class="citation" data-cites="quine1951">(<a href="bibliography.html#ref-quine1951" role="doc-biblioref">Quine 1951</a>)</span></td>
+<td style="text-align: left;">Duhem’s holism generalized to all belief</td>
+<td style="text-align: left;">Protect</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1958</td>
+<td style="text-align: left;">Hanson <span class="citation" data-cites="hanson1958">(<a href="bibliography.html#ref-hanson1958" role="doc-biblioref">Hanson 1958</a>)</span></td>
+<td style="text-align: left;">Discovery has a logic; observation is theory-laden</td>
+<td style="text-align: left;">Generate, Observe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1964</td>
+<td style="text-align: left;">Platt <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964</a>)</span></td>
+<td style="text-align: left;">Strong inference</td>
+<td style="text-align: left;">The loop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1965</td>
+<td style="text-align: left;">Harman <span class="citation" data-cites="harman1965">(<a href="bibliography.html#ref-harman1965" role="doc-biblioref">Harman 1965</a>)</span></td>
+<td style="text-align: left;">Inference to the best explanation, named</td>
+<td style="text-align: left;">Retain</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1970</td>
+<td style="text-align: left;">Lakatos <span class="citation" data-cites="lakatos1970">(<a href="bibliography.html#ref-lakatos1970" role="doc-biblioref">Lakatos 1970</a>)</span></td>
+<td style="text-align: left;">Protective belt; research programmes</td>
+<td style="text-align: left;">Protect</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1996</td>
+<td style="text-align: left;">Mayo <span class="citation" data-cites="mayo1996">(<a href="bibliography.html#ref-mayo1996" role="doc-biblioref">Mayo 1996</a>)</span></td>
+<td style="text-align: left;">Severity as the measure of a test</td>
+<td style="text-align: left;">Design</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2001</td>
+<td style="text-align: left;">Cleland <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001</a>)</span></td>
+<td style="text-align: left;">Historical versus experimental: the asymmetry of overdetermination</td>
+<td style="text-align: left;">Conditions, Retain</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="the-graph">5. The graph</h2>
+<ul>
+<li>One unit as a workflow. Ten working nodes and one escape. Every thinker above sits on one of them. The <a href="./sessions/01-scientific-method.html#where-the-two-papers-sit-on-the-unit-graph">meeting 1 page</a> places Platt and Cleland on it.</li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-unit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-unit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-unit">%%{init: {"theme": "base", "themeVariables": {"fontSize": "17px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 26, "rankSpacing": 40, "curve": "basis", "padding": 10}}}%%
+flowchart TD
+    Q["Q. Question or anomaly"] --&gt; G["G. Generate rivals H1 … Hn&lt;br/&gt;abduction · Peirce, Gilbert, Chamberlin"]
+    G --&gt; D["D. Derive E_i from H_i + A + C&lt;br/&gt;deduction · Hempel, Cleland"]
+    D --&gt; S["S. Design: choose the C and the observable&lt;br/&gt;where the E_i differ&lt;br/&gt;Bacon's fingerpost · Mill · Mayo"]
+    S --&gt; C["C. Set the conditions (experiment)&lt;br/&gt;or find them (trace)"]
+    C --&gt; O["O. Observe&lt;br/&gt;theory-laden · Hanson"]
+    O --&gt; M{"M. Match E_i?"}
+    M --&gt; V["V. Control the series: hold C and vary A;&lt;br/&gt;repeat after a success; remove C&lt;br/&gt;Mill · Cleland"]
+    V -- "run again" --&gt; C
+    V -- "not E_i survives the series" --&gt; X["X. Exclude H_i&lt;br/&gt;falsify · Popper, Platt"]
+    V -- "E_i survives the series" --&gt; K["K. Retain H_i&lt;br/&gt;confirm, corroborate, or best explanation&lt;br/&gt;Hempel · Popper · Harman"]
+    X -. "or protect H_i" .-&gt; P["P. Revise A or C instead&lt;br/&gt;Duhem · Quine · Lakatos"]
+    P -.-&gt; D
+    X --&gt; R["R. Refine the survivors&lt;br/&gt;into subhypotheses"]
+    K --&gt; R
+    R --&gt; G
+
+    classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
+    classDef escape fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    class Q,G,D,S,C,O,V,X,K,R step;
+    class M branch;
+    class P escape;
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The unit of inquiry as a workflow. Solid arrows are one pass; V is the control series Cleland says is the real unit of experimental work, and its loop back to C is where most laboratory time goes; the dashed arrow is the Duhem escape, revising an auxiliary or a condition instead of the hypothesis. Node letters are used in the tables below and in every meeting’s ledger row.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="using-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-graph">6. Using the graph</h2>
+<ul>
+<li>Meeting 1: place one recent paper of your own on the graph; mark the nodes it performed, the nodes it skipped, and whether <span class="math inline">\(C\)</span> was set or found. Then place Platt and Cleland.</li>
+<li>Every later meeting: the ledger’s “decisive move” names a node letter. The <a href="./glossary.html#working-mode-specifications">mode specifications</a> say which nodes each mode exercises; <a href="./modes/hypothesis.html">hypothesis assessment</a> is the mode that runs the whole loop.</li>
+<li>Discussion question 3 of meeting 1, whether the papers describe how ideas are generated or how claims are warranted, becomes a pointing exercise: G against K.</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-atwater1987" class="csl-entry" role="listitem">
+Atwater, Brian F. 1987. <span>“<span class="nocase">Evidence for great Holocene earthquakes along the outer coast of Washington state</span>.”</span> <em>Science</em> 236 (4804): 942–44. <a href="https://doi.org/10.1126/science.236.4804.942">https://doi.org/10.1126/science.236.4804.942</a>.
+</div>
+<div id="ref-bacon2004" class="csl-entry" role="listitem">
+Bacon, Francis. 2004. <span>“<span class="nocase">Novum organum</span>.”</span> In <em>The Oxford Francis Bacon, Vol. 11: The Instauratio Magna Part II: Novum Organum and Associated Texts</em>, edited by Graham Rees and Maria Wakely. Oxford University Press. <a href="https://doi.org/10.1093/oseo/instance.00007242">https://doi.org/10.1093/oseo/instance.00007242</a>.
+</div>
+<div id="ref-boiko2023" class="csl-entry" role="listitem">
+Boiko, Daniil A., Robert MacKnight, Ben Kline, and Gabe Gomes. 2023. <span>“<span class="nocase">Autonomous chemical research with large language models</span>.”</span> <em>Nature</em> 624: 570–78. <a href="https://doi.org/10.1038/s41586-023-06792-0">https://doi.org/10.1038/s41586-023-06792-0</a>.
+</div>
+<div id="ref-chamberlin1965" class="csl-entry" role="listitem">
+Chamberlin, T. C. 1965. <span>“<span class="nocase">The Method of Multiple Working Hypotheses</span>.”</span> <em>Science</em> 148 (3671): 754–59. <a href="https://doi.org/10.1126/science.148.3671.754">https://doi.org/10.1126/science.148.3671.754</a>.
+</div>
+<div id="ref-cleland2001" class="csl-entry" role="listitem">
+Cleland, Carol E. 2001. <span>“<span class="nocase">Historical science, experimental science, and the scientific method</span>.”</span> <em>Geology</em> 29 (11): 987–90. <a href="https://doi.org/10.1130/0091-7613(2001)029<0987:HSESAT>2.0.CO;2">https://doi.org/10.1130/0091-7613(2001)029&lt;0987:HSESAT&gt;2.0.CO;2</a>.
+</div>
+<div id="ref-cleland2002" class="csl-entry" role="listitem">
+Cleland, Carol E. 2002. <span>“<span class="nocase">Methodological and Epistemic Differences between Historical Science and Experimental Science</span>.”</span> <em>Philosophy of Science</em> 69 (3): 474–96. <a href="https://doi.org/10.1086/342455">https://doi.org/10.1086/342455</a>.
+</div>
+<div id="ref-douglas2013" class="csl-entry" role="listitem">
+Douglas, Heather, and P. D. Magnus. 2013. <span>“<span class="nocase">State of the Field: Why Novel Prediction Matters</span>.”</span> <em>Studies in History and Philosophy of Science Part A</em> 44 (4): 580–89. <a href="https://doi.org/10.1016/j.shpsa.2013.04.001">https://doi.org/10.1016/j.shpsa.2013.04.001</a>.
+</div>
+<div id="ref-duhem1954" class="csl-entry" role="listitem">
+Duhem, Pierre. 1954. <em><span class="nocase">The Aim and Structure of Physical Theory</span></em>. Princeton University Press. <a href="https://doi.org/10.1515/9780691233857">https://doi.org/10.1515/9780691233857</a>.
+</div>
+<div id="ref-frodeman1995" class="csl-entry" role="listitem">
+Frodeman, R. 1995. <span>“<span class="nocase">Geological reasoning: Geology as an interpretive and historical science</span>.”</span> <em>Geological Society of America Bulletin</em> 107 (8): 960–68. <a href="https://doi.org/10.1130/0016-7606(1995)107<0960:GRGAAI>2.3.CO;2">https://doi.org/10.1130/0016-7606(1995)107&lt;0960:GRGAAI&gt;2.3.CO;2</a>.
+</div>
+<div id="ref-gilbert1886" class="csl-entry" role="listitem">
+Gilbert, G. K. 1886. <span>“<span class="nocase">The Inculcation of Scientific Method by Example, with an Illustration Drawn from the Quaternary Geology of Utah</span>.”</span> <em>American Journal of Science</em> s3-31 (184): 284–99. <a href="https://doi.org/10.2475/ajs.s3-31.184.284">https://doi.org/10.2475/ajs.s3-31.184.284</a>.
+</div>
+<div id="ref-gilbert1896" class="csl-entry" role="listitem">
+Gilbert, G. K. 1896. <span>“<span class="nocase">The Origin of Hypotheses, Illustrated by the Discussion of a Topographic Problem</span>.”</span> <em>Science</em> 3 (53): 1–13. <a href="https://doi.org/10.1126/science.3.53.1">https://doi.org/10.1126/science.3.53.1</a>.
+</div>
+<div id="ref-glass2008" class="csl-entry" role="listitem">
+Glass, D. J., and N. Hall. 2008. <span>“<span class="nocase">A Brief History of the Hypothesis</span>.”</span> <em>Cell</em> 134 (3): 378–81. <a href="https://doi.org/10.1016/j.cell.2008.07.033">https://doi.org/10.1016/j.cell.2008.07.033</a>.
+</div>
+<div id="ref-gottweis2026" class="csl-entry" role="listitem">
+<span class="nocase">Gottweis, Juraj, Wei-Hung Weng, Alexander Daryin, et al.</span> 2026. <span>“<span class="nocase">Accelerating scientific discovery with Co-Scientist</span>.”</span> <em>Nature</em> 655 (8122): 487–96. <a href="https://doi.org/10.1038/s41586-026-10644-y">https://doi.org/10.1038/s41586-026-10644-y</a>.
+</div>
+<div id="ref-hanson1958" class="csl-entry" role="listitem">
+Hanson, Norwood Russell. 1958. <em><span class="nocase">Patterns of Discovery: An Inquiry into the Conceptual Foundations of Science</span></em>. Cambridge University Press. <a href="https://openlibrary.org/works/OL6927705W">https://openlibrary.org/works/OL6927705W</a>.
+</div>
+<div id="ref-harman1965" class="csl-entry" role="listitem">
+Harman, Gilbert H. 1965. <span>“<span class="nocase">The Inference to the Best Explanation</span>.”</span> <em>The Philosophical Review</em> 74 (1): 88–95. <a href="https://doi.org/10.2307/2183532">https://doi.org/10.2307/2183532</a>.
+</div>
+<div id="ref-hempel1945" class="csl-entry" role="listitem">
+Hempel, Carl G. 1945. <span>“<span class="nocase">Studies in the Logic of Confirmation (I.)</span>.”</span> <em>Mind</em> LIV (213): 1–26. <a href="https://doi.org/10.1093/mind/LIV.213.1">https://doi.org/10.1093/mind/LIV.213.1</a>.
+</div>
+<div id="ref-king2009" class="csl-entry" role="listitem">
+King, Ross D., Jem Rowland, Stephen G. Oliver, et al. 2009. <span>“<span class="nocase">The Automation of Science</span>.”</span> <em>Science</em> 324 (5923): 85–89. <a href="https://doi.org/10.1126/science.1165620">https://doi.org/10.1126/science.1165620</a>.
+</div>
+<div id="ref-kitano2021" class="csl-entry" role="listitem">
+Kitano, Hiroaki. 2021. <span>“<span class="nocase">Nobel Turing Challenge: creating the engine for scientific discovery</span>.”</span> <em>Npj Systems Biology and Applications</em> 7 (1): 29. <a href="https://doi.org/10.1038/s41540-021-00189-3">https://doi.org/10.1038/s41540-021-00189-3</a>.
+</div>
+<div id="ref-lakatos1970" class="csl-entry" role="listitem">
+Lakatos, Imre. 1970. <span>“<span class="nocase">Falsification and the Methodology of Scientific Research Programmes</span>.”</span> In <em>Criticism and the Growth of Knowledge</em>, edited by Imre Lakatos and Alan Musgrave. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139171434.009">https://doi.org/10.1017/CBO9781139171434.009</a>.
+</div>
+<div id="ref-leeman2024" class="csl-entry" role="listitem">
+Leeman, Josh, Yuhan Liu, Joseph Stiles, et al. 2024. <span>“<span class="nocase">Challenges in High-Throughput Inorganic Materials Prediction and Autonomous Synthesis</span>.”</span> <em>PRX Energy</em> 3 (1): 011002. <a href="https://doi.org/10.1103/PRXEnergy.3.011002">https://doi.org/10.1103/PRXEnergy.3.011002</a>.
+</div>
+<div id="ref-lindsey2019" class="csl-entry" role="listitem">
+Lindsey, Nathaniel J., T. Craig Dawe, and Jonathan B. Ajo-Franklin. 2019. <span>“<span class="nocase">Illuminating seafloor faults and ocean dynamics with dark fiber distributed acoustic sensing</span>.”</span> <em>Science</em> 366 (6469): 1103–7. <a href="https://doi.org/10.1126/science.aay5881">https://doi.org/10.1126/science.aay5881</a>.
+</div>
+<div id="ref-lipton2004" class="csl-entry" role="listitem">
+Lipton, Peter. 2004. <em><span class="nocase">Inference to the Best Explanation</span></em>. 2nd ed. Routledge. <a href="https://doi.org/10.4324/9780203470855">https://doi.org/10.4324/9780203470855</a>.
+</div>
+<div id="ref-mayo1996" class="csl-entry" role="listitem">
+Mayo, Deborah G. 1996. <em><span class="nocase">Error and the Growth of Experimental Knowledge</span></em>. University of Chicago Press. <a href="https://doi.org/10.7208/chicago/9780226511993.001.0001">https://doi.org/10.7208/chicago/9780226511993.001.0001</a>.
+</div>
+<div id="ref-mayo2006" class="csl-entry" role="listitem">
+Mayo, Deborah G., and Aris Spanos. 2006. <span>“<span class="nocase">Severe Testing as a Basic Concept in a Neyman–Pearson Philosophy of Induction</span>.”</span> <em>The British Journal for the Philosophy of Science</em> 57 (2): 323–57. <a href="https://doi.org/10.1093/bjps/axl003">https://doi.org/10.1093/bjps/axl003</a>.
+</div>
+<div id="ref-mill2011" class="csl-entry" role="listitem">
+Mill, John Stuart. 2011. <em><span class="nocase">A System of Logic, Ratiocinative and Inductive</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139149839">https://doi.org/10.1017/CBO9781139149839</a>.
+</div>
+<div id="ref-musgrave1974" class="csl-entry" role="listitem">
+Musgrave, Alan. 1974. <span>“<span class="nocase">Logical versus Historical Theories of Confirmation</span>.”</span> <em>The British Journal for the Philosophy of Science</em> 25 (1): 1–23. <a href="https://doi.org/10.1093/bjps/25.1.1">https://doi.org/10.1093/bjps/25.1.1</a>.
+</div>
+<div id="ref-okasha2016" class="csl-entry" role="listitem">
+Okasha, Samir. 2016. <span>“<span>Scientific Inference</span>.”</span> In <em>Philosophy of Science: A Very Short Introduction</em>, 2nd ed. Oxford University Press. <a href="https://doi.org/10.1093/actrade/9780198745587.003.0002">https://doi.org/10.1093/actrade/9780198745587.003.0002</a>.
+</div>
+<div id="ref-peirce1992" class="csl-entry" role="listitem">
+Peirce, Charles S. 1992. <span>“<span class="nocase">Deduction, Induction, and Hypothesis</span>.”</span> In <em>The Essential Peirce: Selected Philosophical Writings, Volume 1 (1867–1893)</em>, edited by Nathan Houser and Christian Kloesel. Indiana University Press. <a href="https://doi.org/10.2307/j.ctvpwhg1z.17">https://doi.org/10.2307/j.ctvpwhg1z.17</a>.
+</div>
+<div id="ref-platt1964" class="csl-entry" role="listitem">
+Platt, John R. 1964. <span>“<span>Strong Inference</span>.”</span> <em>Science</em> 146 (3642): 347–53. <a href="https://doi.org/10.1126/science.146.3642.347">https://doi.org/10.1126/science.146.3642.347</a>.
+</div>
+<div id="ref-popper2005" class="csl-entry" role="listitem">
+Popper, Karl R. 2005. <em><span class="nocase">The Logic of Scientific Discovery</span></em>. Routledge. <a href="https://doi.org/10.4324/9780203994627">https://doi.org/10.4324/9780203994627</a>.
+</div>
+<div id="ref-quine1951" class="csl-entry" role="listitem">
+Quine, W. V. 1951. <span>“<span class="nocase">Two Dogmas of Empiricism</span>.”</span> <em>The Philosophical Review</em> 60 (1): 20–43. <a href="https://doi.org/10.2307/2181906">https://doi.org/10.2307/2181906</a>.
+</div>
+<div id="ref-szymanski2023" class="csl-entry" role="listitem">
+Szymanski, Nathan J., Bernardus Rendy, Yuxing Fei, et al. 2023. <span>“<span class="nocase">An autonomous laboratory for the accelerated synthesis of inorganic materials</span>.”</span> <em>Nature</em> 624 (7990): 86–91. <a href="https://doi.org/10.1038/s41586-023-06734-w">https://doi.org/10.1038/s41586-023-06734-w</a>.
+</div>
+<div id="ref-tarantola2006" class="csl-entry" role="listitem">
+Tarantola, Albert. 2006. <span>“<span class="nocase">Popper, Bayes and the inverse problem</span>.”</span> <em>Nature Physics</em> 2 (8): 492–94. <a href="https://doi.org/10.1038/nphys375">https://doi.org/10.1038/nphys375</a>.
+</div>
+<div id="ref-vine1963" class="csl-entry" role="listitem">
+Vine, F. J., and D. H. Matthews. 1963. <span>“<span>Magnetic Anomalies Over Oceanic Ridges</span>.”</span> <em>Nature</em> 199 (4897): 947–49. <a href="https://doi.org/10.1038/199947a0">https://doi.org/10.1038/199947a0</a>.
+</div>
+<div id="ref-whewell2014" class="csl-entry" role="listitem">
+Whewell, William. 2014. <em><span class="nocase">The Philosophy of the Inductive Sciences, Founded upon Their History</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139644662">https://doi.org/10.1017/CBO9781139644662</a>.
+</div>
+<div id="ref-wilson1965" class="csl-entry" role="listitem">
+Wilson, J. Tuzo. 1965. <span>“<span class="nocase">A New Class of Faults and their Bearing on Continental Drift</span>.”</span> <em>Nature</em> 207: 343–47. <a href="https://doi.org/10.1038/207343a0">https://doi.org/10.1038/207343a0</a>.
+</div>
+<div id="ref-windschitl2008" class="csl-entry" role="listitem">
+Windschitl, Mark, Jessica Thompson, and Melissa Braaten. 2008. <span>“<span class="nocase">Beyond the Scientific Method: Model-Based Inquiry as a New Paradigm of Preference for School Science Investigations</span>.”</span> <em>Science Education</em> 92 (5): 941–67. <a href="https://doi.org/10.1002/sce.20259">https://doi.org/10.1002/sce.20259</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/denolle-lab\.github\.io\/metascience-and-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./glossary.html" class="pagination-link" aria-label="Scientific advance and modes of inquiry">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Scientific advance and modes of inquiry</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./sessions/01-scientific-method.html" class="pagination-link" aria-label="Is there a scientific method?">
+        <span class="nav-page-text"><span class="chapter-title">Is there a scientific method?</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Working curriculum v0.4</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/unit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://denolle-lab.github.io/">Denolle Lab</a></p>
+</div>
+  </div>
+</footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
+
+
+
+
+</body></html>
