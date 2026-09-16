@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from urllib.parse import quote
 
-BOOK = re.compile(r'\b(Press|Publishers|Publishing)\b')
+BOOK = re.compile(r'\b(Press|Publishers|Publishing|Routledge)\b')
 CONFERENCE = re.compile(r'\b(Conference|Proceedings|Association for Computational Linguistics|Symposium|Workshop)\b')
 
 
