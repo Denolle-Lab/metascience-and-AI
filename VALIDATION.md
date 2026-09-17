@@ -1,5 +1,12 @@
 # Validation performed
 
+## September 17, 2026: composition, the agent skill, and a leaner meeting page
+
+`unit.qmd` gained section 6, composing units into a mode (parallel shared test, trace series, nature's repetition, each with the passage that forces it), and section 7, the unit as an agent skill, pointing at the new `agents/skills/unit-of-inquiry/SKILL.md` (v0.1.0: state, one rule per node with its source, compositions, outputs, planted flaws). Meeting 1's Platt figure was redrawn as a composition of units in the unit graph's letters and styling, with V dashed where Platt's "clean result" stands. Every session page lost its minute schedule and gained a section "The agent"; meeting 1's is written from the texts, the others say what would fill them. Meeting 1's optional readings were pruned to the method: Simon 1973 moved to meeting 13, Klahr and Dunbar 1988 to meeting 2, Fortunato and colleagues 2018 to meeting 10, Hacking 1992 and Dellsén 2016 dropped from the page (the glossary and meeting 12 keep them).
+
+- `tools/validate.py` passes: 35 chapter files, 176 records; Pandoc citations without warnings.
+- `quarto render` clean; both Mermaid figures render; the skill file is copied into `_book/` as a linked resource.
+
 ## September 16, 2026: meeting 1 verified against the texts
 
 All three meeting 1 papers were reread in full (Cleland 2002 from the publisher; Platt and Cleland 2001 from university course-page copies, not stored here). Every page-cited claim on the unit page and the session page checked out, with two page corrections. Twenty-six passages the notes had not recorded are listed on the session page under "Read against the texts" and in the sealed analysis. From the reading: the unit graph gained node V, the control series Cleland calls the real unit of experimental work; the verb table gained "control"; the unit page now cites Cleland 2001, p. 987, as the source of the schema; `modes/regularities.qmd` (0.4.1) gained Cleland's found-data passage and Platt's two-boxes passage.

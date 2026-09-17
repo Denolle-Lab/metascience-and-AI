@@ -21,6 +21,7 @@ v0.4 revision; the mode definitions and evaluation instruments remain drafts for
 | `index.qmd` | Rationale, schedule, standing questions |
 | `glossary.qmd` | Working definitions of the modes of inquiry and of the terms the quarter measures; meeting 1 revises it |
 | `unit.qmd` | The unit of inquiry: deduction, induction, abduction; the hypothetico-deductive schema and its verbs; the thinkers who fixed them; one graph on which Platt's loop and Cleland's objections are placed |
+| `agents/skills/unit-of-inquiry/SKILL.md` | The unit graph as an agent skill: state, one rule per node with its source, three compositions of units, required outputs, planted-flaw tests; every meeting's page ends by saying what its papers change here |
 | `sessions/` | One chapter per meeting, thirteen of them |
 | `rubrics.qmd` | Inquiry, novelty, advance, and evaluation worksheets |
 | `prior-art.qmd` | Registry of existing science agents and benchmarks, and what their scores do not establish |
