@@ -22,6 +22,8 @@ v0.4 revision; the mode definitions and evaluation instruments remain drafts for
 | `glossary.qmd` | Working definitions of the modes of inquiry and of the terms the quarter measures; meeting 1 revises it |
 | `unit.qmd` | The unit of inquiry: deduction, induction, abduction; the hypothetico-deductive schema and its verbs; the thinkers who fixed them; one graph on which Platt's loop and Cleland's objections are placed |
 | `agents/skills/unit-of-inquiry/SKILL.md` | The unit graph as an agent skill: state, one rule per node with its source, three compositions of units, required outputs, planted-flaw tests; every meeting's page ends by saying what its papers change here |
+| `metrics.qmd` | Registry of what the measurement literature found useful for novelty, impact, breadth, and advance, with data, findings, stated limitations, and the basis each entry rests on; how the club tests the metrics against its own judgments; the embedding-era revisit |
+| `tools/indicators.py` | Computes citations, field percentile, the CD_5 disruption index, and the sleeping-beauty coefficient for the assigned papers from OpenAlex, into `private/indicators.json` |
 | `sessions/` | One chapter per meeting, thirteen of them |
 | `rubrics.qmd` | Inquiry, novelty, advance, and evaluation worksheets |
 | `prior-art.qmd` | Registry of existing science agents and benchmarks, and what their scores do not establish |

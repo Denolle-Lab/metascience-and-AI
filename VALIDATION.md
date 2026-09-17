@@ -1,5 +1,12 @@
 # Validation performed
 
+## September 17, 2026: the metrics registry
+
+Added `metrics.qmd` to the working materials: a registry of the novelty, impact, disruption, and breadth literature with metric, data, main finding, stated limitation, and basis per paper (full text where an open copy exists: seventeen papers read from open copies fetched by `tools/fetch_open_copies.py` and by hand; abstracts from registries for the rest; three marked record-only), where each construct attaches on the unit graph, a meeting-by-meeting plan that seals the numbers until meeting 10, and a table of which pre-LLM metrics embeddings and computational reading can revisit and what they cannot fix. Added `tools/indicators.py` (OpenAlex citations, field percentile, CD_5, beauty coefficient) and ran it on the assigned papers into `private/indicators.json`. Six records added and verified (Yegros-Yegros et al. 2015, Wang et al. 2015, Liu et al. 2021, Hofstra et al. 2020, Sinatra et al. 2016, Leibel and Bornmann 2024). Corrected the private glossary prose, which stated the Teodoridis et al. 2019 result backwards; the public pages were already neutral.
+
+- `tools/validate.py` passes: 36 chapter files, 182 records; Pandoc citations without warnings.
+- `quarto render` clean.
+
 ## September 17, 2026: composition, the agent skill, and a leaner meeting page
 
 `unit.qmd` gained section 6, composing units into a mode (parallel shared test, trace series, nature's repetition, each with the passage that forces it), and section 7, the unit as an agent skill, pointing at the new `agents/skills/unit-of-inquiry/SKILL.md` (v0.1.0: state, one rule per node with its source, compositions, outputs, planted flaws). Meeting 1's Platt figure was redrawn as a composition of units in the unit graph's letters and styling, with V dashed where Platt's "clean result" stands. Every session page lost its minute schedule and gained a section "The agent"; meeting 1's is written from the texts, the others say what would fill them. Meeting 1's optional readings were pruned to the method: Simon 1973 moved to meeting 13, Klahr and Dunbar 1988 to meeting 2, Fortunato and colleagues 2018 to meeting 10, Hacking 1992 and Dellsén 2016 dropped from the page (the glossary and meeting 12 keep them).
