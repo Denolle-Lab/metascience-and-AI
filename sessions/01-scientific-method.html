@@ -447,8 +447,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#prepare-and-discuss" id="toc-prepare-and-discuss" class="nav-link" data-scroll-target="#prepare-and-discuss">Prepare and discuss</a></li>
   <li><a href="#case-exercise-scientific-gain-and-epistemic-mode" id="toc-case-exercise-scientific-gain-and-epistemic-mode" class="nav-link" data-scroll-target="#case-exercise-scientific-gain-and-epistemic-mode">Case exercise: scientific gain and epistemic mode</a></li>
-  <li><a href="#one-hour-meeting" id="toc-one-hour-meeting" class="nav-link" data-scroll-target="#one-hour-meeting">One-hour meeting</a></li>
   <li><a href="#shared-output" id="toc-shared-output" class="nav-link" data-scroll-target="#shared-output">Shared output</a></li>
+  <li><a href="#the-agent" id="toc-the-agent" class="nav-link" data-scroll-target="#the-agent">The agent</a></li>
   <li><a href="#optional-extensions" id="toc-optional-extensions" class="nav-link" data-scroll-target="#optional-extensions">Optional extensions</a></li>
   <li><a href="#record-after-the-meeting" id="toc-record-after-the-meeting" class="nav-link" data-scroll-target="#record-after-the-meeting">Record after the meeting</a></li>
   </ul>
@@ -512,7 +512,7 @@ window.Quarto = {
 <section id="platt" class="level3">
 <h3 class="anchored" data-anchor-id="platt">Platt</h3>
 <ul>
-<li>The path is Q, G with <span class="math inline">\(n &gt; 1\)</span>, D, S with a crucial experiment, C set, O, M, X, R, and back to G <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</li>
+<li>Strong inference is the parallel composition of <a href="../unit.html#composing-units-into-a-mode">unit page, section 6</a>: <span class="math inline">\(n\)</span> units with their own D share one S, C, O, and M; the figure below draws it with the unit’s letters <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</li>
 <li>What makes it strong is one property of node S: every outcome at M excludes at least one rival. The tree branches and prunes on each pass.</li>
 <li>Platt’s step 3, “carrying out the experiment so as to get a clean result” <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>, is where node V hides. He never describes the control series; Cleland says it is most of the work <span class="citation" data-cites="cleland2002">(<a href="../bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 477–78</a>)</span>.</li>
 <li>Its parts are older than Platt: Bacon’s eliminative induction at S and X, Chamberlin’s family at G, Popper’s asymmetry at X <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 349–50</a>)</span>.</li>
@@ -527,41 +527,41 @@ window.Quarto = {
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-platt-loop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<pre class="mermaid mermaid-js" data-label="fig-platt-loop">%%{init: {"theme": "base", "themeVariables": {"fontSize": "18px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 28, "rankSpacing": 42, "curve": "basis", "padding": 10}}}%%
+<pre class="mermaid mermaid-js" data-label="fig-platt-loop">%%{init: {"theme": "base", "themeVariables": {"fontSize": "17px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 22, "rankSpacing": 38, "curve": "basis", "padding": 10}}}%%
 flowchart TD
-    Q["Problem or&lt;br/&gt;scientific question"] --&gt; A["1. Devise alternative&lt;br/&gt;hypotheses"]
-
-    A --&gt; H1["Hypothesis H1"]
-    A --&gt; H2["Hypothesis H2"]
-    A --&gt; H3["Hypothesis H3"]
-
-    H1 &amp; H2 &amp; H3 --&gt; P["2. Deduce contrasting predictions&lt;br/&gt;and devise a crucial experiment"]
-
-    P --&gt; T["3. Carry out the experiment&lt;br/&gt;to obtain a clean result"]
-    T --&gt; O{"Observed outcome:&lt;br/&gt;nature chooses a branch"}
-
-    O -- "Outcome A" --&gt; OA["Exclude H2 and H3;&lt;br/&gt;H1 remains"]
-    O -- "Outcome B" --&gt; OB["Exclude H1 and H3;&lt;br/&gt;H2 remains"]
-    O -- "Outcome C" --&gt; OC["Exclude H1 and H2;&lt;br/&gt;H3 remains"]
-    O -- "No clear&lt;br/&gt;separation" --&gt; NC["No secure exclusion:&lt;br/&gt;recheck or redesign the test"]
-
-    OA &amp; OB &amp; OC --&gt; R["1'. Refine the remaining possibility&lt;br/&gt;into sequential hypotheses&lt;br/&gt;or subhypotheses"]
-    NC --&gt; P
-    R --&gt; P
+    Q["Q. Problem"] --&gt; G["G. Generate rivals H_1, H_2, H_3&lt;br/&gt;&lt;b&gt;abduction&lt;/b&gt;&lt;br/&gt;&lt;small&gt;Chamberlin · Platt step 1&lt;/small&gt;"]
+    G --&gt; D1["D. Derive E_1&lt;br/&gt;from H_1 + A + C&lt;br/&gt;&lt;b&gt;deduction&lt;/b&gt;"]
+    G --&gt; D2["D. Derive E_2&lt;br/&gt;from H_2 + A + C&lt;br/&gt;&lt;b&gt;deduction&lt;/b&gt;"]
+    G --&gt; D3["D. Derive E_3&lt;br/&gt;from H_3 + A + C&lt;br/&gt;&lt;b&gt;deduction&lt;/b&gt;"]
+    D1 &amp; D2 &amp; D3 --&gt; S["S. One crucial experiment: choose C and the observable&lt;br/&gt;where E_1, E_2, E_3 differ&lt;br/&gt;&lt;b&gt;severe test&lt;/b&gt;&lt;br/&gt;&lt;small&gt;Bacon's fingerpost · Platt step 2&lt;/small&gt;"]
+    S --&gt; C["C. Set the conditions"]
+    C --&gt; O["O. Observe&lt;br/&gt;&lt;small&gt;Platt step 3, 'a clean result'&lt;/small&gt;"]
+    O -.-&gt; V["V. Control the series&lt;br/&gt;&lt;small&gt;not described by Platt&lt;/small&gt;"]
+    V -.-&gt; M
+    O --&gt; M{"M. Which E_i?"}
+    M -- "E_1" --&gt; R1["X. Exclude H_2, H_3 · K. Retain H_1&lt;br/&gt;&lt;b&gt;falsify&lt;/b&gt; · eliminative &lt;b&gt;induction&lt;/b&gt;"]
+    M -- "E_2" --&gt; R2["X. Exclude H_1, H_3 · K. Retain H_2"]
+    M -- "E_3" --&gt; R3["X. Exclude H_1, H_2 · K. Retain H_3"]
+    M -- "no clean separation" --&gt; NC["No exclusion: redesign S&lt;br/&gt;&lt;small&gt;Platt, p. 347: 'insecure and must be rechecked'&lt;/small&gt;"]
+    NC --&gt; S
+    R1 &amp; R2 &amp; R3 --&gt; R["R. Refine the survivor into subhypotheses&lt;br/&gt;&lt;small&gt;Platt step 1'&lt;/small&gt;"]
+    R --&gt; G
 
     classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
-    classDef hyp fill:#ffffff,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
+    classDef unit fill:#ffffff,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
     classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
-    classDef warn fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
-    class Q,A,P,T,R step;
-    class H1,H2,H3,OA,OB,OC hyp;
-    class O branch;
-    class NC warn;
+    classDef escape fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
+    classDef ghost fill:#f5f4f2,stroke:#49616a,stroke-width:1px,stroke-dasharray:4 3,color:#49616a;
+    class Q,G,S,C,O,R step;
+    class D1,D2,D3,R1,R2,R3 unit;
+    class M branch;
+    class NC escape;
+    class V ghost;
 </pre>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-platt-loop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Platt’s strong inference as one path through the unit graph: generate several rivals, design a crucial experiment whose outcomes each exclude one, exclude, refine, repeat. The nodes are G, D, S, C, O, M, X, and R of the unit page; the loop never visits P.
+Figure&nbsp;1.1: Platt’s strong inference as a composition of units: three units share one crucial experiment. Each rival gets its own derivation D; one design S picks the observable on which E_1, E_2, and E_3 differ; a single C, O, and M serve all three; each outcome excludes two rivals and retains one; the survivor is refined at R and the cycle returns to G. Node V is drawn dashed because Platt’s step 3, ‘a clean result’, stands where the control series would be and he does not describe it. Letters, tasks, and thinkers are those of the unit graph.
 </figcaption>
 </figure>
 </div>
@@ -692,45 +692,21 @@ Figure&nbsp;1.1: Platt’s strong inference as one path through the unit graph: 
 <li>Ask what was gained, what warrants it, which action helped, and what a comparable agent would need to demonstrate.</li>
 </ul>
 </section>
-<section id="one-hour-meeting" class="level2">
-<h2 class="anchored" data-anchor-id="one-hour-meeting">One-hour meeting</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Minutes</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">0–5</td>
-<td style="text-align: left;">Frame the scientific question and possible advance.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">5–15</td>
-<td style="text-align: left;">Companion presented by the rotating reader.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15–40</td>
-<td style="text-align: left;">Discuss the sources and their limits.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">40–55</td>
-<td style="text-align: left;">Work through the case and its agent/evaluation implications.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">55–60</td>
-<td style="text-align: left;">Add the shared record and one unresolved question.</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="shared-output" class="level2">
 <h2 class="anchored" data-anchor-id="shared-output">Shared output</h2>
 <p>One episode entry and three sentences: what changed scientifically; what evidence warrants that account; what agent action or evaluation follows. Longer worksheets are optional.</p>
 <ul>
 <li><a href="../rubrics.html#inquiry-mode-ledger">Episode ledger</a> · <a href="../rubrics.html#scientific-advance-profile-v1">Advance profile</a> · <a href="../rubrics.html#claim-record">Claim record</a>.</li>
-<li>Facilitator framing: compare knowledge/understanding accounts in <span class="citation" data-cites="dellsen2016">Dellsén (<a href="../bibliography.html#ref-dellsen2016" role="doc-biblioref">2016</a>)</span>; introduce advance now and revisit its measurement in meeting 12.</li>
+</ul>
+</section>
+<section id="the-agent" class="level2">
+<h2 class="anchored" data-anchor-id="the-agent">The agent</h2>
+<ul>
+<li>Every meeting ends by asking what its papers change in the unit skill, <a href="../agents/skills/unit-of-inquiry/SKILL.md">agents/skills/unit-of-inquiry/SKILL.md</a>. Meeting 1 wrote its first version. The rules below are the ones these two papers force, each with its line in the file.</li>
+<li>From Platt: no test without at least two incompatible rivals at G, or a logged reason why none could be formulated; before any experiment, the agent answers Platt’s Question, which hypothesis this outcome would disprove, and an experiment with no answer is labelled exploration <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 350, 352</a>)</span>. The parallel composition, one crucial experiment shared by <span class="math inline">\(n\)</span> units, is the skill’s first composition <span class="citation" data-cites="platt1964">(<a href="../bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964, 347</a>)</span>.</li>
+<li>From Cleland: the agent records whether C was set or found; an experimental claim cannot leave V after one run; controls fixed before data may be revised after data with the reason logged, the Viking rule; rejecting an auxiliary is node P, not X, and is logged as such; a best explanation is retained with that status, never as an exclusion; “not decidable, and this would decide it” is a legal terminal state <span class="citation" data-cites="cleland2001 cleland2002">(<a href="../bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 988</a>; <a href="../bibliography.html#ref-cleland2002" role="doc-biblioref">2002, 477–80, 483–84, 492–94</a>)</span>.</li>
+<li>Planted flaws that test the rules: a forced single hypothesis; a test all rivals pass; a claim leaving V after one run; an exclusion that silently rejected A; a smoking gun reported as an exclusion; abstention on an answerable case.</li>
+<li>Open: whether exclusion and best explanation are one rule with two thresholds or two rules. The room decides; the skill file records the answer.</li>
 </ul>
 </section>
 <section id="optional-extensions" class="level2">
@@ -738,8 +714,6 @@ Figure&nbsp;1.1: Platt’s strong inference as one path through the unit graph: 
 <p><strong>On reasoning and testing.</strong> The sources behind <a href="../unit.html">the unit of inquiry</a>, listed there by node. Deduction, induction, and abduction: <span class="citation" data-cites="peirce1992">Peirce (<a href="../bibliography.html#ref-peirce1992" role="doc-biblioref">1992</a>)</span>; <span class="citation" data-cites="hanson1958">Hanson (<a href="../bibliography.html#ref-hanson1958" role="doc-biblioref">1958</a>)</span>; <span class="citation" data-cites="okasha2016">Okasha (<a href="../bibliography.html#ref-okasha2016" role="doc-biblioref">2016</a>)</span> as the one-hour introduction. The hypothesis and where it comes from: <span class="citation" data-cites="gilbert1886">Gilbert (<a href="../bibliography.html#ref-gilbert1886" role="doc-biblioref">1886</a>)</span>; <span class="citation" data-cites="whewell2014">Whewell (<a href="../bibliography.html#ref-whewell2014" role="doc-biblioref">2014</a>)</span>; <span class="citation" data-cites="mill2011">Mill (<a href="../bibliography.html#ref-mill2011" role="doc-biblioref">2011</a>)</span>. Confirmation, falsification, and the Duhem problem: <span class="citation" data-cites="hempel1945">Hempel (<a href="../bibliography.html#ref-hempel1945" role="doc-biblioref">1945</a>)</span>; <span class="citation" data-cites="popper2005">Popper (<a href="../bibliography.html#ref-popper2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="duhem1954">Duhem (<a href="../bibliography.html#ref-duhem1954" role="doc-biblioref">1954</a>)</span>; <span class="citation" data-cites="quine1951">Quine (<a href="../bibliography.html#ref-quine1951" role="doc-biblioref">1951</a>)</span>; <span class="citation" data-cites="lakatos1970">Lakatos (<a href="../bibliography.html#ref-lakatos1970" role="doc-biblioref">1970</a>)</span>. Eliminative induction and severity: <span class="citation" data-cites="bacon2004">Bacon (<a href="../bibliography.html#ref-bacon2004" role="doc-biblioref">2004</a>)</span>; <span class="citation" data-cites="mayo1996">Mayo (<a href="../bibliography.html#ref-mayo1996" role="doc-biblioref">1996</a>)</span>; <span class="citation" data-cites="mayo2006">Mayo and Spanos (<a href="../bibliography.html#ref-mayo2006" role="doc-biblioref">2006</a>)</span>. Inference to the best explanation: <span class="citation" data-cites="harman1965">Harman (<a href="../bibliography.html#ref-harman1965" role="doc-biblioref">1965</a>)</span>; <span class="citation" data-cites="lipton2004">Lipton (<a href="../bibliography.html#ref-lipton2004" role="doc-biblioref">2004</a>)</span>. Prediction against accommodation: <span class="citation" data-cites="musgrave1974">Musgrave (<a href="../bibliography.html#ref-musgrave1974" role="doc-biblioref">1974</a>)</span>; <span class="citation" data-cites="douglas2013">Douglas and Magnus (<a href="../bibliography.html#ref-douglas2013" role="doc-biblioref">2013</a>)</span>. Strong inference fifty years on: <span class="citation" data-cites="davis2006">Davis (<a href="../bibliography.html#ref-davis2006" role="doc-biblioref">2006</a>)</span>; <span class="citation" data-cites="fudge2014">Fudge (<a href="../bibliography.html#ref-fudge2014" role="doc-biblioref">2014</a>)</span>. The school version of the method and what it leaves out, from the University of Washington’s College of Education: <span class="citation" data-cites="windschitl2008">Windschitl et al. (<a href="../bibliography.html#ref-windschitl2008" role="doc-biblioref">2008</a>)</span>.</p>
 <ul>
 <li><span class="citation" data-cites="chamberlin1965">Chamberlin (<a href="../bibliography.html#ref-chamberlin1965" role="doc-biblioref">1965</a>)</span>: <a href="https://doi.org/10.1126/science.148.3671.754">The Method of Multiple Working Hypotheses</a>. Science (1965). Written by a geologist, and the source Platt built on. Chamberlin’s target is the single ruling hypothesis; his remedy is to hold a family of them at once. Decide whether Platt’s loop and Chamberlin’s family are the same practice.</li>
-<li><span class="citation" data-cites="simon1973">Simon (<a href="../bibliography.html#ref-simon1973" role="doc-biblioref">1973</a>)</span>: <a href="https://doi.org/10.1086/288559">Does Scientific Discovery Have a Logic?</a>. Philosophy of Science (1973). Simon argues, against Popper, that discovery is problem solving with describable heuristics. The computer discovery programs listed in <a href="../sessions/13-agent-design-and-evaluation.html">meeting 13</a> were built on this argument.</li>
-<li><span class="citation" data-cites="klahr1988">Klahr and Dunbar (<a href="../bibliography.html#ref-klahr1988" role="doc-biblioref">1988</a>)</span>: <a href="https://doi.org/10.1207/s15516709cog1201_1">Dual Space Search During Scientific Reasoning</a>. Cognitive Science (1988). People solving a discovery task searched two spaces, one of hypotheses and one of experiments, and some made progress by running experiments with no hypothesis at all. Experimental evidence that inquiry has more than one search mode.</li>
 <li><span class="citation" data-cites="holmes1987">Holmes (<a href="../bibliography.html#ref-holmes1987" role="doc-biblioref">1987</a>)</span>: <a href="https://doi.org/10.1086/354391">Scientific Writing and Scientific Discovery</a>. Isis (1987). Holmes compared laboratory notebooks with the published papers written from them and describes what the paper leaves out. The basis for standing question 5.</li>
 <li><span class="citation" data-cites="gilbert1896">Gilbert (<a href="../bibliography.html#ref-gilbert1896" role="doc-biblioref">1896</a>)</span>: <a href="https://doi.org/10.1126/science.3.53.1">The Origin of Hypotheses, Illustrated by the Discussion of a Topographic Problem</a>. Science (1896). Grove Karl Gilbert on where a geological hypothesis comes from, worked through his own attempt to explain the Coon Butte crater: by analogy, by enumeration of the possible causes, and by the test that separates them. The geological ancestor of Platt’s method, and an account of the generative step Platt hands to Pólya.</li>
 <li><span class="citation" data-cites="johnson1933">Johnson (<a href="../bibliography.html#ref-johnson1933" role="doc-biblioref">1933</a>)</span>: <a href="https://doi.org/10.1130/GSAB-44-461">Role of Analysis in Scientific Investigation</a>. Geological Society of America Bulletin (1933). A geologist’s account of analysis as the method of geological investigation, with the failure modes it guards against.</li>
@@ -747,9 +721,6 @@ Figure&nbsp;1.1: Platt’s strong inference as one path through the unit graph: 
 <li><span class="citation" data-cites="kleinhans2005">Kleinhans et al. (<a href="../bibliography.html#ref-kleinhans2005" role="doc-biblioref">2005</a>)</span>: <a href="https://doi.org/10.1080/02698590500462356">Terra Incognita: Explanation and Reduction in Earth Science</a>. International Studies in the Philosophy of Science (2005). What explanation and reduction mean in earth science, where the systems are open and the histories unique.</li>
 <li><span class="citation" data-cites="elliott2007">Elliott and Brook (<a href="../bibliography.html#ref-elliott2007" role="doc-biblioref">2007</a>)</span>: <a href="https://doi.org/10.1641/B570708">Revisiting Chamberlin: Multiple Working Hypotheses for the 21st Century</a>. BioScience (2007). Chamberlin’s multiple working hypotheses reconsidered for present-day practice, with the model-selection tools that now implement them.</li>
 <li><span class="citation" data-cites="cleland2002">Cleland (<a href="../bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>: <a href="https://doi.org/10.1086/342455">Methodological and Epistemic Differences between Historical Science and Experimental Science</a>. Longer development of experimental/historical differences; optional elaboration of the companion.</li>
-<li><span class="citation" data-cites="hacking1992">Hacking (<a href="../bibliography.html#ref-hacking1992" role="doc-biblioref">1992</a>)</span>: <a href="https://doi.org/10.1016/0039-3681(92)90024-z">‘Style’ for historians and philosophers</a>. Historical/philosophical framing for plural styles; these precedents do not validate our profiles.</li>
-<li><span class="citation" data-cites="fortunato2018">Fortunato et al. (<a href="../bibliography.html#ref-fortunato2018" role="doc-biblioref">2018</a>)</span>: <a href="https://doi.org/10.1126/science.aao0185">Science of science</a>. A broad science-of-science orientation; distinguish process, population associations, and impact measures.</li>
-<li><span class="citation" data-cites="dellsen2016">Dellsén (<a href="../bibliography.html#ref-dellsen2016" role="doc-biblioref">2016</a>)</span>: <a href="https://doi.org/10.1016/j.shpsa.2016.01.003">Scientific progress: Knowledge versus understanding</a>. An understanding-based account of progress to compare with knowledge and capability gains.</li>
 </ul>
 </section>
 <section id="record-after-the-meeting" class="level2">
@@ -773,9 +744,6 @@ Cleland, Carol E. 2002. <span>“<span class="nocase">Methodological and Epistem
 <div id="ref-davis2006" class="csl-entry" role="listitem">
 Davis, Rowland H. 2006. <span>“<span class="nocase">Strong Inference: Rationale or Inspiration?</span>”</span> <em>Perspectives in Biology and Medicine</em> 49 (2): 238–50. <a href="https://doi.org/10.1353/pbm.2006.0022">https://doi.org/10.1353/pbm.2006.0022</a>.
 </div>
-<div id="ref-dellsen2016" class="csl-entry" role="listitem">
-Dellsén, Finnur. 2016. <span>“<span class="nocase">Scientific progress: Knowledge versus understanding</span>.”</span> <em>Studies in History and Philosophy of Science Part A</em> 56: 72–83. <a href="https://doi.org/10.1016/j.shpsa.2016.01.003">https://doi.org/10.1016/j.shpsa.2016.01.003</a>.
-</div>
 <div id="ref-douglas2013" class="csl-entry" role="listitem">
 Douglas, Heather, and P. D. Magnus. 2013. <span>“<span class="nocase">State of the Field: Why Novel Prediction Matters</span>.”</span> <em>Studies in History and Philosophy of Science Part A</em> 44 (4): 580–89. <a href="https://doi.org/10.1016/j.shpsa.2013.04.001">https://doi.org/10.1016/j.shpsa.2013.04.001</a>.
 </div>
@@ -784,9 +752,6 @@ Duhem, Pierre. 1954. <em><span class="nocase">The Aim and Structure of Physical 
 </div>
 <div id="ref-elliott2007" class="csl-entry" role="listitem">
 Elliott, L. P., and B. W. Brook. 2007. <span>“<span class="nocase">Revisiting Chamberlin: Multiple Working Hypotheses for the 21st Century</span>.”</span> <em>BioScience</em> 57 (7): 608–14. <a href="https://doi.org/10.1641/B570708">https://doi.org/10.1641/B570708</a>.
-</div>
-<div id="ref-fortunato2018" class="csl-entry" role="listitem">
-Fortunato, Santo, Carl T. Bergstrom, Katy Börner, et al. 2018. <span>“Science of Science.”</span> <em>Science</em> 359 (6379). <a href="https://doi.org/10.1126/science.aao0185">https://doi.org/10.1126/science.aao0185</a>.
 </div>
 <div id="ref-frodeman1995" class="csl-entry" role="listitem">
 Frodeman, R. 1995. <span>“<span class="nocase">Geological reasoning: Geology as an interpretive and historical science</span>.”</span> <em>Geological Society of America Bulletin</em> 107 (8): 960–68. <a href="https://doi.org/10.1130/0016-7606(1995)107<0960:GRGAAI>2.3.CO;2">https://doi.org/10.1130/0016-7606(1995)107&lt;0960:GRGAAI&gt;2.3.CO;2</a>.
@@ -799,9 +764,6 @@ Gilbert, G. K. 1886. <span>“<span class="nocase">The Inculcation of Scientific
 </div>
 <div id="ref-gilbert1896" class="csl-entry" role="listitem">
 Gilbert, G. K. 1896. <span>“<span class="nocase">The Origin of Hypotheses, Illustrated by the Discussion of a Topographic Problem</span>.”</span> <em>Science</em> 3 (53): 1–13. <a href="https://doi.org/10.1126/science.3.53.1">https://doi.org/10.1126/science.3.53.1</a>.
-</div>
-<div id="ref-hacking1992" class="csl-entry" role="listitem">
-Hacking, Ian. 1992. <span>“<span>‘Style’</span> for Historians and Philosophers.”</span> <em>Studies in History and Philosophy of Science Part A</em> 23 (1): 1–20. <a href="https://doi.org/10.1016/0039-3681(92)90024-z">https://doi.org/10.1016/0039-3681(92)90024-z</a>.
 </div>
 <div id="ref-hanson1958" class="csl-entry" role="listitem">
 Hanson, Norwood Russell. 1958. <em><span class="nocase">Patterns of Discovery: An Inquiry into the Conceptual Foundations of Science</span></em>. Cambridge University Press. <a href="https://openlibrary.org/works/OL6927705W">https://openlibrary.org/works/OL6927705W</a>.
@@ -817,9 +779,6 @@ Holmes, Frederic L. 1987. <span>“<span class="nocase">Scientific Writing and S
 </div>
 <div id="ref-johnson1933" class="csl-entry" role="listitem">
 Johnson, D. 1933. <span>“<span class="nocase">Role of Analysis in Scientific Investigation</span>.”</span> <em>Geological Society of America Bulletin</em> 44 (3): 461–94. <a href="https://doi.org/10.1130/GSAB-44-461">https://doi.org/10.1130/GSAB-44-461</a>.
-</div>
-<div id="ref-klahr1988" class="csl-entry" role="listitem">
-Klahr, David, and Kevin Dunbar. 1988. <span>“<span>Dual Space Search During Scientific Reasoning</span>.”</span> <em>Cognitive Science</em> 12 (1): 1–48. <a href="https://doi.org/10.1207/s15516709cog1201_1">https://doi.org/10.1207/s15516709cog1201_1</a>.
 </div>
 <div id="ref-kleinhans2005" class="csl-entry" role="listitem">
 Kleinhans, M. G., C. J. J. Buskes, and H. W. de Regt. 2005. <span>“<span class="nocase">Terra Incognita: Explanation and Reduction in Earth Science</span>.”</span> <em>International Studies in the Philosophy of Science</em> 19 (3): 289–317. <a href="https://doi.org/10.1080/02698590500462356">https://doi.org/10.1080/02698590500462356</a>.
@@ -856,9 +815,6 @@ Popper, Karl R. 2005. <em><span class="nocase">The Logic of Scientific Discovery
 </div>
 <div id="ref-quine1951" class="csl-entry" role="listitem">
 Quine, W. V. 1951. <span>“<span class="nocase">Two Dogmas of Empiricism</span>.”</span> <em>The Philosophical Review</em> 60 (1): 20–43. <a href="https://doi.org/10.2307/2181906">https://doi.org/10.2307/2181906</a>.
-</div>
-<div id="ref-simon1973" class="csl-entry" role="listitem">
-Simon, Herbert A. 1973. <span>“<span class="nocase">Does Scientific Discovery Have a Logic?</span>”</span> <em>Philosophy of Science</em> 40 (4): 471–80. <a href="https://doi.org/10.1086/288559">https://doi.org/10.1086/288559</a>.
 </div>
 <div id="ref-whewell2014" class="csl-entry" role="listitem">
 Whewell, William. 2014. <em><span class="nocase">The Philosophy of the Inductive Sciences, Founded upon Their History</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139644662">https://doi.org/10.1017/CBO9781139644662</a>.
