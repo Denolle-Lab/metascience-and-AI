@@ -447,7 +447,14 @@ window.Quarto = {
   <li><a href="#the-thinkers-and-the-node-each-owns" id="toc-the-thinkers-and-the-node-each-owns" class="nav-link" data-scroll-target="#the-thinkers-and-the-node-each-owns">4. The thinkers, and the node each owns</a></li>
   <li><a href="#the-graph" id="toc-the-graph" class="nav-link" data-scroll-target="#the-graph">5. The graph</a></li>
   <li><a href="#composing-units-into-a-mode" id="toc-composing-units-into-a-mode" class="nav-link" data-scroll-target="#composing-units-into-a-mode">6. Composing units into a mode</a></li>
-  <li><a href="#the-unit-as-an-agent-skill" id="toc-the-unit-as-an-agent-skill" class="nav-link" data-scroll-target="#the-unit-as-an-agent-skill">7. The unit as an agent skill</a></li>
+  <li><a href="#ai-agents-how-we-build-one-from-the-graph" id="toc-ai-agents-how-we-build-one-from-the-graph" class="nav-link" data-scroll-target="#ai-agents-how-we-build-one-from-the-graph">7. AI agents: how we build one from the graph</a>
+  <ul class="collapse">
+  <li><a href="#three-layers" id="toc-three-layers" class="nav-link" data-scroll-target="#three-layers">Three layers</a></li>
+  <li><a href="#defining-a-scientific-method" id="toc-defining-a-scientific-method" class="nav-link" data-scroll-target="#defining-a-scientific-method">Defining a scientific method</a></li>
+  <li><a href="#using-a-scientific-method" id="toc-using-a-scientific-method" class="nav-link" data-scroll-target="#using-a-scientific-method">Using a scientific method</a></li>
+  <li><a href="#what-the-group-keeps-for-itself" id="toc-what-the-group-keeps-for-itself" class="nav-link" data-scroll-target="#what-the-group-keeps-for-itself">What the group keeps for itself</a></li>
+  <li><a href="#where-the-seminars-outputs-enter-the-agent" id="toc-where-the-seminars-outputs-enter-the-agent" class="nav-link" data-scroll-target="#where-the-seminars-outputs-enter-the-agent">Where the seminar’s outputs enter the agent</a></li>
+  </ul></li>
   <li><a href="#using-the-graph" id="toc-using-the-graph" class="nav-link" data-scroll-target="#using-the-graph">8. Using the graph</a>
   <ul class="collapse">
   <li><a href="#the-graph-is-a-living-object" id="toc-the-graph-is-a-living-object" class="nav-link" data-scroll-target="#the-graph-is-a-living-object">The graph is a living object</a></li>
@@ -939,13 +946,113 @@ Figure&nbsp;1: The unit of inquiry as a workflow. Solid arrows are one pass; V i
 <li>The <a href="./sessions/01-scientific-method.html#platt">meeting 1 page</a> draws the first composition with the unit’s own letters. The seminar’s longer aim is the fourth row and onward: a geoscientific workflow composed from units, one composition per meeting, until the ledger’s episodes can each be written as a path.</li>
 </ul>
 </section>
-<section id="the-unit-as-an-agent-skill" class="level2">
-<h2 class="anchored" data-anchor-id="the-unit-as-an-agent-skill">7. The unit as an agent skill</h2>
+<section id="ai-agents-how-we-build-one-from-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="ai-agents-how-we-build-one-from-the-graph">7. AI agents: how we build one from the graph</h2>
 <ul>
-<li>Everything above is written twice: once here for people, once as a skill file that controls an agent, <a href="agents/skills/unit-of-inquiry/SKILL.md">agents/skills/unit-of-inquiry/SKILL.md</a>.</li>
-<li>The skill is an operating procedure, not a classifier. A trigger comes in, one of the five entry states of section 0; the agent reads the situation (can it set the conditions, does nature repeat the event, is the phenomenon stable), chooses a human-made method from a decision table or accepts one named by the user, and runs the graph node by node. Each node says what to do, what to produce, when to move on, and what not to do, with the reading that fixed the rule. It ends in a warranted claim with a status, a principled abstention with the observation that would decide, a reframed question, or an artifact verdict. A worked example runs from a seismic observation to an abstention.</li>
-<li>The file is built one meeting at a time: meeting 2 fills the exploration node, meeting 3 the trace-series method, meeting 5 the observation node, and so on; its change log records each addition with the meeting and the paper. Each meeting’s page ends by saying what its papers change in it.</li>
+<li>The seminar’s agents are not personas. An agent here is a controller that runs the graph, a set of rubrics it is held to, and references that explain the rubrics to the people who revise them. The three are kept in separate files and the controller cites the rubrics by version (<a href="agents/README.md">agents/README.md</a>).</li>
 </ul>
+<section id="three-layers" class="level3">
+<h3 class="anchored" data-anchor-id="three-layers">Three layers</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Layer</th>
+<th style="text-align: left;">What it holds</th>
+<th style="text-align: left;">Who edits it</th>
+<th style="text-align: left;">What loads into the agent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Rubrics</td>
+<td style="text-align: left;">The graph on this page; the <a href="./glossary.html#working-mode-specifications">mode pages</a>, which say what evidence each kind of claim owes; the <a href="./rubrics.html#claim-record">claim record</a> it must emit</td>
+<td style="text-align: left;">The group, one meeting at a time, with the paper that forced each change</td>
+<td style="text-align: left;">On demand, at the node that needs it; the mode pages are exported to <code>agents/mode-instructions.json</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Controller</td>
+<td style="text-align: left;">A skill: one line per node, do, produce, move on, do not; a decision table that picks the method from the situation; the outputs</td>
+<td style="text-align: left;">Derived from the rubrics after each meeting</td>
+<td style="text-align: left;">In full, when the skill fires: <a href="agents/skills/unit-of-inquiry/SKILL.md">agents/skills/unit-of-inquiry/SKILL.md</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">References</td>
+<td style="text-align: left;">The reasons and sources behind every rule; the methods with their guards; a worked example; the evaluator’s planted-flaw items; the change log</td>
+<td style="text-align: left;">With the rubrics</td>
+<td style="text-align: left;">Not by the acting agent; the evaluator loads its items, people load the rest</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The rule that keeps it lean: one fact lives in one place, and the others cite it by version. A controller that grows past about a thousand words is split.</li>
+<li>The evaluator’s items are never in the acting agent’s context. An agent that holds its own grading rubric scores itself, which is what the A-Lab reanalysis found <span class="citation" data-cites="leeman2024">(<a href="bibliography.html#ref-leeman2024" role="doc-biblioref">Leeman et al. 2024</a>)</span>.</li>
+</ul>
+</section>
+<section id="defining-a-scientific-method" class="level3">
+<h3 class="anchored" data-anchor-id="defining-a-scientific-method">Defining a scientific method</h3>
+<ul>
+<li>A method is a composition of the unit (section 6). To define one, the group writes one row: how the composition runs the graph, its guard, and the paper that defined it. That row is the rubric.</li>
+<li>The controller then gets two things from the row: an entry in its method table, and the state test that selects it, which uses the same variables for every method: can the conditions be set, does nature repeat the event, is the phenomenon stable.</li>
+<li>The glossary supplies the second half of the rubric. A method says how the nodes are composed; a mode page says what a claim at K owes given the kind of work. Strong inference in the hypothesis mode owes a discriminating outcome; nature’s repetition in the regularities mode owes out-of-sample fit and a stated range.</li>
+<li>Four methods are defined so far, from the meeting 1 readings. Each later meeting defines the one its papers document, in the same row form, with provenance in the graph’s log.</li>
+</ul>
+</section>
+<section id="using-a-scientific-method" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-scientific-method">Using a scientific method</h3>
+<ul>
+<li>A run starts from a trigger, one of the five entry states of section 0, and a stated situation. The controller enters the graph at the node the trigger implies, chooses the method from the state test unless a person names one, and moves node by node.</li>
+<li>At each node it produces the artifact the node owes and refuses the moves the node forbids. At K it writes a claim record with a status. At any node after M it may abstain with the observation that would decide.</li>
+<li>The run’s record is the node-labelled action log, the method declaration with the state that chose it, and the claim records. The agent’s own rationale is not the record.</li>
+<li>Terminal states are four: a warranted claim, a principled abstention, a reframed question, an artifact verdict. Two of the four are not discoveries, and the evaluation scores them as correct where the evidence warranted them.</li>
+</ul>
+</section>
+<section id="what-the-group-keeps-for-itself" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-group-keeps-for-itself">What the group keeps for itself</h3>
+<ul>
+<li>The rubrics. Nothing in the controller is edited except by shortening a rubric the group has changed.</li>
+<li>The verification contract: for every delegated action, the check a non-specialist can run to see that it was done wrong. It is written into the claim record’s evidence fields, not into the agent’s confidence.</li>
+<li>The separation of powers: the controller that acts, the evaluator that scores, and the notebook that records are different components. The group’s own agent family already has that shape; the seminar changes what its designer can plan and what its auditor must ask, not its structure (<a href="./sessions/13-agent-design-and-evaluation.html">meeting 13</a>).</li>
+</ul>
+</section>
+<section id="where-the-seminars-outputs-enter-the-agent" class="level3">
+<h3 class="anchored" data-anchor-id="where-the-seminars-outputs-enter-the-agent">Where the seminar’s outputs enter the agent</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Seminar output</th>
+<th style="text-align: left;">Becomes</th>
+<th style="text-align: left;">Where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A revised node rule</td>
+<td style="text-align: left;">One line in the controller; the full rule with its source in the references</td>
+<td style="text-align: left;">After the meeting that changed it</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A new composition</td>
+<td style="text-align: left;">A row in section 6; a method entry and a state test in the controller</td>
+<td style="text-align: left;">The meeting whose papers document it</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A mode page’s evidence column</td>
+<td style="text-align: left;">What a claim record must show at K for that mode</td>
+<td style="text-align: left;">Exported automatically</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A ledger episode</td>
+<td style="text-align: left;">A historical item the evaluator can score, on process at the date</td>
+<td style="text-align: left;"><a href="./historical-evaluation.html">Historical evaluation</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A failure mode from the reading</td>
+<td style="text-align: left;">A planted-flaw item for the evaluator, never a line the agent sees</td>
+<td style="text-align: left;"><code>references/evaluation.md</code></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="using-the-graph" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-graph">8. Using the graph</h2>
