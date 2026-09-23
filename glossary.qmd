@@ -49,11 +49,43 @@
 - Primary evaluation: the fraction of held-out cases achieving a prespecified meaningful warranted gain, with magnitude, failures, uncertainty, and case-family results. The [rubric](rubrics.qmd#scientific-advance-profile-v1) specifies its limits.
 - Neither a fixed novelty × correctness × impact formula nor contribution count defines advance.
 
+### Idea
+
+- The unit that novelty and uptake are assigned to. The readings use four different units, and a novelty score is only comparable with another computed on the same unit.
+
+| Unit | Definition in the source | Source |
+|:--|:--|:--|
+| A research idea | A sufficiently specified research project that proposes a motivated method and a practical way to test it, not a short concept or hypothesis alone | @si2025, as summarized in the meeting 10 notes |
+| A link between two concepts | Two concepts from a topic model put together in one document for the first time in the corpus | @hofstra2020 |
+| A combination of prior work | A pair of journals co-cited in one reference list | @uzzi2013; @wang2017 |
+| A contribution or claim | An observation, method, concept, explanation, connection, or question, stated atomically | [Novelty Dossier](rubrics.qmd#novelty-dossier-v1) |
+
+- On the [unit graph](unit.qmd#the-graph), an idea in Si's sense is a pass through Q, G, D, and S without C, O, or M: a question, a hypothesis, and a designed test, not yet run. A link in Hofstra's sense is part of what happens at G, generation by joining two concepts.
+
 ### Novelty
 
 - Newness of a specific contribution relative to a stated corpus and date [@uzzi2013; @fontana2020].
 - Record closest precedent, new component, search coverage, and uncertainty; semantic or citation distance is a proxy [@shibayama2021].
 - Say “no precedent located within this search.” Distinguish discovery data from later evaluation data. [Novelty Dossier](rubrics.qmd#novelty-dossier-v1).
+- The same word names different constructs. Meeting 10 read three of them side by side:
+
+| Construct | What is new | How it is judged | Source |
+|:--|:--|:--|:--|
+| Atypical combination | A pair of cited journals that co-occurs less often than in a randomized citation network; atypical pairs are those in the 10th percentile of z-scores | Computed; no human in the loop | @uzzi2013 |
+| First-ever combination | A journal pair cited together for the first time, weighted by how difficult the pairing is | Computed | @wang2017 |
+| New conceptual link | A concept pair never linked before in the corpus; counted per thesis | Computed from a topic model | @hofstra2020 |
+| Semantic distance | Distance between cited works, or between concepts, in an embedding space | Computed; validated against authors' own ratings in one field | @shibayama2021 |
+| Rated difference from prior art | "Whether the idea is creative and different from existing works on the topic, and brings fresh insights," with all work online before a stated cutoff treated as prior | 1 to 10 expert rating against written anchors | @si2025 |
+| Originality as a review criterion | One of four dimensions a funder's panel scores | Expert panel; compared with a language model's ranking | @machado2026 |
+
+- Two rules follow for this group's records. State the construct with the score: "novel" without its unit and its judge is not a finding. And state the cutoff date: Si's reviewers used July 2024; a computed measure uses the corpus it was run on.
+- Si's rubric bundles two things, difference from prior work and "fresh insights." An idea can be unprecedented and useless. The Dossier keeps them apart: difference goes in "new component," usefulness in the advance profile.
+
+### Proximal and distal novelty
+
+- **Proximal novelty** links two concepts inside one cluster of a field's vocabulary. **Distal novelty** bridges two clusters. Distance is the embedding distance between the linked concepts, averaged per document [@hofstra2020].
+- Distal novelty is the continuous form of what the combination measures call atypicality and what the breadth literature calls interdisciplinarity. Fontana's point applies: a distance score may be measuring interdisciplinarity rather than newness [@fontana2020].
+- In Hofstra's data, uptake falls steeply with distance: distal links are "difficult to integrate into localized conversations within prevailing fields" [@hofstra2020]. Distal novelty is the kind least likely to travel, not the kind least likely to matter.
 
 ### Correctness and evidential warrant
 
@@ -68,18 +100,28 @@
 - Field/time-qualified citations measure some uptake and attention; record follow-up windows and missed forms of use [@bornmann2008; @waltman2016; @petersen2025].
 - Keep predicted impact dated and separate from realized impact; an overlooked gain can still be an advance [@wang2017].
 
+### Uptake
+
+- Uptake is impact counted on the unit of novelty: the later reuse of one specific new element. Hofstra counts, for each new concept link a thesis introduced, how many later theses use that link [@hofstra2020]. Citations per paper, Uzzi's outcome, count attention to the whole paper, not reuse of its new part [@uzzi2013].
+- **Impactful novelty** is novelty that is taken up. Hofstra models uptake only where novelty is greater than zero, so "not adopted" is not confused with "nothing to adopt" [@hofstra2020].
+- **Innovation = novelty × uptake**, kept as two variables. The split lets two separate questions be asked: who creates new links, and whose links spread. In Hofstra's data they have opposite answers. Scholars with fewer demographically similar peers introduce more new links, and their links are reused less [@hofstra2020].
+- Before- and after-the-fact estimates of uptake are different quantities. Si's "excitement" rating is a reviewer's estimate before the work is done of "potential impact and influence if developed fully" [@si2025]. Hofstra's uptake is observed afterwards. The advance profile keeps the two in separate fields.
+
 ### Breadth, interdisciplinarity, and depth
 
 - Breadth is a candidate contributor to advance: test when integrating another field’s concepts, methods, or observations helps [@wagner2011; @shi2023].
 - Distinguish project integration, competent individual/team reach, and diversity across a portfolio. Reference diversity alone demonstrates none of these.
 - Depth means demonstrated competence and understanding. Reference concentration and topic specialization are proxies for concentration, not its definition [@teodoridis2019; @rassenfosse2022].
 - Empirical studies differ in populations and outcomes: citation combinations [@uzzi2013], career costs/uptake [@leahey2017], and scientific AI/topic coverage [@hao2026]. A writing experiment [@doshi2024] is a different setting. No combined universal breadth recipe follows.
+- Breadth of inputs and distance of a link are measured differently. Reference diversity measures what was read, over the whole reference list [@stirling2007; @wagner2011]. [Distal novelty](#proximal-and-distal-novelty) measures how far apart two joined concepts are, one link at a time [@hofstra2020]. A paper can read broadly and join nothing distant.
 
 ### Field-shaping
 
 - Retrospective change in a field’s questions, capabilities, practices, or explanatory resources.
 - Citation disruption, canonical status, and delayed recognition observe different aspects [@wu2019; @petersen2025; @chu2021; @ke2015].
 - Enabling is a contribution role, not a middle rank between incremental and field-shaping.
+- Field-shaping differs from uptake in what is counted. Uptake counts reuse of a new element. Field-shaping asks whether the later literature reorganized around the work: whether its citers stop citing what it built on [@funk2017; @wu2019], whether the field's canon turns over [@chu2021], or whether recognition arrives late and from another field [@ke2015]. A widely reused link can leave a field's structure unchanged; a paper cited little for a decade can reshape one.
+- Uzzi's high-impact profile, a conventional base with an intrusion of atypical combinations [@uzzi2013], is a claim about citation impact, not about field-shaping. Meeting 10 recorded it as "a strong base and a niche where you add the novelty."
 
 ## Action, commitment, and claim status
 

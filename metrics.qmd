@@ -1,11 +1,52 @@
 # What has been measured: novelty, impact, breadth, advance {.unnumbered}
 
-[Drafted]{.status .drafted} [registry of metrics and findings · read against the texts where an open copy exists · not yet discussed]{.status-line}
+[Drafted]{.status .drafted} [registry of metrics and findings · read against the texts where an open copy exists · master list begun at meeting 10, September 22, 2026]{.status-line}
 
 - The seminar's outcome is scientific advance, assessed through novelty, correctness, and impact ([glossary](glossary.qmd#terms-of-assessment)). This page records what the measurement literature has found useful, what it found, and what it cannot see, so the club reads the papers with the constructs already in view.
-- Most of this literature predates language models. Its metrics are built from citation graphs, journal categories, and keyword co-occurrence. Section 5 says which of them embeddings and computational reading can revisit, and which they cannot fix.
-- The club does not take these findings on trust. Section 4 says how they are tested against the group's own judgments, meeting by meeting, using [tools/indicators.py](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/indicators.py).
+- Most of this literature predates language models. Its metrics are built from citation graphs, journal categories, and keyword co-occurrence. Section 7 says which of them embeddings and computational reading can revisit, and which they cannot fix.
+- The club does not take these findings on trust. Section 6 says how they are tested against the group's own judgments, meeting by meeting, using [tools/indicators.py](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/indicators.py).
 - Basis column: **full** means the full text was read from an open copy on September 17, 2026; **abstract** means the abstract from a registry; **record** means bibliographic record only, and the finding column reports the paper's stated claim as commonly cited, unverified here.
+
+## 0. Master list by construct
+
+- One row per metric, grouped by the construct it is used for. The definitions of the constructs are in the [glossary](glossary.qmd#terms-of-assessment). Findings, data, and limitations are in sections 1 to 4, by paper. Started at meeting 10, September 22, 2026. Add a row when a reading introduces a metric, with the unit it counts on.
+- "Unit" is what receives the score. Two metrics with different units are not two measurements of one thing.
+
+| Construct | Metric | Unit | Computation or scale | Source |
+|:--|:--|:--|:--|:--|
+| Novelty | Atypicality: tail z-score of co-cited journal pairs | Reference list | z-score of each pair's frequency against a randomized citation network; the 10th-percentile pair marks the atypical tail | @uzzi2013 |
+| Novelty | Conventionality: median z-score of the same pairs | Reference list | As above; high median means a conventional base | @uzzi2013 |
+| Novelty | First-ever journal pairs, difficulty-weighted | Reference list | Count of pairs never co-cited before, weighted by how distant the two journals are | @wang2017 |
+| Novelty | Semantic distance between cited works | Reference list | Cosine distance between embeddings of the cited works' titles, abstracts, or keywords | @shibayama2021 |
+| Novelty | New concept links | Document (thesis) | Count of concept pairs from a topic model that never co-occurred before in the corpus | @hofstra2020 |
+| Novelty | Surprise of content and context combinations | Paper | Improbability of the paper's keyword and cited-journal combinations under a hypergraph model fitted to earlier papers | @shi2023 |
+| Novelty | Research strategy: tradition versus innovation | Paper | Whether the chemical relationships a paper states are new to the network or repeat existing ones | @foster2015 |
+| Novelty | Expert novelty rating | Research idea | 1 to 10 against written anchors (5: not enough for a paper; 6: probably enough); prior art is everything online before a stated cutoff; a low score must name the similar work | @si2025 |
+| Novelty | Originality as a review criterion | Proposal | Panel score; compared with a language model's pairwise ranking | @machado2026 |
+| Novelty | Model novelty assessment against expert reviews | Paper | Agreement of a model's novelty judgment with reviewers' written assessments | @novbench2026 |
+| Novelty (validation) | Construct validity of combination indicators | Paper | Indicators tested against expert judgment and against interdisciplinarity | @fontana2020 |
+| Distance | Proximal against distal novelty | Concept link | Embedding distance between the two linked concepts, averaged per document | @hofstra2020 |
+| Distance | Intellectual distance from the evaluator | Proposal and evaluator | Overlap between a proposal's topic and the evaluator's own expertise | @boudreau2016 |
+| Breadth | Variety, balance, disparity | Reference list | Number of categories cited, evenness across them, and how dissimilar they are | @stirling2007; @yegros2015; @wang2015 |
+| Breadth | Integration score | Reference list | Rao-Stirling-type diversity over Web of Science categories | @porter2009 |
+| Breadth | Interdisciplinarity weighted by disciplinary similarity | Scientist's output | Share of output outside one discipline, discounted by similarity | @leahey2017 |
+| Depth | Specialization | Scientist's output | Concentration of MeSH terms over a career | @rassenfosse2022 |
+| Depth | Exploration against exploitation | Scientist's output | Topic diversity of outputs from learned representations, before and after a hot streak | @liu2021 |
+| Uptake | Uptake per new link | Concept link | Number of later documents that reuse a link; modelled only where novelty is greater than zero | @hofstra2020 |
+| Uptake (predicted) | Excitement rating | Research idea | 1 to 10: potential impact and influence if developed fully | @si2025 |
+| Impact | Citations; top-percentile membership | Paper | Count, or membership of the top 5% (Uzzi) or top 1% (Wang) within field and year | @uzzi2013; @wang2017 |
+| Impact | Relative citations | Paper | Citations divided by the field-and-year mean | @radicchi2008 |
+| Impact | Fitness, immediacy, longevity | Paper | Parameters of a fitted model of the citation history | @wang2013 |
+| Impact | Q parameter | Scientist | Constant factor in the impact of a scientist's papers once productivity is removed | @sinatra2016 |
+| Field-shaping | CD disruption index | Paper, patent, software | Whether citers of the focal work also cite its references; −1 consolidating to +1 disruptive | @funk2017; @wu2019; @park2023; critiques @petersen2025; @leibel2024 |
+| Field-shaping | Canon ossification | Field and year | Turnover of the most-cited list against field size | @chu2021 |
+| Field-shaping | Beauty coefficient | Paper | Area between the citation curve and a line from publication to the citation peak | @ke2015 |
+| Field-shaping | Outsider entry | Field | Output of non-collaborators after a star's death | @azoulay2019 |
+| Feasibility and quality | Feasibility; expected effectiveness; overall | Research idea | 1 to 10 each; feasibility for a PhD student in one to two months; effectiveness against baselines; overall as likely acceptance at a leading venue | @si2025 |
+| Feasibility and quality | Scientific merit; team capacity; feasibility | Proposal | Funder's panel dimensions, alongside originality | @machado2026 |
+| Advance (field level) | Research productivity | Sector | Idea output per effective researcher | @bloom2020 |
+
+- Three rows are expert rubrics, not computations: Si's five dimensions, Machado's four, and the Novelty Dossier. The meeting 10 discussion called them the subjective and objective rubrics and asked for both. A computed score says where to look. A rubric records what an expert found when they looked.
 
 ## 1. Novelty
 
@@ -17,7 +58,7 @@
 | @shibayama2021 | Semantic distance between a paper's cited references, from word embeddings of their titles, abstracts, or keywords | Biomedicine, WoS; validation on 321 survey respondents rating one of their own 2001 to 2006 papers; 2,000 articles from 2010 for citation prediction | The embedding measure correlates with self-reported novelty and predicts ten-year citations; keyword-based variants correlate best | Validation is one field and one survey; most prior novelty measures were never validated at all; computation needs the whole database | full |
 | @boudreau2016 | Expert scores of research proposals as a function of intellectual distance and novelty | 2,130 randomized evaluator-proposal pairs at one university | Evaluators score proposals lower when closer to their own expertise and when highly novel | One institution, one competition | abstract |
 | @foster2015 | Research strategies coded on chemical-relationship networks from abstracts: tradition versus innovation, consolidate versus bridge | Millions of MEDLINE abstracts | The mix of strategies is stable over time; innovation is rare; an innovative paper is more likely to be high impact but the reward does not compensate for the risk of not publishing; prizewinners gamble | Biomedicine and chemistry only; novelty defined on chemical entities | abstract |
-| @hofstra2020 | New links between concepts in dissertation abstracts, from word embeddings; uptake of each new link in later documents | 1.2 million US doctoral theses 1977 to 2015, ProQuest, linked to WoS careers | Underrepresented groups introduce more novel links; their links are taken up less and lead to faculty positions less often | Abstracts only, by necessity; novelty of a thesis, not of a claim | full |
+| @hofstra2020 | New links between concepts in dissertation abstracts, from word embeddings; uptake of each new link in later documents | 1.2 million US doctoral theses 1977 to 2015, ProQuest, linked to WoS careers | Underrepresented groups introduce more novel links; their links are taken up less and lead to faculty positions less often; uptake falls steeply with the embedding distance of a link, and gender minorities introduce slightly more distal links, which explains part but not all of the discount | Abstracts only, by necessity; novelty of a thesis, not of a claim | full |
 | @shi2023 | Surprise of a paper's combination of contents (keywords) and contexts (cited journals) under a hypergraph embedding model that predicts realized combinations | MEDLINE 19.9 million papers 1865 to 2009; 541,448 physics papers 1893 to 2013; 6.5 million patents 1976 to 2015 | Surprise predicts top-10% citation impact: most surprising context combinations four times more likely to be hits in biomedicine, content two times, both about five; surprising advances come disproportionately from outsiders publishing to a distant field; Nobel papers have high content novelty and low context novelty | Contents as keywords and contexts as cited journals are coarse; association with citations, not a causal test of advance | full |
 | @machado2026 | GPT-4o funding decisions from pairwise comparisons against expert scores | 139 monodisciplinary proposals to the Austrian Science Fund, 2021 | The model matched human funding decisions in 60% of cases; novelty was the only review dimension that predicted disagreement, and proposals humans rated more novel were the ones the model declined | One funder, one year, one model; mechanism not identified | full |
 | @novbench2026 | Quality of language-model novelty assessments against expert-written reviews | 1,684 paper-review pairs from one NLP conference | Current models show limited understanding of novelty; fine-tuned models fail at instruction following | Accepted NLP papers only; selection bias acknowledged | full |
