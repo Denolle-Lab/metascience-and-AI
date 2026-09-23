@@ -2,7 +2,7 @@
 
 **Meeting 1 of 13**
 
-[Drafted]{.status .drafted} [v0.4 · not yet held · [record discussion](../notes.qmd)]{.status-line}
+[Discussed]{.status .discussed} [v0.4 · held September 15, 2026 · [record discussion](../notes.qmd)]{.status-line}
 
 ## Central question
 
@@ -144,6 +144,57 @@ flowchart TD
 - Are Platt's exclusion at X and Cleland's smoking gun at K one Bayesian move under two constraints, or two different moves? Cleland's last sentence says one [@cleland2002, p. 495]; the two papers read as two.
 - Both papers put the hard part before the loop: Platt at G, Cleland in the exploratory phase before it.
 
+## Held September 15, 2026
+
+- Source: the group's shared meeting notes for September 15. No slides are recorded for this meeting. Beyond the anchor and companion, the discussion drew on two readings listed elsewhere on this site: the science-of-science review @fortunato2018 and Simon's argument that discovery has a logic, @simon1973, an optional reading for [meeting 13](13-agent-design-and-evaluation.qmd).
+
+### What was discussed
+
+| Reading | Role on this page | What the room took from it |
+|:--|:--|:--|
+| @platt1964 | Anchor | Strong inference (the notes say "strong hypothesis"); falsification between rivals as the method |
+| @cleland2001 | Companion | Assume the conditions, derive the predicted event, test the hypothesis by whether it occurs; the smoking gun as the evidence that discriminates between hypotheses |
+| @fortunato2018 | Background, cited in the [glossary](../glossary.qmd#purpose-and-use) | Science grows and changes, so a data-driven science of science can show where opportunities for advance remain; small teams against large teams; how scientists choose experiments |
+| @simon1973 | Optional reading, meeting 13 | Where new ideas come from; discovery as search; the British Museum algorithm against heuristic search |
+
+### What the room said
+
+- **The scientific method, as the room stated it.** A hypothesis H is stated, conditions C are assumed, and a testable implication is derived: if C is brought about, event E will occur. H is accepted or rejected according to whether E occurs.
+- **Three kinds of cognitive work,** induction, deduction, and abduction, and a fourth element, the conditions, which are "never really fully represented and reproducible."
+- **Prior knowledge sets the range of hypotheses.** With strong prior knowledge the range is narrow and the work is a hunt for the smoking gun that shows the expectation is right; with little prior knowledge the range is broader.
+- **Two textbook accounts.** Inductivism: repeated successes confirm H. Falsificationism: H cannot be confirmed, only refuted.
+- **Less difference between experimental and historical science** than Cleland draws.
+- **The smoking gun cuts both ways.** It discriminates between hypotheses, and it biases the work toward confirming one.
+- **Falsification is not done as rigorously as Chamberlin and Platt describe,** because conditions vary. Falsifying a hypothesis needs conditions that are known, met, and repeated, which is very hard in nature; a failed prediction can be a misleading disconfirmation.
+- **Models of the past are theory.** The notes quote Cleland: "modeling past events is theoretical work, and while it may yield predictions, these predictions are only as secure as the assumptions upon which the model is based."
+- **Science of science.** Small teams bring in older, less popular ideas and open new directions, and last longest when they keep a stable core; large teams refine recent, popular ideas and reach high but often short-lived impact. Scientists' actual strategy for choosing experiments mines the hubs they already care about efficiently but does not reveal the whole knowledge network; both high-impact targets and unexplored ones need attention. There are optimal team sizes, and smaller teams try to disrupt. The design question the room drew: how to build a small, stable core of agents.
+- **Simon: discovery is search.** If some ways of hunting for hypotheses are systematically better than others, discovery has a logic. It does not need to solve the problem of induction: discovery recodes the data in hand into a more compact pattern, and whether the pattern fits those data can be checked with certainty; whether it will hold on future data belongs to testing. Brute-force enumeration, the British Museum algorithm, against heuristic search, which uses structure in the data to prune the space. Generating hypotheses is a search process, some search processes are demonstrably better than others, and studying why gives a logic of discovery.
+- **What the group needs to quantify next:** disruptive ideas, scientific consensus, novelty, and what counts as an advance, a big leap against incremental work. [Meeting 10](10-novelty.qmd) took up novelty and uptake the following week, on September 22.
+
+### Read against the texts
+
+- **The room's definition is Cleland's schema without the auxiliaries.** Cleland writes the test implication as "if C then E," inferred from H [@cleland2001, p. 987], and adds the auxiliary assumptions a page later [@cleland2001, p. 988]. The room's remark that conditions are never fully represented is the same point from the other side: what is not written into C sits in A, and a failed prediction cannot say which conjunct failed [@duhem1954]. The unit graph writes the schema as $H + A + C \Rightarrow E$ for that reason.
+- **On falsification, the room agrees with Cleland against Platt.** Cleland's own claim is that experimentalists "are not trying to disprove their hypotheses": after a failed prediction they vary the auxiliaries to guard against a false negative, the room's misleading disconfirmation [@cleland2001, p. 988]. What the room calls unrigorous falsification is, in her account, the control series, node V on the graph [@cleland2002, pp. 477--478]. Where conditions can only be found, V is unavailable, and the found-C methods replace it with independent traces.
+- **"Less difference than Cleland draws" is partly hers.** She allows that experimentalists reason like historians when a test fails or a result surprises them, and that historians reason like experimentalists when nature repeats herself [@cleland2002, pp. 485--486]. What she maintains is the asymmetry of overdetermination: a past event leaves many independent traces [@cleland2001, pp. 989--990]. The notes do not record the room disputing that. Whether the difference is one of kind or of degree stays open.
+- **The smoking gun and confirmation bias.** Cleland's defense is that a smoking gun is judged within a stated set of rivals, and the survivor is retained as the best explanation, not proved [@cleland2002, pp. 481--482]. The bias the room named is the risk when the set is too small, which is Chamberlin's warning against the ruling theory [@chamberlin1965]. On the graph, that is why G requires at least two incompatible rivals and why K records "best explanation within the stated set."
+- **Prior knowledge narrows G in both directions.** It supplies hypotheses by analogy [@gilbert1886], and it hides the rivals nobody thought to list. The notes' contrast, narrow range with prior knowledge, broad range without, is a claim about the size of the rival set at G that the ledger can record case by case.
+- **The quotation is not located.** Its argument matches Cleland on computer models, which determine consequences under stated conditions and cannot say which conditions obtained [@cleland2001, p. 989]; the wording has not been checked against either Cleland paper.
+- **The science-of-science points trace to three sources, one outside this site.** Small teams disrupt and large teams develop: @wu2019, whose team-size effect Petersen and colleagues find small once reference-list growth is corrected, and reversing above eight authors [@petersen2025]. The experiment-choice finding: @rzhetsky2015, an optional reading for [meeting 6](06-exploration-confirmation.qmd). That small teams last longest with a stable core is not in this site's bibliography and has not been traced to a source. "Optimal team sizes" is not traced to a reading either. The design question, a small stable core of agents, leans on the contested part.
+- **Simon answers discussion question 3.** He separates the logic of discovery, norms for generating a pattern, from the logic of verification, and argues both exist [@simon1973]. On the graph that is G against K, and the room took his side: generation is search and can be done better or worse.
+
+### The three questions, as the meeting left them
+
+1. **Can an observational study discriminate hypotheses without controlling the system?** Yes, by the smoking gun, with conditions assumed rather than set, and with the risk of confirmation bias when the rival set is small.
+2. **Which research actions are not well described as a test?** Pattern-finding in Simon's sense: recoding data into a compact pattern is discovery, and whether it will hold is a later test. Exploration is the other, as the unit page's entry states record.
+3. **Generation or warrant?** Both, following Simon. The notes record no disagreement.
+
+### Open after the meeting
+
+- Whether experimental and historical science differ in kind or in degree.
+- Where the stable-core finding comes from, and whether it holds for agents.
+- Whether the case exercise was done, each person's own paper placed on the unit graph; the notes do not say.
+- Quantifying disruption, consensus, novelty, and advance, taken up in [meeting 10](10-novelty.qmd).
+
 ## Prepare and discuss
 
 Read the selected anchor sections and the companion abstract or overview. Bring one source passage or artifact relevant to the case; the rotating reader presents the companion in depth.
@@ -174,6 +225,11 @@ One episode entry and three sentences: what changed scientifically; what evidenc
 - From Cleland: the agent records whether C was set or found; an experimental claim cannot leave V after one run; controls fixed before data may be revised after data with the reason logged, the Viking rule; rejecting an auxiliary is node P, not X, and is logged as such; a best explanation is retained with that status, never as an exclusion; "not decidable, and this would decide it" is a legal terminal state [@cleland2001, p. 988; @cleland2002, pp. 477--480, 483--484, 492--494].
 - Planted flaws that test the rules: a forced single hypothesis; a test all rivals pass; a claim leaving V after one run; an exclusion that silently rejected A; a smoking gun reported as an exclusion; abstention on an answerable case.
 - Open: whether exclusion and best explanation are one rule with two thresholds or two rules. The room decides; the skill file records the answer.
+- Proposed from the September 15 discussion, not yet adopted:
+  - At G: log how each rival was generated (analogy, known cause, a pattern in the data), so that generation strategies can be compared, as Simon's argument requires [@simon1973]. The evaluator adds a brute-force baseline, enumeration without heuristics, as the control.
+  - At G: when prior knowledge leaves one rival, log what excluded the others before any test. A single rival with no logged reason is the ruling theory [@chamberlin1965].
+  - At M and V: when conditions were assumed rather than set, a failed prediction goes to P with the assumption named, not to X. This is the room's misleading disconfirmation, and the existing planted flaw, an exclusion that silently rejected A, tests it.
+  - For meeting 13: the architecture question the room raised, a small stable core of agents, with the caveat that the team-size evidence it rests on is contested [@petersen2025].
 
 ## Optional extensions
 
