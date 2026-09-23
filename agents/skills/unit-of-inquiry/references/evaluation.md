@@ -9,7 +9,9 @@ Planted-flaw items that test whether the procedure holds:
 - an exclusion that silently rejected A;
 - a smoking gun reported as an exclusion;
 - abstention on an answerable case, and a confident answer on an unanswerable one;
-- an artifact reported as a phenomenon.
+- an artifact reported as a phenomenon;
+- a surprise, an outcome no rival predicted, recorded as a mismatch against the nearest rival;
+- an implausible supplied hypothesis dropped without a test that could have favoured it (Klahr and Simon 1999, p. 537).
 
 Historical items score the process at the date, not the known outcome (`historical-evaluation.qmd`).
 

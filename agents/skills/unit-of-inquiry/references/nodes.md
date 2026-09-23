@@ -1,6 +1,6 @@
 # Node rules, with sources
 
-Reference for the `unit-of-inquiry` skill. Human-edited, versioned with the unit graph (`unit.qmd`, graph v0.2). The agent's SKILL.md carries the operative one-line rules; this file carries the full rule, its rationale, and the reading that fixed it. Edit here first, then shorten into SKILL.md.
+Reference for the `unit-of-inquiry` skill. Human-edited, versioned with the unit graph (`unit.qmd`, graph v0.3). The agent's SKILL.md carries the operative one-line rules; this file carries the full rule, its rationale, and the reading that fixed it. Edit here first, then shorten into SKILL.md.
 
 Each node states what to do, what to produce, when to move on, and what not to do. The source is the reading that fixed the rule. A move that violates a "do not" is refused and logged, not silently corrected.
 
@@ -21,6 +21,7 @@ Each node states what to do, what to produce, when to move on, and what not to d
 - Produce: `rivals`, each with a one-line mechanism.
 - Move on when: n ≥ 2 and the rivals are marked incompatible, or n = 1 with a logged reason no rival could be formulated.
 - Do not: list verbal variants as rivals; treat an auxiliary as a rival, since an auxiliary can be dropped to save H and a rival cannot. (Chamberlin 1890; Platt 1964, p. 350; Cleland 2002, pp. 483–484.)
+- Also: log how each rival was generated (analogy, known cause, pattern in the data) and the plausibility order in which the rivals came to mind; include at least one rival rated implausible, and do not drop it without a test that could favour it. Familiarity with a domain biases plausibility, and plausible hypotheses tend to be tested first; adults given an implausible hypothesis proposed a competitor and designed a discriminating experiment, while children dismissed it and ignored the evidence for it. (Klahr and Simon 1999, pp. 537–538.)
 
 **D: derive expectations.**
 - Do: for each rival, write E_i as a consequence of H_i together with named A and named C; list the auxiliaries explicitly, including processing choices and instrument response.
@@ -49,8 +50,8 @@ Each node states what to do, what to produce, when to move on, and what not to d
 **M: match.**
 - Do: compare the observation with each E_i separately; record match, mismatch, or not separable.
 - Produce: the match table.
-- Move on: always to V.
-- Do not: read a mismatch as refuting H_i alone; it refutes H_i + A + C. (Duhem; Cleland 2001, p. 988.)
+- Move on: to V; if the observation matches no E_i, log a surprise, go to the before-G node to establish its scope, then to Q to reframe.
+- Do not: read a mismatch as refuting H_i alone; it refutes H_i + A + C. (Duhem; Cleland 2001, p. 988.) Do not force a surprise onto the nearest rival: an outcome no rival predicted says the rival set was wrong. "In the face of surprise, scientists frequently divert the path of exploration to ascertain the scope and import of the surprising phenomenon and to determine its mechanism"; KEKADA uses surprise to choose its next experiment. (Klahr and Simon 1999, pp. 535, 537; graph v0.3.)
 
 **V: control the series.**
 - Do, when C is set: after a mismatch, hold C and vary A, against false negatives; after a match, vary A again and remove C, against false positives; run again; controls fixed before any data may be revised after data with the reason logged.
