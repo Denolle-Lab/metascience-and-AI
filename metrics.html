@@ -405,7 +405,8 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#novelty" id="toc-novelty" class="nav-link active" data-scroll-target="#novelty">1. Novelty</a></li>
+  <li><a href="#master-list-by-construct" id="toc-master-list-by-construct" class="nav-link active" data-scroll-target="#master-list-by-construct">0. Master list by construct</a></li>
+  <li><a href="#novelty" id="toc-novelty" class="nav-link" data-scroll-target="#novelty">1. Novelty</a></li>
   <li><a href="#impact-and-its-normalization" id="toc-impact-and-its-normalization" class="nav-link" data-scroll-target="#impact-and-its-normalization">2. Impact and its normalization</a></li>
   <li><a href="#field-shaping-and-disruption" id="toc-field-shaping-and-disruption" class="nav-link" data-scroll-target="#field-shaping-and-disruption">3. Field-shaping and disruption</a></li>
   <li><a href="#breadth-depth-and-the-conditions-of-advance" id="toc-breadth-depth-and-the-conditions-of-advance" class="nav-link" data-scroll-target="#breadth-depth-and-the-conditions-of-advance">4. Breadth, depth, and the conditions of advance</a></li>
@@ -438,13 +439,260 @@ div.csl-indent {
 </header>
 
 
-<p><span class="status drafted">Drafted</span> <span class="status-line">registry of metrics and findings · read against the texts where an open copy exists · not yet discussed</span></p>
+<p><span class="status drafted">Drafted</span> <span class="status-line">registry of metrics and findings · read against the texts where an open copy exists · master list begun at meeting 10, September 22, 2026</span></p>
 <ul>
 <li>The seminar’s outcome is scientific advance, assessed through novelty, correctness, and impact (<a href="./glossary.html#terms-of-assessment">glossary</a>). This page records what the measurement literature has found useful, what it found, and what it cannot see, so the club reads the papers with the constructs already in view.</li>
-<li>Most of this literature predates language models. Its metrics are built from citation graphs, journal categories, and keyword co-occurrence. Section 5 says which of them embeddings and computational reading can revisit, and which they cannot fix.</li>
-<li>The club does not take these findings on trust. Section 4 says how they are tested against the group’s own judgments, meeting by meeting, using <a href="https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/indicators.py">tools/indicators.py</a>.</li>
+<li>Most of this literature predates language models. Its metrics are built from citation graphs, journal categories, and keyword co-occurrence. Section 7 says which of them embeddings and computational reading can revisit, and which they cannot fix.</li>
+<li>The club does not take these findings on trust. Section 6 says how they are tested against the group’s own judgments, meeting by meeting, using <a href="https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/indicators.py">tools/indicators.py</a>.</li>
 <li>Basis column: <strong>full</strong> means the full text was read from an open copy on September 17, 2026; <strong>abstract</strong> means the abstract from a registry; <strong>record</strong> means bibliographic record only, and the finding column reports the paper’s stated claim as commonly cited, unverified here.</li>
 </ul>
+<section id="master-list-by-construct" class="level2">
+<h2 class="anchored" data-anchor-id="master-list-by-construct">0. Master list by construct</h2>
+<ul>
+<li>One row per metric, grouped by the construct it is used for. The definitions of the constructs are in the <a href="./glossary.html#terms-of-assessment">glossary</a>. Findings, data, and limitations are in sections 1 to 4, by paper. Started at meeting 10, September 22, 2026. Add a row when a reading introduces a metric, with the unit it counts on.</li>
+<li>“Unit” is what receives the score. Two metrics with different units are not two measurements of one thing.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Construct</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Unit</th>
+<th style="text-align: left;">Computation or scale</th>
+<th style="text-align: left;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Atypicality: tail z-score of co-cited journal pairs</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">z-score of each pair’s frequency against a randomized citation network; the 10th-percentile pair marks the atypical tail</td>
+<td style="text-align: left;"><span class="citation" data-cites="uzzi2013">Uzzi et al. (<a href="bibliography.html#ref-uzzi2013" role="doc-biblioref">2013</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Conventionality: median z-score of the same pairs</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">As above; high median means a conventional base</td>
+<td style="text-align: left;"><span class="citation" data-cites="uzzi2013">Uzzi et al. (<a href="bibliography.html#ref-uzzi2013" role="doc-biblioref">2013</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">First-ever journal pairs, difficulty-weighted</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">Count of pairs never co-cited before, weighted by how distant the two journals are</td>
+<td style="text-align: left;"><span class="citation" data-cites="wang2017">Wang et al. (<a href="bibliography.html#ref-wang2017" role="doc-biblioref">2017</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Semantic distance between cited works</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">Cosine distance between embeddings of the cited works’ titles, abstracts, or keywords</td>
+<td style="text-align: left;"><span class="citation" data-cites="shibayama2021">Shibayama et al. (<a href="bibliography.html#ref-shibayama2021" role="doc-biblioref">2021</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">New concept links</td>
+<td style="text-align: left;">Document (thesis)</td>
+<td style="text-align: left;">Count of concept pairs from a topic model that never co-occurred before in the corpus</td>
+<td style="text-align: left;"><span class="citation" data-cites="hofstra2020">Hofstra et al. (<a href="bibliography.html#ref-hofstra2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Surprise of content and context combinations</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Improbability of the paper’s keyword and cited-journal combinations under a hypergraph model fitted to earlier papers</td>
+<td style="text-align: left;"><span class="citation" data-cites="shi2023">Shi and Evans (<a href="bibliography.html#ref-shi2023" role="doc-biblioref">2023</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Research strategy: tradition versus innovation</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Whether the chemical relationships a paper states are new to the network or repeat existing ones</td>
+<td style="text-align: left;"><span class="citation" data-cites="foster2015">Foster et al. (<a href="bibliography.html#ref-foster2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Expert novelty rating</td>
+<td style="text-align: left;">Research idea</td>
+<td style="text-align: left;">1 to 10 against written anchors (5: not enough for a paper; 6: probably enough); prior art is everything online before a stated cutoff; a low score must name the similar work</td>
+<td style="text-align: left;"><span class="citation" data-cites="si2025">Si, Yang, et al. (<a href="bibliography.html#ref-si2025" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Originality as a review criterion</td>
+<td style="text-align: left;">Proposal</td>
+<td style="text-align: left;">Panel score; compared with a language model’s pairwise ranking</td>
+<td style="text-align: left;"><span class="citation" data-cites="machado2026">Machado (<a href="bibliography.html#ref-machado2026" role="doc-biblioref">2026</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Novelty</td>
+<td style="text-align: left;">Model novelty assessment against expert reviews</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Agreement of a model’s novelty judgment with reviewers’ written assessments</td>
+<td style="text-align: left;"><span class="citation" data-cites="novbench2026">Wu et al. (<a href="bibliography.html#ref-novbench2026" role="doc-biblioref">2026</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Novelty (validation)</td>
+<td style="text-align: left;">Construct validity of combination indicators</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Indicators tested against expert judgment and against interdisciplinarity</td>
+<td style="text-align: left;"><span class="citation" data-cites="fontana2020">Fontana et al. (<a href="bibliography.html#ref-fontana2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Distance</td>
+<td style="text-align: left;">Proximal against distal novelty</td>
+<td style="text-align: left;">Concept link</td>
+<td style="text-align: left;">Embedding distance between the two linked concepts, averaged per document</td>
+<td style="text-align: left;"><span class="citation" data-cites="hofstra2020">Hofstra et al. (<a href="bibliography.html#ref-hofstra2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Distance</td>
+<td style="text-align: left;">Intellectual distance from the evaluator</td>
+<td style="text-align: left;">Proposal and evaluator</td>
+<td style="text-align: left;">Overlap between a proposal’s topic and the evaluator’s own expertise</td>
+<td style="text-align: left;"><span class="citation" data-cites="boudreau2016">Boudreau et al. (<a href="bibliography.html#ref-boudreau2016" role="doc-biblioref">2016</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">Variety, balance, disparity</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">Number of categories cited, evenness across them, and how dissimilar they are</td>
+<td style="text-align: left;"><span class="citation" data-cites="stirling2007">Stirling (<a href="bibliography.html#ref-stirling2007" role="doc-biblioref">2007</a>)</span>; <span class="citation" data-cites="yegros2015">Yegros-Yegros et al. (<a href="bibliography.html#ref-yegros2015" role="doc-biblioref">2015</a>)</span>; <span class="citation" data-cites="wang2015">Wang et al. (<a href="bibliography.html#ref-wang2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">Integration score</td>
+<td style="text-align: left;">Reference list</td>
+<td style="text-align: left;">Rao-Stirling-type diversity over Web of Science categories</td>
+<td style="text-align: left;"><span class="citation" data-cites="porter2009">Porter and Rafols (<a href="bibliography.html#ref-porter2009" role="doc-biblioref">2009</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">Interdisciplinarity weighted by disciplinary similarity</td>
+<td style="text-align: left;">Scientist’s output</td>
+<td style="text-align: left;">Share of output outside one discipline, discounted by similarity</td>
+<td style="text-align: left;"><span class="citation" data-cites="leahey2017">Leahey et al. (<a href="bibliography.html#ref-leahey2017" role="doc-biblioref">2017</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Depth</td>
+<td style="text-align: left;">Specialization</td>
+<td style="text-align: left;">Scientist’s output</td>
+<td style="text-align: left;">Concentration of MeSH terms over a career</td>
+<td style="text-align: left;"><span class="citation" data-cites="rassenfosse2022">Rassenfosse et al. (<a href="bibliography.html#ref-rassenfosse2022" role="doc-biblioref">2022</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Depth</td>
+<td style="text-align: left;">Exploration against exploitation</td>
+<td style="text-align: left;">Scientist’s output</td>
+<td style="text-align: left;">Topic diversity of outputs from learned representations, before and after a hot streak</td>
+<td style="text-align: left;"><span class="citation" data-cites="liu2021">Liu et al. (<a href="bibliography.html#ref-liu2021" role="doc-biblioref">2021</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uptake</td>
+<td style="text-align: left;">Uptake per new link</td>
+<td style="text-align: left;">Concept link</td>
+<td style="text-align: left;">Number of later documents that reuse a link; modelled only where novelty is greater than zero</td>
+<td style="text-align: left;"><span class="citation" data-cites="hofstra2020">Hofstra et al. (<a href="bibliography.html#ref-hofstra2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uptake (predicted)</td>
+<td style="text-align: left;">Excitement rating</td>
+<td style="text-align: left;">Research idea</td>
+<td style="text-align: left;">1 to 10: potential impact and influence if developed fully</td>
+<td style="text-align: left;"><span class="citation" data-cites="si2025">Si, Yang, et al. (<a href="bibliography.html#ref-si2025" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">Citations; top-percentile membership</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Count, or membership of the top 5% (Uzzi) or top 1% (Wang) within field and year</td>
+<td style="text-align: left;"><span class="citation" data-cites="uzzi2013">Uzzi et al. (<a href="bibliography.html#ref-uzzi2013" role="doc-biblioref">2013</a>)</span>; <span class="citation" data-cites="wang2017">Wang et al. (<a href="bibliography.html#ref-wang2017" role="doc-biblioref">2017</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">Relative citations</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Citations divided by the field-and-year mean</td>
+<td style="text-align: left;"><span class="citation" data-cites="radicchi2008">Radicchi et al. (<a href="bibliography.html#ref-radicchi2008" role="doc-biblioref">2008</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">Fitness, immediacy, longevity</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Parameters of a fitted model of the citation history</td>
+<td style="text-align: left;"><span class="citation" data-cites="wang2013">Wang et al. (<a href="bibliography.html#ref-wang2013" role="doc-biblioref">2013</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">Q parameter</td>
+<td style="text-align: left;">Scientist</td>
+<td style="text-align: left;">Constant factor in the impact of a scientist’s papers once productivity is removed</td>
+<td style="text-align: left;"><span class="citation" data-cites="sinatra2016">Sinatra et al. (<a href="bibliography.html#ref-sinatra2016" role="doc-biblioref">2016</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Field-shaping</td>
+<td style="text-align: left;">CD disruption index</td>
+<td style="text-align: left;">Paper, patent, software</td>
+<td style="text-align: left;">Whether citers of the focal work also cite its references; −1 consolidating to +1 disruptive</td>
+<td style="text-align: left;"><span class="citation" data-cites="funk2017">Funk and Owen-Smith (<a href="bibliography.html#ref-funk2017" role="doc-biblioref">2017</a>)</span>; <span class="citation" data-cites="wu2019">Wu et al. (<a href="bibliography.html#ref-wu2019" role="doc-biblioref">2019</a>)</span>; <span class="citation" data-cites="park2023">Park et al. (<a href="bibliography.html#ref-park2023" role="doc-biblioref">2023</a>)</span>; critiques <span class="citation" data-cites="petersen2025">Petersen et al. (<a href="bibliography.html#ref-petersen2025" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="leibel2024">Leibel and Bornmann (<a href="bibliography.html#ref-leibel2024" role="doc-biblioref">2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Field-shaping</td>
+<td style="text-align: left;">Canon ossification</td>
+<td style="text-align: left;">Field and year</td>
+<td style="text-align: left;">Turnover of the most-cited list against field size</td>
+<td style="text-align: left;"><span class="citation" data-cites="chu2021">Chu and Evans (<a href="bibliography.html#ref-chu2021" role="doc-biblioref">2021</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Field-shaping</td>
+<td style="text-align: left;">Beauty coefficient</td>
+<td style="text-align: left;">Paper</td>
+<td style="text-align: left;">Area between the citation curve and a line from publication to the citation peak</td>
+<td style="text-align: left;"><span class="citation" data-cites="ke2015">Ke et al. (<a href="bibliography.html#ref-ke2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Field-shaping</td>
+<td style="text-align: left;">Outsider entry</td>
+<td style="text-align: left;">Field</td>
+<td style="text-align: left;">Output of non-collaborators after a star’s death</td>
+<td style="text-align: left;"><span class="citation" data-cites="azoulay2019">Azoulay et al. (<a href="bibliography.html#ref-azoulay2019" role="doc-biblioref">2019</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Feasibility and quality</td>
+<td style="text-align: left;">Feasibility; expected effectiveness; overall</td>
+<td style="text-align: left;">Research idea</td>
+<td style="text-align: left;">1 to 10 each; feasibility for a PhD student in one to two months; effectiveness against baselines; overall as likely acceptance at a leading venue</td>
+<td style="text-align: left;"><span class="citation" data-cites="si2025">Si, Yang, et al. (<a href="bibliography.html#ref-si2025" role="doc-biblioref">2025</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Feasibility and quality</td>
+<td style="text-align: left;">Scientific merit; team capacity; feasibility</td>
+<td style="text-align: left;">Proposal</td>
+<td style="text-align: left;">Funder’s panel dimensions, alongside originality</td>
+<td style="text-align: left;"><span class="citation" data-cites="machado2026">Machado (<a href="bibliography.html#ref-machado2026" role="doc-biblioref">2026</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Advance (field level)</td>
+<td style="text-align: left;">Research productivity</td>
+<td style="text-align: left;">Sector</td>
+<td style="text-align: left;">Idea output per effective researcher</td>
+<td style="text-align: left;"><span class="citation" data-cites="bloom2020">Bloom et al. (<a href="bibliography.html#ref-bloom2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Three rows are expert rubrics, not computations: Si’s five dimensions, Machado’s four, and the Novelty Dossier. The meeting 10 discussion called them the subjective and objective rubrics and asked for both. A computed score says where to look. A rubric records what an expert found when they looked.</li>
+</ul>
+</section>
 <section id="novelty" class="level2">
 <h2 class="anchored" data-anchor-id="novelty">1. Novelty</h2>
 <table class="caption-top table">
@@ -519,7 +767,7 @@ div.csl-indent {
 <td style="text-align: left;"><span class="citation" data-cites="hofstra2020">Hofstra et al. (<a href="bibliography.html#ref-hofstra2020" role="doc-biblioref">2020</a>)</span></td>
 <td style="text-align: left;">New links between concepts in dissertation abstracts, from word embeddings; uptake of each new link in later documents</td>
 <td style="text-align: left;">1.2 million US doctoral theses 1977 to 2015, ProQuest, linked to WoS careers</td>
-<td style="text-align: left;">Underrepresented groups introduce more novel links; their links are taken up less and lead to faculty positions less often</td>
+<td style="text-align: left;">Underrepresented groups introduce more novel links; their links are taken up less and lead to faculty positions less often; uptake falls steeply with the embedding distance of a link, and gender minorities introduce slightly more distal links, which explains part but not all of the discount</td>
 <td style="text-align: left;">Abstracts only, by necessity; novelty of a thesis, not of a claim</td>
 <td style="text-align: left;">full</td>
 </tr>

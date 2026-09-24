@@ -1,8 +1,8 @@
 ---
 name: unit-of-inquiry
-description: Runs a research agent along the unit graph of scientific inquiry (unit.qmd, graph v0.2), from a trigger event to a warranted claim or a principled abstention, following a human-made method chosen from the situation. Load whenever an agent is asked to investigate, explain, test, or decide something about the physical world. Not a paper classifier.
-version: 0.2.1
-rubric: unit.qmd graph v0.2; modes/*.qmd for the evidence each claim owes
+description: Runs a research agent along the unit graph of scientific inquiry (unit.qmd, graph v0.3), from a trigger event to a warranted claim or a principled abstention, following a human-made method chosen from the situation. Load whenever an agent is asked to investigate, explain, test, or decide something about the physical world. Not a paper classifier.
+version: 0.2.2
+rubric: unit.qmd graph v0.3; modes/*.qmd for the evidence each claim owes
 references: references/nodes.md (rules with sources), references/methods.md, references/example.md, references/evaluation.md, CHANGELOG.md
 status: drafted, not evaluated
 ---
@@ -13,7 +13,7 @@ You do research by moving through the nodes of the unit graph. At each node prod
 
 ## Inputs
 
-`trigger` (one of: observation, problem, prediction, capability, supplied goal, with its content) · `situation` (can conditions be set or only found; is the event unique or repeated by nature; is the phenomenon stable) · `method` (`auto` or `strong-inference` | `trace-series` | `natures-repetition` | `exploration-first`) · `evidence_access` (what you already hold, dated) · `budget` · `tools`.
+`trigger` (one of: observation, problem, prediction, data without theory, capability, supplied goal, with its content) · `expectation` (what you expected before looking, with its source; a surprise is measured against it) · `situation` (can conditions be set or only found; is the event unique or repeated by nature; is the phenomenon stable) · `method` (`auto` or `strong-inference` | `trace-series` | `natures-repetition` | `exploration-first`) · `evidence_access` (what you already hold, dated) · `budget` · `tools`.
 
 ## Step 0: enter, then choose the method
 
@@ -22,6 +22,7 @@ You do research by moving through the nodes of the unit graph. At each node prod
 | Observation or anomaly | before G | Establish it is a phenomenon: does it repeat; is it in the chain or the world |
 | Problem or question | Q, G | Enumerate rivals before deriving anything |
 | Prediction | D | Name A and C, write the expectation, then design |
+| Data without theory | before G | Find a pattern; choose each next candidate from the misfit of the last; retain a regularity, not a mechanism |
 | New capability | before G via O | Record the chain; treat the first structure seen as an anomaly |
 | Supplied goal | Q | Record who supplied it; reframe as a question with a consequence |
 
@@ -34,18 +35,20 @@ You do research by moving through the nodes of the unit graph. At each node prod
 
 A named method overrides the table; log the override and the table's choice.
 
+Before G, record the starting state: the expectation, the plausibility order in which the first rivals came to mind, and the domains that knowledge came from.
+
 ## The loop
 
 | Node | Do | Produce | Move on when | Do not |
 |:--|:--|:--|:--|:--|
 | before G | Vary conditions and representations; check the measurement chain before the world; record what repeats | `phenomenon` | It repeats, or an independent record corroborates it, or the chain explains it (stop: artifact) | Invent a hypothesis to make exploration look like a test |
 | Q | Write the question, its origin, every reframing with a date | `question` | It names a consequence that differs between answers | Proceed on a goal with no consequence |
-| G | Enumerate ≥ 2 incompatible rivals, by analogy and by known causes; keep "artifact" as a rival until before-G excluded it | `rivals` | n ≥ 2 marked incompatible, or n = 1 with a logged reason | List verbal variants as rivals; treat an auxiliary as a rival |
+| G | Enumerate ≥ 2 incompatible rivals, by analogy and by known causes; keep "artifact" as a rival until before-G excluded it; include one you rate implausible and log how each was generated | `rivals` | n ≥ 2 marked incompatible, or n = 1 with a logged reason | List verbal variants as rivals; treat an auxiliary as a rival; drop an implausible rival without a test that could favour it |
 | D | For each rival, derive E_i from H_i + A + C with A and C named | `expectations`, `auxiliaries` | Every E_i has its A and C listed | Use at X an expectation whose A is unlisted |
 | S | Choose the observable and conditions where the E_i differ; map each outcome to the rival it disproves | design | Every outcome excludes ≥ 1 rival, or you record that no design exists and ask for a capability | Run an observation no outcome counts against; that is exploration, label it |
 | C | Set the conditions and record held/varied; or find them and record what was unavailable | `conditions` set or found | The design's conditions are in hand or their absence is logged | Report a control not run; claim the method of difference when C is found |
 | O | Observe with the full chain; add the theory it is laden with to A | observation + provenance | Provenance complete | Use an observation of unknown chain at M |
-| M | Compare with each E_i separately | match table | Always, to V | Read a mismatch as refuting H_i alone |
+| M | Compare with each E_i separately | match table | To V; if no E_i matches, log a surprise and go to before G, then Q | Read a mismatch as refuting H_i alone; force a surprise onto the nearest rival |
 | V | Set C: after a mismatch hold C and vary A; after a match vary A again and remove C; run again. Found C: substitute independent traces and say V is unavailable | `series` or `traces` | The outcome survives the series, or budget is spent (report from V) | Let a claim leave after one run |
 | X | Exclude after the series; state the conjunct rejected | verdict | | Reject A or C silently (that is P) |
 | P | Revise A or C with reason; return to D | revision | | Protect the same H more than twice without a new prediction |
@@ -64,12 +67,12 @@ One reference per question; consult it at that moment, not before. Cite the vers
 
 | Question | Reference | Version |
 |:--|:--|:--|
-| Which node am I at, and what may I do next | the graph, `unit.qmd` section 5 | graph v0.2 |
+| Which node am I at, and what may I do next | the graph, `unit.qmd` section 5 | graph v0.3 |
 | What evidence does this kind of claim owe | the mode page for the work in hand, `modes/<mode>.qmd`, exported in `agents/mode-instructions.json` | per mode, 0.4.x |
 | What do I emit for a retained hypothesis | `templates/claim-record.json` | 0.4.0 |
-| Which method am I running and what is its guard | `references/methods.md` | 0.2.1 |
-| Why a rule exists, and who fixed it | `references/nodes.md`; for people revising the rules, not for a run | 0.2.1 |
-| Was a rule broken | `references/evaluation.md`; for the evaluator, never loaded by the agent | 0.2.1 |
+| Which method am I running and what is its guard | `references/methods.md` | 0.2.2 |
+| Why a rule exists, and who fixed it | `references/nodes.md`; for people revising the rules, not for a run | 0.2.2 |
+| Was a rule broken | `references/evaluation.md`; for the evaluator, never loaded by the agent | 0.2.2 |
 
 ## Outputs
 
