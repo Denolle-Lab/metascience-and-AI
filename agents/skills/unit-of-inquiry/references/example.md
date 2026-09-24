@@ -1,6 +1,6 @@
 # Worked example: an observation triggers the run
 
-Reference for the `unit-of-inquiry` skill. Human-edited, versioned with the unit graph (`unit.qmd`, graph v0.2). The agent's SKILL.md carries the operative one-line rules; this file carries the full rule, its rationale, and the reading that fixed it. Edit here first, then shorten into SKILL.md.
+Reference for the `unit-of-inquiry` skill. Human-edited, versioned with the unit graph (`unit.qmd`, graph v0.3). The agent's SKILL.md carries the operative one-line rules; this file carries the full rule, its rationale, and the reading that fixed it. Edit here first, then shorten into SKILL.md.
 
 Trigger: an observation. Three years of ambient-noise cross-correlations on a dense array; most station pairs show a small annual velocity change; one pair shows an unexpected jump in year two. `situation`: C found (nature sets the seasons), repeated by nature for the annual cycle, unique for the jump. `method: auto`.
 

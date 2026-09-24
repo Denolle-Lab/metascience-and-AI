@@ -17,3 +17,4 @@
 | 0.1.0 | September 17, 2026 | First draft: state, one rule per node, three compositions |
 | 0.2.0 | September 17, 2026 | Rewritten as an operating procedure from a trigger; step 0 method choice; do / produce / move on / do not per node; exploration-first added as a fourth method; worked example; progressive-build plan |
 | 0.2.1 | September 17, 2026 | Split: SKILL.md keeps the operative procedure (1,180 words, from 3,289); rules with sources, methods, the example, evaluation items, and this log move to references/ and CHANGELOG.md; a rubrics table says which reference answers which question |
+| 0.2.2 | September 23, 2026 | Graph v0.3 from Klahr and Simon 1999: a sixth trigger, data without theory; an `expectation` input and the starting state recorded before G; at G, generation logged, plausibility order recorded, one implausible rival kept; at M, the surprise branch to before G and Q; two planted flaws |

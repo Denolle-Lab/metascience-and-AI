@@ -29,6 +29,56 @@ Read Fontana’s introduction, validation results, and conclusion; a discussant 
 
 Uzzi associates citation impact with conventional foundations plus some atypical combinations. Fontana examines whether combination indicators identify novelty rather than interdisciplinarity. The pair supports testing a proxy, not replacing scientific judgment with a distance score. [@uzzi2013; @fontana2020]
 
+## Held September 22, 2026
+
+- Source: the group's shared meeting notes and the presentation slides for September 22. The meeting took up novelty, uptake, and impact together, so it also covers part of [meeting 12](12-scientific-advance.qmd). The definitions agreed from it are in the [glossary](../glossary.qmd#idea); the metrics are in the [master list](../metrics.qmd#master-list-by-construct).
+
+### What was presented
+
+| Reading | Role on this page | What the presentation took from it |
+|:--|:--|:--|
+| @uzzi2013 | Anchor | 17.9 million papers over 50 years; prior knowledge as pairs of cited journals; a z-score of each pair against expectation, with the 10th-percentile pair as the unusual combination; impact as citations per paper. The highest-impact papers are not the most novel: they carry an unexpected "tail," one new part and not the whole story |
+| @hofstra2020 | Optional extension | Novelty as new concept links per thesis, uptake as later reuse per link, innovation as novelty times uptake kept as two variables; the diversity–innovation paradox; proximal against distal links by embedding distance |
+| @machado2026 | Optional extension | GPT-4o ranked 139 proposals across four fields (physics and astronomy, mathematics, chemistry, biology) against human funding decisions on four criteria: scientific merit, team capacity, feasibility, novelty or originality. It disagreed with the humans in 40% of cases, and proposals humans rated high on novelty were the ones it tended not to fund |
+| @si2025 | Optional extension | Language-model against human idea generation; the definition of an idea; five 1 to 10 rubric dimensions: novelty, excitement, feasibility, expected effectiveness, overall |
+| A group member's own work | Case | Novelty measured as cosine distance between embeddings of title, abstract, and keywords, the design of @shibayama2021; titles used to predict citations; regression against prediction; whether shorter papers are cited more |
+
+- The notes cite "Si et al., 2026" and "Shibayama 2011." The readings on this site are the ICLR paper, @si2025, with its execution follow-up @si2025execution, and @shibayama2021.
+- The notes do not record a presentation of the companion, @fontana2020.
+
+### What the room said
+
+- **Two rubrics, not one.** A subjective rubric for the group (expert judgment against written anchors, as Si's reviewers used) and an objective one (a computed score, such as Uzzi's z-score). Both are needed; neither replaces the other.
+- **Innovation = novelty × uptake.** Kept as two variables, following Hofstra.
+- **Novelty comes from the edge.** Outliers and scholars in a minority in their field raise novelty but not impact.
+- **Distance works against uptake.** Linking two concepts from different communities makes the link harder to take up; distal novelty, close to interdisciplinarity, measured as semantic distance between embeddings, is anti-correlated with uptake.
+- **Novelty does not drive impact.** The high-impact pattern is a strong base and a niche where the novelty is added, in your own field.
+- **A division of labour between people and agents.** Novelty and breadth come from people working with AI: human–AI teams from different backgrounds and fields make more new links, and more distal ones. Uptake and impact come from agents: a large population of agents can pick up a new link, test it against existing data, and carry it forward without waiting for a local human audience to form. Agents break the social barrier on the uptake side, where Hofstra finds novelty from the edge is discounted.
+- **Si's agent** was a prompted pipeline, not a self-improving one. The reading recorded: a well-built pipeline produced ideas experts rated more novel than an expert's median quick idea, in one narrow subfield, judged on paper, by reviewers who agreed with each other 56% of the time.
+
+### Read against the texts
+
+- **"Novelty does not drive impact" is stronger than Uzzi's finding.** Uzzi's papers with a conventional base and an atypical tail were twice as likely to be highly cited [@uzzi2013]. Wang, Veugelers, and Stephan find highly novel papers more likely to reach the top 1% given a long citation window, and less cited in short ones [@wang2017]. Novelty alone does not predict median impact; the tail does, and the window decides whether it shows. The two readings disagree on emphasis and the room should settle which it adopts.
+- **Hofstra's outcome is uptake of a link, not citations of a paper.** "Distal novelty is anti-correlated with impact" holds for reuse of the specific link, in US doctoral theses [@hofstra2020]. Whether it holds for papers, and in the earth sciences, has not been measured. The group member's embedding pipeline could test it on the [corpus study](../corpus-study.qmd) sample.
+- **Distance explains only part of the paradox.** Minorities introduce slightly more distal links, and distal links travel less; but a discount on their novelty remains after distance is accounted for, which the paper attributes to how novelty is received, not to what it is [@hofstra2020].
+- **The division of labour maps onto Hofstra's two variables.** Novelty is created at the edge of a field; uptake needs a large audience that shares the vocabulary [@hofstra2020]. The room assigns the first to human–AI teams built for breadth and the second to agents, the Hofstra presentation's "agents make novelty travel; humans make more of it, from further away." The proposal is a hypothesis about the uptake side, and it has a stated test: Hofstra's uptake per new link, measured on links taken up by agents against links left to a human audience.
+- **The main risk is on the agent side.** The one model tested on proposals declined those humans rated most original [@machado2026]. An agent audience trained on what fields already accept may reproduce the discount on distal novelty instead of removing it. The uptake agents therefore need their own check: whether they take up distal links at the rate they take up proximal ones.
+- **The mechanism in Machado is the presenter's reading.** The slide's explanation, that a model underfunds novelty because novel work sits away from the statistical mean of successful proposals, is a plausible mechanism. The paper does not identify one; it covers one funder, one year, one model configuration [@machado2026].
+- **Si's numbers, as the notes record them.** Mean novelty was 4.84 for human ideas and 5.64 for model ideas, either side of the rubric's line between "not enough for a new paper" (5) and "probably enough" (6); neither reached "clearly novel" (8). 80 of 298 reviews linked a specific prior paper to justify a low score. After execution, the model ideas' scores fell more than the human ideas' on every measure [@si2025execution].
+- **Si's rubric is the Dossier with a scale.** Prior art fixed by a cutoff date, and a low score required to name the similar work: both are Novelty Dossier fields. What the rubric adds is the anchored 1 to 10 scale. What it omits is the reverse requirement, that a high score state the searches that failed to find a precedent.
+
+### The three questions, as the meeting left them
+
+1. **Community, corpus, and time.** Answered in form, not in content: every novelty judgment carries a cutoff date and a corpus. Which corpus the group uses for seismology was not settled.
+2. **Can a conventional method yield a genuinely new observation?** Not discussed. Uzzi's pattern suggests the common case is exactly that: a conventional base with one new part.
+3. **No precedent found.** Si's rubric makes "not novel" require evidence and lets "novel" pass without it. The group's rule stays: "no precedent located within this search," with the search stated.
+
+### Open after the meeting
+
+- Which unit the group scores: the idea, the link, the reference list, or the claim.
+- Whether distal links are taken up less in the earth sciences, by the embedding measure on the corpus sample.
+- Whether the sealed indicator numbers were compared with the group's judgments, as [metrics, section 6](../metrics.qmd#how-the-club-uses-them-as-it-proceeds) planned for this meeting; the notes do not say.
+
 ## Prepare and discuss
 
 Read the selected anchor sections and the companion abstract or overview. Bring one source passage or artifact relevant to the case; the rotating reader presents the companion in depth.
@@ -55,7 +105,12 @@ One episode entry and three sentences: what changed scientifically; what evidenc
 
 - After the meeting, say what these papers change in the unit skill, [agents/skills/unit-of-inquiry/SKILL.md](../agents/skills/unit-of-inquiry/SKILL.md): a rule at a node, a new composition of units, or a planted flaw. Meeting 1's page shows the form.
 - Modes exercised here, whose "agent actions" sections the rule would enter: [synthesis](../modes/synthesis.qmd), [regularities](../modes/regularities.qmd).
-- Written from the texts after the papers are read in full, as for meeting 1; nothing here yet.
+- Proposed from the September 22 discussion, not yet adopted. Each is a candidate change to the skill or its evaluator.
+- At G: a generated hypothesis that joins two concepts records the link, its embedding distance, and whether the link has a precedent before the cutoff. Novelty and expected uptake are separate fields, never one score [@hofstra2020].
+- At G: the agent reports the distance of what it generates and does not maximize it. The high-impact pattern is a conventional base with one atypical part [@uzzi2013]; distal links are the ones least likely to be taken up [@hofstra2020].
+- At K: a novelty statement names its unit, its cutoff date, and either the closest precedent or the searches that found none, as the [Novelty Dossier](../rubrics.qmd#novelty-dossier-v1) asks and Si's rubric half-asks [@si2025].
+- Evaluator, never in the agent's context: a planted item where a correct but distal hypothesis should be kept, to catch a scorer that prunes what is far from the mean [@machado2026].
+- The design the room settled on, for meeting 13: human–AI teams generate novelty and breadth; an agent population takes up, tests, and propagates new links. The generating side is evaluated on the number and distance of new links; the uptake side on uptake per link, with distal and proximal links scored separately so that a discount on distance shows.
 
 ## Optional extensions
 
