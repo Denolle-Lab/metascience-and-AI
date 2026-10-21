@@ -21,6 +21,7 @@ with APA citations, DOI links, and a UW Libraries proxy link for everything stil
 Usage:
   python3 tools/fetch_pdfs.py add KEY [KEY ...]        queue references from references.bib by key
   python3 tools/fetch_pdfs.py add-doi FILE             queue DOIs from a file (one 'doi' or 'key doi' per line)
+  python3 tools/fetch_pdfs.py add-manifest FILE.jsonl  queue a corpus manifest from tools/corpus.py (group = corpus name and stratum)
   python3 tools/fetch_pdfs.py run [--out DIR] [--library DIR ...] [--dry-run]
   python3 tools/fetch_pdfs.py list                     rewrite private/download-list.md only
 Nothing fetched here is redistributed; PDFs go to a gitignored folder.
@@ -241,6 +242,7 @@ def main() -> int:
     sub = ap.add_subparsers(dest='cmd', required=True)
     a = sub.add_parser('add'); a.add_argument('keys', nargs='+'); a.add_argument('--group', default='other')
     b = sub.add_parser('add-doi'); b.add_argument('file'); b.add_argument('--group', default='other')
+    mf = sub.add_parser('add-manifest'); mf.add_argument('file')
     r = sub.add_parser('run'); r.add_argument('--out', type=Path, default=DEFAULT_OUT)
     r.add_argument('--library', type=Path, action='append'); r.add_argument('--dry-run', action='store_true')
     sub.add_parser('list')
@@ -258,6 +260,14 @@ def main() -> int:
                 continue
             key, doi = (parts[0], parts[1]) if len(parts) > 1 else (re.sub(r'\W+', '_', parts[0]), parts[0])
             q.setdefault(key, {'doi': doi, 'status': 'missing', 'group': args.group, 'tried': []})
+    elif args.cmd == 'add-manifest':
+        name = Path(args.file).name.split('.')[0]
+        for line in Path(args.file).read_text().splitlines():
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            q.setdefault(r['key'], {'doi': r['doi'], 'status': 'missing', 'group': f'Corpus {name}: {r.get("stratum", "all")}', 'tried': [],
+                                    'meta': {'title': r.get('title'), 'year': r.get('year'), 'venue': r.get('venue')}})
     elif args.cmd == 'run':
         args.out.mkdir(parents=True, exist_ok=True)
         idx = index_library(args.library or DEFAULT_LIBRARY)
