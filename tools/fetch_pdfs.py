@@ -33,6 +33,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
+import keys  # noqa: E402
+keys.load()
 import apa  # noqa: E402
 
 QUEUE = ROOT / 'private' / 'download-queue.json'

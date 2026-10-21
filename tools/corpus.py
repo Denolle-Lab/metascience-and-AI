@@ -25,6 +25,9 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+import keys  # noqa: E402
+keys.load()
 OUT = ROOT / 'private' / 'corpus'
 API = 'https://api.openalex.org/works'
 UA = {'User-Agent': 'metascience-seminar-corpus/1.0'}

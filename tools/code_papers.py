@@ -28,6 +28,8 @@ from anthropic.types.messages.batch_create_params import Request
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
+import keys  # noqa: E402
+keys.load()
 from check_coding import validate  # noqa: E402
 
 MODEL = 'claude-opus-5-5'
