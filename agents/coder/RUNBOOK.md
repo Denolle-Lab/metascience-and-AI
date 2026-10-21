@@ -1,6 +1,6 @@
 # Coding papers at scale: runbook
 
-For coding 1,000 or more papers under the codebook (`CODEBOOK.md`, v1.1.0), with the scripts in `tools/`. Everything written goes under `private/` (a separate, unpushed repository); nothing here publishes data.
+For coding 1,000 or more papers under the codebook (`CODEBOOK.md`, v1.2.0), with the scripts in `tools/`. Everything written goes under `private/` (a separate, unpushed repository); nothing here publishes data.
 
 ## 0. Before the first run
 
