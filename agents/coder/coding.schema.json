@@ -1,0 +1,466 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Paper coding, codebook v1.1.0",
+ "type": "object",
+ "properties": {
+  "key": {
+   "type": "string"
+  },
+  "doi": {
+   "type": "string"
+  },
+  "codebook_version": {
+   "type": "string",
+   "enum": [
+    "1.0.0",
+    "1.1.0"
+   ]
+  },
+  "coder": {
+   "type": "string"
+  },
+  "documents": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "pages_convention": {
+   "type": "string"
+  },
+  "entry": {
+   "type": "object",
+   "properties": {
+    "state": {
+     "type": "string",
+     "enum": [
+      "anomaly",
+      "problem",
+      "hypothesis",
+      "data_without_theory",
+      "capability",
+      "external_goal"
+     ]
+    },
+    "node": {
+     "type": "string",
+     "enum": [
+      "N",
+      "E",
+      "O",
+      "I",
+      "Q",
+      "H",
+      "S",
+      "D",
+      "F",
+      "C",
+      "V",
+      "X",
+      "K",
+      "P",
+      "R"
+     ]
+    },
+    "evidence": {
+     "type": "string"
+    },
+    "page": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "state",
+    "node",
+    "evidence",
+    "page"
+   ],
+   "additionalProperties": false
+  },
+  "sequences": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "kind": {
+      "type": "string",
+      "enum": [
+       "final_paper",
+       "review"
+      ]
+     },
+     "source_document": {
+      "type": "string"
+     },
+     "steps": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "n": {
+         "type": "integer"
+        },
+        "node": {
+         "type": "string",
+         "enum": [
+          "N",
+          "E",
+          "O",
+          "I",
+          "Q",
+          "H",
+          "S",
+          "D",
+          "F",
+          "C",
+          "V",
+          "X",
+          "K",
+          "P",
+          "R"
+         ]
+        },
+        "mode": {
+         "type": "string",
+         "enum": [
+          "observation",
+          "exploration",
+          "question",
+          "hypothesis",
+          "theory",
+          "simulation",
+          "instruments",
+          "methods",
+          "synthesis",
+          "reconstruction",
+          "robustness",
+          "estimation",
+          "regularities"
+         ]
+        },
+        "action": {
+         "type": "string"
+        },
+        "page": {
+         "type": "string"
+        },
+        "move": {
+         "type": "string",
+         "enum": [
+          "new",
+          "repeat",
+          "return_after_failure",
+          "review_forced",
+          "declined",
+          "inherited"
+         ]
+        },
+        "trigger": {
+         "type": "string",
+         "enum": [
+          "author",
+          "referee",
+          "editor",
+          "commenter",
+          "unknown"
+         ]
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "n",
+        "node",
+        "mode",
+        "action",
+        "page",
+        "move",
+        "trigger",
+        "quote"
+       ],
+       "additionalProperties": false
+      }
+     }
+    },
+    "required": [
+     "kind",
+     "source_document",
+     "steps"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "tree": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "question": {
+      "type": "string",
+      "enum": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "6b",
+       "7",
+       "8",
+       "9"
+      ]
+     },
+     "answer": {
+      "type": "string"
+     },
+     "mode_called": {
+      "type": "string",
+      "enum": [
+       "observation",
+       "exploration",
+       "question",
+       "hypothesis",
+       "theory",
+       "simulation",
+       "instruments",
+       "methods",
+       "synthesis",
+       "reconstruction",
+       "robustness",
+       "estimation",
+       "regularities",
+       "none"
+      ]
+     }
+    },
+    "required": [
+     "question",
+     "answer",
+     "mode_called"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "end": {
+   "type": "object",
+   "properties": {
+    "outcome": {
+     "type": "string",
+     "enum": [
+      "kept",
+      "excluded",
+      "contradicted",
+      "no_conclusion"
+     ]
+    },
+    "claim_status": {
+     "type": "string",
+     "enum": [
+      "confirmed",
+      "best_explanation",
+      "regularity_in_range",
+      "estimate_with_resolution",
+      "capability_characterized",
+      "forecast_skill",
+      "none"
+     ]
+    },
+    "claim": {
+     "type": "string"
+    },
+    "page": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "outcome",
+    "claim_status",
+    "claim",
+    "page"
+   ],
+   "additionalProperties": false
+  },
+  "decisive_move": {
+   "type": "object",
+   "properties": {
+    "node": {
+     "type": "string",
+     "enum": [
+      "N",
+      "E",
+      "O",
+      "I",
+      "Q",
+      "H",
+      "S",
+      "D",
+      "F",
+      "C",
+      "V",
+      "X",
+      "K",
+      "P",
+      "R"
+     ]
+    },
+    "mode": {
+     "type": "string",
+     "enum": [
+      "observation",
+      "exploration",
+      "question",
+      "hypothesis",
+      "theory",
+      "simulation",
+      "instruments",
+      "methods",
+      "synthesis",
+      "reconstruction",
+      "robustness",
+      "estimation",
+      "regularities"
+     ]
+    },
+    "sentence": {
+     "type": "string"
+    },
+    "page": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "node",
+    "mode",
+    "sentence",
+    "page"
+   ],
+   "additionalProperties": false
+  },
+  "composition": {
+   "type": "string",
+   "enum": [
+    "strong_inference",
+    "trace_series",
+    "natures_repetition",
+    "capability_first",
+    "forecast_verification",
+    "exploration_first",
+    "none_fits"
+   ]
+  },
+  "gates": {
+   "type": "object",
+   "properties": {
+    "action": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "partly"
+     ]
+    },
+    "claim": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "partly"
+     ]
+    },
+    "registration": {
+     "type": "string",
+     "enum": [
+      "yes",
+      "no",
+      "partly"
+     ]
+    },
+    "evidence": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "action",
+    "claim",
+    "registration",
+    "evidence"
+   ],
+   "additionalProperties": false
+  },
+  "imports": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "field": {
+      "type": "string"
+     },
+     "item": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "method",
+       "instrument",
+       "data",
+       "concept"
+      ]
+     },
+     "page": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "field",
+     "item",
+     "kind",
+     "page"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "novelty_claims": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "quote": {
+      "type": "string"
+     },
+     "page": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "quote",
+     "page"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "limits": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "key",
+  "doi",
+  "codebook_version",
+  "coder",
+  "documents",
+  "pages_convention",
+  "entry",
+  "sequences",
+  "tree",
+  "end",
+  "decisive_move",
+  "composition",
+  "gates",
+  "imports",
+  "novelty_claims",
+  "limits"
+ ],
+ "additionalProperties": false
+}
