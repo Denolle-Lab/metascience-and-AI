@@ -102,3 +102,61 @@ blockquote { border-left: 3px solid var(--dn-part); color: $dn-muted; }
   main table { display: block; overflow-x: auto; }
 }
 @media print { body { font-size: 11pt; background: #fff; } }
+
+/* Walks: a paper's path through graph v0.4, as a numbered strip of steps */
+.walk { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.2rem; margin: 0.6rem 0 1.1rem; }
+.walk .st { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.22rem 0.55rem 0.22rem 0.3rem; border: 2px solid $dn-focus; background: #e7f0f2; border-radius: 0.3rem; font-family: $font-family-sans-serif; font-size: 0.92rem; line-height: 1.2; white-space: nowrap; }
+.walk .st b { display: inline-block; min-width: 1.5rem; text-align: center; font-size: 1.05rem; color: $dn-focus; }
+.walk .st i { font-style: normal; font-size: 0.72rem; color: $dn-muted; margin-right: 0.1rem; }
+.walk .st.entry { border-color: $dn-part-4; background: rgba($dn-part-4, 0.1); }
+.walk .st.entry b { color: $dn-part-4; }
+.walk .ar { font-size: 1.15rem; color: $dn-part-4; padding: 0 0.1rem; }
+.walk .ar.jump { color: $dn-part-2; letter-spacing: -0.1em; }
+.walk-key { font-size: 0.85rem; color: $dn-muted; }
+.walk-key .ar { color: $dn-part-4; font-weight: 700; } .walk-key .ar.jump { color: $dn-part-2; }
+
+/* Bold links inside tables (mode names on the modes page) */
+table strong a, table a strong { font-weight: 700; }
+
+/* decision tree (decision-tree.qmd, fig-tree) */
+.dtree { font-family: "Source Sans 3", Helvetica, Arial, sans-serif; font-size: 1.02rem; line-height: 1.3; color: #102a33; margin: 0.5rem 0 0.8rem; text-align: left; }
+.dtree .dt-start, .dtree .dt-keep { background: #102a33; color: #fff; border-radius: 1.4rem; padding: 0.55rem 1.1rem; display: inline-block; max-width: 34rem; }
+.dtree .dt-keep { background: #0f4c5c; }
+.dtree .dt-row { display: grid; grid-template-columns: minmax(15rem, 21rem) 1fr; gap: 0.9rem; align-items: start; }
+.dtree .dt-q { display: flex; gap: 0.6rem; background: #fff4e8; border: 2.5px solid #a1512b; border-radius: 0.35rem; padding: 0.55rem 0.7rem; color: #3d1f0e; }
+.dtree .dt-n { font-weight: 700; font-size: 1.5rem; line-height: 1; color: #a1512b; min-width: 1.6rem; }
+.dtree .dt-sub { font-size: 0.9rem; color: #5a3a26; }
+.dtree .dt-branches { display: flex; flex-wrap: wrap; gap: 0.5rem 0.8rem; }
+.dtree .dt-br { display: flex; flex-direction: column; gap: 0.15rem; flex: 1 1 13rem; max-width: 19rem; }
+.dtree .dt-lab { font-size: 0.85rem; font-weight: 600; color: #a1512b; }
+.dtree .dt-lab::before { content: "→ "; }
+.dtree .dt-mode { background: #fff; border: 2.5px solid #0f4c5c; border-radius: 0.35rem; padding: 0.45rem 0.65rem; font-size: 0.95rem; }
+.dtree .dt-nodes { font-weight: 700; color: #0f4c5c; background: #e7f0f2; border-radius: 0.2rem; padding: 0 0.3rem; font-size: 0.85rem; }
+.dtree .dt-ret { display: block; margin-top: 0.2rem; font-weight: 700; color: #a1512b; font-size: 0.88rem; }
+.dtree .dt-back { border: 2px dashed #a1512b; background: #f5f4f2; }
+.dtree .dt-esc { border: 2px dashed #a1512b; background: #f6e9e2; }
+.dtree .dt-end { background: #102a33; color: #fff; border-color: #102a33; }
+.dtree .dt-down { margin: 0.15rem 0 0.15rem 1.4rem; border-left: 3px solid #a1512b; padding: 0.35rem 0 0.35rem 0.6rem; font-size: 0.85rem; font-weight: 600; color: #a1512b; }
+@media (max-width: 760px) { .dtree .dt-row { grid-template-columns: 1fr; } }
+
+/* schema figure (modes.qmd, fig-mode-map) */
+.schema { font-family: "Source Sans 3", Helvetica, Arial, sans-serif; color: #102a33; text-align: left; margin: 0.4rem 0 0.6rem; }
+.schema .sc-row { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.4rem; }
+.schema .sc-term { flex: 1 1 10rem; background: #fff; border: 2.5px solid #0f4c5c; border-radius: 0.4rem; padding: 0.5rem 0.65rem; }
+.schema .sc-obs { flex: 2 1 18rem; }
+.schema .sc-sym { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-weight: 700; font-size: 2rem; line-height: 1; color: #0f4c5c; }
+.schema .sc-name { font-weight: 700; font-size: 1.02rem; margin: 0.1rem 0 0.3rem; color: #0f4c5c; }
+.schema ul { margin: 0; padding-left: 0; list-style: none; font-size: 0.95rem; line-height: 1.3; }
+.schema li { margin: 0.18rem 0; }
+.schema li a { color: #102a33; text-decoration: none; border-bottom: 1.5px solid #9fb3b9; }
+.schema .sc-op { align-self: center; font-size: 1.8rem; font-weight: 700; color: #a1512b; padding: 0 0.1rem; }
+.schema .sc-cmp { margin: 0.35rem 0 0.35rem 1rem; border-left: 3px solid #a1512b; padding: 0.3rem 0.6rem; font-weight: 600; color: #a1512b; font-size: 0.95rem; }
+.schema .sc-check { background: #fff4e8; border-color: #a1512b; }
+.schema .sc-check .sc-sym, .schema .sc-check .sc-name { color: #a1512b; }
+.schema .sc-verdict { background: #102a33; border-color: #102a33; color: #fff; flex: 1 1 9rem; }
+.schema .sc-verdict .sc-name { color: #fff; }
+@media (min-width: 761px) {
+  .schema .sc-row { flex-wrap: nowrap; }
+  .schema .sc-term, .schema .sc-obs, .schema .sc-verdict { flex: 1 1 0; min-width: 0; }
+  .schema .sc-obs { flex-grow: 1.6; }
+}

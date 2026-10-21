@@ -14,14 +14,14 @@
 | Where it is stated | Science texts "from grade school through college," which Cleland says "invariably provide one (or a combination) of two accounts, scientific inductivism or falsificationism" [@cleland2001, p. 987]; the school version taken apart by @windschitl2008 | "Closed-the-loop of hypothesis generation, experimental planning, and execution" [@kitano2021, p. 1]; a system "mirroring the reasoning process underpinning the scientific method" that, "given a research goal specified in natural language," proposes hypotheses and protocols [@gottweis2026]; "active learning closes the loop by proposing improved follow-up recipes" [@szymanski2023, p. 86]; a system that "autonomously designs, plans and performs complex experiments" [@boiko2023, p. 570]; Adam, the first closed loop [@king2009] | Chamberlin's multiple working hypotheses, written by a geologist against the "ruling theory" [@chamberlin1965]; Gilbert on where a geological hypothesis comes from [@gilbert1886; @gilbert1896]; Cleland on historical science [@cleland2001; @cleland2002]; Frodeman on geology as interpretive and historical [@frodeman1995] |
 | The steps | Observe, ask, hypothesize, predict, test, conclude; one hypothesis at a time; confirmation accumulates or a failure refutes | Goal in; generate hypotheses or candidates; choose the next experiment by a score; execute; analyze; repeat until the goal is met | Observe puzzling traces; formulate incompatible rivals; hunt for the trace that discriminates; retain the best explanation; expect it to be deposed |
 | Where it starts (node Q) | An observation, then a question | A goal supplied from outside: six tasks [@boiko2023], a target list [@szymanski2023], a research goal [@gottweis2026] | Puzzling traces of a past event [@cleland2002, p. 480] |
-| Hypotheses at G | One | Many, ranked by a score; rarely incompatible rivals | Several, incompatible [@chamberlin1965; @cleland2002, pp. 483--484] |
-| Conditions at C | Set | Set, by a robot or a computation | Found, by fieldwork [@cleland2002, p. 484] |
+| Hypotheses at H | One | Many, ranked by a score; rarely incompatible rivals | Several, incompatible [@chamberlin1965; @cleland2002, pp. 483--484] |
+| Conditions at F | Set | Set, by a robot or a computation | Found, by fieldwork [@cleland2002, p. 484] |
 | The control series at V | Absent from the diagram; present in the laboratory | Mostly absent: a positive-only verifier scored itself [@leeman2024] | Absent by necessity; replaced by independent traces [@cleland2002, p. 491] |
 | Decision at X or K | Refute or confirm | A score threshold | Best explanation within the stated set [@cleland2002, pp. 481--482] |
 | What it leaves out | Auxiliaries, the series, rival generation, where questions come from [@cleland2001, pp. 987--988; @windschitl2008] | Choosing the question; enumerating rivals; abstaining [@leeman2024] | Manipulation; hence the method of difference |
 
 - The textbook version is Platt's loop with one branch: he called that "The Great Man With a Single Hypothesis" [@platt1964, p. 350]. Chamberlin's remedy is what makes it strong.
-- The AI loop is Platt's loop with node G automated and node Q supplied. Kitano's own example iterates "to verify or reject h1" against "h2, h3, and h4" [@kitano2021, p. 4], so the design has room for rivals; the published systems mostly optimize a single target.
+- The AI loop is Platt's loop with node H automated and node Q supplied. Kitano's own example iterates "to verify or reject h1" against "h2, h3, and h4" [@kitano2021, p. 4], so the design has room for rivals; the published systems mostly optimize a single target.
 - The earth sciences run both patterns. Where nature repeats herself, a catalog of events supports regularities the way an experimental program would, minus the power to set the condition [@cleland2002, p. 485]; where an event is unique, the trace pattern rules. That is why one word will not do, and why the ledger records a node letter instead.
 
 ### Where inquiry starts
@@ -38,7 +38,7 @@
 | A goal supplied by someone else | Every AI system in the prior-art chapter; funders, in Platt's closing paragraph [@platt1964, p. 352] | Six chemistry tasks; fifty-seven target compounds [@boiko2023; @szymanski2023] |
 
 - Platt's description and his prescription start in different places: the blackboards begin with a result, the four steps begin with hypotheses already devised. The gap between them is the exploratory phase Cleland describes and Platt does not [@cleland2002, p. 486].
-- The data-without-theory state differs from the anomaly state in what it lacks. An anomaly needs an expectation to violate; a table of numbers with no theory has none, and the work is pattern-finding with feedback from each misfit. It enters the graph before G, and what it retains at K is a regularity, not a mechanism: Planck's formula is still accepted, while the physical explanation he spent the following months on "bears little relation to today's quantum mechanics" [@klahr1999, p. 534].
+- The data-without-theory state differs from the anomaly state in what it lacks. An anomaly needs an expectation to violate; a table of numbers with no theory has none, and the work is pattern-finding with feedback from each misfit. It enters the graph before H, and what it retains at K is a regularity, not a mechanism: Planck's formula is still accepted, while the physical explanation he spent the following months on "bears little relation to today's quantum mechanics" [@klahr1999, p. 534].
 
 ### The starting state: knowledge, expectation, search
 
@@ -126,54 +126,91 @@ $$H + A + C \Rightarrow E$$
 | 1970 | Lakatos [@lakatos1970] | Protective belt; research programmes | Protect |
 | 1988 | Klahr and Dunbar, via @klahr1999, p. 538 | Discovery as search in two spaces, hypotheses and experiments; theorists and experimenters | Generate, Design |
 | 1996 | Mayo [@mayo1996] | Severity as the measure of a test | Design |
-| 1999 | Klahr and Simon [@klahr1999] | Discovery as heuristic search in several spaces; surprise as a heuristic for the next step; the starting state as knowledge plus expectation | Q, the surprise edge from M |
+| 1999 | Klahr and Simon [@klahr1999] | Discovery as heuristic search in several spaces; surprise as a heuristic for the next step; the starting state as knowledge plus expectation | Q, the surprise edge from C |
 | 2001 | Cleland [@cleland2001] | Historical versus experimental: the asymmetry of overdetermination | Conditions, Retain |
 
 ## 5. The graph
 
-- One unit as a workflow. Ten working nodes and one escape. Every thinker above sits on one of them. The [meeting 1 page](sessions/01-scientific-method.qmd#where-the-two-papers-sit-on-the-unit-graph) places Platt and Cleland on it.
+- **Controller v0.5.1, adopted by the convenor on October 21, 2026: [From graph to decision tree](decision-tree.qmd).** Graph v0.4.2, below, is the vocabulary. The nodes below are the inner moves of the thirteen modes; Cleland's schema becomes the record a project fills; a decision tree of eight questions calls the modes in turn and loops back when a check fails. Proposed because the eight coded papers loop between modes (27 returns), not along the edges drawn here (24 of 83 steps).
+- One unit as a workflow. In v0.3, eleven working nodes and one escape; v0.4 proposes three more. Every thinker above sits on one of them. The [meeting 1 page](sessions/01-scientific-method.qmd#where-the-two-papers-sit-on-the-unit-graph) places Platt and Cleland on it.
+- **Graph v0.4, drafted for the [modes meeting](modes.qmd).** Three nodes drawn dashed, E (explore), N (new capability), and I (estimate), place the moves that most geoscience advances start with: establishing a phenomenon, creating a capability, and estimating a quantity that is not observed directly. They stay dashed, and the [unit skill](agents/skills/unit-of-inquiry/SKILL.md) stays on v0.3, until the group adopts them.
 
 ```{mermaid}
 %%| label: fig-unit
-%%| fig-cap: "The unit of inquiry as a workflow. Solid arrows are one pass; V is the control series Cleland says is the real unit of experimental work, and its loop back to C is where most laboratory time goes; the dashed arrow from X is the Duhem escape, revising an auxiliary or a condition instead of the hypothesis; the dashed arrow from M is surprise, an outcome no rival predicted, which sends the search back to establish the new phenomenon and reframe the question. Node letters are used in the tables below and in every meeting's ledger row."
+%%| fig-cap: "The unit of inquiry as a workflow, graph v0.4.2 (drafted). Each node's letter is the first letter of its word. Solid arrows are one pass; V is the control series Cleland says is the real unit of experimental work, and its loop back to F is where most laboratory time goes; the dashed arrow from X is the Duhem escape, protecting the rival by revising an auxiliary or a condition; the dashed arrow from C is surprise, an outcome no rival predicted, which sends the search to E to establish the new phenomenon before the question is reframed. Dashed boxes are proposed in v0.4: E explores to establish a phenomenon, N creates a new capability, I infers a latent quantity. The table below maps each node to the modes it serves."
 %%{init: {"theme": "base", "themeVariables": {"fontSize": "17px", "fontFamily": "Source Serif 4, Georgia, serif", "primaryColor": "#e7f0f2", "primaryBorderColor": "#1c6a7f", "primaryTextColor": "#153742", "lineColor": "#49616a", "secondaryColor": "#ffffff", "tertiaryColor": "#f5f4f2", "edgeLabelBackground": "#f5f4f2"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 26, "rankSpacing": 40, "curve": "basis", "padding": 10}}}%%
 flowchart TD
-    Q["Q. Question or anomaly"] --> G["G. Generate rivals H1 … Hn<br/><b>abduction</b><br/><small>Peirce · Gilbert · Chamberlin</small>"]
-    G --> D["D. Derive E_i from H_i + A + C<br/><b>deduction</b><br/><small>Hempel · Cleland</small>"]
-    D --> S["S. Design: choose the C and the observable<br/>where the E_i differ<br/><b>severe test</b><br/><small>Bacon's fingerpost · Mill · Mayo</small>"]
-    S --> C["C. Set the conditions (experiment)<br/>or find them (trace)"]
-    C --> O["O. Observe<br/><small>theory-laden · Hanson</small>"]
-    O --> M{"M. Match E_i?"}
-    M --> V["V. <b>Control</b> the series: hold C and vary A;<br/>repeat after a success; remove C<br/><small>Mill · Cleland</small>"]
-    M -. "surprise: no E_i matches<br/>find its scope, then its mechanism<br/><small>Klahr · Simon</small>" .-> Q
-    V -- "run again" --> C
-    V -- "not E_i survives the series" --> X["X. Exclude H_i<br/><b>falsify</b> · eliminative <b>induction</b><br/><small>Popper · Platt</small>"]
-    V -- "E_i survives the series" --> K["K. Retain H_i<br/><b>induction</b>: confirm, corroborate<br/>or <b>best explanation</b><br/><small>Hempel · Popper · Harman</small>"]
-    X -. "or protect H_i" .-> P["P. Revise A or C instead<br/><small>Duhem · Quine · Lakatos</small>"]
-    P -.-> D
-    X --> R["R. Refine the survivors<br/>into subhypotheses"]
+    E["E. <b>Explore</b>: establish the phenomenon;<br/>does it repeat; chain or world<br/><small>Bogen · Woodward · Steinle</small>"] --> Q
+    Q["Q. <b>Question</b> or anomaly"] --> H["H. <b>Hypothesize</b>: rivals H1 … Hn<br/>abduction<br/><small>Peirce · Gilbert · Chamberlin</small>"]
+    H --> S["S. <b>Simulate</b> or derive the expectations<br/>from each rival, auxiliaries, conditions<br/><small>Hempel · Cleland · Charney</small>"]
+    S --> D["D. <b>Design</b> the test: conditions and observable<br/>where the expectations differ; severe test<br/><small>Bacon's fingerpost · Mill · Mayo</small>"]
+    D --> F["F. <b>Find</b> or set the conditions<br/>(trace or experiment)"]
+    F --> O["O. <b>Observe</b><br/><small>theory-laden · Hanson</small>"]
+    O --> I["I. <b>Infer</b> a latent quantity (estimate):<br/>invert O through a forward model<br/><small>Backus · Gilbert · Tarantola</small>"]
+    O --> C{"C. <b>Compare</b><br/>with the expectations"}
+    I --> C
+    O -. "pattern, no expectation" .-> E
+    C --> V["V. <b>Vary</b> and replicate: hold the conditions,<br/>vary the auxiliaries; repeat; remove the conditions<br/><small>Mill · Cleland</small>"]
+    C -. "surprise: no expectation matches<br/>find its scope, then its mechanism<br/><small>Klahr · Simon</small>" .-> E
+    V -- "run again" --> F
+    V -- "expectation fails across the series" --> X["X. e<b>X</b>clude the rival<br/>falsify · eliminative induction<br/><small>Popper · Platt</small>"]
+    V -- "expectation holds across the series" --> K["K. <b>Keep</b> the claim<br/>confirm, corroborate, or best explanation<br/><small>Hempel · Popper · Harman</small>"]
+    X -. "or protect the rival" .-> P["P. <b>Protect</b>: revise an auxiliary<br/>or a condition instead<br/><small>Duhem · Quine · Lakatos</small>"]
+    P -.-> S
+    X --> R["R. <b>Refine</b> the survivors<br/>into subhypotheses"]
     K --> R
-    R --> G
+    R --> H
+    N["N. <b>New capability</b>: build and<br/>characterize an instrument or method<br/><small>Hacking · Lehmann</small>"] -- "new capability" --> O
+    E -. "artifact" .-> N
 
     classDef step fill:#e7f0f2,stroke:#1c6a7f,stroke-width:1.5px,color:#153742;
     classDef branch fill:#ffffff,stroke:#1c6a7f,stroke-width:2px,color:#153742;
     classDef escape fill:#f6e9e2,stroke:#a1512b,stroke-width:1.5px,color:#5a2e17;
-    class Q,G,D,S,C,O,V,X,K,R step;
-    class M branch;
+    classDef proposed fill:#eef4ec,stroke:#2e7a5c,stroke-width:2px,stroke-dasharray:5 3,color:#153742;
+    class Q,H,S,D,F,O,V,X,K,R step;
+    class C branch;
     class P escape;
+    class N,E,I proposed;
 ```
 
 - **The surprise edge (graph v0.3).** A mismatch with one $E_i$ goes to V and then to X or P. An outcome that matches none of the $E_i$ is a different event: the rival set was wrong, not one rival. Klahr and Simon document the move in history, in models, and in the laboratory: "in the face of surprise, scientists frequently divert the path of exploration to ascertain the scope and import of the surprising phenomenon and to determine its mechanism" [@klahr1999, p. 537]. Krebs's ornithine yield and Faraday's transient current both went this way, and KEKADA uses surprise as the heuristic that chooses its next experiment [@klahr1999, pp. 535, 537]. The edge re-enters at Q as the anomaly entry state, which first establishes that the surprise is a phenomenon.
+- **The three v0.4 nodes (drafted).** Each is forced by a source and by the geoscience episodes coded for the [modes meeting](modes.qmd#how-the-modes-have-been-studied), where 13 of 18 advances began with an observation, an instrument, or a method.
+  - **E, explore: establish the phenomenon.** Data are not phenomena; a phenomenon is what repeats across data and survives a check of the chain that produced them [@bogen1988]. Steinle's exploratory experimentation varies conditions to stabilize one [@steinle1997]. E was the unnamed "before H" step in the skill and the landing point of the surprise edge.
+  - **N, new capability: build and characterize an instrument or method.** A capability claim that can come before any theory [@hacking1983, p. 160]. Lehmann's inner core waited on vertical-component records: their absence "has caused the false impression to be gained of P'3 being quite small" [@kolblebert2001, p. 264]. Keeling's analysers came before his finding [@keeling1960].
+  - **I, estimate a latent quantity.** An inverse problem: what finite data can resolve, at what length scale [@backus1968; @tarantola2005]. A tomographic image is inferred, not observed [@bokulich2017]; data are model-laden, and model-filtered data can in some instances be more reliable than raw data [@bokulich2020]. C compares the expectations with the output of I when the observable is latent.
+  - S now names computation as well as deduction: a simulation derives E_i when the derivation cannot be done by hand [@charney1950].
+- **Nodes and modes (v0.4.2).** A node is one move; a mode is the kind of work a move serves. Each node's letter is the first letter of its verb, so a path reads as a sentence: N, O, E, I, C, K is "build a new capability, observe, explore, infer, compare, keep." One move can serve more than one mode.
+- The schema's terms are typeset in italics, $H + A + C \Rightarrow E$; a bare capital is always a node. Node H generates the $H_i$; node S derives the $E_i$; node F finds or sets the $C$.
+
+| Node | Verb | Modes it serves | What the move produces |
+|:--|:--|:--|:--|
+| **N** | **N**ew capability: build and characterize | [Instruments](modes/instruments.qmd); [methods](modes/methods.qmd) | A characterized instrument, network, or inference procedure |
+| **E** | **E**xplore: establish the phenomenon | [Exploration](modes/exploration.qmd); [observation](modes/observation.qmd) | A phenomenon that repeats and is not an artifact |
+| **O** | **O**bserve | [Observation](modes/observation.qmd) | A record with its provenance |
+| **I** | **I**nfer a latent quantity (estimate) | [Estimation](modes/estimation.qmd) | A quantity with resolution and uncertainty |
+| **Q** | **Q**uestion | Any mode | The question and its origin |
+| **H** | **H**ypothesize: generate rivals | [Hypothesis assessment](modes/hypothesis.qmd); [theory](modes/theory.qmd) | Rival explanations, with how each was generated |
+| **S** | **S**imulate or derive the expectations | [Theory](modes/theory.qmd); [simulation](modes/simulation.qmd) | Expectations for each rival |
+| **D** | **D**esign the test | [Hypothesis assessment](modes/hypothesis.qmd) | An observation where the rivals differ |
+| **F** | **F**ind or set the conditions | Hypothesis assessment (set); observation and [reconstruction](modes/synthesis.qmd) (found) | The conditions in hand |
+| **C** | **C**ompare | Hypothesis assessment; [regularities](modes/regularities.qmd) (fit) | A comparison of observation and expectation |
+| **V** | **V**ary and replicate | [Replication and robustness](modes/robustness.qmd) | A result that survives repetition or perturbation |
+| **X** | e**X**clude | Hypothesis assessment | A rival rejected, with the conjunct named |
+| **K** | **K**eep the claim | Every mode's endpoint | A retained claim with its status |
+| **P** | **P**rotect | Hypothesis assessment | A revised auxiliary or condition, logged |
+| **R** | **R**efine | Hypothesis assessment | Subhypotheses, appended to the record |
+
+- **Two modes have no node of their own.** [Synthesis](modes/synthesis.qmd) combines several passes, as the trace-series composition does: independent traces at V, a best explanation at K. [Regularities](modes/regularities.qmd) fit a relation across nature's repetitions at C and K. In the eight coded papers, steps doing synthesis fall at V, C, K, and R ([walks](walks.qmd)), which is what a composition, not a single move, would look like.
 - **The graph as search in several spaces.** Klahr and Simon's spaces sit on the nodes as follows [@klahr1999, pp. 538--539].
 
 | Search space | Node | What is chosen there |
 |:--|:--|:--|
-| Hypotheses | G, R | The rivals and their refinements; ordered by plausibility unless a rule says otherwise |
-| Experimental paradigms | S | Which factors vary and which are held, the class of experiment |
-| Experiments | S, C | The settings within the paradigm |
-| Data representations | O, and before G | The features in which the phenomenon is described; where Monod's activation became inhibition and Faraday's currents became lines of force [@klahr1999, pp. 533--534, 539] |
+| Hypotheses | H, R | The rivals and their refinements; ordered by plausibility unless a rule says otherwise |
+| Experimental paradigms | D | Which factors vary and which are held, the class of experiment |
+| Experiments | D, F | The settings within the paradigm |
+| Data representations | O, and before H | The features in which the phenomenon is described; where Monod's activation became inhibition and Faraday's currents became lines of force [@klahr1999, pp. 533--534, 539] |
 | Instruments | The capability entry state; O | What can be observed at all; the gas measurements behind the oxygen theory [@klahr1999, p. 539] |
-| Strategies | The method choice, [section 6](#composing-units-into-a-mode) | Which composition of units is run; Klahr and Dunbar's theorists search G first, their experimenters S first [@klahr1999, p. 538] |
+| Strategies | The method choice, [section 6](#composing-units-into-a-mode) | Which composition of units is run; Klahr and Dunbar's theorists search H first, their experimenters D first [@klahr1999, p. 538] |
 
 ## 6. Composing units into a mode
 
@@ -181,11 +218,13 @@ flowchart TD
 
 | Composition | Structure | Forced by |
 |:--|:--|:--|
-| Parallel, shared test | $n$ units share one S, C, O, and M: one crucial experiment whose outcomes differ across the rivals; every outcome excludes at least one; survivors go to R and back to G. Platt's strong inference | @platt1964, p. 347 |
-| Trace series | C found; O repeated over independent traces stands in for V over varied A; K decided by best explanation within the stated rival set | @cleland2002, pp. 484, 487--491 |
-| Nature's repetition | C found but repeated by nature; a regularity is fitted across the repetitions; no power to set or remove C | @cleland2002, p. 485 |
+| Parallel, shared test | $n$ units share one D, F, O, and C: one crucial experiment whose outcomes differ across the rivals; every outcome excludes at least one; survivors go to R and back to H. Platt's strong inference | @platt1964, p. 347 |
+| Trace series | $C$ found; O repeated over independent traces stands in for V over varied $A$; K decided by best explanation within the stated rival set | @cleland2002, pp. 484, 487--491 |
+| Nature's repetition | $C$ found but repeated by nature; a regularity is fitted across the repetitions; no power to set or remove $C$ | @cleland2002, p. 485 |
+| Capability first (drafted, v0.4) | N, then O, then E until a phenomenon repeats, then Q; no rival exists until E is done | @kolblebert2001, p. 264; @keeling1960 |
+| Forecast verification (drafted, v0.4) | The expectation frozen at S by computation before O exists; O and C at a later date; skill scored against a reference | @charney1950, p. 245 |
 
-- Which composition applies is decided by two state variables: whether C is set or found, and whether the event is unique or repeated. That decision is what a mode page's "when this mode helps" section records.
+- Which composition applies is decided by two state variables: whether $C$ is set or found, and whether the event is unique or repeated. That decision is what a mode page's "when this mode helps" section records.
 - The [meeting 1 page](sessions/01-scientific-method.qmd#platt) draws the first composition with the unit's own letters. The seminar's longer aim is the fourth row and onward: a geoscientific workflow composed from units, one composition per meeting, until the ledger's episodes can each be written as a path.
 
 ## 7. AI agents: how we build one from the graph
@@ -213,7 +252,7 @@ flowchart TD
 ### Using a scientific method
 
 - A run starts from a trigger, one of the six entry states of section 0, and a stated situation. The controller enters the graph at the node the trigger implies, chooses the method from the state test unless a person names one, and moves node by node.
-- At each node it produces the artifact the node owes and refuses the moves the node forbids. At K it writes a claim record with a status. At any node after M it may abstain with the observation that would decide.
+- At each node it produces the artifact the node owes and refuses the moves the node forbids. At K it writes a claim record with a status. At any node after C it may abstain with the observation that would decide.
 - The run's record is the node-labelled action log, the method declaration with the state that chose it, and the claim records. The agent's own rationale is not the record.
 - Terminal states are four: a warranted claim, a principled abstention, a reframed question, an artifact verdict. Two of the four are not discoveries, and the evaluation scores them as correct where the evidence warranted them.
 
@@ -221,7 +260,7 @@ flowchart TD
 
 - The rubrics. Nothing in the controller is edited except by shortening a rubric the group has changed.
 - The verification contract: for every delegated action, the check a non-specialist can run to see that it was done wrong. It is written into the claim record's evidence fields, not into the agent's confidence.
-- The separation of powers: the controller that acts, the evaluator that scores, and the notebook that records are different components. The group's own agent family already has that shape; the seminar changes what its designer can plan and what its auditor must ask, not its structure ([meeting 13](sessions/13-agent-design-and-evaluation.qmd)).
+- The separation of powers: the controller that acts, the evaluator that scores, and the notebook that records are different components. The group's own agent family already has that shape; the seminar changes what its designer can plan and what its auditor must ask, not its structure (meeting 13).
 
 ### Where the seminar's outputs enter the agent
 
@@ -230,14 +269,14 @@ flowchart TD
 | A revised node rule | One line in the controller; the full rule with its source in the references | After the meeting that changed it |
 | A new composition | A row in section 6; a method entry and a state test in the controller | The meeting whose papers document it |
 | A mode page's evidence column | What a claim record must show at K for that mode | Exported automatically |
-| A ledger episode | A historical item the evaluator can score, on process at the date | [Historical evaluation](historical-evaluation.qmd) |
+| A ledger episode | A historical item the evaluator can score, on process at the date | [Historical evaluation](success-set.qmd) |
 | A failure mode from the reading | A planted-flaw item for the evaluator, never a line the agent sees | `references/evaluation.md` |
 
 ## 8. Using the graph
 
 - Meeting 1: place one recent paper of your own on the graph; mark the nodes it performed, the nodes it skipped, and whether $C$ was set or found. Then place Platt and Cleland.
 - Every later meeting: the ledger's "decisive move" names a node letter. The [mode specifications](glossary.qmd#working-mode-specifications) say which nodes each mode exercises; [hypothesis assessment](modes/hypothesis.qmd) is the mode that runs the whole loop.
-- Discussion question 3 of meeting 1, whether the papers describe how ideas are generated or how claims are warranted, becomes a pointing exercise: G against K.
+- Discussion question 3 of meeting 1, whether the papers describe how ideas are generated or how claims are warranted, becomes a pointing exercise: H against K.
 
 ### The graph is a living object
 
@@ -249,3 +288,7 @@ flowchart TD
 | 0.1 | September 16, 2026 | Nodes Q, G, D, S, C, O, M, X, K, P, R | @platt1964; @cleland2001 |
 | 0.2 | September 16, 2026 | Node V, the control series, between M and X or K, with its loop back to C | @cleland2002, pp. 477--478, on rereading the full text |
 | 0.3 | September 23, 2026 | The surprise edge, M to Q, for an outcome no rival predicted; a sixth entry state, data without a theory; the starting state and the search spaces placed on the nodes | @klahr1999, pp. 532--540, read in full for the meeting 1 follow-up |
+| 0.4, drafted | October 19, 2026 | Nodes F, B, I; D also by computation; the surprise edge lands at F; compositions capability first and forecast verification. Proposed for the [modes meeting](modes.qmd), not adopted; the skill stays on v0.3 | @bogen1988; @steinle1997; @hacking1983; @kolblebert2001; @backus1968; @tarantola2005; @charney1950 |
+| 0.4.1, drafted | October 20, 2026 | Labels reconciled with the mode taxonomy: B new capability, F explore, G hypotheses, D derive or simulate, I estimate, M compare, V replicate and control. Letters unchanged, so codings and ledger rows stay valid | Convenor request; the [walks](walks.qmd) |
+| 0.4.2, drafted | October 20, 2026 | Letters made first-letter mnemonics of the verbs: B→N new capability, F→E explore, G→H hypothesize, D→S simulate or derive, S→D design, C→F find conditions, M→C compare; O, I, Q, V, X, K, P, R kept. Schema terms set in italics so a bare capital is always a node. Earlier rows keep the letters of their version; the private codings carry the conversion table | the seminar's mode taxonomy |
+| 0.5, proposed; 0.5.1 adopted as controller | October 21, 2026 | Two levels: the modes as the outer graph, a decision tree of eight questions over the schema terms $H$, $A$, $C$, $E$, $O$; the nodes kept as the inner moves of each mode. The convenor adopted v0.4.2 as the vocabulary and the tree (v0.5.1, `agents/controller/decision-tree.json`) as the controller | the eight walks; [decision tree](decision-tree.qmd) |

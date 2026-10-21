@@ -1,0 +1,190 @@
+# Success set: test cases for evaluation and mode analysis {.unnumbered}
+
+[Drafted]{.status .drafted} [v0.1 · eight papers supplied by the convenor, October 20, 2026 · coded from full text · metrics from OpenAlex · not yet discussed]{.status-line}
+
+- Positive test cases. A scoring rule, a mode agent, or an evaluation protocol that cannot recognize these as advances, reproduce what they report, or catch what a careful reader would catch, fails.
+- Slides: [modes-meeting deck](slides/modes-meeting.html).
+- Each paper is used three ways: metrics (section 1), a mode coding on [graph v0.4](unit.qmd#the-graph) (section 2), and a [historical-evaluation](success-set.qmd) case (section 3).
+- Full codings, with a page for every claim: `private/analysis/success-set/`. Metric values: `private/success-set-indicators.json`. Reading copies: the convenor's shared folder.
+
+## The set
+
+| Stratum | Papers | How chosen | What success means here |
+|:--|:--|:--|:--|
+| Recognized | @vine1963; @shapiro2005; @rodell2009; @lam2023 | Meet the [selection rule](success-set.qmd): *Nature* or *Science*, at or above the 99th citation percentile, interdisciplinary input or uptake | Impact already observed |
+| Designated | @graff2025; @normandeau2025; @sun2026; @xu2025 | Chosen by the convenor, 2025–2026 | Impact not yet observable; their success is a prediction the group can check |
+
+- Six rule-qualified candidates have no full text on file yet and stay candidates: @molina1974, @alvarez1980, @farman1985, @massonnet1993, @rockstrom2009, @lindsey2019.
+- Two authors of @graff2025, Lipovsky and Williams, are at the University of Washington. Assign that case an assessor from outside the group.
+
+## 1. Metrics
+
+| Paper | Citations | Field-normalized percentile | Field-weighted citation impact | Citers outside geoscience | References outside geoscience | Diversity of citing fields | CD₅ without n_k (citers in window) | Authors / countries |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| @vine1963 | 1,413 | 99.28 | 26.5 | 33% | 40% | 0.49 | 0.00 (110) | 2 / 1 |
+| @shapiro2005 | 2,285 | 99.99 | 66.8 | 8% | 29% | 0.15 | −0.61 (390) | 4 / 2 |
+| @rodell2009 | 2,877 | 99.97 | 58.1 | 24% | 14% | 0.41 | −0.30 (477) | 3 / 2 |
+| @lam2023 | 1,439 | 99.99 | 158.8 | 38% | 30% | 0.59 | −0.11 (1,428) | 18 / 2 |
+| @graff2025 | 23 | 99.35 | 10.2 | 46% | 14% | 0.57 | −1.00 (22) | 23 / 4 |
+| @normandeau2025 | 1 | 57.03 | 0.4 | 0% | 2% | 0.00 | +1.00 (1) | 17 / 1 |
+| @sun2026 | 2 | 97.15 | 7.8 | 0% | 4% | 0.00 | −1.00 (2) | 2 / 1 |
+| @xu2025 | 25 | 99.78 | 15.4 | 4% | 23% | 0.08 | −0.92 (25) | 10 / 2 |
+
+- Source: OpenAlex, retrieved anonymously on October 20, 2026. Geoscience means OpenAlex's Earth and Planetary Sciences and Environmental Science fields together. Diversity is Gini–Simpson over citing works' fields, geoscience counted as one field. CD₅ uses the formula in `tools/indicators.py` without the n_k term, over all citers in the five-year window.
+- For the designated papers, citations, diversity, and CD₅ rest on 1 to 25 citers and mean nothing yet. Their percentiles are early and will move.
+- The outside-geoscience columns use the old measure; the [corrected measure](#breadth-v1-the-measure-corrected) lowers Vine and Matthews from 33% to about 4%, because OpenAlex files geomagnetism under molecular biology. Vine and Matthews also has only 10 references, so its reference share is unstable.
+
+**What the metrics show on the recognized four**
+
+- Citation impact separates them from ordinary papers, as the selection rule guarantees. The rule therefore cannot test whether citations identify advances.
+- Interdisciplinary *input* and *uptake* disagree. Shapiro and colleagues imported statistical physics, ultrasonics, and helioseismology (section 2), and 29% of their references are outside geoscience, but only 8% of their citers are. Rodell and colleagues imported satellite geodesy and government statistics, and 24% of their citers are outside.
+- CD₅ never comes out positive for any paper with enough citers. Noise tomography, the clearest new method, scores lowest.
+
+### Against matched controls
+
+- **Design.** For each paper, three research articles from the same journal and year, in the same OpenAlex subfield, at the median citation rank of that pool. Type article, at least 20 references (5 for 1963, when reference lists were short), retrieved anonymously on October 20, 2026. The same measures as above.
+- **The citation percentile cannot separate advances inside these journals.** A median-ranked Earth-science article in *Nature* or *Science* already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile rule on the [historical-evaluation page](success-set.qmd) selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.
+
+| Paper | Match (pool) | Citations, paper / median control | Citers outside geoscience | References outside geoscience | Diversity of citing fields | CD₅ without n_k |
+|:--|:--|:--|:--|:--|:--|:--|
+| @vine1963 | Field, 1963 (58) | 1,413 / 12 | 33% / 0% | 40% / 0% | 0.49 / 0.00 | 0.00 / 0.00 |
+| @shapiro2005 | Geophysics (15) | 2,285 / 223 | 8% / 26% | 29% / 11% | 0.15 / 0.43 | −0.61 / −0.69 |
+| @rodell2009 | Oceanography (10) | 2,877 / 502 | 24% / 6% | 14% / 8% | 0.41 / 0.11 | −0.30 / −0.78 |
+| @lam2023 | Atmospheric science (11) | 1,439 / 67 | 38% / 3% | 30% / 5% | 0.59 / 0.07 | −0.11 / −0.83 |
+| @graff2025 | Atmospheric science (14) | 23 / 21 | 45% / 21% | 14% / 4% | 0.57 / 0.37 | −1.00 / −0.56 |
+| @normandeau2025 | Atmospheric science (55) | 1 / 8 | 0% / 0% | 2% / 5% | 0.00 / 0.00 | +1.00 / −0.75 |
+| @sun2026 | Geophysics (52) | 2 / 0 | 0% / none | 4% / 19% | 0.00 / none | −1.00 / none |
+| @xu2025 | Geophysics (20) | 25 / 11 | 4% / 27% | 23% / 24% | 0.08 / 0.40 | −0.92 / −0.46 |
+
+| Measure | Paper above its median control |
+|:--|:--|
+| Citations, percentile, field-weighted impact | 7 of 8 |
+| References outside geoscience | 5 of 8 |
+| Citers outside geoscience | 4 of 7 |
+| Diversity of citing fields | 4 of 7 |
+| CD₅ without n_k | 4 of 7 |
+| Team size | 4 of 8 |
+
+- **Citations separate the recognized four from their controls by 5.7 to 118 times** (Rodell 5.7, Shapiro 10, Lam 21, Vine 118). This is partly circular: these four were chosen on citations.
+- **Breadth of uptake separates three of the four recognized papers, not Shapiro.** The noise-tomography paper draws its citers from geoscience more than its controls do.
+- **The honest test is the designated stratum,** chosen by judgment and not by metrics. After 6 to 14 months, two lead their controls on citations (Xu, Sun), one is level (Gräff), and one trails (Normandeau). Score them again in 2028.
+- **CD₅ and team size separate nothing:** about half the papers are above their controls.
+- **OpenAlex's subfield labels shape the controls.** Gräff and colleagues' fjord study and Normandeau and colleagues' seafloor-freezing study are both labelled atmospheric science, so their controls are paleoclimate and ozone papers. Xu and colleagues' median control is another 2025 supershear rupture, imaged with fibre.
+
+::: {.callout-note collapse="true"}
+### Breadth v1: the measure corrected
+
+[Adopted, provisional]{.status .adopted} [adopted by the convenor on October 21, 2026 as a temporary measure, to be revised once the breadth literature is read]{.status-line}
+
+- **The defect.** The breadth columns above count a citer as outside geoscience when its OpenAlex field is neither Earth and Planetary Sciences nor Environmental Science. Twelve geoscience topics sit under other fields. "Geomagnetism and Paleomagnetism Studies" is filed under molecular biology; a random sample of 25 of Vine and Matthews's "molecular biology" citers were all geomagnetism papers in geoscience journals. Across the 32 papers, 307 works moved on that topic alone.
+- **v1.** Each citer labelled by its primary topic through a corrected topic map (geoscience, adjacent, outside), citers in the first five years, self-citations excluded, with a Wilson 95% interval; fewer than 30 citers is not estimable.
+
+| Paper | Old measure | v1, first five years [95% CI] (n) | Checked by hand, lifetime |
+|:--|:--|:--|:--|
+| @vine1963 | 33% | 1% [0, 5] (104) | 4% |
+| @rodell2009 | 24% | 22% [19, 27] (451) | 15% |
+| @shapiro2005 | 8% | 8% [5, 11] (332) | 7% |
+| @lam2023 | 38% | 34% [31, 36] (1,422) | 27% |
+| @graff2025 | 46% | 40% [20, 64] (15), not estimable | 23% |
+
+- **Checked by hand.** 138 citers labelled outside and 169 labelled geoscience were judged from title and venue: 69% and 96% correct. Topic labels follow subject, not community, so physicists citing Shapiro in PRL and JASA are labelled seismology.
+- **Against the controls**, no verdict changes. Only Rodell, Shapiro, and Lam have 30 or more citers on both sides: Rodell and Lam are above their controls, Shapiro below.
+- Source: OpenAlex, anonymous, October 21, 2026; `private/analysis/success-set/breadth/` (script, audited topic map, validation samples).
+
+## Two contrast strata
+
+- **C, highly cited outside Nature and Science.** Earth-science research articles at or above the 99.9th field-normalized percentile, in journals outside the Nature and Science families, in four eras matched to the success set. Reviews, software, and data products excluded.
+- **D, Nature and Science, bottom decile.** Earth-science research articles in Nature or Science, 2005 to 2015, in the bottom tenth of their own journal and year by citations, drawn at random (seed 2026).
+- Selection rules, pools, and replacements: `private/analysis/success-set/strata/REPORT.md`. All DOIs checked on Crossref.
+
+| Paper | Journal | Citations | Percentile | Citers outside geoscience, v1 lifetime | Contribution |
+|:--|:--|:--|:--|:--|:--|
+| @smagorinsky1963 | Monthly Weather Review | 14,048 | 100.00 | 62% (n = 9,998) | new method: numerical general circulation model |
+| @macdonald1964 | Journal of Petrology | 1,595 | 99.90 | 1% (n = 1,566) | regularity: alkalic versus tholeiitic boundary |
+| @bullard1965 | Phil. Trans. R. Soc. A | 1,275 | 99.91 | 3% (n = 1,238) | new method: computed continental fit |
+| @jackson2004 | Chemical Geology | 5,259 | 99.93 | 2% (n = 5,033) | new method: laser-ablation U–Pb zircon dating |
+| @tapley2004 | Geophysical Research Letters | 3,011 | 99.99 | 12% (n = 2,926) | new instrument: GRACE gravity |
+| @bensen2007 | Geophysical Journal International | 2,429 | 99.98 | 2% (n = 2,220) | new method: ambient-noise processing |
+| @gupta2009 | Journal of Hydrology | 6,726 | 99.91 | 4% (n = 6,611) | new method: decomposition of model skill (KGE) |
+| @chelton2011 | Progress in Oceanography | 2,614 | 99.99 | 4% (n = 2,575) | new observation: global eddy census |
+| @rignot2019 | PNAS | 1,650 | 100.00 | 4% (n = 1,538) | synthesis: 40 years of Antarctic mass balance |
+| @wu2019faultseg | Geophysics | 900 | 99.98 | 14% (n = 841) | new method: network trained on synthetic faults |
+| @davis2006gps | Nature | 33 | 84.8 | 11% (n = 28) | GPS strain-rate change |
+| @stlaurent2007 | Nature | 88 | 94.7 | 5% (n = 78) | ridge-crest mixing |
+| @wookey2008 | Nature | 61 | 91.6 | 4% (n = 57) | PKJKP and inner-core anisotropy |
+| @wickert2013 | Nature | 78 | 87.9 | 28% (n = 65) | ice-sheet demise from drainage |
+| @burr2014 | Nature | 85 | 98.6 | 8% (n = 76) | Titan saltation thresholds |
+| @koppers2005 | Science | 74 | 99.2 | 2% (n = 61) | seamount-trail bends and hotspots |
+| @li2006 | Science | 26 | 93.7 | 17% (n = 18) | plankton trend switching |
+| @duplessy2007 | Science | 67 | 93.1 | 5% (n = 58) | interglacial deep ocean |
+| @griffith2008 | Science | 109 | 94.6 | 15% (n = 92) | marine calcium cycle |
+| @hurst2013 | Science | 86 | 97.7 | 2% (n = 68) | hillslopes record uplift |
+
+- **No Nature or Science paper fails by citations.** Of the 1,717 Earth-science research articles in the two journals from 2005 to 2015, none sits below its field's median normalized citation; the median is the 99.4th percentile, and 34 (2%) are below the 90th. Stratum D is low only against its journal: 73 to 118 citations is the cut-off.
+- **Failure, as now defined, is not visible in these strata.** Failure means no conclusion reached; a contradicted claim is a successful result (convenor, October 21, 2026). Every published paper in C and D reports a conclusion, so neither stratum contains a failure. Later contradictions of @davis2006gps and @wookey2008 would make them successes of the field, not failures of the papers. A failure corpus has to come from work that ended without a conclusion: conference abstracts never followed by a paper, funded projects without publications, registered reports with inconclusive results.
+- **Highly cited is not broad.** The median share of citers outside geoscience is 4% for stratum C, the same as the matched controls with 30 or more citers (4%), and 7% for stratum D. The recognized four reach about 12%, carried by Lam and Rodell. Breadth of uptake does not follow citation success.
+- **The citation tail is products.** Among the most-cited Earth-science items, reanalyses, calibration curves, and assessment reports come first (ERA5: 31,639 citations); in 2019 to 2023 the first research article ranks seventh. Six of the ten C papers contribute a method or an instrument.
+- **Caveats.** 366 topics that appear among these papers' citers were not in the audited map and default to outside, which raises the outside shares. Stratum D's five-year counts are mostly below 30. None of the 20 has been coded by mode yet; 2 have legal open full texts in hand, 2 more are free on the publisher site, 16 are paywalled.
+
+## The 24 controls, with citations on October 20, 2026
+
+- **Vine & Matthews 1963** (field, references ≥ 5, pool 58): [Cross-Stratification and Palæogeography of the Lower Greensand](https://doi.org/10.1038/1991246a0) (14); [Discordant Lead–Uranium Ages due to Continuous Loss of Lead](https://doi.org/10.1038/200561a0) (12); [Pre-Fluvial, Autogeosynclinal Sedimentation in the Namurian](https://doi.org/10.1038/199133b0) (12)
+- **Shapiro et al. 2005** (geophysics, pool 15): [Earth's Free Oscillations Excited by the 26 December 2004 Sumatra-Andaman Earthquake](https://doi.org/10.1126/science.1112305) (285); [Slip-Rate Measurements on the Karakorum Fault](https://doi.org/10.1126/science.1105466) (223); [Laboratory Earthquakes Along Inhomogeneous Faults](https://doi.org/10.1126/science.1108193) (191)
+- **Rodell et al. 2009** (oceanography, pool 10): [Denitrification as the dominant nitrogen loss process in the Arabian Sea](https://doi.org/10.1038/nature08276) (536); [Catastrophic flood of the Mediterranean after the Messinian salinity crisis](https://doi.org/10.1038/nature08555) (502); [Increase in Agulhas leakage due to poleward shift of Southern Hemisphere westerlies](https://doi.org/10.1038/nature08519) (384)
+- **Lam et al. 2023** (atmospheric science, pool 11): [Iodine oxoacids enhance nucleation of sulfuric acid particles](https://doi.org/10.1126/science.adh2526) (72); [Rapid ozone depletion after humidification of the stratosphere](https://doi.org/10.1126/science.adg2551) (67); [Deglaciation of northwestern Greenland during Marine Isotope Stage 11](https://doi.org/10.1126/science.ade4248) (59)
+- **Gräff et al. 2025** (atmospheric science, pool 14): [Past warm intervals inform the future South Asian summer monsoon](https://doi.org/10.1038/s41586-025-08956-6) (23); [Recurrent humid phases in Arabia over the past 8 million years](https://doi.org/10.1038/s41586-025-08859-6) (21); [Fingerprinting the recovery of Antarctic ozone](https://doi.org/10.1038/s41586-025-08640-9) (19)
+- **Normandeau et al. 2025** (atmospheric science, pool 55): [A radiometric timescale challenges the chronology of the iconic 1992 GISP2 ice core](https://doi.org/10.1126/sciadv.adx8837) (8); [Pronounced methane cycling in northern lakes](https://doi.org/10.1126/sciadv.adt2561) (8); [Episodic reef growth in the Last Interglacial](https://doi.org/10.1126/sciadv.adu3701) (8)
+- **Sun & Davis 2026** (geophysics, pool 52): [Pliny the Younger advances geochronology](https://doi.org/10.1126/sciadv.aeg2624) (0); [Pacific tsunami records suggest similar rupture locations of two great earthquakes](https://doi.org/10.1126/sciadv.aee5294) (0); [Cascading magmatic unrest and aseismic faulting in the Aegean Sea](https://doi.org/10.1126/sciadv.aec3198) (0)
+- **Xu et al. 2025** (geophysics, pool 20): [Fiber-imaged supershear dynamics in the 2024 Mw 7 Mendocino Fault earthquake](https://doi.org/10.1126/science.adx6858) (11); [Very-long-range dynamic triggering of mud volcano unrest](https://doi.org/10.1126/science.adv8438) (11); [The forearc seismic belt: A fluid pathway constraining down-dip megathrust rupture](https://doi.org/10.1126/science.adt6389) (11)
+:::
+
+## 2. Mode analysis from the full text
+
+| Paper | Entry state | Path on graph v0.4 | Modes, in the order they did decisive work | Decisive move | Composition |
+|:--|:--|:--|:--|:--|:--|
+| @vine1963 | Problem: unexplained ridge anomalies | E, Q, O, I, C, P, S, C, X, H, K, S, C, V, P, K | Observation, estimation, simulation, theory, synthesis, hypothesis | Tying reversed blocks to spreading under a reversing field (p. 948) | Trace series |
+| @shapiro2005 | Capability: Green functions from noise, plus USArray | N, E, V, C, F, O, I, V, C, K | Methods, robustness, estimation, observation, instruments | One month of noise gives waveforms that match earthquake Rayleigh waves (p. 1616) | Capability first, with no question node |
+| @rodell2009 | Problem: no regional assessment existed | Q, N, O, I, H, S, C, X, V, K | Instruments, methods, estimation, synthesis, hypothesis | Groundwater as GRACE storage minus modeled soil water, 4.0 ± 1.0 cm/yr (p. 1001) | None fits; attribution closest to trace series |
+| @lam2023 | Capability: machine learning, reanalysis, compute | N, D, S, O, C, X, V, C, R, K | Methods, regularities, simulation and prediction, robustness | The trained graph network, scored under a leakage-matched protocol (p. 3) | Forecast verification, retrospective |
+| @graff2025 | Capability: seafloor fibre sensing | N, F, O, E, I, S, C, K | Instruments, exploration, observation, methods, synthesis, regularities, estimation, theory | A cable laid parallel to the calving front, carrying acoustic and temperature sensing (p. 2) | Capability first |
+| @normandeau2025 | Anomaly between repeat surveys | O, E, H, I, S, C, P, K | Observation, synthesis, theory, reconstruction, hypothesis, instruments | Resurveying in autumn and the next summer (pp. 4, 12) | Trace series, leaning to nature's repetition |
+| @sun2026 | Problem: offshore secular strain unmeasured | N, O, E, H, V, X, I, Q, S, V, C, X, K, R | Instruments, observation, robustness, estimation, modeling, synthesis | Showing pressure trends exceed sensor drift (pp. 5, 9) | Capability first |
+| @xu2025 | Data on a new event | O, I, E, N, V, C, K, Q, H, F, S, C, P, R, K | Methods, observation, robustness, hypothesis, estimation, theory, synthesis | Back-projection of a 5 km/s rupture front (p. 476) | Trace series |
+
+| Gate | Yes | Partly | No |
+|:--|:--|:--|:--|
+| Action gate: a stated hypothesis directed the key data acquisition | 0 | 1 (Rodell) | 7 |
+| Claim gate: the main claim faced a test it could have failed | 4 (Shapiro, Rodell, Lam, Xu for supershear) | 4 | 0 |
+| Anything fixed before the data | 0 | 1 (Lam: held-out years) | 7 |
+
+**What the eight show about modes**
+
+- None entered from a hypothesis. Four entered from a capability, three from a problem, one from an anomaly in a repeat survey.
+- Node I (estimate a latent quantity) appears in 7 of 8; node N (new capability) in 6; node E (explore) in 6. Node D, designing a discriminating observation before the data, appears once (Lam's verification design).
+- Rivals were stated in six papers and excluded by a test in four, one of them only partly. Xu and colleagues list eight possible mechanisms and exclude none; the retained account combines several (p. 479).
+- Every claim gate was met at least in part; no action gate was. On these eight, the claim gate describes the practice and the action gate does not.
+- The protective move at P appears three times: Vine and Matthews's auxiliaries (p. 949), Normandeau and colleagues' multi-year ice to close a 0.05 m versus 0.2 m gap (p. 10), and Xu and colleagues' added assumption after a failed length prediction (p. 479).
+- Interdisciplinary content does not predict interdisciplinary uptake: Xu and colleagues import fracture mechanics, laboratory rupture experiments, and satellite radar, and 4% of their citers are outside geoscience.
+- None of the recognized four uses the word "first" for its claim; three of the four designated papers do. With eight papers this is a description, not a pattern.
+
+## 3. The papers as historical-evaluation cases
+
+| Paper | Best suite | Decision point and decisive action | Scoring reference | Errors or traps a careful reader catches | Exposure |
+|:--|:--|:--|:--|:--|:--|
+| @vine1963 | Reproduction | After the 1962 survey and the failed uniform-normal model: propose alternating normal and reversed blocks (p. 948) | Forward profiles of Fig. 4 from stated parameters (pp. 948–949) | The non-reversal rival is dismissed on plausibility, not tested (p. 949); no misfit statistic | Canonical |
+| @shapiro2005 | Reproduction, extension | Correlate one month of noise, check against earthquakes, invert (p. 1616) | Fig. 2 maps; 678 and 891 measurements; variance reduction 93% and 76% | Directional noise mitigated, not quantified (p. 1616); validation by geology is qualitative and after the fact | Canonical |
+| @rodell2009 | Reproduction, extension | Subtract modeled soil water from GRACE storage over the overdrafted states | 4.0 ± 1.0 cm/yr; held-out well-level decline of about 0.33 m/yr (p. 1001) | No independent well check; one processing center | Canonical |
+| @lam2023 | Reproduction, extension | Freeze weights trained on 1979–2017; score held-out years against operational forecasts (p. 3) | Released weights; 90.3% of scorecard targets (p. 4); score years after 2021 | Verification against a reanalysis, not observations; level exclusions decided after the fact | Canonical |
+| @graff2025 | Decision reconstruction | Before deployment on August 6, 2023: lay the cable parallel to the front and run both sensing modes (p. 2) | The process chain and a melt of at most 1 cm per cycle | The Turner angle is −50° in the main text (p. 5) and +50° in the Methods (p. 13); only the negative value fits the diffusive convection the paper reports | Recent; group-adjacent |
+| @normandeau2025 | Decision reconstruction | After the July 2023 survey: resurvey in autumn and again in summer (pp. 4, 12) | The seasonal blister cycle and its mechanism | The 2021 survey is dated October on two pages and November on five; expansion of the ice gives at most 0.05 m against 0.2 m of relief (p. 10) | Recent |
+| @sun2026 | Reproduction | Correct the borehole pressure records for drift, convert to strain, test locking (pp. 4–9) | Table 1 strain rates; data and code stated to be with the paper (p. 12) | Seafloor drift rates in the text, +0.52, +0.14, and +0.43 kPa/yr (p. 9), differ from Fig. 2 and Table 1, 0.42, 0.13, and 0.39 kPa/yr (pp. 2, 4) | Recent, April 2026 |
+| @xu2025 | Decision reconstruction, extension | Between March 28 and April 28, 2025: test supershear with independent observables | Supershear at about 5 km/s over about 450 km in the south; cross-fault Vs of 2.9 against 3.3 km/s as a held-out check (p. 477) | The fault-parallel motion test is not unique (p. 478); the mechanism combines eight options, none excluded | Recent; an EarthArXiv preprint exists |
+
+- **Exposure.** The four recognized papers are in any model's training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models' training; check each model's training cutoff and whether it can recall the result before using them for decision reconstruction ([contamination](success-set.qmd)).
+- **Errors in the text are a separate item from planted flaws.** An agent that reproduces a result should also flag the Turner-angle sign and the survey date. A model that has memorized the paper may repeat them.
+
+## What this page does not establish
+
+- That these eight are advances by any measure other than the convenor's judgment and, for four of them, citations.
+- That the metrics discriminate advances: three controls per paper is a start, not a test with power, and the recognized four were chosen on the measure that separates them best. The designated four are the test; their citations mean something only after a few years.
+- That the codings are reliable: one coder per paper, from the text alone. Two independent codings of a subset would give an agreement figure.

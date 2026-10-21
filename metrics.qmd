@@ -72,7 +72,7 @@
 |:--|:--|:--|:--|:--|:--|
 | @radicchi2008 | Relative citations c divided by the field-and-year mean c_0 | WoS, several disciplines | Citation distributions across fields collapse onto one curve when rescaled by c_0; rankings by c_0-normalized counts are unbiased across fields where raw counts are not | Individual-level biases not addressed; the universality was later qualified in the literature | full |
 | @wang2013 | A mechanistic model of a paper's citation history with three parameters: fitness, immediacy, longevity; predicts ultimate impact | 463,348 Physical Review papers 1893 to 2010; Cell and NEJM 1996 to 2006 | Citation histories collapse onto one universal curve; the fitness parameter predicts long-term impact where impact factor and short-term counts do not | The logistic form cannot capture asymmetric curves; physics-heavy validation | full |
-| @ke2015 | The beauty coefficient B, parameter-free: the area between a straight line from publication to the citation peak and the actual curve | 22 million WoS papers, all disciplines, over a century; 384,649 APS papers | Delayed recognition is not exceptional but a continuous spectrum; top sleeping beauties come disproportionately from physics, chemistry, mathematics and often awaken in a different discipline; short-term metrics miss them | B depends on citation windows long enough to contain the awakening | full |
+| @ke2015 | The beauty coefficient B, parameter-free: the area between a straight line from publication to the citation peak and the actual curve | 22 million WoS papers, all disciplines, over a century; 384,649 APS papers | Delayed recognition is not exceptional but a continuous spectrum; top sleeping beauties come disproportionately from physics, chemistry, mathematics and often awaken in a different discipline; short-term metrics miss them | N depends on citation windows long enough to contain the awakening | full |
 | @bornmann2008 | Review of about thirty studies of why scientists cite | Studies from the 1960s to 2005 | Citing is not motivated only by intellectual influence; but the other motives are not so random as to destroy citations as an impact measure; the studies themselves are of poor and unreplicable design | The review's own verdict on its evidence base | abstract |
 | @waltman2016 | Review of citation impact indicators: databases, selection of publications, field normalization, counting methods, journal indicators | Literature review | Field normalization and counting method change rankings; database coverage differs by field; recommendations for further research | A review, not a measurement | full |
 | @sinatra2016 | Position of a scientist's highest-impact paper in the sequence of their papers; the Q parameter | 2,887 physicists and scientists in several fields | Controlling for productivity, the highest-impact paper falls at a random position in the career; Q is constant over a career and captures the scientist's contribution beyond luck | Impact is citations within ten years; position in a sequence, not calendar time | abstract |
@@ -91,7 +91,7 @@
 | @chu2021 | Field size against canon turnover, new-paper entry into the most-cited list, and disruption | WoS, by field and year | When a field publishes many papers per year, citations flow to already-cited papers, the most-cited list ossifies, new papers rarely become highly cited, and new papers are less disruptive | Association across fields; the theory of cognitive overload is argued, not tested directly | abstract |
 | @azoulay2019 | Entry of outsiders into a field after a star scientist's premature death | Life sciences, WoS | Collaborators' output falls; non-collaborators' output rises, draws on a different corpus, and is more often highly cited | Life sciences only; a specific natural experiment | abstract |
 
-- What survives: the construct "disruption" is real enough to argue about and its index is not yet trustworthy. The seminar's own numbers (section 4) show why: the paper that tested a concept scores as "developing" and the concept as "disruptive," which is the ledger's distinction between G and X, not a ranking of worth.
+- What survives: the construct "disruption" is real enough to argue about and its index is not yet trustworthy. The seminar's own numbers (section 4) show why: the paper that tested a concept scores as "developing" and the concept as "disruptive," which is the ledger's distinction between H and X, not a ranking of worth.
 
 ## 4. Breadth, depth, and the conditions of advance
 
@@ -117,25 +117,26 @@
 | @tshitoyan2019 | Word embeddings trained on materials abstracts up to a cutoff, tested on later discoveries | 3.3 million materials-science abstracts | Embeddings trained before a cutoff pick out materials later reported as thermoelectrics | One property, one field | record |
 
 - What survives on breadth: the three dimensions of diversity behave differently and nonlinearly, so "more breadth" is not a variable; the reception benefit and the production and funding costs are separate outcomes; and the direction of the specialist advantage depends on the pace of the field, in the one natural experiment that could test it. None of it was measured in the earth sciences.
+- **The seminar's provisional measure (breadth v1, adopted October 21, 2026).** Share of a paper's citers outside geoscience in the first five years, self-citations excluded, each citer labelled through an audited OpenAlex topic map, with a Wilson interval and a floor of 30 citers. It is a one-category share, not variety, balance, and disparity; it stays provisional until the papers in this section are read and a diversity measure replaces it. Results and the audit: [success set](success-set.qmd#breadth-v1-the-measure-corrected).
 - Correction recorded September 17, 2026: earlier seminar documents stated the Teodoridis result backwards. The paper's finding is that specialists gained when the pace of change increased.
 
 ## 5. Where the metrics attach on the unit graph
 
 | Construct | Node | What the metric sees | What it misses |
 |:--|:--|:--|:--|
-| Novelty | G, and the claim at K | The inputs (references, keywords) or the vocabulary of the claim, at a date | Whether the claim itself had a precedent; the Dossier's job |
+| Novelty | H, and the claim at K | The inputs (references, keywords) or the vocabulary of the claim, at a date | Whether the claim itself had a precedent; the Dossier's job |
 | Correctness | V, X, K | Nothing directly; survival and contradiction are proxies | Whether the evidence owed was supplied; the mode page's job |
 | Impact | After R | Uptake by citation, normalized by field and year, over a long window | Use without citation: data, methods, standards, decisions |
 | Field-shaping | After R, across many units | Whether citers also cite the references (CD); canon turnover; delayed awakening | Confounded by reference-list length and field size |
-| Breadth | G and D | Diversity of cited categories; author topic concentration | Integration in the work; borrowed competence and its check |
+| Breadth | H and S | Diversity of cited categories; author topic concentration | Integration in the work; borrowed competence and its check |
 
 ## 6. How the club uses them as it proceeds
 
 1. **Meetings 1 to 9: judgments first, numbers sealed.** For each anchor and companion paper, the ledger row records the group's judgment of novelty at the date (closest precedent), warrant, and uptake, before anyone looks at a number. The indicator tool has already computed citations, field percentile, CD_5, and the beauty coefficient for the assigned papers; the file stays in the private repository until meeting 10.
 2. **Meeting 10, novelty:** unseal the numbers. Compare the group's closest-precedent judgments with reference-pair atypicality and with an embedding distance computed over the assigned papers' reference lists, the Shibayama measure redone with a current embedding model. Record where the metric and the room disagree and why.
 3. **Meeting 11, breadth:** compute variety, balance, and disparity of cited categories for one paper of each participant, alongside their own held, borrowed, trusted, absent inventory from the case exercise. The comparison is the paper's point: reference diversity against integration in the work.
-4. **Meeting 12, advance:** compare the group's blinded advance ratings of the nine practice episodes with CD_5, percentile, and B. The Wilson and Sykes pair is the planned disagreement: the index files the test as development and the concept as disruption.
-5. **Meeting 13 and after:** the metrics that survived the three comparisons enter the [historical evaluation](historical-evaluation.qmd) as scores, with the disagreements as the construct-validity record. The [corpus study](corpus-study.qmd) inherits only those.
+4. **Meeting 12, advance:** compare the group's blinded advance ratings of the nine practice episodes with CD_5, percentile, and N. The Wilson and Sykes pair is the planned disagreement: the index files the test as development and the concept as disruption.
+5. **Meeting 13 and after:** the metrics that survived the three comparisons enter the [historical evaluation](success-set.qmd) as scores, with the disagreements as the construct-validity record. The corpus study inherits only those.
 
 - First numbers, computed September 17, 2026 from OpenAlex, which is not the Web of Science data the original papers used. CD_5 here omits the n_k term; the full index needs each reference's citers and is computed on request.
 
@@ -166,8 +167,8 @@
 | Correctness | Not measured; survival as a proxy | Read later papers for replication, contradiction, or correction of a specific claim | The proxy's blindness to silent failure | Ground truth, which needs the mode rubric applied by people |
 | Question choice and breadth of a field | Topic coverage of a field over time (Hao) | Topic-embedding diversity of a field's questions, computed prospectively as the group's own work proceeds | Measuring the portfolio effect the agent evaluation needs | Attribution to the tool rather than to the field's trend |
 
-- Two cautions run through the column. Historical replay leaks: a model trained after the outcome cannot be a blind judge of novelty before it, which is why the [historical evaluation](historical-evaluation.qmd) scores process rather than outcome on known episodes. And the models themselves are measured to be conservative about novelty (Machado 2026) and weak at judging it (NovBench 2026), so an embedding-based novelty score is a second instrument to validate, not a replacement for the first.
-- The seismology corpus is the test bed: the assigned papers first, then the [corpus study](corpus-study.qmd) sample, each metric run in its original form and its embedding form, disagreements inspected by hand.
+- Two cautions run through the column. Historical replay leaks: a model trained after the outcome cannot be a blind judge of novelty before it, which is why the [historical evaluation](success-set.qmd) scores process rather than outcome on known episodes. And the models themselves are measured to be conservative about novelty (Machado 2026) and weak at judging it (NovBench 2026), so an embedding-based novelty score is a second instrument to validate, not a replacement for the first.
+- The seismology corpus is the test bed: the assigned papers first, then the corpus study sample, each metric run in its original form and its embedding form, disagreements inspected by hand.
 
 ## 8. What this page does not claim
 

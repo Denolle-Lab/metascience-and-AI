@@ -50,6 +50,9 @@ def main() -> int:
     mode_check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'export_modes.py'), '--check'], capture_output=True, text=True)
     if mode_check.returncode:
         errors.append(mode_check.stderr.strip() or 'Mode export is out of date')
+    tree_check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'build_tree.py'), '--check'], capture_output=True, text=True)
+    if tree_check.returncode:
+        errors.append(tree_check.stderr.strip() or 'Decision tree page is out of date')
     bib = (ROOT / 'references.bib').read_text()
     bib_keys = re.findall(r'^@\w+\{([^,]+),', bib, flags=re.M)
     if len(bib_keys) != len(set(bib_keys)):

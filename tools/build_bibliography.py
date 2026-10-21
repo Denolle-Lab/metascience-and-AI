@@ -27,10 +27,21 @@ def entry(key: str, refs: dict) -> str:
     return line
 
 
+def in_book(data: dict) -> list[dict]:
+    """Meetings whose session page is a chapter of the book. Meetings not yet held are
+    kept in curriculum.json and the repository but are not published; their readings
+    appear in the list of works cited outside the meetings."""
+    try:
+        chapters = (ROOT / '_quarto.yml').read_text()
+    except OSError:
+        return list(data['sessions'])
+    return [s for s in data['sessions'] if f"sessions/{s['n']:02}-{s['slug']}.qmd" in chapters]
+
+
 def by_meeting(data: dict) -> str:
     refs = data['references']
     out: list[str] = []
-    for s in data['sessions']:
+    for s in in_book(data):
         out.append(f"### Meeting {s['n']}: {s['title']}\n")
         out.append(f"*[Session page](sessions/{s['n']:02}-{s['slug']}.qmd).*\n")
         for role, key in zip(('Anchor', 'Companion'), s['pair']):
@@ -50,7 +61,7 @@ def by_meeting(data: dict) -> str:
 
 def outside_meetings(data: dict) -> str:
     used: set[str] = set()
-    for s in data['sessions']:
+    for s in in_book(data):
         used.update(s['pair'])
         used.update(s.get('discussant', []))
         used.update(s.get('corrections', []))

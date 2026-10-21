@@ -1,0 +1,60 @@
+{
+  "name": "research decision tree",
+  "version": "0.5.1",
+  "status": "adopted by the convenor, October 21, 2026; room discussion pending",
+  "role": "Controller over the modes of inquiry. Reads the record (Cleland's H + A + C => E, with Q and O) and calls the next mode. Graph v0.4.2 is the vocabulary inside each mode.",
+  "outcomes": {
+    "success": "A conclusion is reached: a claim kept with its status, a rival excluded, or a claim contradicted. A contradicted claim is a successful result.",
+    "failure": "No conclusion is reached after the question has been reframed."
+  },
+  "start": "Start: a question, an anomaly, data, a capability, or a goal",
+  "questions": [
+    {"n": "1", "q": "Is there a phenomenon?", "sub": "It repeats, and it is not an artifact of the measurement chain.", "down": "yes",
+     "branches": [
+      {"label": "no: the chain is suspect", "kind": "mode", "name": "Instruments · methods", "nodes": "N", "note": "characterize the chain", "ret": "↺ back to 1"},
+      {"label": "no: not yet stable", "kind": "mode", "name": "Exploration", "nodes": "E, O", "note": "vary conditions until it repeats", "ret": "↺ back to 1"}]},
+    {"n": "2", "q": "Is the target observed directly?", "sub": "Or is it a latent quantity behind the data?", "down": "yes",
+     "branches": [
+      {"label": "no", "kind": "mode", "name": "Estimation", "nodes": "I", "note": "invert through a forward model; state resolution", "ret": "→ then 3"}]},
+    {"n": "3", "q": "What is the aim?", "sub": "A mechanism, a relation, a forecast, or a pooled estimate.", "down": "a mechanism",
+     "branches": [
+      {"label": "a relation", "kind": "mode", "name": "Regularities", "nodes": "C, K", "note": "fit across repetitions; test out of sample", "ret": "→ to 7"},
+      {"label": "a forecast", "kind": "mode", "name": "Simulation", "nodes": "S, C", "note": "freeze the forecast; compare when the outcome arrives", "ret": "→ to 7"},
+      {"label": "a pooled estimate", "kind": "mode", "name": "Cross-study synthesis", "nodes": "O, C, K", "note": "state the inclusion rule; model dependence between studies", "ret": "→ to 7"}]},
+    {"n": "4", "q": "Two or more rivals?", "sub": "Incompatible explanations, with \"artifact\" kept as one.", "down": "yes",
+     "branches": [
+      {"label": "no", "kind": "mode", "name": "Theory · hypothesis", "nodes": "H", "note": "generate rivals; record how each was generated", "ret": "↺ back to 4"}]},
+    {"n": "5", "q": "Does each rival predict something different?", "sub": "An expectation for each rival, from H + A + C.", "down": "yes",
+     "branches": [
+      {"label": "no", "kind": "mode", "name": "Theory · simulation", "nodes": "S", "note": "derive or compute each expectation", "ret": "↺ back to 5"},
+      {"label": "still identical", "kind": "mode", "name": "A new observable", "nodes": "N", "note": "a capability that separates the rivals", "ret": "↺ back to 1"}]},
+    {"n": "6", "q": "Can you set the conditions?", "sub": "Experiment, or conditions found in nature.", "down": "evidence in hand",
+     "branches": [
+      {"label": "yes", "kind": "mode", "name": "Hypothesis assessment", "nodes": "D, F, O, C", "note": "design the test, set the conditions, observe, compare", "ret": "→ to 7"},
+      {"label": "no: nature repeats it", "kind": "mode", "name": "Regularities", "nodes": "F, O, C", "note": "nature's repetition", "ret": "→ to 7"},
+      {"label": "no: one event", "kind": "mode", "name": "Reconstruction from traces", "nodes": "F, O, C", "note": "independent traces of the same event; rival histories", "ret": "→ to 7"}]},
+    {"n": "7", "q": "Does the result survive variation?", "sub": "Replication and robustness (V): vary the auxiliaries A and the conditions C; independent data, methods, models.", "down": "yes",
+     "branches": [
+      {"label": "no: an artifact?", "kind": "back", "ret": "↺ back to 1"},
+      {"label": "no: an auxiliary is wrong", "kind": "esc", "name": "Protect", "nodes": "P", "note": "revise A instead of H; logged; must predict something new (cap: open)", "ret": "↺ back to 5"}]},
+    {"n": "8", "q": "Verdict", "sub": "Keep, exclude, contradict: each is a conclusion.", "down": "a conclusion: draft the paper",
+     "branches": [
+      {"label": "survivors remain", "kind": "mode", "name": "Refine", "nodes": "R", "note": "split the survivors into subhypotheses", "ret": "↺ back to 4"},
+      {"label": "no rival fits", "kind": "mode", "name": "Surprise", "nodes": "E", "note": "an outcome no rival predicted: explore it", "ret": "↺ back to 1"},
+      {"label": "no conclusion", "kind": "mode", "name": "Question-driven inquiry", "nodes": "Q", "note": "reframe the question; record why the first framing could not be answered", "ret": "↺ back to start"},
+      {"label": "still none after reframing", "kind": "end", "name": "Failure, recorded", "note": "name the observation that would decide"}]},
+    {"n": "9", "q": "Does the claim survive review?", "sub": "Co-authors, referees, editors, readers.", "down": "accepted",
+     "branches": [
+      {"label": "a new control asked for", "kind": "mode", "name": "Robustness", "nodes": "V", "note": "run it; it usually enters as a planned-looking figure", "ret": "↺ back to 7"},
+      {"label": "a new rival named", "kind": "mode", "name": "Hypothesis assessment", "nodes": "H", "note": "test it, or state why it is excluded", "ret": "↺ back to 4"},
+      {"label": "the claim is too broad", "kind": "mode", "name": "Refine the claim", "nodes": "R", "note": "narrow it to what the evidence carries", "ret": "→ to Keep"},
+      {"label": "the request is declined", "kind": "back", "name": "Argue and log", "note": "keep the design; record the reason", "ret": "→ to Keep"}]}
+  ],
+  "end": "<b>Conclusion</b>: keep, exclude, or contradict the claim, with its status, and publish the record, the path including its loops, and the evidence the mode owes.",
+  "caption": "The research decision tree, v0.5.1 (adopted by the convenor; room discussion pending). Questions about the record run down the left; each answer that sends the work elsewhere calls a mode (right, with the graph nodes it runs) and returns to the question marked ↺. Every route that produces evidence reaches question 7, robustness, before the verdict. A project fails only when no conclusion is reached after the question has been reframed.",
+  "open": ["A numeric cap on protective revisions (P): undecided."],
+  "changelog": [
+    {"version": "0.5.0", "date": "2026-10-21", "change": "First tree: eight questions over the record; review added as question 9 after the process-document test."},
+    {"version": "0.5.1", "date": "2026-10-21", "change": "Convenor decisions: adopted as the controller over graph v0.4.2; reframing (question-driven inquiry) after no conclusion; failure = no conclusion, a contradicted claim is a success; synthesis split into cross-study synthesis (question 3) and reconstruction from traces (question 6b); protection cap left open."}
+  ]
+}
