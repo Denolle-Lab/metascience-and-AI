@@ -296,7 +296,8 @@ def main() -> int:
             if not line.strip():
                 continue
             r = json.loads(line)
-            q.setdefault(r['key'], {'doi': r['doi'], 'status': 'missing', 'group': f'Corpus {name}: {r.get("stratum", "all")}', 'tried': [],
+            stratum = r.get('stratum') or r.get('band') or r.get('bin') or r.get('citation_band') or 'all'
+            q.setdefault(r['key'], {'doi': r['doi'], 'status': 'missing', 'group': f'Corpus {name}: {stratum}', 'tried': [],
                                     'meta': {'title': r.get('title'), 'year': r.get('year'), 'venue': r.get('venue')}})
     elif args.cmd == 'run':
         args.out.mkdir(parents=True, exist_ok=True)
