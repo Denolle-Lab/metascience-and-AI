@@ -1,0 +1,555 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:metascience-ai-readiness:annotation:v3",
+  "title": "Human-reviewed paper annotation; not metadata-screen labels",
+  "type": "object",
+  "required": [
+    "paper_id",
+    "year",
+    "review_status",
+    "eligibility",
+    "actual_modality_families",
+    "ai_actual_use",
+    "fusion_labels",
+    "evidence"
+  ],
+  "properties": {
+    "paper_id": {
+      "type": "string"
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "source_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sampling_stratum": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "inclusion_probability": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "exclusiveMinimum": 0,
+      "maximum": 1
+    },
+    "review_status": {
+      "enum": [
+        "not_reviewed",
+        "reviewed",
+        "inaccessible",
+        "pending",
+        "adjudication"
+      ]
+    },
+    "reviewer_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "review_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_level": {
+      "enum": [
+        null,
+        "title_abstract",
+        "full_text"
+      ]
+    },
+    "full_text_status": {
+      "enum": [
+        "not_attempted",
+        "available_open",
+        "available_licensed",
+        "unavailable",
+        "parse_failed",
+        "partial"
+      ]
+    },
+    "eligibility": {
+      "enum": [
+        "yes",
+        "no",
+        "uncertain"
+      ]
+    },
+    "eligibility_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actual_modality_families": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/measurement_family"
+      }
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "measurement_family",
+          "actual_analysis_use",
+          "origin",
+          "platform",
+          "representation",
+          "evidence_ids"
+        ],
+        "properties": {
+          "measurement_family": {
+            "$ref": "#/$defs/measurement_family"
+          },
+          "actual_analysis_use": {
+            "enum": [
+              "yes",
+              "no_mention_only",
+              "uncertain"
+            ]
+          },
+          "origin": {
+            "enum": [
+              "observed",
+              "simulated",
+              "derived",
+              "mixed",
+              "uncertain"
+            ]
+          },
+          "platform": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Separate from modality: satellite, ground station, DAS cable, gauge, etc."
+          },
+          "representation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Separate from modality: waveform, image, point cloud, mesh, time series, graph, etc."
+          },
+          "native_support_and_dimensions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dataset_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dataset_doi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ai_actual_use": {
+      "enum": [
+        "yes",
+        "no",
+        "uncertain"
+      ]
+    },
+    "ai_method_families": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ai_role": {
+      "enum": [
+        null,
+        "not_used",
+        "preprocessing",
+        "feature_extraction",
+        "prediction",
+        "surrogate",
+        "inversion",
+        "fusion",
+        "agent_workflow",
+        "multiple",
+        "uncertain"
+      ]
+    },
+    "fusion_labels": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "co_used_only",
+          "joint_non_ml_inversion",
+          "late_output_fusion",
+          "joint_ml_inputs",
+          "cross_modal_representation_learning",
+          "cross_modal_transfer_test"
+        ]
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "section_or_page",
+          "excerpt",
+          "supports"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "section_or_page": {
+            "type": "string"
+          },
+          "excerpt": {
+            "type": "string",
+            "description": "At most 25 words per excerpt; keep total verbatim quotation per source within applicable limits."
+          },
+          "supports": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "dataset_dois_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "readiness_barriers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "need_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_origin",
+          "tags",
+          "claim_summary",
+          "evidence_ids"
+        ],
+        "properties": {
+          "claim_origin": {
+            "enum": [
+              "explicit_author_request",
+              "assessor_inference"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "coverage",
+                "quality_control",
+                "additional_simulations",
+                "metadata",
+                "access",
+                "interoperability",
+                "training_scalability",
+                "independent_evaluation",
+                "other"
+              ]
+            }
+          },
+          "claim_summary": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "readiness_assessment": {
+      "type": "object",
+      "description": "Separate evidence-supported dimensions, not a single universal maturity score. Null means not established.",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "grade": {
+            "enum": [
+              "asserted",
+              "demonstrated_one_team",
+              "independently_reused",
+              "routine_community_use",
+              "uncertain"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "deep_learning_actual_use": {
+      "enum": [
+        "yes",
+        "no",
+        "uncertain"
+      ],
+      "description": "Verified actual computational use; unknown for unreviewed or legacy records. Positive requires locatable full-text evidence."
+    },
+    "foundation_model_actual_use": {
+      "enum": [
+        "yes",
+        "no",
+        "uncertain"
+      ],
+      "description": "Verified actual computational use; unknown for unreviewed or legacy records. Positive requires locatable full-text evidence."
+    },
+    "foundation_model_pretraining": {
+      "enum": [
+        "yes",
+        "no",
+        "uncertain"
+      ],
+      "description": "Verified actual computational use; unknown for unreviewed or legacy records. Positive requires locatable full-text evidence."
+    },
+    "foundation_model_roles": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "pretrain_from_scratch",
+          "continued_pretraining",
+          "finetune",
+          "frozen_features",
+          "inference",
+          "evaluate_existing"
+        ]
+      }
+    },
+    "training_regimes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "supervised",
+          "self_supervised",
+          "semi_supervised",
+          "self_training_pseudo_labels",
+          "reinforcement_learning",
+          "other"
+        ]
+      }
+    },
+    "model_scale": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "parameter_count": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "training_data_size": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "compute_cost_or_budget": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "small_model_comparisons": {
+      "type": "array",
+      "description": "Record task, data, label budget, tuning and compute budget before any claim that a small model is sufficient. Small/lean has no universal parameter cutoff.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "string"
+          },
+          "comparison_model": {
+            "type": "string"
+          },
+          "metric_and_outcome": {
+            "type": "string"
+          },
+          "matched_conditions": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "adoption_explanations": {
+      "type": "array",
+      "description": "Explanations are not inferred from non-adoption or from paper counts. Preserve explicit author statements separately from assessor hypotheses.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "enum": [
+              "explicit_author_statement",
+              "assessor_hypothesis"
+            ]
+          },
+          "reason": {
+            "enum": [
+              "data_access",
+              "data_interoperability",
+              "labels",
+              "compute_cost",
+              "skills",
+              "evaluation_transfer",
+              "small_model_adequacy",
+              "other"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "cohort_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modality_ontology": {
+      "enum": [
+        null,
+        "earth_measurement_families",
+        "cs_information_channels"
+      ]
+    }
+  },
+  "$defs": {
+    "measurement_family": {
+      "enum": [
+        "seismic_elastic",
+        "geodetic_position_displacement",
+        "radar_backscatter_interferometry",
+        "optical_reflectance",
+        "passive_microwave",
+        "thermal_radiance",
+        "atmospheric_in_situ",
+        "hydrologic_in_situ",
+        "oceanographic_in_situ",
+        "gravity_potential",
+        "electromagnetic_electrical",
+        "geochemical_biological",
+        "human_system_records",
+        "other",
+        "cs_text_language",
+        "cs_image_video",
+        "cs_audio_speech",
+        "cs_structured_tabular",
+        "cs_graph_relational",
+        "cs_robotics_proprioception"
+      ]
+    }
+  }
+}

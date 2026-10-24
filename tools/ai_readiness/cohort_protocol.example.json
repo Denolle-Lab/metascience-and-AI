@@ -1,0 +1,33 @@
+{
+  "status": "UNRESOLVED_TEMPLATE_NOT_A_SAMPLED_DATASET",
+  "years": {"start": 2016, "end": 2025},
+  "eligibility": "Preregister comparable empirical/computational research eligibility. Decide how CS conference proceedings and Earth-science journal articles can be compared; do not silently mix reviews, benchmarks and research papers.",
+  "cohorts": {
+    "earth": {
+      "modality_ontology": "earth_measurement_families",
+      "source_frame": [
+        {"label": "Earth and environmental journal frame", "verified_OpenAlex_source_ids": [], "coverage_decision": null}
+      ],
+      "note": "Retain screen-negative papers in the sampling denominator. Scope of a Nature subset is only those selected journals; do not call it all geoscience."
+    },
+    "cs": {
+      "modality_ontology": "cs_information_channels",
+      "source_frame": [
+        {"label": "Candidate NeurIPS/ICML/ICLR, ACL-family, CVPR or computing-journal frame", "verified_OpenAlex_source_ids": [], "coverage_decision": null}
+      ],
+      "note": "Source/series identities, proceeding coverage, deduplication of preprint and publication, and article-type mapping require verification before retrieval. No guessed IDs supplied."
+    }
+  },
+  "comparability": {
+    "matched_years": {"confirmed": false, "evidence": null},
+    "matched_article_eligibility": {"confirmed": false, "evidence": null},
+    "matched_annotation_codebook": {"confirmed": false, "evidence": null},
+    "full_text_coverage_audited": {"confirmed": false, "evidence": null},
+    "frozen_source_frames": {"confirmed": false, "evidence": null}
+  },
+  "cautions": [
+    "Earth measurement-family and CS information-channel multimodality are different constructs; do not equate their percentages without a separate shared definition and sensitivity analysis.",
+    "AI/DL/foundation-model use and pretraining are separately coded actual methods/results evidence, not keyword hits.",
+    "Author-reported barriers and assessor explanations are hypotheses to test, not causal explanations inferred from non-adoption."
+  ]
+}
