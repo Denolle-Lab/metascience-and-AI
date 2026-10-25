@@ -74,13 +74,14 @@ Writes `papers.csv`, `transitions.csv`, `nodes.csv`, `tree.csv`, and `summary.md
 - **Human check**: one human coding of at least four papers per corpus, with Cohen's kappa on entry state and outcome, before any count is cited.
 - **Drift**: rerun the eight success papers under every new codebook version and compare.
 
-## Cost and time (estimates, to be replaced by the pilot's measurement)
+## Cost and time (measured on the format test, October 25, 2026)
 
 | Item | Assumption | Per paper | 1,000 papers |
 |:--|:--|:--|:--|
 | Input | about 2,300 tokens per PDF page (text plus page image), 10 to 20 pages, codebook cached | 23,000 to 46,000 tokens | |
 | Output | about 10,000 tokens, thinking included | | |
-| Price | Claude Opus 5.5, $4 input and $20 output per million tokens, batches at half price | about $0.15 to $0.20 | about $150 to $200 |
+| Price, estimated beforehand | Claude Opus 5.5, $4 input and $20 output per million tokens, batches at half price | about $0.15 to $0.20 | about $150 to $200 |
+| Price, measured | 24 batch requests on six papers, effort high (`code_papers.py cost --tag fmt-P1` etc.): PDF alone $0.26 to $0.27; PDF plus the located XML text $0.34 to $0.39 | $0.27 to $0.39 | about $270 to $390 |
 
 Long Methods sections or supplements can double the input. Batches finish within 24 hours. Fetching runs about one paper every 5 to 10 seconds.
 
@@ -88,4 +89,5 @@ Long Methods sections or supplements can double the input. Batches finish within
 
 | Date | Change |
 |:--|:--|
+| 2026-10-25 | Measured cost from the format test replaces the estimate; the batch coder now puts the schema in the prompt (constrained decoding refused the schema as too large) |
 | 2026-10-21 | First runbook: corpus builder, manifest queueing, Files API batches with state and retries, aggregation, pilot gates |
