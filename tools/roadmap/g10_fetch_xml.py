@@ -17,6 +17,7 @@ Run   : python tools/roadmap/g10_fetch_xml.py [--keys g22_W... ...]
 """
 from __future__ import annotations
 import argparse
+import json
 import os
 import re
 import sys
@@ -127,6 +128,8 @@ def routes(g: dict, dest: Path) -> tuple[str | None, list[str]]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument('--keys', nargs='*')
+    ap.add_argument('--manifest', help='a manifest .jsonl (key, doi, openalex) instead of the gold set, e.g. derived/calc1/manifest.jsonl')
+    ap.add_argument('--out', help='folder for the XML (default: private/data/roadmap/pdfs/gold)')
     ap.add_argument('--reconvert', action='store_true', help='rewrite every <key>.xml.txt from the stored XML with the current jats_text.py')
     a = ap.parse_args()
     if a.reconvert:
@@ -135,19 +138,30 @@ def main() -> None:
             (OUT / (x.name + '.txt')).write_text(jats_text.convert(jats_text.parse(x))); n += 1
         log('g10_fetch_xml.py', 'reconverted located text from stored XML (jats_text.py)', n)
         print(n, 'reconverted'); return
-    gold = read_json(DERIVED / 'gold' / 'gold_set.json')
+    global OUT
+    if a.out:
+        OUT = Path(a.out)
+    if a.manifest:
+        titles = {('g22_' + p['id']): p['title'] for p in read_json(DERIVED / 'gold' / 'preselect.json')}
+        lines = [json.loads(l) for l in Path(a.manifest).read_text().splitlines() if l.strip()]
+        gold = [{'key': r['key'], 'doi': r['doi'], 'id': r['openalex'], 'title': titles.get(r['key'], '')} for r in lines]
+    else:
+        gold = read_json(DERIVED / 'gold' / 'gold_set.json')
     if a.keys:
         gold = [g for g in gold if g['key'] in a.keys]
     OUT.mkdir(parents=True, exist_ok=True)
     rows = []
     for g in gold:
         dest = OUT / f"{g['key']}.xml"
+        if not dest.is_file() and (ROOT / 'private/data/roadmap/pdfs/gold' / f"{g['key']}.xml").is_file():
+            dest = ROOT / 'private/data/roadmap/pdfs/gold' / f"{g['key']}.xml"   # gold papers already fetched
         if dest.is_file():
             rows.append({'key': g['key'], 'doi': g['doi'], 'xml': True, 'route': 'already present', 'tried': []}); continue
         route, tried = routes(g, dest)
         rows.append({'key': g['key'], 'doi': g['doi'], 'xml': route is not None, 'route': route, 'tried': tried})
         print(f"{g['key']}: {route or 'none'}  {tried}", flush=True)
-    write_json(DERIVED / 'gold' / 'xml_status.json', rows, ['derived/gold/gold_set.json'])
+    status = (DERIVED / 'calc1' / 'xml_status.json') if a.manifest else (DERIVED / 'gold' / 'xml_status.json')
+    write_json(status, rows, [a.manifest or 'derived/gold/gold_set.json'])
     c = Counter(r['route'] for r in rows if r['xml'])
     log('g10_fetch_xml.py', 'publisher full-text XML for the gold set', len(rows), f"{sum(r['xml'] for r in rows)} with XML: {dict(c)}")
     print(sum(r['xml'] for r in rows), 'of', len(rows), 'with XML;', dict(c))
