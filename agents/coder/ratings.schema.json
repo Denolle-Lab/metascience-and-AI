@@ -1,0 +1,184 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Blind human ratings of one paper, ratings v1.0.0 (Novelty Dossier v1 and Scientific Advance Profile v1, rubrics.qmd)",
+ "type": "object",
+ "properties": {
+  "key": {
+   "type": "string"
+  },
+  "doi": {
+   "type": "string"
+  },
+  "ratings_version": {
+   "type": "string",
+   "enum": [
+    "1.0.0"
+   ]
+  },
+  "coder": {
+   "type": "string"
+  },
+  "rated_on": {
+   "type": "string"
+  },
+  "minutes_spent": {
+   "type": "integer"
+  },
+  "familiarity": {
+   "type": "string",
+   "enum": [
+    "outside_my_field",
+    "adjacent",
+    "my_field"
+   ]
+  },
+  "novelty": {
+   "type": "object",
+   "properties": {
+    "atomic_claim": {
+     "type": "string"
+    },
+    "claim_kind": {
+     "type": "string",
+     "enum": [
+      "observation",
+      "method",
+      "concept",
+      "explanation",
+      "connection",
+      "question"
+     ]
+    },
+    "closest_precedent": {
+     "type": "string"
+    },
+    "new_component": {
+     "type": "string"
+    },
+    "judgment": {
+     "type": "string",
+     "enum": [
+      "exact_precedent",
+      "close_precedent",
+      "component_precedent",
+      "apparently_new_component",
+      "unresolved"
+     ]
+    },
+    "score": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 5
+    },
+    "confidence": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ]
+    }
+   },
+   "required": [
+    "atomic_claim",
+    "claim_kind",
+    "closest_precedent",
+    "new_component",
+    "judgment",
+    "score",
+    "confidence"
+   ],
+   "additionalProperties": false
+  },
+  "advance": {
+   "type": "object",
+   "properties": {
+    "starting_state": {
+     "type": "string"
+    },
+    "gain": {
+     "type": "string"
+    },
+    "magnitude": {
+     "type": "string"
+    },
+    "evidence": {
+     "type": "string"
+    },
+    "roles": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "corrective",
+       "enabling",
+       "integrative",
+       "cumulative",
+       "transformative"
+      ]
+     }
+    },
+    "score": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 5
+    },
+    "confidence": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ]
+    }
+   },
+   "required": [
+    "starting_state",
+    "gain",
+    "magnitude",
+    "evidence",
+    "roles",
+    "score",
+    "confidence"
+   ],
+   "additionalProperties": false
+  },
+  "impact_forecast": {
+   "type": "string",
+   "enum": [
+    "below_median",
+    "around_median",
+    "top_quartile",
+    "top_decile",
+    "no_forecast"
+   ]
+  },
+  "notes": {
+   "type": "string"
+  },
+  "eligible_in_my_view": {
+   "type": "string",
+   "enum": [
+    "yes",
+    "no",
+    "unsure"
+   ],
+   "description": "Second check of the eligibility screen: a primary research article whose object is Earth science"
+  }
+ },
+ "required": [
+  "key",
+  "doi",
+  "ratings_version",
+  "coder",
+  "rated_on",
+  "minutes_spent",
+  "eligible_in_my_view",
+  "familiarity",
+  "novelty",
+  "advance",
+  "impact_forecast",
+  "notes"
+ ],
+ "additionalProperties": false
+}

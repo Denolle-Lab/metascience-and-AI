@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold-set coder</title>
+<!-- Template: tools/roadmap/app/gold_coder.html. Data is embedded by tools/roadmap/g09_human_coding_app.py.
+     Runs from disk, offline. Nothing is sent anywhere: drafts stay in this browser and files are saved where you choose. -->
+<style>
+:root{
+  --bg:#f5f4f2; --panel:#ffffff; --ink:#153742; --muted:#5b6b70; --line:#d9d6d0; --accent:#0f4c5c; --accent-ink:#ffffff;
+  --soft:#e8eff0; --warn:#8a5a00; --warn-bg:#fdf3dc; --err:#a1302b; --err-bg:#fbe7e5; --ok:#2e6b4f; --ok-bg:#e3f1ea;
+  --build:#4b2e83; --test:#164d64; --decide:#85754d;
+  --serif:"Source Serif 4","Source Serif Pro",Georgia,serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#10191c; --panel:#172429; --ink:#dfe8ea; --muted:#9aaaae; --line:#2b3b40; --accent:#5fa8b8; --accent-ink:#0b1416;
+  --soft:#1d2f35; --warn:#f0c46a; --warn-bg:#3a2f12; --err:#f19a93; --err-bg:#3d1d1b; --ok:#8fd3b0; --ok-bg:#183327;
+  --build:#a690d6; --test:#6fb3c9; --decide:#cdbb8c; }}
+:root[data-theme="dark"]{
+  --bg:#10191c; --panel:#172429; --ink:#dfe8ea; --muted:#9aaaae; --line:#2b3b40; --accent:#5fa8b8; --accent-ink:#0b1416;
+  --soft:#1d2f35; --warn:#f0c46a; --warn-bg:#3a2f12; --err:#f19a93; --err-bg:#3d1d1b; --ok:#8fd3b0; --ok-bg:#183327;
+  --build:#a690d6; --test:#6fb3c9; --decide:#cdbb8c; }
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0}
+h1{font-size:22px} h2{font-size:19px;margin:0 0 6px} h3{font-size:16px}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:5px 10px}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.ghost{border-color:transparent;background:transparent;padding:3px 6px}
+button:disabled{opacity:.45;cursor:default}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 7px;width:100%}
+textarea{min-height:56px;resize:vertical}
+select{padding:4px 6px}
+label{display:block;font-size:13px;color:var(--muted);margin:8px 0 3px}
+.small{font-size:12.5px;color:var(--muted)}
+header.top{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+header.top .sp{flex:1}
+nav.tabs button{border:none;background:transparent;padding:6px 10px;border-bottom:2px solid transparent;border-radius:0}
+nav.tabs button.on{border-bottom-color:var(--accent);color:var(--accent);font-weight:600}
+main{padding:16px;max-width:1500px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 300px;gap:14px;align-items:start}
+@media (max-width:1150px){.layout{grid-template-columns:1fr}.side{position:static!important}}
+.side{position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto}
+.secnav a{display:flex;justify-content:space-between;padding:4px 8px;border-radius:5px;text-decoration:none;color:var(--ink);font-size:14px}
+.secnav a:hover{background:var(--soft)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-left:6px;flex:none;align-self:center}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.err{background:var(--err)} .dot.none{background:var(--line)}
+table{border-collapse:collapse;width:100%}
+th,td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:top;font-size:14px}
+th{font-size:12.5px;color:var(--muted);font-weight:600}
+.queue tr{cursor:pointer} .queue tr:hover td{background:var(--soft)}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.pill.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.pill.err{background:var(--err-bg);color:var(--err);border-color:transparent}
+.step{display:grid;grid-template-columns:34px 88px 150px minmax(0,1fr) 70px;gap:6px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.step .row2{grid-column:2 / -1;display:grid;grid-template-columns:150px 120px minmax(0,1fr) auto;gap:6px}
+@media (max-width:820px){.step{grid-template-columns:1fr}.step .row2{grid-column:auto;grid-template-columns:1fr}}
+.step .n{font-weight:700;color:var(--muted);padding-top:6px}
+.wc{font-size:11.5px;color:var(--muted);text-align:right} .wc.bad{color:var(--err);font-weight:600}
+.strip{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:14px;color:#fff;font-weight:700;font-size:13px;padding:0 6px}
+.chip.build{background:var(--build)} .chip.test{background:var(--test)} .chip.decide{background:var(--decide)} .chip.blank{background:var(--line);color:var(--muted)}
+.msg{font-size:13px;padding:4px 8px;border-radius:5px;margin:3px 0}
+.msg.err{background:var(--err-bg);color:var(--err)} .msg.warn{background:var(--warn-bg);color:var(--warn)} .msg.ok{background:var(--ok-bg);color:var(--ok)}
+.hint{font-size:13px;color:var(--muted);background:var(--soft);border-radius:6px;padding:8px 10px;margin:6px 0 10px}
+.listitem{border:1px solid var(--line);border-radius:6px;padding:8px;margin:6px 0}
+.rowflex{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.scale{display:flex;gap:6px;flex-wrap:wrap}
+.scale label{display:flex;gap:6px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:0;color:var(--ink);font-size:13px;flex:1 1 170px;cursor:pointer}
+.scale input{width:auto;margin-top:3px}
+.checks label{display:inline-flex;gap:5px;align-items:center;margin-right:12px;color:var(--ink)}
+.checks input{width:auto}
+details summary{cursor:pointer;color:var(--accent);font-size:14px}
+.banner{background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px;margin-bottom:12px;font-size:14px}
+.center{max-width:720px;margin:30px auto}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:4px 10px;font-size:14px}
+.kv div:nth-child(odd){color:var(--muted)}
+.drop{border:2px dashed var(--line);border-radius:8px;padding:24px;text-align:center;color:var(--muted)}
+.drop.on{border-color:var(--accent);color:var(--accent)}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<script id="payload" type="application/json">/*__DATA__*/null</script>
+<header class="top">
+  <h1>Gold-set coder</h1>
+  <nav class="tabs" id="tabs"></nav>
+  <span class="sp"></span>
+  <span class="small" id="who"></span>
+  <button class="ghost" id="themeBtn" title="Switch light or dark">◐</button>
+</header>
+<main id="app"></main>
+<script>
+(function(){
+'use strict';
+const P = JSON.parse(document.getElementById('payload').textContent || 'null');
+const app = document.getElementById('app');
+if(!P){ app.innerHTML = '<div class="center card"><h2>No data</h2><p>This is the template. Build the app with <code>python tools/roadmap/g09_human_coding_app.py</code> and open <code>private/data/roadmap/app/gold-coder.html</code>.</p></div>'; return; }
+
+// ---------- storage (wrapped: private windows may block it) ----------
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } },
+  keys(prefix){ try{ return Object.keys(localStorage).filter(k => k.startsWith(prefix)); }catch(e){ return []; } }
+};
+const NS = 'goldcoder.v1.';
+let storageOk = store.set(NS + 'probe', 1);
+
+// ---------- vocab ----------
+const S = P.schema, RS = P.ratings_schema;
+const SP = S.properties;
+const NODE = Object.fromEntries(P.nodes.map(n => [n.id, n]));
+const MODE = Object.fromEntries(P.modes.map(m => [m.id, m]));
+const ENUM = {
+  entryState: SP.entry.properties.state.enum,
+  node: SP.entry.properties.node.enum,
+  mode: SP.sequences.items.properties.steps.items.properties.mode.enum,
+  move: SP.sequences.items.properties.steps.items.properties.move.enum,
+  trigger: SP.sequences.items.properties.steps.items.properties.trigger.enum,
+  kind: SP.sequences.items.properties.kind.enum,
+  treeQ: SP.tree.items.properties.question.enum,
+  treeMode: SP.tree.items.properties.mode_called.enum,
+  outcome: SP.end.properties.outcome.enum,
+  status: SP.end.properties.claim_status.enum,
+  composition: SP.composition.enum,
+  gate: SP.gates.properties.action.enum,
+  importKind: SP.imports.items.properties.kind.enum,
+  disKind: SP.disagreements.items.properties.kind.enum,
+  disStance: SP.disagreements.items.properties.stance.enum,
+  effect: SP.alternatives_considered.items.properties.effect_reported.enum,
+};
+const LABEL = {
+  anomaly:'anomaly (a surprising observation)', problem:'problem (an unsolved question)', hypothesis:'hypothesis (or a theory’s prediction)',
+  data_without_theory:'data without a theory', capability:'capability (new instrument, method, archive, computer)', external_goal:'external goal (benchmark, mission)',
+  challenged_result:'challenged result (a published result to check or replicate)',
+  new:'new', repeat:'repeat (same node as the step just before)', return_after_failure:'return after failure', review_forced:'review forced',
+  declined:'declined (answered without new work)', inherited:'inherited (authors’ earlier work, cited)', cited:'cited (other groups’ result, used)',
+  kept:'kept', excluded:'excluded (a rival rejected)', contradicted:'contradicted (an earlier claim shown wrong)', no_conclusion:'no conclusion (failure)',
+  strong_inference:'strong inference', trace_series:'trace series', natures_repetition:'nature’s repetition', capability_first:'capability first',
+  forecast_verification:'forecast verification', exploration_first:'exploration first', independent_replication:'independent replication', none_fits:'none fits',
+};
+const lab = v => LABEL[v] || v.replace(/_/g,' ');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const words = s => (String(s||'').trim().match(/\S+/g) || []).length;
+const todayISO = () => new Date().toISOString().slice(0,10);
+
+// ---------- state ----------
+let coder = store.get(NS + 'coder', null);
+let view = store.get(NS + 'view', 'queue');
+let current = store.get(NS + 'current', null);
+let dirHandle = null;
+
+function draftKey(k){ return NS + 'draft.' + coder + '.' + k; }
+function emptyCoding(p){
+  return {
+    key: p.key, doi: p.doi, codebook_version: P.meta.codebook_version, coder: coderName(coder) + ' (' + coder + '), human',
+    documents: ['final paper'], pages_convention: '',
+    entry: {state:'', node:'', evidence:'', page:''},
+    sequences: [{kind:'final_paper', source_document:'final paper', steps:[]}],
+    tree: [], end: {outcome:'', claim_status:'', claim:'', page:''},
+    decisive_move: {node:'', mode:'', sentence:'', page:''}, composition:'',
+    gates: {action:'', claim:'', registration:'', evidence:''},
+    imports: [], novelty_claims: [], limits:'', disagreements: [], alternatives_considered: []
+  };
+}
+function emptyRatings(p){
+  return { key:p.key, doi:p.doi, ratings_version:P.meta.ratings_version, coder: coderName(coder) + ' (' + coder + ')', rated_on: todayISO(),
+    minutes_spent: 0, eligible_in_my_view:'', familiarity:'',
+    novelty:{atomic_claim:'', claim_kind:'', closest_precedent:'', new_component:'', judgment:'', score:0, confidence:''},
+    advance:{starting_state:'', gain:'', magnitude:'', evidence:'', roles:[], score:0, confidence:''},
+    impact_forecast:'', notes:'' };
+}
+function loadDraft(k){
+  const p = P.papers.find(x => x.key === k);
+  const d = store.get(draftKey(k), null);
+  if(d) return d;
+  return {coding: emptyCoding(p), ratings: emptyRatings(p), started: new Date().toISOString(), saved: null, savedFiles: null};
+}
+let D = null; // current draft
+let saveTimer = null;
+function persist(){ if(!D) return; D.updated = new Date().toISOString(); if(!store.set(draftKey(current), D)) storageOk = false; }
+function persistSoon(){ clearTimeout(saveTimer); saveTimer = setTimeout(() => { persist(); refreshSide(); }, 250); }
+const coderName = id => (P.coders.find(c => c.id === id) || {}).name || id;
+
+// ---------- validation ----------
+function vSchema(schema, data, path, out){
+  const t = schema.type;
+  if(t === 'object'){
+    if(typeof data !== 'object' || data === null || Array.isArray(data)){ out.push([path,'must be an object']); return; }
+    (schema.required||[]).forEach(r => { if(!(r in data)) out.push([path + '.' + r, 'is required']); });
+    const props = schema.properties || {};
+    Object.keys(data).forEach(k => {
+      if(props[k]) vSchema(props[k], data[k], path + '.' + k, out);
+      else if(schema.additionalProperties === false) out.push([path + '.' + k, 'is not allowed by the schema']);
+    });
+  } else if(t === 'array'){
+    if(!Array.isArray(data)){ out.push([path,'must be a list']); return; }
+    data.forEach((x,i) => vSchema(schema.items, x, path + '[' + i + ']', out));
+  } else if(t === 'string'){
+    if(typeof data !== 'string'){ out.push([path,'must be text']); return; }
+    if(schema.enum && !schema.enum.includes(data)) out.push([path, data === '' ? 'choose a value' : 'is not an allowed value']);
+  } else if(t === 'integer'){
+    if(!Number.isInteger(data)){ out.push([path,'must be a whole number']); return; }
+    if(schema.minimum !== undefined && data < schema.minimum) out.push([path, 'must be at least ' + schema.minimum]);
+    if(schema.maximum !== undefined && data > schema.maximum) out.push([path, 'must be at most ' + schema.maximum]);
+  }
+}
+// map a schema path to a section of the form
+function sectionOf(path){
+  const s = path.replace(/^\$\.?/,'').split(/[.\[]/)[0];
+  return ({pages_convention:'doc', documents:'doc', key:'doc', doi:'doc', codebook_version:'doc', coder:'doc', entry:'entry', sequences:'steps', tree:'tree', end:'end',
+    decisive_move:'end', composition:'end', gates:'gates', imports:'extras', novelty_claims:'extras', limits:'extras', disagreements:'disagree', alternatives_considered:'disagree'})[s] || 'doc';
+}
+function checkCoding(c){
+  const out = []; // {sec, level, text}
+  const se = []; vSchema(S, c, '$', se);
+  se.forEach(([p,m]) => out.push({sec: sectionOf(p), level:'err', text: p.replace(/^\$\./,'') + ' ' + m}));
+  // codebook rules
+  const needPage = (v, where, sec) => { if(!String(v||'').trim()) out.push({sec, level:'err', text: where + ': page is missing (every claim carries a page)'}); };
+  if(!String(c.pages_convention||'').trim()) out.push({sec:'doc', level:'err', text:'State the page convention (printed journal pages, or PDF pages from 1)'});
+  needPage(c.entry.page, 'Entry', 'entry');
+  if(!String(c.entry.evidence||'').trim()) out.push({sec:'entry', level:'err', text:'Entry: quote the sentence that establishes the entry state'});
+  if(words(c.entry.evidence) > 25) out.push({sec:'entry', level:'err', text:'Entry evidence is ' + words(c.entry.evidence) + ' words (at most 25)'});
+  const fp = c.sequences.filter(s => s.kind === 'final_paper');
+  if(fp.length !== 1) out.push({sec:'steps', level:'err', text:'Exactly one final_paper sequence is needed'});
+  c.sequences.forEach((s, si) => {
+    const tag = s.kind === 'final_paper' ? 'Final paper' : 'Review sequence ' + si;
+    if(!s.steps.length) out.push({sec:'steps', level:'err', text: tag + ': no steps yet'});
+    s.steps.forEach((st, i) => {
+      if(st.n !== i + 1) out.push({sec:'steps', level:'err', text: tag + ' step ' + (i+1) + ': numbering is off'});
+      needPage(st.page, tag + ' step ' + (i+1), 'steps');
+      if(!String(st.action||'').trim()) out.push({sec:'steps', level:'err', text: tag + ' step ' + (i+1) + ': describe the action'});
+      if(words(st.quote) > 25) out.push({sec:'steps', level:'err', text: tag + ' step ' + (i+1) + ': quote is ' + words(st.quote) + ' words (at most 25)'});
+      if(st.move === 'repeat' && (i === 0 || s.steps[i-1].node !== st.node)) out.push({sec:'steps', level:'warn', text: tag + ' step ' + (i+1) + ': "repeat" means the same node as the step just before'});
+      if(i > 0 && s.steps[i-1].node === st.node && s.steps[i-1].mode === st.mode && st.move === 'new') out.push({sec:'steps', level:'warn', text: tag + ' step ' + (i+1) + ': same node and mode as the step before; the codebook merges consecutive actions on the same node and mode into one step'});
+      if(s.kind === 'final_paper' && ['review_forced','declined'].includes(st.move)) out.push({sec:'steps', level:'warn', text: 'Final paper step ' + (i+1) + ': code the final paper from the published text alone; review-forced or declined moves belong to the review sequence'});
+    });
+  });
+  if(fp.length === 1){
+    const n = fp[0].steps.length;
+    if(n && (n < 8 || n > 30)) out.push({sec:'steps', level:'warn', text: n + ' steps. A letter usually has 8 to 20 steps and an article with Methods 12 to 30; check the granularity rule'});
+    const nodes = fp[0].steps.map(s => s.node);
+    if(c.decisive_move.node && nodes.length && !nodes.includes(c.decisive_move.node)) out.push({sec:'end', level:'warn', text:'The decisive move’s node does not appear in the final-paper steps'});
+  }
+  const qs = c.tree.map(t => t.question);
+  if(new Set(qs).size !== qs.length) out.push({sec:'tree', level:'err', text:'A tree question is answered twice'});
+  if(!c.tree.length) out.push({sec:'tree', level:'warn', text:'No tree question answered yet (record each question the paper answers)'});
+  c.tree.forEach(t => { if(!String(t.answer||'').trim()) out.push({sec:'tree', level:'err', text:'Tree question ' + t.question + ': answer is empty'}); });
+  needPage(c.end.page, 'End', 'end');
+  if(!String(c.end.claim||'').trim()) out.push({sec:'end', level:'err', text:'State the claim in one sentence'});
+  needPage(c.decisive_move.page, 'Decisive move', 'end');
+  if(!String(c.decisive_move.sentence||'').trim()) out.push({sec:'end', level:'err', text:'Decisive move: one sentence'});
+  if(!String(c.gates.evidence||'').trim()) out.push({sec:'gates', level:'err', text:'Gates: give the evidence for the three answers'});
+  c.imports.forEach((x,i) => needPage(x.page, 'Import ' + (i+1), 'extras'));
+  c.novelty_claims.forEach((x,i) => { needPage(x.page, 'Novelty claim ' + (i+1), 'extras'); if(words(x.quote) > 25) out.push({sec:'extras', level:'err', text:'Novelty claim ' + (i+1) + ' is over 25 words'}); });
+  c.disagreements.forEach((x,i) => { needPage(x.page, 'Disagreement ' + (i+1), 'disagree'); if(words(x.quote) > 25) out.push({sec:'disagree', level:'err', text:'Disagreement ' + (i+1) + ' quote is over 25 words'}); });
+  c.alternatives_considered.forEach((x,i) => needPage(x.page, 'Alternative ' + (i+1), 'disagree'));
+  if(!String(c.limits||'').trim()) out.push({sec:'extras', level:'warn', text:'Limits: say what the paper does not show about its own process (or write "none noted")'});
+  return out;
+}
+function checkRatings(r){
+  const out = []; const se = []; vSchema(RS, r, '$', se);
+  se.forEach(([p,m]) => out.push({sec:'ratings', level:'err', text: p.replace(/^\$\./,'') + ' ' + m}));
+  ['atomic_claim','closest_precedent','new_component'].forEach(f => { if(!String(r.novelty[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Novelty: ' + f.replace(/_/g,' ') + ' is empty'}); });
+  ['starting_state','gain','magnitude','evidence'].forEach(f => { if(!String(r.advance[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Advance: ' + f.replace(/_/g,' ') + ' is empty'}); });
+  if(!r.advance.roles.length) out.push({sec:'ratings', level:'err', text:'Advance: choose at least one contribution role'});
+  if(!r.minutes_spent) out.push({sec:'ratings', level:'warn', text:'Record the minutes you spent on this paper (coding and rating)'});
+  return out;
+}
+function paperStatus(k){
+  const d = store.get(NS + 'draft.' + coder + '.' + k, null);
+  if(!d) return {label:'not started', cls:''};
+  const e = checkCoding(d.coding).filter(x => x.level === 'err').length + checkRatings(d.ratings).filter(x => x.level === 'err').length;
+  if(d.savedFiles && !e) return {label:'saved', cls:'ok'};
+  if(!e) return {label:'complete, not saved', cls:'warn'};
+  return {label:'in progress (' + e + ' to fix)', cls:'err'};
+}
+
+// ---------- shell ----------
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.onclick = () => { const cur = document.documentElement.getAttribute('data-theme'); const dark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark'); store.set(NS+'theme', dark ? 'light':'dark'); };
+const th = store.get(NS+'theme', null); if(th) document.documentElement.setAttribute('data-theme', th);
+
+function go(v, k){ view = v; if(k !== undefined) current = k; store.set(NS+'view', view); store.set(NS+'current', current); render(); window.scrollTo(0,0); }
+function renderTabs(){
+  const tabs = [['queue','My papers'], ['code','Code'], ['help','Codebook'], ['coord','Coordinator']];
+  document.getElementById('tabs').innerHTML = coder ? tabs.map(([v,t]) => `<button data-v="${v}" class="${view===v?'on':''}" ${v==='code'&&!current?'disabled':''}>${t}</button>`).join('') : '';
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => go(b.dataset.v));
+  document.getElementById('who').innerHTML = coder ? `${esc(coderName(coder))} · <a href="#" id="switch">switch</a>` : '';
+  const sw = document.getElementById('switch'); if(sw) sw.onclick = e => { e.preventDefault(); if(confirmSwitch()) { coder = null; store.set(NS+'coder', null); render(); } };
+}
+function confirmSwitch(){ return true; }
+
+function render(){
+  renderTabs();
+  if(!coder) return renderSetup();
+  if(view === 'queue') return renderQueue();
+  if(view === 'code' && current) return renderCode();
+  if(view === 'help') return renderHelp();
+  if(view === 'coord') return renderCoord();
+  renderQueue();
+}
+
+function renderSetup(){
+  app.innerHTML = `<div class="center">
+    ${storageOk ? '' : '<div class="banner">This browser is blocking local storage, so drafts will not survive a reload. Save files often, or open the app in a normal window.</div>'}
+    <div class="card"><h2>Who is coding?</h2>
+    <p>Each paper is coded independently by two of you. Use your own browser or computer so that you never see another coder’s drafts. Do not discuss a paper with your co-coder until both of you have saved it.</p>
+    <div class="rowflex">${P.coders.map(c => `<button class="primary" data-c="${c.id}">${esc(c.name)}</button>`).join('')}</div>
+    <p class="small" style="margin-top:12px">Codebook v${esc(P.meta.codebook_version)} · graph ${esc(P.meta.graph)} · tree ${esc(P.meta.tree||'')} · ratings v${esc(P.meta.ratings_version)} · built ${esc(P.meta.built)} from commit ${esc(P.meta.commit)}</p></div></div>`;
+  app.querySelectorAll('[data-c]').forEach(b => b.onclick = () => { coder = b.dataset.c; store.set(NS+'coder', coder); view = 'queue'; render(); });
+}
+
+function renderQueue(){
+  const mine = P.order[coder] || [];
+  const rows = mine.map((k, i) => {
+    const p = P.papers.find(x => x.key === k), st = paperStatus(k);
+    return `<tr data-k="${k}"><td class="num">${i+1}</td><td>${esc(p.title)}<div class="small">${esc(p.journal)} · 2022 · <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">${esc(p.doi)}</a></div></td>
+      <td>${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">PDF</a>` : '<span class="small">get PDF</span>'}</td><td><span class="pill ${st.cls}">${st.label}</span></td></tr>`;
+  }).join('');
+  const done = mine.filter(k => paperStatus(k).cls === 'ok').length;
+  app.innerHTML = `${storageOk ? '' : '<div class="banner">Local storage is blocked: drafts will be lost on reload. Save files often.</div>'}
+  <div class="card"><div class="rowflex"><h2 style="flex:1">My papers</h2><span class="small">${done} of ${mine.length} saved</span>
+    <button id="pick">${dirHandle ? 'Save folder: ' + esc(dirHandle.name) : 'Choose save folder'}</button>
+    <button id="backup">Back up all drafts</button><label class="small" style="margin:0"><input type="file" id="restore" accept=".json" style="display:none"><span style="text-decoration:underline;cursor:pointer">restore a backup</span></label></div>
+    <p class="small">Work in this order. Open the PDF next to this window. A paper counts as done when both its coding and its ratings pass the checks and the two files are saved. Save files into the private repository at <code>private/data/roadmap/derived/gold/human/${esc(coder)}/</code>.</p>
+    <table class="queue"><thead><tr><th>#</th><th>Paper</th><th>Full text</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  app.querySelectorAll('tr[data-k]').forEach(tr => tr.onclick = e => { if(e.target.tagName === 'A') return; go('code', tr.dataset.k); });
+  document.getElementById('pick').onclick = pickFolder;
+  document.getElementById('backup').onclick = backupAll;
+  document.getElementById('restore').onchange = restoreBackup;
+}
+
+async function pickFolder(){
+  if(!window.showDirectoryPicker){ alertBox('This browser cannot write to a folder directly. Use the download buttons instead (Chrome and Edge support folders).'); return; }
+  try{ dirHandle = await window.showDirectoryPicker({mode:'readwrite'}); render(); }catch(e){}
+}
+function alertBox(t){ const el = document.createElement('div'); el.className='banner'; el.textContent = t; app.prepend(el); setTimeout(() => el.remove(), 7000); }
+function download(name, obj){
+  const blob = new Blob([JSON.stringify(obj, null, 1) + '\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+async function writeFile(name, obj){
+  if(dirHandle){
+    try{ const fh = await dirHandle.getFileHandle(name, {create:true}); const w = await fh.createWritable(); await w.write(JSON.stringify(obj, null, 1) + '\n'); await w.close(); return 'folder'; }
+    catch(e){ /* fall through to download */ }
+  }
+  download(name, obj); return 'download';
+}
+function backupAll(){
+  const ks = store.keys(NS + 'draft.' + coder + '.');
+  const all = {}; ks.forEach(k => all[k.split('.').pop()] = store.get(k, null));
+  download('gold-coder-backup.' + coder + '.' + todayISO() + '.json', {coder, made: new Date().toISOString(), drafts: all});
+}
+function restoreBackup(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  f.text().then(t => { const b = JSON.parse(t); if(b.coder !== coder){ alertBox('That backup belongs to ' + coderName(b.coder) + '.'); return; }
+    Object.entries(b.drafts||{}).forEach(([k,d]) => store.set(NS + 'draft.' + coder + '.' + k, d)); render(); }).catch(() => alertBox('Could not read that file.'));
+}
+
+// ---------- coding form ----------
+const SECTIONS = [['doc','Document'],['entry','Entry'],['steps','Steps'],['tree','Tree reading'],['end','End and decisive move'],['gates','Gates'],['extras','Imports, novelty claims, limits'],['disagree','Disagreements and alternatives'],['ratings','Ratings (blind)']];
+function opt(list, val, labelFn, blank){ return (blank ? `<option value="">${blank}</option>` : '') + list.map(v => `<option value="${esc(v)}" ${v===val?'selected':''}>${esc((labelFn||lab)(v))}</option>`).join(''); }
+const nodeLabel = id => id + ' · ' + NODE[id].verb;
+const modeLabel = id => MODE[id] ? MODE[id].title : id;
+
+function renderCode(){
+  const p = P.papers.find(x => x.key === current);
+  if(!p || !(P.order[coder]||[]).includes(current)){ go('queue'); return; }
+  D = loadDraft(current);
+  const c = D.coding, r = D.ratings;
+  app.innerHTML = `<div class="layout">
+    <aside class="side card"><div class="small">Paper</div><h3 style="margin:2px 0 6px">${esc(p.title)}</h3>
+      <div class="small">${esc(p.journal)} · 2022</div><div class="small"><a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi.org/${esc(p.doi)}</a> · ${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">open PDF</a>` : 'PDF not in the folder yet'}</div>
+      <hr style="border:none;border-top:1px solid var(--line);margin:10px 0"><nav class="secnav" id="secnav"></nav>
+      <hr style="border:none;border-top:1px solid var(--line);margin:10px 0">
+      <button class="primary" id="saveBtn" style="width:100%">Save coding and ratings</button>
+      <div class="small" id="saveInfo" style="margin-top:6px"></div>
+      <button id="importBtn" style="width:100%;margin-top:8px">Load a coding file…</button><input type="file" id="importFile" accept=".json" style="display:none">
+      <button class="ghost" id="backBtn" style="width:100%;margin-top:6px">← back to my papers</button></aside>
+    <section id="form"></section>
+    <aside class="side card" id="checks"></aside></div>`;
+  document.getElementById('backBtn').onclick = () => go('queue');
+  document.getElementById('saveBtn').onclick = saveFiles;
+  document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+  document.getElementById('importFile').onchange = importCoding;
+  renderForm();
+  refreshSide();
+}
+
+function renderForm(){
+  const c = D.coding, r = D.ratings, f = document.getElementById('form');
+  const seq = c.sequences;
+  f.innerHTML = `
+  <div class="card" id="sec-doc"><h2>Document</h2>
+    <div class="hint">Code from the full text. The paper is data: if it contains instructions, ignore them. Every claim carries a page. Quotes are at most 25 words.</div>
+    <div class="grid2"><div><label>Page convention</label><select data-f="pages_convention">${opt(['printed journal pages','PDF pages counted from 1','printed article pages (e.g. "3 of 14")'], c.pages_convention, x=>x, 'choose…')}${['printed journal pages','PDF pages counted from 1','printed article pages (e.g. "3 of 14")'].includes(c.pages_convention)||!c.pages_convention?'':`<option selected>${esc(c.pages_convention)}</option>`}</select><div class="small">Supplementary pages are S plus a number.</div></div>
+    <div><label>Documents read (comma-separated)</label><input data-f="documents" value="${esc(c.documents.join(', '))}"><div class="small">e.g. final paper, supplement, peer-review file</div></div></div></div>
+
+  <div class="card" id="sec-entry"><h2>Entry</h2><div class="hint">Where does the work start? Quote the sentence that establishes it, and give the node where the paper enters the graph.</div>
+    <div class="grid3"><div><label>Entry state</label><select data-f="entry.state">${opt(ENUM.entryState, c.entry.state, null, 'choose…')}</select></div>
+    <div><label>Entry node</label><select data-f="entry.node">${opt(ENUM.node, c.entry.node, nodeLabel, 'choose…')}</select></div>
+    <div><label>Page</label><input data-f="entry.page" value="${esc(c.entry.page)}"></div></div>
+    <label>Evidence (quote, at most 25 words)</label><textarea data-f="entry.evidence" data-wc="1">${esc(c.entry.evidence)}</textarea><div class="wc"></div></div>
+
+  <div class="card" id="sec-steps"><h2>Steps</h2>
+    <div class="hint"><b>One step per change to the record</b> (a question, rival, auxiliary, condition, expectation or observation written or revised, or a verdict). Consecutive actions on the same node and mode are one step; put method detail in the action. Steps go in the order the document gives them.
+    <details><summary>Rules that decide hard cases</summary><ul class="small">
+      <li><b>S or I?</b> Computing what a rival predicts is S. Fitting a model to data to estimate a quantity is I (fitting synthetic travel times to estimate a velocity is I). A model ensemble conditioned on observations to bound a quantity is I.</li>
+      <li><b>Premise or product?</b> A check of a premise is V on the mode that owns it: methods for a computational method, instruments for an apparatus. A check of the product is V on the product’s mode. E only for establishing that a phenomenon is real; a check that a known measurement is not an artifact is V.</li>
+      <li><b>Conditions</b> found in a live event are F on observation; past events known only from traces are reconstruction; conditions set in a laboratory are F on hypothesis.</li>
+      <li><b>Methods and supplements:</b> a check reported only there goes right after the main-text step it supports, with its page.</li>
+      <li><b>Moves:</b> repeat = same node as the step just before; return after failure = the paper says an earlier attempt failed or was revised; inherited = the authors’ earlier work, cited; cited = another group’s result, used. In the final paper, code moves from the published text alone.</li></ul></details></div>
+    ${seq.map((s, si) => seqBlock(s, si)).join('')}
+    <div class="rowflex"><button id="addReview">+ add a review sequence</button><span class="small">Only when you read a peer-review file, open discussion or earlier version: code the changes it records.</span></div></div>
+
+  <div class="card" id="sec-tree"><h2>Tree reading</h2><div class="hint">For each question of the decision tree that the paper answers, record the answer in a few words and the mode the answer called. Leave unanswered questions out.</div>
+    <table><thead><tr><th style="width:34%">Question</th><th style="width:70px">Answered</th><th>Answer</th><th style="width:190px">Mode called</th></tr></thead><tbody>
+    ${P.questions.filter(q => ENUM.treeQ.includes(q.n)).map(q => { const t = c.tree.find(x => x.question === q.n); return `<tr><td><b>${esc(q.n)}.</b> ${esc(q.q)}<div class="small">${esc(q.sub)}</div></td>
+      <td><input type="checkbox" data-tq="${esc(q.n)}" ${t?'checked':''} style="width:auto"></td>
+      <td>${t ? `<input data-tqa="${esc(q.n)}" value="${esc(t.answer)}">` : ''}</td>
+      <td>${t ? `<select data-tqm="${esc(q.n)}">${opt(ENUM.treeMode, t.mode_called, m => m==='none'?'none':modeLabel(m))}</select>` : ''}</td></tr>`; }).join('')}
+    </tbody></table></div>
+
+  <div class="card" id="sec-end"><h2>End and decisive move</h2>
+    <div class="grid3"><div><label>Outcome</label><select data-f="end.outcome">${opt(ENUM.outcome, c.end.outcome, null, 'choose…')}</select></div>
+    <div><label>Claim status</label><select data-f="end.claim_status">${opt(ENUM.status, c.end.claim_status, null, 'choose…')}</select></div>
+    <div><label>Page</label><input data-f="end.page" value="${esc(c.end.page)}"></div></div>
+    <label>The headline claim, one sentence</label><textarea data-f="end.claim">${esc(c.end.claim)}</textarea>
+    <div class="small">A contradicted claim is a success; no conclusion is failure. Sub-claims at other statuses go in Limits.</div>
+    <h3 style="margin-top:14px">Decisive move</h3><div class="small">The node and mode without which the claim would not exist.</div>
+    <div class="grid3"><div><label>Node</label><select data-f="decisive_move.node">${opt(ENUM.node, c.decisive_move.node, nodeLabel, 'choose…')}</select></div>
+    <div><label>Mode</label><select data-f="decisive_move.mode">${opt(ENUM.mode, c.decisive_move.mode, modeLabel, 'choose…')}</select></div>
+    <div><label>Page</label><input data-f="decisive_move.page" value="${esc(c.decisive_move.page)}"></div></div>
+    <label>One sentence</label><textarea data-f="decisive_move.sentence">${esc(c.decisive_move.sentence)}</textarea>
+    <label>Composition</label><select data-f="composition">${opt(ENUM.composition, c.composition, null, 'choose…')}</select></div>
+
+  <div class="card" id="sec-gates"><h2>Gates</h2>
+    <div class="grid3"><div><label>Action: did a stated hypothesis direct the key data acquisition?</label><select data-f="gates.action">${opt(ENUM.gate, c.gates.action, null, 'choose…')}</select></div>
+    <div><label>Claim: did the main claim face a test it could have failed?</label><select data-f="gates.claim">${opt(ENUM.gate, c.gates.claim, null, 'choose…')}</select></div>
+    <div><label>Registration: was anything fixed before the data?</label><select data-f="gates.registration">${opt(ENUM.gate, c.gates.registration, null, 'choose…')}</select></div></div>
+    <label>Evidence for the three answers</label><textarea data-f="gates.evidence">${esc(c.gates.evidence)}</textarea></div>
+
+  <div class="card" id="sec-extras"><h2>Imports, novelty claims, limits</h2>
+    <h3>Imports from outside Earth science</h3><div class="small">Concepts, methods, instruments or data, with the field they come from.</div>
+    ${c.imports.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Field</label><input data-l="imports.${i}.field" value="${esc(x.field)}"></div><div><label>Item</label><input data-l="imports.${i}.item" value="${esc(x.item)}"></div>
+      <div><label>Kind</label><select data-l="imports.${i}.kind">${opt(ENUM.importKind, x.kind, null, 'choose…')}</select></div><div><label>Page</label><input data-l="imports.${i}.page" value="${esc(x.page)}"></div></div>
+      <button class="ghost" data-del="imports.${i}">remove</button></div>`).join('')}
+    <button data-add="imports">+ import</button>
+    <h3 style="margin-top:14px">Novelty claims</h3><div class="small">The authors’ own "first" or "previously unknown" statements, quoted.</div>
+    ${c.novelty_claims.map((x,i) => `<div class="listitem"><div class="grid2" style="grid-template-columns:1fr 120px"><div><label>Quote</label><input data-l="novelty_claims.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div></div><div><label>Page</label><input data-l="novelty_claims.${i}.page" value="${esc(x.page)}"></div></div>
+      <button class="ghost" data-del="novelty_claims.${i}">remove</button></div>`).join('')}
+    <button data-add="novelty_claims">+ novelty claim</button>
+    <label style="margin-top:14px">Limits: what the document does not show about its own process; mark inference as inference; sub-claims at other statuses</label><textarea data-f="limits">${esc(c.limits)}</textarea></div>
+
+  <div class="card" id="sec-disagree"><h2>Disagreements and alternatives</h2>
+    <h3>Disagreements with published work</h3><div class="small">Every place the paper sets its result against published work or a community position.</div>
+    ${c.disagreements.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Target (as named)</label><input data-l="disagreements.${i}.target" value="${esc(x.target)}"></div>
+      <div><label>Kind</label><select data-l="disagreements.${i}.kind">${opt(ENUM.disKind, x.kind, null, 'choose…')}</select></div>
+      <div><label>Stance</label><select data-l="disagreements.${i}.stance">${opt(ENUM.disStance, x.stance, null, 'choose…')}</select></div><div><label>Page</label><input data-l="disagreements.${i}.page" value="${esc(x.page)}"></div></div>
+      <label>Support (one sentence on the evidence)</label><input data-l="disagreements.${i}.support" value="${esc(x.support)}">
+      <label>Quote</label><input data-l="disagreements.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div>
+      <button class="ghost" data-del="disagreements.${i}">remove</button></div>`).join('')}
+    <button data-add="disagreements">+ disagreement</button>
+    <h3 style="margin-top:14px">Alternatives considered</h3><div class="small">Every fork the authors say they chose among: a method, a parameter, a model, a dataset, a rival. Forks the paper does not mention are not coded.</div>
+    ${c.alternatives_considered.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Node</label><select data-l="alternatives_considered.${i}.node">${opt(ENUM.node, x.node, nodeLabel, 'choose…')}</select></div>
+      <div><label>Chosen</label><input data-l="alternatives_considered.${i}.chosen" value="${esc(x.chosen)}"></div><div><label>Alternatives (as named)</label><input data-l="alternatives_considered.${i}.alternatives" value="${esc(x.alternatives)}"></div>
+      <div><label>Page</label><input data-l="alternatives_considered.${i}.page" value="${esc(x.page)}"></div></div>
+      <div class="grid2" style="grid-template-columns:1fr 220px"><div><label>Reason (as given, or "none given")</label><input data-l="alternatives_considered.${i}.reason" value="${esc(x.reason)}"></div>
+      <div><label>Effect of the alternative reported?</label><select data-l="alternatives_considered.${i}.effect_reported">${opt(ENUM.effect, x.effect_reported, null, 'choose…')}</select></div></div>
+      <button class="ghost" data-del="alternatives_considered.${i}">remove</button></div>`).join('')}
+    <button data-add="alternatives_considered">+ alternative</button></div>
+
+  <div class="card" id="sec-ratings"><h2>Ratings (blind)</h2>
+    <div class="hint">Rate what the paper contributed, judged against work available in 2022. Do not look up its citations or any metric before rating. Novelty follows the Novelty Dossier v1 and advance the Scientific Advance Profile v1 (rubrics page of the seminar book).</div>
+    <div class="grid2" style="margin-bottom:6px"><div><label>Is this an Earth-science research article, in your view? (second check of the screen)</label><select data-r="eligible_in_my_view">${opt(['yes','no','unsure'], r.eligible_in_my_view, null, 'choose\u2026')}</select></div>
+    <div class="small" style="align-self:end">A primary research article (not a review, comment or editorial) whose object of study is Earth science. If no, still finish the coding, and say why in Notes.</div></div>
+    <div class="grid3"><div><label>Your familiarity with this subfield</label><select data-r="familiarity">${opt(['outside_my_field','adjacent','my_field'], r.familiarity, null, 'choose…')}</select></div>
+    <div><label>Minutes spent (coding and rating)</label><input type="number" min="0" data-r="minutes_spent" value="${esc(r.minutes_spent||'')}"></div>
+    <div><label>Impact forecast, against 2022 papers in its subfield</label><select data-r="impact_forecast">${opt(['below_median','around_median','top_quartile','top_decile','no_forecast'], r.impact_forecast, null, 'choose…')}</select></div></div>
+    <h3 style="margin-top:14px">Novelty</h3>
+    <div class="grid2"><div><label>Atomic claim: the single contribution being judged</label><textarea data-r="novelty.atomic_claim">${esc(r.novelty.atomic_claim)}</textarea></div>
+    <div><label>Kind of claim</label><select data-r="novelty.claim_kind">${opt(['observation','method','concept','explanation','connection','question'], r.novelty.claim_kind, null, 'choose…')}</select>
+      <label>Judgment against the closest precedent</label><select data-r="novelty.judgment">${opt(['exact_precedent','close_precedent','component_precedent','apparently_new_component','unresolved'], r.novelty.judgment, null, 'choose…')}</select></div></div>
+    <div class="grid2"><div><label>Closest precedent you know (work and overlapping result)</label><textarea data-r="novelty.closest_precedent">${esc(r.novelty.closest_precedent)}</textarea></div>
+    <div><label>New component: what goes beyond the precedent, in which respect</label><textarea data-r="novelty.new_component">${esc(r.novelty.new_component)}</textarea></div></div>
+    <label>Novelty score</label><div class="scale">${scale('novelty', r.novelty.score, ['Routine: known approach, known question, expected result','A new case or setting for a known approach','A new combination, or a clearly new result in a known frame','A new question, phenomenon, method or capability','Redirects how a problem is approached'])}</div>
+    <div style="max-width:260px"><label>Confidence</label><select data-r="novelty.confidence">${opt(['low','medium','high'], r.novelty.confidence, null, 'choose…')}</select></div>
+    <h3 style="margin-top:14px">Advance</h3>
+    <div class="grid2"><div><label>Starting state: what was known, possible and available before</label><textarea data-r="advance.starting_state">${esc(r.advance.starting_state)}</textarea></div>
+    <div><label>Gain: what can now be known, explained, measured, predicted or investigated</label><textarea data-r="advance.gain">${esc(r.advance.gain)}</textarea></div></div>
+    <div class="grid2"><div><label>Magnitude and significance</label><textarea data-r="advance.magnitude">${esc(r.advance.magnitude)}</textarea></div>
+    <div><label>Evidence: what warrants the gain, at what uncertainty and scope</label><textarea data-r="advance.evidence">${esc(r.advance.evidence)}</textarea></div></div>
+    <label>Contribution role (one or more)</label><div class="checks">${['corrective','enabling','integrative','cumulative','transformative'].map(x => `<label><input type="checkbox" data-role="${x}" ${r.advance.roles.includes(x)?'checked':''}>${x}</label>`).join('')}</div>
+    <label>Advance score</label><div class="scale">${scale('advance', r.advance.score, ['No warranted gain beyond what was known','A small, local gain','A clear gain for one subfield','A substantial gain others will build on','Resolves a recognized problem or opens a new line of work'])}</div>
+    <div style="max-width:260px"><label>Confidence</label><select data-r="advance.confidence">${opt(['low','medium','high'], r.advance.confidence, null, 'choose…')}</select></div>
+    <label>Notes</label><textarea data-r="notes">${esc(r.notes)}</textarea></div>`;
+  bindForm();
+}
+function scale(name, val, anchors){ return anchors.map((a,i) => `<label><input type="radio" name="sc-${name}" data-score="${name}" value="${i+1}" ${val===i+1?'checked':''}><span><b>${i+1}</b> ${esc(a)}</span></label>`).join(''); }
+function seqBlock(s, si){
+  const isFP = s.kind === 'final_paper';
+  return `<div class="listitem" style="border-color:${isFP?'var(--accent)':'var(--line)'}"><div class="rowflex"><h3 style="flex:1">${isFP ? 'Final paper' : 'Review sequence'}</h3>
+    ${isFP ? '' : `<label class="small" style="margin:0">source document <input data-seqsrc="${si}" value="${esc(s.source_document)}" style="width:240px;display:inline-block"></label><button class="ghost" data-delseq="${si}">remove sequence</button>`}</div>
+    ${s.steps.map((st, i) => `<div class="step" data-si="${si}" data-i="${i}"><div class="n">${i+1}</div>
+      <select data-s="node" title="${st.node ? esc(NODE[st.node].desc) : 'node'}">${opt(ENUM.node, st.node, nodeLabel, 'node')}</select>
+      <select data-s="mode" title="${st.mode && MODE[st.mode] ? esc(MODE[st.mode].purpose) : 'mode'}">${opt(ENUM.mode, st.mode, modeLabel, 'mode')}</select>
+      <textarea data-s="action" placeholder="What the authors did, one sentence" style="min-height:40px">${esc(st.action)}</textarea>
+      <input data-s="page" placeholder="page" value="${esc(st.page)}">
+      <div class="row2"><select data-s="move">${opt(ENUM.move, st.move, null)}</select><select data-s="trigger">${opt(ENUM.trigger, st.trigger, null)}</select>
+        <div><input data-s="quote" data-wc="1" placeholder="quote, at most 25 words (or leave empty)" value="${esc(st.quote)}"><div class="wc"></div></div>
+        <div class="rowflex" style="gap:2px"><button class="ghost" data-act="up" title="move up">↑</button><button class="ghost" data-act="down" title="move down">↓</button><button class="ghost" data-act="ins" title="insert a step below">+</button><button class="ghost" data-act="del" title="delete">×</button></div></div></div>`).join('')}
+    <button data-addstep="${si}">+ step</button></div>`;
+}
+function setPath(obj, path, val){ const ks = path.split('.'); let o = obj; ks.slice(0,-1).forEach(k => o = o[k]); o[ks[ks.length-1]] = val; }
+function wc(el){ const box = el.parentElement.querySelector('.wc') || el.nextElementSibling; if(box && box.classList && box.classList.contains('wc')){ const n = words(el.value); box.textContent = n + ' / 25 words'; box.classList.toggle('bad', n > 25); } }
+function bindForm(){
+  const c = D.coding, r = D.ratings, f = document.getElementById('form');
+  f.querySelectorAll('[data-f]').forEach(el => { const path = el.dataset.f; const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { const v = path === 'documents' ? el.value.split(',').map(x => x.trim()).filter(Boolean) : el.value; setPath(c, path, v); if(el.dataset.wc) wc(el); persistSoon(); }); if(el.dataset.wc) wc(el); });
+  f.querySelectorAll('[data-l]').forEach(el => { const [list, i, field] = el.dataset.l.split('.'); const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { c[list][+i][field] = el.value; if(el.dataset.wc) wc(el); persistSoon(); }); if(el.dataset.wc) wc(el); });
+  const blanks = {imports:{field:'',item:'',kind:'',page:''}, novelty_claims:{quote:'',page:''}, disagreements:{target:'',kind:'',stance:'',support:'',page:'',quote:''},
+    alternatives_considered:{node:'',chosen:'',alternatives:'',reason:'',effect_reported:'',page:''}};
+  f.querySelectorAll('[data-add]').forEach(b => b.onclick = () => { c[b.dataset.add].push(Object.assign({}, blanks[b.dataset.add])); persist(); renderForm(); refreshSide(); });
+  f.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const [list, i] = b.dataset.del.split('.'); c[list].splice(+i, 1); persist(); renderForm(); refreshSide(); });
+  // steps
+  f.querySelectorAll('.step').forEach(row => { const si = +row.dataset.si, i = +row.dataset.i, st = c.sequences[si].steps[i];
+    row.querySelectorAll('[data-s]').forEach(el => { const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+      el.addEventListener(ev, () => { st[el.dataset.s] = el.value; if(el.dataset.wc) wc(el);
+        if(el.dataset.s === 'node' && el.value) el.title = NODE[el.value].desc; if(el.dataset.s === 'mode' && MODE[el.value]) el.title = MODE[el.value].purpose; persistSoon(); });
+      if(el.dataset.wc) wc(el); });
+    row.querySelectorAll('[data-act]').forEach(b => b.onclick = () => { const steps = c.sequences[si].steps; const a = b.dataset.act;
+      if(a === 'del') steps.splice(i,1);
+      if(a === 'up' && i > 0) [steps[i-1], steps[i]] = [steps[i], steps[i-1]];
+      if(a === 'down' && i < steps.length-1) [steps[i+1], steps[i]] = [steps[i], steps[i+1]];
+      if(a === 'ins') steps.splice(i+1, 0, newStep(c.sequences[si].kind));
+      renumber(); persist(); renderForm(); refreshSide(); });
+  });
+  f.querySelectorAll('[data-addstep]').forEach(b => b.onclick = () => { const s = c.sequences[+b.dataset.addstep]; s.steps.push(newStep(s.kind)); renumber(); persist(); renderForm(); refreshSide();
+    const rows = f.querySelectorAll(`.step[data-si="${b.dataset.addstep}"]`); const last = rows[rows.length-1]; if(last){ last.querySelector('select').focus(); } });
+  const ar = document.getElementById('addReview'); if(ar) ar.onclick = () => { c.sequences.push({kind:'review', source_document:'peer-review file', steps:[]}); if(!c.documents.includes('peer-review file')) c.documents.push('peer-review file'); persist(); renderForm(); refreshSide(); };
+  f.querySelectorAll('[data-delseq]').forEach(b => b.onclick = () => { c.sequences.splice(+b.dataset.delseq, 1); persist(); renderForm(); refreshSide(); });
+  f.querySelectorAll('[data-seqsrc]').forEach(el => el.addEventListener('input', () => { c.sequences[+el.dataset.seqsrc].source_document = el.value; persistSoon(); }));
+  // tree
+  f.querySelectorAll('[data-tq]').forEach(cb => cb.onchange = () => { const q = cb.dataset.tq;
+    if(cb.checked){ if(!c.tree.find(t => t.question === q)) c.tree.push({question:q, answer:'', mode_called:'none'}); c.tree.sort((a,b) => ENUM.treeQ.indexOf(a.question) - ENUM.treeQ.indexOf(b.question)); }
+    else c.tree = c.tree.filter(t => t.question !== q);
+    persist(); renderForm(); refreshSide(); document.querySelector(`[data-tqa="${q}"]`)?.focus(); });
+  f.querySelectorAll('[data-tqa]').forEach(el => el.addEventListener('input', () => { c.tree.find(t => t.question === el.dataset.tqa).answer = el.value; persistSoon(); }));
+  f.querySelectorAll('[data-tqm]').forEach(el => el.addEventListener('change', () => { c.tree.find(t => t.question === el.dataset.tqm).mode_called = el.value; persistSoon(); }));
+  // ratings
+  f.querySelectorAll('[data-r]').forEach(el => { const path = el.dataset.r; const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { let v = el.value; if(path === 'minutes_spent') v = parseInt(v || '0', 10) || 0; setPath(r, path, v); persistSoon(); }); });
+  f.querySelectorAll('[data-score]').forEach(el => el.addEventListener('change', () => { r[el.dataset.score].score = parseInt(el.value, 10); persistSoon(); }));
+  f.querySelectorAll('[data-role]').forEach(el => el.addEventListener('change', () => { const roles = new Set(r.advance.roles); el.checked ? roles.add(el.dataset.role) : roles.delete(el.dataset.role);
+    r.advance.roles = ['corrective','enabling','integrative','cumulative','transformative'].filter(x => roles.has(x)); persistSoon(); }));
+}
+function newStep(kind){ return {n:0, node:'', mode:'', action:'', page:'', move:'new', trigger: kind === 'review' ? 'referee' : 'author', quote:''}; }
+function renumber(){ D.coding.sequences.forEach(s => s.steps.forEach((st,i) => st.n = i+1)); }
+
+function refreshSide(){
+  if(!D) return;
+  const issues = checkCoding(D.coding).concat(checkRatings(D.ratings));
+  const nav = document.getElementById('secnav');
+  if(nav) nav.innerHTML = SECTIONS.map(([id, t]) => { const mine = issues.filter(x => x.sec === id); const cls = mine.some(x => x.level === 'err') ? 'err' : (mine.length ? 'warn' : 'ok');
+    return `<a href="#sec-${id}" data-sec="${id}"><span>${t}</span><span class="dot ${cls}" title="${mine.length} to check"></span></a>`; }).join('');
+  nav && nav.querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); document.getElementById('sec-' + a.dataset.sec).scrollIntoView({behavior:'smooth', block:'start'}); });
+  const fp = D.coding.sequences.find(s => s.kind === 'final_paper');
+  const chips = fp ? fp.steps.map(st => st.node ? `<span class="chip ${NODE[st.node].group}" title="${esc(st.node + ' ' + NODE[st.node].verb + (st.mode ? ' · ' + modeLabel(st.mode) : ''))}">${st.node}</span>` : '<span class="chip blank">?</span>').join('') : '';
+  const errs = issues.filter(x => x.level === 'err'), warns = issues.filter(x => x.level === 'warn');
+  const box = document.getElementById('checks');
+  if(box) box.innerHTML = `<h3>Walk (final paper)</h3><div class="small" style="margin:2px 0 6px">entry ${D.coding.entry.node ? `<span class="chip ${NODE[D.coding.entry.node].group}" style="height:22px;min-width:22px">${D.coding.entry.node}</span>` : '?'} · ${fp ? fp.steps.length : 0} steps</div>
+    <div class="strip">${chips || '<span class="small">no steps yet</span>'}</div>
+    <div class="small" style="margin-top:6px"><span class="chip build" style="height:16px;min-width:16px"></span> build and observe <span class="chip test" style="height:16px;min-width:16px"></span> test <span class="chip decide" style="height:16px;min-width:16px"></span> decide</div>
+    <h3 style="margin-top:14px">Checks</h3>
+    ${errs.length ? '' : '<div class="msg ok">No errors.' + (warns.length ? '' : ' Ready to save.') + '</div>'}
+    ${errs.slice(0,40).map(x => `<div class="msg err">${esc(x.text)}</div>`).join('')}${errs.length > 40 ? `<div class="small">… and ${errs.length-40} more</div>` : ''}
+    ${warns.map(x => `<div class="msg warn">${esc(x.text)}</div>`).join('')}`;
+  const info = document.getElementById('saveInfo');
+  if(info) info.innerHTML = D.savedFiles ? `Last saved ${esc(D.savedFiles.when.slice(0,16).replace('T',' '))} (${esc(D.savedFiles.how)})` : (storageOk ? 'Draft kept in this browser.' : 'Draft NOT kept: storage blocked.');
+}
+
+async function saveFiles(){
+  const errs = checkCoding(D.coding).concat(checkRatings(D.ratings)).filter(x => x.level === 'err');
+  if(errs.length && !window.confirm(errs.length + ' problems remain. Save anyway as an unfinished draft? (The files will not validate.)')) return;
+  renumber();
+  const base = current + '.' + coder;
+  const how1 = await writeFile(base + '.coding.json', D.coding);
+  await writeFile(base + '.ratings.json', D.ratings);
+  D.savedFiles = {when: new Date().toISOString(), how: how1 === 'folder' ? 'to ' + dirHandle.name : 'downloaded', complete: !errs.length};
+  persist(); refreshSide();
+}
+function importCoding(ev){
+  const file = ev.target.files[0]; if(!file) return;
+  file.text().then(t => { const obj = JSON.parse(t);
+    if(obj.key !== current){ alertBox('That file is for ' + obj.key + ', not this paper.'); return; }
+    if(obj.ratings_version) D.ratings = obj; else if(obj.codebook_version) D.coding = obj; else { alertBox('Not a coding or ratings file.'); return; }
+    persist(); renderForm(); refreshSide(); }).catch(() => alertBox('Could not read that file.'));
+}
+
+// ---------- help ----------
+function renderHelp(){
+  app.innerHTML = `<div class="card"><h2>Nodes of graph ${esc(P.meta.graph)}</h2><table><thead><tr><th style="width:60px">Node</th><th style="width:160px">Verb</th><th>What it records</th></tr></thead><tbody>
+    ${P.nodes.map(n => `<tr><td><span class="chip ${n.group}">${n.id}</span></td><td>${esc(n.verb)}</td><td>${esc(n.desc)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>The thirteen modes of inquiry</h2><table><thead><tr><th style="width:240px">Mode</th><th>Epistemic purpose</th></tr></thead><tbody>
+    ${P.modes.map(m => `<tr><td><b>${esc(m.title)}</b><div class="small">${esc(m.id)}</div></td><td>${esc(m.purpose)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>Decision tree ${esc(P.meta.tree||'')}</h2><table><tbody>${P.questions.map(q => `<tr><td style="width:40px"><b>${esc(q.n)}</b></td><td>${esc(q.q)}<div class="small">${esc(q.sub)}</div></td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>How to work</h2><ol>
+      <li>Read the whole paper once before coding. Then code the entry, the steps in the order the paper gives them, the tree, the end, and the rest.</li>
+      <li>Code what the paper says the authors did, not what you think they did. Mark anything you infer in Limits.</li>
+      <li>Rate novelty and advance after coding, without looking up citations or metrics.</li>
+      <li>Save both files into <code>private/data/roadmap/derived/gold/human/&lt;your initials&gt;/</code> and commit them to the private repository. Do not open your co-coder’s folder until you have saved the paper.</li>
+      <li>Disagreements are data: never revise a saved coding after seeing your co-coder’s. If you find a mistake later, save a new version and say why in Limits.</li></ol>
+      <p class="small">Full codebook: <code>agents/coder/CODEBOOK.md</code> (v${esc(P.meta.codebook_version)}). Schemas: <code>agents/coder/coding.schema.json</code>, <code>agents/coder/ratings.schema.json</code>.</p></div>`;
+}
+
+// ---------- coordinator ----------
+const runs = xs => xs.filter((x,i) => i === 0 || x !== xs[i-1]);
+function editDist(a, b){ const d = Array.from({length:b.length+1}, (_,j) => j); for(let i=1;i<=a.length;i++){ let prev = d[0]; d[0] = i; for(let j=1;j<=b.length;j++){ const t = d[j]; d[j] = Math.min(d[j]+1, d[j-1]+1, prev + (a[i-1] !== b[j-1] ? 1 : 0)); prev = t; } } return d[b.length]; }
+const jacc = (a, b) => { const A = new Set(a), B = new Set(b); const u = new Set([...A, ...B]); return u.size ? [...A].filter(x => B.has(x)).length / u.size : 1; };
+function seqOf(c, f){ const s = (c.sequences||[]).find(s => s.kind === 'final_paper'); return s ? runs(s.steps.map(x => x[f])) : []; }
+function agree(a, b){ const na = seqOf(a,'node'), nb = seqOf(b,'node'), ma = seqOf(a,'mode'), mb = seqOf(b,'mode');
+  const sim = (x, y) => 1 - editDist(x, y) / Math.max(x.length, y.length, 1);
+  return {entry_node: a.entry.node === b.entry.node, entry_state: a.entry.state === b.entry.state, outcome: a.end.outcome === b.end.outcome,
+    decisive_mode: a.decisive_move.mode === b.decisive_move.mode, node_set_jaccard: jacc(na, nb), mode_set_jaccard: jacc(ma, mb),
+    node_seq_similarity: sim(na, nb), mode_seq_similarity: sim(ma, mb), steps: [na.length, nb.length]}; }
+let coordFiles = [];
+function renderCoord(){
+  const unlocked = store.get(NS + 'coordUnlocked.' + coder, false);
+  if(!unlocked){
+    app.innerHTML = `<div class="center card"><h2>Coordinator view</h2><p>This view compares codings from different coders. Open it only after you have saved all of your own papers, or if you are not coding the papers you load. It stays open in this browser once unlocked.</p>
+      <button class="primary" id="unlock">I have saved my own codings: open the comparison</button></div>`;
+    document.getElementById('unlock').onclick = () => { store.set(NS + 'coordUnlocked.' + coder, true); renderCoord(); };
+    return;
+  }
+  const cod = coordFiles.filter(x => x.codebook_version), rat = coordFiles.filter(x => x.ratings_version);
+  const byKey = {}; cod.forEach(c => (byKey[c.key] = byKey[c.key] || []).push(c));
+  const pairs = Object.entries(byKey).filter(([k, v]) => v.length >= 2).map(([k, v]) => ({key:k, a:v[0], b:v[1], m: agree(v[0], v[1])}));
+  const mean = f => pairs.length ? pairs.reduce((s, p) => s + (typeof p.m[f] === 'boolean' ? +p.m[f] : p.m[f]), 0) / pairs.length : NaN;
+  const ratBy = {}; rat.forEach(r => (ratBy[r.key] = ratBy[r.key] || []).push(r));
+  const fmt = x => Number.isNaN(x) ? 'n/a' : x.toFixed(2);
+  app.innerHTML = `<div class="card"><h2>Coordinator: agreement between coders</h2>
+    <p class="small">Drop the saved <code>.coding.json</code> and <code>.ratings.json</code> files of several coders. Metrics follow <code>tools/check_coding.py agree</code> (consecutive repeats merged; Jaccard overlap of the node and mode sets; sequence similarity = 1 − edit distance / longer length). The analysis of record is run in Python from the committed files; this view is for checking progress.</p>
+    <div class="drop" id="drop">Drop files here, or <label style="display:inline;color:var(--accent);cursor:pointer;text-decoration:underline">choose files<input type="file" id="files" multiple accept=".json" style="display:none"></label></div>
+    <p class="small">${cod.length} codings, ${rat.length} ratings loaded; ${pairs.length} papers with two codings.</p></div>
+    ${pairs.length ? `<div class="card"><h3>Mean agreement over ${pairs.length} papers</h3><div class="grid4">
+      <div>Entry node <b class="num">${fmt(mean('entry_node'))}</b></div><div>Entry state <b class="num">${fmt(mean('entry_state'))}</b></div>
+      <div>Outcome <b class="num">${fmt(mean('outcome'))}</b></div><div>Decisive mode <b class="num">${fmt(mean('decisive_mode'))}</b></div>
+      <div>Node set (Jaccard) <b class="num">${fmt(mean('node_set_jaccard'))}</b></div><div>Mode set (Jaccard) <b class="num">${fmt(mean('mode_set_jaccard'))}</b></div>
+      <div>Node sequence <b class="num">${fmt(mean('node_seq_similarity'))}</b></div><div>Mode sequence <b class="num">${fmt(mean('mode_seq_similarity'))}</b></div></div>
+      <button id="csv" style="margin-top:10px">Download table (CSV)</button></div>
+    <div class="card"><table><thead><tr><th>Paper</th><th>Coders</th><th>Entry</th><th>Outcome</th><th>Decisive mode</th><th>Node set</th><th>Node seq.</th><th>Steps</th><th>Novelty scores</th><th>Advance scores</th></tr></thead><tbody>
+      ${pairs.map(p => { const rr = ratBy[p.key] || []; return `<tr><td>${esc((P.papers.find(x => x.key === p.key)||{}).title || p.key)}<div class="small">${esc(p.key)}</div></td><td class="small">${esc(p.a.coder)}<br>${esc(p.b.coder)}</td>
+        <td>${p.m.entry_node ? '✓' : '✗'} ${esc(p.a.entry.node)}/${esc(p.b.entry.node)}</td><td>${p.m.outcome ? '✓' : '✗'}</td><td>${p.m.decisive_mode ? '✓' : '✗'}</td>
+        <td class="num">${fmt(p.m.node_set_jaccard)}</td><td class="num">${fmt(p.m.node_seq_similarity)}</td><td class="num">${p.m.steps.join(' / ')}</td>
+        <td class="num">${rr.map(r => r.novelty.score).join(' / ') || '–'}</td><td class="num">${rr.map(r => r.advance.score).join(' / ') || '–'}</td></tr>`; }).join('')}</tbody></table></div>` : ''}`;
+  const drop = document.getElementById('drop');
+  const take = files => Promise.all([...files].map(f => f.text().then(t => { try{ return JSON.parse(t); }catch(e){ return null; } }))).then(objs => { objs.filter(Boolean).forEach(o => { coordFiles = coordFiles.filter(x => !(x.key === o.key && x.coder === o.coder && !!x.ratings_version === !!o.ratings_version)); coordFiles.push(o); }); renderCoord(); });
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add('on'); }; drop.ondragleave = () => drop.classList.remove('on');
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove('on'); take(e.dataTransfer.files); };
+  document.getElementById('files').onchange = e => take(e.target.files);
+  const csv = document.getElementById('csv'); if(csv) csv.onclick = () => {
+    const head = ['key','coder_a','coder_b','entry_node','entry_state','outcome','decisive_mode','node_set_jaccard','mode_set_jaccard','node_seq_similarity','mode_seq_similarity','steps_a','steps_b'];
+    const lines = [head.join(',')].concat(pairs.map(p => [p.key, '"'+p.a.coder+'"', '"'+p.b.coder+'"', +p.m.entry_node, +p.m.entry_state, +p.m.outcome, +p.m.decisive_mode, p.m.node_set_jaccard.toFixed(3), p.m.mode_set_jaccard.toFixed(3), p.m.node_seq_similarity.toFixed(3), p.m.mode_seq_similarity.toFixed(3), p.m.steps[0], p.m.steps[1]].join(',')));
+    const blob = new Blob([lines.join('\n') + '\n'], {type:'text/csv'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'gold-agreement.' + todayISO() + '.csv'; a.click(); };
+}
+
+render();
+})();
+</script>
+</body>
+</html>
