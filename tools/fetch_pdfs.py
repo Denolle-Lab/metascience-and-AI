@@ -159,7 +159,24 @@ def routes_for(doi: str, title: str, key: str, out: Path) -> tuple[str | None, l
             BLOCKED.setdefault(key, []).append(url)
         if ok:
             return f'openalex ({urllib.parse.urlparse(url).netloc})', tried
-    s2h = {'x-api-key': os.environ['S2_API_KEY']} if os.environ.get('S2_API_KEY') else {}
+    # publisher PDF addresses for open-access articles whose DOI resolves to a landing page
+    pub_urls = []
+    m = re.match(r'10\.5194/([a-z]+)-(\d+)-(\d+)-(\d{4})$', doi, re.I)
+    if m:  # Copernicus (EGU journals): all open access
+        ab, vol, pg, yr = m.groups()
+        pub_urls.append(f'https://{ab.lower()}.copernicus.org/articles/{vol}/{pg}/{yr}/{ab.lower()}-{vol}-{pg}-{yr}.pdf')
+    if ((w or {}).get('open_access') or {}).get('is_oa'):
+        if doi.lower().startswith('10.1038/'):  # Nature Portfolio open-access article
+            pub_urls.append(f'https://www.nature.com/articles/{doi.split("/", 1)[1]}.pdf')
+        elif doi.startswith('10.1007/') or doi.startswith('10.1186/') or doi.startswith('10.1140/'):  # Springer open access
+            pub_urls.append('https://link.springer.com/content/pdf/' + doi + '.pdf')
+    for url in pub_urls:
+        data, info = get(url, {'Accept': 'application/pdf,*/*'}, raw=True)
+        ok, why = save(data, dest, doi, title) if data else (False, info)
+        tried.append(f'publisher oa {urllib.parse.urlparse(url).netloc}: {why}')
+        if ok:
+            return f'publisher oa ({urllib.parse.urlparse(url).netloc})', tried
+    s2h ={'x-api-key': os.environ['S2_API_KEY']} if os.environ.get('S2_API_KEY') else {}
     for a in range(3):
         s2 = get('https://api.semanticscholar.org/graph/v1/paper/DOI:' + urllib.parse.quote(doi, safe='/') + '?fields=openAccessPdf', s2h)
         if s2 is not None:

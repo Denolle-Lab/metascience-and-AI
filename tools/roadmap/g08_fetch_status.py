@@ -36,7 +36,7 @@ def main() -> None:
         cc = (L.get('license') or '').startswith('cc')
         rows.append({'key': g['key'], 'doi': g['doi'], 'journal': g['journal'], 'route_class': g['route'],
                      'fetched': f.is_file(), 'file': str(f.relative_to(ROOT)) if f.is_file() else None,
-                     'queue_status': st.get('status'), 'source': st.get('source'), 'tried': st.get('tried'),
+                     'queue_status': st.get('status'), 'route': st.get('route'), 'tried': st.get('tried'),
                      'oa_status': L.get('oa_status'), 'license': L.get('license'),
                      'model_coding': ('open_licence' if cc else 'hold_licence') if f.is_file() else 'missing'})
     write_json(DERIVED / 'gold' / 'fetch_status.json', rows, ['derived/gold/gold_set.json', 'private/download-queue.json', 'OpenAlex best_oa_location'])
