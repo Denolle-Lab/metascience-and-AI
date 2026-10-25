@@ -1,6 +1,6 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "title": "Paper coding, codebook v1.4.1",
+ "title": "Paper coding, codebook v1.5.0",
  "type": "object",
  "properties": {
   "key": {
@@ -17,7 +17,8 @@
     "1.2.0",
     "1.3.0",
     "1.4.0",
-    "1.4.1"
+    "1.4.1",
+    "1.5.0"
    ]
   },
   "coder": {
@@ -553,6 +554,42 @@
     ],
     "additionalProperties": false
    }
+  },
+  "v_checks": {
+   "type": "array",
+   "description": "Every check of a result (codebook section 3a, NASEM 2019); required from codebook 1.5.0",
+   "items": {
+    "type": "object",
+    "properties": {
+     "kind": {
+      "type": "string",
+      "enum": [
+       "reproduction",
+       "replication",
+       "method",
+       "robustness",
+       "control",
+       "generalization"
+      ]
+     },
+     "performed_here": {
+      "type": "boolean"
+     },
+     "quote": {
+      "type": "string"
+     },
+     "page": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "kind",
+     "performed_here",
+     "quote",
+     "page"
+    ],
+    "additionalProperties": false
+   }
   }
  },
  "required": [
@@ -573,7 +610,8 @@
   "novelty_claims",
   "limits",
   "disagreements",
-  "alternatives_considered"
+  "alternatives_considered",
+  "v_checks"
  ],
  "additionalProperties": false
 }

@@ -55,6 +55,9 @@ async function codeOnePaper(browser, coder, dl, url) {
   await sel('[data-f="composition"]', 'strong_inference');
   for (const g of ['action', 'claim', 'registration']) await sel(`[data-f="gates.${g}"]`, g === 'claim' ? 'yes' : 'no');
   await typ('[data-f="gates.evidence"]', 'Archival data; the rival could have matched.');
+  await page.click('[data-add="v_checks"]'); await page.waitForSelector('[data-l="v_checks.0.kind"]');
+  await sel('[data-l="v_checks.0.kind"]', 'control'); await sel('[data-vph="0"]', 'yes');
+  await page.type('[data-l="v_checks.0.page"]', '5'); await page.type('[data-l="v_checks.0.quote"]', 'compared with a reference station');
   await typ('[data-f="limits"]', 'none noted');
   await sel('[data-r="eligible_in_my_view"]', 'yes'); await sel('[data-r="familiarity"]', 'adjacent');
   await typ('[data-r="minutes_spent"]', '55'); await sel('[data-r="impact_forecast"]', 'around_median');

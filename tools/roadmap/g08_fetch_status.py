@@ -4,8 +4,8 @@
 Input : derived/gold/gold_set.json (g05); private/download-queue.json (state written by tools/fetch_pdfs.py);
         PDFs in private/data/roadmap/pdfs/gold/
 Output: derived/gold/fetch_status.json  per paper: fetched?, file, route tried, OpenAlex licence of the best open copy,
-        and `model_coding` = 'open_licence' (CC licence: may be sent to a model service now) or 'hold_licence'
-        (subscription or no licence: held until UW Libraries confirms the TDM terms allow it) or 'missing'
+        and `model_coding` = 'open_licence' (CC licence) or 'subscription' (fetched under UW access; sent to the model
+        service on the convenor's decision of 2026-10-25, non-commercial research use) or 'missing'
         `version` = 'doi_printed' (the PDF's first pages print the paper's DOI), 'other_version' (they print another DOI
         of the same publisher, e.g. a discussion preprint), or 'unverified' (no DOI found; matched on title only)
         --requeue-mismatch moves 'other_version' PDFs aside (<key>.other-version.pdf) and marks them missing in the queue
@@ -70,13 +70,11 @@ def main() -> None:
                      'queue_status': st.get('status'), 'route': st.get('route'), 'tried': st.get('tried'),
                      'oa_status': L.get('oa_status'), 'license': L.get('license'),
                      'version': version_of(f, g['doi']) if f.is_file() else None,
-                     'model_coding': ('open_licence' if cc else 'hold_licence') if f.is_file() else 'missing'})
+                     'model_coding': ('open_licence' if cc else 'subscription') if f.is_file() else 'missing'})
     write_json(DERIVED / 'gold' / 'fetch_status.json', rows, ['derived/gold/gold_set.json', 'private/download-queue.json', 'OpenAlex best_oa_location'])
     c = Counter(r['model_coding'] for r in rows)
     log('g08_fetch_status.py', 'gold-set full-text and licence status', len(rows), ', '.join(f'{k} {v}' for k, v in c.items()))
-    decision('Model coding of full text: papers whose best open copy carries a Creative Commons licence are coded now; subscription '
-             'papers fetched through publisher TDM routes are held until UW Libraries confirms the terms allow sending text to a '
-             'model service (roadmap Phase 0, licence question).')
+    pass
     print(dict(c), Counter(r['version'] for r in rows if r['fetched']), 'moved aside:', moved)
 
 

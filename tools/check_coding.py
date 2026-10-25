@@ -20,7 +20,17 @@ SCHEMA = json.loads((ROOT / 'agents' / 'coder' / 'coding.schema.json').read_text
 TYPES = {'object': dict, 'array': list, 'string': str, 'integer': int, 'boolean': bool}
 
 
-def check(node, schema, path, errs):
+NEW_IN = {'disagreements': '1.3.0', 'alternatives_considered': '1.3.0', 'v_checks': '1.5.0'}
+
+
+def _older(v, than):
+    try:
+        return tuple(map(int, v.split('.'))) < tuple(map(int, than.split('.')))
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def check(node, schema, path, errs, version=None):
     t = schema.get('type')
     if t and not isinstance(node, TYPES[t]):
         errs.append(f'{path}: expected {t}'); return
@@ -28,7 +38,7 @@ def check(node, schema, path, errs):
         errs.append(f'{path}: {node!r} not in {schema["enum"]}')
     if t == 'object':
         for k in schema.get('required', []):
-            if k not in node:
+            if k not in node and not (path == '$' and k in NEW_IN and _older(version or '', NEW_IN[k])):
                 errs.append(f'{path}: missing {k}')
         if schema.get('additionalProperties') is False:
             for k in node:
@@ -44,7 +54,7 @@ def check(node, schema, path, errs):
 
 def validate(c: dict) -> list[str]:
     errs: list[str] = []
-    check(c, SCHEMA, '$', errs)
+    check(c, SCHEMA, '$', errs, c.get('codebook_version'))
     for s in c.get('sequences', []):
         for i, st in enumerate(s.get('steps', []), 1):
             if st.get('n') != i:
@@ -55,7 +65,25 @@ def validate(c: dict) -> list[str]:
                 errs.append(f'{s.get("kind")} step {i}: quote over 25 words')
     if not any(s.get('kind') == 'final_paper' for s in c.get('sequences', [])):
         errs.append('no final_paper sequence')
+    if 'v_checks' in c:  # codebook 1.5.0, section 3a (NASEM 2019)
+        here = [v for v in c['v_checks'] if v.get('performed_here') is True]
+        has_v = any(st.get('node') == 'V' for s in c.get('sequences', []) if s.get('kind') == 'final_paper' for st in s.get('steps', []))
+        if has_v and not here:
+            errs.append('V steps in the final paper but no check performed here in v_checks (codebook 3a)')
+        for i, v in enumerate(c['v_checks'], 1):
+            if len(str(v.get('quote', '')).split()) > 25:
+                errs.append(f'v_checks {i}: quote over 25 words')
+            if not str(v.get('page', '')).strip():
+                errs.append(f'v_checks {i}: no page')
     return errs
+
+
+def v_status(c: dict) -> dict:
+    """NASEM V for a paper (codebook 1.5.0, section 3a): full, partial or none, and whether it triangulates."""
+    here = [v['kind'] for v in c.get('v_checks', []) if v.get('performed_here') is True]
+    mark = 'full' if any(k != 'reproduction' for k in here) else ('partial' if here else 'none')
+    tri = len({k for k in here if k in ('replication', 'method', 'generalization')}) >= 2
+    return {'v': mark, 'triangulation': tri, 'kinds': sorted(set(here))}
 
 
 def runs(xs):

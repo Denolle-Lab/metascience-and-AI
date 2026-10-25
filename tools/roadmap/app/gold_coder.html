@@ -151,6 +151,7 @@ const ENUM = {
   composition: SP.composition.enum, gate: SP.gates.properties.action.enum,
   importKind: SP.imports.items.properties.kind.enum, disKind: SP.disagreements.items.properties.kind.enum,
   disStance: SP.disagreements.items.properties.stance.enum, effect: SP.alternatives_considered.items.properties.effect_reported.enum,
+  vkind: SP.v_checks ? SP.v_checks.items.properties.kind.enum : [],
 };
 const PAGE_CONV = ['XML section and paragraph locators (jats_text)', 'XML locators, PDF pages for figure content', 'printed journal pages',
   'PDF pages counted from 1', 'printed article pages (e.g. "3 of 14")'];
@@ -177,7 +178,7 @@ function emptyCoding(p){
     documents:['final paper'], pages_convention:'', entry:{state:'', node:'', evidence:'', page:''},
     sequences:[{kind:'final_paper', source_document:'final paper', steps:[]}], tree:[], end:{outcome:'', claim_status:'', claim:'', page:''},
     decisive_move:{node:'', mode:'', sentence:'', page:''}, composition:'', gates:{action:'', claim:'', registration:'', evidence:''},
-    imports:[], novelty_claims:[], limits:'', disagreements:[], alternatives_considered:[] };
+    imports:[], novelty_claims:[], limits:'', disagreements:[], alternatives_considered:[], v_checks:[] };
 }
 function emptyRatings(p){
   return { key:p.key, doi:p.doi, ratings_version:P.meta.ratings_version, coder: coderName(coder) + ' (' + coder + ')', rated_on:'',
@@ -238,6 +239,8 @@ function vSchema(schema, data, path, out){
   } else if(t === 'string'){
     if(typeof data !== 'string'){ out.push([path,'must be text']); return; }
     if(schema.enum && !schema.enum.includes(data)) out.push([path, data === '' ? 'choose a value' : 'is not an allowed value']);
+  } else if(t === 'boolean'){
+    if(typeof data !== 'boolean') out.push([path, 'choose yes or no']);
   } else if(t === 'integer'){
     if(!Number.isInteger(data)){ out.push([path,'must be a whole number']); return; }
     if(schema.minimum !== undefined && data < schema.minimum) out.push([path, schema.minimum === 1 ? 'choose a score' : 'must be at least ' + schema.minimum]);
@@ -245,8 +248,8 @@ function vSchema(schema, data, path, out){
   }
 }
 const SECOF = {pages_convention:'doc', documents:'doc', key:'doc', doi:'doc', codebook_version:'doc', coder:'doc', entry:'entry', sequences:'steps', tree:'tree',
-  end:'end', decisive_move:'end', composition:'end', gates:'gates', imports:'extras', novelty_claims:'extras', limits:'extras', disagreements:'disagree', alternatives_considered:'disagree'};
-const LISTNAME = {imports:'Import', novelty_claims:'Novelty claim', disagreements:'Disagreement', alternatives_considered:'Alternative'};
+  end:'end', decisive_move:'end', composition:'end', gates:'gates', imports:'extras', novelty_claims:'extras', limits:'extras', disagreements:'disagree', alternatives_considered:'disagree', v_checks:'vchecks'};
+const LISTNAME = {imports:'Import', novelty_claims:'Novelty claim', disagreements:'Disagreement', alternatives_considered:'Alternative', v_checks:'V check'};
 function friendly(path, c){
   const [a, b, x, y, z] = path;
   if(a === 'sequences'){ const s = c.sequences[b]; const tag = s && s.kind === 'final_paper' ? 'Final paper' : 'Review sequence';
@@ -298,6 +301,10 @@ function checkCoding(c){
     need(x.quote, w, 'disagree', 'quote is empty'); need(x.page, w, 'disagree'); if(words(x.quote) > 25) out.push({sec:'disagree', level:'err', text: w + ' quote is over 25 words'}); });
   c.alternatives_considered.forEach((x,i) => { const w = 'Alternative ' + (i+1); need(x.chosen, w, 'disagree', 'what was chosen is empty');
     need(x.alternatives, w, 'disagree', 'the alternatives are empty'); need(x.reason, w, 'disagree', 'reason is empty (write "none given" if the paper gives none)'); need(x.page, w, 'disagree'); });
+  c.v_checks.forEach((x,i) => { const w = 'V check ' + (i+1); need(x.page, w, 'vchecks'); if(words(x.quote) > 25) out.push({sec:'vchecks', level:'err', text: w + ' quote is over 25 words'}); });
+  const hasV = c.sequences.some(s => s.kind === 'final_paper' && s.steps.some(st => st.node === 'V'));
+  if(hasV && !c.v_checks.some(x => x.performed_here === true)) out.push({sec:'vchecks', level:'err', text:'The final paper has V steps: list at least one check performed in this paper (section 3a)'});
+  if(!hasV && c.v_checks.some(x => x.performed_here === true)) out.push({sec:'vchecks', level:'warn', text:'Checks performed here but no V step in the final paper: add the V step(s) or mark the checks as cited'});
   if(!String(c.limits||'').trim()) out.push({sec:'extras', level:'warn', text:'Limits: say what the paper does not show about its own process (or write "none noted")'});
   return out;
 }
@@ -409,7 +416,7 @@ function restoreBackup(ev){
 }
 
 // ---------- coding form ----------
-const SECTIONS = [['doc','Document'],['entry','Entry'],['steps','Steps'],['tree','Tree reading'],['end','End and decisive move'],['gates','Gates'],['extras','Imports, novelty claims, limits'],['disagree','Disagreements and alternatives'],['ratings','Ratings (blind)']];
+const SECTIONS = [['doc','Document'],['entry','Entry'],['steps','Steps'],['tree','Tree reading'],['end','End and decisive move'],['gates','Gates'],['vchecks','V checks (NASEM)'],['extras','Imports, novelty claims, limits'],['disagree','Disagreements and alternatives'],['ratings','Ratings (blind)']];
 function opt(list, val, labelFn, blank){ return (blank ? `<option value="">${blank}</option>` : '') + list.map(v => `<option value="${esc(v)}" ${v===val?'selected':''}>${esc((labelFn||lab)(v))}</option>`).join(''); }
 const nodeLabel = id => id + ' · ' + NODE[id].verb;
 const modeLabel = id => MODE[id] ? MODE[id].title : id;
@@ -490,6 +497,15 @@ function renderForm(focusSel){
     <div><label>Claim</label>${sel('data-f="gates.claim"', ENUM.gate, c.gates.claim)}<div class="def">${esc(defOf('gate_claim'))}</div></div>
     <div><label>Registration</label>${sel('data-f="gates.registration"', ENUM.gate, c.gates.registration)}<div class="def">${esc(defOf('gate_registration'))}</div></div></div>
     <label>Evidence for the three answers</label><textarea data-f="gates.evidence">${esc(c.gates.evidence)}</textarea></div>
+
+  <div class="card" id="sec-vchecks"><h2>V checks (NASEM 2019)</h2>
+    <div class="hint">List every check of a result, one entry per check. V is full when at least one check done in this paper is not a reproduction; partial when the only checks done here are reproductions. Triangulation is computed later from the kinds. ${esc(['v_reproduction','v_replication','v_method','v_robustness','v_control','v_generalization'].map(k => lab(k) + ': ' + defOf(k)).join(' '))}</div>
+    ${c.v_checks.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Kind</label><select data-l="v_checks.${i}.kind">${opt(ENUM.vkind, x.kind, null, CHOOSE)}</select></div>
+      <div><label>Done in this paper?</label><select data-vph="${i}"><option value="">${CHOOSE}</option><option value="yes" ${x.performed_here===true?'selected':''}>yes, performed here</option><option value="no" ${x.performed_here===false?'selected':''}>no, cited</option></select></div>
+      <div><label>Location</label><input data-l="v_checks.${i}.page" value="${esc(x.page)}"></div><div></div></div>
+      <label>Quote (at most 25 words)</label><input data-l="v_checks.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div>
+      <button class="ghost" data-del="v_checks.${i}">remove</button></div>`).join('')}
+    <button data-add="v_checks">+ V check</button></div>
 
   <div class="card" id="sec-extras"><h2>Imports, novelty claims, limits</h2>
     <h3>Imports from outside Earth science</h3><div class="small">Concepts, methods, instruments or data, with the field they come from.</div>
@@ -581,7 +597,7 @@ function bindForm(){
   f.querySelectorAll('[data-l]').forEach(el => { const [list, i, field] = el.dataset.l.split('.'); const ev = el.tagName === 'SELECT' ? 'change' : 'input';
     el.addEventListener(ev, () => { c[list][+i][field] = el.value; if(el.dataset.wc) wc(el); persistSoon(); }); if(el.dataset.wc) wc(el); });
   const blanks = {imports:{field:'',item:'',kind:'',page:''}, novelty_claims:{quote:'',page:''}, disagreements:{target:'',kind:'',stance:'',support:'',page:'',quote:''},
-    alternatives_considered:{node:'',chosen:'',alternatives:'',reason:'',effect_reported:'',page:''}};
+    alternatives_considered:{node:'',chosen:'',alternatives:'',reason:'',effect_reported:'',page:''}, v_checks:{kind:'', performed_here:null, quote:'', page:''}};
   f.querySelectorAll('[data-add]').forEach(b => b.onclick = () => { const L = b.dataset.add; c[L].push(Object.assign({}, blanks[L])); rerender(`[data-l^="${L}.${c[L].length-1}."]`); });
   f.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const [list, i] = b.dataset.del.split('.'); if(!confirmLoss(c[list][+i], 'entry')) return; c[list].splice(+i, 1); rerender(); });
   f.querySelectorAll('.step').forEach(row => { const si = +row.dataset.si, i = +row.dataset.i, st = c.sequences[si].steps[i];
@@ -601,6 +617,7 @@ function bindForm(){
   f.querySelectorAll('[data-addstep]').forEach(b => b.onclick = () => { const si = +b.dataset.addstep, s = c.sequences[si]; s.steps.push(newStep()); renumber(); rerender(`.step[data-si="${si}"][data-i="${s.steps.length-1}"] [data-s="node"]`); });
   const ar = document.getElementById('addReview'); if(ar) ar.onclick = () => { c.sequences.push({kind:'review', source_document:'peer-review file', steps:[]}); if(!c.documents.includes('peer-review file')) c.documents.push('peer-review file'); rerender(); };
   f.querySelectorAll('[data-delseq]').forEach(b => b.onclick = () => { const s = c.sequences[+b.dataset.delseq]; if(s.steps.length && !window.confirm('Remove this review sequence and its ' + s.steps.length + ' step(s)?')) return; c.sequences.splice(+b.dataset.delseq, 1); rerender(); });
+  f.querySelectorAll('[data-vph]').forEach(el => el.addEventListener('change', () => { c.v_checks[+el.dataset.vph].performed_here = el.value === '' ? null : el.value === 'yes'; persistSoon(); }));
   f.querySelectorAll('[data-seqsrc]').forEach(el => el.addEventListener('input', () => { c.sequences[+el.dataset.seqsrc].source_document = el.value; persistSoon(); }));
   f.querySelectorAll('[data-tq]').forEach(cb => cb.onchange = () => { const q = cb.dataset.tq;
     if(cb.checked){ if(!c.tree.find(t => t.question === q)) c.tree.push({question:q, answer:'', mode_called:''}); c.tree.sort((a,b) => ENUM.treeQ.indexOf(a.question) - ENUM.treeQ.indexOf(b.question)); }
