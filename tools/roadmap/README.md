@@ -21,8 +21,10 @@ About 100 research articles from 2022 near the convenor's research, spanning imp
 | 2 | `g02_pool.py` | `pool.json`: 2022 articles in her topics (core ring) and neighbouring Earth-science subfields (broad ring), in venues with a full-text route |
 | 3 | `g03_preselect.py` | `preselect.json`: 600 papers, ring × impact quintile × subfield |
 | 4 | `g04_metrics.py` | `metrics.json`: novelty proxy (topic-pair rarity), reference breadth, citer breadth (breadth v1) |
-| 5 | `g05_select.py` | `gold_set.json`, `gold_set.md`, `gold_manifest.jsonl`: the frozen set |
-| 6 | `tools/fetch_pdfs.py` | PDFs in `private/data/roadmap/pdfs/gold/` (gitignored) |
+| 6 | `g06_abstracts.py` | `screen_input.json`, `screen_batches/`: abstracts of the 600 for screening |
+| 7 | workflow `workflows/gold-eligibility-screen.js`, then `g07_eligibility.py` | `eligibility.json`: two independent model screeners per abstract, a third on disagreements |
+| 8 | `g05_select.py` (rerun; reads `eligibility.json`) | `gold_set.json`, `gold_set.md`, `gold_manifest.jsonl`: the frozen set, eligible papers only |
+| 9 | `tools/fetch_pdfs.py` | PDFs in `private/data/roadmap/pdfs/gold/` (gitignored) |
 
 ```bash
 conda activate metascience
@@ -30,6 +32,9 @@ python tools/roadmap/g01_author_profile.py
 python tools/roadmap/g02_pool.py
 python tools/roadmap/g03_preselect.py --n 600 --seed 2026
 python tools/roadmap/g04_metrics.py
+python tools/roadmap/g06_abstracts.py
+# run the workflow tools/roadmap/workflows/gold-eligibility-screen.js with args {"n_batches": 60}; save its result as JSON
+python tools/roadmap/g07_eligibility.py RESULT.json --run-id wf_...
 python tools/roadmap/g05_select.py --n 100 --seed 2026
 python tools/fetch_pdfs.py add-manifest private/data/roadmap/derived/gold/gold_manifest.jsonl
 python tools/fetch_pdfs.py run --out private/data/roadmap/pdfs/gold
