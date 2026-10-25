@@ -27,6 +27,13 @@ About 100 research articles from 2022 near the convenor's research, spanning imp
 | 8 | `g05_select.py` (rerun; reads `eligibility.json`) | `gold_set.json`, `gold_set.md`, `gold_manifest.jsonl`: the frozen set, eligible papers only |
 | 9 | `tools/fetch_pdfs.py` | PDFs in `private/data/roadmap/pdfs/gold/` (gitignored) |
 | 10 | `g08_fetch_status.py` | `fetch_status.json`: fetched or not, route, licence, and whether the paper may go to model coding now |
+| 11 | `g10_fetch_xml.py` (`--reconvert` after a converter change) | `<key>.xml` and located text `<key>.xml.txt` beside the PDFs; `xml_status.json` |
+| 12 | `g09_human_coding_app.py` | frozen `human_assignment.json` (40 papers, two coders each, 20 per coder); `private/data/roadmap/app/packets/<ID>/` (one per coder: app locked to that coder, PDFs, located texts, `my_codings/`, README) and `app/gold-coordinator.html` |
+| 13 | `g11_human_agreement.py` | collects `my_codings/` into `derived/gold/human/<ID>/`; `human_agreement.json`: per-pair agreement and Krippendorff's alpha per field, against the 0.67 and 0.8 gates |
+
+Tests: `python tools/roadmap/test_g11_alpha.py` (alpha reproduces the reliability run's 0.63); `node tools/roadmap/app/e2e_test.js` (two coders code a shared paper in headless Chrome; files validate; import of a co-coder's file is refused; the coordinator pairs them).
+
+Format test (codebook 1.4.0): `f00_format_test_prep.py`, the workflow `workflows/format-test-coding.js`, batch-API arms via `tools/code_papers.py submit --tag fmt-P1 --no-xml` (and fmt-PX1 without `--no-xml`), then `f01_format_test.py`.
 
 ```bash
 conda activate metascience
@@ -41,6 +48,9 @@ python tools/roadmap/g05_select.py --n 100 --seed 2026
 python tools/fetch_pdfs.py add-manifest private/data/roadmap/derived/gold/gold_manifest.jsonl
 python tools/fetch_pdfs.py run --out private/data/roadmap/pdfs/gold
 python tools/roadmap/g08_fetch_status.py
+python tools/roadmap/g10_fetch_xml.py
+python tools/roadmap/g09_human_coding_app.py          # first time: --reassign; afterwards the assignment is frozen
+python tools/roadmap/g11_human_agreement.py           # after coders return their my_codings folders
 ```
 
 Keys are read from `~/.config/metascience/keys.env` (see the main README). The fetcher records the route used for each paper; papers it cannot get are listed with links in `private/download-list.md`.
