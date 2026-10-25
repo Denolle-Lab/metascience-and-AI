@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Turn publisher full-text XML (JATS, or Elsevier's full-text format) into plain text with locators.
 
-Every paragraph is prefixed with a locator a coder can cite instead of a page (codebook v1.4.0):
+The first lines give the DOI and the title. Every paragraph is prefixed with a locator a coder can cite instead of a page (codebook v1.4.0):
   [§0 ¶2]          abstract, second paragraph
   [§3.2 ¶4]        section 3.2, fourth paragraph (section numbers from the article's labels, else by position)
   [Fig. 3]         figure caption        [Table 2]   table caption        [§A1 ¶1]  appendix
@@ -72,6 +72,10 @@ def child(el: ET.Element, names: set) -> ET.Element | None:
 
 def convert(root: ET.Element) -> str:
     lines = []
+    doi = next(((e.text or '').strip() for e in root.iter() if (local(e.tag) == 'article-id' and e.get('pub-id-type') == 'doi')
+                or local(e.tag) == 'doi'), '')
+    if doi:
+        lines.append('DOI: ' + doi.replace('https://doi.org/', ''))
     title = next((e for e in root.iter() if local(e.tag) in ('article-title', 'title') and e is not None), None)
     if title is not None:
         lines.append('TITLE: ' + text_of(title))

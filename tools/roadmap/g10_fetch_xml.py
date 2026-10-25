@@ -127,7 +127,14 @@ def routes(g: dict, dest: Path) -> tuple[str | None, list[str]]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument('--keys', nargs='*')
+    ap.add_argument('--reconvert', action='store_true', help='rewrite every <key>.xml.txt from the stored XML with the current jats_text.py')
     a = ap.parse_args()
+    if a.reconvert:
+        n = 0
+        for x in sorted(OUT.glob('*.xml')):
+            (OUT / (x.name + '.txt')).write_text(jats_text.convert(jats_text.parse(x))); n += 1
+        log('g10_fetch_xml.py', 'reconverted located text from stored XML (jats_text.py)', n)
+        print(n, 'reconverted'); return
     gold = read_json(DERIVED / 'gold' / 'gold_set.json')
     if a.keys:
         gold = [g for g in gold if g['key'] in a.keys]
