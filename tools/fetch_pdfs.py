@@ -50,9 +50,13 @@ META: dict[str, dict] = {}
 BLOCKED: dict[str, list] = {}  # open copies that refused scripted download (HTTP 403)
 
 
+# seconds between requests to one host; Wiley's TDM API allows about 60 requests per 10 minutes, so 10 s keeps under it
+HOST_DELAY = {'api.wiley.com': 10.0, 'api.elsevier.com': 2.0}
+
+
 def polite(url: str) -> None:
     host = urllib.parse.urlparse(url).netloc
-    wait = 1.0 - (time.time() - _last.get(host, 0))
+    wait = HOST_DELAY.get(host, 1.0) - (time.time() - _last.get(host, 0))
     if wait > 0:
         time.sleep(wait)
     _last[host] = time.time()

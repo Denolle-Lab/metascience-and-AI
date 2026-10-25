@@ -126,6 +126,7 @@ def routes(g: dict, dest: Path) -> tuple[str | None, list[str]]:
 
 
 def main() -> None:
+    global OUT
     ap = argparse.ArgumentParser()
     ap.add_argument('--keys', nargs='*')
     ap.add_argument('--manifest', help='a manifest .jsonl (key, doi, openalex) instead of the gold set, e.g. derived/calc1/manifest.jsonl')
@@ -138,7 +139,6 @@ def main() -> None:
             (OUT / (x.name + '.txt')).write_text(jats_text.convert(jats_text.parse(x))); n += 1
         log('g10_fetch_xml.py', 'reconverted located text from stored XML (jats_text.py)', n)
         print(n, 'reconverted'); return
-    global OUT
     if a.out:
         OUT = Path(a.out)
     if a.manifest:
