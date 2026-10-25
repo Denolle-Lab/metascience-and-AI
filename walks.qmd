@@ -7,14 +7,14 @@
 - **Strip.** The steps in order. [→]{.walk-key .ar} a step along an edge the graph draws (or a repeat of the same node). [⇢]{.walk-key .ar .jump} a jump the graph reaches only through other nodes.
 - **Table.** One row per step: the node, the mode of inquiry the step belongs to, what the authors did, and the page. Read the table against the paper.
 - Each node's letter is the first letter of its verb: **N** new capability · **E** explore: establish the phenomenon · **O** observe · **I** infer a latent quantity (estimate) · **Q** question · **H** hypothesize · **S** simulate or derive the expectations · **D** design the test · **F** find or set the conditions · **C** compare · **V** vary and replicate · **X** exclude · **K** keep the claim · **P** protect · **R** refine. The [crosswalk](unit.qmd#the-graph) maps each node to the modes it serves.
-- One reader coded each paper, from the text alone. The order is the order of the paper's account, which may not be the order of the work. Full codings: `private/analysis/success-set/`. Slides: [three of these walks](slides/modes-meeting.html).
+- One reader (coder 1, a Claude subagent, codebook v0) coded each paper, from the text alone; two blind model coders recoded them on October 25, 2026 (see "What the walks cannot show"). The order is the order of the paper's account, which may not be the order of the work. Full codings: `private/analysis/success-set/`. Slides: [three of these walks](slides/modes-meeting.html).
 
 ## Is the graph right? What these eight say
 
 | Test of graph v0.4 | Result on the eight papers |
 |:--|:--|
 | Every move can be placed on a node | Yes: no coder needed a node outside v0.4 |
-| Steps follow edges the graph draws | 24 of 83 steps (29%); the rest are jumps |
+| Transitions follow edges the graph draws | 24 of 83 transitions between the 91 steps (29%); the rest are jumps |
 | The textbook route Q → H → S → D → F → O → C is walked | Never |
 | D, a discriminating test designed before the data | 1 of 8 papers |
 | H, stated rival hypotheses | 5 of 8 papers |
@@ -540,12 +540,13 @@ flowchart LR
 ## What the walks cannot show
 
 - **Loops are under-counted by design.** A published paper reports the work in the order of its argument: between protocol and paper, 62% of trials changed, added, or dropped a primary outcome [@chan2004]. Our coding followed the paper's order and had no field for a failed attempt, a rerun, or a redesign, so a return and a next step look alike.
-- **Loops are at the mode level.** Merging consecutive repeats, the papers return to a node already visited 11 times but to a mode already used 27 times; every paper has at least one return. The [decision tree](decision-tree.qmd) draws the graph at that level.
-- **One coder per paper, coding against the graph it tests.** The coder was given the v0.4 nodes, so every step was placed on a node; "no new node needed" is partly an effect of the instruction. No second coder yet, so no agreement figure.
+- **Loops are at the mode level, for coder 1.** Merging consecutive repeats, the papers return to a node already visited 11 times but to a mode already used 27 times; every paper has at least one return. The [decision tree](decision-tree.qmd) draws the graph at that level.
+- **The blind coders do not confirm it.** Two blind model coders (Opus 5.5 and Sonnet 5.5, paper codebook 1.3.0, October 25, 2026) code 169 and 108 steps on the same eight papers. They find 83 and 33 node returns against 78 and 38 mode returns, so where the loops sit depends on the coder (`private/analysis/reliability/codings/papers/`, final-paper sequences, consecutive repeats merged).
+- **One coder per walk, coding against the graph it tests.** The coder was given the v0.4 nodes, so every step was placed on a node; "no new node needed" is partly an effect of the instruction. The blind coders also get the graph. They agree on which nodes a paper uses at Krippendorff's alpha 0.63, below the 0.67 gate, over 13 papers (`private/analysis/reliability/RESULTS.md`). No person has coded yet.
 - **Granularity varies.** Vine and Matthews have 17 steps, Normandeau and colleagues and Gräff and colleagues 8. Step counts measure the coder as much as the paper.
 - **Labels are not fully consistent.** One Shapiro step is labelled replication where the others use robustness.
 - **Supplements unread** for Shapiro, Lam, Sun, and Xu, where methods and robustness checks usually sit.
-- **Successes only.** Eight papers chosen for success; no matched control or failure has been coded yet.
+- **Successes only, as walks.** The eight walks are successes. Five matched controls have been coded since (October 21 and 25, 2026); no failure has been coded.
 - **How to see the loops.** Peer-review files, open discussions, and version histories record changes made during the work. On nine papers with such records, 126 loops were found, and 4 of them (3%) can be read as loops in the final paper ([decision tree, section 6](decision-tree.qmd#what-process-documents-show)). For Gräff and colleagues and for Lam and colleagues, a review sequence can now be coded beside the final-paper sequence.
 
 ## For students

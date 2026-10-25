@@ -8,8 +8,9 @@
 
 ## 1. What the eight walks say about v0.4
 
-- **Nodes held, edges did not.** Every coded step landed on a v0.4 node, but 24 of 83 steps follow an edge the graph draws ([walks](walks.qmd)).
-- **The loops are between modes.** At the node level the papers return to a node already visited 11 times. At the mode level they return to a mode already used 27 times, in all eight papers; Xu et al. return eight times. Counts are from the coded steps in `private/analysis/success-set/build/steps.py`, consecutive repeats merged.
+- **Nodes held, edges did not.** Every coded step (91 of 91) landed on a v0.4 node, but only 24 of the 83 transitions between steps follow an edge the graph draws ([walks](walks.qmd)).
+- **The loops are between modes, for coder 1.** At the node level the papers return to a node already visited 11 times. At the mode level they return to a mode already used 27 times, in all eight papers; Xu et al. return eight times. Counts are from the coded steps in `private/analysis/success-set/build/steps.py`, consecutive repeats merged.
+- **The blind coders disagree on where the loops sit.** Two blind model coders (Opus 5.5 and Sonnet 5.5, paper codebook 1.3.0, October 25, 2026) cut finer steps: 169 and 108 against 91. They find 83 and 33 node returns against 78 and 38 mode returns. The between-modes reading is not yet coder-independent (final-paper sequences in `private/analysis/reliability/codings/papers/`, consecutive repeats merged).
 - **Hypothesis assessment is a hub.** The most frequent two-way hand-offs:
 
 | Pair of modes | Hand-offs, both directions | Papers |
@@ -22,9 +23,10 @@
 | Hypothesis assessment ↔ observation | 4 | 3 |
 | Methods ↔ observation | 4 | 2 |
 
-- Hypothesis assessment is one side of five of the seven most frequent pairs.
-- **Shape.** Every paper enters through a capability or record mode (methods 2, instruments 2, observation 3, estimation 1). The middle is a loop around hypothesis assessment. Four of eight leave through synthesis.
-- **What this cannot show.** The order is the order of the paper's account; one reader coded each paper; supplements were not read for four papers. Section 6 tests that limit on nine papers with [process documents](#what-process-documents-show).
+- Hypothesis assessment is one side of five of the seven most frequent pairs, for coder 1. For both blind coders the most frequent pair is estimation ↔ observation (17 and 13 hand-offs, in 6 of 8 papers each).
+- **Shape, for coder 1.** Every paper enters through a capability or record mode (methods 2, instruments 2, observation 3, estimation 1). The middle is a loop around hypothesis assessment. Four of eight leave through synthesis.
+- **Shape, for the blind coders.** They open 5 (Opus 5.5) and 6 (Sonnet 5.5) of 8 papers with a question step; after it, a capability or record mode comes first in 7 and 5 of 8. The last step is in synthesis for 2 and 0 of 8; hypothesis assessment is their most common last mode (3 of 8 each). Codebook 1.3.0 has no rule for the mode of a K step, so exit modes are soft.
+- **What this cannot show.** The order is the order of the paper's account; the table and the walks are one reader's coding (coder 1); supplements were not read for four papers. Section 6 tests that limit on nine papers with [process documents](#what-process-documents-show).
 
 ## 2. Cleland's schema is the record
 
@@ -156,7 +158,7 @@ The research decision tree, v0.5.1 (adopted by the convenor; room discussion pen
 |:--|:--|:--|:--|
 | @shapiro2005 | Methods, robustness, observation, estimation, robustness, observation, methods | Robustness, observation, methods each twice | Question 1 by method and robustness, question 2 by estimation, then Keep a capability; never reaches question 4 |
 | @sun2026 | Instruments, observation, hypothesis, robustness, estimation, theory, simulation, robustness, theory, hypothesis, estimation, synthesis | Theory, robustness, hypothesis, estimation | Question 1 loops on drift versus signal; question 2 by estimation; questions 4 to 7 with forward models; ends in synthesis |
-| @normandeau2025 | Observation, hypothesis, estimation, theory, hypothesis, synthesis | Hypothesis | Enters at an anomaly; question 5 by theory; a protective move at question 7 (the ice lasts several years) |
+| @normandeau2025 | Observation, hypothesis, estimation, theory, hypothesis, synthesis | Hypothesis | Coder 1 enters at the change seen between surveys (O); question 5 by theory; a protective move at question 7 (the ice lasts several years). Both blind coders enter at a question (Q); Opus 5.5 codes the multi-year-ice move as P, Sonnet 5.5 as R |
 | @vine1963 | Observation, estimation, hypothesis, simulation, hypothesis, theory, synthesis, simulation, synthesis, hypothesis | Hypothesis with simulation, synthesis | Questions 4 and 5 loop twice through block-model simulations |
 | @rodell2009 | Estimation, instruments, observation, estimation, hypothesis, simulation, hypothesis, robustness, estimation, synthesis | Estimation three times; hypothesis | Question 2 dominates; rivals (rainfall, soil water) excluded at questions 5 to 7 |
 | @lam2023 | Methods, robustness, simulation, hypothesis, robustness, simulation, robustness, simulation | Simulation and robustness, three times | The forecast branch of question 3: verify, vary, verify |
@@ -200,31 +202,32 @@ The research decision tree, v0.5.1 (adopted by the convenor; room discussion pen
 | System | Loop, in node letters | Returns when | Level |
 |:--|:--|:--|:--|
 | Strong inference [@platt1964] | H, D, F, O, C, X, R, back to H | a rival is excluded | inside hypothesis assessment |
-| Robot Scientist [@king2004; @king2009] | H, S, D, F, O, I, C, X, back to H | each cycle; a falsification | inside hypothesis assessment; the model $A$ fixed |
-| Bayesian adaptive design [@rainforth2024] | D, F, O, I, back to D | every observation, until the budget is spent | inside one mode; $H$ and $A$ fixed |
-| Coscientist [@boiko2023] | F, D, S, F, O, C, R, back to F | a software error; the yield | inside one mode |
-| Co-Scientist [@gottweis2026] | H, C, C, R, back to H, with no O | tournament results | inside hypothesis generation, without data |
+| Robot Scientist [@king2004; @king2009] | H, S, D, F, O, C, X, back to H (Sonnet 5.5 adds K; Opus 5.5 codes the 2009 loop with I and K) | each cycle; a falsification | inside hypothesis assessment; the model $A$ fixed |
+| Bayesian adaptive design [@rainforth2024] | S, D, F, O, I, back to S (Opus 5.5) or to D (Sonnet 5.5) | every observation, until the budget is spent | inside one mode; $H$ and $A$ fixed |
+| Coscientist [@boiko2023] | optimization loop: D, F, O, C, R, back to D (Sonnet 5.5: H, F, O, C, back to H; its planner loop D, F, O, R); neither codes S | a software error; the yield | inside one mode |
+| Co-Scientist [@gottweis2026] | H, D, S, C, X, R, back to H, with no O (Opus 5.5 adds P and K, in another order) | tournament results | inside hypothesis generation, without new data; compares against the literature |
 | Robin [@ghareeb2026] | Q, F, H, D, humans run F and O, I, C, K | data return from the laboratory | across modes, with humans at F and O |
 | The AI Scientist [@lu2026] | D, F, O, C, R per step; H to K across runs | an error trace or a critique | inner and outer |
 | FunSearch [@romeraparedes2024] | H, R, S, C, K or X, back to H | every evaluation | inside one mode |
 
-- **What none of them does by itself**: revise an auxiliary (P), revise the set of rivals after a surprise, or answer question 1 (is there a phenomenon). Adaptive design "only capture[s] uncertainty within the model" [@rainforth2024, preprint p. 9].
+- **Sources.** The Robot Scientist (recoded from the 2004 and 2009 full texts), adaptive design, Coscientist, and Co-Scientist rows are from the two blind loop codings of October 25, 2026 (`private/analysis/reliability/codings/agents/`, loop codebook 0.1.0); the other rows are from the literature report `private/analysis/modes-literature/07-loops.md`.
+- **What they rarely do by themselves.** Only Co-Scientist revises an auxiliary (P), and only for one of two blind coders (Opus 5.5: deep verification keeps the core hypothesis when an error is not fundamental). None of the five coded systems here answers question 1 (is there a phenomenon); of all 31 coded systems, SWE-agent does for both coders, by reproducing the bug first. None is described revising the set of rivals after a surprise. Adaptive design "only capture[s] uncertainty within the model" [@rainforth2024, preprint p. 9].
 - **Practice in laboratories**: scientists faced with inconsistent data first protect the method, then repeat, and only then revise the hypothesis [@fugelsang2004]. That is the path C, P, V, then H, which the tree's question 7 allows.
 - **For agents.** A mode agent can run its inner loop as these systems do. The controller, which these systems lack, is what the tree adds: it decides when to leave a mode, when to doubt the phenomenon, and when to protect or exclude.
 
 ## 8. What would show the tree is wrong
 
 - **Same route, different outcomes.** If the matched controls and the low-cited Nature and Science papers pass the same questions in the same order as the successes, the tree describes papers, not success.
-- **Missing questions.** If peer-review files, preprint versions, or lab records show loops returning to a point the tree lacks, such as reframing the question, the tree needs that question.
+- **Missing questions.** If peer-review files, preprint versions, or lab records show loops returning to a point the tree lacks, the tree needs that question. Reframing was added this way, at question 8, on October 21, 2026.
 - **No gain for agents.** If agents that follow the tree do no better on held-out cases than agents that choose modes freely, the tree adds nothing for agents.
 - **Unobservable gates.** If two coders agree on which question a step answers less often than κ = 0.6, the questions are not observable in papers.
 - **Limits of the present evidence**, from the [walks](walks.qmd#what-the-walks-cannot-show) and section 6:
   - Order is the paper's narrative, not the work's; 3% of recorded loops are visible in the final paper.
-  - One coder per paper, coding against the graph it tests.
-  - The coding had no field for a failed attempt, so a return and a next step look alike.
+  - The walks are one coder's, coding against the graph it tests. Two blind model coders agree on node use at alpha 0.63, below the 0.67 gate (`private/analysis/reliability/RESULTS.md`); no person has coded yet.
+  - The walks' coding (codebook v0) had no field for a failed attempt, so a return and a next step look alike. Codebook 1.0.0 added a move on every step.
   - Supplements unread for four papers.
   - Mode labels inconsistent in one case.
-  - Eight successes, no failures.
+  - Eight successes as walks; five matched controls coded since; no failures.
 
 ## 9. Decisions and change log
 

@@ -98,12 +98,29 @@ def main() -> None:
                 f = (FT / 'codings' / f'{k}.{arm}{rep}.json') if arm in ('X', 'T') else (API / f'fmt-{arm}{rep}' / f'{k}.json')
                 if f.is_file():
                     cod[k][f'{arm}{rep}'] = json.loads(f.read_text())
-    per_pair = defaultdict(list)
+    # same version? the PDF text must print the paper's DOI (a discussion preprint prints its own DOI instead)
+    dois = {r['key']: r['doi'].lower() for r in read_json(DERIVED / 'gold' / 'gold_set.json')}
+    same = [k for k in keys if dois[k] in (FT / 'inputs' / f'{k}.pdf.txt').read_text().lower().replace('\n', '').replace(' ', '')]
+    per_pair, per_pair_same = defaultdict(list), defaultdict(list)
     for k in keys:
         for a, b in itertools.combinations(sorted(cod[k]), 2):
             ga, gb = re.sub(r'\d', '', a), re.sub(r'\d', '', b)
             label = f'{ga} within' if ga == gb else '-'.join(sorted([ga, gb]))
-            per_pair[label].append((k, agree(cod[k][a], cod[k][b])))
+            m = agree(cod[k][a], cod[k][b])
+            per_pair[label].append((k, m))
+            if k in same:
+                per_pair_same[label].append((k, m))
+
+    def summarize(pp):
+        out = {}
+        for label, rows in sorted(pp.items()):
+            by_paper = defaultdict(list)
+            for k, m in rows:
+                by_paper[k].append(m)
+            pm = [{f: mean(float(m[f]) for m in ms) for f in NUM + BOOL} for ms in by_paper.values()]
+            out[label] = {'papers': len(pm), 'pairs': len(rows), **{f: round(mean(p[f] for p in pm), 3) for f in NUM + BOOL}}
+        return out
+    agreement_same = summarize(per_pair_same)
     agreement = {}
     for label, rows in sorted(per_pair.items()):
         by_paper = defaultdict(list)
@@ -143,7 +160,7 @@ def main() -> None:
                         'quotes_in_pdf_text': round(sum(x['in_pdf'] for x in F) / max(nq, 1), 3),
                         'locations_valid': round(sum(x['valid'] for x in L) / max(sum(x['locations'] for x in L), 1), 3),
                         'mean_steps': round(mean(x['steps'] for x in S), 1), 'figure_located_steps': sum(x['figure_steps'] for x in S)}
-    write_json(FT / 'results.json', {'agreement': agreement, 'summary': summary, 'fidelity': fidelity, 'locations': locs, 'shape': shape},
+    write_json(FT / 'results.json', {'same_version_papers': same, 'agreement_same_version': agreement_same, 'agreement': agreement, 'summary': summary, 'fidelity': fidelity, 'locations': locs, 'shape': shape},
                ['derived/format_test/codings', 'private/analysis/codings/api/fmt-*', 'derived/format_test/inputs'])
     lines = ['# Format test: XML text versus PDF', '', f"Papers: {len(keys)}. Arms: X located XML text (subagent), T pdftotext text (subagent), "
              'P PDF via the batch API, PX PDF plus XML text via the batch API. Two independent codings per arm and paper. '
@@ -151,6 +168,12 @@ def main() -> None:
              '## Agreement', '', '| Pair | Papers | Node set | Mode set | Node sequence | Mode sequence | Entry node | Entry state | Outcome | Decisive mode |',
              '|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|']
     for label, a in agreement.items():
+        lines.append(f"| {label} | {a['papers']} | " + ' | '.join(f"{a[f]:.2f}" for f in NUM + BOOL) + ' |')
+    lines += ['', f'## Agreement, the {len(same)} papers whose PDF is the same version as the XML', '',
+              f"Excluded: {', '.join(k for k in keys if k not in same) or 'none'} (the PDF was the discussion preprint, so arms T and P coded another version).", '',
+              '| Pair | Papers | Node set | Mode set | Node sequence | Mode sequence | Entry node | Entry state | Outcome | Decisive mode |',
+              '|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|']
+    for label, a in agreement_same.items():
         lines.append(f"| {label} | {a['papers']} | " + ' | '.join(f"{a[f]:.2f}" for f in NUM + BOOL) + ' |')
     lines += ['', '## Fidelity, locations and shape', '', '| Arm | Codings | Quotes | In XML text | In PDF text | Valid locations | Mean steps | Figure-located steps |',
               '|:--|:--|:--|:--|:--|:--|:--|:--|']
