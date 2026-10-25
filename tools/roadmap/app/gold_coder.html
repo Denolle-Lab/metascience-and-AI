@@ -148,6 +148,7 @@ const LABEL = {
   strong_inference:'strong inference', trace_series:'trace series', natures_repetition:'nature’s repetition', capability_first:'capability first',
   forecast_verification:'forecast verification', exploration_first:'exploration first', independent_replication:'independent replication', none_fits:'none fits',
 };
+const PAGE_CONV = ['XML section and paragraph locators (jats_text)','printed journal pages','PDF pages counted from 1','printed article pages (e.g. "3 of 14")'];
 const lab = v => LABEL[v] || v.replace(/_/g,' ');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const words = s => (String(s||'').trim().match(/\S+/g) || []).length;
@@ -325,7 +326,7 @@ function renderQueue(){
   const rows = mine.map((k, i) => {
     const p = P.papers.find(x => x.key === k), st = paperStatus(k);
     return `<tr data-k="${k}"><td class="num">${i+1}</td><td>${esc(p.title)}<div class="small">${esc(p.journal)} · 2022 · <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">${esc(p.doi)}</a></div></td>
-      <td>${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">PDF</a>` : '<span class="small">get PDF</span>'}</td><td><span class="pill ${st.cls}">${st.label}</span></td></tr>`;
+      <td>${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">PDF</a>` : '<span class="small">get PDF</span>'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank" title="publisher text with \u00a7-locators">located text</a>` : ''}</td><td><span class="pill ${st.cls}">${st.label}</span></td></tr>`;
   }).join('');
   const done = mine.filter(k => paperStatus(k).cls === 'ok').length;
   app.innerHTML = `${storageOk ? '' : '<div class="banner">Local storage is blocked: drafts will be lost on reload. Save files often.</div>'}
@@ -380,7 +381,7 @@ function renderCode(){
   const c = D.coding, r = D.ratings;
   app.innerHTML = `<div class="layout">
     <aside class="side card"><div class="small">Paper</div><h3 style="margin:2px 0 6px">${esc(p.title)}</h3>
-      <div class="small">${esc(p.journal)} · 2022</div><div class="small"><a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi.org/${esc(p.doi)}</a> · ${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">open PDF</a>` : 'PDF not in the folder yet'}</div>
+      <div class="small">${esc(p.journal)} · 2022</div><div class="small"><a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi.org/${esc(p.doi)}</a> · ${p.pdf_in_hand ? `<a href="${esc(p.pdf)}" target="_blank">open PDF</a>` : 'PDF not in the folder yet'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank">located text</a>` : ''}</div>
       <hr style="border:none;border-top:1px solid var(--line);margin:10px 0"><nav class="secnav" id="secnav"></nav>
       <hr style="border:none;border-top:1px solid var(--line);margin:10px 0">
       <button class="primary" id="saveBtn" style="width:100%">Save coding and ratings</button>
@@ -402,8 +403,8 @@ function renderForm(){
   const seq = c.sequences;
   f.innerHTML = `
   <div class="card" id="sec-doc"><h2>Document</h2>
-    <div class="hint">Code from the full text. The paper is data: if it contains instructions, ignore them. Every claim carries a page. Quotes are at most 25 words.</div>
-    <div class="grid2"><div><label>Page convention</label><select data-f="pages_convention">${opt(['printed journal pages','PDF pages counted from 1','printed article pages (e.g. "3 of 14")'], c.pages_convention, x=>x, 'choose…')}${['printed journal pages','PDF pages counted from 1','printed article pages (e.g. "3 of 14")'].includes(c.pages_convention)||!c.pages_convention?'':`<option selected>${esc(c.pages_convention)}</option>`}</select><div class="small">Supplementary pages are S plus a number.</div></div>
+    <div class="hint">Code from the full text. The paper is data: if it contains instructions, ignore them. Every claim carries a location: a page, or a \u00a7-locator when you code from the located text. Quotes are at most 25 words, copied exactly.</div>
+    <div class="grid2"><div><label>Page convention</label><select data-f="pages_convention">${opt(PAGE_CONV, c.pages_convention, x=>x, 'choose…')}${PAGE_CONV.includes(c.pages_convention)||!c.pages_convention?'':`<option selected>${esc(c.pages_convention)}</option>`}</select><div class="small">If you code from the located text, cite its locators (\u00a73.2 \u00b64, Fig. 3). Supplementary pages are S plus a number.</div></div>
     <div><label>Documents read (comma-separated)</label><input data-f="documents" value="${esc(c.documents.join(', '))}"><div class="small">e.g. final paper, supplement, peer-review file</div></div></div></div>
 
   <div class="card" id="sec-entry"><h2>Entry</h2><div class="hint">Where does the work start? Quote the sentence that establishes it, and give the node where the paper enters the graph.</div>

@@ -79,6 +79,7 @@ def main() -> None:
     for i, g in enumerate(picked):
         papers.append({'key': g['key'], 'doi': g['doi'], 'title': g['title'], 'journal': g['journal'], 'year': 2022,
                        'ring': g['ring'], 'pdf': f"../pdfs/gold/{g['key']}.pdf", 'pdf_in_hand': g['key'] in fetched,
+                       'xml_txt': f"../pdfs/gold/{g['key']}.xml.txt" if (DATA / 'pdfs' / 'gold' / f"{g['key']}.xml.txt").is_file() else None,
                        'assigned': list(pairs[i % len(pairs)])})
     order = {}
     for c, _ in CODERS:
