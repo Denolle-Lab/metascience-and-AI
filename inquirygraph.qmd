@@ -1,0 +1,49 @@
+# inquirygraph: the coding agent and its gold set {.unnumbered}
+
+[Drafted]{.status .drafted} [v0.1 · October 25, 2026 · paper codebook 1.5.0 · loop codebook 0.1.2 · human gold set in preparation]{.status-line}
+
+- **What it is.** A codebook, a JSON schema, and a coding agent that turn a research paper into a walk on the [graph of inquiry](unit.qmd): where the work enters, each step the authors took (a graph node and one of the [thirteen modes](glossary.qmd)), how it ended, and which step decided it. Every step carries a quote of at most 25 words and its page or paragraph, so each coded claim can be checked against the paper.
+- **Why.** To compare how people do research with how AI agents loop, on one vocabulary. The same graph codes agent systems with a sister codebook.
+- **Status.** Working tool of the seminar, to become a standalone package (working name `inquirygraph`). Results are reported here; the downloaded papers are not shared.
+
+## The pieces
+
+| Piece | File | Version |
+|:--|:--|:--|
+| Paper codebook | [agents/coder/CODEBOOK.md](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/agents/coder/CODEBOOK.md) | 1.5.0 |
+| Output schema | [agents/coder/coding.schema.json](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/agents/coder/coding.schema.json) | 1.5.0 |
+| Definitions of every category | [agents/coder/definitions.json](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/agents/coder/definitions.json) | 1.5.0 |
+| Agent-loop codebook | [agents/loop-coder/CODEBOOK.md](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/agents/loop-coder/CODEBOOK.md) | 0.1.2 |
+| Batch coder (Claude API) | [tools/code_papers.py](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/code_papers.py) | |
+| Validator and agreement | [tools/check_coding.py](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/check_coding.py) | |
+| Located text from publisher XML | [tools/jats_text.py](https://github.com/Denolle-Lab/metascience-and-AI/blob/main/tools/jats_text.py) | |
+
+- **Vary and replicate follows NASEM (2019).** Each check of a result is a reproduction, replication, method, robustness, control, or generalization check. V is full when a check other than a reproduction is done in the paper; triangulation is two or more of replication, method, and generalization [@nasem2019; @munafo2018]. Papers and agent loops use the same rule.
+
+## The gold set
+
+| Step | Count | Rule |
+|:--|:--|:--|
+| Pool | 14,223 | 2022 research articles in Earth-science venues with a full-text route, in the convenor's research topics (core ring) and neighbouring Earth-science subfields (broad ring) |
+| Preselection | 600 | Equal numbers per ring and impact quintile, subfields interleaved |
+| Eligible | 525 | Two independent screeners per abstract, a third on disagreements; 594 of 600 agreed |
+| Gold set | 100 | Spread over impact, novelty-proxy, and reference-breadth terciles within each ring; advance is rated by people |
+| Human subset | 40 | Each coded independently by two of four coders (20 papers each), blind to all metrics |
+
+- Impact: OpenAlex field-normalized citation percentile. Novelty proxy: rarity of the paper's two leading topics appearing together in 2017 to 2021. Breadth: share of references outside geoscience. The three are weakly correlated (Spearman 0.09 to 0.25), so they sample different things.
+- Every selection rule, threshold, and exclusion is logged with the script and commit that applied it.
+
+## What has been measured
+
+| Test | Result |
+|:--|:--|
+| Two blind model coders, 13 papers (paper codebook 1.3.0) | Node-set overlap 0.76; Krippendorff's alpha for node presence 0.63, below the 0.67 gate |
+| Two blind model coders, 31 agent systems (loop codebook 0.1.2) | Alpha 0.73 for the node marks |
+| Input format, six papers coded twice from publisher XML text and twice from PDF text | Agreement between formats is within coder noise; quotes from XML text are found word for word in the source 100% of the time, against 83% from PDF text |
+| Cost | $0.27 (PDF) to $0.39 (PDF plus XML text) per paper, batch prices |
+
+- **Under way.** Model coding of the 525 eligible papers (once) and the 100 gold papers (a second, independent time); human coding of the 40-paper subset. The human codings are the reference that decides whether the model coder is reliable enough to scale.
+
+## Contact
+
+- Marine Denolle, University of Washington ([Denolle Lab](https://denolle-lab.github.io/)). Coders: Sangwoo Han, Maleen Kidiwela, Michael Hemmett.
