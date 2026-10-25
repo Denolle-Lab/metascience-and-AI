@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Gold set, step 5: the final stratified gold set, frozen, plus a manifest for the PDF fetcher.
 
-Input : derived/gold/metrics.json (g04)
+Input : derived/gold/metrics.json (g04); derived/gold/eligibility.json (g07, the eligibility screen) when present:
+        only papers judged eligible are drawn
 Output: derived/gold/gold_set.json      the frozen set with every metric and its stratum
         derived/gold/gold_manifest.jsonl  key, doi, stratum: input to `fetch_pdfs.py add-manifest`
         derived/gold/gold_set.md        readable table for the convenor
@@ -37,6 +38,12 @@ def main() -> None:
     a = ap.parse_args()
     rng = random.Random(a.seed)
     rows = read_json(DERIVED / 'gold' / 'metrics.json')
+    inputs = ['derived/gold/metrics.json']
+    el = DERIVED / 'gold' / 'eligibility.json'
+    if el.is_file():
+        ok = {d['key'] for d in read_json(el) if d.get('eligible') is True}
+        rows = [r for r in rows if 'g22_' + r['id'] in ok]
+        inputs.append('derived/gold/eligibility.json')
     gold, cutlog = [], {}
     for ring in ('core', 'broad'):
         R = sorted([r for r in rows if r['ring'] == ring], key=lambda r: r['id'])
@@ -64,7 +71,7 @@ def main() -> None:
     for r in gold:
         r['key'] = 'g22_' + r['id']
         r['stratum'] = f"{r['ring']} I{r['impact_tier']} N{r['novelty_tier']} B{r['breadth_tier']}"
-    write_json(DERIVED / 'gold' / 'gold_set.json', gold, ['derived/gold/metrics.json'], {'n': a.n, 'seed': a.seed, 'tercile_cuts': cutlog})
+    write_json(DERIVED / 'gold' / 'gold_set.json', gold, inputs, {'n': a.n, 'seed': a.seed, 'tercile_cuts': cutlog})
     with open(DERIVED / 'gold' / 'gold_manifest.jsonl', 'w') as f:
         for r in gold:
             f.write(json.dumps({'key': r['key'], 'doi': r['doi'], 'stratum': f"gold2022 {r['ring']}", 'openalex': r['id']}) + '\n')
