@@ -26,6 +26,7 @@ About 100 research articles from 2022 near the convenor's research, spanning imp
 | 7 | workflow `workflows/gold-eligibility-screen.js`, then `g07_eligibility.py` | `eligibility.json`: two independent model screeners per abstract, a third on disagreements |
 | 8 | `g05_select.py` (rerun; reads `eligibility.json`) | `gold_set.json`, `gold_set.md`, `gold_manifest.jsonl`: the frozen set, eligible papers only |
 | 9 | `tools/fetch_pdfs.py` | PDFs in `private/data/roadmap/pdfs/gold/` (gitignored) |
+| 10 | `g08_fetch_status.py` | `fetch_status.json`: fetched or not, route, licence, and whether the paper may go to model coding now |
 
 ```bash
 conda activate metascience
@@ -39,6 +40,7 @@ python tools/roadmap/g07_eligibility.py RESULT.json --run-id wf_...
 python tools/roadmap/g05_select.py --n 100 --seed 2026
 python tools/fetch_pdfs.py add-manifest private/data/roadmap/derived/gold/gold_manifest.jsonl
 python tools/fetch_pdfs.py run --out private/data/roadmap/pdfs/gold
+python tools/roadmap/g08_fetch_status.py
 ```
 
 Keys are read from `~/.config/metascience/keys.env` (see the main README). The fetcher records the route used for each paper; papers it cannot get are listed with links in `private/download-list.md`.
