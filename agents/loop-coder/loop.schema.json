@@ -3,66 +3,299 @@
   "$id": "agents/loop-coder/loop.schema.json",
   "title": "Agent loop coding (codebook agents/loop-coder/CODEBOOK.md)",
   "type": "object",
-  "required": ["key", "system", "family", "codebook_version", "coder", "sources", "nodes", "loops", "supplied", "human_steps", "return_trigger", "stop_rule", "no_conclusion_exit", "measured_behaviour", "limits"],
+  "required": [
+    "key",
+    "system",
+    "family",
+    "codebook_version",
+    "coder",
+    "sources",
+    "nodes",
+    "loops",
+    "v_checks",
+    "supplied",
+    "human_steps",
+    "return_trigger",
+    "stop_rule",
+    "no_conclusion_exit",
+    "measured_behaviour",
+    "limits"
+  ],
   "additionalProperties": false,
   "$defs": {
     "mark": {
       "type": "object",
-      "required": ["mark", "quote", "where", "note"],
+      "required": [
+        "mark",
+        "quote",
+        "where",
+        "note"
+      ],
       "additionalProperties": false,
       "properties": {
-        "mark": {"enum": ["full", "partial", "none"]},
-        "quote": {"type": "string", "description": "At most 25 words; empty only when mark is none"},
-        "where": {"type": "string", "description": "Source number (1-based, from sources) and page or section, e.g. '1, p. 5'"},
-        "note": {"type": "string", "description": "For partial: the surrogate, or 'human'"}
+        "mark": {
+          "enum": [
+            "full",
+            "partial",
+            "none"
+          ]
+        },
+        "quote": {
+          "type": "string",
+          "description": "At most 25 words; empty only when mark is none"
+        },
+        "where": {
+          "type": "string",
+          "description": "Source number (1-based, from sources) and page or section, e.g. '1, p. 5'"
+        },
+        "note": {
+          "type": "string",
+          "description": "For partial: the surrogate, or 'human'"
+        }
       }
     }
   },
   "properties": {
-    "key": {"type": "string", "pattern": "^[a-z0-9_-]+$"},
-    "system": {"type": "string"},
-    "family": {"enum": ["general", "multi-agent", "workflow pattern", "coding", "deep research", "science"]},
-    "codebook_version": {"type": "string"},
-    "coder": {"type": "string"},
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$"
+    },
+    "system": {
+      "type": "string"
+    },
+    "family": {
+      "enum": [
+        "general",
+        "multi-agent",
+        "workflow pattern",
+        "coding",
+        "deep research",
+        "science"
+      ]
+    },
+    "codebook_version": {
+      "type": "string"
+    },
+    "coder": {
+      "type": "string"
+    },
     "sources": {
-      "type": "array", "minItems": 1,
+      "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "object", "required": ["citation", "id", "read"], "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "citation",
+          "id",
+          "read"
+        ],
+        "additionalProperties": false,
         "properties": {
-          "citation": {"type": "string"},
-          "id": {"type": "string", "description": "DOI, arXiv ID, or URL"},
-          "read": {"enum": ["full_text", "abstract", "web_raw", "web_extracted", "metadata"]}
+          "citation": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "DOI, arXiv ID, or URL"
+          },
+          "read": {
+            "enum": [
+              "full_text",
+              "abstract",
+              "web_raw",
+              "web_extracted",
+              "metadata"
+            ]
+          }
         }
       }
     },
     "nodes": {
-      "type": "object", "additionalProperties": false,
-      "required": ["N", "E", "O", "I", "Q", "H", "S", "D", "F", "C", "V", "X", "K", "P", "R"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "N",
+        "E",
+        "O",
+        "I",
+        "Q",
+        "H",
+        "S",
+        "D",
+        "F",
+        "C",
+        "V",
+        "X",
+        "K",
+        "P",
+        "R"
+      ],
       "properties": {
-        "N": {"$ref": "#/$defs/mark"}, "E": {"$ref": "#/$defs/mark"}, "O": {"$ref": "#/$defs/mark"}, "I": {"$ref": "#/$defs/mark"},
-        "Q": {"$ref": "#/$defs/mark"}, "H": {"$ref": "#/$defs/mark"}, "S": {"$ref": "#/$defs/mark"}, "D": {"$ref": "#/$defs/mark"},
-        "F": {"$ref": "#/$defs/mark"}, "C": {"$ref": "#/$defs/mark"}, "V": {"$ref": "#/$defs/mark"}, "X": {"$ref": "#/$defs/mark"},
-        "K": {"$ref": "#/$defs/mark"}, "P": {"$ref": "#/$defs/mark"}, "R": {"$ref": "#/$defs/mark"}
-      }
-    },
-    "loops": {
-      "type": "array", "minItems": 1,
-      "items": {
-        "type": "object", "required": ["name", "steps", "evidence", "where"], "additionalProperties": false,
-        "properties": {
-          "name": {"type": "string", "description": "e.g. 'main', 'outer', 'inner per tree node'"},
-          "steps": {"type": "array", "minItems": 2, "items": {"enum": ["N", "E", "O", "I", "Q", "H", "S", "D", "F", "C", "V", "X", "K", "P", "R"]}},
-          "evidence": {"type": "string"},
-          "where": {"type": "string"}
+        "N": {
+          "$ref": "#/$defs/mark"
+        },
+        "E": {
+          "$ref": "#/$defs/mark"
+        },
+        "O": {
+          "$ref": "#/$defs/mark"
+        },
+        "I": {
+          "$ref": "#/$defs/mark"
+        },
+        "Q": {
+          "$ref": "#/$defs/mark"
+        },
+        "H": {
+          "$ref": "#/$defs/mark"
+        },
+        "S": {
+          "$ref": "#/$defs/mark"
+        },
+        "D": {
+          "$ref": "#/$defs/mark"
+        },
+        "F": {
+          "$ref": "#/$defs/mark"
+        },
+        "C": {
+          "$ref": "#/$defs/mark"
+        },
+        "V": {
+          "$ref": "#/$defs/mark"
+        },
+        "X": {
+          "$ref": "#/$defs/mark"
+        },
+        "K": {
+          "$ref": "#/$defs/mark"
+        },
+        "P": {
+          "$ref": "#/$defs/mark"
+        },
+        "R": {
+          "$ref": "#/$defs/mark"
         }
       }
     },
-    "supplied": {"type": "array", "items": {"type": "string"}, "description": "Nodes given to the system before the loop starts, e.g. Q from the user"},
-    "human_steps": {"type": "array", "items": {"type": "string"}},
-    "return_trigger": {"type": "string"},
-    "stop_rule": {"type": "string"},
-    "no_conclusion_exit": {"enum": ["yes", "flag_only", "no"]},
-    "measured_behaviour": {"type": "string"},
-    "limits": {"type": "string"}
+    "loops": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "steps",
+          "evidence",
+          "where"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "e.g. 'main', 'outer', 'inner per tree node'"
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "enum": [
+                "N",
+                "E",
+                "O",
+                "I",
+                "Q",
+                "H",
+                "S",
+                "D",
+                "F",
+                "C",
+                "V",
+                "X",
+                "K",
+                "P",
+                "R"
+              ]
+            }
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "where": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "supplied": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Nodes given to the system before the loop starts, e.g. Q from the user"
+    },
+    "human_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "return_trigger": {
+      "type": "string"
+    },
+    "stop_rule": {
+      "type": "string"
+    },
+    "no_conclusion_exit": {
+      "enum": [
+        "yes",
+        "flag_only",
+        "no"
+      ]
+    },
+    "measured_behaviour": {
+      "type": "string"
+    },
+    "limits": {
+      "type": "string"
+    },
+    "v_checks": {
+      "type": "array",
+      "description": "Every check of a result (codebook section 3a); may be empty",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "in_loop",
+          "quote",
+          "where"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "reproduction",
+              "replication",
+              "method",
+              "robustness",
+              "control",
+              "generalization"
+            ]
+          },
+          "in_loop": {
+            "type": "boolean"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "where": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
   }
 }

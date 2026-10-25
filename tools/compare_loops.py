@@ -71,6 +71,18 @@ def validate(c: dict) -> list[str]:
             err.append(f"loop {lp.get('name')!r}: steps must be two or more node letters (bad: {bad})")
         if not lp.get('evidence'):
             err.append(f"loop {lp.get('name')!r}: evidence is empty")
+    if 'v_checks' in s['properties']:  # codebook 0.1.2 and later: V follows NASEM (2019) kinds
+        kinds = ('reproduction', 'replication', 'method', 'robustness', 'control', 'generalization')
+        for i, v in enumerate(c.get('v_checks', []), 1):
+            if v.get('kind') not in kinds or not isinstance(v.get('in_loop'), bool) or not (v.get('quote') and v.get('where')):
+                err.append(f'v_checks {i}: needs kind in {kinds}, in_loop true/false, a quote and a where')
+        loop_kinds = {v.get('kind') for v in c.get('v_checks', []) if v.get('in_loop') is True}
+        expect = 'full' if loop_kinds - {'reproduction'} else 'partial' if loop_kinds else None
+        vm = nodes.get('V', {}).get('mark')
+        if expect and vm != expect:
+            err.append(f'node V is {vm!r} but the in-loop v_checks imply {expect!r} (codebook section 3a)')
+        if vm == 'full' and not expect:
+            err.append('node V is full but no in-loop v_check supports it')
     return err
 
 
