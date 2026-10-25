@@ -11,12 +11,22 @@ Rules (each recorded in DECISIONS.md when run):
   - ring 'core': primary topic is one of the convenor's own research topics (weight >= 2 in the profile, Earth-science
     or seismology topics only)
   - ring 'broad': primary topic in a neighbouring Earth-science subfield, not already core
+  - the venue is an Earth-science journal: of its OpenAlex topics (top 25 by count), more than half are geoscience under
+    the breadth v1 topic map; multidisciplinary journals (Nature, Science Advances, Nature Communications, Scientific
+    Reports, Communications Earth & Environment, PNAS, PLOS ONE) are kept when the paper's own topic is geoscience
+  - reviews, overviews and perspectives are excluded (title or venue), since the codebook codes research workflows
   - papers authored by the convenor are excluded; papers with a convenor co-author are kept in the pool and flagged
 Run   : python tools/roadmap/g02_pool.py
 """
 from __future__ import annotations
 from collections import Counter
-from common import DERIVED, decision, log, paged, read_json, sid, write_json
+import csv
+import re
+from common import DERIVED, ROOT, decision, log, openalex, paged, read_json, sid, write_json
+
+AUDIT = ROOT / 'private' / 'analysis' / 'success-set' / 'breadth' / 'topic_audit.csv'
+MULTI = {'S137773608', 'S2737427234', 'S64187185', 'S196734849', 'S4210221880', 'S125754415', 'S202381698'}
+REVIEW = re.compile(r'\b(review|overview|perspectives?|state of the art|progress in)\b', re.I)
 
 HOSTS = {  # OpenAlex host organizations with a full-text route
     'P4310320990': ('Elsevier', 'key'), 'P4310320595': ('Wiley', 'key'), 'P4310315809': ('AGU', 'key'),
@@ -45,6 +55,27 @@ def core_topics(profile: dict) -> list[dict]:
         if t['weight'] >= 2 and earthy and t['subfield'] != 'Civil and Structural Engineering':
             out.append(t)
     return out
+
+
+def topic_geo(tid: str, field_id: str | None, ov: dict) -> bool:
+    if tid in ov:
+        return ov[tid] == 'geo'
+    return field_id in ('19', '23')
+
+
+_SRC: dict = {}
+
+
+def earth_venue(source_id: str | None, ov: dict) -> bool:
+    if not source_id:
+        return False
+    if source_id not in _SRC:
+        s = openalex(f'sources/{source_id}', {'select': 'id,display_name,topics'})
+        ts = (s.get('topics') or [])[:25]
+        geo = sum(t.get('count', 0) for t in ts if topic_geo(sid(t['id']), sid((t.get('field') or {}).get('id')), ov))
+        tot = sum(t.get('count', 0) for t in ts)
+        _SRC[source_id] = (geo / tot) if tot else 0.0
+    return _SRC[source_id] > 0.5
 
 
 def venue(w: dict):
@@ -76,7 +107,22 @@ def slim(w: dict, ring: str, mine: set, coauth: set) -> dict:
             'counts_by_year': {c['year']: c['cited_by_count'] for c in w.get('counts_by_year', [])}}
 
 
+def keep(w: dict, ov: dict) -> bool:
+    if not venue(w):
+        return False
+    src = (w.get('primary_location') or {}).get('source') or {}
+    s = sid(src.get('id'))
+    if REVIEW.search(w.get('title') or '') or REVIEW.search(src.get('display_name') or ''):
+        return False
+    pt = w.get('primary_topic') or {}
+    if s in MULTI:
+        return topic_geo(sid(pt.get('id')), sid((pt.get('field') or {}).get('id')), ov)
+    return earth_venue(s, ov)
+
+
 def main() -> None:
+    ov = {r['topic_id']: {'geoscience': 'geo', 'adjacent': 'near', 'outside': 'far'}[r['verdict'].strip()]
+          for r in csv.DictReader(open(AUDIT)) if r.get('verdict', '').strip() in ('geoscience', 'adjacent', 'outside')}
     prof = read_json(DERIVED / 'gold' / 'author_profile.json')
     mine, coauth = set(prof['author_ids']), set(prof['coauthor_ids'])
     core = core_topics(prof)
@@ -84,16 +130,17 @@ def main() -> None:
     pool, seen = [], set()
     for chunk in [core_ids[i:i + 20] for i in range(0, len(core_ids), 20)]:
         for w in paged('works', {'filter': f"{BASE},primary_topic.id:{'|'.join(chunk)}", 'select': SEL}, cap=60000):
-            if venue(w) and w['id'] not in seen:
+            if w['id'] not in seen and keep(w, ov):
                 seen.add(w['id']); pool.append(slim(w, 'core', mine, coauth))
     for sf in BROAD_SUBFIELDS:
         for w in paged('works', {'filter': f'{BASE},primary_topic.subfield.id:{sf}', 'select': SEL}, cap=60000):
-            if venue(w) and w['id'] not in seen:
+            if w['id'] not in seen and keep(w, ov):
                 seen.add(w['id']); pool.append(slim(w, 'broad', mine, coauth))
     n_mine = sum(p['convenor_author'] for p in pool)
     pool = [p for p in pool if not p['convenor_author']]
     params = {'base_filter': BASE, 'core_topics': [(t['topic_id'], t['topic'], t['weight']) for t in core],
-              'broad_subfields': BROAD_SUBFIELDS, 'hosts': HOSTS, 'sources': SOURCES}
+              'broad_subfields': BROAD_SUBFIELDS, 'hosts': HOSTS, 'sources': SOURCES,
+              'multidisciplinary': sorted(MULTI), 'review_regex': REVIEW.pattern, 'venue_geo_share': _SRC}
     write_json(DERIVED / 'gold' / 'pool.json', pool, ['derived/gold/author_profile.json', 'OpenAlex works API'], params)
     by = Counter((p['ring'], p['route']) for p in pool)
     log('g02_pool.py', '2022 Earth-science articles with a full-text route', len(pool),
@@ -102,6 +149,8 @@ def main() -> None:
     decision(f"Pool = 2022 research articles (abstract, >= 15 references) in venues with a full-text route: keys (Elsevier, Wiley, AGU, "
              f"Springer Nature open access), open (Copernicus/EGU, Science Advances, Seismica), manual (GJI, BSSA, SRL). Restricting to "
              f"fetchable venues is a known availability bias; MDPI, Frontiers, Taylor & Francis and others are out of scope. "
+             f"Venue must be an Earth-science journal (>50% of its top-25 OpenAlex topics geoscience under the breadth v1 map) or a "
+             f"multidisciplinary journal with a geoscience paper; reviews, overviews and perspectives excluded by title or venue. "
              f"Core ring = {len(core)} convenor topics ({', '.join(t['topic'] for t in core)}); broad ring = subfields "
              f"{', '.join(BROAD_SUBFIELDS.values())}. {n_mine} papers authored by the convenor excluded; co-authored papers flagged.")
     print(f'pool {len(pool)}:', dict(by))
