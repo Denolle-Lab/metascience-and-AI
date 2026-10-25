@@ -88,8 +88,15 @@ def matches(path: Path, doi: str, title: str) -> str:
     text = pdf_text(path)
     if not text:
         return 'unchecked (no pdftotext)'
-    if doi.lower() in text.lower().replace('\n', ''):
+    flat = text.lower().replace('\n', '').replace(' ', '')
+    if doi.lower() in flat:
         return 'doi found'
+    # a different DOI from the same publisher prefix (a discussion preprint, a correction, a companion paper) means
+    # another version or another document: reject it even if the title matches
+    prefix = doi.lower().split('/', 1)[0]
+    other = [d for d in re.findall(r'10\.\d{4,5}/[a-z0-9._()/-]+', flat) if d.startswith(prefix + '/') and not d.startswith(doi.lower())]
+    if other:
+        return f'MISMATCH (other version or document: {other[0][:40]})'
     words = [w for w in norm(title).split() if len(w) > 3]
     if words:
         t = norm(text)
@@ -148,6 +155,15 @@ def routes_for(doi: str, title: str, key: str, out: Path) -> tuple[str | None, l
     META[key] = {'title': (w or {}).get('title'), 'year': (w or {}).get('publication_year'),
                  'venue': (((w or {}).get('primary_location') or {}).get('source') or {}).get('display_name')}
     locs = (w or {}).get('locations') or []
+    m0 = re.match(r'10\.5194/([a-z]+)-(\d+)-(\d+)-(\d{4})$', doi, re.I)
+    if m0:  # Copernicus: the final article first; OpenAlex locations can point to the discussion preprint
+        ab, vol, pg, yr = m0.groups()
+        url = f'https://{ab.lower()}.copernicus.org/articles/{vol}/{pg}/{yr}/{ab.lower()}-{vol}-{pg}-{yr}.pdf'
+        data, info = get(url, {'Accept': 'application/pdf,*/*'}, raw=True)
+        ok, why = save(data, dest, doi, title) if data else (False, info)
+        tried.append(f'publisher oa {urllib.parse.urlparse(url).netloc}: {why}')
+        if ok:
+            return f'publisher oa ({urllib.parse.urlparse(url).netloc})', tried
     for loc in locs:
         url = loc.get('pdf_url')
         if not url:

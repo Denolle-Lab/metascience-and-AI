@@ -12,7 +12,7 @@ Measures:
               light normalization (case, whitespace, quote marks, dashes, ligatures, line-end hyphenation); checked against
               the XML text, which serves as the canonical text, and against the PDF text
   locators    share of location fields that point to something that exists: a §-locator or figure/table label in the XML
-              text, or a page number within the PDF's page count
+              text, or a page number within the PDF's page count or within the article's printed page range (XML fpage-lpage)
 Run   : python tools/roadmap/f01_format_test.py
 """
 from __future__ import annotations
@@ -59,8 +59,21 @@ def locations(c: dict) -> list[str]:
     return [x for x in loc if x is not None]
 
 
-def loc_ok(v: str, xml_locs: set, figs: set, npages: int) -> bool:
+def printed_range(key: str) -> tuple[int, int] | None:
+    """First and last printed page from the publisher XML (<fpage>, <lpage>), for codings that cite printed journal pages."""
+    x = ROOT / 'private' / 'data' / 'roadmap' / 'pdfs' / 'gold' / f'{key}.xml'
+    if not x.is_file():
+        return None
+    t = x.read_text(errors='replace')
+    f, l = re.search(r'<fpage[^>]*>(\d+)</fpage>', t), re.search(r'<lpage[^>]*>(\d+)</lpage>', t)
+    return (int(f.group(1)), int(l.group(1))) if f and l else None
+
+
+def loc_ok(v: str, xml_locs: set, figs: set, npages: int, printed: tuple | None = None) -> bool:
     v = v.strip()
+    parts = [x.strip() for x in re.split(r'[;,]', v) if x.strip()]
+    if len(parts) > 1:  # a compound location is valid when every part is
+        return all(loc_ok(x, xml_locs, figs, npages, printed) for x in parts)
     m = re.search(r'§\s*([0-9A-Za-z.]+)\s*¶\s*(\d+)', v)
     if m:
         return f'§{m.group(1)} ¶{m.group(2)}' in xml_locs
@@ -68,10 +81,11 @@ def loc_ok(v: str, xml_locs: set, figs: set, npages: int) -> bool:
     if m and not re.fullmatch(r'\d+', v):
         kind = 'Table' if m.group(1).lower().startswith('tab') else 'Figure'
         return (f'{kind} {m.group(2)}' in figs) if figs else True  # without captions in the XML, a figure number cannot be checked
-    m = re.fullmatch(r'(?:p\.?\s*)?(\d+)(?:\s*[-–]\s*(\d+))?', v)
+    m = re.fullmatch(r'(?:pp?\.?\s*)?(\d+)(?:\s*[-–]\s*(\d+))?', v)
     if m:
-        return 1 <= int(m.group(1)) <= max(npages, 1)
-    return bool(re.fullmatch(r'S\d+', v))
+        n = int(m.group(1))
+        return 1 <= n <= max(npages, 1) or bool(printed and printed[0] <= n <= printed[1])
+    return bool(re.fullmatch(r'S\d+(?:\s*[-–]\s*S?\d+)?', v))
 
 
 def main() -> None:
@@ -105,12 +119,13 @@ def main() -> None:
         xml_locs = set(re.findall(r'\[(§[^ \]]+ ¶\d+)\]', xml_raw))
         figs = set(m.strip() for m in re.findall(r'^\[((?:Figure|Table)[^\]]*)\]', xml_raw, re.M))
         npages = pdf_raw.count('\f') + 1
+        printed = printed_range(k)
         for name, c in cod[k].items():
             arm = re.sub(r'\d', '', name)
             qs = quotes(c)
             fx = [norm(q) in xml_n for q in qs]
             fp = [norm(q) in pdf_n for q in qs]
-            lv = [loc_ok(v, xml_locs, figs, npages) for v in locations(c) if str(v).strip()]
+            lv = [loc_ok(v, xml_locs, figs, npages, printed) for v in locations(c) if str(v).strip()]
             fidelity[arm].append({'key': k, 'name': name, 'quotes': len(qs), 'in_xml': sum(fx), 'in_pdf': sum(fp)})
             locs[arm].append({'key': k, 'name': name, 'locations': len(lv), 'valid': sum(lv)})
             fp_steps = next(s for s in c['sequences'] if s['kind'] == 'final_paper')['steps']
