@@ -21,6 +21,7 @@ About 100 research articles from 2022 near the convenor's research, spanning imp
 | 2 | `g02_pool.py` | `pool.json`: 2022 articles in her topics (core ring) and neighbouring Earth-science subfields (broad ring), in venues with a full-text route |
 | 3 | `g03_preselect.py` | `preselect.json`: 600 papers, ring × impact quintile × subfield |
 | 4 | `g04_metrics.py` | `metrics.json`: novelty proxy (topic-pair rarity), reference breadth, citer breadth (breadth v1) |
+| 5 | `g05_select.py` (first pass, before screening; superseded by step 8) | first `gold_set.json` |
 | 6 | `g06_abstracts.py` | `screen_input.json`, `screen_batches/`: abstracts of the 600 for screening |
 | 7 | workflow `workflows/gold-eligibility-screen.js`, then `g07_eligibility.py` | `eligibility.json`: two independent model screeners per abstract, a third on disagreements |
 | 8 | `g05_select.py` (rerun; reads `eligibility.json`) | `gold_set.json`, `gold_set.md`, `gold_manifest.jsonl`: the frozen set, eligible papers only |
