@@ -185,6 +185,18 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
             and not any(k in b['keys'] and b['tag'] == args.tag and not b.get('collected') for b in st['batches'])]
     if args.limit:
         todo = todo[:args.limit]
+    # spending cap: measured per-paper cost from earlier batches (format test, Oct 25: $0.27 PDF only, $0.39 PDF + XML)
+    spent = sum(v.get('usd', 0) for v in st['done'].values())
+    if getattr(args, 'max_usd', None):
+        per = lambda k: 0.39 if xml_text_for(Path(cands[k]['file'])) else 0.27
+        keep, total = [], spent
+        for k in todo:
+            if total + per(k) > args.max_usd:
+                break
+            keep.append(k); total += per(k)
+        if len(keep) < len(todo):
+            print(f'cap ${args.max_usd:,.0f}: submitting {len(keep)} of {len(todo)} (already spent ${spent:,.2f}, projected ${total:,.2f})')
+        todo = keep
     # rough estimate: 2,300 input tokens per PDF page (text plus page image), 10,000 output tokens incl. thinking
     est_pages = sum(max(4, Path(cands[k]['file']).stat().st_size // 60_000) for k in todo)
     est = (est_pages * 2300 * PRICE['input'] + len(todo) * 10_000 * PRICE['output']) / 1e6 * 0.5
@@ -246,6 +258,7 @@ def main() -> int:
         s.add_argument('--dry-run', action='store_true')
         s.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness'])
         s.add_argument('--no-xml', action='store_true', help='send the PDF only, even when a located XML text exists')
+        s.add_argument('--max-usd', type=float, help='stop submitting before the recorded spend plus the projected cost passes this')
     c = sub.add_parser('collect'); c.add_argument('--tag', default='run1'); c.add_argument('--wait', action='store_true')
     c.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness'])
     o = sub.add_parser('one'); o.add_argument('key'); o.add_argument('--tag', default='run1'); o.add_argument('--effort', default='high')
