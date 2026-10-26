@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inquiry Graph Evaluation</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a two-pane work surface, paper on the left, questions on the right; stacks below 980px. */
+:root {
+  --bg: #f5f4f2; --panel: #ffffff; --fg: #153742; --muted: #5b6f75; --line: #d9dcd8;
+  --accent: #0f4c5c; --accent-soft: #e2ecee; --ok: #2f6b3a; --warn: #8a5a00; --bad: #9b2c2c;
+  --serif: "Source Serif 4", Georgia, serif; --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a1d; --panel: #16252a; --fg: #e3ecee; --muted: #9fb3b8; --line: #2c3f44;
+    --accent: #7fc0cf; --accent-soft: #1d3a42; --ok: #8fd19e; --warn: #e6b45c; --bad: #f08c8c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a1d; --panel: #16252a; --fg: #e3ecee; --muted: #9fb3b8; --line: #2c3f44;
+  --accent: #7fc0cf; --accent-soft: #1d3a42; --ok: #8fd19e; --warn: #e6b45c; --bad: #f08c8c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.5 var(--sans); }
+header.top { padding-block: 18px 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; }
+h1 { font: 600 1.6rem/1.2 var(--serif); margin: 0; text-wrap: balance; }
+.sub { color: var(--muted); font-size: .95rem; max-width: 70ch; }
+.versions { font: 400 .78rem var(--mono); color: var(--muted); }
+main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; min-height: calc(100vh - 90px); }
+@media (max-width: 980px) { main { grid-template-columns: minmax(0, 1fr); } .paper { position: static !important; height: auto !important; } .viewer { height: 70vh; } }
+.paper { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; border-right: 1px solid var(--line);
+  padding: 16px max(16px, env(safe-area-inset-left, 0px)); gap: 12px; min-width: 0; }
+.questions { padding: 16px max(16px, env(safe-area-inset-right, 0px)) 80px 20px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+section.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+section.card > h2 { font: 600 1.15rem/1.25 var(--serif); margin: 0; display: flex; gap: 10px; align-items: baseline; }
+section.card > h2 .n { font: 500 .8rem var(--mono); color: var(--accent); letter-spacing: .04em; }
+.help { color: var(--muted); font-size: .9rem; margin: 0; max-width: 72ch; }
+label { font-weight: 600; font-size: .9rem; }
+input[type=text], input[type=number], select, textarea { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; width: 100%; min-width: 0; }
+textarea { min-height: 2.6em; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button { font: 600 .9rem var(--sans); color: var(--panel); background: var(--accent); border: 0; border-radius: 4px; padding: 7px 12px; cursor: pointer; }
+button.ghost { color: var(--accent); background: transparent; border: 1px solid var(--accent); }
+button.small { padding: 3px 8px; font-size: .8rem; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 8px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 560px) { .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); } }
+.meta { font-size: .92rem; } .meta b { font-family: var(--serif); font-size: 1rem; }
+.viewer { flex: 1; min-height: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.viewer iframe { width: 100%; height: 100%; border: 0; }
+.viewer .empty { color: var(--muted); padding: 24px; text-align: center; max-width: 46ch; }
+.drop { border: 1px dashed var(--accent); border-radius: 6px; padding: 10px; text-align: center; color: var(--muted); font-size: .9rem; }
+.drop.over { background: var(--accent-soft); }
+.mode { border-top: 1px solid var(--line); padding-top: 10px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
+.mode:first-of-type { border-top: 0; padding-top: 0; }
+.mode .name { font-weight: 600; } .mode .purpose { color: var(--muted); font-size: .86rem; grid-column: 1 / -1; }
+.mode .ev { grid-column: 1 / -1; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.seg button { background: transparent; color: var(--fg); border-radius: 0; padding: 4px 10px; font-weight: 400; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed=true] { background: var(--accent); color: var(--panel); font-weight: 600; }
+.ev { display: grid; grid-template-columns: minmax(0, 1fr) 7.5em auto; gap: 6px; align-items: start; }
+@media (max-width: 560px) { .ev { grid-template-columns: minmax(0, 1fr) 6em; } .ev .qc { grid-column: 1 / -1; } }
+.qc { font: 500 .75rem var(--mono); padding: 6px 4px; white-space: nowrap; }
+.qc.ok { color: var(--ok); } .qc.warn { color: var(--warn); } .qc.bad { color: var(--bad); } .qc.none { color: var(--muted); }
+.walk { display: flex; flex-wrap: wrap; gap: 6px; min-height: 2.2em; padding: 6px; border: 1px dashed var(--line); border-radius: 4px; }
+.chip { font: 500 .85rem var(--sans); border: 1px solid var(--accent); color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 2px 4px 2px 10px; display: inline-flex; gap: 4px; align-items: center; }
+.chip.ret { border-style: dashed; }
+.chip .k { font: 500 .72rem var(--mono); opacity: .8; }
+.chip button { background: transparent; color: var(--accent); padding: 0 5px; font-size: .85rem; }
+.palette { display: flex; flex-wrap: wrap; gap: 6px; }
+.palette button { background: var(--panel); color: var(--fg); border: 1px solid var(--line); font-weight: 400; }
+.tq { border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.tq:first-of-type { border-top: 0; padding-top: 0; }
+.tq .q { font-weight: 600; } .tq .q .num { font-family: var(--mono); color: var(--accent); margin-right: 6px; }
+.opts { display: flex; flex-direction: column; gap: 3px; }
+.opts label { font-weight: 400; display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; font-size: .92rem; }
+.opts label > span:first-of-type { white-space: nowrap; }
+.opts .to { color: var(--muted); font-size: .82rem; }
+.status { position: sticky; bottom: 0; background: var(--panel); border-top: 1px solid var(--line); padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; z-index: 5; }
+.status .msg { font-size: .88rem; color: var(--muted); }
+.status .msg.bad { color: var(--bad); }
+.pill { font: 600 .75rem var(--sans); padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+details summary { cursor: pointer; font-weight: 600; }
+.toast { position: fixed; right: 16px; bottom: 70px; background: var(--fg); color: var(--bg); padding: 8px 12px; border-radius: 4px; font-size: .9rem; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.show { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+.sr { position: absolute; left: -9999px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Inquiry Graph Evaluation</h1>
+    <div class="sub">Read one paper and record how its authors moved between modes of inquiry: where the work starts, which modes it uses, and how each decision sent it to the next mode. Back every answer with a short quote and its page.</div>
+  </div>
+  <div class="versions" id="versions"></div>
+</header>
+<main>
+  <aside class="paper" aria-label="The paper">
+    <div class="row">
+      <input type="text" id="doi" placeholder="DOI, e.g. 10.1126/science.1108339" aria-label="DOI" style="flex:1">
+      <button id="lookup">Look up</button>
+    </div>
+    <div class="drop" id="drop">Open the paper's PDF from your computer: <label for="pdf" style="font-weight:600;cursor:pointer;text-decoration:underline">choose a file</label> or drop it here. It stays in this browser; nothing is uploaded.
+      <input type="file" id="pdf" accept="application/pdf" class="sr"></div>
+    <div class="meta" id="meta"><span style="color:var(--muted)">No paper yet. Look up a DOI, open a PDF, or both.</span></div>
+    <div class="viewer" id="viewer"><div class="empty">The PDF opens here. Cite pages by the number the viewer shows (PDF page), so quotes can be checked automatically.</div></div>
+  </aside>
+
+  <div class="questions">
+    <section class="card" id="s-rater">
+      <h2><span class="n">0</span>You</h2>
+      <p class="help">Your initials identify your file among other raters. Nothing is sent anywhere until you send the file yourself.</p>
+      <div class="grid3">
+        <div><label for="r-init">Initials</label><input type="text" id="r-init" maxlength="6"></div>
+        <div><label for="r-field">Field</label><input type="text" id="r-field" placeholder="e.g. seismology"></div>
+        <div><label for="r-fam">Familiarity with this paper</label>
+          <select id="r-fam"><option value="">choose</option><option>never read it</option><option>read it before</option><option>know it well</option><option>an author or close colleague</option></select></div>
+      </div>
+    </section>
+
+    <section class="card" id="s-entry">
+      <h2><span class="n">1</span>Where does the work start?</h2>
+      <p class="help">The state the authors were in before the first step: what they had in hand and what moved them.</p>
+      <div class="grid2">
+        <div><label for="e-state">Starting point</label><select id="e-state"></select></div>
+        <div><label for="e-node">Graph node</label><select id="e-node"></select></div>
+      </div>
+      <div class="ev" data-ev="entry"></div>
+    </section>
+
+    <section class="card" id="s-modes">
+      <h2><span class="n">2</span>Which modes does the paper use?</h2>
+      <p class="help">Mark each mode absent, minor or central. For every mode you mark, quote the passage that shows it (25 words at most) and give the page.</p>
+      <div id="modes"></div>
+    </section>
+
+    <section class="card" id="s-decisive">
+      <h2><span class="n">3</span>Which mode did the decisive work?</h2>
+      <p class="help">The one step without which the main claim would not stand.</p>
+      <select id="d-mode" aria-label="Decisive mode"></select>
+      <div class="ev" data-ev="decisive"></div>
+    </section>
+
+    <section class="card" id="s-walk">
+      <h2><span class="n">4</span>In what order did the modes run?</h2>
+      <p class="help">Click modes in the order the work used them; add a mode again when the work came back to it. Mark a step as a return when it follows a failed attempt. Use the order of the work where the paper reveals it, not the order of the sections.</p>
+      <div class="palette" id="palette" aria-label="Add a mode to the sequence"></div>
+      <div class="walk" id="walk" aria-label="Sequence of modes"></div>
+    </section>
+
+    <section class="card" id="s-tree">
+      <h2><span class="n">5</span>How did the paper decide between modes?</h2>
+      <p class="help">The questions of the decision tree, in order. For each, choose the answer the paper gave and where it led. Choose "not addressed" when the paper never faces the question, and "can't tell" when it does but the text doesn't show the answer.</p>
+      <div id="tree"></div>
+    </section>
+
+    <section class="card" id="s-end">
+      <h2><span class="n">6</span>Where does it end?</h2>
+      <div class="grid2">
+        <div><label for="x-out">Outcome</label><select id="x-out"></select></div>
+        <div><label for="x-status">Claim status</label><select id="x-status"></select></div>
+      </div>
+      <div><label for="x-claim">The main claim, in one sentence of your own</label><textarea id="x-claim"></textarea></div>
+      <div class="ev" data-ev="end"></div>
+    </section>
+
+    <section class="card" id="s-hidden">
+      <h2><span class="n">7</span>What is missing from the paper?</h2>
+      <p class="help">Steps the work must have taken that the paper does not report: failed attempts, abandoned rivals, reruns, choices made before the final design. Say what makes you think so.</p>
+      <textarea id="h-text" style="min-height:5em"></textarea>
+      <div class="row"><label for="h-conf">How sure are you?</label>
+        <select id="h-conf" style="width:auto"><option value="">choose</option><option>guess</option><option>likely</option><option>clear from the text or a review file</option></select></div>
+    </section>
+
+    <section class="card" id="s-ratings">
+      <h2><span class="n">8</span>Your judgment (optional)</h2>
+      <p class="help">Rate without looking up citations or metrics.</p>
+      <div class="grid3">
+        <div><label for="g-nov">Novelty</label><select id="g-nov"></select></div>
+        <div><label for="g-adv">Advance</label><select id="g-adv"></select></div>
+        <div><label for="g-brd">Breadth</label><select id="g-brd"></select></div>
+      </div>
+      <div><label for="g-com">Comments for the coordinators</label><textarea id="g-com"></textarea></div>
+    </section>
+  </div>
+</main>
+<div class="status">
+  <div class="row"><span class="pill" id="done">0 of 7 answered</span><span class="msg" id="msg">Drafts save in this browser as you type.</span></div>
+  <div class="row">
+    <label for="load" class="ghost" style="font-weight:600;cursor:pointer;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:6px 12px;font-size:.9rem">Open a saved file</label>
+    <input type="file" id="load" accept="application/json,.json" class="sr">
+    <button class="ghost" id="copy">Copy answers</button>
+    <button class="ghost" id="reset">Start a new paper</button>
+    <button id="save">Download answers</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const SPEC = {"schema_version": "0.1.0", "graph_version": "0.4.2", "codebook_version": "1.5.0", "modes_version": {"question": "0.1.0", "exploration": "0.4.4", "observation": "0.4.4", "instruments": "0.4.5", "methods": "0.4.4", "estimation": "0.4.3", "regularities": "0.4.5", "theory": "0.4.5", "simulation": "0.4.5", "hypothesis": "0.4.5", "reconstruction": "0.1.0", "synthesis": "0.5.0", "robustness": "0.4.4"}, "built": "2026-10-25", "modes": [{"id": "question", "title": "Question-driven inquiry", "short": "Question", "purpose": "Pose, sharpen, or reframe a research question, and pursue it through partial answers that change the aim, rather than testing a hypothesis already stated.", "version": "0.1.0"}, {"id": "exploration", "title": "Exploratory inquiry", "short": "Exploration", "purpose": "Develop phenomena, questions, candidate relationships, and useful representations.", "version": "0.4.4"}, {"id": "observation", "title": "Observation and description", "short": "Observation", "purpose": "Establish a credible record of a phenomenon, its variability, and what remains unobserved.", "version": "0.4.4"}, {"id": "instruments", "title": "Instruments and observing systems", "short": "Instruments", "purpose": "Expand what can be measured reliably and thereby enable scientific questions.", "version": "0.4.5"}, {"id": "methods", "title": "Methods and computation", "short": "Methods", "purpose": "Expand what can be inferred or computed with an inspectable method.", "version": "0.4.4"}, {"id": "estimation", "title": "Inferential estimation", "short": "Estimation", "purpose": "Recover an unobserved quantity with uncertainty and identifiable limits.", "version": "0.4.3"}, {"id": "regularities", "title": "Statistical modeling and empirical regularities", "short": "Regularities", "purpose": "Establish useful distributions or relationships and the conditions under which they apply.", "version": "0.4.5"}, {"id": "theory", "title": "Theory and mechanistic modeling", "short": "Theory", "purpose": "Create concepts, explanations, and derivations that make new relationships understandable or testable.", "version": "0.4.5"}, {"id": "simulation", "title": "Simulation and prediction", "short": "Simulation", "purpose": "Compute model consequences, investigate scenarios, or make assessed forecasts.", "version": "0.4.5"}, {"id": "hypothesis", "title": "Hypothesis assessment", "short": "Hypothesis", "purpose": "Discriminate among explanations or stated expectations using informative evidence.", "version": "0.4.5"}, {"id": "reconstruction", "title": "Reconstruction from traces", "short": "Reconstruction", "purpose": "Establish what happened in a past event or history, and when, from the physical traces it left, by finding the account that independent traces support and rival histories do not.", "version": "0.1.0"}, {"id": "synthesis", "title": "Cross-study synthesis", "short": "Synthesis", "purpose": "Integrate results from many studies or data sets into a pooled estimate, a reconciled account, or a connection between literatures that no single study supports.", "version": "0.5.0"}, {"id": "robustness", "title": "Replication and robustness assessment", "short": "Robustness", "purpose": "Establish what survives repetition, perturbation, or transfer, and correct consequential errors.", "version": "0.4.4"}], "nodes": [{"k": "N", "verb": "New capability: build and characterize"}, {"k": "E", "verb": "Explore: establish the phenomenon"}, {"k": "O", "verb": "Observe"}, {"k": "I", "verb": "Infer a latent quantity (estimate)"}, {"k": "Q", "verb": "Question"}, {"k": "H", "verb": "Hypothesize: generate rivals"}, {"k": "S", "verb": "Simulate or derive the expectations"}, {"k": "D", "verb": "Design the test"}, {"k": "F", "verb": "Find or set the conditions"}, {"k": "C", "verb": "Compare"}, {"k": "V", "verb": "Vary and replicate"}, {"k": "X", "verb": "eXclude"}, {"k": "K", "verb": "Keep the claim"}, {"k": "P", "verb": "Protect"}, {"k": "R", "verb": "Refine"}], "entry_states": [["anomaly", "an anomaly: something unexpected in data"], ["problem", "an unsolved problem"], ["hypothesis", "a hypothesis to test"], ["data_without_theory", "data without a theory"], ["capability", "a new capability: instrument, method, or data set"], ["external_goal", "a goal set from outside (a mission, a benchmark, a hazard)"], ["challenged_result", "a published result to challenge or replicate"]], "outcomes": [["kept", "kept: the claim is retained"], ["excluded", "excluded: a rival is ruled out"], ["contradicted", "contradicted: an earlier claim is refuted"], ["no_conclusion", "no conclusion reached"]], "statuses": [["confirmed", "confirmed by a test it could have failed"], ["best_explanation", "best explanation among stated rivals"], ["regularity_in_range", "a regularity, within a stated range"], ["estimate_with_resolution", "an estimate with stated resolution or uncertainty"], ["capability_characterized", "a capability, characterized"], ["forecast_skill", "forecast skill, verified"], ["none", "no claim status"]], "tree": {"version": "0.5.1", "start": "Start: a question, an anomaly, data, a capability, or a goal", "questions": [{"n": "1", "q": "Is there a phenomenon?", "sub": "It repeats, and it is not an artifact of the measurement chain.", "down": "yes", "branches": [{"label": "no: the chain is suspect", "name": "Instruments · methods", "ret": "↺ back to 1"}, {"label": "no: not yet stable", "name": "Exploration", "ret": "↺ back to 1"}]}, {"n": "2", "q": "Is the target observed directly?", "sub": "Or is it a latent quantity behind the data?", "down": "yes", "branches": [{"label": "no", "name": "Estimation", "ret": "→ then 3"}]}, {"n": "3", "q": "What is the aim?", "sub": "A mechanism, a relation, a forecast, or a pooled estimate.", "down": "a mechanism", "branches": [{"label": "a relation", "name": "Regularities", "ret": "→ to 7"}, {"label": "a forecast", "name": "Simulation", "ret": "→ to 7"}, {"label": "a pooled estimate", "name": "Cross-study synthesis", "ret": "→ to 7"}]}, {"n": "4", "q": "Two or more rivals?", "sub": "Incompatible explanations, with \"artifact\" kept as one.", "down": "yes", "branches": [{"label": "no", "name": "Theory · hypothesis", "ret": "↺ back to 4"}]}, {"n": "5", "q": "Does each rival predict something different?", "sub": "An expectation for each rival, from H + A + C.", "down": "yes", "branches": [{"label": "no", "name": "Theory · simulation", "ret": "↺ back to 5"}, {"label": "still identical", "name": "A new observable", "ret": "↺ back to 1"}]}, {"n": "6", "q": "Can you set the conditions?", "sub": "Experiment, or conditions found in nature.", "down": "evidence in hand", "branches": [{"label": "yes", "name": "Hypothesis assessment", "ret": "→ to 7"}, {"label": "no: nature repeats it", "name": "Regularities", "ret": "→ to 7"}, {"label": "no: one event", "name": "Reconstruction from traces", "ret": "→ to 7"}]}, {"n": "7", "q": "Does the result survive variation?", "sub": "Replication and robustness (V): vary the auxiliaries A and the conditions C; independent data, methods, models.", "down": "yes", "branches": [{"label": "no: an artifact?", "name": "", "ret": "↺ back to 1"}, {"label": "no: an auxiliary is wrong", "name": "Protect", "ret": "↺ back to 5"}]}, {"n": "8", "q": "Verdict", "sub": "Keep, exclude, contradict: each is a conclusion.", "down": "a conclusion: draft the paper", "branches": [{"label": "survivors remain", "name": "Refine", "ret": "↺ back to 4"}, {"label": "no rival fits", "name": "Surprise", "ret": "↺ back to 1"}, {"label": "no conclusion", "name": "Question-driven inquiry", "ret": "↺ back to start"}, {"label": "still none after reframing", "name": "Failure, recorded", "ret": ""}]}, {"n": "9", "q": "Does the claim survive review?", "sub": "Co-authors, referees, editors, readers.", "down": "accepted", "branches": [{"label": "a new control asked for", "name": "Robustness", "ret": "↺ back to 7"}, {"label": "a new rival named", "name": "Hypothesis assessment", "ret": "↺ back to 4"}, {"label": "the claim is too broad", "name": "Refine the claim", "ret": "→ to Keep"}, {"label": "the request is declined", "name": "Argue and log", "ret": "→ to Keep"}]}]}};
+const $ = id => document.getElementById(id);
+const STORE = 'inquirygraph-evaluation-draft';
+const OUTCOMES = SPEC.outcomes, STATUSES = SPEC.statuses;
+const SCALE = [["","not rated"],["1","1 minimal"],["2","2"],["3","3 typical for the field"],["4","4"],["5","5 exceptional"]];
+
+let S = blank();
+let pdfText = null;   // array of normalized page texts
+let pdfUrl = null;
+
+function blank() {
+  return { schema: "inquirygraph.evaluation", schema_version: SPEC.schema_version, graph_version: SPEC.graph_version,
+    tree_version: SPEC.tree.version, modes_version: SPEC.modes_version, tool: "evaluate/index.html " + SPEC.built,
+    rater: { initials: "", field: "", familiarity: "" },
+    paper: { doi: "", title: "", authors: "", journal: "", year: "", pdf: null, pages_convention: "PDF page as shown in the viewer" },
+    entry: { state: "", node: "", quote: "", page: "" },
+    modes: {}, decisive: { mode: "", quote: "", page: "" }, walk: [], tree: {},
+    end: { outcome: "", status: "", claim: "", quote: "", page: "" },
+    hidden: { text: "", confidence: "" }, ratings: { novelty: "", advance: "", breadth: "" }, comments: "",
+    started: new Date().toISOString(), saved: null };
+}
+function persist() { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} refreshStatus(); }
+function toast(t) { const el = $("toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => el.classList.remove("show"), 2600); }
+function opt(sel, pairs, val) { sel.textContent = ""; for (const [v, t] of pairs) { const o = document.createElement("option"); o.value = v; o.textContent = t; sel.appendChild(o); } sel.value = val || ""; }
+function words(s) { return (s || "").trim().split(/\s+/).filter(Boolean).length; }
+function norm(s) { return (s || "").toLowerCase().replace(/-\s+/g, "").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, "-").replace(/[^a-z0-9'"%.\- ]+/g, " ").replace(/\s+/g, " ").trim(); }
+
+// ---- evidence widget: quote + page + check ----
+function evidence(host, obj, ph) {
+  host.textContent = "";
+  const q = document.createElement("textarea"); q.placeholder = ph || "Quote, 25 words at most"; q.value = obj.quote || ""; q.setAttribute("aria-label", "Quote");
+  const p = document.createElement("input"); p.type = "text"; p.placeholder = "PDF page"; p.value = obj.page || ""; p.setAttribute("aria-label", "Page");
+  const c = document.createElement("span"); c.className = "qc none";
+  const upd = () => { obj.quote = q.value; obj.page = p.value; check(obj, c); persist(); };
+  q.addEventListener("input", upd); p.addEventListener("input", upd);
+  host.append(q, p, c); check(obj, c);
+}
+function check(obj, c) {
+  const n = words(obj.quote);
+  if (!n) { c.className = "qc none"; c.textContent = ""; return; }
+  if (n > 25) { c.className = "qc bad"; c.textContent = n + " words, over 25"; return; }
+  if (!pdfText) { c.className = "qc none"; c.textContent = n + " words"; return; }
+  const needle = norm(obj.quote); const pg = parseInt(String(obj.page).replace(/[^0-9]/g, ""), 10);
+  if (needle.length < 12) { c.className = "qc warn"; c.textContent = "too short to check"; return; }
+  if (pg && pdfText[pg - 1] && pdfText[pg - 1].includes(needle)) { c.className = "qc ok"; c.textContent = "found on p. " + pg; return; }
+  const at = pdfText.findIndex(t => t.includes(needle));
+  if (at >= 0) { c.className = "qc warn"; c.textContent = "found on p. " + (at + 1); return; }
+  c.className = "qc bad"; c.textContent = "not found in PDF";
+}
+function recheckAll() { document.querySelectorAll(".ev").forEach(h => h._redraw && h._redraw()); }
+
+// ---- build sections from SPEC ----
+function build() {
+  $("versions").textContent = "graph v" + SPEC.graph_version + " · decision tree v" + SPEC.tree.version + " · " + SPEC.modes.length + " modes · form v" + SPEC.schema_version;
+  opt($("e-state"), [["", "choose"]].concat(SPEC.entry_states), S.entry.state);
+  opt($("e-node"), [["", "choose"]].concat(SPEC.nodes.map(n => [n.k, n.k + " · " + n.verb])), S.entry.node);
+  $("e-state").onchange = e => { S.entry.state = e.target.value; persist(); };
+  $("e-node").onchange = e => { S.entry.node = e.target.value; persist(); };
+  bindEv("entry", S.entry, "Quote showing where the work starts");
+
+  const box = $("modes"); box.textContent = "";
+  for (const m of SPEC.modes) {
+    S.modes[m.id] = S.modes[m.id] || { role: "absent", quote: "", page: "" };
+    const st = S.modes[m.id];
+    const row = document.createElement("div"); row.className = "mode";
+    const nm = document.createElement("div"); nm.className = "name"; nm.textContent = m.title;
+    const seg = document.createElement("div"); seg.className = "seg"; seg.setAttribute("role", "group"); seg.setAttribute("aria-label", m.title);
+    const ev = document.createElement("div"); ev.className = "ev";
+    for (const r of ["absent", "minor", "central"]) {
+      const b = document.createElement("button"); b.type = "button"; b.textContent = r; b.setAttribute("aria-pressed", String(st.role === r));
+      b.onclick = () => { st.role = r; seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); ev.hidden = r === "absent"; persist(); fillDecisive(); };
+      seg.appendChild(b);
+    }
+    const pu = document.createElement("div"); pu.className = "purpose"; pu.textContent = m.purpose;
+    row.append(nm, seg, pu, ev); box.appendChild(row);
+    ev._redraw = () => evidence(ev, st, "Quote showing " + m.title.toLowerCase()); ev._redraw(); ev.hidden = st.role === "absent";
+  }
+  fillDecisive();
+  $("d-mode").onchange = e => { S.decisive.mode = e.target.value; persist(); };
+  bindEv("decisive", S.decisive, "Quote showing the decisive step");
+
+  const pal = $("palette"); pal.textContent = "";
+  for (const m of SPEC.modes) { const b = document.createElement("button"); b.type = "button"; b.className = "small"; b.textContent = "+ " + m.short; b.onclick = () => { S.walk.push({ mode: m.id, ret: false }); drawWalk(); persist(); }; pal.appendChild(b); }
+  drawWalk();
+
+  const tr = $("tree"); tr.textContent = "";
+  for (const q of SPEC.tree.questions) {
+    S.tree[q.n] = S.tree[q.n] || { answer: "", quote: "", page: "" };
+    const st = S.tree[q.n];
+    const d = document.createElement("div"); d.className = "tq";
+    const h = document.createElement("div"); h.className = "q"; const num = document.createElement("span"); num.className = "num"; num.textContent = q.n; h.append(num, document.createTextNode(q.q));
+    const sub = document.createElement("div"); sub.className = "help"; sub.textContent = q.sub;
+    const os = document.createElement("div"); os.className = "opts"; os.setAttribute("role", "radiogroup"); os.setAttribute("aria-label", "Question " + q.n);
+    const choices = [[q.down, "continue down the tree"]].concat(q.branches.map(b => [b.label, [b.name, b.ret].filter(Boolean).join(" ")]), [["not addressed", "the paper never faces this question"], ["can't tell", "the paper faces it, the text doesn't show how"]]);
+    for (const [v, to] of choices) {
+      const l = document.createElement("label"); const r = document.createElement("input"); r.type = "radio"; r.name = "tq" + q.n; r.value = v; r.checked = st.answer === v;
+      r.onchange = () => { st.answer = v; ev.hidden = v === "not addressed"; persist(); };
+      const t = document.createElement("span"); t.textContent = v; const s = document.createElement("span"); s.className = "to"; s.textContent = to ? "→ " + to : "";
+      l.append(r, t, s); os.appendChild(l);
+    }
+    const ev = document.createElement("div"); ev.className = "ev"; ev._redraw = () => evidence(ev, st, "Quote showing the answer"); ev._redraw(); ev.hidden = !st.answer || st.answer === "not addressed";
+    d.append(h, sub, os, ev); tr.appendChild(d);
+  }
+
+  opt($("x-out"), [["", "choose"]].concat(OUTCOMES), S.end.outcome);
+  opt($("x-status"), [["", "choose"]].concat(STATUSES), S.end.status);
+  $("x-out").onchange = e => { S.end.outcome = e.target.value; persist(); };
+  $("x-status").onchange = e => { S.end.status = e.target.value; persist(); };
+  bindText("x-claim", () => S.end.claim, v => S.end.claim = v);
+  bindEv("end", S.end, "Quote stating the main claim");
+  bindText("h-text", () => S.hidden.text, v => S.hidden.text = v);
+  $("h-conf").value = S.hidden.confidence; $("h-conf").onchange = e => { S.hidden.confidence = e.target.value; persist(); };
+  for (const [id, k] of [["g-nov", "novelty"], ["g-adv", "advance"], ["g-brd", "breadth"]]) { opt($(id), SCALE, S.ratings[k]); $(id).onchange = e => { S.ratings[k] = e.target.value; persist(); }; }
+  bindText("g-com", () => S.comments, v => S.comments = v);
+  bindText("r-init", () => S.rater.initials, v => S.rater.initials = v.toUpperCase());
+  bindText("r-field", () => S.rater.field, v => S.rater.field = v);
+  $("r-fam").value = S.rater.familiarity; $("r-fam").onchange = e => { S.rater.familiarity = e.target.value; persist(); };
+  $("doi").value = S.paper.doi || "";
+  drawMeta(); refreshStatus();
+}
+function bindEv(key, obj, ph) { const h = document.querySelector('[data-ev="' + key + '"]'); h._redraw = () => evidence(h, obj, ph); h._redraw(); }
+function bindText(id, get, set) { const el = $(id); el.value = get() || ""; el.oninput = () => { set(el.value); persist(); }; }
+function fillDecisive() {
+  const used = SPEC.modes.filter(m => S.modes[m.id] && S.modes[m.id].role !== "absent");
+  const list = (used.length ? used : SPEC.modes).map(m => [m.id, m.title]);
+  opt($("d-mode"), [["", used.length ? "choose" : "mark modes in section 2 first, or choose"]].concat(list), S.decisive.mode);
+}
+function drawWalk() {
+  const w = $("walk"); w.textContent = "";
+  if (!S.walk.length) { const e = document.createElement("span"); e.className = "help"; e.textContent = "No steps yet. Click a mode above to add the first step."; w.appendChild(e); }
+  S.walk.forEach((st, i) => {
+    const m = SPEC.modes.find(x => x.id === st.mode); const c = document.createElement("span"); c.className = "chip" + (st.ret ? " ret" : "");
+    const k = document.createElement("span"); k.className = "k"; k.textContent = i + 1; c.append(k, document.createTextNode(" " + (m ? m.short : st.mode)));
+    const mk = (t, title, f) => { const b = document.createElement("button"); b.type = "button"; b.textContent = t; b.title = title; b.setAttribute("aria-label", title + ", step " + (i + 1)); b.onclick = () => { f(); drawWalk(); persist(); }; return b; };
+    c.append(mk(st.ret ? "↺" : "→", st.ret ? "return after a failed attempt (click to unmark)" : "mark as a return after a failed attempt", () => st.ret = !st.ret));
+    if (i) c.append(mk("‹", "move earlier", () => { [S.walk[i - 1], S.walk[i]] = [S.walk[i], S.walk[i - 1]]; }));
+    c.append(mk("×", "remove", () => S.walk.splice(i, 1)));
+    w.appendChild(c);
+  });
+}
+
+// ---- completeness ----
+function answered() {
+  const used = Object.values(S.modes).filter(m => m.role !== "absent");
+  const treeDone = SPEC.tree.questions.filter(q => S.tree[q.n] && S.tree[q.n].answer).length;
+  return [
+    ["the starting point", !!S.entry.state],
+    ["at least one central mode", used.some(m => m.role === "central")],
+    ["the decisive mode", !!S.decisive.mode],
+    ["the sequence of modes", S.walk.length >= 2],
+    ["the decision-tree questions", treeDone === SPEC.tree.questions.length],
+    ["the outcome and claim", !!S.end.outcome && !!S.end.claim.trim()],
+    ["what is missing", !!S.hidden.text.trim()],
+  ];
+}
+function problems() {
+  const p = [];
+  if (!S.paper.doi && !S.paper.pdf) p.push("identify the paper by DOI or PDF");
+  if (!S.rater.initials) p.push("add your initials");
+  const ev = [S.entry, S.decisive, S.end].concat(Object.values(S.modes).filter(m => m.role !== "absent"), Object.values(S.tree).filter(t => t.answer && t.answer !== "not addressed"));
+  if (ev.some(e => words(e.quote) > 25)) p.push("shorten quotes to 25 words");
+  return p;
+}
+function refreshStatus() {
+  const a = answered(); const n = a.filter(x => x[1]).length;
+  $("done").textContent = n + " of " + a.length + " answered";
+  const pr = problems(); const m = $("msg");
+  if (pr.length) { m.className = "msg bad"; m.textContent = "Before you send it: " + pr.join("; ") + "."; }
+  else if (n < a.length) { m.className = "msg"; m.textContent = "Still open: " + a.filter(x => !x[1]).map(x => x[0]).join(", ") + "."; }
+  else { m.className = "msg"; m.textContent = "Complete. Download the file and send it to your coordinator."; }
+}
+
+// ---- paper: DOI lookup and PDF ----
+function cleanDoi(s) { return (s || "").trim().replace(/^https?:\/\/(dx\.)?doi\.org\//i, "").replace(/^doi:\s*/i, ""); }
+async function lookup() {
+  const doi = cleanDoi($("doi").value); if (!doi) { toast("Enter a DOI first."); return; }
+  S.paper.doi = doi; persist(); $("meta").textContent = "Looking up " + doi + " …";
+  try {
+    const r = await fetch("https://api.crossref.org/works/" + encodeURIComponent(doi));
+    if (!r.ok) throw new Error(r.status === 404 ? "Crossref has no record of this DOI" : "Crossref answered " + r.status);
+    const w = (await r.json()).message;
+    S.paper.title = (w.title || [""])[0]; S.paper.journal = (w["container-title"] || [""])[0];
+    S.paper.year = String(((w.issued || {})["date-parts"] || [[""]])[0][0] || "");
+    S.paper.authors = (w.author || []).map(a => [a.given, a.family].filter(Boolean).join(" ")).slice(0, 6).join(", ") + ((w.author || []).length > 6 ? ", et al." : "");
+  } catch (e) { $("meta").textContent = "Could not look up the DOI: " + e.message + ". Check it, or open the PDF instead."; return; }
+  let oa = null;
+  try { const r = await fetch("https://api.openalex.org/works/doi:" + encodeURIComponent(doi)); if (r.ok) { const w = await r.json(); const b = w.best_oa_location || {}; oa = b.pdf_url || b.landing_page_url || null; } } catch (e) {}
+  S.paper.oa_url = oa; persist(); drawMeta();
+}
+function drawMeta() {
+  const m = $("meta"); m.textContent = "";
+  if (!S.paper.title && !S.paper.pdf) { const s = document.createElement("span"); s.style.color = "var(--muted)"; s.textContent = "No paper yet. Look up a DOI, open a PDF, or both."; m.appendChild(s); return; }
+  if (S.paper.title) { const b = document.createElement("b"); b.textContent = S.paper.title; m.appendChild(b); m.appendChild(document.createElement("br"));
+    m.appendChild(document.createTextNode([S.paper.authors, S.paper.journal, S.paper.year].filter(Boolean).join(" · "))); }
+  const links = document.createElement("div"); links.className = "row"; links.style.marginTop = "4px";
+  if (S.paper.doi) { const a = document.createElement("a"); a.href = "https://doi.org/" + S.paper.doi; a.target = "_blank"; a.rel = "noopener"; a.textContent = "publisher page"; links.appendChild(a); }
+  if (S.paper.oa_url) { const a = document.createElement("a"); a.href = S.paper.oa_url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "open-access copy (download it, then open it here)"; links.appendChild(a); }
+  else if (S.paper.doi && S.paper.title) { const s = document.createElement("span"); s.className = "help"; s.textContent = "No open-access copy found; use your library access."; links.appendChild(s); }
+  if (S.paper.pdf) { const s = document.createElement("span"); s.className = "help"; s.textContent = "PDF: " + S.paper.pdf.name + " · " + S.paper.pdf.pages + " pages" + (pdfText ? "" : " (open it again to check quotes)"); links.appendChild(s); }
+  m.appendChild(links);
+}
+async function openPdf(file) {
+  if (!file || !/pdf$/i.test(file.type || file.name)) { toast("That is not a PDF."); return; }
+  const buf = await file.arrayBuffer();
+  const hash = await crypto.subtle.digest("SHA-256", buf); const hex = [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, "0")).join("");
+  if (pdfUrl) URL.revokeObjectURL(pdfUrl); pdfUrl = URL.createObjectURL(new Blob([buf], { type: "application/pdf" }));
+  const v = $("viewer"); v.textContent = ""; const f = document.createElement("iframe"); f.src = pdfUrl; f.title = "PDF of the paper"; v.appendChild(f);
+  let pages = null, firstText = "";
+  if (window.pdfjsLib) {
+    try {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buf.slice(0)) }).promise; pages = doc.numPages; pdfText = [];
+      for (let i = 1; i <= pages; i++) { const tc = await (await doc.getPage(i)).getTextContent(); const t = tc.items.map(x => x.str + (x.hasEOL ? " " : "")).join(" "); pdfText.push(norm(t)); firstText += " " + t; }
+    } catch (e) { pdfText = null; toast("The PDF opened, but its text could not be read, so quotes can't be checked."); }
+  }
+  const all = (firstText.match(/10\.\d{4,9}\/[^\s"<>]+/g) || []).map(d => d.replace(/[.,;)\]]+$/, ""));
+  const want = (S.paper.doi || "").toLowerCase();
+  const doiInPdf = all.find(d => d.toLowerCase() === want) || all[0] || null;
+  const prev = S.paper.pdf;
+  S.paper.pdf = { name: file.name, sha256: hex, pages: pages, doi_printed: doiInPdf, dois_printed: all.slice(0, 5) };
+  if (prev && prev.sha256 && prev.sha256 !== hex) toast("This is a different file from the one these answers were made on.");
+  if (!S.paper.doi && S.paper.pdf.doi_printed) { $("doi").value = S.paper.pdf.doi_printed; lookup(); }
+  else if (S.paper.doi && all.length && !all.some(d => d.toLowerCase() === want)) toast("The DOI you looked up is not printed in this PDF (it shows " + all[0] + "). Check it is the right paper.");
+  persist(); drawMeta(); recheckAll();
+}
+
+// ---- save, load, copy ----
+function exportObj() { S.saved = new Date().toISOString(); persist(); return S; }
+function fileName() { const k = (S.paper.doi || (S.paper.pdf && S.paper.pdf.name) || "paper").replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 60); return k + "." + (S.rater.initials || "XX") + ".evaluation.json"; }
+$("save").onclick = () => {
+  const pr = problems(); if (pr.length) { toast("Fix first: " + pr.join("; ") + "."); return; }
+  const blob = new Blob([JSON.stringify(exportObj(), null, 2)], { type: "application/json" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("Downloaded " + fileName());
+};
+$("copy").onclick = async () => { const t = JSON.stringify(exportObj(), null, 2); try { await navigator.clipboard.writeText(t); toast("Answers copied."); } catch (e) { toast("Copy failed; use Download instead."); } };
+$("load").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try { const o = JSON.parse(await f.text()); if (o.schema !== "inquirygraph.evaluation") throw new Error("not an evaluation file");
+    S = Object.assign(blank(), o); persist(); build(); toast("Opened " + f.name + (S.paper.pdf ? ". Open its PDF again to check quotes." : ".")); }
+  catch (err) { toast("Could not open that file: " + err.message + "."); }
+  e.target.value = "";
+};
+$("reset").onclick = () => {
+  const b = $("reset");
+  if (b.dataset.arm !== "1") { b.dataset.arm = "1"; b.textContent = "Click again to clear"; setTimeout(() => { b.dataset.arm = ""; b.textContent = "Start a new paper"; }, 4000); return; }
+  const keep = S.rater; S = blank(); S.rater = keep; pdfText = null; if (pdfUrl) URL.revokeObjectURL(pdfUrl); pdfUrl = null;
+  $("viewer").innerHTML = '<div class="empty">The PDF opens here.</div>'; b.dataset.arm = ""; b.textContent = "Start a new paper"; persist(); build(); toast("Cleared. Your initials are kept.");
+};
+$("lookup").onclick = lookup; $("doi").addEventListener("keydown", e => { if (e.key === "Enter") lookup(); });
+$("pdf").onchange = e => openPdf(e.target.files[0]);
+const drop = $("drop");
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); openPdf(e.dataTransfer.files[0]); });
+
+try { const d = JSON.parse(localStorage.getItem(STORE) || "null"); if (d && d.schema === "inquirygraph.evaluation") S = Object.assign(blank(), d); } catch (e) {}
+build();
+</script>
+</body>
+</html>
