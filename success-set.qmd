@@ -4,14 +4,14 @@
 
 - Positive test cases. A scoring rule, a mode agent, or an evaluation protocol that cannot recognize these as advances, reproduce what they report, or catch what a careful reader would catch, fails.
 - Slides: [modes-meeting deck](slides/modes-meeting.html).
-- Each paper is used three ways: metrics (section 1), a mode coding on [graph v0.4](unit.qmd#the-graph) (section 2), and a [historical-evaluation](success-set.qmd) case (section 3).
+- Each paper is used three ways: metrics (section 1), a mode coding on [graph v0.4](unit.qmd#the-graph) (section 2), and a historical-evaluation case (section 3).
 - Full codings, with a page for every claim: `private/analysis/success-set/`. Metric values: `private/success-set-indicators.json`. Reading copies: the convenor's shared folder.
 
 ## The set
 
 | Stratum | Papers | How chosen | What success means here |
 |:--|:--|:--|:--|
-| Recognized | @vine1963; @shapiro2005; @rodell2009; @lam2023 | Meet the [selection rule](success-set.qmd): *Nature* or *Science*, at or above the 99th citation percentile, interdisciplinary input or uptake | Impact already observed |
+| Recognized | @vine1963; @shapiro2005; @rodell2009; @lam2023 | Meet the selection rule: *Nature* or *Science*, at or above the 99th citation percentile, interdisciplinary input or uptake | Impact already observed |
 | Designated | @graff2025; @normandeau2025; @sun2026; @xu2025 | Chosen by the convenor, 2025–2026 | Impact not yet observable; their success is a prediction the group can check |
 
 - Six rule-qualified candidates have no full text on file yet and stay candidates: @molina1974, @alvarez1980, @farman1985, @massonnet1993, @rockstrom2009, @lindsey2019.
@@ -43,7 +43,7 @@
 ### Against matched controls
 
 - **Design.** For each paper, three research articles from the same journal and year, in the same OpenAlex subfield, at the median citation rank of that pool. Type article, at least 20 references (5 for 1963, when reference lists were short), retrieved anonymously on October 20, 2026. The same measures as above.
-- **The citation percentile cannot separate advances inside these journals.** A median-ranked Earth-science article in *Nature* or *Science* already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile rule on the [historical-evaluation page](success-set.qmd) selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.
+- **The citation percentile cannot separate advances inside these journals.** A median-ranked Earth-science article in *Nature* or *Science* already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile selection rule used for the recognized papers selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.
 
 | Paper | Match (pool) | Citations, paper / median control | Citers outside geoscience | References outside geoscience | Diversity of citing fields | CD₅ without n_k |
 |:--|:--|:--|:--|:--|:--|:--|
@@ -180,7 +180,7 @@
 | @sun2026 | Reproduction | Correct the borehole pressure records for drift, convert to strain, test locking (pp. 4–9) | Table 1 strain rates; data and code stated to be with the paper (p. 12) | Seafloor drift rates in the text, +0.52, +0.14, and +0.43 kPa/yr (p. 9), differ from Fig. 2 and Table 1, 0.42, 0.13, and 0.39 kPa/yr (pp. 2, 4) | Recent, April 2026 |
 | @xu2025 | Decision reconstruction, extension | Between March 28 and April 28, 2025: test supershear with independent observables | Supershear at about 5 km/s over about 450 km in the south; cross-fault Vs of 2.9 against 3.3 km/s as a held-out check (p. 477) | The fault-parallel motion test is not unique (p. 478); the mechanism combines eight options, none excluded | Recent; an EarthArXiv preprint exists |
 
-- **Exposure.** The four recognized papers are in any model's training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models' training; check each model's training cutoff and whether it can recall the result before using them for decision reconstruction ([contamination](success-set.qmd)).
+- **Exposure.** The four recognized papers are in any model's training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models' training; check each model's training cutoff and whether it can recall the result before using them for decision reconstruction.
 - **Errors in the text are a separate item from planted flaws.** An agent that reproduces a result should also flag the Turner-angle sign and the survey date. A model that has memorized the paper may repeat them.
 
 ## What this page does not establish
