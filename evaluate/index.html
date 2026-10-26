@@ -92,6 +92,8 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .status .msg.bad { color: var(--bad); }
 .pill { font: 600 .75rem var(--sans); padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
 details summary { cursor: pointer; font-weight: 600; }
+.send { flex-basis: 100%; color: var(--muted); font-size: .88rem; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.send b { font-family: var(--mono); font-weight: 500; user-select: all; }
 .toast { position: fixed; right: 16px; bottom: 70px; background: var(--fg); color: var(--bg); padding: 8px 12px; border-radius: 4px; font-size: .9rem; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
 .toast.show { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
@@ -102,7 +104,7 @@ details summary { cursor: pointer; font-weight: 600; }
 <header class="top">
   <div>
     <h1>Inquiry Graph Evaluation</h1>
-    <div class="sub">Read one paper and record how its authors moved between modes of inquiry: where the work starts, which modes it uses, and how each decision sent it to the next mode. Back every answer with a short quote and its page.</div>
+    <div class="sub">Read one paper and record how its authors moved between modes of inquiry: where the work starts, which modes it uses, and how each decision sent it to the next mode. Back every answer with a short quote and its page. When you finish, download your answers and email the file to mdenolle@uw.edu.</div>
   </div>
   <div class="versions" id="versions"></div>
 </header>
@@ -205,6 +207,7 @@ details summary { cursor: pointer; font-weight: 600; }
     <button class="ghost" id="reset">Start a new paper</button>
     <button id="save">Download answers</button>
   </div>
+  <div class="send" id="send">Send your answers: download the file, then email it as an attachment to <b id="addr"></b> <button class="ghost small" id="copyaddr" type="button">Copy address</button> <a id="mail" href="#">open an email</a></div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -213,6 +216,7 @@ details summary { cursor: pointer; font-weight: 600; }
 const SPEC = {"schema_version": "0.1.0", "graph_version": "0.4.2", "codebook_version": "1.5.0", "modes_version": {"question": "0.1.0", "exploration": "0.4.4", "observation": "0.4.4", "instruments": "0.4.5", "methods": "0.4.4", "estimation": "0.4.3", "regularities": "0.4.5", "theory": "0.4.5", "simulation": "0.4.5", "hypothesis": "0.4.5", "reconstruction": "0.1.0", "synthesis": "0.5.0", "robustness": "0.4.4"}, "built": "2026-10-25", "modes": [{"id": "question", "title": "Question-driven inquiry", "short": "Question", "purpose": "Pose, sharpen, or reframe a research question, and pursue it through partial answers that change the aim, rather than testing a hypothesis already stated.", "version": "0.1.0"}, {"id": "exploration", "title": "Exploratory inquiry", "short": "Exploration", "purpose": "Develop phenomena, questions, candidate relationships, and useful representations.", "version": "0.4.4"}, {"id": "observation", "title": "Observation and description", "short": "Observation", "purpose": "Establish a credible record of a phenomenon, its variability, and what remains unobserved.", "version": "0.4.4"}, {"id": "instruments", "title": "Instruments and observing systems", "short": "Instruments", "purpose": "Expand what can be measured reliably and thereby enable scientific questions.", "version": "0.4.5"}, {"id": "methods", "title": "Methods and computation", "short": "Methods", "purpose": "Expand what can be inferred or computed with an inspectable method.", "version": "0.4.4"}, {"id": "estimation", "title": "Inferential estimation", "short": "Estimation", "purpose": "Recover an unobserved quantity with uncertainty and identifiable limits.", "version": "0.4.3"}, {"id": "regularities", "title": "Statistical modeling and empirical regularities", "short": "Regularities", "purpose": "Establish useful distributions or relationships and the conditions under which they apply.", "version": "0.4.5"}, {"id": "theory", "title": "Theory and mechanistic modeling", "short": "Theory", "purpose": "Create concepts, explanations, and derivations that make new relationships understandable or testable.", "version": "0.4.5"}, {"id": "simulation", "title": "Simulation and prediction", "short": "Simulation", "purpose": "Compute model consequences, investigate scenarios, or make assessed forecasts.", "version": "0.4.5"}, {"id": "hypothesis", "title": "Hypothesis assessment", "short": "Hypothesis", "purpose": "Discriminate among explanations or stated expectations using informative evidence.", "version": "0.4.5"}, {"id": "reconstruction", "title": "Reconstruction from traces", "short": "Reconstruction", "purpose": "Establish what happened in a past event or history, and when, from the physical traces it left, by finding the account that independent traces support and rival histories do not.", "version": "0.1.0"}, {"id": "synthesis", "title": "Cross-study synthesis", "short": "Synthesis", "purpose": "Integrate results from many studies or data sets into a pooled estimate, a reconciled account, or a connection between literatures that no single study supports.", "version": "0.5.0"}, {"id": "robustness", "title": "Replication and robustness assessment", "short": "Robustness", "purpose": "Establish what survives repetition, perturbation, or transfer, and correct consequential errors.", "version": "0.4.4"}], "nodes": [{"k": "N", "verb": "New capability: build and characterize"}, {"k": "E", "verb": "Explore: establish the phenomenon"}, {"k": "O", "verb": "Observe"}, {"k": "I", "verb": "Infer a latent quantity (estimate)"}, {"k": "Q", "verb": "Question"}, {"k": "H", "verb": "Hypothesize: generate rivals"}, {"k": "S", "verb": "Simulate or derive the expectations"}, {"k": "D", "verb": "Design the test"}, {"k": "F", "verb": "Find or set the conditions"}, {"k": "C", "verb": "Compare"}, {"k": "V", "verb": "Vary and replicate"}, {"k": "X", "verb": "eXclude"}, {"k": "K", "verb": "Keep the claim"}, {"k": "P", "verb": "Protect"}, {"k": "R", "verb": "Refine"}], "entry_states": [["anomaly", "an anomaly: something unexpected in data"], ["problem", "an unsolved problem"], ["hypothesis", "a hypothesis to test"], ["data_without_theory", "data without a theory"], ["capability", "a new capability: instrument, method, or data set"], ["external_goal", "a goal set from outside (a mission, a benchmark, a hazard)"], ["challenged_result", "a published result to challenge or replicate"]], "outcomes": [["kept", "kept: the claim is retained"], ["excluded", "excluded: a rival is ruled out"], ["contradicted", "contradicted: an earlier claim is refuted"], ["no_conclusion", "no conclusion reached"]], "statuses": [["confirmed", "confirmed by a test it could have failed"], ["best_explanation", "best explanation among stated rivals"], ["regularity_in_range", "a regularity, within a stated range"], ["estimate_with_resolution", "an estimate with stated resolution or uncertainty"], ["capability_characterized", "a capability, characterized"], ["forecast_skill", "forecast skill, verified"], ["none", "no claim status"]], "tree": {"version": "0.5.1", "start": "Start: a question, an anomaly, data, a capability, or a goal", "questions": [{"n": "1", "q": "Is there a phenomenon?", "sub": "It repeats, and it is not an artifact of the measurement chain.", "down": "yes", "branches": [{"label": "no: the chain is suspect", "name": "Instruments · methods", "ret": "↺ back to 1"}, {"label": "no: not yet stable", "name": "Exploration", "ret": "↺ back to 1"}]}, {"n": "2", "q": "Is the target observed directly?", "sub": "Or is it a latent quantity behind the data?", "down": "yes", "branches": [{"label": "no", "name": "Estimation", "ret": "→ then 3"}]}, {"n": "3", "q": "What is the aim?", "sub": "A mechanism, a relation, a forecast, or a pooled estimate.", "down": "a mechanism", "branches": [{"label": "a relation", "name": "Regularities", "ret": "→ to 7"}, {"label": "a forecast", "name": "Simulation", "ret": "→ to 7"}, {"label": "a pooled estimate", "name": "Cross-study synthesis", "ret": "→ to 7"}]}, {"n": "4", "q": "Two or more rivals?", "sub": "Incompatible explanations, with \"artifact\" kept as one.", "down": "yes", "branches": [{"label": "no", "name": "Theory · hypothesis", "ret": "↺ back to 4"}]}, {"n": "5", "q": "Does each rival predict something different?", "sub": "An expectation for each rival, from H + A + C.", "down": "yes", "branches": [{"label": "no", "name": "Theory · simulation", "ret": "↺ back to 5"}, {"label": "still identical", "name": "A new observable", "ret": "↺ back to 1"}]}, {"n": "6", "q": "Can you set the conditions?", "sub": "Experiment, or conditions found in nature.", "down": "evidence in hand", "branches": [{"label": "yes", "name": "Hypothesis assessment", "ret": "→ to 7"}, {"label": "no: nature repeats it", "name": "Regularities", "ret": "→ to 7"}, {"label": "no: one event", "name": "Reconstruction from traces", "ret": "→ to 7"}]}, {"n": "7", "q": "Does the result survive variation?", "sub": "Replication and robustness (V): vary the auxiliaries A and the conditions C; independent data, methods, models.", "down": "yes", "branches": [{"label": "no: an artifact?", "name": "", "ret": "↺ back to 1"}, {"label": "no: an auxiliary is wrong", "name": "Protect", "ret": "↺ back to 5"}]}, {"n": "8", "q": "Verdict", "sub": "Keep, exclude, contradict: each is a conclusion.", "down": "a conclusion: draft the paper", "branches": [{"label": "survivors remain", "name": "Refine", "ret": "↺ back to 4"}, {"label": "no rival fits", "name": "Surprise", "ret": "↺ back to 1"}, {"label": "no conclusion", "name": "Question-driven inquiry", "ret": "↺ back to start"}, {"label": "still none after reframing", "name": "Failure, recorded", "ret": ""}]}, {"n": "9", "q": "Does the claim survive review?", "sub": "Co-authors, referees, editors, readers.", "down": "accepted", "branches": [{"label": "a new control asked for", "name": "Robustness", "ret": "↺ back to 7"}, {"label": "a new rival named", "name": "Hypothesis assessment", "ret": "↺ back to 4"}, {"label": "the claim is too broad", "name": "Refine the claim", "ret": "→ to Keep"}, {"label": "the request is declined", "name": "Argue and log", "ret": "→ to Keep"}]}]}};
 const $ = id => document.getElementById(id);
 const STORE = 'inquirygraph-evaluation-draft';
+const SEND_TO = 'mdenolle@uw.edu';
 const OUTCOMES = SPEC.outcomes, STATUSES = SPEC.statuses;
 const SCALE = [["","not rated"],["1","1 minimal"],["2","2"],["3","3 typical for the field"],["4","4"],["5","5 exceptional"]];
 
@@ -379,7 +383,7 @@ function refreshStatus() {
   const pr = problems(); const m = $("msg");
   if (pr.length) { m.className = "msg bad"; m.textContent = "Before you send it: " + pr.join("; ") + "."; }
   else if (n < a.length) { m.className = "msg"; m.textContent = "Still open: " + a.filter(x => !x[1]).map(x => x[0]).join(", ") + "."; }
-  else { m.className = "msg"; m.textContent = "Complete. Download the file and send it to your coordinator."; }
+  else { m.className = "msg"; m.textContent = "Complete. Download the file and email it to " + SEND_TO + "."; }
 }
 
 // ---- paper: DOI lookup and PDF ----
@@ -443,7 +447,7 @@ $("save").onclick = () => {
   const pr = problems(); if (pr.length) { toast("Fix first: " + pr.join("; ") + "."); return; }
   const blob = new Blob([JSON.stringify(exportObj(), null, 2)], { type: "application/json" });
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("Downloaded " + fileName());
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("Downloaded " + fileName() + ". Now email it to " + SEND_TO + "."); drawMail();
 };
 $("copy").onclick = async () => { const t = JSON.stringify(exportObj(), null, 2); try { await navigator.clipboard.writeText(t); toast("Answers copied."); } catch (e) { toast("Copy failed; use Download instead."); } };
 $("load").onchange = async e => {
@@ -466,8 +470,16 @@ drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add(
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); openPdf(e.dataTransfer.files[0]); });
 
+function drawMail() {
+  $("addr").textContent = SEND_TO;
+  const subj = "Inquiry graph evaluation: " + (S.paper.doi || (S.paper.pdf && S.paper.pdf.name) || "paper") + " (" + (S.rater.initials || "initials") + ")";
+  const body = "Attached: " + fileName() + "\n\nPaper: " + (S.paper.title || "") + "\nDOI: " + (S.paper.doi || "") + "\n";
+  $("mail").href = "mailto:" + SEND_TO + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+}
+$("copyaddr").onclick = async () => { try { await navigator.clipboard.writeText(SEND_TO); toast("Address copied."); } catch (e) { toast("Select the address and copy it."); } };
+$("mail").addEventListener("focus", drawMail); $("mail").addEventListener("mouseenter", drawMail);
 try { const d = JSON.parse(localStorage.getItem(STORE) || "null"); if (d && d.schema === "inquirygraph.evaluation") S = Object.assign(blank(), d); } catch (e) {}
-build();
+build(); drawMail();
 </script>
 </body>
 </html>

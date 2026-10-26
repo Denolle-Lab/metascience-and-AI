@@ -92,6 +92,8 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .status .msg.bad { color: var(--bad); }
 .pill { font: 600 .75rem var(--sans); padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
 details summary { cursor: pointer; font-weight: 600; }
+.send { flex-basis: 100%; color: var(--muted); font-size: .88rem; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.send b { font-family: var(--mono); font-weight: 500; user-select: all; }
 .toast { position: fixed; right: 16px; bottom: 70px; background: var(--fg); color: var(--bg); padding: 8px 12px; border-radius: 4px; font-size: .9rem; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
 .toast.show { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
@@ -102,7 +104,7 @@ details summary { cursor: pointer; font-weight: 600; }
 <header class="top">
   <div>
     <h1>Inquiry Graph Evaluation</h1>
-    <div class="sub">Read one paper and record how its authors moved between modes of inquiry: where the work starts, which modes it uses, and how each decision sent it to the next mode. Back every answer with a short quote and its page.</div>
+    <div class="sub">Read one paper and record how its authors moved between modes of inquiry: where the work starts, which modes it uses, and how each decision sent it to the next mode. Back every answer with a short quote and its page. When you finish, download your answers and email the file to mdenolle@uw.edu.</div>
   </div>
   <div class="versions" id="versions"></div>
 </header>
@@ -205,6 +207,7 @@ details summary { cursor: pointer; font-weight: 600; }
     <button class="ghost" id="reset">Start a new paper</button>
     <button id="save">Download answers</button>
   </div>
+  <div class="send" id="send">Send your answers: download the file, then email it as an attachment to <b id="addr"></b> <button class="ghost small" id="copyaddr" type="button">Copy address</button> <a id="mail" href="#">open an email</a></div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -213,6 +216,7 @@ details summary { cursor: pointer; font-weight: 600; }
 const SPEC = /*__SPEC__*/null;
 const $ = id => document.getElementById(id);
 const STORE = 'inquirygraph-evaluation-draft';
+const SEND_TO = 'mdenolle@uw.edu';
 const OUTCOMES = SPEC.outcomes, STATUSES = SPEC.statuses;
 const SCALE = [["","not rated"],["1","1 minimal"],["2","2"],["3","3 typical for the field"],["4","4"],["5","5 exceptional"]];
 
@@ -379,7 +383,7 @@ function refreshStatus() {
   const pr = problems(); const m = $("msg");
   if (pr.length) { m.className = "msg bad"; m.textContent = "Before you send it: " + pr.join("; ") + "."; }
   else if (n < a.length) { m.className = "msg"; m.textContent = "Still open: " + a.filter(x => !x[1]).map(x => x[0]).join(", ") + "."; }
-  else { m.className = "msg"; m.textContent = "Complete. Download the file and send it to your coordinator."; }
+  else { m.className = "msg"; m.textContent = "Complete. Download the file and email it to " + SEND_TO + "."; }
 }
 
 // ---- paper: DOI lookup and PDF ----
@@ -443,7 +447,7 @@ $("save").onclick = () => {
   const pr = problems(); if (pr.length) { toast("Fix first: " + pr.join("; ") + "."); return; }
   const blob = new Blob([JSON.stringify(exportObj(), null, 2)], { type: "application/json" });
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("Downloaded " + fileName());
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000); toast("Downloaded " + fileName() + ". Now email it to " + SEND_TO + "."); drawMail();
 };
 $("copy").onclick = async () => { const t = JSON.stringify(exportObj(), null, 2); try { await navigator.clipboard.writeText(t); toast("Answers copied."); } catch (e) { toast("Copy failed; use Download instead."); } };
 $("load").onchange = async e => {
@@ -466,8 +470,16 @@ drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add(
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); openPdf(e.dataTransfer.files[0]); });
 
+function drawMail() {
+  $("addr").textContent = SEND_TO;
+  const subj = "Inquiry graph evaluation: " + (S.paper.doi || (S.paper.pdf && S.paper.pdf.name) || "paper") + " (" + (S.rater.initials || "initials") + ")";
+  const body = "Attached: " + fileName() + "\n\nPaper: " + (S.paper.title || "") + "\nDOI: " + (S.paper.doi || "") + "\n";
+  $("mail").href = "mailto:" + SEND_TO + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+}
+$("copyaddr").onclick = async () => { try { await navigator.clipboard.writeText(SEND_TO); toast("Address copied."); } catch (e) { toast("Select the address and copy it."); } };
+$("mail").addEventListener("focus", drawMail); $("mail").addEventListener("mouseenter", drawMail);
 try { const d = JSON.parse(localStorage.getItem(STORE) || "null"); if (d && d.schema === "inquirygraph.evaluation") S = Object.assign(blank(), d); } catch (e) {}
-build();
+build(); drawMail();
 </script>
 </body>
 </html>
