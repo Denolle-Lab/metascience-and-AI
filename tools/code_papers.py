@@ -11,6 +11,7 @@ Restartable: all state lives in private/analysis/codings/api/state.json. Typical
   python3 tools/code_papers.py submit --tag full --batch-size 200          everything with a PDF, in batches
   python3 tools/code_papers.py one KEY [--tag T]                           one paper now (refusal fallback on)
   python3 tools/code_papers.py cleanup-files                               delete uploaded PDFs no longer needed
+  Add --review-dir DIR to submit/retry/one to attach DIR/<key>/discussion.txt (an open review record) and code a review sequence.
   Add --no-xml to submit/retry/one to send the PDF without the located publisher XML text (<key>.xml.txt beside the PDF,
   attached by default under codebook v1.4.0).
   Add --task readiness to submit/collect/retry/one for AI-readiness draft annotations (tools/ai_readiness
@@ -47,6 +48,7 @@ BASE = ROOT / 'private' / 'analysis' / 'codings' / 'api'
 STATE = BASE / 'state.json'
 READINESS_DIR = ROOT / 'tools' / 'ai_readiness'
 NO_XML = False     # set from --no-xml: send the PDF without the located XML text (format test arm P)
+REVIEW_DIR = None  # set from --review-dir: attach <dir>/<key>/discussion.txt (open review record) and code a review sequence
 TASK = 'inquiry'   # set from --task: 'inquiry' (codebook coding) or 'readiness' (AI-readiness draft annotation)
 
 
@@ -130,14 +132,25 @@ def xml_text_for(pdf: Path) -> str | None:
     return t.read_text() if t.is_file() and not NO_XML else None
 
 
+def review_text_for(key: str) -> str | None:
+    """Open review record of the paper (tools/roadmap/g15_open_review.py), with [RC1 ¶n] / [RC1 p.n] locators."""
+    if not REVIEW_DIR:
+        return None
+    t = Path(REVIEW_DIR) / key / 'discussion.txt'
+    return t.read_text() if t.is_file() and t.stat().st_size > 400 else None
+
+
 def params(key: str, doi: str, file_id: str, effort: str, max_tokens: int, review_id: str | None = None,
-           xml_text: str | None = None) -> dict:
+           xml_text: str | None = None, review_text: str | None = None) -> dict:
     content = [{'type': 'document', 'source': {'type': 'file', 'file_id': file_id}}]
     if xml_text and TASK == 'inquiry':
         content.append({'type': 'document', 'title': 'Publisher full text from XML, with section and paragraph locators',
                         'source': {'type': 'text', 'media_type': 'text/plain', 'data': xml_text}})
     if review_id:
         content.append({'type': 'document', 'source': {'type': 'file', 'file_id': review_id}})
+    if review_text and TASK == 'inquiry':
+        content.append({'type': 'document', 'title': 'Open review record: referee, author, community and editor comments, with [ID ¶n] or [ID p.n] locators',
+                        'source': {'type': 'text', 'media_type': 'text/plain', 'data': review_text}})
     if TASK == 'readiness':
         content.append({'type': 'text', 'text': f'Draft the AI-readiness annotation for this paper. paper_id = {key}; doi = {doi}. '
                         'Use "unknown" or empty lists where the paper gives no evidence; do not infer use from a model name.'})
@@ -145,7 +158,8 @@ def params(key: str, doi: str, file_id: str, effort: str, max_tokens: int, revie
                     messages=[{'role': 'user', 'content': content}])
     content.append({'type': 'text', 'text': f'Code this paper. key = {key}; doi = {doi}; coder = "{MODEL}"; '
                     f'codebook_version = "{codebook_version()}". The first document is the published paper'
-                    + ('; a later document is its review file or earlier version: code a review sequence too.' if review_id else '.')
+                    + ('; a later document is its review file or earlier version: code a review sequence too.' if (review_id or review_text) else '.')
+                    + (' For the review sequence, cite the review record\'s own locators (for example "RC1 ¶4" or "AC2 p.3").' if review_text else '')
                     + (' The publisher XML text is also attached: quote from it and cite its \u00a7-locators (codebook section 1); '
                        'use PDF pages only for steps read off a figure.' if xml_text else '')})
     return dict(model=MODEL, max_tokens=max_tokens, system=system_blocks(), output_config={'effort': effort},
@@ -209,7 +223,7 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
         for k in chunk:
             fid = upload(client, st, k, Path(cands[k]['file']))
             save_state(st)
-            reqs.append(Request(custom_id=k, params=MessageCreateParamsNonStreaming(**params(k, cands[k]['doi'], fid, args.effort, max_tokens, xml_text=xml_text_for(Path(cands[k]['file']))))))
+            reqs.append(Request(custom_id=k, params=MessageCreateParamsNonStreaming(**params(k, cands[k]['doi'], fid, args.effort, max_tokens, xml_text=xml_text_for(Path(cands[k]['file'])), review_text=review_text_for(k)))))
         b = client.messages.batches.create(requests=reqs)
         st['batches'].append({'id': b.id, 'tag': args.tag, 'keys': chunk, 'submitted': time.strftime('%Y-%m-%d %H:%M'),
                               'codebook': codebook_version(), 'effort': args.effort, 'max_tokens': max_tokens, 'collected': False})
@@ -258,19 +272,22 @@ def main() -> int:
         s.add_argument('--dry-run', action='store_true')
         s.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness'])
         s.add_argument('--no-xml', action='store_true', help='send the PDF only, even when a located XML text exists')
+        s.add_argument('--review-dir', help='attach <dir>/<key>/discussion.txt, the open review record, and code a review sequence')
         s.add_argument('--max-usd', type=float, help='stop submitting before the recorded spend plus the projected cost passes this')
     c = sub.add_parser('collect'); c.add_argument('--tag', default='run1'); c.add_argument('--wait', action='store_true')
     c.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness'])
     o = sub.add_parser('one'); o.add_argument('key'); o.add_argument('--tag', default='run1'); o.add_argument('--effort', default='high')
     o.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness'])
     o.add_argument('--no-xml', action='store_true')
+    o.add_argument('--review-dir')
     co = sub.add_parser('cost'); co.add_argument('--tag')
     ins = sub.add_parser('inspect', help='print each request\'s result type and error message for one batch'); ins.add_argument('batch_id')
     sub.add_parser('status'); sub.add_parser('cleanup-files')
     args = ap.parse_args()
-    global TASK, NO_XML
+    global TASK, NO_XML, REVIEW_DIR
     TASK = getattr(args, 'task', 'inquiry')
     NO_XML = getattr(args, 'no_xml', False)
+    REVIEW_DIR = getattr(args, 'review_dir', None)
     if TASK == 'readiness' and getattr(args, 'tag', None) and not args.tag.endswith('-readiness'):
         args.tag += '-readiness'   # keep readiness drafts apart from inquiry codings in state and folders
     st = load_state()
@@ -301,7 +318,7 @@ def main() -> int:
         if args.key not in cands:
             print('no PDF in the queue for that key'); return 1
         fid = upload(client, st, args.key, Path(cands[args.key]['file'])); save_state(st)
-        p = params(args.key, cands[args.key]['doi'], fid, args.effort, 64000, xml_text=xml_text_for(Path(cands[args.key]['file'])))
+        p = params(args.key, cands[args.key]['doi'], fid, args.effort, 64000, xml_text=xml_text_for(Path(cands[args.key]['file'])), review_text=review_text_for(args.key))
         try:
             with client.beta.messages.stream(**p, betas=['server-side-fallback-2026-07-01'], fallbacks='default') as stream:
                 msg = stream.get_final_message()
