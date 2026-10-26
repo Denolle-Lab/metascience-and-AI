@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A thirteen-meeting reading club studying scientific advance through plural epistemic modes, and designing agents evaluated against documented scientific work.">
+
+<title>From graph to decision tree – MetaScience, Scientific Inquiry, and Agents</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./metrics.html" rel="next">
+<link href="./walks.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ac7d07509a5ec904cce7a8a576ef775b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit.html">The graph of inquiry</a></li><li class="breadcrumb-item"><a href="./decision-tree.html">From graph to decision tree</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MetaScience, Scientific Inquiry, and Agents</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Denolle-Lab/metascience-and-AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this Group Meeting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Defining the modes of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modes of inquiry: definitions, evidence, and the graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/question.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Question-driven inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/hypothesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruments and observing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods and computation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cross-study synthesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/reconstruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reconstruction from traces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication and robustness assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">The graph of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walking the graph: eight papers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./decision-tree.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">From graph to decision tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Outcomes and test cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./success-set.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Success set: test cases for evaluation and mode analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inquirygraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">inquirygraph: the coding agent and its gold set</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meetings held</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meeting notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-the-eight-walks-say-about-v0.4" id="toc-what-the-eight-walks-say-about-v0.4" class="nav-link active" data-scroll-target="#what-the-eight-walks-say-about-v0.4">1. What the eight walks say about v0.4</a></li>
+  <li><a href="#clelands-schema-is-the-record" id="toc-clelands-schema-is-the-record" class="nav-link" data-scroll-target="#clelands-schema-is-the-record">2. Cleland’s schema is the record</a></li>
+  <li><a href="#three-levels" id="toc-three-levels" class="nav-link" data-scroll-target="#three-levels">3. Three levels</a></li>
+  <li><a href="#the-decision-tree" id="toc-the-decision-tree" class="nav-link" data-scroll-target="#the-decision-tree">4. The decision tree</a></li>
+  <li><a href="#the-eight-papers-on-the-tree" id="toc-the-eight-papers-on-the-tree" class="nav-link" data-scroll-target="#the-eight-papers-on-the-tree">5. The eight papers on the tree</a></li>
+  <li><a href="#what-process-documents-show" id="toc-what-process-documents-show" class="nav-link" data-scroll-target="#what-process-documents-show">6. What process documents show</a></li>
+  <li><a href="#loops-in-automated-science" id="toc-loops-in-automated-science" class="nav-link" data-scroll-target="#loops-in-automated-science">7. Loops in automated science</a></li>
+  <li><a href="#what-would-show-the-tree-is-wrong" id="toc-what-would-show-the-tree-is-wrong" class="nav-link" data-scroll-target="#what-would-show-the-tree-is-wrong">8. What would show the tree is wrong</a></li>
+  <li><a href="#decisions-and-change-log" id="toc-decisions-and-change-log" class="nav-link" data-scroll-target="#decisions-and-change-log">9. Decisions and change log</a></li>
+  <li><a href="#for-the-room" id="toc-for-the-room" class="nav-link" data-scroll-target="#for-the-room">10. For the room</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/decision-tree.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit.html">The graph of inquiry</a></li><li class="breadcrumb-item"><a href="./decision-tree.html">From graph to decision tree</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">From graph to decision tree</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="status adopted">Adopted</span> <span class="status-line">controller v0.5.1 · adopted by the convenor on October 21, 2026 · room discussion pending · graph v0.4.2 is the vocabulary · source <code>agents/controller/decision-tree.json</code></span></p>
+<ul>
+<li><strong>The controller in three lines.</strong> Cleland’s schema, <span class="math inline">\(H + A + C \Rightarrow E\)</span>, is the record a project fills. The thirteen <a href="./modes.html">modes</a> are the units that fill it, each with its own inner loop and stopping rule. A decision tree reads the record and calls the next mode; the project ends in a paper when the record carries the evidence its claim owes.</li>
+<li><strong>Why a tree.</strong> The seminar’s aim is a procedure that a scientist or an agent can follow during a project, not only a map for coding finished papers. A tree states, at each point, the question to ask, the answer that sends the work elsewhere, and the mode that does the work.</li>
+<li>The node graph (v0.4.2, on <a href="./unit.html#the-graph">the unit page</a>) stays as the vocabulary inside the modes. The tree is the level above it.</li>
+</ul>
+<section id="what-the-eight-walks-say-about-v0.4" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-eight-walks-say-about-v0.4">1. What the eight walks say about v0.4</h2>
+<ul>
+<li><strong>Nodes held, edges did not.</strong> Every coded step (91 of 91) landed on a v0.4 node, but only 24 of the 83 transitions between steps follow an edge the graph draws (<a href="./walks.html">walks</a>).</li>
+<li><strong>The loops are between modes, for coder 1.</strong> At the node level the papers return to a node already visited 11 times. At the mode level they return to a mode already used 27 times, in all eight papers; Xu et al.&nbsp;return eight times. Counts are from the coded steps in <code>private/analysis/success-set/build/steps.py</code>, consecutive repeats merged.</li>
+<li><strong>The blind coders disagree on where the loops sit.</strong> Two blind model coders (Opus 5.5 and Sonnet 5.5, paper codebook 1.3.0, October 25, 2026) cut finer steps: 169 and 108 against 91. They find 83 and 33 node returns against 78 and 38 mode returns. The between-modes reading is not yet coder-independent (final-paper sequences in <code>private/analysis/reliability/codings/papers/</code>, consecutive repeats merged).</li>
+<li><strong>Hypothesis assessment is a hub.</strong> The most frequent two-way hand-offs:</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pair of modes</th>
+<th style="text-align: left;">Hand-offs, both directions</th>
+<th style="text-align: left;">Papers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hypothesis assessment ↔︎ theory</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hypothesis assessment ↔︎ simulation</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Simulation ↔︎ robustness</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hypothesis assessment ↔︎ robustness</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hypothesis assessment ↔︎ estimation</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hypothesis assessment ↔︎ observation</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Methods ↔︎ observation</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hypothesis assessment is one side of five of the seven most frequent pairs, for coder 1. For both blind coders the most frequent pair is estimation ↔︎ observation (17 and 13 hand-offs, in 6 of 8 papers each).</li>
+<li><strong>Shape, for coder 1.</strong> Every paper enters through a capability or record mode (methods 2, instruments 2, observation 3, estimation 1). The middle is a loop around hypothesis assessment. Four of eight leave through synthesis.</li>
+<li><strong>Shape, for the blind coders.</strong> They open 5 (Opus 5.5) and 6 (Sonnet 5.5) of 8 papers with a question step; after it, a capability or record mode comes first in 7 and 5 of 8. The last step is in synthesis for 2 and 0 of 8; hypothesis assessment is their most common last mode (3 of 8 each). Codebook 1.3.0 has no rule for the mode of a K step, so exit modes are soft.</li>
+<li><strong>What this cannot show.</strong> The order is the order of the paper’s account; the table and the walks are one reader’s coding (coder 1); supplements were not read for four papers. Section 6 tests that limit on nine papers with <a href="#what-process-documents-show">process documents</a>.</li>
+</ul>
+</section>
+<section id="clelands-schema-is-the-record" class="level2">
+<h2 class="anchored" data-anchor-id="clelands-schema-is-the-record">2. Cleland’s schema is the record</h2>
+<ul>
+<li>The schema <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 987–88</a>)</span>: a hypothesis <span class="math inline">\(H\)</span>, with auxiliary assumptions <span class="math inline">\(A\)</span> and conditions <span class="math inline">\(C\)</span>, implies an expected observation <span class="math inline">\(E\)</span>. A mismatch refutes the conjunction, not <span class="math inline">\(H\)</span> alone <span class="citation" data-cites="duhem1954">(<a href="bibliography.html#ref-duhem1954" role="doc-biblioref">Duhem 1954</a>)</span>.</li>
+<li>A project’s record holds each term, the observations <span class="math inline">\(O\)</span> that <span class="math inline">\(E\)</span> is compared with, and the status of the claim. Every mode is defined by what it reads from the record and what it writes. <a href="./modes.html#fig-mode-map">the figure on the modes page</a> draws the same table.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Term</th>
+<th style="text-align: left;">What it holds</th>
+<th style="text-align: left;">Modes that write it</th>
+<th style="text-align: left;">Nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(Q\)</span></td>
+<td style="text-align: left;">The target: a question, an anomaly, a goal</td>
+<td style="text-align: left;">Question-driven inquiry; exploration; observation</td>
+<td style="text-align: left;">Q, E</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(O\)</span></td>
+<td style="text-align: left;">Observations with their provenance</td>
+<td style="text-align: left;">Observation; instruments; reconstruction (independent traces); cross-study synthesis (pooled results)</td>
+<td style="text-align: left;">N, O, E</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(O^*\)</span></td>
+<td style="text-align: left;">A latent quantity inferred from <span class="math inline">\(O\)</span> through a forward model</td>
+<td style="text-align: left;">Estimation</td>
+<td style="text-align: left;">I</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(A\)</span></td>
+<td style="text-align: left;">Auxiliaries: instrument theory, forward model, processing, background laws</td>
+<td style="text-align: left;">Instruments; methods; theory; revised only at P</td>
+<td style="text-align: left;">N, I, P</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(H\)</span></td>
+<td style="text-align: left;">Rival explanations, with how each was generated</td>
+<td style="text-align: left;">Theory; hypothesis assessment; regularities (a relation proposed as a law)</td>
+<td style="text-align: left;">H, R</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(C\)</span></td>
+<td style="text-align: left;">Conditions, set by the investigator or found in nature</td>
+<td style="text-align: left;">Hypothesis assessment (set); reconstruction and regularities (found)</td>
+<td style="text-align: left;">D, F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(E\)</span></td>
+<td style="text-align: left;">The expectation from each rival</td>
+<td style="text-align: left;">Theory (derivation); simulation (computation)</td>
+<td style="text-align: left;">S</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Verdict</td>
+<td style="text-align: left;">Comparison, robustness, decision, status</td>
+<td style="text-align: left;">Hypothesis assessment; replication and robustness</td>
+<td style="text-align: left;">C, V, X, K</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>What the schema adds to the modes.</strong> It names what a mode may not do. Estimation writes <span class="math inline">\(O^*\)</span> and cannot write <span class="math inline">\(H\)</span>; a resolved parameter is not a mechanism. Simulation writes <span class="math inline">\(E\)</span> and cannot write <span class="math inline">\(O\)</span>. Robustness varies <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span>; when it revises one instead, that is P and is logged.</li>
+<li><strong>What the modes add to the schema.</strong> Cleland’s schema has no term for the capability to observe or for whether a phenomenon exists. Instruments, methods, and exploration produce those, and most of the coded advances began there (<a href="./modes.html#how-the-modes-have-been-studied">modes</a>, 13 of 18 episodes).</li>
+</ul>
+</section>
+<section id="three-levels" class="level2">
+<h2 class="anchored" data-anchor-id="three-levels">3. Three levels</h2>
+<ol type="1">
+<li><strong>The record</strong>: the schema terms above, with provenance.</li>
+<li><strong>The modes</strong>: each runs an inner loop over graph nodes until its stopping rule holds, then hands back what it wrote.</li>
+<li><strong>The controller</strong>: the decision tree in section 4, which reads the record and calls the next mode.</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mode</th>
+<th style="text-align: left;">Inner loop (nodes)</th>
+<th style="text-align: left;">Stops when</th>
+<th style="text-align: left;">Hands back</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/observation.html">Observation</a></td>
+<td style="text-align: left;">O, E, O</td>
+<td style="text-align: left;">The record repeats across sessions or sensors; coverage limits stated</td>
+<td style="text-align: left;"><span class="math inline">\(O\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/exploration.html">Exploration</a></td>
+<td style="text-align: left;">E, O, E, varying conditions and representations</td>
+<td style="text-align: left;">A phenomenon repeats and survives a check of the chain <span class="citation" data-cites="bogen1988 steinle1997">(<a href="bibliography.html#ref-bogen1988" role="doc-biblioref">Bogen and Woodward 1988</a>; <a href="bibliography.html#ref-steinle1997" role="doc-biblioref">Steinle 1997</a>)</span></td>
+<td style="text-align: left;"><span class="math inline">\(Q\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/instruments.html">Instruments</a></td>
+<td style="text-align: left;">N, O, V</td>
+<td style="text-align: left;">Response known; an independent sensor agrees</td>
+<td style="text-align: left;"><span class="math inline">\(A\)</span> and new <span class="math inline">\(O\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/methods.html">Methods</a></td>
+<td style="text-align: left;">N, I, V on synthetic data</td>
+<td style="text-align: left;">Recovers synthetics; failure cases known</td>
+<td style="text-align: left;"><span class="math inline">\(A\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/estimation.html">Estimation</a></td>
+<td style="text-align: left;">I, C, I</td>
+<td style="text-align: left;">Misfit at noise level; resolution and uncertainty stated <span class="citation" data-cites="backus1968 tarantola2005">(<a href="bibliography.html#ref-backus1968" role="doc-biblioref">Backus and Gilbert 1968</a>; <a href="bibliography.html#ref-tarantola2005" role="doc-biblioref">Tarantola 2005</a>)</span></td>
+<td style="text-align: left;"><span class="math inline">\(O^*\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/theory.html">Theory</a></td>
+<td style="text-align: left;">H, S</td>
+<td style="text-align: left;">A valid derivation; a distinct expectation per rival</td>
+<td style="text-align: left;"><span class="math inline">\(H\)</span>, <span class="math inline">\(E\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/simulation.html">Simulation</a></td>
+<td style="text-align: left;">S, C, S</td>
+<td style="text-align: left;">Converged; verified against a reference; forecasts frozen before the outcome <span class="citation" data-cites="charney1950">(<a href="bibliography.html#ref-charney1950" role="doc-biblioref">Charney et al. 1950</a>)</span></td>
+<td style="text-align: left;"><span class="math inline">\(E\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/regularities.html">Regularities</a></td>
+<td style="text-align: left;">C, K, C out of sample</td>
+<td style="text-align: left;">Holds out of sample; range stated</td>
+<td style="text-align: left;"><span class="math inline">\(H\)</span> as a relation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/hypothesis.html">Hypothesis assessment</a></td>
+<td style="text-align: left;">H, S, D, F, O, C, X or K, R</td>
+<td style="text-align: left;">One rival left, or abstention naming the deciding observation <span class="citation" data-cites="platt1964 chamberlin1965">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964</a>; <a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">Chamberlin 1965</a>)</span></td>
+<td style="text-align: left;">Verdict</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/synthesis.html">Cross-study synthesis</a></td>
+<td style="text-align: left;">O over many studies, C, K</td>
+<td style="text-align: left;">The pooled estimate is stable to removing any one study; dependence stated <span class="citation" data-cites="gurevitch2018">(<a href="bibliography.html#ref-gurevitch2018" role="doc-biblioref">Gurevitch et al. 2018</a>)</span></td>
+<td style="text-align: left;"><span class="math inline">\(O\)</span> pooled</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/reconstruction.html">Reconstruction from traces</a></td>
+<td style="text-align: left;">F found, O over independent traces, C</td>
+<td style="text-align: left;">Independent traces converge on one account <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002</a>)</span></td>
+<td style="text-align: left;">Verdict</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="./modes/question.html">Question-driven inquiry</a></td>
+<td style="text-align: left;">Q, then back to the start</td>
+<td style="text-align: left;">The reframed question names what would answer it</td>
+<td style="text-align: left;"><span class="math inline">\(Q\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="./modes/robustness.html">Robustness</a></td>
+<td style="text-align: left;">V over <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span></td>
+<td style="text-align: left;">Survives variation; or scope revised <span class="citation" data-cites="wimsatt2012 lloyd2010">(<a href="bibliography.html#ref-wimsatt2012" role="doc-biblioref">Wimsatt 2012</a>; <a href="bibliography.html#ref-lloyd2010" role="doc-biblioref">Lloyd 2010</a>)</span></td>
+<td style="text-align: left;">Status</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The stopping rules are the “evidence owed” sections of the mode pages, shortened. Each is a hypothesis for the room.</li>
+</ul>
+</section>
+<section id="the-decision-tree" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-decision-tree">4. The decision tree</h2>
+<!-- tree:begin (generated by tools/build_tree.py) -->
+<div id="fig-tree" class="column-body-outset quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="dtree">
+<div class="dt-start">Start: a question, an anomaly, data, a capability, or a goal</div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">1</span><div><b>Is there a phenomenon?</b><br><span class="dt-sub">It repeats, and it is not an artifact of the measurement chain.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no: the chain is suspect</span><div class="dt-mode"><b>Instruments · methods</b> <span class="dt-nodes">N</span><br>characterize the chain<span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no: not yet stable</span><div class="dt-mode"><b>Exploration</b> <span class="dt-nodes">E, O</span><br>vary conditions until it repeats<span class="dt-ret">↺ back to 1</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">2</span><div><b>Is the target observed directly?</b><br><span class="dt-sub">Or is it a latent quantity behind the data?</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Estimation</b> <span class="dt-nodes">I</span><br>invert through a forward model; state resolution<span class="dt-ret">→ then 3</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">3</span><div><b>What is the aim?</b><br><span class="dt-sub">A mechanism, a relation, a forecast, or a pooled estimate.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">a relation</span><div class="dt-mode"><b>Regularities</b> <span class="dt-nodes">C, K</span><br>fit across repetitions; test out of sample<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">a forecast</span><div class="dt-mode"><b>Simulation</b> <span class="dt-nodes">S, C</span><br>freeze the forecast; compare when the outcome arrives<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">a pooled estimate</span><div class="dt-mode"><b>Cross-study synthesis</b> <span class="dt-nodes">O, C, K</span><br>state the inclusion rule; model dependence between studies<span class="dt-ret">→ to 7</span></div></div></div>
+</div>
+<div class="dt-down"><span>a mechanism</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">4</span><div><b>Two or more rivals?</b><br><span class="dt-sub">Incompatible explanations, with "artifact" kept as one.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Theory · hypothesis</b> <span class="dt-nodes">H</span><br>generate rivals; record how each was generated<span class="dt-ret">↺ back to 4</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">5</span><div><b>Does each rival predict something different?</b><br><span class="dt-sub">An expectation for each rival, from H + A + C.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Theory · simulation</b> <span class="dt-nodes">S</span><br>derive or compute each expectation<span class="dt-ret">↺ back to 5</span></div></div><div class="dt-br"><span class="dt-lab">still identical</span><div class="dt-mode"><b>A new observable</b> <span class="dt-nodes">N</span><br>a capability that separates the rivals<span class="dt-ret">↺ back to 1</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">6</span><div><b>Can you set the conditions?</b><br><span class="dt-sub">Experiment, or conditions found in nature.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">yes</span><div class="dt-mode"><b>Hypothesis assessment</b> <span class="dt-nodes">D, F, O, C</span><br>design the test, set the conditions, observe, compare<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">no: nature repeats it</span><div class="dt-mode"><b>Regularities</b> <span class="dt-nodes">F, O, C</span><br>nature's repetition<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">no: one event</span><div class="dt-mode"><b>Reconstruction from traces</b> <span class="dt-nodes">F, O, C</span><br>independent traces of the same event; rival histories<span class="dt-ret">→ to 7</span></div></div></div>
+</div>
+<div class="dt-down"><span>evidence in hand</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">7</span><div><b>Does the result survive variation?</b><br><span class="dt-sub">Replication and robustness (V): vary the auxiliaries A and the conditions C; independent data, methods, models.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no: an artifact?</span><div class="dt-mode dt-back"><span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no: an auxiliary is wrong</span><div class="dt-mode dt-esc"><b>Protect</b> <span class="dt-nodes">P</span><br>revise A instead of H; logged; must predict something new (cap: open)<span class="dt-ret">↺ back to 5</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">8</span><div><b>Verdict</b><br><span class="dt-sub">Keep, exclude, contradict: each is a conclusion.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">survivors remain</span><div class="dt-mode"><b>Refine</b> <span class="dt-nodes">R</span><br>split the survivors into subhypotheses<span class="dt-ret">↺ back to 4</span></div></div><div class="dt-br"><span class="dt-lab">no rival fits</span><div class="dt-mode"><b>Surprise</b> <span class="dt-nodes">E</span><br>an outcome no rival predicted: explore it<span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no conclusion</span><div class="dt-mode"><b>Question-driven inquiry</b> <span class="dt-nodes">Q</span><br>reframe the question; record why the first framing could not be answered<span class="dt-ret">↺ back to start</span></div></div><div class="dt-br"><span class="dt-lab">still none after reframing</span><div class="dt-mode dt-end"><b>Failure, recorded</b><br>name the observation that would decide</div></div></div>
+</div>
+<div class="dt-down"><span>a conclusion: draft the paper</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">9</span><div><b>Does the claim survive review?</b><br><span class="dt-sub">Co-authors, referees, editors, readers.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">a new control asked for</span><div class="dt-mode"><b>Robustness</b> <span class="dt-nodes">V</span><br>run it; it usually enters as a planned-looking figure<span class="dt-ret">↺ back to 7</span></div></div><div class="dt-br"><span class="dt-lab">a new rival named</span><div class="dt-mode"><b>Hypothesis assessment</b> <span class="dt-nodes">H</span><br>test it, or state why it is excluded<span class="dt-ret">↺ back to 4</span></div></div><div class="dt-br"><span class="dt-lab">the claim is too broad</span><div class="dt-mode"><b>Refine the claim</b> <span class="dt-nodes">R</span><br>narrow it to what the evidence carries<span class="dt-ret">→ to Keep</span></div></div><div class="dt-br"><span class="dt-lab">the request is declined</span><div class="dt-mode dt-back"><b>Argue and log</b><br>keep the design; record the reason<span class="dt-ret">→ to Keep</span></div></div></div>
+</div>
+<div class="dt-down"><span>accepted</span></div>
+<div class="dt-keep"><b>Conclusion</b>: keep, exclude, or contradict the claim, with its status, and publish the record, the path including its loops, and the evidence the mode owes.</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The research decision tree, v0.5.1 (adopted by the convenor; room discussion pending). Questions about the record run down the left; each answer that sends the work elsewhere calls a mode (right, with the graph nodes it runs) and returns to the question marked ↺. Every route that produces evidence reaches question 7, robustness, before the verdict. A project fails only when no conclusion is reached after the question has been reframed. Source: <code>agents/controller/decision-tree.json</code>, v0.5.1.
+</figcaption>
+</figure>
+</div>
+<!-- tree:end -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Reads from the record</th>
+<th style="text-align: left;">If the answer sends work elsewhere</th>
+<th style="text-align: left;">Source of the rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1. Is there a phenomenon?</td>
+<td style="text-align: left;"><span class="math inline">\(O\)</span> and the chain in <span class="math inline">\(A\)</span></td>
+<td style="text-align: left;">Instruments or methods if the chain is suspect; exploration if the record does not yet repeat</td>
+<td style="text-align: left;"><span class="citation" data-cites="bogen1988">Bogen and Woodward (<a href="bibliography.html#ref-bogen1988" role="doc-biblioref">1988</a>)</span>; <span class="citation" data-cites="steinle1997">Steinle (<a href="bibliography.html#ref-steinle1997" role="doc-biblioref">1997</a>)</span>; <span class="citation" data-cites="hacking1983">Hacking (<a href="bibliography.html#ref-hacking1983" role="doc-biblioref">1983</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2. Is the target observed directly?</td>
+<td style="text-align: left;"><span class="math inline">\(O\)</span></td>
+<td style="text-align: left;">Estimation, which needs a forward model in <span class="math inline">\(A\)</span></td>
+<td style="text-align: left;"><span class="citation" data-cites="backus1968">Backus and Gilbert (<a href="bibliography.html#ref-backus1968" role="doc-biblioref">1968</a>)</span>; <span class="citation" data-cites="tarantola2005">Tarantola (<a href="bibliography.html#ref-tarantola2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="bokulich2020">Bokulich (<a href="bibliography.html#ref-bokulich2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. What is the aim?</td>
+<td style="text-align: left;"><span class="math inline">\(Q\)</span></td>
+<td style="text-align: left;">A relation goes to regularities; a forecast to simulation; a pooled estimate to cross-study synthesis; a mechanism to question 4</td>
+<td style="text-align: left;"><span class="citation" data-cites="charney1950">Charney et al. (<a href="bibliography.html#ref-charney1950" role="doc-biblioref">1950</a>)</span>; <span class="citation" data-cites="cleland2002">Cleland (<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>, p.&nbsp;485; <span class="citation" data-cites="gurevitch2018">Gurevitch et al. (<a href="bibliography.html#ref-gurevitch2018" role="doc-biblioref">2018</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Two or more rivals?</td>
+<td style="text-align: left;"><span class="math inline">\(H\)</span></td>
+<td style="text-align: left;">Theory and hypothesis generation, artifact kept as a rival</td>
+<td style="text-align: left;"><span class="citation" data-cites="chamberlin1965">Chamberlin (<a href="bibliography.html#ref-chamberlin1965" role="doc-biblioref">1965</a>)</span>; <span class="citation" data-cites="platt1964">Platt (<a href="bibliography.html#ref-platt1964" role="doc-biblioref">1964</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Distinct predictions?</td>
+<td style="text-align: left;"><span class="math inline">\(E\)</span> for each <span class="math inline">\(H\)</span></td>
+<td style="text-align: left;">Derivation or simulation; if still identical, a new observable, hence a new capability</td>
+<td style="text-align: left;"><span class="citation" data-cites="platt1964">Platt (<a href="bibliography.html#ref-platt1964" role="doc-biblioref">1964</a>)</span>; <span class="citation" data-cites="mayo1996">Mayo (<a href="bibliography.html#ref-mayo1996" role="doc-biblioref">1996</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6. Can you set the conditions?</td>
+<td style="text-align: left;"><span class="math inline">\(C\)</span></td>
+<td style="text-align: left;">Experiment if yes; if not, regularities when nature repeats, reconstruction from traces when it does not</td>
+<td style="text-align: left;"><span class="citation" data-cites="cleland2001">Cleland (<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">2001</a>)</span>; <span class="citation" data-cites="cleland2002">Cleland (<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>; <span class="citation" data-cites="turner2007">Turner (<a href="bibliography.html#ref-turner2007" role="doc-biblioref">2007</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7. Does it survive variation?</td>
+<td style="text-align: left;">Verdict, <span class="math inline">\(A\)</span>, <span class="math inline">\(C\)</span></td>
+<td style="text-align: left;">Back to question 1 if it may be an artifact; protection of an auxiliary, logged, and acceptable only if the revision predicts something new</td>
+<td style="text-align: left;"><span class="citation" data-cites="mill2011">Mill (<a href="bibliography.html#ref-mill2011" role="doc-biblioref">2011</a>)</span>; <span class="citation" data-cites="wimsatt2012">Wimsatt (<a href="bibliography.html#ref-wimsatt2012" role="doc-biblioref">2012</a>)</span>; <span class="citation" data-cites="duhem1954">Duhem (<a href="bibliography.html#ref-duhem1954" role="doc-biblioref">1954</a>)</span>; <span class="citation" data-cites="lakatos1970">Lakatos (<a href="bibliography.html#ref-lakatos1970" role="doc-biblioref">1970</a>)</span> (the novel-prediction test; any numeric cap is the seminar’s)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8. Verdict</td>
+<td style="text-align: left;">Verdict</td>
+<td style="text-align: left;">Refine survivors and return to question 4; a surprise returns to exploration; no conclusion sends the question to question-driven inquiry for reframing, then back to the start; still none is a failure, recorded</td>
+<td style="text-align: left;"><span class="citation" data-cites="klahr1999">Klahr and Simon (<a href="bibliography.html#ref-klahr1999" role="doc-biblioref">1999</a>)</span>, p.&nbsp;537; <span class="citation" data-cites="cleland2002">Cleland (<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">2002</a>)</span>, pp.&nbsp;481–482; <span class="citation" data-cites="omalley2010">O’Malley et al. (<a href="bibliography.html#ref-omalley2010" role="doc-biblioref">2010</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9. Does the claim survive review?</td>
+<td style="text-align: left;">The draft and its record</td>
+<td style="text-align: left;">A new control returns to 7; a new rival to 4; an over-broad claim is narrowed; a declined request is argued and logged</td>
+<td style="text-align: left;">The nine process documents in section 6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Success and failure</strong> (convenor, October 21, 2026). A project <strong>succeeds</strong> when it reaches a conclusion: a claim kept with its status, a rival excluded, or a claim contradicted. A contradicted claim is a successful result. A project <strong>fails</strong> when no conclusion is reached after the question has been reframed.</li>
+<li><strong>Stopping.</strong> A project ends at a conclusion or at a recorded failure. A kept claim carries a status the mode page defines: confirmed, best explanation among stated rivals, regularity within a range, estimate with resolution, capability with its characterization.</li>
+<li><strong>A paper is the record plus the path.</strong> The tree gives a paper’s outline: the question, the gates passed, the loops taken, and the claim’s status.</li>
+<li><strong>Reframing</strong> is question-driven inquiry <span class="citation" data-cites="omalley2010 elliott2012">(<a href="bibliography.html#ref-omalley2010" role="doc-biblioref">O’Malley et al. 2010</a>; <a href="bibliography.html#ref-elliott2012" role="doc-biblioref">Elliott 2012</a>)</span>, called after question 8 finds no conclusion, not before the tree starts.</li>
+<li><strong>What the tree leaves out</strong>: the choice of project, and resource limits, which decide in practice when a loop stops.</li>
+</ul>
+</section>
+<section id="the-eight-papers-on-the-tree" class="level2">
+<h2 class="anchored" data-anchor-id="the-eight-papers-on-the-tree">5. The eight papers on the tree</h2>
+<ul>
+<li>Mode sequences from the coded steps, consecutive repeats merged; “replication” in one Shapiro step is read as robustness.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Mode sequence</th>
+<th style="text-align: left;">Where it loops</th>
+<th style="text-align: left;">Reading on the tree</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Methods, robustness, observation, estimation, robustness, observation, methods</td>
+<td style="text-align: left;">Robustness, observation, methods each twice</td>
+<td style="text-align: left;">Question 1 by method and robustness, question 2 by estimation, then Keep a capability; never reaches question 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Instruments, observation, hypothesis, robustness, estimation, theory, simulation, robustness, theory, hypothesis, estimation, synthesis</td>
+<td style="text-align: left;">Theory, robustness, hypothesis, estimation</td>
+<td style="text-align: left;">Question 1 loops on drift versus signal; question 2 by estimation; questions 4 to 7 with forward models; ends in synthesis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Observation, hypothesis, estimation, theory, hypothesis, synthesis</td>
+<td style="text-align: left;">Hypothesis</td>
+<td style="text-align: left;">Coder 1 enters at the change seen between surveys (O); question 5 by theory; a protective move at question 7 (the ice lasts several years). Both blind coders enter at a question (Q); Opus 5.5 codes the multi-year-ice move as P, Sonnet 5.5 as R</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">Observation, estimation, hypothesis, simulation, hypothesis, theory, synthesis, simulation, synthesis, hypothesis</td>
+<td style="text-align: left;">Hypothesis with simulation, synthesis</td>
+<td style="text-align: left;">Questions 4 and 5 loop twice through block-model simulations</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Estimation, instruments, observation, estimation, hypothesis, simulation, hypothesis, robustness, estimation, synthesis</td>
+<td style="text-align: left;">Estimation three times; hypothesis</td>
+<td style="text-align: left;">Question 2 dominates; rivals (rainfall, soil water) excluded at questions 5 to 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Methods, robustness, simulation, hypothesis, robustness, simulation, robustness, simulation</td>
+<td style="text-align: left;">Simulation and robustness, three times</td>
+<td style="text-align: left;">The forecast branch of question 3: verify, vary, verify</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Instruments, observation, exploration, estimation, theory, synthesis, theory</td>
+<td style="text-align: left;">Theory</td>
+<td style="text-align: left;">Question 1 by a new instrument and exploration; the melt-amplifier claim stops at theory without question 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Observation, methods, observation, methods, robustness, hypothesis, observation, theory, hypothesis, observation, theory, hypothesis, theory, synthesis</td>
+<td style="text-align: left;">Observation and methods twice; hypothesis and theory three times</td>
+<td style="text-align: left;">Question 1 loops on back-projection calibration; questions 4 and 5 loop without an exclusion</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Reading.</strong> The tree places all eight, and their loops are its loops: six papers trade between hypothesis assessment and theory or simulation (questions 4 and 5); three return among capability and record modes before any hypothesis (question 1: Shapiro, Rodell, Xu). The test that matters is whether unsuccessful papers walk it differently (section 6).</li>
+</ul>
+</section>
+<section id="what-process-documents-show" class="level2">
+<h2 class="anchored" data-anchor-id="what-process-documents-show">6. What process documents show</h2>
+<ul>
+<li><strong>The test.</strong> Peer-review files, open review discussions, and version histories record changes made after a manuscript first reached a claim. Nine Earth-science papers with such records were coded on graph v0.4.2: four Nature papers with peer-review files <span class="citation" data-cites="graff2025 bi2025 isken2025 licciardi2022">(<a href="bibliography.html#ref-graff2025" role="doc-biblioref">Gräff et al. 2025</a>; <a href="bibliography.html#ref-bi2025" role="doc-biblioref">Bi et al. 2025</a>; <a href="bibliography.html#ref-isken2025" role="doc-biblioref">Isken et al. 2025</a>; <a href="bibliography.html#ref-licciardi2022" role="doc-biblioref">Licciardi et al. 2022</a>)</span>, four EGU papers with open discussions <span class="citation" data-cites="kratzert2018 kratzert2019 ryan2015 vandenende2021">(<a href="bibliography.html#ref-kratzert2018" role="doc-biblioref">Kratzert et al. 2018</a>, <a href="bibliography.html#ref-kratzert2019" role="doc-biblioref">2019</a>; <a href="bibliography.html#ref-ryan2015" role="doc-biblioref">Ryan et al. 2015</a>; <a href="bibliography.html#ref-vandenende2021" role="doc-biblioref">Ende and Ampuero 2021</a>)</span>, and GraphCast’s two arXiv versions <span class="citation" data-cites="lam2023">(<a href="bibliography.html#ref-lam2023" role="doc-biblioref">Lam et al. 2023</a>)</span>.</li>
+<li>A <strong>loop</strong> is a change that sends a manuscript already at K back to an earlier node. <strong>Real</strong>: new analysis, data, or runs. <strong>Textual</strong>: argument, caveat, deletion.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Count, nine papers</th>
+<th style="text-align: left;">Loops</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Loops in the process documents</td>
+<td style="text-align: left;">126 (61 real, 65 textual)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Returns in the final papers’ own sequences</td>
+<td style="text-align: left;">7, all repeated C or V steps</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Loops readable as loops in the final paper</td>
+<td style="text-align: left;">4 (3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Content kept but written as if planned</td>
+<td style="text-align: left;">70 (56%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">No trace in the final paper</td>
+<td style="text-align: left;">52 (41%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requests declined and argued</td>
+<td style="text-align: left;">30</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Node the loop returns to</th>
+<th style="text-align: left;">Loops</th>
+<th style="text-align: left;">Real</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">V, a new control or robustness check</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R, a claim narrowed</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">H, a new rival named</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D, a redesigned test</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C, a new comparison</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>What the final paper hides is order and failure, more than work.</strong> A reviewer-forced control usually survives as an Extended Data figure that reads as planned. Rivals named in review are rarely tested: 15 of 17 are argued away or become caveats. Narrowed claims leave no trace.</li>
+<li><strong>Earlier attempts leak only by accident.</strong> At least eight pre-submission loops surface in rebuttals and nowhere else, for example a first liquid-core hypothesis for Mars <span class="citation" data-cites="bi2025">(<a href="bibliography.html#ref-bi2025" role="doc-biblioref">Bi et al. 2025</a>)</span> and a deformation inversion rerun once pressure data arrived <span class="citation" data-cites="isken2025">(<a href="bibliography.html#ref-isken2025" role="doc-biblioref">Isken et al. 2025</a>)</span>.</li>
+<li><strong>The literature agrees.</strong> Between protocol and paper, 62% of randomized trials changed, added, or dropped a primary outcome <span class="citation" data-cites="chan2004">(<a href="bibliography.html#ref-chan2004" role="doc-biblioref">Chan et al. 2004</a>)</span>. 96% of standard psychology reports supported their first hypothesis against 44% of registered reports <span class="citation" data-cites="scheel2021">(<a href="bibliography.html#ref-scheel2021" role="doc-biblioref">Scheel et al. 2021</a>)</span>. Preprint text changes little before publication, so preprints do not recover loops either <span class="citation" data-cites="klein2019">(<a href="bibliography.html#ref-klein2019" role="doc-biblioref">Klein et al. 2019</a>)</span>.</li>
+<li><strong>For the tree.</strong> The loops are question 9 (review) and question 7 (robustness), the two places the published sequence flattens. Codings should be labelled “final-paper sequence”; where a review file exists, a second “review sequence” is coded, with the trigger (author, referee, editor) and the kind (real, textual) on each return.</li>
+<li>Source: <code>private/analysis/success-set/loops/</code>; one coder per paper; papers chosen because their reviews were substantive, which raises the counts.</li>
+</ul>
+</section>
+<section id="loops-in-automated-science" class="level2">
+<h2 class="anchored" data-anchor-id="loops-in-automated-science">7. Loops in automated science</h2>
+<ul>
+<li>The automated systems loop too, but almost always inside one mode, holding <span class="math inline">\(H\)</span> and <span class="math inline">\(A\)</span> fixed and changing the conditions.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">System</th>
+<th style="text-align: left;">Loop, in node letters</th>
+<th style="text-align: left;">Returns when</th>
+<th style="text-align: left;">Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Strong inference <span class="citation" data-cites="platt1964">(<a href="bibliography.html#ref-platt1964" role="doc-biblioref">Platt 1964</a>)</span></td>
+<td style="text-align: left;">H, D, F, O, C, X, R, back to H</td>
+<td style="text-align: left;">a rival is excluded</td>
+<td style="text-align: left;">inside hypothesis assessment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Robot Scientist <span class="citation" data-cites="king2004 king2009">(<a href="bibliography.html#ref-king2004" role="doc-biblioref">King et al. 2004</a>, <a href="bibliography.html#ref-king2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">H, S, D, F, O, C, X, back to H (Sonnet 5.5 adds K; Opus 5.5 codes the 2009 loop with I and K)</td>
+<td style="text-align: left;">each cycle; a falsification</td>
+<td style="text-align: left;">inside hypothesis assessment; the model <span class="math inline">\(A\)</span> fixed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bayesian adaptive design <span class="citation" data-cites="rainforth2024">(<a href="bibliography.html#ref-rainforth2024" role="doc-biblioref">Rainforth et al. 2024</a>)</span></td>
+<td style="text-align: left;">S, D, F, O, I, back to S (Opus 5.5) or to D (Sonnet 5.5)</td>
+<td style="text-align: left;">every observation, until the budget is spent</td>
+<td style="text-align: left;">inside one mode; <span class="math inline">\(H\)</span> and <span class="math inline">\(A\)</span> fixed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coscientist <span class="citation" data-cites="boiko2023">(<a href="bibliography.html#ref-boiko2023" role="doc-biblioref">Boiko et al. 2023</a>)</span></td>
+<td style="text-align: left;">optimization loop: D, F, O, C, R, back to D (Sonnet 5.5: H, F, O, C, back to H; its planner loop D, F, O, R); neither codes S</td>
+<td style="text-align: left;">a software error; the yield</td>
+<td style="text-align: left;">inside one mode</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Co-Scientist <span class="citation" data-cites="gottweis2026">(<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref">Gottweis et al. 2026</a>)</span></td>
+<td style="text-align: left;">H, D, S, C, X, R, back to H, with no O (Opus 5.5 adds P and K, in another order)</td>
+<td style="text-align: left;">tournament results</td>
+<td style="text-align: left;">inside hypothesis generation, without new data; compares against the literature</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Robin <span class="citation" data-cites="ghareeb2026">(<a href="bibliography.html#ref-ghareeb2026" role="doc-biblioref">Ghareeb et al. 2026</a>)</span></td>
+<td style="text-align: left;">Q, F, H, D, humans run F and O, I, C, K</td>
+<td style="text-align: left;">data return from the laboratory</td>
+<td style="text-align: left;">across modes, with humans at F and O</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">The AI Scientist <span class="citation" data-cites="lu2026">(<a href="bibliography.html#ref-lu2026" role="doc-biblioref">Lu et al. 2026</a>)</span></td>
+<td style="text-align: left;">D, F, O, C, R per step; H to K across runs</td>
+<td style="text-align: left;">an error trace or a critique</td>
+<td style="text-align: left;">inner and outer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FunSearch <span class="citation" data-cites="romeraparedes2024">(<a href="bibliography.html#ref-romeraparedes2024" role="doc-biblioref">Romera-Paredes et al. 2024</a>)</span></td>
+<td style="text-align: left;">H, R, S, C, K or X, back to H</td>
+<td style="text-align: left;">every evaluation</td>
+<td style="text-align: left;">inside one mode</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Sources.</strong> The Robot Scientist (recoded from the 2004 and 2009 full texts), adaptive design, Coscientist, and Co-Scientist rows are from the two blind loop codings of October 25, 2026 (<code>private/analysis/reliability/codings/agents/</code>, loop codebook 0.1.0); the other rows are from the literature report <code>private/analysis/modes-literature/07-loops.md</code>.</li>
+<li><strong>What they rarely do by themselves.</strong> Only Co-Scientist revises an auxiliary (P), and only for one of two blind coders (Opus 5.5: deep verification keeps the core hypothesis when an error is not fundamental). None of the five coded systems here answers question 1 (is there a phenomenon); of all 31 coded systems, SWE-agent does for both coders, by reproducing the bug first. None is described revising the set of rivals after a surprise. Adaptive design “only capture[s] uncertainty within the model” <span class="citation" data-cites="rainforth2024">(<a href="bibliography.html#ref-rainforth2024" role="doc-biblioref">Rainforth et al. 2024</a>, preprint p.&nbsp;9)</span>.</li>
+<li><strong>Practice in laboratories</strong>: scientists faced with inconsistent data first protect the method, then repeat, and only then revise the hypothesis <span class="citation" data-cites="fugelsang2004">(<a href="bibliography.html#ref-fugelsang2004" role="doc-biblioref">Fugelsang et al. 2004</a>)</span>. That is the path C, P, V, then H, which the tree’s question 7 allows.</li>
+<li><strong>For agents.</strong> A mode agent can run its inner loop as these systems do. The controller, which these systems lack, is what the tree adds: it decides when to leave a mode, when to doubt the phenomenon, and when to protect or exclude.</li>
+</ul>
+</section>
+<section id="what-would-show-the-tree-is-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="what-would-show-the-tree-is-wrong">8. What would show the tree is wrong</h2>
+<ul>
+<li><strong>Same route, different outcomes.</strong> If the matched controls and the low-cited Nature and Science papers pass the same questions in the same order as the successes, the tree describes papers, not success.</li>
+<li><strong>Missing questions.</strong> If peer-review files, preprint versions, or lab records show loops returning to a point the tree lacks, the tree needs that question. Reframing was added this way, at question 8, on October 21, 2026.</li>
+<li><strong>No gain for agents.</strong> If agents that follow the tree do no better on held-out cases than agents that choose modes freely, the tree adds nothing for agents.</li>
+<li><strong>Unobservable gates.</strong> If two coders agree on which question a step answers less often than κ = 0.6, the questions are not observable in papers.</li>
+<li><strong>Limits of the present evidence</strong>, from the <a href="./walks.html#what-the-walks-cannot-show">walks</a> and section 6:
+<ul>
+<li>Order is the paper’s narrative, not the work’s; 3% of recorded loops are visible in the final paper.</li>
+<li>The walks are one coder’s, coding against the graph it tests. Two blind model coders agree on node use at alpha 0.63, below the 0.67 gate (<code>private/analysis/reliability/RESULTS.md</code>); no person has coded yet.</li>
+<li>The walks’ coding (codebook v0) had no field for a failed attempt, so a return and a next step look alike. Codebook 1.0.0 added a move on every step.</li>
+<li>Supplements unread for four papers.</li>
+<li>Mode labels inconsistent in one case.</li>
+<li>Eight successes as walks; five matched controls coded since; no failures.</li>
+</ul></li>
+</ul>
+</section>
+<section id="decisions-and-change-log" class="level2">
+<h2 class="anchored" data-anchor-id="decisions-and-change-log">9. Decisions and change log</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Date</th>
+<th style="text-align: left;">Decision</th>
+<th style="text-align: left;">By</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">Graph v0.4.2 is the vocabulary; this tree is the controller</td>
+<td style="text-align: left;">Convenor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">Reframing the question comes after a failure to conclude</td>
+<td style="text-align: left;">Convenor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">Failure means no conclusion; a contradicted claim is a success</td>
+<td style="text-align: left;">Convenor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">Synthesis split; question-driven inquiry added as a mode</td>
+<td style="text-align: left;">Convenor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Open</td>
+<td style="text-align: left;">A numeric cap on protective revisions</td>
+<td style="text-align: left;">Undecided</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Date</th>
+<th style="text-align: left;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0.5.0</td>
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">First tree: eight questions over the record; review added as question 9 after the process-document test</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.5.1</td>
+<td style="text-align: left;">October 21, 2026</td>
+<td style="text-align: left;">Adopted as controller; reframing after no conclusion; outcomes defined; synthesis split across questions 3 and 6b; protection cap left open</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The tree’s source is <code>agents/controller/decision-tree.json</code>; <code>tools/build_tree.py</code> writes the figure, and the validator fails if the page and the file differ. Every change gets a version and a row here.</li>
+</ul>
+</section>
+<section id="for-the-room" class="level2">
+<h2 class="anchored" data-anchor-id="for-the-room">10. For the room</h2>
+<ol type="1">
+<li>Is question 3 (the aim) asked before question 4, or does a mechanism question come first and the aim follow?</li>
+<li>Does the seminar want a numeric cap on protective revisions, beyond Lakatos’s novel-prediction test?</li>
+<li>Which stopping rule in section 3 is wrong for your own last paper?</li>
+</ol>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-backus1968" class="csl-entry" role="listitem">
+Backus, George, and Freeman Gilbert. 1968. <span>“<span class="nocase">The Resolving Power of Gross Earth Data</span>.”</span> <em>Geophysical Journal International</em> 16 (2): 169–205. <a href="https://doi.org/10.1111/j.1365-246x.1968.tb00216.x">https://doi.org/10.1111/j.1365-246x.1968.tb00216.x</a>.
+</div>
+<div id="ref-bi2025" class="csl-entry" role="listitem">
+Bi, Huixing, Daoyuan Sun, Ningyu Sun, Zhu Mao, Mingwei Dai, and Douglas Hemingway. 2025. <span>“<span class="nocase">Seismic detection of a 600-km solid inner core in Mars</span>.”</span> <em>Nature</em> 645 (8079): 67–72. <a href="https://doi.org/10.1038/s41586-025-09361-9">https://doi.org/10.1038/s41586-025-09361-9</a>.
+</div>
+<div id="ref-bogen1988" class="csl-entry" role="listitem">
+Bogen, James, and James Woodward. 1988. <span>“Saving the Phenomena.”</span> <em>The Philosophical Review</em> 97 (3): 303. <a href="https://doi.org/10.2307/2185445">https://doi.org/10.2307/2185445</a>.
+</div>
+<div id="ref-boiko2023" class="csl-entry" role="listitem">
+Boiko, Daniil A., Robert MacKnight, Ben Kline, and Gabe Gomes. 2023. <span>“<span class="nocase">Autonomous chemical research with large language models</span>.”</span> <em>Nature</em> 624: 570–78. <a href="https://doi.org/10.1038/s41586-023-06792-0">https://doi.org/10.1038/s41586-023-06792-0</a>.
+</div>
+<div id="ref-bokulich2020" class="csl-entry" role="listitem">
+Bokulich, Alisa. 2020. <span>“<span class="nocase">Towards a Taxonomy of the Model-Ladenness of Data</span>.”</span> <em>Philosophy of Science</em> 87 (5): 793–806. <a href="https://doi.org/10.1086/710516">https://doi.org/10.1086/710516</a>.
+</div>
+<div id="ref-chamberlin1965" class="csl-entry" role="listitem">
+Chamberlin, T. C. 1965. <span>“<span class="nocase">The Method of Multiple Working Hypotheses</span>.”</span> <em>Science</em> 148 (3671): 754–59. <a href="https://doi.org/10.1126/science.148.3671.754">https://doi.org/10.1126/science.148.3671.754</a>.
+</div>
+<div id="ref-chan2004" class="csl-entry" role="listitem">
+Chan, An-Wen, Asbjørn Hróbjartsson, Mette T. Haahr, Peter C. Gøtzsche, and Douglas G. Altman. 2004. <span>“<span class="nocase">Empirical Evidence for Selective Reporting of Outcomes in Randomized Trials</span>.”</span> <em>JAMA</em> 291 (20): 2457–65. <a href="https://doi.org/10.1001/jama.291.20.2457">https://doi.org/10.1001/jama.291.20.2457</a>.
+</div>
+<div id="ref-charney1950" class="csl-entry" role="listitem">
+Charney, J. G., R. Fjörtoft, and J. von Neumann. 1950. <span>“<span class="nocase">Numerical Integration of the Barotropic Vorticity Equation</span>.”</span> <em>Tellus</em> 2 (4): 237–54. <a href="https://doi.org/10.1111/j.2153-3490.1950.tb00336.x">https://doi.org/10.1111/j.2153-3490.1950.tb00336.x</a>.
+</div>
+<div id="ref-cleland2001" class="csl-entry" role="listitem">
+Cleland, Carol E. 2001. <span>“<span class="nocase">Historical science, experimental science, and the scientific method</span>.”</span> <em>Geology</em> 29 (11): 987–90. <a href="https://doi.org/10.1130/0091-7613(2001)029<0987:HSESAT>2.0.CO;2">https://doi.org/10.1130/0091-7613(2001)029&lt;0987:HSESAT&gt;2.0.CO;2</a>.
+</div>
+<div id="ref-cleland2002" class="csl-entry" role="listitem">
+Cleland, Carol E. 2002. <span>“<span class="nocase">Methodological and Epistemic Differences between Historical Science and Experimental Science</span>.”</span> <em>Philosophy of Science</em> 69 (3): 474–96. <a href="https://doi.org/10.1086/342455">https://doi.org/10.1086/342455</a>.
+</div>
+<div id="ref-duhem1954" class="csl-entry" role="listitem">
+Duhem, Pierre. 1954. <em><span class="nocase">The Aim and Structure of Physical Theory</span></em>. Princeton University Press. <a href="https://doi.org/10.1515/9780691233857">https://doi.org/10.1515/9780691233857</a>.
+</div>
+<div id="ref-elliott2012" class="csl-entry" role="listitem">
+Elliott, Kevin C. 2012. <span>“<span class="nocase">Epistemic and methodological iteration in scientific research</span>.”</span> <em>Studies in History and Philosophy of Science Part A</em> 43 (2): 376–82. <a href="https://doi.org/10.1016/j.shpsa.2011.12.034">https://doi.org/10.1016/j.shpsa.2011.12.034</a>.
+</div>
+<div id="ref-vandenende2021" class="csl-entry" role="listitem">
+Ende, Martijn P. A. van den, and Jean-Paul Ampuero. 2021. <span>“<span class="nocase">Evaluating seismic beamforming capabilities of distributed acoustic sensing arrays</span>.”</span> <em>Solid Earth</em> 12 (4): 915–34. <a href="https://doi.org/10.5194/se-12-915-2021">https://doi.org/10.5194/se-12-915-2021</a>.
+</div>
+<div id="ref-fugelsang2004" class="csl-entry" role="listitem">
+Fugelsang, Jonathan A., Courtney B. Stein, Adam E. Green, and Kevin N. Dunbar. 2004. <span>“<span class="nocase">Theory and data interactions of the scientific mind: Evidence from the molecular and the cognitive laboratory</span>.”</span> <em>Canadian Journal of Experimental Psychology</em> 58 (2): 86–95. <a href="https://doi.org/10.1037/h0085799">https://doi.org/10.1037/h0085799</a>.
+</div>
+<div id="ref-ghareeb2026" class="csl-entry" role="listitem">
+Ghareeb, Ali E., Benjamin Chang, Ludovico Mitchener, et al. 2026. <span>“<span class="nocase">A multi-agent system for automating scientific discovery</span>.”</span> <em>Nature</em> 655 (8122): 497–505. <a href="https://doi.org/10.1038/s41586-026-10652-y">https://doi.org/10.1038/s41586-026-10652-y</a>.
+</div>
+<div id="ref-gottweis2026" class="csl-entry" role="listitem">
+Gottweis, Juraj, Wei-Hung Weng, Alexander Daryin, et al. 2026. <span>“<span class="nocase">Accelerating scientific discovery with Co-Scientist</span>.”</span> <em>Nature</em> 655 (8122): 487–96. <a href="https://doi.org/10.1038/s41586-026-10644-y">https://doi.org/10.1038/s41586-026-10644-y</a>.
+</div>
+<div id="ref-graff2025" class="csl-entry" role="listitem">
+Gräff, Dominik, Bradley Paul Lipovsky, Andreas Vieli, et al. 2025. <span>“<span class="nocase">Calving-driven fjord dynamics resolved by seafloor fibre sensing</span>.”</span> <em>Nature</em> 644 (8076): 404–12. <a href="https://doi.org/10.1038/s41586-025-09347-7">https://doi.org/10.1038/s41586-025-09347-7</a>.
+</div>
+<div id="ref-gurevitch2018" class="csl-entry" role="listitem">
+Gurevitch, Jessica, Julia Koricheva, Shinichi Nakagawa, and Gavin Stewart. 2018. <span>“<span class="nocase">Meta-analysis and the science of research synthesis</span>.”</span> <em>Nature</em> 555 (7695): 175–82. <a href="https://doi.org/10.1038/nature25753">https://doi.org/10.1038/nature25753</a>.
+</div>
+<div id="ref-hacking1983" class="csl-entry" role="listitem">
+Hacking, Ian. 1983. <em><span class="nocase">Representing and Intervening: Introductory Topics in the Philosophy of Natural Science</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511814563">https://doi.org/10.1017/cbo9780511814563</a>.
+</div>
+<div id="ref-isken2025" class="csl-entry" role="listitem">
+Isken, Marius P., Jens Karstens, Paraskevi Nomikou, et al. 2025. <span>“<span class="nocase">Volcanic crisis reveals coupled magma system at Santorini and Kolumbo</span>.”</span> <em>Nature</em> 645 (8082): 939–45. <a href="https://doi.org/10.1038/s41586-025-09525-7">https://doi.org/10.1038/s41586-025-09525-7</a>.
+</div>
+<div id="ref-king2009" class="csl-entry" role="listitem">
+King, Ross D., Jem Rowland, Stephen G. Oliver, et al. 2009. <span>“<span class="nocase">The Automation of Science</span>.”</span> <em>Science</em> 324 (5923): 85–89. <a href="https://doi.org/10.1126/science.1165620">https://doi.org/10.1126/science.1165620</a>.
+</div>
+<div id="ref-king2004" class="csl-entry" role="listitem">
+King, Ross D., Kenneth E. Whelan, Ffion M. Jones, et al. 2004. <span>“<span class="nocase">Functional genomic hypothesis generation and experimentation by a robot scientist</span>.”</span> <em>Nature</em> 427 (6971): 247–52. <a href="https://doi.org/10.1038/nature02236">https://doi.org/10.1038/nature02236</a>.
+</div>
+<div id="ref-klahr1999" class="csl-entry" role="listitem">
+Klahr, David, and Herbert A. Simon. 1999. <span>“<span class="nocase">Studies of scientific discovery: Complementary approaches and convergent findings</span>.”</span> <em>Psychological Bulletin</em> 125 (5): 524–43. <a href="https://doi.org/10.1037/0033-2909.125.5.524">https://doi.org/10.1037/0033-2909.125.5.524</a>.
+</div>
+<div id="ref-klein2019" class="csl-entry" role="listitem">
+Klein, Martin, Peter Broadwell, Sharon E. Farb, and Todd Grappone. 2019. <span>“<span class="nocase">Comparing published scientific journal articles to their pre-print versions</span>.”</span> <em>International Journal on Digital Libraries</em> 20 (4): 335–50. <a href="https://doi.org/10.1007/s00799-018-0234-1">https://doi.org/10.1007/s00799-018-0234-1</a>.
+</div>
+<div id="ref-kratzert2018" class="csl-entry" role="listitem">
+Kratzert, Frederik, Daniel Klotz, Claire Brenner, Karsten Schulz, and Mathew Herrnegger. 2018. <span>“<span class="nocase">Rainfall–runoff modelling using Long Short-Term Memory (LSTM) networks</span>.”</span> <em>Hydrology and Earth System Sciences</em> 22 (11): 6005–22. <a href="https://doi.org/10.5194/hess-22-6005-2018">https://doi.org/10.5194/hess-22-6005-2018</a>.
+</div>
+<div id="ref-kratzert2019" class="csl-entry" role="listitem">
+Kratzert, Frederik, Daniel Klotz, Guy Shalev, Günter Klambauer, Sepp Hochreiter, and Grey Nearing. 2019. <span>“<span class="nocase">Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets</span>.”</span> <em>Hydrology and Earth System Sciences</em> 23 (12): 5089–110. <a href="https://doi.org/10.5194/hess-23-5089-2019">https://doi.org/10.5194/hess-23-5089-2019</a>.
+</div>
+<div id="ref-lakatos1970" class="csl-entry" role="listitem">
+Lakatos, Imre. 1970. <span>“<span class="nocase">Falsification and the Methodology of Scientific Research Programmes</span>.”</span> In <em>Criticism and the Growth of Knowledge</em>, edited by Imre Lakatos and Alan Musgrave. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139171434.009">https://doi.org/10.1017/CBO9781139171434.009</a>.
+</div>
+<div id="ref-lam2023" class="csl-entry" role="listitem">
+Lam, Remi, Alvaro Sanchez-Gonzalez, Matthew Willson, et al. 2023. <span>“<span class="nocase">Learning skillful medium-range global weather forecasting</span>.”</span> <em>Science</em> 382 (6677): 1416–21. <a href="https://doi.org/10.1126/science.adi2336">https://doi.org/10.1126/science.adi2336</a>.
+</div>
+<div id="ref-licciardi2022" class="csl-entry" role="listitem">
+Licciardi, Andrea, Quentin Bletery, Bertrand Rouet-Leduc, Jean-Paul Ampuero, and Kévin Juhel. 2022. <span>“<span class="nocase">Instantaneous tracking of earthquake growth with elastogravity signals</span>.”</span> <em>Nature</em> 606 (7913): 319–24. <a href="https://doi.org/10.1038/s41586-022-04672-7">https://doi.org/10.1038/s41586-022-04672-7</a>.
+</div>
+<div id="ref-lloyd2010" class="csl-entry" role="listitem">
+Lloyd, Elisabeth A. 2010. <span>“<span class="nocase">Confirmation and Robustness of Climate Models</span>.”</span> <em>Philosophy of Science</em> 77 (5): 971–84. <a href="https://doi.org/10.1086/657427">https://doi.org/10.1086/657427</a>.
+</div>
+<div id="ref-lu2026" class="csl-entry" role="listitem">
+Lu, Chris, Cong Lu, Robert Tjarko Lange, et al. 2026. <span>“<span class="nocase">Towards end-to-end automation of AI research</span>.”</span> <em>Nature</em> 651 (8107): 914–19. <a href="https://doi.org/10.1038/s41586-026-10265-5">https://doi.org/10.1038/s41586-026-10265-5</a>.
+</div>
+<div id="ref-mayo1996" class="csl-entry" role="listitem">
+Mayo, Deborah G. 1996. <em><span class="nocase">Error and the Growth of Experimental Knowledge</span></em>. University of Chicago Press. <a href="https://doi.org/10.7208/chicago/9780226511993.001.0001">https://doi.org/10.7208/chicago/9780226511993.001.0001</a>.
+</div>
+<div id="ref-mill2011" class="csl-entry" role="listitem">
+Mill, John Stuart. 2011. <em><span class="nocase">A System of Logic, Ratiocinative and Inductive</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139149839">https://doi.org/10.1017/CBO9781139149839</a>.
+</div>
+<div id="ref-normandeau2025" class="csl-entry" role="listitem">
+Normandeau, Alexandre, Barret L. Kurylyk, Emma J. Harrison, et al. 2025. <span>“<span class="nocase">Winter in the coastal ocean: Seasonal freezing causes seafloor expansion and contraction</span>.”</span> <em>Science Advances</em> 11 (44): eadw7439. <a href="https://doi.org/10.1126/sciadv.adw7439">https://doi.org/10.1126/sciadv.adw7439</a>.
+</div>
+<div id="ref-omalley2010" class="csl-entry" role="listitem">
+O’Malley, Maureen A., Kevin C. Elliott, and Richard M. Burian. 2010. <span>“<span class="nocase">From genetic to genomic regulation: iterativity in microRNA research</span>.”</span> <em>Studies in History and Philosophy of Science Part C: Studies in History and Philosophy of Biological and Biomedical Sciences</em> 41 (4): 407–17. <a href="https://doi.org/10.1016/j.shpsc.2010.10.011">https://doi.org/10.1016/j.shpsc.2010.10.011</a>.
+</div>
+<div id="ref-platt1964" class="csl-entry" role="listitem">
+Platt, John R. 1964. <span>“<span>Strong Inference</span>.”</span> <em>Science</em> 146 (3642): 347–53. <a href="https://doi.org/10.1126/science.146.3642.347">https://doi.org/10.1126/science.146.3642.347</a>.
+</div>
+<div id="ref-rainforth2024" class="csl-entry" role="listitem">
+Rainforth, Tom, Adam Foster, Desi R. Ivanova, and Freddie Bickford Smith. 2024. <span>“<span>Modern Bayesian Experimental Design</span>.”</span> <em>Statistical Science</em> 39 (1): 100–114. <a href="https://doi.org/10.1214/23-STS915">https://doi.org/10.1214/23-STS915</a>.
+</div>
+<div id="ref-rodell2009" class="csl-entry" role="listitem">
+Rodell, Matthew, Isabella Velicogna, and James S. Famiglietti. 2009. <span>“<span class="nocase">Satellite-based estimates of groundwater depletion in India</span>.”</span> <em>Nature</em> 460 (7258): 999–1002. <a href="https://doi.org/10.1038/nature08238">https://doi.org/10.1038/nature08238</a>.
+</div>
+<div id="ref-romeraparedes2024" class="csl-entry" role="listitem">
+Romera-Paredes, Bernardino, Mohammadamin Barekatain, Alexander Novikov, et al. 2024. <span>“<span class="nocase">Mathematical discoveries from program search with large language models</span>.”</span> <em>Nature</em> 625 (7995): 468–75. <a href="https://doi.org/10.1038/s41586-023-06924-6">https://doi.org/10.1038/s41586-023-06924-6</a>.
+</div>
+<div id="ref-ryan2015" class="csl-entry" role="listitem">
+Ryan, J. C., A. L. Hubbard, J. E. Box, et al. 2015. <span>“<span class="nocase">UAV photogrammetry and structure from motion to assess calving dynamics at Store Glacier, a large outlet draining the Greenland ice sheet</span>.”</span> <em>The Cryosphere</em> 9 (1): 1–11. <a href="https://doi.org/10.5194/tc-9-1-2015">https://doi.org/10.5194/tc-9-1-2015</a>.
+</div>
+<div id="ref-scheel2021" class="csl-entry" role="listitem">
+Scheel, Anne M., Mitchell R. M. J. Schijen, and Daniël Lakens. 2021. <span>“<span class="nocase">An Excess of Positive Results: Comparing the Standard Psychology Literature With Registered Reports</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 4 (2): 25152459211007467. <a href="https://doi.org/10.1177/25152459211007467">https://doi.org/10.1177/25152459211007467</a>.
+</div>
+<div id="ref-shapiro2005" class="csl-entry" role="listitem">
+Shapiro, Nikolai M., Michel Campillo, Laurent Stehly, and Michael H. Ritzwoller. 2005. <span>“<span class="nocase">High-Resolution Surface-Wave Tomography from Ambient Seismic Noise</span>.”</span> <em>Science</em> 307 (5715): 1615–18. <a href="https://doi.org/10.1126/science.1108339">https://doi.org/10.1126/science.1108339</a>.
+</div>
+<div id="ref-steinle1997" class="csl-entry" role="listitem">
+Steinle, Friedrich. 1997. <span>“<span class="nocase">Entering New Fields: Exploratory Uses of Experimentation</span>.”</span> <em>Philosophy of Science</em> 64 (S4): S65–74. <a href="https://doi.org/10.1086/392587">https://doi.org/10.1086/392587</a>.
+</div>
+<div id="ref-sun2026" class="csl-entry" role="listitem">
+Sun, Tianhaozhe, and Earl E. Davis. 2026. <span>“<span class="nocase">Strain accumulation associated with locked subduction megathrusts revealed by deep-ocean borehole observations</span>.”</span> <em>Science Advances</em> 12 (16): eaea7133. <a href="https://doi.org/10.1126/sciadv.aea7133">https://doi.org/10.1126/sciadv.aea7133</a>.
+</div>
+<div id="ref-tarantola2005" class="csl-entry" role="listitem">
+Tarantola, Albert. 2005. <em><span class="nocase">Inverse Problem Theory and Methods for Model Parameter Estimation</span></em>. Society for Industrial; Applied Mathematics. <a href="https://doi.org/10.1137/1.9780898717921">https://doi.org/10.1137/1.9780898717921</a>.
+</div>
+<div id="ref-turner2007" class="csl-entry" role="listitem">
+Turner, Derek. 2007. <em><span class="nocase">Making Prehistory: Historical Science and the Scientific Realism Debate</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511487385">https://doi.org/10.1017/cbo9780511487385</a>.
+</div>
+<div id="ref-vine1963" class="csl-entry" role="listitem">
+Vine, F. J., and D. H. Matthews. 1963. <span>“<span>Magnetic Anomalies Over Oceanic Ridges</span>.”</span> <em>Nature</em> 199 (4897): 947–49. <a href="https://doi.org/10.1038/199947a0">https://doi.org/10.1038/199947a0</a>.
+</div>
+<div id="ref-wimsatt2012" class="csl-entry" role="listitem">
+Wimsatt, William C. 2012. <span>“<span class="nocase">Robustness, Reliability, and Overdetermination (1981)</span>.”</span> In <em>Characterizing the Robustness of Science</em>, edited by Léna Soler, Emiliano Trizio, Thomas Nickles, and William Wimsatt. Springer Netherlands. <a href="https://doi.org/10.1007/978-94-007-2759-5_2">https://doi.org/10.1007/978-94-007-2759-5_2</a>.
+</div>
+<div id="ref-xu2025" class="csl-entry" role="listitem">
+Xu, Liuwei, Lingsen Meng, Zhang Yunjun, et al. 2025. <span>“<span class="nocase">Bimaterial effect and favorable energy ratio enabled supershear rupture in the 2025 Mandalay earthquake</span>.”</span> <em>Science</em> 390 (6772): 476–81. <a href="https://doi.org/10.1126/science.ady6100">https://doi.org/10.1126/science.ady6100</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/denolle-lab\.github\.io\/metascience-and-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./walks.html" class="pagination-link" aria-label="Walking the graph: eight papers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Walking the graph: eight papers</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./metrics.html" class="pagination-link" aria-label="What has been measured: novelty, impact, breadth, advance">
+        <span class="nav-page-text">What has been measured: novelty, impact, breadth, advance</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Working curriculum v0.4</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/decision-tree.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://denolle-lab.github.io/">Denolle Lab</a></p>
+</div>
+  </div>
+</footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
+
+
+
+
+</body></html>

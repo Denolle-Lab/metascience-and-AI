@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A thirteen-meeting reading club studying scientific advance through plural epistemic modes, and designing agents evaluated against documented scientific work.">
+
+<title>Modes of inquiry: definitions, evidence, and the graph – MetaScience, Scientific Inquiry, and Agents</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./modes/question.html" rel="next">
+<link href="./glossary.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ac7d07509a5ec904cce7a8a576ef775b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glossary.html">Defining the modes of inquiry</a></li><li class="breadcrumb-item"><a href="./modes.html">Modes of inquiry: definitions, evidence, and the graph</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MetaScience, Scientific Inquiry, and Agents</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Denolle-Lab/metascience-and-AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this Group Meeting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Defining the modes of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Modes of inquiry: definitions, evidence, and the graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/question.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Question-driven inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/hypothesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruments and observing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods and computation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cross-study synthesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/reconstruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reconstruction from traces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication and robustness assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">The graph of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walking the graph: eight papers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./decision-tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">From graph to decision tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Outcomes and test cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./success-set.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Success set: test cases for evaluation and mode analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inquirygraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">inquirygraph: the coding agent and its gold set</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meetings held</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meeting notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-meeting" id="toc-the-meeting" class="nav-link active" data-scroll-target="#the-meeting">The meeting</a></li>
+  <li><a href="#what-a-mode-is" id="toc-what-a-mode-is" class="nav-link" data-scroll-target="#what-a-mode-is">1. What a mode is</a></li>
+  <li><a href="#thirteen-definitions-and-where-they-come-from" id="toc-thirteen-definitions-and-where-they-come-from" class="nav-link" data-scroll-target="#thirteen-definitions-and-where-they-come-from">2. Thirteen definitions and where they come from</a></li>
+  <li><a href="#the-modes-on-the-graph-v0.4-drafted" id="toc-the-modes-on-the-graph-v0.4-drafted" class="nav-link" data-scroll-target="#the-modes-on-the-graph-v0.4-drafted">3. The modes on the graph (v0.4, drafted)</a></li>
+  <li><a href="#how-the-modes-have-been-studied" id="toc-how-the-modes-have-been-studied" class="nav-link" data-scroll-target="#how-the-modes-have-been-studied">4. How the modes have been studied</a></li>
+  <li><a href="#do-modes-drive-novelty-breadth-or-advance" id="toc-do-modes-drive-novelty-breadth-or-advance" class="nav-link" data-scroll-target="#do-modes-drive-novelty-breadth-or-advance">5. Do modes drive novelty, breadth, or advance?</a></li>
+  <li><a href="#from-modes-to-agents" id="toc-from-modes-to-agents" class="nav-link" data-scroll-target="#from-modes-to-agents">6. From modes to agents</a></li>
+  <li><a href="#for-the-room" id="toc-for-the-room" class="nav-link" data-scroll-target="#for-the-room">7. For the room</a></li>
+  <li><a href="#what-this-page-does-not-establish" id="toc-what-this-page-does-not-establish" class="nav-link" data-scroll-target="#what-this-page-does-not-establish">What this page does not establish</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/modes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glossary.html">Defining the modes of inquiry</a></li><li class="breadcrumb-item"><a href="./modes.html">Modes of inquiry: definitions, evidence, and the graph</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Modes of inquiry: definitions, evidence, and the graph</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="status drafted">Drafted</span> <span class="status-line">the next meeting · graph v0.4 drafted · literature read October 16 to 19, 2026 · not yet discussed</span></p>
+<ul>
+<li>The next meeting. It defines the thirteen <a href="./glossary.html#working-mode-specifications">mode profiles</a> from the literature, places them on the <a href="./unit.html#the-graph">unit graph</a>, and asks what the evidence says about modes and novelty, breadth, and advance.</li>
+<li>Each mode will become an agent. This page is the evidence the agents’ rubrics start from; the <a href="./glossary.html#working-mode-specifications">mode pages</a> carry the rubric itself.</li>
+<li><strong>Slides for the meeting:</strong> <a href="slides/modes-meeting.html">open the deck</a> (arrow keys to move, F for full screen).</li>
+<li><strong>Eight papers walked through the graph:</strong> <a href="./walks.html">Walking the graph</a>.</li>
+</ul>
+<section id="the-meeting" class="level2">
+<h2 class="anchored" data-anchor-id="the-meeting">The meeting</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Central question</td>
+<td style="text-align: left;">Which kinds of scientific work does an agent family need, where was each defined, and has any been shown to raise novelty, breadth, or advance?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Anchor</td>
+<td style="text-align: left;"><span class="citation" data-cites="elliott2016">Elliott et al. (<a href="bibliography.html#ref-elliott2016" role="doc-biblioref">2016</a>)</span>, full text, open access. Read “A richer account of scientific practice” and their Figure 3.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Companion</td>
+<td style="text-align: left;"><span class="citation" data-cites="betts2021">Betts et al. (<a href="bibliography.html#ref-betts2021" role="doc-biblioref">2021</a>)</span>, open access. The rotating reader presents the coding scheme and Figure 4.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Geoscience pair, optional</td>
+<td style="text-align: left;"><span class="citation" data-cites="pfister2017">Pfister and Kirchner (<a href="bibliography.html#ref-pfister2017" role="doc-biblioref">2017</a>)</span> and <span class="citation" data-cites="baker2017">Baker (<a href="bibliography.html#ref-baker2017" role="doc-biblioref">2017</a>)</span>, the <em>Water Resources Research</em> debate on hypothesis testing in hydrology.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bring</td>
+<td style="text-align: left;">One paper of your own, with its modes named in order from the table in section 2.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Output</td>
+<td style="text-align: left;">A decision on the mode list (keep, split, merge, add), each with the source that forces it; graph v0.4 adopted, amended, or rejected; one <a href="./notes.html#inquiry-mode-ledger">ledger</a> row.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Why these two: Elliott and colleagues name plural modes and judge research by “the alignment between the nature of the knowledge gap or challenge addressed and the combination of approaches or methods used” <span class="citation" data-cites="elliott2016">(<a href="bibliography.html#ref-elliott2016" role="doc-biblioref">Elliott et al. 2016</a>)</span>. Betts and colleagues coded 268 ecology and evolution papers, found multiple alternative hypotheses in 6.7% and no citation or grant advantage for any hypothesis use, and still argue for more of it <span class="citation" data-cites="betts2021">(<a href="bibliography.html#ref-betts2021" role="doc-biblioref">Betts et al. 2021</a>)</span>.</li>
+<li>One conceptual, one empirical, and they disagree: Elliott judges by fit to the knowledge gap, Betts by the clarity that rival hypotheses bring. Neither is geoscience; the optional pair is.</li>
+</ul>
+</section>
+<section id="what-a-mode-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-mode-is">1. What a mode is</h2>
+<ul>
+<li><strong>Working definition.</strong> A mode of inquiry is a kind of epistemic work, named by the gain it aims at and the evidence its claims owe. It describes an episode or an action, not a whole paper.</li>
+<li><strong>Precedent for the word.</strong> O’Malley, Elliott, and Burian name four modes of research practice: hypothesis-driven, exploratory, question-driven, and technology-oriented <span class="citation" data-cites="omalley2010">Elliott (<a href="bibliography.html#ref-elliott2012" role="doc-biblioref">2012</a>)</span>. Moving back and forth between them is “methodological iteration” <span class="citation" data-cites="elliott2012">(<a href="bibliography.html#ref-elliott2012" role="doc-biblioref">Elliott 2012</a>)</span>.</li>
+<li><strong>Not the same as:</strong></li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Term</th>
+<th style="text-align: left;">Unit</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Relation to our modes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Style of reasoning</td>
+<td style="text-align: left;">A long-lived tradition: six in Crombie, plus a laboratory and an “algorismic” style in Hacking</td>
+<td style="text-align: left;"><span class="citation" data-cites="crombie1988">Crombie (<a href="bibliography.html#ref-crombie1988" role="doc-biblioref">1988</a>)</span>; <span class="citation" data-cites="hacking2002">Hacking (<a href="bibliography.html#ref-hacking2002" role="doc-biblioref">2002</a>)</span></td>
+<td style="text-align: left;">Coarser; one style holds several modes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Epistemic culture</td>
+<td style="text-align: left;">A field’s machinery for making knowledge</td>
+<td style="text-align: left;"><span class="citation" data-cites="knorr1999">Knorr Cetina (<a href="bibliography.html#ref-knorr1999" role="doc-biblioref">1999</a>)</span></td>
+<td style="text-align: left;">Orthogonal; a culture uses many modes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paradigm, in Gray’s sense</td>
+<td style="text-align: left;">An era: empirical, theoretical, computational, data-intensive</td>
+<td style="text-align: left;"><span class="citation" data-cites="hey2009">Hey et al. (<a href="bibliography.html#ref-hey2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">A period label; the fourth spans three of our modes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mode 1 / Mode 2</td>
+<td style="text-align: left;">How knowledge production is organized</td>
+<td style="text-align: left;"><a href="./glossary.html#purpose-and-use">glossary</a></td>
+<td style="text-align: left;">Term collision only</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Method, in this book</td>
+<td style="text-align: left;">A composition of units on the graph</td>
+<td style="text-align: left;"><a href="./unit.html#composing-units-into-a-mode">unit, section 6</a></td>
+<td style="text-align: left;">How a mode runs the graph</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Contribution type</td>
+<td style="text-align: left;">What a paper delivers: data, estimate, method, concept</td>
+<td style="text-align: left;"><a href="./glossary.html#coding-an-episode">glossary</a></td>
+<td style="text-align: left;">The output, not the work</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>How modes relate, four claims in the literature:</strong>
+<ul>
+<li>Historical sequence, cumulative: Crombie’s order of emergence; Gray’s four paradigms <span class="citation" data-cites="crombie1988 hey2009">(<a href="bibliography.html#ref-crombie1988" role="doc-biblioref">Crombie 1988</a>; <a href="bibliography.html#ref-hey2009" role="doc-biblioref">Hey et al. 2009</a>)</span>.</li>
+<li>Coexistence with unequal stability: “The taxonomic and the historic-genetic styles have produced nothing like the stability of the laboratory or the mathematical style” <span class="citation" data-cites="hacking2002">(<a href="bibliography.html#ref-hacking2002" role="doc-biblioref">Hacking 2002</a>)</span>.</li>
+<li>Iteration: data- and technology-driven programmes are “complementary and iterative partners” of hypothesis-led work <span class="citation" data-cites="kell2004 elliott2012 elliott2016">(<a href="bibliography.html#ref-kell2004" role="doc-biblioref">Kell and Oliver 2004, 99</a>; <a href="bibliography.html#ref-elliott2012" role="doc-biblioref">Elliott 2012</a>; <a href="bibliography.html#ref-elliott2016" role="doc-biblioref">Elliott et al. 2016</a>)</span>.</li>
+<li>Institutional hierarchy: some funders privilege hypothesis testing <span class="citation" data-cites="omalley2009 haufe2013">(<a href="bibliography.html#ref-omalley2009" role="doc-biblioref">O’Malley et al. 2009, 612–13</a>; <a href="bibliography.html#ref-haufe2013" role="doc-biblioref">Haufe 2013</a>)</span>, as do US courts judging scientific testimony <span class="citation" data-cites="haufe2013">(<a href="bibliography.html#ref-haufe2013" role="doc-biblioref">Haufe 2013, 364</a>)</span>; school science teaches the single-variable experiment <span class="citation" data-cites="manduca2012">(<a href="bibliography.html#ref-manduca2012" role="doc-biblioref">Manduca and Kastens 2012, 2</a>)</span>. Haufe’s reason: hypothesis testing is the easiest to appraise, not the best (p.&nbsp;366).</li>
+</ul></li>
+<li>The book adopts iteration. The hierarchy is a claim about practice, and section 5 tests it.</li>
+</ul>
+</section>
+<section id="thirteen-definitions-and-where-they-come-from" class="level2">
+<h2 class="anchored" data-anchor-id="thirteen-definitions-and-where-they-come-from">2. Thirteen definitions and where they come from</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 32%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mode</th>
+<th style="text-align: left;">Gain it aims at</th>
+<th style="text-align: left;">Defined as distinct work by</th>
+<th style="text-align: left;">Contested boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/question.html">Question-driven inquiry</a></strong></td>
+<td style="text-align: left;">A question framed so that some result would answer it, and reframed when a pass ends without a conclusion</td>
+<td style="text-align: left;">Named only by <span class="citation" data-cites="omalley2009">O’Malley et al. (<a href="bibliography.html#ref-omalley2009" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="omalley2010">O’Malley et al. (<a href="bibliography.html#ref-omalley2010" role="doc-biblioref">2010</a>)</span>, with <span class="citation" data-cites="elliott2012">Elliott (<a href="bibliography.html#ref-elliott2012" role="doc-biblioref">2012</a>)</span>; parts of a question from <span class="citation" data-cites="vanfraassen1980">Fraassen (<a href="bibliography.html#ref-vanfraassen1980" role="doc-biblioref">1980</a>)</span> and <span class="citation" data-cites="nickles1981">Nickles (<a href="bibliography.html#ref-nickles1981" role="doc-biblioref">1981</a>)</span></td>
+<td style="text-align: left;">No evidence standard in the mode literature; the seminar assembles one</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/observation.html">Observation and description</a></strong></td>
+<td style="text-align: left;">A credible record of a phenomenon, its variability, and what is unobserved</td>
+<td style="text-align: left;">Data versus phenomena <span class="citation" data-cites="bogen1988">(<a href="bibliography.html#ref-bogen1988" role="doc-biblioref">Bogen and Woodward 1988</a>)</span>; “‘Descriptive’ in science is a pejorative, almost always preceded by ‘merely’” <span class="citation" data-cites="grimaldi2007">(<a href="bibliography.html#ref-grimaldi2007" role="doc-biblioref">Grimaldi and Engel 2007</a>)</span></td>
+<td style="text-align: left;">No peer-reviewed account gives description its own success criteria</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/exploration.html">Exploratory inquiry</a></strong></td>
+<td style="text-align: left;">Phenomena, questions, and representations</td>
+<td style="text-align: left;">Experimentation “not … driven by specific theories” <span class="citation" data-cites="steinle1997">(<a href="bibliography.html#ref-steinle1997" role="doc-biblioref">Steinle 1997, S65</a>)</span>; “mapping activities” <span class="citation" data-cites="franklin2005">(<a href="bibliography.html#ref-franklin2005" role="doc-biblioref">Franklin 2005, 893</a>)</span>; extended to observational data <span class="citation" data-cites="pietsch2015">(<a href="bibliography.html#ref-pietsch2015" role="doc-biblioref">Pietsch 2015, 914</a>)</span></td>
+<td style="text-align: left;">Steinle’s exploration aims at regularities, so it overlaps the last row</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/hypothesis.html">Hypothesis assessment</a></strong></td>
+<td style="text-align: left;">Discrimination among rivals</td>
+<td style="text-align: left;">“He invents hypotheses and he invents tests for them” <span class="citation" data-cites="gilbert1896">(<a href="bibliography.html#ref-gilbert1896" role="doc-biblioref">Gilbert 1896, 2</a>)</span>; the smoking gun <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002, 480</a>)</span></td>
+<td style="text-align: left;">Generation and test are separate actions, already in Gilbert</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/theory.html">Theory and mechanistic modeling</a></strong></td>
+<td style="text-align: left;">Concepts, explanations, valid derivations</td>
+<td style="text-align: left;">Models as mediating instruments <span class="citation" data-cites="morrison1999">(<a href="bibliography.html#ref-morrison1999" role="doc-biblioref">Morrison and Morgan 1999</a>)</span>; modeling is “indirect representation and analysis” <span class="citation" data-cites="weisberg2007">(<a href="bibliography.html#ref-weisberg2007" role="doc-biblioref">Weisberg 2007, 207</a>)</span></td>
+<td style="text-align: left;">Weisberg separates modeling from other theorizing; our row joins them</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/simulation.html">Simulation and prediction</a></strong></td>
+<td style="text-align: left;">Computed consequences; assessed forecasts</td>
+<td style="text-align: left;">“A new kind of scientific method” <span class="citation" data-cites="humphreys2004">(<a href="bibliography.html#ref-humphreys2004" role="doc-biblioref">Humphreys 2004</a>)</span>; <span class="citation" data-cites="winsberg2010">Winsberg (<a href="bibliography.html#ref-winsberg2010" role="doc-biblioref">2010</a>)</span>; prediction as a goal <span class="citation" data-cites="shmueli2010">(<a href="bibliography.html#ref-shmueli2010" role="doc-biblioref">Shmueli 2010</a>)</span></td>
+<td style="text-align: left;">Computer simulation studies are “material experiments in a straightforward sense,” though simulations as such are not <span class="citation" data-cites="parker2009">(<a href="bibliography.html#ref-parker2009" role="doc-biblioref">Parker 2009, 483, 495</a>)</span>; the row joins a method with a goal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/instruments.html">Instruments and observing systems</a></strong></td>
+<td style="text-align: left;">A reliable new measurement capability</td>
+<td style="text-align: left;">Experimentation “has a life of its own” <span class="citation" data-cites="hacking1983">(<a href="bibliography.html#ref-hacking1983" role="doc-biblioref">Hacking 1983, 150</a>)</span>; instruments “express knowledge” <span class="citation" data-cites="baird2004">(<a href="bibliography.html#ref-baird2004" role="doc-biblioref">Baird 2004</a>)</span>; <span class="citation" data-cites="rheinberger2011">Rheinberger (<a href="bibliography.html#ref-rheinberger2011" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Merged with methods as “technology-oriented” <span class="citation" data-cites="omalley2009 omalley2010">(<a href="bibliography.html#ref-omalley2009" role="doc-biblioref">O’Malley et al. 2009, 612</a>; <a href="bibliography.html#ref-omalley2010" role="doc-biblioref">2010</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/methods.html">Methods and computation</a></strong></td>
+<td style="text-align: left;">A new inference or computational capability</td>
+<td style="text-align: left;">No source defines it as a mode. Nearest: the algorismic style “dedicated to finding algorithms” <span class="citation" data-cites="hacking2002">(<a href="bibliography.html#ref-hacking2002" role="doc-biblioref">Hacking 2002</a>)</span>; tools that become theories <span class="citation" data-cites="gigerenzer1991">(<a href="bibliography.html#ref-gigerenzer1991" role="doc-biblioref">Gigerenzer 1991</a>)</span></td>
+<td style="text-align: left;">Gap</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/synthesis.html">Cross-study synthesis</a></strong></td>
+<td style="text-align: left;">A pooled estimate or a connection across studies that no single study supports</td>
+<td style="text-align: left;">Meta-analysis <span class="citation" data-cites="gurevitch2018">(<a href="bibliography.html#ref-gurevitch2018" role="doc-biblioref">Gurevitch et al. 2018</a>)</span>; synthesis centres <span class="citation" data-cites="carpenter2009">(<a href="bibliography.html#ref-carpenter2009" role="doc-biblioref">Carpenter et al. 2009</a>)</span></td>
+<td style="text-align: left;">Where pooling ends and a new estimate begins</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/reconstruction.html">Reconstruction from traces</a></strong></td>
+<td style="text-align: left;">A constrained history of a past event, retained against stated rival histories</td>
+<td style="text-align: left;">Historical science <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002</a>)</span>; prehistory from traces <span class="citation" data-cites="turner2007">(<a href="bibliography.html#ref-turner2007" role="doc-biblioref">Turner 2007</a>)</span></td>
+<td style="text-align: left;">Whether convergent traces confirm or only explain</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/robustness.html">Replication and robustness</a></strong></td>
+<td style="text-align: left;">What survives repetition, perturbation, transfer</td>
+<td style="text-align: left;">Replication: <span class="citation" data-cites="schmidt2009replication">Schmidt (<a href="bibliography.html#ref-schmidt2009replication" role="doc-biblioref">2009</a>)</span>; <span class="citation" data-cites="machery2020">Machery (<a href="bibliography.html#ref-machery2020" role="doc-biblioref">2020</a>)</span>. Robustness: <span class="citation" data-cites="wimsatt2012">Wimsatt (<a href="bibliography.html#ref-wimsatt2012" role="doc-biblioref">2012</a>)</span>; <span class="citation" data-cites="parker2011">Parker (<a href="bibliography.html#ref-parker2011" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Defined for experiments and model ensembles. Nearest for a one-off natural event: conceptual replication, a test of the hypothesis “with different methods” <span class="citation" data-cites="schmidt2009replication">(<a href="bibliography.html#ref-schmidt2009replication" role="doc-biblioref">Schmidt 2009, 91</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><a href="./modes/estimation.html">Inferential estimation</a></strong></td>
+<td style="text-align: left;">A latent quantity with uncertainty and resolution</td>
+<td style="text-align: left;"><span class="citation" data-cites="backus1968">Backus and Gilbert (<a href="bibliography.html#ref-backus1968" role="doc-biblioref">1968</a>)</span> (resolution); <span class="citation" data-cites="tarantola2005">Tarantola (<a href="bibliography.html#ref-tarantola2005" role="doc-biblioref">2005</a>)</span> (uncertainty); inversion in philosophy: <span class="citation" data-cites="bokulich2017">Bokulich and Oreskes (<a href="bibliography.html#ref-bokulich2017" role="doc-biblioref">2017</a>)</span></td>
+<td style="text-align: left;">Absent from every general taxonomy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><a href="./modes/regularities.html">Statistical modeling and empirical regularities</a></strong></td>
+<td style="text-align: left;">A relation or distribution with a warranted range</td>
+<td style="text-align: left;">Crombie’s style (e) <span class="citation" data-cites="hacking2002">(<a href="bibliography.html#ref-hacking2002" role="doc-biblioref">Hacking 2002</a>)</span>; two cultures <span class="citation" data-cites="breiman2001">(<a href="bibliography.html#ref-breiman2001" role="doc-biblioref">Breiman 2001</a>)</span>; descriptive versus explanatory models <span class="citation" data-cites="shmueli2010">(<a href="bibliography.html#ref-shmueli2010" role="doc-biblioref">Shmueli 2010</a>)</span></td>
+<td style="text-align: left;">Overlaps exploration</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Three modes have no source that defines them as a distinct mode:</strong> methods and computation, inferential estimation, and replication for non-repeatable natural events, where conceptual replication is the nearest <span class="citation" data-cites="schmidt2009replication">(<a href="bibliography.html#ref-schmidt2009replication" role="doc-biblioref">Schmidt 2009, 91</a>)</span>. Estimation is where geophysics wrote its own founding texts <span class="citation" data-cites="backus1968 tarantola2005">(<a href="bibliography.html#ref-backus1968" role="doc-biblioref">Backus and Gilbert 1968</a>; <a href="bibliography.html#ref-tarantola2005" role="doc-biblioref">Tarantola 2005</a>)</span>; its only philosophical treatment is <span class="citation" data-cites="bokulich2017">Bokulich and Oreskes (<a href="bibliography.html#ref-bokulich2017" role="doc-biblioref">2017</a>)</span>.</li>
+<li><strong>Missing relative to the precedents:</strong> question-driven inquiry <span class="citation" data-cites="omalley2010">(<a href="bibliography.html#ref-omalley2010" role="doc-biblioref">O’Malley et al. 2010</a>)</span> and systematic invention, or engineering design <span class="citation" data-cites="pickstone2007">(<a href="bibliography.html#ref-pickstone2007" role="doc-biblioref">Pickstone 2007</a>)</span>. The book keeps question origin as a ledger attribute (decided September 10, 2026). O’Malley and colleagues are the case against that decision.</li>
+<li><strong>Proposed for the room: split synthesis.</strong> Research synthesis across studies and reconstruction from traces owe different evidence (study selection versus common-cause inference), and no precedent joins them. One agent system was 85.5% accurate on its data-analysis statements and 57.9% on its synthesis statements <span class="citation" data-cites="mitchener2025">(<a href="bibliography.html#ref-mitchener2025" role="doc-biblioref">Mitchener et al. 2025</a>, preprint)</span>.</li>
+<li><strong>Geoscience accounts agree on three points:</strong> explanatory pluralism, narrative with causal explanation <span class="citation" data-cites="kleinhans2005">(<a href="bibliography.html#ref-kleinhans2005" role="doc-biblioref">Kleinhans et al. 2005</a>)</span>; several rivals at once <span class="citation" data-cites="gilbert1896 cleland2002">(<a href="bibliography.html#ref-gilbert1896" role="doc-biblioref">Gilbert 1896</a>; <a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002</a>)</span>; model-laden data <span class="citation" data-cites="bokulich2017 bokulich2020">(<a href="bibliography.html#ref-bokulich2017" role="doc-biblioref">Bokulich and Oreskes 2017</a>; <a href="bibliography.html#ref-bokulich2020" role="doc-biblioref">Bokulich 2020</a>)</span>. They differ on how far laboratory accounts fit: geoscience tests hypotheses, but against observations and through “multiple converging lines of evidence” rather than single-variable experiments <span class="citation" data-cites="manduca2012">(<a href="bibliography.html#ref-manduca2012" role="doc-biblioref">Manduca and Kastens 2012, 1–2</a>)</span>, or field work does not fit a philosophy built on the laboratory <span class="citation" data-cites="raab2002 baker2017">(<a href="bibliography.html#ref-raab2002" role="doc-biblioref">Raab and Frodeman 2002</a>; <a href="bibliography.html#ref-baker2017" role="doc-biblioref">Baker 2017</a>)</span>.</li>
+</ul>
+</section>
+<section id="the-modes-on-the-graph-v0.4-drafted" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-modes-on-the-graph-v0.4-drafted">3. The modes on the graph (v0.4, drafted)</h2>
+<ul>
+<li>Graph v0.3 draws one hypothesis pass. In 13 of the 18 geoscience advances in section 4, the first decisive move was an observation, an instrument, or a method, made before any rival existed. v0.3 can place those only as entry states.</li>
+<li>v0.4 adds three nodes, each forced by a source, drawn dashed until the group adopts them. The figure and the log are on <a href="./unit.html#the-graph">the unit page</a>.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Node</th>
+<th style="text-align: left;">Move</th>
+<th style="text-align: left;">Forced by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">E. Explore: establish the phenomenon</td>
+<td style="text-align: left;">From data to a phenomenon: does it repeat; is it in the measurement chain or in the world</td>
+<td style="text-align: left;"><span class="citation" data-cites="bogen1988">Bogen and Woodward (<a href="bibliography.html#ref-bogen1988" role="doc-biblioref">1988</a>)</span>; <span class="citation" data-cites="steinle1997">Steinle (<a href="bibliography.html#ref-steinle1997" role="doc-biblioref">1997</a>)</span>; the v0.3 surprise edge <span class="citation" data-cites="klahr1999">(<a href="bibliography.html#ref-klahr1999" role="doc-biblioref">Klahr and Simon 1999, 537</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N. New capability: build and characterize an instrument or method</td>
+<td style="text-align: left;">A capability claim, made before any theory</td>
+<td style="text-align: left;"><span class="citation" data-cites="hacking1983">Hacking (<a href="bibliography.html#ref-hacking1983" role="doc-biblioref">1983</a>)</span>, pp.&nbsp;160, 163; Lehmann on the missing vertical-component records <span class="citation" data-cites="kolblebert2001">(<a href="bibliography.html#ref-kolblebert2001" role="doc-biblioref">Kölbl-Ebert 2001, 264</a>)</span>; <span class="citation" data-cites="keeling1960">Keeling (<a href="bibliography.html#ref-keeling1960" role="doc-biblioref">1960</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I. Estimate a latent quantity</td>
+<td style="text-align: left;">Invert observations through a forward model; state resolution and uncertainty</td>
+<td style="text-align: left;"><span class="citation" data-cites="backus1968">Backus and Gilbert (<a href="bibliography.html#ref-backus1968" role="doc-biblioref">1968</a>)</span> (resolution); <span class="citation" data-cites="tarantola2005">Tarantola (<a href="bibliography.html#ref-tarantola2005" role="doc-biblioref">2005</a>)</span> (uncertainty); data are model-laden <span class="citation" data-cites="bokulich2020">(<a href="bibliography.html#ref-bokulich2020" role="doc-biblioref">Bokulich 2020</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Node labels use the words of the mode taxonomy; <a href="./unit.html#the-graph">the crosswalk</a> on the unit page maps each node to the modes it serves.</li>
+<li>Two compositions are added: <strong>capability first</strong> (N, O, E, then Q), forced by Lehmann and Keeling; <strong>forecast verification</strong> (the expectation frozen at S before O exists, C at a later date), forced by <span class="citation" data-cites="charney1950">Charney et al. (<a href="bibliography.html#ref-charney1950" role="doc-biblioref">1950</a>)</span> (p.&nbsp;245: “we were just able to keep pace with the weather”).</li>
+<li>Each mode as a path on the graph:</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mode</th>
+<th style="text-align: left;">Usual entry</th>
+<th style="text-align: left;">Nodes it runs</th>
+<th style="text-align: left;">What it retains, and where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Question-driven inquiry</td>
+<td style="text-align: left;">Problem, no conclusion</td>
+<td style="text-align: left;">Q, then the start of the tree</td>
+<td style="text-align: left;">A reframed question with its diagnosis (Q)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Observation</td>
+<td style="text-align: left;">Capability, data</td>
+<td style="text-align: left;">N, O, E</td>
+<td style="text-align: left;">A phenomenon or a coverage limit (E)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exploration</td>
+<td style="text-align: left;">Anomaly, data without theory</td>
+<td style="text-align: left;">E and O in a loop; Q reframed</td>
+<td style="text-align: left;">A candidate phenomenon or a new question (E, Q)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hypothesis assessment</td>
+<td style="text-align: left;">Problem, prediction</td>
+<td style="text-align: left;">Q through R</td>
+<td style="text-align: left;">A retained or excluded rival (K, X)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Theory and modeling</td>
+<td style="text-align: left;">Problem, anomaly</td>
+<td style="text-align: left;">H, S</td>
+<td style="text-align: left;">A concept or a valid derivation (S); empirical adequacy later, at K</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Simulation and prediction</td>
+<td style="text-align: left;">Prediction</td>
+<td style="text-align: left;">S by computation; O later; C</td>
+<td style="text-align: left;">An assessed forecast (C)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Instruments</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">N, O</td>
+<td style="text-align: left;">A characterized measurement chain (N)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Methods and computation</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">N, I</td>
+<td style="text-align: left;">An inference procedure with known failure cases (N, I)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cross-study synthesis</td>
+<td style="text-align: left;">Problem</td>
+<td style="text-align: left;">O over many studies; C; K</td>
+<td style="text-align: left;">A pooled estimate with its spread (K)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reconstruction from traces</td>
+<td style="text-align: left;">Anomaly, problem</td>
+<td style="text-align: left;">H; F found; O over independent traces; K</td>
+<td style="text-align: left;">A best explanation within a stated rival set (K)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Replication and robustness</td>
+<td style="text-align: left;">A challenged result</td>
+<td style="text-align: left;">V, or the whole unit rerun</td>
+<td style="text-align: left;">A corrected or supported range (V, X, K)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Estimation</td>
+<td style="text-align: left;">Data</td>
+<td style="text-align: left;">O, I</td>
+<td style="text-align: left;">A latent quantity with resolution (I)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regularities</td>
+<td style="text-align: left;">Data without theory</td>
+<td style="text-align: left;">E, K</td>
+<td style="text-align: left;">A relation with a stated range (K)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each mode is defined here by what it writes into Cleland’s schema, <span class="math inline">\(H + A + C \Rightarrow E\)</span>: the rivals <span class="math inline">\(H\)</span>, the auxiliaries <span class="math inline">\(A\)</span> (instrument theory, forward model, processing), the conditions <span class="math inline">\(C\)</span>, the expectations <span class="math inline">\(E\)</span>, and the observations <span class="math inline">\(O\)</span> they are compared with. The figure is the bridge between the definitions and the <a href="./decision-tree.html">decision tree</a>, which calls the modes in turn until the schema is complete enough for a claim.</li>
+</ul>
+<div id="fig-mode-map" class="column-body-outset quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mode-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="schema">
+<div class="sc-row"><div class="sc-term"><div class="sc-sym">Q</div><div class="sc-name">question</div><ul><li><a href="./modes/question.html"><b>Question-driven inquiry</b></a> frames and reframes it</li><li><a href="./modes/exploration.html"><b>Exploration</b></a> turns a phenomenon into one</li></ul></div><div class="sc-op">→</div><div class="sc-term "><div class="sc-sym">H</div><div class="sc-name">rival hypotheses</div><ul><li><a href="./modes/theory.html"><b>Theory</b></a> proposes a mechanism</li><li><a href="./modes/hypothesis.html"><b>Hypothesis assessment</b></a> keeps a set of rivals</li><li><a href="./modes/regularities.html"><b>Regularities</b></a> a relation proposed as a law</li></ul></div><div class="sc-op">+</div><div class="sc-term "><div class="sc-sym">A</div><div class="sc-name">auxiliaries</div><ul><li><a href="./modes/instruments.html"><b>Instruments</b></a> theory of the instrument</li><li><a href="./modes/methods.html"><b>Methods</b></a> the processing and inference</li><li><a href="./modes/theory.html"><b>Theory</b></a> background laws, forward model</li></ul></div><div class="sc-op">+</div><div class="sc-term "><div class="sc-sym">C</div><div class="sc-name">conditions</div><ul><li><a href="./modes/hypothesis.html"><b>Hypothesis assessment</b></a> set by the investigator</li><li><a href="./modes/reconstruction.html"><b>Reconstruction</b></a> found: one past event</li><li><a href="./modes/regularities.html"><b>Regularities</b></a> found: nature repeats it</li></ul></div><div class="sc-op">⇒</div><div class="sc-term "><div class="sc-sym">E</div><div class="sc-name">expectations</div><ul><li><a href="./modes/theory.html"><b>Theory</b></a> derived by hand</li><li><a href="./modes/simulation.html"><b>Simulation</b></a> computed</li></ul></div></div>
+<div class="sc-cmp"><span>compared with</span></div>
+<div class="sc-row sc-row2"><div class="sc-term sc-obs"><div class="sc-sym">O</div><div class="sc-name">observations</div><ul><li><a href="./modes/observation.html"><b>Observation</b></a> a record with provenance</li><li><a href="./modes/exploration.html"><b>Exploration</b></a> a phenomenon that repeats</li><li><a href="./modes/instruments.html"><b>Instruments</b></a> a new capability to observe</li><li><a href="./modes/reconstruction.html"><b>Reconstruction</b></a> independent traces</li><li><a href="./modes/synthesis.html"><b>Cross-study synthesis</b></a> pooled results across studies</li><li><a href="./modes/estimation.html"><b>Estimation</b></a> O*: a latent quantity inferred from O</li></ul></div><div class="sc-op">→</div><div class="sc-term sc-check"><div class="sc-sym">V</div><div class="sc-name">replication and robustness</div><ul><li><a href="./modes/robustness.html"><b>Robustness</b></a> varies A and C; independent data, methods, models</li></ul></div><div class="sc-op">→</div><div class="sc-term sc-verdict"><div class="sc-name">verdict</div><ul><li>keep · exclude · contradict · no conclusion</li><li>protect: a logged move at question 7</li></ul></div></div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mode-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: What each mode writes into Cleland’s schema (drafted). Top: the question <span class="math inline">\(Q\)</span> comes first; the hypothesis <span class="math inline">\(H\)</span>, auxiliaries <span class="math inline">\(A\)</span>, and conditions <span class="math inline">\(C\)</span> jointly imply the expectation <span class="math inline">\(E\)</span> <span class="citation" data-cites="cleland2001">(<a href="bibliography.html#ref-cleland2001" role="doc-biblioref">Cleland 2001, 987–88</a>)</span>. Bottom: the observations <span class="math inline">\(E\)</span> is compared with, the robustness check, and the verdict. Under each term, the modes that write it; a mode that writes two terms appears twice.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="how-the-modes-have-been-studied" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-modes-have-been-studied">4. How the modes have been studied</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kind of evidence</th>
+<th style="text-align: left;">What it can show</th>
+<th style="text-align: left;">Examples</th>
+<th style="text-align: left;">What it cannot show</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Philosophy and history</td>
+<td style="text-align: left;">Definitions; what warrant each mode owes</td>
+<td style="text-align: left;">Section 2</td>
+<td style="text-align: left;">Prevalence; effect on outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cognitive and ethnographic studies</td>
+<td style="text-align: left;">How scientists move between modes</td>
+<td style="text-align: left;"><span class="citation" data-cites="klahr1988">Klahr and Dunbar (<a href="bibliography.html#ref-klahr1988" role="doc-biblioref">1988</a>)</span>; <span class="citation" data-cites="fugelsang2004">Fugelsang et al. (<a href="bibliography.html#ref-fugelsang2004" role="doc-biblioref">2004</a>)</span>; <span class="citation" data-cites="macleod2016">MacLeod and Nersessian (<a href="bibliography.html#ref-macleod2016" role="doc-biblioref">2016</a>)</span></td>
+<td style="text-align: left;">Outcomes at scale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Science of science</td>
+<td style="text-align: left;">Associations between contribution type and citation, disruption, prizes</td>
+<td style="text-align: left;">Section 5</td>
+<td style="text-align: left;">Causation; advance</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Documented episodes</td>
+<td style="text-align: left;">Which modes did the decisive work, in what order</td>
+<td style="text-align: left;">The table below</td>
+<td style="text-align: left;">Base rates; failures are missing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Eighteen geoscience advances, coded by mode.</strong> Coding by this search from primary abstracts and secondary sources; a historian’s own coding supports four rows (drift, inner core, ice ages and Keeling, Omori to ETAS).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Advance</th>
+<th style="text-align: left;">Entry state</th>
+<th style="text-align: left;">Decisive modes, in order</th>
+<th style="text-align: left;">Primary record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Seafloor spreading, plate tectonics (1962–1967)</td>
+<td style="text-align: left;">Data without theory</td>
+<td style="text-align: left;">Instruments, observation, theory, hypothesis, synthesis</td>
+<td style="text-align: left;"><span class="citation" data-cites="hess1962">Hess (<a href="bibliography.html#ref-hess1962" role="doc-biblioref">1962</a>)</span>; <span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span>; <span class="citation" data-cites="wilson1965">Wilson (<a href="bibliography.html#ref-wilson1965" role="doc-biblioref">1965</a>)</span>; <span class="citation" data-cites="sykes1967">Sykes (<a href="bibliography.html#ref-sykes1967" role="doc-biblioref">1967</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">K–Pg impact, Chicxulub (1980–2010)</td>
+<td style="text-align: left;">Anomaly</td>
+<td style="text-align: left;">Observation, hypothesis, synthesis of independent traces</td>
+<td style="text-align: left;"><span class="citation" data-cites="alvarez1980">Alvarez et al. (<a href="bibliography.html#ref-alvarez1980" role="doc-biblioref">1980</a>)</span>; <span class="citation" data-cites="bohor1984">Bohor et al. (<a href="bibliography.html#ref-bohor1984" role="doc-biblioref">1984</a>)</span>; <span class="citation" data-cites="hildebrand1991">Hildebrand et al. (<a href="bibliography.html#ref-hildebrand1991" role="doc-biblioref">1991</a>)</span>; <span class="citation" data-cites="schulte2010">Schulte et al. (<a href="bibliography.html#ref-schulte2010" role="doc-biblioref">2010</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cascadia great earthquakes (1987–1996)</td>
+<td style="text-align: left;">Hypothesis by analogy</td>
+<td style="text-align: left;">Hypothesis, observation, reconstruction, estimation</td>
+<td style="text-align: left;"><span class="citation" data-cites="atwater1987">Atwater (<a href="bibliography.html#ref-atwater1987" role="doc-biblioref">1987</a>)</span>; <span class="citation" data-cites="satake1996">Satake et al. (<a href="bibliography.html#ref-satake1996" role="doc-biblioref">1996</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gutenberg–Richter law (1944)</td>
+<td style="text-align: left;">Data without theory</td>
+<td style="text-align: left;">Instruments and method, observation, regularity</td>
+<td style="text-align: left;"><span class="citation" data-cites="gutenberg1944">Gutenberg and Richter (<a href="bibliography.html#ref-gutenberg1944" role="doc-biblioref">1944</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Omori law to ETAS (1894–1988)</td>
+<td style="text-align: left;">Data without theory</td>
+<td style="text-align: left;">Observation, regularity, estimation, simulation</td>
+<td style="text-align: left;"><span class="citation" data-cites="utsu1995">Utsu et al. (<a href="bibliography.html#ref-utsu1995" role="doc-biblioref">1995</a>)</span>; <span class="citation" data-cites="ogata1988">Ogata (<a href="bibliography.html#ref-ogata1988" role="doc-biblioref">1988</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inner core (1936)</td>
+<td style="text-align: left;">Anomaly</td>
+<td style="text-align: left;">Instruments, observation, theory, hypothesis, replication</td>
+<td style="text-align: left;"><span class="citation" data-cites="kolblebert2001">Kölbl-Ebert (<a href="bibliography.html#ref-kolblebert2001" role="doc-biblioref">2001</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PREM (1981)</td>
+<td style="text-align: left;">Problem</td>
+<td style="text-align: left;">Synthesis, estimation, theory</td>
+<td style="text-align: left;"><span class="citation" data-cites="dziewonski1981">Dziewonski and Anderson (<a href="bibliography.html#ref-dziewonski1981" role="doc-biblioref">1981</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mantle tomography (1984)</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">Data archive, method, estimation, observation</td>
+<td style="text-align: left;"><span class="citation" data-cites="dziewonski1984">Dziewonski (<a href="bibliography.html#ref-dziewonski1984" role="doc-biblioref">1984</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ambient-noise imaging (2001–2005)</td>
+<td style="text-align: left;">Capability, by method transfer</td>
+<td style="text-align: left;">Method, replication, observation, estimation</td>
+<td style="text-align: left;"><span class="citation" data-cites="weaver2001">Weaver and Lobkis (<a href="bibliography.html#ref-weaver2001" role="doc-biblioref">2001</a>)</span>; <span class="citation" data-cites="campillo2003">Campillo and Paul (<a href="bibliography.html#ref-campillo2003" role="doc-biblioref">2003</a>)</span>; <span class="citation" data-cites="shapiro2004">Shapiro and Campillo (<a href="bibliography.html#ref-shapiro2004" role="doc-biblioref">2004</a>)</span>; <span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Slow slip and tremor (2001–2003)</td>
+<td style="text-align: left;">Capability, then anomaly</td>
+<td style="text-align: left;">Instruments, observation, estimation, synthesis</td>
+<td style="text-align: left;"><span class="citation" data-cites="dragert2001">Dragert et al. (<a href="bibliography.html#ref-dragert2001" role="doc-biblioref">2001</a>)</span>; <span class="citation" data-cites="obara2002">Obara (<a href="bibliography.html#ref-obara2002" role="doc-biblioref">2002</a>)</span>; <span class="citation" data-cites="rogers2003">Rogers and Dragert (<a href="bibliography.html#ref-rogers2003" role="doc-biblioref">2003</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Orbital pacemaker of the ice ages (1976)</td>
+<td style="text-align: left;">Hypothesis, waiting decades</td>
+<td style="text-align: left;">Theory, instruments and method, observation, regularity, hypothesis</td>
+<td style="text-align: left;"><span class="citation" data-cites="hays1976">Hays et al. (<a href="bibliography.html#ref-hays1976" role="doc-biblioref">1976</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Keeling curve (1958 onward)</td>
+<td style="text-align: left;">Problem and capability</td>
+<td style="text-align: left;">Instruments, observation, estimation</td>
+<td style="text-align: left;"><span class="citation" data-cites="keeling1960">Keeling (<a href="bibliography.html#ref-keeling1960" role="doc-biblioref">1960</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Antarctic ozone hole (1985)</td>
+<td style="text-align: left;">Anomaly in a long record</td>
+<td style="text-align: left;">Instruments, observation, hypothesis</td>
+<td style="text-align: left;"><span class="citation" data-cites="farman1985">Farman et al. (<a href="bibliography.html#ref-farman1985" role="doc-biblioref">1985</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Numerical weather prediction (1950)</td>
+<td style="text-align: left;">Problem and capability</td>
+<td style="text-align: left;">Theory and method, simulation, replication</td>
+<td style="text-align: left;"><span class="citation" data-cites="charney1950">Charney et al. (<a href="bibliography.html#ref-charney1950" role="doc-biblioref">1950</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">InSAR map of Landers (1993)</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">Instruments, method, observation</td>
+<td style="text-align: left;"><span class="citation" data-cites="massonnet1993">Massonnet et al. (<a href="bibliography.html#ref-massonnet1993" role="doc-biblioref">1993</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dynamic triggering (1993)</td>
+<td style="text-align: left;">Anomaly</td>
+<td style="text-align: left;">Instruments, observation, hypothesis by elimination</td>
+<td style="text-align: left;"><span class="citation" data-cites="hill1993"><span class="nocase">Hill et al.</span> (<a href="bibliography.html#ref-hill1993" role="doc-biblioref">1993</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Induced seismicity, Rangely (1976)</td>
+<td style="text-align: left;">Anomaly</td>
+<td style="text-align: left;">Observation, hypothesis, field experiment</td>
+<td style="text-align: left;"><span class="citation" data-cites="raleigh1976">Raleigh et al. (<a href="bibliography.html#ref-raleigh1976" role="doc-biblioref">1976</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine-learning catalogs (2019–2020)</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">Method, observation, exploration</td>
+<td style="text-align: left;"><span class="citation" data-cites="ross2019">Ross et al. (<a href="bibliography.html#ref-ross2019" role="doc-biblioref">2019</a>)</span>; <span class="citation" data-cites="mousavi2020">Mousavi et al. (<a href="bibliography.html#ref-mousavi2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Count over these 18</th>
+<th style="text-align: left;">Episodes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">First decisive mode was observation, an instrument, or a method</td>
+<td style="text-align: left;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">First decisive mode was a theory or a stated hypothesis</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">First decisive mode was synthesis</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A new instrument, archive, or computer was a precondition</td>
+<td style="text-align: left;">15, and 1 partial</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">An explicit hypothesis test did decisive work</td>
+<td style="text-align: left;">7, two of them by elimination</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Synthesis across data types did decisive work</td>
+<td style="text-align: left;">5, and 2 partial</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Replication in the experimental sense did decisive work</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The sample is hand-picked, mostly seismology, and successes only. The counts are hypotheses for the corpus study, not base rates.</li>
+</ul>
+<p><strong>Ten more since 2010.</strong> Chosen to fill modes the first table under-represents: robustness, prediction, regularities, and an episode that began from theory. Coded from abstracts and editors’ summaries, October 20, 2026; no historian’s account exists yet for any of them.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Advance</th>
+<th style="text-align: left;">Entry state</th>
+<th style="text-align: left;">Decisive modes, in order</th>
+<th style="text-align: left;">Primary record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Slow slip before Tohoku-Oki (2012)</td>
+<td style="text-align: left;">Capability, by method</td>
+<td style="text-align: left;">Method (repeating-earthquake extraction), observation, estimation, hypothesis on nucleation</td>
+<td style="text-align: left;"><span class="citation" data-cites="kato2012">Kato et al. (<a href="bibliography.html#ref-kato2012" role="doc-biblioref">2012</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reconciled ice-sheet mass balance (2012)</td>
+<td style="text-align: left;">Problem: estimates disagreed even on sign</td>
+<td style="text-align: left;">Synthesis of altimetry, interferometry, gravimetry; robustness; estimation</td>
+<td style="text-align: left;"><span class="citation" data-cites="shepherd2012">Shepherd et al. (<a href="bibliography.html#ref-shepherd2012" role="doc-biblioref">2012</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Drought uplift of the western United States (2014)</td>
+<td style="text-align: left;">Capability, an instrument repurposed</td>
+<td style="text-align: left;">Instruments (GPS network), observation, estimation of water loss</td>
+<td style="text-align: left;"><span class="citation" data-cites="borsa2014">Borsa et al. (<a href="bibliography.html#ref-borsa2014" role="doc-biblioref">2014</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Injection rate and mid-continent seismicity (2015)</td>
+<td style="text-align: left;">Anomaly and existing databases</td>
+<td style="text-align: left;">Synthesis of well and catalog data, regularity, hypothesis (injection rate as the trigger)</td>
+<td style="text-align: left;"><span class="citation" data-cites="weingarten2015">Weingarten et al. (<a href="bibliography.html#ref-weingarten2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">The warming “hiatus” as a data artifact (2015)</td>
+<td style="text-align: left;">A challenged result</td>
+<td style="text-align: left;">Robustness, instrument bias correction, observation revised</td>
+<td style="text-align: left;"><span class="citation" data-cites="karl2015">Karl et al. (<a href="bibliography.html#ref-karl2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Broad plumes beneath hotspots (2015)</td>
+<td style="text-align: left;">Hypothesis in dispute</td>
+<td style="text-align: left;">Method (full-waveform tomography), estimation, hypothesis (broad against thin)</td>
+<td style="text-align: left;"><span class="citation" data-cites="french2015">French and Romanowicz (<a href="bibliography.html#ref-french2015" role="doc-biblioref">2015</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prompt elastogravity signals (2016–2017)</td>
+<td style="text-align: left;">Theoretical prediction</td>
+<td style="text-align: left;">Theory, observation, hypothesis, simulation, method (rapid magnitude)</td>
+<td style="text-align: left;"><span class="citation" data-cites="montagner2016">Montagner et al. (<a href="bibliography.html#ref-montagner2016" role="doc-biblioref">2016</a>)</span>; <span class="citation" data-cites="vallee2017">Vallée et al. (<a href="bibliography.html#ref-vallee2017" role="doc-biblioref">2017</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Global seismic quieting during COVID-19 lockdowns (2020)</td>
+<td style="text-align: left;">Anomaly in a natural experiment</td>
+<td style="text-align: left;">Observation from open networks, exploration, regularity</td>
+<td style="text-align: left;"><span class="citation" data-cites="lecocq2020">Lecocq et al. (<a href="bibliography.html#ref-lecocq2020" role="doc-biblioref">2020</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">The martian core (2021)</td>
+<td style="text-align: left;">Capability</td>
+<td style="text-align: left;">Instruments, observation, estimation</td>
+<td style="text-align: left;"><span class="citation" data-cites="stahler2021">Stähler et al. (<a href="bibliography.html#ref-stahler2021" role="doc-biblioref">2021</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine-learned medium-range weather forecasts (2023)</td>
+<td style="text-align: left;">Capability: reanalysis and compute</td>
+<td style="text-align: left;">Method, simulation and prediction, robustness (1,380 verification targets)</td>
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Count over these 10</th>
+<th style="text-align: left;">Episodes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">First decisive mode was observation, an instrument, or a method</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">First decisive mode was synthesis</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">First decisive mode was theory</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">First decisive mode was robustness</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A new instrument, archive, or computer was a precondition</td>
+<td style="text-align: left;">8, and 1 partial</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">An explicit hypothesis test did decisive work</td>
+<td style="text-align: left;">2, and 1 partial</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Synthesis across data types did decisive work</td>
+<td style="text-align: left;">2, and 1 partial</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Robustness or replication did decisive work</td>
+<td style="text-align: left;">2, and 1 partial</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Capability first still holds for most episodes (6 of 10, against 13 of 18 before 2010), but synthesis and robustness each led twice, which the earlier table never shows. This is a choice of episodes, not a trend.</li>
+<li>The one theory-first episode waited for an instrument: prompt gravity signals were predicted, then detected in superconducting-gravimeter and broadband records of Tohoku-Oki <span class="citation" data-cites="montagner2016 vallee2017">(<a href="bibliography.html#ref-montagner2016" role="doc-biblioref">Montagner et al. 2016</a>; <a href="bibliography.html#ref-vallee2017" role="doc-biblioref">Vallée et al. 2017</a>)</span>.</li>
+<li>Alternates not in the table: displacement reaching the Japan trench <span class="citation" data-cites="fujiwara2011">(<a href="bibliography.html#ref-fujiwara2011" role="doc-biblioref">Fujiwara et al. 2011</a>)</span>; global atmospheric waves from the Hunga eruption <span class="citation" data-cites="matoza2022">(<a href="bibliography.html#ref-matoza2022" role="doc-biblioref">Matoza et al. 2022</a>)</span>.</li>
+<li>Ten advances chosen by impact and interdisciplinary uptake, several of them in the tables above, are candidates for the group’s <a href="./success-set.html">success set</a>, the positive test cases for scoring rules and agents, coded by mode from full text.</li>
+<li>Two of the four hypothesis-first episodes waited years or decades for a capability or a field programme (the ice ages; Cascadia).</li>
+<li>Acceptance times a source states: drift to plate tectonics, about fifty years <span class="citation" data-cites="oreskes1999">(<a href="bibliography.html#ref-oreskes1999" role="doc-biblioref">Oreskes 1999</a>)</span>; the inner core, about twenty years <span class="citation" data-cites="kolblebert2001">(<a href="bibliography.html#ref-kolblebert2001" role="doc-biblioref">Kölbl-Ebert 2001, 267</a>)</span>; Milankovitch to the pacemaker, about thirty-five years <span class="citation" data-cites="weart2008">(<a href="bibliography.html#ref-weart2008" role="doc-biblioref">Weart 2008</a>)</span>.</li>
+<li>Robustness in these episodes came from independent traces converging on one event, not from repeated experiments <span class="citation" data-cites="cleland2002">(<a href="bibliography.html#ref-cleland2002" role="doc-biblioref">Cleland 2002</a>)</span>; for climate models, agreement across models confirms when read as variety of evidence <span class="citation" data-cites="lloyd2010">(<a href="bibliography.html#ref-lloyd2010" role="doc-biblioref">Lloyd 2010</a>)</span>.</li>
+<li>No study counts hypothesis-driven against descriptive papers in an Earth-science journal. Nearest: in ecology, 21 of 100 papers tested more than one hypothesis and 3 were purely descriptive <span class="citation" data-cites="betini2017">(<a href="bibliography.html#ref-betini2017" role="doc-biblioref">Betini et al. 2017</a>)</span>; in hydrology, hypothesis testing “rarely” matches the ideal (<span class="citation" data-cites="pfister2017">Pfister and Kirchner (<a href="bibliography.html#ref-pfister2017" role="doc-biblioref">2017</a>)</span>, abstract).</li>
+</ul>
+</section>
+<section id="do-modes-drive-novelty-breadth-or-advance" class="level2">
+<h2 class="anchored" data-anchor-id="do-modes-drive-novelty-breadth-or-advance">5. Do modes drive novelty, breadth, or advance?</h2>
+<ul>
+<li><strong>Verdict.</strong> No mode has been shown to cause novelty, breadth, or advance. Five contribution types have associations with citation or disruption, all outside the Earth sciences. Two quasi-experiments touch modes indirectly.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Outcome</th>
+<th style="text-align: left;">Strongest evidence</th>
+<th style="text-align: left;">Modes involved</th>
+<th style="text-align: left;">Kind</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Novelty, disruption</td>
+<td style="text-align: left;">New methods more disruptive, new theories less <span class="citation" data-cites="leahey2023">(<a href="bibliography.html#ref-leahey2023" role="doc-biblioref">Leahey et al. 2023</a>)</span>; an originality index tracks self-assessed theoretical, not methodological, originality in 246 life scientists <span class="citation" data-cites="shibayama2020">(<a href="bibliography.html#ref-shibayama2020" role="doc-biblioref">Shibayama and Wang 2020</a>)</span></td>
+<td style="text-align: left;">Methods, theory</td>
+<td style="text-align: left;">Association; the two metrics see different contribution types</td>
+<td style="text-align: left;">Not established</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Breadth</td>
+<td style="text-align: left;">A cost shock to one sensing tool let generalists recruit specialists and widen the knowledge combined <span class="citation" data-cites="teodoridis2018">(<a href="bibliography.html#ref-teodoridis2018" role="doc-biblioref">Teodoridis 2018</a>)</span>; methods and model templates cross fields <span class="citation" data-cites="gao2024 knuuttila2023">(<a href="bibliography.html#ref-gao2024" role="doc-biblioref">Gao and Wang 2024</a>; <a href="bibliography.html#ref-knuuttila2023" role="doc-biblioref">Knuuttila and Loettgers 2023</a>)</span></td>
+<td style="text-align: left;">Instruments, methods, theory as template</td>
+<td style="text-align: left;">One natural experiment; case studies</td>
+<td style="text-align: left;">Carriers identified; payoff of breadth in modes unmeasured</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Advance</td>
+<td style="text-align: left;">Capability first in 13 of 18 episodes; hypothesis assessment decisive in 7, usually late</td>
+<td style="text-align: left;">Instruments, methods, observation; hypothesis late</td>
+<td style="text-align: left;">Coded episodes, not a sample</td>
+<td style="text-align: left;">A hypothesis for the corpus study</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Citation impact</td>
+<td style="text-align: left;">Methods and synthesis cited most; hypothesis use null; failed replications cited more</td>
+<td style="text-align: left;">See next table</td>
+<td style="text-align: left;">Associations</td>
+<td style="text-align: left;">Consistent outside geoscience</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 24%">
+<col style="width: 34%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mode</th>
+<th style="text-align: left;">Novelty or disruption</th>
+<th style="text-align: left;">Citation impact</th>
+<th style="text-align: left;">Breadth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Observation</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Three ocean data sets out-cite 99% of oceanography articles <span class="citation" data-cites="belter2014">(<a href="bibliography.html#ref-belter2014" role="doc-biblioref">Belter 2014</a>)</span>; case reports least cited in medicine <span class="citation" data-cites="patsopoulos2005">(<a href="bibliography.html#ref-patsopoulos2005" role="doc-biblioref">Patsopoulos et al. 2005</a>)</span></td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exploration</td>
+<td style="text-align: left;">Exploration-tolerant funding: lower keyword overlap with past work <span class="citation" data-cites="azoulay2011">(<a href="bibliography.html#ref-azoulay2011" role="doc-biblioref">Azoulay et al. 2011</a>)</span></td>
+<td style="text-align: left;">Fatter tails: +97% top-1% papers and +35% flops, 73 against 393 investigators <span class="citation" data-cites="azoulay2011">(<a href="bibliography.html#ref-azoulay2011" role="doc-biblioref">Azoulay et al. 2011</a>)</span>; risky strategies are 14.2% of statements and their extra reward does not cover the risk <span class="citation" data-cites="foster2015">(<a href="bibliography.html#ref-foster2015" role="doc-biblioref">Foster et al. 2015</a>)</span></td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hypothesis assessment</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">No advantage: β = −0.024, p = 0.83, N = 268 <span class="citation" data-cites="betts2021">(<a href="bibliography.html#ref-betts2021" role="doc-biblioref">Betts et al. 2021</a>)</span></td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Theory</td>
+<td style="text-align: left;">New theories less disruptive <span class="citation" data-cites="leahey2023">(<a href="bibliography.html#ref-leahey2023" role="doc-biblioref">Leahey et al. 2023</a>)</span></td>
+<td style="text-align: left;">28% fewer citations per main-text equation per page, lost among empirical citers; appendix equations had no effect (649 ecology and evolution papers, 1998) <span class="citation" data-cites="fawcett2012">(<a href="bibliography.html#ref-fawcett2012" role="doc-biblioref">Fawcett and Higginson 2012</a>)</span></td>
+<td style="text-align: left;">Templates travel; across disciplines their warrant may stay home <span class="citation" data-cites="knuuttila2016 knuuttila2023">(<a href="bibliography.html#ref-knuuttila2016" role="doc-biblioref">Knuuttila and Loettgers 2016</a>, <a href="bibliography.html#ref-knuuttila2023" role="doc-biblioref">2023</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Simulation</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Computational templates reorganize fields <span class="citation" data-cites="humphreys2004">(<a href="bibliography.html#ref-humphreys2004" role="doc-biblioref">Humphreys 2004</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Instruments</td>
+<td style="text-align: left;">Prize counts disagree by coding: 82% “method” <span class="citation" data-cites="greenwald2012">(<a href="bibliography.html#ref-greenwald2012" role="doc-biblioref">Greenwald 2012</a>)</span> against 77% discoveries in physics, 1901–2004, where 11 of 17 invention prizes were measuring instruments <span class="citation" data-cites="bartneck2008">(<a href="bibliography.html#ref-bartneck2008" role="doc-biblioref">Bartneck and Rauterberg 2008, 74–75</a>)</span></td>
+<td style="text-align: left;">Not measured directly</td>
+<td style="text-align: left;">Cheaper tools widen teams <span class="citation" data-cites="teodoridis2018">(<a href="bibliography.html#ref-teodoridis2018" role="doc-biblioref">Teodoridis 2018</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Methods</td>
+<td style="text-align: left;">New methods more disruptive <span class="citation" data-cites="leahey2023">(<a href="bibliography.html#ref-leahey2023" role="doc-biblioref">Leahey et al. 2023</a>)</span></td>
+<td style="text-align: left;">Bioinformatics tools are 34% of each year’s top-20 most-cited papers <span class="citation" data-cites="wren2016">(<a href="bibliography.html#ref-wren2016" role="doc-biblioref">Wren 2016</a>)</span></td>
+<td style="text-align: left;">AI methods rose from 0.5% to 1.3% of papers, 2000–2019 <span class="citation" data-cites="gao2024">(<a href="bibliography.html#ref-gao2024" role="doc-biblioref">Gao and Wang 2024</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Synthesis</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Meta-analyses the most-cited design in health sciences <span class="citation" data-cites="patsopoulos2005">(<a href="bibliography.html#ref-patsopoulos2005" role="doc-biblioref">Patsopoulos et al. 2005</a>)</span>; reviews 2.95 times articles, mean of the 35 largest SCI-E categories, none in geoscience <span class="citation" data-cites="miranda2018">(<a href="bibliography.html#ref-miranda2018" role="doc-biblioref">Miranda and Garcia-Carpintero 2018</a>)</span>; synthesis-centre papers 82.7 against 42.9 citations <span class="citation" data-cites="hackett2021">(<a href="bibliography.html#ref-hackett2021" role="doc-biblioref">Hackett et al. 2021</a>)</span></td>
+<td style="text-align: left;">Topical diversity negatively related to citations <span class="citation" data-cites="hackett2021">(<a href="bibliography.html#ref-hackett2021" role="doc-biblioref">Hackett et al. 2021</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Replication</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Nonreplicable papers cited more <span class="citation" data-cites="serragarcia2021">(<a href="bibliography.html#ref-serragarcia2021" role="doc-biblioref">Serra-Garcia and Gneezy 2021</a>)</span>; a failed replication cut citations about 9%, not significant <span class="citation" data-cites="vonhippel2022">(<a href="bibliography.html#ref-vonhippel2022" role="doc-biblioref">Hippel 2022</a>)</span></td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Estimation</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regularities</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Not measured</td>
+<td style="text-align: left;">Not measured</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Read from abstracts only: <span class="citation" data-cites="leahey2023">Leahey et al. (<a href="bibliography.html#ref-leahey2023" role="doc-biblioref">2023</a>)</span>, <span class="citation" data-cites="wren2016">Wren (<a href="bibliography.html#ref-wren2016" role="doc-biblioref">2016</a>)</span>. <span class="citation" data-cites="miranda2018">Miranda and Garcia-Carpintero (<a href="bibliography.html#ref-miranda2018" role="doc-biblioref">2018</a>)</span>, <span class="citation" data-cites="patsopoulos2005">Patsopoulos et al. (<a href="bibliography.html#ref-patsopoulos2005" role="doc-biblioref">2005</a>)</span>, <span class="citation" data-cites="fawcett2012">Fawcett and Higginson (<a href="bibliography.html#ref-fawcett2012" role="doc-biblioref">2012</a>)</span>, and <span class="citation" data-cites="bartneck2008">Bartneck and Rauterberg (<a href="bibliography.html#ref-bartneck2008" role="doc-biblioref">2008</a>)</span> were checked against the full text on October 20, 2026. The rest were read in full or in an open preprint; the private analysis lists the basis per source.</li>
+<li><strong>Correctness and citation pull apart.</strong> Citations do not reflect soundness or originality <span class="citation" data-cites="aksnes2019">(<a href="bibliography.html#ref-aksnes2019" role="doc-biblioref">Aksnes et al. 2019</a>)</span>; the replication rows show it directly.</li>
+<li><strong>Breadth is measured in topics and references, not modes.</strong> A pivot away from one’s own past references cuts the top-5% hit rate from 7.4% to 2.2% <span class="citation" data-cites="hill2025">(<a href="bibliography.html#ref-hill2025" role="doc-biblioref">Hill et al. 2025</a>)</span>; publishing into a distant audience makes a hit 3.5 times as likely <span class="citation" data-cites="shi2023">(<a href="bibliography.html#ref-shi2023" role="doc-biblioref">Shi and Evans 2023</a>)</span>; generalists or specialists win depending on the field’s pace <span class="citation" data-cites="teodoridis2019">(<a href="bibliography.html#ref-teodoridis2019" role="doc-biblioref">Teodoridis et al. 2019</a>)</span>. A hypothesis neither paper tests: carrying a home method to a distant audience is an expedition, not a pivot.</li>
+<li><strong>What travels and what stays.</strong> Methods, instruments, and model templates cross fields; validation standards and task routines stay behind <span class="citation" data-cites="macleod2018">(<a href="bibliography.html#ref-macleod2018" role="doc-biblioref">MacLeod 2018</a>)</span>.</li>
+<li><strong>One person, two modes.</strong> Bimodal modeler-experimenters reported losing time switching, and their field doubted it could become the norm <span class="citation" data-cites="macleod2016">(<a href="bibliography.html#ref-macleod2016" role="doc-biblioref">MacLeod and Nersessian 2016, 409</a>)</span>.</li>
+<li><strong>Teams of different approaches.</strong> Diversity helps on rugged problems and costs speed; on smooth problems the best performers win <span class="citation" data-cites="hong2004 grim2019 thoma2015 wu2023">(<a href="bibliography.html#ref-hong2004" role="doc-biblioref">Hong and Page 2004</a>; <a href="bibliography.html#ref-grim2019" role="doc-biblioref">Grim et al. 2019, 108</a>; <a href="bibliography.html#ref-thoma2015" role="doc-biblioref">Thoma 2015</a>; <a href="bibliography.html#ref-wu2023" role="doc-biblioref">Wu and O’Connor 2023</a>)</span>. The gain in Weisberg and Muldoon’s model is the mavericks’ own work <span class="citation" data-cites="weisberg2009 alexander2015">(<a href="bibliography.html#ref-weisberg2009" role="doc-biblioref">Weisberg and Muldoon 2009</a>; <a href="bibliography.html#ref-alexander2015" role="doc-biblioref">Alexander et al. 2015, 440</a>)</span>.</li>
+</ul>
+<p><strong>Claims this evidence does not support.</strong></p>
+<ul>
+<li>That hypothesis-driven papers have more impact <span class="citation" data-cites="betts2021">(<a href="bibliography.html#ref-betts2021" role="doc-biblioref">Betts et al. 2021</a>)</span>.</li>
+<li>That most breakthroughs follow hypothesis testing: 81% of 761 major discoveries used it, with no comparison set <span class="citation" data-cites="krauss2024">(<a href="bibliography.html#ref-krauss2024" role="doc-biblioref">Krauss 2024</a>)</span>.</li>
+<li>That science is driven more by tools than ideas: the counts flip with the coding <span class="citation" data-cites="greenwald2012 bartneck2008">(<a href="bibliography.html#ref-greenwald2012" role="doc-biblioref">Greenwald 2012</a>; <a href="bibliography.html#ref-bartneck2008" role="doc-biblioref">Bartneck and Rauterberg 2008</a>)</span>.</li>
+<li>That being cited means being correct <span class="citation" data-cites="serragarcia2021 aksnes2019">(<a href="bibliography.html#ref-serragarcia2021" role="doc-biblioref">Serra-Garcia and Gneezy 2021</a>; <a href="bibliography.html#ref-aksnes2019" role="doc-biblioref">Aksnes et al. 2019</a>)</span>.</li>
+<li>That breadth in modes raises impact: no study measures it.</li>
+<li>That any of this holds in the Earth sciences: no impact study above uses an Earth-science corpus.</li>
+</ul>
+</section>
+<section id="from-modes-to-agents" class="level2">
+<h2 class="anchored" data-anchor-id="from-modes-to-agents">6. From modes to agents</h2>
+<ul>
+<li><strong>No taxonomy of AI in science is organized by mode.</strong> Surveys sort by workflow stage, autonomy, or mechanism <span class="citation" data-cites="zheng2025 reddy2025">(<a href="bibliography.html#ref-zheng2025" role="doc-biblioref">Zheng et al. 2025</a>; <a href="bibliography.html#ref-reddy2025" role="doc-biblioref">Reddy and Shojaee 2025</a>)</span>; one sorts by kind of understanding <span class="citation" data-cites="krenn2022">(<a href="bibliography.html#ref-krenn2022" role="doc-biblioref">Krenn et al. 2022</a>)</span>. The nearest to a mode list is the five geoscience problem classes of <span class="citation" data-cites="karpatne2019">Karpatne et al. (<a href="bibliography.html#ref-karpatne2019" role="doc-biblioref">2019</a>)</span>.</li>
+<li><strong>Coverage.</strong> Coded by this search over 19 published systems and benchmarks: the core loop runs methods in 7, hypothesis generation and ranking in 6, regularities in 4, literature synthesis in 4, and simulation, instruments, or replication in none. All 19 start from a supplied goal; none starts from an anomaly or reconstructs an event from physical traces.</li>
+<li><strong>Roles.</strong> One multi-agent system splits agents by epistemic function: generation, reflection, ranking, evolution <span class="citation" data-cites="gottweis2026">(<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref">Gottweis et al. 2026</a>)</span>. Others split by disciplinary persona, career rank, or tool <span class="citation" data-cites="swanson2025 su2025 schmidgall2025 ghareeb2026">(<a href="bibliography.html#ref-swanson2025" role="doc-biblioref">Swanson et al. 2025</a>; <a href="bibliography.html#ref-su2025" role="doc-biblioref">Su et al. 2025</a>; <a href="bibliography.html#ref-schmidgall2025" role="doc-biblioref">Schmidgall et al. 2025</a>; <a href="bibliography.html#ref-ghareeb2026" role="doc-biblioref">Ghareeb et al. 2026</a>)</span>.</li>
+<li><strong>Drift.</strong> AI-augmented papers concentrate where data are abundant, topics shrink by 4.63%, and follow-on engagement falls by 22%; the authors read it as a move from questions of origin to operational ones, which they did not measure by mode <span class="citation" data-cites="hao2026">(<a href="bibliography.html#ref-hao2026" role="doc-biblioref">Hao et al. 2026</a>)</span>. Against it, LLM adopters cite 11.9% more books <span class="citation" data-cites="kusumegi2025">(<a href="bibliography.html#ref-kusumegi2025" role="doc-biblioref">Kusumegi et al. 2025</a>)</span>.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Design hypothesis</th>
+<th style="text-align: left;">Evidence for</th>
+<th style="text-align: left;">What would refute it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Specialize agents by the evidence a mode owes, not by persona or by Peirce’s labels</td>
+<td style="text-align: left;">Search access for the reflection agent cut implausible hypotheses <span class="citation" data-cites="gottweis2026">(<a href="bibliography.html#ref-gottweis2026" role="doc-biblioref">Gottweis et al. 2026</a>)</span>; agents split by abduction, deduction, and induction were tested only on logic puzzles <span class="citation" data-cites="abdaljalil2025">(<a href="bibliography.html#ref-abdaljalil2025" role="doc-biblioref">Abdaljalil et al. 2025</a>)</span></td>
+<td style="text-align: left;">A generalist with the same tools and budget runs as many mode-specific checks as the specialists</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Each mode agent has an evaluator the generating model does not control</td>
+<td style="text-align: left;">Automated reviewers scored 6.1 of 10 against 3.8 from humans <span class="citation" data-cites="schmidgall2025">(<a href="bibliography.html#ref-schmidgall2025" role="doc-biblioref">Schmidgall et al. 2025</a>)</span>; the A-Lab scored itself <span class="citation" data-cites="leeman2024">(<a href="bibliography.html#ref-leeman2024" role="doc-biblioref">Leeman et al. 2024</a>)</span></td>
+<td style="text-align: left;">Self-scores track blinded expert scores</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Synthesis is its own agent, scored apart from the analyses it draws on</td>
+<td style="text-align: left;">57.9% against 85.5% accuracy <span class="citation" data-cites="mitchener2025">(<a href="bibliography.html#ref-mitchener2025" role="doc-biblioref">Mitchener et al. 2025</a>)</span></td>
+<td style="text-align: left;">Synthesis accuracy equals analysis accuracy once scored separately</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A system without a mode budget drifts to data-rich modes</td>
+<td style="text-align: left;"><span class="citation" data-cites="hao2026">Hao et al. (<a href="bibliography.html#ref-hao2026" role="doc-biblioref">2026</a>)</span>; the coverage counts above</td>
+<td style="text-align: left;">Logged mode shares in the group’s runs match the ledger without a budget</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A method carried to a new field must carry that field’s validation standard</td>
+<td style="text-align: left;"><span class="citation" data-cites="macleod2018">MacLeod (<a href="bibliography.html#ref-macleod2018" role="doc-biblioref">2018</a>)</span>; the Ising model lost its renormalization-group warrant moving from physics to socio-economics <span class="citation" data-cites="knuuttila2016">(<a href="bibliography.html#ref-knuuttila2016" role="doc-biblioref">Knuuttila and Loettgers 2016</a>)</span></td>
+<td style="text-align: left;">Transferred methods pass the destination’s checks without being given them</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Specialists built on one base model are not a diverse team</td>
+<td style="text-align: left;">Diversity’s advantage depends on solvers that differ <span class="citation" data-cites="hong2004 grim2019">(<a href="bibliography.html#ref-hong2004" role="doc-biblioref">Hong and Page 2004</a>; <a href="bibliography.html#ref-grim2019" role="doc-biblioref">Grim et al. 2019</a>)</span></td>
+<td style="text-align: left;">Same-model specialists generate as many distinct rivals as specialists on different models</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">The exploration agent enters from an anomaly</td>
+<td style="text-align: left;">None of the 19 systems does; Kosmos “can sometimes veer in unexpected trajectories” <span class="citation" data-cites="mitchener2025">(<a href="bibliography.html#ref-mitchener2025" role="doc-biblioref">Mitchener et al. 2025, 19</a>)</span></td>
+<td style="text-align: left;">An agent given a goal finds the anomalies an anomaly-entry agent finds</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The polymath hypothesis, restated for agents.</strong> A human’s cost of holding two modes is training and switching time <span class="citation" data-cites="macleod2016">(<a href="bibliography.html#ref-macleod2016" role="doc-biblioref">MacLeod and Nersessian 2016</a>)</span>; an agent’s switching cost is near zero. That is where a generalist could beat people. Test: one generalist agent against a team of three mode specialists on a task that needs simulation and observation, scored by a blinded specialist in each mode, recording whether each mode’s own checks ran.</li>
+</ul>
+</section>
+<section id="for-the-room" class="level2">
+<h2 class="anchored" data-anchor-id="for-the-room">7. For the room</h2>
+<ol type="1">
+<li>Decided by the convenor (October 21, 2026): synthesis split, question-driven inquiry added. For the room: does any other mode need splitting?</li>
+<li>Is methods and computation a mode or a contribution type? Hacking gives it a style; no one gives it its own warrant.</li>
+<li>Graph v0.4: do E, N, and I place your own paper better than v0.3 did?</li>
+<li>Which outcome should a mode agent be scored on, by whom, and against what baseline?</li>
+</ol>
+<ul>
+<li><strong>Exercise.</strong> Code your paper by mode, draw it as a path on the <a href="./decision-tree.html">decision tree</a>, and mark the node where its decisive move happened. Then do the same for one row of the episode table and compare.</li>
+<li><strong>Record.</strong> Sign the <a href="./notes.html">notes</a>; one <a href="./notes.html#inquiry-mode-ledger">ledger</a> row; the decision on the list and on graph v0.4, with the source behind each change.</li>
+</ul>
+</section>
+<section id="what-this-page-does-not-establish" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-page-does-not-establish">What this page does not establish</h2>
+<ul>
+<li>That any mode causes novelty, breadth, or advance.</li>
+<li>Base rates: the twenty-eight episodes are a selected set, coded by this search; four rows rest on a historian’s coding, and the ten after 2010 rest on abstracts.</li>
+<li>That the agent hypotheses hold: none has been run on the group’s agents.</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-abdaljalil2025" class="csl-entry" role="listitem">
+Abdaljalil, Samir, Hasan Kurban, Khalid Qaraqe, and Erchin Serpedin. 2025. <span>“<span class="nocase">Theorem-of-Thought: A Multi-Agent Framework for Abductive, Deductive, and Inductive Reasoning in Language Models</span>.”</span> <em>Proceedings of the 3rd Workshop on Towards Knowledgeable Foundation Models (KnowFM)</em>, 111–19. <a href="https://doi.org/10.18653/v1/2025.knowllm-1.10">https://doi.org/10.18653/v1/2025.knowllm-1.10</a>.
+</div>
+<div id="ref-aksnes2019" class="csl-entry" role="listitem">
+Aksnes, Dag W., Liv Langfeldt, and Paul Wouters. 2019. <span>“<span class="nocase">Citations, Citation Indicators, and Research Quality: An Overview of Basic Concepts and Theories</span>.”</span> <em>Sage Open</em> 9 (1): 2158244019829575. <a href="https://doi.org/10.1177/2158244019829575">https://doi.org/10.1177/2158244019829575</a>.
+</div>
+<div id="ref-alexander2015" class="csl-entry" role="listitem">
+Alexander, Jason McKenzie, Johannes Himmelreich, and Christopher Thompson. 2015. <span>“<span class="nocase">Epistemic Landscapes, Optimal Search, and the Division of Cognitive Labor</span>.”</span> <em>Philosophy of Science</em> 82 (3): 424–53. <a href="https://doi.org/10.1086/681766">https://doi.org/10.1086/681766</a>.
+</div>
+<div id="ref-alvarez1980" class="csl-entry" role="listitem">
+Alvarez, Luis W., Walter Alvarez, Frank Asaro, and Helen V. Michel. 1980. <span>“<span class="nocase">Extraterrestrial Cause for the Cretaceous-Tertiary Extinction</span>.”</span> <em>Science</em> 208 (4448): 1095–108. <a href="https://doi.org/10.1126/science.208.4448.1095">https://doi.org/10.1126/science.208.4448.1095</a>.
+</div>
+<div id="ref-atwater1987" class="csl-entry" role="listitem">
+Atwater, Brian F. 1987. <span>“<span class="nocase">Evidence for great Holocene earthquakes along the outer coast of Washington state</span>.”</span> <em>Science</em> 236 (4804): 942–44. <a href="https://doi.org/10.1126/science.236.4804.942">https://doi.org/10.1126/science.236.4804.942</a>.
+</div>
+<div id="ref-azoulay2011" class="csl-entry" role="listitem">
+Azoulay, Pierre, Joshua S. Graff Zivin, and Gustavo Manso. 2011. <span>“Incentives and Creativity: Evidence from the Academic Life Sciences.”</span> <em>The RAND Journal of Economics</em> 42 (3): 527–54. <a href="https://doi.org/10.1111/j.1756-2171.2011.00140.x">https://doi.org/10.1111/j.1756-2171.2011.00140.x</a>.
+</div>
+<div id="ref-backus1968" class="csl-entry" role="listitem">
+Backus, George, and Freeman Gilbert. 1968. <span>“<span class="nocase">The Resolving Power of Gross Earth Data</span>.”</span> <em>Geophysical Journal International</em> 16 (2): 169–205. <a href="https://doi.org/10.1111/j.1365-246x.1968.tb00216.x">https://doi.org/10.1111/j.1365-246x.1968.tb00216.x</a>.
+</div>
+<div id="ref-baird2004" class="csl-entry" role="listitem">
+Baird, Davis. 2004. <em><span class="nocase">Thing Knowledge: A Philosophy of Scientific Instruments</span></em>. University of California Press. <a href="https://doi.org/10.1525/9780520928206">https://doi.org/10.1525/9780520928206</a>.
+</div>
+<div id="ref-baker2017" class="csl-entry" role="listitem">
+Baker, Victor R. 2017. <span>“<span class="nocase">Debates—Hypothesis testing in hydrology: Pursuing certainty versus pursuing uberty</span>.”</span> <em>Water Resources Research</em> 53 (3): 1770–78. <a href="https://doi.org/10.1002/2016wr020078">https://doi.org/10.1002/2016wr020078</a>.
+</div>
+<div id="ref-bartneck2008" class="csl-entry" role="listitem">
+Bartneck, Christoph, and Matthias Rauterberg. 2008. <span>“<span class="nocase">The asymmetry between discoveries and inventions in the Nobel Prize in Physics</span>.”</span> <em>Technoetic Arts</em> 6 (1): 73–77. <a href="https://doi.org/10.1386/tear.6.1.73_1">https://doi.org/10.1386/tear.6.1.73_1</a>.
+</div>
+<div id="ref-belter2014" class="csl-entry" role="listitem">
+Belter, Christopher W. 2014. <span>“<span class="nocase">Measuring the Value of Research Data: A Citation Analysis of Oceanographic Data Sets</span>.”</span> <em>PLoS ONE</em> 9 (3): e92590. <a href="https://doi.org/10.1371/journal.pone.0092590">https://doi.org/10.1371/journal.pone.0092590</a>.
+</div>
+<div id="ref-betini2017" class="csl-entry" role="listitem">
+Betini, Gustavo S., Tal Avgar, and John M. Fryxell. 2017. <span>“<span class="nocase">Why are we not evaluating multiple competing hypotheses in ecology and evolution?</span>”</span> <em>Royal Society Open Science</em> 4 (1): 160756. <a href="https://doi.org/10.1098/rsos.160756">https://doi.org/10.1098/rsos.160756</a>.
+</div>
+<div id="ref-betts2021" class="csl-entry" role="listitem">
+Betts, Matthew G., Adam S. Hadley, David W. Frey, et al. 2021. <span>“<span class="nocase">When are hypotheses useful in ecology and evolution?</span>”</span> <em>Ecology and Evolution</em> 11 (11): 5762–76. <a href="https://doi.org/10.1002/ece3.7365">https://doi.org/10.1002/ece3.7365</a>.
+</div>
+<div id="ref-bogen1988" class="csl-entry" role="listitem">
+Bogen, James, and James Woodward. 1988. <span>“Saving the Phenomena.”</span> <em>The Philosophical Review</em> 97 (3): 303. <a href="https://doi.org/10.2307/2185445">https://doi.org/10.2307/2185445</a>.
+</div>
+<div id="ref-bohor1984" class="csl-entry" role="listitem">
+Bohor, B. F., E. E. Foord, P. J. Modreski, and D. M. Triplehorn. 1984. <span>“<span class="nocase">Mineralogic Evidence for an Impact Event at the Cretaceous-Tertiary Boundary</span>.”</span> <em>Science</em> 224 (4651): 867–69. <a href="https://doi.org/10.1126/science.224.4651.867">https://doi.org/10.1126/science.224.4651.867</a>.
+</div>
+<div id="ref-bokulich2020" class="csl-entry" role="listitem">
+Bokulich, Alisa. 2020. <span>“<span class="nocase">Towards a Taxonomy of the Model-Ladenness of Data</span>.”</span> <em>Philosophy of Science</em> 87 (5): 793–806. <a href="https://doi.org/10.1086/710516">https://doi.org/10.1086/710516</a>.
+</div>
+<div id="ref-bokulich2017" class="csl-entry" role="listitem">
+Bokulich, A., and N. Oreskes. 2017. <span>“<span class="nocase">Models in Geosciences</span>.”</span> In <em>Springer Handbook of Model-Based Science</em>, edited by Lorenzo Magnani and Tommaso Bertolotti. Springer. <a href="https://doi.org/10.1007/978-3-319-30526-4_41">https://doi.org/10.1007/978-3-319-30526-4_41</a>.
+</div>
+<div id="ref-borsa2014" class="csl-entry" role="listitem">
+Borsa, Adrian Antal, Duncan Carr Agnew, and Daniel R. Cayan. 2014. <span>“<span class="nocase">Ongoing drought-induced uplift in the western United States</span>.”</span> <em>Science</em> 345 (6204): 1587–90. <a href="https://doi.org/10.1126/science.1260279">https://doi.org/10.1126/science.1260279</a>.
+</div>
+<div id="ref-breiman2001" class="csl-entry" role="listitem">
+Breiman, Leo. 2001. <span>“Statistical Modeling: The Two Cultures (with Comments and a Rejoinder by the Author).”</span> <em>Statistical Science</em> 16 (3). <a href="https://doi.org/10.1214/ss/1009213726">https://doi.org/10.1214/ss/1009213726</a>.
+</div>
+<div id="ref-campillo2003" class="csl-entry" role="listitem">
+Campillo, Michel, and Anne Paul. 2003. <span>“<span class="nocase">Long-Range Correlations in the Diffuse Seismic Coda</span>.”</span> <em>Science</em> 299 (5606): 547–49. <a href="https://doi.org/10.1126/science.1078551">https://doi.org/10.1126/science.1078551</a>.
+</div>
+<div id="ref-carpenter2009" class="csl-entry" role="listitem">
+Carpenter, Stephen R., E. Virginia Armbrust, Peter W. Arzberger, et al. 2009. <span>“<span class="nocase">Accelerate Synthesis in Ecology and Environmental Sciences</span>.”</span> <em>BioScience</em> 59 (8): 699–701. <a href="https://doi.org/10.1525/bio.2009.59.8.11">https://doi.org/10.1525/bio.2009.59.8.11</a>.
+</div>
+<div id="ref-charney1950" class="csl-entry" role="listitem">
+Charney, J. G., R. Fjörtoft, and J. von Neumann. 1950. <span>“<span class="nocase">Numerical Integration of the Barotropic Vorticity Equation</span>.”</span> <em>Tellus</em> 2 (4): 237–54. <a href="https://doi.org/10.1111/j.2153-3490.1950.tb00336.x">https://doi.org/10.1111/j.2153-3490.1950.tb00336.x</a>.
+</div>
+<div id="ref-cleland2001" class="csl-entry" role="listitem">
+Cleland, Carol E. 2001. <span>“<span class="nocase">Historical science, experimental science, and the scientific method</span>.”</span> <em>Geology</em> 29 (11): 987–90. <a href="https://doi.org/10.1130/0091-7613(2001)029<0987:HSESAT>2.0.CO;2">https://doi.org/10.1130/0091-7613(2001)029&lt;0987:HSESAT&gt;2.0.CO;2</a>.
+</div>
+<div id="ref-cleland2002" class="csl-entry" role="listitem">
+Cleland, Carol E. 2002. <span>“<span class="nocase">Methodological and Epistemic Differences between Historical Science and Experimental Science</span>.”</span> <em>Philosophy of Science</em> 69 (3): 474–96. <a href="https://doi.org/10.1086/342455">https://doi.org/10.1086/342455</a>.
+</div>
+<div id="ref-crombie1988" class="csl-entry" role="listitem">
+Crombie, Alistair C. 1988. <span>“<span class="nocase">Designed in the Mind: Western Visions of Science, Nature and Humankind</span>.”</span> <em>History of Science</em> 26 (1): 1–12. <a href="https://doi.org/10.1177/007327538802600101">https://doi.org/10.1177/007327538802600101</a>.
+</div>
+<div id="ref-dragert2001" class="csl-entry" role="listitem">
+Dragert, Herb, Kelin Wang, and Thomas S. James. 2001. <span>“<span class="nocase">A Silent Slip Event on the Deeper Cascadia Subduction Interface</span>.”</span> <em>Science</em> 292 (5521): 1525–28. <a href="https://doi.org/10.1126/science.1060152">https://doi.org/10.1126/science.1060152</a>.
+</div>
+<div id="ref-dziewonski1984" class="csl-entry" role="listitem">
+Dziewonski, Adam M. 1984. <span>“<span class="nocase">Mapping the lower mantle: Determination of lateral heterogeneity in P velocity up to degree and order 6</span>.”</span> <em>Journal of Geophysical Research: Solid Earth</em> 89 (B7): 5929–52. <a href="https://doi.org/10.1029/jb089ib07p05929">https://doi.org/10.1029/jb089ib07p05929</a>.
+</div>
+<div id="ref-dziewonski1981" class="csl-entry" role="listitem">
+Dziewonski, Adam M., and Don L. Anderson. 1981. <span>“<span class="nocase">Preliminary reference Earth model</span>.”</span> <em>Physics of the Earth and Planetary Interiors</em> 25 (4): 297–356. <a href="https://doi.org/10.1016/0031-9201(81)90046-7">https://doi.org/10.1016/0031-9201(81)90046-7</a>.
+</div>
+<div id="ref-elliott2016" class="csl-entry" role="listitem">
+Elliott, K. C., K. S. Cheruvelil, G. M. Montgomery, and P. A. Soranno. 2016. <span>“<span class="nocase">Conceptions of Good Science in Our Data-Rich World</span>.”</span> <em>BioScience</em> 66 (10): 880–89. <a href="https://doi.org/10.1093/biosci/biw115">https://doi.org/10.1093/biosci/biw115</a>.
+</div>
+<div id="ref-elliott2012" class="csl-entry" role="listitem">
+Elliott, Kevin C. 2012. <span>“<span class="nocase">Epistemic and methodological iteration in scientific research</span>.”</span> <em>Studies in History and Philosophy of Science Part A</em> 43 (2): 376–82. <a href="https://doi.org/10.1016/j.shpsa.2011.12.034">https://doi.org/10.1016/j.shpsa.2011.12.034</a>.
+</div>
+<div id="ref-farman1985" class="csl-entry" role="listitem">
+Farman, J. C., B. G. Gardiner, and J. D. Shanklin. 1985. <span>“<span class="nocase">Large losses of total ozone in Antarctica reveal seasonal ClOx/NOx interaction</span>.”</span> <em>Nature</em> 315 (6016): 207–10. <a href="https://doi.org/10.1038/315207a0">https://doi.org/10.1038/315207a0</a>.
+</div>
+<div id="ref-fawcett2012" class="csl-entry" role="listitem">
+Fawcett, Tim W., and Andrew D. Higginson. 2012. <span>“<span class="nocase">Heavy use of equations impedes communication among biologists</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (29): 11735–39. <a href="https://doi.org/10.1073/pnas.1205259109">https://doi.org/10.1073/pnas.1205259109</a>.
+</div>
+<div id="ref-foster2015" class="csl-entry" role="listitem">
+Foster, Jacob G., Andrey Rzhetsky, and James A. Evans. 2015. <span>“<span class="nocase">Tradition and Innovation in Scientists’ Research Strategies</span>.”</span> <em>American Sociological Review</em> 80 (5): 875–908. <a href="https://doi.org/10.1177/0003122415601618">https://doi.org/10.1177/0003122415601618</a>.
+</div>
+<div id="ref-vanfraassen1980" class="csl-entry" role="listitem">
+Fraassen, Bas C. van. 1980. <em><span>The Scientific Image</span></em>. Oxford University Press. <a href="https://doi.org/10.1093/0198244274.001.0001">https://doi.org/10.1093/0198244274.001.0001</a>.
+</div>
+<div id="ref-franklin2005" class="csl-entry" role="listitem">
+Franklin, L. R. 2005. <span>“<span>Exploratory Experiments</span>.”</span> <em>Philosophy of Science</em> 72 (5): 888–99. <a href="https://doi.org/10.1086/508117">https://doi.org/10.1086/508117</a>.
+</div>
+<div id="ref-french2015" class="csl-entry" role="listitem">
+French, Scott W., and Barbara Romanowicz. 2015. <span>“<span class="nocase">Broad plumes rooted at the base of the Earth’s mantle beneath major hotspots</span>.”</span> <em>Nature</em> 525 (7567): 95–99. <a href="https://doi.org/10.1038/nature14876">https://doi.org/10.1038/nature14876</a>.
+</div>
+<div id="ref-fugelsang2004" class="csl-entry" role="listitem">
+Fugelsang, Jonathan A., Courtney B. Stein, Adam E. Green, and Kevin N. Dunbar. 2004. <span>“<span class="nocase">Theory and data interactions of the scientific mind: Evidence from the molecular and the cognitive laboratory</span>.”</span> <em>Canadian Journal of Experimental Psychology</em> 58 (2): 86–95. <a href="https://doi.org/10.1037/h0085799">https://doi.org/10.1037/h0085799</a>.
+</div>
+<div id="ref-fujiwara2011" class="csl-entry" role="listitem">
+Fujiwara, Toshiya, Shuichi Kodaira, Tetsuo No, Yuka Kaiho, Narumi Takahashi, and Yoshiyuki Kaneda. 2011. <span>“<span class="nocase">The 2011 Tohoku-Oki Earthquake: Displacement Reaching the Trench Axis</span>.”</span> <em>Science</em> 334 (6060): 1240–40. <a href="https://doi.org/10.1126/science.1211554">https://doi.org/10.1126/science.1211554</a>.
+</div>
+<div id="ref-gao2024" class="csl-entry" role="listitem">
+Gao, Jian, and Dashun Wang. 2024. <span>“<span class="nocase">Quantifying the use and potential benefits of artificial intelligence in scientific research</span>.”</span> <em>Nature Human Behaviour</em> 8 (12): 2281–92. <a href="https://doi.org/10.1038/s41562-024-02020-5">https://doi.org/10.1038/s41562-024-02020-5</a>.
+</div>
+<div id="ref-ghareeb2026" class="csl-entry" role="listitem">
+Ghareeb, Ali E., Benjamin Chang, Ludovico Mitchener, et al. 2026. <span>“<span class="nocase">A multi-agent system for automating scientific discovery</span>.”</span> <em>Nature</em> 655 (8122): 497–505. <a href="https://doi.org/10.1038/s41586-026-10652-y">https://doi.org/10.1038/s41586-026-10652-y</a>.
+</div>
+<div id="ref-gigerenzer1991" class="csl-entry" role="listitem">
+Gigerenzer, Gerd. 1991. <span>“<span class="nocase">From tools to theories: A heuristic of discovery in cognitive psychology.</span>”</span> <em>Psychological Review</em> 98 (2): 254–67. <a href="https://doi.org/10.1037/0033-295x.98.2.254">https://doi.org/10.1037/0033-295x.98.2.254</a>.
+</div>
+<div id="ref-gilbert1896" class="csl-entry" role="listitem">
+Gilbert, G. K. 1896. <span>“<span class="nocase">The Origin of Hypotheses, Illustrated by the Discussion of a Topographic Problem</span>.”</span> <em>Science</em> 3 (53): 1–13. <a href="https://doi.org/10.1126/science.3.53.1">https://doi.org/10.1126/science.3.53.1</a>.
+</div>
+<div id="ref-gottweis2026" class="csl-entry" role="listitem">
+Gottweis, Juraj, Wei-Hung Weng, Alexander Daryin, et al. 2026. <span>“<span class="nocase">Accelerating scientific discovery with Co-Scientist</span>.”</span> <em>Nature</em> 655 (8122): 487–96. <a href="https://doi.org/10.1038/s41586-026-10644-y">https://doi.org/10.1038/s41586-026-10644-y</a>.
+</div>
+<div id="ref-greenwald2012" class="csl-entry" role="listitem">
+Greenwald, Anthony G. 2012. <span>“<span class="nocase">There Is Nothing So Theoretical as a Good Method</span>.”</span> <em>Perspectives on Psychological Science</em> 7 (2): 99–108. <a href="https://doi.org/10.1177/1745691611434210">https://doi.org/10.1177/1745691611434210</a>.
+</div>
+<div id="ref-grim2019" class="csl-entry" role="listitem">
+Grim, Patrick, Daniel J. Singer, Aaron Bramson, Bennett Holman, Sean McGeehan, and William J. Berger. 2019. <span>“<span class="nocase">Diversity, Ability, and Expertise in Epistemic Communities</span>.”</span> <em>Philosophy of Science</em> 86 (1): 98–123. <a href="https://doi.org/10.1086/701070">https://doi.org/10.1086/701070</a>.
+</div>
+<div id="ref-grimaldi2007" class="csl-entry" role="listitem">
+Grimaldi, David A., and Michael S. Engel. 2007. <span>“<span>Why Descriptive Science Still Matters</span>.”</span> <em>BioScience</em> 57 (8): 646–47. <a href="https://doi.org/10.1641/b570802">https://doi.org/10.1641/b570802</a>.
+</div>
+<div id="ref-gurevitch2018" class="csl-entry" role="listitem">
+Gurevitch, Jessica, Julia Koricheva, Shinichi Nakagawa, and Gavin Stewart. 2018. <span>“<span class="nocase">Meta-analysis and the science of research synthesis</span>.”</span> <em>Nature</em> 555 (7695): 175–82. <a href="https://doi.org/10.1038/nature25753">https://doi.org/10.1038/nature25753</a>.
+</div>
+<div id="ref-gutenberg1944" class="csl-entry" role="listitem">
+Gutenberg, B., and C. F. Richter. 1944. <span>“<span class="nocase">Frequency of earthquakes in California</span>.”</span> <em>Bulletin of the Seismological Society of America</em> 34 (4): 185–88. <a href="https://doi.org/10.1785/bssa0340040185">https://doi.org/10.1785/bssa0340040185</a>.
+</div>
+<div id="ref-hackett2021" class="csl-entry" role="listitem">
+Hackett, Edward J., Erin Leahey, John N. Parker, et al. 2021. <span>“<span class="nocase">Do synthesis centers synthesize? A semantic analysis of topical diversity in research</span>.”</span> <em>Research Policy</em> 50 (1): 104069. <a href="https://doi.org/10.1016/j.respol.2020.104069">https://doi.org/10.1016/j.respol.2020.104069</a>.
+</div>
+<div id="ref-hacking1983" class="csl-entry" role="listitem">
+Hacking, Ian. 1983. <em><span class="nocase">Representing and Intervening: Introductory Topics in the Philosophy of Natural Science</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511814563">https://doi.org/10.1017/cbo9780511814563</a>.
+</div>
+<div id="ref-hacking2002" class="csl-entry" role="listitem">
+Hacking, Ian. 2002. <span>“<span class="nocase"><span>‘Style’</span> for Historians and Philosophers</span>.”</span> In <em>Historical Ontology</em>. Harvard University Press. <a href="https://doi.org/10.2307/j.ctv1n3x198.15">https://doi.org/10.2307/j.ctv1n3x198.15</a>.
+</div>
+<div id="ref-hao2026" class="csl-entry" role="listitem">
+Hao, Qianyue, Fengli Xu, Yong Li, and James Evans. 2026. <span>“<span class="nocase">Artificial intelligence tools expand scientists’ impact but contract science’s focus</span>.”</span> <em>Nature</em> 649 (8099): 1237–43. <a href="https://doi.org/10.1038/s41586-025-09922-y">https://doi.org/10.1038/s41586-025-09922-y</a>.
+</div>
+<div id="ref-haufe2013" class="csl-entry" role="listitem">
+Haufe, Chris. 2013. <span>“<span class="nocase">Why do funding agencies favor hypothesis testing?</span>”</span> <em>Studies in History and Philosophy of Science Part A</em> 44 (3): 363–74. <a href="https://doi.org/10.1016/j.shpsa.2013.05.002">https://doi.org/10.1016/j.shpsa.2013.05.002</a>.
+</div>
+<div id="ref-hays1976" class="csl-entry" role="listitem">
+Hays, J. D., John Imbrie, and N. J. Shackleton. 1976. <span>“<span class="nocase">Variations in the Earth’s Orbit: Pacemaker of the Ice Ages</span>.”</span> <em>Science</em> 194 (4270): 1121–32. <a href="https://doi.org/10.1126/science.194.4270.1121">https://doi.org/10.1126/science.194.4270.1121</a>.
+</div>
+<div id="ref-hess1962" class="csl-entry" role="listitem">
+Hess, H. H. 1962. <span>“<span class="nocase">History of Ocean Basins</span>.”</span> In <em>Petrologic Studies: A Volume to Honor a. F. Buddington</em>, edited by A. E. J. Engel, H. L. James, and B. F. Leonard. Geological Society of America. <a href="https://doi.org/10.1130/petrologic.1962.599">https://doi.org/10.1130/petrologic.1962.599</a>.
+</div>
+<div id="ref-hey2009" class="csl-entry" role="listitem">
+Hey, Tony, Stewart Tansley, and Kristin Tolle. 2009. <em><span>The Fourth Paradigm: Data-Intensive Scientific Discovery</span></em>. Edited by Tony Hey, Stewart Tansley, and Kristin Tolle. Microsoft Research. <a href="https://www.microsoft.com/en-us/research/publication/fourth-paradigm-data-intensive-scientific-discovery/">https://www.microsoft.com/en-us/research/publication/fourth-paradigm-data-intensive-scientific-discovery/</a>.
+</div>
+<div id="ref-hildebrand1991" class="csl-entry" role="listitem">
+Hildebrand, Alan R., Glen T. Penfield, David A. Kring, et al. 1991. <span>“<span class="nocase">Chicxulub Crater: A possible Cretaceous/Tertiary boundary impact crater on the Yucatán Peninsula, Mexico</span>.”</span> <em>Geology</em> 19 (9): 867. <a href="https://doi.org/10.1130/0091-7613(1991)019<0867:ccapct>2.3.co;2">https://doi.org/10.1130/0091-7613(1991)019&lt;0867:ccapct&gt;2.3.co;2</a>.
+</div>
+<div id="ref-hill1993" class="csl-entry" role="listitem">
+<span class="nocase">Hill, D. P., P. A. Reasenberg, A. Michael, et al.</span> 1993. <span>“<span class="nocase">Seismicity Remotely Triggered by the Magnitude 7.3 Landers, California, Earthquake</span>.”</span> <em>Science</em> 260 (5114): 1617–23. <a href="https://doi.org/10.1126/science.260.5114.1617">https://doi.org/10.1126/science.260.5114.1617</a>.
+</div>
+<div id="ref-hill2025" class="csl-entry" role="listitem">
+Hill, Ryan, Yian Yin, Carolyn Stein, Xizhao Wang, Dashun Wang, and Benjamin F. Jones. 2025. <span>“<span class="nocase">The pivot penalty in research</span>.”</span> <em>Nature</em> 642 (8069): 999–1006. <a href="https://doi.org/10.1038/s41586-025-09048-1">https://doi.org/10.1038/s41586-025-09048-1</a>.
+</div>
+<div id="ref-vonhippel2022" class="csl-entry" role="listitem">
+Hippel, Paul T. von. 2022. <span>“<span class="nocase">Is Psychological Science Self-Correcting? Citations Before and After Successful and Failed Replications</span>.”</span> <em>Perspectives on Psychological Science</em> 17 (6): 1556–65. <a href="https://doi.org/10.1177/17456916211072525">https://doi.org/10.1177/17456916211072525</a>.
+</div>
+<div id="ref-hong2004" class="csl-entry" role="listitem">
+Hong, Lu, and Scott E. Page. 2004. <span>“<span class="nocase">Groups of diverse problem solvers can outperform groups of high-ability problem solvers</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 101 (46): 16385–89. <a href="https://doi.org/10.1073/pnas.0403723101">https://doi.org/10.1073/pnas.0403723101</a>.
+</div>
+<div id="ref-humphreys2004" class="csl-entry" role="listitem">
+Humphreys, Paul. 2004. <em><span class="nocase">Extending Ourselves: Computational Science, Empiricism, and Scientific Method</span></em>. Oxford University Press. <a href="https://doi.org/10.1093/0195158709.001.0001">https://doi.org/10.1093/0195158709.001.0001</a>.
+</div>
+<div id="ref-karl2015" class="csl-entry" role="listitem">
+Karl, Thomas R., Anthony Arguez, Boyin Huang, et al. 2015. <span>“<span class="nocase">Possible artifacts of data biases in the recent global surface warming hiatus</span>.”</span> <em>Science</em> 348 (6242): 1469–72. <a href="https://doi.org/10.1126/science.aaa5632">https://doi.org/10.1126/science.aaa5632</a>.
+</div>
+<div id="ref-karpatne2019" class="csl-entry" role="listitem">
+Karpatne, Anuj, Imme Ebert-Uphoff, Sai Ravela, Hassan Ali Babaie, and Vipin Kumar. 2019. <span>“<span class="nocase">Machine Learning for the Geosciences: Challenges and Opportunities</span>.”</span> <em>IEEE Transactions on Knowledge and Data Engineering</em> 31 (8): 1544–54. <a href="https://doi.org/10.1109/tkde.2018.2861006">https://doi.org/10.1109/tkde.2018.2861006</a>.
+</div>
+<div id="ref-kato2012" class="csl-entry" role="listitem">
+Kato, Aitaro, Kazushige Obara, Toshihiro Igarashi, Hiroshi Tsuruoka, Shigeki Nakagawa, and Naoshi Hirata. 2012. <span>“<span class="nocase">Propagation of Slow Slip Leading Up to the 2011 Mw 9.0 Tohoku-Oki Earthquake</span>.”</span> <em>Science</em> 335 (6069): 705–8. <a href="https://doi.org/10.1126/science.1215141">https://doi.org/10.1126/science.1215141</a>.
+</div>
+<div id="ref-keeling1960" class="csl-entry" role="listitem">
+Keeling, Charles D. 1960. <span>“<span class="nocase">The Concentration and Isotopic Abundances of Carbon Dioxide in the Atmosphere</span>.”</span> <em>Tellus</em> 12 (2): 200–203. <a href="https://doi.org/10.1111/j.2153-3490.1960.tb01300.x">https://doi.org/10.1111/j.2153-3490.1960.tb01300.x</a>.
+</div>
+<div id="ref-kell2004" class="csl-entry" role="listitem">
+Kell, D. B., and S. G. Oliver. 2004. <span>“<span class="nocase">Here is the evidence, now what is the hypothesis? The complementary roles of inductive and hypothesis-driven science in the post-genomic era</span>.”</span> <em>BioEssays</em> 26 (1): 99–105. <a href="https://doi.org/10.1002/bies.10385">https://doi.org/10.1002/bies.10385</a>.
+</div>
+<div id="ref-klahr1988" class="csl-entry" role="listitem">
+Klahr, David, and Kevin Dunbar. 1988. <span>“<span>Dual Space Search During Scientific Reasoning</span>.”</span> <em>Cognitive Science</em> 12 (1): 1–48. <a href="https://doi.org/10.1207/s15516709cog1201_1">https://doi.org/10.1207/s15516709cog1201_1</a>.
+</div>
+<div id="ref-klahr1999" class="csl-entry" role="listitem">
+Klahr, David, and Herbert A. Simon. 1999. <span>“<span class="nocase">Studies of scientific discovery: Complementary approaches and convergent findings</span>.”</span> <em>Psychological Bulletin</em> 125 (5): 524–43. <a href="https://doi.org/10.1037/0033-2909.125.5.524">https://doi.org/10.1037/0033-2909.125.5.524</a>.
+</div>
+<div id="ref-kleinhans2005" class="csl-entry" role="listitem">
+Kleinhans, M. G., C. J. J. Buskes, and H. W. de Regt. 2005. <span>“<span class="nocase">Terra Incognita: Explanation and Reduction in Earth Science</span>.”</span> <em>International Studies in the Philosophy of Science</em> 19 (3): 289–317. <a href="https://doi.org/10.1080/02698590500462356">https://doi.org/10.1080/02698590500462356</a>.
+</div>
+<div id="ref-knorr1999" class="csl-entry" role="listitem">
+Knorr Cetina, Karin. 1999. <em><span class="nocase">Epistemic Cultures: How the Sciences Make Knowledge</span></em>. Harvard University Press. <a href="https://doi.org/10.4159/9780674039681">https://doi.org/10.4159/9780674039681</a>.
+</div>
+<div id="ref-knuuttila2016" class="csl-entry" role="listitem">
+Knuuttila, Tarja, and Andrea Loettgers. 2016. <span>“<span class="nocase">Model templates within and between disciplines: from magnets to gases – and socio-economic systems</span>.”</span> <em>European Journal for Philosophy of Science</em> 6 (3): 377–400. <a href="https://doi.org/10.1007/s13194-016-0145-1">https://doi.org/10.1007/s13194-016-0145-1</a>.
+</div>
+<div id="ref-knuuttila2023" class="csl-entry" role="listitem">
+Knuuttila, Tarja, and Andrea Loettgers. 2023. <span>“<span class="nocase">Model templates: transdisciplinary application and entanglement</span>.”</span> <em>Synthese</em> 201 (6): 200. <a href="https://doi.org/10.1007/s11229-023-04178-3">https://doi.org/10.1007/s11229-023-04178-3</a>.
+</div>
+<div id="ref-kolblebert2001" class="csl-entry" role="listitem">
+Kölbl-Ebert, Martina. 2001. <span>“<span class="nocase">Inge Lehmann’s paper: "P’" (1936)</span>.”</span> <em>Episodes</em> 24 (4): 262–67. <a href="https://doi.org/10.18814/epiiugs/2001/v24i4/007">https://doi.org/10.18814/epiiugs/2001/v24i4/007</a>.
+</div>
+<div id="ref-krauss2024" class="csl-entry" role="listitem">
+Krauss, Alexander. 2024. <span>“<span class="nocase">Redefining the scientific method: As the use of sophisticated scientific methods that extend our mind</span>.”</span> <em>PNAS Nexus</em> 3 (4): pgae112. <a href="https://doi.org/10.1093/pnasnexus/pgae112">https://doi.org/10.1093/pnasnexus/pgae112</a>.
+</div>
+<div id="ref-krenn2022" class="csl-entry" role="listitem">
+Krenn, Mario, Robert Pollice, Si Yue Guo, et al. 2022. <span>“<span class="nocase">On scientific understanding with artificial intelligence</span>.”</span> <em>Nature Reviews Physics</em> 4 (12): 761–69. <a href="https://doi.org/10.1038/s42254-022-00518-3">https://doi.org/10.1038/s42254-022-00518-3</a>.
+</div>
+<div id="ref-kusumegi2025" class="csl-entry" role="listitem">
+Kusumegi, Keigo, Xinyu Yang, Paul Ginsparg, Mathijs de Vaan, Toby Stuart, and Yian Yin. 2025. <span>“<span class="nocase">Scientific production in the era of large language models</span>.”</span> <em>Science</em> 390 (6779): 1240–43. <a href="https://doi.org/10.1126/science.adw3000">https://doi.org/10.1126/science.adw3000</a>.
+</div>
+<div id="ref-lam2023" class="csl-entry" role="listitem">
+Lam, Remi, Alvaro Sanchez-Gonzalez, Matthew Willson, et al. 2023. <span>“<span class="nocase">Learning skillful medium-range global weather forecasting</span>.”</span> <em>Science</em> 382 (6677): 1416–21. <a href="https://doi.org/10.1126/science.adi2336">https://doi.org/10.1126/science.adi2336</a>.
+</div>
+<div id="ref-leahey2023" class="csl-entry" role="listitem">
+Leahey, Erin, Jina Lee, and Russell J. Funk. 2023. <span>“<span class="nocase">What Types of Novelty Are Most Disruptive?</span>”</span> <em>American Sociological Review</em> 88 (3): 562–97. <a href="https://doi.org/10.1177/00031224231168074">https://doi.org/10.1177/00031224231168074</a>.
+</div>
+<div id="ref-lecocq2020" class="csl-entry" role="listitem">
+Lecocq, Thomas, Stephen P. Hicks, Koen Van Noten, et al. 2020. <span>“<span class="nocase">Global quieting of high-frequency seismic noise due to COVID-19 pandemic lockdown measures</span>.”</span> <em>Science</em> 369 (6509): 1338–43. <a href="https://doi.org/10.1126/science.abd2438">https://doi.org/10.1126/science.abd2438</a>.
+</div>
+<div id="ref-leeman2024" class="csl-entry" role="listitem">
+Leeman, Josh, Yuhan Liu, Joseph Stiles, et al. 2024. <span>“<span class="nocase">Challenges in High-Throughput Inorganic Materials Prediction and Autonomous Synthesis</span>.”</span> <em>PRX Energy</em> 3 (1): 011002. <a href="https://doi.org/10.1103/PRXEnergy.3.011002">https://doi.org/10.1103/PRXEnergy.3.011002</a>.
+</div>
+<div id="ref-lloyd2010" class="csl-entry" role="listitem">
+Lloyd, Elisabeth A. 2010. <span>“<span class="nocase">Confirmation and Robustness of Climate Models</span>.”</span> <em>Philosophy of Science</em> 77 (5): 971–84. <a href="https://doi.org/10.1086/657427">https://doi.org/10.1086/657427</a>.
+</div>
+<div id="ref-machery2020" class="csl-entry" role="listitem">
+Machery, Edouard. 2020. <span>“<span class="nocase">What Is a Replication?</span>”</span> <em>Philosophy of Science</em> 87 (4): 545–67. <a href="https://doi.org/10.1086/709701">https://doi.org/10.1086/709701</a>.
+</div>
+<div id="ref-macleod2018" class="csl-entry" role="listitem">
+MacLeod, Miles. 2018. <span>“<span class="nocase">What makes interdisciplinarity difficult? Some consequences of domain specificity in interdisciplinary practice</span>.”</span> <em>Synthese</em> 195 (2): 697–720. <a href="https://doi.org/10.1007/s11229-016-1236-4">https://doi.org/10.1007/s11229-016-1236-4</a>.
+</div>
+<div id="ref-macleod2016" class="csl-entry" role="listitem">
+MacLeod, Miles, and Nancy J. Nersessian. 2016. <span>“<span class="nocase">Interdisciplinary problem-solving: emerging modes in integrative systems biology</span>.”</span> <em>European Journal for Philosophy of Science</em> 6 (3): 401–18. <a href="https://doi.org/10.1007/s13194-016-0157-x">https://doi.org/10.1007/s13194-016-0157-x</a>.
+</div>
+<div id="ref-manduca2012" class="csl-entry" role="listitem">
+Manduca, Cathryn A., and Kim A. Kastens. 2012. <span>“<span class="nocase">Geoscience and geoscientists: Uniquely equipped to study Earth</span>.”</span> In <em>Earth and Mind II: A Synthesis of Research on Thinking and Learning in the Geosciences</em>. Geological Society of America. <a href="https://doi.org/10.1130/2012.2486(01)">https://doi.org/10.1130/2012.2486(01)</a>.
+</div>
+<div id="ref-massonnet1993" class="csl-entry" role="listitem">
+Massonnet, Didier, Marc Rossi, César Carmona, et al. 1993. <span>“<span class="nocase">The displacement field of the Landers earthquake mapped by radar interferometry</span>.”</span> <em>Nature</em> 364 (6433): 138–42. <a href="https://doi.org/10.1038/364138a0">https://doi.org/10.1038/364138a0</a>.
+</div>
+<div id="ref-matoza2022" class="csl-entry" role="listitem">
+Matoza, Robin S., David Fee, Jelle D. Assink, et al. 2022. <span>“<span class="nocase">Atmospheric waves and global seismoacoustic observations of the January 2022 Hunga eruption, Tonga</span>.”</span> <em>Science</em> 377 (6601): 95–100. <a href="https://doi.org/10.1126/science.abo7063">https://doi.org/10.1126/science.abo7063</a>.
+</div>
+<div id="ref-miranda2018" class="csl-entry" role="listitem">
+Miranda, Ruben, and Esther Garcia-Carpintero. 2018. <span>“<span class="nocase">Overcitation and overrepresentation of review papers in the most cited papers</span>.”</span> <em>Journal of Informetrics</em> 12 (4): 1015–30. <a href="https://doi.org/10.1016/j.joi.2018.08.006">https://doi.org/10.1016/j.joi.2018.08.006</a>.
+</div>
+<div id="ref-mitchener2025" class="csl-entry" role="listitem">
+Mitchener, Ludovico, Angela Yiu, Benjamin Chang, et al. 2025. <span>“<span class="nocase">Kosmos: An AI Scientist for Autonomous Discovery</span>.”</span> <em>arXiv 2511.02824</em>. <a href="https://arxiv.org/abs/2511.02824">https://arxiv.org/abs/2511.02824</a>.
+</div>
+<div id="ref-montagner2016" class="csl-entry" role="listitem">
+Montagner, Jean-Paul, Kévin Juhel, Matteo Barsuglia, et al. 2016. <span>“<span class="nocase">Prompt gravity signal induced by the 2011 Tohoku-Oki earthquake</span>.”</span> <em>Nature Communications</em> 7 (1): 13349. <a href="https://doi.org/10.1038/ncomms13349">https://doi.org/10.1038/ncomms13349</a>.
+</div>
+<div id="ref-morrison1999" class="csl-entry" role="listitem">
+Morrison, Margaret, and Mary S. Morgan. 1999. <span>“<span class="nocase">Models as mediating instruments</span>.”</span> In <em>Models as Mediators</em>, edited by Mary S. Morgan and Margaret Morrison. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511660108.003">https://doi.org/10.1017/cbo9780511660108.003</a>.
+</div>
+<div id="ref-mousavi2020" class="csl-entry" role="listitem">
+Mousavi, S. Mostafa, William L. Ellsworth, Weiqiang Zhu, Lindsay Y. Chuang, and Gregory C. Beroza. 2020. <span>“<span class="nocase">Earthquake transformer—an attentive deep-learning model for simultaneous earthquake detection and phase picking</span>.”</span> <em>Nature Communications</em> 11 (1): 3952. <a href="https://doi.org/10.1038/s41467-020-17591-w">https://doi.org/10.1038/s41467-020-17591-w</a>.
+</div>
+<div id="ref-nickles1981" class="csl-entry" role="listitem">
+Nickles, Thomas. 1981. <span>“<span class="nocase">What is a problem that we may solve it?</span>”</span> <em>Synthese</em> 47 (1): 85–118. <a href="https://doi.org/10.1007/bf01064267">https://doi.org/10.1007/bf01064267</a>.
+</div>
+<div id="ref-omalley2010" class="csl-entry" role="listitem">
+O’Malley, Maureen A., Kevin C. Elliott, and Richard M. Burian. 2010. <span>“<span class="nocase">From genetic to genomic regulation: iterativity in microRNA research</span>.”</span> <em>Studies in History and Philosophy of Science Part C: Studies in History and Philosophy of Biological and Biomedical Sciences</em> 41 (4): 407–17. <a href="https://doi.org/10.1016/j.shpsc.2010.10.011">https://doi.org/10.1016/j.shpsc.2010.10.011</a>.
+</div>
+<div id="ref-omalley2009" class="csl-entry" role="listitem">
+O’Malley, Maureen A., Kevin C. Elliott, Chris Haufe, and Richard M. Burian. 2009. <span>“<span class="nocase">Philosophies of Funding</span>.”</span> <em>Cell</em> 138 (4): 611–15. <a href="https://doi.org/10.1016/j.cell.2009.08.008">https://doi.org/10.1016/j.cell.2009.08.008</a>.
+</div>
+<div id="ref-obara2002" class="csl-entry" role="listitem">
+Obara, Kazushige. 2002. <span>“<span class="nocase">Nonvolcanic Deep Tremor Associated with Subduction in Southwest Japan</span>.”</span> <em>Science</em> 296 (5573): 1679–81. <a href="https://doi.org/10.1126/science.1070378">https://doi.org/10.1126/science.1070378</a>.
+</div>
+<div id="ref-ogata1988" class="csl-entry" role="listitem">
+Ogata, Yosihiko. 1988. <span>“<span class="nocase">Statistical Models for Earthquake Occurrences and Residual Analysis for Point Processes</span>.”</span> <em>Journal of the American Statistical Association</em> 83 (401): 9–27. <a href="https://doi.org/10.1080/01621459.1988.10478560">https://doi.org/10.1080/01621459.1988.10478560</a>.
+</div>
+<div id="ref-oreskes1999" class="csl-entry" role="listitem">
+Oreskes, Naomi. 1999. <em><span class="nocase">The Rejection of Continental Drift: Theory and Method in American Earth Science</span></em>. Oxford University Press. <a href="https://doi.org/10.1093/oso/9780195117325.001.0001">https://doi.org/10.1093/oso/9780195117325.001.0001</a>.
+</div>
+<div id="ref-parker2009" class="csl-entry" role="listitem">
+Parker, Wendy S. 2009. <span>“<span class="nocase">Does matter really matter? Computer simulations, experiments, and materiality</span>.”</span> <em>Synthese</em> 169 (3): 483–96. <a href="https://doi.org/10.1007/s11229-008-9434-3">https://doi.org/10.1007/s11229-008-9434-3</a>.
+</div>
+<div id="ref-parker2011" class="csl-entry" role="listitem">
+Parker, Wendy S. 2011. <span>“<span class="nocase">When Climate Models Agree: The Significance of Robust Model Predictions</span>.”</span> <em>Philosophy of Science</em> 78 (4): 579–600. <a href="https://doi.org/10.1086/661566">https://doi.org/10.1086/661566</a>.
+</div>
+<div id="ref-patsopoulos2005" class="csl-entry" role="listitem">
+Patsopoulos, Nikolaos A., Apostolos A. Analatos, and John P. A. Ioannidis. 2005. <span>“<span class="nocase">Relative Citation Impact of Various Study Designs in the Health Sciences</span>.”</span> <em>JAMA</em> 293 (19): 2362–66. <a href="https://doi.org/10.1001/jama.293.19.2362">https://doi.org/10.1001/jama.293.19.2362</a>.
+</div>
+<div id="ref-pfister2017" class="csl-entry" role="listitem">
+Pfister, Laurent, and James W. Kirchner. 2017. <span>“<span class="nocase">Debates—Hypothesis testing in hydrology: Theory and practice</span>.”</span> <em>Water Resources Research</em> 53 (3): 1792–98. <a href="https://doi.org/10.1002/2016wr020116">https://doi.org/10.1002/2016wr020116</a>.
+</div>
+<div id="ref-pickstone2007" class="csl-entry" role="listitem">
+Pickstone, John V. 2007. <span>“<span class="nocase">Working Knowledges Before and After circa 1800: Practices and Disciplines in the History of Science, Technology, and Medicine</span>.”</span> <em>Isis</em> 98 (3): 489–516. <a href="https://doi.org/10.1086/521154">https://doi.org/10.1086/521154</a>.
+</div>
+<div id="ref-pietsch2015" class="csl-entry" role="listitem">
+Pietsch, Wolfgang. 2015. <span>“<span class="nocase">Aspects of Theory-Ladenness in Data-Intensive Science</span>.”</span> <em>Philosophy of Science</em> 82 (5): 905–16. <a href="https://doi.org/10.1086/683328">https://doi.org/10.1086/683328</a>.
+</div>
+<div id="ref-raab2002" class="csl-entry" role="listitem">
+Raab, Thomas, and Robert Frodeman. 2002. <span>“<span class="nocase">What is it like to be a geologist? A phenomenology of geology and its epistemological implications</span>.”</span> <em>Philosophy &amp; Geography</em> 5 (1): 69–81. <a href="https://doi.org/10.1080/10903770120116840">https://doi.org/10.1080/10903770120116840</a>.
+</div>
+<div id="ref-raleigh1976" class="csl-entry" role="listitem">
+Raleigh, C. B., J. H. Healy, and J. D. Bredehoeft. 1976. <span>“<span class="nocase">An Experiment in Earthquake Control at Rangely, Colorado</span>.”</span> <em>Science</em> 191 (4233): 1230–37. <a href="https://doi.org/10.1126/science.191.4233.1230">https://doi.org/10.1126/science.191.4233.1230</a>.
+</div>
+<div id="ref-reddy2025" class="csl-entry" role="listitem">
+Reddy, Chandan K, and Parshin Shojaee. 2025. <span>“<span class="nocase">Towards Scientific Discovery with Generative AI: Progress, Opportunities, and Challenges</span>.”</span> <em>Proceedings of the AAAI Conference on Artificial Intelligence</em> 39 (27): 28601–9. <a href="https://doi.org/10.1609/aaai.v39i27.35084">https://doi.org/10.1609/aaai.v39i27.35084</a>.
+</div>
+<div id="ref-rheinberger2011" class="csl-entry" role="listitem">
+Rheinberger, Hans-Jörg. 2011. <span>“<span class="nocase">Consistency from the perspective of an experimental systems approach to the sciences and their epistemic objects</span>.”</span> <em>Manuscrito</em> 34 (1): 307–21. <a href="https://doi.org/10.1590/s0100-60452011000100014">https://doi.org/10.1590/s0100-60452011000100014</a>.
+</div>
+<div id="ref-rogers2003" class="csl-entry" role="listitem">
+Rogers, Garry, and Herb Dragert. 2003. <span>“<span class="nocase">Episodic Tremor and Slip on the Cascadia Subduction Zone: The Chatter of Silent Slip</span>.”</span> <em>Science</em> 300 (5627): 1942–43. <a href="https://doi.org/10.1126/science.1084783">https://doi.org/10.1126/science.1084783</a>.
+</div>
+<div id="ref-ross2019" class="csl-entry" role="listitem">
+Ross, Zachary E., Daniel T. Trugman, Egill Hauksson, and Peter M. Shearer. 2019. <span>“<span class="nocase">Searching for hidden earthquakes in Southern California</span>.”</span> <em>Science</em> 364 (6442): 767–71. <a href="https://doi.org/10.1126/science.aaw6888">https://doi.org/10.1126/science.aaw6888</a>.
+</div>
+<div id="ref-satake1996" class="csl-entry" role="listitem">
+Satake, Kenji, Kunihiko Shimazaki, Yoshinobu Tsuji, and Kazue Ueda. 1996. <span>“<span class="nocase">Time and size of a giant earthquake in Cascadia inferred from Japanese tsunami records of January 1700</span>.”</span> <em>Nature</em> 379 (6562): 246–49. <a href="https://doi.org/10.1038/379246a0">https://doi.org/10.1038/379246a0</a>.
+</div>
+<div id="ref-schmidgall2025" class="csl-entry" role="listitem">
+Schmidgall, Samuel, Yusheng Su, Ze Wang, et al. 2025. <span>“<span class="nocase">Agent Laboratory: Using LLM Agents as Research Assistants</span>.”</span> <em>Findings of the Association for Computational Linguistics: EMNLP 2025</em>, 5977–6043. <a href="https://doi.org/10.18653/v1/2025.findings-emnlp.320">https://doi.org/10.18653/v1/2025.findings-emnlp.320</a>.
+</div>
+<div id="ref-schmidt2009replication" class="csl-entry" role="listitem">
+Schmidt, Stefan. 2009. <span>“<span class="nocase">Shall we Really do it Again? The Powerful Concept of Replication is Neglected in the Social Sciences</span>.”</span> <em>Review of General Psychology</em> 13 (2): 90–100. <a href="https://doi.org/10.1037/a0015108">https://doi.org/10.1037/a0015108</a>.
+</div>
+<div id="ref-schulte2010" class="csl-entry" role="listitem">
+Schulte, Peter, Laia Alegret, Ignacio Arenillas, et al. 2010. <span>“<span class="nocase">The Chicxulub Asteroid Impact and Mass Extinction at the Cretaceous-Paleogene Boundary</span>.”</span> <em>Science</em> 327 (5970): 1214–18. <a href="https://doi.org/10.1126/science.1177265">https://doi.org/10.1126/science.1177265</a>.
+</div>
+<div id="ref-serragarcia2021" class="csl-entry" role="listitem">
+Serra-Garcia, Marta, and Uri Gneezy. 2021. <span>“<span class="nocase">Nonreplicable publications are cited more than replicable ones</span>.”</span> <em>Science Advances</em> 7 (21): eabd1705. <a href="https://doi.org/10.1126/sciadv.abd1705">https://doi.org/10.1126/sciadv.abd1705</a>.
+</div>
+<div id="ref-shapiro2004" class="csl-entry" role="listitem">
+Shapiro, N. M., and M. Campillo. 2004. <span>“<span class="nocase">Emergence of broadband Rayleigh waves from correlations of the ambient seismic noise</span>.”</span> <em>Geophysical Research Letters</em> 31 (7): L07614. <a href="https://doi.org/10.1029/2004GL019491">https://doi.org/10.1029/2004GL019491</a>.
+</div>
+<div id="ref-shapiro2005" class="csl-entry" role="listitem">
+Shapiro, Nikolai M., Michel Campillo, Laurent Stehly, and Michael H. Ritzwoller. 2005. <span>“<span class="nocase">High-Resolution Surface-Wave Tomography from Ambient Seismic Noise</span>.”</span> <em>Science</em> 307 (5715): 1615–18. <a href="https://doi.org/10.1126/science.1108339">https://doi.org/10.1126/science.1108339</a>.
+</div>
+<div id="ref-shepherd2012" class="csl-entry" role="listitem">
+Shepherd, Andrew, Erik R. Ivins, Geruo A, et al. 2012. <span>“<span class="nocase">A Reconciled Estimate of Ice-Sheet Mass Balance</span>.”</span> <em>Science</em> 338 (6111): 1183–89. <a href="https://doi.org/10.1126/science.1228102">https://doi.org/10.1126/science.1228102</a>.
+</div>
+<div id="ref-shi2023" class="csl-entry" role="listitem">
+Shi, Feng, and James Evans. 2023. <span>“Surprising Combinations of Research Contents and Contexts Are Related to Impact and Emerge with Scientific Outsiders from Distant Disciplines.”</span> <em>Nature Communications</em> 14 (1): 1641. <a href="https://doi.org/10.1038/s41467-023-36741-4">https://doi.org/10.1038/s41467-023-36741-4</a>.
+</div>
+<div id="ref-shibayama2020" class="csl-entry" role="listitem">
+Shibayama, Sotaro, and Jian Wang. 2020. <span>“<span class="nocase">Measuring originality in science</span>.”</span> <em>Scientometrics</em> 122 (1): 409–27. <a href="https://doi.org/10.1007/s11192-019-03263-0">https://doi.org/10.1007/s11192-019-03263-0</a>.
+</div>
+<div id="ref-shmueli2010" class="csl-entry" role="listitem">
+Shmueli, Galit. 2010. <span>“To Explain or to Predict?”</span> <em>Statistical Science</em> 25 (3). <a href="https://doi.org/10.1214/10-sts330">https://doi.org/10.1214/10-sts330</a>.
+</div>
+<div id="ref-stahler2021" class="csl-entry" role="listitem">
+Stähler, Simon C., Amir Khan, W. Bruce Banerdt, et al. 2021. <span>“<span class="nocase">Seismic detection of the martian core</span>.”</span> <em>Science</em> 373 (6553): 443–48. <a href="https://doi.org/10.1126/science.abi7730">https://doi.org/10.1126/science.abi7730</a>.
+</div>
+<div id="ref-steinle1997" class="csl-entry" role="listitem">
+Steinle, Friedrich. 1997. <span>“<span class="nocase">Entering New Fields: Exploratory Uses of Experimentation</span>.”</span> <em>Philosophy of Science</em> 64 (S4): S65–74. <a href="https://doi.org/10.1086/392587">https://doi.org/10.1086/392587</a>.
+</div>
+<div id="ref-su2025" class="csl-entry" role="listitem">
+Su, Haoyang, Renqi Chen, Shixiang Tang, et al. 2025. <span>“<span class="nocase">Many Heads Are Better Than One: Improved Scientific Idea Generation by A LLM-Based Multi-Agent System</span>.”</span> <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, 28201–40. <a href="https://doi.org/10.18653/v1/2025.acl-long.1368">https://doi.org/10.18653/v1/2025.acl-long.1368</a>.
+</div>
+<div id="ref-swanson2025" class="csl-entry" role="listitem">
+Swanson, Kyle, Wesley Wu, Nash L. Bulaong, John E. Pak, and James Zou. 2025. <span>“<span class="nocase">The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies</span>.”</span> <em>Nature</em> 646 (8085): 716–23. <a href="https://doi.org/10.1038/s41586-025-09442-9">https://doi.org/10.1038/s41586-025-09442-9</a>.
+</div>
+<div id="ref-sykes1967" class="csl-entry" role="listitem">
+Sykes, Lynn R. 1967. <span>“<span class="nocase">Mechanism of earthquakes and nature of faulting on the mid-oceanic ridges</span>.”</span> <em>Journal of Geophysical Research</em> 72 (8): 2131–53. <a href="https://doi.org/10.1029/JZ072i008p02131">https://doi.org/10.1029/JZ072i008p02131</a>.
+</div>
+<div id="ref-tarantola2005" class="csl-entry" role="listitem">
+Tarantola, Albert. 2005. <em><span class="nocase">Inverse Problem Theory and Methods for Model Parameter Estimation</span></em>. Society for Industrial; Applied Mathematics. <a href="https://doi.org/10.1137/1.9780898717921">https://doi.org/10.1137/1.9780898717921</a>.
+</div>
+<div id="ref-teodoridis2018" class="csl-entry" role="listitem">
+Teodoridis, Florenta. 2018. <span>“<span class="nocase">Understanding Team Knowledge Production: The Interrelated Roles of Technology and Expertise</span>.”</span> <em>Management Science</em> 64 (8): 3625–48. <a href="https://doi.org/10.1287/mnsc.2017.2789">https://doi.org/10.1287/mnsc.2017.2789</a>.
+</div>
+<div id="ref-teodoridis2019" class="csl-entry" role="listitem">
+Teodoridis, Florenta, Michaël Bikard, and Keyvan Vakili. 2019. <span>“<span class="nocase">Creativity at the Knowledge Frontier: The Impact of Specialization in Fast- and Slow-paced Domains</span>.”</span> <em>Administrative Science Quarterly</em> 64 (4): 894–927. <a href="https://doi.org/10.1177/0001839218793384">https://doi.org/10.1177/0001839218793384</a>.
+</div>
+<div id="ref-thoma2015" class="csl-entry" role="listitem">
+Thoma, Johanna. 2015. <span>“<span class="nocase">The Epistemic Division of Labor Revisited</span>.”</span> <em>Philosophy of Science</em> 82 (3): 454–72. <a href="https://doi.org/10.1086/681768">https://doi.org/10.1086/681768</a>.
+</div>
+<div id="ref-turner2007" class="csl-entry" role="listitem">
+Turner, Derek. 2007. <em><span class="nocase">Making Prehistory: Historical Science and the Scientific Realism Debate</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511487385">https://doi.org/10.1017/cbo9780511487385</a>.
+</div>
+<div id="ref-utsu1995" class="csl-entry" role="listitem">
+Utsu, Tokuji, Yosihiko Ogata, and Ritsuko S. Matsu’ura. 1995. <span>“<span class="nocase">The Centenary of the Omori Formula for a Decay Law of Aftershock Activity.</span>”</span> <em>Journal of Physics of the Earth</em> 43 (1): 1–33. <a href="https://doi.org/10.4294/jpe1952.43.1">https://doi.org/10.4294/jpe1952.43.1</a>.
+</div>
+<div id="ref-vallee2017" class="csl-entry" role="listitem">
+Vallée, Martin, Jean Paul Ampuero, Kévin Juhel, Pascal Bernard, Jean-Paul Montagner, and Matteo Barsuglia. 2017. <span>“<span class="nocase">Observations and modeling of the elastogravity signals preceding direct seismic waves</span>.”</span> <em>Science</em> 358 (6367): 1164–68. <a href="https://doi.org/10.1126/science.aao0746">https://doi.org/10.1126/science.aao0746</a>.
+</div>
+<div id="ref-vine1963" class="csl-entry" role="listitem">
+Vine, F. J., and D. H. Matthews. 1963. <span>“<span>Magnetic Anomalies Over Oceanic Ridges</span>.”</span> <em>Nature</em> 199 (4897): 947–49. <a href="https://doi.org/10.1038/199947a0">https://doi.org/10.1038/199947a0</a>.
+</div>
+<div id="ref-weart2008" class="csl-entry" role="listitem">
+Weart, Spencer R. 2008. <em><span class="nocase">The Discovery of Global Warming: Revised and Expanded Edition</span></em>. Harvard University Press. <a href="https://doi.org/10.4159/9780674417557">https://doi.org/10.4159/9780674417557</a>.
+</div>
+<div id="ref-weaver2001" class="csl-entry" role="listitem">
+Weaver, Richard L., and Oleg I. Lobkis. 2001. <span>“<span class="nocase">Ultrasonics without a Source: Thermal Fluctuation Correlations at MHz Frequencies</span>.”</span> <em>Physical Review Letters</em> 87 (13): 134301. <a href="https://doi.org/10.1103/physrevlett.87.134301">https://doi.org/10.1103/physrevlett.87.134301</a>.
+</div>
+<div id="ref-weingarten2015" class="csl-entry" role="listitem">
+Weingarten, M., S. Ge, J. W. Godt, B. A. Bekins, and J. L. Rubinstein. 2015. <span>“<span class="nocase">High-rate injection is associated with the increase in U.S. mid-continent seismicity</span>.”</span> <em>Science</em> 348 (6241): 1336–40. <a href="https://doi.org/10.1126/science.aab1345">https://doi.org/10.1126/science.aab1345</a>.
+</div>
+<div id="ref-weisberg2007" class="csl-entry" role="listitem">
+Weisberg, Michael. 2007. <span>“<span class="nocase">Who is a Modeler?</span>”</span> <em>The British Journal for the Philosophy of Science</em> 58 (2): 207–33. <a href="https://doi.org/10.1093/bjps/axm011">https://doi.org/10.1093/bjps/axm011</a>.
+</div>
+<div id="ref-weisberg2009" class="csl-entry" role="listitem">
+Weisberg, Michael, and Ryan Muldoon. 2009. <span>“<span class="nocase">Epistemic Landscapes and the Division of Cognitive Labor</span>.”</span> <em>Philosophy of Science</em> 76 (2): 225–52. <a href="https://doi.org/10.1086/644786">https://doi.org/10.1086/644786</a>.
+</div>
+<div id="ref-wilson1965" class="csl-entry" role="listitem">
+Wilson, J. Tuzo. 1965. <span>“<span class="nocase">A New Class of Faults and their Bearing on Continental Drift</span>.”</span> <em>Nature</em> 207: 343–47. <a href="https://doi.org/10.1038/207343a0">https://doi.org/10.1038/207343a0</a>.
+</div>
+<div id="ref-wimsatt2012" class="csl-entry" role="listitem">
+Wimsatt, William C. 2012. <span>“<span class="nocase">Robustness, Reliability, and Overdetermination (1981)</span>.”</span> In <em>Characterizing the Robustness of Science</em>, edited by Léna Soler, Emiliano Trizio, Thomas Nickles, and William Wimsatt. Springer Netherlands. <a href="https://doi.org/10.1007/978-94-007-2759-5_2">https://doi.org/10.1007/978-94-007-2759-5_2</a>.
+</div>
+<div id="ref-winsberg2010" class="csl-entry" role="listitem">
+Winsberg, Eric. 2010. <em><span class="nocase">Science in the Age of Computer Simulation</span></em>. University of Chicago Press. <a href="https://doi.org/10.7208/chicago/9780226902050.001.0001">https://doi.org/10.7208/chicago/9780226902050.001.0001</a>.
+</div>
+<div id="ref-wren2016" class="csl-entry" role="listitem">
+Wren, Jonathan D. 2016. <span>“<span class="nocase">Bioinformatics programs are 31-fold over-represented among the highest impact scientific papers of the past two decades</span>.”</span> <em>Bioinformatics</em> 32 (17): 2686–91. <a href="https://doi.org/10.1093/bioinformatics/btw284">https://doi.org/10.1093/bioinformatics/btw284</a>.
+</div>
+<div id="ref-wu2023" class="csl-entry" role="listitem">
+Wu, Jingyi, and Cailin O’Connor. 2023. <span>“<span class="nocase">How should we promote transient diversity in science?</span>”</span> <em>Synthese</em> 201 (2): 37. <a href="https://doi.org/10.1007/s11229-023-04037-1">https://doi.org/10.1007/s11229-023-04037-1</a>.
+</div>
+<div id="ref-zheng2025" class="csl-entry" role="listitem">
+Zheng, Tianshi, Zheye Deng, Hong Ting Tsang, et al. 2025. <span>“<span class="nocase">From Automation to Autonomy: A Survey on Large Language Models in Scientific Discovery</span>.”</span> <em>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing</em>, 17744–61. <a href="https://doi.org/10.18653/v1/2025.emnlp-main.895">https://doi.org/10.18653/v1/2025.emnlp-main.895</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/denolle-lab\.github\.io\/metascience-and-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./glossary.html" class="pagination-link" aria-label="Scientific advance and modes of inquiry">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Scientific advance and modes of inquiry</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./modes/question.html" class="pagination-link" aria-label="Question-driven inquiry">
+        <span class="nav-page-text">Question-driven inquiry</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Working curriculum v0.4</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/modes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://denolle-lab.github.io/">Denolle Lab</a></p>
+</div>
+  </div>
+</footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
+
+
+
+
+</body></html>

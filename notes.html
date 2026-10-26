@@ -53,8 +53,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./contributing.html" rel="next">
-<link href="./metrics.html" rel="prev">
+<link href="./bibliography.html" rel="next">
+<link href="./sessions/10-novelty.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -65,7 +65,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-169f7a08814820334159842d99e83f22.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ac7d07509a5ec904cce7a8a576ef775b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -95,8 +95,37 @@ div.csl-indent {
 }</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -109,7 +138,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./notes.html">Group workspace</a></li><li class="breadcrumb-item"><a href="./notes.html">Meeting notes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sessions/01-scientific-method.html">Meetings held</a></li><li class="breadcrumb-item"><a href="./notes.html">Meeting notes</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,22 +172,10 @@ div.csl-indent {
  <span class="menu-text">About this Group Meeting</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Scientific advance and modes of inquiry</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Inquiry in practice</span></a>
+ <span class="menu-text">Defining the modes of inquiry</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -166,95 +183,26 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/02-exploratory-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploratory experimentation is not theory-free</span></a>
+  <a href="./modes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modes of inquiry: definitions, evidence, and the graph</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/03-historical-traces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">From coastal traces to earthquake histories</span></a>
+  <a href="./modes/question.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Question-driven inquiry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/04-tectonic-synthesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Plate tectonics: concept formation and a discriminating test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/05-measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">New sensing capability versus trustworthy measurement</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/06-exploration-confirmation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Explore freely; distinguish exploration from confirmation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/07-field-marine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Field and marine research under real constraints</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/08-serendipity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Serendipity, anomaly, and scientific interestingness</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/09-model-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hypothesis testing when several models fit</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Novelty, advance, breadth, and agents</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/11-polymathy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interdisciplinary integration: breadth, competence, and scientific advance</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/12-scientific-advance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Assessing scientific advance: novelty, correctness, and impact</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sessions/13-agent-design-and-evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What architecture follows from practice, and what would show it worked?</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Epistemic mode specifications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Inferential estimation</span></a>
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,6 +219,18 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Instruments and observing systems</span></a>
   </div>
@@ -283,14 +243,14 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Observation and description</span></a>
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cross-study synthesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  <a href="./modes/reconstruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reconstruction from traces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,20 +261,78 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Simulation and prediction</span></a>
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Synthesis and reconstruction</span></a>
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">The graph of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Theory and mechanistic modeling</span></a>
+  <a href="./walks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walking the graph: eight papers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./decision-tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">From graph to decision tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Outcomes and test cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./success-set.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Success set: test cases for evaluation and mode analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inquirygraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">inquirygraph: the coding agent and its gold set</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
   </div>
 </li>
       </ul>
@@ -322,7 +340,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Working materials</span></a>
+ <span class="menu-text">Meetings held</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -330,61 +348,18 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prior-art.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prior art: agents and benchmarks for science</span></a>
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./corpus-study.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Scientific practice and impact: a study design</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agent-design.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">From human-defined modes to scientific agents</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./historical-evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Evaluating scientific advance against past work</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Group workspace</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Meeting notes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to contribute</span></a>
   </div>
 </li>
       </ul>
@@ -406,18 +381,8 @@ div.csl-indent {
    
   <ul>
   <li><a href="#meeting-1-is-there-a-scientific-method" id="toc-meeting-1-is-there-a-scientific-method" class="nav-link active" data-scroll-target="#meeting-1-is-there-a-scientific-method">Meeting 1: Is there a scientific method?</a></li>
-  <li><a href="#meeting-2-exploratory-experimentation-is-not-theory-free" id="toc-meeting-2-exploratory-experimentation-is-not-theory-free" class="nav-link" data-scroll-target="#meeting-2-exploratory-experimentation-is-not-theory-free">Meeting 2: Exploratory experimentation is not theory-free</a></li>
-  <li><a href="#meeting-3-from-coastal-traces-to-earthquake-histories" id="toc-meeting-3-from-coastal-traces-to-earthquake-histories" class="nav-link" data-scroll-target="#meeting-3-from-coastal-traces-to-earthquake-histories">Meeting 3: From coastal traces to earthquake histories</a></li>
-  <li><a href="#meeting-4-plate-tectonics-concept-formation-and-a-discriminating-test" id="toc-meeting-4-plate-tectonics-concept-formation-and-a-discriminating-test" class="nav-link" data-scroll-target="#meeting-4-plate-tectonics-concept-formation-and-a-discriminating-test">Meeting 4: Plate tectonics: concept formation and a discriminating test</a></li>
-  <li><a href="#meeting-5-new-sensing-capability-versus-trustworthy-measurement" id="toc-meeting-5-new-sensing-capability-versus-trustworthy-measurement" class="nav-link" data-scroll-target="#meeting-5-new-sensing-capability-versus-trustworthy-measurement">Meeting 5: New sensing capability versus trustworthy measurement</a></li>
-  <li><a href="#meeting-6-explore-freely-distinguish-exploration-from-confirmation" id="toc-meeting-6-explore-freely-distinguish-exploration-from-confirmation" class="nav-link" data-scroll-target="#meeting-6-explore-freely-distinguish-exploration-from-confirmation">Meeting 6: Explore freely; distinguish exploration from confirmation</a></li>
-  <li><a href="#meeting-7-field-and-marine-research-under-real-constraints" id="toc-meeting-7-field-and-marine-research-under-real-constraints" class="nav-link" data-scroll-target="#meeting-7-field-and-marine-research-under-real-constraints">Meeting 7: Field and marine research under real constraints</a></li>
-  <li><a href="#meeting-8-serendipity-anomaly-and-scientific-interestingness" id="toc-meeting-8-serendipity-anomaly-and-scientific-interestingness" class="nav-link" data-scroll-target="#meeting-8-serendipity-anomaly-and-scientific-interestingness">Meeting 8: Serendipity, anomaly, and scientific interestingness</a></li>
-  <li><a href="#meeting-9-hypothesis-testing-when-several-models-fit" id="toc-meeting-9-hypothesis-testing-when-several-models-fit" class="nav-link" data-scroll-target="#meeting-9-hypothesis-testing-when-several-models-fit">Meeting 9: Hypothesis testing when several models fit</a></li>
+  <li><a href="#modes-meeting-definitions-evidence-and-the-graph" id="toc-modes-meeting-definitions-evidence-and-the-graph" class="nav-link" data-scroll-target="#modes-meeting-definitions-evidence-and-the-graph">Modes meeting: definitions, evidence, and the graph</a></li>
   <li><a href="#meeting-10-scientific-novelty-new-to-whom-compared-with-what" id="toc-meeting-10-scientific-novelty-new-to-whom-compared-with-what" class="nav-link" data-scroll-target="#meeting-10-scientific-novelty-new-to-whom-compared-with-what">Meeting 10: Scientific novelty: new to whom, compared with what?</a></li>
-  <li><a href="#meeting-11-interdisciplinary-integration-breadth-competence-and-scientific-advance" id="toc-meeting-11-interdisciplinary-integration-breadth-competence-and-scientific-advance" class="nav-link" data-scroll-target="#meeting-11-interdisciplinary-integration-breadth-competence-and-scientific-advance">Meeting 11: Interdisciplinary integration: breadth, competence, and scientific advance</a></li>
-  <li><a href="#meeting-12-assessing-scientific-advance-novelty-correctness-and-impact" id="toc-meeting-12-assessing-scientific-advance-novelty-correctness-and-impact" class="nav-link" data-scroll-target="#meeting-12-assessing-scientific-advance-novelty-correctness-and-impact">Meeting 12: Assessing scientific advance: novelty, correctness, and impact</a></li>
-  <li><a href="#meeting-13-what-architecture-follows-from-practice-and-what-would-show-it-worked" id="toc-meeting-13-what-architecture-follows-from-practice-and-what-would-show-it-worked" class="nav-link" data-scroll-target="#meeting-13-what-architecture-follows-from-practice-and-what-would-show-it-worked">Meeting 13: What architecture follows from practice, and what would show it worked?</a></li>
   <li><a href="#inquiry-mode-ledger" id="toc-inquiry-mode-ledger" class="nav-link" data-scroll-target="#inquiry-mode-ledger">Inquiry-mode ledger</a></li>
   <li><a href="#unresolved-across-the-quarter" id="toc-unresolved-across-the-quarter" class="nav-link" data-scroll-target="#unresolved-across-the-quarter">Unresolved across the quarter</a></li>
   </ul>
@@ -426,7 +391,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./notes.html">Group workspace</a></li><li class="breadcrumb-item"><a href="./notes.html">Meeting notes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sessions/01-scientific-method.html">Meetings held</a></li><li class="breadcrumb-item"><a href="./notes.html">Meeting notes</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Meeting notes</h1>
 </div>
@@ -453,52 +418,27 @@ div.csl-indent {
 <p><em>Held: September 15, 2026. Reading: <a href="./sessions/01-scientific-method.html">session page</a>, with <span class="citation" data-cites="fortunato2018">Fortunato et al. (<a href="bibliography.html#ref-fortunato2018" role="doc-biblioref">2018</a>)</span> and <span class="citation" data-cites="simon1973">Simon (<a href="bibliography.html#ref-simon1973" role="doc-biblioref">1973</a>)</span> brought into the discussion.</em></p>
 <p>Transcribed from the group’s shared notes, September 23, 2026. The session page gives the full account and the readings checked against the notes.</p>
 <ul>
-<li>Evidence for the main claim: the method as the room stated it is Cleland’s schema, H with conditions C implying E; conditions are never fully represented, so falsification in nature is rarely as clean as Platt and Chamberlin describe.</li>
+<li>Evidence for the main claim: the method as the room stated it is Cleland’s schema, H with conditions <span class="math inline">\(C\)</span> implying E; conditions are never fully represented, so falsification in nature is rarely as clean as Platt and Chamberlin describe.</li>
 <li>What changed: the smoking gun was read as both discriminating and biasing toward confirmation; Simon’s argument that generating hypotheses is a search, better or worse done, gave the group a way to treat discovery as having a logic.</li>
 <li>Unresolved: whether experimental and historical science differ in kind or in degree; the source and strength of the small-stable-core finding.</li>
-<li>One change to the agent: log how each rival at G was generated, so that search strategies can be compared.</li>
+<li>One change to the agent: log how each rival at H was generated, so that search strategies can be compared.</li>
 <li>Follow-up, September 23: the discussion of prior knowledge traced to <span class="citation" data-cites="klahr1999">Klahr and Simon (<a href="bibliography.html#ref-klahr1999" role="doc-biblioref">1999</a>)</span>, read in full. It gives the unit graph its surprise edge and a sixth entry state (graph v0.3).</li>
 </ul>
 </section>
-<section id="meeting-2-exploratory-experimentation-is-not-theory-free" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-2-exploratory-experimentation-is-not-theory-free">Meeting 2: Exploratory experimentation is not theory-free</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/02-exploratory-experiments.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-3-from-coastal-traces-to-earthquake-histories" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-3-from-coastal-traces-to-earthquake-histories">Meeting 3: From coastal traces to earthquake histories</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/03-historical-traces.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-4-plate-tectonics-concept-formation-and-a-discriminating-test" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-4-plate-tectonics-concept-formation-and-a-discriminating-test">Meeting 4: Plate tectonics: concept formation and a discriminating test</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/04-tectonic-synthesis.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-5-new-sensing-capability-versus-trustworthy-measurement" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-5-new-sensing-capability-versus-trustworthy-measurement">Meeting 5: New sensing capability versus trustworthy measurement</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/05-measurement.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-6-explore-freely-distinguish-exploration-from-confirmation" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-6-explore-freely-distinguish-exploration-from-confirmation">Meeting 6: Explore freely; distinguish exploration from confirmation</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/06-exploration-confirmation.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-7-field-and-marine-research-under-real-constraints" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-7-field-and-marine-research-under-real-constraints">Meeting 7: Field and marine research under real constraints</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/07-field-marine.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-8-serendipity-anomaly-and-scientific-interestingness" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-8-serendipity-anomaly-and-scientific-interestingness">Meeting 8: Serendipity, anomaly, and scientific interestingness</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/08-serendipity.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-9-hypothesis-testing-when-several-models-fit" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-9-hypothesis-testing-when-several-models-fit">Meeting 9: Hypothesis testing when several models fit</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/09-model-tests.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
+<section id="modes-meeting-definitions-evidence-and-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="modes-meeting-definitions-evidence-and-the-graph">Modes meeting: definitions, evidence, and the graph</h2>
+<p><em>Held: date to be recorded. Reading: <a href="./modes.html">modes page</a>, with <span class="citation" data-cites="elliott2016">Elliott et al. (<a href="bibliography.html#ref-elliott2016" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="betts2021">Betts et al. (<a href="bibliography.html#ref-betts2021" role="doc-biblioref">2021</a>)</span>.</em></p>
+<p><em>Convenor’s decisions on the open questions, October 21, 2026, before the room meets:</em></p>
+<ul>
+<li>Split synthesis into <a href="./modes/synthesis.html">cross-study synthesis</a> and <a href="./modes/reconstruction.html">reconstruction from traces</a>; add <a href="./modes/question.html">question-driven inquiry</a>, defined from the literature on research questions and research ideas.</li>
+<li>Graph v0.4.2 is the vocabulary; the <a href="./decision-tree.html">decision tree</a> (v0.5.1) is the controller.</li>
+<li>Reframing a question comes after a failure to conclude, at question 8 of the tree.</li>
+<li>A numeric cap on protective revisions: undecided.</li>
+<li>Breadth v1 is adopted as a provisional measure until the breadth literature is read.</li>
+<li>Failure means no conclusion was reached; a contradicted claim is a successful result.</li>
+<li>Coding needs more papers and has to be automated: <a href="https://github.com/Denolle-Lab/metascience-and-AI/blob/main/agents/coder/CODEBOOK.md">codebook v1</a> with a schema and a checker.</li>
+<li>The controller, the modes, and the graphs are versioned in the repository; each change gets a version and a change-log row.</li>
+</ul>
 </section>
 <section id="meeting-10-scientific-novelty-new-to-whom-compared-with-what" class="level2">
 <h2 class="anchored" data-anchor-id="meeting-10-scientific-novelty-new-to-whom-compared-with-what">Meeting 10: Scientific novelty: new to whom, compared with what?</h2>
@@ -509,23 +449,8 @@ div.csl-indent {
 <li>What changed: “novelty” was used for at least four constructs (journal-pair atypicality, new concept links, embedding distance, expert rating against anchors). The group asked for a subjective and an objective rubric, kept side by side.</li>
 <li>Position taken: human–AI teams raise novelty and breadth; agents raise uptake and impact, taking up new links without waiting for a local human audience.</li>
 <li>Unresolved: whether an agent audience takes up distal links or reproduces the discount on them (Machado); whether distal novelty is taken up less in the earth sciences; whether novelty drives impact once a long citation window is used.</li>
-<li>One change to the agent: record novelty and expected uptake as separate fields, and the distance of any link generated at G.</li>
+<li>One change to the agent: record novelty and expected uptake as separate fields, and the distance of any link generated at H.</li>
 </ul>
-</section>
-<section id="meeting-11-interdisciplinary-integration-breadth-competence-and-scientific-advance" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-11-interdisciplinary-integration-breadth-competence-and-scientific-advance">Meeting 11: Interdisciplinary integration: breadth, competence, and scientific advance</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/11-polymathy.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-12-assessing-scientific-advance-novelty-correctness-and-impact" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-12-assessing-scientific-advance-novelty-correctness-and-impact">Meeting 12: Assessing scientific advance: novelty, correctness, and impact</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/12-scientific-advance.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
-</section>
-<section id="meeting-13-what-architecture-follows-from-practice-and-what-would-show-it-worked" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-13-what-architecture-follows-from-practice-and-what-would-show-it-worked">Meeting 13: What architecture follows from practice, and what would show it worked?</h2>
-<p><em>Held: date to be recorded. Reading: <a href="./sessions/13-agent-design-and-evaluation.html">session page</a>.</em></p>
-<p><em>No notes recorded yet.</em></p>
 </section>
 <section id="inquiry-mode-ledger" class="level2">
 <h2 class="anchored" data-anchor-id="inquiry-mode-ledger">Inquiry-mode ledger</h2>
@@ -571,6 +496,12 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-betts2021" class="csl-entry" role="listitem">
+Betts, Matthew G., Adam S. Hadley, David W. Frey, et al. 2021. <span>“<span class="nocase">When are hypotheses useful in ecology and evolution?</span>”</span> <em>Ecology and Evolution</em> 11 (11): 5762–76. <a href="https://doi.org/10.1002/ece3.7365">https://doi.org/10.1002/ece3.7365</a>.
+</div>
+<div id="ref-elliott2016" class="csl-entry" role="listitem">
+Elliott, K. C., K. S. Cheruvelil, G. M. Montgomery, and P. A. Soranno. 2016. <span>“<span class="nocase">Conceptions of Good Science in Our Data-Rich World</span>.”</span> <em>BioScience</em> 66 (10): 880–89. <a href="https://doi.org/10.1093/biosci/biw115">https://doi.org/10.1093/biosci/biw115</a>.
+</div>
 <div id="ref-fortunato2018" class="csl-entry" role="listitem">
 Fortunato, Santo, Carl T. Bergstrom, Katy Börner, et al. 2018. <span>“Science of Science.”</span> <em>Science</em> 359 (6379). <a href="https://doi.org/10.1126/science.aao0185">https://doi.org/10.1126/science.aao0185</a>.
 </div>
@@ -1000,13 +931,13 @@ Simon, Herbert A. 1973. <span>“<span class="nocase">Does Scientific Discovery 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./metrics.html" class="pagination-link" aria-label="What has been measured: novelty, impact, breadth, advance">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What has been measured: novelty, impact, breadth, advance</span>
+      <a href="./sessions/10-novelty.html" class="pagination-link" aria-label="Scientific novelty: new to whom, compared with what?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./contributing.html" class="pagination-link" aria-label="How to contribute">
-        <span class="nav-page-text">How to contribute</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bibliography.html" class="pagination-link" aria-label="Bibliography and reading library">
+        <span class="nav-page-text">Bibliography and reading library</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

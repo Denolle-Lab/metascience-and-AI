@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A thirteen-meeting reading club studying scientific advance through plural epistemic modes, and designing agents evaluated against documented scientific work.">
+
+<title>Success set: test cases for evaluation and mode analysis – MetaScience, Scientific Inquiry, and Agents</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./inquirygraph.html" rel="next">
+<link href="./metrics.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ac7d07509a5ec904cce7a8a576ef775b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metrics.html">Outcomes and test cases</a></li><li class="breadcrumb-item"><a href="./success-set.html">Success set: test cases for evaluation and mode analysis</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MetaScience, Scientific Inquiry, and Agents</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Denolle-Lab/metascience-and-AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this Group Meeting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Defining the modes of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modes of inquiry: definitions, evidence, and the graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/question.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Question-driven inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/hypothesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruments and observing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods and computation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cross-study synthesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/reconstruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reconstruction from traces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication and robustness assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">The graph of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walking the graph: eight papers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./decision-tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">From graph to decision tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Outcomes and test cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./success-set.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Success set: test cases for evaluation and mode analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inquirygraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">inquirygraph: the coding agent and its gold set</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meetings held</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meeting notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-set" id="toc-the-set" class="nav-link active" data-scroll-target="#the-set">The set</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">1. Metrics</a>
+  <ul class="collapse">
+  <li><a href="#against-matched-controls" id="toc-against-matched-controls" class="nav-link" data-scroll-target="#against-matched-controls">Against matched controls</a></li>
+  </ul></li>
+  <li><a href="#mode-analysis-from-the-full-text" id="toc-mode-analysis-from-the-full-text" class="nav-link" data-scroll-target="#mode-analysis-from-the-full-text">2. Mode analysis from the full text</a></li>
+  <li><a href="#the-papers-as-historical-evaluation-cases" id="toc-the-papers-as-historical-evaluation-cases" class="nav-link" data-scroll-target="#the-papers-as-historical-evaluation-cases">3. The papers as historical-evaluation cases</a></li>
+  <li><a href="#what-this-page-does-not-establish" id="toc-what-this-page-does-not-establish" class="nav-link" data-scroll-target="#what-this-page-does-not-establish">What this page does not establish</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/success-set.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metrics.html">Outcomes and test cases</a></li><li class="breadcrumb-item"><a href="./success-set.html">Success set: test cases for evaluation and mode analysis</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Success set: test cases for evaluation and mode analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="status drafted">Drafted</span> <span class="status-line">v0.1 · eight papers supplied by the convenor, October 20, 2026 · coded from full text · metrics from OpenAlex · not yet discussed</span></p>
+<ul>
+<li>Positive test cases. A scoring rule, a mode agent, or an evaluation protocol that cannot recognize these as advances, reproduce what they report, or catch what a careful reader would catch, fails.</li>
+<li>Slides: <a href="slides/modes-meeting.html">modes-meeting deck</a>.</li>
+<li>Each paper is used three ways: metrics (section 1), a mode coding on <a href="./unit.html#the-graph">graph v0.4</a> (section 2), and a <a href="./success-set.html">historical-evaluation</a> case (section 3).</li>
+<li>Full codings, with a page for every claim: <code>private/analysis/success-set/</code>. Metric values: <code>private/success-set-indicators.json</code>. Reading copies: the convenor’s shared folder.</li>
+</ul>
+<section id="the-set" class="level2">
+<h2 class="anchored" data-anchor-id="the-set">The set</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stratum</th>
+<th style="text-align: left;">Papers</th>
+<th style="text-align: left;">How chosen</th>
+<th style="text-align: left;">What success means here</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Recognized</td>
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span>; <span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span>; <span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Meet the <a href="./success-set.html">selection rule</a>: <em>Nature</em> or <em>Science</em>, at or above the 99th citation percentile, interdisciplinary input or uptake</td>
+<td style="text-align: left;">Impact already observed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Designated</td>
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span>; <span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Chosen by the convenor, 2025–2026</td>
+<td style="text-align: left;">Impact not yet observable; their success is a prediction the group can check</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Six rule-qualified candidates have no full text on file yet and stay candidates: <span class="citation" data-cites="molina1974">Molina and Rowland (<a href="bibliography.html#ref-molina1974" role="doc-biblioref">1974</a>)</span>, <span class="citation" data-cites="alvarez1980">Alvarez et al. (<a href="bibliography.html#ref-alvarez1980" role="doc-biblioref">1980</a>)</span>, <span class="citation" data-cites="farman1985">Farman et al. (<a href="bibliography.html#ref-farman1985" role="doc-biblioref">1985</a>)</span>, <span class="citation" data-cites="massonnet1993">Massonnet et al. (<a href="bibliography.html#ref-massonnet1993" role="doc-biblioref">1993</a>)</span>, <span class="citation" data-cites="rockstrom2009">Rockström et al. (<a href="bibliography.html#ref-rockstrom2009" role="doc-biblioref">2009</a>)</span>, <span class="citation" data-cites="lindsey2019">Lindsey et al. (<a href="bibliography.html#ref-lindsey2019" role="doc-biblioref">2019</a>)</span>.</li>
+<li>Two authors of <span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span>, Lipovsky and Williams, are at the University of Washington. Assign that case an assessor from outside the group.</li>
+</ul>
+</section>
+<section id="metrics" class="level2">
+<h2 class="anchored" data-anchor-id="metrics">1. Metrics</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Citations</th>
+<th style="text-align: left;">Field-normalized percentile</th>
+<th style="text-align: left;">Field-weighted citation impact</th>
+<th style="text-align: left;">Citers outside geoscience</th>
+<th style="text-align: left;">References outside geoscience</th>
+<th style="text-align: left;">Diversity of citing fields</th>
+<th style="text-align: left;">CD₅ without n_k (citers in window)</th>
+<th style="text-align: left;">Authors / countries</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">1,413</td>
+<td style="text-align: left;">99.28</td>
+<td style="text-align: left;">26.5</td>
+<td style="text-align: left;">33%</td>
+<td style="text-align: left;">40%</td>
+<td style="text-align: left;">0.49</td>
+<td style="text-align: left;">0.00 (110)</td>
+<td style="text-align: left;">2 / 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">2,285</td>
+<td style="text-align: left;">99.99</td>
+<td style="text-align: left;">66.8</td>
+<td style="text-align: left;">8%</td>
+<td style="text-align: left;">29%</td>
+<td style="text-align: left;">0.15</td>
+<td style="text-align: left;">−0.61 (390)</td>
+<td style="text-align: left;">4 / 2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">2,877</td>
+<td style="text-align: left;">99.97</td>
+<td style="text-align: left;">58.1</td>
+<td style="text-align: left;">24%</td>
+<td style="text-align: left;">14%</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">−0.30 (477)</td>
+<td style="text-align: left;">3 / 2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">1,439</td>
+<td style="text-align: left;">99.99</td>
+<td style="text-align: left;">158.8</td>
+<td style="text-align: left;">38%</td>
+<td style="text-align: left;">30%</td>
+<td style="text-align: left;">0.59</td>
+<td style="text-align: left;">−0.11 (1,428)</td>
+<td style="text-align: left;">18 / 2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">99.35</td>
+<td style="text-align: left;">10.2</td>
+<td style="text-align: left;">46%</td>
+<td style="text-align: left;">14%</td>
+<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">−1.00 (22)</td>
+<td style="text-align: left;">23 / 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">57.03</td>
+<td style="text-align: left;">0.4</td>
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">2%</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">+1.00 (1)</td>
+<td style="text-align: left;">17 / 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">97.15</td>
+<td style="text-align: left;">7.8</td>
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">4%</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">−1.00 (2)</td>
+<td style="text-align: left;">2 / 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">99.78</td>
+<td style="text-align: left;">15.4</td>
+<td style="text-align: left;">4%</td>
+<td style="text-align: left;">23%</td>
+<td style="text-align: left;">0.08</td>
+<td style="text-align: left;">−0.92 (25)</td>
+<td style="text-align: left;">10 / 2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Source: OpenAlex, retrieved anonymously on October 20, 2026. Geoscience means OpenAlex’s Earth and Planetary Sciences and Environmental Science fields together. Diversity is Gini–Simpson over citing works’ fields, geoscience counted as one field. CD₅ uses the formula in <code>tools/indicators.py</code> without the n_k term, over all citers in the five-year window.</li>
+<li>For the designated papers, citations, diversity, and CD₅ rest on 1 to 25 citers and mean nothing yet. Their percentiles are early and will move.</li>
+<li>The outside-geoscience columns use the old measure; the <a href="#breadth-v1-the-measure-corrected">corrected measure</a> lowers Vine and Matthews from 33% to about 4%, because OpenAlex files geomagnetism under molecular biology. Vine and Matthews also has only 10 references, so its reference share is unstable.</li>
+</ul>
+<p><strong>What the metrics show on the recognized four</strong></p>
+<ul>
+<li>Citation impact separates them from ordinary papers, as the selection rule guarantees. The rule therefore cannot test whether citations identify advances.</li>
+<li>Interdisciplinary <em>input</em> and <em>uptake</em> disagree. Shapiro and colleagues imported statistical physics, ultrasonics, and helioseismology (section 2), and 29% of their references are outside geoscience, but only 8% of their citers are. Rodell and colleagues imported satellite geodesy and government statistics, and 24% of their citers are outside.</li>
+<li>CD₅ never comes out positive for any paper with enough citers. Noise tomography, the clearest new method, scores lowest.</li>
+</ul>
+<section id="against-matched-controls" class="level3">
+<h3 class="anchored">Against matched controls</h3>
+<ul>
+<li><strong>Design.</strong> For each paper, three research articles from the same journal and year, in the same OpenAlex subfield, at the median citation rank of that pool. Type article, at least 20 references (5 for 1963, when reference lists were short), retrieved anonymously on October 20, 2026. The same measures as above.</li>
+<li><strong>The citation percentile cannot separate advances inside these journals.</strong> A median-ranked Earth-science article in <em>Nature</em> or <em>Science</em> already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile rule on the <a href="./success-set.html">historical-evaluation page</a> selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Match (pool)</th>
+<th style="text-align: left;">Citations, paper / median control</th>
+<th style="text-align: left;">Citers outside geoscience</th>
+<th style="text-align: left;">References outside geoscience</th>
+<th style="text-align: left;">Diversity of citing fields</th>
+<th style="text-align: left;">CD₅ without n_k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">Field, 1963 (58)</td>
+<td style="text-align: left;">1,413 / 12</td>
+<td style="text-align: left;">33% / 0%</td>
+<td style="text-align: left;">40% / 0%</td>
+<td style="text-align: left;">0.49 / 0.00</td>
+<td style="text-align: left;">0.00 / 0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Geophysics (15)</td>
+<td style="text-align: left;">2,285 / 223</td>
+<td style="text-align: left;">8% / 26%</td>
+<td style="text-align: left;">29% / 11%</td>
+<td style="text-align: left;">0.15 / 0.43</td>
+<td style="text-align: left;">−0.61 / −0.69</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Oceanography (10)</td>
+<td style="text-align: left;">2,877 / 502</td>
+<td style="text-align: left;">24% / 6%</td>
+<td style="text-align: left;">14% / 8%</td>
+<td style="text-align: left;">0.41 / 0.11</td>
+<td style="text-align: left;">−0.30 / −0.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Atmospheric science (11)</td>
+<td style="text-align: left;">1,439 / 67</td>
+<td style="text-align: left;">38% / 3%</td>
+<td style="text-align: left;">30% / 5%</td>
+<td style="text-align: left;">0.59 / 0.07</td>
+<td style="text-align: left;">−0.11 / −0.83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Atmospheric science (14)</td>
+<td style="text-align: left;">23 / 21</td>
+<td style="text-align: left;">45% / 21%</td>
+<td style="text-align: left;">14% / 4%</td>
+<td style="text-align: left;">0.57 / 0.37</td>
+<td style="text-align: left;">−1.00 / −0.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Atmospheric science (55)</td>
+<td style="text-align: left;">1 / 8</td>
+<td style="text-align: left;">0% / 0%</td>
+<td style="text-align: left;">2% / 5%</td>
+<td style="text-align: left;">0.00 / 0.00</td>
+<td style="text-align: left;">+1.00 / −0.75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Geophysics (52)</td>
+<td style="text-align: left;">2 / 0</td>
+<td style="text-align: left;">0% / none</td>
+<td style="text-align: left;">4% / 19%</td>
+<td style="text-align: left;">0.00 / none</td>
+<td style="text-align: left;">−1.00 / none</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Geophysics (20)</td>
+<td style="text-align: left;">25 / 11</td>
+<td style="text-align: left;">4% / 27%</td>
+<td style="text-align: left;">23% / 24%</td>
+<td style="text-align: left;">0.08 / 0.40</td>
+<td style="text-align: left;">−0.92 / −0.46</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: left;">Paper above its median control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Citations, percentile, field-weighted impact</td>
+<td style="text-align: left;">7 of 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">References outside geoscience</td>
+<td style="text-align: left;">5 of 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Citers outside geoscience</td>
+<td style="text-align: left;">4 of 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diversity of citing fields</td>
+<td style="text-align: left;">4 of 7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CD₅ without n_k</td>
+<td style="text-align: left;">4 of 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Team size</td>
+<td style="text-align: left;">4 of 8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Citations separate the recognized four from their controls by 5.7 to 118 times</strong> (Rodell 5.7, Shapiro 10, Lam 21, Vine 118). This is partly circular: these four were chosen on citations.</li>
+<li><strong>Breadth of uptake separates three of the four recognized papers, not Shapiro.</strong> The noise-tomography paper draws its citers from geoscience more than its controls do.</li>
+<li><strong>The honest test is the designated stratum,</strong> chosen by judgment and not by metrics. After 6 to 14 months, two lead their controls on citations (Xu, Sun), one is level (Gräff), and one trails (Normandeau). Score them again in 2028.</li>
+<li><strong>CD₅ and team size separate nothing:</strong> about half the papers are above their controls.</li>
+<li><strong>OpenAlex’s subfield labels shape the controls.</strong> Gräff and colleagues’ fjord study and Normandeau and colleagues’ seafloor-freezing study are both labelled atmospheric science, so their controls are paleoclimate and ozone papers. Xu and colleagues’ median control is another 2025 supershear rupture, imaged with fibre.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Breadth v1: the measure corrected
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="status adopted">Adopted, provisional</span> <span class="status-line">adopted by the convenor on October 21, 2026 as a temporary measure, to be revised once the breadth literature is read</span></p>
+<ul>
+<li><strong>The defect.</strong> The breadth columns above count a citer as outside geoscience when its OpenAlex field is neither Earth and Planetary Sciences nor Environmental Science. Twelve geoscience topics sit under other fields. “Geomagnetism and Paleomagnetism Studies” is filed under molecular biology; a random sample of 25 of Vine and Matthews’s “molecular biology” citers were all geomagnetism papers in geoscience journals. Across the 32 papers, 307 works moved on that topic alone.</li>
+<li><strong>v1.</strong> Each citer labelled by its primary topic through a corrected topic map (geoscience, adjacent, outside), citers in the first five years, self-citations excluded, with a Wilson 95% interval; fewer than 30 citers is not estimable.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Old measure</th>
+<th style="text-align: left;">v1, first five years [95% CI] (n)</th>
+<th style="text-align: left;">Checked by hand, lifetime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">33%</td>
+<td style="text-align: left;">1% [0, 5] (104)</td>
+<td style="text-align: left;">4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">24%</td>
+<td style="text-align: left;">22% [19, 27] (451)</td>
+<td style="text-align: left;">15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">8%</td>
+<td style="text-align: left;">8% [5, 11] (332)</td>
+<td style="text-align: left;">7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">38%</td>
+<td style="text-align: left;">34% [31, 36] (1,422)</td>
+<td style="text-align: left;">27%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">46%</td>
+<td style="text-align: left;">40% [20, 64] (15), not estimable</td>
+<td style="text-align: left;">23%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Checked by hand.</strong> 138 citers labelled outside and 169 labelled geoscience were judged from title and venue: 69% and 96% correct. Topic labels follow subject, not community, so physicists citing Shapiro in PRL and JASA are labelled seismology.</li>
+<li><strong>Against the controls</strong>, no verdict changes. Only Rodell, Shapiro, and Lam have 30 or more citers on both sides: Rodell and Lam are above their controls, Shapiro below.</li>
+<li>Source: OpenAlex, anonymous, October 21, 2026; <code>private/analysis/success-set/breadth/</code> (script, audited topic map, validation samples).</li>
+</ul>
+<section id="two-contrast-strata" class="level2">
+<h2 class="anchored" data-anchor-id="two-contrast-strata">Two contrast strata</h2>
+<ul>
+<li><strong>C, highly cited outside Nature and Science.</strong> Earth-science research articles at or above the 99.9th field-normalized percentile, in journals outside the Nature and Science families, in four eras matched to the success set. Reviews, software, and data products excluded.</li>
+<li><strong>D, Nature and Science, bottom decile.</strong> Earth-science research articles in Nature or Science, 2005 to 2015, in the bottom tenth of their own journal and year by citations, drawn at random (seed 2026).</li>
+<li>Selection rules, pools, and replacements: <code>private/analysis/success-set/strata/REPORT.md</code>. All DOIs checked on Crossref.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Journal</th>
+<th style="text-align: left;">Citations</th>
+<th style="text-align: left;">Percentile</th>
+<th style="text-align: left;">Citers outside geoscience, v1 lifetime</th>
+<th style="text-align: left;">Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="smagorinsky1963">Smagorinsky (<a href="bibliography.html#ref-smagorinsky1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">Monthly Weather Review</td>
+<td style="text-align: left;">14,048</td>
+<td style="text-align: left;">100.00</td>
+<td style="text-align: left;">62% (n = 9,998)</td>
+<td style="text-align: left;">new method: numerical general circulation model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="macdonald1964">Macdonald and Katsura (<a href="bibliography.html#ref-macdonald1964" role="doc-biblioref">1964</a>)</span></td>
+<td style="text-align: left;">Journal of Petrology</td>
+<td style="text-align: left;">1,595</td>
+<td style="text-align: left;">99.90</td>
+<td style="text-align: left;">1% (n = 1,566)</td>
+<td style="text-align: left;">regularity: alkalic versus tholeiitic boundary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="bullard1965">Bullard et al. (<a href="bibliography.html#ref-bullard1965" role="doc-biblioref">1965</a>)</span></td>
+<td style="text-align: left;">Phil. Trans. R. Soc. A</td>
+<td style="text-align: left;">1,275</td>
+<td style="text-align: left;">99.91</td>
+<td style="text-align: left;">3% (n = 1,238)</td>
+<td style="text-align: left;">new method: computed continental fit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="jackson2004">Jackson et al. (<a href="bibliography.html#ref-jackson2004" role="doc-biblioref">2004</a>)</span></td>
+<td style="text-align: left;">Chemical Geology</td>
+<td style="text-align: left;">5,259</td>
+<td style="text-align: left;">99.93</td>
+<td style="text-align: left;">2% (n = 5,033)</td>
+<td style="text-align: left;">new method: laser-ablation U–Pb zircon dating</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="tapley2004">Tapley et al. (<a href="bibliography.html#ref-tapley2004" role="doc-biblioref">2004</a>)</span></td>
+<td style="text-align: left;">Geophysical Research Letters</td>
+<td style="text-align: left;">3,011</td>
+<td style="text-align: left;">99.99</td>
+<td style="text-align: left;">12% (n = 2,926)</td>
+<td style="text-align: left;">new instrument: GRACE gravity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="bensen2007">Bensen et al. (<a href="bibliography.html#ref-bensen2007" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Geophysical Journal International</td>
+<td style="text-align: left;">2,429</td>
+<td style="text-align: left;">99.98</td>
+<td style="text-align: left;">2% (n = 2,220)</td>
+<td style="text-align: left;">new method: ambient-noise processing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="gupta2009">Gupta et al. (<a href="bibliography.html#ref-gupta2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Journal of Hydrology</td>
+<td style="text-align: left;">6,726</td>
+<td style="text-align: left;">99.91</td>
+<td style="text-align: left;">4% (n = 6,611)</td>
+<td style="text-align: left;">new method: decomposition of model skill (KGE)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="chelton2011">Chelton et al. (<a href="bibliography.html#ref-chelton2011" role="doc-biblioref">2011</a>)</span></td>
+<td style="text-align: left;">Progress in Oceanography</td>
+<td style="text-align: left;">2,614</td>
+<td style="text-align: left;">99.99</td>
+<td style="text-align: left;">4% (n = 2,575)</td>
+<td style="text-align: left;">new observation: global eddy census</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rignot2019">Rignot et al. (<a href="bibliography.html#ref-rignot2019" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">PNAS</td>
+<td style="text-align: left;">1,650</td>
+<td style="text-align: left;">100.00</td>
+<td style="text-align: left;">4% (n = 1,538)</td>
+<td style="text-align: left;">synthesis: 40 years of Antarctic mass balance</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="wu2019faultseg">Wu et al. (<a href="bibliography.html#ref-wu2019faultseg" role="doc-biblioref">2019</a>)</span></td>
+<td style="text-align: left;">Geophysics</td>
+<td style="text-align: left;">900</td>
+<td style="text-align: left;">99.98</td>
+<td style="text-align: left;">14% (n = 841)</td>
+<td style="text-align: left;">new method: network trained on synthetic faults</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="davis2006gps">Davis et al. (<a href="bibliography.html#ref-davis2006gps" role="doc-biblioref">2006</a>)</span></td>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">84.8</td>
+<td style="text-align: left;">11% (n = 28)</td>
+<td style="text-align: left;">GPS strain-rate change</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="stlaurent2007">St Laurent and Thurnherr (<a href="bibliography.html#ref-stlaurent2007" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">94.7</td>
+<td style="text-align: left;">5% (n = 78)</td>
+<td style="text-align: left;">ridge-crest mixing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="wookey2008">Wookey and Helffrich (<a href="bibliography.html#ref-wookey2008" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">91.6</td>
+<td style="text-align: left;">4% (n = 57)</td>
+<td style="text-align: left;">PKJKP and inner-core anisotropy</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="wickert2013">Wickert et al. (<a href="bibliography.html#ref-wickert2013" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">87.9</td>
+<td style="text-align: left;">28% (n = 65)</td>
+<td style="text-align: left;">ice-sheet demise from drainage</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="burr2014">Burr et al. (<a href="bibliography.html#ref-burr2014" role="doc-biblioref">2014</a>)</span></td>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">85</td>
+<td style="text-align: left;">98.6</td>
+<td style="text-align: left;">8% (n = 76)</td>
+<td style="text-align: left;">Titan saltation thresholds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="koppers2005">Koppers and Staudigel (<a href="bibliography.html#ref-koppers2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Science</td>
+<td style="text-align: left;">74</td>
+<td style="text-align: left;">99.2</td>
+<td style="text-align: left;">2% (n = 61)</td>
+<td style="text-align: left;">seamount-trail bends and hotspots</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="li2006">Li et al. (<a href="bibliography.html#ref-li2006" role="doc-biblioref">2006</a>)</span></td>
+<td style="text-align: left;">Science</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">93.7</td>
+<td style="text-align: left;">17% (n = 18)</td>
+<td style="text-align: left;">plankton trend switching</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="duplessy2007">Duplessy et al. (<a href="bibliography.html#ref-duplessy2007" role="doc-biblioref">2007</a>)</span></td>
+<td style="text-align: left;">Science</td>
+<td style="text-align: left;">67</td>
+<td style="text-align: left;">93.1</td>
+<td style="text-align: left;">5% (n = 58)</td>
+<td style="text-align: left;">interglacial deep ocean</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="griffith2008">Griffith et al. (<a href="bibliography.html#ref-griffith2008" role="doc-biblioref">2008</a>)</span></td>
+<td style="text-align: left;">Science</td>
+<td style="text-align: left;">109</td>
+<td style="text-align: left;">94.6</td>
+<td style="text-align: left;">15% (n = 92)</td>
+<td style="text-align: left;">marine calcium cycle</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="hurst2013">Hurst et al. (<a href="bibliography.html#ref-hurst2013" role="doc-biblioref">2013</a>)</span></td>
+<td style="text-align: left;">Science</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">97.7</td>
+<td style="text-align: left;">2% (n = 68)</td>
+<td style="text-align: left;">hillslopes record uplift</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>No Nature or Science paper fails by citations.</strong> Of the 1,717 Earth-science research articles in the two journals from 2005 to 2015, none sits below its field’s median normalized citation; the median is the 99.4th percentile, and 34 (2%) are below the 90th. Stratum D is low only against its journal: 73 to 118 citations is the cut-off.</li>
+<li><strong>Failure, as now defined, is not visible in these strata.</strong> Failure means no conclusion reached; a contradicted claim is a successful result (convenor, October 21, 2026). Every published paper in C and D reports a conclusion, so neither stratum contains a failure. Later contradictions of <span class="citation" data-cites="davis2006gps">Davis et al. (<a href="bibliography.html#ref-davis2006gps" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="wookey2008">Wookey and Helffrich (<a href="bibliography.html#ref-wookey2008" role="doc-biblioref">2008</a>)</span> would make them successes of the field, not failures of the papers. A failure corpus has to come from work that ended without a conclusion: conference abstracts never followed by a paper, funded projects without publications, registered reports with inconclusive results.</li>
+<li><strong>Highly cited is not broad.</strong> The median share of citers outside geoscience is 4% for stratum C, the same as the matched controls with 30 or more citers (4%), and 7% for stratum D. The recognized four reach about 12%, carried by Lam and Rodell. Breadth of uptake does not follow citation success.</li>
+<li><strong>The citation tail is products.</strong> Among the most-cited Earth-science items, reanalyses, calibration curves, and assessment reports come first (ERA5: 31,639 citations); in 2019 to 2023 the first research article ranks seventh. Seven of the ten C papers contribute a method or an instrument.</li>
+<li><strong>Caveats.</strong> 366 topics that appear among these papers’ citers were not in the audited map and default to outside, which raises the outside shares. Stratum D’s five-year counts are mostly below 30. None of the 20 has been coded by mode yet; 2 have legal open full texts in hand, 2 more are free on the publisher site, 16 are paywalled.</li>
+</ul>
+</section>
+<section id="the-24-controls-with-citations-on-october-20-2026" class="level2">
+<h2 class="anchored" data-anchor-id="the-24-controls-with-citations-on-october-20-2026">The 24 controls, with citations on October 20, 2026</h2>
+<ul>
+<li><strong>Vine &amp; Matthews 1963</strong> (field, references ≥ 5, pool 58): <a href="https://doi.org/10.1038/1991246a0">Cross-Stratification and Palæogeography of the Lower Greensand</a> (14); <a href="https://doi.org/10.1038/200561a0">Discordant Lead–Uranium Ages due to Continuous Loss of Lead</a> (12); <a href="https://doi.org/10.1038/199133b0">Pre-Fluvial, Autogeosynclinal Sedimentation in the Namurian</a> (12)</li>
+<li><strong>Shapiro et al.&nbsp;2005</strong> (geophysics, pool 15): <a href="https://doi.org/10.1126/science.1112305">Earth’s Free Oscillations Excited by the 26 December 2004 Sumatra-Andaman Earthquake</a> (285); <a href="https://doi.org/10.1126/science.1105466">Slip-Rate Measurements on the Karakorum Fault</a> (223); <a href="https://doi.org/10.1126/science.1108193">Laboratory Earthquakes Along Inhomogeneous Faults</a> (191)</li>
+<li><strong>Rodell et al.&nbsp;2009</strong> (oceanography, pool 10): <a href="https://doi.org/10.1038/nature08276">Denitrification as the dominant nitrogen loss process in the Arabian Sea</a> (536); <a href="https://doi.org/10.1038/nature08555">Catastrophic flood of the Mediterranean after the Messinian salinity crisis</a> (502); <a href="https://doi.org/10.1038/nature08519">Increase in Agulhas leakage due to poleward shift of Southern Hemisphere westerlies</a> (384)</li>
+<li><strong>Lam et al.&nbsp;2023</strong> (atmospheric science, pool 11): <a href="https://doi.org/10.1126/science.adh2526">Iodine oxoacids enhance nucleation of sulfuric acid particles</a> (72); <a href="https://doi.org/10.1126/science.adg2551">Rapid ozone depletion after humidification of the stratosphere</a> (67); <a href="https://doi.org/10.1126/science.ade4248">Deglaciation of northwestern Greenland during Marine Isotope Stage 11</a> (59)</li>
+<li><strong>Gräff et al.&nbsp;2025</strong> (atmospheric science, pool 14): <a href="https://doi.org/10.1038/s41586-025-08956-6">Past warm intervals inform the future South Asian summer monsoon</a> (23); <a href="https://doi.org/10.1038/s41586-025-08859-6">Recurrent humid phases in Arabia over the past 8 million years</a> (21); <a href="https://doi.org/10.1038/s41586-025-08640-9">Fingerprinting the recovery of Antarctic ozone</a> (19)</li>
+<li><strong>Normandeau et al.&nbsp;2025</strong> (atmospheric science, pool 55): <a href="https://doi.org/10.1126/sciadv.adx8837">A radiometric timescale challenges the chronology of the iconic 1992 GISP2 ice core</a> (8); <a href="https://doi.org/10.1126/sciadv.adt2561">Pronounced methane cycling in northern lakes</a> (8); <a href="https://doi.org/10.1126/sciadv.adu3701">Episodic reef growth in the Last Interglacial</a> (8)</li>
+<li><strong>Sun &amp; Davis 2026</strong> (geophysics, pool 52): <a href="https://doi.org/10.1126/sciadv.aeg2624">Pliny the Younger advances geochronology</a> (0); <a href="https://doi.org/10.1126/sciadv.aee5294">Pacific tsunami records suggest similar rupture locations of two great earthquakes</a> (0); <a href="https://doi.org/10.1126/sciadv.aec3198">Cascading magmatic unrest and aseismic faulting in the Aegean Sea</a> (0)</li>
+<li><strong>Xu et al.&nbsp;2025</strong> (geophysics, pool 20): <a href="https://doi.org/10.1126/science.adx6858">Fiber-imaged supershear dynamics in the 2024 Mw 7 Mendocino Fault earthquake</a> (11); <a href="https://doi.org/10.1126/science.adv8438">Very-long-range dynamic triggering of mud volcano unrest</a> (11); <a href="https://doi.org/10.1126/science.adt6389">The forearc seismic belt: A fluid pathway constraining down-dip megathrust rupture</a> (11)</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mode-analysis-from-the-full-text" class="level2">
+<h2 class="anchored" data-anchor-id="mode-analysis-from-the-full-text">2. Mode analysis from the full text</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Entry state</th>
+<th style="text-align: left;">Path on graph v0.4</th>
+<th style="text-align: left;">Modes, in the order they did decisive work</th>
+<th style="text-align: left;">Decisive move</th>
+<th style="text-align: left;">Composition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">Problem: unexplained ridge anomalies</td>
+<td style="text-align: left;">E, Q, O, I, C, P, S, C, X, H, K, S, C, V, P, K</td>
+<td style="text-align: left;">Observation, estimation, simulation, theory, synthesis, hypothesis</td>
+<td style="text-align: left;">Tying reversed blocks to spreading under a reversing field (p.&nbsp;948)</td>
+<td style="text-align: left;">Trace series</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Capability: Green functions from noise, plus USArray</td>
+<td style="text-align: left;">N, E, V, C, F, O, I, V, C, K</td>
+<td style="text-align: left;">Methods, robustness, estimation, observation, instruments</td>
+<td style="text-align: left;">One month of noise gives waveforms that match earthquake Rayleigh waves (p.&nbsp;1616)</td>
+<td style="text-align: left;">Capability first, with no question node</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Problem: no regional assessment existed</td>
+<td style="text-align: left;">Q, N, O, I, H, S, C, X, V, K</td>
+<td style="text-align: left;">Instruments, methods, estimation, synthesis, hypothesis</td>
+<td style="text-align: left;">Groundwater as GRACE storage minus modeled soil water, 4.0 ± 1.0 cm/yr (p.&nbsp;1001)</td>
+<td style="text-align: left;">None fits; attribution closest to trace series</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Capability: machine learning, reanalysis, compute</td>
+<td style="text-align: left;">N, D, S, O, C, X, V, C, R, K</td>
+<td style="text-align: left;">Methods, regularities, simulation and prediction, robustness</td>
+<td style="text-align: left;">The trained graph network, scored under a leakage-matched protocol (p.&nbsp;3)</td>
+<td style="text-align: left;">Forecast verification, retrospective</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Capability: seafloor fibre sensing</td>
+<td style="text-align: left;">N, F, O, E, I, S, C, K</td>
+<td style="text-align: left;">Instruments, exploration, observation, methods, synthesis, regularities, estimation, theory</td>
+<td style="text-align: left;">A cable laid parallel to the calving front, carrying acoustic and temperature sensing (p.&nbsp;2)</td>
+<td style="text-align: left;">Capability first</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Anomaly between repeat surveys</td>
+<td style="text-align: left;">O, E, H, I, S, C, P, K</td>
+<td style="text-align: left;">Observation, synthesis, theory, reconstruction, hypothesis, instruments</td>
+<td style="text-align: left;">Resurveying in autumn and the next summer (pp.&nbsp;4, 12)</td>
+<td style="text-align: left;">Trace series, leaning to nature’s repetition</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Problem: offshore secular strain unmeasured</td>
+<td style="text-align: left;">N, O, E, H, V, X, I, Q, S, V, C, X, K, R</td>
+<td style="text-align: left;">Instruments, observation, robustness, estimation, modeling, synthesis</td>
+<td style="text-align: left;">Showing pressure trends exceed sensor drift (pp.&nbsp;5, 9)</td>
+<td style="text-align: left;">Capability first</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Data on a new event</td>
+<td style="text-align: left;">O, I, E, N, V, C, K, Q, H, F, S, C, P, R, K</td>
+<td style="text-align: left;">Methods, observation, robustness, hypothesis, estimation, theory, synthesis</td>
+<td style="text-align: left;">Back-projection of a 5 km/s rupture front (p.&nbsp;476)</td>
+<td style="text-align: left;">Trace series</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gate</th>
+<th style="text-align: left;">Yes</th>
+<th style="text-align: left;">Partly</th>
+<th style="text-align: left;">No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Action gate: a stated hypothesis directed the key data acquisition</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1 (Rodell)</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claim gate: the main claim faced a test it could have failed</td>
+<td style="text-align: left;">4 (Shapiro, Rodell, Lam, Xu for supershear)</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anything fixed before the data</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1 (Lam: held-out years)</td>
+<td style="text-align: left;">7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What the eight show about modes</strong></p>
+<ul>
+<li>None entered from a hypothesis. Four entered from a capability, three from a problem, one from an anomaly in a repeat survey.</li>
+<li>Node I (estimate a latent quantity) appears in 7 of 8; node N (new capability) in 6; node E (explore) in 6. Node D, designing a discriminating observation before the data, appears once (Lam’s verification design).</li>
+<li>Rivals were stated in six papers and excluded by a test in four, one of them only partly. Xu and colleagues list eight possible mechanisms and exclude none; the retained account combines several (p.&nbsp;479).</li>
+<li>Every claim gate was met at least in part; no action gate was. On these eight, the claim gate describes the practice and the action gate does not.</li>
+<li>The protective move at P appears three times: Vine and Matthews’s auxiliaries (p.&nbsp;949), Normandeau and colleagues’ multi-year ice to close a 0.05 m versus 0.2 m gap (p.&nbsp;10), and Xu and colleagues’ added assumption after a failed length prediction (p.&nbsp;479).</li>
+<li>Interdisciplinary content does not predict interdisciplinary uptake: Xu and colleagues import fracture mechanics, laboratory rupture experiments, and satellite radar, and 4% of their citers are outside geoscience.</li>
+<li>None of the recognized four uses the word “first” for its claim; three of the four designated papers do. With eight papers this is a description, not a pattern.</li>
+</ul>
+</section>
+<section id="the-papers-as-historical-evaluation-cases" class="level2">
+<h2 class="anchored" data-anchor-id="the-papers-as-historical-evaluation-cases">3. The papers as historical-evaluation cases</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Best suite</th>
+<th style="text-align: left;">Decision point and decisive action</th>
+<th style="text-align: left;">Scoring reference</th>
+<th style="text-align: left;">Errors or traps a careful reader catches</th>
+<th style="text-align: left;">Exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span></td>
+<td style="text-align: left;">Reproduction</td>
+<td style="text-align: left;">After the 1962 survey and the failed uniform-normal model: propose alternating normal and reversed blocks (p.&nbsp;948)</td>
+<td style="text-align: left;">Forward profiles of Fig. 4 from stated parameters (pp.&nbsp;948–949)</td>
+<td style="text-align: left;">The non-reversal rival is dismissed on plausibility, not tested (p.&nbsp;949); no misfit statistic</td>
+<td style="text-align: left;">Canonical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span></td>
+<td style="text-align: left;">Reproduction, extension</td>
+<td style="text-align: left;">Correlate one month of noise, check against earthquakes, invert (p.&nbsp;1616)</td>
+<td style="text-align: left;">Fig. 2 maps; 678 and 891 measurements; variance reduction 93% and 76%</td>
+<td style="text-align: left;">Directional noise mitigated, not quantified (p.&nbsp;1616); validation by geology is qualitative and after the fact</td>
+<td style="text-align: left;">Canonical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span></td>
+<td style="text-align: left;">Reproduction, extension</td>
+<td style="text-align: left;">Subtract modeled soil water from GRACE storage over the overdrafted states</td>
+<td style="text-align: left;">4.0 ± 1.0 cm/yr; held-out well-level decline of about 0.33 m/yr (p.&nbsp;1001)</td>
+<td style="text-align: left;">No independent well check; one processing center</td>
+<td style="text-align: left;">Canonical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
+<td style="text-align: left;">Reproduction, extension</td>
+<td style="text-align: left;">Freeze weights trained on 1979–2017; score held-out years against operational forecasts (p.&nbsp;3)</td>
+<td style="text-align: left;">Released weights; 90.3% of scorecard targets (p.&nbsp;4); score years after 2021</td>
+<td style="text-align: left;">Verification against a reanalysis, not observations; level exclusions decided after the fact</td>
+<td style="text-align: left;">Canonical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="graff2025">Gräff et al. (<a href="bibliography.html#ref-graff2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Decision reconstruction</td>
+<td style="text-align: left;">Before deployment on August 6, 2023: lay the cable parallel to the front and run both sensing modes (p.&nbsp;2)</td>
+<td style="text-align: left;">The process chain and a melt of at most 1 cm per cycle</td>
+<td style="text-align: left;">The Turner angle is −50° in the main text (p.&nbsp;5) and +50° in the Methods (p.&nbsp;13); only the negative value fits the diffusive convection the paper reports</td>
+<td style="text-align: left;">Recent; group-adjacent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="normandeau2025">Normandeau et al. (<a href="bibliography.html#ref-normandeau2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Decision reconstruction</td>
+<td style="text-align: left;">After the July 2023 survey: resurvey in autumn and again in summer (pp.&nbsp;4, 12)</td>
+<td style="text-align: left;">The seasonal blister cycle and its mechanism</td>
+<td style="text-align: left;">The 2021 survey is dated October on two pages and November on five; expansion of the ice gives at most 0.05 m against 0.2 m of relief (p.&nbsp;10)</td>
+<td style="text-align: left;">Recent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="sun2026">Sun and Davis (<a href="bibliography.html#ref-sun2026" role="doc-biblioref">2026</a>)</span></td>
+<td style="text-align: left;">Reproduction</td>
+<td style="text-align: left;">Correct the borehole pressure records for drift, convert to strain, test locking (pp.&nbsp;4–9)</td>
+<td style="text-align: left;">Table 1 strain rates; data and code stated to be with the paper (p.&nbsp;12)</td>
+<td style="text-align: left;">Seafloor drift rates in the text, +0.52, +0.14, and +0.43 kPa/yr (p.&nbsp;9), differ from Fig. 2 and Table 1, 0.42, 0.13, and 0.39 kPa/yr (pp.&nbsp;2, 4)</td>
+<td style="text-align: left;">Recent, April 2026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="xu2025">Xu et al. (<a href="bibliography.html#ref-xu2025" role="doc-biblioref">2025</a>)</span></td>
+<td style="text-align: left;">Decision reconstruction, extension</td>
+<td style="text-align: left;">Between March 28 and April 28, 2025: test supershear with independent observables</td>
+<td style="text-align: left;">Supershear at about 5 km/s over about 450 km in the south; cross-fault Vs of 2.9 against 3.3 km/s as a held-out check (p.&nbsp;477)</td>
+<td style="text-align: left;">The fault-parallel motion test is not unique (p.&nbsp;478); the mechanism combines eight options, none excluded</td>
+<td style="text-align: left;">Recent; an EarthArXiv preprint exists</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Exposure.</strong> The four recognized papers are in any model’s training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models’ training; check each model’s training cutoff and whether it can recall the result before using them for decision reconstruction (<a href="./success-set.html">contamination</a>).</li>
+<li><strong>Errors in the text are a separate item from planted flaws.</strong> An agent that reproduces a result should also flag the Turner-angle sign and the survey date. A model that has memorized the paper may repeat them.</li>
+</ul>
+</section>
+<section id="what-this-page-does-not-establish" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-page-does-not-establish">What this page does not establish</h2>
+<ul>
+<li>That these eight are advances by any measure other than the convenor’s judgment and, for four of them, citations.</li>
+<li>That the metrics discriminate advances: three controls per paper is a start, not a test with power, and the recognized four were chosen on the measure that separates them best. The designated four are the test; their citations mean something only after a few years.</li>
+<li>That the codings are reliable: one coder per paper, from the text alone. Two independent codings of a subset would give an agreement figure.</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-alvarez1980" class="csl-entry" role="listitem">
+Alvarez, Luis W., Walter Alvarez, Frank Asaro, and Helen V. Michel. 1980. <span>“<span class="nocase">Extraterrestrial Cause for the Cretaceous-Tertiary Extinction</span>.”</span> <em>Science</em> 208 (4448): 1095–108. <a href="https://doi.org/10.1126/science.208.4448.1095">https://doi.org/10.1126/science.208.4448.1095</a>.
+</div>
+<div id="ref-bensen2007" class="csl-entry" role="listitem">
+Bensen, G. D., M. H. Ritzwoller, M. P. Barmin, et al. 2007. <span>“<span class="nocase">Processing seismic ambient noise data to obtain reliable broad-band surface wave dispersion measurements</span>.”</span> <em>Geophysical Journal International</em> 169 (3): 1239–60. <a href="https://doi.org/10.1111/j.1365-246x.2007.03374.x">https://doi.org/10.1111/j.1365-246x.2007.03374.x</a>.
+</div>
+<div id="ref-bullard1965" class="csl-entry" role="listitem">
+Bullard, Edward, J. E. Everett, and A. G. Smith. 1965. <span>“<span class="nocase">The fit of the continents around the Atlantic</span>.”</span> <em>Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences</em> 258 (1088): 41–51. <a href="https://doi.org/10.1098/rsta.1965.0020">https://doi.org/10.1098/rsta.1965.0020</a>.
+</div>
+<div id="ref-burr2014" class="csl-entry" role="listitem">
+Burr, Devon M., Nathan T. Bridges, John R. Marshall, James K. Smith, Bruce R. White, and Joshua P. Emery. 2014. <span>“<span class="nocase">Higher-than-predicted saltation threshold wind speeds on Titan</span>.”</span> <em>Nature</em> 517 (7532): 60–63. <a href="https://doi.org/10.1038/nature14088">https://doi.org/10.1038/nature14088</a>.
+</div>
+<div id="ref-chelton2011" class="csl-entry" role="listitem">
+Chelton, Dudley B., Michael G. Schlax, and Roger M. Samelson. 2011. <span>“<span class="nocase">Global observations of nonlinear mesoscale eddies</span>.”</span> <em>Progress in Oceanography</em> 91 (2): 167–216. <a href="https://doi.org/10.1016/j.pocean.2011.01.002">https://doi.org/10.1016/j.pocean.2011.01.002</a>.
+</div>
+<div id="ref-davis2006gps" class="csl-entry" role="listitem">
+Davis, J. L., B. P. Wernicke, S. Bisnath, N. A. Niemi, and P. Elósegui. 2006. <span>“<span class="nocase">Subcontinental-scale crustal velocity changes along the Pacific–North America plate boundary</span>.”</span> <em>Nature</em> 441 (7097): 1131–34. <a href="https://doi.org/10.1038/nature04781">https://doi.org/10.1038/nature04781</a>.
+</div>
+<div id="ref-duplessy2007" class="csl-entry" role="listitem">
+Duplessy, J. C., D. M. Roche, and M. Kageyama. 2007. <span>“<span class="nocase">The Deep Ocean During the Last Interglacial Period</span>.”</span> <em>Science</em> 316 (5821): 89–91. <a href="https://doi.org/10.1126/science.1138582">https://doi.org/10.1126/science.1138582</a>.
+</div>
+<div id="ref-farman1985" class="csl-entry" role="listitem">
+Farman, J. C., B. G. Gardiner, and J. D. Shanklin. 1985. <span>“<span class="nocase">Large losses of total ozone in Antarctica reveal seasonal ClOx/NOx interaction</span>.”</span> <em>Nature</em> 315 (6016): 207–10. <a href="https://doi.org/10.1038/315207a0">https://doi.org/10.1038/315207a0</a>.
+</div>
+<div id="ref-graff2025" class="csl-entry" role="listitem">
+Gräff, Dominik, Bradley Paul Lipovsky, Andreas Vieli, et al. 2025. <span>“<span class="nocase">Calving-driven fjord dynamics resolved by seafloor fibre sensing</span>.”</span> <em>Nature</em> 644 (8076): 404–12. <a href="https://doi.org/10.1038/s41586-025-09347-7">https://doi.org/10.1038/s41586-025-09347-7</a>.
+</div>
+<div id="ref-griffith2008" class="csl-entry" role="listitem">
+Griffith, Elizabeth M., Adina Paytan, Ken Caldeira, Thomas D. Bullen, and Ellen Thomas. 2008. <span>“<span class="nocase">A Dynamic Marine Calcium Cycle During the Past 28 Million Years</span>.”</span> <em>Science</em> 322 (5908): 1671–74. <a href="https://doi.org/10.1126/science.1163614">https://doi.org/10.1126/science.1163614</a>.
+</div>
+<div id="ref-gupta2009" class="csl-entry" role="listitem">
+Gupta, Hoshin V., Harald Kling, Koray K. Yilmaz, and Guillermo F. Martinez. 2009. <span>“<span class="nocase">Decomposition of the mean squared error and NSE performance criteria: Implications for improving hydrological modelling</span>.”</span> <em>Journal of Hydrology</em> 377 (1-2): 80–91. <a href="https://doi.org/10.1016/j.jhydrol.2009.08.003">https://doi.org/10.1016/j.jhydrol.2009.08.003</a>.
+</div>
+<div id="ref-hurst2013" class="csl-entry" role="listitem">
+Hurst, Martin D., Simon M. Mudd, Mikael Attal, and George Hilley. 2013. <span>“<span class="nocase">Hillslopes Record the Growth and Decay of Landscapes</span>.”</span> <em>Science</em> 341 (6148): 868–71. <a href="https://doi.org/10.1126/science.1241791">https://doi.org/10.1126/science.1241791</a>.
+</div>
+<div id="ref-jackson2004" class="csl-entry" role="listitem">
+Jackson, Simon E., Norman J. Pearson, William L. Griffin, and Elena A. Belousova. 2004. <span>“<span class="nocase">The application of laser ablation-inductively coupled plasma-mass spectrometry to in situ U–Pb zircon geochronology</span>.”</span> <em>Chemical Geology</em> 211 (1-2): 47–69. <a href="https://doi.org/10.1016/j.chemgeo.2004.06.017">https://doi.org/10.1016/j.chemgeo.2004.06.017</a>.
+</div>
+<div id="ref-koppers2005" class="csl-entry" role="listitem">
+Koppers, Anthony A. P., and Hubert Staudigel. 2005. <span>“<span class="nocase">Asynchronous Bends in Pacific Seamount Trails: A Case for Extensional Volcanism?</span>”</span> <em>Science</em> 307 (5711): 904–7. <a href="https://doi.org/10.1126/science.1107260">https://doi.org/10.1126/science.1107260</a>.
+</div>
+<div id="ref-lam2023" class="csl-entry" role="listitem">
+Lam, Remi, Alvaro Sanchez-Gonzalez, Matthew Willson, et al. 2023. <span>“<span class="nocase">Learning skillful medium-range global weather forecasting</span>.”</span> <em>Science</em> 382 (6677): 1416–21. <a href="https://doi.org/10.1126/science.adi2336">https://doi.org/10.1126/science.adi2336</a>.
+</div>
+<div id="ref-li2006" class="csl-entry" role="listitem">
+Li, William K. W., W. Glen Harrison, and Erica J. H. Head. 2006. <span>“<span class="nocase">Coherent Sign Switching in Multiyear Trends of Microbial Plankton</span>.”</span> <em>Science</em> 311 (5764): 1157–60. <a href="https://doi.org/10.1126/science.1122748">https://doi.org/10.1126/science.1122748</a>.
+</div>
+<div id="ref-lindsey2019" class="csl-entry" role="listitem">
+Lindsey, Nathaniel J., T. Craig Dawe, and Jonathan B. Ajo-Franklin. 2019. <span>“<span class="nocase">Illuminating seafloor faults and ocean dynamics with dark fiber distributed acoustic sensing</span>.”</span> <em>Science</em> 366 (6469): 1103–7. <a href="https://doi.org/10.1126/science.aay5881">https://doi.org/10.1126/science.aay5881</a>.
+</div>
+<div id="ref-macdonald1964" class="csl-entry" role="listitem">
+Macdonald, G. A., and T. Katsura. 1964. <span>“<span class="nocase">Chemical composition of Hawaiian lavas</span>.”</span> <em>Journal of Petrology</em> 5 (1): 82–133. <a href="https://doi.org/10.1093/petrology/5.1.82">https://doi.org/10.1093/petrology/5.1.82</a>.
+</div>
+<div id="ref-massonnet1993" class="csl-entry" role="listitem">
+Massonnet, Didier, Marc Rossi, César Carmona, et al. 1993. <span>“<span class="nocase">The displacement field of the Landers earthquake mapped by radar interferometry</span>.”</span> <em>Nature</em> 364 (6433): 138–42. <a href="https://doi.org/10.1038/364138a0">https://doi.org/10.1038/364138a0</a>.
+</div>
+<div id="ref-molina1974" class="csl-entry" role="listitem">
+Molina, Mario J., and F. S. Rowland. 1974. <span>“<span class="nocase">Stratospheric sink for chlorofluoromethanes: chlorine atom-catalysed destruction of ozone</span>.”</span> <em>Nature</em> 249 (5460): 810–12. <a href="https://doi.org/10.1038/249810a0">https://doi.org/10.1038/249810a0</a>.
+</div>
+<div id="ref-normandeau2025" class="csl-entry" role="listitem">
+Normandeau, Alexandre, Barret L. Kurylyk, Emma J. Harrison, et al. 2025. <span>“<span class="nocase">Winter in the coastal ocean: Seasonal freezing causes seafloor expansion and contraction</span>.”</span> <em>Science Advances</em> 11 (44): eadw7439. <a href="https://doi.org/10.1126/sciadv.adw7439">https://doi.org/10.1126/sciadv.adw7439</a>.
+</div>
+<div id="ref-rignot2019" class="csl-entry" role="listitem">
+Rignot, Eric, Jérémie Mouginot, Bernd Scheuchl, Michiel van den Broeke, Melchior J. van Wessem, and Mathieu Morlighem. 2019. <span>“<span class="nocase">Four decades of Antarctic Ice Sheet mass balance from 1979–2017</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 116 (4): 1095–103. <a href="https://doi.org/10.1073/pnas.1812883116">https://doi.org/10.1073/pnas.1812883116</a>.
+</div>
+<div id="ref-rockstrom2009" class="csl-entry" role="listitem">
+Rockström, Johan, Will Steffen, Kevin Noone, et al. 2009. <span>“<span class="nocase">A safe operating space for humanity</span>.”</span> <em>Nature</em> 461 (7263): 472–75. <a href="https://doi.org/10.1038/461472a">https://doi.org/10.1038/461472a</a>.
+</div>
+<div id="ref-rodell2009" class="csl-entry" role="listitem">
+Rodell, Matthew, Isabella Velicogna, and James S. Famiglietti. 2009. <span>“<span class="nocase">Satellite-based estimates of groundwater depletion in India</span>.”</span> <em>Nature</em> 460 (7258): 999–1002. <a href="https://doi.org/10.1038/nature08238">https://doi.org/10.1038/nature08238</a>.
+</div>
+<div id="ref-shapiro2005" class="csl-entry" role="listitem">
+Shapiro, Nikolai M., Michel Campillo, Laurent Stehly, and Michael H. Ritzwoller. 2005. <span>“<span class="nocase">High-Resolution Surface-Wave Tomography from Ambient Seismic Noise</span>.”</span> <em>Science</em> 307 (5715): 1615–18. <a href="https://doi.org/10.1126/science.1108339">https://doi.org/10.1126/science.1108339</a>.
+</div>
+<div id="ref-smagorinsky1963" class="csl-entry" role="listitem">
+Smagorinsky, J. 1963. <span>“<span class="nocase">General circulation experiments with the primitive equations</span>.”</span> <em>Monthly Weather Review</em> 91 (3): 99–164. <a href="https://doi.org/10.1175/1520-0493(1963)091<0099:gcewtp>2.3.co;2">https://doi.org/10.1175/1520-0493(1963)091&lt;0099:gcewtp&gt;2.3.co;2</a>.
+</div>
+<div id="ref-stlaurent2007" class="csl-entry" role="listitem">
+St Laurent, Louis C., and Andreas M. Thurnherr. 2007. <span>“<span class="nocase">Intense mixing of lower thermocline water on the crest of the Mid-Atlantic Ridge</span>.”</span> <em>Nature</em> 448 (7154): 680–83. <a href="https://doi.org/10.1038/nature06043">https://doi.org/10.1038/nature06043</a>.
+</div>
+<div id="ref-sun2026" class="csl-entry" role="listitem">
+Sun, Tianhaozhe, and Earl E. Davis. 2026. <span>“<span class="nocase">Strain accumulation associated with locked subduction megathrusts revealed by deep-ocean borehole observations</span>.”</span> <em>Science Advances</em> 12 (16): eaea7133. <a href="https://doi.org/10.1126/sciadv.aea7133">https://doi.org/10.1126/sciadv.aea7133</a>.
+</div>
+<div id="ref-tapley2004" class="csl-entry" role="listitem">
+Tapley, B. D., S. Bettadpur, M. Watkins, and C. Reigber. 2004. <span>“<span class="nocase">The gravity recovery and climate experiment: Mission overview and early results</span>.”</span> <em>Geophysical Research Letters</em> 31 (9): 2004GL019920. <a href="https://doi.org/10.1029/2004gl019920">https://doi.org/10.1029/2004gl019920</a>.
+</div>
+<div id="ref-vine1963" class="csl-entry" role="listitem">
+Vine, F. J., and D. H. Matthews. 1963. <span>“<span>Magnetic Anomalies Over Oceanic Ridges</span>.”</span> <em>Nature</em> 199 (4897): 947–49. <a href="https://doi.org/10.1038/199947a0">https://doi.org/10.1038/199947a0</a>.
+</div>
+<div id="ref-wickert2013" class="csl-entry" role="listitem">
+Wickert, Andrew D., Jerry X. Mitrovica, Carlie Williams, and Robert S. Anderson. 2013. <span>“<span class="nocase">Gradual demise of a thin southern Laurentide ice sheet recorded by Mississippi drainage</span>.”</span> <em>Nature</em> 502 (7473): 668–71. <a href="https://doi.org/10.1038/nature12609">https://doi.org/10.1038/nature12609</a>.
+</div>
+<div id="ref-wookey2008" class="csl-entry" role="listitem">
+Wookey, James, and George Helffrich. 2008. <span>“<span class="nocase">Inner-core shear-wave anisotropy and texture from an observation of PKJKP waves</span>.”</span> <em>Nature</em> 454 (7206): 873–76. <a href="https://doi.org/10.1038/nature07131">https://doi.org/10.1038/nature07131</a>.
+</div>
+<div id="ref-wu2019faultseg" class="csl-entry" role="listitem">
+Wu, Xinming, Luming Liang, Yunzhi Shi, and Sergey Fomel. 2019. <span>“<span class="nocase">FaultSeg3D: Using synthetic data sets to train an end-to-end convolutional neural network for 3D seismic fault segmentation</span>.”</span> <em>Geophysics</em> 84 (3): IM35–45. <a href="https://doi.org/10.1190/geo2018-0646.1">https://doi.org/10.1190/geo2018-0646.1</a>.
+</div>
+<div id="ref-xu2025" class="csl-entry" role="listitem">
+Xu, Liuwei, Lingsen Meng, Zhang Yunjun, et al. 2025. <span>“<span class="nocase">Bimaterial effect and favorable energy ratio enabled supershear rupture in the 2025 Mandalay earthquake</span>.”</span> <em>Science</em> 390 (6772): 476–81. <a href="https://doi.org/10.1126/science.ady6100">https://doi.org/10.1126/science.ady6100</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/denolle-lab\.github\.io\/metascience-and-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./metrics.html" class="pagination-link" aria-label="What has been measured: novelty, impact, breadth, advance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What has been measured: novelty, impact, breadth, advance</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./inquirygraph.html" class="pagination-link" aria-label="inquirygraph: the coding agent and its gold set">
+        <span class="nav-page-text">inquirygraph: the coding agent and its gold set</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Working curriculum v0.4</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/success-set.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://denolle-lab.github.io/">Denolle Lab</a></p>
+</div>
+  </div>
+</footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
+
+
+
+
+</body></html>
