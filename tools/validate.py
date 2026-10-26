@@ -53,6 +53,9 @@ def main() -> int:
     tree_check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'build_tree.py'), '--check'], capture_output=True, text=True)
     if tree_check.returncode:
         errors.append(tree_check.stderr.strip() or 'Decision tree page is out of date')
+    eval_check = subprocess.run([sys.executable, str(ROOT / 'tools' / 'evaluate' / 'build_evaluate.py'), '--check'], capture_output=True, text=True)
+    if eval_check.returncode:
+        errors.append(eval_check.stderr.strip() or 'Evaluation page is out of date')
     bib = (ROOT / 'references.bib').read_text()
     bib_keys = re.findall(r'^@\w+\{([^,]+),', bib, flags=re.M)
     if len(bib_keys) != len(set(bib_keys)):
