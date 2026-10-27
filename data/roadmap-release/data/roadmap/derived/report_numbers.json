@@ -1,0 +1,2750 @@
+{
+ "_provenance": {
+  "script": "g19_report_numbers.py",
+  "commit": "3b4b2d5",
+  "date": "2026-10-27",
+  "private_root": "private",
+  "inputs": [
+   "private/analysis/codings/api/state.json",
+   "private/analysis/codings/api/{calc1,calc1-review,r2}",
+   "derived/{gold,calc1,r2,r2calc,review,outcomes}",
+   "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+   "private/download-queue.json"
+  ],
+  "params": {
+   "publisher_rule": "DOI registrant prefix (PREFIX in g19_report_numbers.py); 10.1029 = AGU",
+   "cap_usd": 250.0,
+   "chars_per_token": 4,
+   "max_chars": 200000
+  }
+ },
+ "data": {
+  "cost.E1.usd": {
+   "value": 74.4724,
+   "definition": "Sum of recorded per-paper cost (state.json done[*].usd) over valid codings of tag group calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E1.valid_codings": {
+   "value": 233,
+   "definition": "Valid codings with a recorded cost, tag group calc1 (0 while its batch is uncollected).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E1.usd_per_paper_mean": {
+   "value": 0.3196,
+   "definition": "Mean recorded cost per valid coding, tag group calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E1.usd_per_paper_median": {
+   "value": 0.3103,
+   "definition": "Median recorded cost per valid coding, tag group calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E3.usd": {
+   "value": 26.7622,
+   "definition": "Sum of recorded per-paper cost (state.json done[*].usd) over valid codings of tag group calc1-review.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E3.valid_codings": {
+   "value": 58,
+   "definition": "Valid codings with a recorded cost, tag group calc1-review (0 while its batch is uncollected).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E3.usd_per_paper_mean": {
+   "value": 0.4614,
+   "definition": "Mean recorded cost per valid coding, tag group calc1-review.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E3.usd_per_paper_median": {
+   "value": 0.4488,
+   "definition": "Median recorded cost per valid coding, tag group calc1-review.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E0.usd": {
+   "value": 6.6378,
+   "definition": "Sum of recorded per-paper cost (state.json done[*].usd) over valid codings of tag group fmt.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E0.valid_codings": {
+   "value": 21,
+   "definition": "Valid codings with a recorded cost, tag group fmt (0 while its batch is uncollected).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E0.usd_per_paper_mean": {
+   "value": 0.3161,
+   "definition": "Mean recorded cost per valid coding, tag group fmt.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E0.usd_per_paper_median": {
+   "value": 0.3134,
+   "definition": "Median recorded cost per valid coding, tag group fmt.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E0.usd_by_tag": {
+   "value": {
+    "fmt-P1": 1.349,
+    "fmt-P2": 1.5864,
+    "fmt-PX1": 2.3405,
+    "fmt-PX2": 1.3619
+   },
+   "definition": "Recorded cost per format-test arm replicate.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E2.usd": {
+   "value": 15.7194,
+   "definition": "Sum of recorded per-paper cost (state.json done[*].usd) over valid codings of tag group gold-r2.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E2.valid_codings": {
+   "value": 50,
+   "definition": "Valid codings with a recorded cost, tag group gold-r2 (0 while its batch is uncollected).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E2.usd_per_paper_mean": {
+   "value": 0.3144,
+   "definition": "Mean recorded cost per valid coding, tag group gold-r2.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E2.usd_per_paper_median": {
+   "value": 0.3093,
+   "definition": "Median recorded cost per valid coding, tag group gold-r2.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E7.usd": {
+   "value": 0,
+   "definition": "Sum of recorded per-paper cost (state.json done[*].usd) over valid codings of tag group r2.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.E7.valid_codings": {
+   "value": 0,
+   "definition": "Valid codings with a recorded cost, tag group r2 (0 while its batch is uncollected).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.all.usd": {
+   "value": 123.5918,
+   "definition": "Sum of recorded cost over every valid coding of every tag in state.json (the spend code_papers.py counts against --max-usd). Outputs that failed validation, were refused or hit max_tokens are billed but carry no cost here, so true spend is higher.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.all.valid_codings": {
+   "value": 362,
+   "definition": "Valid codings with a recorded cost, all tags.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.all.usd_per_paper_mean": {
+   "value": 0.3414,
+   "definition": "Mean recorded cost per valid coding over all tags (mixes format-test, review-attached and plain codings; not the round-1 per-paper rate).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.cap_usd": {
+   "value": 250.0,
+   "definition": "Spending cap passed as --max-usd to code_papers.py.",
+   "inputs": [
+    "EXPERIMENTS.md E1, E3, E7 commands"
+   ]
+  },
+  "cost.cap_remaining_usd": {
+   "value": 126.41,
+   "definition": "Cap minus recorded cost over all tags (an upper bound on what remains).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.batch_requests_collected": {
+   "value": {
+    "total": 446,
+    "calc1": 263,
+    "calc1-review": 75,
+    "gold-r2": 60,
+    "fmt": 48
+   },
+   "definition": "Requests in collected batches (each billed), by tag group.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.batch_requests_without_cost": {
+   "value": 85,
+   "definition": "Billed batch requests with no recorded cost: requests in collected batches minus done entries whose batch is one of them (synchronous `one` runs are not batch requests and are excluded from both sides).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.sync_one_runs": {
+   "value": [
+    "calc1:g22_W4306165551"
+   ],
+   "definition": "Done entries written by the synchronous `code_papers.py one` command (full price, no batch discount).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.pending_batches": {
+   "value": [
+    {
+     "id": "msgbatch_012cZJeGophYMMZ1CcnfcsA9",
+     "tag": "r2",
+     "requests": 154,
+     "submitted": "2026-10-27 01:37"
+    },
+    {
+     "id": "msgbatch_01HTgc7EkMN55Gd8gzUtQPjm",
+     "tag": "r2",
+     "requests": 48,
+     "submitted": "2026-10-27 08:40"
+    },
+    {
+     "id": "msgbatch_01EsvmQCFDiY2ido76NMGZK3",
+     "tag": "calc1",
+     "requests": 146,
+     "submitted": "2026-10-27 10:23"
+    }
+   ],
+   "definition": "Submitted batches not yet collected (their cost is unknown until collect).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.projection_10000_papers_usd": {
+   "value": [
+    3196,
+    4614
+   ],
+   "definition": "10,000 papers times the mean recorded cost per paper of calc1 (PDF + XML) and of calc1-review (with review record), batch price.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "tokens.calc1.input": {
+   "value": {
+    "n": 233,
+    "median": 74620,
+    "p90_nearest": 117531,
+    "p90_linear": 117292.8,
+    "max": 175252
+   },
+   "definition": "Input tokens per valid coding (input + cache_read + cache_write; PDF pages as images and text, plus XML), tag calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "tokens.calc1.output": {
+   "value": {
+    "n": 233,
+    "median": 16424,
+    "p90_nearest": 21307,
+    "max": 27511
+   },
+   "definition": "Output tokens per valid coding including reasoning, tag calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "tokens.calc1-review.input": {
+   "value": {
+    "n": 58,
+    "median": 109622,
+    "p90_nearest": 157205,
+    "p90_linear": 155159.6,
+    "max": 260289
+   },
+   "definition": "Input tokens per valid coding (input + cache_read + cache_write; PDF pages as images and text, plus XML), tag calc1-review.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "tokens.calc1-review.output": {
+   "value": {
+    "n": 58,
+    "median": 23953,
+    "p90_nearest": 29829,
+    "max": 32822
+   },
+   "definition": "Output tokens per valid coding including reasoning, tag calc1-review.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.eligible": {
+   "value": 525,
+   "definition": "Eligible round-1 papers (derived/calc1/manifest.jsonl).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.submitted_with_full_text": {
+   "value": 379,
+   "definition": "Papers with full text sent to the coder in E1: union of keys of state.json batches tagged calc1.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.coding_files": {
+   "value": 235,
+   "definition": "Coding files in private/analysis/codings/api/calc1/.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.valid": {
+   "value": 233,
+   "definition": "calc1 codings that pass tools/check_coding.py validate.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.invalid": {
+   "value": {
+    "g22_W4293915783": "quote over 25 words",
+    "g22_W4306167517": "quote over 25 words"
+   },
+   "definition": "calc1 codings that fail validation, with the reason.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.without_full_text_e1": {
+   "value": 146,
+   "definition": "Eligible round-1 papers not sent to the coder in E1 (no full text then).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.without_valid_coding": {
+   "value": 292,
+   "definition": "Eligible round-1 papers without a valid calc1 coding.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl"
+   ]
+  },
+  "calc1.open_access.eligible": {
+   "value": {
+    "n": 525,
+    "oa": 328,
+    "share": 0.6248
+   },
+   "definition": "Open-access papers (metrics.json is_oa) among the eligible round-1 papers.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.open_access.coded": {
+   "value": {
+    "n": 233,
+    "oa": 194,
+    "share": 0.8326
+   },
+   "definition": "Open-access papers (metrics.json is_oa) among the coded round-1 papers.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.open_access.not_coded": {
+   "value": {
+    "n": 292,
+    "oa": 134,
+    "share": 0.4589
+   },
+   "definition": "Open-access papers (metrics.json is_oa) among the not coded round-1 papers.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.coded_by_journal_top5": {
+   "value": {
+    "The cryosphere": 33,
+    "Earth Planets and Space": 13,
+    "Geophysical Prospecting": 13,
+    "Geological Journal": 9,
+    "Scientific Reports": 8
+   },
+   "definition": "Journals with the most valid calc1 codings (metrics.json journal, control characters removed).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.top_journal_eligible_all_coded": {
+   "value": [
+    33,
+    33
+   ],
+   "definition": "[coded, eligible] papers of the top journal (The cryosphere).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.xml_among_submitted": {
+   "value": 188,
+   "definition": "E1 papers (submitted with full text) that have publisher XML in derived/calc1/xml_status.json.",
+   "inputs": [
+    "derived/calc1/xml_status.json",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "text.calc1.source": {
+   "value": {
+    "pdftotext": 191,
+    "xml": 188
+   },
+   "definition": "Text route the open-model runner (code_papers_open.py --pdf-text) uses for each E1 paper: publisher XML, else pdftotext.",
+   "inputs": [
+    "derived/calc1/manifest.jsonl",
+    "private/download-queue.json (files)",
+    "<key>.xml.txt",
+    "pdftotext",
+    "tools/code_papers_open.py"
+   ]
+  },
+  "text.calc1.over_cap": {
+   "value": 2,
+   "definition": "E1 papers whose text is longer than 200,000 characters (skipped by default).",
+   "inputs": [
+    "derived/calc1/manifest.jsonl",
+    "private/download-queue.json (files)",
+    "<key>.xml.txt",
+    "pdftotext",
+    "tools/code_papers_open.py"
+   ]
+  },
+  "text.calc1.user_chars": {
+   "value": {
+    "n": 377,
+    "median": 62736,
+    "p90_linear": 117317.4,
+    "max": 199271
+   },
+   "definition": "Characters of user text per E1 paper within the 200,000 cap (code_papers_open.user_text).",
+   "inputs": [
+    "derived/calc1/manifest.jsonl",
+    "private/download-queue.json (files)",
+    "<key>.xml.txt",
+    "pdftotext",
+    "tools/code_papers_open.py"
+   ]
+  },
+  "text.system_chars": {
+   "value": 29568,
+   "definition": "Characters of the system prompt (codebook + schema), code_papers_open.system_text().",
+   "inputs": [
+    "agents/coder/CODEBOOK.md",
+    "agents/coder/coding.schema.json"
+   ]
+  },
+  "text.calc1.input_tokens_est": {
+   "value": {
+    "median": 23076,
+    "p90": 36721,
+    "cap": 57392
+   },
+   "definition": "Estimated input tokens for a text-only model: (user + system characters) / 4; the ratio is assumed, not measured.",
+   "inputs": [
+    "derived/calc1/manifest.jsonl",
+    "private/download-queue.json (files)",
+    "<key>.xml.txt",
+    "pdftotext",
+    "tools/code_papers_open.py"
+   ]
+  },
+  "fetch.calc1.oct27.papers": {
+   "value": 525,
+   "definition": "Papers in derived/calc1/manifest.jsonl.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.have": {
+   "value": 235,
+   "definition": "Papers with queue status \"have\" (the rule code_papers.py candidates() uses).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.pdf": {
+   "value": 235,
+   "definition": "Papers with status \"have\" whose queue file is an existing .pdf.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.pdf_in_pdfs_gold": {
+   "value": 235,
+   "definition": "Papers whose PDF is private/data/roadmap/pdfs/gold/<key>.pdf (now: on disk; oct27: queue file of that name).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.xml": {
+   "value": 190,
+   "definition": "Papers with publisher XML (derived/calc1/xml_status.json; not dated, read as it is).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.text_any": {
+   "value": 300,
+   "definition": "Papers with a queue PDF or publisher XML.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.not_fetched": {
+   "value": 290,
+   "definition": "Papers without queue status \"have\".",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.not_fetched_by_publisher": {
+   "value": {
+    "AGU": 81,
+    "Elsevier": 65,
+    "SSA": 44,
+    "Pleiades (via Springer)": 43,
+    "OUP": 28,
+    "Springer Nature": 12,
+    "Allerton Press (via Springer)": 11,
+    "GeoScienceWorld": 4,
+    "Wiley": 2
+   },
+   "definition": "Papers without status \"have\", by publisher (DOI registrant prefix rule, module docstring).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.not_fetched_by_doi_prefix": {
+   "value": {
+    "10.1029": 81,
+    "10.1016": 65,
+    "10.1785": 44,
+    "10.1134": 43,
+    "10.1093": 28,
+    "10.1007": 12,
+    "10.3103": 11,
+    "10.2113": 4,
+    "10.1002": 1,
+    "10.1111": 1
+   },
+   "definition": "The same papers by DOI prefix.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.oct27.not_fetched_by_publisher.openalex_field": {
+   "value": {
+    "Elsevier": 70,
+    "Springer Nature": 54,
+    "Wiley": 45,
+    "AGU": 37,
+    "Geophysical Journal International": 28,
+    "Seismological Research Letters": 27,
+    "Bulletin of the Seismological Society of America": 17,
+    "Springer": 12
+   },
+   "definition": "The same papers by the OpenAlex publisher field (metrics/preselect \"publisher\"; labels some AGU journals as Wiley). Secondary: kept to trace numbers already reported.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "fetch.calc1.oct27.not_fetched_by_journal_top": {
+   "value": {
+    "Geophysical Journal International": 28,
+    "Seismological Research Letters": 27,
+    "Geophysical Research Letters": 23,
+    "Journal of Geophysical Research Solid Earth": 18,
+    "Bulletin of the Seismological Society of America": 17,
+    "Izvestiya Atmospheric and Oceanic Physics": 11,
+    "Journal of the Geological Society of India": 11,
+    "Ore Geology Reviews": 10,
+    "Journal of Geophysical Research Oceans": 9,
+    "Seismic Instruments": 8
+   },
+   "definition": "The same papers, ten most common journals.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.papers": {
+   "value": 525,
+   "definition": "Papers in derived/calc1/manifest.jsonl.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.have": {
+   "value": 379,
+   "definition": "Papers with queue status \"have\" (the rule code_papers.py candidates() uses).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.pdf": {
+   "value": 379,
+   "definition": "Papers with status \"have\" whose queue file is an existing .pdf.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.pdf_in_pdfs_gold": {
+   "value": 379,
+   "definition": "Papers whose PDF is private/data/roadmap/pdfs/gold/<key>.pdf (now: on disk; oct27: queue file of that name).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.xml": {
+   "value": 190,
+   "definition": "Papers with publisher XML (derived/calc1/xml_status.json; not dated, read as it is).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.text_any": {
+   "value": 381,
+   "definition": "Papers with a queue PDF or publisher XML.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.not_fetched": {
+   "value": 146,
+   "definition": "Papers without queue status \"have\".",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.not_fetched_by_publisher": {
+   "value": {
+    "SSA": 44,
+    "Pleiades (via Springer)": 43,
+    "OUP": 28,
+    "Springer Nature": 12,
+    "Allerton Press (via Springer)": 11,
+    "GeoScienceWorld": 4,
+    "Elsevier": 2,
+    "Wiley": 2
+   },
+   "definition": "Papers without status \"have\", by publisher (DOI registrant prefix rule, module docstring).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.not_fetched_by_doi_prefix": {
+   "value": {
+    "10.1785": 44,
+    "10.1134": 43,
+    "10.1093": 28,
+    "10.1007": 12,
+    "10.3103": 11,
+    "10.2113": 4,
+    "10.1016": 2,
+    "10.1002": 1,
+    "10.1111": 1
+   },
+   "definition": "The same papers by DOI prefix.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.calc1.now.not_fetched_by_publisher.openalex_field": {
+   "value": {
+    "Springer Nature": 54,
+    "Geophysical Journal International": 28,
+    "Seismological Research Letters": 27,
+    "Bulletin of the Seismological Society of America": 17,
+    "Springer": 12,
+    "Elsevier": 7,
+    "Wiley": 1
+   },
+   "definition": "The same papers by the OpenAlex publisher field (metrics/preselect \"publisher\"; labels some AGU journals as Wiley). Secondary: kept to trace numbers already reported.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "fetch.calc1.now.not_fetched_by_journal_top": {
+   "value": {
+    "Geophysical Journal International": 28,
+    "Seismological Research Letters": 27,
+    "Bulletin of the Seismological Society of America": 17,
+    "Izvestiya Atmospheric and Oceanic Physics": 11,
+    "Journal of the Geological Society of India": 11,
+    "Seismic Instruments": 8,
+    "Doklady Earth Sciences": 7,
+    "Geochemistry International": 5,
+    "Journal of Volcanology and Seismology": 4,
+    "Russian Geology and Geophysics": 4
+   },
+   "definition": "The same papers, ten most common journals.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "derived/calc1/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.papers": {
+   "value": 222,
+   "definition": "Papers in derived/r2calc/manifest.jsonl.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.have": {
+   "value": 154,
+   "definition": "Papers with queue status \"have\" (the rule code_papers.py candidates() uses).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.pdf": {
+   "value": 154,
+   "definition": "Papers with status \"have\" whose queue file is an existing .pdf.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.pdf_in_pdfs_gold": {
+   "value": 153,
+   "definition": "Papers whose PDF is private/data/roadmap/pdfs/gold/<key>.pdf (now: on disk; oct27: queue file of that name).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.xml": {
+   "value": 134,
+   "definition": "Papers with publisher XML (derived/r2calc/xml_status.json; not dated, read as it is).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.text_any": {
+   "value": 176,
+   "definition": "Papers with a queue PDF or publisher XML.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched": {
+   "value": 68,
+   "definition": "Papers without queue status \"have\".",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched_by_publisher": {
+   "value": {
+    "Elsevier": 22,
+    "AGU": 21,
+    "Springer Nature": 6,
+    "SSA": 5,
+    "Wiley": 5,
+    "AAAS": 4,
+    "Pleiades (via Springer)": 2,
+    "GeoScienceWorld": 1,
+    "OUP": 1,
+    "Scandinavian University Press": 1
+   },
+   "definition": "Papers without status \"have\", by publisher (DOI registrant prefix rule, module docstring).",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched_by_doi_prefix": {
+   "value": {
+    "10.1016": 22,
+    "10.1029": 21,
+    "10.1007": 6,
+    "10.1785": 5,
+    "10.1126": 4,
+    "10.1002": 3,
+    "10.1111": 2,
+    "10.1134": 2,
+    "10.1093": 1,
+    "10.18261": 1,
+    "10.2113": 1
+   },
+   "definition": "The same papers by DOI prefix.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched_by_publisher.openalex_field": {
+   "value": {
+    "Elsevier": 23,
+    "Wiley": 16,
+    "AGU": 11,
+    "Springer": 6,
+    "Bulletin of the Seismological Society of America": 4,
+    "Science Advances": 4,
+    "Springer Nature": 2,
+    "Geophysical Journal International": 1,
+    "Seismological Research Letters": 1
+   },
+   "definition": "The same papers by the OpenAlex publisher field (metrics/preselect \"publisher\"; labels some AGU journals as Wiley). Secondary: kept to trace numbers already reported.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json",
+    "derived/r2/preselect.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched_by_journal_top": {
+   "value": {
+    "Bulletin of the Seismological Society of America": 4,
+    "Earth and Space Science": 4,
+    "Science Advances": 4,
+    "Geochemistry Geophysics Geosystems": 3,
+    "Geophysical Research Letters": 3,
+    "Journal of Asian Earth Sciences X": 3,
+    "Earth s Future": 2,
+    "Geodesy and Geodynamics": 2,
+    "Journal of Geophysical Research Atmospheres": 2,
+    "Journal of the Geological Society of India": 2
+   },
+   "definition": "The same papers, ten most common journals.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.oct27.not_fetched_open_access": {
+   "value": 68,
+   "definition": "Of the papers not fetched, those marked is_oa in derived/r2/preselect.json.",
+   "inputs": [
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json",
+    "derived/r2/preselect.json"
+   ]
+  },
+  "fetch.r2.now.papers": {
+   "value": 222,
+   "definition": "Papers in derived/r2calc/manifest.jsonl.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.have": {
+   "value": 202,
+   "definition": "Papers with queue status \"have\" (the rule code_papers.py candidates() uses).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.pdf": {
+   "value": 202,
+   "definition": "Papers with status \"have\" whose queue file is an existing .pdf.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.pdf_in_pdfs_gold": {
+   "value": 201,
+   "definition": "Papers whose PDF is private/data/roadmap/pdfs/gold/<key>.pdf (now: on disk; oct27: queue file of that name).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.xml": {
+   "value": 134,
+   "definition": "Papers with publisher XML (derived/r2calc/xml_status.json; not dated, read as it is).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.text_any": {
+   "value": 202,
+   "definition": "Papers with a queue PDF or publisher XML.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched": {
+   "value": 20,
+   "definition": "Papers without queue status \"have\".",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched_by_publisher": {
+   "value": {
+    "SSA": 5,
+    "Springer Nature": 5,
+    "AAAS": 4,
+    "Pleiades (via Springer)": 2,
+    "GeoScienceWorld": 1,
+    "OUP": 1,
+    "Scandinavian University Press": 1,
+    "Wiley": 1
+   },
+   "definition": "Papers without status \"have\", by publisher (DOI registrant prefix rule, module docstring).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched_by_doi_prefix": {
+   "value": {
+    "10.1007": 5,
+    "10.1785": 5,
+    "10.1126": 4,
+    "10.1134": 2,
+    "10.1002": 1,
+    "10.1093": 1,
+    "10.18261": 1,
+    "10.2113": 1
+   },
+   "definition": "The same papers by DOI prefix.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched_by_publisher.openalex_field": {
+   "value": {
+    "Springer": 5,
+    "Bulletin of the Seismological Society of America": 4,
+    "Science Advances": 4,
+    "Springer Nature": 2,
+    "Wiley": 2,
+    "Elsevier": 1,
+    "Geophysical Journal International": 1,
+    "Seismological Research Letters": 1
+   },
+   "definition": "The same papers by the OpenAlex publisher field (metrics/preselect \"publisher\"; labels some AGU journals as Wiley). Secondary: kept to trace numbers already reported.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json",
+    "derived/r2/preselect.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched_by_journal_top": {
+   "value": {
+    "Bulletin of the Seismological Society of America": 4,
+    "Science Advances": 4,
+    "Journal of the Geological Society of India": 2,
+    "Advances in Atmospheric Sciences": 1,
+    "Geotectonics": 1,
+    "Journal of Ocean University of China": 1,
+    "Journal of Seismology": 1,
+    "Lethaia": 1,
+    "Russian Geology and Geophysics": 1,
+    "Seismological Research Letters": 1
+   },
+   "definition": "The same papers, ten most common journals.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "fetch.r2.now.not_fetched_open_access": {
+   "value": 20,
+   "definition": "Of the papers not fetched, those marked is_oa in derived/r2/preselect.json.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/r2calc/manifest.jsonl",
+    "derived/r2calc/xml_status.json",
+    "derived/r2/preselect.json"
+   ]
+  },
+  "fetch.r2.xml_by_route": {
+   "value": {
+    "already present": 105,
+    "elsevier": 29
+   },
+   "definition": "Round-2 papers with publisher XML, by route.",
+   "inputs": [
+    "derived/r2calc/xml_status.json"
+   ]
+  },
+  "r2.drawn": {
+   "value": 277,
+   "definition": "Papers in the round-2 preselection (g18_round2_draw.py).",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.journals": {
+   "value": 157,
+   "definition": "Distinct journals in the round-2 preselection.",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.max_per_journal": {
+   "value": 4,
+   "definition": "Largest number of papers from one journal in the round-2 preselection.",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.publishers.openalex_field": {
+   "value": 12,
+   "definition": "Distinct values of the OpenAlex publisher field in the round-2 preselection.",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.publishers.doi_rule": {
+   "value": {
+    "Springer Nature": 100,
+    "Copernicus": 42,
+    "Elsevier": 42,
+    "AGU": 32,
+    "Wiley": 27,
+    "SSA": 8,
+    "Pleiades (via Springer)": 7,
+    "AAAS": 4,
+    "OUP": 4,
+    "Seismica": 4,
+    "National Speleological Society": 2,
+    "GeoScienceWorld": 1,
+    "Hindawi": 1,
+    "Korean Society for Atmospheric Environment": 1,
+    "Scandinavian University Press": 1,
+    "Science Press (Earth and Planetary Physics)": 1
+   },
+   "definition": "Round-2 preselection by publisher (DOI registrant prefix rule).",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.open_access": {
+   "value": 277,
+   "definition": "Round-2 preselected papers marked is_oa.",
+   "inputs": [
+    "derived/r2/preselect.json"
+   ]
+  },
+  "r2.eligible": {
+   "value": 222,
+   "definition": "Round-2 papers judged eligible after screening and adjudication.",
+   "inputs": [
+    "derived/r2/eligibility.json"
+   ]
+  },
+  "r2.screen_agree": {
+   "value": [
+    275,
+    277
+   ],
+   "definition": "[papers where the two screeners agreed on eligibility, papers with both screens].",
+   "inputs": [
+    "derived/r2/eligibility.json"
+   ]
+  },
+  "r2.excluded_by_category": {
+   "value": {
+    "off_topic": 42,
+    "review_or_overview": 8,
+    "comment_reply_or_editorial": 4,
+    "other_non_research": 1
+   },
+   "definition": "Excluded round-2 papers by category.",
+   "inputs": [
+    "derived/r2/eligibility.json"
+   ]
+  },
+  "r2.batch.msgbatch_012cZJeGophYMMZ1CcnfcsA9": {
+   "value": {
+    "requests": 154,
+    "submitted": "2026-10-27 01:37",
+    "est_pages": 19954,
+    "dry_run_estimate_usd": 107.19
+   },
+   "definition": "Round-2 batch and the code_papers.py submit estimate: pages = sum(max(4, pdf_bytes // 60000)); usd = (pages x 2300 x $4 + papers x 10000 x $20) / 1e6 x 0.5.",
+   "inputs": [
+    "private/analysis/codings/api/state.json",
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json"
+   ]
+  },
+  "r2.batch.msgbatch_01HTgc7EkMN55Gd8gzUtQPjm": {
+   "value": {
+    "requests": 48,
+    "submitted": "2026-10-27 08:40",
+    "est_pages": 6643,
+    "dry_run_estimate_usd": 35.36
+   },
+   "definition": "Round-2 batch and the code_papers.py submit estimate: pages = sum(max(4, pdf_bytes // 60000)); usd = (pages x 2300 x $4 + papers x 10000 x $20) / 1e6 x 0.5.",
+   "inputs": [
+    "private/analysis/codings/api/state.json",
+    "private/data/roadmap/download-queue.before-refetch-2026-10-27.json"
+   ]
+  },
+  "vis.papers": {
+   "value": 58,
+   "definition": "Papers with visibility labels.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.steps": {
+   "value": 746,
+   "definition": "Review steps labelled.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.changes": {
+   "value": 580,
+   "definition": "Review steps that changed the work (label not no_change).",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.as_planned": {
+   "value": 560,
+   "definition": "Review steps labelled as_planned.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.as_planned.share_of_changes_pct": {
+   "value": 96.55,
+   "definition": "as_planned as a percentage of changes.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.absent": {
+   "value": 20,
+   "definition": "Review steps labelled absent.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.absent.share_of_changes_pct": {
+   "value": 3.45,
+   "definition": "absent as a percentage of changes.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.as_revision": {
+   "value": 0,
+   "definition": "Review steps labelled as_revision.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.as_revision.share_of_changes_pct": {
+   "value": 0.0,
+   "definition": "as_revision as a percentage of changes.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.label.no_change": {
+   "value": 166,
+   "definition": "Review steps labelled no_change.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.papers_marking_any_change": {
+   "value": 0,
+   "definition": "Papers with at least one change labelled as_revision.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.papers_marking_upper95_pct": {
+   "value": {
+    "rule_of_three": 5.17,
+    "exact_one_sided": 5.03
+   },
+   "definition": "95% upper bound on the share of papers that would mark a review change, given 0 of 58: 3/n and 1 - 0.05^(1/n).",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.agreement": {
+   "value": [
+    720,
+    746
+   ],
+   "definition": "[steps where the two labelers agreed, steps].",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.adjudicated": {
+   "value": 26,
+   "definition": "Steps where the labelers differed (adjudicated).",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.steps_per_paper": {
+   "value": {
+    "median": 13.0,
+    "min": 5,
+    "max": 23
+   },
+   "definition": "Review steps per labelled paper.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.quotes_over_25_words": {
+   "value": 44,
+   "definition": "Labeler quotes (as_planned or as_revision) longer than 25 whitespace-separated words.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.by_node": {
+   "value": {
+    "V": [
+     102,
+     13
+    ],
+    "R": [
+     94,
+     2
+    ],
+    "C": [
+     61,
+     1
+    ],
+    "N": [
+     49,
+     1
+    ],
+    "I": [
+     44,
+     1
+    ],
+    "D": [
+     40,
+     1
+    ],
+    "O": [
+     34,
+     1
+    ],
+    "S": [
+     33,
+     0
+    ],
+    "P": [
+     28,
+     0
+    ],
+    "K": [
+     27,
+     0
+    ],
+    "Q": [
+     26,
+     0
+    ],
+    "H": [
+     24,
+     0
+    ],
+    "X": [
+     9,
+     0
+    ],
+    "F": [
+     7,
+     0
+    ],
+    "E": [
+     2,
+     0
+    ]
+   },
+   "definition": "Per node of the coded review step: [changes, changes labelled absent].",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.V_absent": {
+   "value": [
+    13,
+    102
+   ],
+   "definition": "[V changes absent, V changes].",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.other_absent": {
+   "value": [
+    7,
+    478
+   ],
+   "definition": "[absent, changes] for every node other than V.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.most_common_node_all_steps": {
+   "value": [
+    "V",
+    141
+   ],
+   "definition": "Most common node over all labelled steps, with count.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.move.declined": {
+   "value": {
+    "no_change": 159,
+    "as_planned": 60,
+    "absent": 1,
+    "total": 220
+   },
+   "definition": "Labels of the steps the coder marked move = declined.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.move.review_forced": {
+   "value": {
+    "as_planned": 498,
+    "absent": 19,
+    "no_change": 6,
+    "total": 523
+   },
+   "definition": "Labels of the steps the coder marked move = review_forced.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "vis.journals": {
+   "value": {
+    "tc": 33,
+    "bg": 4,
+    "gmd": 4,
+    "hess": 4,
+    "nhess": 4,
+    "acp": 3,
+    "essd": 2,
+    "esurf": 2,
+    "gi": 1,
+    "se": 1
+   },
+   "definition": "Labelled papers by Copernicus journal (DOI suffix prefix, e.g. tc = The Cryosphere).",
+   "inputs": [
+    "private/analysis/codings/api/calc1-review",
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "review.copernicus_coded": {
+   "value": 64,
+   "definition": "E1-coded papers in Copernicus journals (rows of open_review_index.json).",
+   "inputs": [
+    "derived/review/open_review_index.json"
+   ]
+  },
+  "review.with_open_discussion": {
+   "value": 61,
+   "definition": "Of these, papers with an open discussion and its comments.",
+   "inputs": [
+    "derived/review/open_review_index.json"
+   ]
+  },
+  "review.without_open_discussion": {
+   "value": {
+    "ejm": 2,
+    "sd": 1
+   },
+   "definition": "Papers without an open discussion, by journal (DOI suffix prefix).",
+   "inputs": [
+    "derived/review/open_review_index.json"
+   ]
+  },
+  "review.comments": {
+   "value": {
+    "RC": 134,
+    "AC": 147,
+    "CC": 6,
+    "EC": 4
+   },
+   "definition": "Comments in the open discussions: RC referee, AC author, CC community, EC editor.",
+   "inputs": [
+    "derived/review/open_review_index.json"
+   ]
+  },
+  "review.final_xml": {
+   "value": [
+    61,
+    61
+   ],
+   "definition": "[papers with <file>.xml.txt beside the queue file, papers with an open discussion].",
+   "inputs": [
+    "derived/review/open_review_index.json",
+    "private/download-queue.json"
+   ]
+  },
+  "review.open_access": {
+   "value": [
+    64,
+    64
+   ],
+   "definition": "[open access per metrics.json is_oa, Copernicus papers].",
+   "inputs": [
+    "derived/review/open_review_index.json",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "review.coded_valid": {
+   "value": 58,
+   "definition": "Valid calc1-review codings.",
+   "inputs": [
+    "private/analysis/codings/api/calc1-review"
+   ]
+  },
+  "review.coded_invalid": {
+   "value": {
+    "g22_W4229458794": "schema: $.tree[2]: unexpected aim",
+    "g22_W4294237838": "quote over 25 words"
+   },
+   "definition": "calc1-review codings dropped, with the validation reason.",
+   "inputs": [
+    "private/analysis/codings/api/calc1-review"
+   ]
+  },
+  "review.batches": {
+   "value": [
+    {
+     "id": "msgbatch_01FV7yetioL8VW76BK5epm6W",
+     "requests": 61,
+     "max_tokens": 32000
+    },
+    {
+     "id": "msgbatch_01NKTCyH5Eo8Y5FNXdw7atzk",
+     "requests": 10,
+     "max_tokens": 32000
+    },
+    {
+     "id": "msgbatch_011hEkDUAwKGzNL1CMQRDB6w",
+     "requests": 4,
+     "max_tokens": 64000
+    }
+   ],
+   "definition": "calc1-review batches in order: the first pass, then the resubmissions (their sum is the first-pass failure count).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "review.first_pass_failures": {
+   "value": 14,
+   "definition": "Requests resubmitted after the first calc1-review pass.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "agents.node_share_rank": {
+   "value": {
+    "P": 0.0,
+    "E": 0.05,
+    "I": 0.05,
+    "X": 0.05,
+    "N": 0.06,
+    "H": 0.06,
+    "Q": 0.1,
+    "S": 0.1,
+    "V": 0.1,
+    "F": 0.21,
+    "K": 0.32,
+    "D": 0.4,
+    "C": 0.6,
+    "R": 0.68,
+    "O": 0.69
+   },
+   "definition": "Share of agent loops running each node (g14 papers_vs_agents.json node_use[*].agents estimate), lowest first. Agent estimates do not depend on the paper set.",
+   "inputs": [
+    "derived/calc1/papers_vs_agents.json"
+   ]
+  },
+  "outcomes.tests": {
+   "value": 245,
+   "definition": "Feature-outcome tests (rows of outcomes.json).",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.tests_by_type": {
+   "value": {
+    "bin": 200,
+    "num": 45
+   },
+   "definition": "Tests by feature type.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.q_below_0.1": {
+   "value": 15,
+   "definition": "Tests with Benjamini-Hochberg q < 0.1.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.bh_expected_false_upper": {
+   "value": 1.5,
+   "definition": "Upper bound on expected false discoveries among them under BH at 0.1 (0.1 x count).",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.q_sum_significant": {
+   "value": 0.529,
+   "definition": "Sum of q over the tests with q < 0.1.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.abs_rho_range_significant": {
+   "value": [
+    0.181,
+    0.566
+   ],
+   "definition": "Range of |rho| among tests with q < 0.1.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.partial_nrefs.cnp": {
+   "value": {
+    "n": 233,
+    "steps": 0.167,
+    "revisits": 0.15,
+    "decisive simulation": 0.186
+   },
+   "definition": "Partial Spearman of a feature with cnp, controlling for reference count (n_refs): ranks with average ties, feature and outcome ranks regressed on [1, rank(n_refs)], Pearson correlation of residuals.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "outcomes.rho_nrefs.cnp": {
+   "value": 0.278,
+   "definition": "Spearman of n_refs with cnp.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "outcomes.partial_nrefs.fwci": {
+   "value": {
+    "n": 233,
+    "steps": 0.164,
+    "revisits": 0.15,
+    "decisive simulation": 0.194
+   },
+   "definition": "Partial Spearman of a feature with fwci, controlling for reference count (n_refs): ranks with average ties, feature and outcome ranks regressed on [1, rank(n_refs)], Pearson correlation of residuals.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "outcomes.rho_nrefs.fwci": {
+   "value": 0.304,
+   "definition": "Spearman of n_refs with fwci.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "outcomes.rho_steps_nrefs": {
+   "value": 0.259,
+   "definition": "Spearman of steps with n_refs.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.full_text_now": {
+   "value": 379,
+   "definition": "Eligible round-1 papers with queue status \"have\" now.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.full_text_without_valid_coding": {
+   "value": 146,
+   "definition": "Eligible round-1 papers with full text now and no valid calc1 coding.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.full_text_without_valid_coding.split": {
+   "value": {
+    "never_in_a_collected_batch": 144,
+    "failed_validation": 2,
+    "in_an_uncollected_calc1_batch": 146
+   },
+   "definition": "The same papers: not in any collected calc1 batch (fetched after E1); coded but failing validation; and how many of all of them sit in a calc1 batch submitted but not yet collected.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.full_text_without_valid_coding.by_publisher": {
+   "value": {
+    "AGU": 82,
+    "Elsevier": 63,
+    "Wiley": 1
+   },
+   "definition": "The backlog by publisher (DOI registrant prefix rule).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "calc1.open_access_by_publisher": {
+   "value": {
+    "AGU": {
+     "eligible": [
+      70,
+      98
+     ],
+     "coded": [
+      16,
+      16
+     ]
+    },
+    "Elsevier": {
+     "eligible": [
+      74,
+      74
+     ],
+     "coded": [
+      9,
+      9
+     ]
+    }
+   },
+   "definition": "[open access, papers] among eligible and among coded round-1 papers of AGU and Elsevier (metrics.json is_oa).",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "calc1.no_pdf_now": {
+   "value": 146,
+   "definition": "Eligible round-1 papers still without queue status \"have\" (no PDF); a separate set from the backlog above.",
+   "inputs": [
+    "private/download-queue.json",
+    "derived/calc1/manifest.jsonl",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "gold.n": {
+   "value": 100,
+   "definition": "Papers in the frozen gold set (a stratified sample of 100 eligible round-1 papers; not human-labelled yet).",
+   "inputs": [
+    "derived/gold/gold_set.json",
+    "derived/gold/human_assignment.json",
+    "private/analysis/codings/api/{calc1,gold-r2}"
+   ]
+  },
+  "gold.retest": {
+   "value": {
+    "gold_papers_coded_twice": 51,
+    "pairs_valid_both": 50
+   },
+   "definition": "Gold papers with a second coding (tag gold-r2; the gold papers that had full text at E1) and pairs where both codings pass validation.",
+   "inputs": [
+    "derived/gold/gold_set.json",
+    "derived/gold/human_assignment.json",
+    "private/analysis/codings/api/{calc1,gold-r2}"
+   ]
+  },
+  "gold.human_assigned": {
+   "value": {
+    "papers": 40,
+    "coders": 4,
+    "per_paper": 2,
+    "codings_returned": 0
+   },
+   "definition": "Human coding of the gold subset: papers, coders, coders per paper, coding files returned to derived/gold/human/.",
+   "inputs": [
+    "derived/gold/gold_set.json",
+    "derived/gold/human_assignment.json",
+    "private/analysis/codings/api/{calc1,gold-r2}"
+   ]
+  },
+  "setup.coder": {
+   "value": {
+    "model": "claude-opus-5-5",
+    "effort": "high (code_papers.py default, recorded per batch in state.json)",
+    "max_tokens": "32000; retries after max_tokens at 64000",
+    "temperature": "not set (API default)",
+    "thinking": "no thinking parameter set; output tokens include reasoning",
+    "system_prompt_sha256": "9e8d9aad8c91f67b4ac1be8bc714153eea8387738be405e5e8cc9e4106dfc462",
+    "system_prompt_chars": 29568,
+    "codebook": "agents/coder/CODEBOOK.md 1.5.0, last changed at public commit 01b7f78"
+   },
+   "definition": "Annotation setup of the batch coder: tools/code_papers.py params() and system_blocks() at the current commit.",
+   "inputs": [
+    "tools/code_papers.py",
+    "agents/coder/CODEBOOK.md",
+    "agents/coder/coding.schema.json"
+   ]
+  },
+  "features.steps_median": {
+   "value": {
+    "unmerged": 22,
+    "merged": 20,
+    "n": 233
+   },
+   "definition": "Median steps per final-paper sequence: unmerged (as coded; the g17 \"steps\" feature) and with consecutive repeats of a node merged (g13 steps_median).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "features.revisits_median": {
+   "value": {
+    "g17_unmerged": 12,
+    "merged": 10,
+    "consecutive_repeats_share": 0.1507
+   },
+   "definition": "Median revisits per paper. g17 counts a step whose node already occurred earlier in the unmerged sequence, so a consecutive repeat counts; \"merged\" counts returns to an earlier node after merging consecutive repeats. consecutive_repeats_share = share of g17 revisits that are consecutive repeats.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "features.revisits_merged_rho.cnp": {
+   "value": {
+    "rho_g17_revisits": 0.211,
+    "rho_merged_revisits": 0.233,
+    "rho_merged_steps": 0.239,
+    "n": 233
+   },
+   "definition": "Sensitivity check, outside the g17 BH family: Spearman of cnp with g17 revisits, with revisits on the merged sequence, and with merged steps.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "features.revisits_merged_rho.fwci": {
+   "value": {
+    "rho_g17_revisits": 0.217,
+    "rho_merged_revisits": 0.239,
+    "rho_merged_steps": 0.244,
+    "n": 233
+   },
+   "definition": "Sensitivity check, outside the g17 BH family: Spearman of fwci with g17 revisits, with revisits on the merged sequence, and with merged steps.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "features.v_status": {
+   "value": {
+    "n": 233,
+    "status": {
+     "full": 225,
+     "none": 8
+    },
+    "papers_with_kind": {
+     "control": 203,
+     "robustness": 148,
+     "replication": 119,
+     "method": 116,
+     "generalization": 51,
+     "reproduction": 21
+    }
+   },
+   "definition": "V status per paper (check_coding.v_status: full = a check performed here that is not a reproduction) and the number of papers with each kind of check performed here (reproduction, replication, method, robustness, control, generalization).",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "features.retest_consistency": {
+   "value": {
+    "pairs": 50,
+    "steps": {
+     "kind": "count",
+     "spearman_run1_run2": 0.758
+    },
+    "revisits": {
+     "kind": "count",
+     "spearman_run1_run2": 0.764
+    },
+    "distinct modes": {
+     "kind": "count",
+     "spearman_run1_run2": 0.834
+    },
+    "imports": {
+     "kind": "count",
+     "spearman_run1_run2": 0.869
+    },
+    "import fields": {
+     "kind": "count",
+     "spearman_run1_run2": 0.811
+    },
+    "V check kinds": {
+     "kind": "count",
+     "spearman_run1_run2": 0.848
+    },
+    "decisive simulation": {
+     "kind": "binary",
+     "agreement": 0.94,
+     "alpha_nominal": 0.737,
+     "prevalence_run1": 0.14
+    },
+    "decisive methods": {
+     "kind": "binary",
+     "agreement": 1.0,
+     "alpha_nominal": 1.0,
+     "prevalence_run1": 0.32
+    },
+    "composition capability_first": {
+     "kind": "binary",
+     "agreement": 0.92,
+     "alpha_nominal": 0.625,
+     "prevalence_run1": 0.14
+    },
+    "mode observation": {
+     "kind": "binary",
+     "agreement": 0.92,
+     "alpha_nominal": 0.732,
+     "prevalence_run1": 0.82
+    },
+    "mode synthesis": {
+     "kind": "binary",
+     "agreement": 0.86,
+     "alpha_nominal": 0.648,
+     "prevalence_run1": 0.78
+    },
+    "node I infer": {
+     "kind": "binary",
+     "agreement": 0.9,
+     "alpha_nominal": 0.736,
+     "prevalence_run1": 0.74
+    }
+   },
+   "definition": "Run-to-run consistency of the coded features behind the 15 g17 associations, on gold papers coded twice (calc1 and gold-r2, both valid): Spearman between runs for counts; agreement and Krippendorff alpha (nominal, g11_human_agreement.alpha_nominal) for binary features. Both runs are the same model; this is stability, not accuracy.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "outcomes.rho_ci_halfwidth": {
+   "value": {
+    "rows": 196,
+    "median": 0.128,
+    "min": 0.098,
+    "max": 0.147
+   },
+   "definition": "Half-width of the 95% bootstrap interval on rho, over g17 rows that use all coded papers.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.benjamini_yekutieli": {
+   "value": {
+    "tests": 245,
+    "c_m": 6.081,
+    "q_below_0.1": 0,
+    "min_q": 0.149,
+    "min_p": 0.0002,
+    "p_floor": 0.0002
+   },
+   "definition": "Sensitivity check: Benjamini-Yekutieli q (BH q times c(m) = sum 1/i, valid under any dependence) over the g17 tests. With 5000 permutations the smallest attainable p is 1/5001.",
+   "inputs": [
+    "derived/outcomes/outcomes.json"
+   ]
+  },
+  "outcomes.pool_cnp_median": {
+   "value": {
+    "n": 14071,
+    "median": 0.754
+   },
+   "definition": "Median cnp in the 2022 candidate pool without convenor co-authored papers (the round-1 sample is stratified to equal cnp quintiles).",
+   "inputs": [
+    "derived/gold/pool.json"
+   ]
+  },
+  "vis.by_trigger": {
+   "value": {
+    "author": {
+     "as_planned": 1,
+     "no_change": 1,
+     "total": 2
+    },
+    "commenter": {
+     "as_planned": 9,
+     "no_change": 6,
+     "total": 15
+    },
+    "referee": {
+     "as_planned": 550,
+     "no_change": 159,
+     "absent": 20,
+     "total": 729
+    }
+   },
+   "definition": "Review steps by coded trigger (referee, editor, commenter, author, unknown), with their labels.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "review.coder_input": {
+   "value": {
+    "papers": 58,
+    "tracked_changes_pdf_downloaded": 58,
+    "comment_supplements_in_discussion_txt": 58,
+    "given_to_coder": "published PDF, publisher XML text, discussion.txt (RC, AC, CC, EC comments and comment supplements)",
+    "not_given_to_coder": "tracked-changes manuscripts (ATC), author-response PDFs (AR), manuscript versions, the article supplement"
+   },
+   "definition": "What the review coder read (tools/code_papers.py review_text_for: <review-dir>/<key>/discussion.txt only), and how many labelled papers have a tracked-changes PDF on disk that was not sent.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input",
+    "private/data/roadmap/review/<key>/"
+   ]
+  },
+  "vis.string_scan": {
+   "value": {
+    "xml": {
+     "papers": 58,
+     "acknowledgement_section": 12,
+     "any_reviewer_or_referee": 0,
+     "mention_outside_thanks_or_review_statement": 0,
+     "revision_phrase": 0
+    },
+    "pdf": {
+     "papers": 58,
+     "acknowledgement_section": 55,
+     "any_reviewer_or_referee": 53,
+     "mention_outside_thanks_or_review_statement": 0,
+     "revision_phrase": 0
+    },
+    "pattern_any": "\\b(reviewers?|referees?)\\b",
+    "pattern_revision": "as suggested by (an?|the|two|both)? ?(anonymous )?(reviewer|referee)|(reviewer|referee)s? (suggested|asked|pointed out|requested)|in response to (an?|the)? ?(reviewer|referee)|during (the )?(review|revision)|in (the )?revised (manuscript|version)",
+    "pattern_thanks_context": "thank|grateful|reviewed by|edited by|acknowledg|comments|appreciat|review statement"
+   },
+   "definition": "Script check, independent of the labelers, on the published text of each labelled paper in two forms: the publisher XML text the labelers read (xml; the converter keeps body and captions, and most back matter, including acknowledgements, is missing) and pdftotext of the published PDF (pdf). Counts papers with an acknowledgements heading, with the word reviewer or referee, with such a word outside a thank-you or the Copernicus review statement (160 characters before, 60 after), and with a phrase tying content to review (pattern_revision).",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input",
+    "published PDFs (private/download-queue.json)"
+   ]
+  },
+  "vis.node_vs_rest_paper_level": {
+   "value": {
+    "nodes_tested": 14,
+    "V": {
+     "diff": 0.1128,
+     "ci": [
+      0.0413,
+      0.1963
+     ],
+     "p": 0.0002,
+     "q": 0.0028
+    },
+    "R": {
+     "diff": -0.0158,
+     "ci": [
+      -0.0471,
+      0.0135
+     ],
+     "p": 0.4849,
+     "q": 1.0
+    },
+    "C": {
+     "diff": -0.0202,
+     "ci": [
+      -0.0514,
+      0.0189
+     ],
+     "p": 0.4527,
+     "q": 1.0
+    },
+    "N": {
+     "diff": -0.0154,
+     "ci": [
+      -0.0506,
+      0.0346
+     ],
+     "p": 0.8432,
+     "q": 1.0
+    },
+    "I": {
+     "diff": -0.0127,
+     "ci": [
+      -0.053,
+      0.042
+     ],
+     "p": 0.816,
+     "q": 1.0
+    },
+    "D": {
+     "diff": -0.0102,
+     "ci": [
+      -0.0505,
+      0.0478
+     ],
+     "p": 1.0,
+     "q": 1.0
+    },
+    "O": {
+     "diff": -0.0054,
+     "ci": [
+      -0.0501,
+      0.0666
+     ],
+     "p": 1.0,
+     "q": 1.0
+    },
+    "S": {
+     "diff": -0.0366,
+     "ci": [
+      -0.0584,
+      -0.0179
+     ],
+     "p": 0.4609,
+     "q": 1.0
+    },
+    "P": {
+     "diff": -0.0362,
+     "ci": [
+      -0.0584,
+      -0.0176
+     ],
+     "p": 0.5923,
+     "q": 1.0
+    },
+    "K": {
+     "diff": -0.0362,
+     "ci": [
+      -0.0584,
+      -0.018
+     ],
+     "p": 0.8056,
+     "q": 1.0
+    },
+    "Q": {
+     "diff": -0.0361,
+     "ci": [
+      -0.0592,
+      -0.0175
+     ],
+     "p": 0.6325,
+     "q": 1.0
+    },
+    "H": {
+     "diff": -0.036,
+     "ci": [
+      -0.0576,
+      -0.0178
+     ],
+     "p": 0.5791,
+     "q": 1.0
+    },
+    "X": {
+     "diff": -0.035,
+     "ci": [
+      -0.0563,
+      -0.0167
+     ],
+     "p": 1.0,
+     "q": 1.0
+    },
+    "F": {
+     "diff": -0.0349,
+     "ci": [
+      -0.056,
+      -0.0168
+     ],
+     "p": 1.0,
+     "q": 1.0
+    }
+   },
+   "definition": "Absent share of a node minus the absent share of all other nodes (changes only, nodes with at least 5 changes). p: two-sided permutation test that shuffles the absent labels among the changes within each paper (5000), so papers keep their own number of absences; interval: 2000 bootstrap resamples of papers; q: Benjamini-Hochberg over the nodes tested. Exploratory.",
+   "inputs": [
+    "derived/review/visibility_labels.json",
+    "derived/review/visibility_input"
+   ]
+  },
+  "cost.r2_dry_run_total_usd": {
+   "value": 142.55,
+   "definition": "Sum of the code_papers.py submit estimates of the round-2 batches (an upper-bound style estimate).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.pending_requests": {
+   "value": {
+    "total": 348,
+    "r2": 202,
+    "calc1": 146
+   },
+   "definition": "Requests in batches submitted and not yet collected, by tag.",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "cost.pending_projection_usd": {
+   "value": 111.22,
+   "definition": "Pending requests times the E1 mean recorded cost per valid coding (a lower-bound style projection; retries and invalid outputs are billed but not counted).",
+   "inputs": [
+    "private/analysis/codings/api/state.json"
+   ]
+  },
+  "review.loop_pilot": {
+   "value": {
+    "papers": 9,
+    "loops": 126,
+    "readable_as_loops": 4,
+    "as_planned": 70,
+    "absent": 52
+   },
+   "definition": "October 21 loop pilot: loops recorded in the process documents (Nature peer-review files, EGU discussions, one preprint revision) of 9 papers, and how they appear in the published paper; totals row of the pilot report, coded by hand-run model sessions, not by a committed script.",
+   "inputs": [
+    "private/analysis/success-set/loops/REPORT.md"
+   ]
+  },
+  "retest.between_paper_baseline": {
+   "value": {
+    "retest_pairs": 50,
+    "between_paper_pairs": 27028,
+    "node_set_jaccard": {
+     "retest": 0.855,
+     "between_papers": 0.65,
+     "chance_corrected": 0.585
+    },
+    "mode_set_jaccard": {
+     "retest": 0.808,
+     "between_papers": 0.48,
+     "chance_corrected": 0.63
+    },
+    "node_seq_similarity": {
+     "retest": 0.692,
+     "between_papers": 0.326,
+     "chance_corrected": 0.543
+    },
+    "mode_seq_similarity": {
+     "retest": 0.64,
+     "between_papers": 0.254,
+     "chance_corrected": 0.517
+    },
+    "entry_state": {
+     "retest": 0.92,
+     "between_papers": 0.616,
+     "chance_corrected": 0.792
+    },
+    "decisive_mode": {
+     "retest": 0.86,
+     "between_papers": 0.169,
+     "chance_corrected": 0.832
+    }
+   },
+   "definition": "Test-retest mean (calc1 against gold-r2, same paper) next to the mean over every pair of two different papers' calc1 codings (all unordered pairs of valid calc1 codings); chance_corrected = (retest - baseline) / (1 - baseline). Sets and sequences after merging consecutive repeats (check_coding.seq); categorical fields as share of pairs that match.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2"
+   ]
+  },
+  "quotes.calc1_existence": {
+   "value": {
+    "papers": 233,
+    "xml": {
+     "papers": 116,
+     "quotes": 2692,
+     "found_any": 2692,
+     "found_pdftotext": 2356,
+     "found_xml": 2692,
+     "share_found_any": 1.0,
+     "share_found_pdftotext": 0.8752,
+     "share_found_xml": 1.0
+    },
+    "pdf": {
+     "papers": 117,
+     "quotes": 2469,
+     "found_any": 2393,
+     "found_pdftotext": 2393,
+     "share_found_any": 0.9692,
+     "share_found_pdftotext": 0.9692
+    },
+    "papers_below_90pct": [
+     {
+      "key": "g22_W4224281163",
+      "route": "pdf",
+      "quotes": 25,
+      "found": 7
+     },
+     {
+      "key": "g22_W4226151218",
+      "route": "pdf",
+      "quotes": 23,
+      "found": 10
+     },
+     {
+      "key": "g22_W4289778872",
+      "route": "pdf",
+      "quotes": 29,
+      "found": 22
+     },
+     {
+      "key": "g22_W4293553476",
+      "route": "pdf",
+      "quotes": 24,
+      "found": 21
+     },
+     {
+      "key": "g22_W4309619206",
+      "route": "pdf",
+      "quotes": 17,
+      "found": 15
+     }
+    ]
+   },
+   "definition": "Do the final-paper quotes of the valid calc1 codings exist in the source text? Route = what the coder reports in `documents` or `pages_convention` (xml: PDF plus located publisher XML text; pdf: PDF only). A quote counts as found when every fragment between ellipses occurs in the text after lower-casing, joining line-break hyphens and collapsing punctuation and spaces to single spaces (NFKC first, so ligatures split). Texts: <key>.xml.txt (xml route) and pdftotext of the PDF in default and -raw order (both routes). Existence only: whether the quote supports the step is not checked.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "PDFs and <key>.xml.txt (private/download-queue.json)",
+    "pdftotext"
+   ]
+  },
+  "text.calc1.e1_route": {
+   "value": {
+    "e1_papers": 235,
+    "xml_status_true_now": 125,
+    "xml_fetched_after_e1_elsevier": 9,
+    "valid_codings_by_reported_route": {
+     "pdf": 117,
+     "xml": 116
+    },
+    "xml_files_under_15000_chars": [
+     {
+      "key": "g22_W4281557287",
+      "chars": 6901,
+      "route": "elsevier",
+      "coder_reports_xml": false
+     },
+     {
+      "key": "g22_W4285592359",
+      "chars": 12435,
+      "route": "already present",
+      "coder_reports_xml": true
+     },
+     {
+      "key": "g22_W4287733677",
+      "chars": 3564,
+      "route": "elsevier",
+      "coder_reports_xml": false
+     },
+     {
+      "key": "g22_W4289778872",
+      "chars": 7161,
+      "route": "elsevier",
+      "coder_reports_xml": false
+     },
+     {
+      "key": "g22_W4298007005",
+      "chars": 5901,
+      "route": "elsevier",
+      "coder_reports_xml": false
+     },
+     {
+      "key": "g22_W4304186078",
+      "chars": 10919,
+      "route": "elsevier",
+      "coder_reports_xml": false
+     }
+    ]
+   },
+   "definition": "E1 text route. xml_status_true_now counts E1 papers with publisher XML in derived/calc1/xml_status.json today; the Elsevier XML files were fetched on October 27, after E1 was submitted (October 25), so the coder did not see them. valid_codings_by_reported_route uses the coder's own `documents` field. Short XML files (under 15,000 characters) are listed.",
+   "inputs": [
+    "derived/calc1/xml_status.json",
+    "private/analysis/codings/api/state.json",
+    "private/analysis/codings/api/calc1"
+   ]
+  },
+  "workflow.textbook_order": {
+   "value": {
+    "papers": 233,
+    "QHSDFOC_ordered_with_gaps": 1,
+    "QHSDFOC_contiguous": 0,
+    "QHC_ordered_with_gaps": 160,
+    "QHDOC_ordered_with_gaps": 45,
+    "papers_with_D": 163
+   },
+   "definition": "Papers whose merged final-paper node sequence contains the textbook order question, hypothesize, simulate, design, find conditions, observe, compare (QHSDFOC) as an ordered subsequence with other steps allowed between (the g13 rule), as a contiguous run, and shorter orders.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2"
+   ]
+  },
+  "calc1.agu_selection": {
+   "value": {
+    "coded": {
+     "n": 16,
+     "open_access": 16,
+     "cnp_median": 0.802,
+     "journals": {
+      "Journal of Geophysical Research (all sections)": 9,
+      "other AGU journals": 5,
+      "Geophysical Research Letters": 2
+     }
+    },
+    "not_coded": {
+     "n": 82,
+     "open_access": 54,
+     "cnp_median": 0.652,
+     "journals": {
+      "Journal of Geophysical Research (all sections)": 40,
+      "Geophysical Research Letters": 24,
+      "other AGU journals": 18
+     }
+    }
+   },
+   "definition": "Eligible round-1 AGU papers (DOI prefix 10.1029), coded at E1 against not coded: open access, median cnp, and journal group (GRL, the letters journal; JGR, the full-length journals; other).",
+   "inputs": [
+    "derived/calc1/manifest.jsonl",
+    "derived/gold/metrics.json",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2"
+   ]
+  },
+  "confounding.family_estimators": {
+   "value": {
+    "steps~cnp": {
+     "pooled_ranks_centred": 0.12,
+     "ranks_within_family": 0.165,
+     "ranks_within_family_ci": [
+      0.015,
+      0.302
+     ],
+     "n": 233
+    },
+    "steps~fwci": {
+     "pooled_ranks_centred": 0.121,
+     "ranks_within_family": 0.149,
+     "ranks_within_family_ci": [
+      0.003,
+      0.288
+     ],
+     "n": 233
+    },
+    "revisits~cnp": {
+     "pooled_ranks_centred": 0.121,
+     "ranks_within_family": 0.151,
+     "ranks_within_family_ci": [
+      0.001,
+      0.296
+     ],
+     "n": 233
+    },
+    "revisits~fwci": {
+     "pooled_ranks_centred": 0.124,
+     "ranks_within_family": 0.138,
+     "ranks_within_family_ci": [
+      -0.018,
+      0.281
+     ],
+     "n": 233
+    }
+   },
+   "definition": "Within-journal-family Spearman of steps and revisits with cnp and fwci under two estimators: pooled ranks centred within family (the g20 confounding estimator) and ranks recomputed inside each family, then centred. Interval: 2000 stratified bootstrap resamples (seed 2026). Families by g20_topics_journals.family, not pooled.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "vis.labeler_kappa": {
+   "value": {
+    "steps": 746,
+    "agreed": 720,
+    "observed": 0.9651,
+    "chance": 0.6036,
+    "cohen_kappa": 0.912,
+    "labeler_marginals_a": {
+     "as_planned": 551,
+     "no_change": 175,
+     "absent": 20
+    },
+    "labeler_marginals_b": {
+     "as_planned": 554,
+     "no_change": 173,
+     "absent": 19
+    }
+   },
+   "definition": "Agreement of the two E4 labelers (label_a, label_b) before adjudication: Cohen kappa = (observed - chance) / (1 - chance), chance from each labeler's own label frequencies.",
+   "inputs": [
+    "derived/review/visibility_labels.json"
+   ]
+  },
+  "coding.resubmissions": {
+   "value": {
+    "calc1": {
+     "papers": 235,
+     "requests": 263,
+     "papers_resubmitted": 22,
+     "requests_at_64000_max_tokens": 0,
+     "steps_median_resubmitted": 24,
+     "steps_median_first_pass": 22.0
+    },
+    "gold-r2": {
+     "papers": 51,
+     "requests": 60,
+     "papers_resubmitted": 6,
+     "requests_at_64000_max_tokens": 0,
+     "steps_median_resubmitted": 24,
+     "steps_median_first_pass": 20
+    },
+    "calc1-review": {
+     "papers": 61,
+     "requests": 75,
+     "papers_resubmitted": 14,
+     "requests_at_64000_max_tokens": 4,
+     "steps_median_resubmitted": 25,
+     "steps_median_first_pass": 24
+    }
+   },
+   "definition": "Collected batches per tag: papers, requests, papers sent more than once (a failed or invalid first answer), requests sent with max_tokens 64000, and median unmerged final-paper steps of valid codings for resubmitted and first-pass papers.",
+   "inputs": [
+    "private/analysis/codings/api/state.json",
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2"
+   ]
+  },
+  "retest.sample_mix": {
+   "value": {
+    "retest_pairs": {
+     "n": 50,
+     "family": {
+      "EGU/Copernicus": 16,
+      "Wiley non-AGU": 13,
+      "Springer Nature (non-portfolio)": 9,
+      "Elsevier": 4,
+      "AGU": 3,
+      "Nature portfolio": 2,
+      "Oxford": 2,
+      "SSA": 1
+     },
+     "entry_state": {
+      "problem": 41,
+      "capability": 6,
+      "data_without_theory": 1,
+      "external_goal": 1,
+      "hypothesis": 1
+     },
+     "ring": {
+      "broad": 26,
+      "core": 24
+     }
+    },
+    "coded": {
+     "n": 233,
+     "family": {
+      "Wiley non-AGU": 76,
+      "EGU/Copernicus": 64,
+      "Springer Nature (non-portfolio)": 44,
+      "AGU": 16,
+      "Nature portfolio": 14,
+      "Elsevier": 9,
+      "Oxford": 6,
+      "SSA": 2,
+      "AAAS": 1,
+      "other": 1
+     },
+     "entry_state": {
+      "problem": 181,
+      "capability": 25,
+      "challenged_result": 6,
+      "hypothesis": 6,
+      "anomaly": 5,
+      "data_without_theory": 5,
+      "external_goal": 5
+     },
+     "ring": {
+      "core": 121,
+      "broad": 112
+     }
+    }
+   },
+   "definition": "Journal family (g20 rule), entry state (first coding) and ring of the 50 retest papers (gold papers with full text at E1 and both codings valid) against all 233 coded papers.",
+   "inputs": [
+    "private/analysis/codings/api/calc1",
+    "private/analysis/codings/api/gold-r2",
+    "derived/gold/metrics.json"
+   ]
+  },
+  "agents.node_share_by_group": {
+   "value": {
+    "coders": [
+     "opus-b",
+     "sonnet-c"
+    ],
+    "research systems (manifest family science)": {
+     "systems": 14,
+     "names": [
+      "Agent Laboratory",
+      "AIDE (MLE-bench; RE-Bench)",
+      "Bayesian adaptive design",
+      "Biomni",
+      "Co-Scientist",
+      "Coscientist",
+      "data-to-paper",
+      "DiscoveryWorld Hypothesizer",
+      "FunSearch / AlphaEvolve",
+      "Kosmos",
+      "Robin",
+      "Robot Scientist (Adam)",
+      "The AI Scientist",
+      "Virtual Lab"
+     ],
+     "node_share_full": {
+      "N": 0.071,
+      "E": 0.036,
+      "O": 0.75,
+      "I": 0.107,
+      "Q": 0.179,
+      "H": 0.143,
+      "S": 0.214,
+      "D": 0.607,
+      "F": 0.321,
+      "C": 0.714,
+      "V": 0.214,
+      "X": 0.107,
+      "K": 0.357,
+      "P": 0.0,
+      "R": 0.679
+     }
+    },
+    "general patterns and tools (other families)": {
+     "systems": 17,
+     "names": [
+      "AutoGen / CAMEL / ChatDev",
+      "BabyAGI",
+      "Coding harness (Claude Code; OpenAI SDK)",
+      "Deep research (OpenAI; Gemini)",
+      "Evaluator-optimizer",
+      "LATS",
+      "Magentic-One",
+      "MetaGPT",
+      "OpenHands",
+      "Plan-and-Solve",
+      "ReAct",
+      "Reflexion",
+      "Self-Refine",
+      "STORM",
+      "SWE-agent",
+      "Tree of Thoughts",
+      "Voyager"
+     ],
+     "node_share_full": {
+      "N": 0.059,
+      "E": 0.059,
+      "O": 0.647,
+      "I": 0.0,
+      "Q": 0.029,
+      "H": 0.0,
+      "S": 0.0,
+      "D": 0.235,
+      "F": 0.118,
+      "C": 0.5,
+      "V": 0.0,
+      "X": 0.0,
+      "K": 0.294,
+      "P": 0.0,
+      "R": 0.676
+     }
+    },
+    "mark_agreement_two_coders": 0.849
+   },
+   "definition": "Share of agent systems whose loop runs each node in full (loop codebook 0.1.2), averaged over the two blind coders, for research systems (agents_manifest.json family \"science\") and for general patterns, coding, multi-agent and deep-research systems; and raw agreement of the two coders on the mark (full, partial, none) over 31 systems x 15 nodes.",
+   "inputs": [
+    "private/analysis/reliability/agents_manifest.json",
+    "private/analysis/reliability/codings/agents/{opus-b,sonnet-c}"
+   ]
+  }
+ }
+}

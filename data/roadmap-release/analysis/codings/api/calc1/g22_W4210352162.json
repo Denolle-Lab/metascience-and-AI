@@ -1,0 +1,393 @@
+{
+ "key": "g22_W4210352162",
+ "doi": "10.1002/nsg.12199",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Harmankaya & Kaslilar 2022, Near Surface Geophysics 20, 292-314 (published paper, PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "Here, we further improve the modelling part of the method by including both Lamé and density contrasts of the scatterers.",
+  "page": "293"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Harmankaya & Kaslilar 2022, Near Surface Geophysics 20, 292-314",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors take as their starting point their earlier Born-approximation integral-representation method (Kaslilar 2007), which modelled and imaged scatterers through density contrasts only.",
+     "page": "293",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The method was initially described in Kaslilar (2007), where it was only capable of modelling scattered wavefields"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose the motivating question, drawing on cited work (Ji et al. 2010; Goodway 2001): can density and Lamé contrasts characterize scatterers where velocity contrasts are weak?",
+     "page": "294",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the contrasts in P- or S-wave velocities alone cannot sufficiently discriminate between different lithologies"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They derive the domain-type integral representation from Betti-Rayleigh reciprocity and linearize it with the Born approximation. This gives Fréchet-derivative terms for δρ, δλ and δμ (Eqs 9-16); the method of moments was rejected as too expensive.",
+     "page": "296",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, the Born approximation, with the assumption of weak parameter contrast between the scatterer and the embedding medium, is used"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "They compute Green tensors with Fourier-Hankel transforms and the scattering-matrix method, choose pmax, Δp and grid spacing, and precalculate parallelized Green tables (1 m grid, 0-150 Hz).",
+     "page": "297",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The Green table mesh interval for the modelling instances given in this paper is 1 m"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They model 3D wave propagation for a water-filled cavity in a shale half-space on a 21 x 21 receiver grid and show snapshots and seismogram panels of the direct and scattered Rayleigh arrivals.",
+     "page": "298",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To give a visual example of wavefield modelling with our method, a simple subsurface scatterer model is considered"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design seven synthetic scenarios (Table 1) with 10% contrasts in single, paired or all parameters on one receiver line. Case 7 has zero velocity contrast.",
+     "page": "299",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The density and Lamé parameter contrasts are set to have relative values of 10% higher than of the background values."
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute horizontal and vertical scattered wavefields and traces for single-parameter (cases 1-3), double-parameter (cases 4-6) and all-parameter (case 7) scatterers.",
+     "page": "300",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Initial scenarios (cases 1–3 from Table 1) concern the simple cases of scatterers"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Comparing the cases, they find that λ contributes least and ρ and μ dominate, that polarity and phase differ between parameters, and that forward scattering is stronger. They note the last result is in line with Almuhaidib & Toksöz (2014) and Snieder (2002).",
+     "page": "301",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is observed from Figures 6 and 8 that λ has the least relative contribution to the recorded wavefields"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the forward model against the finite-difference code SOFI3D for case 7, isolating the SOFI3D scattered field by subtracting a no-scatterer run. Traces are compared by semblance, and runtimes are reported (5 min versus 218 min).",
+     "page": "304",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results in Figure 10 indicate generally good fit between the outputs of two modelling techniques, with semblances over 0.80"
+    },
+    {
+     "n": 10,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that the Lamé parameters are properly incorporated into the forward model.",
+     "page": "305",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these results from trace comparisons indicate the proper incorporation of Lamé parameters into the forward modelling part of the method"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute monochromatic 3D Fréchet sensitivity kernels for ρ, λ and μ (vertical source and receiver 40 m apart) on a horizontal plane at 2 m depth, a vertical plane, and a vertical cross-section at 40, 80 and 120 Hz.",
+     "page": "305",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculate the 3D full wave Fréchet sensitivity kernels for density and both Lamé parameters"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They interpret the kernels: maximum sensitivity lies off the source-receiver axis within the Fresnel volume (consistent with Tromp et al. 2005 and others), sensitivity declines with depth and frequency, and λ sensitivity is lowest.",
+     "page": "306",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Vertical plane kernels in Figure 12 clearly show the decline of sensitivity with depth for Rayleigh waves."
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "methods",
+     "action": "They propose that a future inversion could use only density and μ contrasts to reduce computation, with λ kept where fluid content matters.",
+     "page": "309",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this method may be implemented for only density and μ contrasts to lessen the computation workload"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "They cite their own earlier preliminary field result (density-only version, concrete-masonry tunnel) to argue the Born-based method still works for higher contrasts.",
+     "page": "309",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Kaslilar and Herman (2007) were able to obtain an estimate for a subsurface tunnel with concrete masonry"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "methods",
+     "action": "They state the final claim: the improved method properly includes Lamé contrasts and forms a basis for joint density-Lamé imaging.",
+     "page": "310",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The comparable results from the finite-difference modelling indicate proper inclusion of Lamé parameter contrasts into our method."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Surface-wave scattering by a near-surface scatterer with density and Lamé contrasts, generated synthetically",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; all wavefields are synthetic and no field data are used",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a forward modelling method with density and Lamé contrasts as the basis for a future inversion",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only parameter-contrast scenarios and a benchmark code",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Scenarios give distinct scattered wavefields (λ weakest; polarity and phase differences)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in the computer (synthetic half-space, 10% contrasts)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Agrees with SOFI3D finite-difference output, semblance over 0.80",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Lamé contrasts properly incorporated; method characterized",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Anonymous reviewers thanked; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The Born-approximation integral-representation method, extended to density and Lamé contrasts, reproduces finite-difference (SOFI3D) scattered wavefields with semblance above 0.80 at far lower runtime, and shows λ contributing least to the surface-wave-dominated field.",
+  "page": "310"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "methods",
+  "sentence": "The trace comparison with the independent finite-difference code SOFI3D (semblance over 0.80) is the only evidence that the Lamé contrasts were properly incorporated.",
+  "page": "304"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data are synthetic, set by design, with no hypothesis directing acquisition. The SOFI3D comparison could have revealed a mismatch, but no pass threshold was fixed in advance: 'good agreement' and semblance over 0.80 are judged after the fact. Nothing was registered beforehand."
+ },
+ "imports": [
+  {
+   "field": "physics (wave scattering theory)",
+   "item": "Born approximation for linearizing the scattering integral equation",
+   "kind": "method",
+   "page": "293"
+  },
+  {
+   "field": "physics / acoustics",
+   "item": "Betti-Rayleigh reciprocity theorem of convolution type and the Sommerfeld radiation condition",
+   "kind": "concept",
+   "page": "295"
+  },
+  {
+   "field": "mathematics",
+   "item": "Fourier-Hankel transform and Bessel-function representation of Green tensors",
+   "kind": "method",
+   "page": "296"
+  },
+  {
+   "field": "optics",
+   "item": "Fresnel zone / Fresnel volume as a measure of resolution",
+   "kind": "concept",
+   "page": "308"
+  },
+  {
+   "field": "computer science",
+   "item": "Parallel programming for Green-table and wavefield computation",
+   "kind": "method",
+   "page": "294"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we further improve the modelling part of the method by including both Lamé and density contrasts of the scatterers.",
+   "page": "293"
+  },
+  {
+   "quote": "our method would be advantageous when compared to methods that can only model full wavefields",
+   "page": "294"
+  }
+ ],
+ "limits": "The paper uses synthetic data only: one homogeneous half-space, one cubic scatterer, one source and one receiver line. Contrasts are fixed at 10%, so the accuracy of the Born approximation as contrast and size vary is not tested; the claim that it works for strong contrasts rests on an earlier preliminary field result. The SOFI3D benchmark covers case 7 only, and the semblance over 0.80 is reported without a prior threshold or a per-trace table; waveform differences are attributed to different Q implementations without testing. The runtime comparison (5 versus 218 min) uses precalculated Green tables whose own cost is not given. No inversion is performed, so the imaging claims are prospective. Sub-claims: 'λ contributes least and ρ and μ suffice' is a regularity_in_range for this geometry and these frequencies only. The kernel and Fresnel-zone resolution statements are qualitative (best_explanation), not estimates with resolution. No review file was supplied, so revisions cannot be traced. Composition coded none_fits because the walk is method development checked against a benchmark code on synthetic data, with no observation or phenomenon-establishing phase (inference).",
+ "disagreements": [
+  {
+   "target": "Community position that 3D elastic full-waveform inversion is rare because of computational cost (Teodor et al. 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors report that their precalculated-table method computes the scattered field in about 5 min against about 218 min for SOFI3D on the same workstation.",
+   "page": "294",
+   "quote": "Traditionally, due to its high computational cost, 3D full waveform inversions for elastic or viscoelastic cases are rare"
+  },
+  {
+   "target": "Butzer (2015): density is the most difficult parameter to resolve",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The authors cite their own earlier density-only imaging that resolved positive and negative density contrasts (Harmankaya and Kaslilar 2019).",
+   "page": "310",
+   "quote": "[...] for our method we were able to successfully resolve the positive and negative density contrasting scatterers"
+  },
+  {
+   "target": "Limits of the Born approximation to small scatterers and low contrasts (Malovichko et al. 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors cite a preliminary field estimate of a concrete-masonry tunnel with the density-only version (Kaslilar and Herman 2007).",
+   "page": "309",
+   "quote": "it can still provide reasonable results for the modelling and imaging of scatterers with higher contrasts"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Born approximation (incident field replaces the field inside the scatterer)",
+   "alternatives": "Method of moments solution of the integral equation (Ditzel and Herman 2004; Riyanti and Herman 2005)",
+   "reason": "Method of moments proved computationally expensive",
+   "effect_reported": "no",
+   "page": "296"
+  },
+  {
+   "node": "N",
+   "chosen": "Precalculated Green tensor tables",
+   "alternatives": "Green tensors calculated 'on the fly'",
+   "reason": "Tables can be quickly reused in subsequent modelling",
+   "effect_reported": "yes",
+   "page": "297"
+  },
+  {
+   "node": "D",
+   "chosen": "Homogeneous half-space background with a single parameter set",
+   "alternatives": "Layered model (Almuhaidib and Toksöz 2014); velocity-gradient background as thin layers or averaged (Teodor et al. 2021)",
+   "reason": "Simplicity; easier comparisons and better observation of scattering behaviour",
+   "effect_reported": "no",
+   "page": "294"
+  },
+  {
+   "node": "D",
+   "chosen": "Density and Lamé parameter contrasts",
+   "alternatives": "Velocity contrast parameters",
+   "reason": "Lamé contrasts may give insight where velocity contrasts are weak (Goodway 2001)",
+   "effect_reported": "no",
+   "page": "294"
+  },
+  {
+   "node": "V",
+   "chosen": "Dissipation through imaginary parts of complex velocities",
+   "alternatives": "Generalized standard linear solid attenuation (as in SOFI3D)",
+   "reason": "To avoid the singularities of complex integration",
+   "effect_reported": "yes",
+   "page": "304"
+  },
+  {
+   "node": "S",
+   "chosen": "Monochromatic kernels (80 Hz shown; 40 and 120 Hz in cross-section)",
+   "alternatives": "Kernels calculated over a frequency range",
+   "reason": "For the sake of brevity",
+   "effect_reported": "no",
+   "page": "308"
+  },
+  {
+   "node": "R",
+   "chosen": "Future inversion with density and μ only",
+   "alternatives": "All three parameters (ρ, λ, μ)",
+   "reason": "To lessen the computation workload; λ contributes little to the surface-wave field",
+   "effect_reported": "yes",
+   "page": "309"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The results in Figure 10 indicate generally good fit between the outputs of two modelling techniques, with semblances over 0.80",
+   "page": "304"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "The stronger forward scattering of Rayleigh waves is in line with the results in Almuhaidib and Toksöz (2014)",
+   "page": "302"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "This is in line with the findings of Tromp et al. (2005), Yoshizawa and Kennett (2005), Shen et al. (2008)",
+   "page": "306"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "[...] version of the method in a preliminary study, Kaslilar and Herman (2007) were able to obtain an estimate",
+   "page": "309"
+  }
+ ]
+}

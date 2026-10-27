@@ -1,0 +1,599 @@
+{
+ "key": "g22_W4312133528",
+ "doi": "10.5194/tc-16-4811-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Lin et al. 2022, The Cryosphere 16, 4811-4822",
+  "Publisher XML full text with section and paragraph locators (jats_text)",
+  "Open discussion record of preprint tc-2022-111 (RC1 McCallum, AC1, RC2 Löwe, AC2)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); review steps cite the review record's own locators (RC/AC ¶n, AC-S p.n)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "The idea of this work is to employ a method that allows estimating the underlying stochastic differential equation from empirical data",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text), with PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "instruments",
+     "action": "Cite the SnowMicroPen's high resolution (250 measurements per mm) as resolving penetration details that appear as stochastic signals.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "more and more details of the penetration process can be resolved, leading to many more stochastic signals"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how different kinds of stochastic signals in SMP profiles relate to different snow types.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to find out how different kinds of stochastic signals are related to different snow types"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "theory",
+     "action": "Review prior penetration models (Johnson and Schneebeli; Marshall and Johnson; Löwe and van Herwijnen; Peinke et al.) that treat the signal as brittle failures or Poisson shot noise.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "described the fluctuating penetration hardness as a Poisson shot noise process"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that penetration resembles Brownian motion (diffusive Langevin noise from many grain interactions), with jump noise added for brittle failures; pure diffusion and jump-diffusion become the rival models.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We describe this penetration process in analogy to the well-known Brownian motion"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take Pawula's theorem as the expectation that a pure diffusion process has vanishing higher-order Kramers–Moyal coefficients (K4 = 0), which separates the rivals.",
+     "page": "§2.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "According to Pawula's theorem, all KM coefficients K ( j ) are vanishing"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set up jump-diffusion estimation for SMP depth series: drift, diffusion, jump amplitude and jump rate from KM coefficients via Wick's theorem, using a Gaussian Nadaraya–Watson kernel with bandwidth h = 0.3.",
+     "page": "§2.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Nadaraya–Watson estimator, which is a kernel estimator, can be used"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Validate the method on synthetic Ornstein–Uhlenbeck series: K4 separates diffusion from jump processes, and estimated diffusion-to-jump ratios are compared with the known values for three parameter sets.",
+     "page": "§2.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To validate our method, based on the KM coefficients of Eq. () to Eq. (), three pairs of parameters were chosen"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Use micro-cone (modified SMP) hardness profiles of laboratory samples of four snow types (PP, DH, RG, RGlr), sieved, sintered at -10 °C and imaged by X-ray tomography; the acquisition is described in Peinke et al. (2020).",
+     "page": "§3.1.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We tested several snow samples composed of four different natural snow types"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Drop the first 4 mm, detrend each profile with a 0.6 mm Gaussian kernel, normalize, split into sub-samples, estimate KM coefficients per sub-sample and average them per snow type with standard errors.",
+     "page": "§3.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each profile was first detrended."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the detrending kernel width between 0.14 and 0.66 mm (the range of grain sizes) and report no significant change (footnote).",
+     "page": "§3.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results do not change significantly if the kernel widths are changed between 0.14 and 0.66"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the estimated K4 of the snow data with the pure-diffusion expectation K4 = 0; K4 is non-zero.",
+     "page": "§3.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, we find that in general, K ( 4 ) ( R ′ ) ≠ 0 and the higher-order KM coefficients are not negligible."
+    },
+    {
+     "n": 12,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the pure Langevin model and adopt the jump-diffusion model, then estimate jump parameters.",
+     "page": "§3.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] presence of discontinuities in the snow hardness profile, so the jump-diffusion model is considered."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit linear drift D1 = -γR′ for each snow type and derive the correlation length L_C = 1/γ over -2 < R′ < 2.",
+     "page": "§3.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the correlation length scale is given by L C = 1 γ"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check L_C against correlation lengths from the autocorrelation function; both give the same ordering across snow types.",
+     "page": "§3.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we find that both length scales have the same ordering of their values for all snow types"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate jump amplitude, jump probability, the diffusion-to-jump ratio D2/(λσ²) and the jump length L_J = 1/λ per snow type (Table 2).",
+     "page": "§3.1.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To analyze whether diffusion or jump noise is dominating"
+    },
+    {
+     "n": 16,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take one field SMP profile (standard tip) from the Hagenmuller and Pilloix (2016) campaign.",
+     "page": "§3.2.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "measurements from a field campaign are presented"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate local K4 and jump amplitude along the field profile in non-overlapping 2 mm windows with the Nadaraya–Watson estimator, and plot them beside the laboratory snow types (Figure 10).",
+     "page": "§3.2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The measurement profile is strongly inhomogeneous; therefore, we used the Nadaraya–Watson estimator to determine the local characteristics of the profile."
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Refine the physical interpretation: diffusive noise comes from integrating many bond breaks and the pushing aside of grains, and jump noise from bond breaking at the tip.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The jump noise may represent the bond-breaking events occurring directly at the tip of the SMP"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare parameter orderings with the microstructure seen in tomography and Table 1: relaxation length, K4, jump amplitude, jump probability and noise ratio all track ice-structure size and density.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conclude that L C or γ is clearly related to the size of the snow structures"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare against classical statistics (mean hardness and σR) as a baseline: the stochastic parameters separate DH from RG, the baseline does not clearly.",
+     "page": "§4 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "according to the classical statistical features of the snow signals shown in Table , the differences for DH and RG are less clear"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "observation",
+     "action": "Apply the laboratory reference to the field profile: mixtures of snow types are read, with an RG-like section at 732 to 740 mm; called preliminary.",
+     "page": "§4 ¶7",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "With reference to the laboratory measurements, we see dynamics that suggest mixtures of different snow types within this depth segment."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the claim that stochastic analysis differentiates snow types: denser DH/RGlr show more diffusive behaviour, porous PP/RG stronger jump noise.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the advanced stochastic analysis of SMP measurements of snow layers allows differentiation of snow types"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion record of tc-2022-111 (RC1, AC1, RC2, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Referee asked to reframe the work as micro-cone penetration or to cite McCallum's large-scale CPT work; the title was changed and McCallum cited in the introduction.",
+     "page": "RC1 ¶6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "you may wish to refer to your work as ‘micro’ cone penetration testing"
+    },
+    {
+     "n": 2,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Referee questioned how breaking of a 'single' bond is confirmed; the authors reworded the abstract to mark it as interpretation.",
+     "page": "AC1-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We now outline that these are our interpretation and findings of our analysis."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Referee noted that the actual penetration rate may not be constant though the drive is; the authors agreed and made no change.",
+     "page": "AC1-S p.3",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We agree. In the paper, we do not mention the penetration rate."
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee asked how KM coefficients per sample were estimated; the authors added the reference to Eq. 2.",
+     "page": "AC1-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We use Eq. 2 to estimate them and mention it in the revised manuscript."
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "instruments",
+     "action": "Referee asked what differed in the field SMP tip; the authors specified the standard-tip shape.",
+     "page": "RC1 ¶71",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "but the tip had a different sensitivity of…what was it??"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee asked whether jump and diffusion parameters are independent; the authors made scatter plots and regressions (R² ≈ 0.9) showing hints of correlation, reported only in the reply.",
+     "page": "AC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "from these plots, we could see the hints for the possible correlations"
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "theory",
+     "action": "The authors kept the independence assumption and deferred estimating the correlation between Wiener and jump processes to future work.",
+     "page": "AC2-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Data-based estimation of ρ(t) is an open topic and we will address this important problem in the near future."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee asked to test the fixed 0.6 mm kernel against grain-size-scaled kernels; the authors reran with kernel width equal to optical diameter per snow type, found no significant change, and added the footnote.",
+     "page": "AC2-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The new kernel widths do not change the results significantly."
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee asked for inter-sample uncertainties in Table 2; they were added.",
+     "page": "AC2-S p.5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Uncertainties are now included in Table 2."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Referee asked to report ACF correlation lengths to support the L_C ordering statement; they were added to the text and Table 2.",
+     "page": "AC2-S p.5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The correlation lengths LACF estimated from the ACF"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee suggested a semilog scale for K4 in Figure 10; the authors kept the linear scale.",
+     "page": "AC2-S p.5",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "we decide to keep it in linear scale"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee asked to add jump probability and the noise ratio to Figure 10; the authors declined, citing large uncertainties of λ.",
+     "page": "AC2-S p.6",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Since the uncertainties of λ are relatively large"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Stochastic fluctuations in high-resolution SMP hardness profiles",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; drift, diffusion and jump parameters are latent, inferred from KM coefficients",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Distinguish snow types by diffusive versus jump noise",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Pure diffusion (Langevin) versus jump-diffusion",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: pure diffusion predicts K4 = 0 (Pawula)",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Set in laboratory-prepared samples of four snow types (prepared in earlier work), plus one field profile found",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "7",
+   "answer": "Synthetic tests, kernel-width variation, ACF cross-check, classical-statistics baseline, field profile (qualitative)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Jump-diffusion kept; parameters order with structure size and density",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Accepted after minor revisions; kernel-width check and uncertainties added, independence question left open",
+   "mode_called": "robustness"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Kramers–Moyal jump-diffusion analysis of micro-cone penetration profiles separates snow types: denser DH and RGlr show more collective diffusive behaviour, porous PP and RG stronger jump noise.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Estimating jump amplitudes, jump rates and the diffusion-to-jump ratio per snow type from KM coefficients is what yields the snow-type separation.",
+  "page": "§3.1.2 ¶3"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Both laboratory and field data come from earlier campaigns (Peinke et al. 2020; Hagenmuller and Pilloix 2016), not acquired for this hypothesis. The pure-diffusion rival faced a test it could fail (K4 = 0 expected, K4 ≠ 0 found, §3.1.2 ¶1), and synthetic recovery could have failed (§2.3 ¶3). The mapping of noise types to mechanisms and densities is interpreted after the fact (§4 ¶1, ¶5). The 0.6 mm kernel and h = 0.3 are stated, not shown fixed before the analysis."
+ },
+ "imports": [
+  {
+   "field": "statistical physics",
+   "item": "Brownian motion and Langevin process analogy",
+   "kind": "concept",
+   "page": "§1 ¶3"
+  },
+  {
+   "field": "statistical physics / complex systems",
+   "item": "Kramers–Moyal coefficient estimation of jump-diffusion processes (Anvari et al. 2016)",
+   "kind": "method",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "field": "mathematical finance",
+   "item": "Jump-diffusion models (Tankov, Stanton, Johannes, Bandi and Nguyen)",
+   "kind": "concept",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "mathematical physics",
+   "item": "Wick's (Isserlis') theorem for Gaussian moments",
+   "kind": "concept",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "field": "statistics",
+   "item": "Nadaraya–Watson kernel regression estimator",
+   "kind": "method",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Ornstein–Uhlenbeck process with jumps for synthetic tests",
+   "kind": "method",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "field": "materials imaging",
+   "item": "X-ray tomography of sample microstructure",
+   "kind": "instrument",
+   "page": "§3.1.1 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The proposed methodology provides new insights into the characterization of the snowpack stratigraphy with micro-cone penetration tests.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "gives new insights into the stochastic behaviors of the cone penetration test in snow",
+   "page": "§5 ¶1"
+  }
+ ],
+ "limits": "Headline status capability_characterized. The sub-claim that noise character orders with density and structure size is a regularity_in_range: four snow types, a few samples each, -2 < R′ < 2. The mechanism reading (diffusion = pushing aside grains; jumps = bond breaking at the tip) is best_explanation, an interpretation not tested independently. The field result is a single preliminary profile with qualitative agreement only. Laboratory and field data were acquired in the authors' earlier studies; coding them as inherited is an inference from citations and author contributions. A direct comparison with shot-noise inversions is declared out of scope, so the rival framework is not tested. The review record shows that the kernel-width footnote, the Table 2 uncertainties and the L_ACF values were added at referee request; the published text presents them as the authors' own. The reply also reports possible correlations between parameters (R² ≈ 0.9), which bear on the independence assumption; the published paper does not mention this.",
+ "disagreements": [
+  {
+   "target": "Poisson shot-noise models (Löwe and van Herwijnen 2012; Peinke et al. 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper drops progressive loading (deflection length δ) and adds a diffusive term, without a direct comparison.",
+   "page": "§2.2 ¶5",
+   "quote": "Here, we do not consider any progressive loading of a microstructural element"
+  },
+  {
+   "target": "Inversion models treating penetration resistance as brittle failures only (Johnson and Schneebeli 1999 and successors)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "K4 analysis and noise ratios show a diffusive (Brownian) contribution alongside jump noise, dominant in dense snow.",
+   "page": "§0 ¶1",
+   "quote": "a combination of (a) diffusive noise, as in Brownian motion, and (b) jumpy noise, as proposed by previous dedicated inversion methods"
+  },
+  {
+   "target": "Classical statistical features of SMP signals (mean hardness and σR)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The noise ratio and K4 separate DH from RG where mean and standard deviation do not clearly.",
+   "page": "§4 ¶6",
+   "quote": "It is interesting to see that [...] ) λ σ ξ 2 and K ( 4 ) enable differentiation between RG and [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "X",
+   "chosen": "Jump-diffusion model",
+   "alternatives": "Pure diffusive Langevin model",
+   "reason": "K4 and higher-order KM coefficients are not negligible",
+   "effect_reported": "yes",
+   "page": "§3.1.2 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Gaussian detrending kernel of 0.6 mm",
+   "alternatives": "Kernel widths between 0.14 and 0.66 mm",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§3.1.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Nadaraya–Watson kernel estimator (h = 0.3)",
+   "alternatives": "Direct conditional incremental averages (Eq. 2)",
+   "reason": "Smoother estimation, especially of high-order coefficients",
+   "effect_reported": "no",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "node": "H",
+   "chosen": "Stochastic jump-diffusion approach",
+   "alternatives": "Shot-noise based approaches",
+   "reason": "Direct comparison out of the scope of this paper",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Analysis restricted to -2 < R′ < 2",
+   "alternatives": "Full range of R′",
+   "reason": "More data and fewer uncertainties in this range",
+   "effect_reported": "no",
+   "page": "§4 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "K ( 4 ) of the diffusion process is negligibly small compared to drift-jump and jump-diffusion processes.",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the ratios of diffusion and jump noise D λ σ ξ 2 estimated from each time series were compared to the expected values (blue lines)",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The results do not change significantly if the kernel widths are changed between 0.14 and 0.66",
+   "page": "§3.1.1 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "we find that both length scales have the same ordering of their values for all snow types",
+   "page": "§3.1.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "according to the classical statistical features of the snow signals shown in Table , the differences for DH and RG are less clear",
+   "page": "§4 ¶6"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "Based on these preliminary results of real field data, the developed methodology appears promising for interpreting cone penetration tests in the field",
+   "page": "§4 ¶7"
+  }
+ ]
+}

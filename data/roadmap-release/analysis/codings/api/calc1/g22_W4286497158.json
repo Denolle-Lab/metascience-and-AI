@@ -1,0 +1,397 @@
+{
+ "key": "g22_W4286497158",
+ "doi": "10.1111/1365-2478.13245",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Pham & Fomel (2024) Seismic data augmentation for automatic fault picking using deep learning, Geophysical Prospecting 72, 125-141 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "our training data do not have similar characteristics as testing data, a very powerful neural network model can be meaningless",
+  "page": "125"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF), Geophysical Prospecting 72:125-141",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem that deep-learning fault picking depends on training data resembling the field test data, in contrast to model-centric improvement.",
+     "page": "125",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, training data also play a very important role."
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Take from other studies the expectation that augmentation improves generalization, while traditional augmentations (flipping, smoothing) can harm seismic models.",
+     "page": "126",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "some augmentation methods can provide negative impacts on the model."
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that GAN-generated fault labels and seismic images, styled on a target area of field data, will improve fault picking in that area.",
+     "page": "126",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we generate different seismic data depending on the field seismic data that we use to impose the prior information."
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Use 1800 synthetic 2D seismic images and fault labels (128 x 128) from Wu et al. (2020), a study co-authored by both authors, as training data.",
+     "page": "128",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We use two-dimensional (2D) synthetic seismic data from Wu et al. (2020)"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a Wasserstein GAN with zero-centred gradient penalty to generate fault systems, train it for 700 epochs and track loss convergence and fault connectivity (Figs 3-4).",
+     "page": "128",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use the Wasserstein generative adversarial network (GAN) to generate the fault system"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a conditional Wasserstein GAN (two-branch generator after Pandey et al. 2020, plus an MSE loss) that generates seismic images from fault labels as condition and seismic data as style.",
+     "page": "129",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "However, we use the fault system as a condition."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "methods",
+     "action": "Generate fault systems from random latent vectors (Fig. 5) and seismic images using Wu's synthetic data as style (Fig. 6), noting small unconnected segments.",
+     "page": "130",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The generated fault system appears feasible and connected (Fig. 5)."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check that the generator reproduces the style by comparing the FK spectrum of generated images with that of the synthetic style data (Fig. 7).",
+     "page": "131; Figure 7 (p. 129)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "resembles the FK plot of the synthetic seismic data as a style (Fig. 7a)"
+    },
+    {
+     "n": 9,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design two field-style experiments using shallow (<2.5 s) and deep (>2.5 s) sections of all crosslines of a Gulf of Mexico 3D volume as style (Fig. 8).",
+     "page": "131",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We perform two experiments with different styles."
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "methods",
+     "action": "Generate seismic images with shallow and deep field styles (Figs 9, 11) and describe their clarity and noise.",
+     "page": "132",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the faults in the generated image are also imaged clearly."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare FK spectra of field-style generated images with those of the shallow and deep style inputs (Figs 10, 12).",
+     "page": "132; Figures 10, 12 (pp. 131-132)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is similar to the FK plot of the style images (Fig. 12a)."
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Build four 3600-image training sets (original plus shallow-, deep- or Wu-style GAN data, or plus flipped images) and fix a simplified U-Net architecture so that only the training data vary.",
+     "page": "132",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We train a fixed neural network architecture for fault picking and only change the training dataset."
+    },
+    {
+     "n": 13,
+     "node": "O",
+     "mode": "observation",
+     "action": "Apply each trained model to all inlines and crosslines of the field volume and average the probabilities into a 3D fault-probability volume.",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We then apply the trained model on all crosslines and inlines of the field data to pick faults."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Visually compare fault predictions from the five models on two inlines and two crosslines (cleanliness, connectivity, false positives).",
+     "page": "139; Figures 13-16 (pp. 133-136)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the model trained with flipped augmentation has many false positives (Fig. 14f)."
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the claim that shallow-style augmentation gives the best overall fault segmentation, attributing this to the shallow section's resolution and noise.",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the model trained with shallow style augmentation produces the best fault segmentation"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare model predictions on time slices at 2 s and 3 s.",
+     "page": "139; Figures 17-18 (pp. 137-138)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results from the model trained with shallow style augmentation exhibit the best lateral and vertical continuities of detected faults"
+    },
+    {
+     "n": 17,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Refine the claim by area: deep-style augmentation gives cleaner, more connected faults in the deep section, and label continuity carries over to the predictions.",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, the predicted faults in the deep section from the model trained with deep style augmentation are more connected and cleaner (Fig. 18d)."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Conclude that the GAN workflow produces labeled seismic images that improve neural-network fault picking on field data.",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The test results on field data show that having more training data improves the inference results."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No new phenomenon; the problem is mismatch between training and field test data",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Faults are visible in seismic images, but field labels are not available; generated outputs are inspected directly",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a GAN augmentation method for fault picking",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Alternative training sets: original only, flipping, Wu style, shallow style, deep style",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not stated in advance; only expected improvement in the targeted area",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set computationally by choosing the style input and training set while fixing the architecture",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Compared on two inlines, two crosslines and two time slices of one field volume; no repeated runs",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "8",
+   "answer": "Shallow style best overall; deep style better in the deep section; flipping noisier",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "GAN-generated training data styled on a target area of field data improve CNN fault picking in that area; shallow-style augmentation gives the best overall segmentation on the Gulf of Mexico volume.",
+  "page": "139"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The conditional Wasserstein GAN that takes field seismic data as style and fault labels as condition is what makes area-specific labeled training data possible.",
+  "page": "129-130"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The hypothesis that field-styled augmentation helps directed the choice of shallow and deep style inputs, but all data are existing data (synthetic set from Wu et al. 2020, a provided Gulf of Mexico volume). The claim faced a comparison against an original-only baseline and a flipping baseline that it could have lost; the Wu-style set did not produce clean faults. The comparison is visual only, with no field ground truth or metric. Nothing was stated as fixed before the results."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "Generative adversarial networks (Goodfellow et al. 2014)",
+   "kind": "method",
+   "page": "126"
+  },
+  {
+   "field": "machine learning",
+   "item": "Wasserstein GAN (Arjovsky et al. 2017) and zero-centred gradient penalty (Thanh-Tung et al. 2019)",
+   "kind": "method",
+   "page": "127"
+  },
+  {
+   "field": "mathematics (optimal transport)",
+   "item": "Wasserstein distance / Kantorovich-Rubinstein duality and Lipschitz constraint",
+   "kind": "concept",
+   "page": "127"
+  },
+  {
+   "field": "information theory",
+   "item": "Kullback-Leibler and Jensen-Shannon divergences as alternative metrics",
+   "kind": "concept",
+   "page": "127"
+  },
+  {
+   "field": "biomedical image analysis",
+   "item": "Two-stage GAN generator architecture from nuclei image segmentation (Pandey et al. 2020)",
+   "kind": "method",
+   "page": "129"
+  },
+  {
+   "field": "biomedical image analysis",
+   "item": "U-Net encoder-decoder for segmentation (Ronneberger et al. 2015)",
+   "kind": "method",
+   "page": "139"
+  },
+  {
+   "field": "machine learning",
+   "item": "Data-centric versus model-centric approach",
+   "kind": "concept",
+   "page": "125"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so no review sequence is coded. The paper reports no quantitative metric and no manual field interpretation, so all performance judgments are the authors' visual readings of figures. One field volume is used. Training is not repeated, and the GAN components (MSE loss, gradient penalty) are not ablated. Every augmented set has 3600 images against 1800 originals; the flipping set controls for size, but the headline sentence 'more training data improves' generalizes beyond the evidence, since flipping gave noisier results (inference). Sub-claim status: deep-style augmentation better in the deep section is capability_characterized, with weaker, slice-specific support. The authors suggest a more complex network might improve deep results but do not test it. The text makes no explicit 'first' claims. Data are available only on request. Composition is none_fits: this is a method-development walk (problem, build method, characterize outputs, compare against baselines) with no phenomenon established and no stated rivals with distinct predictions, so neither capability_first nor strong_inference fits. Fault-picking results checked across different slices of the same volume are not counted as replication, because no new data are involved.",
+ "disagreements": [
+  {
+   "target": "Model-centric deep-learning fault picking (researchers focused on improving the neural network model)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors fix the architecture and show that changing only the training data changes field fault-picking quality.",
+   "page": "125",
+   "quote": "[...] have focused on improving the neural network model to improve the results in the test data."
+  },
+  {
+   "target": "Traditional data augmentation shown to improve generalization (Nalepa et al. 2019; Hu et al. 2019; Zhu et al. 2020; Zhao et al. 2021; Zhang et al. 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that flipping and smoothing alter depositional order and frequency content; their flipping-augmented model gave noisier predictions with many false positives.",
+   "page": "126",
+   "quote": "However, some augmentation methods can provide negative impacts on the model."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Wasserstein distance (Wasserstein GAN)",
+   "alternatives": "Kullback-Leibler divergence, Jensen-Shannon divergence",
+   "reason": "Helps convergence and prevents vanishing gradients for some distributions (Arjovsky et al. 2017)",
+   "effect_reported": "no",
+   "page": "127"
+  },
+  {
+   "node": "N",
+   "chosen": "Zero-centred gradient penalty (Thanh-Tung et al. 2019)",
+   "alternatives": "Gradient penalty toward norm 1 (Gulrajani et al. 2017)",
+   "reason": "To improve the generalization capability of the discriminator",
+   "effect_reported": "no",
+   "page": "129"
+  },
+  {
+   "node": "O",
+   "chosen": "Generated fault system from the first GAN as condition",
+   "alternatives": "Manually generated fault labels",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "130"
+  },
+  {
+   "node": "D",
+   "chosen": "GAN augmentation with shallow, deep or Wu-style inputs",
+   "alternatives": "Original data only; traditional flipping augmentation (rotation, noise and smoothing mentioned)",
+   "reason": "Traditional augmentation needs prior information and can mismatch the field data",
+   "effect_reported": "yes",
+   "page": "126, 132, 139"
+  },
+  {
+   "node": "D",
+   "chosen": "Fixed simplified U-Net (data-centric approach)",
+   "alternatives": "Increasing network complexity (model-centric approach)",
+   "reason": "Data-centric approach: fix the architecture and change only the training data",
+   "effect_reported": "no",
+   "page": "125, 139"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "resembles the FK plot of the synthetic seismic data as a style (Fig. 7a)",
+   "page": "131"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "This is similar to the FK plot of the style images (Fig. 12a).",
+   "page": "132"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "fault predictions from the model trained with flipped augmentation (Fig. 13f) are noisier than those from the model trained only with the original data",
+   "page": "139"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "better results from the model trained with shallow style augmentation (Fig. 15c) in both shallow and deep sections",
+   "page": "139"
+  }
+ ]
+}

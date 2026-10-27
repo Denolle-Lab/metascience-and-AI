@@ -1,0 +1,466 @@
+{
+ "key": "g22_W4300002284",
+ "doi": "10.1002/qj.4374",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Andernach, Turton & Mölg (2022), Modeling cloud properties over the 79 N Glacier (Nioghalvfjerdsfjorden, NE Greenland) for an intense summer melt period in 2019, Q J R Meteorol Soc 148:3566–3590 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, no high-resolution study had systematically investigated cloud properties and their role on the near-surface climate conditions of the 79 N area.",
+  "page": "3568"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Andernach, Turton & Mölg 2022, QJRMS 148:3566–3590 (published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors cite the lack of local-scale knowledge of cloud radiative impacts over the NEGIS and 79 N, and set the aim: evaluate PWRF's skill at simulating clouds there, then assess the clouds' effect on surface melt in the July–August 2019 event.",
+     "page": "3568",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] objective of the present study is, thus, to evaluate PWRF′s capability of simulating cloud properties over northeast Greenland."
+    },
+    {
+     "n": 2,
+     "node": "F",
+     "mode": "observation",
+     "action": "They take the 2019 melt event as the case and describe its synoptic conditions from the literature and from ERA5 geopotential and surface-temperature anomalies: blocking anticyclone, warm-air advection, reduced cloud cover over 79 N.",
+     "page": "3568–3569",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The second major melt event took place between July 29 and August 2 with a maximum melt extent of 62%–73%"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They base the model setup on their own earlier PWRF/WRF applications over the NEGIS, including the snow-depth caps used in earlier 79 N studies.",
+     "page": "3569–3570",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The model setup was informed by extensive experience from our previous WRF applications"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "They configure PWRF 4.1.1 with nested 5 km and 1 km domains, chosen from 44 sensitivity runs. Forcing is ERA5 plus NOAA OI SST. Sea-ice thickness, sea-ice albedo and snow depth on sea ice are adjusted from satellite data, and ERA5 snow water equivalent and snow depth are capped.",
+     "page": "3569–3570",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The best-performing configuration (Table 1) was chosen out of a set of 44 sensitivity runs"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble the evaluation data: PROMICE AWS records at KPC_U and KPC_L (daily albedo computed, hourly values capped at 0.9), Sentinel-2A L1C scenes processed with Fmask, and MODIS MOD35/MOD06 scenes within 15 min of the model hour.",
+     "page": "3570–3572",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Three observational datasets were used to validate the PWRF simulations."
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare simulated near-surface variables with the KPC_U observations (MMB, r, RMSE) and note higher radiative skill at KPC_L. Temporal variability is captured, but albedo, humidity and wind direction match only moderately.",
+     "page": "3573",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, the near-surface properties at 79 N are realistically reflected by PWRF."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "After the albedo mismatch they run further tests with changed physics and input fields. They trace the remaining bias to ERA5 snow depth, which stays too high even after capping, and the bias is not removed.",
+     "page": "3573–3574",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "In order to solve the deviations in albedo, several tests were performed, including changes in the physical parametrization and the input meteorological fields."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare the spatially averaged simulated cloud cover and cloud water path with MODIS and Fmask/Sentinel-2A retrievals. The three-stage cloud evolution is reproduced, but the model overestimates cloud cover, especially over the coast and the glacier tongue.",
+     "page": "3574–3576",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PWRF captures the absolute values as well as the temporal variability in cloud cover (Figure 5a) and CWP (Figure 5b) reasonably well"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They check the satellite reference products themselves: visual inspection of Sentinel-2A false-colour composites shows missed thin clouds and rock outcrops misclassified as cloud, and published work documents MODIS thin-cloud omission.",
+     "page": "3575–3576",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Visual inspection of the Sentinel-2A images, however, revealed that some optically thin clouds were not detected."
+    },
+    {
+     "n": 10,
+     "node": "K",
+     "mode": "methods",
+     "action": "They attribute much of the model–satellite mismatch to satellite shortcomings and to published Morrison microphysics performance, and accept the model for the cloud-effect analysis.",
+     "page": "3577",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, model simulations are assumed to be sufficiently accurate to further analyze the cloud radiative impact."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "From model output over land they derive cloud-cover distributions by level, spatial occurrence, LWP, IWP and vertical hydrometeor contents for the study period.",
+     "page": "3577–3579",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Over the whole study period and area, mean total cloud cover (as vertical integral) is 45%"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the simulated cloud cover, LWP and IWP with published Arctic and Greenland results (Cho et al. 2020, van Tricht et al. 2016, Ettema et al. 2010) and explain the differences by the blocking conditions and the northern location.",
+     "page": "3577–3578",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The bimodal distribution is similar to previous PWRF results for the Arctic (Cho et al., 2020)."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute short-wave, long-wave and net cloud radiative effect from all-sky minus clear-sky fluxes. Long-wave warming dominates, so net CRE is positive on average.",
+     "page": "3573, 3579",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Net CRE is dominated by its positive long-wave component, resulting in overall warming effects."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They correlate CRE with cloud cover at each level, with LWP and IWP, and with albedo times cos(SZA). Correlations weaken with cloud altitude, are stronger for liquid clouds, and are weak for albedo and SZA.",
+     "page": "3579–3581",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, the strength of the correlation (Figure 9b) with cloud cover decreases with cloud altitude."
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute the surface energy balance and the energy available for melt, and correlate melt energy with net short-wave radiation, long-wave radiation and CRE. Melt peaks on August 2, and SHF contributes about 28% during peak melt.",
+     "page": "3581",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence, surface melt tends to be higher during times of low cloud coverage."
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that foehn winds, remotely triggered by an atmospheric river in the northwest, accompanied the blocking anticyclone and enhanced SHF and cloud clearing.",
+     "page": "3581–3582",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We hypothesize that the blocking anticyclone in the northeast is accompanied by foehn winds, remotely triggered by an antecedent atmospheric river event in the northwest"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They check simulated KPC_U time series for foehn signatures: a drop in relative humidity, a wind shift, a jump in wind speed and warming on July 29 and August 1–2. They also check the atmospheric river timing against MERRA-2 as reported by Mattingly et al. (2022).",
+     "page": "3581–3582",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These conditions are characteristic of foehn winds, although they are not well documented in this region."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "They retain the interpretation that net short-wave radiation and SHF drove peak melt under clear skies, and that cloud long-wave warming sustained melt after the anticyclone abated.",
+     "page": "3582",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence, our results suggest that the combined impact of high net short-wave radiation and SHF drove the extensive surface melt on the NEGIS."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They recompute CRE at KPC_U with observed AWS albedo in place of modelled albedo. Net CRE rises by 64% and short-wave CRE magnitude falls by 69%; in areas of overestimated albedo, net CRE often turns negative.",
+     "page": "3582–3583",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To determine the impact of the bias in the surface albedo on the calculation of CRE, a test was conducted"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare their implied albedo threshold between cloud warming and cooling with the published thresholds of Solomon et al. (2017, about 0.8) and Wang et al. (2018, about 0.5), and side with the latter.",
+     "page": "3583",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the present study setup, the boundary appears to comply with the latter one."
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that PWRF at 1 km simulates realistic cloud magnitudes and extents, while noting coastal overestimation and unresolved validation uncertainty.",
+     "page": "3583",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PWRF is capable of simulating realistic magnitudes of cloud cover, water content and water path."
+    },
+    {
+     "n": 22,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Because of the albedo bias, they restrict where the cloud-effect results apply: higher-elevation areas and off-peak melt seasons.",
+     "page": "3583–3584",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, the simulations are assumed to be most realistic for higher-elevation areas and off-peak melt seasons"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Extreme late-July 2019 surface melt over 79 N; role of clouds unknown",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: cloud cover via satellite and radiation at two AWSs; CRE and melt energy need the model",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate PWRF cloud skill, then estimate cloud effect on melt",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Implicit: cloud-driven melt (Tedesco & Fettweis, Hofer) vs anticyclone/SHF/foehn-driven melt",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions derived; drivers read from the energy-balance partition",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: one live 2019 event",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: observed-albedo test changes CRE magnitude and sign in low-albedo areas; scope narrowed",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Model kept as sufficiently accurate; melt drivers kept as best explanation",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A 1-km PWRF configuration simulates realistic magnitudes and extents of cloud cover, water content and water path over the 79 N area, with coastal overestimation relative to MODIS and Sentinel-2A and a biased surface albedo.",
+  "page": "3583"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The comparison of simulated cloud cover and cloud water path with MODIS and Fmask/Sentinel-2A retrievals is what supports the claim that PWRF captures cloud properties; without it the capability claim, and the cloud-effect analysis built on it, would not stand.",
+  "page": "3574–3577"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the model runs and evaluation data were chosen to evaluate the model, not directed by a stated hypothesis; the foehn hypothesis is posed after the results (p. 3581). Claim: the model faced AWS and satellite comparisons it could have failed (pp. 3573–3576). However, no skill threshold was fixed, and mismatches were largely attributed to satellite shortcomings (p. 3577). The melt-driver interpretation faced no test against a rival. Registration: nothing reported as fixed before the data; the configuration was selected as best-performing out of 44 runs (p. 3569)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Mean model bias, Pearson correlation coefficient and RMSE as evaluation metrics",
+   "kind": "method",
+   "page": "3572"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However, no high-resolution study had systematically investigated cloud properties and their role on the near-surface climate conditions of the 79 N area.",
+   "page": "3568"
+  },
+  {
+   "quote": "the cloud effect over Greenland is spatially and temporally variable and high-resolution information on the northeast is absent",
+   "page": "3566"
+  }
+ ],
+ "limits": "No review file was supplied, although the acknowledgements thank two reviewers. The 44 sensitivity runs are not reported: their configurations and metrics are absent, so the selection criterion for 'best-performing' cannot be checked. No pre-set skill threshold defines 'sufficient accuracy'. Model–satellite mismatches are attributed mainly to satellite shortcomings without an independent reference such as lidar or radar. The authors themselves say they cannot separate model bias from validation-data error. The albedo bias was not resolved by the additional tests, and their results are not shown. Sub-claims and their statuses: (a) peak melt driven by net short-wave radiation and SHF under clear skies is best_explanation, read from the simulated energy partition with no counterfactual run; (b) cloud long-wave warming preconditioned and prolonged melt is best_explanation, though the preconditioning by JJA cloud anomalies is assumed ('It is assumed', p. 3583); (c) foehn winds triggered by an atmospheric river is a hypothesis with no status, checked only qualitatively against simulated station signatures; (d) the CRE and melt-energy values are estimates without stated uncertainty, and the albedo test shows they are sensitive to albedo. The study covers a single 2019 event, so generality is not shown. Composition is none_fits (inference): the walk is a model evaluation followed by a case-study diagnosis of one found event. It is not capability_first, because the question precedes the capability, and it is not trace_series, because there are no repeated independent traces. The interpretation that the sea-ice adjustment explains the coastal fog is inference by the authors.",
+ "disagreements": [
+  {
+   "target": "Hofer et al. (2017), decreased cloud shading in the ablation zone as the cause of enhanced melt",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The simulated CRE over the NEGIS was positive (long-wave warming) throughout the study period, and peak melt was driven by short-wave radiation and SHF from the anticyclone and foehn rather than by reduced cloud shading. The paper calls this 'contradictory', but it concerns a different region and period.",
+   "page": "3582",
+   "quote": "[...] Hofer et al. (2017), this analysis reveals that clouds had a permanent long-wave warming effect over the NEGIS during the study period."
+  },
+  {
+   "target": "Solomon et al. (2017), albedo threshold of about 0.8 between cloud warming and cooling",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The observed-albedo CRE test implies that positive net CRE persists at lower albedo, consistent with Wang et al. (2018, about 0.5).",
+   "page": "3583",
+   "quote": "In the present study setup, the boundary appears to comply with the latter one."
+  },
+  {
+   "target": "MODIS MOD35 and Fmask/Sentinel-2A cloud masks as validation over polar snow and ice",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Visual inspection of Sentinel-2A images and published evaluations (Kotarba 2020, Frantz et al. 2018, Chen et al. 2020) show missed thin clouds and bright-surface misclassification.",
+   "page": "3577",
+   "quote": "Mismatch in many instances is likely to be a consequence of the shortcomings of the satellite products in the polar regions."
+  },
+  {
+   "target": "ERA5 snow water equivalent and snow depth over northeast Greenland",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "ERA5 values of 2,000 kg m-2 and 10 m exceed measured summer snow heights reported by Pedersen et al. (2016) and Rasmussen et al. (2018), so the authors cap them in the initial conditions.",
+   "page": "3570",
+   "quote": "These exceed typical snow heights measured in summer"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Configuration in Table 1 (Morrison 2-moment, CAM radiation, MYJ PBL, Noah LSM, 5/1 km nest)",
+   "alternatives": "43 other sensitivity runs testing combinations of physics, dynamics and time-step [...]",
+   "reason": "best-performing configuration",
+   "effect_reported": "no",
+   "page": "3569"
+  },
+  {
+   "node": "N",
+   "chosen": "ERA5 as lateral and boundary forcing",
+   "alternatives": "four other reanalysis products compared by Graham et al. (2019)",
+   "reason": "ERA5 performed best of five reanalyses over the Arctic gateway (Graham et al. 2019)",
+   "effect_reported": "no",
+   "page": "3570"
+  },
+  {
+   "node": "N",
+   "chosen": "Snow water equivalent and snow depth capped at 300 kg m-2 and 1.0 m",
+   "alternatives": "Uncapped ERA5 values (2,000 kg m-2 and 10 m)",
+   "reason": "ERA5 overestimates summer snow; caps based on local observations and earlier 79 N studies",
+   "effect_reported": "no",
+   "page": "3570"
+  },
+  {
+   "node": "O",
+   "chosen": "Sentinel-2A and MODIS Terra cloud retrievals",
+   "alternatives": "CloudSat and other datasets",
+   "reason": "high spatial and temporal resolution for robust cloud detection at high latitudes",
+   "effect_reported": "no",
+   "page": "3571"
+  },
+  {
+   "node": "C",
+   "chosen": "Upper station KPC_U for the near-surface evaluation",
+   "alternatives": "Lower station KPC_L",
+   "reason": "better represents conditions over 79 N and the interior, and is far enough from the ice-sheet margin",
+   "effect_reported": "yes",
+   "page": "3573"
+  },
+  {
+   "node": "I",
+   "chosen": "Analysis over land only (ocean masked)",
+   "alternatives": "Including the ocean area in spatial averages",
+   "reason": "strong cloud contrast between land and sea, focus on surface melt, comparability with earlier studies",
+   "effect_reported": "no",
+   "page": "3577"
+  },
+  {
+   "node": "V",
+   "chosen": "Modelled surface albedo for the CRE calculation",
+   "alternatives": "Observed AWS albedo at KPC_U",
+   "reason": "test of the impact of the albedo bias",
+   "effect_reported": "yes",
+   "page": "3583"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Simulations were evaluated against the PROMICE and satellite observations, using the two grid points closest to the AWS coordinates and spatial averages, respectively.",
+   "page": "3572"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "However, it should be noted that radiative fluxes are simulated with higher skill at KPC_L",
+   "page": "3573"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Spatiotemporally averaged, cloud cover is highest (41.1%) in the simulations, followed by the results of Fmask (36.3%), and lowest in the MOD35 product (26.8%).",
+   "page": "3575"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Visual inspection of the Sentinel-2A images, however, revealed that some optically thin clouds were not detected.",
+   "page": "3575"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The best-performing configuration (Table 1) was chosen out of a set of 44 sensitivity runs",
+   "page": "3569"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To determine the impact of the bias in the surface albedo on the calculation of CRE, a test was conducted",
+   "page": "3583"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "[...] proven the good performance of the Morrison 2-moment microphysics in the polar regions",
+   "page": "3577"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "A positive CRE of a similar range had previously been observed at KPC_L and KPC_U during May to August 2008–2013 by Wang et al. (2019).",
+   "page": "3582"
+  }
+ ]
+}

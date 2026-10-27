@@ -1,0 +1,371 @@
+{
+ "key": "g22_W4205944540",
+ "doi": "10.1002/nsg.12196",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chernyshov, Duchkov & Koulakov 2022, Near Surface Geophysics 20, 135-146 (published paper, PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Here we revisit the problem of weighing the elements of the model vector (unknown model perturbations)",
+  "page": "136"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chernyshov, Duchkov & Koulakov 2022, Near Surface Geophysics 20, 135-146",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Ask how the weighting (parameterization) of the model-perturbation vector affects the resolution and accuracy of near-surface refraction tomography.",
+     "page": "136",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we revisit the problem of weighing the elements of the model vector"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "From the linearized traveltime equation and diagonal right-preconditioning, derive that the velocity parameterization should be less sensitive to deep anomalies than the slowness parameterization, because the reference velocity increases with depth.",
+     "page": "136",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in the velocity parameterization is less sensitive to deep anomalies in the model parameters"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "methods",
+     "action": "Generalize the scaling to a family w = 1/v0^σ and set out three variants as rivals: slowness (σ = 0), velocity (σ = 2) and a new intermediate one (σ = 1).",
+     "page": "137",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We compare three variants of the model parameterization using the scaling rule described in equation (6)"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the synthetic tests: iterative tomography after Koulakov et al. (2010) with a fast-sweeping eikonal solver and LSQR, ten iterations, and a common initial gradient model. Smoothing and damping were tuned separately for each parameterization.",
+     "page": "138",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Optimal smoothing and damping parameters were chosen separately for each model parameterization"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set the conditions of the first synthetic test: a checkerboard of ±10% anomalies on a linear velocity gradient, small cells shallow and large cells deep, with engineering-seismology acquisition geometry and topography.",
+     "page": "138",
+     "move": "new",
+     "trigger": "author",
+     "quote": "anomaly amplitudes were ±10% of the reference linear gradient of increasing velocity"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Invert the synthetic traveltimes with the two classic parameterizations, velocity and slowness.",
+     "page": "138",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We performed tomographic inversion for two classic model parameterizations"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the recovered models with the true checkerboard: velocity recovers the shallow part better and slowness the deeper part, as the derivation expected.",
+     "page": "138-139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "provides better results for the shallow part (small rectangles are better recovered)"
+    },
+    {
+     "n": 8,
+     "node": "R",
+     "mode": "methods",
+     "action": "Given the depth trade-off, try the intermediate σ = 1 (1/v0) weighting and invert the checkerboard with it (Fig. 1d).",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "So it looks natural to try intermediate value"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compute the mean absolute error against the true model in shallow and all-depth regions (Table 1). The new parameterization is near the best in both regions.",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These quantitative estimates confirm that our new parameterizations give the optimal result everywhere."
+    },
+    {
+     "n": 10,
+     "node": "X",
+     "mode": "methods",
+     "action": "Test a further rival that alternates between velocity and slowness at each iteration, and set it aside because it does not beat the new parameterization (Table 1).",
+     "page": "139",
+     "move": "new",
+     "trigger": "author",
+     "quote": "such an alternating strategy does not perform better than our new parameterization"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the synthetic model and compare all four parameterizations by mean absolute error: a smooth checkerboard (Figs 2-3), an uplifted block with error per iteration (Figs 4-5), a sharp boundary, and vertical and horizontal anomalies (Fig. 6). Further tests are in the Supporting Information.",
+     "page": "139-141",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results confirm our overall conclusion that the new parameterization (New) provides optimal results"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take a real engineering-seismology dataset (P- and S-wave first breaks along an 800 m profile at a planned tunnel site) as a test.",
+     "page": "141",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a real dataset from an engineering-seismology survey conducted in the area of perspective tunnel construction was used as a test"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Invert the P- and S-wave traveltimes with all four parameterizations to obtain Vp models and Vs/Vp ratios (Figs 7-9).",
+     "page": "141",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We performed tomographic inversion of P- and S-wave traveltimes for all model parameterizations discussed earlier."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the mean traveltime misfits across parameterizations. The new parameterization gives the lowest P and S misfits.",
+     "page": "142",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The best traveltime misfit is reached when we use our new parameterization."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the plausibility of each real-data model against the physical bound Vs/Vp ≤ 0.7 and a priori geology. The velocity, slowness and alternating results show artefacts, very smooth models or non-geologic anomalies; the new parameterization does not.",
+     "page": "142-143",
+     "move": "new",
+     "trigger": "author",
+     "quote": "contains many small anomalies with values exceeding 0.7, which is not physically reasonable."
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Interpret the low Vs/Vp anomalies in the new-parameterization model as two water-saturated loosened or fractured zones, and advise against tunnel construction without further drilling.",
+     "page": "143",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the seismic survey revealed two zones of loosened water-saturated zones in the gabbro–diorite layer"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim: velocity suits shallow-only anomalies, slowness suits deep-only anomalies, and the new parameterization gives optimal resolution at all depths with good ray coverage.",
+     "page": "144",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the general case, the new parameterization provides optimal results with good resolution of the recovered velocity anomalies at all depths"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Parameterization weighting changes the depth sensitivity of linearized refraction tomography",
+   "mode_called": "theory"
+  },
+  {
+   "question": "2",
+   "answer": "No; velocity structure is inferred by traveltime inversion",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Choose a parameterization with balanced shallow and deep accuracy",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Velocity, slowness, new 1/v0, and alternating parameterizations",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; theory predicts velocity weaker at depth and slowness weaker shallow",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Set: synthetic models with known truth; plus one real dataset",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across five or more synthetic models and the real-data misfit",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "New parameterization kept as optimal general choice",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Weighting the model perturbations by 1/v0 (σ = 1, between velocity and slowness) gives balanced resolution and minimal or near-minimal reconstruction error at all depths in synthetic tests, and the lowest traveltime misfit on a real near-surface dataset.",
+  "page": "144"
+ },
+ "decisive_move": {
+  "node": "H",
+  "mode": "methods",
+  "sentence": "Recasting the parameterization as a diagonal scaling family w = 1/v0^σ, with velocity and slowness as end members, is what yields the intermediate σ = 1 parameterization the claim rests on.",
+  "page": "136-137"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "evidence": "The derived expectation (velocity weaker at depth, step 2) shaped the synthetic checkerboard with shallow and deep anomaly regions (p. 138). The new parameterization, however, was introduced after seeing the first comparison (p. 139). The real dataset was an existing engineering survey, not acquired for the hypothesis (p. 141). For the claim, each synthetic test compared errors against a known true model, so the new parameterization could have lost: it is not best in the shallow region of Table 1 and ties in one test (pp. 136, 140). For registration, smoothing and damping were tuned per parameterization against residuals and visual stability (p. 138), and no analysis was fixed in advance.",
+  "claim": "yes",
+  "registration": "no"
+ },
+ "imports": [
+  {
+   "field": "numerical linear algebra",
+   "item": "LSQR sparse least-squares solver (Paige and Saunders 1982)",
+   "kind": "method",
+   "page": "138"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "fast-sweeping method for eikonal equations (Zhao 2005)",
+   "kind": "method",
+   "page": "138"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "right-preconditioning / diagonal scaling of the model space",
+   "kind": "concept",
+   "page": "136"
+  },
+  {
+   "field": "biomedical imaging",
+   "item": "discrete tomography parameterization (Varga et al. 2015), cited as prior parameterization",
+   "kind": "concept",
+   "page": "135"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We suggest a new parameterization (in-between the velocity and the slowness)",
+   "page": "135"
+  },
+  {
+   "quote": "We also propose an alternative model parameterization that is advantageous for recovering shallow and deep anomalies of seismic velocities.",
+   "page": "136"
+  }
+ ],
+ "limits": "No review file was supplied, so the review sequence is absent.\n\nSmoothing and damping were tuned separately for each parameterization by residuals and visual stability (p. 138). Inference: part of the performance difference may reflect tuning rather than parameterization, and the paper does not report the tuned values.\n\nOnly σ = 0, 1 and 2 were tested; no other intermediate σ values are reported (inference).\n\nThe new parameterization is not uniformly best. In Table 1 it is slightly worse than velocity in the shallow region (20.9 vs 20.7 m/s), and for the horizontal anomaly it ties with alternating (p. 140). Errors for the smooth checkerboard are described but not shown (p. 140).\n\nThe real-data example has no ground truth such as boreholes. Its evaluation rests on traveltime misfit and plausibility against the Vs/Vp ≤ 0.7 bound and a priori geology. Data are available only on request (p. 145).\n\nSub-claims at other statuses:\n- The depth-dependent sensitivity of velocity versus slowness parameterizations is a regularity_in_range, holding within the tested synthetic models and gradient-type reference models.\n- The site interpretation (two water-saturated zones, tunnel not recommended) is a best_explanation.\n\nNo uncertainty estimates are given for the recovered models.\n\nComposition is none_fits: this is a method benchmark against synthetic truth. The rivals are parameterizations, not explanations, and velocity and slowness are restricted to depth domains rather than excluded, so strong inference does not fit cleanly.",
+ "disagreements": [
+  {
+   "target": "standard velocity and slowness parameterizations used in the literature (Zelt, 2011)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The derivation and synthetic tests show that each classic parameterization biases resolution toward shallow (velocity) or deep (slowness) parts, which can produce large errors; an intermediate weighting performs better in general.",
+   "page": "135",
+   "quote": "This affects the inversion results and can lead to large errors."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "new intermediate parameterization (σ = 1, w = 1/v0)",
+   "alternatives": "velocity parameterization (σ = 2), slowness parameterization (σ = 0), alternating velocity/slowness each iteration",
+   "reason": "minimal or near-minimal mean absolute error at all depths in synthetic tests and lowest traveltime misfit on real data",
+   "effect_reported": "yes",
+   "page": "137-142"
+  },
+  {
+   "node": "D",
+   "chosen": "smoothing and damping parameters chosen separately for each parameterization",
+   "alternatives": "other smoothing and damping values (not specified)",
+   "reason": "minimal traveltime and velocity residuals, and visual assessment of the solution stability",
+   "effect_reported": "no",
+   "page": "138"
+  },
+  {
+   "node": "D",
+   "chosen": "initial model with a slightly higher velocity gradient",
+   "alternatives": "lower velocity gradient for the initial model",
+   "reason": "results in deeper diving rays, that is better ray coverage with depth",
+   "effect_reported": "no",
+   "page": "138"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "comparative values are the same as in Table 1 so we do not show them here",
+   "page": "140"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "One can see that the new parameterization (New) shows the minimum error.",
+   "page": "140"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The results confirm our overall conclusion that the new parameterization (New) provides optimal results",
+   "page": "140"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Additional tests can be found in the Supporting Information.",
+   "page": "141"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "a real dataset from an engineering-seismology survey conducted in the area of perspective tunnel construction was used as a test",
+   "page": "141"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "contains many small anomalies with values exceeding 0.7, which is not physically reasonable.",
+   "page": "142"
+  }
+ ]
+}

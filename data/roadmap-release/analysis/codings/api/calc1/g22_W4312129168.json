@@ -1,0 +1,498 @@
+{
+ "key": "g22_W4312129168",
+ "doi": "10.1038/s41598-022-25839-2",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Hirano, Kawakata & Doi 2022, Scientific Reports 12:22090, published PDF (9 pages)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page counted from 1 in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "we have no unified or objective algorithm to assume an appropriate threshold value",
+  "page": "§2.3 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), with PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors ask what distribution the tails of the cross-correlation coefficient (CC) follow, because event detection is outlier detection and current matched-filter thresholds are subjective.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "do they follow the Gaussian, exponential, or power-law?"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They take from earlier matched-filter studies the assumption that CC is Gaussian, which those studies used to compute false-positive rates.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the Gaussian distribution has been assumed, and the possibility of false positives was calculated under this assumption"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "They derive analytically that CC between an i.i.d. random record and any template of length d follows N(0, 1/d), by analogy with a d-dimensional Maxwell-Boltzmann distribution (Supplement A).",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the PDF of CC can be approximated by extending the Maxwell-Boltzmann distribution from 3-dimensional to"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "theory",
+     "action": "They check the derivation with ten numerical experiments (random waveform of length 10^8, random template d = 500), both raw and band-pass filtered; CC stays normal.",
+     "page": "§2.1 ¶1; Figure 1 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After ten experiments, we confirmed that CC follows the normal distribution"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "From the filtered experiment they set the null reference for real data: with a 5–30 Hz filter on 100 Hz series the CC variance rises to 1.8/d.",
+     "page": "§2.1 ¶1; Figure 1 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "because narrowing the frequency band may increase the variance"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "theory",
+     "action": "They argue that coherent noise or repeating events break the i.i.d. assumption. They propose that maxima of CC in every M-sample interval follow the GEV distribution, approximated by the Gumbel limit.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Theoretically, it has been shown that the frequency of the maxima of any distribution in every interval follows the Generalized Extreme Value (GEV) distribution"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build an AIC-based outlier detector (after Ueda, Kitagawa) with a Gumbel null instead of a normal one. They approximate dAIC for large N and prove it increases monotonically, giving a stopping rule at s0 (schematic, Fig. 2).",
+     "page": "§2.3 ¶1–¶3; Figure 2 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We assume the Gumbel distribution and calculate the difference in AIC when we increase the number of suspects"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "They refer to a supplementary check of how much the maximum-likelihood parameters change when s outliers are removed, a premise of the dAIC approximation.",
+     "page": "§2.3 ¶3 (Supplement C)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "see also Supplement C on its effect"
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "observation",
+     "action": "They choose a natural case: 27 JMA-catalogued foreshocks within 1 km of an M5.4 2011 Nagano mainshock, surrounded by four Hi-net stations within 10 km.",
+     "page": "§3.1 ¶1; Figure 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "27 small foreshocks were recorded within 13 h before the mainshock"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "They compute network CC (NCC) between the 27 templates (5 s, 12 channels) and two years of 5–30 Hz filtered continuous records, removing the daily instrument health-check signals.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We thus calculated the Network Cross-correlation Coefficient (NCC) among template waveforms due to the 27 events and 2-year continuous waveforms"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare the normalized NCC histograms with the standard normal in semi-log. The tails are linear and exceed the normal by over 100 times at 7σ and 10^4 times at 8σ, implying coherent, non-i.i.d. microtremor.",
+     "page": "§3.2 ¶1; Figure 4 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the tails of the NCC histograms appear to be linear in the semi-log plot and significantly different from the theoretical distribution"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "hypothesis",
+     "action": "They check weekly NCC statistics against the filtered-random-noise reference σ; the weekly σ is consistently higher.",
+     "page": "§3.2 ¶1; Figure 5 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Weekly statistics of NCC histograms (Fig. 5) show that the standard deviation is higher than the case of the random waveform"
+    },
+    {
+     "n": 13,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They reject the Gaussian null for real NCC and conclude that 8σ thresholds under a normal assumption severely underestimate false positives.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the possibility of false positives may be severely underestimated if we set the threshold value as"
+    },
+    {
+     "n": 14,
+     "node": "D",
+     "mode": "methods",
+     "action": "Because coherence makes neighbouring high values near-duplicates, they decide to test the distribution of NCC maxima instead of all NCC values.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we should refer to the distribution of the maxima of NCC that is less sensitive to coherence"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They fit the Gumbel distribution by maximum likelihood to per-minute NCC maxima for each template over two years and apply the AIC rule. This selects 21 outliers across 10 templates.",
+     "page": "§3.3 ¶1; Figure 6 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In total, we could select 21 outliers according to Fig. 6"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "observation",
+     "action": "They merge outliers within 1 s into events and compare them with the JMA catalog. The 21 outliers are four uncatalogued events, with amplitudes 10–20% of the templates, including a triplet 3–4 days before the mainshock.",
+     "page": "§3.3 ¶1; Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Finally, we could detect four new events"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "theory",
+     "action": "They compare the fitted Gumbel with the cumulative maxima; the misfit is mostly below tenfold, which supports false-positive estimates under the Gumbel model.",
+     "page": "§4 ¶1; Figure 6 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the differences between the distribution and the cumulative number of data are almost less than tenfold (Fig. 6)"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "They cross-check detections across templates: values rejected for templates No.01 and No.06 correspond to events A–D found with other templates. This shows that the criterion can reject real, non-noise waveforms.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the rejected third-, fifth-, and sixth-largest CC for the template No.06 correspond to ID = C, B, and D, respectively"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state two unresolved readings of the low count of four detections: true quiescence before the foreshocks, or an overly strict method.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the hypocentre region had been quite inactive before the foreshock activity or our method is excessively strict"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the claim that, under either reading, the method detects similar events missed by the JMA catalog.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our method has a higher detection ability than JMA in that term, at least for similar seismic events"
+    },
+    {
+     "n": 21,
+     "node": "R",
+     "mode": "theory",
+     "action": "They qualify the Gumbel model: it may not be the best, Fréchet or Weibull limits may fit better, and full three-parameter GEV estimation with outliers is left for future work.",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Gumbel distribution is not necessarily the best model"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude with an objective matched-filter technique: CC maxima fitted by Gumbel, plus an AIC outlier rule.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose a reasonable method less sensitive to arbitrariness than a conventional thresholding method for detecting outlier seismic signals"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Heavy, linear (semi-log) tails of NCC above the Gaussian; seismic signals as outliers",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; outliers inferred against a fitted Gumbel null",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "An objective threshold for matched-filter detection",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Gaussian null (i.i.d. noise) versus extreme-value (Gumbel) model of interval maxima",
+   "mode_called": "theory"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: the Gaussian predicts a parabola in semi-log, the Gumbel a linear falloff",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural foreshock sequence and two-year Hi-net records",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Partly: 27 templates repeat the analysis over the same record",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: numerical tests of the null, weekly statistics, cross-template checks; one data set, interval length not varied",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Gaussian null rejected for real NCC; Gumbel-AIC method kept as a characterized capability",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An AIC outlier rule applied to Gumbel-fitted per-interval maxima of network cross-correlation gives an objective matched-filter threshold, which found four JMA-uncatalogued events in two years of Hi-net records.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Replacing the normal null in Ueda's AIC outlier elimination with a Gumbel distribution of interval maxima, with a monotone dAIC stopping rule, is what yields the objective threshold.",
+  "page": "§2.3 ¶1–¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the case and the two-year record were chosen for station geometry around a catalogued foreshock sequence, not directed by the Gumbel hypothesis (§3.1 ¶1). Claim: the Gaussian null could have fitted the NCC tails and did not (§3.2 ¶1). The detector itself was not tested against ground truth (no synthetic injections or known-event recovery); the authors admit it may be 'excessively strict' (§4 ¶2). Registration: nothing is stated as fixed in advance; the Gumbel choice is justified partly by the data's linear falloff 'as confirmed in the next section' (§2.2 ¶1), and the 1-min interval was chosen for computational time (§4 ¶3)."
+ },
+ "imports": [
+  {
+   "field": "statistical physics",
+   "item": "Maxwell-Boltzmann distribution extended to d dimensions to derive the CC distribution",
+   "kind": "concept",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Extreme value theory: GEV and Gumbel distributions of interval maxima (Gumbel 1958; Coles 2001)",
+   "kind": "concept",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Akaike's Information Criterion (Akaike 1973)",
+   "kind": "method",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "field": "applied statistics / bioinformatics",
+   "item": "AIC-based outlier elimination (Kitagawa 1979; Ueda 1996/2009; Marmolejo-Ramos et al. 2015; Kadota et al. 2003)",
+   "kind": "method",
+   "page": "§2.3 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "to propose a new method to determine an objective threshold based on theories of the extreme value statistics",
+   "page": "§1 ¶1"
+  },
+  {
+   "quote": "Finally, we could detect four new events",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "quote": "may provide us with new insight for considering the preparation process of the mainshock",
+   "page": "§3.3 ¶1"
+  }
+ ],
+ "limits": "Sub-claims and their statuses. That real NCC tails depart from the Gaussian null is excluded against data for this case (§3.2 ¶1). That interval maxima follow the Gumbel distribution is at most regularity_in_range: one region and one foreshock sequence, and the authors note deviations (§4 ¶4). The four uncatalogued events are detections, not confirmed, with no independent location or catalog check beyond JMA absence (§3.3 ¶1). Not shown: no synthetic-injection or known-event recovery test of detection power or false-positive rate; no side-by-side run of a conventional (8σ or MAD) threshold on the same data; the 1-min interval length and the 5–30 Hz band were not varied; no second data set. Supplements A–C were not supplied. The Supplement C check (step 8) is coded from the main-text pointer, so its content is inferred. Composition is none_fits: this is a method-development paper. A single null rival (Gaussian) is excluded by one comparison, and a case study demonstrates the capability. It is not capability_first, because the question and the rival precede the capability. No review file was supplied, so there is no review sequence; triggers come from the published text only.",
+ "disagreements": [
+  {
+   "target": "Matched-filter studies using constant or unspecified thresholds (refs 7, 9, 10)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argument that random microtremor can produce high CC, so thresholds should depend on the empirical CC distribution.",
+   "page": "§1 ¶1",
+   "quote": "The threshold value has occasionally been defined as a constant9,10 or not specified7"
+  },
+  {
+   "target": "Studies assuming Gaussian CC and judging fit on linear-scale histograms (refs 2–4)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argument that tails are invisible on a linear scale; Figure 4 then shows the real NCC tails exceed the Gaussian by up to 10^4 at 8σ.",
+   "page": "§1 ¶1",
+   "quote": "[...] a Gaussian curve overlapping the histogram of CC in a linear scale is insufficient"
+  },
+  {
+   "target": "8σ thresholds under a normal assumption (Aso et al. 2011; Kato et al. 2012)",
+   "kind": "method",
+   "stance": "contradicts",
+   "support": "Empirical NCC histograms over two years show heavy linear tails and a weekly σ above the random-noise reference.",
+   "page": "§3.2 ¶1",
+   "quote": "the possibility of false positives may be severely underestimated if we set the threshold value as"
+  },
+  {
+   "target": "Akuhara & Mochizuki (2014), top 5% of CC as signals",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Argument that values following the background extreme-value distribution are noise, and signals must be outliers from it.",
+   "page": "§1 ¶1",
+   "quote": "However, they12 considered the top 5% of CC values significant seismic signals even though the values obeyed the extreme value distribution"
+  },
+  {
+   "target": "Ueda's normal-based AIC outlier method",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Citing Marmolejo-Ramos et al. (2015), the normal version over-detects for positively skewed data, so the Gumbel is substituted.",
+   "page": "§2.3 ¶2",
+   "quote": "the original method tends to be sensitive and detect too many values as outliers if the true distribution is positively skewed"
+  },
+  {
+   "target": "JMA unified earthquake catalog",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Four similar events detected in 2011 are absent from the JMA catalog.",
+   "page": "§4 ¶2",
+   "quote": "[...] detection of four uncataloged events shows that our method has a higher detection ability than JMA in that term"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "Gumbel (two-parameter) approximation of interval maxima",
+   "alternatives": "Full three-parameter GEV; Fréchet or Weibull limits",
+   "reason": "Linear falloff in semi-log plots; three-parameter MLE of GEV is technically challenging (Supplement B)",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1; §4 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "Gumbel PDF as the null in the AIC outlier rule",
+   "alternatives": "Normal distribution as in Ueda's original method",
+   "reason": "The original method over-detects for positively skewed distributions",
+   "effect_reported": "no",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Approximate dAIC for large N",
+   "alternatives": "Direct calculation of AIC (Eq. 4)",
+   "reason": "log (N−s)! is uncalculatable for N ~ 10^6",
+   "effect_reported": "no",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Maxima of NCC in each interval",
+   "alternatives": "All NCC values",
+   "reason": "Coherence makes high values repeat near peaks and widens the tail",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶1; §3.2 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "5–30 Hz band-pass filter",
+   "alternatives": "15–40 Hz filter used by Doi & Kawakata",
+   "reason": "Depends on the spectra of the template waveforms",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "1-min interval (6000 samples) for maxima",
+   "alternatives": "Shorter intervals such as 5 s (500 samples), or longer intervals",
+   "reason": "Computational time; trade-off between GEV convergence and temporal resolution",
+   "effect_reported": "no",
+   "page": "§4 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Pool the full two years in one distribution",
+   "alternatives": "Separate periods (around the 2011 Tohoku earthquake; diurnal, nocturnal, seasonal)",
+   "reason": "Sufficient data needed to study tails; no objective method to separate terms",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2; §4 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "After ten experiments, we confirmed that CC follows the normal distribution",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we can conclude that CC follows the normal distribution even after applying the band-pass filter if the continuous waveform is random",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "see also Supplement C on its effect",
+   "page": "§2.3 ¶3 (Supplement C)"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Weekly statistics of NCC histograms (Fig. 5) show that the standard deviation is higher than the case of the random waveform",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the rejected third-, fifth-, and sixth-largest CC for the template No.06 correspond to ID = C, B, and D, respectively",
+   "page": "§4 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Such modelling was also done12 for long-term waveform data recorded by [...] .",
+   "page": "§1 ¶1"
+  }
+ ]
+}

@@ -1,0 +1,521 @@
+{
+ "key": "g22_W4224110642",
+ "doi": "10.1111/1365-2478.13199",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Liu, Huff, Luo, Jin & Simmons (2022), Convolutional neural network-based classification of microseismic events originating in a stimulated reservoir from distributed acoustic sensing data, Geophysical Prospecting 70, 904–920 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Estimations of microseismic event locations from surface arrays are often unreliable because of large uncertainties in event depth",
+  "page": "905"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Liu et al. 2022, Geophysical Prospecting 70, 904–920 (published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the task of automatically classifying microseismic events as originating inside or outside the target Eagle Ford reservoir, given unreliable event depths.",
+     "page": "905",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we focus on applying machine learning algorithms towards automatic classification of microseismic events inside and outside of a stimulated (or targeted) shale formation"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take from the authors' earlier work the premise that guided waves are strong only when source and receivers lie within or near the low-velocity Eagle Ford, which makes the task a binary guided-wave detection.",
+     "page": "906",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "guided waves are only strong when microseismic events, and the receivers that detect them, are within or close to the low-velocity zone"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble the field DAS records from a 2015 stimulation, cut 1-s windows from the surface catalogue, select 346 events by amplitude threshold and 198 high-SNR events by eye, and preprocess them with a median filter and a 10–80 Hz bandpass.",
+     "page": "906",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We refer to these two datasets as the high-SNR subset (198 events) and the complete dataset including low-SNR events (346 events)."
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Generate 300 synthetic DAS seismograms by 2D P-SV anisotropic finite-difference modelling in a three-layer VTI model, with double-couple sources at depths inside and outside the Eagle Ford. The VTI choice is justified by the similarity in frequency–phase velocity space shown in Luo et al. 2021.",
+     "page": "907",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Finite difference modelling is used to solve the 2D P-SV anisotropic elastic wave equation"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Augment the synthetics with amplitude scalars and 12 event-free field noise profiles to build 36,000 training images, split 80/20 into training and validation sets.",
+     "page": "910",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This augmentation process yields a training dataset of 36,000 images in total."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Use the baseline two-layer LeNet-5-style CNN from the authors' previous study, built in TensorFlow, with hyperparameters tuned on the synthetic validation set.",
+     "page": "911",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "In our previous study (Liu et al., 2021), a baseline CNN (two convolutional layers) based on the LeNet-5 architecture"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare baseline CNN classifications of the high-SNR field subset against human labels of guided-wave presence using a confusion matrix, accuracy and F1-score.",
+     "page": "911",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The baseline CNN model achieved an accuracy of 0.82 and a weighted F1-score of 0.82"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Test the baseline CNN on the complete 346-event dataset, where accuracy drops to 0.73.",
+     "page": "912",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Perhaps expectedly, there is a significant drop in accuracy compared to the testing on the high-SNR subset."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply Grad-CAM to high- and low-SNR field events and find that on low-SNR events activation falls off the guided wave, diagnosing overfitting to noise.",
+     "page": "912",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This Grad-CAM analysis indicates that the initial CNN is often not able to make the correct classification due to the low SNR of certain events."
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revise the architecture (three convolutional layers, 10x10 kernels, batch normalization, lower dropout, fewer filters, robust scaling, Adam optimizer, 10 epochs), reaching 0.98 training and validation accuracy.",
+     "page": "912",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Based on the findings from the Grad-CAM analysis and confusion matrix evaluation, the CNN was updated"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Test the final CNN on the field data: accuracy rises to 0.85 on the high-SNR subset but only to 0.74 on the complete dataset.",
+     "page": "914",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the accuracy only increases slightly from 0.73 to 0.74"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Add a non-local means filter (scikit-image, four search windows, 7x7 patches) to the field-data preprocessing to suppress random and coherent noise.",
+     "page": "914",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "additional processing of the field data is necessary to further improve the result"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Classify the noise-attenuated complete dataset with the final CNN and compare with human labels.",
+     "page": "914",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The classification accuracy is improved from 0.74 to 0.80 when the non-local means filter is applied to the data."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Ablation: run the baseline CNN on the noise-attenuated data (accuracy 0.69) to separate the effect of the architecture from the effect of the filter.",
+     "page": "914",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This confirms the improvement caused by updating the architecture of the CNN."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare Grad-CAMs of a low-SNR event before and after the update (baseline without filter versus final CNN with filter) to check that the network now attends to the guided wave.",
+     "page": "914",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The stronger class activation intensity on the noise-attenuated data demonstrates that the CNN is now able to identify the guided wave more effectively"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Try an alternative denoiser, the curvelet transform (PyLops), which improves accuracy only to 0.76.",
+     "page": "915",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "This improved the classification accuracy using the final CNN from 0.74 to 0.76"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the CNN against the image-masking method of Huff et al. (2020): concede that method's higher accuracy and argue the CNN's speed and generalizability.",
+     "page": "916",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to achieve higher accuracy in guided wave classification compared to the CNN"
+    },
+    {
+     "n": 18,
+     "node": "S",
+     "mode": "theory",
+     "action": "Argue from the cos²θ axial-strain sensitivity of DAS that 2D modelling is an adequate approximation of 3D source geometries.",
+     "page": "916",
+     "move": "new",
+     "trigger": "author",
+     "quote": "2-D modelling adequately approximates results from events outside of the vertical plane of the fibre"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the final accuracies with published CNN results on DAS event identification (Stork et al. 2020) and footstep detection (Jakkampudi et al. 2020).",
+     "page": "917",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are comparable to similar studies on microseismic event identification (0.80 in Stork et al., 2020)"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check from the confusion matrices that the gains come from more true-positive (Eagle Ford) classifications, not only from true negatives, as evidence that the network detects guided waves rather than noise.",
+     "page": "917",
+     "move": "new",
+     "trigger": "author",
+     "quote": "true positive (Eagle Ford) classifications increased significantly after the updating of the CNN architecture and denoising steps"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the workflow as an effective automatic classifier: accuracy 0.85 on the high-SNR subset and 0.80 on the complete dataset against human labels.",
+     "page": "918",
+     "move": "new",
+     "trigger": "author",
+     "quote": "On a high signal-to-noise ratio (SNR) subset of the data (198 events), the final CNN obtains a classification accuracy of 0.85"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Guided waves in DAS records mark events in or near the low-velocity Eagle Ford; established in the authors' earlier work",
+   "mode_called": "theory"
+  },
+  {
+   "question": "2",
+   "answer": "No: formation of origin is not observed; it is read from guided-wave presence, labelled by human inspection",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize an automatic CNN classifier of in-reservoir versus out-of-reservoir events",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; rival methods only (image masking of Huff 2020, baseline CNN, curvelet denoising)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Synthetics predict guided-wave energy for in-formation sources and its absence for distant sources",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: field microseismic events during hydraulic stimulation, recorded in 2015",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: architecture ablation, alternative denoiser and Grad-CAM checks; no independent field dataset",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Capability characterized: accuracy 0.85 (high SNR) and 0.80 (all events) against human labels",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A CNN trained on 2D anisotropic synthetic seismograms overlain with real DAS noise, combined with non-local means denoising, classifies field microseismic events as inside or outside the Eagle Ford with accuracy 0.85 on the high-SNR subset and 0.80 on all 346 events, measured against human labels of guided-wave presence.",
+  "page": "918"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "Without the finite-difference synthetics of in- and out-of-formation events overlain with real noise, there would be no training set, because field data were too few to train the CNN.",
+  "page": "907"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The guided-wave premise directed the design of the synthetic training data (source depths inside and outside the Eagle Ford), but the field data were acquired in 2015 independently of it. The classifier faced a test it could fail against human labels, and the baseline did fail on low-SNR data (0.73). Nothing was fixed in advance: the architecture and the denoising filter were chosen after seeing field-test accuracy (p. 912–914)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Convolutional neural networks (LeNet-5, AlexNet lineage) for image classification",
+   "kind": "method",
+   "page": "905"
+  },
+  {
+   "field": "photonics",
+   "item": "Fibre-optic distributed acoustic sensing (Rayleigh backscatter interrogator)",
+   "kind": "instrument",
+   "page": "905"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "TensorFlow library",
+   "kind": "method",
+   "page": "911"
+  },
+  {
+   "field": "information science",
+   "item": "Confusion matrix, accuracy and F1-score (Sokolova & Lapalme 2009)",
+   "kind": "method",
+   "page": "911"
+  },
+  {
+   "field": "computer vision",
+   "item": "Gradient-weighted class activation mapping (Grad-CAM)",
+   "kind": "method",
+   "page": "912"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Batch normalization and Adam optimizer",
+   "kind": "method",
+   "page": "913"
+  },
+  {
+   "field": "image processing",
+   "item": "Non-local means filter (Buades et al. 2005; scikit-image)",
+   "kind": "method",
+   "page": "914"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "Curvelet transform (PyLops)",
+   "kind": "method",
+   "page": "915"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Transfer learning",
+   "kind": "concept",
+   "page": "916"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The paper makes no explicit 'first' or 'previously unknown' claim, so novelty_claims is empty. Ground truth is human visual labelling of guided-wave presence, not independent event locations. The classifier is therefore validated as a guided-wave detector, and the formation-of-origin claim rests on the inherited premise (Huff et al. 2021), which is not tested here. Inference: the same field test sets (198 and 346 events) were used repeatedly to choose the architecture and the denoiser, so the reported accuracies are not on held-out field data. No independent field dataset or other reservoir is tested; generalizability through transfer learning is asserted, not shown. The baseline confusion matrix (Fig. 6a) is attributed to Liu et al. 2021, so whether that test was rerun here is unclear. The text states class shares of 40% and 50% (summing to 90%). Fig. 10c gives 254/346 = 0.734, while the text reports 0.74 for the final CNN without filter. The VTI-versus-isotropic similarity to field data is shown in Luo et al. 2021, not here. The 2D-versus-3D adequacy is argued, not tested. No review file was supplied; the acknowledgements mention reviewers, but their requests are unknown. Composition is none_fits: the walk is an engineering build–test–diagnose–refine loop against a labelled benchmark (capability characterization by iterative refinement), with no rival hypotheses, no exploration phase, and no frozen forecast.",
+ "disagreements": [
+  {
+   "target": "Huff et al. (2020) image-masking amplitude method in frequency–phase velocity space",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors concede that the earlier method achieved higher accuracy, but argue that the CNN avoids domain transforms, enabling real-time use, and needs no manual mask redrawing in new environments.",
+   "page": "916",
+   "quote": "to achieve higher accuracy in guided wave classification compared to the CNN"
+  },
+  {
+   "target": "CNN architecture of Binder & Tura (2020) and LeNet-5 small kernels",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Grad-CAM and accuracy drops on low-SNR data motivate fewer filters, lower dropout, larger kernels and batch normalization; the ablation shows the baseline at 0.69 versus the final CNN at 0.80 on denoised data.",
+   "page": "912",
+   "quote": "Compared to the architecture used by Binder and Tura (2020), the number of filters in the later convolutional layers is reduced"
+  },
+  {
+   "target": "Microseismic preprocessing workflows (Consolvo & Thornton 2020; Liang et al. 2009; Titov et al. 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that their bandpass, median and non-local means steps are simpler and quicker than workflows needing extensive parameter testing; no direct comparison is run.",
+   "page": "915",
+   "quote": "these preprocessing workflows often include noise reduction (f–x deconvolution, dip filtering etc.) and velocity correction steps that require extensive and time-consuming parameter [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Synthetic training data",
+   "alternatives": "Field data for training",
+   "reason": "Lack of an adequate number of field data",
+   "effect_reported": "no",
+   "page": "907"
+  },
+  {
+   "node": "S",
+   "chosen": "2D finite-difference modelling",
+   "alternatives": "3D modelling",
+   "reason": "Far less computationally expensive, practical for many training images; later argued adequate via DAS cos²θ response",
+   "effect_reported": "no",
+   "page": "907"
+  },
+  {
+   "node": "S",
+   "chosen": "P-SV guided-wave modelling",
+   "alternatives": "SH (Love-type) wave modelling",
+   "reason": "P-SV seismograms more accurately approximated the field data (Luo et al. 2021)",
+   "effect_reported": "no",
+   "page": "907"
+  },
+  {
+   "node": "S",
+   "chosen": "VTI anisotropic Eagle Ford",
+   "alternatives": "Isotropic Eagle Ford",
+   "reason": "Greatly improves similarity between field and synthetic guided-wave modes",
+   "effect_reported": "yes",
+   "page": "909"
+  },
+  {
+   "node": "N",
+   "chosen": "Event-free random field noise profiles for augmentation",
+   "alternatives": "Noise from the event records themselves (implied)",
+   "reason": "Avoids the CNN learning similar noises instead of guided waves",
+   "effect_reported": "no",
+   "page": "910"
+  },
+  {
+   "node": "Q",
+   "chosen": "CNN on seismogram images",
+   "alternatives": "Image-masking in frequency–phase velocity space (Huff et al. 2020)",
+   "reason": "Avoids computationally intensive domain transformations; real-time; more generalizable",
+   "effect_reported": "yes",
+   "page": "906"
+  },
+  {
+   "node": "C",
+   "chosen": "Accuracy as the reported metric",
+   "alternatives": "F1-score",
+   "reason": "Dataset relatively balanced, so F1 is close to accuracy",
+   "effect_reported": "yes",
+   "page": "912"
+  },
+  {
+   "node": "V",
+   "chosen": "Grad-CAM",
+   "alternatives": "Original CAM (Zhou et al. 2016)",
+   "reason": "Grad-CAM handles architectures with multiple fully connected layers",
+   "effect_reported": "no",
+   "page": "912"
+  },
+  {
+   "node": "R",
+   "chosen": "Final three-layer CNN with 10x10 kernels and batch normalization",
+   "alternatives": "Baseline two-layer CNN; small 2x2 or 5x5 kernels",
+   "reason": "Reduce overfitting to noise and capture the overall guided-wave pattern",
+   "effect_reported": "yes",
+   "page": "912"
+  },
+  {
+   "node": "R",
+   "chosen": "10 training epochs",
+   "alternatives": "Other epoch numbers (implied)",
+   "reason": "Accuracy and loss stable after about 8 epochs",
+   "effect_reported": "yes",
+   "page": "914"
+  },
+  {
+   "node": "R",
+   "chosen": "Non-local means filter",
+   "alternatives": "Curvelet transform; untested other algorithms",
+   "reason": "Higher accuracy (0.80 versus 0.76)",
+   "effect_reported": "yes",
+   "page": "915"
+  },
+  {
+   "node": "S",
+   "chosen": "Simple average range of amplitude scaling coefficients",
+   "alternatives": "Fine-tuned scaling coefficients",
+   "reason": "Testing would require regenerating training data and retraining each time; out of scope",
+   "effect_reported": "no",
+   "page": "917"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This Grad-CAM analysis indicates that the initial CNN is often not able to make the correct classification due to the low SNR of certain events.",
+   "page": "912"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "Next, the initial CNN is tested on the complete dataset including lower-SNR events.",
+   "page": "912"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This confirms the improvement caused by updating the architecture of the CNN.",
+   "page": "914"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The stronger class activation intensity on the noise-attenuated data demonstrates that the CNN is now able to identify the guided wave more effectively",
+   "page": "914"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This improved the classification accuracy using the final CNN from 0.74 to 0.76",
+   "page": "915"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "true positive (Eagle Ford) classifications increased significantly after the updating of the CNN architecture and denoising steps",
+   "page": "917"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "Adding these VTI parameters to the Eagle Ford greatly improves the similarity between field data and synthetic data",
+   "page": "909"
+  }
+ ]
+}

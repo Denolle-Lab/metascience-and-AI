@@ -1,0 +1,456 @@
+{
+ "key": "g22_W4220869240",
+ "doi": "10.1038/s43247-022-00377-x",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF (Communications Earth & Environment 3:56, 2022), 9 pages",
+  "Publisher XML converted to located text (jats_text), with section and paragraph locators"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "there has been no seismic constraints on the dimensions of the rim, largely due to limited detection of small earthquakes",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text, with PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the open question of what mechanism allows earthquakes at depths greater than 300 km, where brittle failure should be prohibited.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Their mechanism remains enigmatic due to the limited experimental observations"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They take from the literature three rival mechanisms (thermal shear instability, dehydration embrittlement, transformational faulting in the rim of the metastable olivine wedge) and cite arguments against dehydration embrittlement.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Three main hypotheses have been proposed in the literature to explain the occurrence of deep earthquakes"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "They narrow the question to the dimensions of the MOW rim, which earlier catalogs with high completeness magnitude could not constrain.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there has been no seismic constraints on the dimensions of the rim, largely due to limited detection of small earthquakes"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They select the JMA catalog: 10,660 events deeper than 300 km from 2002 to 2016, with a completeness magnitude near 3.0 against about 5.3 for the global CMT catalog.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we analyzed one of the most complete catalogs, the Japan Meteorological Agency (JMA) catalog"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "They group the deep events by hypocenter location with K-means clustering and choose four clusters by silhouette analysis and by agreement with the known slab segments (Kuril, Honshu, Izu, Bonin).",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used the earthquake hypocenter locations as the features for the K-means clustering, with the intention of minimizing human interference"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the clustering with spectral clustering and Gaussian mixture models and report similar results (reported in Methods and the supplement).",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The robustness of the K-means clustering algorithm has been further corroborated by the spectral clustering and Gaussian mixture models (GMM) clustering algorithms."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They convert Mj to Mw, estimate Mc, and fit Gutenberg-Richter b values per cluster. Honshu and Izu show kinks at Mw 3.7-3.8, with b falling from 1.4-1.7 to 0.6-0.7; Kuril and Bonin are linear with b near 1.0 (Figure 3, p. 4).",
+     "page": "§2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "clear kinks (breaks in the slopes of the GR distribution) are observed at a"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare three b-value estimators (b0, b1, and the Tinti-Mulargia b2, which is less sensitive to magnitude error) and their standard deviations, check Mc with several approaches (Methods §5.2), and note that the jump at the kink far exceeds the standard deviations.",
+     "page": "§2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This drastic b-values variation across the kink is much larger than the standard deviations (<0.03)."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They bootstrap the b values by Monte Carlo resampling, which gives bimodal distributions for Izu and Honshu, and show that the kinks are not caused by large events such as Tohoku-Oki (supplement).",
+     "page": "§2 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "These results further corroborate the robustness of the b-value analysis in each cluster"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They re-derive Zhan's large-magnitude kink from the CMT catalog with three more years of data (kink at Mw 6.7 for warm slabs, none for Tonga) and repeat it with the IRIS catalog (kink near Mw 6.9).",
+     "page": "§2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we revisit the GR distribution of the CMT catalog with three more years of data compared to the previous study by Zhan"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state two rival causes of the anomalously high b values: high pore pressure or strong heterogeneity.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "likely requires either high pore-pressure—unlikely at such depths—or strong heterogeneity that facilitates the occurrence of low-magnitude earthquakes"
+    },
+    {
+     "n": 12,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They reject high pore pressure as unlikely at depths greater than 300 km, by assertion and without a test.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "high pore-pressure—unlikely at such depths"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "They compare the b-value pattern with pre-subduction hydration states inferred from the literature: oblique faults and bending faults hydrate Honshu and Izu; trench-parallel or trench-normal fabric limits hydration at Kuril; Ogasawara magmatism dries Bonin.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "happen to be correlated to the highly hydrated lithospheric segments prior to subduction"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Using earthquake source scaling, they convert the kink magnitude into the thickness of a seismogenic zone below about 1 km, which they identify as the MOW rim.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "corresponds to the characteristic thickness of a seismogenic zone of less than 1 km"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that hydrous defects, without fluid overpressure, coincide with the MOW rim in hydrated slabs and catalyze transformational faulting; they separate this mechanism from dehydration embrittlement (Fig. 4).",
+     "page": "§3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We propose that the highly hydrated slabs in Honshu and Izu are likely to preserve substantial hydrous defects at greater depths"
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "theory",
+     "action": "They refine Zhan's dual-mechanism interpretation into a three-domain rupture model (unstable rim, MOW interior, surrounding wadsleyite) that accounts for both kinks (Fig. 5).",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The development of ruptures of different sizes can all be related to three distinct rupture domains"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "reconstruction",
+     "action": "From the absence of a kink in Bonin down to 550 km depth, the subduction velocity, and a fixed-hotspot assumption, they infer that Ogasawara hotspot magmatism began at least about 80 Ma.",
+     "page": "§3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the activity of the Ogasawara hotspot magmatism started at least around 80 million years ago"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "They keep the claim that hydrous defects in an approximately 1 km thick MOW rim explain the high b values below Mw 3.7-3.8 in hydrated slabs.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The hydrous defects favor the nucleation of small earthquakes via the mechanism of transformational faulting within the rim."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "b-value kink at Mw [...] .7-3.8 in [...] deep seismicity; none at Kuril or Bonin",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; b values are estimated from the catalog and the rim is inferred",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Constrain the MOW rim thickness and the mechanism of deep earthquake nucleation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "High pore pressure versus strong heterogeneity; three literature mechanisms for deep earthquakes",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Qualitative only; no rival predictions computed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: slab segments with pre-subduction hydration states inferred from seafloor traces",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "6b",
+   "answer": "Four slab segments and three catalogs act as repeated cases",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Kink survives bootstrapping, three estimators, alternative clusterings, and removal of large events",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Hydrated-rim mechanism kept as the best explanation",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The b-value kink at Mw [...] .7-3.8 in [...] deep seismicity reflects enhanced transformational faulting, catalyzed by hydrous defects, in an approximately 1 km thick unstable rim of the metastable olivine wedge, tied to the slabs' pre-subduction hydration.",
+  "page": "§4 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Estimating b values per cluster from the low-completeness JMA catalog revealed the Mw 3.7-3.8 kink; without it there is no rim constraint and nothing to explain.",
+  "page": "§2 ¶1"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the catalog was chosen to see small events, motivated by the speculated rim nucleation (§1 ¶2, §5 ¶1), but the hydrous-rim hypothesis was formed after the analysis (the PDF author contributions, p. 9, say interpretations were proposed from a literature review). Claim: the kink's existence faced tests it could have failed (bootstrapping, alternative estimators, removal of large events); the hydration interpretation rests on a post hoc correlation with four segments and on rejecting pore pressure by assertion. Registration: nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "K-means unsupervised clustering",
+   "kind": "method",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "silhouette analysis for choosing the number of clusters",
+   "kind": "method",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "spectral clustering and Gaussian mixture model clustering",
+   "kind": "method",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Monte Carlo bootstrap resampling",
+   "kind": "method",
+   "page": "§2 ¶2"
+  },
+  {
+   "field": "mathematics",
+   "item": "fractal dimension",
+   "kind": "concept",
+   "page": "§1 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "For the first time, we observe kinks of b values reducing from 1.4–1.7 down to 0.6–0.7 at",
+   "page": "§4 ¶1"
+  },
+  {
+   "quote": "Our unique observation of the b-value kink at",
+   "page": "§1 ¶3"
+  }
+ ],
+ "limits": "The PDF mentions a peer review file (p. 9) that was not supplied, so there is no review sequence. The supplement (Supplementary Notes 1-8, Tables S1-S12, Figs. S1-S5) was not supplied; the supplement-only checks (depth-range choice, Mc approaches, alternative clusterings, Tohoku-Oki test) are coded from the main-text statements only. Slab hydration states are not measured: they are inferred from seafloor fault fabric and magmatism in cited literature, and the correlation rests on four segments. High pore pressure is rejected by assertion. The rim thickness comes from source scaling that assumes circular ruptures, and no catalog-location test of hypocenter concentration in the rim is made. Inference: the hydrous-rim hypothesis was formulated after the kink was observed (author contributions, PDF p. 9). The authors leave Tonga's small-magnitude kink for future verification (§3 ¶5). Sub-claims at other statuses: existence of the Mw 3.7-3.8 kink in Honshu and Izu, estimate_with_resolution (b values with standard deviations below 0.03); MOW rim thickness of about 1 km (between about 1 and 4 km), estimate_with_resolution; Mw 6.7 kink from CMT and IRIS replicating Zhan (2017), regularity_in_range (warm slabs only, not Tonga); three-domain rupture model, best_explanation; Ogasawara magmatism beginning by at least about 80 Ma, best_explanation (it depends on a fixed-hotspot assumption). Composition is trace_series because conditions are found, not set, and the result is the best explanation among stated rivals; the four clusters also act as repeated natural cases.",
+ "disagreements": [
+  {
+   "target": "Zhan (2017), dual-mechanism interpretation of the Mw 6.5 kink (ref. 24)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors argue that the b-value changes reflect both rupture-domain heterogeneity and rupture mechanism, and they replace the thin-MOW fractal-dimension account with a three-domain model.",
+   "page": "§3 ¶4",
+   "quote": "We argue here that changes in b values at different sizes should be determined by changes of both the rupture domain heterogeneity"
+  },
+  {
+   "target": "The “dehydration embrittlement” model often mentioned in the literature",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "They cite recent studies against fluid overpressure at depth and state that their hydrous-defect mechanism involves only residual water defects in nominally anhydrous minerals.",
+   "page": "§3 ¶2",
+   "quote": "We want to emphasize again that the mechanism proposed here is different from the “dehydration embrittlement” model often mentioned in the literature."
+  },
+  {
+   "target": "Expectation that the MOW cannot exist in wet slabs (refs. 25, 26, 49)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "They cite experimental evidence that the MOW can coexist with hydrous phases under water-undersaturated conditions (ref. 50).",
+   "page": "§3 ¶2",
+   "quote": "While the MOW should not be expected in wet slabs due to the water-enhanced kinetics of the olivine-wadsleyite transition"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "K-means clustering",
+   "alternatives": "spectral clustering; Gaussian mixture models",
+   "reason": "easy to implement, low computational cost, most widely used",
+   "effect_reported": "yes",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "four clusters",
+   "alternatives": "other cluster numbers scored by silhouette analysis",
+   "reason": "local maximum silhouette score and agreement with the known slab segments",
+   "effect_reported": "no",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "separate Izu and Bonin clusters",
+   "alternatives": "a single Izu-Bonin cluster",
+   "reason": "magmatic overprint argued to leave the Bonin lithosphere drier",
+   "effect_reported": "no",
+   "page": "§5.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "300-700 km depth range",
+   "alternatives": "other depth ranges (Supplementary Note 3, Tables S2 to S6)",
+   "reason": "detailed in Supplementary Note 3",
+   "effect_reported": "yes",
+   "page": "§5 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "three b-value estimators reported (b0, b1, b2)",
+   "alternatives": "maximum likelihood b0, modified b1, Tinti-Mulargia b2",
+   "reason": "b0 and b1 are affected by magnitude error; b2 much less",
+   "effect_reported": "yes",
+   "page": "§5.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Mc from the non-cumulative (binned) distribution",
+   "alternatives": "other Mc approaches (Supplementary Note 8, Table S12)",
+   "reason": "all approaches give similar Mc",
+   "effect_reported": "yes",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "full catalog",
+   "alternatives": "catalog excluding events affected by specific large earthquakes (e.g., Tohoku-Oki)",
+   "reason": "to check that the kinks are not caused by regional stress changes",
+   "effect_reported": "yes",
+   "page": "§2 ¶2"
+  },
+  {
+   "node": "X",
+   "chosen": "strong heterogeneity",
+   "alternatives": "high pore pressure",
+   "reason": "high pore pressure unlikely at such depths",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The robustness of the K-means clustering algorithm has been further corroborated by the spectral clustering and Gaussian mixture models (GMM) clustering algorithms.",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The b values calculated using three different methods are listed in Table 1.",
+   "page": "§2 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the completeness determination in this study is reliable",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we resampled the earthquakes in each cluster using the Monte Carlo approach to conduct bootstrapping",
+   "page": "§2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we confirmed that the kinks for the Izu and Honshu regions were not affected by the occurrence of specific large events",
+   "page": "§2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "In comparison, no b-value kink is detected at the Kuril and Bonin trenches.",
+   "page": "§1 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we revisit the GR distribution of the CMT catalog with three more years of data compared to the previous study by Zhan",
+   "page": "§2 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The IRIS catalog with mixed magnitudes is also analyzed.",
+   "page": "§2 ¶3"
+  }
+ ]
+}

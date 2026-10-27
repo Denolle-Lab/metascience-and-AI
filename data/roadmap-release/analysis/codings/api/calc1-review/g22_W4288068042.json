@@ -1,0 +1,609 @@
+{
+ "key": "g22_W4288068042",
+ "doi": "10.5194/gmd-15-5857-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "gmd-15-5857-2022.pdf (published paper, Geosci. Model Dev. 15, 5857-5881)",
+  "gmd-15-5857-2022.xml.txt (publisher XML converted to located text, jats_text)",
+  "Open discussion of preprint gmd-2022-48 (RC1, AC1, RC2, AC2)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses; review steps cite the open-discussion locators [ID ¶n]",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the overall impact of ABCs on the full-waveform inversion problem, from the perspective of computational cost-effectiveness and efficiency, is still widely debated",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "gmd-15-5857-2022.xml.txt (published paper)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how absorbing boundary conditions affect the full FWI problem, including the adjoint, in effectiveness and computational cost.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the overall impact of ABCs on the full-waveform inversion problem, from the perspective of computational cost-effectiveness and efficiency, is still widely debated"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Review and adopt published forward formulations of damping, second-order PML, second-order CPML and HABC-A1 as the rival boundary schemes.",
+     "page": "§3.3 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Like the damping method, the PML is widely used in seismic problems"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Construct the new HABC-Higdon scheme: second-order Higdon conditions (angles 0 and pi/4) applied over nested domain extensions with a nonlinear convex weighting.",
+     "page": "§3.5 ¶4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The method we use in this work employs order 2"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "theory",
+     "action": "Derive the adjoint wave equations and adjoint boundary conditions for each ABC (damping, PML, CPML, HABC-A1, HABC-Higdon) via the Lagrangian method.",
+     "page": "§4.3 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "This derivation shows, once more, the self-adjointing nature of the adjoint problem with HABC-A1 or HABC-Higdon."
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Implement all forward and adjoint ABCs in Devito with high-level symbolic code, solving the augmented equations only in subdomains of the absorbing region.",
+     "page": "§5.1 ¶6",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The possibility of creating specific subdomains allows us to save time and memory for the computations."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the test: four heterogeneous velocity models, FWI-type source/receiver layout, reflection-free reference fields on a very large domain, and a relative L2 error on the physical domain.",
+     "page": "§6 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The goal of this particular and very large extended region is solely to define adequate reference solutions with no inbound reflected waves."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check that the forward and adjoint reference solutions never reach the truncated boundaries, so the reference is free of reflections.",
+     "page": "§6 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In none of the cases did the waves have time to reach the truncated boundaries"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare forward-solution errors of the five ABCs against the reference across Ricker peak frequencies on the four models; HABC-Higdon has the smallest errors and damping the largest.",
+     "page": "§6.1 ¶2; Figure 8 (p. 5869)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is also clear in Fig. that the HABC-Higdon incurs smaller errors."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the extension width p (1 to 20 percent) and peak frequency on Marmousi and SEG/EAGE; errors fall with p and the ranking holds.",
+     "page": "§6.1 ¶3; Figure 9 (p. 5869)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to ascertain whether similar behaviour would be seen for different sizes of domain extension"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare adjoint-solution errors of the ABCs against a reflection-free adjoint reference; the adjoint has its own boundary reflections plus those carried from the forward solution, and HABC-Higdon is close to or better than PML.",
+     "page": "§6.2 ¶5; Figure 11 (p. 5871)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the adjoint problem experiences its own spurious boundary reflections, and those from the forward solution"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary extension width p for several frequencies in the adjoint problem; errors diminish with p for all ABCs, CPML is least effective at high frequency on Marmousi.",
+     "page": "§6.2 ¶3; Figure 12 (p. 5871)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In all cases, the error diminishes as p increases."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Measure wall-clock time and memory growth of each ABC relative to a no-ABC baseline on Marmousi and plot error against cost; HABC-Higdon is cheaper than PML and CPML at similar error.",
+     "page": "§6.3 ¶5; Figures 13-14 (p. 5872)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "HABC-Higdon demands less wall clock time and memory usage than that of PML and CPML"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run FWI on the 17 km Marmousi model (f0 = 7 Hz, L-BFGS-B, 40 sources) with damping, PML and HABC-Higdon to estimate the velocity model.",
+     "page": "§7 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The first case evaluates the ABCs performance in FWI for a fixed peak of frequency"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare misfit, velocity error Ec and cost among ABCs, including damping with a 2.5 km layer; HABC-Higdon gives lower misfit and Ec than PML at lower time cost.",
+     "page": "§7 ¶5; Figure 15 (p. 5874)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, it is proper to conclude that HABC-Higdon has shown better overall performance compared to PML."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the FWI comparison at f0 = 15 Hz with a multiscale frequency approach; HABC-Higdon and PML perform similarly (PML lower Ec at 5 and 8 Hz cuts), damping worst.",
+     "page": "§7 ¶7; Figures 17-18 (pp. 5875-5876)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "FWI executions with HABC-Higdon and PML have presented a similar performance."
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that HABC-Higdon is the most cost-effective ABC among those tested, for forward, adjoint and FWI problems.",
+     "page": "§8 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "On evaluating the computational cost of ABCs methods, HABC-Higdon has shown the best performance"
+    },
+    {
+     "n": 17,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive expectations, untested here, for 3D cost scaling, real seismograms and other wave physics from symmetry arguments and cited work.",
+     "page": "§8 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also expect the effectiveness of the ABCs in 3D problems to be similar to those shown here"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion of gmd-2022-48 (RC1, AC1, RC2, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "R",
+     "mode": "methods",
+     "action": "Referee 1 asked for a bulleted contributions statement; the published introduction lists four contributions as bullets (§1 ¶7).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Could you add a clear \"Contributions\" section to the paper that highlights (bullet points) what is being claimed as new in this paper?"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "Referee 1 asked how velocity-model choice affects results; the published conclusions add a discussion of incidence angle set by the velocity field (§8 ¶6).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "[...] how the choice of velocity models affects the results presented?"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Referee 1 asked about other physics; the published conclusions add cited expectations for elastic and anisotropic waves (§8 ¶7).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Can you comment on how different physics (e.g. elastic/viscouacoustic) might affect your results?"
+    },
+    {
+     "n": 4,
+     "node": "C",
+     "mode": "methods",
+     "action": "Referee 1 asked whether the adjoint field carries forward reflection errors; the published text states the adjoint carries its own and forward reflections via the forcing term (§6.2 ¶5).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Does the adjoint field include reflection errors from the forward [...] ?"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 1 asked whether augmented PDEs are solved over the whole domain; the published text describes subdomains where augmented equations are solved only in the extension (§5.1 ¶6).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Are you solving the same augmented PDE in the entire domain (instead of just the boundary region)?"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Referee 1 asked to distinguish the accuracy reference from the cost baseline; the published text names a separate no-ABC computational reference (§6.3 ¶2).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "if the reference/baseline problem has changed between sections, could you please make that more clear."
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Referee 1 asked to justify subsampling; the published text states the ratios r = 5 and r = 4 satisfy the Nyquist criterion (§7 ¶3, §7 ¶7).",
+     "page": "RC1 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Could you justify the use of subsampling, as well as the chosen subsampling factors?"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "theory",
+     "action": "Referee 2 asked to move the adjoint derivations to an appendix; the published paper keeps summary equations in Sect. 4 and full derivations in Appendix A.",
+     "page": "RC2 ¶3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "the derivations of the ABCs of the adjoint form can be put into an appendex without damaging the main message of this paper"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 2 asked for FWI results with all ABCs; the published text states FWI was run for all ABCs and models were similar, but plots only damping, PML and HABC-Higdon (§7 ¶9).",
+     "page": "RC2 ¶4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I would like to see FWI results for the Marmousi model for all the ABCs that this paper has compared."
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 2 asked for a figure of staggered-grid variable locations; the published paper includes Figure 2 on PML staggering (§3.3 ¶5).",
+     "page": "RC2 ¶5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Can you please add a figure here showing the locations of the staggered grid for different variables in your equation?"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Spurious reflections from truncated computational boundaries, in forward and adjoint wave solutions",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; measured as relative L2 error against a reflection-free enlarged-domain reference",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Compare effectiveness and cost of ABCs in FWI and propose HABC-Higdon",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Damping, PML, CPML, HABC-A1, HABC-Higdon",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No formal predictions; only literature expectations (PML effective but costly, damping cheap but weak)",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set in computation: velocity models, peak frequency, extension width",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly: ranking holds over p, f, four models, adjoint and two FWI cases; PML has lower Ec at 5 and 8 Hz cuts",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "HABC-Higdon is the most cost-effective scheme among those tested",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Yes; two referees asked for clarifications and additions, no change of claim",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The proposed hybrid ABC with nested Higdon boundary conditions is as effective as or more effective than PML and the other schemes while being computationally cheaper, making it the most cost-effective ABC tested for FWI.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "Comparing error against wall-clock time and memory for every ABC (Figs. 13-14, Tables 4-5) is what turns the new HABC-Higdon scheme into a cost-effectiveness claim; without it only the construction would exist.",
+  "page": "§6.3 ¶5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The stated aim of combining effectiveness with low cost (§1 ¶6) shaped which schemes and measures were run, but no hypothesis directed specific simulations. The headline claim could have failed: HABC-Higdon was compared against PML on error and cost, and PML did give lower Ec at the 5 and 8 Hz cuts (§7 ¶7). Nothing is said to have been fixed before the runs; the extension width was chosen after seeing errors (§6.1 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "electrical engineering / electromagnetics",
+   "item": "Perfectly matched layer concept (Berenger 1994), standard PML formulation",
+   "kind": "concept",
+   "page": "§A2 ¶4"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "Absorbing pointwise boundary conditions of Clayton-Engquist and Higdon",
+   "kind": "method",
+   "page": "§3.5 ¶2"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "Adjoint-state / Lagrangian method for gradients",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "computer science",
+   "item": "SymPy symbolic computation within the Devito code-generation DSL",
+   "kind": "method",
+   "page": "§5 ¶1"
+  },
+  {
+   "field": "computer science",
+   "item": "Dask parallel task library and its diagnostic performance tool",
+   "kind": "method",
+   "page": "§5.2 ¶3"
+  },
+  {
+   "field": "numerical optimization",
+   "item": "L-BFGS-B search algorithm",
+   "kind": "method",
+   "page": "§7 ¶3"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Finite difference approximations on arbitrary grids (Fornberg 1988)",
+   "kind": "method",
+   "page": "§5.1 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the HABC-Higdon, first presented in this current work",
+   "page": "§1 ¶5"
+  },
+  {
+   "quote": "to the best of our knowledge, those conditions have not yet been assessed for their role in the adjoint problem",
+   "page": "§6 ¶1"
+  },
+  {
+   "quote": "There are new implementations of ABCs in Devito, which are openly available for the scientific and industry communities.",
+   "page": "§1 ¶7"
+  }
+ ],
+ "limits": "The paper reports single deterministic runs; no uncertainty or run-to-run variation of timings is given, and costs come from one machine and one compiler. All data are synthetic; claims for real seismograms, 3D and other wave physics are expectations, not tests (sub-claims at status none). The sub-claim that the adjoint problem has its own boundary reflections is capability_characterized for these models. The HABC-Higdon effectiveness advantage over PML is only partly supported: in the multiscale FWI case PML gave lower velocity error at 5 and 8 Hz cuts. Tuning choices favour the new scheme without fairness checks stated: nonlinear weights were preferred from unshown experiments, alpha follows Liu and Sen, Higdon angles 0 and pi/4 are not justified, and the extension width was chosen to keep errors below a threshold (inference). FWI results for CPML and HABC-A1 are said to be similar but not shown. The review sequence is inferred by matching referee requests to the published text: the authors' responses were in attached zip files not supplied, so whether each change was made in response, or was already present, cannot be confirmed; minor requests (typos, compiler, colour scheme) are not coded. Composition is none_fits: the walk is a method benchmark (question, new method, set computational conditions, comparison against rival methods), with no phenomenon established first as in capability_first and no crucial test with excluding outcomes as in strong_inference.",
+ "disagreements": [
+  {
+   "target": "Prior ABC analyses (Gao et al., 2017; Grote and Sim, 2010; Liu and [...] )",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper evaluates ABCs on heterogeneous velocity models where earlier studies used homogeneous ones.",
+   "page": "§6 ¶1",
+   "quote": "In the literature, analyses of ABCs are usually limited to the homogeneous [...]"
+  },
+  {
+   "target": "Forward-only assessments of ABC performance (Gao et al., 2017; Liu and Sen, 2010, 2012; Grote and Sim, 2010)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper derives and tests adjoint ABCs and shows adjoint reflections occur.",
+   "page": "§1 ¶3",
+   "quote": "The performance of ABC methods is generally assessed for the forward problem"
+  },
+  {
+   "target": "Common FWI practice of using PML (Abubakar et al., 2009; Asnaashari et al., 2012; Aghamiry et al., 2019; Ben-Hadj-Ali et al., 2011)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Cost and error comparisons show PML is effective but costlier than HABC-Higdon at similar or larger error.",
+   "page": "§0 ¶1",
+   "quote": "even though the popular perfectly matching layers (PMLs) are effective at avoiding wave reflections at the boundaries, they can be computationally more demanding"
+  },
+  {
+   "target": "CPML as an improvement over PML (Pasalic and McGarry, 2010)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "In these tests CPML had higher errors than PML and HABC-Higdon and was least effective in the adjoint problem at high frequency.",
+   "page": "§8 ¶3",
+   "quote": "The CPML method has presented higher errors than the PML and HABC-Higdon"
+  },
+  {
+   "target": "Devito seismic examples using Sochacki et al. (1987) damping",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Damping shows the highest errors in all tests and needs a much larger layer to approach HABC-Higdon.",
+   "page": "§1 ¶4",
+   "quote": "However, it can be less effective than other ABCs sometimes requiring larger domain extensions."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Nonlinear HABC weight function (Eq. 28)",
+   "alternatives": "Linear weight function (Eq. 27)",
+   "reason": "HABC produces better results with a nonlinear weight function in the authors' experiments",
+   "effect_reported": "yes",
+   "page": "§3.5 ¶8"
+  },
+  {
+   "node": "N",
+   "chosen": "alpha values from Liu and Sen (2018)",
+   "alternatives": "alpha adjusted for specific cases",
+   "reason": "none given beyond following Liu and Sen (2018)",
+   "effect_reported": "no",
+   "page": "§3.5 ¶8"
+  },
+  {
+   "node": "N",
+   "chosen": "Second-order CPML formulation of Pasalic and McGarry (2010)",
+   "alternatives": "CPML derived for the first-order set of PDEs",
+   "reason": "designed for the second-order form of the wave equation",
+   "effect_reported": "no",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Second-order PML formulation of Grote and Sim (2010)",
+   "alternatives": "Other acoustic (first-order) and elastic PML formulations",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Sinusoidal damping profile (Eqs. 7-9)",
+   "alternatives": "Linear, cubic or exponential damping functions (Sochacki et al., 1987)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Extension width as a percentage p of domain length",
+   "alternatives": "Number of points in the extension (previous works)",
+   "reason": "range consistent with previous works",
+   "effect_reported": "no",
+   "page": "§6 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "FWI comparison with damping, PML and HABC-Higdon",
+   "alternatives": "All five ABCs",
+   "reason": "damping is cheapest, PML is common in FWI, HABC-Higdon best in forward/adjoint tests",
+   "effect_reported": "yes",
+   "page": "§7 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Damping layer width 0.67 km equal to the other schemes",
+   "alternatives": "Larger damping layer of 2.5 km",
+   "reason": "to test whether a larger layer lets damping match HABC-Higdon",
+   "effect_reported": "yes",
+   "page": "§7 ¶6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "In none of the cases did the waves have time to reach the truncated boundaries",
+   "page": "§6 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "it shows that the frequency peak bears on the effectiveness of the ABC methods",
+   "page": "§6.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In order to ascertain whether similar behaviour would be seen for different sizes of domain extension",
+   "page": "§6.1 ¶3"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "A number of application cases has been run for heterogeneous velocity models, ranging from the simplest models to realistic ones.",
+   "page": "§8 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "Here, we consider their performance in the adjoint wave equation, which is referred to as the backward problem.",
+   "page": "§6.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In all cases, the error diminishes as p increases.",
+   "page": "§6.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "it is used as a computational reference to evaluate the growth of the memory usage",
+   "page": "§6.3 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "this section proposes to compare numerical results and the computational cost in FWI using damping, PML, and HABC-Higdon.",
+   "page": "§7 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "even when increasing l w , the damping error E c is still higher than that of the HABC-Higdon",
+   "page": "§7 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A second case considers the peak of frequency",
+   "page": "§7 ¶7"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "previous works on PML methods did not report on differences in attenuation effectiveness when going from 2D to 3D domains",
+   "page": "§8 ¶5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "verified that PML condition is efficient for both pressure (P) and shear (S) waves",
+   "page": "§8 ¶7"
+  }
+ ]
+}

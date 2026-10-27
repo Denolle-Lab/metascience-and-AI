@@ -1,0 +1,316 @@
+{
+ "key": "g22_W4205906323",
+ "doi": "10.1155/2022/9181219",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Teng, Cai, Sun & Chen (2022), Geometric and Physical Characteristics of Precipitation Clouds in Tibetan Plateau, Advances in Meteorology 2022, 9181219, 18 pp."
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "there is still a lack of research on other aspects, such as the geometric characteristics of precipitation clouds",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (Advances in Meteorology 2022, 9181219)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "After reviewing plateau cloud studies, the authors name a gap: geometric characteristics of precipitation clouds, size-precipitation relations, and the convective versus stratiform contribution within a cloud.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is still a lack of research on other aspects, such as the geometric characteristics of precipitation clouds"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Select the TRMM PR 2A25 version 7 rain-rate profiles and the convective/stratiform/other rain-type flags, 1998-2015, over the Tibetan Plateau (3000 m contour).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the standard dataset of TRMM 2A25 at version 7 from January 1998 to December 2015"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the minimum bounding rectangle (MBR) cloud-identification method of Fu et al. (2020) instead of ellipse fitting, citing its avoidance of swath truncation.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In 2020, Fu et al. [34] used the minimum bounding rectangle (MBR) method to identify precipitation clouds"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the identification: eliminate clouds with pixels at the swath edge (citing Hirose et al. on edge distortion), rotate the MBR to fit each cloud, and define geometric and physical parameters (Tables 1-2) after Fu et al.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these precipitation clouds will be defined as truncated precipitation clouds and will be eliminated"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Apply MBR to two example clouds (Figure 2, Table 3) and to the full record, identifying 300,320 clouds, and compute PDFs and means of horizontal parameters L, W, S, alpha, beta (Figure 3, Table 4).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a total of 300,320 precipitation clouds were identified in the Tibetan Plateau from January 1998 to March 2015"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Take the mean filling ratio beta = 0.55 (clouds fill more than half of their MBR) as evidence that the MBR identification works.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which shows that the MBR method in this study is effective for identifying"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute PDFs and means of vertical parameters (Hmax, Havg, gamma; Figure 4) and physical parameters (rain rates, CAF, SAF, CPC, SPC; Figure 5).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the spatial morphology of precipitation clouds in the Tibetan Plateau is still dominated by “lanky” appearance"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Adopt equal-sample binning (40 intervals of 2.5% of samples each, after Fu et al. 2018) for the parameter-parameter relations.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the approach of equal sample statistics is adopted"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit a log-linear relation log W = a + b log L (a = 0.0798, b = 0.8264) for L > 25 km; the relation for smaller clouds is called complicated.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the relationship between L (x axis) and W (y axis) is shown in logarithmic coordinates in Figure 6"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Describe binned relations of alpha, beta, Hmax, Havg and gamma with L, W and S (Figures 7-9): clouds loosen and become squattier as they grow, and echo-top heights stabilize above about 200 km2.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "as the area increases, the precipitation cloud gradually becomes a squatty appearance"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "theory",
+     "action": "Offer a post hoc physical rationale: large clouds lack the energy for overall vertical development.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is not enough energy to support its overall vertical development"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Describe binned relations of RRmax, RRavg, convective and stratiform rain rates, CAF, SAF, CPC and SPC with area S (Figures 10-12).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It illustrates that in the larger precipitation cloud, the probability of extreme precipitation is greater."
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "theory",
+     "action": "Interpret high CAF in small clouds as the initial development stage and lower CAF in larger clouds as dissipation, without testing it.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which may be the initial development period of precipitation clouds"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "observation",
+     "action": "Map the spatial frequency of clouds in classes of alpha, gamma_avg and RRavg on a grid over the plateau (Figures 13-15).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we further investigate the spatial frequency distribution of the precipitation cloud corresponding to the three different parameters"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare class frequencies in the maps with the earlier PDFs and report them consistent (same data, re-aggregated).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is consistent with the situation in Figure 4(d)"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Summarize the distributions and size relations as the basic characteristics of plateau precipitation clouds, with the southern slope as the large-value area.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the southern slope of the plateau is a large-value area where various types of precipitation clouds appear"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Geometry and physical properties of precipitation clouds over the Tibetan Plateau",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes, via TRMM PR 2A25 rain-rate and rain-type products",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Describe distributions and relations among cloud parameters",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats: 300,320 clouds over about 17 years",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Not tested beyond a filling-ratio self-check",
+   "mode_called": "none"
+  },
+  {
+   "question": "8",
+   "answer": "Descriptive regularities kept",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Over the Tibetan Plateau (TRMM PR, 1998-2015), most precipitation clouds are about 18 km by 15 km; W scales log-linearly with L above 25 km; clouds become looser and squattier as area grows; mean rain rate rises with area up to about 500 km2.",
+  "page": "1, 17"
+ },
+ "decisive_move": {
+  "node": "O",
+  "mode": "observation",
+  "sentence": "Applying the MBR identification to 18 years of TRMM PR 2A25 data, yielding 300,320 precipitation clouds, produces every distribution and relation the paper reports.",
+  "page": "5"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "no",
+  "registration": "no",
+  "evidence": "Data acquisition was not directed by any hypothesis: the full archived TRMM PR record was processed. No claim faces a test it could fail; the physical interpretations (energy limits on vertical growth, life-cycle stages from CAF) are post hoc. Parameter definitions are taken from Fu et al. (2020), but class thresholds (e.g., alpha <= 0.4, 0.4-0.7, > 0.7) are chosen from the PDFs already computed (p. 13). Nothing is registered."
+ },
+ "imports": [
+  {
+   "field": "computational geometry",
+   "item": "Minimum bounding rectangle algorithm for fitting rotated rectangles to pixel clusters (via Fu et al. 2020)",
+   "kind": "method",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "there is still a lack of research on other aspects, such as the geometric characteristics of precipitation clouds",
+   "page": "3"
+  }
+ ],
+ "limits": "No review file was supplied, so only the final paper is coded.\n\nThe only check performed here is the filling-ratio argument (mean beta > 0.5 taken to show MBR works, p. 6). It is coded as a control, but it is a weak self-consistency criterion, not a test against an independent reference such as ground radar or another identification method. The map-versus-PDF consistency (pp. 13-14) re-aggregates the same data and is not coded as a check.\n\nNo uncertainty, significance, or sensitivity tests are reported for:\n- the log-linear fit;\n- the rain-rate threshold;\n- the minimum cloud size;\n- the binning.\n\nInternal inconsistencies (inference from the text):\n- Period: January to December 2015 (p. 3) versus March 2015 (p. 5).\n- Shape: horizontal form called 'between square and long strip' (p. 6) and 'long strip shape' (p. 8). The conclusion says larger clouds approach quasisquare (p. 17), while Figure 7(a) shows alpha decreasing with L.\n- Stratiform versus convective contribution: p. 8 says the stratiform contribution is lower than the convective, contradicting Table 4 (SPC 86.39% versus CPC 44.16%) and the abstract.\n- CAF + SAF exceeds 100% in Table 4.\n- The PDF peak of 60% does not match Figure 3 (peak near 30%).\n- RRavg plateau is given as 1.7 (p. 9) and 1.6 mm/h (p. 17).\n- Figure 4(b) is cited for rain rate.\n\nSub-claims: the life-cycle and energy interpretations are at most untested hypotheses (status none); the spatial patterns are descriptive regularities within the TRMM sampling (35 degrees inclination; seasonal sampling not stated).",
+ "disagreements": [
+  {
+   "target": "Ellipse-fitting approach used by most scholars (refs 31-33)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors cite limitations in identification and swath-truncation errors, and Fu et al. (2020) showing MBR avoids truncation; they make no direct comparison themselves.",
+   "page": "3",
+   "quote": "this method has some limitations in the identification of precipitation clouds and errors due to [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Minimum bounding rectangle (MBR) identification",
+   "alternatives": "Ellipse-fitting approach",
+   "reason": "Avoids the swath truncation effect, is easily applied to tens of thousands of rain pixels, and improves inclusion integrity of rain pixels",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "Havg to express the relation between vertical and horizontal scale",
+   "alternatives": "Hmax",
+   "reason": "Havg reduces the error caused by random or extreme values",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "O",
+   "chosen": "RRavg to relate cloud area to precipitation intensity",
+   "alternatives": "RRmax",
+   "reason": "RRavg normalizes all raindrops and reduces the influence of unequal raindrop numbers across clouds",
+   "effect_reported": "yes",
+   "page": "9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which shows that the MBR method in this study is effective for identifying",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "due to the radial distortion of TRMM PR scanning, the geometric distortion of edge pixels is more significant than that of the near nadir pixels",
+   "page": "3"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "which effectively avoided the swath truncation effect",
+   "page": "3"
+  }
+ ]
+}

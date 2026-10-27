@@ -1,0 +1,814 @@
+{
+ "figure": "fig03_reliability",
+ "script": "tools/roadmap/figures/fig03_reliability.py",
+ "date": "2026-10-27",
+ "private_root": "private",
+ "commit_public": "3b4b2d5",
+ "commit_private": "abf4cf7",
+ "inputs": [
+  {
+   "file": "private/analysis/codings/api/calc1",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/gold-r2",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/fmt-P1",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/fmt-P2",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/fmt-PX1",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/fmt-PX2",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/format_test/codings",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/format_test/design.json",
+   "sha256_16": "726f954d276b1f45",
+   "provenance": {
+    "script": "f00_format_test_prep.py",
+    "commit": "cb1d9bc+uncommitted",
+    "date": "2026-10-25",
+    "inputs": [
+     "private/data/roadmap/pdfs/gold"
+    ],
+    "params": {}
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/calc1/results.json",
+   "sha256_16": "33ec5ef68848e7ae",
+   "provenance": {
+    "script": "g13_calc1_results.py",
+    "commit": "3b4b2d5",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "private/analysis/codings/api/calc1",
+     "private/analysis/codings/api/gold-r2",
+     "derived/calc1/manifest.jsonl",
+     "derived/gold/metrics.json"
+    ],
+    "params": {
+     "codebook": "1.5.0"
+    }
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/format_test/results.json",
+   "sha256_16": "d9759abb537e8381",
+   "provenance": {
+    "script": "f01_format_test.py",
+    "commit": "1067cb8+uncommitted",
+    "date": "2026-10-25",
+    "inputs": [
+     "derived/format_test/codings",
+     "private/analysis/codings/api/fmt-*",
+     "derived/format_test/inputs"
+    ],
+    "params": {}
+   }
+  }
+ ],
+ "numbers": {
+  "rounds_drawn": [
+   "round 1 (calc1 vs gold-r2)"
+  ],
+  "round2_retest_pairs": 0,
+  "bootstrap": {
+   "resamples": 2000,
+   "seed_a": 2026,
+   "seed_alpha": 2027,
+   "seed_b": 2028,
+   "seed_c_paired": 2030,
+   "unit": "paper",
+   "interval": "percentile 2.5-97.5"
+  },
+  "a_test_retest": {
+   "gold_papers_coded_twice": 51,
+   "dropped_invalid": {},
+   "papers": 50,
+   "codebook_versions": {
+    "1.5.0": 100
+   },
+   "entry_state": {
+    "estimate_lo_hi": [
+     0.92,
+     0.84,
+     0.98
+    ]
+   },
+   "entry_node": {
+    "estimate_lo_hi": [
+     0.9,
+     0.82,
+     0.98
+    ]
+   },
+   "outcome": {
+    "estimate_lo_hi": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "decisive_mode": {
+    "estimate_lo_hi": [
+     0.86,
+     0.76,
+     0.94
+    ]
+   },
+   "node_set_jaccard": {
+    "estimate_lo_hi": [
+     0.855,
+     0.829,
+     0.882
+    ]
+   },
+   "mode_set_jaccard": {
+    "estimate_lo_hi": [
+     0.808,
+     0.768,
+     0.847
+    ]
+   },
+   "node_seq_similarity": {
+    "estimate_lo_hi": [
+     0.692,
+     0.663,
+     0.721
+    ]
+   },
+   "mode_seq_similarity": {
+    "estimate_lo_hi": [
+     0.639,
+     0.598,
+     0.68
+    ]
+   },
+   "per_paper": {
+    "node_set_jaccard": [
+     0.67,
+     0.67,
+     0.69,
+     0.69,
+     0.7,
+     0.7,
+     0.75,
+     0.75,
+     0.75,
+     0.75,
+     0.75,
+     0.78,
+     0.8,
+     0.8,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.83,
+     0.83,
+     0.83,
+     0.85,
+     0.85,
+     0.85,
+     0.85,
+     0.86,
+     0.88,
+     0.9,
+     0.9,
+     0.9,
+     0.9,
+     0.91,
+     0.91,
+     0.91,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     0.92,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "mode_set_jaccard": [
+     0.33,
+     0.56,
+     0.57,
+     0.62,
+     0.67,
+     0.67,
+     0.67,
+     0.7,
+     0.7,
+     0.7,
+     0.71,
+     0.71,
+     0.71,
+     0.71,
+     0.71,
+     0.71,
+     0.71,
+     0.73,
+     0.75,
+     0.75,
+     0.75,
+     0.75,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.83,
+     0.83,
+     0.86,
+     0.86,
+     0.88,
+     0.88,
+     0.88,
+     0.88,
+     0.88,
+     0.91,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "node_seq_similarity": [
+     0.53,
+     0.53,
+     0.54,
+     0.55,
+     0.56,
+     0.56,
+     0.58,
+     0.59,
+     0.6,
+     0.6,
+     0.6,
+     0.6,
+     0.61,
+     0.61,
+     0.62,
+     0.62,
+     0.64,
+     0.64,
+     0.65,
+     0.65,
+     0.65,
+     0.67,
+     0.67,
+     0.68,
+     0.69,
+     0.69,
+     0.69,
+     0.69,
+     0.7,
+     0.7,
+     0.71,
+     0.71,
+     0.71,
+     0.71,
+     0.72,
+     0.72,
+     0.74,
+     0.76,
+     0.76,
+     0.76,
+     0.77,
+     0.81,
+     0.81,
+     0.83,
+     0.85,
+     0.87,
+     0.89,
+     0.9,
+     0.92,
+     0.93
+    ],
+    "mode_seq_similarity": [
+     0.2,
+     0.4,
+     0.42,
+     0.43,
+     0.46,
+     0.46,
+     0.47,
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.53,
+     0.53,
+     0.56,
+     0.57,
+     0.58,
+     0.58,
+     0.59,
+     0.59,
+     0.6,
+     0.6,
+     0.61,
+     0.62,
+     0.62,
+     0.62,
+     0.62,
+     0.62,
+     0.62,
+     0.65,
+     0.67,
+     0.67,
+     0.68,
+     0.68,
+     0.68,
+     0.7,
+     0.71,
+     0.73,
+     0.73,
+     0.74,
+     0.77,
+     0.77,
+     0.79,
+     0.81,
+     0.82,
+     0.83,
+     0.85,
+     0.85,
+     0.93,
+     1.0,
+     1.0
+    ]
+   },
+   "per_paper_share_of_1.0": {
+    "node_set_jaccard": 0.14,
+    "mode_set_jaccard": 0.24,
+    "node_seq_similarity": 0.0,
+    "mode_seq_similarity": 0.04
+   }
+  },
+  "b_format_test": {
+   "papers": 6,
+   "keys": [],
+   "pairs": {
+    "within": 24,
+    "between": 144
+   },
+   "codebook_versions": {
+    "1.4.0": 48
+   },
+   "graph_version": {
+    "1.4.0": "v0.4.2"
+   },
+   "coder_by_arm": {
+    "X": [
+     "claude paper-coder, format test arm X"
+    ],
+    "T": [
+     "claude paper-coder, format test arm T"
+    ],
+    "P": [
+     "claude-opus-5-5"
+    ],
+    "PX": [
+     "claude-opus-5-5"
+    ]
+   },
+   "invalid_codings_not_filtered": {},
+   "within_format": {
+    "entry_state": [
+     0.958,
+     0.875,
+     1.0
+    ],
+    "entry_node": [
+     0.958,
+     0.875,
+     1.0
+    ],
+    "outcome": [
+     0.917,
+     0.75,
+     1.0
+    ],
+    "decisive_mode": [
+     0.917,
+     0.833,
+     1.0
+    ],
+    "node_set_jaccard": [
+     0.861,
+     0.823,
+     0.896
+    ],
+    "mode_set_jaccard": [
+     0.817,
+     0.726,
+     0.907
+    ],
+    "node_seq_similarity": [
+     0.685,
+     0.622,
+     0.752
+    ],
+    "mode_seq_similarity": [
+     0.618,
+     0.572,
+     0.662
+    ]
+   },
+   "between_format": {
+    "entry_state": [
+     0.958,
+     0.875,
+     1.0
+    ],
+    "entry_node": [
+     0.903,
+     0.708,
+     1.0
+    ],
+    "outcome": [
+     0.931,
+     0.792,
+     1.0
+    ],
+    "decisive_mode": [
+     0.917,
+     0.833,
+     1.0
+    ],
+    "node_set_jaccard": [
+     0.875,
+     0.856,
+     0.894
+    ],
+    "mode_set_jaccard": [
+     0.79,
+     0.719,
+     0.886
+    ],
+    "node_seq_similarity": [
+     0.609,
+     0.549,
+     0.701
+    ],
+    "mode_seq_similarity": [
+     0.559,
+     0.496,
+     0.617
+    ]
+   },
+   "between_minus_within": {
+    "entry_state": 0.0,
+    "entry_node": -0.056,
+    "outcome": 0.014,
+    "decisive_mode": 0.0,
+    "node_set_jaccard": 0.013,
+    "mode_set_jaccard": -0.027,
+    "node_seq_similarity": -0.076,
+    "mode_seq_similarity": -0.059
+   },
+   "by_pair_label": {
+    "P within": {
+     "entry_state": 1.0,
+     "entry_node": 1.0,
+     "outcome": 1.0,
+     "decisive_mode": 0.833,
+     "node_set_jaccard": 0.853,
+     "mode_set_jaccard": 0.837,
+     "node_seq_similarity": 0.708,
+     "mode_seq_similarity": 0.633
+    },
+    "P-PX": {
+     "entry_state": 1.0,
+     "entry_node": 0.917,
+     "outcome": 1.0,
+     "decisive_mode": 0.833,
+     "node_set_jaccard": 0.892,
+     "mode_set_jaccard": 0.836,
+     "node_seq_similarity": 0.615,
+     "mode_seq_similarity": 0.622
+    },
+    "P-T": {
+     "entry_state": 1.0,
+     "entry_node": 0.833,
+     "outcome": 0.917,
+     "decisive_mode": 0.917,
+     "node_set_jaccard": 0.873,
+     "mode_set_jaccard": 0.754,
+     "node_seq_similarity": 0.667,
+     "mode_seq_similarity": 0.555
+    },
+    "P-X": {
+     "entry_state": 0.917,
+     "entry_node": 0.833,
+     "outcome": 0.917,
+     "decisive_mode": 0.917,
+     "node_set_jaccard": 0.862,
+     "mode_set_jaccard": 0.778,
+     "node_seq_similarity": 0.572,
+     "mode_seq_similarity": 0.518
+    },
+    "PX within": {
+     "entry_state": 1.0,
+     "entry_node": 0.833,
+     "outcome": 1.0,
+     "decisive_mode": 0.833,
+     "node_set_jaccard": 0.873,
+     "mode_set_jaccard": 0.827,
+     "node_seq_similarity": 0.692,
+     "mode_seq_similarity": 0.663
+    },
+    "PX-T": {
+     "entry_state": 1.0,
+     "entry_node": 0.917,
+     "outcome": 0.917,
+     "decisive_mode": 0.917,
+     "node_set_jaccard": 0.876,
+     "mode_set_jaccard": 0.774,
+     "node_seq_similarity": 0.586,
+     "mode_seq_similarity": 0.523
+    },
+    "PX-X": {
+     "entry_state": 0.917,
+     "entry_node": 0.917,
+     "outcome": 0.917,
+     "decisive_mode": 0.917,
+     "node_set_jaccard": 0.867,
+     "mode_set_jaccard": 0.818,
+     "node_seq_similarity": 0.597,
+     "mode_seq_similarity": 0.57
+    },
+    "T within": {
+     "entry_state": 1.0,
+     "entry_node": 1.0,
+     "outcome": 0.833,
+     "decisive_mode": 1.0,
+     "node_set_jaccard": 0.853,
+     "mode_set_jaccard": 0.737,
+     "node_seq_similarity": 0.703,
+     "mode_seq_similarity": 0.548
+    },
+    "T-X": {
+     "entry_state": 0.917,
+     "entry_node": 1.0,
+     "outcome": 0.917,
+     "decisive_mode": 1.0,
+     "node_set_jaccard": 0.877,
+     "mode_set_jaccard": 0.781,
+     "node_seq_similarity": 0.616,
+     "mode_seq_similarity": 0.568
+    },
+    "X within": {
+     "entry_state": 0.833,
+     "entry_node": 1.0,
+     "outcome": 0.833,
+     "decisive_mode": 1.0,
+     "node_set_jaccard": 0.865,
+     "mode_set_jaccard": 0.867,
+     "node_seq_similarity": 0.637,
+     "mode_seq_similarity": 0.628
+    }
+   },
+   "same_version_4_papers": {
+    "entry_state": {
+     "within": 1.0,
+     "between": 1.0,
+     "between_minus_within": 0.0
+    },
+    "entry_node": {
+     "within": 1.0,
+     "between": 1.0,
+     "between_minus_within": 0.0
+    },
+    "outcome": {
+     "within": 0.875,
+     "between": 0.896,
+     "between_minus_within": 0.021
+    },
+    "decisive_mode": {
+     "within": 0.938,
+     "between": 0.938,
+     "between_minus_within": 0.0
+    },
+    "node_set_jaccard": {
+     "within": 0.866,
+     "between": 0.881,
+     "between_minus_within": 0.014
+    },
+    "mode_set_jaccard": {
+     "within": 0.866,
+     "between": 0.83,
+     "between_minus_within": -0.036
+    },
+    "node_seq_similarity": {
+     "within": 0.683,
+     "between": 0.645,
+     "between_minus_within": -0.038
+    },
+    "mode_seq_similarity": {
+     "within": 0.653,
+     "between": 0.61,
+     "between_minus_within": -0.043
+    }
+   },
+   "preprint_papers": []
+  },
+  "c_paired_difference": {
+   "estimate_lo_hi": {
+    "entry_state": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "entry_node": [
+     -0.056,
+     -0.167,
+     0.0
+    ],
+    "outcome": [
+     0.014,
+     0.0,
+     0.042
+    ],
+    "decisive_mode": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "node_set_jaccard": [
+     0.013,
+     -0.021,
+     0.048
+    ],
+    "mode_set_jaccard": [
+     -0.027,
+     -0.055,
+     0.008
+    ],
+    "node_seq_similarity": [
+     -0.076,
+     -0.151,
+     -0.017
+    ],
+    "mode_seq_similarity": [
+     -0.059,
+     -0.103,
+     -0.022
+    ]
+   },
+   "per_paper": {
+    "entry_state": {},
+    "entry_node": {},
+    "outcome": {},
+    "decisive_mode": {},
+    "node_set_jaccard": {},
+    "mode_set_jaccard": {},
+    "node_seq_similarity": {},
+    "mode_seq_similarity": {}
+   }
+  },
+  "d_alpha": {
+   "entry_state": {
+    "estimate_lo_hi": [
+     0.768,
+     0.496,
+     0.949
+    ],
+    "resamples_undefined": 0,
+    "modal_class": "problem",
+    "papers_outside_modal_class": 12,
+    "outside_keys": null,
+    "outside_values": null,
+    "drawn_open_without_interval": false
+   },
+   "outcome": {
+    "estimate_lo_hi": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "resamples_undefined": 699,
+    "modal_class": "kept",
+    "papers_outside_modal_class": 1,
+    "outside_keys": [
+     "g22_W4214504470"
+    ],
+    "outside_values": {
+     "g22_W4214504470": [
+      "contradicted",
+      "contradicted"
+     ]
+    },
+    "drawn_open_without_interval": true
+   },
+   "claim_status": {
+    "estimate_lo_hi": [
+     0.755,
+     0.596,
+     0.888
+    ],
+    "resamples_undefined": 0,
+    "modal_class": "capability_characterized",
+    "papers_outside_modal_class": 33,
+    "outside_keys": null,
+    "outside_values": null,
+    "drawn_open_without_interval": false
+   },
+   "decisive_mode": {
+    "estimate_lo_hi": [
+     0.83,
+     0.703,
+     0.927
+    ],
+    "resamples_undefined": 0,
+    "modal_class": "methods",
+    "papers_outside_modal_class": 34,
+    "outside_keys": null,
+    "outside_values": null,
+    "drawn_open_without_interval": false
+   },
+   "composition": {
+    "estimate_lo_hi": [
+     0.596,
+     0.382,
+     0.771
+    ],
+    "resamples_undefined": 0,
+    "modal_class": "none_fits",
+    "papers_outside_modal_class": 25,
+    "outside_keys": null,
+    "outside_values": null,
+    "drawn_open_without_interval": false
+   },
+   "v_status": {
+    "estimate_lo_hi": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "resamples_undefined": 746,
+    "modal_class": "full",
+    "papers_outside_modal_class": 1,
+    "outside_keys": [],
+    "outside_values": {},
+    "drawn_open_without_interval": true
+   },
+   "node_presence": {
+    "estimate_lo_hi": [
+     0.743,
+     0.696,
+     0.788
+    ],
+    "resamples_undefined": 0,
+    "modal_class": "True",
+    "papers_outside_modal_class": 50,
+    "outside_keys": null,
+    "outside_values": null,
+    "drawn_open_without_interval": false
+   }
+  },
+  "reference_lines_alpha": [
+   0.667,
+   0.8
+  ]
+ },
+ "caption": "Run-to-run consistency of the model coder. The same model (Claude Opus 5.5) coded the same paper twice, independently; agreement between the two runs measures how stable the output is, not whether it is right. It does not cap or estimate agreement with human coders, whose coding has not started, and errors the model repeats on every run do not show. Codebook 1.5.0 and graph v0.4.2 in (a) and (d); the format test in (b) and (c) used the earlier codebook 1.4.0 (also graph v0.4.2) and two coding pipelines, so it is not comparable with (a). (a) First and second coding of 51 gold-set papers (the papers of the 100-paper gold sample that had full text at the first coding); 50 pairs pass the format check in both runs. Both runs were sent as asynchronous batch requests with the same instructions, effort setting high and no temperature set. Top four rows: share of papers whose two codings match on entry state, entry node, outcome and decisive mode; the outcome row has no visible interval because all 50 pairs agree. Bottom four rows: mean similarity of the node set and mode set (Jaccard: shared items over items in either) and of the node and mode sequences (1 minus the normalized edit distance, after merging repeated consecutive steps). Grey points are single papers, jittered vertically; per-paper similarities are rounded to 2 decimals, so several papers share a value. (b) Input format test, n = 6 papers, four input formats, two codings per format and paper: agreement between the two codings made from the same format (filled blue, upper, 24 pairs) and between codings made from different formats (open orange, lower, 144 pairs), averaged within paper, then over papers. The two text-only formats (publisher XML text, and text extracted from the PDF) were coded by a Claude model run inside the Claude Code tool, model version not recorded; the PDF and PDF-plus-XML formats by Claude Opus 5.5 in batch mode, so four of the six between-format pair types also cross the coding pipeline. Format-test codings are not filtered by the format check (3 of 48 fail it, each on one quote over 25 words). (c) Per paper, between-format minus within-format agreement (grey circles), and the mean over the 6 papers with a paired 95% bootstrap interval (blue). The difference excludes zero for the node sequence (-0.076 [-0.151, -0.017]) and the mode sequence (-0.059 [-0.103, -0.022]); for entry state, decisive mode, node set and outcome it lies between 0 and +0.014. Open triangles: the 2 papers whose PDF was the discussion preprint, so two formats coded another text version and their between-format pairs compare different texts; they carry the largest sequence drops. On the 4 same-version papers, node-sequence similarity is 0.683 within and 0.645 between formats, mode sequence 0.653 and 0.610. (d) Krippendorff's alpha (nominal) for the pairs of (a): agreement corrected for the agreement expected by chance, 1 perfect, 0 chance; node presence uses one unit per paper and node (15 nodes). V status is full when the paper performs at least one check of its result other than a plain rerun (new data, a second method, varied parameters, a control or reference, a new context), partial when its only checks are reruns, and none otherwise; it counts internal checks, not only replication by others (terms of NASEM, the US National Academies, 2019, for reproduction, replication and generalization). Dashed lines: 0.667 and 0.8, the usual thresholds for tentative and firm conclusions. Alpha for outcome and V status equals 1 but each rests on a single, different paper outside the modal class (49 of 50 papers are \"kept\", respectively \"full\" in both codings); such an alpha says little, and its bootstrap interval is undefined in about a third of resamples (699, 746 of 2000), so it is drawn as an open circle without interval. Bars: 95% percentile bootstrap intervals (2000 resamples) over papers; in (d) all 15 node units of a paper are resampled together. With n = 6 in (b) and (c) the intervals are coarse and reach the ceiling of 1 for several match shares. Paper identifiers, run tags and validation messages are in the numbers and provenance fields of this file."
+}

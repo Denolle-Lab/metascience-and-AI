@@ -1,0 +1,366 @@
+{
+ "key": "g22_W4306402783",
+ "doi": "10.5194/essd-14-4525-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4306402783.pdf (published paper, Earth Syst. Sci. Data 14, 4525-4550, 2022)",
+  "g22_W4306402783.xml.txt (publisher XML converted to located text, jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "Currently, available global hydrographies do not feature small headwater streams in great detail.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4306402783.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors name the gap: global hydrographies, built with coarse channelisation thresholds, miss the small headwater streams that make up more than 70 % of stream length.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We aimed to fill this gap by using the MERIT Hydro digital elevation model at 3 arcsec"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They choose a single worldwide flow-accumulation threshold of 0.05 km2 to initiate stream channels, so that headwaters are retained.",
+     "page": "§1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "employ a standard, worldwide channelisation threshold of 0.05 km 2"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "instruments",
+     "action": "They adopt the MERIT Hydro DEM (Yamazaki et al. 2019), with its error removal and hydrological conditioning, as the elevation base.",
+     "page": "§2.2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "we used the MERIT Hydro DEM, which represents the best available globally seamless, high-resolution DEM to date"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build the processing chain: MD8 (Holmgren/FD8) multi-flow routing in GRASS GIS rather than D8 or D-infinity, inland depressions and 1400 interior lakes set as NoData, a 59-tile irregular tiling system of entire basins, a 116-tile regular tiling system, and a two-phase r.watershed/r.stream.extract/r.stream.basins workflow on HPC.",
+     "page": "§2.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we opted for MD8 using the traditional Holmgren method, which has been implemented in GRASS GIS (named “FD8”)"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute a globally seamless flow accumulation, remove truncated basins, recompute flow direction, basins and streams from the merged layer, and reclassify IDs, which yields about 1.56 million drainage basins and 726 million stream segments with their sub-catchments.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to a globally seamless flow accumulation layer at 3 × 3 arcsec spatial resolution"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "estimation",
+     "action": "They rasterise NHDPlus HR, HydroRIVERS, GRWL and MERIT Hydro-Vector to 3 arcsec, buffer NHDPlus HR in 100 m steps, and compare overlap and stream length: Hydrography90m overlaps 46 % within 100 m and has 28 % fewer stream cells than NHDPlus HR, against 77-99 % fewer for the other datasets.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We then buffered the NHDPlus HR gridded stream lines in five categories"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They check flow accumulation against NHDPlus HR TotDASqKm over 61 million cells (MAD 0.597, rho 0.709; Figure 10, p. 4537), with lakes masked, and compare the areas of the 10 largest basins with HydroBASINS and HYDRO1k.",
+     "page": "§5.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to compute the median absolute deviation (MAD) and Spearman coefficient (rho)"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "They derive stream topographic and topological layers: slope, distance, segment properties, five stream-order schemes, and the spi, sti and cti flow indices.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we produced layers that characterise the topographic and topological properties of the hydrography"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "They rerun the whole procedure several times and run benchmarking checks: constant resolution, unique IDs, histogram outlier screening, and cross-over counts such as outlets equal to basins and segments equal to sub-catchments.",
+     "page": "§7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The entire procedure was run several times during computational development to check for consistency and potential mismatches among the different hydrographic layers."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "They trace basin-area discrepancies to the Tongji Canal (Yellow River flow routed into the Yangtze) and to missing bifurcations in the Niger, both caused by single-direction channel routing.",
+     "page": "§8.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Tongji Canal in China, part of the Grand Canal that connects the Yellow and Yangtze Rivers"
+    },
+    {
+     "n": 11,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They keep the claim that Hydrography90m represents stream networks more accurately than HydroRIVERS, GRWL and MERIT Hydro-Vector, and attribute this to the DEM, MD8 routing and the low threshold.",
+     "page": "§11 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The data validation procedures confirmed Hydrography90m as a more accurate representation of stream networks compared to HydroRIVERS, GRWL, and MERIT Hydro–Vector."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Headwater streams missing from global hydrographies",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; channels inferred from a DEM through flow routing",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterise a global high-resolution hydrography dataset",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Competing datasets (HydroRIVERS, GRWL, MERIT Hydro-Vector), not rival hypotheses",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: existing US NHDPlus HR reference data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: reference comparisons and reruns, no parameter variation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: highest overlap with the reference among global datasets",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Review not supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Hydrography90m, a global 3-arcsec hydrographic network with a 0.05 km2 channelisation threshold, has the highest spatial overlap with NHDPlus HR among the global datasets compared, and its flow accumulation agrees with NHDPlus HR (MAD 0.597, rho 0.709).",
+  "page": "§11 ¶2"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The choice of the 0.05 km2 channelisation threshold with MD8 routing on MERIT Hydro, which the authors credit for the accuracy gain, is what produces the dense headwater network on which the claim rests.",
+  "page": "§11 ¶2"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No hypothesis directed data acquisition: the dataset was built and then validated. The NHDPlus HR comparison could have shown lower overlap than the competing datasets, but no pass criterion was set beforehand, validation covers only the United States, and no threshold or algorithm sensitivity was tested. The threshold (§1 ¶5) and algorithm (§2.3 ¶6) were fixed before validation, but not as a registration of expected results."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Median absolute deviation and Spearman rank correlation for agreement of flow accumulation",
+   "kind": "method",
+   "page": "§5.2 ¶2"
+  },
+  {
+   "field": "computer science / high-performance computing",
+   "item": "Yale HPC cluster, cascading Bash job arrays, parallel processing",
+   "kind": "instrument",
+   "page": "§2.5 ¶2"
+  },
+  {
+   "field": "freshwater ecology",
+   "item": "River Continuum Concept as the rationale for stream order layers",
+   "kind": "concept",
+   "page": "§6.4 ¶1"
+  },
+  {
+   "field": "ecology",
+   "item": "Dendritic ('as-the-fish-swims') distance metrics from species distribution modelling",
+   "kind": "concept",
+   "page": "§6.2 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "can be considered a pioneering computational achievement",
+   "page": "§4.3 ¶2"
+  },
+  {
+   "quote": "delineating small headwater streams for the first time globally",
+   "page": "§5.1 ¶3"
+  },
+  {
+   "quote": "Hydrography90m is the first-ever data product that allows for global and comparative area-of-interest studies on small headwater stream channels.",
+   "page": "§8.1 ¶1"
+  },
+  {
+   "quote": "but have not been depicted globally until this publication",
+   "page": "§8.1 ¶1"
+  }
+ ],
+ "limits": "Coded from the published text only. The paper went through an ESSD open discussion and two anonymous referees (PDF p. 4546), but no review file was supplied, so there is no review sequence.\n\nValidation is restricted to the contiguous United States (NHDPlus HR). No independent region tests generalisation.\n\nNo sensitivity analysis is reported for the 0.05 km2 threshold, MD8 versus D8 or D-infinity, or the MD8 convergence factor. The headline accuracy cannot be decomposed into the three causes the conclusions credit (§11 ¶2); that attribution is an inference by the authors, not a tested result.\n\nInternal tensions in the text:\n- §5.1 ¶3 reports 28 % fewer stream cells than NHDPlus HR, while §8.1 ¶1 speaks of increased headwater density compared to NHDPlus HR.\n- Basin counts differ: 1.6 million (§0 ¶1), 1 560 490 (§4.5 ¶1), and IDs up to 1 676 628 (Table 1).\n\nSub-claims at other statuses:\n- Flow accumulation agreement (MAD 0.597, rho 0.709) is estimate_with_resolution but has no uncertainty bounds.\n- The topographic and topological variables (§6) are produced but not validated (status none).\n- 'First time globally' for headwater delineation is asserted, not tested.\n- The planned discharge-based pruning (§8.1 ¶2) is future work.\n\nThe NHDPlus HR spatial-accuracy method may build on the authors' own preprint (Amatulli et al. 2018a, cited in §2.2 ¶4); this is inference, as the paper does not say so.",
+ "disagreements": [
+  {
+   "target": "MERIT Hydro-Vector (Lin et al. 2021)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Its 1 km2 initial threshold misses headwaters; in validation it has 77 % fewer stream cells than NHDPlus HR, against 28 % for Hydrography90m.",
+   "page": "§1 ¶3",
+   "quote": "its coarse channelisation threshold does not yield a worldwide distribution of small headwater stream channels in substantial detail"
+  },
+  {
+   "target": "Global non-perennial stream map (Messager et al. 2021) based on HydroRIVERS",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Argued from the larger channelisation threshold of HydroRIVERS; HydroRIVERS has 92 % fewer stream cells than NHDPlus HR in the validation.",
+   "page": "§1 ¶4",
+   "quote": "small headwater streams are nevertheless missing from this dataset because of a significantly larger stream channelisation threshold"
+  },
+  {
+   "target": "D8 single-flow routing used in HydroRIVERS, MERIT Hydro and MERIT Hydro-Vector",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cited literature (Erskine et al. 2006; Yamazaki et al. 2019) on artificially straight channels and inadequacy in headwaters; no direct D8 test is run here.",
+   "page": "§2.3 ¶3",
+   "quote": "it is acknowledged that D8 algorithm is not adequate for representing flow contributing area in headwater regions"
+  },
+  {
+   "target": "Region-contingent channelisation thresholds (Vogt et al. 2003)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argument only: future monthly discharge-based dynamic pruning is said to be more complete; nothing is demonstrated in this paper.",
+   "page": "§8.1 ¶2",
+   "quote": "an improved and more complete representation of the network than assigning, for example, a channelisation threshold contingent on the geographic region alone"
+  },
+  {
+   "target": "HydroRIVERS, GRWL and MERIT Hydro-Vector as global stream networks",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Buffer-overlap and stream-length comparison of all four datasets against NHDPlus HR in the United States (Figures 8 and 9).",
+   "page": "§5.1 ¶3",
+   "quote": "Within a buffer distance of 100 m, Hydrography90m overlaps with NHDPlus HR by 46 %, achieving the highest overlap among all available global hydrographic datasets"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "0.05 km2 worldwide channelisation threshold, with later discharge-based pruning",
+   "alternatives": "higher threshold (e.g. 1 km2); region-contingent threshold (Vogt et al. 2003); pruning with a wider threshold first",
+   "reason": "A higher threshold would fail to include headwater features and would not allow computing headwater stream variables.",
+   "effect_reported": "no",
+   "page": "§1 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "MD8 multi-flow direction (Holmgren, GRASS FD8)",
+   "alternatives": "D8 single-flow; D-infinity (Tarboton 1997)",
+   "reason": "D8 gives artificially straight channels and is inadequate in headwaters; FD8 is implemented in GRASS GIS and performs similarly to D-infinity in flat terrain.",
+   "effect_reported": "no",
+   "page": "§2.3 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "MERIT Hydro DEM at 3 arcsec",
+   "alternatives": "GTOPO30, SRTM-based products (HydroSHEDS)",
+   "reason": "Best available globally seamless, high-resolution DEM, with error removal.",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "C",
+   "chosen": "Exclude NHDPlus HR streams inside lakes (masked with HydroLAKES) from the flow accumulation validation",
+   "alternatives": "include all streams",
+   "reason": "'Fish-bone' artificial straight channels in zero-slope lake areas.",
+   "effect_reported": "no",
+   "page": "§5.2 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we used the NHDPlus HR vector dataset as a reference to compare the accuracy of our newly delineated stream channels",
+   "page": "§5.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A total of 61 million grid cell values were used in this procedure to compute the median absolute deviation (MAD) and Spearman coefficient (rho).",
+   "page": "§5.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compared the surface areas of the 10 largest drainage basins worldwide",
+   "page": "§5.2 ¶3"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "The entire procedure was run several times during computational development to check for consistency and potential mismatches among the different hydrographic layers.",
+   "page": "§7 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "cross-over procedures to obtain consistent results (e.g. outlet number = drainage basins number; stream segments number = sub-catchments number)",
+   "page": "§7 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "after the error removal, areas mapped with ± 2 m or better vertical accuracy increased by 19 %",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "which shows similar performance to the D ∞ in hydrologically and algorithmically challenging terrain, such as flat areas",
+   "page": "§2.3 ¶6"
+  }
+ ]
+}

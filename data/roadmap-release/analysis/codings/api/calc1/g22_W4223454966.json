@@ -1,0 +1,451 @@
+{
+ "key": "g22_W4223454966",
+ "doi": "10.1007/s00477-022-02218-x",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "D'Angelo, Di Benedetto, Adelfio, D'Alessandro, Chiodi (2022), Stochastic Environmental Research and Risk Assessment 36:2101-2113, published PDF",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off a figure cite the figure label with the printed journal page in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this paper, we propose a novel picking algorithm for the automatic P- and S-waves onset time determination.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML text (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the need for automatic, robust, computationally light pickers of P- and S-arrival times for monitoring and early warning.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "automatic picking algorithms capable of carrying out a precise and reliable identification of the arrival times of seismic phases has become increasingly important"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Review existing pickers (Allen CF, Baer-Kradolfer, higher-order statistics, AR-AIC) and the shortcomings reported by comparative studies by other groups.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A comparative study by Küperkoch et al. (19) shows that this algorithm tends to pick somewhat early compared to what an analyst would pick."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the co-author's earlier changepoint method for variance piecewise constant models (Adelfio 2012) as the basis for onset picking.",
+     "page": "§1 ¶7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "In this paper, we advocate the usage of the algorithm proposed in Adelfio (1) for the automated seismogram onset time determination."
+    },
+    {
+     "n": 4,
+     "node": "C",
+     "mode": "methods",
+     "action": "Report the authors' earlier synthetic tests (D'Angelo et al. 2020, 2021): good P and S detection, but the post-selection step sometimes picked the wrong changepoints.",
+     "page": "§1 ¶9",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "it is noticed that the post-selection algorithm is not always able to correctly identify the relevant changepoints"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set out the model: variance changes recast as mean changes of squared studentized residuals, a gamma GLM with log link, a cumSeg-type segmented fit, lars selection and a generalized BIC.",
+     "page": "§2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a gamma generalized linear model (GLM) is fitted with a log-link function, with response given by the squared studentized residuals"
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "methods",
+     "action": "Fix the BIC constant Cn = log log n on the basis of the authors' earlier simulation comparison of specifications.",
+     "page": "§2 ¶6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Thus, we use this value for the provided analysis."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose changepost, which selects among the estimated changepoints the two with the largest variance ratios as the P and S arrivals (Algorithm 1).",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The two relevant changepoints are selected as the two ones in correspondence to the two biggest variance ratios."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check changepost on a toy simulated signal with known piecewise variance (Figs. 1-2).",
+     "page": "§2.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is evident that changepost correctly identifies the changepoints corresponding to the most abrupt changes in the variance."
+    },
+    {
+     "n": 9,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design a validation on synthetic seismograms with known arrival times: 12 scenarios (distances 10, 50 and 250 km by magnitudes 2-5), 100 waveforms each, vertical component only.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for controlling the precision and accuracy of an automatic picking procedure, the best practice is to start from simulated data"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Generate broadband synthetic waveforms by a hybrid SPECFEM3D low-frequency and empirical Green's function high-frequency approach (Fig. 3).",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The seismic waveforms are simulated using the deterministic hybrid approach proposed by Mourhatch and Krishnan (21)."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Apply changepost to every synthetic waveform; report the mean and MSE of the estimated P and S arrivals and the share of waveforms with no estimate (Table 1).",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Table 1 reports the empirical means (m) and Mean Squared Error values (s) of the two relevant changepoints estimated by the proposed algorithm"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Examine how performance varies across the magnitude and distance scenarios; changepost fails entirely at 250 km for M2-3 and is best at 10 km.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the NA values are most likely to occur when the magnitude is small and the distance is large"
+    },
+    {
+     "n": 13,
+     "node": "D",
+     "mode": "methods",
+     "action": "Set up the STA/LTA baseline (Allen 1978), tuning window lengths and thresholds per distance class through optimization tests (Table 2).",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After several optimization tests for each earthquake class, we set the parameters reported in Table 2 for the comparison."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Run STA/LTA on the same synthetics, keep the pick closest to the truth, and compare its mean, MSE and NA% with changepost (Tables 1 and 3).",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have noticed that the number of the picked arrival times is generally lower using the STA/LTA"
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revise the comparison metric: because many candidate picks bias the MSE in favour of changepost, define a probability index of picks within ±0.2 s of the truth.",
+     "page": "§3.3 ¶5",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Therefore, we define a probability index, computed for each waveform q:"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the probability indices (Tables 4 and 5) and computational cost: STA/LTA is better on P, changepost on S; changepost is slower but not prohibitively so.",
+     "page": "§3.3 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, changepost outperforms STA/LTA in the S-Phases picking. Otherwise, the STA/LTA picking time is better for the P-Phases"
+    },
+    {
+     "n": 17,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble real waveforms from the 2009 L'Aquila sequence (80 events, 12 stations, 2880 traces), bandpass-filtered at 0.1-35 Hz and normalized.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The complete database is made up of 80 seismic events recorded by 12 stations with three components"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply changepost (K* = 10) and STA/LTA, with the Table 2 settings, to real waveforms and compare picks visually on five traces from station BSSO (Figs. 4-5), with no reference picks.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "while changepost is always able to identify two arrival times"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that changepost is flexible and needs no testing or optimization phase, unlike STA/LTA.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results confirm the conclusion drawn by simulation study, that is the high flexibility of the proposed changepost algorithm."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "P and S onsets treated as abrupt changes in waveform variance",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No: true arrival times are unknown in real data, so synthetic seismograms with known truth are needed",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize a new automatic picking method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival method: the tuned STA/LTA baseline; other pickers reviewed but not tested",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions stated in advance; performance compared after the runs",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set by simulation: 12 magnitude-distance scenarios with known arrivals",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Real L'Aquila 2009 sequence used as a qualitative application without reference picks",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: performance degrades with distance and low magnitude and fails at 250 km for M2-3; real-data check is visual only",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method characterized as comparable to STA/LTA (worse on P, better on S) and tuning-free",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The changepost algorithm automatically picks P- and S-wave onsets with performance similar to a tuned STA/LTA on synthetic seismograms (less precise on P, better on S), and needs no testing or optimization phase.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The comparison of changepost and tuned STA/LTA picks against the known synthetic arrival times, with the probability index, is what characterizes the method's performance.",
+  "page": "§3.3 ¶8"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "No hypothesis directed data acquisition: synthetic scenarios were chosen to map performance (§3 ¶2), and the real L'Aquila data were an archive application. The synthetic accuracy claim faced known truth and could fail; it did fail at 250 km for M2-3 (Table 1) and lost to STA/LTA on P (§3.3 ¶7). The headline flexibility claim rests on five real traces with no reference picks (§4 ¶2-3). Cn = log log n was fixed from earlier simulations before these data (§2 ¶6), but the STA/LTA parameters were tuned on the synthetic test data (§3.3 ¶4), and no analysis plan was registered."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Changepoint detection for variance piecewise constant models (Adelfio 2012)",
+   "kind": "method",
+   "page": "§2 ¶2"
+  },
+  {
+   "field": "bioinformatics / genomics",
+   "item": "cumSeg multiple changepoint models for gene expression sequences (Muggeo and Adelfio 2011)",
+   "kind": "method",
+   "page": "§2 ¶5"
+  },
+  {
+   "field": "biostatistics",
+   "item": "Iterative segmented-regression estimation of break-points (Muggeo 2003, 2008)",
+   "kind": "method",
+   "page": "§2 ¶5"
+  },
+  {
+   "field": "statistics",
+   "item": "Gamma GLM with log link on squared studentized residuals for heteroscedastic regression (Smyth et al. 2001)",
+   "kind": "method",
+   "page": "§2 ¶4"
+  },
+  {
+   "field": "statistics",
+   "item": "Least angle regression (lars) for model selection (Efron et al. 2004)",
+   "kind": "method",
+   "page": "§2 ¶5"
+  },
+  {
+   "field": "statistics",
+   "item": "Generalized Bayesian Information Criterion BIC_Cn",
+   "kind": "concept",
+   "page": "§2 ¶5"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "In this paper, we propose a novel picking algorithm for the automatic P- and S-waves onset time determination.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "This section proposes a new methodology for automatic picking of arrival times based on the theory of the variance piecewise constant models.",
+   "page": "§2 ¶1"
+  },
+  {
+   "quote": "Indeed, changepost is entirely automatic, meaning that no choice of any parameters is needed to run the algorithm.",
+   "page": "§5 ¶3"
+  }
+ ],
+ "limits": "The real-data application has no reference (analyst) picks. Only five waveforms from one station (BSSO) are shown, and no quantitative metric is given for the 2880 traces, so the claim that accuracy is 'almost independent of the analyzed dataset' (§4 ¶3) is asserted, not tested. Sub-claim statuses: tuning-free flexibility on real data, status none (asserted, untested); changepost better on S and worse on P than STA/LTA on synthetics, capability_characterized within the 12 scenarios. The STA/LTA settings were tuned on the synthetics (200 Hz) and reused unchanged on the 100 Hz real data, which handicaps the baseline on real data. The abstract's 'similar results' glosses over STA/LTA's better P precision (Tables 4-5). The Fig. 4 and Fig. 5 captions say three events but each shows five panels. Only the vertical component is reported. All synthetics have impulsive onsets, so emergent onsets are untested. Computational time is described qualitatively only. The default 'No conclusion' for 250 km M2-3 is left unexplained beyond signal-to-noise. It is inference that changepost revises the post-selection step criticized in D'Angelo et al. 2021; the paper does not say what changed. Code and data are available only on request. No review file was supplied, so no review sequence is coded.",
+ "disagreements": [
+  {
+   "target": "STA/LTA method (Allen 1978) as the standard picker",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "STA/LTA needed per-class optimization to perform on synthetics, and with those settings it missed arrivals on real L'Aquila traces, whereas changepost needed no tuning.",
+   "page": "§3.3 ¶3",
+   "quote": "it needs a calibration phase to identify both the best length of the STA and the LTA and the best threshold level"
+  },
+  {
+   "target": "Higher-order-statistics picker with automated quality assessment (Küperkoch et al. 2010)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Asserted from the literature; not tested in this paper.",
+   "page": "§1 ¶5",
+   "quote": "However, choosing the parameters for this sophisticated algorithm is quite difficult and needs a great experience."
+  },
+  {
+   "target": "AR-AIC picker (Sleeman and Van Eck 1999)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Asserted from the literature; not tested in this paper.",
+   "page": "§1 ¶6",
+   "quote": "The algorithm is computationally quite expensive and hence much slower than the [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "Cn = log log n in the generalized BIC",
+   "alternatives": "other specifications of Cn",
+   "reason": "best performance in the simulations of D'Angelo et al. (2020)",
+   "effect_reported": "no",
+   "page": "§2 ¶6"
+  },
+  {
+   "node": "D",
+   "chosen": "STA/LTA (Allen 1978) as the comparison baseline",
+   "alternatives": "Allen CF picker, Baer-Kradolfer, higher-order statistics (Küperkoch et al.), AR-AIC",
+   "reason": "STA/LTA is the simplest and most commonly used picking technique",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "vertical component only",
+   "alternatives": "North-South and East-West components (generated but not reported)",
+   "reason": "for the sake of brevity",
+   "effect_reported": "no",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "node": "R",
+   "chosen": "probability index of picks within ±0.2 s, alongside mean, MSE and NA%",
+   "alternatives": "mean and MSE of the closest pick only",
+   "reason": "a large number of candidate picks raises the chance of a pick near the truth and lowers the MSE",
+   "effect_reported": "yes",
+   "page": "§3.3 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "K* = 10 maximum changepoints on real data",
+   "alternatives": "different values of K*",
+   "reason": "larger K* raises computational time but yields more changepoints; choice depends on available time and waveform complexity",
+   "effect_reported": "no",
+   "page": "§3.3 ¶9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "it is evident that changepost correctly identifies the changepoints corresponding to the most abrupt changes in the variance.",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the best practice is to start from simulated data, with well known seismic phases [...] .",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] aim at capturing the performance variations due to some characteristics of both the seismic event and its detection",
+   "page": "§3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compare the changepost picking algorithm, based on the variance piecewise constant models, introduced in Sect. 2, with the Short-Term Average/Long-Term Average (STA/LTA) method",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The seismic events selected for showing an application to real data belong to the seismic sequence of L’Aquila ( [...] .",
+   "page": "§4 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "tested on a set of 100 synthetic seismograms, showing that the model is always able to correctly detect the arrival of the first P-wave",
+   "page": "§1 ¶8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "In D’Angelo et al. (11), by simulation, the performance of different specifications of",
+   "page": "§2 ¶6"
+  }
+ ]
+}

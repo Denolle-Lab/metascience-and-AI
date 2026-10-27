@@ -1,0 +1,431 @@
+{
+ "key": "g22_W4214827077",
+ "doi": "10.5194/nhess-22-677-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Ehmele et al. 2022, Nat. Hazards Earth Syst. Sci. 22, 677-692 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "is now adapted and applied for hydrological applications",
+  "page": "§1 ¶7"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: floods with return periods of 100 years or more are poorly sampled by short observational records, so long data sets are needed to drive hydrological models.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is expedient to use long-term data sets to run hydrological models (HMs) for proper flood risk estimation of high return periods"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "simulation",
+     "action": "Take up the LAERTES-EU regional climate model ensemble (over 12 000 simulated years), built in the authors' earlier work, as the capability to be adapted.",
+     "page": "§1 ¶7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The novel RCM ensemble LAERTES-EU"
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Carry over the earlier finding that LAERTES-EU precipitation is biased high against observations, which would inflate simulated discharges.",
+     "page": "§1 ¶7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "identified a positive bias in LAERTES-EU precipitation compared to observations"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose three research questions: does bias correction improve precipitation, can the HM reproduce historical discharges, and does corrected LAERTES-EU give robust return levels above 100 years?",
+     "page": "§1 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Does the bias-corrected LAERTES-EU provide the potential to derive statistically robust estimates of flood return levels above 100 years?"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble the reference data: E-OBS and HYRAS gridded precipitation and temperature, and daily discharge at 71 Rhine gauges, plus 6 gauges chosen for flood case studies.",
+     "page": "§2.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have selected 71 gauging stations in the Rhine basin, all of them having at least 20 years of continuous observations."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adapt gamma quantile mapping with monthly correction functions fitted per data block (members concatenated) against E-OBS, plus Gaussian quantile mapping for temperature.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we therefore use the gamma quantile mapping (GQM) technique with different correction functions for each month"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the block 2 ensemble-mean precipitation bias against E-OBS before and after correction; the residual bias is mostly below 0.2 mm except in the Alps.",
+     "page": "§3.2 ¶1; Figure 2 (p. 683)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, a clear improvement is found after bias correction (Fig. b)."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the correction against the independent HYRAS data set and repeat the comparison for data block 4 (supplement); a slight negative residual bias is attributed to E-OBS.",
+     "page": "§3.2 ¶2; S (Fig. S1)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A strong reduction in the bias is also shown when comparing LAERTES-EU with HYRAS."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare intensity-probability curves and the annual cycle of corrected and uncorrected blocks 2 and 4 against E-OBS and HYRAS.",
+     "page": "§3.2 ¶3–¶4; Figure 3 (p. 684); Figure 4 (p. 684)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After bias correction, the IPCs of LAERTES-EU are in good agreement with the E-OBS curve but retain the heavy tail"
+    },
+    {
+     "n": 10,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the claim that bias correction adds value for precipitation fields, distributions and the annual cycle.",
+     "page": "§3.2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conclude that the bias correction provides a clear added value for precipitation fields, distributions, and the annual cycle."
+    },
+    {
+     "n": 11,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set up the distributed HBV-IWS hydrological model (5 km, daily, Oudin ET, Muskingum routing) and calibrate it per catchment for 1975–1985.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model was calibrated and validated using the time series of the 71 gauging stations"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Validate the HM over the held-out period 1986–2009 by NSE at 71 catchments, forced with HYRAS and with E-OBS, and against three historical floods (1988, 1993, 1995) at six gauges.",
+     "page": "§4.2.1 ¶2; §4.2.2 ¶1; Figure 5 (p. 685); Figure 6 (p. 687); S (Figs. S2–S6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In both cases the NSE shows a good general agreement between the observed and simulated discharges."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate discharge return levels from the yearly maxima of the LAERTES-EU-driven HM runs using Weibull plotting positions, and fit Weibull (L-moments) distributions with bootstrap CIs to the short observed and observation-driven series.",
+     "page": "§5 ¶2–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we can calculate discharges for different return periods (RPs) from a sorted series of the yearly maxima using the plotting-position approach of Weibull"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the extreme-value distribution fitted to observed discharges (gamma and Gumbel in addition to Weibull) to show the uncertainty from distribution choice.",
+     "page": "§5 ¶2; Figure 7 (p. 687)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To illustrate the uncertainty in the distribution selection, we also use gamma and Gumbel distributions for the observed discharges."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare return-level curves from corrected and uncorrected LAERTES-EU with observed, E-OBS- and HYRAS-driven curves at EMME and FRAN; the corrected ensemble falls within the observed CIs.",
+     "page": "§5 ¶4; Figure 7 (p. 687)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results for the two biggest catchments (EMME and FRAN) reveal a clear advantage of using the bias-corrected data."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Extend the comparison to medium and small catchments (ROCK, GROL, BETZ, BADV); the effect of correction is mixed and is attributed to resolution and to the E-OBS reference.",
+     "page": "§5 ¶4; S (Figs. S7–S11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the smaller catchments, the effect of bias correction is mixed (sometimes positive, sometimes negative)."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare LAERTES-EU return intervals of the three historical floods with observation-based estimates and their 95% CI at six stations.",
+     "page": "§5 ¶5; Table 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the two biggest catchments (EMME and FRAN), the return periods from LAERTES-EU are close to those estimates from observed discharges"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Restrict the claim to large and medium catchments, since performance depends on catchment size.",
+     "page": "§6 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the quality of the discharge simulations strongly depends on the catchment size."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Retain the conclusion that bias-corrected LAERTES-EU represents discharge distributions up to high return periods, within the observational uncertainty.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Discharge simulations for the Rhine basin demonstrate a proper representation of discharge distributions even for high return periods using LAERTES-EU as input data"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known positive precipitation bias of a large RCM ensemble, plus rare floods poorly sampled by observations",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No: return levels above 100 years are not observable from about 50-year records and must be estimated",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize the bias-corrected ensemble as HM forcing for extreme-discharge statistics",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only alternative inputs (uncorrected data, observation-driven runs) serve as baselines",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions of rivals stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: historical floods (1988, 1993, 1995) and gauged records",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: holds against HYRAS, block 4, alternative distributions and large catchments; mixed for small catchments",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: data set suitable for hydrological use, mainly for large catchments",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; not assessable",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Bias-corrected LAERTES-EU is generally suitable for hydrological applications: it improves precipitation statistics and gives discharge return levels within observational uncertainty for large Rhine catchments, with mixed results for small ones.",
+  "page": "§0 ¶1; §6 ¶1; §6 ¶4"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The block-wise monthly gamma quantile mapping of LAERTES-EU precipitation; without it the uncorrected forcing overestimates discharges and the suitability claim would not stand.",
+  "page": "§3.1 ¶2–¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data were pre-existing (an inherited ensemble and archived observations); no hypothesis directed acquisition. The return levels were compared against observed 95% CIs and could have fallen outside them; they partly did for small catchments, and ROCK uncorrected values fell outside the CI. No acceptance thresholds were fixed in advance: agreement is judged qualitatively ('good agreement')."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Parametric gamma-distribution quantile mapping (inverse CDF transform) for bias correction",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "L-moments estimation of distribution parameters (Hosking 1990)",
+   "kind": "method",
+   "page": "§5 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Bootstrap confidence intervals for fitted extreme-value distributions",
+   "kind": "method",
+   "page": "§5 ¶3"
+  },
+  {
+   "field": "insurance regulation / finance",
+   "item": "Solvency II 1-in-200-years event requirement motivating return-period estimation",
+   "kind": "concept",
+   "page": "§1 ¶2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No peer-review file or discussion was supplied, although the paper went through open discussion and thanks two referees; only a final_paper sequence is coded. The ensemble, its drizzle and dry-day correction, and its known bias come from the authors' earlier work (inherited). The HBV-IWS model also comes from a co-author's earlier work (He et al. 2011); its calibration here is described only briefly. Agreement criteria are qualitative: no metric thresholds and no pre-specified tests. The claim that the parametric function chosen for the bias correction has 'little or no influence' on discharge statistics (§6 ¶6) is asserted, not tested. The paper leaves open whether E-OBS or HYRAS is the better reference. Sub-claims at other statuses: (a) bias correction improves precipitation statistics, capability_characterized (§3.2 ¶5); (b) the HM reproduces historical floods in timing and peak, with 10–20% peak overestimation at EMME, capability_characterized (§4.2.2 ¶1); (c) return levels for small catchments (GROL, BETZ, BADV) are mixed and biased, so no status (§5 ¶4–¶5). Composition is none_fits: the walk is a capability characterization (adapt a data set and method, validate against references, apply) with no rivals and no phenomenon-establishing stage, so neither capability_first nor any other listed composition fits (inference). The statement that the observed estimates tend to overestimate return periods (§5 ¶5) rests on the ensemble being correct, which is itself under test (inference).",
+ "disagreements": [
+  {
+   "target": "Return-period estimates extrapolated from observed discharge series (Q Obs-Weibull)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "LAERTES-EU return intervals for EMME and FRAN fall within but near the lower bound of the observed CI, which the authors read as observed extrapolations overestimating return periods.",
+   "page": "§5 ¶5",
+   "quote": "This indicates that the observed estimates tend to overestimate return periods."
+  },
+  {
+   "target": "Fang et al. (2015): empirical quantile mapping and power transformation perform best for precipitation",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors choose parametric gamma mapping instead, arguing that it retains the heavy tail of unobserved intensities; they do not compare it with empirical mapping.",
+   "page": "§3.1 ¶3",
+   "quote": "Using a parameterized density function instead of an empirical approach allows us to retain the heavy tail of the model distribution"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Parametric gamma quantile mapping with monthly correction functions",
+   "alternatives": "Other bias correction methods (empirical quantile mapping, power transformation, local intensity scaling) reviewed in Maraun 2016 and Fang et al. 2015",
+   "reason": "Gamma distribution seems most suitable; a parametric function retains the heavy tail of unobserved intensities",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2–¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "Correction fitted per data block, with members concatenated",
+   "alternatives": "Correcting individual members independently",
+   "reason": "Member-wise correction would reduce ensemble spread and underestimate internal climate variability",
+   "effect_reported": "no",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "E-OBS as the bias-correction reference",
+   "alternatives": "HYRAS (higher resolution)",
+   "reason": "Consistent approach across several large European basins; only E-OBS has sufficiently long series over EURO-CORDEX",
+   "effect_reported": "yes",
+   "page": "§2.2.1 ¶1; §6 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Weibull distribution fitted by L-moments",
+   "alternatives": "Gamma and Gumbel distributions",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§5 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "Data blocks 2 and 4 of LAERTES-EU",
+   "alternatives": "Data blocks 1 and 3",
+   "reason": "Blocks 2 and 4 make up approximately 95% of the data set",
+   "effect_reported": "no",
+   "page": "§2.1 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "A strong reduction in the bias is also shown when comparing LAERTES-EU with HYRAS.",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Similar results can be found for LAERTES-EU data block 4 (see Fig. S1 in the Supplement).",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "shows the IPCs of LAERTES-EU data blocks 2 and 4 before and after bias correction in comparison with those of E- [...]",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the calibration period is 1975–1985 (11 years) and the validation period is 1986–2009 (24 years)",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "is shown in Fig. for HYRAS (Fig. a), and E-OBS (Fig. b) [...] .",
+   "page": "§4.2.1 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we analyze in detail three major Rhine river flood events within the validation period",
+   "page": "§4.2.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To illustrate the uncertainty in the distribution selection, we also use gamma and Gumbel distributions for the observed discharges.",
+   "page": "§5 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "At the ROCK station, the uncorrected discharge extremes are too high and outside the CI of the observations.",
+   "page": "§5 ¶4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The results for the other gauges can be found in the Supplement (Figs. S7–S11).",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "as the method itself has been validated by numerous previous studies",
+   "page": "§3 ¶1"
+  }
+ ]
+}

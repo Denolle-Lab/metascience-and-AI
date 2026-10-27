@@ -1,0 +1,545 @@
+{
+ "key": "g22_W4295411252",
+ "doi": "10.5194/tc-16-3669-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Piho, Alexander and Kruusmaa, The Cryosphere 16, 3669–3683, 2022",
+  "Publisher XML full text with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this paper, we present a method that allows for in situ data collection in englacial channels using sensing drifters.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text g22_W4295411252.xml.txt, PDF for figure pages)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: glacier drainage flow paths and pressures are poorly observed because existing methods are indirect or point-scale, so spatially extensive sensing methods are needed.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "developing sensing methods that retrieve drainage parameters (e.g., water pressure, water flow paths) over problem-relevant spatial scales is critical"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Take over the submersible pressure and IMU drifter and its demonstrated measurement repeatability from the authors' earlier study (Alexander et al., 2020a).",
+     "page": "§1 ¶3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "high repeatability of measurements from inertial measurement units (IMUs), alongside pressure recordings in a supraglacial channel, has been demonstrated"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the mobile-robotics solution to dead-reckoning error: probabilistic mapping with salient features used as landmarks.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In mobile robotics, this problem is often addressed using probabilistic mapping algorithms"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose using morphology-related signal patterns as salient features, extracted by an infinite hidden Markov model, with piecewise integration between features to bound the integration error.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using observed distinct signal patterns related to channel morphology as salient features and extracting them via an infinite hidden Markov model"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Use the GNSS surface drifter described in earlier co-authored work (Tuhtan et al., 2020) as the reference platform, with ±3 m horizontal static accuracy.",
+     "page": "§2.1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "served as a reference"
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select the lower englacial channel of Austre Brøggerbreen, previously mapped by GPR and speleology and now close to the surface because of downwasting, together with a small supraglacial channel for validation.",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our fieldwork focused on the lower englacial channel"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the validation test: deploy both drifter types in a supraglacial channel with known geometry so the IMU reconstruction can be scored against GNSS.",
+     "page": "§2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to test and validate our reconstruction algorithms, both drifter platforms were deployed in the small supraglacial channel"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Deploy the drifters in July 2019: 18 supraglacial and 16 englacial submersible deployments, yielding 11 and 6 complete datasets.",
+     "page": "§2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both platforms were then deployed into the englacial channel via a former moulin"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Collect reference data: GNSS surface drifter on the melted-out channel in August 2020, and the canyon and river digitized from 2019 Planet imagery.",
+     "page": "§2.2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We revisited the englacial channel on 19 August 2020 and deployed a GNSS-enabled surface drifter"
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the processing chain: changepoint segmentation, Savitzky–Golay filtering, outlier removal, accelerometer mean correction, rotation to NED and downsampling; iHMM with beam sampling for feature estimation; feature-wise double integration, declination correction, two-point rescaling and dynamic-time-warping averaging.",
+     "page": "§2.4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence, a more computationally expensive but more flexible infinite hidden Markov model (iHMM) will be used to address these limitations."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Reconstruct the supraglacial flow path and its pressure distribution from 11 submersible-drifter datasets.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reconstruction was based on 11 submersible-drifter deployments."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the supraglacial reconstruction with the averaged GNSS reference track: mean position error 3.9 m (range 2.0–11.1 m), length overestimated by 6.5 %.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] a water flow path, which is on average within 3.9 m of [...] channel"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the number of deployments averaged and show that the average position error converges after six datasets.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the average position error from our reconstruction converges after six datasets"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Reconstruct the mean englacial flow path from the six 2019 datasets.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reconstruction from the IMU data, collected in 2019 (six datasets), leads to the mean water flow path"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the englacial track qualitatively against the 1999 GPR track (Stuart et al., 2003) and the 2020 GNSS track.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "similarities between the shape of the reconstructed water flow path and the shape of both the 2020 GNSS reference and the 1999 GPR track"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Score the englacial reconstruction against the 2020 GNSS and 2019 satellite references: mean error 12.1 m overall, 13.3 m for the channel section and 10.9 m for the canyon and river; modelled length 1027 m.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The englacial channel part of the reconstruction has an average position error of 13.3 m compared to the 2020 GNSS reference"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Map the englacial pressure distribution (mean 1011.7 hPa, SD 3.4 hPa) and identify one high-pressure zone just before the canyon exit.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reveals one zone of higher pressure shortly before the englacial channel exits into the open canyon"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the reconstruction against satellite-visible topology (the sharp river turn after the canyon) and check consistency between the GPR and 2020 GNSS references.",
+     "page": "§3.2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the sharp turn of the river after the canyon exit is visible on the satellite imagery and can be matched to the topology"
+    },
+    {
+     "n": 19,
+     "node": "P",
+     "mode": "instruments",
+     "action": "Attribute the residual supraglacial error to limited GNSS reference accuracy and to over-smoothing in the averaged reference, rather than to the method.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An average error of 3.9 m for the reconstruction versus the GNSS reference is therefore likely below the accuracy of the GNSS reference track itself."
+    },
+    {
+     "n": 20,
+     "node": "P",
+     "mode": "instruments",
+     "action": "After the englacial length mismatch (1027 m against 835 m), revise the reference length by adding an 85 m missing section from handheld GPS (leaving 11.6 %), and argue the satellite reference underestimates length.",
+     "page": "§4.1 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "this length difference is estimated to be 85 m"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare the measured englacial pressures with the pressurized flow reported in 1999 and conclude that flow is now at atmospheric pressure.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "no longer exist within the channel"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check pressure-sensor precision: the 3.4 hPa standard deviation matches the authors' previous work and is attributed to in-channel variability rather than sensor accuracy.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is most likely influenced by the pressure variability within the channel rather than the accuracy of the pressure sensor."
+    },
+    {
+     "n": 23,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Interpret the high-pressure zone as a step-pool sequence with a large step riser, by analogy with pressure peaks in earlier work.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we interpret this as the presence of a step-pool sequence with a large step riser"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the interpretation with 2018 speleological observation of a 2.5 m step riser at the same location and with earlier lidar scans.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This interpretation was confirmed by speleological investigations in 2018"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the method can identify and locate step-pool sequences in glacial channels.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This shows that our method allows for identifying and locating step-pool sequences within glacial channels."
+    },
+    {
+     "n": 26,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine the deployment requirements: a single deployment gives sufficient precision (0.66 % pressure precision), but recovery and utility rates imply at least three deployments for a 1 km channel.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimate that at least 3 submersible-drifter deployments will be needed in the field"
+    },
+    {
+     "n": 27,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the length error with the published GPR result of Church et al. (2020, 2.4 % over 250 m) and argue that the errors are similar once scaled by channel length.",
+     "page": "§4.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This indicates that the error in our method scales with the length of the investigated channel"
+    },
+    {
+     "n": 28,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the capability claim: 2D flow paths and spatially referenced pressure reconstructed from inertial data with only two known coordinates.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shows the possibility of reconstructing water flow paths from inertial data with only two given coordinates"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Englacial flow path and pressure distribution, a phenomenon already known to exist",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "2",
+   "answer": "No; GNSS is unavailable underground, so the path is inferred from IMU data",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize a new drifter plus iHMM reconstruction method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; only a post hoc step-pool interpretation of the pressure peak",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Not applicable",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found in the field (live melt-season channel), with a supraglacial channel of known geometry chosen for validation",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Repeat deployments supply repeated passes through the same channel",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Error converges with the number of deployments; consistent with GNSS, satellite, GPR and speleology references",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept as characterized, with stated errors (3.9 m and 12.1 m; length errors 6.5 % and 11.6 %)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Submersible IMU and pressure drifters combined with an iHMM-based reconstruction map the 2D path of an englacial channel and spatially reference its pressure distribution, with mean position errors of 3.9 m (supraglacial validation) and 12.1 m (englacial) and length errors of 6.5 % and 11.6 %.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Using morphology-related signal features extracted by an infinite hidden Markov model as landmarks for piecewise integration keeps dead-reckoning error bounded; without it no path could be reconstructed from the IMU data.",
+  "page": "§1 ¶4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data acquisition was directed by the aim of validating a method, not by a hypothesis (§2.2 ¶3). The reconstruction was scored against independent GNSS, satellite and GPR references and could have mismatched, but no accuracy threshold was fixed beforehand, and the englacial length mismatch was absorbed by revising the reference (§4.1 ¶2). Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "mobile robotics",
+   "item": "Probabilistic mapping with salient features as landmarks to limit dead-reckoning error",
+   "kind": "concept",
+   "page": "§1 ¶3"
+  },
+  {
+   "field": "navigation",
+   "item": "Dead-reckoning error concept",
+   "kind": "concept",
+   "page": "§1 ¶3"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "Infinite hidden Markov model with hierarchical Dirichlet processes (Beal et al., 2002)",
+   "kind": "method",
+   "page": "§2.4.1 ¶3"
+  },
+  {
+   "field": "machine learning",
+   "item": "Beam sampling for the iHMM (Van Gael et al., 2008)",
+   "kind": "method",
+   "page": "§2.4.1 ¶6"
+  },
+  {
+   "field": "statistics",
+   "item": "Changepoint detection for piecewise segmentation (Killick et al., 2012)",
+   "kind": "method",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "field": "analytical chemistry / signal processing",
+   "item": "Savitzky–Golay filter",
+   "kind": "method",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "field": "control engineering / indoor navigation",
+   "item": "Gait-aided IMU integration resetting velocity at features (Fourati et al., 2013)",
+   "kind": "method",
+   "page": "§2.4.1 ¶1"
+  },
+  {
+   "field": "speech recognition",
+   "item": "Dynamic time warping for aligning repeat reconstructions (Sakoe and Chiba, 1978)",
+   "kind": "method",
+   "page": "§2.4.2 ¶2"
+  },
+  {
+   "field": "electronics",
+   "item": "Bosch BNO055 9-DOF IMU and MS5837 pressure sensors",
+   "kind": "instrument",
+   "page": "§2.1 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The main focus of our presented method is to provide spatial reference for measurements where such reference is currently lacking.",
+   "page": "§5 ¶2"
+  },
+  {
+   "quote": "the model proposed not only provides in situ data along subsurface water flow paths but also enables spatially referencing the collected data.",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "No review file or discussion was supplied, so changes made in review are unknown. There is no supplement. The englacial reference is non-contemporaneous (2020 GNSS track, 1999 GPR track) and partial; the authors concede that discrepancies cannot be separated from channel evolution (§4.1 ¶3). Only complete datasets (6 of 16 englacial) were used, and selection effects are not assessed. iHMM hyperpriors, the number of posterior samples, and the outlier thresholds are not varied, so sensitivity to processing choices is unreported (inference). No uncertainty band is given for the englacial track beyond the averaged error. Sub-claims at other statuses: the step-pool location from the pressure peak is a best_explanation, supported by speleology and lidar; 'one deployment suffices' is an estimate_with_resolution from the supraglacial convergence only; 'the channel kept its overall shape over 21 years' is a best_explanation from qualitative comparison; the length error scaling with channel length is an extrapolation from two cases. 3D reconstruction and flow velocity were not achieved (§4.4 ¶2).",
+ "disagreements": [
+  {
+   "target": "Stuart et al. (2003): pressurized englacial flow with water flowing partly uphill in this channel",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Drifter pressure records from 2019 show flow at atmospheric pressure, implying that the conditions have changed since 1999 rather than that the earlier result was wrong.",
+   "page": "§4.2 ¶1",
+   "quote": "Pressurized flow conditions, with water flowing partly uphill as encountered by , no longer exist within the channel."
+  },
+  {
+   "target": "GPR as the most commonly used method to localize glacial drainage systems (Church et al., 2020, 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Length errors from two channels are argued to scale with length to match the 2.4 % GPR error, and the drifters are said to offer direct pressure measurement, lower risk and shorter field time, while lacking channel width, height and 3D information.",
+   "page": "§4.4 ¶1",
+   "quote": "[...] a similar length error as reported for the GPR investigations by if scaled down to similar shorter channel length"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "First-order Savitzky–Golay filter applied per section",
+   "alternatives": "other commonly used filters",
+   "reason": "preserved high-frequency signal components better than other commonly used filters",
+   "effect_reported": "no",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Infinite hidden Markov model",
+   "alternatives": "finite (regular) HMM with a predefined number of states",
+   "reason": "finite HMMs require predefining the number of states, and maximum likelihood ignores model complexity (over- or underfitting)",
+   "effect_reported": "no",
+   "page": "§2.4.1 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Planar 2D reconstruction",
+   "alternatives": "full 3D reconstruction by removing the gravity vector in postprocessing",
+   "reason": "gravity removal in postprocessing introduces additional uncertainty and renders an inaccurate elevation track",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "Averaging 11 (supraglacial) and 6 (englacial) deployments",
+   "alternatives": "fewer deployments, down to a single one",
+   "reason": "error converges at six deployments; the decrease is only 2.5 %",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] a water flow path, which is on average within 3.9 m of [...] channel",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the average position error from our reconstruction converges after six datasets",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The englacial channel part of the reconstruction has an average position error of 13.3 m compared to the 2020 GNSS reference",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "similarities between the shape of the reconstructed water flow path and the shape of both the 2020 GNSS reference and the 1999 GPR track",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the sharp turn of the river after the canyon exit is visible on the satellite imagery and can be matched to the topology",
+   "page": "§3.2 ¶5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] deviation of the pressure data is, with 3.4 hPa, similar to our previous work",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] m high step riser was found at the same location.",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "high repeatability of measurements from inertial measurement units (IMUs), alongside pressure recordings in a supraglacial channel, has been demonstrated",
+   "page": "§1 ¶3"
+  }
+ ]
+}

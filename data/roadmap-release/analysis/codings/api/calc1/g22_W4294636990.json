@@ -1,0 +1,532 @@
+{
+ "key": "g22_W4294636990",
+ "doi": "10.1038/s41561-022-01019-9",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF (Nature Geoscience 15, 706-713, 2022)",
+  "Publisher XML full text with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The literature gap is named: \"there has been no way of reconstructing rates of past grounding-line retreat over annual or even subannual, let alone daily, [...]",
+  "page": "§1 ¶4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text), with PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how quickly, and through what grounding-zone processes, Thwaites Glacier can retreat from sea-floor stabilizing highs.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the processes operating at marine ice-stream margins are poorly resolved"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Take from the co-authors' earlier sonar mapping (Hogan et al. 2020) that offshore promontories are former grounding sites analogous to the modern grounding zone.",
+     "page": "§1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "recent sonar mapping documented numerous sea-bed promontories where the ice was previously grounded"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take from Dowdeswell et al. (2020) that delicate grounding-line landforms can resolve subannual retreat rates.",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "revealed delicate grounding-line landforms that record exceptionally fast rates of past retreat"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Sharpen the question to reconstructing subannual-to-daily grounding-line retreat rates for the pre-satellite (pre-1990s) era.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there has been no way of reconstructing rates of past grounding-line retreat over annual or even subannual"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "reconstruction",
+     "action": "Select the isolated 'bump' promontory at the TGT corner as the trace site, because its depth below iceberg keels protects the landforms from later disturbance.",
+     "page": "§1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "post-retreat processes are unlikely to have disturbed landforms produced during grounding-zone retreat"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Deploy the HUGIN AUV 'Ran' (EM2040 multibeam, Edgetech sidescan) over a 19 h mission covering about 13 km2, and grid the bathymetry at 1.5 m.",
+     "page": "§1 ¶5; §5.1 ¶1-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We deployed an autonomous underwater vehicle (AUV) mounted with geophysical sensors to acquire high-resolution (sub-metre) multibeam bathymetry"
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "instruments",
+     "action": "After noise from the first UTP transponder corrupted onboard navigation, have Kongsberg reprocess it: remove the first UTP fixes, remove loops, apply a static shift, and regrid at 0.7 m.",
+     "page": "§5.1 ¶2, ¶4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "owing to noise from the first UTP station, the filtered navigation required further processing subsequent to the cruise"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Verify the 1.5 m grid analyses against the 0.7 m post-processed grid, and state that the about 95 m map offset leaves the rib geometry unchanged.",
+     "page": "§5.1 ¶4; §5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A second grid with improved resolution of 0.7 m was produced for subsequent visualization and verification of our analyses"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Map the glacial geomorphology (three grounding-zone ramps GZ1-3, lineations, a meltwater channel and fan, gullies) and interpret the bump as a former grounding zone, with ice fully grounded through the present cavity.",
+     "page": "§2 ¶1-2; §5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Sea-floor imagery reveals that the bump is a former grounding zone of Thwaites Glacier"
+    },
+    {
+     "n": 10,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Establish more than 1,500 subtle transverse ribs on GZ3 as a distinct phenomenon: they overprint lineations and cross them obliquely, and resemble the Weddell Sea 'rungs'.",
+     "page": "§2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Some ridges sit obliquely across the underlying lineations, distinguishing them from the processes that created the subglacial bedforms"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Extract amplitude and spacing of the 164-rib longest series by semi-automated peak picking, and find FFT periodicities of 14.9 (amplitude) and 13.7 (spacing) ridges that co-vary.",
+     "page": "§2 ¶4; §5.2 ¶2; Fig. 4 (p. 710)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Spectral analysis of the along-flow variance in rib heights shows a dominant frequency peak at 14.9 ridges"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Check that the periodicity recurs in adjacent rib sequences at different depths.",
+     "page": "§2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The periodicity is not unique to one series and is preserved in adjacent sequences of ribs found at different depths."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeat the periodograms on the filtered, mean-adjusted topography instead of the extracted amplitudes; the results do not differ.",
+     "page": "§5.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "periodograms of the filtered and mean-adjusted topography produce results with no discernible differences"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute expected modern tides from TPXO-9 at 108° W, 74° S for a 166-day late-summer-to-spring window, filtered to daily peak heights.",
+     "page": "§5.3 ¶1-2; §5.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we extracted predicted tidal amplitudes from a tidal model of the global ocean for a location seaward of the Thwaites Glacier front"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare the 99th-percentile tidal filter with daily decimation; both preserve the fortnightly spring-neap dominance.",
+     "page": "§5.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We compared this approach with a method that decimated the data to a single time per day."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare rib amplitude and spacing with modelled daily tidal heights: diurnal and 14-day spring-neap match, R2 = 0.57. Conclude that the spatial rib series is a daily time series.",
+     "page": "§2 ¶5; Fig. 4 (p. 710)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is a strong coherence between the variability in the amplitudes of the ribs and daily tidal heights"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State two rival formation mechanisms for the daily ribs: forward motion of ice keels, or inland migration of the grounding line (detailed in the Supplementary Information).",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ribs could relate either to the forward motion by grounded ice"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "reconstruction",
+     "action": "Keep tidal lifting and settling at a fast, steadily retreating grounding line as the best explanation, set out in the Fig. 5 conceptual model.",
+     "page": "§3 ¶1; Fig. 5 (p. 711)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "then settling on the sea bed during low tide—can best explain the unusual rib features"
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate ice loss above 1,000 kg per day per metre of grounding zone, and the heat flux above 600 W m-2 needed to melt it.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimate the daily ice loss rate to exceed 1,000 kg per day per metre of the grounding zone"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the required heat flux with the 300-900 W m-2 deliverable by warm water and the 0.9 TW delivered through a deep trough (co-author Wåhlin et al. 2021).",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "delivered through one of the deep troughs leading into the cavity from the north"
+    },
+    {
+     "n": 21,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infer daily grounding-line migration from rib spacing: about 4 m per day at neap tides to about 8 m per day at spring tides.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The distances between sequential ribs (Fig. 4b) show grounding-line migration [...]"
+    },
+    {
+     "n": 22,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Explain why ribs are absent elsewhere with an auxiliary condition: low-gradient ice-plain configurations are needed for ribs to form.",
+     "page": "§3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ribs are not found everywhere despite the grounding line having retreated through the study area."
+    },
+    {
+     "n": 23,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Convert the upstream increase in mean rib spacing (5.8 to 6.3 m) into a retreat rate accelerating from 2.12 to 2.3 km per year over 5.5 months.",
+     "page": "§4 ¶1; Fig. 4 (p. 710)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Over a 5.5 month period, Thwaites Glacier retreated across the bump at an accelerated rate"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the reconstructed rate with satellite-era rates (Thwaites 1996-2017, Smith/Kohler, Pope) and geological long-term rates.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the rate of retreat from the bump was double the average estimated for the period 1996 to 2009"
+    },
+    {
+     "n": 25,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Refine the earlier sediment-removal idea (Hogan et al. 2020): flattening of sea-bed highs promotes ice plains and pre-conditions rapid recession.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "bed modification by erosion at the base of streaming ice may have pre-conditioned Thwaites Glacier to rapid recession"
+    },
+    {
+     "n": 26,
+     "node": "I",
+     "mode": "reconstruction",
+     "action": "Bound the rib age from the 1978 radar grounding-line position and assumed retreat rates of 0.8 or 0.3 km per year: pre-1950s, possibly about 180 years or older.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ribs almost certainly pre-date the 1950s"
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Retain the claim of a daily-resolved rapid retreat pulse, offered as an analogue for the modern grounding zone and a target for ice-sheet models.",
+     "page": "§4 ¶4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We show one of probably many pulses of rapid retreat"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: back-stepping tidal ribs on a former Thwaites grounding zone",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No: the retreat rate is inferred from rib spacing as a daily clock",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Rate and process of pre-satellite grounding-line retreat",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "4",
+   "answer": "Ice-keel forward motion versus tidal grounding-line migration",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Tidal migration predicts diurnal ribs with spring-neap modulation; tide model computed",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: a single past retreat event preserved at the bump",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "6b",
+   "answer": "Partly: adjacent rib series at other depths, and Weddell Sea rungs elsewhere",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Survives alternative grid, periodogram input and tidal filtering, and adjacent series",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Tidal migration is the best explanation; retreat rate above 2.1 km per year estimated",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Rib spacing read as a daily tidal clock shows the Thwaites grounding zone retreated from the bump at more than 2.1 km per year over 5.5 months, twice the fastest satellite-observed rate for 2011-2019.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "Matching the rib amplitude and spacing periodicities to modelled diurnal and spring-neap tides turns the spatial rib series into a daily time series; without that match the spacing gives no retreat rate.",
+  "page": "§2 ¶5"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the AUV survey of the bump was chosen to study grounding-zone retreat in general (§1 ¶5), not to test a stated hypothesis; the ribs were found in the data. Claim: the tidal coherence (R2 = 0.57) and the replication in adjacent series could have failed, but the rival keel mechanism is set aside only as 'can best explain', and the rate rests on the one-rib-per-day assumption. Registration: the tide-model time window was chosen to 'correlate the landform record' after the data were in hand (§5.3 ¶2); nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "signal processing / mathematics",
+   "item": "Fast Fourier transform periodograms with a Hanning window (OriginLab)",
+   "kind": "method",
+   "page": "§5.4 ¶1-2"
+  },
+  {
+   "field": "marine robotics / ocean engineering",
+   "item": "Kongsberg HUGIN autonomous underwater vehicle with INS-UTP-DVL navigation",
+   "kind": "instrument",
+   "page": "§5.1 ¶1-2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "there has been no way of reconstructing rates of past grounding-line retreat over annual or even subannual",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "was trialled and underwent first deployments in polar waters during the cruise",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "quote": "Both sonars enabled the collection of high-resolution images of the sea bed at a resolution unrivalled for shelf regions around the West Antarctic Ice Sheet.",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "quote": "The present study provides a rare example where the clear influence of tides has left geological markers",
+   "page": "§3 ¶2"
+  },
+  {
+   "quote": "The data described in this paper are unique in several aspects.",
+   "page": "§4 ¶5"
+  },
+  {
+   "quote": "The rates of retreat inferred from the landforms resolve daily grounding line motion for a key West Antarctic ice stream over nearly half a year",
+   "page": "§4 ¶5"
+  }
+ ],
+ "limits": "The Supplementary Information, where the rival keel mechanism is discussed, was not supplied. The main text says only that tidal migration 'can best explain' the ribs, so how the rival was rejected is not visible; no X step is coded. The mechanism sub-claim is at best_explanation. The heat-flux and ice-loss figures are order-of-magnitude estimates resting on assumed 6-8 m per day recession; their status is estimate_with_resolution, without stated uncertainty. The age of the ribs is not dated (regularity/estimate only, 'remains to be resolved by direct sampling'). No uncertainty is given on the 2.12-2.3 km per year retreat rate. The one-rib-per-day assumption rests on the match with modern (2020) TPXO-9 tides, used as a proxy for past tides at an unknown date. The coherence R2 = 0.57 is reported without a significance test. A peer review file is not supplied, although reviewers are acknowledged, so no review sequence is coded. Inference: the site was chosen and surveyed before the rib hypothesis existed, and the tidal interpretation was formed after the ribs were seen.",
+ "disagreements": [
+  {
+   "target": "Long-term retreat rates from satellites/airborne missions (Milillo et al. 2019) and the offshore geological record (Smith et al. 2014)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The daily-resolved rib record shows a pulse faster than decadal and millennial averages, implying that those averages hide punctuated rapid phases.",
+   "page": "§4 ¶1",
+   "quote": "may, therefore, hide temporal variability in grounding-line behaviour, including rapid, punctuated retreat phases that exceed the typically documented upper bounds"
+  },
+  {
+   "target": "Observations that Amundsen Sea glacier retreat rates over the past 30 years do not exceed 1-2 km per year (Milillo et al. 2022)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The reconstructed 2.12-2.3 km per year exceeds most satellite-era rates, though Pope Glacier's >11 km per year is acknowledged.",
+   "page": "§4 ¶1",
+   "quote": "These rates—lower than those recorded on the bump—underscore the exceptionally fast retreat phase uncovered by our data."
+  },
+  {
+   "target": "Deglacial grounding-zone landforms offshore of the Antarctic Peninsula as records of fast retreat (Dowdeswell et al. 2020)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "That retreat was driven partly by Northern Hemisphere meltwater sea-level rise, so it is argued not to be an appropriate analogue for the near-future WAIS.",
+   "page": "§1 ¶4",
+   "quote": "neither the time period nor forcing provide appropriate analogues for the near-future state of the West Antarctic Ice Sheet"
+  },
+  {
+   "target": "Previous work that sediment removal from sea-bed highs sensitized Thwaites by lowering topography (Hogan et al. 2020)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The rib evidence for ice-plain tidal migration is used to add a second effect of flattening highs: promoting rapid retreat.",
+   "page": "§4 ¶2",
+   "quote": "in addition to increasing bathymetric depth, the process of flattening sea-bed highs during grounding may have also increased the likelihood of rapid retreat"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "1.5 m onboard grid for most mapping and analysis",
+   "alternatives": "0.7 m post-processed grid",
+   "reason": "Conservative cell size because of the varied flying height; the 0.7 m grid was used for visualization and verification",
+   "effect_reported": "no",
+   "page": "§5.1 ¶3-4"
+  },
+  {
+   "node": "O",
+   "chosen": "Landform map made before navigation post-processing, aligned with an XY shift",
+   "alternatives": "Remapping on the post-processed data",
+   "reason": "Map was generated before secondary post-processing; data internally consistent",
+   "effect_reported": "yes",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Periodograms of the extracted rib amplitude series",
+   "alternatives": "Periodograms of the filtered and mean-adjusted topography",
+   "reason": "Amplitude data are already detrended and extracted from the topography",
+   "effect_reported": "yes",
+   "page": "§5.4 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "24-point 99th-percentile filter of hourly TPXO-9 output",
+   "alternatives": "Decimating the data to a single time per day",
+   "reason": "Removes the 24, 12 and 6 h periodicities while tracking the daily peak tidal height",
+   "effect_reported": "yes",
+   "page": "§5.4 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "Tide window 22 March to 4 September 2020 (late summer start)",
+   "alternatives": "Winter window, when CDW is thicker and slightly warmer (ref. 38)",
+   "reason": "End of summer judged the most likely trigger time for rapid retreat (warmth, minimum sea ice, timing of past collapses)",
+   "effect_reported": "no",
+   "page": "§5.3 ¶2"
+  },
+  {
+   "node": "H",
+   "chosen": "Tidal lifting and settling at a retreating grounding line",
+   "alternatives": "Forward motion by grounded ice-shelf or ice-mélange keels",
+   "reason": "Shape, regularity and periodicity of the ribs best explained",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Age bounds under assumed monotonic retreat",
+   "alternatives": "Current retreat rate of 0.8 km per year versus slower 0.3 km per year",
+   "reason": "Rib age is unknown without sampling",
+   "effect_reported": "yes",
+   "page": "§4 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The periodicity is not unique to one series and is preserved in adjacent sequences of ribs found at different depths.",
+   "page": "§2 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "periodograms of the filtered and mean-adjusted topography produce results with no discernible differences",
+   "page": "§5.4 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We compared this approach with a method that decimated the data to a single time per day.",
+   "page": "§5.4 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A second grid with improved resolution of 0.7 m was produced for subsequent visualization and verification of our analyses",
+   "page": "§5.1 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the interpretations and subsequent geometric analysis of the ribs are not subject to any appreciable change",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "They are similar to regularly spaced ‘rungs’ recently observed in the Weddell Sea",
+   "page": "§2 ¶3"
+  }
+ ]
+}
