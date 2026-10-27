@@ -329,7 +329,7 @@ def main():
     raf = rv['return_after_failure_steps']
     qmv = rv['entry_node_Q']['later_Q_step_moves']
     numbers = {
-        'source': rel(SRC), 'source_provenance': J.get('_provenance'),
+        'source': ps.rel(SRC), 'source_provenance': J.get('_provenance'),
         'valid_codings_now': {t: d['n_valid'].get(t, 0) for t, _ in g21.ROUNDS}, 'invalid_files': bad,
         'a_shares': {'batch': {r: {s: v for s, v in d['distribution'][r]['state'].items()} for r in rounds},
                      'blind_consensus_weighted': pe, 'blind_A_weighted': ba['population_estimate']['A'],

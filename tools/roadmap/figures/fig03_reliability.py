@@ -71,12 +71,12 @@ GRAPH_FOR_CODEBOOK = {'1.4.0': 'v0.4.2', '1.5.0': 'v0.4.2'}   # agents/coder/COD
 BOOL = ['entry_state', 'entry_node', 'outcome', 'decisive_mode']
 NUM = ['node_set_jaccard', 'mode_set_jaccard', 'node_seq_similarity', 'mode_seq_similarity']
 MEASURES = BOOL + NUM
-LABEL = {'entry_state': 'Entry state', 'entry_node': 'Entry node', 'outcome': 'Outcome', 'decisive_mode': 'Decisive mode',
-         'node_set_jaccard': 'Node set (Jaccard)', 'mode_set_jaccard': 'Mode set (Jaccard)',
-         'node_seq_similarity': 'Node sequence', 'mode_seq_similarity': 'Mode sequence'}
+LABEL = {'entry_state': 'Entry state', 'entry_node': 'Entry node', 'outcome': 'Outcome', 'decisive_mode': 'Decisive mode of inquiry',
+         'node_set_jaccard': 'Node set (Jaccard)', 'mode_set_jaccard': 'Mode-of-inquiry set (Jaccard)',
+         'node_seq_similarity': 'Node sequence', 'mode_seq_similarity': 'Mode-of-inquiry sequence'}
 ALPHA = ['entry_state', 'outcome', 'claim_status', 'decisive_mode', 'composition', 'v_status', 'node_presence']
 ALPHA_LABEL = {'entry_state': 'Entry state', 'outcome': 'Outcome', 'claim_status': 'Claim status',
-               'decisive_mode': 'Decisive mode', 'composition': 'Composition', 'v_status': 'V status',
+               'decisive_mode': 'Decisive mode of inquiry', 'composition': 'Composition', 'v_status': 'V status',
                'node_presence': 'Node presence'}
 
 
@@ -409,10 +409,12 @@ def main():
         f'(a) First and second coding of {len(coded_twice)} gold-set papers (the papers of the 100-paper gold sample that had full '
         f'text at the first coding); {len(pair)} pairs pass the format check in both runs. Both runs were sent as asynchronous '
         'batch requests with the same instructions, effort setting high and no temperature set. '
-        'Top four rows: share of papers whose two codings match on entry state, entry node, outcome and decisive mode; '
+        'Top four rows: share of papers whose two codings match on entry state, entry node, outcome and decisive mode of '
+        'inquiry (a mode of inquiry is the kind of epistemic work a step serves, such as estimation or methods; the '
+        'decisive one is that of the step without which the main claim would not exist); '
         f'the outcome row has no visible interval because all {len(pair)} pairs agree. '
-        'Bottom four rows: mean similarity of the node set and mode set (Jaccard: shared items over items in either) and of '
-        'the node and mode sequences (1 minus the normalized edit distance, after merging repeated consecutive steps). Grey '
+        'Bottom four rows: mean similarity of the node set and mode-of-inquiry set (Jaccard: shared items over items in '
+        'either) and of the node and mode-of-inquiry sequences (1 minus the normalized edit distance, after merging repeated consecutive steps). Grey '
         'points are single papers, jittered vertically; per-paper similarities are rounded to 2 decimals, so several papers '
         'share a value. '
         f'(b) Input format test, n = {len(fkeys)} papers, four input formats, two codings per format and paper: '
@@ -425,13 +427,14 @@ def main():
         f'{"each on one quote over 25 words" if all("quote over 25" in e for e in fmeta["invalid"].values()) else "see the numbers file"}). '
         f'(c) Per paper, between-format minus within-format agreement (grey circles), and the mean over the {len(fkeys)} papers '
         'with a paired 95% bootstrap interval (blue). The difference excludes zero for the node sequence '
-        f'({dd("node_seq_similarity")}) and the mode sequence ({dd("mode_seq_similarity")}); for entry state, decisive mode, '
+        f'({dd("node_seq_similarity")}) and the mode-of-inquiry sequence ({dd("mode_seq_similarity")}); for entry state, '
+        'decisive mode of inquiry, '
         f'node set and outcome it lies between {fmt0(min(ed[f][0] for f in ("entry_state", "decisive_mode", "node_set_jaccard", "outcome")))} '
         f'and {fmt0(max(ed[f][0] for f in ("entry_state", "decisive_mode", "node_set_jaccard", "outcome")))}. '
         f'Open triangles: the {len(PREPRINT)} papers whose PDF was the discussion preprint, so two formats coded '
         'another text version and their between-format pairs compare different texts; they carry the largest sequence drops. '
         f'On the 4 same-version papers, node-sequence similarity is {s4("node_seq_similarity", "within")} within and '
-        f'{s4("node_seq_similarity", "between")} between formats, mode sequence {s4("mode_seq_similarity", "within")} and '
+        f'{s4("node_seq_similarity", "between")} between formats, mode-of-inquiry sequence {s4("mode_seq_similarity", "within")} and '
         f'{s4("mode_seq_similarity", "between")}. '
         "(d) Krippendorff's alpha (nominal) for the pairs of (a): agreement corrected for the agreement expected by chance, "
         '1 perfect, 0 chance; node presence uses one unit per paper and node (15 nodes). V status is full when the paper '

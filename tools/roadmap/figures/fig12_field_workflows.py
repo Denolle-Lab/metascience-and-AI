@@ -85,12 +85,12 @@ def feature_label(f, kind):
     if w[0] == 'node':
         return f'Uses node {w[1][0]} ({w[1][2:]})'
     if w[0] == 'mode':
-        return f'Uses {w[1]} mode'
+        return f'Uses {w[1]} (mode of inquiry)'
     if w[0] == 'decisive':
-        return f'Decisive mode: {w[1]}'
+        return f'Decisive mode of inquiry: {w[1]}'
     if w[0] == 'composition':
         return f"Composition: {w[1].replace('_', ' ')}"
-    lab = {'V check kinds': 'Kinds of V checks', 'distinct modes': 'Distinct modes', 'import fields': 'Fields borrowed from',
+    lab = {'V check kinds': 'Kinds of V checks', 'distinct modes': 'Distinct modes of inquiry', 'import fields': 'Fields borrowed from',
            'imports': 'Borrowed from other fields', 'revisits': 'Revisits', 'steps': 'Steps'}.get(f, f)
     return lab + (' (count)' if kind == 'num' else '')
 
@@ -217,7 +217,7 @@ def main():
     first_dec = next(i for i, r in enumerate(rows) if r[3] == 'decisive')
     ax.text(xs[0] - 0.5, ys[0] - 0.75, 'Nodes used (% of papers)', ha='left', va='bottom', fontsize=ps.SMALL,
             fontweight='bold', color=ps.INK)
-    ax.text(xs[0] - 0.5, ys[first_dec] - 0.75, f"Decisive mode (% of papers; whole variable: Cram\u00e9r's V = {dec_whole['cramers_v_bc']}, "
+    ax.text(xs[0] - 0.5, ys[first_dec] - 0.75, f"Decisive mode of inquiry (% of papers; Cram\u00e9r's V = {dec_whole['cramers_v_bc']}, "
             f"q = {dec_whole['q']:.3f})", ha='left', va='bottom', fontsize=ps.SMALL, fontweight='bold', color=ps.INK)
     # q column
     qx = xs[-1] + 0.62
@@ -365,15 +365,16 @@ def main():
            "of steps; each step carries a node, the kind of move in the modes-of-inquiry graph (N new capability, "
            "E explore, O observe, I infer a latent quantity, Q question, H hypothesize rivals, S simulate or derive "
            "expectations, D design the test, F find or set conditions, C compare, V vary or replicate, X exclude a rival, "
-           "K keep the claim, P protect the claim by revising an auxiliary assumption, R refine), and a mode, the style of "
-           "inquiry the step belongs to (methods: new inference or computational capability; estimation: a latent "
+           "K keep the claim, P protect the claim by revising an auxiliary assumption, R refine), and a mode of inquiry, the "
+           "kind of epistemic work the step serves (methods: new inference or computational capability; estimation: a latent "
            "quantity with uncertainty; simulation: model forecasts or consequences; reconstruction: a past event from its "
            "traces; observation: describing a phenomenon; hypothesis: testing among rivals; regularities: an empirical "
            "relation with its range; theory: consequences derived from first principles; instruments: building or "
            "characterizing an apparatus or sensor; exploration: establishing that a phenomenon is real; synthesis: "
            "combining results across studies; robustness: varying conditions to see whether a result holds; question: "
-           "posing or sharpening the question). A node is one of 15 kinds of move; a mode is one of 13 styles of inquiry "
-           "the move serves. The decisive move is the single step, with its mode, without which the "
+           "posing or sharpening the question). A node is one of 15 kinds of move; a mode of inquiry is one of 13 kinds of "
+           "epistemic work the move serves. The decisive move is the single step, with its mode of inquiry, without "
+           "which the "
            "paper's main claim would not exist. Field is the subfield of the paper's leading topic in OpenAlex (an open "
            "bibliographic database), a machine label from title, abstract, venue and citations. OpenAlex files topics, not papers, under subfields, so "
            "a subfield label names its dominant leading topic where one topic holds at least 60% of the subfield's coded "
@@ -382,14 +383,14 @@ def main():
            "mainly The Cryosphere). Venue is the journal family, grouped by DOI prefix and publisher (AGU apart from Wiley; "
            "Copernicus, mostly European Geosciences Union journals). "
            f"(a) Share of papers in each subfield that use each node at least once (upper block) and whose decisive move "
-           f"is in each mode (lower block; modes with fewer than 10 papers summed as other, so columns sum to 100%). "
+           f"is in each mode of inquiry (lower block; modes of inquiry with fewer than 10 papers summed as other, so columns sum to 100%). "
            f"Subfields with fewer than 10 coded papers ({', '.join(f'{k} {v}' for k, v in pooled_subs.items())}) appear "
            "in All only. The q column is the Benjamini-Hochberg adjusted p (BH q; rows with q < 0.1 are expected to "
            "include at most about 10% false discoveries) of a permutation chi-square test of that row against subfield, "
            f"adjusted over all {T['workflows']['tests']} workflow tests (every binary, count and categorical feature, tested "
            "once against subfield and once against journal family); n.t. marks rows not tested because fewer "
            f"than 10 or more than n - 10 papers have the feature (nodes {', '.join(nodes_untested)}). Cram\u00e9r's V for the "
-           "decisive mode as a whole is bias-corrected, 0 when mode is independent of subfield and 1 when subfield "
+           "decisive mode of inquiry as a whole is bias-corrected, 0 when it is independent of subfield and 1 when subfield "
            "determines it. An outlined cell has row q < 0.1 and a 95% bootstrap interval of its rate minus the rate in "
            "all other papers that excludes zero, above or below (a 0 can be outlined). "
            f"Nodes with q < 0.1: {', '.join(nodes_sig)}. "
@@ -408,8 +409,8 @@ def main():
            f"(c) The {nconf} associations between a workflow feature and an outcome with q < 0.1 over the "
            f"{ps.read_json(D / 'outcomes' / 'outcomes.json')['tests']} workflow-outcome tests (cnp and fwci correlate at "
            "0.99, so the impact rows repeat one signal). Features: "
-           "steps and revisits as in (b); decisive mode as in (a); uses a mode, at least one step in it; distinct modes, "
-           "number of different modes in the sequence; borrowed from other fields, number of concepts, methods, instruments "
+           "steps and revisits as in (b); decisive mode of inquiry as in (a); uses a mode of inquiry, at least one step in "
+           "it; distinct modes of inquiry, number of different modes of inquiry in the sequence; borrowed from other fields, number of concepts, methods, instruments "
            "or data from outside Earth science that the coder lists (codebook section 6); fields borrowed from, number of "
            "distinct source fields (these two against breadth_refs are a convergent validity check of the coder, the same "
            "thing measured from the text and from the reference list, not workflow-outcome findings); composition capability "

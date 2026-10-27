@@ -62,7 +62,7 @@ OUT_LONG = {'cnp': 'Impact: citation percentile (cnp)', 'fwci': 'Impact: field-w
             'novelty_pair': 'Novelty: rare topic pair', 'breadth_refs': 'Breadth: references outside geoscience',
             'breadth_citers': 'Breadth: citers outside geoscience'}
 
-COUNTS = {'steps': 'Steps', 'distinct nodes': 'Distinct nodes', 'distinct modes': 'Distinct modes',
+COUNTS = {'steps': 'Steps', 'distinct nodes': 'Distinct nodes', 'distinct modes': 'Distinct modes of inquiry',
           'revisits': 'Node revisits', 'returns after failure': 'Returns after failure', 'imports': 'Borrowed from other fields',
           'import fields': 'Fields borrowed from', 'novelty claims': 'Novelty claims',
           'V check kinds': 'Kinds of V check'}
@@ -71,8 +71,8 @@ CHECKS = {'claim gate yes': 'Claim gate passed', 'action gate yes or partly': 'A
           'any return after failure': 'Any return after failure', 'outcome contradicted': 'Outcome contradicted'}
 # (group key, header in panel a, prefix in panel b)
 GROUPS = [('count', 'Counts per paper', ''), ('check', 'Gates and checks', ''), ('entry', 'Entry state', 'Entry: '),
-          ('node', 'Node used', 'Node used: '), ('mode', 'Mode used', 'Mode used: '),
-          ('decisive', 'Decisive mode', 'Decisive mode: '), ('composition', 'Composition', 'Composition: '),
+          ('node', 'Node used', 'Node used: '), ('mode', 'Mode of inquiry used', 'Mode of inquiry used: '),
+          ('decisive', 'Decisive mode of inquiry', 'Decisive mode of inquiry: '), ('composition', 'Composition', 'Composition: '),
           ('other', 'Other', '')]
 TERMS = {}               # filled in main() from definitions.json
 
