@@ -296,8 +296,10 @@ def round2(state: dict) -> None:
         '[papers where the two screeners agreed on eligibility, papers with both screens].', I)
     put('r2.excluded_by_category', counter(Counter(x['category'] for x in el if not x['eligible'])), 'Excluded round-2 papers by category.', I)
     q27 = json.loads(QUEUE_OCT27.read_text())
+    qnow = json.loads(QUEUE_NOW.read_text())
+    pdf_of = lambda k: (q27.get(k) or {}).get('file') or qnow[k]['file']   # top-up batches hold papers fetched after Oct 27
     for b in [b for b in state['batches'] if b['tag'] == 'r2']:
-        pages = sum(max(4, (ROOT / q27[k]['file']).stat().st_size // 60_000) for k in b['keys'])
+        pages = sum(max(4, (ROOT / pdf_of(k)).stat().st_size // 60_000) for k in b['keys'])
         est = (pages * 2300 * 4.00 + len(b['keys']) * 10_000 * 20.00) / 1e6 * 0.5
         put(f'r2.batch.{b["id"]}', {'requests': len(b['keys']), 'submitted': b['submitted'], 'est_pages': pages, 'dry_run_estimate_usd': round(est, 2)},
             'Round-2 batch and the code_papers.py submit estimate: pages = sum(max(4, pdf_bytes // 60000)); '
