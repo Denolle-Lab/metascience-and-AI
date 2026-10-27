@@ -2,7 +2,7 @@
 
 The report is public since October 27, 2026 (quotes of single papers are allowed; paper texts are not redistributed).
 This script copies it into the book: the first heading becomes the page title, a status line goes under it, the
-"Private; not for circulation" sentence is dropped, figure links are pointed at assets/roadmap/ and every figure PNG
+"Private; not for circulation" sentence is dropped, the body is wrapped in a .report-paper div (STIX Two Text, styles.scss), figure links are pointed at assets/roadmap/ and every figure PNG
 the report uses is copied there from private/data/roadmap/figures/paper/. Paths written as code (`private/...`) are
 left as they are: they name files in the data release, data/roadmap-release/, which mirrors the private layout.
 
@@ -40,7 +40,7 @@ def main() -> None:
             f'- Data release (codings with quotes, derived tables, figure provenance; no paper texts): '
             f'[`data/roadmap-release/`](https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release).\n'
             f'- Short result pages: [topics and journals](topics-journals.qmd), [workflows and outcomes](workflow-outcomes.qmd), '
-            f'[peer review](review-visibility.qmd).\n' + body)
+            f'[peer review](review-visibility.qmd).\n\n::: {{.report-paper}}\n' + body.rstrip() + '\n\n:::\n')
     # blinding: the page must not identify a paper still in human coding (same embargo as g22_release.py)
     sys.path.insert(0, str(ROOT / 'tools' / 'roadmap'))
     from g22_release import Embargo

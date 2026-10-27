@@ -160,3 +160,11 @@ table strong a, table a strong { font-weight: 700; }
   .schema .sc-term, .schema .sc-obs, .schema .sc-verdict { flex: 1 1 0; min-width: 0; }
   .schema .sc-obs { flex-grow: 1.6; }
 }
+
+// The roadmap report (roadmap-report.qmd) is set in STIX Two Text, a journal face, at the PI's request (October 27, 2026);
+// the rest of the book keeps the denolle.ai theme. build_report_page.py wraps the body in .report-paper.
+$report-font: "STIX Two Text", "STIX Two", "Times New Roman", Times, serif;
+main:has(.report-paper) h1, main:has(.report-paper) .status-line { font-family: $report-font; letter-spacing: 0; }
+.report-paper { font-family: $report-font; font-size: 1.04rem; line-height: 1.55; }
+.report-paper h2, .report-paper h3, .report-paper h4 { font-family: $report-font; }
+.report-paper .table, .report-paper figcaption, .report-paper .figure-caption { font-family: $report-font; }
