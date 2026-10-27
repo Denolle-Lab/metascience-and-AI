@@ -1,0 +1,78 @@
+# Research workflows and their outcomes {.unnumbered}
+
+[Drafted]{.status .drafted} [v0.1 · October 27, 2026 · first calculation, 233 papers · paper codebook 1.5.0 · exploratory]{.status-line}
+
+- **Question.** Do the workflow features coded from a paper (where it starts, which modes and graph nodes it uses, how often it loops back, how it checks its result) go with its outcomes: impact, novelty, breadth, advance?
+- **Short answer.** Weakly, and mostly in expected directions. Of 425 feature-outcome tests, 15 pass a false-discovery threshold (q < 0.1); the largest correlations are 0.2 to 0.6. Advance is not measured yet.
+- **Scope.** Results only; codings and papers stay in the lab's private repository.
+
+## Status of the 600-paper plan
+
+| Stage | Papers | Status |
+|:--|--:|:--|
+| Preselected from 14,223 candidate 2022 papers, stratified by impact, novelty, breadth | 600 | done |
+| Eligible after a double-blind abstract screen | 525 | done |
+| Gold set (stratified draw) | 100 | frozen |
+| Full text in hand and coded once | 233 | done |
+| Gold papers coded twice (model test-retest) | 50 | done |
+| Open-review papers with review sequence coded | 58 | done, see [review visibility](review-visibility.qmd) |
+| Gold papers assigned to human coders (four coders, two per paper) | 40 | packets ready, coding not started |
+| Eligible papers still without full text | 290 | blocked: Elsevier 70, Springer Nature 54, Wiley and AGU 82, SSA journals 44, GJI 28, others |
+
+- The 233 coded papers lean toward open access (83% against 46% of the uncoded), and 33 come from one journal (The Cryosphere).
+
+## Outcome measures
+
+| Dimension | Measure | Papers | Median |
+|:--|:--|--:|--:|
+| Impact | OpenAlex citation percentile, about four years after publication | 233 | 0.55 |
+| Impact | Field-weighted citation impact | 233 | 0.48 |
+| Novelty | Rarity of the paper's two leading topics appearing together, 2017 to 2021 | 233 | −3.8 |
+| Breadth | Share of references outside geoscience | 233 | 0.03 |
+| Breadth | Share of citers outside geoscience, papers with at least 10 citers | 53 | 0.00 |
+| Advance | Blind human rating | 0 | pending |
+
+- The outcome measures are nearly independent of each other (rank correlations between impact, novelty and breadth from −0.12 to 0.10), except the two breadth measures (0.30). They measure different things.
+
+## Associations that pass the threshold
+
+Spearman rank correlation, 95% bootstrap interval over papers, permutation p, Benjamini-Hochberg q over all 425 tests.
+
+| Workflow feature | Outcome | rho [95% CI] | q | Papers with feature |
+|:--|:--|:--|--:|--:|
+| Imports from other fields (count) | Breadth of references | 0.57 [0.46, 0.66] | 0.03 | numeric |
+| Fields imported from (count) | Breadth of references | 0.51 [0.41, 0.61] | 0.03 | numeric |
+| Decisive mode: methods | Breadth of references | 0.22 [0.09, 0.36] | 0.03 | 29% |
+| Composition: capability first | Breadth of references | 0.22 [0.08, 0.35] | 0.03 | 13% |
+| Kinds of vary-and-replicate check | Breadth of references | 0.20 [0.08, 0.33] | 0.05 | numeric |
+| Distinct modes used | Breadth of references | −0.22 [−0.34, −0.10] | 0.03 | numeric |
+| Uses the synthesis mode | Breadth of references | −0.22 [−0.35, −0.09] | 0.04 | 70% |
+| Uses node I (infer a latent quantity) | Breadth of references | −0.18 [−0.31, −0.05] | 0.09 | 82% |
+| Steps in the walk | Impact (FWCI) | 0.23 [0.11, 0.35] | 0.03 | numeric |
+| Steps in the walk | Impact (percentile) | 0.23 [0.09, 0.35] | 0.03 | numeric |
+| Revisits to an earlier node | Impact (FWCI) | 0.22 [0.08, 0.34] | 0.03 | numeric |
+| Revisits to an earlier node | Impact (percentile) | 0.21 [0.09, 0.34] | 0.03 | numeric |
+| Decisive mode: simulation | Impact (FWCI) | 0.21 [0.08, 0.33] | 0.03 | 11% |
+| Decisive mode: simulation | Impact (percentile) | 0.20 [0.07, 0.32] | 0.04 | 11% |
+| Uses the observation mode | Novelty | 0.21 [0.08, 0.33] | 0.05 | 78% |
+
+- **Paper length check.** Longer papers have more steps and more citations. Controlling for reference count, the impact correlations drop but stay positive: steps 0.17, revisits 0.15, decisive simulation 0.19.
+- **Partly circular.** Imports from other fields and references outside geoscience measure overlapping things; the 0.57 says the coder's import list tracks the reference list, more than it says anything about outcomes.
+- **Breadth of citers** (53 papers): no association passes the threshold. The largest is the claim gate (exposing the claim to a test it could have failed), 0.37 [0.11, 0.59], q = 0.11.
+
+## Reading the result
+
+- Work that loops back more and is decided by simulation is cited somewhat more; work decided by a method, or that starts from a new capability, draws more on other fields; work that combines many modes or synthesizes draws less on other fields.
+- None of this is causal. Journal, field, open access, team size and topic all differ between papers and are not controlled here.
+- Novelty as measured (a rare topic pair) barely relates to any workflow feature. Either the proxy is weak or novelty does not show in the workflow; the human ratings will tell which.
+
+## Limits
+
+- One model coder (Claude Opus 5.5); test-retest node overlap 0.86 on 50 papers; no human check yet.
+- 233 of 525 eligible papers, open-access-leaning; 2022 papers, citations at about four years.
+- Proxies: novelty and breadth are bibliometric stand-ins; advance is missing.
+- 425 tests: some of the 15 will be false positives (by construction about 1 to 2 at q < 0.1).
+
+## Reproduce
+
+- `tools/roadmap/g17_outcomes.py` (this repository); inputs are the private codings and `derived/gold/metrics.json`.
