@@ -302,6 +302,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./review-visibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What review changes, and what the paper says</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Scientific advance: records and evaluation</span></a>
   </div>
@@ -388,12 +394,18 @@ div.csl-indent {
 <ul>
 <li>Positive test cases. A scoring rule, a mode agent, or an evaluation protocol that cannot recognize these as advances, reproduce what they report, or catch what a careful reader would catch, fails.</li>
 <li>Slides: <a href="slides/modes-meeting.html">modes-meeting deck</a>.</li>
-<li>Each paper is used three ways: metrics (section 1), a mode coding on <a href="./unit.html#the-graph">graph v0.4</a> (section 2), and a <a href="./success-set.html">historical-evaluation</a> case (section 3).</li>
+<li>Each paper is used three ways: metrics (section 1), a mode coding on <a href="./unit.html#the-graph">graph v0.4</a> (section 2), and a historical-evaluation case (section 3).</li>
 <li>Full codings, with a page for every claim: <code>private/analysis/success-set/</code>. Metric values: <code>private/success-set-indicators.json</code>. Reading copies: the convenor’s shared folder.</li>
 </ul>
 <section id="the-set" class="level2">
 <h2 class="anchored" data-anchor-id="the-set">The set</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Stratum</th>
@@ -406,7 +418,7 @@ div.csl-indent {
 <tr class="odd">
 <td style="text-align: left;">Recognized</td>
 <td style="text-align: left;"><span class="citation" data-cites="vine1963">Vine and Matthews (<a href="bibliography.html#ref-vine1963" role="doc-biblioref">1963</a>)</span>; <span class="citation" data-cites="shapiro2005">Shapiro et al. (<a href="bibliography.html#ref-shapiro2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="rodell2009">Rodell et al. (<a href="bibliography.html#ref-rodell2009" role="doc-biblioref">2009</a>)</span>; <span class="citation" data-cites="lam2023">Lam et al. (<a href="bibliography.html#ref-lam2023" role="doc-biblioref">2023</a>)</span></td>
-<td style="text-align: left;">Meet the <a href="./success-set.html">selection rule</a>: <em>Nature</em> or <em>Science</em>, at or above the 99th citation percentile, interdisciplinary input or uptake</td>
+<td style="text-align: left;">Meet the selection rule: <em>Nature</em> or <em>Science</em>, at or above the 99th citation percentile, interdisciplinary input or uptake</td>
 <td style="text-align: left;">Impact already observed</td>
 </tr>
 <tr class="even">
@@ -555,7 +567,7 @@ div.csl-indent {
 <h3 class="anchored">Against matched controls</h3>
 <ul>
 <li><strong>Design.</strong> For each paper, three research articles from the same journal and year, in the same OpenAlex subfield, at the median citation rank of that pool. Type article, at least 20 references (5 for 1963, when reference lists were short), retrieved anonymously on October 20, 2026. The same measures as above.</li>
-<li><strong>The citation percentile cannot separate advances inside these journals.</strong> A median-ranked Earth-science article in <em>Nature</em> or <em>Science</em> already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile rule on the <a href="./success-set.html">historical-evaluation page</a> selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.</li>
+<li><strong>The citation percentile cannot separate advances inside these journals.</strong> A median-ranked Earth-science article in <em>Nature</em> or <em>Science</em> already sits at the 98.4th to 99.9th field-normalized percentile. The 99th-percentile selection rule used for the recognized papers selects journals, not breakthroughs. Use raw citations or rank within the journal-year instead.</li>
 </ul>
 <table class="caption-top table">
 <colgroup>
@@ -1203,7 +1215,7 @@ div.csl-indent {
 </tbody>
 </table>
 <ul>
-<li><strong>Exposure.</strong> The four recognized papers are in any model’s training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models’ training; check each model’s training cutoff and whether it can recall the result before using them for decision reconstruction (<a href="./success-set.html">contamination</a>).</li>
+<li><strong>Exposure.</strong> The four recognized papers are in any model’s training data: use them for reproduction and extension, not blind decision reconstruction. The four designated papers postdate some models’ training; check each model’s training cutoff and whether it can recall the result before using them for decision reconstruction.</li>
 <li><strong>Errors in the text are a separate item from planted flaws.</strong> An agent that reproduces a result should also flag the Turner-angle sign and the survey date. A model that has memorized the paper may repeat them.</li>
 </ul>
 </section>
