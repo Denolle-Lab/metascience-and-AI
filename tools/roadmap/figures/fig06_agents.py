@@ -269,15 +269,6 @@ def main():
     axa.set_xlabel('Share of papers or agent systems using the node (%)')
     ps.grid(axa, 'x')
     axa.tick_params(axis='y', length=0)
-    # selective direct labels on row P (agents at zero, papers mid-scale: clear space on both sides)
-    ip = ps.NODES.index('P')
-    pap = [(cells, dy) for (lab, _, _, cells, _, _), dy in zip(allser, offs) if lab.startswith('Papers')]
-    hi_p = max(100 * c['P'][2] for c, _ in pap)
-    axa.text(hi_p + 2.5, ip + np.mean([dy for _, dy in pap]),
-             'Papers, round 1 (filled)\nand round 2 (open)' if r2 else 'Papers',
-             va='center', ha='left', fontsize=ps.SMALL, color=ps.INK2, linespacing=1.1)
-    e, lo, hi = (100 * v for v in agent[3]['P'])
-    axa.text(hi + 2.5, ip + offs[-1], 'Agent systems', va='center', ha='left', fontsize=ps.SMALL, color=ps.INK2)
     handles = [Line2D([], [], marker='o', ls='', color=col, mfc=col if fill else 'white', mec=col, ms=3.6, mew=0.8,
                       label=f'{lab} (n = {nn})') for lab, col, fill, _, _, nn in allser]
     axa.legend(handles=handles, loc='lower left', bbox_to_anchor=(-0.02, 1.0), ncol=2 if k > 2 else k, handletextpad=0.3,

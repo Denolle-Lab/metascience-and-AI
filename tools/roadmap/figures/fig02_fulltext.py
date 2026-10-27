@@ -74,7 +74,7 @@ CATS = [('both', 'PDF and XML', ps.BLUE), ('pdf', 'PDF only', ps.ORANGE), ('xml'
         ('none', 'No full text', ps.NEUTRAL)]
 SHORT = {'Geophysical Journal International': 'GJI (Oxford)', 'Bulletin of the Seismological Society of America': 'BSSA (SSA)',
          'Seismological Research Letters': 'SRL (SSA)', 'AGU': 'AGU (Wiley)', 'Wiley': 'Wiley, not AGU',
-         'Springer Nature': 'Springer Nature (incl. Pleiades)'}
+         'Springer': 'Springer (incl. Pleiades)'}
 FT_HEADER = 'Any full text'
 
 
@@ -158,6 +158,9 @@ def load_round(mfold: str, metfold: str, queue: dict):
         elif prefix == COPERNICUS_PREFIX and pub != 'Copernicus':
             checks[f'relabelled_Copernicus_from_{pub}'] += 1
             pub = 'Copernicus'
+        elif pub == 'Springer Nature':   # OpenAlex splits Springer journals between two labels; Nature Portfolio stays apart
+            checks['merged_Springer_Nature_into_Springer'] += 1
+            pub = 'Springer'
         cat = 'both' if pdf and xml else 'pdf' if pdf else 'xml' if xml else 'none'
         xfmt = None
         if xml:
@@ -281,7 +284,7 @@ def main() -> None:
         numbers.setdefault('all_open_access_by_design', {})[rd['label']] = all_oa
         rows = rd['rows']
         els = [r for r in rows if r['publisher'] == 'Elsevier']
-        sn = [r for r in rows if r['publisher'] == 'Springer Nature']
+        sn = [r for r in rows if r['publisher'] == 'Springer']
         numbers[rd['label']] = {
             'eligible': tab['All publishers']['n'],
             'by_publisher': {g: tab[g] for g in order},
@@ -356,7 +359,7 @@ def main() -> None:
         + (', which in these rounds are exactly the papers with DOI prefix 10.1029' if agu_mismatch == 0 else '')
         + ', and papers with DOI prefix 10.5194 (European Journal of Mineralogy, hosted by OpenAlex under Elsevier) are '
         'shown as Copernicus. GJI, SRL and BSSA are shown by journal; their publishers are given in parentheses. '
-        f'The Springer Nature host includes Pleiades translations of Russian journals (DOI prefixes 10.1134 and 10.3103; '
+        f'Springer joins the two OpenAlex labels Springer and Springer Nature (Nature Portfolio is shown apart) and includes Pleiades translations of Russian journals (DOI prefixes 10.1134 and 10.3103; '
         f'{pleiades})'
         + (f"; the Elsevier host includes {', and '.join(els_other)}" if els_other else '') + '. '
         f'Publishers with fewer than {MIN_N} eligible papers in a round are pooled as Other ({other}). Rows keep the '

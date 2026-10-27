@@ -73,7 +73,7 @@ LABEL = {'entry_state': 'Entry state', 'entry_node': 'Entry node', 'outcome': 'O
          'node_seq_similarity': 'Node sequence', 'mode_seq_similarity': 'Mode sequence'}
 ALPHA = ['entry_state', 'outcome', 'claim_status', 'decisive_mode', 'composition', 'v_status', 'node_presence']
 ALPHA_LABEL = {'entry_state': 'Entry state', 'outcome': 'Outcome', 'claim_status': 'Claim status',
-               'decisive_mode': 'Decisive mode', 'composition': 'Composition', 'v_status': 'V status (NASEM)',
+               'decisive_mode': 'Decisive mode', 'composition': 'Composition', 'v_status': 'V status',
                'node_presence': 'Node presence'}
 
 
