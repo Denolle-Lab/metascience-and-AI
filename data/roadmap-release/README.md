@@ -2,7 +2,7 @@
 
 Data, model codings, figures and reports of the roadmap study in this repository (how Earth-science papers move
 through the inquiry graph v0.4.2, coded by a language model under codebook 1.5.0). Built on 2026-10-27 by
-`tools/roadmap/g22_release.py` from the private working tree (public commit b4369fe, private commit bcbd23f).
+`tools/roadmap/g22_release.py` from the private working tree (public commit fc67985, private commit d9422ce+uncommitted).
 268 files, 24.6 MB. `RELEASE.json` lists every file with its sha256 and size.
 
 The folder mirrors the layout of the private tree (`private/` in the scripts' docstrings and provenance blocks is this
@@ -110,5 +110,5 @@ Data and text in this folder: CC BY 4.0 (see `LICENSE`, section 1). Code in `too
 remain with their holders; a quotation here does not license reuse of the source.
 
 Cite as: Denolle, M. (2026). *Roadmap data release: model codings of Earth-science papers on the inquiry graph*
-(release of 2026-10-27, commit b4369fe). Denolle Lab, University of Washington.
+(release of 2026-10-27, commit fc67985). Denolle Lab, University of Washington.
 https://github.com/Denolle-Lab/metascience-and-AI/tree/main/data/roadmap-release

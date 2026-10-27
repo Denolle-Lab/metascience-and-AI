@@ -113,7 +113,7 @@ A and B agree on the group in 18 of 21 (alpha 0.82). The subtype describes what 
 
 ## Is the entry state revisited in the walk?
 
-No, and it cannot be in the current schema. Entry state is one paper-level label; the walk has nodes, modes and moves, and no state. What can recur is the entry node. From g21 step 4 (rerun today, 233 round-1 codings; revisit = the node returns after at least one other node):
+No, and it cannot be in the current schema. Entry state is one paper-level label; the walk has nodes, modes of inquiry (the kind of epistemic work a step serves, such as estimation or methods) and moves, and no state. What can recur is the entry node. From g21 step 4 (rerun today, 233 round-1 codings; revisit = the node returns after at least one other node):
 
 | Measure | Value |
 |:--|:--|
