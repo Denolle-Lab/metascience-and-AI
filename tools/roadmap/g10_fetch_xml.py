@@ -27,12 +27,12 @@ import urllib.parse
 import urllib.request
 from collections import Counter
 from pathlib import Path
-from common import SET, CALC, DERIVED, ROOT, log, openalex, read_json, sid, write_json
+from common import SET, CALC, DERIVED, ROOT, PRIVATE, log, openalex, read_json, sid, write_json
 
 sys.path.insert(0, str(ROOT / 'tools'))
 import jats_text  # noqa: E402
 
-OUT = ROOT / 'private' / 'data' / 'roadmap' / 'pdfs' / 'gold'
+OUT = PRIVATE / 'data' / 'roadmap' / 'pdfs' / 'gold'
 UA = 'metascience-roadmap/1.0'
 
 
@@ -153,8 +153,8 @@ def main() -> None:
     rows = []
     for g in gold:
         dest = OUT / f"{g['key']}.xml"
-        if not dest.is_file() and (ROOT / 'private/data/roadmap/pdfs/gold' / f"{g['key']}.xml").is_file():
-            dest = ROOT / 'private/data/roadmap/pdfs/gold' / f"{g['key']}.xml"   # gold papers already fetched
+        if not dest.is_file() and (PRIVATE / 'data/roadmap/pdfs/gold' / f"{g['key']}.xml").is_file():
+            dest = PRIVATE / 'data/roadmap/pdfs/gold' / f"{g['key']}.xml"   # gold papers already fetched
         if dest.is_file():
             rows.append({'key': g['key'], 'doi': g['doi'], 'xml': True, 'route': 'already present', 'tried': []}); continue
         route, tried = routes(g, dest)

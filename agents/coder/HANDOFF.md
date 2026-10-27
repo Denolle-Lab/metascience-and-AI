@@ -48,6 +48,8 @@ compare with the lab's Claude codings. Written October 27, 2026, for paper codeb
 
 ## What is not shared
 
-Papers, review records and codings that quote them stay in the lab's private repository unless the paper's licence
-allows sharing. Results are reported on the seminar site. The registry of every experiment, with inputs, commands,
-commits and costs, is `private/data/roadmap/EXPERIMENTS.md` in the lab repository.
+Paper texts, abstracts and open-review texts are not redistributed: the codings quote papers (25 words at most), they
+do not republish them. Codings with quotes, derived tables and figure provenance are public in the data release,
+[`data/roadmap-release/`](https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release), built by `tools/roadmap/g22_release.py`. Per-paper records of the papers in human
+coding are held back until that coding is done. The registry of every experiment, with inputs, commands, commits and
+costs, is `data/roadmap/EXPERIMENTS.md` in the release (`private/data/roadmap/EXPERIMENTS.md` in the lab repository).

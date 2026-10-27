@@ -49,7 +49,7 @@ from matplotlib.patches import Patch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paperstyle as ps  # noqa: E402
 
-STATE = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'state.json'
+STATE = ps.PRIVATE / 'analysis' / 'codings' / 'api' / 'state.json'
 CAP = 250.0
 SEED = 2026
 N_BOOT = 5000

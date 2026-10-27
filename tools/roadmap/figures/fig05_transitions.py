@@ -45,8 +45,8 @@ import paperstyle as ps  # noqa: E402
 sys.path.insert(0, str(ps.ROOT / 'tools'))
 from check_coding import seq, validate  # noqa: E402
 
-API = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
-AG = ps.ROOT / 'private' / 'analysis' / 'reliability' / 'codings' / 'agents'
+API = ps.PRIVATE / 'analysis' / 'codings' / 'api'
+AG = ps.PRIVATE / 'analysis' / 'reliability' / 'codings' / 'agents'
 G14 = ps.DERIVED / 'calc1' / 'papers_vs_agents.json'
 ROUNDS = [('Round 1', 'calc1', ps.DERIVED / 'calc1' / 'manifest.jsonl'),
           ('Round 2', 'r2', ps.DERIVED / 'r2calc' / 'manifest.jsonl')]

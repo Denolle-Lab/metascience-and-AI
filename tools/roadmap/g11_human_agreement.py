@@ -23,7 +23,7 @@ import shutil
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
-from common import DATA, DERIVED, ROOT, decision, log, read_json, write_json
+from common import DATA, DERIVED, ROOT, decision, log, read_json, rel, write_json
 
 sys.path.insert(0, str(ROOT / 'tools'))
 from check_coding import agree  # noqa: E402
@@ -119,7 +119,7 @@ def main() -> None:
             elif f.name.endswith('.ratings.json'):
                 jsonschema.validate(obj, rs); rat[obj['key']][cid] = obj
         except Exception as e:  # noqa: BLE001
-            bad.append({'file': str(f.relative_to(ROOT)), 'error': str(e).splitlines()[0][:200]})
+            bad.append({'file': rel(f), 'error': str(e).splitlines()[0][:200]})
     pairs = []
     for k, by in cod.items():
         for x, y in itertools.combinations(sorted(by), 2):

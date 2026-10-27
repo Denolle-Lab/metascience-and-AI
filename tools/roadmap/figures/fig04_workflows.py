@@ -46,7 +46,7 @@ import paperstyle as ps  # noqa: E402
 sys.path.insert(0, str(ps.ROOT / 'tools'))
 from check_coding import seq, validate  # noqa: E402
 
-API = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = ps.PRIVATE / 'analysis' / 'codings' / 'api'
 ROUNDS = [('Round 1', 'calc1', ps.DERIVED / 'calc1' / 'manifest.jsonl'),
           ('Round 2', 'r2', ps.DERIVED / 'r2calc' / 'manifest.jsonl')]
 RETEST_TAG = 'gold-r2'

@@ -18,10 +18,10 @@ Run:  python tools/roadmap/g16_visibility.py prep
 import json, re, sys, random
 from collections import Counter
 from pathlib import Path
-from common import ROOT, DATA, DERIVED, write_json, log
+from common import ROOT, PRIVATE, DATA, DERIVED, write_json, log
 
-CODED = ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'calc1-review'
-QUEUE = ROOT / 'private' / 'download-queue.json'
+CODED = PRIVATE / 'analysis' / 'codings' / 'api' / 'calc1-review'
+QUEUE = PRIVATE / 'download-queue.json'
 PACK = DERIVED / 'review' / 'visibility_input'
 LABELS = DERIVED / 'review' / 'visibility_labels.json'
 CATS = ['as_revision', 'as_planned', 'absent', 'no_change']

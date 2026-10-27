@@ -59,7 +59,7 @@ from matplotlib.ticker import FuncFormatter, MultipleLocator
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paperstyle as ps  # noqa: E402
 
-API = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = ps.PRIVATE / 'analysis' / 'codings' / 'api'
 ROUNDS = [('round 1', 'calc1-review', ps.DERIVED / 'review' / 'visibility_labels.json')]
 G16 = ps.DERIVED / 'review' / 'visibility_results.json'
 MANIFEST = ps.DERIVED / 'calc1' / 'manifest.jsonl'

@@ -56,14 +56,14 @@ from collections import Counter
 from pathlib import Path
 
 import numpy as np
-from common import ROOT, DATA, DERIVED, log, read_json, write_json
+from common import ROOT, PRIVATE, DATA, DERIVED, log, read_json, rel, write_json
 from check_coding import validate
 import code_papers_open as cpo  # tools/ (on the path via common); imports code_papers
 import g17_outcomes as g17
 
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = PRIVATE / 'analysis' / 'codings' / 'api'
 STATE = API / 'state.json'
-QUEUE_NOW = ROOT / 'private' / 'download-queue.json'
+QUEUE_NOW = PRIVATE / 'download-queue.json'
 QUEUE_OCT27 = DATA / 'download-queue.before-refetch-2026-10-27.json'
 PDFS = DATA / 'pdfs' / 'gold'
 OUT = DERIVED / 'report_numbers.json'
@@ -257,7 +257,7 @@ def fetch(met: dict) -> None:
     for rnd, name, mfield in [('calc1', 'calc1', met), ('r2', 'r2calc', pre2)]:
         man = {m['key']: m for m in manifest(name)}
         xml = {r['key'] for r in read_json(DERIVED / name / 'xml_status.json') if r['xml']}
-        for when, q, qpath in [('oct27', q27, str(QUEUE_OCT27.relative_to(ROOT))), ('now', qnow, 'private/download-queue.json')]:
+        for when, q, qpath in [('oct27', q27, rel(QUEUE_OCT27)), ('now', qnow, 'private/download-queue.json')]:
             I = [qpath, f'derived/{name}/manifest.jsonl', f'derived/{name}/xml_status.json']
             p = f'fetch.{rnd}.{when}'
             have = {k for k in man if q.get(k, {}).get('status') == 'have'}
@@ -314,7 +314,7 @@ def round2(state: dict) -> None:
         est = (pages * 2300 * 4.00 + len(b['keys']) * 10_000 * 20.00) / 1e6 * 0.5
         put(f'r2.batch.{b["id"]}', {'requests': len(b['keys']), 'submitted': b['submitted'], 'est_pages': pages, 'dry_run_estimate_usd': round(est, 2)},
             'Round-2 batch and the code_papers.py submit estimate: pages = sum(max(4, pdf_bytes // 60000)); '
-            'usd = (pages x 2300 x $4 + papers x 10000 x $20) / 1e6 x 0.5.', ['private/analysis/codings/api/state.json', str(QUEUE_OCT27.relative_to(ROOT))])
+            'usd = (pages x 2300 x $4 + papers x 10000 x $20) / 1e6 x 0.5.', ['private/analysis/codings/api/state.json', rel(QUEUE_OCT27)])
     ok, bad = load_valid('r2')
     if ok or bad:
         put('r2.coded_valid', len(ok), 'Valid round-2 codings (tools/check_coding.py validate).', ['private/analysis/codings/api/r2'])
@@ -687,7 +687,7 @@ def review_extra(state: dict) -> None:
 def loop_pilot() -> None:
     """The October 21 loop pilot (9 papers with review files), read from its report's totals row; distinct from the
     10-paper labelling pilot of E4 (derived/review/visibility_labels_pilot.json)."""
-    src = ROOT / 'private' / 'analysis' / 'success-set' / 'loops' / 'REPORT.md'
+    src = PRIVATE / 'analysis' / 'success-set' / 'loops' / 'REPORT.md'
     row = next((l for l in src.read_text().splitlines() if l.startswith('| All |')), None)
     if not row:
         return
@@ -917,8 +917,8 @@ def audit_extra2(met: dict) -> None:
         'Journal family (g20 rule), entry state (first coding) and ring of the 50 retest papers (gold papers with full text at E1 '
         'and both codings valid) against all 233 coded papers.', I + ['derived/gold/metrics.json'])
     # agent node shares by system family (research systems against general patterns), two coders averaged
-    man = {x['key']: x for x in json.loads((ROOT / 'private' / 'analysis' / 'reliability' / 'agents_manifest.json').read_text())}
-    AG = ROOT / 'private' / 'analysis' / 'reliability' / 'codings' / 'agents'
+    man = {x['key']: x for x in json.loads((PRIVATE / 'analysis' / 'reliability' / 'agents_manifest.json').read_text())}
+    AG = PRIVATE / 'analysis' / 'reliability' / 'codings' / 'agents'
     coders = sorted(p.name for p in AG.iterdir() if p.is_dir())
     marks = {cd: {json.loads(f.read_text())['key']: json.loads(f.read_text()) for f in sorted((AG / cd).glob('*.json'))} for cd in coders}
     out = {}
@@ -959,7 +959,7 @@ def main() -> None:
     audit_extra(state, met)
     audit_extra2(met)
     write_json(OUT, VALUES, ['private/analysis/codings/api/state.json', 'private/analysis/codings/api/{calc1,calc1-review,r2}',
-                             'derived/{gold,calc1,r2,r2calc,review,outcomes}', str(QUEUE_OCT27.relative_to(ROOT)), 'private/download-queue.json'],
+                             'derived/{gold,calc1,r2,r2calc,review,outcomes}', rel(QUEUE_OCT27), 'private/download-queue.json'],
                {'publisher_rule': 'DOI registrant prefix (PREFIX in g19_report_numbers.py); 10.1029 = AGU', 'cap_usd': CAP_USD,
                 'chars_per_token': CHARS_PER_TOKEN, 'max_chars': MAX_CHARS})
     log('g19_report_numbers.py', 'reported numbers recomputed from data (counts, costs, tokens, fetch)', len(VALUES),

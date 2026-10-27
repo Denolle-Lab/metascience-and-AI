@@ -11,11 +11,11 @@ Run:     python tools/roadmap/g14_papers_vs_agents.py
 import json, random
 from collections import Counter
 from pathlib import Path
-from common import ROOT, DERIVED, write_json, log
+from common import ROOT, PRIVATE, DERIVED, write_json, log
 from check_coding import validate, seq
 
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'calc1'
-AG = ROOT / 'private' / 'analysis' / 'reliability' / 'codings' / 'agents'
+API = PRIVATE / 'analysis' / 'codings' / 'api' / 'calc1'
+AG = PRIVATE / 'analysis' / 'reliability' / 'codings' / 'agents'
 NODES = list('NEOIQHSDFCVXKPR')
 NAMES = dict(N='new capability', E='explore', O='observe', I='infer a latent quantity', Q='question', H='hypothesize rivals',
              S='simulate or derive', D='design the test', F='find or set conditions', C='compare', V='vary and replicate',

@@ -22,13 +22,13 @@ import re
 import sys
 from collections import defaultdict
 from statistics import mean
-from common import DERIVED, ROOT, log, read_json, write_json
+from common import DERIVED, ROOT, PRIVATE, log, read_json, write_json
 
 sys.path.insert(0, str(ROOT / 'tools'))
 from check_coding import agree  # noqa: E402
 
 FT = DERIVED / 'format_test'
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = PRIVATE / 'analysis' / 'codings' / 'api'
 ARMS = ['X', 'T', 'P', 'PX']
 NUM = ['node_set_jaccard', 'mode_set_jaccard', 'node_seq_similarity', 'mode_seq_similarity']
 BOOL = ['entry_node', 'entry_state', 'outcome', 'decisive_mode']
@@ -61,7 +61,7 @@ def locations(c: dict) -> list[str]:
 
 def printed_range(key: str) -> tuple[int, int] | None:
     """First and last printed page from the publisher XML (<fpage>, <lpage>), for codings that cite printed journal pages."""
-    x = ROOT / 'private' / 'data' / 'roadmap' / 'pdfs' / 'gold' / f'{key}.xml'
+    x = PRIVATE / 'data' / 'roadmap' / 'pdfs' / 'gold' / f'{key}.xml'
     if not x.is_file():
         return None
     t = x.read_text(errors='replace')

@@ -8,16 +8,21 @@ Output: derived/format_test/inputs/<key>.xml.txt  (tools/jats_text.py output, wi
         derived/format_test/design.json          papers, arms, replicate count
 Arms  : X = located XML text only; T = pdftotext text only (the subagent coder's current input). Each arm coded twice
         per paper by independent coders, so the within-arm agreement is the noise floor for the between-arm comparison.
-Run   : python tools/roadmap/f00_format_test_prep.py
+Run   : python tools/roadmap/f00_format_test_prep.py   (a first run, before design.json exists: add the six g22_ keys)
 """
 from __future__ import annotations
+import json
 import shutil
+import sys
 import subprocess
 from common import DATA, DERIVED, decision, log, write_json
 
-PAPERS = ['g22_W4285387965', 'g22_W4283688628', 'g22_W4220724311', 'g22_W4306927857', 'g22_W4309046613', 'g22_W4292315839']
 SRC = DATA / 'pdfs' / 'gold'
 FT = DERIVED / 'format_test'
+# The six format-test papers are named in the private record (derived/format_test/design.json, written by this script
+# on its first run), not here: they are in the blind human-coding set. A first run takes the keys on the command line.
+PAPERS = ([p['key'] for p in json.loads((FT / 'design.json').read_text())['data']['papers']]
+          if (FT / 'design.json').is_file() else [a for a in sys.argv[1:] if a.startswith('g22_')])
 
 
 def main() -> None:

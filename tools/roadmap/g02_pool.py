@@ -22,9 +22,9 @@ from __future__ import annotations
 from collections import Counter
 import csv
 import re
-from common import DERIVED, ROOT, decision, log, openalex, paged, read_json, sid, write_json
+from common import DERIVED, ROOT, PRIVATE, decision, log, openalex, paged, read_json, sid, write_json
 
-AUDIT = ROOT / 'private' / 'analysis' / 'success-set' / 'breadth' / 'topic_audit.csv'
+AUDIT = PRIVATE / 'analysis' / 'success-set' / 'breadth' / 'topic_audit.csv'
 MULTI = {'S137773608', 'S2737427234', 'S64187185', 'S196734849', 'S4210221880', 'S125754415', 'S202381698'}
 REVIEW = re.compile(r'\b(review|overview|perspectives?|state of the art|progress in)\b', re.I)
 

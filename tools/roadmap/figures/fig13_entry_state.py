@@ -49,12 +49,12 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paperstyle as ps  # noqa: E402
-from paperstyle import DERIVED, ROOT  # noqa: E402
+from paperstyle import DERIVED, PRIVATE, ROOT, rel  # noqa: E402
 import g21_entry_state as g21  # noqa: E402
 from check_coding import runs  # noqa: E402
 
 SRC = DERIVED / 'entry' / 'entry_state.json'
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = PRIVATE / 'analysis' / 'codings' / 'api'
 STATES = g21.STATES
 SNAME = {'problem': 'Problem', 'capability': 'Capability', 'anomaly': 'Anomaly', 'challenged_result': 'Challenged result',
          'hypothesis': 'Hypothesis', 'data_without_theory': 'Data without theory', 'external_goal': 'External goal'}
@@ -124,6 +124,9 @@ def rows_axis(ax, n, xlabel, ticks=(0, 0.25, 0.5, 0.75, 1.0), labels=('0', '25',
 def main():
     J = json.loads(SRC.read_text())
     d = J['data']
+    if 'blind_audit' not in d:
+        sys.exit('fig13: entry_state.json has no blind_audit section (in the data release the blind re-codings are '
+                 'withheld until the human coding ends)')
     ba = d['blind_audit']
     W, pooled, bad = walks()
     # the json must describe the codings as they are now
@@ -326,7 +329,7 @@ def main():
     raf = rv['return_after_failure_steps']
     qmv = rv['entry_node_Q']['later_Q_step_moves']
     numbers = {
-        'source': str(SRC.relative_to(ROOT)), 'source_provenance': J.get('_provenance'),
+        'source': rel(SRC), 'source_provenance': J.get('_provenance'),
         'valid_codings_now': {t: d['n_valid'].get(t, 0) for t, _ in g21.ROUNDS}, 'invalid_files': bad,
         'a_shares': {'batch': {r: {s: v for s, v in d['distribution'][r]['state'].items()} for r in rounds},
                      'blind_consensus_weighted': pe, 'blind_A_weighted': ba['population_estimate']['A'],

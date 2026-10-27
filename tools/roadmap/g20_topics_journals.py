@@ -79,12 +79,12 @@ import re
 import zlib
 from collections import Counter
 import numpy as np
-from common import ROOT, DERIVED, write_json, log, openalex
+from common import ROOT, PRIVATE, DERIVED, write_json, log, openalex
 from check_coding import validate
 from g17_outcomes import features, bh, OUTCOMES as G17_OUTCOMES
 
-CODINGS = ROOT / 'private' / 'analysis' / 'codings' / 'api'
-QUEUE = ROOT / 'private' / 'download-queue.json'
+CODINGS = PRIVATE / 'analysis' / 'codings' / 'api'
+QUEUE = PRIVATE / 'download-queue.json'
 OUT = DERIVED / 'topics'
 ROUNDS = [  # name, set folder, calc folder, coding tag, first-stage label
     ('round1', 'gold', 'calc1', 'calc1', 'preselected'),

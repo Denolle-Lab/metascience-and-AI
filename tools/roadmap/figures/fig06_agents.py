@@ -49,8 +49,8 @@ from check_coding import seq, validate  # noqa: E402
 import g14_papers_vs_agents as g14  # noqa: E402  (tools/roadmap is on sys.path through paperstyle)
 
 G14 = ps.DERIVED / 'calc1' / 'papers_vs_agents.json'
-API = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
-AGENTS = ps.ROOT / 'private' / 'analysis' / 'reliability' / 'codings' / 'agents'
+API = ps.PRIVATE / 'analysis' / 'codings' / 'api'
+AGENTS = ps.PRIVATE / 'analysis' / 'reliability' / 'codings' / 'agents'
 R1_MANIFEST = ps.DERIVED / 'calc1' / 'manifest.jsonl'
 R2_MANIFEST = ps.DERIVED / 'r2calc' / 'manifest.jsonl'
 B, SEED = 2000, 2026

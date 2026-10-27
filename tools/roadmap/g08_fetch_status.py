@@ -16,10 +16,10 @@ import argparse
 import json
 import sys
 from collections import Counter
-from common import DERIVED, ROOT, decision, log, openalex, read_json, write_json
+from common import DERIVED, ROOT, PRIVATE, decision, log, openalex, read_json, rel, write_json
 
-PDFS = ROOT / 'private' / 'data' / 'roadmap' / 'pdfs' / 'gold'
-QUEUE = ROOT / 'private' / 'download-queue.json'
+PDFS = PRIVATE / 'data' / 'roadmap' / 'pdfs' / 'gold'
+QUEUE = PRIVATE / 'download-queue.json'
 
 
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -66,7 +66,7 @@ def main() -> None:
         L = lic.get(g['id'], {})
         cc = (L.get('license') or '').startswith('cc')
         rows.append({'key': g['key'], 'doi': g['doi'], 'journal': g['journal'], 'route_class': g['route'],
-                     'fetched': f.is_file(), 'file': str(f.relative_to(ROOT)) if f.is_file() else None,
+                     'fetched': f.is_file(), 'file': rel(f) if f.is_file() else None,
                      'queue_status': st.get('status'), 'route': st.get('route'), 'tried': st.get('tried'),
                      'oa_status': L.get('oa_status'), 'license': L.get('license'),
                      'version': version_of(f, g['doi']) if f.is_file() else None,

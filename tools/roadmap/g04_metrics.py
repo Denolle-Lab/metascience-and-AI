@@ -19,9 +19,9 @@ Run   : python tools/roadmap/g04_metrics.py
 from __future__ import annotations
 import csv
 import math
-from common import SET, CALC, DERIVED, ROOT, decision, log, openalex, paged, read_json, sid, write_json
+from common import SET, CALC, DERIVED, ROOT, PRIVATE, decision, log, openalex, paged, read_json, rel, sid, write_json
 
-AUDIT = ROOT / 'private' / 'analysis' / 'success-set' / 'breadth' / 'topic_audit.csv'
+AUDIT = PRIVATE / 'analysis' / 'success-set' / 'breadth' / 'topic_audit.csv'
 GEO_FIELDS = {'19', '23'}
 WSEL = 'id,publication_year,primary_topic,authorships'
 
@@ -81,7 +81,7 @@ def main() -> None:
                     'breadth_citers': cb['far'] if cb['n'] >= 10 else None, 'n_citers_noself': cb['n'], 'advance': None})
         if k % 50 == 0:
             print(k, p['id'], rb, n_pair, cb['n'], flush=True)
-    write_json(SET / 'metrics.json', out, ['derived/gold/preselect.json', str(AUDIT.relative_to(ROOT))])
+    write_json(SET / 'metrics.json', out, ['derived/gold/preselect.json', rel(AUDIT)])
     log('g04_metrics.py', 'novelty (topic-pair rarity) and breadth (references, citers) for preselected papers', len(out))
     decision('Breadth used for stratification = share of references outside geoscience (defined for every paper, not tied to '
              'citation count); citer breadth v1 (>= 10 citers, self-citations removed, 2022-2026) recorded as an outcome. '

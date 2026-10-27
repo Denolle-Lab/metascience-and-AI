@@ -41,7 +41,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 import code_papers as cp  # noqa: E402  (loads keys.env; reuses prompt, codebook, validator)
 
-OPEN = ROOT / 'private' / 'analysis' / 'codings' / 'open'
+OPEN = cp.PRIVATE / 'analysis' / 'codings' / 'open'
 
 
 def sha(s: str) -> str:
@@ -83,9 +83,9 @@ def inputs(args) -> tuple[list, list]:
     cands = cp.candidates(args)
     rows, skipped = [], []
     for k in sorted(cands):
-        x, src = cp.xml_text_for(Path(cands[k]['file'])), 'xml'
+        x, src = cp.xml_text_for(cp.queue_file(cands[k]['file'])), 'xml'
         if not x and getattr(args, 'pdf_text', False):
-            x, src = pdf_text(Path(cands[k]['file'])), 'pdftotext'
+            x, src = pdf_text(cp.queue_file(cands[k]['file'])), 'pdftotext'
         if not x:
             skipped.append(k); continue
         if len(x) > getattr(args, 'max_chars', 200000):

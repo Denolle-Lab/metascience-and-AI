@@ -15,11 +15,11 @@ Run:  python tools/roadmap/g15_open_review.py [--limit N]
 """
 import html, json, re, subprocess, sys, time, urllib.request
 from pathlib import Path
-from common import ROOT, DATA, DERIVED, write_json, log
+from common import ROOT, PRIVATE, DATA, DERIVED, write_json, log
 
 UA = {'User-Agent': 'Mozilla/5.0 (metascience seminar, University of Washington)'}
 OUT = DATA / 'review'
-CODED = ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'calc1'
+CODED = PRIVATE / 'analysis' / 'codings' / 'api' / 'calc1'
 PAUSE = 1.5
 
 

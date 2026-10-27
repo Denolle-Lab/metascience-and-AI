@@ -1,6 +1,6 @@
 # Coding papers at scale: runbook
 
-For coding 1,000 or more papers under the codebook (`CODEBOOK.md`, v1.2.0), with the scripts in `tools/`. Everything written goes under `private/` (a separate, unpushed repository); nothing here publishes data.
+For coding 1,000 or more papers under the codebook (`CODEBOOK.md`, v1.2.0), with the scripts in `tools/`. Everything written goes under `private/` (a separate, unpushed repository); nothing here publishes data. For the roadmap codings, publication is a separate step: `tools/roadmap/g22_release.py` copies codings with quotes, derived tables and figure provenance into `data/roadmap-release/`, without paper texts, abstracts or review texts, and holds back per-paper records of the papers in human coding until that coding is done.
 
 ## 0. Before the first run
 

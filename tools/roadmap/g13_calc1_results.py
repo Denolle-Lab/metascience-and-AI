@@ -15,11 +15,11 @@ Run:  python tools/roadmap/g13_calc1_results.py
 import json, statistics as st
 from collections import Counter
 from pathlib import Path
-from common import ROOT, DERIVED, write_json, log, read_json
+from common import ROOT, PRIVATE, DERIVED, write_json, log, read_json
 from check_coding import validate, v_status, seq, agree
 from g11_human_agreement import alpha_nominal
 
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = PRIVATE / 'analysis' / 'codings' / 'api'
 NODES = list('NEOIQHSDFCVXKPR')
 
 

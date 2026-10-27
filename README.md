@@ -92,7 +92,7 @@ a fallback.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: this repository is public, so no journal PDFs,
-no unpublished data, nothing a collaborator has not agreed to share, and nothing from `private/`.
+no unpublished data, nothing a collaborator has not agreed to share, and nothing from `private/` except the roadmap data release, which `tools/roadmap/g22_release.py` builds into `data/roadmap-release/` (codings with quotes, derived tables, figure provenance; no paper texts, abstracts or review texts; per-paper records of the papers in human coding held back until that coding is done).
 
 `private/` is where the parallel agent analysis lives. It is gitignored, and `validate.py` fails if
 that ignore rule is removed or if private material is registered as a chapter.
@@ -148,7 +148,7 @@ See [Wiley's TDM instructions](https://onlinelibrary.wiley.com/library-info/reso
 
 ## Running the Python tools
 
-The selection, download, coding, and analysis scripts in `tools/` run in one conda environment. Results, PDFs, and credentials stay under the ignored `private/` folder and `~/.config/metascience/`; nothing from them enters Git.
+The selection, download, coding, and analysis scripts in `tools/` run in one conda environment. Results, PDFs, and credentials stay under the ignored `private/` folder and `~/.config/metascience/`; nothing from them enters Git except the roadmap data release in `data/roadmap-release/`, which `tools/roadmap/g22_release.py` builds under the rules in `tools/roadmap/README.md`.
 
 ### Set up the environment (any machine)
 

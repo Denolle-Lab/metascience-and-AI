@@ -24,7 +24,7 @@ Requires `pip install anthropic` and credentials (ANTHROPIC_API_KEY or `ant auth
 Every submit spends money. Check the licence of each PDF before sending it to a model API.
 """
 from __future__ import annotations
-import argparse, hashlib, json, sys, time
+import argparse, hashlib, json, os, sys, time
 from pathlib import Path
 
 import anthropic
@@ -43,8 +43,18 @@ MODEL = 'claude-opus-5-5'
 PRICE = {'input': 4.00, 'output': 20.00, 'cache_read': 0.20, 'cache_write': 5.00}
 CODEBOOK_PATH = ROOT / 'agents' / 'coder' / 'CODEBOOK.md'
 SCHEMA_PATH = ROOT / 'agents' / 'coder' / 'coding.schema.json'
-QUEUE = ROOT / 'private' / 'download-queue.json'
-BASE = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+# The private tree, as in tools/roadmap/common.py: METASCIENCE_PRIVATE points scripts at another copy (the data release).
+PRIVATE = Path(os.environ['METASCIENCE_PRIVATE']).resolve() if os.environ.get('METASCIENCE_PRIVATE') else ROOT / 'private'
+QUEUE = PRIVATE / 'download-queue.json'
+BASE = PRIVATE / 'analysis' / 'codings' / 'api'
+
+
+def queue_file(f) -> Path:
+    """A 'file' value of the fetch queue ('private/...', relative to the repository) resolved against PRIVATE."""
+    f = Path(f)
+    if f.is_absolute():
+        return f
+    return PRIVATE.joinpath(*f.parts[1:]) if f.parts and f.parts[0] == 'private' else ROOT / f
 STATE = BASE / 'state.json'
 READINESS_DIR = ROOT / 'tools' / 'ai_readiness'
 NO_XML = False     # set from --no-xml: send the PDF without the located XML text (format test arm P)
@@ -106,7 +116,7 @@ def save_state(st: dict) -> None:
 
 def candidates(args) -> dict:
     q = json.loads(QUEUE.read_text())
-    have = {k: v for k, v in q.items() if v.get('status') == 'have' and v.get('file') and Path(v['file']).exists()}
+    have = {k: v for k, v in q.items() if v.get('status') == 'have' and v.get('file') and queue_file(v['file']).exists()}
     if args.manifest:
         keys = {json.loads(l)['key'] for l in Path(args.manifest).read_text().splitlines() if l.strip()}
         have = {k: v for k, v in have.items() if k in keys}
@@ -217,7 +227,7 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
     # spending cap: measured per-paper cost from earlier batches (format test, Oct 25: $0.27 PDF only, $0.39 PDF + XML)
     spent = sum(v.get('usd', 0) for v in st['done'].values())
     if getattr(args, 'max_usd', None):
-        per = lambda k: 0.39 if xml_text_for(Path(cands[k]['file'])) else 0.27
+        per = lambda k: 0.39 if xml_text_for(queue_file(cands[k]['file'])) else 0.27
         keep, total = [], spent
         for k in todo:
             if total + per(k) > args.max_usd:
@@ -227,7 +237,7 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
             print(f'cap ${args.max_usd:,.0f}: submitting {len(keep)} of {len(todo)} (already spent ${spent:,.2f}, projected ${total:,.2f})')
         todo = keep
     # rough estimate: 2,300 input tokens per PDF page (text plus page image), 10,000 output tokens incl. thinking
-    est_pages = sum(max(4, Path(cands[k]['file']).stat().st_size // 60_000) for k in todo)
+    est_pages = sum(max(4, queue_file(cands[k]['file']).stat().st_size // 60_000) for k in todo)
     est = (est_pages * 2300 * PRICE['input'] + len(todo) * 10_000 * PRICE['output']) / 1e6 * 0.5
     print(f'{len(todo)} papers to submit under tag "{args.tag}"; rough batch cost ${est:,.0f} (measure on a pilot with `cost`)')
     if args.dry_run or not todo:
@@ -236,9 +246,9 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
         chunk = todo[i:i + args.batch_size]
         reqs = []
         for k in chunk:
-            fid = upload(client, st, k, Path(cands[k]['file']))
+            fid = upload(client, st, k, queue_file(cands[k]['file']))
             save_state(st)
-            reqs.append(Request(custom_id=k, params=MessageCreateParamsNonStreaming(**params(k, cands[k]['doi'], fid, args.effort, max_tokens, xml_text=xml_text_for(Path(cands[k]['file'])), review_text=review_text_for(k)))))
+            reqs.append(Request(custom_id=k, params=MessageCreateParamsNonStreaming(**params(k, cands[k]['doi'], fid, args.effort, max_tokens, xml_text=xml_text_for(queue_file(cands[k]['file'])), review_text=review_text_for(k)))))
         prewarm(client, args.effort)
         b = client.messages.batches.create(requests=reqs)
         st['batches'].append({'id': b.id, 'tag': args.tag, 'keys': chunk, 'submitted': time.strftime('%Y-%m-%d %H:%M'),
@@ -333,8 +343,8 @@ def main() -> int:
         cands = candidates(argparse.Namespace(manifest=None, keys=args.key))
         if args.key not in cands:
             print('no PDF in the queue for that key'); return 1
-        fid = upload(client, st, args.key, Path(cands[args.key]['file'])); save_state(st)
-        p = params(args.key, cands[args.key]['doi'], fid, args.effort, 64000, xml_text=xml_text_for(Path(cands[args.key]['file'])), review_text=review_text_for(args.key))
+        fid = upload(client, st, args.key, queue_file(cands[args.key]['file'])); save_state(st)
+        p = params(args.key, cands[args.key]['doi'], fid, args.effort, 64000, xml_text=xml_text_for(queue_file(cands[args.key]['file'])), review_text=review_text_for(args.key))
         try:
             with client.beta.messages.stream(**p, betas=['server-side-fallback-2026-07-01'], fallbacks='default') as stream:
                 msg = stream.get_final_message()

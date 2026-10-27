@@ -28,10 +28,10 @@ import json
 from collections import Counter
 from pathlib import Path
 import numpy as np
-from common import ROOT, DERIVED, write_json, log, read_json
+from common import ROOT, PRIVATE, DERIVED, write_json, log, read_json
 from check_coding import validate, v_status
 
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'calc1'
+API = PRIVATE / 'analysis' / 'codings' / 'api' / 'calc1'
 OUT = DERIVED / 'outcomes'
 NODES = {'N': 'new capability', 'E': 'explore', 'O': 'observe', 'I': 'infer', 'Q': 'question', 'H': 'hypothesize',
          'S': 'simulate or derive', 'D': 'design', 'F': 'find or set conditions', 'C': 'compare', 'V': 'vary and replicate',

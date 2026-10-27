@@ -57,7 +57,7 @@ from matplotlib.gridspec import GridSpec  # noqa: E402
 from check_coding import validate  # noqa: E402  (tools/ is on sys.path via common)
 
 D = ps.DERIVED
-CODINGS = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
+CODINGS = ps.PRIVATE / 'analysis' / 'codings' / 'api'
 ROUNDS = [  # name, set folder, calc folder, coding tag, first-stage label, draw seed
     ('Round 1', 'gold', 'calc1', 'calc1', 'Preselected', 2026),
     ('Round 2', 'r2', 'r2calc', 'r2', 'Drawn', 2027),

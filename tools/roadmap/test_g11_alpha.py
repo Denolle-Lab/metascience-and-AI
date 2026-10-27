@@ -7,7 +7,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from g11_human_agreement import alpha_nominal, alpha_ordinal, NODES  # noqa: E402
 
-base = os.path.join(os.path.dirname(__file__), '..', '..', 'private', 'analysis', 'reliability', 'codings', 'papers')
+base = os.path.join(os.environ.get('METASCIENCE_PRIVATE') or os.path.join(os.path.dirname(__file__), '..', '..', 'private'),
+                    'analysis', 'reliability', 'codings', 'papers')
 A = {os.path.basename(f)[:-5]: json.load(open(f)) for f in glob.glob(base + '/opus-b/*.json')}
 B = {os.path.basename(f)[:-5]: json.load(open(f)) for f in glob.glob(base + '/sonnet-c/*.json')}
 fp = lambda c: next(s for s in c['sequences'] if s['kind'] == 'final_paper')['steps']

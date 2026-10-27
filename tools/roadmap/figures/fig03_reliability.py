@@ -3,8 +3,8 @@
 Panels
   (a) test-retest: two independent codings of the same gold paper by the model coder (claude-opus-5-5 via the Batch API,
       codebook 1.5.0, graph v0.4.2), first coding from tag calc1, second from tag gold-r2. Only papers whose two codings
-      both pass tools/check_coding.py validate() are kept (50 of the 51 gold papers coded twice; the gold-r2 coding of
-      g22_W4297373829 fails with '$.tree[2]: unexpected aim'). Four match shares (entry state, entry node, outcome,
+      both pass tools/check_coding.py validate() are kept (50 of the 51 gold papers coded twice; one retest coding fails
+      validation, see numbers.a_test_retest.dropped_invalid). Four match shares (entry state, entry node, outcome,
       decisive mode) and four similarity means (node-set and mode-set Jaccard, node-sequence and mode-sequence
       similarity = 1 - normalized edit distance), each with a 95% bootstrap interval over papers. Per-paper values of the
       four similarity measures (rounded to 2 decimals by agree()) are drawn as a vertically jittered grey strip.
@@ -53,16 +53,19 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paperstyle as ps  # noqa: E402
-from paperstyle import DERIVED, ROOT, read_json  # noqa: E402
+from paperstyle import DERIVED, PRIVATE, ROOT, read_json  # noqa: E402
 from check_coding import agree, seq, v_status, validate  # noqa: E402
 from g11_human_agreement import alpha_nominal  # noqa: E402
 
-API = ROOT / 'private' / 'analysis' / 'codings' / 'api'
+API = PRIVATE / 'analysis' / 'codings' / 'api'
 FT = DERIVED / 'format_test'
 B = 2000
 SEED = 2026
-# papers whose PDF was the discussion preprint (format_test/report.md, second table): arms T and P coded another version
-PREPRINT = ['g22_W4285387965', 'g22_W4283688628']
+# papers whose PDF was the discussion preprint (arms T and P coded another version): read from the 'Excluded: ...
+# (the PDF was the discussion preprint ...)' line of derived/format_test/report.md, so the script names no paper
+_FT_REPORT = DERIVED / 'format_test' / 'report.md'
+_m = re.search(r'^Excluded: (.*?)\(the PDF was the discussion preprint', _FT_REPORT.read_text(), re.M) if _FT_REPORT.is_file() else None
+PREPRINT = re.findall(r'g22_W\d+', _m.group(1)) if _m else []
 GRAPH_FOR_CODEBOOK = {'1.4.0': 'v0.4.2', '1.5.0': 'v0.4.2'}   # agents/coder/CODEBOOK.md header at 32b807e and at HEAD
 
 BOOL = ['entry_state', 'entry_node', 'outcome', 'decisive_mode']
@@ -261,6 +264,10 @@ def group_headers(ax, ys, color):
 
 
 def main():
+    ft_keys = [p['key'] for p in read_json(FT / 'design.json')['papers']]
+    if not ft_keys or not all(any((FT / 'codings').glob(f'{k}.*.json')) for k in ft_keys) or not PREPRINT:
+        sys.exit('fig03: the format-test papers or their codings are missing (in the data release they are under '
+                 'embargo until the human coding ends); panels (b) and (c) cannot be drawn')
     pair, vals, est, alpha, rounds, r2_pairs, coded_twice, dropped, cb_tr = test_retest()
     fkeys, ew, eb, ed, fdiff, sub4, flabels, fpairs, fmeta = format_test()
     check(est, alpha, flabels, len(pair))

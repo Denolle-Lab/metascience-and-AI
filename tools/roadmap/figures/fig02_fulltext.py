@@ -49,7 +49,7 @@ from matplotlib.gridspec import GridSpec  # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 
 D = ps.DERIVED
-QUEUE = ps.ROOT / 'private' / 'download-queue.json'
+QUEUE = ps.PRIVATE / 'download-queue.json'
 PDFS = ps.DATA / 'pdfs' / 'gold'
 MIN_N = 5
 ROUNDS = [  # (label, manifest folder, metrics folder)

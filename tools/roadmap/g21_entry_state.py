@@ -84,7 +84,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 import numpy as np
-from common import ROOT, DERIVED, write_json, log
+from common import ROOT, PRIVATE, DERIVED, write_json, log, private_path, rel as rel_path
 from check_coding import validate, runs
 from g11_human_agreement import alpha_nominal
 
@@ -93,8 +93,8 @@ try:
 except Exception:  # noqa: BLE001
     family = None
 
-CODINGS = ROOT / 'private' / 'analysis' / 'codings' / 'api'
-QUEUE = ROOT / 'private' / 'download-queue.json'
+CODINGS = PRIVATE / 'analysis' / 'codings' / 'api'
+QUEUE = PRIVATE / 'download-queue.json'
 OUT = DERIVED / 'entry'
 STATES = ['problem', 'capability', 'anomaly', 'challenged_result', 'hypothesis', 'data_without_theory', 'external_goal']
 NODES = list('NEOIQHSDFCVXKPR')
@@ -195,10 +195,10 @@ def text_paths(key, queue):
     that exists (paths in the queue are relative to the repository root); XML text = the PDF path with suffix .xml.txt."""
     q = queue.get(key) or {}
     f = q.get('file')
-    pdf = (ROOT / f) if f and not Path(f).is_absolute() else (Path(f) if f else None)
+    pdf = private_path(f) if f else None
     ok = q.get('status') == 'have' and pdf is not None and pdf.exists()
     xml = pdf.with_suffix('.xml.txt') if pdf is not None else None
-    rel = lambda p: str(p.relative_to(ROOT)) if p is not None and str(p).startswith(str(ROOT)) else (str(p) if p else None)
+    rel = lambda p: rel_path(p) if p is not None else None
     return {'pdf': rel(pdf) if ok else None, 'xml_text': rel(xml) if (ok and xml.is_file()) else None,
             'queue_status': q.get('status'), 'code_papers_candidate': ok}
 
@@ -309,7 +309,7 @@ def where(c, paths):
     if m:
         top, out['xml_locator'] = m.group(1), page
     if paths.get('xml_text'):
-        heads, paras = xml_index(ROOT / paths['xml_text'])
+        heads, paras = xml_index(private_path(paths['xml_text']))
         q = norm(c['entry'].get('evidence'))
         hit = next((p for p in paras if q and q in p[2]), None)
         if hit is None and q:   # a quote may span a paragraph break or be lightly edited: try its first 8 words
@@ -566,7 +566,9 @@ def main():
            'note': 'one model coder (Claude, codebook 1.5.0); test-retest is the same model coding twice; descriptive'}
     inputs = ['private/analysis/codings/api/{calc1,r2,gold-r2}', 'derived/{gold,r2}/metrics.json', 'derived/topics/topics_journals.json',
               'private/download-queue.json']
-    if BLIND.is_file():   # a full run keeps the audit section (step 9) when the blind re-codings exist
+    # a full run keeps the audit section (step 9) when the blind re-codings exist (in the data release they are withheld
+    # while the human coding runs, so the file holds no rows there)
+    if BLIND.is_file() and json.loads(BLIND.read_text())['data'].get('A'):
         res['blind_audit'] = audit(pooled, rows)
         inputs.append('private/data/roadmap/derived/entry/blind_audit.json')
     write_json(OUT / 'entry_state.json', res, inputs, {'codebook': '1.5.0', 'seed': SEED, 'nboot': NBOOT})
@@ -650,7 +652,7 @@ def audit(pooled, sample_rows):
 
     cs, cn, cg, co = cons('state'), cons('node'), cons('rhetorical_gap'), cons('operational_start')
     out = {'n': n, 'n_A': len(A), 'n_B': len(B), 'coders': blind['_provenance'].get('coders'),
-           'source': str(BLIND.relative_to(ROOT)), 'batch_vs_audit_sample_mismatches': mismatch,
+           'source': rel_path(BLIND), 'batch_vs_audit_sample_mismatches': mismatch,
            'strata': {s: {'population': avail[s], 'sampled': strata[s], 'weight': round(w[s], 3)} for s in STATES if strata[s]},
            'consensus_rule': 'consensus = the value A and B both gave; split when they differ'}
 

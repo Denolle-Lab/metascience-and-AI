@@ -50,8 +50,8 @@ from matplotlib.ticker import MultipleLocator  # noqa: E402
 from check_coding import validate  # noqa: E402  (tools/ is on sys.path via common)
 
 D = ps.DERIVED
-QUEUE = ps.ROOT / 'private' / 'download-queue.json'
-CODINGS = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api'
+QUEUE = ps.PRIVATE / 'download-queue.json'
+CODINGS = ps.PRIVATE / 'analysis' / 'codings' / 'api'
 STATE = CODINGS / 'state.json'
 ROUNDS = [  # name, short, set folder, calc folder, coding tag, first-stage label, colour
     ('Round 1', 'R1', 'gold', 'calc1', 'calc1', 'Preselected', ps.BLUE),

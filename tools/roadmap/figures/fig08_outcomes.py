@@ -48,8 +48,8 @@ import paperstyle as ps  # noqa: E402
 SRC = ps.DERIVED / 'outcomes' / 'outcomes.json'
 SRC_R2 = [ps.DERIVED / 'outcomes_r2' / 'outcomes.json', ps.DERIVED / 'r2calc' / 'outcomes.json']
 MANIFEST = ps.DERIVED / 'calc1' / 'manifest.jsonl'
-CODINGS = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'calc1'
-CODINGS_R2 = ps.ROOT / 'private' / 'analysis' / 'codings' / 'api' / 'r2'
+CODINGS = ps.PRIVATE / 'analysis' / 'codings' / 'api' / 'calc1'
+CODINGS_R2 = ps.PRIVATE / 'analysis' / 'codings' / 'api' / 'r2'
 DEFS = ps.ROOT / 'agents' / 'coder' / 'definitions.json'
 Q_CUT = 0.1
 MIN_PAPERS = 10          # g17 prevalence filter: present in MIN_PAPERS to n - MIN_PAPERS papers

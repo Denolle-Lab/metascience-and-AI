@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 logging.getLogger('fontTools').setLevel(logging.ERROR)   # Helvetica .ttc subsetting notices
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
-from common import DATA, DERIVED, ROOT, TODAY, read_json  # noqa: E402,F401
+from common import DATA, DERIVED, ROOT, PRIVATE, PRIVATE_ROOT, TODAY, read_json, rel  # noqa: E402,F401
 
 OUT = DATA / 'figures' / 'paper'
 
@@ -112,15 +112,15 @@ def save(fig, name: str, inputs: list, numbers: dict, caption: str) -> Path:
     for p in inputs:
         p = Path(p)
         p = p if p.is_absolute() else ROOT / p
-        ins.append({'file': str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p),
+        ins.append({'file': rel(p),
                     'sha256_16': _sha(p) if p.is_file() else None,
                     'provenance': _provenance(p)})
-    prov = {'figure': name, 'script': str(script.relative_to(ROOT)) if script.is_relative_to(ROOT) else str(script), 'date': TODAY,
+    prov = {'figure': name, 'script': rel(script), 'date': TODAY, 'private_root': PRIVATE_ROOT,
             'commit_public': _commit(ROOT, ['tools/roadmap']),
-            'commit_private': _commit(ROOT / 'private', ['data/roadmap/derived', 'analysis/codings']),
+            'commit_private': _commit(PRIVATE, ['data/roadmap/derived', 'analysis/codings']),
             'inputs': ins, 'numbers': numbers, 'caption': caption}
     (OUT / f'{name}.json').write_text(json.dumps(prov, indent=1, ensure_ascii=False, default=str))
-    print(f'wrote {OUT.relative_to(ROOT)}/{name}.pdf|.png|.json')
+    print(f'wrote {rel(OUT)}/{name}.pdf|.png|.json')
     return OUT / f'{name}.pdf'
 
 

@@ -1,6 +1,6 @@
 # Roadmap scripts
 
-Scripts for the research roadmap in `private/analysis/roadmap-plurality-loops.md`. The scripts are versioned here; everything they download or derive goes to `private/data/roadmap/` (the sealed private repository). Only results of the analysis are made public, never the downloaded data.
+Scripts for the research roadmap in `private/analysis/roadmap-plurality-loops.md`. The scripts are versioned here; everything they download or derive goes to `private/data/roadmap/` (the sealed private repository). Publication rule (PI, October 27, 2026): quoting individual papers is fine, republishing them is not. Codings with quotes, derived tables and figure provenance are public in [`data/roadmap-release/`](https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release); paper texts, abstracts and open-review texts are not redistributed; per-paper records of the papers in human coding are held back until that coding is done. See [Data release](#data-release) below.
 
 ## Traceability rules
 
@@ -86,3 +86,38 @@ python tools/roadmap/g17_outcomes.py
 python tools/roadmap/g19_report_numbers.py
 python tools/roadmap/figures/make_all.py
 ```
+
+## Data release
+
+- `g22_release.py` builds `data/roadmap-release/` from the private tree: derived tables, model codings, paper figures
+  (PNG and provenance JSON), the run, decision and experiment logs, and the roadmap reports. The folder mirrors the
+  layout of `private/`, so a path written `private/...` in a report or provenance block is found there without the
+  prefix. It is wiped and rebuilt on every run; rerun after new codings arrive.
+- What it leaves out: paper full texts in any form (PDF, XML, extracted text, format-test inputs), abstracts,
+  open-review texts and the excerpts given to the visibility coder, the raw OpenAlex cache, the human-coder app and
+  packets, `human_assignment.json`, API keys. Quote fields are cut to 25 words (the codebook limit) with " [...]".
+- Embargo: the papers in `derived/gold/human_assignment.json` and `derived/entry/audit_sample.json` (90 in all) have
+  no per-paper record in the release (coding files, table rows, audit rows, report sentences that name them) until
+  the four human coders are done. Aggregates over the full set are released as computed. The PI lifts it with
+  `python tools/roadmap/g22_release.py --lift-embargo`.
+- The build fails, and the previous release stays, if it finds a JSON string over 60 words outside the model's own
+  prose fields, a quoted passage over 25 words, an abstract, a key or the PI's email address, an identifier or quote of an
+  embargoed paper, a PDF, or a file over 20 MB. `data/roadmap-release/RELEASE.json` lists every file with sha256 and
+  size, and the counts dropped per rule.
+- `build_report_page.py` copies the report of record, `private/text/report-roadmap.md`, into the book page
+  `roadmap-report.qmd` and the figures it uses into `assets/roadmap/`. Run it after `figures/make_all.py`.
+- `METASCIENCE_PRIVATE` points every roadmap script (through `common.PRIVATE`, or the same rule in `make_all.py`, `build_report_page.py` and `tools/code_papers.py`) at another private tree; default
+  `private/`, relative paths read from the current directory. To rerun from the release, copy it first, because reruns
+  overwrite outputs and append to `MANIFEST.md`:
+
+```bash
+cp -r data/roadmap-release /tmp/roadmap-rerun
+METASCIENCE_PRIVATE=/tmp/roadmap-rerun python tools/roadmap/g13_calc1_results.py
+METASCIENCE_PRIVATE=/tmp/roadmap-rerun python tools/roadmap/g17_outcomes.py
+```
+
+  While the embargo holds, such reruns use only the released papers, so their numbers differ from the reports.
+  Scripts that need full texts (f00, f01, g08, g10, g15, the coding runs) do not run from the release; which others
+  do is listed in `data/roadmap-release/README.md`, with the numbers a correct rerun gives. With `METASCIENCE_PRIVATE`
+  set, `figures/make_all.py` leaves the book's `assets/roadmap/` alone, and provenance blocks and MANIFEST rows record
+  the tree (`private_root`). Do not run `g22_release.py` with `METASCIENCE_PRIVATE` set to the release (it refuses).

@@ -24,13 +24,22 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import keys  # noqa: E402
 keys.load()
 
-DATA = ROOT / 'private' / 'data' / 'roadmap'
+# The private tree (data, codings, reports). A colleague working from the public data release points it there:
+# METASCIENCE_PRIVATE=data/roadmap-release python tools/roadmap/g13_calc1_results.py (relative paths resolve from the cwd).
+PRIVATE = Path(os.environ['METASCIENCE_PRIVATE']).resolve() if os.environ.get('METASCIENCE_PRIVATE') else ROOT / 'private'
+DATA = PRIVATE / 'data' / 'roadmap'
 RAW = DATA / 'raw'
 DERIVED = DATA / 'derived'
 # Which paper set and corpus a run works on (round 1: gold / calc1). Round 2: ROADMAP_SET=r2 ROADMAP_CALC=r2calc.
 SET = DERIVED / os.environ.get('ROADMAP_SET', 'gold')
 CALC = DERIVED / os.environ.get('ROADMAP_CALC', 'calc1')
 MANIFEST = DATA / 'MANIFEST.md'
+# Which tree a run read: the private tree, or a copy of the public data release (it holds RELEASE.json). Recorded in
+# every provenance block and MANIFEST row, so a rerun's output is never mistaken for the record.
+_REL = PRIVATE / 'RELEASE.json'
+PRIVATE_ROOT = 'private' if not os.environ.get('METASCIENCE_PRIVATE') else (
+    ('release (embargo on)' if json.loads(_REL.read_text()).get('embargo', {}).get('active') else 'release (embargo lifted)')
+    if _REL.is_file() else 'METASCIENCE_PRIVATE (not a release)')
 DECISIONS = DATA / 'DECISIONS.md'
 API = 'https://api.openalex.org'
 UA = {'User-Agent': 'metascience-roadmap/1.0'}
@@ -45,6 +54,29 @@ def commit() -> str:
         return sha + ('+uncommitted' if dirty else '')
     except Exception:  # noqa: BLE001
         return 'unknown'
+
+
+def rel(p) -> str:
+    """A path as provenance writes it: 'private/...' under the private tree (wherever METASCIENCE_PRIVATE points),
+    repository-relative under the repository, else as given. Never a local home path for files of either tree."""
+    p = Path(p)
+    for base, pre in ((PRIVATE, 'private/'), (ROOT, '')):
+        try:
+            return pre + p.resolve().relative_to(base.resolve()).as_posix()
+        except ValueError:
+            continue
+    return str(p)
+
+
+def private_path(f: str | Path) -> Path:
+    """Resolve a path stored in the fetch queue ('private/data/roadmap/pdfs/...', relative to the repository) against
+    the private tree in use; absolute paths are kept as they are, other relative paths resolve from the repository."""
+    f = Path(f)
+    if f.is_absolute():
+        return f
+    if f.parts and f.parts[0] == 'private':
+        return PRIVATE.joinpath(*f.parts[1:])
+    return ROOT / f
 
 
 def openalex(path: str, params: dict | None = None, refresh: bool = False) -> dict:
@@ -113,7 +145,8 @@ def log(script: str, what: str, n: int, note: str = '') -> None:
     if not MANIFEST.is_file():
         MANIFEST.write_text('# Download and derivation log\n\n| Date | Script | Commit | What | Records | API calls / cache hits | Note |\n|:--|:--|:--|:--|:--|:--|:--|\n')
     with MANIFEST.open('a') as f:
-        f.write(f"| {TODAY} | `{script}` | {commit()} | {what} | {n} | {_calls['api']} / {_calls['cache']} | {note} |\n")
+        tree = '' if PRIVATE_ROOT == 'private' else f' [tree: {PRIVATE_ROOT}]'
+        f.write(f"| {TODAY} | `{script}` | {commit()} | {what} | {n} | {_calls['api']} / {_calls['cache']} | {note}{tree} |\n")
 
 
 def decision(text: str) -> None:
@@ -127,7 +160,8 @@ def decision(text: str) -> None:
 
 def write_json(path: Path, data, inputs: list[str], params: dict | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    prov = {'script': Path(sys.argv[0]).name, 'commit': commit(), 'date': TODAY, 'inputs': inputs, 'params': params or {}}
+    prov = {'script': Path(sys.argv[0]).name, 'commit': commit(), 'date': TODAY, 'private_root': PRIVATE_ROOT,
+            'inputs': inputs, 'params': params or {}}
     path.write_text(json.dumps({'_provenance': prov, 'data': data}, indent=1, ensure_ascii=False))
 
 
