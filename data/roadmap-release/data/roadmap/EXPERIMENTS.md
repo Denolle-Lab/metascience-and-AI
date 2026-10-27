@@ -126,6 +126,13 @@ Conventions
 - Result: `problem` (78% of round 1) confirmed by both blind coders in 20 of 36; reweighted share about 44% [31, 57]; other states 20 of 24 confirmed; alpha 0.77 batch vs batch, 0.81 blind vs blind, 0.60 to 0.67 blind vs batch. No paper reframes its question after a failure. Figure fig13.
 - Proposal (not adopted): codebook 1.6.0 adds `entry.start {kind, evidence, page}`; `analysis/entry-state-evaluation.md`.
 
+## E10. Round 2 as a confirmatory test (plan frozen October 27, before any round-2 coding)
+
+- Decision (PI, October 27, 2026): round 1 is exploratory; round 2 tests the round-1 associations; both rounds are also reported pooled for description, with round as a stratum.
+- Plan: `python tools/roadmap/g23_confirmatory.py freeze` → public `preregistration/round2-confirmatory.{json,md}`: 43 hypotheses (15 g17 feature-outcome associations, 28 g20 field and venue associations, all q < 0.1 in round 1), one Benjamini-Hochberg family, confirmed when round-2 q < 0.1 and the round-1 direction holds. The freeze refuses to run if any round-2 coding file exists; it ran with 0. The plan json records sha256 of g17, g20, g23, check_coding.py, the codebook and both round-1 result files.
+- Test: `python tools/roadmap/g23_confirmatory.py test` after round 2 is collected → `derived/confirmatory/results.json`, `CONFIRMATORY.md`. The code path was dry-run on round-1 data in the scratchpad (not a result).
+- Correction made at the same time: round 2 is stratified by cnp quintile like round 1 (`g18_round2_draw.py`), so neither round estimates the pool's cnp distribution.
+
 ## Report
 
 - `text/report-roadmap.md` (draft v0.2, October 27): scientific report of E0 to E9 for geoscientists and NLP researchers, every outcome metric and agreement statistic defined in place. Reviewed by workflow wf_1e353a97-c37 (geoscientist, NLP researcher, numbers auditor, voice editor; 97 findings, high and medium applied). Regenerate after round 2 and the top-up return.
