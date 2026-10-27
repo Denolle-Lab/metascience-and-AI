@@ -9,20 +9,20 @@ Run   : python tools/roadmap/g12_calc1_manifest.py
 """
 from __future__ import annotations
 import json
-from common import DERIVED, decision, log, read_json
+from common import SET, CALC, DERIVED, decision, log, read_json
 
 
 def main() -> None:
-    pre = read_json(DERIVED / 'gold' / 'preselect.json')
-    ok = {d['key'] for d in read_json(DERIVED / 'gold' / 'eligibility.json') if d.get('eligible') is True}
-    gold = {g['key'] for g in read_json(DERIVED / 'gold' / 'gold_set.json')}
-    out = DERIVED / 'calc1' / 'manifest.jsonl'
+    pre = read_json(SET / 'preselect.json')
+    ok = {d['key'] for d in read_json(SET / 'eligibility.json') if d.get('eligible') is True}
+    gold = {g['key'] for g in read_json(SET / 'gold_set.json')} if (SET / 'gold_set.json').is_file() else set()
+    out = CALC / 'manifest.jsonl'
     out.parent.mkdir(parents=True, exist_ok=True)
     rows = []
     for p in sorted(pre, key=lambda p: p['id']):
         k = 'g22_' + p['id']
         if k in ok:
-            rows.append({'key': k, 'doi': p['doi'], 'stratum': f"calc1 {p['ring']}", 'openalex': p['id'], 'in_gold': k in gold})
+            rows.append({'key': k, 'doi': p['doi'], 'stratum': f"{CALC.name} {p['ring']}", 'openalex': p['id'], 'in_gold': k in gold})
     out.write_text(''.join(json.dumps(r) + '\n' for r in rows))
     log('g12_calc1_manifest.py', 'first-calculation corpus manifest (eligible papers of the 600 preselected)', len(rows),
         f"{sum(r['in_gold'] for r in rows)} also in the gold set")

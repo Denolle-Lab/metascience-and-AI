@@ -27,7 +27,7 @@ import urllib.parse
 import urllib.request
 from collections import Counter
 from pathlib import Path
-from common import DERIVED, ROOT, log, openalex, read_json, sid, write_json
+from common import SET, CALC, DERIVED, ROOT, log, openalex, read_json, sid, write_json
 
 sys.path.insert(0, str(ROOT / 'tools'))
 import jats_text  # noqa: E402
@@ -142,11 +142,11 @@ def main() -> None:
     if a.out:
         OUT = Path(a.out)
     if a.manifest:
-        titles = {('g22_' + p['id']): p['title'] for p in read_json(DERIVED / 'gold' / 'preselect.json')}
+        titles = {('g22_' + p['id']): p['title'] for p in read_json(SET / 'preselect.json')}
         lines = [json.loads(l) for l in Path(a.manifest).read_text().splitlines() if l.strip()]
         gold = [{'key': r['key'], 'doi': r['doi'], 'id': r['openalex'], 'title': titles.get(r['key'], '')} for r in lines]
     else:
-        gold = read_json(DERIVED / 'gold' / 'gold_set.json')
+        gold = read_json(SET / 'gold_set.json')
     if a.keys:
         gold = [g for g in gold if g['key'] in a.keys]
     OUT.mkdir(parents=True, exist_ok=True)
@@ -160,7 +160,7 @@ def main() -> None:
         route, tried = routes(g, dest)
         rows.append({'key': g['key'], 'doi': g['doi'], 'xml': route is not None, 'route': route, 'tried': tried})
         print(f"{g['key']}: {route or 'none'}  {tried}", flush=True)
-    status = (DERIVED / 'calc1' / 'xml_status.json') if a.manifest else (DERIVED / 'gold' / 'xml_status.json')
+    status = (CALC / 'xml_status.json') if a.manifest else (SET / 'xml_status.json')
     write_json(status, rows, [a.manifest or 'derived/gold/gold_set.json'])
     c = Counter(r['route'] for r in rows if r['xml'])
     log('g10_fetch_xml.py', 'publisher full-text XML for the gold set', len(rows), f"{sum(r['xml'] for r in rows)} with XML: {dict(c)}")

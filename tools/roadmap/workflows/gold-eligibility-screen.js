@@ -7,7 +7,7 @@ export const meta = {
   ],
 }
 
-const DIR = '/Users/marinedenolle/GitHub/metascience-and-AI/private/data/roadmap/derived/gold/screen_batches'
+const DIR = args.dir || '/Users/marinedenolle/GitHub/metascience-and-AI/private/data/roadmap/derived/gold/screen_batches'
 const NB = args.n_batches
 
 const CRITERIA = `ELIGIBLE means BOTH:

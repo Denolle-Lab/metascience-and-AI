@@ -7,7 +7,7 @@ Output: derived/gold/screen_input.json  [{key, id, doi, title, journal, topic, s
 Run   : python tools/roadmap/g06_abstracts.py
 """
 from __future__ import annotations
-from common import DERIVED, log, openalex, read_json, write_json
+from common import SET, CALC, DERIVED, log, openalex, read_json, write_json
 
 
 def rebuild(inv: dict | None) -> str:
@@ -18,7 +18,7 @@ def rebuild(inv: dict | None) -> str:
 
 
 def main() -> None:
-    pre = read_json(DERIVED / 'gold' / 'preselect.json')
+    pre = read_json(SET / 'preselect.json')
     out = []
     for i in range(0, len(pre), 50):
         chunk = pre[i:i + 50]
@@ -30,7 +30,7 @@ def main() -> None:
             out.append({'key': 'g22_' + p['id'], 'id': p['id'], 'doi': p['doi'], 'title': p['title'], 'journal': p['journal'],
                         'topic': p['topic'], 'subfield': p['subfield'], 'type_crossref': r.get('type_crossref'),
                         'abstract': rebuild(r.get('abstract_inverted_index'))})
-    write_json(DERIVED / 'gold' / 'screen_input.json', out, ['derived/gold/preselect.json', 'OpenAlex abstract_inverted_index'])
+    write_json(SET / 'screen_input.json', out, ['derived/gold/preselect.json', 'OpenAlex abstract_inverted_index'])
     log('g06_abstracts.py', 'abstracts for the eligibility screen', len(out), f"{sum(1 for o in out if not o['abstract'])} without abstract")
     print(len(out), 'records;', sum(1 for o in out if not o['abstract']), 'without abstract')
 

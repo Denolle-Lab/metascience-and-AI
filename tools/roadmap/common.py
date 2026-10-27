@@ -27,6 +27,9 @@ keys.load()
 DATA = ROOT / 'private' / 'data' / 'roadmap'
 RAW = DATA / 'raw'
 DERIVED = DATA / 'derived'
+# Which paper set and corpus a run works on (round 1: gold / calc1). Round 2: ROADMAP_SET=r2 ROADMAP_CALC=r2calc.
+SET = DERIVED / os.environ.get('ROADMAP_SET', 'gold')
+CALC = DERIVED / os.environ.get('ROADMAP_CALC', 'calc1')
 MANIFEST = DATA / 'MANIFEST.md'
 DECISIONS = DATA / 'DECISIONS.md'
 API = 'https://api.openalex.org'

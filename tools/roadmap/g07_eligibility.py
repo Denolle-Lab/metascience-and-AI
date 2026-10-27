@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections import Counter
-from common import DERIVED, decision, log, read_json, write_json
+from common import SET, CALC, DERIVED, decision, log, read_json, write_json
 
 
 def main() -> None:
@@ -20,7 +20,7 @@ def main() -> None:
     a = ap.parse_args()
     res = json.load(open(a.result))
     dec = {d['key']: d for d in res['decisions']}
-    recs = read_json(DERIVED / 'gold' / 'screen_input.json')
+    recs = read_json(SET / 'screen_input.json')
     rows = []
     for r in recs:
         d = dec.get(r['key'])
@@ -29,7 +29,7 @@ def main() -> None:
                      'screenB': d.get('screenB') if d else None, 'adjudication': d.get('adjudication') if d else None})
     both = [x for x in rows if x['screenA'] and x['screenB']]
     agree = sum(1 for x in both if x['screenA']['eligible'] == x['screenB']['eligible'])
-    write_json(DERIVED / 'gold' / 'eligibility.json', rows, ['derived/gold/screen_input.json', f'workflow {a.run_id}'],
+    write_json(SET / 'eligibility.json', rows, ['derived/gold/screen_input.json', f'workflow {a.run_id}'],
                {'workflow': 'tools/roadmap/workflows/gold-eligibility-screen.js', 'run_id': a.run_id})
     c = Counter(x['category'] for x in rows)
     log('g07_eligibility.py', f'eligibility screen (workflow {a.run_id})', len(rows),

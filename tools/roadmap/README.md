@@ -54,3 +54,12 @@ python tools/roadmap/g11_human_agreement.py           # after coders return thei
 ```
 
 Keys are read from `~/.config/metascience/keys.env` (see the main README). The fetcher records the route used for each paper; papers it cannot get are listed with links in `private/download-list.md`.
+
+## Rounds
+
+- Round 1 (the 600-paper plan) uses the default folders `derived/gold/` and `derived/calc1/`.
+- Round 2 (October 27, 2026): `python g18_round2_draw.py` draws a diversified open-access set into `derived/r2/`;
+  the same steps then run with `ROADMAP_SET=r2 ROADMAP_CALC=r2calc` (g06, g04, the eligibility workflow with
+  `args.dir`, g07, g12, g10) and code with `code_papers.py --tag r2`.
+- Every experiment, with inputs, commands, commits and costs: `private/data/roadmap/EXPERIMENTS.md`.
+- Rerunning with another model: `agents/coder/HANDOFF.md` and `tools/code_papers_open.py`.
