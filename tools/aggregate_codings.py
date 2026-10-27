@@ -64,7 +64,10 @@ def main() -> int:
                      'outcome': c['end']['outcome'], 'claim_status': c['end']['claim_status'], 'composition': c['composition'],
                      'gate_action': c['gates']['action'], 'gate_claim': c['gates']['claim'], 'gate_registration': c['gates']['registration'],
                      'steps': len(fp), 'distinct_modes': len(set(modes)), 'mode_returns': returns(modes), 'node_returns': returns(nodes),
-                     'nodes_used': ''.join(sorted(set(nodes))), 'has_H': 'H' in nodes, 'has_D': 'D' in nodes, 'has_V': 'V' in nodes,
+                     'nodes_used': ''.join(sorted(set(nodes))), 'has_N': 'N' in nodes, 'has_E': 'E' in nodes, 'has_H': 'H' in nodes, 'has_D': 'D' in nodes,
+                     'has_V': 'V' in nodes, 'has_X': 'X' in nodes, 'has_P': 'P' in nodes,
+                     'n_disagreements': len(c.get('disagreements', [])), 'n_alternatives': len(c.get('alternatives_considered', [])),
+                     'n_alternatives_effect_reported': sum(a.get('effect_reported') == 'yes' for a in c.get('alternatives_considered', [])),
                      'review_steps': sum(len(s['steps']) for s in c['sequences'] if s['kind'] == 'review'),
                      'cited_by_count': meta.get(k, {}).get('cited_by_count'), 'cnp': meta.get(k, {}).get('cnp'),
                      'decisive_mode': c['decisive_move']['mode'], 'codebook': c['codebook_version'], 'coder': c['coder']})

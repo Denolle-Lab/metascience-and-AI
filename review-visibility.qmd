@@ -1,0 +1,69 @@
+# What review changes, and what the paper says {.unnumbered}
+
+[Drafted]{.status .drafted} [v0.1 · October 27, 2026 · roadmap Phase 2b · paper codebook 1.5.0 · model-coded, no human check yet]{.status-line}
+
+- **Question.** When referees ask for changes and authors make them, does the published paper show that the work changed in review?
+- **Answer, 58 Earth-science papers with open review.** No. None of 580 changes made during review is marked as a revision in the published paper. 97% are in the paper, written as if planned; 3% are not in the paper at all.
+- **Why it matters.** Papers are what people and AI agents learn research from. The review loop, where much of the checking happens, does not appear in them.
+- **Scope.** Results only. The papers, their review records and the codings stay in the lab's private repository.
+
+## Corpus
+
+| Step | Papers |
+|:--|--:|
+| Eligible 2022 gold-set candidates after a double-blind abstract screen | 525 |
+| Coded from full text (first calculation) | 232 |
+| Of those, in Copernicus (EGU) journals | 64 |
+| With an open review discussion | 61 |
+| Review sequence coded and valid | 58 |
+
+- Journals: The Cryosphere 33; NHESS, GMD, HESS and Biogeosciences 4 each; ACP 3; ESurf and ESSD 2 each; GI and Solid Earth 1 each.
+- Each paper's record: referee comments, author replies, and the tracked-changes manuscript (134 referee comments and 147 author replies across the 61).
+
+## Method
+
+- **Coding.** Claude Opus 5.5 read the paper, its located publisher text and its open-review record, and coded the review process as steps on the [graph of inquiry](unit.qmd), each with node, mode, action, location, a quote of at most 25 words, and a move (forced by review, declined, return after failure). Batch API, $26.76 for 58 papers.
+- **Labelling.** Two model labelers, working independently, classified every step by how it appears in the published paper. A third resolved disagreements.
+
+| Label | Rule |
+|:--|:--|
+| Marked as a revision | In the paper, and the paper ties it to review. A generic thank-you to referees does not count. |
+| As if planned | In the paper, with no sign it came from review. |
+| Not in the paper | A change described in review that the published paper does not contain. |
+| No change | A declined request or a reply that only argues. |
+
+- **Checks.** Every "in the paper" label carries a quote from the published text, matched by script. Interval by the rule of three, papers as the unit [@hanley1983].
+
+## Results
+
+| | Steps | Share of changes |
+|:--|--:|--:|
+| Review steps coded | 746 | |
+| No change | 166 | |
+| Changes to the work | 580 | 100% |
+| In the paper, as if planned | 560 | 96.6% |
+| Not in the paper | 20 | 3.4% |
+| Marked as a revision | 0 | 0% |
+
+- **Papers marking any review change:** 0 of 58. 95% upper bound: about 5% of papers.
+- **Labeler agreement:** 97% (720 of 746 steps). **Quotes found in the published text:** 560 of 560.
+- **What goes missing:** vary-and-replicate changes (added controls, replications) are the most common request and the most often lost: 13 of 102 not in the paper, against 7 of 478 for all other kinds.
+- **Refusals that still changed the paper:** 60 of 220 declined requests left a trace in the published text, usually a caveat or a justification.
+- **Pilot, 9 papers with review files** (October 21): 4 of 126 loops readable as loops, 70 as if planned, 52 absent. Same direction; the larger absent share comes from review files that discuss analyses never added to any version.
+
+## Reading the result
+
+- A convention, not misconduct. EGU journals publish the whole discussion next to the paper [@poschl2012]; the history is on the record, just not in the paper.
+- For agents: a loop designed from methods sections sees no review loop. The steps most affected (controls, replication, refinement) are the ones agent loops already run least.
+
+## Limits
+
+- Coding and labelling by one model family; agreement is an upper bound on reliability. Human check pending.
+- 58 papers, one year, mostly The Cryosphere, all open discussion.
+- Strict rule for "marked": generic acknowledgements not counted.
+- Three papers dropped for overlong quotes.
+
+## Reproduce
+
+- Code (this repository): `tools/code_papers.py`, `tools/roadmap/g15_open_review.py`, `tools/roadmap/g16_visibility.py`, `tools/roadmap/workflows/visibility.js`, codebook `agents/coder/` 1.5.0.
+- Data and codings: private repository, `data/roadmap/derived/review/`.
