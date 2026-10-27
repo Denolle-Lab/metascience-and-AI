@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A thirteen-meeting reading club studying scientific advance through plural epistemic modes, and designing agents evaluated against documented scientific work.">
+
+<title>How Earth-science papers describe their research workflows: the roadmap experiments, round 1 – MetaScience, Scientific Inquiry, and Agents</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./rubrics.html" rel="next">
+<link href="./topics-journals.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ac7d07509a5ec904cce7a8a576ef775b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap">
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metrics.html">Outcomes and test cases</a></li><li class="breadcrumb-item"><a href="./roadmap-report.html">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MetaScience, Scientific Inquiry, and Agents</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Denolle-Lab/metascience-and-AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About this Group Meeting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Defining the modes of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance and modes of inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modes of inquiry: definitions, evidence, and the graph</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/question.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Question-driven inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/observation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Observation and description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory inquiry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/hypothesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory and mechanistic modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation and prediction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/instruments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instruments and observing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods and computation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cross-study synthesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/reconstruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reconstruction from traces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication and robustness assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferential estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modes/regularities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical modeling and empirical regularities</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">The graph of inquiry</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The unit of inquiry: reasoning, hypotheses, tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walking the graph: eight papers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./decision-tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">From graph to decision tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Outcomes and test cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What has been measured: novelty, impact, breadth, advance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./success-set.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Success set: test cases for evaluation and mode analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inquirygraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">inquirygraph: the coding agent and its gold set</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review-visibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What review changes, and what the paper says</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow-outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research workflows and their outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./topics-journals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Topics and journals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./roadmap-report.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific advance: records and evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Meetings held</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/01-scientific-method.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Is there a scientific method?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sessions/10-novelty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific novelty: new to whom, compared with what?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Meeting notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibliography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography and reading library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#question-and-why-it-matters-to-two-fields" id="toc-question-and-why-it-matters-to-two-fields" class="nav-link" data-scroll-target="#question-and-why-it-matters-to-two-fields">1. Question, and why it matters to two fields</a></li>
+  <li><a href="#corpus" id="toc-corpus" class="nav-link" data-scroll-target="#corpus">2. Corpus</a></li>
+  <li><a href="#coding-method" id="toc-coding-method" class="nav-link" data-scroll-target="#coding-method">3. Coding method</a></li>
+  <li><a href="#self-consistency-of-the-coder-test-retest" id="toc-self-consistency-of-the-coder-test-retest" class="nav-link" data-scroll-target="#self-consistency-of-the-coder-test-retest">4. Self-consistency of the coder (test-retest)</a>
+  <ul class="collapse">
+  <li><a href="#entry-state-what-the-label-records" id="toc-entry-state-what-the-label-records" class="nav-link" data-scroll-target="#entry-state-what-the-label-records">4.1 Entry state: what the label records</a></li>
+  </ul></li>
+  <li><a href="#what-workflows-look-like" id="toc-what-workflows-look-like" class="nav-link" data-scroll-target="#what-workflows-look-like">5. What workflows look like</a></li>
+  <li><a href="#workflows-by-field-and-venue" id="toc-workflows-by-field-and-venue" class="nav-link" data-scroll-target="#workflows-by-field-and-venue">6. Workflows by field and venue</a></li>
+  <li><a href="#workflows-and-outcomes" id="toc-workflows-and-outcomes" class="nav-link" data-scroll-target="#workflows-and-outcomes">7. Workflows and outcomes</a></li>
+  <li><a href="#what-peer-review-changes-and-whether-papers-show-it" id="toc-what-peer-review-changes-and-whether-papers-show-it" class="nav-link" data-scroll-target="#what-peer-review-changes-and-whether-papers-show-it">8. What peer review changes, and whether papers show it</a></li>
+  <li><a href="#papers-against-agent-loops" id="toc-papers-against-agent-loops" class="nav-link" data-scroll-target="#papers-against-agent-loops">9. Papers against agent loops</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">10. Limitations</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">11. Reproducibility</a></li>
+  <li><a href="#sources-of-numbers" id="toc-sources-of-numbers" class="nav-link" data-scroll-target="#sources-of-numbers">Sources of numbers</a></li>
+  <li><a href="#appendix-the-49-workflow-features-of-section-7" id="toc-appendix-the-49-workflow-features-of-section-7" class="nav-link" data-scroll-target="#appendix-the-49-workflow-features-of-section-7">Appendix: the 49 workflow features of section 7</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/roadmap-report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./metrics.html">Outcomes and test cases</a></li><li class="breadcrumb-item"><a href="./roadmap-report.html">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="status drafted">Drafted</span> <span class="status-line">v0.2 · October 27, 2026 · model-coded, no human check yet</span></p>
+<ul>
+<li>Data release (codings with quotes, derived tables, figure provenance; no paper texts): <a href="https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release"><code>data/roadmap-release/</code></a>.</li>
+<li>Short result pages: <a href="./topics-journals.html">topics and journals</a>, <a href="./workflow-outcomes.html">workflows and outcomes</a>, <a href="./review-visibility.html">peer review</a>.</li>
+</ul>
+<p>Draft v0.2, October 27, 2026. Denolle Lab metascience project. The <em>roadmap</em> is the lab’s staged plan for measuring inquiry in published papers (<code>private/analysis/roadmap-plurality-loops.md</code>); this report covers Phase 0 (a measurement instrument and its reliability), the first round of the corpus study, and Phase 2b (what reporting removes, here the work done in peer review). Status: model-coded throughout; no human coding has been scored against the model yet.</p>
+<p><strong>State at writing.</strong> Every result below rests on the codings that passed validation on October 27, 2026: 233 round-1 papers (tag <code>calc1</code>) and 0 round-2 papers (tag <code>r2</code>). Three coding batches were still running: 154 and 48 round-2 papers, and a top-up of 146 round-1 papers: 144 whose full text arrived after the first batch and the 2 whose first coding failed validation. When they return, the scripts of section 11 recompute every number and figure from the valid codings, and the text will be revised to match. Every n will change, and some results with it.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>We asked a large language model to read 2022 Earth-science papers and write down each paper’s research workflow as a walk on a graph. The graph’s vertices (<em>nodes</em>) are fifteen kinds of research move, such as question, observe, infer, compare, and vary and replicate. Each step also carries one of thirteen <em>modes</em>, the style of inquiry it serves (estimation, reconstruction, methods, and so on). The coder is Claude Opus 5.5 (<code>claude-opus-5-5</code>) under codebook 1.5.0; every step of a coding must cite a page or paragraph locator and a quote of at most 25 words. From an OpenAlex pool of 14,223 candidate papers, round 1 preselected 600, kept 525 after an abstract screen, had full text for 235 at the time of coding, and obtained 233 valid codings.</p>
+<p>Terms used in the bullets, defined fully in sections 3 to 7: <em>entry state</em>, what started the work as the paper tells it; <em>decisive mode</em>, the mode of the one step without which the main claim would not exist; <em>composition</em>, a named overall pattern of the walk; <em>Krippendorff’s alpha</em>, agreement corrected for chance (1 perfect, 0 chance); <em>q</em>, a p value adjusted for many tests (Benjamini-Hochberg false discovery rate); <em>rho</em>, Spearman rank correlation; <em>cnp</em>, a citation percentile within the paper’s OpenAlex subfield and year; <em>agent loop</em>, the cycle an AI research system repeats.</p>
+<ul>
+<li><strong>The coder agrees with itself on most fields; agreement with human coders is not yet measured.</strong> Coding 50 papers twice gave alpha 0.83 for decisive mode (95% bootstrap interval 0.70 to 0.93), 0.77 for entry state (0.50 to 0.95), 0.74 for which nodes a paper uses (0.70 to 0.79) and 0.60 for composition (0.38 to 0.77). Raw agreement on entry state is 92%, but 78% of papers carry its most common label. Outcome and V status (whether the paper checks its own result) cannot be scored this way: 49 of 50 papers fall in one class. Two codings of the same paper overlap more than codings of two different papers, though less than the raw numbers suggest: node-set overlap 0.86 against 0.65 for two different papers.</li>
+<li><strong>Most papers share a core of moves.</strong> Nearly every paper questions, compares, varies or replicates, and keeps a claim. The median paper has 22 coded steps and returns to modes it has already used. Only 1 of 233 contains the textbook order question, hypothesis, simulate, design, find conditions, observe, compare, even with other steps allowed in between.</li>
+<li><strong>Field and venue shape the workflow.</strong> 28 of 104 tests of workflow against OpenAlex subfield or journal family have q &lt; 0.1. Seismology papers that OpenAlex files under the subfield Artificial Intelligence are built around a new method, Earth-Surface Processes papers around reconstruction from traces, and AGU and Copernicus papers have longer workflows than the other Wiley journals. The AGU contrast rests on 16 papers that are not a random draw from AGU.</li>
+<li><strong>A few workflow features track citations and breadth, and venue explains part of the citation link.</strong> 15 of 245 feature-outcome tests have q &lt; 0.1; none passes the stricter Benjamini-Yekutieli correction, which allows any dependence among tests. Longer workflows go with higher citation percentile (rho 0.23; 0.17 with reference count held fixed; 0.12 within journal family). The largest correlation, between the number of items the coder lists as borrowed from other fields and the share of references outside geoscience (rho 0.57), is a check that the coder reads the papers consistently with their reference lists, not an outcome result.</li>
+<li><strong>Review changes enter the paper unattributed.</strong> Of 580 review-driven changes in 58 Copernicus papers with open discussion (33 in The Cryosphere), 560 read as planned, 20 are absent, and none is marked as a revision.</li>
+<li><strong>Published agent designs include few of the moves papers report most often.</strong> Against 31 published agent designs, the largest gaps are at question (98% of papers, 10% of agent systems), vary or replicate (97% against 10%), infer (82% against 5%) and hypothesize rivals (81% against 6%). The gaps hold for the 14 research systems alone, and papers and agents were coded from different kinds of text.</li>
+<li><strong>The sample is set by full-text access.</strong> Coded papers are concentrated in a few venues: The Cryosphere alone is 14% of them, and every eligible Copernicus paper was coded while 16 of 98 AGU papers were. The pending batches should reduce this skew.</li>
+</ul>
+<p>Recorded model spend for all experiments to date: $123.59 of a $250 cap; $0.32 per paper for the main coding.</p>
+</section>
+<section id="question-and-why-it-matters-to-two-fields" class="level2">
+<h2 class="anchored" data-anchor-id="question-and-why-it-matters-to-two-fields">1. Question, and why it matters to two fields</h2>
+<p>Two problems motivate the roadmap. Experts reach different conclusions from the same data, and much of the inquiry behind a paper never reaches the paper. The roadmap measures what papers say about how their research was done, and codes it so that human workflows and AI agent loops can be compared on the same graph.</p>
+<p><strong>For geoscientists.</strong> Much of Earth science works with conditions found in nature rather than set in a laboratory. An earthquake, a glacier or a storm cannot be rerun, so the field relies on reconstruction from traces, on nature repeating itself across events, and on checks such as synthetic tests (running a method on simulated data with a known answer), independent stations or a second inversion method (inversion: estimating unobserved Earth properties from measurements by fitting a physical model). Laboratory work (experimental petrology, rock mechanics, geochemistry) and numerical experiments set their own conditions, and there controls and replication take their usual meaning. Whether published papers show those checks, and whether the shape of a workflow relates to how a paper is cited or how far it reaches outside the field, are questions about the field’s own practice. They can be asked at scale only if reading papers can be automated with known error.</p>
+<p><strong>For NLP and AI researchers.</strong> Research agents such as The AI Scientist (Lu et al., 2026), Coscientist (Boiko et al., 2023) and the AI co-scientist (Gottweis et al., 2026) are designed and evaluated mostly from what published papers report. If papers present the workflow selectively, agents learn a cleaner process than the one people follow. This study is also an annotation experiment: a large language model (Claude Opus 5.5) as annotator of a long, technical, structured coding task (one JSON object with dozens of fields per paper), with measured test-retest consistency, an input-format ablation (rerunning with one input changed), validation by a deterministic checker (a script, not a model), and cost per document.</p>
+<p>Five questions organize the report:</p>
+<ol type="1">
+<li>How consistently does the model code workflows (section 4)?</li>
+<li>What do Earth-science workflows look like on the graph (section 5)?</li>
+<li>Do workflows differ by field and venue (section 6)?</li>
+<li>Do workflow features relate to citation, novelty and breadth, and does field or venue explain that (section 7)?</li>
+<li>What does the paper leave out: the work done in peer review (section 8) and the moves AI agents skip (section 9)?</li>
+</ol>
+</section>
+<section id="corpus" class="level2">
+<h2 class="anchored" data-anchor-id="corpus">2. Corpus</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig01_corpus.png" class="img-fluid figure-img"></p>
+<figcaption>Corpus construction</figcaption>
+</figure>
+</div>
+<p><em>Figure 1.</em> Stages of both rounds and screening exclusions.</p>
+<p><strong>Notation.</strong> Numbers in square brackets are 95% percentile bootstrap intervals: the statistic recomputed on 2,000 samples of papers drawn with replacement, unless a section says otherwise. <em>q</em> is a p value adjusted by the Benjamini-Hochberg procedure for the number of tests in its family (Benjamini &amp; Hochberg, 1995; section 6): among results with q &lt; 0.1, about 10% are expected to be false on average. <em>cnp</em> is the OpenAlex citation normalized percentile, a paper’s citation count as a percentile among works of the same OpenAlex subfield, year and type (0 to 1); the other outcome metrics are defined in section 7.</p>
+<p><strong>Pool.</strong> We drew from OpenAlex, an open bibliographic index that supplies each paper’s journal, publisher, citation counts and machine-assigned topic labels (Priem et al., 2022). The pool is every 2022 journal article with an abstract and at least 15 references in Earth-science venues that have a full-text route, split into a “core” ring (the eight OpenAlex topics of the convenor, M. Denolle, who runs the seminar and the project) and a “broad” ring (eight neighbouring Earth-science subfields): 14,223 papers (<code>g02_pool.py</code>). Papers with a convenor co-author are excluded from both draws.</p>
+<p><strong>Round 1.</strong> 600 papers preselected, 300 per ring, with equal numbers per cnp quintile (120 per quintile) and, within a quintile, subfields taken in turn (<code>g03_preselect.py</code>, seed 2026). The design makes the citation distribution near-uniform (sample median cnp 0.55, pool median 0.75) and raises small subfields: the OpenAlex subfield Artificial Intelligence, which in this pool holds only the core-ring topic Seismology and Earthquake Studies, is 0.8% of the pool and 11% of the preselection.</p>
+<p><strong>Round 2.</strong> 277 open-access papers drawn from the rest of the pool, at most 4 per journal, round robin over publishers (<code>g18_round2_draw.py</code>, seed 2027): 157 journals, 12 publishers.</p>
+<p><strong>Screen.</strong> Each abstract went to two independent model screeners, with a third model call settling disagreement or uncertainty (16 of 600 adjudicated in round 1, 4 of 277 in round 2). The screeners are Claude agents in a Claude Code workflow (<code>tools/roadmap/workflows/gold-eligibility-screen.js</code>, effort medium); the workflow does not set or record the model version. In NLP terms this is double annotation with adjudication; in a systematic review it is the eligibility step. It drops off-topic papers, reviews, and comments or replies, since the codebook codes research workflows. Round 1 kept 525 of 600 (87.5%; 54 off-topic, 12 reviews, 5 comments or replies, 4 other). Round 2 kept 222 of 277 (80.1%); the screeners agreed on 275 of 277.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig02_fulltext.png" class="img-fluid figure-img"></p>
+<figcaption>Full-text access by publisher</figcaption>
+</figure>
+</div>
+<p><em>Figure 2.</em> Full text by publisher (PDF, publisher XML) and open-access share.</p>
+<p><strong>Full text.</strong> The coder needs the whole paper. At the first coding (October 25), 235 of 525 round-1 papers had a PDF. A re-fetch on October 27 from the University of Washington network, with the Wiley route corrected for AGU DOIs, added 192 PDFs across both rounds (144 round 1, 48 round 2; Wiley 106, Elsevier 85, Springer 1) and 103 Elsevier XML files (74 round 1, 29 round 2; <code>refetch_2026-10-27.log</code>). Round 1 now has a PDF for 379 of 525 (72.2%) and text of either kind for 381; round 2 has 202 of 222 (91%), high by design because it was drawn from open-access papers. Round-1 papers still without a PDF are mostly in journals of the Seismological Society of America (SSA: the Bulletin of the Seismological Society of America and Seismological Research Letters, 44), English translations of Russian-language journals that Pleiades (43) and Allerton Press (11) publish and Springer distributes, and Geophysical Journal International (GJI, Oxford University Press, 28). Publisher XML matters for NLP readers because it gives section-and-paragraph locators, so every quote can be found by string search; it exists for 190 round-1 papers now, and 116 of the 233 coded papers were coded with it (section 3).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig09_sample.png" class="img-fluid figure-img"></p>
+<figcaption>Who is in the sample</figcaption>
+</figure>
+</div>
+<p><em>Figure 3.</em> Outcome metrics and open-access share by stage, and the coverage effect.</p>
+<p><strong>Who got coded.</strong> Full-text access filters the sample. In round 1, 83% of the 233 coded papers are open access, against 46% of the 292 eligible papers not coded, a difference of 37 percentage points [30, 45]. The cnp of coded papers is slightly higher (median difference +0.07 [−0.01, +0.18]). Topic-pair rarity (novelty_pair) and the share of references outside geoscience (breadth_refs) do not differ.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig11_topics_journals.png" class="img-fluid figure-img"></p>
+<figcaption>Field and venue by stage</figcaption>
+</figure>
+</div>
+<p><em>Figure 4.</em> Subfield and journal family at each stage, the most frequent journals, and coverage by family.</p>
+<p><strong>Journals and topics.</strong> Two groupings are used throughout. <em>Subfield</em> is the OpenAlex subfield of the paper’s leading topic. OpenAlex assigns topics with a classifier over title, abstract, venue and citations; topics nest in subfields (Geophysics, Atmospheric Science, Oceanography) and fields (Earth and Planetary Sciences, Environmental Science). These are machine labels, not author keywords, and the subfield names can mislead:</p>
+<ul>
+<li>OpenAlex files the topic Seismology and Earthquake Studies under the subfield Artificial Intelligence, in the field Computer Science. Here that subfield holds only this topic: 17 coded seismology papers, 13 of which have machine-learning (ML) terms somewhere in their coding and 6 in a new-capability step. This report calls it “Seismology (OpenAlex: Artificial Intelligence)”; the figures label it “Artificial intelligence (100% seismology)”.</li>
+<li>As coded, Atmospheric Science is 72% the topic Cryospheric studies and observations (53 of 74 papers), that is glaciology and ice sheets rather than meteorology; The Cryosphere alone has 33 coded papers. Earth-Surface Processes is geological formations (12 of 26), aeolian (5) and coastal (5) topics. Water Science and Technology is mostly watershed hydrology (11 of 14). Geophysics is led by seismic imaging and inversion (17 of 64) and earthquake and tectonic studies (14).</li>
+</ul>
+<p><em>Journal family</em> is the publisher group read from the DOI prefix, then the publisher name:</p>
+<ul>
+<li>AGU (American Geophysical Union) journals, which Wiley publishes, counted apart from the other Wiley journals;</li>
+<li>Wiley non-AGU, led in the coded set by Geophysical Prospecting (13), Geological Journal (9), Basin Research (5), Hydrological Processes (5), Earth Surface Processes and Landforms (4) and Terra Nova (4), mostly applied geophysics, sedimentary geology and hydrology;</li>
+<li>Copernicus Publications: the EGU (European Geosciences Union) journals, such as The Cryosphere, Hydrology and Earth System Sciences and Geoscientific Model Development, plus journals Copernicus publishes for other societies, such as European Journal of Mineralogy and Scientific Drilling;</li>
+<li>the Nature portfolio (for example Scientific Reports, 8, and Communications Earth &amp; Environment, 4);</li>
+<li>the rest of Springer Nature, led by Earth, Planets and Space (13), and including the Pleiades and Allerton translations;</li>
+<li>Elsevier; Oxford University Press (mainly GJI); SSA; and AAAS (the American Association for the Advancement of Science, publisher of Science and Science Advances).</li>
+</ul>
+<p>For NLP readers: families differ in more than publisher. Their journals differ in length limits, data policies, review process, citation rates and topic, and several families mix society and commercial journals, so venue can stand in for many unmeasured properties of a paper.</p>
+<p>The coded set is much more concentrated than the pool. The effective number of journals is 1/HHI, where HHI (the Herfindahl-Hirschman index) is the sum of squared journal shares; it falls from 67.7 in the pool to 51.2 preselected, 43.5 eligible, 39.8 with full text and 27.4 coded, and the top-5 journal share rises from 0.20 to 0.33. The Cryosphere holds 1.7% of the pool, 6.3% of eligible papers and 14.2% of coded papers (33 of 233). The leading topic “Cryospheric studies and observations” goes from 3.9% of the pool to 22.7% of coded papers. Wiley non-AGU (76 papers) and Copernicus (64) make up 60% of coded papers; AGU (16) and Elsevier (9) are under-represented against pool shares of 23.5% and 22.5%.</p>
+<p>The skew follows publisher, through download timing, not subfield. Bias-corrected Cramér’s V (the strength of association between two categorical variables, 0 for independence, 1 when one determines the other, corrected for the upward bias of small tables; Bergsma, 2013) is 0.73 between family and being coded, against 0.26 for subfield, among eligible papers. All 64 eligible Copernicus papers are coded, 63 points above the rest. AGU has full text for 98 of 98 but only 16 coded; Elsevier has 72 with full text and 9 coded. Among papers with full text, being coded depends on family (Cramér’s V 0.86) but not on subfield (Cramér’s V 0.12, interval includes 0; q 0.13). The cause is timing: the AGU and Elsevier text arrived in the October 27 re-fetch, after the round-1 batch was submitted. Those papers are most of the 146 in the pending top-up (82 AGU, 63 Elsevier).</p>
+<p>Round 2 is more even: 111 effective journals and a top-5 share of 0.07 among the 277 drawn. Its full-text coverage is independent of subfield (q 0.76) but still tied to family (Cramér’s V 0.53, driven by small pooled venues, mainly Seismica, a community-run open-access seismology journal).</p>
+</section>
+<section id="coding-method" class="level2">
+<h2 class="anchored" data-anchor-id="coding-method">3. Coding method</h2>
+<p><strong>Experiments.</strong> <code>private/data/roadmap/EXPERIMENTS.md</code> registers eight experiments, named E0 to E7 throughout: E0 input-format test; E1 first coding of round 1; E2 test-retest of the coder; E3 coding of the open-review record; E4 labelling of review changes against the published text; E5 papers against agent loops; E6 workflow features against outcomes; E7 round 2 and the October 27 re-fetch.</p>
+<p><strong>Unit and codebook.</strong> Codebook 1.5.0 (<code>agents/coder/CODEBOOK.md</code>) asks for one JSON object per paper. Its core is the <code>final_paper</code> sequence, the paper’s steps in document order. Each step has two labels. Its <em>node</em> is the kind of research move, one of fifteen letters from graph v0.4.2:</p>
+<ul>
+<li>N new capability (build or characterize an instrument or method); E explore (establish that a phenomenon is real: does it repeat, does it chain); O observe; I infer a latent quantity through a forward model; Q question;</li>
+<li>H hypothesize rivals (state competing explanations); S simulate or derive what a rival predicts; D design the test; F find or set the conditions; C compare;</li>
+<li>V vary and replicate (check the result); X exclude a rival; K keep the claim; P protect the claim by revising an auxiliary (secondary) assumption instead of the hypothesis, for example attributing a misfit to unmodelled anisotropy or changing the velocity model; R refine.</li>
+</ul>
+<p>Its <em>mode</em> is the style of inquiry the step serves, one of thirteen: observation, exploration, question, hypothesis, theory, simulation, instruments, methods, synthesis (across studies), reconstruction (of past events from traces), robustness, estimation, regularities. Node and mode share some names but answer different questions: the node says what the step does, the mode which style of inquiry it does it in. A worked example from a Near Surface Geophysics paper on modelling 3D elastic wave scattering by near-surface scatterers (<code>g22_W4210352162</code>, step 9): node V (vary or replicate), mode methods, provenance <code>new</code>, locator p.&nbsp;304, action in the coder’s words: they check the forward model against the finite-difference code SOFI3D for case 7, isolating the SOFI3D scattered field by subtracting a no-scatterer run, compare traces by semblance, and report runtimes (5 min versus 218 min); quote from the paper “The results in Figure 10 indicate generally good fit between the outputs of two modelling techniques, with semblances over 0.80”.</p>
+<p>The graph is the seminar’s (modes.qmd, inquirygraph.qmd). In this report an <em>edge</em> or <em>transition</em> is any pair of consecutive steps after merging consecutive repeats of a node; no transition is forbidden, so 15 × 14 = 210 directed transitions are possible.</p>
+<p>Each step also carries a one-sentence action, a location, a quote of at most 25 words, and its <em>provenance</em> (the codebook field <code>move</code>): <code>new</code>; <code>repeat</code> (the same node as the step before); <code>return_after_failure</code> (the paper says an earlier attempt failed or mismatched and this step goes back); <code>cited</code> (a result taken from other groups’ work, not performed here); <code>inherited</code> (done in the authors’ own earlier work); in review sequences also <code>review_forced</code> (a referee, editor or commenter asked for it) or <code>declined</code>. Beyond the sequence the coder records:</p>
+<ul>
+<li>the <em>entry state</em>, what started the work as the paper tells it, one of seven: problem (an unsolved question the literature names), capability (a new instrument, method or archive), anomaly (a surprising observation), challenged result (a published finding the paper sets out to check), hypothesis (stated before the work), data without theory, or external goal (a mandate, benchmark or mission); and the <em>entry node</em>, the node where the paper enters the graph;</li>
+<li>the <em>decisive node and mode</em>, of the single step without which the main claim would not exist;</li>
+<li>the <em>composition</em>, the named pattern the walk follows, if any: <em>trace series</em> (conditions found, not set, with observations repeated over independent traces such as sediment cores or landforms, ending in the best explanation among stated rivals); <em>capability first</em> (build the instrument or method, then pose the question); <em>nature’s repetition</em> (repeated natural events, such as many earthquakes, used as quasi-replicates to fit a regularity, with no power to set the conditions; Cleland, 2002); <em>independent replication</em> (a published result re-derived with independent data or methods; Schmidt, 2009); <em>strong inference</em> (rivals share one test whose possible outcomes each exclude at least one rival, repeated in turn; Platt, 1964);</li>
+<li>the <em>claim status</em> at the end: best explanation (the best among stated rivals without a decisive test); estimate with resolution (a latent quantity with its uncertainty and resolution, the scale below which the estimate cannot distinguish features); regularity in range (a relation fitted across repeated cases, with the range where it holds); capability characterized (what an instrument or method can measure, and how well); confirmed (the claim survived a test it could have failed, against stated rivals);</li>
+<li>the <em>outcome</em>, exactly one per paper: kept (a claim retained with a status), excluded (a rival rejected), contradicted (an earlier published claim shown wrong) or no conclusion;</li>
+<li>two <em>gates</em>: the <em>claim gate</em> asks whether the main claim faced a test it could have failed (no rivals required, so it is broader than the status confirmed); the <em>action gate</em> asks whether a stated hypothesis directed the main data acquisition;</li>
+<li>the items <em>borrowed from other fields</em>: concepts, methods, instruments or data from outside Earth science that the paper uses, each with its source field (codebook section 6, field <code>imports</code>);</li>
+<li>every <em>V check</em> the paper performs, by kind. Reproduction (same data and code rerun), replication (new data for the same question) and generalization (another context) follow the definitions of the National Academies (NASEM, 2019). The other three kinds are the codebook’s: a second method on the same data, robustness to varied parameters or processing, and a control. The rule that separates the overlapping cases: a new event, period, sample or data set addressing the same question is replication; the result tested in another region, context or task is generalization; nature’s repetition is not a check but a composition of the whole walk, where the repeated events are the data. A seismologist would call a second earthquake a new case; under this rule it counts as replication when it answers the same question. The control kind is broad. It includes synthetic and checkerboard tests (resolution or recovery tests), procedural blanks in laboratory geochemistry, reference stations or baseline periods in field studies, and null or benchmark models. The coding does not separate these, so the control share in section 5 lumps them; a sub-tag is proposed for the next codebook version.</li>
+</ul>
+<p><strong>Model and inputs.</strong> <code>tools/code_papers.py</code> sends each paper to <code>claude-opus-5-5</code> through the Message Batches API. Settings: effort high (an API setting for how much reasoning the model spends before answering), at most 32,000 output tokens, temperature not set (API default), no thinking parameter set (output tokens include the model’s reasoning). A <em>token</em> is a word piece, roughly three-quarters of an English word. A <em>batch API</em> accepts many requests at once, processes them asynchronously and bills them at half price. Each request carries the PDF and, where it existed at submission, the publisher XML converted to located text. Of the 233 valid round-1 codings, 116 were coded from PDF plus XML text and 117 from the PDF alone, by the coder’s own record of its inputs. Nine other E1 papers now have Elsevier XML, but it was fetched on October 27, after E1, so the coder did not see it. <em>pdftotext</em>, a command-line tool that extracts plain text from a PDF, is used only to check quotes and by the open-model runner of section 11. The system prompt is the codebook plus the JSON schema of the output. Its shared prefix (10,884 tokens) is marked for <em>prompt caching</em>: the provider keeps the processed prefix, so later requests reread it at a twentieth of the input price ($0.20 against $4 per million tokens) instead of paying again. From the round-2 top-up on, the cache is pre-warmed by one empty request before submission.</p>
+<p><strong>Validation.</strong> The output is schema-checked, not schema-constrained. A JSON schema is a formal description of the fields and allowed values of the output; this one is too large for constrained decoding (generation restricted token by token to valid JSON), so the model is asked to follow it, and every returned coding is checked afterwards by <code>tools/check_coding.py validate()</code>. The check enforces the schema’s fields and vocabularies, steps numbered in order, a page or locator on every step and every V check, quotes of at most 25 words, the presence of a <code>final_paper</code> sequence, and agreement between V steps and performed V checks. It does not check that a quote exists in the paper. Invalid or failed answers are resubmitted: 22 of the 235 E1 papers were sent twice (263 requests), none with the larger 64,000-token budget, which was used only for 4 open-review requests. Resubmitted papers have slightly longer walks (median 24 steps against 22). Round 1: 233 of 235 valid; the 2 failures have quotes over 25 words. Only valid codings enter any analysis, except the format test, which keeps 3 codings with one overlong quote each.</p>
+<p><strong>Quote existence.</strong> A script check (<code>g19_report_numbers.py</code>, <code>quotes.calc1_existence</code>) searched every final-paper quote of the 233 codings in the text the coder had, after lower-casing and collapsing punctuation. For the 116 papers coded with XML, 2,692 of 2,692 quotes are in the XML text. For the 117 coded from the PDF alone, 2,393 of 2,469 (96.9%) are found in pdftotext output; 8 papers fall below 90%, where text extraction or the coder’s paraphrase is the likely cause. Existence is not entailment: no check has asked whether a quote supports its step.</p>
+<p><strong>Format test (experiment E0).</strong> Before scaling, six open-licence papers were coded twice each from four inputs: the PDF (arm P), the PDF plus XML text (PX), the XML text alone (X), and pdftotext text (T), 48 codings under the earlier codebook 1.4.0. Arms P and PX ran through the batch API with <code>claude-opus-5-5</code>; arms X and T ran as Claude agents inside a Claude Code workflow, model version not recorded, at no recorded cost, which is why only 21 of the 48 codings carry a cost. The 3 codings with an overlong quote were kept. Agreement within a format against between formats: entry state 0.96 and 0.96, node-set overlap 0.86 and 0.88, decisive mode 0.92 and 0.92. Sequence similarity dropped between formats (node sequence by 0.076 [0.017, 0.151]), mostly in two papers whose PDF was the discussion preprint, a different text. With 6 papers this is a feasibility check, not evidence that formats are equivalent. Quotes could be verified in 100% of cases from XML and 83% from PDF text, which is why production runs attach the XML when it exists.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig10_cost.png" class="img-fluid figure-img"></p>
+<figcaption>Cost of coding</figcaption>
+</figure>
+</div>
+<p><em>Figure 5.</em> Cost per valid coding by experiment, cumulative spend against the cap, and token drivers.</p>
+<p><strong>Cost.</strong> Recorded cost is token usage times the price table ($4 per million input tokens, $20 per million output tokens, halved in batch), counted only for valid codings, so it is a lower bound on what was billed. By experiment: E0 format test $6.64 (21 valid codings); E1 first coding $74.47 (233; mean $0.32, median $0.31 per paper); E2 test-retest $15.72 (50); E3 open-review coding $26.76 (58; $0.46 per paper). Total $123.59 of the $250 cap. Across all 362 valid codings, the median was 77,866 prompt and 17,069 output tokens (E1 alone 74,620 and 16,424; open-review codings 109,622 and 23,953). Output tokens are 52% of spend although they are under a fifth of the tokens, because they cost five times as much. At the E1 and E3 rates, 10,000 papers would cost at least $3,200 to $4,600. The 202 round-2 requests in flight are projected at about $64 (95% interval 62 to 66) at the E1 mean, and the 146-paper round-1 top-up at about $46 (95% interval 44 to 48), on the same basis (<code>fig10_cost.json</code>).</p>
+</section>
+<section id="self-consistency-of-the-coder-test-retest" class="level2">
+<h2 class="anchored" data-anchor-id="self-consistency-of-the-coder-test-retest">4. Self-consistency of the coder (test-retest)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig03_reliability.png" class="img-fluid figure-img"></p>
+<figcaption>Run-to-run consistency of the model coder</figcaption>
+</figure>
+</div>
+<p><em>Figure 6.</em> Test-retest agreement, the format test, and Krippendorff’s alpha.</p>
+<p><strong>Design (experiment E2).</strong> The <em>gold set</em> is a stratified sample of 100 eligible round-1 papers, 50 per ring, spread over terciles of cnp, novelty_pair and breadth_refs (<code>g05_select.py</code>, seed 2026), reserved for human coding. Despite its name it carries no human labels yet; here it serves as the <em>retest sample</em>. The 51 gold papers that had full text at E1 were coded a second time, independently, from the same input (tag <code>gold-r2</code>); 50 pairs passed validation in both runs (one second coding failed the schema). The retest sample resembles the coded set: 41 of 50 entry states are problem (82%, against 78% of all 233), and 16 papers are Copernicus (32%, against 27%), 13 Wiley non-AGU, 9 Springer Nature, 4 Elsevier and 3 AGU. For geoscientists: <em>test-retest</em> asks whether the same instrument gives the same reading twice; <em>inter-annotator agreement</em> asks whether two annotators label the same item the same way. Here instrument and annotator are the same model, sampled at the API’s default temperature, so this is test-retest of a stochastic coder. It shows whether the coder is stable. It says nothing about whether it is right, and it does not cap agreement with a human. A coder that gives the correct label with probability 0.6 and spreads the rest evenly over four wrong labels agrees with itself 40% of the time (0.6² + 4 × 0.1²) but with a human who picks the correct label 60% of the time. Errors the model repeats on every run do not show at all. With two runs per paper, per-item variance cannot be estimated; the next retest should draw 3 to 5 runs on a subset and report how stable the majority label is.</p>
+<p><strong>Agreement measures.</strong></p>
+<ul>
+<li><em>Agreement</em> on a categorical field (entry state, outcome, decisive mode): the share of papers with the same value in both codings.</li>
+<li><em>Node-set overlap</em>: the Jaccard index of the sets of nodes used, that is the number of nodes in both codings divided by the number in either. Mode-set overlap is the same for modes.</li>
+<li><em>Sequence similarity</em>: 1 minus the normalized edit distance between the two node (or mode) sequences, after merging consecutive repeats. The edit distance is the number of single-step insertions, deletions and substitutions that turn one sequence into the other; it is divided by the length of the longer sequence (<code>tools/check_coding.py</code>).</li>
+<li><em>Between-paper baseline</em>: the same measure averaged over every pair of two different papers’ codings (27,028 pairs of the 233 calc1 codings). Nearly every paper uses K, C, Q, V and O, so two unrelated papers already overlap. The <em>chance-corrected</em> value is (retest − baseline) / (1 − baseline).</li>
+<li><em>Krippendorff’s alpha</em> (Krippendorff, 2019): agreement corrected for chance, alpha = (observed agreement − chance agreement) / (1 − chance agreement), with chance agreement from how often each category is used. When one category dominates, chance agreement is high and the same raw agreement gives a lower alpha. Common reference points are 0.667 (tentative) and 0.8 (reliable). <em>Node presence</em> alpha treats each paper and node as one unit (is node n used, yes or no). Intervals are bootstrap over papers (Hayes &amp; Krippendorff, 2007).</li>
+</ul>
+<p><strong>Results.</strong> Entry state agrees in 92% of papers, entry node in 90%, outcome in 100%, decisive mode in 86%. Against the between-paper baseline:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: right;">Retest</th>
+<th style="text-align: right;">Two different papers</th>
+<th style="text-align: right;">Chance-corrected</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Node-set overlap</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mode-set overlap</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Node-sequence similarity</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mode-sequence similarity</td>
+<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entry state agreement</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Decisive mode agreement</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.83</td>
+</tr>
+</tbody>
+</table>
+<p>Both acceptance gates passed (node-set overlap at least 0.7; entry and outcome agreement at least 0.8). The roadmap plan fixed these gates before E2 ran (<code>private/analysis/roadmap-plurality-loops.md</code>, Phase 0), but the node-set gate sits only 0.05 above what two different papers give, so passing it says little; a gate on the chance-corrected overlap would be more informative. Alpha is 0.83 for decisive mode [0.70, 0.93], 0.77 for entry state [0.50, 0.95], 0.76 for claim status [0.60, 0.89], 0.74 for node presence [0.70, 0.79] and 0.60 for composition [0.38, 0.77]. Alpha for outcome and V status cannot be estimated: 49 of 50 papers fall in one class (kept, and full), both runs agree on the one exception, and the bootstrap interval is undefined in a third of resamples. The coder is stable on which moves a paper makes and what it concludes, less so on the order of the moves and on which named pattern the walk fits.</p>
+<p><strong>What is missing: the human comparison.</strong> No human coding has been scored against the model yet, so every number in sections 5 to 9 inherits the coder’s errors, and test-retest cannot detect the systematic ones. The design is fixed in <code>DECISIONS.md</code> (<code>g09_human_coding_app.py</code>): 40 of the 100 gold papers, 20 per ring, spread over impact tiers, each coded independently by two of four lab coders (Marine Denolle, Sangwoo Han, Maleen Kidiwela, Michael Hemmett; six pairs in rotation, 20 papers per coder; seed 2026). The coders see no citation metrics; they code with the earlier codebook 1.3.0, which has no V-check kinds, and rate novelty and advance blind (Novelty Dossier v1, Scientific Advance Profile v1). No coding has been returned. The roadmap plan sets the targets: alpha at least 0.67 on categorical fields (entry state, outcome, node set, mode set) before model coding is trusted, and 0.8 for anything used as an outcome. Not yet decided, and proposed here: score the model against the human consensus on entry state, decisive mode, node presence and claim status; adjudicate human disagreements by discussion; report any field below 0.667 as unreliable and revise the codebook before round 2 is read. The E4 review labels and the 4.1 audit sample are not in the human design yet.</p>
+<section id="entry-state-what-the-label-records" class="level3">
+<h3 class="anchored" data-anchor-id="entry-state-what-the-label-records">4.1 Entry state: what the label records</h3>
+<p>Each coded paper carries one of the seven entry states of section 3, and the coder must quote the sentence that supports its choice. In round 1, the model coder labelled 78% of 233 papers as starting from a problem.</p>
+<p>That share raised a concern familiar to readers of scientific prose. Most research articles contain a gap statement in the introduction, a sentence such as “the controls on X remain poorly understood”. Swales (1990) described this as the second move of a standard rhetorical pattern: establish the field, point to a gap, then fill it. (Swales’s “move” is rhetorical; it is not a node of our graph.) If the coder quotes that sentence, every paper looks problem-driven, whatever actually set the work going. In NLP terms, the gap sentence is a surface cue the coder can key on in place of the label’s intended meaning.</p>
+<p>We tested this with a blind audit. From the round-1 codings we drew 60 papers, stratified by label (36 coded <code>problem</code>, four of each other state; numpy default_rng, seed 2026). Two further coders, A and B, re-coded the entry from the full text without seeing the original label or each other’s work. A and B are Claude agents run in Claude Code, of the same model family as the batch coder (<code>claude-opus-5-5</code>), not people. Besides the entry state, each recorded the <em>operational start</em>, meaning the thing the study could not have begun without: data already in hand, an event, a new instrument or deployment, a new method or model, a mandate, a surprising observation, a prior result to test, a stated hypothesis, or only a gap in the literature. Each coder also flagged whether its quoted sentence was a gap statement.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig13_entry_state.png" class="img-fluid figure-img"></p>
+<figcaption>Entry state: shares, agreement, what started the work, gap statements, revisits</figcaption>
+</figure>
+</div>
+<p><em>Figure 7.</em> Entry state under audit.</p>
+<p>Figure 7 summarizes the result. Both blind coders kept the <code>problem</code> label for 20 of the 36 <code>problem</code> papers (56%). They moved the rest mostly to capability (5 papers) and to data without theory (3). Labels other than <code>problem</code> were confirmed in 20 of 24 papers. Reweighted to the full round-1 set, the share of <code>problem</code> falls from 78% to about 44% [31, 57]. Each audited paper is weighted by the number of round-1 papers with its batch label divided by the number audited with that label, and the interval comes from a bootstrap that resamples within each label (2,000 resamples). The quote behind a <code>problem</code> label was a gap statement in 84 to 88% of cases, and no other label was ever supported by one. Asked what started the work, the two coders agreed on “a literature gap only” for just 3 of the 36 <code>problem</code> papers and named a concrete object, usually data in hand or a new method, for 22.</p>
+<p>Alpha (section 4) for entry state was 0.77 between two runs of the original coder and 0.81 [0.68, 0.92] between the blind coders, but 0.60 to 0.67 between each blind coder and the original, at or below the tentative level of 0.667. The label is consistent within one prompt and moves when the coder is asked what started the work.</p>
+<p>We read the entry state as coded so far as a measure of how a paper frames its own beginning, not of how the work began. Neither entry on a problem nor entry on a capability correlates with any outcome (|rho| at most 0.16, q at least 0.19; <code>outcomes.json</code>), so that null result concerns framing. For the next codebook version we propose keeping the framing label and adding a separate operational-start field, whose quote must name the object or act and not a gap.</p>
+<p><strong>Limitations of the audit.</strong> The blind coders share the batch coder’s model family, so their agreement with each other is not independent evidence, and the 44% depends on their being right. The sample has 60 papers, with only four for each rare label. The audit form asked about the operational start, which may have steered the coders away from <code>problem</code>. A human coding of the same 60 papers is planned but not part of the gold design yet.</p>
+</section>
+</section>
+<section id="what-workflows-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-workflows-look-like">5. What workflows look like</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig04_workflows.png" class="img-fluid figure-img"></p>
+<figcaption>Coded workflows</figcaption>
+</figure>
+</div>
+<p><em>Figure 8.</em> Node use, steps per paper, entry state and claim status, 233 round-1 papers.</p>
+<p><strong>What the labels record.</strong> Every label below is read from the published account. Some are framing-level by construction: entry state (section 4.1), claim status and the gates record what the text says. Others are closer to the process the paper reports, such as the nodes used and the V checks, but they too are the paper’s account, not the work (section 10, item 3). Only entry state has had a construct audit. Hypothesize rivals (H) is the next candidate: it appears in 81% of papers, while 3% enter on a hypothesis and 3% pass the action gate, which suggests the coder marks rival explanations named anywhere in the text. A blind audit of H and of decisive mode, on the design of section 4.1, is proposed.</p>
+<p><strong>Nodes.</strong> Keep (K) appears in all 233 papers, compare (C) in 99%, question (Q) in 98%, vary and replicate (V) in 97%, observe (O) in 92%, infer (I) in 82% and hypothesize rivals (H) in 81%. Explore (E), establishing that a phenomenon is real, appears in only 15%. Protect (P), revising an auxiliary assumption to keep a hypothesis, appears in 34%.</p>
+<p><strong>Length and returns.</strong> The median paper has 22 coded steps (range 11 to 32; 20 after merging consecutive repeats of a node). Papers return to modes they have already used, a median of 9 times, and 31% report a return after a failed attempt. <em>Revisits</em>, the steps whose node already occurred earlier in the walk (consecutive repeats included), have a median of 12; this is the revisit count used in sections 6 and 7. The merged step count is 18 in the lowest citation quintile and 23 in the highest (21, 20 and 20.5 between).</p>
+<p><strong>The textbook order.</strong> The rule is the one in <code>g13_calc1_results.py</code>: the merged node sequence must contain question, hypothesize, simulate, design, find conditions, observe, compare (Q, H, S, D, F, O, C) in that order, with any other steps allowed in between. Only 1 of 233 papers does, and none has the seven as a contiguous run. The shorter order question, hypothesize, compare (Q before H before C, gaps allowed) is in 160 papers (69%), and Q, H, D, O, C in 45 (19%). An earlier draft gave 0 of 233; that came from the share stored by g13 rounded to two decimals (1/233 rounds to 0.00), and the count is now stored in <code>report_numbers.json</code> (<code>workflow.textbook_order</code>).</p>
+<p><strong>Entry and end.</strong> 78% of papers enter on a problem and 11% on a new capability. Anomalies, challenged results, hypotheses, data without theory and external goals share the rest, 2 to 3% each, with the caveat of section 4.1. Outcomes are exclusive, one per paper: 226 papers (97%) keep a claim and 7 (3%) contradict an earlier published claim; none ends with an excluded rival or no conclusion. A paper that contradicts a published claim is coded contradicted, not kept, even though it keeps its own result. Claim status: capability characterized 33%, best explanation 31%, estimate with resolution 21%, regularity in range 12%, confirmed 3% (8 papers). Separately, the claim gate asks only whether the main claim faced a test it could have failed (no rivals required): 17% of papers pass it, and 3% pass the action gate (a stated hypothesis directed the main data acquisition).</p>
+<p><strong>Is the entry revisited in the walk?</strong> The entry state is one label per paper, so only the entry node can recur. It returns after another node in 33% of the 233 walks (23% of <code>problem</code> papers, 84% of <code>capability</code> papers). No paper reframes its question after a failed attempt: none of the 101 return-after-failure steps sits at Q or is followed by Q (<code>g21_entry_state.py</code> step 4).</p>
+<p><strong>Decisive node and composition.</strong> The decisive mode is methods in 29% of papers, estimation in 22%, simulation 11%, reconstruction 11%, observation 8%. Half the papers (51%) fit none of the named compositions. Trace series fits 24%, capability first 13% and nature’s repetition 9%; independent replication and strong inference fit fewer than 2% each.</p>
+<p><strong>Checks.</strong> 97% of papers have <em>full V status</em>: at least one check of the result performed in the paper itself that is more than a rerun (a partial status, reruns only, does not occur; 3% have none). Kinds performed: control 87%, robustness 64%, replication 51%, second method 50%, generalization 22%, reproduction 9%. The control share is high partly because the kind is broad (section 3): synthetic tests, laboratory blanks, reference stations and null models all count. A third (33%) <em>triangulate</em>, with two or more checks of different kinds among replication, method and generalization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig05_transitions.png" class="img-fluid figure-img"></p>
+<figcaption>Node transitions</figcaption>
+</figure>
+</div>
+<p><em>Figure 9.</em> Share of papers with each node-to-node transition, and the 12 most common.</p>
+<p><strong>Transitions.</strong> 185 of the 210 possible directed transitions occur at least once. The most common are compare to vary (55% of papers), vary to compare (46%), infer to vary (46%), infer to compare (45%) and compare to keep (44%). The workflow is a loop of inference, comparison and checking more than a line from question to answer. Geoscientists will recognize it: invert, compare with data, test against synthetics or a second method, compare again. For NLP readers: as a sequence-labelling output the walks are long (median 22 steps over 15 labels) and dense in transitions (185 of 210 seen), so a model of them needs loops, not a linear template.</p>
+</section>
+<section id="workflows-by-field-and-venue" class="level2">
+<h2 class="anchored" data-anchor-id="workflows-by-field-and-venue">6. Workflows by field and venue</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig12_field_workflows.png" class="img-fluid figure-img"></p>
+<figcaption>Workflows and outcomes by field and venue</figcaption>
+</figure>
+</div>
+<p><em>Figure 10.</em> (a) Node use and decisive mode by subfield; (b) workflow length, revisits and citation by journal family; (c) the confounding check of section 7. Subfields are labelled with their dominant topic where one holds at least 60% of coded papers: Artificial Intelligence is 100% seismology, Atmospheric Science 72% cryosphere.</p>
+<p><code>g20_topics_journals.py</code> tests each workflow feature against subfield and against journal family. Binary and categorical features get a permutation chi-square test; counts get a Kruskal-Wallis test (Kruskal &amp; Wallis, 1952). A <em>permutation test</em> builds its null distribution by shuffling the group labels many times (5,000 here) and asks how often a shuffle gives an association as strong as the observed one; it assumes no distribution. Because 104 tests are run, p values are adjusted by the Benjamini-Hochberg procedure (Benjamini &amp; Hochberg, 1995): a result with q &lt; 0.1 belongs to a set in which about 10% of findings are expected to be false on average, provided the tests are independent or positively dependent. Effect sizes are bias-corrected Cramér’s V for categorical features and epsilon squared, the share of rank variance explained by the grouping, for counts. Groups with fewer than 10 coded papers are pooled: Geology 9 and Ocean Engineering 4; Elsevier 9, Oxford 6, SSA 2, AAAS 1 and other 1.</p>
+<p>28 of 104 tests have q &lt; 0.1, with Cramér’s V from 0.15 to 0.36 (0.19 to 0.36 for single binary features; this V is the effect size, not the node V) and epsilon squared from 0.06 to 0.15.</p>
+<ul>
+<li><strong>Field.</strong> Seismology (OpenAlex: Artificial Intelligence) papers have methods as the decisive mode in 76% (13 of 17; 51 points above the rest) and use the new-capability node in 88%. The same 17 perform the most kinds of check (median 4, against 2 to 3 elsewhere). Earth-Surface Processes papers (geological formations, aeolian and coastal topics) rely on reconstruction from traces: reconstruction is decisive in 42% (35 points above the rest) and the trace-series composition fits 54% (34 points above). Water Science and Technology papers, mostly watershed hydrology, rarely protect a hypothesis (P in 7%, 28 points below).</li>
+<li><strong>Venue.</strong> Workflow length differs by family (epsilon squared 0.15): median 24.5 steps for AGU (n = 16), 24 for Copernicus, 19.5 for Wiley non-AGU. Revisits follow (0.11). Copernicus papers use protect in 52%, 24 points above the rest. Springer Nature non-portfolio papers use the simulation mode 33 points less often. All 16 AGU papers use the methods mode. Because families differ in topic as well as in format (section 2), these are family contrasts, not pure venue effects.</li>
+<li><strong>No difference.</strong> Entry state differs neither by subfield (q 0.95) nor by family (q 0.22).</li>
+</ul>
+<p><strong>The 16 AGU papers are not a random draw from AGU.</strong> They are the AGU papers whose PDF existed at the first coding. All 16 are open access, against 54 of the 82 eligible AGU papers not coded, and their median cnp is 0.80, against 0.65. Geophysical Research Letters (GRL), a letters journal with a length limit, supplies 2 of the 16 coded papers and 24 of the 82 uncoded ones; the Journal of Geophysical Research sections, full-length journals, supply 9 and 40 (<code>report_numbers.json</code>, <code>calc1.agu_selection</code>). The AGU contrasts in length and in citation may therefore come from selecting open-access, mostly full-length AGU papers. They cannot be read as venue properties until the top-up is coded, and workflow length should then be compared within letters and full-length journals separately.</p>
+<p>For NLP readers, the field results are a sanity check: a coder that gives Earth-Surface Processes papers reconstruction and the seismology group methods responds to paper content rather than filling a fixed template. This does not show that the codings are correct. The OpenAlex classifier and the coder respond to the same title, abstract and method vocabulary (13 of the 17 seismology papers have ML terms in their codings), and a model could assign these labels from the abstract alone. An ablation that codes a subset from title and abstract only would show how much of the field pattern needs the full text; only a human comparison can show correctness. For geoscientists, the venue results raise a question this design cannot answer. Longer workflows in AGU and Copernicus papers may reflect what authors do, what those journals let them write, or what the coder can see in longer papers.</p>
+</section>
+<section id="workflows-and-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="workflows-and-outcomes">7. Workflows and outcomes</h2>
+<p><strong>Outcome metrics.</strong> All come from OpenAlex through <code>g04_metrics.py</code>, retrieved October 2026, about four years after publication.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>cnp</strong> (impact)</td>
+<td style="text-align: left;">OpenAlex citation normalized percentile: the paper’s citation count as a percentile among works of the same OpenAlex subfield, publication year and type, 0 to 1. The comparison set follows the OpenAlex subfield label, so the 17 seismology papers filed under Artificial Intelligence are ranked against 2022 AI works; their median cnp (0.69) is not comparable with other subfields. Round 1 was drawn with equal numbers per cnp quintile, so the sample is stratified on this outcome (section 2).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>fwci</strong> (impact)</td>
+<td style="text-align: left;">Field-weighted citation impact: citations divided by the mean citations of comparable works (same subfield, year, type); 1 is the world average. OpenAlex computes it; <code>g04_metrics.py</code> does not record its citation window. Citations are right-skewed, so the median paper sits below 1. The same Artificial Intelligence caveat applies.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>novelty_pair</strong> (novelty)</td>
+<td style="text-align: left;">Rarity of the paper’s two leading OpenAlex topics appearing together in 2017-2021: −log10(1 + number of 2017-2021 works tagged with both). Higher is rarer. A proxy for an unusual combination, not a measure of novelty.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>breadth_refs</strong> (breadth)</td>
+<td style="text-align: left;">Share of the paper’s classified references whose primary topic is outside geoscience. Geoscience means OpenAlex fields 19 (Earth and Planetary Sciences) and 23 (Environmental Science), corrected by a hand audit that reassigns geoscience topics filed elsewhere (<code>private/analysis/success-set/breadth/topic_audit.csv</code>).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>breadth_citers</strong> (breadth)</td>
+<td style="text-align: left;">Share of citing works 2022-2026 outside geoscience, self-citations removed; defined only for papers with at least 10 such citers (53 of 233). Tested in g17; too sparse for the field and venue analyses.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>advance</strong></td>
+<td style="text-align: left;">Blind rating of the contribution by the four lab coders of section 4, on the Scientific Advance Profile v1 (ratings v1.0.0). Not yet measured.</td>
+</tr>
+</tbody>
+</table>
+<p>cnp and fwci are field-normalized by OpenAlex. novelty_pair and breadth_refs are not, so they differ by subfield from field structure alone. In the coded set the medians are cnp 0.546, fwci 0.482, novelty_pair −3.821 and breadth_refs 0.033. cnp and fwci rank-correlate at 0.99, so they are one impact signal, not two. The other outcomes are nearly independent of each other (|rho| at most 0.12, except the two breadth measures at 0.30).</p>
+<p>Because round 1 has equal numbers per cnp quintile, the cnp distribution in the sample is flatter than in the pool. The correlations with cnp below describe this stratified sample and are not estimates for the pool; round 2, drawn without cnp strata, will give the unweighted estimate.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig08_outcomes.png" class="img-fluid figure-img"></p>
+<figcaption>Workflow features against outcomes</figcaption>
+</figure>
+</div>
+<p><em>Figure 11.</em> Spearman correlations for 245 feature-outcome tests, the 15 with q &lt; 0.1, and correlations among outcomes.</p>
+<p><strong>Tests (experiment E6).</strong> <code>g17_outcomes.py</code> correlates 49 workflow features (listed in the appendix) with the five outcomes. That gives 245 Spearman rank correlations. Each has a 95% bootstrap interval (2,000 resamples of papers; a <em>bootstrap</em> recomputes the statistic on samples drawn with replacement to see how much it varies), a two-sided permutation p (5,000 shuffles), and a Benjamini-Hochberg q over all 245. Fifteen have q &lt; 0.1, of which about 1.5 are expected to be false on average under the Benjamini-Hochberg assumptions. |rho| ranges from 0.18 to 0.57. Under the stricter Benjamini-Yekutieli correction, which is the Benjamini-Hochberg q multiplied by the sum of 1/i over the 245 tests (6.08) and is valid under any dependence (Benjamini &amp; Yekutieli, 2001), none of the 245 passes; the smallest q is 0.149. The dependence here is strong: cnp and fwci correlate at 0.99, and features such as steps, revisits and distinct nodes overlap. With 5,000 permutations no p can fall below 0.0002, which also bounds the smallest q. No analysis was pre-registered, and the analyst choices below (the pooling cutoff of 10, the stratified estimator, the reference-count adjustment) were made after seeing the data. Round 2 is the confirmatory test. Fixed now, before any round-2 coding returns: it will test the 15 associations of Figure 11b and the 28 field and venue associations with q &lt; 0.1 in <code>TOPICS.md</code> section 3, with the same g17 and g20 code, and use the pooled-ranks-centred estimator for the stratified check.</p>
+<ul>
+<li><strong>Breadth.</strong> Methods as decisive mode (0.22), capability first (0.22) and more kinds of V check (0.20) go with broader references. Using the synthesis mode (−0.22), more distinct modes (−0.22) and the infer node (−0.18) go with narrower ones.</li>
+<li><strong>Impact.</strong> More steps (rho 0.23 with cnp and with fwci), more revisits (0.21, 0.22) and simulation as the decisive mode (0.20, 0.21) go with higher field-normalized citation. Because cnp and fwci are one signal, these are three associations, not six.</li>
+<li><strong>Novelty.</strong> Papers using the observation mode have rarer topic pairs (0.21).</li>
+</ul>
+<p><strong>A check of the coder, not an outcome result.</strong> The two largest correlations are between the items borrowed from other fields and breadth_refs (rho 0.57) and between the number of fields borrowed from and breadth_refs (0.51). The coder lists borrowed concepts, methods, instruments or data from the paper’s text; breadth_refs counts references outside geoscience from the OpenAlex reference list. These are two measures of the same thing, one from the text and one from the reference list, so their agreement is a convergent validity check of the coder, not a finding about workflows and outcomes. It holds at 0.52 to 0.57 within every stratification below, and the count repeats well between runs (Spearman 0.87 between the two codings of the retest sample).</p>
+<p><strong>Reference count.</strong> Longer papers have more references, and papers with more references are cited more. Reference count correlates with cnp at 0.28 and with steps at 0.26. With reference count held fixed by partial correlation (feature and outcome ranks each regressed on the rank of reference count, then the residuals correlated), steps against cnp falls from 0.23 to 0.17, revisits to 0.15, and decisive simulation falls slightly, from 0.20 to 0.19.</p>
+<p><strong>Field or venue: the confounding check.</strong> <code>g20_topics_journals.py</code> recomputes each of the 15 associations within strata. Ranks are centred inside each subfield, each journal family, or each subfield-by-family cell, so only variation inside a stratum counts, and the permutation shuffles outcomes only within strata. An association <em>survives</em> if it keeps its sign and has q &lt; 0.1 over the 45 stratified tests (Figure 10c). Within subfield, 15 of 15 survive (14 with a bootstrap interval excluding 0). Within journal family, 15 of 15 survive (12 with an interval excluding 0). Within subfield × family, 12 of 15 survive (8).</p>
+<p>Stratifying by subfield leaves the associations unchanged; stratifying by family weakens the citation link. The strata are small (8 subfield groups, several with 10 to 17 papers), so this check has little power to detect confounding by subfield. Within subfield, steps against cnp is unchanged (0.225 against 0.227). Within journal family it roughly halves (0.12 [−0.00, 0.25]) yet still survives at q 0.085. A permutation q and a bootstrap interval can disagree near the threshold because they answer different questions: the permutation p asks how often shuffled outcomes give an association this strong, while the interval describes how much the estimate varies when papers are resampled. Within subfield × family, steps against cnp, steps against fwci and revisits against fwci all lose q &lt; 0.1. A likely reason is in section 6: AGU and Copernicus papers have longer workflows and are also more cited. Median cnp is 0.80 for AGU, 0.65 for Copernicus and 0.43 for Wiley non-AGU (epsilon squared 0.13 by family, against 0.08 by subfield). The AGU median rests on the 16 selected papers of section 6. Decisive simulation against citation holds within subfield (0.18 to 0.19), within family (0.17 to 0.18) and within subfield × family (0.13 to 0.14, the fwci interval spanning 0).</p>
+<p>Two cautions. First, family is the stratifier most affected by the coverage skew of section 2 (16 AGU and 9 Elsevier papers coded, the AGU papers selected as described in section 6), so this check must be redone after the top-up. Second, the estimator matters: recomputing ranks inside each family, instead of centring pooled ranks, gives 0.165 [0.015, 0.302] rather than 0.120 for steps against cnp (<code>report_numbers.json</code>, <code>confounding.family_estimators</code>). Neither choice makes this a causal statement. Citations at four years measure attention, and a longer workflow may simply be a longer paper.</p>
+</section>
+<section id="what-peer-review-changes-and-whether-papers-show-it" class="level2">
+<h2 class="anchored" data-anchor-id="what-peer-review-changes-and-whether-papers-show-it">8. What peer review changes, and whether papers show it</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig07_review.png" class="img-fluid figure-img"></p>
+<figcaption>Review visibility</figcaption>
+</figure>
+</div>
+<p><em>Figure 12.</em> Review changes by how they appear in the paper, absent share by node, and per paper.</p>
+<p><strong>Why open review.</strong> Most Copernicus journals, including the EGU journals, use <em>interactive public discussion</em>. The submitted manuscript appears online as a discussion paper (a citable preprint), referee comments and author replies are posted beside it, and the final paper is published separately with its review history public. Two Copernicus journals in this sample, European Journal of Mineralogy and Scientific Drilling, published for other societies, do not. For NLP readers, this is a rare case where the revision history of a scientific text is a public record that can be aligned with its final version. In 2022 it covers journals such as The Cryosphere, Hydrology and Earth System Sciences and Geoscientific Model Development.</p>
+<p><strong>Data (experiment E3).</strong> 64 coded round-1 papers are in Copernicus journals, and 61 have an open discussion; the other three, in European Journal of Mineralogy and Scientific Drilling, have none. <code>g15_open_review.py</code> retrieved 134 referee comments, 147 author comments, community and editor comments, the comment supplements, the review files (author-response PDFs, tracked-changes manuscripts, manuscript versions) and the final article XML for all 61. The coder (<code>claude-opus-5-5</code>, same settings as section 3; the batch took 15.6 hours) read the published PDF, the publisher XML text and <code>discussion.txt</code>, the discussion comments (referee, author, community and editor) with their supplements. The tracked-changes manuscripts, author-response PDFs and manuscript versions were downloaded for all 58 papers but not given to the coder (<code>report_numbers.json</code>, <code>review.coder_input</code>). The coder then wrote a second, <em>review</em> sequence for each paper: one step per change or refusal recorded in the discussion, each with a provenance (review-forced, declined) and a trigger (referee, editor, community commenter, author; the 746 steps have 729 referee, 15 commenter, 2 author and 0 editor triggers). 58 codings validated; three failed (two overlong quotes, one schema error). One journal dominates: 33 of the 58 are in The Cryosphere.</p>
+<p><strong>Labelling (experiment E4).</strong> Each of the 746 review steps was labelled against the published text by two independent Claude agents, with a third adjudicating disagreements (<code>tools/roadmap/workflows/visibility.js</code>, run in Claude Code, no API cost; the workflow does not set or record the model version). The labelers are the same model family as the coder that wrote the review steps, so blind spots they share would not show in their agreement. The four labels:</p>
+<ul>
+<li><em>as revision</em>: the change is in the paper and the paper ties it to review (“as suggested by a reviewer”, an acknowledgement naming the change); a generic thanks to referees does not count;</li>
+<li><em>as planned</em>: the change is in the paper with no sign it came from review;</li>
+<li><em>absent</em>: the review step describes a change to the work and the paper does not contain it;</li>
+<li><em>no change</em>: a declined request, a reply that only argues, or a promise that is not a change.</li>
+</ul>
+<p>Every “as revision” or “as planned” label had to carry a quote from the published text with its locator. <code>g16_visibility.py analyze</code> matched each quote against the text. An “absent” label needs no quote, so the 20 absent steps rest on the labelers’ reading alone; they have not been checked against the referee comments and author replies by a person or by a model from another family.</p>
+<p><strong>Results.</strong> Of the 746 review steps, 166 record no change and 580 change the work. Of those 580, 560 (96.6%) appear in the paper as if planned, 20 (3.4%; bootstrap over papers 1.7% to 5.6%) are absent, and 0 are marked as a revision. With 0 of 58 papers marking any change, the 95% upper bound on the share of such papers that mark a change is about 5.2% (rule of three, 3/58: with 0 events in n trials, the one-sided 95% upper bound is about 3/n; the exact bound is 5.0%), for Copernicus journals with open discussion. The labelers agreed on 720 of 746 steps (96.5%; Cohen’s kappa 0.91, <code>report_numbers.json</code>, <code>vis.labeler_kappa</code>), and all 560 quotes were found verbatim. <em>Cohen’s kappa</em> (Cohen, 1960) is the agreement of two annotators corrected for the agreement expected by chance from each annotator’s label frequencies, (observed − chance) / (1 − chance); 1 is perfect, 0 is chance. Unlike Krippendorff’s alpha it uses each annotator’s own label frequencies for the chance term. Quote existence shows that each quote is in the text, not that it shows the change its label claims; no entailment check (does the quote support the label?) has been run. 44 of the 560 labeler quotes exceed the 25-word limit the labelers were given (<code>vis.quotes_over_25_words</code>). Changes per paper: median 10, range 4 to 18. 13 papers have at least one absent change.</p>
+<p><strong>What the labelers could see.</strong> They searched the publisher XML text of the final paper, whose converter keeps body text and captions: only 12 of the 58 texts include an acknowledgements section, and none includes the article supplement. A script check independent of the labelers (<code>g19_report_numbers.py</code>, <code>vis.string_scan</code>) searched pdftotext output of the 58 published PDFs. 53 mention reviewers or referees, every time in a thank-you or in the Copernicus review statement, and none uses a phrase that ties content to review (“as suggested by the reviewer”, “in the revised manuscript” and similar). The zero of “as revision” therefore holds on the full PDF text for the phrases searched. Supplements remain unchecked, so a change moved there would be labelled absent.</p>
+<p><strong>Which changes go missing.</strong> Vary-and-replicate changes (added controls, replications, sensitivity tests) are the most common kind asked for in review. They are also the kind most often promised in a reply but not found in the paper: 13 of 102 are absent, against 7 of 478 for all other nodes together. With papers as the unit, the absent share of V exceeds that of the other nodes by 0.11 [0.04, 0.20] (permutation within papers, q 0.003 over 14 nodes; exploratory). Refusals still change papers. Of the 220 steps the coder marked as declined, 60 are labelled as planned, usually a caveat or a justifying sentence in the final text.</p>
+<p><strong>Comparison with the pilot.</strong> A nine-paper pilot (October 21) coded loops from Nature peer-review files, EGU discussions and one preprint revision. Of 126 loops, 4 were readable as loops in the paper, 70 were in the paper as if planned and 52 were absent. The direction agrees. The absent share differs (41% against 3.4%), and the reason is not established. One candidate is construction: the pilot counted analyses discussed in review files that never entered any version of the manuscript, while the E3 coder saw the authors’ promises in the discussion with the final paper in view. Reading the final paper may bias the coder toward review steps that the paper contains, and so toward “as planned”. An earlier draft said the EGU sequences were coded from tracked-changes manuscripts; the coder was not given them.</p>
+<p><strong>Reading.</strong> Not attributing changes to review is the norm in these journals, and their review history is public. A reader, model or agent design that uses only the final articles sees no review loop, and the work most affected is checking. The full account, with methods and references, is in <code>private/text/report-review-visibility.md</code>.</p>
+</section>
+<section id="papers-against-agent-loops" class="level2">
+<h2 class="anchored" data-anchor-id="papers-against-agent-loops">9. Papers against agent loops</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig06_agents.png" class="img-fluid figure-img"></p>
+<figcaption>Papers against agent loops</figcaption>
+</figure>
+</div>
+<p><em>Figure 13.</em> Node use by papers and by agent systems, distinct nodes per workflow, and researcher transitions that agents run.</p>
+<p><strong>Agent side.</strong> 31 published agent designs were coded blind by two model coders under loop codebook 0.1.2 (<code>private/analysis/reliability/frozen/loop-CODEBOOK-0.1.2.md</code>), which uses the same graph and the same NASEM rule for V. The coders are Claude Code subagents run with the same brief: opus-b uses <code>claude-opus-5-5</code> and sonnet-c uses <code>claude-sonnet-5-5</code> (<code>private/analysis/reliability/RUN.md</code>). They range from 17 general patterns and tools, such as ReAct (Yao, Zhao et al., 2023), Reflexion (Shinn et al., 2023), tree of thoughts (Yao, Yu et al., 2023) and coding agents, to 14 research systems, such as The AI Scientist (Lu et al., 2026), Coscientist (Boiko et al., 2023), the AI co-scientist (Gottweis et al., 2026), FunSearch (Romera-Paredes et al., 2024) and AlphaEvolve (Novikov et al., 2025), Robin (Ghareeb et al., 2026) and Kosmos (Mitchener et al., 2025); the list is <code>agents_manifest.json</code>. A node counts for an agent when the coder marks it <em>full</em>: the loop itself performs the node as the paper codebook defines it, without a person stepping in, from receiving its task until it stops. Shares are averaged over the two coders. The two coders agree on the mark (full, partial or none) in 85% of the 31 × 15 system-node cells, with Krippendorff’s alpha 0.73 over all marks. For geoscientists: an <em>agent loop</em> is the cycle an AI system repeats (propose, act, observe the result, revise). The question is which research moves that cycle contains. For NLP readers, the nodes map onto agent components: Q is task or question proposal, H the generation of competing hypotheses, C evaluation against an external signal, V ablation, seed variation or held-out testing.</p>
+<p><strong>The two sides are measured differently.</strong> Papers are coded from their full published text under codebook 1.5.0; agents from published design descriptions under the loop codebook. By design an agent usually receives its question from the user, which by itself explains much of the low share at Q. General patterns were never built to do research, so including them lowers agent shares by construction. No check of measurement invariance has been run, such as coding a few agent-system papers’ own reported experiments under codebook 1.5.0.</p>
+<p><strong>Results (experiment E5, <code>g14_papers_vs_agents.py</code>).</strong> Papers use a median of 10 distinct nodes [10, 11]; agent systems use 3.5 [2, 4.5]. The largest gaps are at question (98% of papers against 10% of agent systems), vary or replicate (97% against 10%), infer (82% against 5%) and hypothesize rivals (81% against 6%). For the 14 research systems alone the shares are higher but the gaps remain: Q 18%, V 21%, I 11%, H 14%; for the 17 general patterns and tools they are 3%, 0%, 0% and 0% (<code>report_numbers.json</code>, <code>agents.node_share_by_group</code>). No agent system protects a hypothesis (P 0%, against 34% of papers) and none triangulates (0% against 33%). Only refine (R) is run more often by agents (68% against 56%), with overlapping intervals. Of the 59 researcher transitions found in at least 10% of papers, 33 (opus-b) or 24 (sonnet-c) are run by any agent. The most common transitions that no agent runs are vary to compare (46% of papers), infer to vary (46%) and vary to infer (37%).</p>
+<p><strong>Reading with section 8.</strong> Vary and replicate is among the moves agents run least, and it is the work most often added in review and then presented as planned. An agent designed from methods sections would see these checks but not that review forced them.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">10. Limitations</h2>
+<ol type="1">
+<li><strong>One model family, no human check.</strong> Every role is played by a Claude model (table below). Test-retest (section 4) measures agreement of the model with itself, so systematic misreadings that repeat across runs would not show; the entry-state audit points to one candidate. Agreement among coders of the same family is not independent evidence for the screening, the E4 labels, the E5 agent coding or the 4.1 audit. In E4, Claude labels review steps that Claude wrote. Where cost is zero (the Claude Code workflows), a labeler from another model family on a subset of E4 and of the 4.1 audit would be the cheapest independent check.</li>
+<li><strong>Sample set by full-text access and download timing.</strong> Coded papers are 83% open access, against 46% of uncoded eligible papers, and the venue mix is skewed (section 2). Results on AGU and Elsevier rest on 16 and 9 papers until the top-up returns, and the 16 AGU papers are selected (section 6).</li>
+<li><strong>What a paper says is not what was done.</strong> The coding records the published account. Section 8 shows one way that account departs from the process.</li>
+<li><strong>Machine labels for field and rule-based families.</strong> Subfield is OpenAlex’s classifier output for the leading topic, and two subfield names mislead (section 2). Two families rest on DOI prefixes and fall back to “other”: Russian Geology and Geophysics (prefix 10.2113, GeoScienceWorld, which OpenAlex lists under Elsevier; its papers were skipped by the convenor’s decision of October 27) and Seismica. One Remote Sensing of Environment record carries the DOI of its ESS Open Archive preprint (prefix 10.1002, a Wiley prefix), so it counts as Wiley non-AGU. The effect is a few papers per family.</li>
+<li><strong>Outcome metrics.</strong> Citations are counted at about four years. novelty_pair is a proxy based on topic-pair rarity. breadth_refs and the borrowed-from-other-fields counts measure the same thing (section 7). Advance is not measured.</li>
+<li><strong>Many tests.</strong> There are 245 outcome tests, 104 workflow tests, 16 coverage tests, 16 outcome-by-group tests and 45 stratified tests, each corrected within its own question. None was pre-registered; all are exploratory and descriptive, and none is causal. Under the Benjamini-Yekutieli correction none of the 245 outcome tests passes.</li>
+<li><strong>Small cells.</strong> Many subfield × family strata hold one or two papers and drop out. Oceanography (10), the Nature portfolio (14) and Water Science and Technology (14) sit just above the pooling cutoff of 10.</li>
+<li><strong>One journal dominates the review study.</strong> 33 of the 58 review papers are in The Cryosphere, and all have open discussion. Journals with closed review may differ in either direction.</li>
+<li><strong>Round 2 not yet coded.</strong> Every workflow and outcome result is round 1 only. Round 2 was designed to test whether those results hold over 157 journals.</li>
+<li><strong>Training-data contamination.</strong> The papers are from 2022, and the Copernicus discussions, referee comments and replies have been public since then, so they are likely in the coder’s training data. The model may recall published framings or review histories instead of reading the attached text, which bears on the “as planned” labels and on the coding generally. A cheap probe, not run because it costs API money: give the model title and DOI only, ask for entry state, decisive mode and the main review requests, and report how much of the full-text coding it reproduces; or code a few papers published after the model’s training cutoff and compare distributions.</li>
+<li><strong>Papers and agents are measured differently.</strong> Papers are coded from full text, agents from design descriptions, under different codebooks, and the agent set mixes general patterns with research systems (section 9). Node shares for agents are not directly comparable to shares for papers.</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Role</th>
+<th style="text-align: left;">Experiment</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Settings</th>
+<th style="text-align: left;">Instructions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Abstract screeners (two) and adjudicator</td>
+<td style="text-align: left;">screen</td>
+<td style="text-align: left;">Claude agents in Claude Code, version not recorded</td>
+<td style="text-align: left;">effort medium</td>
+<td style="text-align: left;"><code>tools/roadmap/workflows/gold-eligibility-screen.js</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Paper coder</td>
+<td style="text-align: left;">E1, E2, E3</td>
+<td style="text-align: left;"><code>claude-opus-5-5</code>, Message Batches API</td>
+<td style="text-align: left;">effort high, temperature default, 32,000 output tokens</td>
+<td style="text-align: left;">codebook 1.5.0 plus schema (<code>report_numbers.json</code>, <code>setup.coder</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Format-test text arms X and T</td>
+<td style="text-align: left;">E0</td>
+<td style="text-align: left;">Claude agent in Claude Code, version not recorded</td>
+<td style="text-align: left;">not recorded</td>
+<td style="text-align: left;"><code>tools/roadmap/workflows/format-test-coding.js</code>, codebook 1.4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Entry audit coders A and B</td>
+<td style="text-align: left;">4.1</td>
+<td style="text-align: left;">Claude agents in Claude Code, <code>claude-opus-5-5</code> family</td>
+<td style="text-align: left;">not recorded</td>
+<td style="text-align: left;"><code>derived/entry/blind_audit.json</code> provenance</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Review labelers (two) and adjudicator</td>
+<td style="text-align: left;">E4</td>
+<td style="text-align: left;">Claude agents in Claude Code, version not recorded</td>
+<td style="text-align: left;">not recorded</td>
+<td style="text-align: left;"><code>tools/roadmap/workflows/visibility.js</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Agent-loop coders opus-b and sonnet-c</td>
+<td style="text-align: left;">E5</td>
+<td style="text-align: left;"><code>claude-opus-5-5</code> and <code>claude-sonnet-5-5</code>, Claude Code subagents</td>
+<td style="text-align: left;">not recorded</td>
+<td style="text-align: left;"><code>prompt-agents-template-0.1.2.txt</code>, loop codebook 0.1.2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">11. Reproducibility</h2>
+<p><strong>Repositories and commits.</strong> The public repository <code>metascience-and-AI</code> is on branch <code>framework-v0.5</code>, latest commit 2798f89. <code>g20_topics_journals.py</code>, <code>g21_entry_state.py</code>, <code>figures/fig11_topics_journals.py</code>, <code>fig12_field_workflows.py</code> and <code>fig13_entry_state.py</code> are not yet committed, and the other figure scripts, <code>g16_visibility.py</code> and <code>g19_report_numbers.py</code> have uncommitted edits. All thirteen figure sidecars, <code>report_numbers.json</code>, <code>topics/topics_journals.json</code>, <code>review/visibility_results.json</code> and <code>entry/entry_state.json</code> therefore carry <code>2798f89+uncommitted</code> (and, for the figures, <code>ea0f2f9+uncommitted</code>); a commit of both repositories followed by the rebuild below clears the marker. <code>outcomes/outcomes.json</code>, <code>calc1/results.json</code> and <code>calc1/papers_vs_agents.json</code> were written at clean commit 3ec8a49. The private repository <code>private/</code> is local only, latest commit ea0f2f9. Every output JSON has a <code>_provenance</code> block with script, commit, date, inputs and parameters. Every figure has a sidecar JSON with both commits, the sha256 of every input and every plotted number.</p>
+<p><strong>Registry.</strong> <code>private/data/roadmap/EXPERIMENTS.md</code> lists each experiment (E0 to E7) with its question, inputs, model, codebook, script, commit, exact command, outputs and cost. Every script appends a line to <code>private/data/roadmap/MANIFEST.md</code>, and selection rules go to <code>DECISIONS.md</code>.</p>
+<p><strong>Scripts.</strong> Corpus: <code>tools/roadmap/g01</code> to <code>g12</code>, and <code>g18</code>. Coding: <code>tools/code_papers.py</code>, which spends money and was not rerun for this report. Analysis: <code>g13_calc1_results.py</code> (workflows, test-retest), <code>g14_papers_vs_agents.py</code>, <code>g15_open_review.py</code>, <code>g16_visibility.py</code>, <code>g17_outcomes.py</code>, <code>g19_report_numbers.py</code> (every number no other script writes, including since this draft the between-paper baseline, quote existence, the textbook order, the AGU selection, the within-family estimators, the labelers’ kappa, resubmissions, the retest-sample mix and agent shares by system group; rerun on October 27 for this draft, with no earlier value changed), <code>g20_topics_journals.py</code> and <code>g21_entry_state.py</code>. Validation: <code>tools/check_coding.py</code>.</p>
+<p><strong>Rebuild, after committing.</strong> The analysis steps spend no money.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g13_calc1_results.py</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g14_papers_vs_agents.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g16_visibility.py analyze</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g17_outcomes.py</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g19_report_numbers.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g20_topics_journals.py</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/g21_entry_state.py</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tools/roadmap/figures/make_all.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>make_all.py</code> writes <code>private/data/roadmap/figures/paper/fig01</code> to <code>fig13</code> as vector PDF, 300 dpi PNG and provenance JSON. Round-2 series appear automatically once <code>r2</code> codings exist.</p>
+<p><strong>Rerunning with an open model.</strong> <code>tools/code_papers_open.py export</code> writes the exact system prompt, the per-paper user text, an OpenAI-style <code>requests.jsonl</code>, and an <code>inputs.json</code> with the sha256 of every input text. <code>run</code> sends the same requests to an OpenAI-compatible endpoint (for example OLMo served by vLLM) and validates the results with the same checker. To compare with Claude, run <code>python tools/check_coding.py agree &lt;claude coding&gt; &lt;open-model coding&gt;</code> per paper, or rerun the E2 procedure of <code>g13_calc1_results.py</code> with the open-model folder in place of <code>gold-r2</code>. The step-by-step guide is <code>agents/coder/HANDOFF.md</code>. The pipeline was tested end to end against a mock endpoint on October 27; it has not yet run on a real open model. Its requests set temperature 0, while the Claude codings used the API default, so a Claude against open-model comparison mixes model and decoding differences unless the open model is also run at its default temperature.</p>
+<p><strong>Incident.</strong> During figure development, a test render wrote through a symlink into <code>private/analysis/codings/api/calc1/</code> (160 files). The files were restored and match private commit cdadda2 byte for byte. The symlinks were removed, and no script now writes into the codings folder.</p>
+</section>
+<section id="sources-of-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="sources-of-numbers">Sources of numbers</h2>
+<p>Paths are under <code>private/data/roadmap/</code> unless stated. Values were read from these files on October 27, 2026. For this draft <code>g19_report_numbers.py</code> was extended and rerun (no API calls; existing values unchanged); nothing else was rerun.</p>
+<p><strong>Figures.</strong> Report figure number and script: 1 fig01_corpus, 2 fig02_fulltext, 3 fig09_sample, 4 fig11_topics_journals, 5 fig10_cost, 6 fig03_reliability, 7 fig13_entry_state, 8 fig04_workflows, 9 fig05_transitions, 10 fig12_field_workflows, 11 fig08_outcomes, 12 fig07_review, 13 fig06_agents; each has a sidecar <code>figures/paper/&lt;script&gt;.json</code>.</p>
+<ul>
+<li><strong>Summary:</strong> the files of sections 2 to 9.</li>
+<li><strong>2 Corpus:</strong> <code>derived/report_numbers.json</code> (fetch, r2, calc1.open_access, outcomes.pool_cnp_median); <code>derived/topics/topics_journals.json</code> (n, composition, coverage, subfield_topics, ml_terms_check) and <code>TOPICS.md</code> (top journals); sidecars of Figures 1 to 4; <code>EXPERIMENTS.md</code> (E7 re-fetch) and <code>refetch_2026-10-27.log</code> (XML by round).</li>
+<li><strong>3 Coding method:</strong> <code>derived/report_numbers.json</code> (cost, tokens, text, calc1.invalid, setup.coder, text.calc1.e1_route, quotes.calc1_existence, coding.resubmissions); <code>figures/paper/fig10_cost.json</code>; <code>fig03_reliability.json</code> (format test arms, coders, invalid codings); <code>EXPERIMENTS.md</code> (E0 quote verification, cached prefix, E3 batch time); <code>tools/code_papers.py</code> (price table, caching, why constrained decoding is not used); worked example from <code>private/analysis/codings/api/calc1/g22_W4210352162.json</code>.</li>
+<li><strong>4 Self-consistency:</strong> <code>derived/calc1/results.json</code> (test_retest); <code>figures/paper/fig03_reliability.json</code> (alpha intervals); <code>derived/report_numbers.json</code> (gold, retest.between_paper_baseline, retest.sample_mix); <code>derived/entry/ENTRY.md</code> and <code>entry_state.json</code>; <code>outcomes.json</code> (entry features); <code>DECISIONS.md</code> (gold set, human coding design); <code>private/analysis/roadmap-plurality-loops.md</code> (gates and alpha targets).</li>
+<li><strong>5 Workflows:</strong> <code>derived/calc1/results.json</code> (corpus, by_impact_quintile); <code>derived/report_numbers.json</code> (features.steps_median, features.revisits_median, workflow.textbook_order); <code>figures/paper/fig04_workflows.json</code>, <code>fig05_transitions.json</code>.</li>
+<li><strong>6 Field and venue:</strong> <code>derived/topics/topics_journals.json</code> (workflows) and <code>derived/topics/TOPICS.md</code>; <code>derived/report_numbers.json</code> (calc1.agu_selection); <code>figures/paper/fig12_field_workflows.json</code>.</li>
+<li><strong>7 Outcomes:</strong> <code>derived/outcomes/outcomes.json</code>; <code>derived/report_numbers.json</code> (outcomes.partial_nrefs, rho_nrefs, rho_steps_nrefs, bh_expected_false_upper, benjamini_yekutieli, features.retest_consistency, confounding.family_estimators); <code>derived/topics/topics_journals.json</code> (confounding, outcomes_by_group); <code>figures/paper/fig08_outcomes.json</code>, <code>fig12_field_workflows.json</code>.</li>
+<li><strong>8 Review:</strong> <code>derived/review/visibility_results.json</code>; <code>derived/report_numbers.json</code> (vis, including vis.by_trigger, vis.labeler_kappa, vis.string_scan, vis.quotes_over_25_words, vis.node_vs_rest_paper_level, vis.papers_marking_upper95_pct; review, including review.coder_input and review.loop_pilot for the pilot counts); <code>figures/paper/fig07_review.json</code>.</li>
+<li><strong>9 Agents:</strong> <code>derived/calc1/papers_vs_agents.json</code>; <code>derived/report_numbers.json</code> (agents.node_share_by_group); <code>private/analysis/reliability/RESULTS.md</code> and <code>RUN.md</code> (coder models, alpha over marks); <code>figures/paper/fig06_agents.json</code>.</li>
+<li><strong>10 and 11:</strong> <code>derived/topics/topics_journals.json</code> (family_rule, params); <code>EXPERIMENTS.md</code>; <code>DECISIONS.md</code> (skipped prefix 10.2113); <code>tools/roadmap/README.md</code>; <code>tools/code_papers_open.py</code> (temperature 0).</li>
+<li><strong>Pending batches:</strong> <code>derived/report_numbers.json</code> (r2.batch, 154 and 48 requests; calc1.full_text_without_valid_coding.split); <code>collect_calc1_topup.log</code> (146-paper round-1 top-up in progress); <code>figures/paper/fig10_cost.json</code> (E1.projected_usd, the top-up projection).</li>
+</ul>
+</section>
+<section id="appendix-the-49-workflow-features-of-section-7" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-the-49-workflow-features-of-section-7">Appendix: the 49 workflow features of section 7</h2>
+<p>From <code>g17_outcomes.py</code>, computed on the final-paper sequence; binary features are kept when 10 to n − 10 papers have them.</p>
+<ul>
+<li><strong>Counts (9):</strong> steps (as coded); distinct nodes; distinct modes; revisits (steps whose node occurred earlier); returns after failure; items borrowed from other fields (<code>imports</code>); fields borrowed from (<code>import fields</code>); novelty claims (statements of novelty the coder lists); kinds of V check performed.</li>
+<li><strong>Gates and checks (4):</strong> claim gate yes; action gate yes or partly; any return after failure; triangulation. Outcome contradicted (7 papers) and full V status (225 papers) fall outside the 10 to n − 10 filter.</li>
+<li><strong>Entry (2):</strong> entry on a problem; entry on a capability.</li>
+<li><strong>Nodes used (11):</strong> D, E, F, H, I, N, O, P, R, S, X (K, C, Q and V are in nearly every paper and drop out).</li>
+<li><strong>Modes used (12):</strong> estimation, exploration, hypothesis, instruments, methods, observation, reconstruction, regularities, robustness, simulation, synthesis, theory.</li>
+<li><strong>Decisive mode (7):</strong> estimation, hypothesis, methods, observation, reconstruction, regularities, simulation.</li>
+<li><strong>Composition (4):</strong> capability first, nature’s repetition, none fits, trace series.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Entries marked † are in the public <code>references.bib</code> or <code>private/bibliography.md</code> with Crossref-verified metadata. Entries marked ‡ are not yet in either and were written from the arXiv identifiers in <code>private/analysis/reliability/agents_manifest.json</code> or from standard citations; they need Crossref or arXiv verification and an entry in <code>private/bibliography.md</code> before circulation.</p>
+<ul>
+<li>† Benjamini, Y., &amp; Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. <em>Journal of the Royal Statistical Society: Series B (Methodological), 57</em>(1), 289–300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x</li>
+<li>‡ Benjamini, Y., &amp; Yekutieli, D. (2001). The control of the false discovery rate in multiple testing under dependency. <em>The Annals of Statistics, 29</em>(4), 1165–1188. https://doi.org/10.1214/aos/1013699998</li>
+<li>† Bergsma, W. (2013). A bias-correction for Cramér’s V and Tschuprow’s T. <em>Journal of the Korean Statistical Society, 42</em>(3), 323–328. https://doi.org/10.1016/j.jkss.2012.10.002</li>
+<li>† Boiko, D. A., MacKnight, R., Kline, B., &amp; Gomes, G. (2023). Autonomous chemical research with large language models. <em>Nature, 624</em>, 570–578. https://doi.org/10.1038/s41586-023-06792-0</li>
+<li>† Cleland, C. E. (2002). Methodological and epistemic differences between historical science and experimental science. <em>Philosophy of Science, 69</em>(3), 474–496. https://doi.org/10.1086/342455</li>
+<li>‡ Cohen, J. (1960). A coefficient of agreement for nominal scales. <em>Educational and Psychological Measurement, 20</em>(1), 37–46. https://doi.org/10.1177/001316446002000104</li>
+<li>† Ghareeb, A. E., Chang, B., Mitchener, L., Yiu, A., Szostkiewicz, C. J., Shved, D., Gyimesi, G. J., Laurent, J. M., Wright, S. M., Razzak, M. T., White, A. D., Finnemann, S. C., Hinks, M. M., &amp; Rodriques, S. G. (2026). A multi-agent system for automating scientific discovery. <em>Nature, 655</em>(8122), 497–505. https://doi.org/10.1038/s41586-026-10652-y</li>
+<li>† Gottweis, J., Weng, W.-H., Daryin, A., Tu, T., et al.&nbsp;(2026). Accelerating scientific discovery with Co-Scientist. <em>Nature, 655</em>(8122), 487–496. https://doi.org/10.1038/s41586-026-10644-y</li>
+<li>† Hayes, A. F., &amp; Krippendorff, K. (2007). Answering the call for a standard reliability measure for coding data. <em>Communication Methods and Measures, 1</em>(1), 77–89. https://doi.org/10.1080/19312450709336664</li>
+<li>† Krippendorff, K. (2019). <em>Content analysis: An introduction to its methodology</em> (4th ed.). SAGE Publications. https://doi.org/10.4135/9781071878781</li>
+<li>† Kruskal, W. H., &amp; Wallis, W. A. (1952). Use of ranks in one-criterion variance analysis. <em>Journal of the American Statistical Association, 47</em>(260), 583–621. https://doi.org/10.1080/01621459.1952.10483441</li>
+<li>† Lu, C., Lu, C., Lange, R. T., Yamada, Y., Hu, S., Foerster, J., Ha, D., &amp; Clune, J. (2026). Towards end-to-end automation of AI research. <em>Nature, 651</em>(8107), 914–919. https://doi.org/10.1038/s41586-026-10265-5</li>
+<li>† Mitchener, L., Yiu, A., Chang, B., et al.&nbsp;(2025). Kosmos: An AI Scientist for autonomous discovery. <em>arXiv</em>, 2511.02824. https://arxiv.org/abs/2511.02824</li>
+<li>† National Academies of Sciences, Engineering, and Medicine. (2019). <em>Reproducibility and replicability in science</em>. National Academies Press. https://doi.org/10.17226/25303</li>
+<li>‡ Novikov, A., et al.&nbsp;(2025). AlphaEvolve: A coding agent for scientific and algorithmic discovery. <em>arXiv</em>, 2506.13131. https://arxiv.org/abs/2506.13131</li>
+<li>† Platt, J. R. (1964). Strong inference. <em>Science, 146</em>(3642), 347–353. https://doi.org/10.1126/science.146.3642.347</li>
+<li>‡ Priem, J., Piwowar, H., &amp; Orr, R. (2022). OpenAlex: A fully-open index of scholarly works, authors, venues, institutions, and concepts. <em>arXiv</em>, 2205.01833. https://arxiv.org/abs/2205.01833</li>
+<li>† Romera-Paredes, B., Barekatain, M., Novikov, A., Balog, M., Kumar, M. P., Dupont, E., Ruiz, F. J. R., Ellenberg, J. S., Wang, P., Fawzi, O., Kohli, P., &amp; Fawzi, A. (2024). Mathematical discoveries from program search with large language models. <em>Nature, 625</em>(7995), 468–475. https://doi.org/10.1038/s41586-023-06924-6</li>
+<li>† Schmidt, S. (2009). Shall we really do it again? The powerful concept of replication is neglected in the social sciences. <em>Review of General Psychology, 13</em>(2), 90–100. https://doi.org/10.1037/a0015108</li>
+<li>‡ Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., &amp; Yao, S. (2023). Reflexion: Language agents with verbal reinforcement learning. <em>arXiv</em>, 2303.11366. https://arxiv.org/abs/2303.11366</li>
+<li>† Swales, J. M. (1990). <em>Genre analysis: English in academic and research settings</em>. Cambridge University Press. (No DOI; metadata not verified against the publisher record.)</li>
+<li>‡ Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., &amp; Narasimhan, K. (2023). Tree of thoughts: Deliberate problem solving with large language models. <em>arXiv</em>, 2305.10601. https://arxiv.org/abs/2305.10601</li>
+<li>‡ Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., &amp; Cao, Y. (2023). ReAct: Synergizing reasoning and acting in language models. <em>arXiv</em>, 2210.03629. https://arxiv.org/abs/2210.03629</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/denolle-lab\.github\.io\/metascience-and-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./topics-journals.html" class="pagination-link" aria-label="Topics and journals">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Topics and journals</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./rubrics.html" class="pagination-link" aria-label="Scientific advance: records and evaluation">
+        <span class="nav-page-text">Scientific advance: records and evaluation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Working curriculum v0.4</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/edit/main/roadmap-report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Denolle-Lab/metascience-and-AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://denolle-lab.github.io/">Denolle Lab</a></p>
+</div>
+  </div>
+</footer>
+<script>
+  // Stamp the current part on <html> so styles.scss can color the page by part.
+  // The sidebar marks the current chapter; its enclosing section id ends in the
+  // part number. Pages outside any part get "none" and use the default teal.
+  (function () {
+    var active = document.querySelector('#quarto-sidebar .sidebar-link.active');
+    var section = active && active.closest('ul.sidebar-section');
+    var match = section && /section-(\d+)$/.exec(section.id);
+    document.documentElement.setAttribute('data-part', match ? match[1] : 'none');
+  })();
+</script>
+
+
+
+
+</body></html>

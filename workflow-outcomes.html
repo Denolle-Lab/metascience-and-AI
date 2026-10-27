@@ -320,6 +320,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./roadmap-report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Scientific advance: records and evaluation</span></a>
   </div>
@@ -408,7 +414,7 @@ div.csl-indent {
 <li><strong>Short answer.</strong> Weakly. Of 245 feature-outcome tests, 15 pass the Benjamini-Hochberg false-discovery threshold (q &lt; 0.1, defined <a href="#measures">below</a>); because the two citation outcomes are nearly the same measure, these are 12 distinct associations. Their rank correlations lie between 0.18 and 0.57 in absolute value. Under a stricter correction that allows any dependence between tests, none passes. Advance is not measured yet.</li>
 <li><strong>For geoscientists.</strong> Papers whose coded workflow is longer and returns to earlier steps, and papers whose main claim rests on a simulation, are cited a little more (rank correlation about 0.2); about half of that goes with the journal they appear in. Papers whose main claim rests on a new method cite more work from outside geoscience.</li>
 <li><strong>For NLP researchers.</strong> The workflow features are structured extractions by one LLM (Claude Opus 5.5) under a written codebook. Outputs pass a format check; their run-to-run stability is measured, their accuracy is not (human coding has not started). Outcomes are bibliometric, from OpenAlex. The sample is stratified on one of the outcomes (citation percentile).</li>
-<li><strong>Scope.</strong> Results only; codings and papers stay in the lab’s private repository.</li>
+<li><strong>Scope.</strong> Codings with quotes, derived tables and figure provenance are public in the data release, <a href="https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release"><code>data/roadmap-release/</code></a>. Paper texts, abstracts and review texts are not redistributed. Per-paper records of the papers in human coding are held back until that coding is done.</li>
 </ul>
 <section id="measures" class="level2">
 <h2 class="anchored" data-anchor-id="measures">Measures</h2>
@@ -550,7 +556,7 @@ div.csl-indent {
 <section id="reproduce" class="level2">
 <h2 class="anchored" data-anchor-id="reproduce">Reproduce</h2>
 <ul>
-<li><code>tools/roadmap/g17_outcomes.py</code> (this repository); inputs are the private codings and <code>derived/gold/metrics.json</code>. Reported numbers, including the run-to-run consistency of each feature, the sensitivity checks and the backlog counts: <code>tools/roadmap/g19_report_numbers.py</code>. Figures: <code>tools/roadmap/figures/</code> (fig01, fig02, fig03, fig08, fig09).</li>
+<li><code>tools/roadmap/g17_outcomes.py</code> (this repository); inputs are the codings in <code>analysis/codings/api/calc1/</code> and <code>data/roadmap/derived/gold/metrics.json</code>, both in the data release. Reported numbers, including the run-to-run consistency of each feature, the sensitivity checks and the backlog counts: <code>tools/roadmap/g19_report_numbers.py</code>. Figures: <code>tools/roadmap/figures/</code> (fig01, fig02, fig03, fig08, fig09).</li>
 </ul>
 
 

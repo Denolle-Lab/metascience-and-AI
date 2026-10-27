@@ -53,7 +53,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./rubrics.html" rel="next">
+<link href="./roadmap-report.html" rel="next">
 <link href="./workflow-outcomes.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -320,6 +320,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./roadmap-report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Scientific advance: records and evaluation</span></a>
   </div>
@@ -406,7 +412,7 @@ div.csl-indent {
 <li><strong>Short answer.</strong> Journal family predicts which papers get coded far more strongly than subfield does (Cramér’s V, an association strength from 0 to 1, 0.73 against 0.26). The coded set is concentrated: 94 journals, as concentrated as 27 equal-sized ones, with The Cryosphere alone at 14%. Which modes decide a paper differs by subfield; walk length and citations differ by venue. The workflow-outcome associations keep their sign with q &lt; 0.1 in 15, 15 and 12 of 15 cases within subfield, within journal family and within both; counting only those whose interval excludes 0, in 14, 12 and 8.</li>
 <li><strong>For geoscientists.</strong> The coded sample over-represents the convenor’s own topics, cryosphere above all (23% of coded papers against 4% of the 2022 pool), and journals of the European Geosciences Union. It under-represents seismology journals without a full-text route (Seismological Society of America journals, Geophysical Journal International). Two OpenAlex subfield names mislead: “Artificial Intelligence” here holds only seismology papers, and “Atmospheric Science” is mostly cryosphere. Read field comparisons with that in mind.</li>
 <li><strong>For NLP researchers.</strong> Corpus composition here is set by the sampling design and by licensing and retrieval timing together. Any model of research workflows trained or evaluated on such a corpus inherits both the topic and the venue skew.</li>
-<li><strong>Scope.</strong> Results only, as aggregates by field, topic and journal. No paper-level data.</li>
+<li><strong>Scope.</strong> Results on this page are aggregates by field, topic and journal. Codings with quotes, derived tables and figure provenance are public in the data release, <a href="https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release"><code>data/roadmap-release/</code></a>. Paper texts, abstracts and review texts are not redistributed. Per-paper records of the papers in human coding are held back until that coding is done.</li>
 </ul>
 <section id="measures" class="level2">
 <h2 class="anchored" data-anchor-id="measures">Measures</h2>
@@ -445,7 +451,7 @@ div.csl-indent {
 <li><strong>Concentration.</strong> Effective number of journals falls at each step of round 1: 68 in the pool, 51 preselected, 44 eligible, 40 with full text, 27 coded. Round 2, drawn at most 4 per journal, has 111 effective journals at the draw.</li>
 <li><strong>Cryosphere: design, then access.</strong> The topic “Cryospheric studies and observations” is 3.9% of the pool. The design raises it to 13.5% of the round-1 preselection, because it is one of the 8 core-ring topics. Access raises it further: 14.9% of eligible, 19% of full-text and 23% of coded papers (53). The Cryosphere, an open-access EGU journal that is fully coded, holds 33 coded papers.</li>
 <li><strong>“Artificial Intelligence” is seismology.</strong> This OpenAlex subfield is 0.8% of the pool and 11% of the round-1 preselection (64 papers). All 64 have the leading topic “Seismology and Earthquake Studies”, one of the convenor’s core-ring topics, which OpenAlex files under Computer Science. Of the 17 coded, 13 use machine-learning terms somewhere in their coding and 6 build a new capability described in such terms, against 18 of 216 and 4 of 216 in other subfields. They are seismology papers, many of them machine-learning seismology.</li>
-<li><strong>Other subfield names.</strong> “Atmospheric Science” holds 81 of its 125 preselected papers under the cryosphere topic (72% of its coded papers). “Ocean Engineering” is the seismic-sensor topic “Geophysics and Sensor Technology” (19 of 19). “Space and Planetary Science” is an archaeology topic (4 of 4, none eligible). “Water Science and Technology” mixes hydrology with water-treatment topics. The full topic-to-subfield table is in the private results (<code>TOPICS.md</code>, section 6).</li>
+<li><strong>Other subfield names.</strong> “Atmospheric Science” holds 81 of its 125 preselected papers under the cryosphere topic (72% of its coded papers). “Ocean Engineering” is the seismic-sensor topic “Geophysics and Sensor Technology” (19 of 19). “Space and Planetary Science” is an archaeology topic (4 of 4, none eligible). “Water Science and Technology” mixes hydrology with water-treatment topics. The full topic-to-subfield table is in the data release (<code>data/roadmap/derived/topics/TOPICS.md</code>, section 6).</li>
 <li><strong>Access versus timing.</strong> Among eligible round-1 papers, journal family predicts reaching a coding strongly (Cramér’s V 0.73), subfield weakly (0.26). Among papers that already have full text, subfield no longer predicts coding (0.12, interval includes 0) while family still does (0.86). AGU and Elsevier papers were fetched after the round-1 batch; 82 AGU and 63 Elsevier papers are in the batch of 146 sent on October 27. SSA, GJI and the translated Russian-language journals are the access gap.</li>
 </ul>
 </section>
@@ -487,7 +493,7 @@ div.csl-indent {
 <section id="reproduce" class="level2">
 <h2 class="anchored" data-anchor-id="reproduce">Reproduce</h2>
 <ul>
-<li><code>tools/roadmap/g20_topics_journals.py</code> (this repository; numpy only, OpenAlex through a cached client); figures <code>tools/roadmap/figures/fig11_topics_journals.py</code>, <code>fig12_field_workflows.py</code>. Inputs and results stay in the private repository, <code>data/roadmap/derived/topics/</code>.</li>
+<li><code>tools/roadmap/g20_topics_journals.py</code> (this repository; numpy only, OpenAlex through a cached client); figures <code>tools/roadmap/figures/fig11_topics_journals.py</code>, <code>fig12_field_workflows.py</code>. Inputs and results: <a href="https://github.com/Denolle-Lab/metascience-and-AI/tree/framework-v0.5/data/roadmap-release"><code>data/roadmap-release/</code></a>, <code>data/roadmap/derived/topics/</code>.</li>
 </ul>
 
 
@@ -914,8 +920,8 @@ Kruskal, William H., and W. Allen Wallis. 1952. <span>“<span class="nocase">Us
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./rubrics.html" class="pagination-link" aria-label="Scientific advance: records and evaluation">
-        <span class="nav-page-text">Scientific advance: records and evaluation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./roadmap-report.html" class="pagination-link" aria-label="How Earth-science papers describe their research workflows: the roadmap experiments, round 1">
+        <span class="nav-page-text">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
