@@ -79,13 +79,23 @@ def analyze():
             per.append(sum(r['label'] != 'as_revision' for r in rr) / len(rr))
     rng = random.Random(2026)
     bs = sorted(sum(per[rng.randrange(len(per))] for _ in per) / len(per) for _ in range(2000))
+    # absent share with papers as units: ratio of sums over 5000 resamples of papers (seed 0), the fig07 method
+    import numpy as np
+    ab = np.array([sum(r['label'] == 'absent' for r in ch if r['key'] == k) for k in papers], float)
+    cn = np.array([sum(1 for r in ch if r['key'] == k) for k in papers], float)
+    idx = np.random.default_rng(0).integers(0, len(papers), (5000, len(papers)))
+    s = ab[idx].sum(1) / cn[idx].sum(1)
     res = {'papers': len(papers), 'review_steps': n, 'changes': len(ch),
-           'label_share_of_changes': {c: round(sum(r['label'] == c for r in ch) / max(len(ch), 1), 2) for c in CATS[:3]},
+           'label_counts': {c: sum(r['label'] == c for r in rows) for c in CATS},
+           'label_share_of_changes': {c: round(sum(r['label'] == c for r in ch) / max(len(ch), 1), 4) for c in CATS[:3]},
+           'absent_share_paper_bootstrap95': [round(float(ab.sum() / cn.sum()), 4), round(float(np.percentile(s, 2.5)), 4),
+                                              round(float(np.percentile(s, 97.5)), 4)],
+           'labeler_agreement_count': [sum(r['agreed'] for r in rows), n],
            'no_change_steps': sum(r['label'] == 'no_change' for r in rows),
            'hidden_share_per_paper_mean': [round(sum(per) / len(per), 2), round(bs[50], 2), round(bs[1949], 2)],
-           'labeler_agreement': round(sum(r['agreed'] for r in rows) / max(n, 1), 2),
+           'labeler_agreement': round(sum(r['agreed'] for r in rows) / max(n, 1), 4),
            'quotes_found_in_published_text': [quote_ok, quote_n],
-           'by_node_absent_share': {k: round(v[1] / v[0], 2) for k, v in
+           'by_node_absent_share': {k: round(v[1] / v[0], 4) for k, v in
                                     {nd: (sum(1 for r in ch if r['node'] == nd), sum(1 for r in ch if r['node'] == nd and r['label'] == 'absent'))
                                      for nd in sorted({r['node'] for r in ch if r['node']})}.items() if v[0] >= 5},
            'note': 'hidden = a change shown as planned or absent, i.e. not readable as a revision; interval is a 95% bootstrap over papers'}

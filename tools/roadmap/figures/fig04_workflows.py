@@ -320,13 +320,13 @@ def main():
     inv1 = numbers['calc1_invalid_files']
     why = sorted({e.split(': ', 1)[-1] for v in inv1.values() for e in v})
     rounds_txt = (f'round 1 (n = {numbers["calc1_papers"]} of {numbers["calc1_eligible_in_manifest"]} eligible papers '
-                  'with a valid coding; first coding, tag calc1)')
+                  'with a valid coding; first coding)')
     if k > 1:
         rounds_txt += (f' and round 2 (n = {numbers["r2_papers"]} of {numbers["r2_eligible_in_manifest"]} eligible '
                        'papers with a valid coding; tag r2)')
     excl = (f'{numbers["calc1_codings_failing_validation"]} of {numbers["calc1_coding_files"]} round-1 coding files '
-            f'fail schema validation ({", ".join(sorted(inv1))}: {"; ".join(why)}) and are excluded'
-            if inv1 else 'no round-1 coding file fails schema validation')
+            f'fail the format check of tools/check_coding.py ({"; ".join(sorted(set(why)))}) and are excluded'
+            if inv1 else 'no round-1 coding file fails the format check')
     if k > 1:
         excl += (f', as are {numbers["r2_codings_failing_validation"]} of {numbers["r2_coding_files"]} round-2 files')
     every = numbers['calc1_nodes_in_every_paper']
@@ -344,22 +344,23 @@ def main():
     cnt_txt = 'the number of papers in each category' if k == 1 else 'the number of papers in each category (round 1; round 2)'
     caption = (
         f'Coded research workflows of earth-science papers published in 2022, {rounds_txt}. Each paper\'s full text '
-        'was coded by a language model (claude-opus-5-5, Batch API) onto graph v0.4.2 of inquiry modes with codebook '
-        f'1.5.0. The second coding of {numbers[f"{RETEST_TAG}_second_codings_of_drawn_round1_papers_excluded"]} gold '
-        f'papers (tag {RETEST_TAG}, test-retest) is not used. {excl[0].upper() + excl[1:]}. All measures use the '
+        'was coded once by a language model (Claude Opus 5.5, sent as asynchronous batch requests) onto graph v0.4.2 of '
+        'the modes of inquiry with codebook 1.5.0. A valid coding passes a format check (fields, allowed values, step '
+        'order, quotes of 25 words or fewer), which says nothing about accuracy. The second coding of '
+        f'{numbers[f"{RETEST_TAG}_second_codings_of_drawn_round1_papers_excluded"]} gold-set papers (run-to-run test) is '
+        f'not used. {excl[0].upper() + excl[1:]}. All measures use the '
         'final-paper sequence. (a) Share of papers that use each node at least once, nodes in graph order; error bars '
         f'are 95% percentile bootstrap intervals over papers (2000 resamples, seed 2026).{zero_w} (b) Number of coded '
         'steps per paper, steps as coded with consecutive repeats of a node not merged; the vertical line marks the '
-        f'median ({med_txt}). Merging consecutive repeats of a node gives a median of {rc_txt}, the measure reported '
-        f'as steps_median in the g13 results. (c) Entry state of the paper. (d) Claim status at the end of the paper; '
+        f'median ({med_txt}). Merging consecutive repeats of a node gives a median of {rc_txt}.'
+        f' (c) Entry state of the paper. (d) Claim status at the end of the paper; '
         'the text at right gives the number and share of papers whose outcome was coded as contradicted '
         f'({contra}). In (c) and (d), legend labels give {cnt_txt} and percentages are written in '
         'segments of 7% or more.'
         + other_txt(ENTRY_OTHER, rows_c, 'entry_state').replace('Other pools', 'In (c), Other pools')
         + other_txt(CLAIM_OTHER, rows_d, 'claim_status').replace('Other pools', 'In (d), Other pools')
         + dropped_txt(drop_d, CLAIM, CLAIM_OTHER) + dropped_txt(drop_c, ENTRY, ENTRY_OTHER)
-        + ' Source: private/analysis/codings/api/calc1' + (' and api/r2' if k > 1 else '')
-        + '; script tools/roadmap/figures/fig04_workflows.py.')
+        + ' Paper identifiers and file paths are in the provenance fields of this file.')
     ps.save(fig, 'fig04_workflows', inputs=inputs, numbers=numbers, caption=caption)
     print(caption)
     return r1

@@ -343,15 +343,20 @@ def main():
         short = [f'{"lowest second third fourth highest".split()[i]} quintile {q[i]}' for i in range(5) if q[i] < max(q)]
         return 'equal numbers per cnp quintile where the pool allowed', f'{max(q)} per quintile, {", ".join(short)}; '
 
-    cap = (f"Who is in the sample. Each row is one stage of one round. Round 1: {s1['Preselected']} papers from 2022 "
-           f"preselected per ring with {equal_note(r1)[0]} on fixed bins of the OpenAlex citation normalized percentile "
-           f"({equal_note(r1)[1]}seed {r1['seed']}), so the sample cnp distribution is near-uniform by design; {s1['Eligible']} passed "
+    numbers['novelty_pair_min'] = round(float(nov_floor), 4)
+    numbers['novelty_pair_min_prior_works'] = int(round(10 ** -nov_floor - 1))
+    cap = (f"Who is in the sample. Each row is one stage of one round. Rings: the core ring is the OpenAlex topics of the "
+           "study's principal investigator (the convenor), the broad ring 8 neighbouring Earth-science subfields. "
+           f"Round 1: {s1['Preselected']} papers from 2022 "
+           f"preselected, half per ring, with {equal_note(r1)[0]} on fixed bins of the OpenAlex citation normalized percentile "
+           f"(cnp, a paper's citation rank among works of the same OpenAlex subfield, year and type; {equal_note(r1)[1]}seed "
+           f"{r1['seed']}), so the sample cnp distribution is near-uniform by design: the sample is stratified on this outcome; {s1['Eligible']} passed "
            f"the eligibility screen. Coding ran on the {len(r1['coded']) + len(r1['failed'])} eligible papers with "
            f"retrieved full text")
     if r1['failed']:
-        cap += (f"; {len(r1['failed'])} codings failed validation ({', '.join(r1['failed'])}) and are excluded, "
-                f"leaving {len(r1['coded'])} coded papers")
-    cap += ' (claude-opus-5-5, codebook 1.5.0).'
+        cap += (f"; {len(r1['failed'])} codings failed the format check (fields, allowed values, step order, quote "
+                f"length) and are excluded, leaving {len(r1['coded'])} coded papers")
+    cap += ' (Claude Opus 5.5, codebook 1.5.0).'
     if len(rounds) > 1:
         r2 = rounds[1]
         s2 = {s: len(ks) for s, ks in r2['stages'] if ks is not None}
@@ -362,7 +367,7 @@ def main():
             f"({np.median(pool_cnp):.2f}) is not drawn: the stratified draws are not a like-for-like comparison with it. "
             "(b) Rarity of the leading topic pair, -log10(1 + works published 2017 to 2021 that share it). Papers with "
             f"the same pair share a value; the left end ({nov_floor:.2f}, about {round(10 ** -nov_floor, -3):,.0f} prior works) is "
-            "the most common pair. (c) Share of classified references outside geoscience, square-root axis; "
+            f"the most common pair, and a value of -3.8 means about {round(10 ** 3.8, -2):,.0f} prior works. (c) Share of classified references outside geoscience, square-root axis; "
             f"{b0} of {s1['Preselected']} round 1 papers ({100 * b0 / s1['Preselected']:.0f}%) have none. Points are "
             "papers (jittered vertically); boxes give quartiles and median, whiskers 1.5 times the interquartile range. "
             "(d) Open-access share with 95% Wilson intervals (axis starts at 40%). The dashed line is the 2022 "

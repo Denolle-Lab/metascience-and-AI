@@ -363,8 +363,12 @@ def main():
     cap = (f"Researchers' papers against AI agent systems on the inquiry graph (graph v0.4.2). "
            f"Papers are the {n1} of {n_elig} eligible round-1 papers (2022) with full text and a valid coding "
            f"({g['n_files']} were coded; the sample is set by full-text access, not drawn at random), coded by "
-           f"claude-opus-5-5 under codebook 1.5.0. Agent systems are {na} systems coded blind by two model coders "
-           f"({', '.join(coders)}) under loop codebook {', '.join(g['loop_codebook_versions'])}. "
+           f"Claude Opus 5.5 under codebook 1.5.0. Agent systems are {na} published AI agent systems hand-picked for a "
+           "comparison talk (science agents, general agent patterns, multi-agent, coding and deep-research systems), coded "
+           "from their papers and documentation, not from executed runs, by two model coders that did not see each "
+           "other's work, a Claude Opus run (opus-b) and a Claude Sonnet run (sonnet-c), under loop codebook "
+           f"{', '.join(g['loop_codebook_versions'])}, which differs from the paper codebook; an agent loop is the cycle of "
+           "steps the system repeats. "
            f"(a) Share of papers whose coded final-paper workflow uses each node at least once (blue) and share of agent "
            f"systems whose loops run it (orange; a node counts when marked full, and the share is the mean of the two "
            f"coders). Nodes in graph order. Horizontal lines in (a) and (b) are 95% percentile bootstrap intervals "
@@ -379,8 +383,7 @@ def main():
            f"step sequences, including steps on nodes not marked full ("
            + ', '.join(f"{st[c]['not_full']} of {st[c]['steps']} loop steps for {c}" for c in coders)
            + "), so (c) counts more agent nodes than (a). "
-           f"Source: private/analysis/codings/api/calc1 and the agent codings, aggregated with the functions of "
-           f"tools/roadmap/g14_papers_vs_agents.py (stored output private/data/roadmap/derived/calc1/papers_vs_agents.json).")
+           "Aggregated with the functions of tools/roadmap/g14_papers_vs_agents.py; inputs in the provenance fields of this file.")
     if r2:
         cap += (f" Round 2 papers (open blue circles, n = {r2['n']}) were computed here from the r2 codings with the "
                 f"g14 rules against the same agent codings.")

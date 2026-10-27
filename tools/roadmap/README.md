@@ -70,7 +70,7 @@ Keys are read from `~/.config/metascience/keys.env` (see the main README). The f
   costs, tokens, fetch state, screen agreement) into `derived/report_numbers.json`, each with its definition and inputs.
   The October 27 fetch state is read from `private/data/roadmap/download-queue.before-refetch-2026-10-27.json`; the
   current state from `private/download-queue.json`. Publishers are assigned by DOI registrant prefix (10.1029 is AGU).
-- `figures/` holds one script per paper figure (`fig01_corpus.py` to `fig10_cost.py`), the shared style
+- `figures/` holds one script per paper figure (`fig01_corpus.py` to `fig11_topics_journals.py`), the shared style
   `paperstyle.py` (journal column widths, 7 pt text, a colour-blind-checked palette) and `make_all.py`. Each figure is
   written to `private/data/roadmap/figures/paper/<name>.pdf` (vector) and `.png` (300 dpi), with `<name>.json`
   recording the script, both repository commits, the sha256 of every input, every number drawn and a draft caption.

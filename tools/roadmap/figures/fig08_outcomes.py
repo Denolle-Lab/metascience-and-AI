@@ -63,8 +63,8 @@ OUT_LONG = {'cnp': 'Impact: citation percentile (cnp)', 'fwci': 'Impact: field-w
             'breadth_citers': 'Breadth: citers outside geoscience'}
 
 COUNTS = {'steps': 'Steps', 'distinct nodes': 'Distinct nodes', 'distinct modes': 'Distinct modes',
-          'revisits': 'Node revisits', 'returns after failure': 'Returns after failure', 'imports': 'Imports',
-          'import fields': 'Fields imported from', 'novelty claims': 'Novelty claims',
+          'revisits': 'Node revisits', 'returns after failure': 'Returns after failure', 'imports': 'Borrowed from other fields',
+          'import fields': 'Fields borrowed from', 'novelty claims': 'Novelty claims',
           'V check kinds': 'Kinds of V check'}
 CHECKS = {'claim gate yes': 'Claim gate passed', 'action gate yes or partly': 'Action gate passed or partly',
           'V full': 'V check full', 'triangulation': 'Triangulation',
@@ -389,10 +389,17 @@ def main():
         f"claude-opus-5-5 under codebook 1.5.0 on graph v0.4.2; g17 analysis, tools/roadmap/g17_outcomes.py. "
         f"(a) Spearman rank correlation for each of {d['tests']} feature-outcome tests: {nfeat} features (counts per "
         f"paper from the final-paper sequence; binary features, scored 0/1, kept when present in {MIN_PAPERS} to "
-        f"n - {MIN_PAPERS} of all {papers} papers) against five outcomes: OpenAlex citation normalized percentile "
-        f"(cnp), field-weighted citation impact (FWCI), rarity of the paper's top-two topic pair (log scale), share of "
-        f"references outside geoscience, and share of citers outside geoscience (only papers with at least 10 non-self "
-        f"citers, n = {n_cit}). Because that filter is applied over all {papers} papers, {nfaded['breadth_citers']} of "
+        f"n - {MIN_PAPERS} of all {papers} papers) against five outcomes from OpenAlex (retrieved October 2026, about four years after "
+        f"publication): cnp, the citation normalized percentile, the paper's citation count ranked among works of the "
+        f"same OpenAlex subfield, year and type, 0 to 1; FWCI, field-weighted citation impact, citations divided by the "
+        f"mean for those works, 1 = world average; novelty_pair, the rarity of the paper's two leading OpenAlex topics "
+        f"as a pair, -log10(1 + number of 2017-2021 works sharing the pair), higher is rarer; breadth_refs, the share of "
+        f"classified references outside geoscience (OpenAlex fields Earth and Planetary Sciences and Environmental "
+        f"Science, plus audited geoscience topics filed elsewhere); and breadth_citers, the same share for citing works "
+        f"after removing self-citations (only papers with at least 10 such citers, n = {n_cit}). novelty_pair and the "
+        f"two breadth measures are not normalized by subfield. A further planned outcome, advance (a blind human rating of "
+        f"the contribution), is not yet measured. "
+        f"Because that filter is applied over all {papers} papers, {nfaded['breadth_citers']} of "
         f"{nfeat} features fall outside {MIN_PAPERS} to n - {MIN_PAPERS} papers in the n = {n_cit} column; those cells "
         f"are faded and hatched, and their colour rests on {min(minority)} to {max(minority)} papers with, or without, the feature. Outlined cells "
         f"have Benjamini-Hochberg q < {Q_CUT:g} over all {d['tests']} tests (two-sided permutation p, 5000 "
@@ -400,7 +407,11 @@ def main():
         f"their q is bounded by the number of permutations). V is the Vary or replicate node. "
         f"(b) The {len(sig)} tests with q < {Q_CUT:g}: rho and 95% percentile bootstrap interval (2000 resamples over "
         f"papers), n = {nb_n[0] if len(nb_n) == 1 else ', '.join(map(str, nb_n))} papers each. The cnp and FWCI rows "
-        f"repeat the same features, so the panel holds {distinct} distinct associations. (c) Rank correlations among "
+        f"repeat the same features, so the panel holds {distinct} distinct associations. Borrowed from other fields is the "
+        f"number of concepts, methods, instruments or data from outside Earth science that the coder lists (codebook "
+        f"section 6), and fields borrowed from the number of their distinct source fields; their correlation with "
+        f"breadth_refs is a convergent validity check of the coder (the same thing measured from the text and from the "
+        f"reference list), not a workflow-outcome finding. (c) Rank correlations among "
         f"the outcomes on their own -1 to 1 colour scale; values written where |rho| >= {LABEL_RHO:g}; pairs with "
         f"citers outside geoscience use n = {n_cit}, the rest n = {papers}. cnp and FWCI correlate at "
         f"{ia.get('cnp~fwci'):.2f}, so their columns in (a) repeat one impact signal rather than giving independent "

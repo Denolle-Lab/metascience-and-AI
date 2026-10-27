@@ -84,6 +84,20 @@ def wilson(k, n, z=Z):
     return p, max(0.0, c - h), min(1.0, c + h)
 
 
+def v_test_txt():
+    """Paper-level test of V against the other nodes, from g19 (report_numbers.json vis.node_vs_rest_paper_level)."""
+    try:
+        t = ps.read_json(ps.DERIVED / 'report_numbers.json')['vis.node_vs_rest_paper_level']['value']
+        v = t['V']
+        others = [k for k, x in t.items() if k not in ('nodes_tested', 'V') and x['q'] < 0.1]
+    except Exception:  # noqa: BLE001
+        return ''
+    return (f' With papers as units (absent labels shuffled among the changes within each paper, 5000 permutations; '
+            f'Benjamini-Hochberg over the {t["nodes_tested"]} nodes), V\'s absent share exceeds that of the other nodes by '
+            f'{100 * v["diff"]:.1f} percentage points (95% interval over papers {100 * v["ci"][0]:.1f} to {100 * v["ci"][1]:.1f}, '
+            f'q = {v["q"]:.3f}); other nodes with q < 0.1: {", ".join(others) or "none"}. Exploratory.')
+
+
 def paper_bootstrap(num, den, b=B, seed=SEED):
     """95% percentile interval of sum(num)/sum(den) resampling papers with replacement."""
     num, den = np.asarray(num, float), np.asarray(den, float)
@@ -356,30 +370,31 @@ def main():
         f'Visibility of open-review work in the published paper, round 1. Papers: {m} of the {n_cop} Copernicus papers '
         f'in round 1 (2022); the open discussion was fetched for {n_fetch}, and {n_fetch - m} review codings failed '
         f'validation. {top_n} of the {m} are in {top_j}, so the result mostly describes one journal. The open '
-        f'discussion of each paper was coded as a review sequence (claude-opus-5-5, codebook 1.5.0, graph v0.4.2; '
-        f'experiment E3), and each of its {numbers["review_steps"]} review steps was labelled against the published '
-        f'text by two independent Claude agents run in Claude Code, with a third agent adjudicating where they '
-        f'differed (E4). The labelers agreed on {numbers["labeler_agreement"][0]} of {numbers["labeler_agreement"][1]} '
+        f'discussion (referee, author, community and editor comments, posted beside a citable discussion preprint) was '
+        f'coded as a sequence of review steps by Claude Opus 5.5 (codebook 1.5.0, graph v0.4.2), which also read the '
+        f'published paper. Each of the {numbers["review_steps"]} review steps was then labelled against the published '
+        f'text (publisher XML) by two model labelers, separate runs of a Claude model inside the Claude Code tool (model '
+        f'id not recorded), each without seeing the other\'s labels; a third run settled disagreements. The labelers agreed on {numbers["labeler_agreement"][0]} of {numbers["labeler_agreement"][1]} '
         f'steps ({pct(numbers["labeler_agreement"][2], 1)}; Cohen\'s kappa {numbers["labeler_cohen_kappa_4_labels"]:.2f} '
-        f'over the four labels) before adjudication. '
+        f'over the four labels: agreement corrected for the agreement expected by chance from each labeler\'s label '
+        f'frequencies, 1 perfect, 0 chance) before adjudication. '
         f'(a) Of {numbers["review_steps"]} review steps, {numbers["changes"]} record a change to the work; '
         f'{numbers["as_planned"]} of these appear in the paper as if planned, {numbers["absent"]} do not appear, and '
         f'{numbers["as_revision"]} are marked as a revision. The interval on the absent share is a 95% percentile '
         f'interval from {B} bootstrap resamples of papers ({pct(ab[1], 1)} to {pct(ab[2], 1)}), because changes cluster '
-        f'within papers. The g16 analysis found every quote offered as evidence of a shown change in the published '
-        f'text ({q[0]} of {q[1]}). (b) Share of changes absent from the paper by graph node of the review step, nodes '
+        f'within papers. Every quote offered as evidence of a shown change exists verbatim in the published text '
+        f'({q[0]} of {q[1]}); this checks that the quote exists, not that it shows the change. (b) Share of changes absent from the paper by graph node of the review step, nodes '
         f'with at least {MIN_N} changes (left out: {drop_txt}); points are proportions, bars Wilson 95% intervals that '
         f'treat steps as independent and are not adjusted for the {len(numbers["by_node_absent_share_wilson95"])} '
         f'comparisons; counts at right; the dashed line is the pooled share. Interval excluding the pooled share: '
-        f'{excl_txt}. (c) One column per paper, height = changes recorded in its review, split into absent and shown as '
+        f'{excl_txt}.' + v_test_txt() + f' (c) One column per paper, height = changes recorded in its review, split into absent and shown as '
         f'planned; no paper marks any change as a revision ({numbers["papers_marking_any_revision"]} of {m}; one-sided '
         f'95% upper bound by the rule of three, 3/{m} = {pct(3 / m, 1)}). '
         f'Changes per paper: median {numbers["changes_per_paper"]["median"]:.0f}, range '
         f'{numbers["changes_per_paper"]["min"]} to {numbers["changes_per_paper"]["max"]}; '
         f'{numbers["papers_with_any_absent"]} papers have at least one absent change, at most '
-        f'{numbers["absent_per_paper_max"]} in one paper. Counts recomputed from '
-        f'derived/review/visibility_labels.json; nodes from the calc1-review codings.')
-    ps.save(fig, 'fig07_review', inputs=inputs, numbers=numbers, caption=caption)
+        f'{numbers["absent_per_paper_max"]} in one paper. Columns are anonymous and unordered by journal.')
+    ps.save(fig, 'fig07_review', inputs=inputs + [ps.DERIVED / 'report_numbers.json'], numbers=numbers, caption=caption)
     print(json.dumps(numbers, indent=1, default=str))
     print(caption)
 

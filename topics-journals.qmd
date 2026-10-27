@@ -1,0 +1,73 @@
+# Topics and journals {.unnumbered}
+
+[Drafted]{.status .drafted} [v0.2 · October 27, 2026 · round 1, 233 coded papers; round 2 drawn, coding not returned · paper codebook 1.5.0 · exploratory]{.status-line}
+
+- **Question.** Which fields and journals are in the coded corpus? Does reaching full text and a coding depend on field or venue? Do workflows and outcomes differ by field and venue, and do the [workflow-outcome associations](workflow-outcomes.qmd) hold once field or venue is held fixed?
+- **Short answer.** Journal family predicts which papers get coded far more strongly than subfield does (Cramér's V, an association strength from 0 to 1, 0.73 against 0.26). The coded set is concentrated: 94 journals, as concentrated as 27 equal-sized ones, with The Cryosphere alone at 14%. Which modes decide a paper differs by subfield; walk length and citations differ by venue. The workflow-outcome associations keep their sign with q < 0.1 in 15, 15 and 12 of 15 cases within subfield, within journal family and within both; counting only those whose interval excludes 0, in 14, 12 and 8.
+- **For geoscientists.** The coded sample over-represents the convenor's own topics, cryosphere above all (23% of coded papers against 4% of the 2022 pool), and journals of the European Geosciences Union. It under-represents seismology journals without a full-text route (Seismological Society of America journals, Geophysical Journal International). Two OpenAlex subfield names mislead: "Artificial Intelligence" here holds only seismology papers, and "Atmospheric Science" is mostly cryosphere. Read field comparisons with that in mind.
+- **For NLP researchers.** Corpus composition here is set by the sampling design and by licensing and retrieval timing together. Any model of research workflows trained or evaluated on such a corpus inherits both the topic and the venue skew.
+- **Scope.** Results only, as aggregates by field, topic and journal. No paper-level data.
+
+## Measures
+
+Full definitions of the workflow features (node, mode, steps, revisits, decisive mode), valid coding, Spearman rho, bootstrap intervals and BH q are on [workflows and outcomes](workflow-outcomes.qmd#measures). The outcome metrics, in brief (all from OpenAlex, retrieved October 2026, about four years after publication):
+
+- **cnp (impact).** Citation-normalized percentile: the paper's citation count ranked among works of the same OpenAlex subfield, year and type, 0 to 1.
+- **FWCI (impact).** Field-weighted citation impact: citations divided by the mean for those works; 1 is the world average. cnp and FWCI correlate at 0.99, so they are one impact signal.
+- **novelty_pair (novelty).** −log10(1 + number of 2017 to 2021 works whose two leading OpenAlex topics are the same pair as the paper's); higher means a rarer pair.
+- **breadth_refs (breadth).** Share of the paper's classified references that lie outside geoscience.
+- **Advance.** A blind human rating of the contribution; not yet measured, so not used here.
+
+novelty_pair and breadth_refs are not normalized by subfield, so part of any difference between subfields is field structure.
+
+Terms used only here:
+
+- **OpenAlex topic, subfield, field.** OpenAlex assigns each paper a leading topic by a classifier over title, abstract, venue and citations; topics nest in subfields and fields (for example, the topic Seismic Imaging and Inversion Techniques sits in the subfield Geophysics, which sits in the field Earth and Planetary Sciences). These are machine labels, not author keywords. OpenAlex files topics, not papers, under subfields, so a subfield can hold topics from another discipline.
+- **Ring.** Round 1 drew half its papers from the core ring, the convenor's own 8 OpenAlex topics (seismology, seismic waves and imaging, earthquakes and tectonics, seismic sensors, cryosphere, high-pressure geophysics), and half from the broad ring, 8 Earth-science subfields. The convenor is the study's principal investigator.
+- **Journal family.** Publisher group from DOI prefix, then publisher, then journal name. AGU (American Geophysical Union, the largest US geoscience society) is its own family although Wiley publishes its journals. Copernicus (mostly EGU): journals with DOI prefix 10.5194, nearly all of the European Geosciences Union, plus European Journal of Mineralogy and Scientific Drilling. SSA: Seismological Society of America (Bulletin of the Seismological Society of America, Seismological Research Letters). Oxford: Oxford University Press, here Geophysical Journal International, published for the Royal Astronomical Society. Springer Nature (other) includes English translations of Russian-language journals distributed by Springer (Pleiades, Allerton), which are paywalled and have no text-and-data-mining route.
+- **Effective number of journals.** 1/HHI, where the Herfindahl index HHI is the sum of squared journal shares: the number of equal-sized journals with the same concentration.
+- **Cramér's V.** Strength of association between two categorical variables, 0 (independent) to 1 (one determines the other); bias-corrected [@bergsma2013]. Unrelated to node V. Its 95% interval is a percentile interval of the resampled V, which is biased upward under resampling, so read the interval as spread; it can sit above its own estimate.
+- **Rate difference.** Share of papers with a property in one category minus the share in all other categories.
+- **Kruskal-Wallis epsilon squared.** Kruskal-Wallis H [@kruskal1952], a rank-based one-way analysis of variance, divided by n − 1: the share of rank variance in a count or outcome explained by the grouping, 0 to 1.
+- **Within-stratum rank correlation.** Spearman correlation computed after centring both ranks within each subfield (or family, or subfield × family); only co-variation inside a stratum counts. Its p comes from shuffling outcomes within strata.
+- **Holds within strata ("survives").** Same sign as the original correlation and BH q < 0.1 over the 45 stratified tests (15 associations × 3 stratifications). Reported with the stricter count of those whose bootstrap interval also excludes 0.
+- **Test families.** BH q is computed separately for the 16 coverage tests, the 104 workflow tests (40 binary features, 9 counts and 3 whole categorical variables, each tested once against subfield and once against journal family), the 16 outcome tests and the 45 stratified tests.
+
+## Who is in the corpus
+
+![Share of papers by OpenAlex subfield (a) and journal family (b) at each stage of rounds 1 and 2, the most frequent journals among coded papers at three stages (c), and coding rate by journal family relative to all other families (d). Subfield labels name the dominant leading topic where one topic holds at least 60% of the subfield's coded papers.](assets/roadmap/fig11_topics_journals.png){fig-alt="Stacked bars of subfield and journal-family shares by stage; dot plots of journal shares and of coverage differences by family, with Copernicus and Nature portfolio fully coded, Wiley (non-AGU) 96%, and SSA, Elsevier and AGU rarely coded."}
+
+- **Concentration.** Effective number of journals falls at each step of round 1: 68 in the pool, 51 preselected, 44 eligible, 40 with full text, 27 coded. Round 2, drawn at most 4 per journal, has 111 effective journals at the draw.
+- **Cryosphere: design, then access.** The topic "Cryospheric studies and observations" is 3.9% of the pool. The design raises it to 13.5% of the round-1 preselection, because it is one of the 8 core-ring topics. Access raises it further: 14.9% of eligible, 19% of full-text and 23% of coded papers (53). The Cryosphere, an open-access EGU journal that is fully coded, holds 33 coded papers.
+- **"Artificial Intelligence" is seismology.** This OpenAlex subfield is 0.8% of the pool and 11% of the round-1 preselection (64 papers). All 64 have the leading topic "Seismology and Earthquake Studies", one of the convenor's core-ring topics, which OpenAlex files under Computer Science. Of the 17 coded, 13 use machine-learning terms somewhere in their coding and 6 build a new capability described in such terms, against 18 of 216 and 4 of 216 in other subfields. They are seismology papers, many of them machine-learning seismology.
+- **Other subfield names.** "Atmospheric Science" holds 81 of its 125 preselected papers under the cryosphere topic (72% of its coded papers). "Ocean Engineering" is the seismic-sensor topic "Geophysics and Sensor Technology" (19 of 19). "Space and Planetary Science" is an archaeology topic (4 of 4, none eligible). "Water Science and Technology" mixes hydrology with water-treatment topics. The full topic-to-subfield table is in the private results (`TOPICS.md`, section 6).
+- **Access versus timing.** Among eligible round-1 papers, journal family predicts reaching a coding strongly (Cramér's V 0.73), subfield weakly (0.26). Among papers that already have full text, subfield no longer predicts coding (0.12, interval includes 0) while family still does (0.86). AGU and Elsevier papers were fetched after the round-1 batch; 82 AGU and 63 Elsevier papers are in the batch of 146 sent on October 27. SSA, GJI and the translated Russian-language journals are the access gap.
+
+## Workflows and outcomes by field and venue
+
+![Node use and decisive mode by subfield (a), steps, revisits and citation outcomes by journal family (b), and the 15 workflow-outcome associations recomputed within subfield, within journal family, and within both (c).](assets/roadmap/fig12_field_workflows.png){fig-alt="Heat map of node and decisive-mode shares by subfield; interval plots of medians by journal family; interval plot of correlations with four estimates per association."}
+
+- **Workflow differs by subfield.** 28 of the 104 workflow tests pass q < 0.1. Earth-surface process papers (mostly geological-formation, aeolian and coastal topics) are decided by reconstruction, inferring a past event from its traces, in 42% of cases against 11% overall. Papers in the seismology group that OpenAlex calls Artificial Intelligence are decided by a method in 76% of cases against 29% overall, and 88% build a new capability (node N).
+- **Walk length differs by venue.** Median steps: AGU 24.5 (16 papers), Copernicus 24 (64), Nature portfolio 22.5 (14), Springer Nature other 22 (44), Wiley outside AGU 19.5 (76).
+- **Citations differ by venue.** Median cnp among coded papers: AGU 0.80, Copernicus 0.65, Wiley outside AGU 0.43 (epsilon squared 0.13).
+- **AGU is not a sample of AGU.** The 16 coded AGU papers are the ones whose text arrived before the first batch; all 16 are open access, against 70 of the 98 eligible AGU papers. The AGU medians, and any venue effect that leans on them, are provisional until the 82 AGU papers now in the batch are coded.
+- **Novelty and breadth differ by subfield** (epsilon squared 0.11 and 0.12). The seismology group filed under AI cites outside geoscience most (median 0.27 against 0.03). Neither measure is normalized by subfield, so part of this is field structure.
+
+## Confounding check
+
+- **Breadth and novelty associations hold within field and venue.** All 9 keep their sign with q < 0.1 within subfield, within family, and within subfield × family; for two (capability first, observation mode) some stratified intervals include 0. Items borrowed from other fields stay at 0.52 to 0.57 with references outside geoscience, fields borrowed from at 0.48 to 0.52. These two are a convergent validity check of the coder (the same thing measured from the text and from the reference list), not workflow-outcome findings.
+- **Impact associations are partly a venue effect.** Within journal family, the correlations of steps and revisits with cnp and FWCI roughly halve (steps with cnp: 0.23 to 0.12). Long walks are more common in AGU and Copernicus journals, which are also cited more. Within subfield they do not change. Provisional, given the AGU sample.
+- **Decisive simulation** keeps most of its association with impact in every stratification (0.13 to 0.19).
+- Three of 15 do not pass within subfield × family: steps with cnp, steps with FWCI, revisits with FWCI.
+
+## Caveats
+
+- Topic, subfield and field are OpenAlex machine labels. cnp and FWCI are normalized within the OpenAlex subfield, so seismology papers filed under Artificial Intelligence are ranked against AI works and cryosphere papers against atmospheric-science works.
+- Groups with fewer than 10 coded papers are pooled; Geology (9), Elsevier (9), Oxford (6) and SSA (2) are not compared on their own.
+- Holding subfield and family fixed does not hold fixed open access, team size or topic within subfield.
+- Round 2 is not coded yet; its 202 full-text papers are spread over 114 journals and will change the coded composition.
+- One model coder; citations at about four years.
+
+## Reproduce
+
+- `tools/roadmap/g20_topics_journals.py` (this repository; numpy only, OpenAlex through a cached client); figures `tools/roadmap/figures/fig11_topics_journals.py`, `fig12_field_workflows.py`. Inputs and results stay in the private repository, `data/roadmap/derived/topics/`.

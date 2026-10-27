@@ -104,6 +104,16 @@ def column_letters(fig, cols):
             fig.text(x0, y, f'({letter})', fontsize=ps.LABEL, fontweight='bold', va='bottom', ha='left')
 
 
+def dry_run_txt(total):
+    """The submission-time estimate of the round-2 batches (g19 cost.r2_dry_run_total_usd), as an upper-bound style figure."""
+    try:
+        d = ps.read_json(ps.DERIVED / 'report_numbers.json')['cost.r2_dry_run_total_usd']['value']
+    except Exception:  # noqa: BLE001
+        return ''
+    return (f'The estimate printed at submission for the round-2 batches (pages times a fixed token rate) was ${d:,.2f}, '
+            f'which with the recorded ${total:,.2f} would give ${total + d:,.0f}; read it as an upper bound. ')
+
+
 def main():
     st, rows, requests, n_papers, pending, orphan = load()
     rng = np.random.default_rng(SEED)
@@ -287,9 +297,12 @@ def main():
     req_eg = '; '.join(f'{e}: {b_nums[e]["n_requests"]} requests for {b_nums[e]["n_papers"]} papers'
                        for e in ('E1', 'E2', 'E3') if e in b_nums)
     caption = (
-        'Cost of coding papers with claude-opus-5-5 through the Message Batches API. '
-        '(a) Cost per valid coding by run, one point per paper, ink tick at the median; rows grouped by experiment '
-        '(EXPERIMENTS.md): E0 format test (four runs of 6 papers, 4 to 6 valid codings each, codebook 1.4.0), E1 '
+        'Cost of coding papers with Claude Opus 5.5. Tokens are the word-piece units a language model reads and '
+        'writes; cost is billed per token. Cached input is instruction text reused across requests at a reduced price. '
+        'Batch requests run asynchronously at half price (Anthropic Message Batches API). A valid coding passes the '
+        'format check of tools/check_coding.py. '
+        '(a) Cost per valid coding by run, one point per paper, ink tick at the median; rows grouped by experiment: '
+        'E0 format test (four runs of 6 papers, 4 to 6 valid codings each, codebook 1.4.0), E1 '
         'first calculation, E2 test-retest on gold papers, E3 coding with the open review discussion (codebook 1.5.0 '
         f'for E1 to E3). E1 cost per coding: median ${a_nums["calc1"]["median_usd"]:.2f}, mean '
         f'${a_nums["calc1"]["mean_usd"]:.2f} (n = {a_nums["calc1"]["n_valid"]}). '
@@ -300,19 +313,22 @@ def main():
         'codings, distinct papers submitted and requests; requests include resubmissions and retries, so they exceed '
         f'the number of papers ({req_eg}). '
         + (f'E0 was submitted twice ({", ".join(e0_first)}, then {", ".join(e0_later)} under the same tags and '
-           f'papers); the first submission ({sum(b["n"] for b in e0_orph)} requests) has no cost record in '
-           'state.json because the rerun overwrote it, so E0 spend covers the second submission only. '
+           f'papers); the first submission ({sum(b["n"] for b in e0_orph)} requests) has no cost record '
+           'because the rerun overwrote it, so E0 spend covers the second submission only. '
            if e0_orph else '')
         + (f'Hatched: {proj_note["n"]} round-2 requests still in flight, projected at the mean cost of an E1 batch '
            f'coding (${e1.mean():.4f}, n = {len(e1)}): ~${proj_note["proj"]:.0f}, 95% interval '
            f'{proj_note["lo"]:.0f} to {proj_note["hi"]:.0f} from {N_BOOT} bootstrap sums of E1 batch costs, '
            f'giving a total of ~${proj_note["cum"] + proj_note["proj"]:.0f}. The interval reflects sampling of E1 '
            'per-paper costs only, not differences between the round-1 and round-2 corpora (round 2 is open access '
-           'only, spread over 157 journals, with XML for 105 papers, EXPERIMENTS.md E7) or retries, and it projects recorded '
+           'only, spread over 157 journals, with XML for 105 papers) or retries, and it projects recorded '
            '(valid-coding) spend, not billed spend. At the mean of all batch codings '
-           f'(${allb.mean():.2f}, n = {len(allb)}; the basis of the ~$52 estimate in EXPERIMENTS.md E7) the '
+           f'(${allb.mean():.2f}, n = {len(allb)}; the basis of an earlier ~$52 estimate) the '
            f'projection is ${proj_note["alt"]:.0f} (total ${proj_note["cum"] + proj_note["alt"]:.0f}), above the '
-           'interval. ' if proj_note else '')
+           'interval. ' + dry_run_txt(total) if proj_note else '')
+        + (f'A further {sum(v for t, v in pending.items() if t != "r2")} round-1 requests submitted on the figure date '
+           'are in flight and are not projected here (their requests are counted in the E1 row label). '
+           if any(t != 'r2' and v for t, v in pending.items()) else '')
         + f'(c, d) Cost per coding against prompt tokens (input plus cache) and output tokens for all '
         f'{len(pts)} valid codings ({int(bat.sum())} batch, {int((~bat).sum())} at full price, drawn hollow). '
         f'Output tokens account for {share_out:.0%} of recorded spend. Cost is a linear function of the token '
@@ -320,7 +336,7 @@ def main():
         'Cost is token usage times the price table in tools/code_papers.py, halved for batch requests, and is '
         'recorded only for codings that passed validation: requests that hit the output limit, failed validation, '
         'or were overwritten by a rerun were billed but are not counted, so spend is a lower bound. '
-        f'Source: private/analysis/codings/api/state.json, read {ps.TODAY}.')
+        f'Cost record read {ps.TODAY}; file paths in the provenance fields of this file.')
     ps.save(fig, 'fig10_cost', inputs=[STATE], numbers=numbers, caption=caption)
 
 

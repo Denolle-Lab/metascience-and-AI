@@ -284,8 +284,8 @@ def main():
     out_txt = (f'; {len(r1["outside_manifest"])} codings outside the manifest left out' if r1['outside_manifest'] else '')
     caption = (f'Node-to-node transitions in the coded final-paper sequences of {n1} round-1 papers with valid codings '
                f'({r1["n_files"] - len(r1["outside_manifest"])} of the {r1["n_eligible"]} eligible papers coded so far; '
-               f'{len(r1["invalid"])} codings failing schema validation left out{out_txt}). Papers are from 2022 Earth '
-               'science, coded by claude-opus-5-5 with codebook 1.5.0 on graph v0.4.2. Consecutive steps on the same node '
+               f'{len(r1["invalid"])} codings failing the format check left out{out_txt}). Papers are from 2022 Earth '
+               'science, coded by Claude Opus 5.5 with codebook 1.5.0 on graph v0.4.2. Consecutive steps on the same node '
                f'are merged first, which affects {r1["merged"]} of {n1} papers ({100 * r1["merged"] / n1:.0f}%). All values '
                'are percent of papers. (a) Share of papers whose sequence contains each directed transition at least '
                'once, row node to column node in graph order. The hatched diagonal is empty by construction (repeats on '
@@ -293,8 +293,9 @@ def main():
                f'({len(cnt)} of 210 possible transitions occur at least once, {n_white} never). Numbered cells are the '
                f'{TOP} transitions ranked in (b). (b) The {TOP} most common transitions with 95% percentile bootstrap '
                f'intervals ({B} resamples over papers). Fill gives whether any of {n_sys[coders[0]]} coded AI agent '
-               f'systems runs the transition inside a loop, as read by two blind loop coders (loop codebook '
-               f'{", ".join(lv)}): filled, both coders; hatched, one coder only'
+               f'systems runs the transition inside a loop (the cycle of steps the system repeats), as read by two model coders '
+               f'that did not see each other\'s work, a Claude Opus run (opus-b) and a Claude Sonnet run (sonnet-c), '
+               f'under loop codebook {", ".join(lv)}: filled, both coders; hatched, one coder only'
                + (f' (the coders disagree on {one_txt})' if one_coder else '')
                + f'; hollow, no agent loop ({", ".join(no_ag)}). Right column: number of agent systems running the '
                f'transition, {coders[0]} / {coders[1]}.'

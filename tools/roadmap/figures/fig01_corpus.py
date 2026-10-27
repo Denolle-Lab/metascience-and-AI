@@ -130,7 +130,9 @@ def round_counts(spec, queue, state, inputs):
             'adjudicated': sum(bool(r.get('adjudicated')) for r in screen), 'stages': stages, 'excluded': excluded,
             'coded_invalid': bad, 'failed_state': failing_state, 'failed_resolved': resolved,
             'have_not_submitted': sorted(set(have) - set(sent)), 'submitted_without_full_text': sorted(set(sent) - set(have)),
-            'batch_pending': pending, 'codings_folder': present, 'category_split': screen_category_split(screen),
+            'batch_pending': pending,
+            'in_pending_batch': sorted({k for b in state.get('batches', []) if b.get('tag') == tag and not b.get('collected')
+                                        for k in b.get('keys', [])} & set(keys)), 'codings_folder': present, 'category_split': screen_category_split(screen),
             'eligible_equals_manifest': {r['key'] for r in screen if r['eligible']} == set(keys)}
 
 
@@ -252,46 +254,59 @@ def main():
     r1 = rounds[0]
     s1 = dict(r1['stages'])
     cap = (f"Corpus construction. (a) Papers at each stage, per round, with the share of the stage above in "
-           f"parentheses (none on the submitted bar). Both rounds come from one OpenAlex pool of {pool:,} Earth-science "
-           "journal articles from 2022 (type article, with abstract, more than 14 references; topic, subfield and venue "
-           "filters in g02_pool.py) and do not overlap; papers with a convenor co-author are excluded from both. "
-           f"Round 1 is a random preselection of {s1['Preselected']} papers stratified by ring, impact quintile and "
-           "subfield (seed 2026)")
+           f"parentheses (none on the submitted bar). Both rounds come from one pool of {pool:,} articles published in 2022 "
+           "and indexed by OpenAlex (an open bibliographic index): research articles with an abstract and at least 15 "
+           "references, in 16 Earth-science topics and subfields chosen around the study's principal investigator (the "
+           "convenor), from publishers with a full-text route (Elsevier, Wiley and AGU, Springer Nature, Copernicus, "
+           "Science Advances, Seismica, Geophysical Journal International, and the Seismological Society of America "
+           "journals; MDPI, Frontiers, Taylor & Francis and others are not in the pool). The 16 form two rings: the core "
+           "ring is the convenor's own 8 OpenAlex topics (seismology, seismic waves and imaging, earthquakes and tectonics, "
+           "seismic sensors, cryosphere, high-pressure geophysics), the broad ring 8 Earth-science subfields. Papers with a "
+           "convenor co-author are excluded, and the two rounds do not overlap. "
+           f"Round 1 is a random preselection of {s1['Preselected']} papers, half per ring, with equal numbers per impact "
+           "quintile and subfields taken in turn")
     if len(rounds) > 1:
         s2 = dict(rounds[1]['stages'])
         cap += (f"; round 2 is a draw of {s2['Drawn']} open-access papers from the papers not preselected in round 1, "
-                "balanced by ring and impact quintile, round robin over publishers, at most four per journal (seed 2027, "
-                "the g18_round2_draw.py default, which the draw file's provenance does not record)")
+                "balanced by ring and impact quintile, taken in turn over publishers, at most four per journal")
     adj = '; '.join(f"{r['name'].lower()}: {r['adjudicated']} of {r['screened']}" for r in rounds)
-    cap += (". Eligible: passed a double-blind abstract screen by two independent model screeners, with a third model "
-            f"call adjudicating where they disagreed or either was unsure ({adj} adjudicated). "
-            f"Full text: a PDF on disk (private/download-queue.json status have, read at "
-            f"{read_at.strftime('%Y-%m-%d %H:%M %Z')}, file last written {queue_mtime.strftime('%H:%M')}, "
-            f"sha256 {queue_sha[:12]}).")
+    cap += (". Eligible: kept by an abstract screen in which two language-model calls judged each abstract without seeing "
+            "each other's answer, and a third call settled the cases where they disagreed or either was unsure "
+            f"({adj} settled this way); the screener model id was not recorded, and no person has audited the screen. "
+            "Full text: a PDF on disk.")
     if len(rounds) > 1:
         cap += (" Round 2 was drawn from open-access papers only, so its higher full-text share reflects the draw, not "
                 "better retrieval.")
-    cap += (" Submitted: sent to the Batch API for coding. Coded: a coding by claude-opus-5-5 (codebook 1.5.0, graph "
-            "v0.4.2) that passes schema and codebook validation.")
+    cap += (" Submitted: sent for coding as an asynchronous batch request, billed at half price (Anthropic Message Batches "
+            "API). Coded: a coding by Claude Opus 5.5 (codebook 1.5.0, graph v0.4.2) that passes the format check of "
+            "tools/check_coding.py: required fields and allowed values, steps numbered in order, quotes of 25 words or "
+            "fewer. The check says nothing about whether a coding is right; accuracy against human coders is pending.")
     for r in rounds:
         st = dict(r['stages'])
         nm = r['name']
         if st['Coded']:
             fails = len(r['coded_invalid'])
-            cap += (f" {nm}: {st['Coded']} of {st['Submitted for coding']} submitted papers coded; {fails} "
-                    f"{'fails' if fails == 1 else 'fail'} validation (quotes over 25 words)")
+            back = st['Full text'] - st['Coded']
+            cap += (f" {nm}: {st['Coded']} papers coded; {back} papers with full text have no valid coding yet: "
+                    f"{back - fails} fetched after the first coding batch and {fails} whose coding failed the format check")
+            if r['in_pending_batch']:
+                cap += (f"; {len(r['in_pending_batch'])} "
+                        "of them were sent in a further batch that had not returned when the figure was made")
+            if r['have_not_submitted']:
+                cap += f"; {len(r['have_not_submitted'])} not yet submitted"
             if r['failed_resolved']:
-                cap += f", and {len(r['failed_resolved'])} that failed first passed on resubmission"
-            cap += (f"; {len(r['have_not_submitted'])} papers with full text fetched after the batch await coding.")
+                cap += f"; {len(r['failed_resolved'])} paper that failed first passed on resubmission"
+            cap += f"; a separate {st['Eligible'] - st['Full text']} eligible papers have no PDF."
         elif st['Submitted for coding']:
             cap += (f" {nm}: {st['Submitted for coding']} papers submitted; the coding batch had not returned when the "
                     "figure was made.")
     cap += (" (b) Papers excluded at screening, by category, as a share of papers screened in each round; numbers at bar "
-            "ends are counts. The category is screener A's when both screeners excluded the paper and the adjudicator's "
-            "otherwise (the two screeners named different categories for "
+            "ends are counts. The category is the first screener's when both screeners excluded the paper and the "
+            "third call's otherwise (the two screeners named different categories for "
             + ' and '.join(f"{r['category_split']} {r['name'].lower()} paper{'s' if r['category_split'] != 1 else ''}"
                            for r in rounds)
-            + "). These are counts, not estimates, so no uncertainty is shown.")
+            + "). These are counts, not estimates, so no uncertainty is shown. Queue read time and hash, seeds and "
+            "script names are in this file's provenance fields.")
     ps.save(fig, 'fig01_corpus', inputs=inputs, numbers=numbers, caption=cap)
     print(cap)
 

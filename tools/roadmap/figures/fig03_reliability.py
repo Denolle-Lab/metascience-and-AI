@@ -291,7 +291,7 @@ def main():
     group_headers(ax_a, ys, ps.INK2)
     ax_a.text(0.02, ys[len(BOOL)] - 0.42, '(grey: single papers)', fontsize=ps.SMALL, color=ps.MUTED, va='center')
     ps.panel(ax_a, 'a', x=-0.56)
-    ax_a.set_title(f'Test-retest, {len(pair)} gold papers', fontsize=ps.FONT, loc='left', color=ps.INK)
+    ax_a.set_title(f'Same model, two runs, {len(pair)} papers', fontsize=ps.FONT, loc='left', color=ps.INK)
 
     # (b) format test: within (filled, upper) and between (open, lower)
     off = 0.17
@@ -353,7 +353,7 @@ def main():
     style_axis(ax_d, len(ALPHA), "Krippendorff's alpha (nominal)")
     ax_d.set_ylim(len(ALPHA) - 0.5, -1.1)
     ps.panel(ax_d, 'd', x=-0.62)
-    ax_d.set_title('Test-retest, chance-corrected', fontsize=ps.FONT, loc='left', color=ps.INK)
+    ax_d.set_title('Two runs, chance-corrected', fontsize=ps.FONT, loc='left', color=ps.INK)
 
     r3 = lambda t: [round(x, 3) for x in t]
     sing = [f for f in ALPHA if single[f]]
@@ -392,45 +392,54 @@ def main():
     s4 = lambda f, k: f'{sub4[f][k]:.3f}'
     dd = lambda f: f'{ed[f][0]:+.3f} [{ed[f][1]:+.3f}, {ed[f][2]:+.3f}]'
     caption = (
-        f'Reliability of the model coder. Codebook {", ".join(cb_a)} and graph {GRAPH_FOR_CODEBOOK.get(cb_a[0])} in (a) and (d); '
-        f'the format test in (b) and (c) used codebook {", ".join(cb_ft)} (also graph {GRAPH_FOR_CODEBOOK.get(cb_ft[0])}). '
-        f'(a) Test-retest: {len(pair)} of {len(coded_twice)} gold papers coded twice, independently, from the same full text '
-        '(claude-opus-5-5, Batch API, tags calc1 and gold-r2) with schema-valid codings in both runs '
-        f'({", ".join(f"{k}, gold-r2 coding: {v[1]}" for k, v in dropped.items() if v[1])}). '
+        f'Run-to-run consistency of the model coder. The same model (Claude Opus 5.5) coded the same paper twice, '
+        'independently; agreement between the two runs measures how stable the output is, not whether it is right. It does '
+        'not cap or estimate agreement with human coders, whose coding has not started, and errors the model repeats on '
+        'every run do not show. '
+        f'Codebook {", ".join(cb_a)} and graph {GRAPH_FOR_CODEBOOK.get(cb_a[0])} in (a) and (d); '
+        f'the format test in (b) and (c) used the earlier codebook {", ".join(cb_ft)} (also graph {GRAPH_FOR_CODEBOOK.get(cb_ft[0])}) '
+        'and two coding pipelines, so it is not comparable with (a). '
+        f'(a) First and second coding of {len(coded_twice)} gold-set papers (the papers of the 100-paper gold sample that had full '
+        f'text at the first coding); {len(pair)} pairs pass the format check in both runs. Both runs were sent as asynchronous '
+        'batch requests with the same instructions, effort setting high and no temperature set. '
         'Top four rows: share of papers whose two codings match on entry state, entry node, outcome and decisive mode; '
         f'the outcome row has no visible interval because all {len(pair)} pairs agree. '
-        'Bottom four rows: mean similarity of the node set and mode set (Jaccard) and of the node and mode sequences '
-        '(1 minus the normalized edit distance, after merging repeated consecutive steps). Grey points are single papers, '
-        'jittered vertically; per-paper similarities are rounded to 2 decimals by agree(), so several papers share a value. '
-        f'(b) Input format test (experiment E0), n = {len(fkeys)} papers, four input formats, two codings per format and paper: '
+        'Bottom four rows: mean similarity of the node set and mode set (Jaccard: shared items over items in either) and of '
+        'the node and mode sequences (1 minus the normalized edit distance, after merging repeated consecutive steps). Grey '
+        'points are single papers, jittered vertically; per-paper similarities are rounded to 2 decimals, so several papers '
+        'share a value. '
+        f'(b) Input format test, n = {len(fkeys)} papers, four input formats, two codings per format and paper: '
         f'agreement between the two codings made from the same format (filled blue, upper, {fpairs["within"]} pairs) and between '
         f'codings made from different formats (open orange, lower, {fpairs["between"]} pairs), averaged within paper, then over '
-        'papers. Arms X (located XML text) and T (pdftotext text) were coded by a Claude Code paper-coder subagent with no model '
-        'id recorded; arms P (PDF) and PX (PDF plus XML text) by claude-opus-5-5 through the Batch API, so four of the six '
-        'between-format pair types (P-T, P-X, PX-T, PX-X) also cross the coding pipeline. Format-test codings are not filtered '
-        f'by schema validation ({len(fmeta["invalid"])} of {sum(fmeta["codebook"].values())} fail it, '
-        f'{"each on one quote over 25 words" if all("quote over 25" in e for e in fmeta["invalid"].values()) else "see the numbers file"}), '
-        'as in f01_format_test.py. '
+        'papers. The two text-only formats (publisher XML text, and text extracted from the PDF) were coded by a Claude model '
+        'run inside the Claude Code tool, model version not recorded; the PDF and PDF-plus-XML formats by Claude Opus 5.5 in '
+        'batch mode, so four of the six between-format pair types also cross the coding pipeline. Format-test codings are not '
+        f'filtered by the format check ({len(fmeta["invalid"])} of {sum(fmeta["codebook"].values())} fail it, '
+        f'{"each on one quote over 25 words" if all("quote over 25" in e for e in fmeta["invalid"].values()) else "see the numbers file"}). '
         f'(c) Per paper, between-format minus within-format agreement (grey circles), and the mean over the {len(fkeys)} papers '
         'with a paired 95% bootstrap interval (blue). The difference excludes zero for the node sequence '
         f'({dd("node_seq_similarity")}) and the mode sequence ({dd("mode_seq_similarity")}); for entry state, decisive mode, '
         f'node set and outcome it lies between {fmt0(min(ed[f][0] for f in ("entry_state", "decisive_mode", "node_set_jaccard", "outcome")))} '
         f'and {fmt0(max(ed[f][0] for f in ("entry_state", "decisive_mode", "node_set_jaccard", "outcome")))}. '
-        f'Open triangles: the two papers ({", ".join(PREPRINT)}) whose PDF was the discussion preprint, so arms T and P coded '
+        f'Open triangles: the {len(PREPRINT)} papers whose PDF was the discussion preprint, so two formats coded '
         'another text version and their between-format pairs compare different texts; they carry the largest sequence drops. '
         f'On the 4 same-version papers, node-sequence similarity is {s4("node_seq_similarity", "within")} within and '
         f'{s4("node_seq_similarity", "between")} between formats, mode sequence {s4("mode_seq_similarity", "within")} and '
         f'{s4("mode_seq_similarity", "between")}. '
-        "(d) Krippendorff's alpha (nominal) for the pairs of (a); node presence uses one unit per paper and node (15 nodes); "
-        'V status is full, partial or none replication or validation in the sense of NASEM (2019). Dashed lines: 0.667 and 0.8. '
-        f'Alpha for {sing_txt.lower().replace("v status", "V status")} equals 1 but each rests on a single, different paper outside the modal class ({sing_papers}; '
-        f'{len(pair) - 1} of {len(pair)} papers are {sing_modal} in both codings); their bootstrap intervals are undefined in about '
-        f'a third of resamples ({", ".join(str(alpha[f]["undefined"]) for f in sing)} of {B}) and are not shown (open circles). '
+        "(d) Krippendorff's alpha (nominal) for the pairs of (a): agreement corrected for the agreement expected by chance, "
+        '1 perfect, 0 chance; node presence uses one unit per paper and node (15 nodes). V status is full when the paper '
+        'performs at least one check of its result other than a plain rerun (new data, a second method, varied parameters, '
+        'a control or reference, a new context), partial when its only checks are reruns, and none otherwise; it counts '
+        'internal checks, not only replication by others (terms of NASEM, the US National Academies, 2019, for '
+        'reproduction, replication and generalization). Dashed lines: 0.667 and 0.8, the usual thresholds for tentative '
+        f'and firm conclusions. Alpha for {sing_txt.lower().replace("v status", "V status")} equals 1 but each rests on a single, '
+        f'different paper outside the modal class ({len(pair) - 1} of {len(pair)} papers are {sing_modal} in both codings); '
+        'such an alpha says little, and its bootstrap interval is undefined in about '
+        f'a third of resamples ({", ".join(str(alpha[f]["undefined"]) for f in sing)} of {B}), so it is drawn as an open circle '
+        'without interval. '
         f'Bars: 95% percentile bootstrap intervals ({B} resamples) over papers; in (d) all 15 node units of a paper are resampled '
         f'together. With n = {len(fkeys)} in (b) and (c) the intervals are coarse and reach the ceiling of 1 for several match shares. '
-        'Source: private/analysis/codings/api (calc1, gold-r2, fmt-P1, fmt-P2, fmt-PX1, fmt-PX2), '
-        'private/data/roadmap/derived/format_test (codings, design.json, results.json), '
-        'private/data/roadmap/derived/calc1/results.json; agreement logic tools/check_coding.py agree().')
+        'Paper identifiers, run tags and validation messages are in the numbers and provenance fields of this file.')
     ps.save(fig, 'fig03_reliability',
             inputs=[API / 'calc1', API / 'gold-r2', *([API / 'r2'] if (API / 'r2').is_dir() else []),
                     *[API / f'fmt-{a}{r}' for a in ('P', 'PX') for r in (1, 2)], FT / 'codings', FT / 'design.json',

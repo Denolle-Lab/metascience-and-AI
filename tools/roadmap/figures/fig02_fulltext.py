@@ -318,7 +318,7 @@ def main() -> None:
             for pub, c in by.items():
                 fmt_pub.setdefault(f, Counter())[pub] += c
     jats = [SHORT.get(p, p).split(' (')[0] for p, _ in sorted(fmt_pub.get('jats', {}).items(), key=lambda x: (-x[1], x[0]))]
-    xml_txt = ('XML is publisher full-text XML with the article body: JATS for ' + ', '.join(jats[:-1])
+    xml_txt = ('XML is publisher full-text XML with the article body: JATS (Journal Article Tag Suite, the standard XML for articles) for ' + ', '.join(jats[:-1])
                + (' and ' if len(jats) > 1 else '') + jats[-1] + ' papers') if jats else 'XML is publisher full-text XML'
     if fmt_pub.get('other'):
         xml_txt += f", other XML for {sum(fmt_pub['other'].values())} papers"
@@ -353,7 +353,7 @@ def main() -> None:
         f'({letters_bar}) Each bar splits a publisher\'s eligible papers into PDF and XML, PDF only, {xml_only_txt}, and '
         f'no full text. {xml_txt} The number after the publisher name is its '
         f'eligible count; the fraction at the right ("{FT_HEADER.lower()}") counts papers with a PDF or XML. '
-        f'({letters_oa}) Share of the same papers that OpenAlex lists as open access (is_oa). '
+        f'({letters_oa}) Share of the same papers that OpenAlex lists as open access. '
         'Publisher is the OpenAlex host organization, not the DOI registrant, with two exceptions: papers whose journal '
         'is on the AGU journal list are shown as AGU (Wiley)'
         + (', which in these rounds are exactly the papers with DOI prefix 10.1029' if agu_mismatch == 0 else '')
