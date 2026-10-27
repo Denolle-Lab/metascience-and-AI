@@ -9,7 +9,7 @@ Routes, tried in order for each DOI (each attempt is recorded):
   5. europepmc the PMC rendering when OpenAlex gives a PMCID
   6. tdm       publisher text-and-data-mining APIs, only with institutional credentials in the
                environment and only for content the institution subscribes to:
-                 Wiley (incl. AGU journals)  WILEY_TDM_TOKEN
+                 Wiley (incl. AGU journals, DOI 10.1029)  WILEY_TDM_TOKEN
                  Elsevier                    ELSEVIER_API_KEY, optional ELSEVIER_INSTTOKEN
                Any other Crossref "text-mining" link is tried without credentials.
 A file counts only if it starts with %PDF, is larger than 20 KB, and (when pdftotext is
@@ -23,7 +23,7 @@ Usage:
   python3 tools/fetch_pdfs.py add KEY [KEY ...]        queue references from references.bib by key
   python3 tools/fetch_pdfs.py add-doi FILE             queue DOIs from a file (one 'doi' or 'key doi' per line)
   python3 tools/fetch_pdfs.py add-manifest FILE.jsonl  queue a corpus manifest from tools/corpus.py (group = corpus name and stratum)
-  python3 tools/fetch_pdfs.py run [--out DIR] [--library DIR ...] [--dry-run]
+  python3 tools/fetch_pdfs.py run [--out DIR] [--library DIR ...] [--group PREFIX ...] [--dry-run]
   python3 tools/fetch_pdfs.py list                     rewrite private/download-list.md only
 Nothing fetched here is redistributed; PDFs go to a gitignored folder.
 """
@@ -239,7 +239,8 @@ def routes_for(doi: str, title: str, key: str, out: Path) -> tuple[str | None, l
     links = [l for l in ((cr or {}).get('message') or {}).get('link', []) if l.get('intended-application') == 'text-mining']
     wiley, els, insttok = os.environ.get('WILEY_TDM_TOKEN'), os.environ.get('ELSEVIER_API_KEY'), os.environ.get('ELSEVIER_INSTTOKEN')
     publisher = (((cr or {}).get('message') or {}).get('publisher') or '').lower()
-    if 'wiley' in publisher:
+    # Wiley hosts the AGU journals, but Crossref names AGU as their publisher
+    if 'wiley' in publisher or doi.lower().startswith(('10.1029/', '10.1002/', '10.1111/')):
         if wiley:
             url = 'https://api.wiley.com/onlinelibrary/tdm/v1/articles/' + urllib.parse.quote(doi, safe='')
             data, info = get(url, {'Wiley-TDM-Client-Token': wiley}, raw=True)
@@ -312,6 +313,7 @@ def main() -> int:
     mf = sub.add_parser('add-manifest'); mf.add_argument('file')
     r = sub.add_parser('run'); r.add_argument('--out', type=Path, default=DEFAULT_OUT)
     r.add_argument('--library', type=Path, action='append'); r.add_argument('--dry-run', action='store_true')
+    r.add_argument('--group', action='append', help='only queue entries whose group starts with this text (repeatable)')
     sub.add_parser('list')
     args = ap.parse_args()
     q = load_queue(); R = refs()
@@ -342,6 +344,10 @@ def main() -> int:
         by_doi = {d: f for f, v in idx.items() for d in v['dois']}
         for k, v in q.items():
             if v.get('status') == 'have' and v.get('file') and Path(v['file']).exists():
+                continue
+            if v.get('status') == 'skipped':
+                continue
+            if args.group and not any(v.get('group', '').startswith(g) for g in args.group):
                 continue
             doi = v['doi'].lower()
             if doi in by_doi:
