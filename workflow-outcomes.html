@@ -24,7 +24,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,7 +53,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./rubrics.html" rel="next">
+<link href="./topics-journals.html" rel="next">
 <link href="./review-visibility.html" rel="prev">
 <link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -295,6 +314,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./topics-journals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Topics and journals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./rubrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Scientific advance: records and evaluation</span></a>
   </div>
@@ -344,9 +369,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#status-of-the-600-paper-plan" id="toc-status-of-the-600-paper-plan" class="nav-link active" data-scroll-target="#status-of-the-600-paper-plan">Status of the 600-paper plan</a></li>
-  <li><a href="#outcome-measures" id="toc-outcome-measures" class="nav-link" data-scroll-target="#outcome-measures">Outcome measures</a></li>
-  <li><a href="#associations-that-pass-the-threshold" id="toc-associations-that-pass-the-threshold" class="nav-link" data-scroll-target="#associations-that-pass-the-threshold">Associations that pass the threshold</a></li>
+  <li><a href="#measures" id="toc-measures" class="nav-link active" data-scroll-target="#measures">Measures</a></li>
+  <li><a href="#annotation-setup" id="toc-annotation-setup" class="nav-link" data-scroll-target="#annotation-setup">Annotation setup</a></li>
+  <li><a href="#corpus" id="toc-corpus" class="nav-link" data-scroll-target="#corpus">Corpus</a></li>
+  <li><a href="#run-to-run-consistency-of-the-model-coder" id="toc-run-to-run-consistency-of-the-model-coder" class="nav-link" data-scroll-target="#run-to-run-consistency-of-the-model-coder">Run-to-run consistency of the model coder</a></li>
+  <li><a href="#associations" id="toc-associations" class="nav-link" data-scroll-target="#associations">Associations</a></li>
   <li><a href="#reading-the-result" id="toc-reading-the-result" class="nav-link" data-scroll-target="#reading-the-result">Reading the result</a></li>
   <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">Limits</a></li>
   <li><a href="#reproduce" id="toc-reproduce" class="nav-link" data-scroll-target="#reproduce">Reproduce</a></li>
@@ -375,287 +402,175 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><span class="status drafted">Drafted</span> <span class="status-line">v0.1 · October 27, 2026 · first calculation, 233 papers · paper codebook 1.5.0 · exploratory</span></p>
+<p><span class="status drafted">Drafted</span> <span class="status-line">v0.3 · October 27, 2026 · round 1, 233 coded papers · paper codebook 1.5.0 · model-coded, no human check yet · exploratory</span></p>
 <ul>
 <li><strong>Question.</strong> Do the workflow features coded from a paper (where it starts, which modes and graph nodes it uses, how often it loops back, how it checks its result) go with its outcomes: impact, novelty, breadth, advance?</li>
-<li><strong>Short answer.</strong> Weakly, and mostly in expected directions. Of 245 feature-outcome tests, 15 pass a false-discovery threshold (q &lt; 0.1); the largest correlations are 0.2 to 0.6. Advance is not measured yet.</li>
+<li><strong>Short answer.</strong> Weakly. Of 245 feature-outcome tests, 15 pass the Benjamini-Hochberg false-discovery threshold (q &lt; 0.1, defined <a href="#measures">below</a>); because the two citation outcomes are nearly the same measure, these are 12 distinct associations. Their rank correlations lie between 0.18 and 0.57 in absolute value. Under a stricter correction that allows any dependence between tests, none passes. Advance is not measured yet.</li>
+<li><strong>For geoscientists.</strong> Papers whose coded workflow is longer and returns to earlier steps, and papers whose main claim rests on a simulation, are cited a little more (rank correlation about 0.2); about half of that goes with the journal they appear in. Papers whose main claim rests on a new method cite more work from outside geoscience.</li>
+<li><strong>For NLP researchers.</strong> The workflow features are structured extractions by one LLM (Claude Opus 5.5) under a written codebook. Outputs pass a format check; their run-to-run stability is measured, their accuracy is not (human coding has not started). Outcomes are bibliometric, from OpenAlex. The sample is stratified on one of the outcomes (citation percentile).</li>
 <li><strong>Scope.</strong> Results only; codings and papers stay in the lab’s private repository.</li>
 </ul>
-<section id="status-of-the-600-paper-plan" class="level2">
-<h2 class="anchored" data-anchor-id="status-of-the-600-paper-plan">Status of the 600-paper plan</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Stage</th>
-<th style="text-align: right;">Papers</th>
-<th style="text-align: left;">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Preselected from 14,223 candidate 2022 papers, stratified by impact, novelty, breadth</td>
-<td style="text-align: right;">600</td>
-<td style="text-align: left;">done</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Eligible after a double-blind abstract screen</td>
-<td style="text-align: right;">525</td>
-<td style="text-align: left;">done</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gold set (stratified draw)</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: left;">frozen</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Full text in hand and coded once</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: left;">done</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gold papers coded twice (model test-retest)</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: left;">done</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Open-review papers with review sequence coded</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: left;">done, see <a href="./review-visibility.html">review visibility</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gold papers assigned to human coders (four coders, two per paper)</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">packets ready, coding not started</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Eligible papers still without full text</td>
-<td style="text-align: right;">290</td>
-<td style="text-align: left;">blocked: Elsevier 70, Springer Nature 54, Wiley and AGU 82, SSA journals 44, GJI 28, others</td>
-</tr>
-</tbody>
-</table>
+<section id="measures" class="level2">
+<h2 class="anchored" data-anchor-id="measures">Measures</h2>
+<p>Terms used on this page, on <a href="./topics-journals.html">topics and journals</a> and on <a href="./review-visibility.html">what review changes</a>. The graph itself is on <a href="./unit.html">the unit of analysis</a>.</p>
+<p><strong>What is coded</strong></p>
 <ul>
-<li>The 233 coded papers lean toward open access (83% against 46% of the uncoded), and 33 come from one journal (The Cryosphere).</li>
+<li><strong>Node.</strong> One of 15 kinds of move on the graph of inquiry: N new capability (build or characterize an instrument or method), E explore (establish that a phenomenon is real), O observe, I infer a latent quantity through a forward model (an inverse problem), Q question, H hypothesize rivals, S simulate or derive expectations, D design the test, F find or set the conditions, C compare, V vary or replicate (sensitivity tests, comparisons with independent data or methods, controls, reruns), X exclude a rival, K keep the claim, P protect the claim by revising an auxiliary assumption, R refine.</li>
+<li><strong>Mode.</strong> One of 13 styles of inquiry that a step serves: observation, exploration, question, hypothesis (testing among rivals), theory (consequences from first principles), simulation (model forecasts or consequences), instruments (building or characterizing an apparatus), methods (a new inference or computational capability), synthesis (combining results across studies), reconstruction (a past event from its traces, as in paleoclimate or past earthquakes), robustness (varying conditions to see whether a result holds), estimation (a latent quantity with its uncertainty), regularities (an empirical relation with its range).</li>
+<li><strong>Walk.</strong> The coded sequence of steps in the published paper, each step a node with a mode.</li>
+<li><strong>Steps.</strong> Number of steps in the walk as coded; consecutive steps on the same node count separately (median 22; merging them gives a median of 20).</li>
+<li><strong>Revisits.</strong> Steps whose node already occurred earlier in the walk. A consecutive repeat counts, so revisits overlap with steps: 15% of revisits are consecutive repeats.</li>
+<li><strong>Decisive mode.</strong> The mode of the single step without which the paper’s main claim would not exist. “Decided by simulation” means that step is in the simulation mode.</li>
+<li><strong>Entry state.</strong> How the paper starts: an anomaly, an unsolved problem, a challenged result, a hypothesis, data without theory, a new capability, or an external goal.</li>
+<li><strong>Claim status.</strong> What the paper ends with: a confirmed claim, a regularity with its range, an estimate with resolution, a characterized capability, and so on.</li>
+<li><strong>Composition.</strong> The overall shape of the workflow. “Capability first”: the paper builds a new capability before it poses its question.</li>
+<li><strong>Borrowed from other fields.</strong> The number of concepts, methods, instruments or data from outside Earth science that the coder lists for the paper (codebook section 6). <strong>Fields borrowed from</strong>: the number of distinct source fields.</li>
+<li><strong>V status and kinds of V check.</strong> Each check the paper performs on its own result is coded by kind: reproduction (rerun on the same data), replication (new data), method (a second method), robustness (varied parameters or processing), control (a reference, a synthetic test, a null model), generalization (another region or context). V status is full when the paper performs at least one check other than a plain rerun, partial when its only checks are reruns, and none otherwise. The terms reproduction, replication and generalization follow NASEM <span class="citation" data-cites="nasem2019">(<a href="bibliography.html#ref-nasem2019" role="doc-biblioref">2019</a>)</span>; V status counts internal checks and does not mean the result was replicated by others. In round 1, 225 of 233 papers are full and 8 none; the most common kinds are control (203 papers), robustness (148), replication (119) and method (116).</li>
+<li><strong>Valid coding.</strong> The model’s output passes the format check of <code>tools/check_coding.py</code>: required fields, allowed values, steps numbered in order, quotes of 25 words or fewer. The check says nothing about whether the coding is right. Every n on these pages counts valid codings.</li>
+</ul>
+<p><strong>Outcomes</strong></p>
+<ul>
+<li><strong>cnp (impact).</strong> OpenAlex citation-normalized percentile: the paper’s citation count as a percentile among works of the same OpenAlex subfield, publication year and type, 0 to 1, about four years after publication. The reference set follows the OpenAlex subfield label, so a seismology paper that OpenAlex files under Artificial Intelligence is ranked against AI works (<a href="./topics-journals.html">topics and journals</a>). Round 1 was drawn with equal numbers per cnp quintile, so the sample median (0.55) is below the pool median (0.75). 233 papers.</li>
+<li><strong>FWCI (impact).</strong> Field-weighted citation impact: citations divided by the mean for works of the same subfield, year and type (1 is the world average). Citations are right-skewed, so the median paper sits below 1. 233 papers, median 0.48. cnp and FWCI correlate at 0.99.</li>
+<li><strong>novelty_pair (novelty).</strong> −log10(1 + number of 2017 to 2021 works whose two leading OpenAlex topics are the same pair as the paper’s). Higher means a rarer pair. Median −3.8, which means about 6,300 earlier works share the pair; the most common pair has about 46,000. With about 4,500 OpenAlex topics, a pair of topics is a coarse unit.</li>
+<li><strong>breadth_refs (breadth).</strong> Share of the paper’s classified references (those with an OpenAlex topic) that lie outside geoscience. Geoscience is the OpenAlex fields Earth and Planetary Sciences and Environmental Science, plus topics filed elsewhere that a manual audit marked as geoscience (seismology, paleomagnetism, seismic instrumentation, among others). 233 papers, median 0.03.</li>
+<li><strong>breadth_citers (breadth).</strong> The same share for citing works, papers with at least 10 citers after removing self-citations. 53 papers, median 0.00.</li>
+<li><strong>Advance.</strong> Blind human rating of the paper’s contribution. Pending.</li>
+</ul>
+<p><strong>Statistics</strong></p>
+<ul>
+<li><strong>Spearman rho.</strong> Rank correlation between a feature and an outcome, −1 to 1; binary features scored 0/1.</li>
+<li><strong>Bootstrap interval.</strong> 2.5 and 97.5 percentiles of rho over 2000 resamples of papers. At 233 papers its half-width is about ±0.13 (median over the 196 tests that use all 233 papers; range 0.10 to 0.15).</li>
+<li><strong>Permutation p.</strong> Share of 5000 shuffles of the outcome giving a correlation at least as large in absolute value. The smallest attainable p is 1/5001.</li>
+<li><strong>BH q.</strong> Benjamini-Hochberg adjusted p <span class="citation" data-cites="benjamini1995">(<a href="bibliography.html#ref-benjamini1995" role="doc-biblioref">Benjamini and Hochberg 1995</a>)</span>; q &lt; 0.1 means at most about 10% of the findings below the threshold are expected to be false. It holds when tests are independent or positively dependent, which is the expected case here. Families: the 245 tests on this page; on <a href="./topics-journals.html">topics and journals</a>, 16 coverage tests, 104 workflow tests, 16 outcome tests and 45 stratified tests, each adjusted separately.</li>
+<li><strong>Benjamini-Yekutieli q.</strong> The same adjustment made valid under any dependence, by multiplying BH q by 6.08 for 245 tests. Used as a sensitivity check.</li>
+<li><strong>Partial rho.</strong> Feature and outcome ranks each regressed on the rank of reference count; the correlation of the residuals.</li>
+<li><strong>Run-to-run consistency (test-retest).</strong> The same model codes the same paper twice, independently. It measures stability, not accuracy. It does not cap or estimate agreement with human coders, and errors the model repeats on every run do not show.</li>
+<li><strong>Node-set overlap.</strong> Jaccard index of the sets of nodes in two codings of one paper: shared nodes over nodes in either.</li>
+<li><strong>Krippendorff’s alpha.</strong> Agreement between two codings corrected for chance <span class="citation" data-cites="krippendorff2019">(<a href="bibliography.html#ref-krippendorff2019" role="doc-biblioref">Krippendorff 2019</a>)</span>; 1 is perfect, 0 is chance; 0.667 and 0.8 are the usual thresholds for tentative and firm conclusions. When nearly all papers fall in one class, alpha rests on one or two papers and says little.</li>
+<li><strong>Cliff’s delta.</strong> Probability that a coded paper scores higher than an uncoded one minus the reverse, −1 to 1 <span class="citation" data-cites="cliff1993">(<a href="bibliography.html#ref-cliff1993" role="doc-biblioref">Cliff 1993</a>)</span>.</li>
+<li><strong>Wilson interval.</strong> A binomial confidence interval that stays inside 0 to 1 for small counts <span class="citation" data-cites="wilson1927">(<a href="bibliography.html#ref-wilson1927" role="doc-biblioref">Wilson 1927</a>)</span>.</li>
 </ul>
 </section>
-<section id="outcome-measures" class="level2">
-<h2 class="anchored" data-anchor-id="outcome-measures">Outcome measures</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dimension</th>
-<th style="text-align: left;">Measure</th>
-<th style="text-align: right;">Papers</th>
-<th style="text-align: right;">Median</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Impact</td>
-<td style="text-align: left;">OpenAlex citation percentile, about four years after publication</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: right;">0.55</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Impact</td>
-<td style="text-align: left;">Field-weighted citation impact</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: right;">0.48</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Novelty</td>
-<td style="text-align: left;">Rarity of the paper’s two leading topics appearing together, 2017 to 2021</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: right;">−3.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Breadth</td>
-<td style="text-align: left;">Share of references outside geoscience</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: right;">0.03</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Breadth</td>
-<td style="text-align: left;">Share of citers outside geoscience, papers with at least 10 citers</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Advance</td>
-<td style="text-align: left;">Blind human rating</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">pending</td>
-</tr>
-</tbody>
-</table>
+<section id="annotation-setup" class="level2">
+<h2 class="anchored" data-anchor-id="annotation-setup">Annotation setup</h2>
 <ul>
-<li>The outcome measures are nearly independent of each other (rank correlations between impact, novelty and breadth from −0.12 to 0.10), except the two breadth measures (0.30). They measure different things.</li>
+<li><strong>Coder.</strong> <code>claude-opus-5-5</code> through Anthropic’s asynchronous batch mode (half price), effort setting high, maximum 32,000 output tokens (64,000 for a retry after hitting the limit; no round-1 request needed it), no temperature set (API default), no thinking parameter set. One fixed instruction set: codebook 1.5.0 (public commit 01b7f78) and its JSON schema, 29,568 characters, sha256 <code>9e8d9aad…dfc462</code>. The paper goes in as PDF, plus publisher XML text where it existed at submission (116 of the 233 valid codings; 117 were coded from the PDF alone).</li>
+<li><strong>Other model steps.</strong> The abstract screen used two model calls per abstract that did not see each other’s answer and a third on disagreements (model id not recorded). The agent-loop comparison used a Claude Opus run and a Claude Sonnet run. Every step uses Claude models; no model from another family has been run.</li>
+<li><strong>Dates.</strong> Round 1 coded October 25 to 26, 2026; retries October 26.</li>
 </ul>
 </section>
-<section id="associations-that-pass-the-threshold" class="level2">
-<h2 class="anchored" data-anchor-id="associations-that-pass-the-threshold">Associations that pass the threshold</h2>
-<p>Spearman rank correlation, 95% bootstrap interval over papers, permutation p, Benjamini-Hochberg q over all 245 tests.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Workflow feature</th>
-<th style="text-align: left;">Outcome</th>
-<th style="text-align: left;">rho [95% CI]</th>
-<th style="text-align: right;">q</th>
-<th style="text-align: right;">Papers with feature</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Imports from other fields (count)</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">0.57 [0.46, 0.66]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Fields imported from (count)</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">0.51 [0.41, 0.61]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Decisive mode: methods</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">0.22 [0.09, 0.36]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">29%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Composition: capability first</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">0.22 [0.08, 0.35]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">13%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kinds of vary-and-replicate check</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">0.20 [0.08, 0.33]</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Distinct modes used</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">−0.22 [−0.34, −0.10]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Uses the synthesis mode</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">−0.22 [−0.35, −0.09]</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">70%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Uses node I (infer a latent quantity)</td>
-<td style="text-align: left;">Breadth of references</td>
-<td style="text-align: left;">−0.18 [−0.31, −0.05]</td>
-<td style="text-align: right;">0.09</td>
-<td style="text-align: right;">82%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Steps in the walk</td>
-<td style="text-align: left;">Impact (FWCI)</td>
-<td style="text-align: left;">0.23 [0.11, 0.35]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Steps in the walk</td>
-<td style="text-align: left;">Impact (percentile)</td>
-<td style="text-align: left;">0.23 [0.09, 0.35]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Revisits to an earlier node</td>
-<td style="text-align: left;">Impact (FWCI)</td>
-<td style="text-align: left;">0.22 [0.08, 0.34]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Revisits to an earlier node</td>
-<td style="text-align: left;">Impact (percentile)</td>
-<td style="text-align: left;">0.21 [0.09, 0.34]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">numeric</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Decisive mode: simulation</td>
-<td style="text-align: left;">Impact (FWCI)</td>
-<td style="text-align: left;">0.21 [0.08, 0.33]</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">11%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Decisive mode: simulation</td>
-<td style="text-align: left;">Impact (percentile)</td>
-<td style="text-align: left;">0.20 [0.07, 0.32]</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">11%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Uses the observation mode</td>
-<td style="text-align: left;">Novelty</td>
-<td style="text-align: left;">0.21 [0.08, 0.33]</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">78%</td>
-</tr>
-</tbody>
-</table>
+<section id="corpus" class="level2">
+<h2 class="anchored" data-anchor-id="corpus">Corpus</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig01_corpus.png" class="img-fluid figure-img" alt="Horizontal bars: round 1, 600 preselected, 525 eligible, 379 full text, 379 submitted, 233 coded; round 2, 277 drawn, 222 eligible, 202 full text, 202 submitted, coding not returned."></p>
+<figcaption>Corpus construction: papers at each stage in rounds 1 and 2 (a) and reasons for exclusion at the abstract screen (b).</figcaption>
+</figure>
+</div>
 <ul>
-<li><strong>Paper length check.</strong> Longer papers have more steps and more citations. Controlling for reference count, the impact correlations drop but stay positive: steps 0.17, revisits 0.15, decisive simulation 0.19.</li>
-<li><strong>Partly circular.</strong> Imports from other fields and references outside geoscience measure overlapping things; the 0.57 says the coder’s import list tracks the reference list, more than it says anything about outcomes.</li>
-<li><strong>Breadth of citers</strong> (53 papers): no association passes the threshold. The largest is the claim gate (exposing the claim to a test it could have failed), 0.37 [0.11, 0.59], q = 0.11.</li>
+<li><strong>Pool.</strong> 14,223 articles from 2022 in OpenAlex (the open bibliographic index that supplies journals, citations and topic labels), restricted four ways: 16 topics and subfields chosen around the convenor’s (the study’s principal investigator’s) work; publishers with a full-text route (Elsevier, Wiley and AGU, Springer Nature, Copernicus, Science Advances, Seismica, Geophysical Journal International, Seismological Society of America journals); at least 15 references; an Earth-science or multidisciplinary venue. MDPI, Frontiers, Taylor &amp; Francis and others are not in the pool. The results describe this pool, not 2022 Earth science as a whole.</li>
+<li><strong>Rings.</strong> The core ring is the convenor’s own 8 OpenAlex topics (seismology, seismic waves and imaging, earthquakes and tectonics, seismic sensors, cryosphere, high-pressure geophysics); the broad ring is 8 Earth-science subfields. The core ring is 19% of the pool and half of round 1.</li>
+<li><strong>Round 1 preselection.</strong> 600 papers, half per ring, equal numbers per cnp quintile, subfields taken in turn. Eligibility: an abstract screen by model calls (no human audit), 525 eligible.</li>
+<li><strong>Gold set.</strong> A frozen sample of 100 of the 525 eligible papers, stratified by ring and by terciles of impact, novelty and breadth. “Gold” names the sample, not its labels: no human labels exist yet. 51 of the 100 had full text at the first coding and were coded a second time; 50 pairs pass the format check. 40 are assigned to four human coders, two per paper; 0 of 40 coded.</li>
+<li><strong>Waiting for coding, round 1.</strong> 146 papers with full text and no valid coding: 144 fetched after the first batch and 2 whose coding failed the format check. All 146 were sent in a batch on October 27 that has not returned. 82 are AGU papers and 63 Elsevier.</li>
+<li><strong>Waiting for coding, round 2.</strong> Two batches (154 and 48 papers) submitted, not returned.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig02_fulltext.png" class="img-fluid figure-img" alt="Stacked bars by publisher: Copernicus, Nature Portfolio and AGU fully retrieved; SSA journals, GJI and Springer translation journals mostly without full text."></p>
+<figcaption>Full-text access by publisher for eligible papers, round 1 (a, b) and round 2 (c, d): PDF, publisher XML, or neither, and the open-access share.</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Still without a PDF, round 1.</strong> A separate 146 of 525 eligible papers (2 of them have publisher XML): mostly Seismological Society of America journals (44), Pleiades and Allerton English translations of Russian-language journals, distributed by Springer (54; paywalled, no text-and-data-mining route), Geophysical Journal International (28) and other Springer Nature journals (12).</li>
+<li><strong>Who is coded.</strong> The 233 coded papers lean toward open access (83% against 46% of the uncoded), and 33 come from one journal (The Cryosphere). On citation percentile, topic-pair rarity and breadth of references they do not differ clearly from the uncoded papers.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig09_sample.png" class="img-fluid figure-img" alt="Box plots by stage; open access is the only measure where coded and uncoded papers differ, Cliff's delta about 0.37."></p>
+<figcaption>Who is in the sample: citation percentile (a), topic-pair rarity (b), references outside geoscience (c) and open-access share (d) at each stage, and the coded-minus-uncoded difference as Cliff’s delta (e). Points are papers, without identifiers.</figcaption>
+</figure>
+</div>
+</section>
+<section id="run-to-run-consistency-of-the-model-coder" class="level2">
+<h2 class="anchored" data-anchor-id="run-to-run-consistency-of-the-model-coder">Run-to-run consistency of the model coder</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig03_reliability.png" class="img-fluid figure-img" alt="Dot plots: entry state, outcome and decisive mode match in most papers; node-set overlap 0.86; Krippendorff's alpha 0.6 to 1 across variables."></p>
+<figcaption>The same model coding the same 50 papers twice (a, d) and the input-format test on 6 papers (b, c).</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Same model, same paper, two runs (50 papers).</strong> Node-set overlap 0.86; decisive mode matches in 86% of papers; Krippendorff’s alpha 0.74 for node presence and 0.60 to 0.83 for entry state, claim status, decisive mode and composition. Outcome and V status: both runs agree on all 50 papers, but 49 of 50 fall in one class, so alpha (1.0 as a point estimate, undefined in a third of bootstrap resamples) says little.</li>
+<li><strong>The features behind the associations.</strong> Counts, rank correlation between the two runs: steps 0.76, revisits 0.76, distinct modes 0.83, kinds of V check 0.85, borrowed from other fields 0.87, fields borrowed from 0.81. Binary features, alpha: decisive methods 1.0, decisive simulation 0.74, uses observation mode 0.73, uses node I 0.74, uses synthesis mode 0.65, capability-first composition 0.63. The last two are below the 0.667 threshold.</li>
+<li><strong>Format test (6 papers, earlier codebook 1.4.0, two pipelines).</strong> Not comparable with the panel above; shown for the input-format question only.</li>
+<li><strong>Human check.</strong> None yet. This is the main gap.</li>
+</ul>
+</section>
+<section id="associations" class="level2">
+<h2 class="anchored" data-anchor-id="associations">Associations</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/roadmap/fig08_outcomes.png" class="img-fluid figure-img" alt="Heat map of feature-outcome correlations with 15 outlined cells; interval plot of the 15, all between 0.18 and 0.57 in absolute value; outcomes nearly independent except citation percentile and FWCI."></p>
+<figcaption>Spearman correlation of 49 workflow features with five outcomes (a), the 15 tests with q &lt; 0.1 and their 95% bootstrap intervals (b), and correlations among the outcomes (c).</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Impact.</strong> Steps, revisits, and a decisive simulation step each correlate about 0.2 with cnp and with FWCI. Revisits counted without consecutive repeats give slightly higher values (0.23 with cnp, 0.24 with FWCI; a sensitivity check outside the 245 tests).</li>
+<li><strong>Breadth of references.</strong> A decisive method, a capability-first composition (below the reliability threshold, see above) and more kinds of V check correlate positively (about 0.2). More distinct modes, using the synthesis mode (below threshold) and using node I correlate negatively (about −0.2).</li>
+<li><strong>Novelty.</strong> Only the observation mode passes the threshold (0.21).</li>
+<li><strong>Breadth of citers</strong> (53 papers): no association passes the threshold.</li>
+<li><strong>Outcomes are nearly independent</strong> of each other (rank correlations from −0.12 to 0.10 between impact, novelty and breadth), except cnp with FWCI (0.99) and the two breadth measures (0.30).</li>
+<li><strong>Paper length check.</strong> Longer papers have more steps and more citations. Controlling for reference count, the impact correlations drop but stay positive: steps 0.17, revisits 0.15, decisive simulation 0.19 (with cnp).</li>
+<li><strong>A check of the coder, not an outcome result.</strong> The count of items borrowed from other fields (0.57 with breadth_refs) and the number of fields borrowed from (0.51) measure the same thing as breadth_refs: one from the text, as the coder reads it, one from the reference list. Their agreement is a convergent validity check of the coder, not a finding about workflows and outcomes.</li>
+<li><strong>Stricter correction.</strong> Under Benjamini-Yekutieli none of the 245 tests passes (smallest q 0.15), partly because 5000 permutations cannot give p below 0.0002.</li>
+<li><strong>Field and venue.</strong> All 15 keep their sign and q &lt; 0.1 within subfield and within journal family; within subfield × family, 12 of 15 do. Counting only associations whose bootstrap interval excludes 0, the numbers are 14, 12 and 8 of 15. The impact correlations of steps and revisits roughly halve within journal family (steps with cnp: 0.23 to 0.12). Details on <a href="./topics-journals.html">topics and journals</a>.</li>
 </ul>
 </section>
 <section id="reading-the-result" class="level2">
 <h2 class="anchored" data-anchor-id="reading-the-result">Reading the result</h2>
 <ul>
-<li>Work that loops back more and is decided by simulation is cited somewhat more; work decided by a method, or that starts from a new capability, draws more on other fields; work that combines many modes or synthesizes draws less on other fields.</li>
-<li>None of this is causal. Journal, field, open access, team size and topic all differ between papers and are not controlled here.</li>
-<li>Novelty as measured (a rare topic pair) barely relates to any workflow feature. Either the proxy is weak or novelty does not show in the workflow; the human ratings will tell which.</li>
+<li><strong>For geoscientists.</strong> Work that loops back more and is decided by simulation is cited a little more; about half of that goes with the journal. Work decided by a new method, or that starts from a new capability, cites more outside geoscience; work that combines many modes or synthesizes across studies cites less.</li>
+<li><strong>For NLP researchers.</strong> Of 245 tests, 15 pass q &lt; 0.1. The two largest (0.57, 0.51) partly restate the reference list; the rest lie between 0.18 and 0.25 in absolute value. With an interval of about ±0.13 on each rho, these can be detected but not ranked against one another. The sample was drawn with equal numbers per cnp quintile, so correlations with cnp describe this design, not the 2022 population; no inverse-probability weighting has been applied.</li>
+<li>None of this is causal. Open access, team size and topic differ between papers and are not controlled here; field and venue are checked on <a href="./topics-journals.html">topics and journals</a>.</li>
+<li>Novelty as measured (a rare topic pair) barely relates to any workflow feature. Either the proxy is weak or novelty does not show in the workflow; the blind human ratings should help separate the two.</li>
 </ul>
 </section>
 <section id="limits" class="level2">
 <h2 class="anchored" data-anchor-id="limits">Limits</h2>
 <ul>
-<li>One model coder (Claude Opus 5.5); test-retest node overlap 0.86 on 50 papers; no human check yet.</li>
-<li>233 of 525 eligible papers, open-access-leaning; 2022 papers, citations at about four years.</li>
-<li>Proxies: novelty and breadth are bibliometric stand-ins; advance is missing.</li>
-<li>245 tests: some of the 15 will be false positives (by construction about 1 to 2 at q &lt; 0.1).</li>
+<li>One model coder (Claude Opus 5.5) and Claude models at every other step; run-to-run node overlap 0.86 on 50 papers; no human check and no cross-model check yet. A run of an open-weight model (one whose weights are public and can be served locally) through <code>tools/code_papers_open.py</code> on the same 50 papers is prepared but not run.</li>
+<li>Possible contamination: the papers are from 2022 and the model’s knowledge cutoff is June 2026, so the papers and their reception are probably in its training data. The coder may draw on memory as well as on the text. Not tested; a probe would code from title and DOI alone and compare.</li>
+<li>233 of 525 eligible round-1 papers, open-access-leaning; citations at about four years. Round 2 not yet coded.</li>
+<li>Proxies: novelty and breadth are bibliometric stand-ins, not normalized by subfield; advance is missing.</li>
+<li>245 tests: by construction about 1 to 2 of the 15 will be false positives at q &lt; 0.1.</li>
 </ul>
 </section>
 <section id="reproduce" class="level2">
 <h2 class="anchored" data-anchor-id="reproduce">Reproduce</h2>
 <ul>
-<li><code>tools/roadmap/g17_outcomes.py</code> (this repository); inputs are the private codings and <code>derived/gold/metrics.json</code>.</li>
+<li><code>tools/roadmap/g17_outcomes.py</code> (this repository); inputs are the private codings and <code>derived/gold/metrics.json</code>. Reported numbers, including the run-to-run consistency of each feature, the sensitivity checks and the backlog counts: <code>tools/roadmap/g19_report_numbers.py</code>. Figures: <code>tools/roadmap/figures/</code> (fig01, fig02, fig03, fig08, fig09).</li>
 </ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-benjamini1995" class="csl-entry" role="listitem">
+Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“<span class="nocase">Controlling the false discovery rate: A practical and powerful approach to multiple testing</span>.”</span> <em>Journal of the Royal Statistical Society: Series B (Methodological)</em> 57 (1): 289–300. <a href="https://doi.org/10.1111/j.2517-6161.1995.tb02031.x">https://doi.org/10.1111/j.2517-6161.1995.tb02031.x</a>.
+</div>
+<div id="ref-cliff1993" class="csl-entry" role="listitem">
+Cliff, Norman. 1993. <span>“<span class="nocase">Dominance statistics: Ordinal analyses to answer ordinal questions</span>.”</span> <em>Psychological Bulletin</em> 114 (3): 494–509. <a href="https://doi.org/10.1037/0033-2909.114.3.494">https://doi.org/10.1037/0033-2909.114.3.494</a>.
+</div>
+<div id="ref-krippendorff2019" class="csl-entry" role="listitem">
+Krippendorff, Klaus. 2019. <em><span class="nocase">Content analysis: An introduction to its methodology</span></em>. 4th ed. SAGE Publications. <a href="https://doi.org/10.4135/9781071878781">https://doi.org/10.4135/9781071878781</a>.
+</div>
+<div id="ref-nasem2019" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, and Medicine. 2019. <em><span class="nocase">Reproducibility and Replicability in Science</span></em>. National Academies Press. <a href="https://doi.org/10.17226/25303">https://doi.org/10.17226/25303</a>.
+</div>
+<div id="ref-wilson1927" class="csl-entry" role="listitem">
+Wilson, Edwin B. 1927. <span>“<span class="nocase">Probable inference, the law of succession, and statistical inference</span>.”</span> <em>Journal of the American Statistical Association</em> 22 (158): 209–12. <a href="https://doi.org/10.1080/01621459.1927.10502953">https://doi.org/10.1080/01621459.1927.10502953</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1071,8 +986,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./rubrics.html" class="pagination-link" aria-label="Scientific advance: records and evaluation">
-        <span class="nav-page-text">Scientific advance: records and evaluation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./topics-journals.html" class="pagination-link" aria-label="Topics and journals">
+        <span class="nav-page-text">Topics and journals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
