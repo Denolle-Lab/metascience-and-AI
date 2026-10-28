@@ -18,8 +18,8 @@ Restartable: all state lives in private/analysis/codings/api/state.json. Typical
   schema; always stored as review_status "pending" for human review; tag gets a "-readiness" suffix).
   Add --task advance to submit/collect/retry/one for the blind advance coding (agents/advance/RUBRIC.md and
   advance.schema.json, validator tools/check_advance.py; tag gets an "-advance" suffix). The model reads only the
-  blinded text of tools/blind_text.py (no PDF, so no journal page images), with structured outputs
-  (output_config.format, the schema from advance_api_schema()), effort ADVANCE_EFFORT ('medium' unless --effort is
+  blinded text of tools/blind_text.py (no PDF, so no journal page images), without structured outputs (see ADVANCE_STRUCTURED;
+  advance_api_schema() keeps the cleaned schema for a later try), effort ADVANCE_EFFORT ('medium' unless --effort is
   given) and max_tokens ADVANCE_MAX_TOKENS (26,000: pilot 1's 99th percentile of output tokens, 23,619, plus 10%,
   rounded up to 1,000). The request names the paper by an opaque key (P + the first 10
   characters of the blinded text's sha256), never the OpenAlex work id; write_coding maps it back. The answer is
@@ -121,7 +121,16 @@ def advance_api_schema() -> dict:
     return clean(json.loads((ADVANCE_DIR / 'advance.schema.json').read_text()))
 
 
+# Structured outputs are off: the API refuses the full advance schema ("The compiled grammar is too large"), measured
+# October 28 on the v1.1.0 schema; every top-level field compiles alone, the whole does not, with or without enums.
+# The cancelled batch msgbatch_013KSjrU1QGFvNRr52r5HtdU (tag pilot2-a-advance) was the only one sent with it. Codings are
+# parsed from text and checked by tools/check_advance.py, whose normalizer rescued 18 of the 20 invalid pilot-1 codings.
+ADVANCE_STRUCTURED = False
+
+
 def advance_output_config(effort: str) -> dict:
+    if not ADVANCE_STRUCTURED:
+        return {'effort': effort}
     return {'effort': effort, 'format': {'type': 'json_schema', 'schema': advance_api_schema()}}
 
 
@@ -403,10 +412,12 @@ def prewarm(client, effort: str) -> None:
 
     Batch requests run in parallel, so without this many of them miss the cache and each writes the same prefix
     (calc1, Oct 25: 102 of 233 papers read it). The pre-warm uses the batch's model, system and effort, and
-    max_tokens 0, so it bills one cache write and no output. Only the prefix is shared; the paper itself is never cached.
+    max_tokens 0, so it bills one cache write and no output. Advance requests carry a structured-output format, which the
+    API refuses with max_tokens 0, so their pre-warm asks for 1 output token. Only the prefix is shared; the paper itself
+    is never cached.
     """
     try:
-        r = client.messages.create(model=MODEL, max_tokens=0, system=system_blocks(),
+        r = client.messages.create(model=MODEL, max_tokens=1 if TASK == 'advance' and ADVANCE_STRUCTURED else 0, system=system_blocks(),
                                    output_config=advance_output_config(effort) if TASK == 'advance' else {'effort': effort},
                                    messages=[{'role': 'user', 'content': 'Cache pre-warm.'}])
         print(f'pre-warm: {r.usage.cache_creation_input_tokens} tokens written, {r.usage.cache_read_input_tokens} read')
