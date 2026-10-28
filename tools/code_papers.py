@@ -24,7 +24,7 @@ Requires `pip install anthropic` and credentials (ANTHROPIC_API_KEY or `ant auth
 Every submit spends money. Check the licence of each PDF before sending it to a model API.
 """
 from __future__ import annotations
-import argparse, hashlib, json, os, sys, time
+import argparse, fcntl, hashlib, json, os, sys, time
 from pathlib import Path
 
 import anthropic
@@ -110,8 +110,25 @@ def load_state() -> dict:
 
 
 def save_state(st: dict) -> None:
+    """Merge this run's state into the file under an exclusive lock, so two runs (e.g. collectors for two tags) cannot
+    overwrite each other's records: files, done and failed are unions with this run winning on shared keys, a key done
+    in either copy leaves failed, and batches merge by id with 'collected' true if either copy has it."""
     BASE.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps(st, indent=1))
+    with open(STATE.with_suffix('.lock'), 'w') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        disk = load_state()
+        for part in ('files', 'done', 'failed'):
+            disk[part] = {**disk.get(part, {}), **st.get(part, {})}
+        for k in disk['done']:
+            disk['failed'].pop(k, None)
+        byid = {b['id']: b for b in disk.get('batches', [])}
+        for b in st.get('batches', []):
+            byid[b['id']] = {**byid.get(b['id'], {}), **b, 'collected': bool(b.get('collected') or byid.get(b['id'], {}).get('collected'))}
+        disk['batches'] = list(byid.values())
+        tmp = STATE.with_suffix('.tmp')
+        tmp.write_text(json.dumps(disk, indent=1))
+        tmp.replace(STATE)
+        st.update(disk)
 
 
 def candidates(args) -> dict:
