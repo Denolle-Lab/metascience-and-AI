@@ -19,7 +19,7 @@ normalize()  applied by code_papers.write_advance before validation, each change
   extra       a property the schema does not define: dropped when empty, else moved to `notes` (pilot 1: 8 codings
               failed on an empty precedent_search.*_note)
   enum        a near-miss enum value (case, spaces or hyphens) set to the enum value
-  basis       verdict_basis set to the first gain meeting every criterion (achieved), G1 (not_demonstrated) or none
+  basis       verdict_basis set to a gain meeting every criterion when it names one that does not (achieved; the model's choice among such gains is kept), G1 (not_demonstrated) or none
               (unassessable); the verdict itself is never changed
 Checks
   schema     JSON Schema draft 2020-12 (jsonschema); maxItems, minItems (except candidate_gains) and the id patterns
@@ -359,7 +359,9 @@ def normalize(d: dict) -> tuple[dict, list[dict]]:
         else:                                                                   # v1.0.1: one string
             d['notes'] = ((d.get('notes') or '') + ' ' + ' '.join(f'[{p}] {v}' for p, v in notes)).strip()
     v, ids = d.get('verdict'), [g.get('id') for g in d.get('candidate_gains') or [] if isinstance(g, dict)]
-    want = {'achieved': (full_gains(d) or [None])[0], 'not_demonstrated': 'G1', 'unassessable': 'none'}.get(v)
+    full = full_gains(d)
+    want = {'achieved': d.get('verdict_basis') if d.get('verdict_basis') in full else (full or [None])[0],
+            'not_demonstrated': 'G1', 'unassessable': 'none'}.get(v)
     if want and d.get('verdict_basis') != want and (want == 'none' or want in ids):
         out.append({'rule': 'basis', 'path': 'verdict_basis', 'from': d.get('verdict_basis'), 'to': want})
         d['verdict_basis'] = want
@@ -553,8 +555,8 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
             errs.append(f'verdict achieved with unassessable_condition {cond}')
         if not full:
             errs.append('verdict achieved but no candidate gain meets every criterion')
-        elif basis != full[0]:
-            warns.append(f'verdict_basis {basis} is not the first gain meeting every criterion ({full[0]})')
+        elif basis not in full:
+            warns.append(f'verdict_basis {basis} is not a gain meeting every criterion ({", ".join(full)})')
         if score is None or not 2 <= score <= 5:
             errs.append(f'verdict achieved needs advance_score 2 to 5, not {score}')
         if basis in ids and basis_gain(d)['evidence_access'] == 'figure_or_supplement_only':
