@@ -1,6 +1,6 @@
 {
  "version": "1.5.0",
- "note": "Short definitions of every coded category, read by the gold-set coder app and mirrored in CODEBOOK.md section 8. Sources in brackets; 'working definition' marks the seminar's own wording.",
+ "note": "Short definitions of every coded category, read by the gold-set coder app and mirrored in CODEBOOK.md section 8. Sources in brackets; 'working definition' marks the seminar's own wording. Terms verdict_*, unassessable_* and crit_* (and rating_notes) belong to the human ratings v1.1.0 (agents/coder/ratings.schema.json) and are taken from agents/advance/RUBRIC.md v1.0.1, sections 4 to 7; CODEBOOK.md does not mirror them.",
  "terms": {
   "anomaly": {
    "label": "anomaly",
@@ -189,6 +189,62 @@
   "v_generalization": {
    "label": "generalization",
    "def": "The result tested in another region, context, population, or task; V full [NASEM 2019]."
+  },
+  "verdict_achieved": {
+   "label": "achieved",
+   "def": "No unassessable condition holds and at least one gain meets every criterion: M1, M2, W1, W2, W3 and W4 (W3 may be not applicable). The gain you rate is the first such gain, starting with the headline claim. Advance score 2 to 5 [advance rubric 1.0.1, section 6]."
+  },
+  "verdict_not_demonstrated": {
+   "label": "not demonstrated",
+   "def": "No unassessable condition holds and every gain in the paper has at least one criterion not met. The gain you rate is the headline gain. Advance score 1. A highly novel claim that is not warranted is not demonstrated; a modest but warranted correction is achieved [advance rubric 1.0.1, section 6]."
+  },
+  "verdict_unassessable": {
+   "label": "unassessable",
+   "def": "One of the conditions U1 to U5 holds; name it. No advance score. Unassessable is not a hedge for a hard case: if you can judge, judge, and lower the confidence [advance rubric 1.0.1, section 6]."
+  },
+  "unassessable_U1": {
+   "label": "U1 incomplete text",
+   "def": "The text is incomplete: only an abstract, missing pages or sections, or unreadable extraction where the results should be [advance rubric 1.0.1, section 6]."
+  },
+  "unassessable_U2": {
+   "label": "U2 result not in text",
+   "def": "The result every headline component rests on is stated nowhere in the text or captions, only by reference ('see Fig. 4', 'Supplementary Table 2') with no number or direction. A result stated in the text with a pointer to a figure or supplement is evidence: judge it and lower the confidence [advance rubric 1.0.1, section 6]."
+  },
+  "unassessable_U3": {
+   "label": "U3 starting state unknown",
+   "def": "The starting state cannot be established from the paper and your knowledge, so M1 cannot be judged [advance rubric 1.0.1, section 6]."
+  },
+  "unassessable_U4": {
+   "label": "U4 not eligible",
+   "def": "Not a primary Earth-science research article (your eligibility answer is no). A screen failure, reported outside the success fraction [advance rubric 1.0.1, section 6]."
+  },
+  "unassessable_U5": {
+   "label": "U5 other",
+   "def": "Other: name exactly what is missing in the verdict reasons. Use sparingly [advance rubric 1.0.1, section 6]."
+  },
+  "crit_M1": {
+   "label": "M1 beyond the starting state",
+   "def": "The gain changes the epistemic state: new content, or a change in the confidence, scope or standing of a known result (a replication of a contested result, a correction). Not met by a restatement of a known result, a result already established by observation, or a prediction already validated at the same place and scale. A first observational confirmation of a theoretical expectation meets M1. Not met when the gap the paper claims is not real (the cited prior work or your knowledge already covers it). When an exact precedent exists, M1 is normally not met unless the gain is a replication or a correction [advance rubric 1.0.1, section 4]."
+  },
+  "crit_M2": {
+   "label": "M2 meaningful for its gain type",
+   "def": "Knowledge (a fact, measurement, estimate or observation): changes a specific prior assertion or covers new ground, by a place, period, variable or resolution not previously observed (checked against the cited literature, not the paper's gap statement); a reduced uncertainty stated in magnitude, or an estimate differing from a cited prior value beyond the stated uncertainty; the detection or ruling out of a change or trend; or a constrained parameter or resolved discrepancy. Understanding (a mechanism or explanation): accounts for observations previously unexplained or explained differently, or discriminates between rivals, by a formal test, named alternatives each excluded by a named observation, two or more independent lines of evidence that agree, or a feasibility result under stated, realistic conditions; a story fitted after the fact does not meet M2. Capability (a method, data set, instrument, code or standard): demonstrated on at least one case against an existing alternative, a benchmark, synthetic truth or independent observations, with a reported comparison result showing the improvement; a data set meets M2 by documented coverage or quality beyond what existed. Projections, hazard and scenarios are knowledge conditional on stated inputs. A correction, a replication or a negative result can meet M2 [advance rubric 1.0.1, section 4]."
+  },
+  "crit_W1": {
+   "label": "W1 follows from the evidence",
+   "def": "The gain follows from data and analysis presented in this paper, not from assertion. A result the paper takes from a cited source is a dependency, not warrant for this paper's gain [advance rubric 1.0.1, section 5]."
+  },
+  "crit_W2": {
+   "label": "W2 uncertainty",
+   "def": "Uncertainty is stated or bounded, or the gain is large compared with plausible error. A qualitative statement counts when the paper names the alternative interpretations it cannot exclude. For projections and hazard: stated epistemic and aleatory uncertainty (logic tree, ensemble) [advance rubric 1.0.1, section 5]."
+  },
+  "crit_W3": {
+   "label": "W3 principal threat checked",
+   "def": "Name the most plausible alternative explanation or artifact for the gain first. Met when at least one reported check addresses that threat; checks of other things do not meet W3. Not applicable only for a data set release whose quality control is documented under W1 and W2. For projections and hazard: sensitivity to the dominant inputs, or retrospective or pseudo-prospective testing [advance rubric 1.0.1, section 5]."
+  },
+  "crit_W4": {
+   "label": "W4 internal consistency",
+   "def": "No unresolved contradiction among the paper's own results, captions and claims bears on the gain [advance rubric 1.0.1, section 5]."
   }
  },
  "hard_cases": [
@@ -198,5 +254,17 @@
   "A check reported only in the Methods or supplement goes right after the main-text step it supports, and its location says where it is.",
   "Repeat means the same node as the step just before. Return after failure means the paper says an earlier attempt failed or was revised. Inherited is the authors' own earlier work, cited; cited is another group's result, used. In the final-paper sequence, code moves from the published text alone.",
   "Locations: from the located text, cite the locator exactly as printed at the start of the paragraph (§3.2 ¶4) or the caption label as printed (Figure 3, Table 2). For a step read off a figure's content, add the PDF page when you have the PDF: Figure 3 (p. 5)."
+ ],
+ "ratings_version": "1.1.0",
+ "rating_notes": [
+  "Frame: judge against what the field knew, could do and had available before submission (about 2021). Do not use later work, this paper's reception or its citations.",
+  "Judge the work, not the writing or the venue. Fluent claims of novelty, importance or a gap are not evidence; check the gap the introduction draws. The PDF shows the journal: prestige is not evidence.",
+  "Magnitude is the change from the starting state, not the result value: quantity, before -> after (units), against the scale it matters at (signal size, prior uncertainty, natural variability), then one sentence on why it matters. When no number applies, write 'not quantifiable:' and the reason: qualitative discrimination between rivals, first observation with no prior value, feasibility demonstration, or descriptive or taxonomic.",
+  "Advance score rates the gain the verdict rests on. Judge 4 and 5 by what the gain resolves or makes possible within the frame, not by predicted uptake.",
+  "'Local' means narrow in what can now be asserted, not small in geographic extent. A single-site study that settles a question for its subfield is a 3.",
+  "'Others will build on' is judged by how general the gain is, not by its type. A method or data set takes 4 only when its demonstrated improvement transfers beyond the test case.",
+  "Verdict and score agree: achieved takes 2 to 5, not demonstrated takes 1, unassessable takes no score. Novelty, warrant and impact stay separate: there is no weighted sum.",
+  "Novelty: score the highest anchor the result supports, not the approach. A known method in a new setting that finds a new phenomenon is a 3 or 4, not a 2. A bounded search rarely supports high confidence for 'apparently new component'.",
+  "Roles describe the kind of contribution, not its size, judged at publication. Transformative means the paper proposes and demonstrates a reframing; enabling means the new data, method or standard is demonstrated in the paper. Realized uptake is judged later, not here."
  ]
 }

@@ -1,51 +1,59 @@
 #!/usr/bin/env python3
-"""Validate advance codings (agents/advance/RUBRIC.md v1.0.1, schema agents/advance/advance.schema.json).
+"""Validate advance codings (agents/advance/RUBRIC.md v1.1.0, schema agents/advance/advance.schema.json; codings made
+under v1.0.1 are checked against agents/advance/archive/advance.schema.1.0.1.json).
 
   python tools/check_advance.py CODING.json [...]        errors and warnings per file; exit 1 if any file has errors
+  python tools/check_advance.py --normalize CODING.json  also print what normalize() would change (the file is not written)
 
-A saved coding is the model's JSON plus two objects added by tools/code_papers.py after validation: `human_blocks`
-(the ratings.schema.json field names, assembled by assemble_human(); RUBRIC.md section 12) and `run` (model that
-answered, opaque key sent, blinded-text sha256, attempt). Both are stripped before the schema check; human_blocks must
-equal assemble_human() of the coding.
+A saved coding is the model's JSON plus objects added by tools/code_papers.py after validation: `human_blocks` (the
+ratings.schema.json field names, assemble_human(); RUBRIC.md section 12), `run` (model that answered, opaque key,
+blinded-text sha256 and version, attempt) and `_normalized` (what normalize() changed). They are stripped before the
+schema check; human_blocks must equal assemble_human() of the coding.
 
+v1.1.0 (October 28, 2026; diagnosis of advance pilot 1): hard failures are only (1) the schema core, after
+normalization (types, required fields, enums, gain ids G1..Gn in order); (2) fabricated quotes, two or more quotes not
+found in the blinded text; (3) a verdict that contradicts its score, its unassessable condition or the criteria. All
+other rules are warnings. Pilot 1 lost 20 of 40 codings to rules that are now warnings or normalizations.
+
+normalize()  applied by code_papers.write_advance before validation, each change recorded in `_normalized`
+  extra       a property the schema does not define: dropped when empty, else moved to `notes` (pilot 1: 8 codings
+              failed on an empty precedent_search.*_note)
+  enum        a near-miss enum value (case, spaces or hyphens) set to the enum value
+  basis       verdict_basis set to the first gain meeting every criterion (achieved), G1 (not_demonstrated) or none
+              (unassessable); the verdict itself is never changed
 Checks
-  schema     JSON Schema draft 2020-12 (jsonschema)
-  version    rubric_version equals the version line of RUBRIC.md
-  quotes     every quote (in `quotes` and in each gain's `checks`) at most 25 words and found in the blinded text the
-             coder read (private/data/roadmap/blind/<key>.txt, tools/blind_text.py). Matching ignores case, whitespace,
-             punctuation, quote and dash styles; '...' splits a quote into parts that must appear in order. A quote that
-             still fails is accepted when 90% of its word 4-grams occur in the text (its position is then unknown). One
-             unmatched quote is a warning; two or more are an error.
-  locators   for each located quote, the nearest preceding marker ([p. N], [§n ¶k], [Fig. n], [Table n], [Ref n]) at
-             any occurrence must agree with the cited locator (same page, same section and paragraph, same figure, table
-             or reference; the marker where the quote ends also counts). One mismatch is a warning; two or more are an
-             error. A locator with no recognizable marker is not counted.
-  rhetoric   the abstract, key points, summary, title and conclusions are 'restating' parts (XML: §0 and sections headed
-             Conclusion(s), Summary, Concluding remarks, Outlook; PDF: everything before the Introduction heading, and
-             Conclusions or Summary sections). At least one evidence quote and one verdict quote must lie outside them,
-             and at least one of those outside quotes must state a result (a digit, a direction of change or a check
-             outcome word); each evidence or verdict quote inside them is a warning.
-  coverage   quotes support headline_claim, starting_state, gain, evidence and verdict; novelty when a closest
-             precedent is named; overreach when the claim exceeds the warrant
-  gains      ids G1..Gn in order; 1 to 3 headline components first, at most 2 others; out_of_taxonomy if and only if
-             gain_type none_fits, and then a meaningfulness argument; rival_test not_applicable if and only if the gain
-             is not understanding; understanding with rival_test none cannot meet M2; only W3 may be not_applicable, and
-             only for a capability gain; W3 met needs a check that addresses the principal threat; a principal threat is
-             named; M1 met on a headline component needs gap_claim_supported yes or unclear; gap_claim_supported yes
-             needs a specific prior result; magnitude 'not quantifiable:' agrees with magnitude_form and names a reason
-             class (warning when a magnitude has neither a number with units nor that form)
-  verdict    achieved: no unassessable condition, verdict_basis is the first gain in list order with every criterion
-             met (W3 may be not_applicable), whose evidence is not figure_or_supplement_only, score 2 to 5;
-             not_demonstrated: no unassessable condition, every gain has a criterion not met, basis G1, score 1;
-             unassessable: a condition U1-U5, basis none, score null; eligible_in_my_view no needs U4
-  roles      corrective names the corrected prior claim and its locator
-  novelty    uncited_precedent_known is true when precedent_search.limits names a specific work (author and year);
-             warning when judgment_with_coder_knowledge is exact_precedent while the basis gain meets M1 and is
-             neither a replication nor a correction, nor corrective
+  schema     JSON Schema draft 2020-12 (jsonschema); maxItems, minItems (except candidate_gains) and the id patterns
+             are budgets: warnings
+  version    rubric_version is a known version; validate() (the collection path) needs the current RUBRIC.md version
+  quotes     every quote (in `quotes` and in each gain's `checks`) found in the blinded text the coder read (the cache,
+             or private/data/roadmap/blind/archive/<version>/ when run.blind_sha256 names an earlier text). Matching
+             ignores case, whitespace, punctuation, quote and dash styles; '...' splits a quote into parts that must
+             appear in order; a quote that still fails is accepted when 90% of its word 4-grams occur in the text. One
+             unmatched quote is a warning; two or more are an error. Length counts only tokens with a letter or digit
+             (in 'm s - 1' the dash does not count): warning above 30.
+  locators   the nearest preceding marker ([p. N], [§n ¶k], [Fig. n], [Table n], [Ref n]) agrees with the cited locator;
+             mismatches are warnings
+  rhetoric   at least one evidence and one verdict quote outside the abstract, key points, summary, title and
+             conclusions, one of them stating a result (warnings)
+  coverage   quotes support headline_claim, starting_state, gain (any quote with a gain_id counts), evidence, verdict;
+             novelty when a closest precedent is named; overreach when the claim exceeds the warrant (warnings);
+             quote budget (x-quote-budget in the schema) and word budgets (x-max-words) are warnings
+  gains      headline components first, at most MAX_GAINS per rubric version; out_of_taxonomy if and only if none_fits;
+             rival_test not_applicable if and only if not understanding; any criterion may be not_applicable when the
+             verdict is unassessable, else only W3 and only for a capability gain; W3 met needs a check that addresses
+             the principal threat; magnitude_form is authoritative and a 'Not quantifiable ...:' prefix that disagrees
+             with it is a warning (all warnings)
+  verdict    errors: achieved needs no unassessable condition, a gain meeting every criterion and score 2 to 5;
+             not_demonstrated needs no condition, no gain meeting every criterion and score 1; unassessable needs a
+             condition U1-U5 and score null. Warnings: eligible_in_my_view no without U4; basis on a gain stated only in
+             a figure or supplement
+  novelty    limits names a work (author and year) whose surname and year are absent from the reference list while
+             uncited_precedent_known is false (warning; pilot 1's three cases were all in the paper's references)
 """
 from __future__ import annotations
 import json
 import re
+from collections import Counter
 import sys
 import unicodedata
 from pathlib import Path
@@ -58,8 +66,11 @@ import blind_text  # noqa: E402
 
 SCHEMA_PATH = ROOT / 'agents' / 'advance' / 'advance.schema.json'
 RUBRIC_PATH = ROOT / 'agents' / 'advance' / 'RUBRIC.md'
+SCHEMAS = {'1.1.0': SCHEMA_PATH, '1.0.1': ROOT / 'agents' / 'advance' / 'archive' / 'advance.schema.1.0.1.json'}
+MAX_GAINS = {'1.0.1': 5, '1.1.0': 2}
+MAX_QUOTE_WORDS = 30          # counted words (tokens with a letter or digit); the rubric asks for at most 25
 REQUIRED_SUPPORT = ('headline_claim', 'starting_state', 'gain', 'evidence', 'verdict')
-DERIVED = ('human_blocks', 'run')
+DERIVED = ('human_blocks', 'run', '_normalized')
 CRIT = ('M1', 'M2', 'W1', 'W2', 'W3', 'W4')
 NQ_CLASSES = {'qualitative discrimination between rivals': 'not_quantifiable_qualitative_discrimination',
               'first observation with no prior value': 'not_quantifiable_first_observation',
@@ -76,7 +87,8 @@ RESULT = re.compile(r'\d|\b(?:increas|decreas|higher|lower|larger|smaller|reduc|
 WORK = re.compile(r'\b[A-Z][\wÀ-ɏ\'-]+(?:\s+et al\.?,?|\s+(?:and|&)\s+[A-Z][\w\'-]+,?|,)\s*\(?(?:19|20)\d\d[a-z]?\b'
                   r'|\b[A-Z][\wÀ-ɏ\'-]+(?:\s+et al\.?)?\s+\((?:19|20)\d\d[a-z]?\)')
 MAG_NUM = re.compile(r'\d[\d.,]*\s*(?:%|‰|°|[A-Za-zµ])')
-_VALIDATOR = None
+NQ_PREFIX = re.compile(r'^\s*not\s+quantifiable\b[^:]{0,60}:\s*(.*)', re.I | re.S)
+_VALIDATORS: dict = {}
 
 
 def rubric_version() -> str:
@@ -86,11 +98,32 @@ def rubric_version() -> str:
     return 'unknown'
 
 
-def _validator():
-    global _VALIDATOR
-    if _VALIDATOR is None:
-        _VALIDATOR = jsonschema.Draft202012Validator(json.loads(SCHEMA_PATH.read_text()))
-    return _VALIDATOR
+def schema_for(version: str | None) -> dict | None:
+    p = SCHEMAS.get(version or '')
+    return json.loads(p.read_text()) if p and p.is_file() else None
+
+
+def _validator(version: str | None = None):
+    version = version or rubric_version()
+    if version not in _VALIDATORS:
+        sch = schema_for(version)
+        _VALIDATORS[version] = jsonschema.Draft202012Validator(sch) if sch else None
+    return _VALIDATORS[version]
+
+
+def _sub(sch: dict | None, path: list) -> dict | None:
+    """The subschema at a data path (object keys and array indices); used to accept, as a warning, an enum value that an
+    older coding lacks but the current schema allows (dependency kind 'concept', added in v1.1.0)."""
+    for k in path:
+        if not isinstance(sch, dict):
+            return None
+        sch = sch.get('items') if isinstance(k, int) else (sch.get('properties') or {}).get(k)
+    return sch
+
+
+def words(s: str) -> int:
+    """Counted words: whitespace tokens with a letter or digit ('m s - 1' counts 3, 'M ( 2 , 3 )' counts 3)."""
+    return sum(bool(re.search(r'[0-9A-Za-zÀ-ɏͰ-Ͽ]', t)) for t in s.split())
 
 
 # --------------------------------------------------------------------------------------------- text and positions
@@ -274,41 +307,149 @@ def model_part(d: dict) -> dict:
     return {k: v for k, v in d.items() if k not in DERIVED}
 
 
+# --------------------------------------------------------------------------------------------- normalization
+def _empty(v) -> bool:
+    return v is None or v == '' or v == [] or v == {} or (isinstance(v, str) and not v.strip())
+
+
+def _walk(node, sch: dict, path: str, out: list, notes: list):
+    """Normalize node in place against sch: extra properties and near-miss enum values."""
+    if not isinstance(sch, dict):
+        return node
+    if 'enum' in sch and isinstance(node, str) and node not in sch['enum']:
+        cand = re.sub(r'[\s-]+', '_', node.strip().lower())
+        if cand in sch['enum']:
+            out.append({'rule': 'enum', 'path': path.lstrip('/'), 'from': node, 'to': cand})
+            return cand
+    if isinstance(node, dict) and 'properties' in sch:
+        if sch.get('additionalProperties') is False:
+            for k in [k for k in node if k not in sch['properties']]:
+                v = node.pop(k)
+                if _empty(v):
+                    out.append({'rule': 'extra', 'path': f'{path}/{k}'.lstrip('/'), 'action': 'dropped (empty)'})
+                else:
+                    notes.append((f'{path}/{k}'.lstrip('/'), v if isinstance(v, str) else json.dumps(v, ensure_ascii=False)))
+                    out.append({'rule': 'extra', 'path': f'{path}/{k}'.lstrip('/'), 'action': 'moved to notes'})
+        for k, sub in sch['properties'].items():
+            if k in node:
+                node[k] = _walk(node[k], sub, f'{path}/{k}', out, notes)
+    elif isinstance(node, list) and isinstance(sch.get('items'), dict):
+        for i, x in enumerate(node):
+            node[i] = _walk(x, sch['items'], f'{path}/{i}', out, notes)
+    return node
+
+
+def full_gains(d: dict) -> list[str]:
+    return [g['id'] for g in d.get('candidate_gains') or [] if isinstance(g, dict) and isinstance(g.get('criteria'), dict) and
+            all(g['criteria'].get(k) == 'met' or (k == 'W3' and g['criteria'].get(k) == 'not_applicable') for k in CRIT)]
+
+
+def normalize(d: dict) -> tuple[dict, list[dict]]:
+    """(normalized copy, list of changes) by the rules in the module docstring. Model content is never rewritten
+    beyond them; the verdict, the criteria and the score are never changed."""
+    d = json.loads(json.dumps(model_part(d)))
+    out, notes = [], []
+    sch = schema_for(d.get('rubric_version')) or schema_for(rubric_version())
+    _walk(d, sch, '', out, notes)
+    if notes:
+        if isinstance(sch['properties'].get('notes', {}).get('items'), dict):      # v1.1.0: list of {field, note}
+            d.setdefault('notes', [])
+            if isinstance(d['notes'], list):
+                d['notes'] += [{'field': p, 'note': v} for p, v in notes]
+        else:                                                                   # v1.0.1: one string
+            d['notes'] = ((d.get('notes') or '') + ' ' + ' '.join(f'[{p}] {v}' for p, v in notes)).strip()
+    v, ids = d.get('verdict'), [g.get('id') for g in d.get('candidate_gains') or [] if isinstance(g, dict)]
+    want = {'achieved': (full_gains(d) or [None])[0], 'not_demonstrated': 'G1', 'unassessable': 'none'}.get(v)
+    if want and d.get('verdict_basis') != want and (want == 'none' or want in ids):
+        out.append({'rule': 'basis', 'path': 'verdict_basis', 'from': d.get('verdict_basis'), 'to': want})
+        d['verdict_basis'] = want
+    return d, out
+
+
 # --------------------------------------------------------------------------------------------- the checks
-def check(d: dict, text: str | None = None, key: str | None = None, info: dict | None = None) -> tuple[list[str], list[str]]:
-    """(errors, warnings) for one coding. text = the blinded text; read from the cache by key when None. info, when
-    given, receives counts (quotes, unmatched, locator mismatches, restating quotes) for the pilot report."""
+def _refs_part(raw: str) -> str:
+    i = max(raw.rfind('\n§R References'), raw.rfind('\nReferences\n'))
+    return raw[i:] if i >= 0 else ''
+
+
+def _budget_warnings(d: dict, sch: dict) -> list[str]:
+    over = []
+
+    def walk(node, s, path):
+        if not isinstance(s, dict):
+            return
+        if isinstance(node, str) and s.get('x-max-words') and words(node) > s['x-max-words']:
+            over.append(f'{path} {words(node)}/{s["x-max-words"]}')
+        if isinstance(node, dict):
+            for k, sub in (s.get('properties') or {}).items():
+                if k in node:
+                    walk(node[k], sub, f'{path}/{k}'.lstrip('/'))
+        elif isinstance(node, list) and isinstance(s.get('items'), dict):
+            for i, x in enumerate(node):
+                walk(x, s['items'], f'{path}/{i}')
+    walk(d, sch, '')
+    w = [f'{len(over)} fields over their word budget: ' + '; '.join(over[:6])] if over else []
+    qb = (sch['properties'].get('quotes') or {}).get('x-quote-budget')
+    if qb:
+        c = Counter(q.get('supports') for q in d.get('quotes', []))
+        mx = (sch['properties']['quotes'].get('maxItems'))
+        extra = {k: n for k, n in c.items() if n > qb.get(k, 1)}
+        if (mx and len(d.get('quotes', [])) > mx) or extra:
+            w.append(f'quote budget exceeded: {len(d.get("quotes", []))} quotes' + (f' (max {mx})' if mx else '') +
+                     (f'; per field {extra}' if extra else ''))
+    return w
+
+
+def check(d: dict, text: str | None = None, key: str | None = None, info: dict | None = None,
+          expect_version: str | None = None) -> tuple[list[str], list[str]]:
+    """(errors, warnings) for one coding, after normalize() has been applied by the caller. text = the blinded text the
+    coder read; looked up by run.blind_sha256 (cache, then archive) when None. expect_version: the rubric version a new
+    coding must carry (the collection path); otherwise any known version is checked against its own schema."""
     errs, warns = [], []
     m = model_part(d)
-    for e in sorted(_validator().iter_errors(m), key=lambda e: list(e.path)):
-        errs.append(f'schema {"/".join(map(str, e.path)) or "(root)"}: {e.message[:200]}')
+    ver = m.get('rubric_version')
+    V = _validator(ver)
+    if V is None:
+        return [f'rubric_version {ver!r} is not a known version ({", ".join(SCHEMAS)})'], warns
+    if expect_version and ver != expect_version:
+        errs.append(f'rubric_version {ver} is not RUBRIC.md {expect_version}')
+    for e in sorted(V.iter_errors(m), key=lambda e: list(e.path)):
+        where = "/".join(map(str, e.path)) or "(root)"
+        budget = (e.validator in ('maxItems', 'minItems') and where != 'candidate_gains') or \
+                 (e.validator == 'pattern' and isinstance(e.instance, str) and re.fullmatch(r'(G\d+|none)?', e.instance)) or \
+                 (e.validator == 'enum' and e.instance in (_sub(json.loads(SCHEMA_PATH.read_text()), list(e.path)) or {}).get('enum', []))
+        (warns if budget else errs).append(f'schema {where}: {e.message[:200]}' + (' (warning only)' if budget else ''))
     if errs:
         return errs, warns
+    sch = schema_for(ver)
     if key and d['key'] != key:
         errs.append(f'key {d["key"]!r} is not the requested {key!r}')
-    if d['rubric_version'] != rubric_version():
-        errs.append(f'rubric_version {d["rubric_version"]} is not RUBRIC.md {rubric_version()}')
     if 'human_blocks' in d and d['human_blocks'] != assemble_human(d):
         errs.append('human_blocks differ from assemble_human() of the coding')
     gains = d['candidate_gains']
     ids = [g['id'] for g in gains]
+    if ids != [f'G{i}' for i in range(1, len(gains) + 1)]:
+        errs.append(f'candidate gain ids {ids} are not G1..G{len(gains)} in order')
+    warns += _budget_warnings(m, sch)
     # ---- quotes and locators
     if text is None:
-        text = blind_text.cached(d['key'])
-    if text and 'run' in d and d['run'].get('blind_sha256') and d['run']['blind_sha256'] != blind_text.sha(text):
-        warns.append('the cached blinded text differs from the one the coder read (blind_sha256): quote checks may be off')
+        text, _ = blind_text.cached_as_read(d['key'], (d.get('run') or {}).get('blind_sha256'))
+        if text is None and (d.get('run') or {}).get('blind_sha256'):
+            warns.append('no cached or archived blinded text matches run.blind_sha256: quotes checked against the current text')
+            text = blind_text.cached(d['key'])
     T = Text(text) if text else None
     allq = [(f'quotes {i} ({q["supports"]})', q['quote'], q['locator'], q) for i, q in enumerate(d['quotes'])]
     for g in gains:
         allq += [(f'{g["id"]} check {j}', c['quote'], c['locator'], None) for j, c in enumerate(g['checks'])]
-    unmatched, mism, located = [], [], {}
+    unmatched, mism, located, long_q = [], [], {}, 0
     for label, quote, loc, q in allq:
-        if len(quote.split()) > 25:
-            errs.append(f'{label}: over 25 words')
+        if words(quote) > MAX_QUOTE_WORDS:
+            long_q += 1
+            warns.append(f'{label}: {words(quote)} counted words (over {MAX_QUOTE_WORDS})')
         if not loc.strip():
-            errs.append(f'{label}: no locator')
+            warns.append(f'{label}: no locator')
         if not quote.strip():
-            errs.append(f'{label}: empty quote')
+            warns.append(f'{label}: empty quote')
             continue
         if T is None:
             continue
@@ -322,10 +463,15 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
     if T is None:
         warns.append('blinded text not found: quotes, locators and restating parts not checked')
     else:
-        (warns.extend if len(unmatched) == 1 else errs.extend)(([f'{len(unmatched)} quotes not found in the blinded text'] if len(unmatched) > 1 else []) + unmatched[:5])
-        (warns.extend if len(mism) == 1 else errs.extend)(([f'{len(mism)} locator mismatches'] if len(mism) > 1 else []) + mism[:5])
+        if len(unmatched) >= 2:
+            errs.append(f'{len(unmatched)} quotes not found in the blinded text (fabricated or altered)')
+            errs.extend(unmatched[:5])
+        else:
+            warns.extend(unmatched)
+        if mism:
+            warns.append(f'{len(mism)} locator mismatches'); warns.extend(mism[:5])
     # ---- coverage
-    have = {q['supports'] for q in d['quotes']}
+    have = {q['supports'] for q in d['quotes']} | ({'gain'} if any(q['gain_id'] for q in d['quotes']) else set())
     need = list(REQUIRED_SUPPORT)
     if not d['precedent_search']['closest_precedent'].strip().lower().startswith('none'):
         need.append('novelty')
@@ -333,10 +479,10 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
         need.append('overreach')
     for s in need:
         if s not in have:
-            errs.append(f'no quote supports {s}')
+            warns.append(f'no quote supports {s}')
     for q in d['quotes']:
         if q['gain_id'] and q['gain_id'] not in ids:
-            errs.append(f'quote gain_id {q["gain_id"]} names no candidate gain')
+            warns.append(f'quote gain_id {q["gain_id"]} names no candidate gain')
     # ---- restating parts and result statements
     rh = {'evidence': [0, 0], 'verdict': [0, 0]}
     result_outside = False
@@ -349,76 +495,70 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
                 continue
             if r['rhetoric']:
                 rh[q['supports']][1] += 1
-                warns.append(f'{q["supports"]} quote from a restating part (abstract, key points, summary, title or conclusions): {q["quote"][:60]!r}')
             else:
                 rh[q['supports']][0] += 1
                 result_outside |= bool(RESULT.search(q['quote']))
-        for s, (out, _) in rh.items():
+        for s, (out, inside) in rh.items():
             if out == 0:
-                errs.append(f'no {s} quote located outside the abstract, key points, summary, title and conclusions')
+                warns.append(f'no {s} quote located outside the abstract, key points, summary, title and conclusions'
+                             + (f' ({inside} inside them)' if inside else ''))
         if (rh['evidence'][0] or rh['verdict'][0]) and not result_outside:
-            errs.append('no evidence or verdict quote outside the restating parts states a result (number, direction or check outcome)')
+            warns.append('no evidence or verdict quote outside the restating parts states a result (number, direction or check outcome)')
     # ---- candidate gains
-    if ids != [f'G{i}' for i in range(1, len(gains) + 1)]:
-        errs.append(f'candidate gain ids {ids} are not G1..G{len(gains)} in order')
+    v, cond, score, basis = d['verdict'], d['unassessable_condition'], d['advance_score'], d['verdict_basis']
     origins = [g['origin'] for g in gains]
     nh = sum(o == 'headline_component' for o in origins)
-    if not (1 <= nh <= 3) or origins[:nh] != ['headline_component'] * nh or len(gains) - nh > 2:
-        errs.append(f'candidate gains must list 1 to 3 headline components first, then at most 2 others: {origins}')
+    if nh < 1 or origins[:nh] != ['headline_component'] * nh or len(gains) > MAX_GAINS.get(ver, 5) or len(gains) - nh > 2:
+        warns.append(f'candidate gains: headline components first, at most {MAX_GAINS.get(ver, 5)} gains: {origins}')
     for g in gains:
         gid, c = g['id'], g['criteria']
-        for k, val in c.items():
-            if val == 'not_applicable' and k != 'W3':
-                errs.append(f'{gid} {k}: only W3 may be not_applicable')
-        if c['W3'] == 'not_applicable' and g['gain_type'] != 'capability':
-            errs.append(f'{gid} W3 not_applicable is for a data set release (capability) only')
+        if v != 'unassessable':
+            for k, val in c.items():
+                if val == 'not_applicable' and k != 'W3':
+                    warns.append(f'{gid} {k} not_applicable on an assessable coding (counts as not met)')
+            if c['W3'] == 'not_applicable' and g['gain_type'] != 'capability':
+                warns.append(f'{gid} W3 not_applicable is for a data set release (capability) only')
         if c['W3'] == 'met' and not any(x['addresses_principal_threat'] for x in g['checks']):
-            errs.append(f'{gid} W3 met but no check addresses the principal threat')
+            warns.append(f'{gid} W3 met but no listed check addresses the principal threat')
         if not g['principal_threat'].strip():
-            errs.append(f'{gid}: no principal_threat named')
+            warns.append(f'{gid}: no principal_threat named')
         if (g['origin'] == 'out_of_taxonomy') != (g['gain_type'] == 'none_fits'):
-            errs.append(f'{gid}: origin out_of_taxonomy if and only if gain_type none_fits')
+            warns.append(f'{gid}: origin out_of_taxonomy if and only if gain_type none_fits')
         if g['origin'] == 'out_of_taxonomy' and not g['meaningfulness_argument'].strip():
-            errs.append(f'{gid}: out_of_taxonomy gain needs a meaningfulness_argument')
+            warns.append(f'{gid}: out_of_taxonomy gain needs a meaningfulness_argument')
         if (g['rival_test'] == 'not_applicable') != (g['gain_type'] != 'understanding'):
-            errs.append(f'{gid}: rival_test is not_applicable if and only if the gain is not understanding')
+            warns.append(f'{gid}: rival_test is not_applicable if and only if the gain is not understanding')
         if g['gain_type'] == 'understanding' and g['rival_test'] == 'none' and c['M2'] == 'met':
-            errs.append(f'{gid}: understanding with rival_test none cannot meet M2')
+            warns.append(f'{gid}: understanding with rival_test none meets M2')
         if g['origin'] == 'headline_component' and c['M1'] == 'met' and d['gap_claim_supported'] == 'no':
-            errs.append(f'{gid}: M1 met on a headline component although gap_claim_supported is no')
-        mag = g['magnitude'].strip()
-        nq = re.match(r'not quantifiable:\s*(.*)', mag, re.I | re.S)
+            warns.append(f'{gid}: M1 met on a headline component although gap_claim_supported is no')
+        mag, form = g['magnitude'].strip(), g['magnitude_form']
+        nq = NQ_PREFIX.match(mag)
         if nq:
-            cls = next((v for k, v in NQ_CLASSES.items() if nq.group(1).lower().startswith(k)), None)
-            if not cls:
-                warns.append(f'{gid}: "not quantifiable:" without one of the reason classes')
-            if not g['magnitude_form'].startswith('not_quantifiable'):
-                errs.append(f'{gid}: magnitude says not quantifiable but magnitude_form is {g["magnitude_form"]}')
-            elif cls and cls != g['magnitude_form']:
-                errs.append(f'{gid}: magnitude reason class does not match magnitude_form {g["magnitude_form"]}')
-        else:
-            if g['magnitude_form'].startswith('not_quantifiable'):
-                errs.append(f'{gid}: magnitude_form {g["magnitude_form"]} but the magnitude does not start with "not quantifiable:"')
-            if not MAG_NUM.search(mag):
-                warns.append(f'{gid}: magnitude has no number with units and no "not quantifiable:" reason')
+            cls = next((v_ for k_, v_ in NQ_CLASSES.items() if nq.group(1).lower().startswith(k_)), None)
+            if not form.startswith('not_quantifiable'):
+                warns.append(f'{gid}: magnitude text says not quantifiable but magnitude_form (authoritative) is {form}')
+            elif cls and cls != form:
+                warns.append(f'{gid}: magnitude reason class differs from magnitude_form {form} (authoritative)')
+        elif not form.startswith('not_quantifiable') and not MAG_NUM.search(mag):
+            warns.append(f'{gid}: magnitude has no number with units and no "not quantifiable:" reason')
     if d['gap_claim_supported'] == 'yes' and not d['starting_state_as_stated']['prior_results']:
-        errs.append('gap_claim_supported yes needs at least one specific prior result')
-    # ---- verdict
-    v, cond, score, basis = d['verdict'], d['unassessable_condition'], d['advance_score'], d['verdict_basis']
+        warns.append('gap_claim_supported yes needs at least one specific prior result')
+    # ---- verdict (errors: verdict against score, condition and criteria)
     if basis != 'none' and basis not in ids:
         errs.append(f'verdict_basis {basis} names no candidate gain')
-    full = [g['id'] for g in gains if all(g['criteria'][k] == 'met' or (k == 'W3' and g['criteria'][k] == 'not_applicable') for k in CRIT)]
+    full = full_gains(d)
     if v == 'achieved':
         if cond != 'none':
             errs.append(f'verdict achieved with unassessable_condition {cond}')
         if not full:
             errs.append('verdict achieved but no candidate gain meets every criterion')
         elif basis != full[0]:
-            errs.append(f'verdict_basis {basis} is not the first gain meeting every criterion ({full[0]})')
+            warns.append(f'verdict_basis {basis} is not the first gain meeting every criterion ({full[0]})')
         if score is None or not 2 <= score <= 5:
             errs.append(f'verdict achieved needs advance_score 2 to 5, not {score}')
         if basis in ids and basis_gain(d)['evidence_access'] == 'figure_or_supplement_only':
-            errs.append(f'verdict achieved on {basis}, whose result is stated only in a figure or supplement (U2)')
+            warns.append(f'verdict achieved on {basis}, whose result is stated only in a figure or supplement (U2)')
         if not any(q['supports'] == 'evidence' and q['gain_id'] == basis for q in d['quotes']):
             warns.append(f'no evidence quote carries gain_id {basis}')
     elif v == 'not_demonstrated':
@@ -426,15 +566,11 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
             errs.append(f'verdict not_demonstrated with unassessable_condition {cond}: use unassessable')
         if full:
             errs.append(f'verdict not_demonstrated but {", ".join(full)} meets every criterion')
-        if basis != 'G1':
-            errs.append(f'verdict not_demonstrated needs verdict_basis G1, not {basis}')
         if score != 1:
             errs.append(f'verdict not_demonstrated needs advance_score 1, not {score}')
     else:
         if cond == 'none':
             errs.append('verdict unassessable needs an unassessable_condition U1-U5')
-        if basis != 'none':
-            errs.append(f'verdict unassessable needs verdict_basis none, not {basis}')
         if score is not None:
             errs.append(f'verdict unassessable needs advance_score null, not {score}')
         if cond == 'U2' and any(g['evidence_access'] != 'figure_or_supplement_only' for g in gains if g['origin'] == 'headline_component'):
@@ -442,19 +578,29 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
     if v != 'unassessable' and basis == 'none':
         errs.append(f'verdict_basis none with verdict {v}')
     if d['eligible_in_my_view'] == 'no' and not (v == 'unassessable' and cond == 'U4'):
-        errs.append('eligible_in_my_view no needs verdict unassessable with condition U4')
+        warns.append('eligible_in_my_view no without verdict unassessable U4')
     if cond == 'U4' and d['eligible_in_my_view'] == 'yes':
         warns.append('U4 while eligible_in_my_view is yes')
+    if 'advance_score_reasons' in d and score is not None and not d['advance_score_reasons'].strip():
+        warns.append('advance_score_reasons is empty')
+    if d.get('blind_leak_cues') and not d.get('blind_leak_note', '').strip():
+        warns.append('blind_leak_cues named without a blind_leak_note')
     # ---- roles, novelty, frame flags
     cp = d['corrected_prior_claim']
     if 'corrective' in d['roles']:
         if not (cp['text'].strip() and cp['locator'].strip()):
-            errs.append('role corrective needs corrected_prior_claim with text and locator')
+            warns.append('role corrective without corrected_prior_claim text and locator')
         elif not re.search(r'Ref|§|p\.|\d{4}', cp['locator']):
             warns.append('corrected_prior_claim locator is not a reference locator')
     p = d['precedent_search']
-    if WORK.search(p['limits']) and not p['uncited_precedent_known']:
-        errs.append('precedent_search.limits names a specific work but uncited_precedent_known is false')
+    if not p['uncited_precedent_known']:
+        refs = _norm(_refs_part(text or ''))
+        for mw in WORK.finditer(p['limits']):
+            sur, yr = mw.group(0).split()[0].strip(',('), re.search(r'(?:19|20)\d\d', mw.group(0)).group(0)
+            ns = _norm(sur)
+            if not refs or not any(yr in refs[i:i + 400] for i in [x.start() for x in re.finditer(re.escape(ns), refs)]):
+                warns.append(f'precedent_search.limits names {mw.group(0)!r}, not found in the reference list, but uncited_precedent_known is false')
+                break
     bg = basis_gain(d)
     if (p['judgment_with_coder_knowledge'] == 'exact_precedent' and bg['criteria']['M1'] == 'met'
             and bg['replication_or_correction'] == 'none' and 'corrective' not in d['roles']):
@@ -462,27 +608,37 @@ def check(d: dict, text: str | None = None, key: str | None = None, info: dict |
     if bg['magnitude_form'] == 'quantified_change' and not any(re.search(r'\d', q['quote']) for q in d['quotes'] if q['supports'] == 'evidence'):
         warns.append('magnitude is a quantified change but no evidence quote contains a number')
     if not d['post_2022_knowledge_flag'].strip():
-        errs.append('post_2022_knowledge_flag is empty (write "none" or the later work)')
+        warns.append('post_2022_knowledge_flag is empty (write "none" or the later work)')
     if info is not None:
-        info.update({'quotes': len(allq), 'unmatched': len(unmatched), 'locator_mismatch': len(mism),
+        info.update({'quotes': len(allq), 'unmatched': len(unmatched), 'locator_mismatch': len(mism), 'quotes_over_30_words': long_q,
                      'evidence_quotes_outside': rh['evidence'][0], 'evidence_quotes_restating': rh['evidence'][1],
-                     'verdict_quotes_outside': rh['verdict'][0], 'verdict_quotes_restating': rh['verdict'][1]})
+                     'verdict_quotes_outside': rh['verdict'][0], 'verdict_quotes_restating': rh['verdict'][1],
+                     'warnings': len(warns), 'normalized': len(d.get('_normalized') or [])})
     return errs, warns
 
 
 def validate(d: dict, text: str | None = None, key: str | None = None) -> list[str]:
-    """Errors only, the interface tools/code_papers.py uses for every task's validator."""
-    return check(d, text, key)[0]
+    """Errors only, the interface tools/code_papers.py uses: a new coding must carry the current rubric version. Call
+    normalize() first."""
+    return check(d, text, key, expect_version=rubric_version())[0]
 
 
 def main() -> int:
-    bad = 0
-    for f in sys.argv[1:]:
+    bad, args = 0, sys.argv[1:]
+    show = '--normalize' in args
+    for f in [a for a in args if a != '--normalize']:
         try:
             d = json.loads(Path(f).read_text())
         except Exception as e:  # noqa: BLE001
             print(f'{f}: unreadable ({e})'); bad += 1; continue
-        errs, warns = check(d)
+        if isinstance(d.get('coding'), dict) and 'errors' in d:     # an _invalid record: {'errors', 'run', 'coding'}
+            d = {**d['coding'], 'run': d.get('run') or {}}
+        n, changes = normalize(d)
+        n.update({k: d[k] for k in DERIVED if k in d})
+        errs, warns = check(n)
+        if show:
+            for c in changes:
+                print('  normalize ' + json.dumps(c, ensure_ascii=False))
         print(f'{f}: ' + ('ok' if not errs else f'{len(errs)} errors') + (f', {len(warns)} warnings' if warns else ''))
         for x in errs:
             print('  error   ' + x)

@@ -3,7 +3,8 @@
 Decided by the PI on October 27, 2026: measure advance ("a meaningful warranted improvement in knowledge, understanding,
 or research capability") for every coded paper (round 1, tag calc1, 374 valid inquiry codings; round 2, tag r2, 198)
 with claude-opus-5-5 under agents/advance/RUBRIC.md, blind to venue, authors and citations; budget $400 in total, of
-which $221.59 was spent before the advance pilot. Paid calls run through tools/code_papers.py --task advance, never
+which $221.59 was spent before the advance pilot (raised to $500 on October 28, 2026, at $229.64 spent after pilot 1;
+private/data/roadmap/DECISIONS.md). Paid calls run through tools/code_papers.py --task advance, never
 from this script. What the coder measures is reported warrant (RUBRIC.md header); until the validation gate below
 passes, results are reported as the model's judgment of reported warrant, not as advance.
 
@@ -16,8 +17,15 @@ pick    Helper, before the pilot. 20 papers with a valid inquiry coding, none of
         the 20 slots), ties broken by a permutation from default_rng(2029). A paper goes to the first archetype it
         fits in that order. Writes derived/advance/pilot_keys.json and prints the --keys list. Papers with a known
         later correction or failed replication cannot be found from the data here; swap 2 or 3 in by hand if known.
-pilot   Reads the two pilot tags (pilot-a-advance, pilot-b-advance: the same papers coded twice under the same rubric,
-        submitted as --tag pilot-a / pilot-b --task advance) and reports
+pilot   Reads every pilot tag (folders pilot*-advance, or --tags a,b,c,...), groups the tags by the rubric version of
+        their codings (pilot 1: pilot-a-advance and pilot-b-advance under v1.0.1; pilot 2 under v1.1.0), and reports
+        each group; the top-level fields describe the group of the current RUBRIC.md version, else the newest. A paper
+        coded under two or more tags of a group enters the retest with its codings from the first two of them.
+        Codings are revalidated with tools/check_advance.py (normalize, then check against the schema of their own
+        version and the blinded text they read, archived under blind/archive/<version>/ when it has changed since);
+        an invalid coding in <tag>/_invalid that passes is 'rescued', written to derived/advance/rescued/<tag>/ with
+        its normalizations, and counted apart from the codings valid as collected. Text route = the route the coder
+        read (run.blind_source, else the archived meta). Per group it reports
           test-retest   verdict: Krippendorff alpha (nominal), raw agreement, prevalence; advance_score: alpha
                         (ordinal), quadratic-weighted kappa, exact and within-1 agreement (pairs with both scores);
                         criteria M1-W4 of G1: alpha (nominal) and agreement; roles: mean Jaccard and per-role alpha;
@@ -29,9 +37,11 @@ pilot   Reads the two pilot tags (pilot-a-advance, pilot-b-advance: the same pap
                         evidence_access, rival_test, verdict_basis origin; a distribution is flagged degenerate when one
                         class holds at least 70% of codings (revise anchors before freezing); use of scores 1 and 5
           strata        verdict by text route (xml, pdftotext); not-quantifiable rate, U2 rate, low-confidence rate and
-                        median score by OpenAlex subfield; score by basis gain type
-          leakage       residual leakage after blinding (tools/blind_text.py leakage_after, information fields excluded)
-                        for the pilot papers; blind_leak_noticed and post_2022_knowledge_flag rates (self-report)
+                        median score by OpenAlex subfield; score by basis gain type; headline components warranted
+                        (every criterion met) over headline components, a secondary outcome outside the H family
+          leakage       residual leakage after blinding (tools/blind_text.py leakage_after of the text the coder read,
+                        information fields excluded); self-report: blind_leak_noticed rate (v1.0.1) or blind_leak_cues
+                        rate and counts per cue (v1.1.0); post_2022_knowledge_flag rate
           validator     unmatched quotes, locator mismatches, evidence or verdict quotes from restating parts
                         (tools/check_advance.py); invalid codings in <tag>/_invalid
           cost          recorded spend per tag over every returned result (state.json 'spent'), per valid coding;
@@ -39,10 +49,13 @@ pilot   Reads the two pilot tags (pilot-a-advance, pilot-b-advance: the same pap
                         10%, rounded up to 1,000); projected full-run cost for 572 papers against the remaining budget
           verbosity     Spearman rho of advance_score with paper words and with the coder's output tokens
         Writes derived/advance/pilot.json.
-freeze  Refuses when any full-run advance coding exists (a folder <tag>-advance under private/analysis/codings/api/
+freeze  Refuses when no pilot coding exists under the current RUBRIC.md version (--allow-version-mismatch overrides),
+        and when any full-run advance coding exists (a folder <tag>-advance under private/analysis/codings/api/
         whose tag does not start with 'pilot' holding a coding, valid or invalid). Writes the public plan
         preregistration/advance-plan.{json,md}: rubric version and sha256 (with schema, validator, blinding and this
-        script), pilot.json sha256 and the pilot keys, the full-run tag, model, effort and max_tokens, outcome
+        script), the rubric and blind versions of every pilot tag and the current BLIND_VERSION, pilot.json sha256
+        and the pilot keys, the full-run tag, model, effort and max_tokens (from the current-version pilot's
+        batches, else tools/code_papers.py ADVANCE_EFFORT and ADVANCE_MAX_TOKENS), outcome
         definitions, the hypotheses H1-H9 below with predicted directions, the test rule, exclusions, covariates,
         the shared-method statement, the expected achieved rate (pilot rate with a Wilson 95% interval), and the
         validation gate. Run by the parent after the pilot, then commit and push before the full run.
@@ -53,7 +66,8 @@ freeze  Refuses when any full-run advance coding exists (a folder <tag>-advance 
                       from validation checks, so a V-check feature is never tested against W3, which measures the same
                       construct in the same text
           secondary   advance_score 1-5 (ordinal; papers with a score, i.e. achieved or not_demonstrated);
-                      novelty_score 1-5; roles (presence of each role among assessable papers)
+                      novelty_score 1-5; roles (presence of each role among assessable papers); headline components
+                      warranted over headline components (assessable papers), descriptive, outside the H family
         Hypotheses (feature from the round's inquiry coding, tools/roadmap/g17_outcomes.py features(); predicted sign)
           H1  triangulation (checks of two or more of replication, method, generalization performed here) -> primary-W3, +
           H2  number of kinds of V check performed here -> primary-W3, +
@@ -88,7 +102,7 @@ freeze  Refuses when any full-run advance coding exists (a folder <tag>-advance 
               specificity for achieved and a Rogan-Gladen corrected success fraction. Until (1)-(3) pass, results are
               labelled model judgment of reported warrant.
 test    Runs the frozen plan on the full-run tag (refuses if RUBRIC.md, the schema or the validator changed since the
-        freeze) and writes derived/advance/{results.json, ADVANCE.md}: success fraction with all three verdict counts
+        freeze, or if BLIND_VERSION differs from the frozen one) and writes derived/advance/{results.json, ADVANCE.md}: success fraction with all three verdict counts
         (overall, by round, by subfield, by text route; with and without out-of-taxonomy awards), U4 count, the 9
         tests with q and verdicts, sensitivities, calibration checks, and the validation gate status.
 
@@ -96,7 +110,7 @@ Inputs   private/analysis/codings/api/{pilot-a-advance, pilot-b-advance, <full>-
          private/data/roadmap/blind/<key>.json; derived/{gold,r2}/metrics.json; derived/gold/human/ (gate)
 Outputs  derived/advance/{pilot_keys.json, pilot.json, results.json, ADVANCE.md}; preregistration/advance-plan.{json,md}
 Run:     python tools/roadmap/g24_advance.py pick
-         python tools/roadmap/g24_advance.py pilot [--tags pilot-a-advance,pilot-b-advance]
+         python tools/roadmap/g24_advance.py pilot [--tags pilot-a-advance,pilot-b-advance,pilot2-a-advance,...]
          python tools/roadmap/g24_advance.py freeze [--full-tag full-advance]     (parent, after the pilot)
          python tools/roadmap/g24_advance.py test
 """
@@ -123,12 +137,15 @@ import check_advance as ca
 API = PRIVATE / 'analysis' / 'codings' / 'api'
 OUT = DERIVED / 'advance'
 PLAN = ROOT / 'preregistration' / 'advance-plan.json'
-PILOT_TAGS = ('pilot-a-advance', 'pilot-b-advance')
-BUDGET, SPENT_BEFORE = 400.0, 221.59      # PI decision and parent's record, October 27, 2026
+PILOT_TAGS = ('pilot-a-advance', 'pilot-b-advance')   # pilot 1 (rubric 1.0.1); `pilot` reads every pilot*-advance folder
+RESCUED = DERIVED / 'advance' / 'rescued'
+# PI decisions (private/data/roadmap/DECISIONS.md): $400 on October 27, 2026 at $221.59 spent; $500 on October 28 at
+# $229.64 spent (after pilot 1, $8.05). Pilot spend is read from state.json, so SPENT_BEFORE stays the pre-pilot figure.
+BUDGET, SPENT_BEFORE = 500.0, 221.59
 N_FULL = 572                              # valid inquiry codings: calc1 374 + r2 198
 DEGENERATE, Q, SEED, MIN_N = 0.70, 0.1, 2029, 10
 FROZEN_FILES = ['agents/advance/RUBRIC.md', 'agents/advance/advance.schema.json', 'tools/check_advance.py',
-                'tools/blind_text.py', 'tools/code_papers.py', 'tools/roadmap/g24_advance.py']
+                'tools/blind_text.py', 'tools/jats_text.py', 'tools/code_papers.py', 'tools/roadmap/g24_advance.py']
 ROLES = ['corrective', 'enabling', 'integrative', 'cumulative', 'transformative']
 IMPACT = {'below_median': 1, 'around_median': 2, 'top_quartile': 3, 'top_decile': 4}
 HYPOTHESES = [
@@ -159,17 +176,58 @@ def sha(p: Path) -> str:
 
 
 # ------------------------------------------------------------------------------------------------ data
-def advance_codings(tag: str) -> tuple[dict, list[str]]:
-    """({key: valid coding}, [keys with an invalid coding]) for an advance tag folder."""
+def _revalidate(c: dict) -> tuple[dict, list[str], list[dict]]:
+    """(normalized coding with its derived objects, errors, normalizations) under the coding's own rubric version."""
+    n, ch = ca.normalize(c)
+    n.update({k: c[k] for k in ('human_blocks', 'run') if k in c})
+    if ch:
+        n['_normalized'] = (c.get('_normalized') or []) + [x for x in ch if x not in (c.get('_normalized') or [])]
+    if 'human_blocks' in n:
+        n['human_blocks'] = ca.assemble_human(n)
+    return n, ca.check(n)[0], ch
+
+
+def advance_codings(tag: str, rescue: bool = False) -> tuple[dict, list[str]]:
+    """({key: valid coding}, [keys with an invalid coding]) for an advance tag folder. With rescue, each record in
+    <tag>/_invalid that passes the current validator after normalization is added with a 'rescued' entry in its run
+    and written to derived/advance/rescued/<tag>/<key>.json; invalid JSON (.txt records) cannot be rescued."""
     d, out, bad = API / tag, {}, []
     for f in sorted(d.glob('g22_*.json')) if d.is_dir() else []:
         try:
             c = json.loads(f.read_text())
         except Exception:  # noqa: BLE001
             bad.append(f.stem); continue
-        (bad.append(f.stem) if ca.validate(c) else out.__setitem__(c['key'], c))
-    bad += [f.stem for f in sorted((d / '_invalid').glob('g22_*.json'))] if (d / '_invalid').is_dir() else []
+        n, errs, _ = _revalidate(c)
+        (bad.append(f.stem) if errs else out.__setitem__(n['key'], n))
+    inv = d / '_invalid'
+    for f in sorted(inv.glob('g22_*.json')) if inv.is_dir() else []:
+        if f.stem in out:
+            continue
+        rec = json.loads(f.read_text())
+        c = rec.get('coding')
+        if rescue and isinstance(c, dict):
+            n, errs, ch = _revalidate({**c, 'run': rec.get('run') or {}})
+            if not errs:
+                n['human_blocks'] = ca.assemble_human(n)
+                n['run'] = {**n['run'], 'rescued': {'from': rel(f), 'errors_at_collection': rec.get('errors', []), 'on': TODAY}}
+                out[n['key']] = n
+                (RESCUED / tag).mkdir(parents=True, exist_ok=True)
+                (RESCUED / tag / f.name).write_text(json.dumps(n, indent=1, ensure_ascii=False))
+                continue
+        bad.append(f.stem)
+    bad += [f.stem for f in sorted(inv.glob('g22_*.txt'))] if inv.is_dir() else []
     return out, sorted(set(bad) - set(out))
+
+
+def read_meta(k: str, c: dict | None = None) -> dict:
+    """Blind meta of the text the coder of c read (by run.blind_sha256, archive included), else the current meta."""
+    sha_ = ((c or {}).get('run') or {}).get('blind_sha256')
+    m = blind_text.cached_as_read(k, sha_)[1] if sha_ else {}
+    return m or blind_meta(k)
+
+
+def route(k: str, c: dict) -> str:
+    return (c.get('run') or {}).get('blind_source') or read_meta(k, c).get('source', 'unknown')
 
 
 def inquiry() -> dict:
@@ -215,6 +273,10 @@ def derived(c: dict) -> dict:
             'roles': set(c['roles']), 'assessable': v != 'unassessable',
             'basis_origin': bg['origin'] if c['verdict_basis'] != 'none' else 'none', 'basis_type': bg['gain_type'],
             'n_checks': sum(len(g['checks']) for g in c['candidate_gains']),
+            'headline_warranted': (sum(ok(g) for g in c['candidate_gains'] if g['origin'] == 'headline_component'),
+                                   sum(g['origin'] == 'headline_component' for g in c['candidate_gains'])),
+            'leak_cue': (bool(c['blind_leak_cues']) if 'blind_leak_cues' in c else
+                         c.get('blind_leak_noticed', '').strip().lower() not in ('none', 'none.', '')),
             'impact': IMPACT.get(c['impact_forecast'])}
 
 
@@ -334,15 +396,33 @@ def pick(args) -> None:
 
 
 # ------------------------------------------------------------------------------------------------ pilot
-def pilot(args) -> None:
-    ta, tb = (args.tags.split(',') if args.tags else PILOT_TAGS)
-    A, badA = advance_codings(ta)
-    B, badB = advance_codings(tb)
-    if not A and not B:
-        sys.exit(f'no valid codings under {ta} or {tb}')
-    inq = inquiry()
-    both = sorted(set(A) & set(B))
-    DA, DB = {k: derived(c) for k, c in A.items()}, {k: derived(c) for k, c in B.items()}
+def pilot_tags(args) -> list[str]:
+    if getattr(args, 'tags', None):
+        return [t if t.endswith('-advance') else t + '-advance' for t in args.tags.split(',')]
+    return sorted(d.name for d in API.glob('pilot*-advance') if d.is_dir())
+
+
+def tag_cost(st: dict, t: str, n_valid: int, n_bad: int) -> tuple[dict, list[int], Counter]:
+    att = {k.split(':', 1)[1]: v for k, v in st.get('spent', {}).items() if k.startswith(t + ':')}
+    usd = sum(x.get('usd') or 0 for v in att.values() for x in v)
+    outs = [x['usage']['output'] for v in att.values() for x in v if x.get('usage') and x['usage'].get('output')]
+    fails = Counter(x.get('outcome', '')[:40] for v in att.values() for x in v if x.get('outcome') != 'ok')
+    b = [x for x in st.get('batches', []) if x.get('tag') == t]
+    return ({'usd': round(usd, 2), 'attempts': sum(len(v) for v in att.values()), 'valid': n_valid, 'invalid': n_bad,
+             'usd_per_paper_attempted': round(usd / len(att), 3) if att else None,
+             'usd_per_valid': round(usd / n_valid, 3) if n_valid else None,
+             'effort': sorted({x.get('effort') for x in b} - {None}), 'max_tokens': sorted({x.get('max_tokens') for x in b} - {None}),
+             'rubric': sorted({x.get('rubric') for x in b} - {None})}, outs, fails)
+
+
+def pilot_group(tags: list[str], C: dict, bad: dict, inq: dict, st: dict) -> dict:
+    """Report for the tags of one rubric version. C: {tag: {key: coding}}; bad: {tag: [keys]}."""
+    D = {t: {k: derived(c) for k, c in C[t].items()} for t in tags}
+    coded = Counter(k for t in tags for k in C[t])
+    both = sorted(k for k, n in coded.items() if n >= 2)
+    pair = {k: [t for t in tags if k in C[t]][:2] for k in both}
+    A = {k: C[pair[k][0]][k] for k in both}; B = {k: C[pair[k][1]][k] for k in both}
+    DA = {k: D[pair[k][0]][k] for k in both}; DB = {k: D[pair[k][1]][k] for k in both}
     retest = {'papers_in_both': len(both)}
     if both:
         u = [[DA[k]['verdict'], DB[k]['verdict']] for k in both]
@@ -369,28 +449,30 @@ def pilot(args) -> None:
         retest['novelty'] = {'judgment_alpha_nominal': alpha_nominal(nj), 'score_alpha_ordinal': alpha_ordinal(ns),
                              'score_weighted_kappa': wkappa([a for a, _ in ns], [b for _, b in ns])}
         retest['impact_forecast_alpha_ordinal'] = alpha_ordinal([[DA[k]['impact'], DB[k]['impact']] for k in both])
-    allc = [(k, c, DA[k] if t == 'A' else DB[k]) for t, M in (('A', A), ('B', B)) for k, c in M.items()]
-    dist = {'verdict': shares(d['verdict'] for _, _, d in allc),
-            'unassessable_condition': shares(d['condition'] for _, _, d in allc),
-            'advance_score': shares(d['score'] for _, _, d in allc),
-            'novelty_score': shares(d['novelty_score'] for _, _, d in allc),
-            'basis_origin': shares(d['basis_origin'] for _, _, d in allc),
-            'magnitude_form': shares(g['magnitude_form'] for _, c, _ in allc for g in c['candidate_gains']),
-            'evidence_access': shares(g['evidence_access'] for _, c, _ in allc for g in c['candidate_gains']),
-            'rival_test': shares(g['rival_test'] for _, c, _ in allc for g in c['candidate_gains'] if g['gain_type'] == 'understanding'),
-            'criteria_met_G1': {x: round(np.mean([c['candidate_gains'][0]['criteria'][x] == 'met' for _, c, _ in allc]), 3) for x in ca.CRIT},
-            'scores_1_and_5_used': {'1': any(d['score'] == 1 for _, _, d in allc), '5': any(d['score'] == 5 for _, _, d in allc)}}
+    allc = [(k, c, D[t][k], t) for t in tags for k, c in C[t].items()]
+    rescued = [(t, k) for k, c, _, t in allc if (c.get('run') or {}).get('rescued')]
+    dist = {'verdict': shares(d['verdict'] for _, _, d, _ in allc),
+            'unassessable_condition': shares(d['condition'] for _, _, d, _ in allc),
+            'advance_score': shares(d['score'] for _, _, d, _ in allc),
+            'novelty_score': shares(d['novelty_score'] for _, _, d, _ in allc),
+            'basis_origin': shares(d['basis_origin'] for _, _, d, _ in allc),
+            'magnitude_form': shares(g['magnitude_form'] for _, c, _, _ in allc for g in c['candidate_gains']),
+            'evidence_access': shares(g['evidence_access'] for _, c, _, _ in allc for g in c['candidate_gains']),
+            'rival_test': shares(g['rival_test'] for _, c, _, _ in allc for g in c['candidate_gains'] if g['gain_type'] == 'understanding'),
+            'criteria_met_G1': {x: round(np.mean([c['candidate_gains'][0]['criteria'][x] == 'met' for _, c, _, _ in allc]), 3) for x in ca.CRIT},
+            'scores_1_and_5_used': {'1': any(d['score'] == 1 for _, _, d, _ in allc), '5': any(d['score'] == 5 for _, _, d, _ in allc)},
+            'headline_warranted': shares(f"{d['headline_warranted'][0]}/{d['headline_warranted'][1]}" for _, _, d, _ in allc if d['assessable']),
+            'gains_per_coding': shares(len(c['candidate_gains']) for _, c, _, _ in allc)}
     dist['degenerate'] = [f for f in ('verdict', 'advance_score', 'novelty_score') if dist[f]['degenerate']]
     sub = lambda k: (inq.get(k, {}).get('metrics') or {}).get('subfield') or 'unknown'
     strata = {'verdict_by_route': {}, 'by_subfield': {}, 'score_by_basis_type': {}}
-    for k, c, d in allc:
-        strata['verdict_by_route'].setdefault(blind_meta(k).get('source', 'unknown'), Counter())[d['verdict']] += 1
+    for k, c, d, _ in allc:
+        strata['verdict_by_route'].setdefault(route(k, c), Counter())[d['verdict']] += 1
         s = strata['by_subfield'].setdefault(sub(k), {'codings': 0, 'not_quantifiable': 0, 'gains': 0, 'U2': 0, 'low_confidence': 0, 'scores': []})
         s['codings'] += 1; s['U2'] += d['condition'] == 'U2'; s['low_confidence'] += c['verdict_confidence'] == 'low'
         s['gains'] += len(c['candidate_gains']); s['not_quantifiable'] += sum(g['magnitude_form'].startswith('not_quant') for g in c['candidate_gains'])
         if d['score'] is not None:
             s['scores'].append(d['score'])
-        if d['score'] is not None:
             strata['score_by_basis_type'].setdefault(d['basis_type'], []).append(d['score'])
     for s in strata['by_subfield'].values():
         s['median_score'] = float(np.median(s['scores'])) if s['scores'] else None
@@ -398,70 +480,96 @@ def pilot(args) -> None:
         del s['scores']
     strata['score_by_basis_type'] = {t: {'n': len(v), 'median': float(np.median(v)), 'mean': round(float(np.mean(v)), 2)} for t, v in strata['score_by_basis_type'].items()}
     strata['verdict_by_route'] = {r: dict(v) for r, v in strata['verdict_by_route'].items()}
-    keys = sorted(set(A) | set(B))
-    leak = Counter(); leak_papers = Counter()
+    keys = sorted(coded)
+    leak, leak_papers = Counter(), Counter()
     for k in keys:
-        la = blind_meta(k).get('leakage_after', {})
-        for part, fields in la.items():
+        c0 = next(C[t][k] for t in tags if k in C[t])
+        for part, fields in read_meta(k, c0).get('leakage_after', {}).items():
             for f, v in fields.items():
                 if f'{part}.{f}' not in blind_text.INFO_FIELDS and not f.endswith('first_6000'):
                     leak[f'{part}.{f}'] += v; leak_papers[f'{part}.{f}'] += v > 0
+    flagged = [(k, t, c) for k, c, d, t in allc if d['leak_cue']]
     leakage = {'residual': {f: [leak[f], leak_papers[f]] for f in sorted(leak) if leak[f]},
-               'blind_leak_noticed_rate': round(np.mean([c['blind_leak_noticed'].strip().lower() not in ('none', 'none.', '') for _, c, _ in allc]), 3),
-               'post_2022_knowledge_flag_rate': round(np.mean([c['post_2022_knowledge_flag'].strip().lower() not in ('none', 'none.', '') for _, c, _ in allc]), 3),
-               'blind_leak_noticed': {k: c['blind_leak_noticed'] for k, c, _ in allc if c['blind_leak_noticed'].strip().lower() not in ('none', 'none.', '')}}
+               'leak_cue_rate': round(len(flagged) / len(allc), 3) if allc else None,
+               'leak_cue_papers': len({k for k, _, _ in flagged}),
+               'leak_cues': dict(Counter(x for _, _, c in flagged for x in c.get('blind_leak_cues', []))),
+               'post_2022_knowledge_flag_rate': round(np.mean([c['post_2022_knowledge_flag'].strip().lower() not in ('none', 'none.', '') for _, c, _, _ in allc]), 3),
+               'notes': {f'{t}:{k}': (c.get('blind_leak_note') or c.get('blind_leak_noticed') or '') for k, t, c in flagged}}
     val = Counter()
-    for k, c, _ in allc:
+    for k, c, _, _ in allc:
         info = {}
         ca.check(c, info=info)
         val.update(info)
-    st = state()
-    cost = {}
-    outs, failures = [], Counter()
-    for t in (ta, tb):
-        att = {k.split(':', 1)[1]: v for k, v in st.get('spent', {}).items() if k.startswith(t + ':')}
-        usd = sum(x.get('usd') or 0 for v in att.values() for x in v)
-        ok = len(A if t == ta else B)
-        cost[t] = {'usd': round(usd, 2), 'attempts': sum(len(v) for v in att.values()), 'valid': ok,
-                   'usd_per_valid': round(usd / ok, 3) if ok else None, 'invalid': len(badA if t == ta else badB)}
-        for k, v in att.items():
-            for x in v:
-                if x.get('outcome') == 'ok' and x.get('usage'):
-                    outs.append(x['usage']['output'])
-                elif x.get('outcome') != 'ok':
-                    failures[(blind_meta(k).get('source', 'unknown'), x.get('outcome', '')[:40])] += 1
-    per = np.mean([cost[t]['usd_per_valid'] for t in cost if cost[t]['usd_per_valid']]) if any(cost[t]['usd_per_valid'] for t in cost) else None
-    spent_pilot = sum(cost[t]['usd'] for t in cost)
+    val['normalized_codings'] = sum(bool(c.get('_normalized')) for _, c, _, _ in allc)
+    cost, outs, fails = {}, [], Counter()
+    for t in tags:
+        cost[t], o, f = tag_cost(st, t, len(C[t]), len(bad[t]))
+        outs += o; fails.update(f)
+    spent = sum(cost[t]['usd'] for t in tags)
+    attempted = sum(1 for t in tags for k in st.get('spent', {}) if k.startswith(t + ':'))
     cost['output_tokens'] = ({'median': int(np.median(outs)), 'p90': int(np.percentile(outs, 90)), 'p99': int(np.percentile(outs, 99)),
                               'max': int(max(outs)), 'n': len(outs),
                               'recommended_max_tokens': int(math.ceil(np.percentile(outs, 99) * 1.1 / 1000) * 1000)} if outs else None)
-    cost['failures_by_route'] = {f'{s} | {o}': n for (s, o), n in failures.items()}
-    cost['projection'] = {'per_paper_usd': round(float(per), 3) if per else None,
-                          'full_run_usd': round(float(per) * N_FULL, 2) if per else None,
-                          'remaining_budget_usd': round(BUDGET - SPENT_BEFORE - spent_pilot, 2),
-                          'note': f'budget ${BUDGET:.0f} total, ${SPENT_BEFORE} spent before the pilot (parent record), pilot spend from state.json'}
-    sc = [(d['score'], blind_meta(k).get('words')) for k, _, d in allc if d['score'] is not None and blind_meta(k).get('words')]
+    cost['failures'] = dict(fails)
+    cost['spent_usd'] = round(spent, 2)
+    cost['per_paper_attempted_usd'] = round(spent / attempted, 3) if attempted else None
+    sc = [(d['score'], read_meta(k, c).get('words')) for k, c, d, _ in allc if d['score'] is not None and read_meta(k, c).get('words')]
     verb = {'rho_score_paper_words': round(g17.spearman([a for a, _ in sc], [b for _, b in sc]), 3) if len(sc) > 4 else None}
     out_by = {}
-    for t in (ta, tb):
+    for t in tags:
         for k, v in st.get('spent', {}).items():
             if k.startswith(t + ':'):
                 okx = [x for x in v if x.get('outcome') == 'ok' and x.get('usage')]
                 if okx:
                     out_by[(t, k.split(':', 1)[1])] = okx[-1]['usage']['output']
-    so = [((A if t == ta else B)[k]['advance_score'], o) for (t, k), o in out_by.items() if k in (A if t == ta else B) and (A if t == ta else B)[k]['advance_score'] is not None]
+    so = [(C[t][k]['advance_score'], o) for (t, k), o in out_by.items() if k in C[t] and C[t][k]['advance_score'] is not None]
     verb['rho_score_output_tokens'] = round(g17.spearman([a for a, _ in so], [b for _, b in so]), 3) if len(so) > 4 else None
-    res = {'tags': [ta, tb], 'valid': {ta: len(A), tb: len(B)}, 'invalid': {ta: badA, tb: badB}, 'keys': keys,
-           'retest': retest, 'distributions': dist, 'strata': strata, 'leakage': leakage, 'validator': dict(val), 'cost': cost,
-           'verbosity': verb, 'rubric_version': ca.rubric_version(), 'rubric_sha256': sha(ROOT / 'agents/advance/RUBRIC.md'),
-           'blind_version': blind_text.BLIND_VERSION}
+    return {'tags': tags, 'valid': {t: len(C[t]) for t in tags}, 'invalid': {t: bad[t] for t in tags},
+            'rescued': [f'{t}:{k}' for t, k in rescued], 'keys': keys, 'retest_pairs': {k: pair[k] for k in both},
+            'retest': retest, 'distributions': dist, 'strata': strata, 'leakage': leakage, 'validator': dict(val), 'cost': cost,
+            'verbosity': verb, 'blind_versions_read': dict(Counter(read_meta(k, c).get('blind_version') for k, c, _, _ in allc))}
+
+
+def pilot(args) -> None:
+    tags = pilot_tags(args)
+    C, bad = {}, {}
+    for t in tags:
+        C[t], bad[t] = advance_codings(t, rescue=True)
+    if not any(C.values()):
+        sys.exit(f'no valid codings under {", ".join(tags)}')
+    ver = {t: sorted({c['rubric_version'] for c in C[t].values()}) for t in tags}
+    groups = {}
+    for t in tags:
+        for v in ver[t] or ['none']:
+            groups.setdefault(v, []).append(t)
+    inq, st = inquiry(), state()
+    rep = {v: pilot_group(ts, {t: {k: c for k, c in C[t].items() if c['rubric_version'] == v} for t in ts}, bad, inq, st)
+           for v, ts in groups.items() if v != 'none'}
+    cur = ca.rubric_version()
+    top = cur if cur in rep else max(rep, key=lambda v: tuple(int(x) for x in v.split('.')))
+    spent_pilots = sum(rep[v]['cost']['spent_usd'] for v in rep)
+    g = rep[top]
+    per = g['cost']['per_paper_attempted_usd']
+    projection = {'per_paper_usd': per, 'full_run_usd': round(per * N_FULL, 2) if per else None,
+                  'remaining_budget_usd': round(BUDGET - SPENT_BEFORE - spent_pilots, 2),
+                  'note': (f'budget ${BUDGET:.0f} total, ${SPENT_BEFORE} spent before pilot 1 (parent record), pilot spend from '
+                           f'state.json over every pilot tag (${spent_pilots:.2f}); per paper = spend over papers attempted, rubric {top}')}
+    res = {**{k: g[k] for k in ('tags', 'valid', 'invalid', 'rescued', 'keys', 'retest', 'distributions', 'strata', 'leakage', 'validator', 'verbosity')},
+           'cost': {**g['cost'], 'projection': projection}, 'group_rubric_version': top, 'groups': rep,
+           'pilot_versions': {t: {'rubric_versions': ver[t], 'blind_versions': sorted({str(read_meta(k, c).get('blind_version')) for k, c in C[t].items()}),
+                                  'batches': tag_cost(st, t, len(C[t]), len(bad[t]))[0]} for t in tags},
+           'rubric_version': cur, 'rubric_sha256': sha(ROOT / 'agents/advance/RUBRIC.md'), 'blind_version': blind_text.BLIND_VERSION}
     write_json(OUT / 'pilot.json', json.loads(json.dumps(res, default=lambda o: sorted(o) if isinstance(o, set) else str(o))),
-               [f'private/analysis/codings/api/{ta}', f'private/analysis/codings/api/{tb}', 'private/analysis/codings/api/state.json',
-                'private/data/roadmap/blind'])
-    log('g24_advance.py pilot', 'advance pilot report', len(keys), f'{len(both)} papers coded twice')
-    print(json.dumps({'retest': retest, 'degenerate': dist['degenerate'], 'verdict': dist['verdict']['counts'],
-                      'score': dist['advance_score']['counts'], 'cost': cost['projection'], 'output_tokens': cost['output_tokens'],
-                      'leak_noticed_rate': leakage['blind_leak_noticed_rate'], 'validator': dict(val)}, indent=1, default=str))
+               [f'private/analysis/codings/api/{t}' for t in tags] + ['private/analysis/codings/api/state.json', 'private/data/roadmap/blind',
+                                                                      'derived/advance/rescued'])
+    log('g24_advance.py pilot', 'advance pilot report', len(res['keys']), f"{len(groups)} rubric versions; {res['retest']['papers_in_both']} papers coded twice under {top}")
+    for v, r in rep.items():
+        print(f"rubric {v} ({', '.join(r['tags'])}): valid {r['valid']}, rescued {len(r['rescued'])}, invalid {sum(len(x) for x in r['invalid'].values())}; "
+              f"retest pairs {r['retest']['papers_in_both']}; verdict {r['distributions']['verdict']['counts']}; "
+              f"verdict by route {r['strata']['verdict_by_route']}; score {r['distributions']['advance_score']['counts']}")
+    print(json.dumps({'retest': res['retest'], 'degenerate': res['distributions']['degenerate'], 'cost': projection,
+                      'output_tokens': res['cost']['output_tokens'], 'leak_cue_rate': res['leakage']['leak_cue_rate'],
+                      'headline_warranted': res['distributions']['headline_warranted']['counts']}, indent=1, default=str))
 
 
 # ------------------------------------------------------------------------------------------------ freeze
@@ -477,16 +585,27 @@ def freeze(args) -> None:
     if not pj.is_file():
         sys.exit('refusing to freeze: run `pilot` first (derived/advance/pilot.json)')
     p = read_json(pj)
+    cur = ca.rubric_version()
+    if p.get('group_rubric_version') != cur and not args.allow_version_mismatch:
+        sys.exit(f'refusing to freeze: rubric {cur} has no pilot codings (pilot.json describes rubric {p.get("group_rubric_version")}); '
+                 'run pilot 2 under this version and `pilot` again, or pass --allow-version-mismatch')
     if p['rubric_sha256'] != sha(ROOT / 'agents/advance/RUBRIC.md'):
         print('note: RUBRIC.md changed after the pilot; the plan freezes the current version and records both sha256 values')
     ach = [p['distributions']['verdict']['counts'].get('achieved', 0), p['distributions']['verdict']['n']]
+    import code_papers   # noqa: E402  (settings only; no API call)
+    tag_runs = [p['pilot_versions'][t]['batches'] for t in p['tags'] if t in p.get('pilot_versions', {})]
+    efforts = sorted({e for b in tag_runs for e in b.get('effort', [])})
+    effort = efforts[0] if len(efforts) == 1 else code_papers.ADVANCE_EFFORT
     plan = {'frozen': TODAY, 'decided_by': 'Marine Denolle (PI), October 27, 2026',
             'construct': 'reported warrant (RUBRIC.md header); results are the model judgment of reported warrant until the validation gate passes',
             'rubric_version': ca.rubric_version(), 'files_sha256': {f: sha(ROOT / f) for f in FROZEN_FILES},
-            'rubric_sha256_at_pilot': p['rubric_sha256'], 'blind_version': blind_text.BLIND_VERSION,
+            'rubric_sha256_at_pilot': p['rubric_sha256'], 'rubric_version_at_pilot': p.get('group_rubric_version'),
+            'blind_version': blind_text.BLIND_VERSION, 'blind_versions_read_in_pilot': p['groups'][p['group_rubric_version']]['blind_versions_read']
+            if p.get('groups') else None, 'pilot_versions': p.get('pilot_versions'),
             'pilot_sha256': sha(pj), 'pilot_keys': p['keys'], 'full_run_tag': args.full_tag,
-            'model': 'claude-opus-5-5', 'effort': 'high',
-            'max_tokens': (p['cost'].get('output_tokens') or {}).get('recommended_max_tokens') or 32000,
+            'model': 'claude-opus-5-5', 'effort': effort, 'structured_output': True,
+            'max_tokens': max((p['cost'].get('output_tokens') or {}).get('recommended_max_tokens') or 0, code_papers.ADVANCE_MAX_TOKENS),
+            'secondary_descriptive': 'headline components warranted (every criterion met) over headline components, assessable papers; outside the H family',
             'success_fraction': 'achieved / (achieved + not_demonstrated + unassessable U1, U2, U3, U5); U4 reported separately; all three verdict counts reported',
             'expected_achieved_rate': {'pilot': f'{ach[0]} of {ach[1]} codings', 'wilson_95': wilson(*ach)},
             'pilot_degenerate_distributions': p['distributions']['degenerate'],
@@ -504,10 +623,12 @@ def freeze(args) -> None:
                                        '60-paper subsample (about $8) would show how much the associations shrink.'),
             'validation_gate': {'human_human_alpha_ordinal_score_min': 0.667, 'human_human_alpha_nominal_verdict_min': 0.667,
                                 'model_swap_alpha_min': 'human-human alpha minus 0.10', 'mean_offset_max': 0.5,
-                                'verdict_validation': 'needs ratings v1.1.0 (verdict, verdict_criteria, unassessable_condition); '
-                                                      'until then the verdict has no human comparator and only the score is validated, '
-                                                      'on papers both sides rate above 1',
-                                'human_raters_saw_venue': True,
+                                'verdict_validation': 'ratings v1.1.0 (agents/coder/ratings.schema.json, October 28, 2026) records '
+                                                      'advance.verdict, verdict_criteria and unassessable_condition under the same '
+                                                      'criteria; gate (4) uses the papers whose two raters agree on achieved or '
+                                                      'not_demonstrated as the reference',
+                                'human_raters_saw_venue': 'partly: the coder app hides journal and DOI (ratings v1.1.0), but the '
+                                                          'PDF the raters read prints them',
                                 'note': 'n = 40 gives roughly +/- 0.15 to 0.25 on alpha'}}
     PLAN.parent.mkdir(parents=True, exist_ok=True)
     PLAN.write_text(json.dumps(plan, indent=1, ensure_ascii=False) + '\n')
@@ -551,16 +672,35 @@ def gate(model: dict) -> dict:
         swaps.append(alpha_ordinal(units))
     both = [k for k in two if k in model and model[k]['advance_score'] is not None]
     diffs = [model[k]['advance_score'] - np.mean([hs(r) for r in two[k].values()]) for k in both]
-    has_verdict = any('verdict' in r for v in two.values() for r in v.values())
+    hv_of = lambda r: (r.get('advance') or {}).get('verdict')    # ratings v1.1.0 keeps the verdict under advance
+    has_verdict = any(hv_of(r) for v in two.values() for r in v.values())
     res = {'papers_two_raters': len(two), 'papers_with_model': len(both), 'human_human_alpha_score': hh,
            'model_swap_alpha_score': swaps, 'mean_offset': round(float(np.mean(diffs)), 3) if diffs else None,
            'offset_p_signflip': signflip_wilcoxon(diffs), 'human_verdict_available': has_verdict}
     sw = [x for x in swaps if x is not None]
     res['passed'] = bool(hh is not None and hh >= 0.667 and sw and min(sw) >= hh - 0.10 and diffs and abs(np.mean(diffs)) <= 0.5)
     if has_verdict:
-        hv = [[r.get('verdict') for r in v.values()][:2] for v in two.values()]
+        hv = [[hv_of(r) for r in v.values()][:2] for v in two.values()]
         res['human_human_alpha_verdict'] = alpha_nominal(hv)
         res['passed'] = res['passed'] and (res['human_human_alpha_verdict'] or 0) >= 0.667
+        # (4) reference: papers whose two raters agree on achieved or not_demonstrated; the model's sensitivity and
+        # specificity for achieved on them, and the Rogan-Gladen corrected achieved share among the model's codings
+        # that count toward the success fraction (U4 left out)
+        ref = {k: u[0] for k, u in zip(two, hv) if len(u) == 2 and u[0] == u[1] and u[0] in ('achieved', 'not_demonstrated')}
+        pos = [k for k, h in ref.items() if h == 'achieved' and k in model]
+        neg = [k for k, h in ref.items() if h == 'not_demonstrated' and k in model]
+        se = sum(model[k]['verdict'] == 'achieved' for k in pos) / len(pos) if pos else None
+        sp = sum(model[k]['verdict'] != 'achieved' for k in neg) / len(neg) if neg else None
+        counted = [c for c in model.values() if c.get('unassessable_condition') != 'U4']
+        p_obs = sum(c['verdict'] == 'achieved' for c in counted) / len(counted) if counted else None
+        rg = (None if None in (se, sp, p_obs) or se + sp - 1 <= 0 else
+              round(min(1.0, max(0.0, (p_obs + sp - 1) / (se + sp - 1))), 3))
+        res['verdict_vs_humans'] = {'reference_papers': len(ref), 'human_achieved': len(pos), 'human_not_demonstrated': len(neg),
+                                    'sensitivity': None if se is None else round(se, 3),
+                                    'specificity': None if sp is None else round(sp, 3),
+                                    'model_success_fraction': None if p_obs is None else round(p_obs, 3),
+                                    'rogan_gladen_corrected': rg,
+                                    'note': 'reference = both raters agree (achieved or not_demonstrated); descriptive, not part of passed'}
     res['status'] = 'passed' if res['passed'] else 'not passed: results are the model judgment of reported warrant'
     return res
 
@@ -573,6 +713,8 @@ def test(args) -> None:
                if sha(ROOT / f) != plan['files_sha256'][f]]
     if changed:
         sys.exit(f'refusing to test: changed since the freeze: {changed}')
+    if blind_text.BLIND_VERSION != plan.get('blind_version'):
+        sys.exit(f'refusing to test: BLIND_VERSION {blind_text.BLIND_VERSION} is not the frozen {plan.get("blind_version")}')
     full, bad = advance_codings(plan['full_run_tag'])
     inq = inquiry()
     pilot_keys = set(plan['pilot_keys'])
@@ -591,10 +733,12 @@ def test(args) -> None:
     desc = {'overall': frac(keys), 'without_out_of_taxonomy_awards': frac(keys, 'achieved_in_taxonomy'), 'U4_screen_failures': len(u4),
             'unassessable_conditions': dict(Counter(D[k]['condition'] for k in keys if D[k]['verdict'] == 'unassessable')),
             'by_round': {r: frac([k for k in keys if inq[k]['round'] == r]) for r in ('round1', 'round2')},
-            'by_route': {s: frac([k for k in keys if blind_meta(k).get('source') == s]) for s in ('xml', 'pdftotext')},
+            'by_route': {s: frac([k for k in keys if route(k, full[k]) == s]) for s in ('xml', 'pdftotext')},
             'by_subfield': {s: frac([k for k in keys if (inq[k]['metrics'].get('subfield') or 'unknown') == s])
                             for s in sorted({inq[k]['metrics'].get('subfield') or 'unknown' for k in keys})},
-            'score_distribution': dict(Counter(D[k]['score'] for k in keys))}
+            'score_distribution': dict(Counter(D[k]['score'] for k in keys)),
+            'headline_warranted': dict(Counter(f"{D[k]['headline_warranted'][0]}/{D[k]['headline_warranted'][1]}" for k in keys if D[k]['assessable'])),
+            'blind_versions_read': dict(Counter((full[k].get('run') or {}).get('blind_version') for k in keys))}
 
     def outcome(k, o):
         if o.startswith('role:'):
@@ -618,7 +762,7 @@ def test(args) -> None:
         r['feature_present'] = npos
         r['direction_ok'] = bool(res and np.sign(res['rho_within']) == h['sign'])
         r['plain_rho'] = round(g17.spearman(f, o), 3) if testable else None
-        covs = [np.log1p([blind_meta(k).get('words', 0) for k in ks]), [float(blind_meta(k).get('source') == 'xml') for k in ks],
+        covs = [np.log1p([read_meta(k, full[k]).get('words', 0) for k in ks]), [float(route(k, full[k]) == 'xml') for k in ks],
                 [D[k]['n_checks'] for k in ks]]
         r['partial_rho_covariates'] = partial_spearman(f, o, covs) if testable else None
         if h['outcome'] == 'achieved':
@@ -654,7 +798,8 @@ def test(args) -> None:
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('cmd', choices=['pick', 'pilot', 'freeze', 'test'])
-    ap.add_argument('--tags', help='pilot: two advance tags, comma-separated (default pilot-a-advance,pilot-b-advance)')
+    ap.add_argument('--tags', help='pilot: advance tags, comma-separated (default: every pilot*-advance folder)')
     ap.add_argument('--full-tag', default='full-advance', help='freeze: the full-run tag folder (with the -advance suffix)')
+    ap.add_argument('--allow-version-mismatch', action='store_true', help='freeze: allow a plan whose rubric version has no pilot codings')
     a = ap.parse_args()
     {'pick': pick, 'pilot': pilot, 'freeze': freeze, 'test': test}[a.cmd](a)

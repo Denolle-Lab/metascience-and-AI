@@ -18,11 +18,15 @@ Restartable: all state lives in private/analysis/codings/api/state.json. Typical
   schema; always stored as review_status "pending" for human review; tag gets a "-readiness" suffix).
   Add --task advance to submit/collect/retry/one for the blind advance coding (agents/advance/RUBRIC.md and
   advance.schema.json, validator tools/check_advance.py; tag gets an "-advance" suffix). The model reads only the
-  blinded text of tools/blind_text.py (no PDF, so no journal page images), max_tokens 32000 (set the production cap
-  from the pilot's output-token distribution). The request names the paper by an opaque key (P + the first 10
-  characters of the blinded text's sha256), never the OpenAlex work id; write_coding maps it back. A valid coding is
-  saved with `human_blocks` (check_advance.assemble_human) and `run` (model that answered, opaque key, blind sha256,
-  attempt number); an invalid one goes to <tag>/_invalid/<key>.json with its errors. Content failures (invalid JSON
+  blinded text of tools/blind_text.py (no PDF, so no journal page images), with structured outputs
+  (output_config.format, the schema from advance_api_schema()), effort ADVANCE_EFFORT ('medium' unless --effort is
+  given) and max_tokens ADVANCE_MAX_TOKENS (26,000: pilot 1's 99th percentile of output tokens, 23,619, plus 10%,
+  rounded up to 1,000). The request names the paper by an opaque key (P + the first 10
+  characters of the blinded text's sha256), never the OpenAlex work id; write_coding maps it back. The answer is
+  normalized (check_advance.normalize: empty extra properties dropped, other extra properties moved to notes, near-miss
+  enum values, verdict_basis bookkeeping) and validated; a valid coding is saved with `human_blocks`
+  (check_advance.assemble_human), `run` (model that answered, opaque key, blind sha256 and version, text route,
+  attempt number) and `_normalized` (each change); an invalid one goes to <tag>/_invalid/<key>.json with its errors. Content failures (invalid JSON
   or validation errors) get at most one re-draw from `retry`; `one` runs without server-side fallback, so the answer
   always comes from MODEL.
   Every returned result, failures included, is recorded with its usage and cost in state.json 'spent'
@@ -81,9 +85,19 @@ NO_XML = False     # set from --no-xml: send the PDF without the located XML tex
 REVIEW_DIR = None  # set from --review-dir: attach <dir>/<key>/discussion.txt (open review record) and code a review sequence
 TASK = 'inquiry'   # set from --task: 'inquiry' (codebook coding), 'readiness' (AI-readiness draft annotation) or 'advance'
 ADVANCE_DIR = ROOT / 'agents' / 'advance'
-ADVANCE_MAX_TOKENS = 32000
-ADVANCE_OUT_TOKENS_EST = 16000  # projected output tokens per paper (thinking plus JSON) before a pilot; replace with the pilot's median
+# Advance settings, rubric v1.1.0 (October 28, 2026). Pilot 1 (tags pilot-a-advance, pilot-b-advance; rubric v1.0.1,
+# effort high, no structured outputs; 20 valid of 40): output tokens median 16,101, p90 19,391, p99 23,619, max 24,334
+# (derived/advance/pilot.json). max_tokens is that p99 plus 10%, rounded up to 1,000, as g24_advance.py recommends; the
+# shorter v1.1.0 output and effort medium should stay well below it. ADVANCE_OUT_TOKENS_EST is the target, not a
+# measurement: at most $0.25 per paper at batch prices with caching leaves about 9,000 output tokens; replace it with
+# pilot 2's median.
+ADVANCE_MAX_TOKENS = 26000
+ADVANCE_OUT_TOKENS_EST = 9000
+ADVANCE_EFFORT = 'medium'       # Opus 5.5 default; pilot 1 ran at 'high' (about half of its output was thinking)
 ADVANCE_MAX_REDRAWS = 1         # content failures (invalid JSON, validation errors) are re-drawn at most once per paper and tag
+# JSON Schema keywords that structured outputs do not accept, and the schema's own budget annotations (x-max-words,
+# x-quote-budget), are removed from the schema sent as output_config.format; check_advance.py still enforces them
+API_SCHEMA_DROP = {'$schema', 'pattern', 'minItems', 'maxItems', 'minimum', 'maximum', 'minLength', 'maxLength', 'multipleOf'}
 
 
 def rubric_version() -> str:
@@ -91,6 +105,24 @@ def rubric_version() -> str:
         if line.startswith('version:'):
             return line.split(':', 1)[1].strip()
     return 'unknown'
+
+
+def advance_api_schema() -> dict:
+    """agents/advance/advance.schema.json cleaned for structured outputs: unsupported keywords and x- annotations
+    dropped, a type list ('integer' or 'null') turned into anyOf. Every object keeps additionalProperties false."""
+    def clean(x):
+        if isinstance(x, dict):
+            out = {k: clean(v) for k, v in x.items() if k not in API_SCHEMA_DROP and not k.startswith('x-')}
+            if isinstance(out.get('type'), list):
+                t = out.pop('type')
+                out = {'anyOf': [{**out, 'type': y} if y != 'null' else {'type': 'null'} for y in t]}
+            return out
+        return [clean(v) for v in x] if isinstance(x, list) else x
+    return clean(json.loads((ADVANCE_DIR / 'advance.schema.json').read_text()))
+
+
+def advance_output_config(effort: str) -> dict:
+    return {'effort': effort, 'format': {'type': 'json_schema', 'schema': advance_api_schema()}}
 
 
 def opaque_key(blind: str) -> str:
@@ -272,7 +304,7 @@ def params(key: str, doi: str, file_id: str, effort: str, max_tokens: int, revie
                     'source': {'type': 'text', 'media_type': 'text/plain', 'data': blind}},
                    {'type': 'text', 'text': f'Assess this paper under the rubric. key = {opaque_key(blind)}; rubric_version = "{rubric_version()}"; '
                     f'coder = "{MODEL}". Quote only from the document above and cite its locators.'}]
-        return dict(model=MODEL, max_tokens=max_tokens, system=system_blocks(), output_config={'effort': effort},
+        return dict(model=MODEL, max_tokens=max_tokens, system=system_blocks(), output_config=advance_output_config(effort),
                     messages=[{'role': 'user', 'content': content}])
     content = [{'type': 'document', 'source': {'type': 'file', 'file_id': file_id}}]
     if xml_text and TASK == 'inquiry':
@@ -335,7 +367,8 @@ def write_advance(key: str, data, out: Path, run: dict) -> tuple[bool, str]:
     """Map the opaque key back, validate (tools/check_advance.py), and save: valid codings with human_blocks and run to
     <tag>/<key>.json; invalid ones with their errors to <tag>/_invalid/<key>.json, so a folder read never picks them up."""
     import blind_text
-    from check_advance import validate as validate_advance, assemble_human
+    from check_advance import validate as validate_advance, assemble_human, normalize
+    changes = []
     if not isinstance(data, dict):
         errs = ['not a JSON object']
     else:
@@ -343,7 +376,13 @@ def write_advance(key: str, data, out: Path, run: dict) -> tuple[bool, str]:
         if data.get('key') == run.get('expected_key'):
             data['key'] = key
         text = blind_text.cached(key)
-        run['blind_sha256'] = blind_text.sha(text) if text else None
+        bm = blind_text.CACHE / f'{key}.json'
+        bm = json.loads(bm.read_text()) if bm.is_file() else {}
+        run.update({'blind_sha256': blind_text.sha(text) if text else None, 'blind_version': bm.get('blind_version'),
+                    'blind_source': bm.get('source')})
+        data, changes = normalize(data)
+        if changes:
+            data['_normalized'] = changes
         errs = validate_advance(data, text=text, key=key)
     run.pop('expected_key', None)
     if errs:
@@ -352,7 +391,8 @@ def write_advance(key: str, data, out: Path, run: dict) -> tuple[bool, str]:
         (out / '_invalid' / f'{key}.json').write_text(json.dumps(rec, indent=1, ensure_ascii=False))
         return False, f'{len(errs)} validation problems: ' + '; '.join(errs[:3])
     out.mkdir(parents=True, exist_ok=True)
-    data = {**data, 'human_blocks': assemble_human(data), 'run': run}
+    data = {**{k: v for k, v in data.items() if k != '_normalized'}, 'human_blocks': assemble_human(data), 'run': run,
+            '_normalized': changes}
     (out / f'{key}.json').write_text(json.dumps(data, indent=1, ensure_ascii=False))
     (out / '_invalid' / f'{key}.json').unlink(missing_ok=True)
     return True, 'ok'
@@ -366,7 +406,8 @@ def prewarm(client, effort: str) -> None:
     max_tokens 0, so it bills one cache write and no output. Only the prefix is shared; the paper itself is never cached.
     """
     try:
-        r = client.messages.create(model=MODEL, max_tokens=0, system=system_blocks(), output_config={'effort': effort},
+        r = client.messages.create(model=MODEL, max_tokens=0, system=system_blocks(),
+                                   output_config=advance_output_config(effort) if TASK == 'advance' else {'effort': effort},
                                    messages=[{'role': 'user', 'content': 'Cache pre-warm.'}])
         print(f'pre-warm: {r.usage.cache_creation_input_tokens} tokens written, {r.usage.cache_read_input_tokens} read')
     except anthropic.APIError as e:
@@ -452,9 +493,10 @@ def advance_dry_run(client, args, cands: dict, todo: list, blinds: dict, max_tok
         user_tok = total_tok = None
         if getattr(args, 'count_tokens', False):
             try:
-                total_tok = client.messages.count_tokens(model=MODEL, system=p['system'], messages=p['messages']).input_tokens
-                if sys_tok is None:
-                    sys_tok = client.messages.count_tokens(model=MODEL, system=p['system'],
+                total_tok = client.messages.count_tokens(model=MODEL, system=p['system'], messages=p['messages'],
+                                                         output_config=p['output_config']).input_tokens
+                if sys_tok is None:   # the shared prefix: system prompt and the structured-output schema
+                    sys_tok = client.messages.count_tokens(model=MODEL, system=p['system'], output_config=p['output_config'],
                                                            messages=[{'role': 'user', 'content': 'x'}]).input_tokens - 1
                 user_tok = total_tok - sys_tok
             except anthropic.APIError as e:
@@ -487,6 +529,9 @@ def advance_dry_run(client, args, cands: dict, todo: list, blinds: dict, max_tok
                    'assumed_output_tokens': OUT_TOKENS, 'price_per_mtok': {**PRICE, 'cache_write_1h': CACHE_WRITE_1H}, 'batch_discount': 0.5,
                    'batches': nb, 'prewarm_usd_full_price': round(pre, 2), 'mean_paper_tokens': round(u / max(1, n)),
                    'projected_batch_usd': round(cost, 2), 'bound_batch_usd': round(worst, 2),
+                   'projected_usd_per_paper_batch': round((n * sys_tokens * PRICE['cache_read'] + u * PRICE['input'] + n * OUT_TOKENS * PRICE['output']) / 1e6 * 0.5 / max(1, n), 4),
+                   'structured_output': True, 'blind_versions': sorted({blinds[r['key']][1].get('blind_version') or '' for r in rows}),
+                   'sources': {s_: sum(r['source'] == s_ for r in rows) for s_ in sorted({r['source'] for r in rows})},
                    'papers': [{x: r[x] for x in r if x != 'params'} for r in rows]}
         (out / 'summary.json').write_text(json.dumps(summary, indent=1, ensure_ascii=False))
         print(f'rendered {n} requests and summary.json to {out}')
@@ -538,7 +583,8 @@ def main() -> int:
         s = sub.add_parser(name)
         s.add_argument('--tag', default='run1'); s.add_argument('--manifest'); s.add_argument('--keys')
         s.add_argument('--limit', type=int); s.add_argument('--batch-size', type=int, default=200)
-        s.add_argument('--effort', default='high', choices=['low', 'medium', 'high', 'xhigh', 'max'])
+        s.add_argument('--effort', default=None, choices=['low', 'medium', 'high', 'xhigh', 'max'],
+                       help=f'default high; {ADVANCE_EFFORT} for --task advance')
         s.add_argument('--dry-run', action='store_true')
         s.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness', 'advance'])
         s.add_argument('--no-xml', action='store_true', help='send the PDF only, even when a located XML text exists')
@@ -550,7 +596,7 @@ def main() -> int:
         s.add_argument('--exclude-gold', action='store_true', help='leave out the 100 gold-set papers (for pilots)')
     c = sub.add_parser('collect'); c.add_argument('--tag', default='run1'); c.add_argument('--wait', action='store_true')
     c.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness', 'advance'])
-    o = sub.add_parser('one'); o.add_argument('key'); o.add_argument('--tag', default='run1'); o.add_argument('--effort', default='high')
+    o = sub.add_parser('one'); o.add_argument('key'); o.add_argument('--tag', default='run1'); o.add_argument('--effort', default=None)
     o.add_argument('--task', default='inquiry', choices=['inquiry', 'readiness', 'advance'])
     o.add_argument('--no-xml', action='store_true')
     o.add_argument('--review-dir')
@@ -562,6 +608,8 @@ def main() -> int:
     TASK = getattr(args, 'task', 'inquiry')
     NO_XML = getattr(args, 'no_xml', False)
     REVIEW_DIR = getattr(args, 'review_dir', None)
+    if hasattr(args, 'effort') and args.effort is None:
+        args.effort = ADVANCE_EFFORT if TASK == 'advance' else 'high'
     if TASK == 'readiness' and getattr(args, 'tag', None) and not args.tag.endswith('-readiness'):
         args.tag += '-readiness'   # keep readiness drafts apart from inquiry codings in state and folders
     if TASK == 'advance' and getattr(args, 'tag', None) and not args.tag.endswith('-advance'):

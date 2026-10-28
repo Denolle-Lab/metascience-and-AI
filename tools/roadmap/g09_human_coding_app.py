@@ -2,14 +2,19 @@
 """Gold set, step 9: the human coding subset, its assignment to coders, and the offline coding app.
 
 Input : derived/gold/gold_set.json (g05); derived/gold/fetch_status.json (g08) when present;
-        agents/coder/coding.schema.json, agents/coder/ratings.schema.json, agents/coder/CODEBOOK.md (version),
+        agents/coder/coding.schema.json, agents/coder/ratings.schema.json (ratings v1.1.0), agents/coder/CODEBOOK.md (version),
+        agents/coder/definitions.json (terms, hard cases, rating notes),
         agents/mode-instructions.json (mode purposes), agents/controller/decision-tree.json (questions);
         tools/roadmap/app/gold_coder.html (template, no data)
 Output: derived/gold/human_assignment.json   the 40 papers, each assigned to two of the four coders, and each coder's order;
                                              written once and then frozen (rerun with --reassign only before coding starts)
         private/data/roadmap/app/packets/<ID>/     one packet per coder: gold-coder.html locked to that coder, only their papers,
                                              pdfs/ and text/ (located XML text), an empty my_codings/, README.txt. No metrics,
-                                             no pairings, no DOI links, no comparison view. Share each packet with its coder only.
+                                             no pairings, no comparison view, and no journal name: the coder payload carries no
+                                             journal and the app shows neither journal nor DOI (the DOI stays in the payload only
+                                             because both output schemas require it). The PDFs still show the venue; the README
+                                             and the app say so and ask coders not to look papers up. Share each packet with its
+                                             coder only.
         private/data/roadmap/app/gold-coordinator.html  the comparison view, for the convenor
 Rule  : 40 of the 100 gold papers, 20 per ring, spread over impact tiers within a ring; papers whose PDF is in hand first;
         each paper to one of the six coder pairs in rotation, so every coder codes 20 papers and every pair shares 6 or 7;
@@ -26,6 +31,8 @@ from collections import defaultdict
 import hashlib
 import shutil
 from common import DATA, DERIVED, ROOT, TODAY, commit, decision, log, read_json, write_json
+
+RATINGS_VERSION = '1.1.0'  # agents/coder/ratings.schema.json; adds the advance verdict, its criteria and the unassessable condition
 
 CODERS = [('MD', 'Marine Denolle'), ('SH', 'Sangwoo Han'), ('MK', 'Maleen Kidiwela'), ('MH', 'Michael Hemmett')]
 NODES = [
@@ -54,12 +61,17 @@ README = """Gold-set coding packet for {name} ({id})
    provides XML, a located text in text/ whose paragraphs carry locators such as [§3.2 ¶4] you can cite.
 3. When you first save, choose this packet's my_codings folder. Each paper is saved as two files:
    <key>.{id}.coding.json and <key>.{id}.ratings.json. Unfinished saves are named .draft.
-4. Rate novelty and advance without looking the paper up online (publisher pages show citation counts).
+4. The app hides each paper's journal and DOI, but the PDFs show them. Judge the work, not the venue: prestige
+   is not evidence. Rate novelty and advance without looking the paper up online (publisher page, Google Scholar,
+   the authors' pages): those pages show the venue's standing and citation counts.
    Do not discuss a paper with anyone until you have saved it.
-5. Back up your drafts from the My papers page now and then, and send the my_codings folder to Marine when you
+5. Ratings v{rv} add the advance verdict (achieved, not demonstrated, unassessable) with six criteria (M1, M2,
+   W1 to W4) and the unassessable conditions (U1 to U5), as the model coder uses them. Definitions are under each
+   control and in the Codebook drawer.
+6. Back up your drafts from the My papers page now and then, and send the my_codings folder to Marine when you
    finish a batch. The PDFs are for this study only; do not redistribute them.
 
-Codebook v{cb}; built {built} from commit {commit}.
+Codebook v{cb}; ratings v{rv}; built {built} from commit {commit}.
 """
 
 
@@ -71,13 +83,16 @@ def load_vocab(a, cb_version):
     if not any(q['n'] == '6b' for q in questions):
         questions.insert(next(i for i, q in enumerate(questions) if q['n'] == '7'), {'n': '6b', 'q': 'Does nature repeat?', 'sub': 'Conditions found, not set: are there repeated natural instances?'})
     defs = json.loads((ROOT / 'agents/coder/definitions.json').read_text())
-    return {'meta': {'built': TODAY, 'commit': commit(), 'codebook_version': cb_version, 'ratings_version': '1.0.0',
+    rs = json.loads((ROOT / 'agents/coder/ratings.schema.json').read_text())
+    assert RATINGS_VERSION in rs['properties']['ratings_version']['enum'], 'ratings.schema.json does not know ratings v' + RATINGS_VERSION
+    return {'meta': {'built': TODAY, 'commit': commit(), 'codebook_version': cb_version, 'ratings_version': RATINGS_VERSION,
                      'graph': 'v0.4.2', 'tree': tree.get('version'), 'assignment_seed': a.seed},
             'coders': [{'id': c, 'name': n} for c, n in CODERS],
             'nodes': [{'id': i, 'verb': v, 'desc': d, 'group': g} for i, v, d, g in NODES],
             'modes': modes, 'questions': questions, 'definitions': defs['terms'], 'hard_cases': defs['hard_cases'],
+            'rating_notes': defs.get('rating_notes', []),
             'schema': json.loads((ROOT / 'agents/coder/coding.schema.json').read_text()),
-            'ratings_schema': json.loads((ROOT / 'agents/coder/ratings.schema.json').read_text())}
+            'ratings_schema': rs}
 
 
 def assign(a, rng):
@@ -161,12 +176,12 @@ def main() -> None:
                 shutil.copy2(src / f'{k}.pdf', pk / 'pdfs' / f'{k}.pdf')
             if has_txt:
                 shutil.copy2(src / f'{k}.xml.txt', pk / 'text' / f'{k}.xml.txt')
-            mine.append({'key': k, 'doi': p['doi'], 'title': p['title'], 'journal': p['journal'],
+            mine.append({'key': k, 'doi': p['doi'], 'title': p['title'],  # no journal: coders rate without the venue in the app
                          'pdf': f'pdfs/{k}.pdf' if has_pdf else None, 'xml_txt': f'text/{k}.xml.txt' if has_txt else None})
         payload = dict(base, mode='coder', coder=cid, papers=mine, order=order[cid])
         payload['meta'] = dict(base['meta'], packet=f'{cid}-{tag}')
         (pk / 'gold-coder.html').write_text(put(payload))
-        (pk / 'README.txt').write_text(README.format(name=name, id=cid, n=len(mine), cb=cb_version, built=TODAY, commit=base['meta']['commit']))
+        (pk / 'README.txt').write_text(README.format(name=name, id=cid, n=len(mine), cb=cb_version, rv=RATINGS_VERSION, built=TODAY, commit=base['meta']['commit']))
         counts[cid] = (len(mine), sum(1 for m in mine if m['pdf']), sum(1 for m in mine if m['xml_txt']))
     coord = dict(base, mode='coordinator', coder=None, order=[], papers=[{'key': p['key'], 'title': p['title'], 'doi': p['doi'], 'journal': p['journal']} for p in papers])
     coord['meta'] = dict(base['meta'], packet=f'coord-{tag}')

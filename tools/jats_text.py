@@ -8,6 +8,18 @@ The first lines give the DOI and the title. Every paragraph is prefixed with a l
 Section headings are written as their own lines ('§3.2 Title'). Formulas are kept as TeX when the XML carries it,
 otherwise as the MathML text. Elements are matched by local name, so namespaces and both formats work.
 
+convert(root) with no options is the text stored as <key>.xml.txt and sent to the inquiry and readiness coders; it
+must stay byte-identical. Two options, used only by tools/blind_text.py (BLIND_VERSION 1.2.0, October 28, 2026):
+  descend_sections  Elsevier full text puts its sections inside ja:body/ce:sections; without this option the body
+                    loop sees only 'sections' and drops the whole body (101 of the 581 blinded texts at v1.1.1)
+  table_rows        print every table row after its caption as '[Table n] cell | cell | ...' (JATS tr/td/th and
+                    CALS row/entry), so table contents reach the coder as they do on the pdftotext route
+  availability      print the data and code availability statements kept outside the body (JATS back sec
+                    sec-type="data-availability", Copernicus notes notes-type="dataavailability" / "codeavailability" /
+                    "codedataavailability", Elsevier ce:data-availability, or a back section titled '... availability'
+                    or 'Open Research') as sections §D1, §D2, ..., after the appendices; the pdftotext route prints them
+                    as part of the page text (BLIND_VERSION 1.2.1: 210 of the 318 XML-route texts had lost one)
+
 Usage: python3 tools/jats_text.py FILE.xml [OUT.txt]      (prints to stdout without OUT)
 """
 from __future__ import annotations
@@ -70,7 +82,38 @@ def child(el: ET.Element, names: set) -> ET.Element | None:
     return next((c for c in el if local(c.tag) in names), None)
 
 
-def convert(root: ET.Element) -> str:
+def _rows(tab: ET.Element) -> list[str]:
+    """Table rows as 'cell | cell' strings (JATS tr/td/th, CALS/Elsevier row/entry); empty rows dropped."""
+    out = []
+    for r in (e for e in tab.iter() if local(e.tag) in ('tr', 'row')):
+        cells = [text_of(c) for c in r if local(c.tag) in ('td', 'th', 'entry')]
+        if any(cells):
+            out.append(' | '.join(cells))
+    return out
+
+
+AV_TYPES = {'data-availability', 'dataavailability', 'codeavailability', 'codedataavailability', 'data-and-code-availability'}
+AV_TITLE = re.compile(r'^\s*(?:\d+(?:\.\d+)*\.?\s*)?(?:(?:(?:code|data|software)(?:\s*(?:,|and|&|/)\s*)?)+\s*availability'
+                      r'(?:\s+statement)?|availability of (?:data|code|software)\b.*|open research|data access(?:ibility)?'
+                      r'(?:\s+statement)?|data statement)\s*[.:]?\s*$', re.I)
+
+
+def _availability(root: ET.Element, inside: set) -> list[ET.Element]:
+    """Availability statements outside the already-emitted subtrees (`inside`: ids), outermost only, in document order."""
+    found = []
+    for e in root.iter():
+        n = local(e.tag)
+        if id(e) in inside or n not in SEC | {'notes', 'data-availability'}:
+            continue
+        ttl = child(e, TITLE)
+        if (n == 'data-availability' or (e.get('sec-type') or e.get('notes-type') or '').lower() in AV_TYPES
+                or (ttl is not None and AV_TITLE.match(text_of(ttl)))):
+            found.append(e)
+    nested = {id(x) for e in found for x in e.iter() if x is not e}
+    return [e for e in found if id(e) not in nested]
+
+
+def convert(root: ET.Element, descend_sections: bool = False, table_rows: bool = False, availability: bool = False) -> str:
     lines = []
     doi = next(((e.text or '').strip() for e in root.iter() if (local(e.tag) == 'article-id' and e.get('pub-id-type') == 'doi')
                 or local(e.tag) == 'doi'), '')
@@ -89,8 +132,8 @@ def convert(root: ET.Element) -> str:
     body = next((e for e in root.iter() if local(e.tag) in ('body', 'sections')), None)
     figs = []
 
-    def do_sec(sec, num):
-        lab = child(sec, {'label'})
+    def do_sec(sec, num, use_label=True):
+        lab = child(sec, {'label'}) if use_label else None
         ttl = child(sec, TITLE)
         n = (text_of(lab).rstrip('.') if lab is not None and text_of(lab) else num)
         lines.append(f'§{n} ' + (text_of(ttl) if ttl is not None else ''))
@@ -115,17 +158,25 @@ def convert(root: ET.Element) -> str:
                         k += 1
                         lines.append(f'[§{n} ¶{k}] {t}')
     if body is not None:
-        top = [c for c in body if local(c.tag) in SEC]
-        loose = [c for c in body if local(c.tag) in PARA]
+        kids = list(body)
+        if descend_sections:   # Elsevier: ja:body > ce:sections > ce:section
+            kids = [x for c in kids for x in (list(c) if local(c.tag) == 'sections' else [c])]
+        top = [c for c in kids if local(c.tag) in SEC]
+        loose = [c for c in kids if local(c.tag) in PARA]
         for k, p in enumerate(loose, 1):
             t = text_of(p)
             if t:
                 lines.append(f'[§body ¶{k}] {t}')
         for i, s in enumerate(top, 1):
             do_sec(s, str(i))
-    for app in [e for e in root.iter() if local(e.tag) in ('app', 'appendix')]:
+    apps = [e for e in root.iter() if local(e.tag) in ('app', 'appendix')]
+    for app in apps:
         lab = child(app, {'label'})
         do_sec(app, 'A' + (text_of(lab).replace('Appendix', '').strip() if lab is not None else '1'))
+    if availability:
+        inside = {id(x) for top_el in ([body] if body is not None else []) + apps for x in top_el.iter()}
+        for i, s in enumerate(_availability(root, inside), 1):
+            do_sec(s, f'D{i}', use_label=False)
     seen = set()
     for f in figs + [e for e in root.iter() if local(e.tag) in FIG | TAB]:
         if id(f) in seen:
@@ -137,6 +188,10 @@ def convert(root: ET.Element) -> str:
             continue
         name = text_of(lab) if lab is not None else ('Figure' if local(f.tag) in FIG else 'Table')
         lines.append(f'[{name.rstrip(".")}] {text_of(cap)}')
+        if table_rows and local(f.tag) in TAB:
+            for e in f.iter():
+                seen.add(id(e))      # a JATS table-wrap holds a caption-less table: print its rows once
+            lines.extend(f'[{name.rstrip(".")}] {r}' for r in _rows(f))
     return '\n'.join(lines) + '\n'
 
 

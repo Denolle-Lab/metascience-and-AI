@@ -156,6 +156,12 @@ const ENUM = {
 const PAGE_CONV = ['XML section and paragraph locators (jats_text)', 'XML locators, PDF pages for figure content', 'printed journal pages',
   'PDF pages counted from 1', 'printed article pages (e.g. "3 of 14")'];
 const ROLES = ['corrective','enabling','integrative','cumulative','transformative'];
+const RA = RS.properties.advance.properties;
+const VERDICTS = RA.verdict ? RA.verdict.enum : [];
+const CONDS = RA.unassessable_condition ? RA.unassessable_condition.enum.filter(x => x !== 'none') : [];
+const CRITS = RA.verdict_criteria ? Object.keys(RA.verdict_criteria.properties) : [];
+const HAS_VERDICT = VERDICTS.length > 0 && P.meta.ratings_version !== '1.0.0';
+const NOTES = P.rating_notes || [];
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lab = v => (DEF[v] && DEF[v].label) || String(v).replace(/_/g,' ');
 const defOf = v => (DEF[v] && DEF[v].def) || '';
@@ -184,7 +190,26 @@ function emptyRatings(p){
   return { key:p.key, doi:p.doi, ratings_version:P.meta.ratings_version, coder: coderName(coder) + ' (' + coder + ')', rated_on:'',
     minutes_spent:0, eligible_in_my_view:'', familiarity:'',
     novelty:{atomic_claim:'', claim_kind:'', closest_precedent:'', new_component:'', judgment:'', score:0, confidence:''},
-    advance:{starting_state:'', gain:'', magnitude:'', evidence:'', roles:[], score:0, confidence:''}, impact_forecast:'', notes:'' };
+    advance: Object.assign({starting_state:'', gain:'', magnitude:'', evidence:'', roles:[], score:0, confidence:''},
+      HAS_VERDICT ? {verdict:'', verdict_reasons:'', unassessable_condition:'', verdict_criteria: Object.fromEntries(CRITS.map(k => [k, '']))} : {}),
+    impact_forecast:'', notes:'' };
+}
+// the ratings file as saved: the condition is "none" unless unassessable; unassessable has no score and no criteria
+function ratingsOut(r){
+  const o = JSON.parse(JSON.stringify(r));
+  if(!HAS_VERDICT) return o;
+  o.ratings_version = P.meta.ratings_version;
+  const a = o.advance;
+  if(a.verdict === 'achieved' || a.verdict === 'not_demonstrated') a.unassessable_condition = 'none';
+  if(a.verdict === 'unassessable'){ a.score = null; delete a.verdict_criteria; if(a.unassessable_condition === 'none') a.unassessable_condition = ''; }
+  return o;
+}
+// the verdict the six criteria imply for the gain rated (section 6 of the advance rubric)
+function impliedVerdict(a){
+  const c = a.verdict_criteria || {};
+  if(CRITS.some(k => !c[k])) return '';
+  if(CRITS.some(k => c[k] === 'not_met')) return 'not_demonstrated';
+  return 'achieved';
 }
 // fill any missing field from the empty template, so a partial draft can never break rendering
 function fill(t, v){
@@ -308,13 +333,31 @@ function checkCoding(c){
   if(!String(c.limits||'').trim()) out.push({sec:'extras', level:'warn', text:'Limits: say what the paper does not show about its own process (or write "none noted")'});
   return out;
 }
-function checkRatings(r){
+function checkRatings(r0){
+  const r = ratingsOut(r0);
   const out = []; const se = []; vSchema(RS, r, [], se);
   se.forEach(([p,m]) => out.push({sec:'ratings', level:'err', text: p.map(x => String(x).replace(/_/g,' ')).join(' › ') + ' ' + m}));
   ['atomic_claim','closest_precedent','new_component'].forEach(f => { if(!String(r.novelty[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Novelty: ' + f.replace(/_/g,' ') + ' is empty'}); });
   ['starting_state','gain','magnitude','evidence'].forEach(f => { if(!String(r.advance[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Advance: ' + f.replace(/_/g,' ') + ' is empty'}); });
   if(!r.advance.roles.length) out.push({sec:'ratings', level:'err', text:'Advance: choose at least one contribution role'});
   if(!(r.minutes_spent > 0)) out.push({sec:'ratings', level:'err', text:'Minutes spent: enter the time you spent (the recorded active time is shown under the field)'});
+  const a = r.advance, E = t => out.push({sec:'ratings', level:'err', text: t});
+  if(!HAS_VERDICT){ if(!(a.score >= 1)) E('Advance score: choose a score'); return out; }
+  if(a.verdict !== 'unassessable' && !(a.score >= 1)) E('Advance score: choose a score');
+  if(!String(a.verdict_reasons||'').trim()) E('Verdict: give the reasons (two to four sentences naming the decisive criteria and the evidence, with locations)');
+  if(a.verdict === 'achieved'){
+    const iv = impliedVerdict(a);
+    if(iv === 'not_demonstrated') E('Verdict achieved needs every criterion met (W3 may be not applicable): ' + CRITS.filter(k => a.verdict_criteria[k] === 'not_met').join(', ') + ' not met');
+    if(a.score === 1) E('Achieved takes an advance score of 2 to 5 (a score of 1 means no warranted gain)');
+  }
+  if(a.verdict === 'not_demonstrated'){
+    if(impliedVerdict(a) === 'achieved') E('Verdict not demonstrated needs at least one criterion not met; all six are met, so the verdict is achieved');
+    if(a.score > 1) E('Not demonstrated takes an advance score of 1');
+  }
+  if(a.verdict === 'unassessable' && !CONDS.includes(a.unassessable_condition)) E('Unassessable: name the condition (U1 to U5)');
+  if(r.eligible_in_my_view === 'no' && !(a.verdict === 'unassessable' && a.unassessable_condition === 'U4')) E('Eligibility is no: the verdict is unassessable, condition U4 (still complete every field)');
+  if(a.unassessable_condition === 'U4' && r.eligible_in_my_view !== 'no') E('U4 means not a primary Earth-science research article: answer no to the eligibility question, or choose another condition');
+  if(a.verdict === 'unassessable' && a.unassessable_condition === 'U5') out.push({sec:'ratings', level:'warn', text:'U5 is for use sparingly: say exactly what is missing in the verdict reasons'});
   return out;
 }
 function errorCount(d){ return checkCoding(d.coding).filter(x => x.level === 'err').length + checkRatings(d.ratings).filter(x => x.level === 'err').length; }
@@ -360,7 +403,7 @@ function renderQueue(){
   const mine = P.order;
   const rows = mine.map((k, i) => {
     const p = P.papers.find(x => x.key === k), st = paperStatus(k);
-    return `<tr data-k="${k}"><td class="num">${i+1}</td><td>${esc(p.title)}<div class="small">${esc(p.journal)} · 2022 · DOI ${esc(p.doi)}</div></td>
+    return `<tr data-k="${k}"><td class="num">${i+1}</td><td>${esc(p.title)}<div class="small">2022 · ${esc(p.key)}</div></td>
       <td>${p.pdf ? `<a href="${esc(p.pdf)}" target="_blank">PDF</a>` : '<span class="small">no PDF yet</span>'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank">located text</a>` : ''}</td><td><span class="pill ${st.cls}">${st.label}</span></td></tr>`;
   }).join('');
   const done = mine.filter(k => paperStatus(k).cls === 'ok').length;
@@ -368,7 +411,7 @@ function renderQueue(){
   <div class="card"><div class="rowflex"><h2 style="flex:1">My papers</h2><span class="small">${done} of ${mine.length} saved</span>
     <button id="pick">${dirHandle ? 'Saving to: ' + esc(dirHandle.name) : 'Choose the my_codings folder'}</button>
     <button id="backup">Back up all drafts</button><label class="small" style="margin:0;cursor:pointer;text-decoration:underline">restore a backup<input type="file" id="restore" accept=".json" style="display:none"></label></div>
-    <p class="small">Work in this order. Open the PDF (or the located text) beside this window; both are in this packet. Do not look the paper up online before you have rated it: publisher pages show citation counts. Save into this packet’s <code>my_codings</code> folder; when you finish a batch, send that folder to Marine.</p>
+    <p class="small">Work in this order. Open the PDF (or the located text) beside this window; both are in this packet. The app hides each paper’s journal and DOI; the PDF still shows them. Judge the work, not the venue: prestige is not evidence. Do not look the paper up online (publisher page, Google Scholar, the authors’ pages) before you have saved your ratings: those pages show the venue’s standing and citation counts. Save into this packet’s <code>my_codings</code> folder; when you finish a batch, send that folder to Marine.</p>
     <table class="queue"><thead><tr><th>#</th><th>Paper</th><th>Full text</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   app.querySelectorAll('tr[data-k]').forEach(tr => tr.onclick = e => { if(e.target.tagName === 'A') return; go('code', tr.dataset.k); });
   document.getElementById('pick').onclick = pickFolder;
@@ -429,7 +472,8 @@ function renderCode(){
   app.innerHTML = `${banners()}<div class="banner err" id="tabBanner" style="display:none">This paper was changed in another tab or window. Editing is stopped here so the two do not overwrite each other. <button id="reloadDraft">Load the latest version</button></div>
   <div class="layout">
     <aside class="side card paper"><div class="small">Paper</div><h3 style="margin:2px 0 6px">${esc(p.title)}</h3>
-      <div class="small">${esc(p.journal)} · 2022 · DOI ${esc(p.doi)}</div>
+      <div class="small">2022 · ${esc(p.key)}</div>
+      <div class="small" style="margin-top:4px">The app hides the journal and DOI. The PDF shows them: judge the work, not the venue, and do not look the paper up.</div>
       <div class="small">${p.pdf ? `<a href="${esc(p.pdf)}" target="_blank">open PDF</a>` : 'no PDF in this packet'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank">located text</a>` : ''}</div>
       <div class="rowflex" style="margin-top:8px"><button class="ghost" id="backBtn">← my papers</button><button class="ghost" id="cbBtn">Codebook</button></div></aside>
     <section id="form"></section>
@@ -538,7 +582,7 @@ function renderForm(focusSel){
     <button data-add="alternatives_considered">+ alternative</button></div>
 
   <div class="card" id="sec-ratings"><h2>Ratings (blind)</h2>
-    <div class="hint">Rate what the paper contributed, judged against work available in 2022. Do not look up its citations, its publisher page or any metric before rating. Novelty follows the Novelty Dossier v1 and advance the Scientific Advance Profile v1 (rubrics page of the seminar book).</div>
+    <div class="hint">Rate what the paper contributed, judged against what the field knew, could do and had available before submission (about 2021), without hindsight. Do not look up its citations, its publisher page or any metric before rating. Judge the work, not the writing or the venue. Novelty follows the Novelty Dossier v1 and advance the Scientific Advance Profile v1 (rubrics page of the seminar book); the verdict and its six criteria are the same as the model coder’s (advance rubric 1.0.1, sections 4 to 7). Definitions are under each control and in the Codebook drawer.</div>
     <div class="grid2" style="margin-bottom:6px"><div><label>Is this an Earth-science research article, in your view? (second check of the screen)</label><select data-r="eligible_in_my_view">${opt(['yes','no','unsure'], r.eligible_in_my_view, null, CHOOSE)}</select></div>
     <div class="small" style="align-self:end">A primary research article (not a review, comment or editorial) whose object of study is Earth science. If no, still finish, and say why in Notes.</div></div>
     <div class="grid3"><div><label>Your familiarity with this subfield</label><select data-r="familiarity">${opt(['outside_my_field','adjacent','my_field'], r.familiarity, null, CHOOSE)}</select></div>
@@ -554,11 +598,13 @@ function renderForm(focusSel){
     <div style="max-width:260px"><label>Confidence</label><select data-r="novelty.confidence">${opt(['low','medium','high'], r.novelty.confidence, null, CHOOSE)}</select></div>
     <h3 style="margin-top:14px">Advance</h3>
     <div class="grid2"><div><label>Starting state: what was known, possible and available before</label><textarea data-r="advance.starting_state">${esc(r.advance.starting_state)}</textarea></div>
-    <div><label>Gain: what can now be known, explained, measured, predicted or investigated</label><textarea data-r="advance.gain">${esc(r.advance.gain)}</textarea></div></div>
-    <div class="grid2"><div><label>Magnitude and significance</label><textarea data-r="advance.magnitude">${esc(r.advance.magnitude)}</textarea></div>
+    <div><label>Gain: what can now be known, explained, measured, predicted or investigated</label><textarea data-r="advance.gain">${esc(r.advance.gain)}</textarea>${HAS_VERDICT ? '<div class="def">The gain the verdict rests on: the first gain, starting with the headline claim, that meets all six criteria below; if none does, the headline gain.</div>' : ''}</div></div>
+    <div class="grid2"><div><label>Magnitude and significance</label><textarea data-r="advance.magnitude">${esc(r.advance.magnitude)}</textarea><div class="def">The change from the starting state, not the result value: before -> after (units), against the scale it matters at; then why it matters. Or "not quantifiable:" and the reason.</div></div>
     <div><label>Evidence: what warrants the gain, at what uncertainty and scope</label><textarea data-r="advance.evidence">${esc(r.advance.evidence)}</textarea></div></div>
+    ${HAS_VERDICT ? verdictBlock(r.advance) : ''}
     <label>Contribution role (one or more)</label><div class="checks">${ROLES.map(x => `<label title="${esc(defOf('role_' + x))}"><input type="checkbox" data-role="${x}" ${r.advance.roles.includes(x)?'checked':''}>${x}</label>`).join('')}</div>
-    <label>Advance score</label><div class="scale">${scale('advance', r.advance.score, ['No warranted gain beyond what was known','A small, local gain','A clear gain for one subfield','A substantial gain others will build on','Resolves a recognized problem or opens a new line of work'])}</div>
+    <label>Advance score${HAS_VERDICT ? ' (achieved: 2 to 5; not demonstrated: 1; unassessable: no score)' : ''}</label><div class="scale">${scale('advance', HAS_VERDICT && r.advance.verdict === 'unassessable' ? 0 : r.advance.score, ['No warranted gain beyond what was known','A small, local gain','A clear gain for one subfield','A substantial gain others will build on','Resolves a recognized problem or opens a new line of work'], HAS_VERDICT && r.advance.verdict === 'unassessable')}</div>
+    ${NOTES.length ? `<details style="margin-top:6px" open><summary>Notes that bind the ratings (the same notes the model coder follows)</summary><ul class="small">${NOTES.map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
     <div style="max-width:260px"><label>Confidence</label><select data-r="advance.confidence">${opt(['low','medium','high'], r.advance.confidence, null, CHOOSE)}</select></div>
     <label>Notes</label><textarea data-r="notes">${esc(r.notes)}</textarea></div></fieldset>`;
   bindForm();
@@ -567,7 +613,20 @@ function renderForm(focusSel){
   showActive();
 }
 function showActive(){ const el = document.getElementById('activeTime'); if(el && D) el.textContent = 'Recorded active time on this paper: ' + Math.round(D.activeMs / 60000) + ' min'; }
-function scale(name, val, anchors){ return anchors.map((a,i) => `<label><input type="radio" name="sc-${name}" data-score="${name}" value="${i+1}" ${val===i+1?'checked':''}><span><b>${i+1}</b> ${esc(a)}</span></label>`).join(''); }
+function scale(name, val, anchors, off){ return anchors.map((a,i) => `<label${off ? ' style="opacity:.45;cursor:default"' : ''}><input type="radio" name="sc-${name}" data-score="${name}" value="${i+1}" ${val===i+1?'checked':''} ${off?'disabled':''}><span><b>${i+1}</b> ${esc(a)}</span></label>`).join(''); }
+const critOpts = k => RA.verdict_criteria.properties[k].enum;
+function verdictBlock(a){
+  const iv = impliedVerdict(a), un = a.verdict === 'unassessable';
+  const crit = CRITS.map(k => `<div><label>${esc(lab('crit_' + k))}</label><select data-crit="${k}" ${un?'disabled':''}>${opt(critOpts(k), a.verdict_criteria[k], v => v.replace(/_/g,' '), CHOOSE)}</select>
+    <div class="def">${k === 'M2' ? `<details><summary style="font-size:12.5px">by gain type</summary>${esc(defOf('crit_M2'))}</details>` : esc(defOf('crit_' + k))}</div></div>`).join('');
+  return `<h3 style="margin-top:14px">Verdict</h3>
+    <div class="hint">Decide first whether the paper can be assessed (U1 to U5). If it can, judge the six criteria for the gain written above, then the verdict. The verdict is achieved when that gain meets all six (W3 may be not applicable), and not demonstrated when every gain in the paper fails at least one. Unassessable is not a hedge for a hard case: if you can judge, judge, and lower the confidence.</div>
+    <div class="grid3">${crit}</div>
+    <div class="grid2" style="margin-top:6px"><div><label>Verdict</label><select data-verdict="1">${opt(VERDICTS, a.verdict, v => lab('verdict_' + v), CHOOSE)}</select><div class="def">${esc(a.verdict ? defOf('verdict_' + a.verdict) : '')}</div>
+      ${iv && !un ? `<div class="small">Your criteria imply: <b>${esc(lab('verdict_' + iv))}</b></div>` : ''}</div>
+    <div>${un ? `<label>Unassessable condition</label><select data-r="advance.unassessable_condition" data-cond="1">${opt(CONDS, a.unassessable_condition, v => lab('unassessable_' + v), CHOOSE)}</select><div class="def">${esc(a.unassessable_condition && a.unassessable_condition !== 'none' ? defOf('unassessable_' + a.unassessable_condition) : '')}</div>` : ''}</div></div>
+    <label>Verdict reasons: two to four sentences naming the decisive criteria and the evidence, with locations</label><textarea data-r="advance.verdict_reasons">${esc(a.verdict_reasons)}</textarea>`;
+}
 function seqBlock(s, si){
   const isFP = s.kind === 'final_paper';
   return `<div class="listitem" style="border-color:${isFP?'var(--accent)':'var(--line)'}"><div class="rowflex"><h3 style="flex:1">${isFP ? 'Final paper' : 'Review sequence'}</h3>
@@ -628,6 +687,12 @@ function bindForm(){
   f.querySelectorAll('[data-r]').forEach(el => { const path = el.dataset.r; const ev = el.tagName === 'SELECT' ? 'change' : 'input';
     el.addEventListener(ev, () => { let v = el.value; if(path === 'minutes_spent'){ v = Math.max(0, parseInt(v || '0', 10) || 0); } setPath(r, path, v); persistSoon(); }); });
   f.querySelectorAll('[data-score]').forEach(el => el.addEventListener('change', () => { r[el.dataset.score].score = parseInt(el.value, 10); persistSoon(); }));
+  f.querySelectorAll('[data-crit]').forEach(el => el.addEventListener('change', () => { r.advance.verdict_criteria[el.dataset.crit] = el.value; rerender(`[data-crit="${el.dataset.crit}"]`); }));
+  f.querySelectorAll('[data-verdict]').forEach(el => el.addEventListener('change', () => { const a = r.advance; a.verdict = el.value;
+    if(a.verdict === 'unassessable'){ if(!CONDS.includes(a.unassessable_condition)) a.unassessable_condition = r.eligible_in_my_view === 'no' ? 'U4' : ''; }
+    else a.unassessable_condition = a.verdict ? 'none' : '';
+    rerender('[data-verdict]'); }));
+  f.querySelectorAll('[data-cond]').forEach(el => el.addEventListener('change', () => { rerender('[data-cond]'); }));
   f.querySelectorAll('[data-role]').forEach(el => el.addEventListener('change', () => { const roles = new Set(r.advance.roles); el.checked ? roles.add(el.dataset.role) : roles.delete(el.dataset.role);
     r.advance.roles = ROLES.filter(x => roles.has(x)); persistSoon(); }));
 }
@@ -665,8 +730,9 @@ async function saveFiles(){
   const base = current + '.' + coder + (errs ? '.draft' : '');
   if(!dirHandle && window.showDirectoryPicker){ notice('Choose this packet’s my_codings folder once; the app will remember it.'); if(!(await pickFolder())) return; }
   let how = 'folder';
-  const ok1 = await writeFolder(base + '.coding.json', D.coding), ok2 = ok1 && await writeFolder(base + '.ratings.json', D.ratings);
-  if(!(ok1 && ok2)){ download(base + '.coding.json', D.coding); download(base + '.ratings.json', D.ratings); how = 'download'; }
+  const R = ratingsOut(D.ratings);
+  const ok1 = await writeFolder(base + '.coding.json', D.coding), ok2 = ok1 && await writeFolder(base + '.ratings.json', R);
+  if(!(ok1 && ok2)){ download(base + '.coding.json', D.coding); download(base + '.ratings.json', R); how = 'download'; }
   D.savedFiles = {when: new Date().toISOString(), how, folder: dirHandle ? dirHandle.name : null, complete: !errs, hash: contentHash(D)};
   persist(); renderForm(); refreshSide();
   if(how === 'download') notice('Saved as downloads. Move both files into my_codings. If the browser added "(1)" to a name, replace the older file and remove the "(1)".');
@@ -680,7 +746,7 @@ function importCoding(ev){
     const isR = !!obj.ratings_version, isC = !!obj.codebook_version;
     if(!isR && !isC){ notice('Not a coding or ratings file. Nothing was changed.', 'err'); return; }
     const p = P.papers.find(x => x.key === current);
-    if(isR) D.ratings = fill(emptyRatings(p), obj); else { obj.codebook_version = P.meta.codebook_version; D.coding = fill(emptyCoding(p), obj); }
+    if(isR){ obj.ratings_version = P.meta.ratings_version; if(obj.advance && obj.advance.score === null) obj.advance.score = 0; D.ratings = fill(emptyRatings(p), obj); } else { obj.codebook_version = P.meta.codebook_version; D.coding = fill(emptyCoding(p), obj); }
     normalize(D, p); persist(); renderForm(); refreshSide(); notice('Loaded your ' + (isR ? 'ratings' : 'coding') + ' file; check the list on the right for anything to complete.');
   }).catch(() => notice('Could not read that file. Nothing was changed.', 'err'));
 }
@@ -695,12 +761,14 @@ function helpHTML(){
     <div class="card"><h2>Outcomes and claim status</h2>${dl(ENUM.outcome)}${dl(ENUM.status)}</div>
     <div class="card"><h2>Compositions</h2>${dl(ENUM.composition)}</div>
     <div class="card"><h2>Gates</h2>${dl(['gate_action','gate_claim','gate_registration'])}</div>
+    ${HAS_VERDICT ? `<div class="card"><h2>Advance verdict</h2>${dl(VERDICTS.map(v => 'verdict_' + v))}<h3 style="margin-top:10px">Unassessable conditions</h3>${dl(CONDS.map(v => 'unassessable_' + v))}<h3 style="margin-top:10px">Criteria for the gain rated</h3>${dl(CRITS.map(k => 'crit_' + k))}</div>` : ''}
+    ${NOTES.length ? `<div class="card"><h2>Notes that bind the ratings</h2><ul>${NOTES.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
     <div class="card"><h2>Hard cases</h2><ul>${(P.hard_cases||[]).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
     <div class="card"><h2>Decision tree ${esc(P.meta.tree||'')}</h2><table><tbody>${P.questions.map(q => `<tr><td style="width:40px"><b>${esc(q.n)}</b></td><td>${esc(q.q)}<div class="small">${esc(q.sub)}</div></td></tr>`).join('')}</tbody></table></div>
     <div class="card"><h2>How to work</h2><ol>
       <li>Read the whole paper once before coding. Then code the entry, the steps in the order the paper gives them, the tree, the end, and the rest.</li>
       <li>Code what the paper says the authors did, not what you think they did. Mark anything you infer in Limits.</li>
-      <li>Rate novelty and advance after coding, without looking up the paper online.</li>
+      <li>Rate novelty and advance after coding, without looking up the paper online. The app hides the journal and DOI; the PDF shows them. Judge the work, not the venue.</li>
       <li>Save both files into this packet’s <code>my_codings</code> folder. Do not discuss a paper with anyone until you have saved it.</li>
       <li>Disagreements are data: never revise a saved coding after talking with a co-coder. If you find your own mistake later, edit and save again, and say what changed in Limits.</li></ol>
       <p class="small">Codebook v${esc(P.meta.codebook_version)} · ratings v${esc(P.meta.ratings_version)} · built ${esc(P.meta.built)} from commit ${esc(P.meta.commit)}.</p></div>`;
@@ -735,11 +803,11 @@ function renderCoord(){
     ${pairs.length ? `<div class="card"><h3>Mean over ${pairs.length} pairs</h3><div class="grid4">
       ${['entry_node','entry_state','outcome','decisive_mode','node_set_jaccard','mode_set_jaccard','node_seq_similarity','mode_seq_similarity'].map(f => `<div>${f.replace(/_/g,' ')} <b class="num">${fmt(mean(f))}</b></div>`).join('')}</div>
       <button id="csv" style="margin-top:10px">Download table (CSV)</button></div>
-    <div class="card"><table><thead><tr><th>Paper</th><th>Coders</th><th>Entry</th><th>Outcome</th><th>Decisive mode</th><th>Node set</th><th>Node seq.</th><th>Steps</th><th>Novelty</th><th>Advance</th></tr></thead><tbody>
-      ${pairs.map(p => { const R = ratBy[p.key] || {}; const sc = (c, f) => R[c] ? R[c][f].score : '–'; return `<tr><td>${esc(title(p.key))}<div class="small">${esc(p.key)}</div></td><td>${esc(p.ca)} / ${esc(p.cb)}</td>
+    <div class="card"><table><thead><tr><th>Paper</th><th>Coders</th><th>Entry</th><th>Outcome</th><th>Decisive mode</th><th>Node set</th><th>Node seq.</th><th>Steps</th><th>Novelty</th><th>Advance</th><th>Verdict</th></tr></thead><tbody>
+      ${pairs.map(p => { const R = ratBy[p.key] || {}; const sc = (c, f) => R[c] && R[c][f].score != null ? R[c][f].score : '–'; const vd = c => R[c] && R[c].advance.verdict ? R[c].advance.verdict.replace(/_/g,' ') + (R[c].advance.verdict === 'unassessable' ? ' ' + R[c].advance.unassessable_condition : '') : '–'; return `<tr><td>${esc(title(p.key))}<div class="small">${esc(p.key)}</div></td><td>${esc(p.ca)} / ${esc(p.cb)}</td>
         <td>${p.m.entry_node ? '✓' : '✗'} ${esc(p.a.entry.node)}/${esc(p.b.entry.node)}</td><td>${p.m.outcome ? '✓' : '✗'}</td><td>${p.m.decisive_mode ? '✓' : '✗'}</td>
         <td class="num">${fmt(p.m.node_set_jaccard)}</td><td class="num">${fmt(p.m.node_seq_similarity)}</td><td class="num">${p.m.steps.join(' / ')}</td>
-        <td class="num">${sc(p.ca,'novelty')} / ${sc(p.cb,'novelty')}</td><td class="num">${sc(p.ca,'advance')} / ${sc(p.cb,'advance')}</td></tr>`; }).join('')}</tbody></table></div>` : ''}`;
+        <td class="num">${sc(p.ca,'novelty')} / ${sc(p.cb,'novelty')}</td><td class="num">${sc(p.ca,'advance')} / ${sc(p.cb,'advance')}</td><td class="small">${esc(vd(p.ca))} / ${esc(vd(p.cb))}</td></tr>`; }).join('')}</tbody></table></div>` : ''}`;
   const drop = document.getElementById('drop');
   const take = files => Promise.all([...files].filter(f => !/\.draft\./.test(f.name)).map(f => f.text().then(t => ({t, name: f.name, mod: f.lastModified})))).then(list => {
     list.forEach(({t, name, mod}) => { let o; try{ o = JSON.parse(t); }catch(e){ coordSkipped.push(name + ' (not JSON)'); return; }

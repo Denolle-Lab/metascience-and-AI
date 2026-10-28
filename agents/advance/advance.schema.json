@@ -1,6 +1,6 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "title": "Model advance coding of one paper, rubric v1.0.1 (agents/advance/RUBRIC.md). Fields are flat and in the order the rubric judges them (section 3). The blocks compared with human raters (ratings.schema.json v1.0.0: advance, novelty) are assembled after validation into human_blocks by tools/code_papers.py (RUBRIC.md section 12). Consequences and follow-up are not coded here: they are assessed in an unblinded stage 2.",
+ "title": "Model advance coding of one paper, rubric v1.1.0 (agents/advance/RUBRIC.md). Fields are flat and in the order the rubric judges them (section 3). x-max-words and x-quote-budget are length budgets: tools/check_advance.py warns when they are exceeded and tools/code_papers.py strips them from the schema sent as structured output. The blocks compared with human raters (ratings.schema.json v1.0.0) are assembled after validation into human_blocks by tools/code_papers.py (RUBRIC.md section 12).",
  "type": "object",
  "properties": {
   "key": {
@@ -9,17 +9,11 @@
   "rubric_version": {
    "type": "string",
    "enum": [
-    "1.0.1"
+    "1.1.0"
    ]
   },
   "coder": {
    "type": "string"
-  },
-  "frame": {
-   "type": "string",
-   "enum": [
-    "contemporary knowledge before submission, approximated as 2021"
-   ]
   },
   "eligible_in_my_view": {
    "type": "string",
@@ -28,7 +22,7 @@
     "no",
     "unsure"
    ],
-   "description": "Second check of the eligibility screen: a primary research article whose object is Earth science"
+   "description": "second check of the eligibility screen: a primary research article whose object is Earth science"
   },
   "familiarity": {
    "type": "string",
@@ -42,10 +36,12 @@
    "type": "object",
    "properties": {
     "text": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 40
     },
     "locator": {
-     "type": "string"
+     "type": "string",
+     "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
     }
    },
    "required": [
@@ -58,18 +54,22 @@
    "type": "object",
    "properties": {
     "text": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 50
     },
     "prior_results": {
      "type": "array",
+     "description": "at most 3 specific prior results the paper sets its work against",
      "items": {
       "type": "object",
       "properties": {
        "result": {
-        "type": "string"
+        "type": "string",
+        "x-max-words": 25
        },
        "locator": {
-        "type": "string"
+        "type": "string",
+        "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
        }
       },
       "required": [
@@ -77,10 +77,12 @@
        "locator"
       ],
       "additionalProperties": false
-     }
+     },
+     "maxItems": 3
     },
     "gap_statement": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 30
     }
    },
    "required": [
@@ -94,7 +96,8 @@
    "type": "object",
    "properties": {
     "text": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 50
     },
     "agreement": {
      "type": "string",
@@ -123,14 +126,9 @@
   "precedent_search": {
    "type": "object",
    "properties": {
-    "frame": {
-     "type": "string",
-     "enum": [
-      "the paper's own text and reference list, plus the coder's knowledge of pre-2021 work for judgment_with_coder_knowledge; no external search"
-     ]
-    },
     "atomic_claim": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 30
     },
     "claim_kind": {
      "type": "string",
@@ -144,10 +142,13 @@
      ]
     },
     "closest_precedent": {
-     "type": "string"
+     "type": "string",
+     "description": "author, year and reference locator as printed, and the overlap; or \"none located in the reference list\"",
+     "x-max-words": 40
     },
     "new_component": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 25
     },
     "judgment_reference_list": {
      "type": "string",
@@ -173,11 +174,11 @@
      "type": "boolean"
     },
     "limits": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 30
     }
    },
    "required": [
-    "frame",
     "atomic_claim",
     "claim_kind",
     "closest_precedent",
@@ -191,12 +192,13 @@
   },
   "candidate_gains": {
    "type": "array",
+   "description": "G1 (and G2) in list order: one or two headline components, or one headline component and one secondary or out_of_taxonomy gain",
    "items": {
     "type": "object",
     "properties": {
      "id": {
       "type": "string",
-      "pattern": "^G[1-5]$"
+      "pattern": "^G[12]$"
      },
      "origin": {
       "type": "string",
@@ -207,7 +209,9 @@
       ]
      },
      "gain": {
-      "type": "string"
+      "type": "string",
+      "description": "what can now be known, explained, measured or done that could not before: the difference from the starting state",
+      "x-max-words": 35
      },
      "gain_type": {
       "type": "string",
@@ -231,7 +235,9 @@
       ]
      },
      "magnitude": {
-      "type": "string"
+      "type": "string",
+      "description": "the change from the starting state, 'quantity: before -> after (units), against the scale it matters at', or 'not quantifiable: <reason class>', then why it matters",
+      "x-max-words": 40
      },
      "magnitude_form": {
       "type": "string",
@@ -242,7 +248,8 @@
        "not_quantifiable_first_observation",
        "not_quantifiable_feasibility",
        "not_quantifiable_descriptive"
-      ]
+      ],
+      "description": "authoritative record of the magnitude form"
      },
      "rival_test": {
       "type": "string",
@@ -256,7 +263,9 @@
       ]
      },
      "evidence": {
-      "type": "string"
+      "type": "string",
+      "description": "what warrants the gain, at what uncertainty and scope",
+      "x-max-words": 60
      },
      "evidence_access": {
       "type": "string",
@@ -268,16 +277,16 @@
       ]
      },
      "principal_threat": {
-      "type": "string"
+      "type": "string",
+      "description": "the most plausible alternative explanation or artifact, named before the checks",
+      "x-max-words": 15
      },
      "checks": {
       "type": "array",
+      "description": "at most 3 reported checks, those that bear most on the principal threat first",
       "items": {
        "type": "object",
        "properties": {
-        "check": {
-         "type": "string"
-        },
         "kind": {
          "type": "string",
          "enum": [
@@ -301,17 +310,21 @@
          "type": "boolean"
         },
         "result": {
-         "type": "string"
+         "type": "string",
+         "description": "the outcome of the check",
+         "x-max-words": 15
         },
         "quote": {
-         "type": "string"
+         "type": "string",
+         "description": "verbatim, at most 25 words",
+         "x-max-words": 25
         },
         "locator": {
-         "type": "string"
+         "type": "string",
+         "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
         }
        },
        "required": [
-        "check",
         "kind",
         "addresses_principal_threat",
         "result",
@@ -319,19 +332,23 @@
         "locator"
        ],
        "additionalProperties": false
-      }
+      },
+      "maxItems": 3
      },
      "uncertainty": {
-      "type": "string"
+      "type": "string",
+      "description": "how uncertainty is stated, or that it is not",
+      "x-max-words": 20
      },
      "scope": {
-      "type": "string"
-     },
-     "what_would_change": {
-      "type": "string"
+      "type": "string",
+      "description": "region, period, conditions or data set within which the gain is supported",
+      "x-max-words": 20
      },
      "meaningfulness_argument": {
-      "type": "string"
+      "type": "string",
+      "description": "out_of_taxonomy only, else \"\"",
+      "x-max-words": 50
      },
      "criteria": {
       "type": "object",
@@ -412,17 +429,17 @@
      "checks",
      "uncertainty",
      "scope",
-     "what_would_change",
      "meaningfulness_argument",
      "criteria"
     ],
     "additionalProperties": false
    },
    "minItems": 1,
-   "maxItems": 5
+   "maxItems": 2
   },
   "dependencies": {
    "type": "array",
+   "description": "at most 5, those the basis gain rests on most",
    "items": {
     "type": "object",
     "properties": {
@@ -434,14 +451,17 @@
        "method",
        "code",
        "prior_result",
-       "standard"
+       "standard",
+       "concept"
       ]
      },
      "name": {
-      "type": "string"
+      "type": "string",
+      "x-max-words": 12
      },
      "locator": {
-      "type": "string"
+      "type": "string",
+      "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
      }
     },
     "required": [
@@ -450,7 +470,8 @@
      "locator"
     ],
     "additionalProperties": false
-   }
+   },
+   "maxItems": 5
   },
   "roles": {
    "type": "array",
@@ -467,16 +488,19 @@
    "minItems": 1
   },
   "roles_reasons": {
-   "type": "string"
+   "type": "string",
+   "x-max-words": 40
   },
   "corrected_prior_claim": {
    "type": "object",
    "properties": {
     "text": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 30
     },
     "locator": {
-     "type": "string"
+     "type": "string",
+     "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
     }
    },
    "required": [
@@ -489,10 +513,12 @@
    "type": "object",
    "properties": {
     "claimed_scope": {
-     "type": "string"
+     "type": "string",
+     "x-max-words": 30
     },
     "locator": {
-     "type": "string"
+     "type": "string",
+     "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
     },
     "exceeds_warrant": {
      "type": "string",
@@ -531,10 +557,12 @@
   },
   "verdict_basis": {
    "type": "string",
-   "pattern": "^(G[1-5]|none)$"
+   "pattern": "^(G[12]|none)$"
   },
   "verdict_reasons": {
-   "type": "string"
+   "type": "string",
+   "description": "two to four sentences naming the decisive criteria and the evidence",
+   "x-max-words": 80
   },
   "verdict_confidence": {
    "type": "string",
@@ -561,6 +589,11 @@
    ],
    "minimum": 1,
    "maximum": 5
+  },
+  "advance_score_reasons": {
+   "type": "string",
+   "description": "the anchor given and why the next anchor up is not met; \"\" when the score is null",
+   "x-max-words": 25
   },
   "advance_confidence": {
    "type": "string",
@@ -594,16 +627,39 @@
    ]
   },
   "impact_forecast_reasons": {
-   "type": "string"
+   "type": "string",
+   "x-max-words": 40
   },
   "post_2022_knowledge_flag": {
-   "type": "string"
+   "type": "string",
+   "description": "\"none\", or the later work that was hard to set aside",
+   "x-max-words": 25
   },
-  "blind_leak_noticed": {
-   "type": "string"
+  "blind_leak_cues": {
+   "type": "array",
+   "description": "every cue to the authors, their group, institution or venue that survived the blinding; [] when none",
+   "items": {
+    "type": "string",
+    "enum": [
+     "reference_list_author_group",
+     "first_person_self_citation",
+     "own_institution_named",
+     "venue_string",
+     "government_or_copyright_notice",
+     "genre_or_style",
+     "recognizes_paper",
+     "other"
+    ]
+   }
+  },
+  "blind_leak_note": {
+   "type": "string",
+   "description": "the cue in a few words, with its locator; \"\" when blind_leak_cues is []",
+   "x-max-words": 25
   },
   "quotes": {
    "type": "array",
+   "description": "at most 10 quotes: one each for headline_claim, starting_state, gain and novelty (when a precedent is named) and overreach (when the claim exceeds the warrant), and the evidence and verdict quotes",
    "items": {
     "type": "object",
     "properties": {
@@ -626,13 +682,16 @@
      },
      "gain_id": {
       "type": "string",
-      "pattern": "^(G[1-5])?$"
+      "pattern": "^(G[12])?$"
      },
      "quote": {
-      "type": "string"
+      "type": "string",
+      "description": "verbatim from the blinded text, at most 25 words",
+      "x-max-words": 25
      },
      "locator": {
-      "type": "string"
+      "type": "string",
+      "description": "locator of the passage: [§n ¶k], [Fig. n], [Table n], [Ref n] or [p. N] as printed in the text"
      }
     },
     "required": [
@@ -643,17 +702,51 @@
     ],
     "additionalProperties": false
    },
-   "minItems": 5
+   "minItems": 5,
+   "maxItems": 10,
+   "x-quote-budget": {
+    "headline_claim": 1,
+    "starting_state": 2,
+    "gain": 2,
+    "magnitude": 2,
+    "evidence": 3,
+    "warrant": 2,
+    "roles": 1,
+    "dependencies": 1,
+    "overreach": 1,
+    "verdict": 2,
+    "novelty": 1,
+    "impact_forecast": 1
+   }
   },
   "notes": {
-   "type": "string"
+   "type": "array",
+   "description": "optional: up to 3 remarks that have no field of their own; never add other properties to any object",
+   "items": {
+    "type": "object",
+    "properties": {
+     "field": {
+      "type": "string",
+      "description": "the field the note is about"
+     },
+     "note": {
+      "type": "string",
+      "x-max-words": 40
+     }
+    },
+    "required": [
+     "field",
+     "note"
+    ],
+    "additionalProperties": false
+   },
+   "maxItems": 3
   }
  },
  "required": [
   "key",
   "rubric_version",
   "coder",
-  "frame",
   "eligible_in_my_view",
   "familiarity",
   "headline_claim",
@@ -674,13 +767,15 @@
   "verdict_confidence",
   "claim_status",
   "advance_score",
+  "advance_score_reasons",
   "advance_confidence",
   "novelty_score",
   "novelty_confidence",
   "impact_forecast",
   "impact_forecast_reasons",
   "post_2022_knowledge_flag",
-  "blind_leak_noticed",
+  "blind_leak_cues",
+  "blind_leak_note",
   "quotes"
  ],
  "additionalProperties": false

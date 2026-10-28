@@ -21,6 +21,41 @@ Removed tokens are replaced by [author], [journal], [publisher], [publisher URL]
 the coder sees that something was removed. v1.1.1 (October 27, 2026) also replaces publisher host names printed without
 a scheme, such as 'wileyonlinelibrary.com/journal/rge' in Wiley page footers.
 
+v1.2.0 (October 28, 2026; diagnosis of advance pilot 1, tags pilot-a-advance and pilot-b-advance):
+- XML route parity. The XML text is regenerated from <key>.xml with jats_text.convert(descend_sections=True,
+  table_rows=True): Elsevier bodies (ja:body > ce:sections) were dropped by the default converter, which left only the
+  abstract and captions in 101 of the 581 v1.1.1 texts and gave every U1 verdict of the pilot; table rows are printed
+  as '[Table n] cell | cell' lines, as the pdftotext route prints them. The <key>.xml.txt files and the default
+  converter are unchanged, so the inquiry and readiness requests stay byte-identical. An XML text with fewer than
+  MIN_BODY_PARAS (15) body paragraphs falls back to pdftotext; meta 'xml_fallback' records why.
+- DROP_SEC matches a whole heading ('Contributions of the predictor variables' and references to 'Contributions to
+  Mineralogy and Petrology' were dropped as author-contribution sections); run-in headings ('Acknowledgments. We
+  thank') are matched by DROP_RUNIN, which leaves out the ambiguous 'contributions', 'affiliations' and 'additional
+  information'.
+- Leak scrubs, from the coders' blind_leak_noticed reports: 'Government work ... public domain in the USA' notices;
+  'our previous / earlier / prior work' becomes 'previous work' (citation kept); the authors' own institutions
+  (OpenAlex institution names and the unit segments of the raw affiliation strings) become [institution] in the
+  body; journal names are matched longest first ('Earth Surface Processes' no longer pre-empts 'Earth Surface
+  Processes and Landforms'); citation-format page headers ('[journal]. 2022;47:1229-1237') are removed; on the
+  pdftotext route the paper's own 'how to cite' box (lines that are fragments of the paper's title, and the author,
+  journal and DOI lines around them) is removed, also when it falls inside the reference block; the Wiley note
+  '[Colour figure can be viewed at ...]' is removed; name-only lines after an editor label (Seismica 'Handling
+  Editor:') are removed; DOIs left in the body become [repository DOI (host)] for known data hosts, else [DOI (other)]
+  (a prefix such as 10.21979, DR-NTU, names the authors' institution).
+
+v1.2.1 (October 28, 2026; pre-spend check before advance pilot 2): the XML route now keeps the data and code
+availability statements that publishers put outside the body (jats_text.convert(availability=True): JATS back
+sections, Copernicus notes, Elsevier ce:data-availability), printed as §D1, §D2, ... before the references. At v1.2.0
+only 17 of the 318 XML-route texts carried one, against 173 of the 263 pdftotext texts; 227 of the 318 XML sources
+hold one. Their URLs and DOIs are scrubbed like the body's. The §D paragraphs do not count toward MIN_BODY_PARAS.
+On the pdftotext route the abstract was missing from 15 of the 263 texts (printed without a heading on Wiley
+two-column title pages, so it went with the front matter cut at 'I N T RO DU CT I O N') and cut short or interleaved
+with affiliation lines in about 15 more. When fewer than half of the record abstract's word 5-grams are in the text,
+the record abstract (derived/{gold,r2}/screen_input.json, boilerplate sentences dropped) is put at the top of page 1
+with the label 'Abstract (from the bibliographic record; less than half of it was found in the PDF text)' (33 texts;
+in about 3 of them the PDF abstract is complete but worded differently from the record's version); meta
+'abstract_from_record' says so.
+
 Citations are left as printed (v1.1.0): no surname of a cited author is replaced, in the body or the reference list,
 and journal names in the reference list are not replaced. Replacing only the paper's own authors and venue marked which
 references were self-citations or same-venue papers (the DOI beside a [journal] reference decoded the venue), so the
@@ -74,7 +109,8 @@ DATA = PRIVATE / 'data' / 'roadmap'
 CACHE = DATA / 'blind'
 OPENALEX_RAW = DATA / 'raw' / 'openalex'
 API = 'https://api.openalex.org'
-BLIND_VERSION = '1.1.1'
+BLIND_VERSION = '1.2.1'
+MIN_BODY_PARAS = 15     # an XML text with fewer body paragraphs (abstract excluded) is not used; pdftotext instead
 
 PUBLISHERS = ['American Geophysical Union', 'AGU', 'Wiley', 'John Wiley', 'Wiley-Blackwell', 'Blackwell', 'Elsevier',
               'Elsevier B.V.', 'Elsevier Ltd', 'Springer', 'Springer Nature', 'Springer-Verlag', 'Nature Publishing Group',
@@ -91,12 +127,24 @@ DOMAINS = ['agupubs', 'onlinelibrary.wiley', 'wiley.com', 'sciencedirect', 'else
            'science.org', 'sciencemag', 'pnas.org', 'plos.org', 'rmets', 'seg.org', 'earthdoc', 'geolsoc', 'scichina',
            'wileyonlinelibrary']
 
-DROP_SEC = re.compile(r'^(?:\d+(?:\.\d+)*\.?\s+)?(acknowledge?ments?|funding(?: information| sources?| statement)?|financial support|'
-                      r'author contributions?|contributions|credit authorship contribution statement|competing interests?|'
-                      r'conflicts? of interests?|declaration of competing interests?|declarations?|ethics declarations?|'
-                      r'review statement|disclaimer|publisher\'?s note|special issue statement|online content|'
-                      r'author information|additional information|peer review(?: information)?|orcid|about the (?:first |corresponding )?authors?|'
-                      r'mailing address(?:es)?|authors?\'? addresses|author affiliations?|affiliations?)\b', re.I)
+_DROP_TERMS = (r'acknowledge?ments?|funding(?: information| sources?| statement)?|financial support|'
+               r'author contributions?(?: statement)?|author credit(?: statement)?|contributions|credit authorship contribution statement|competing interests?|'
+               r'conflicts? of interests?|declaration of competing interests?|declarations?|ethics declarations?|'
+               r'review statement|disclaimer|publisher\'?s note|special issue statement|online content|'
+               r'author information|additional information|peer review(?: information)?|orcid|about the (?:first |corresponding )?authors?|'
+               r'mailing address(?:es)?|authors?\'? addresses|author affiliations?|affiliations?')
+# v1.2.0: the whole heading must be a drop term, or several joined by ',', '&', 'and', '/' (AGU 'Acknowledgments,
+# Samples, and Data', 'Funding sources & acknowledgements', 'Acknowledgments, funding, and data availability'); a
+# heading that only starts with one ('Contributions of the predictor variables') is kept
+_JOIN = r'\s*(?:,|&|/|\band\b)\s*(?:and\s+)?'
+DROP_SEC = re.compile(rf'^(?:\d+(?:\.\d+)*\.?\s+)?(?:{_DROP_TERMS})(?:{_JOIN}(?:{_DROP_TERMS}|samples|data(?: and code)?(?: availability)?(?: statement)?))*'
+                      r'\s*[.:]?\s*$', re.I)
+# run-in headings on the pdftotext route ('Acknowledgments. We thank ...', 'Acknowledgments—AEG and WM were supported');
+# without the ambiguous single words 'contributions', 'affiliations', 'declarations' and 'additional information'
+DROP_RUNIN = re.compile(r'^(?:\d+(?:\.\d+)*\.?\s+)?(acknowledge?ments?|funding(?: information| sources?| statement)?|financial support|'
+                        r'author contributions?|credit authorship contribution statement|competing interests?|'
+                        r'conflicts? of interests?|declaration of competing interests?|review statement|disclaimer|'
+                        r'publisher\'?s note|special issue statement)\s*(?:[.:]\s+|\s*[—–]\s*)\S', re.I)
 REF_HEAD = re.compile(r'^\s*(references(?: cited)?|bibliography|literature cited|reference list)\s*$', re.I)
 STOP_HEAD = re.compile(r'^\s*(?:\d{1,2}(?:\.\d+)*\.?\s+[A-Z]|abstract|a b s t r a c t|introduction|keywords|key words|plain language summary|appendix|supplement|supporting information|data availability|'
                        r'code availability|data and code availability|code and data availability|open research|'
@@ -166,6 +214,24 @@ CREDIT = re.compile(r'\b(conceptuali[sz]ation|data curation|formal analysis|fund
                     r'project administration|resources|software|supervision|validation|visuali[sz]ation|writing\s*[–—-]\s*'
                     r'(?:original draft|review))\s*:', re.I)
 SLUG = re.compile(r'\.indd\b|\.pdf\s+\d|^\s*\d+\s*of\s*\d+\s*$', re.I)
+# v1.2.0 leak scrubs
+GOV_NOTICE = re.compile(r'[^.\n]{0,160}\b(?:government work|work of the U\.?\s?S\.? government|public\s+domain\s+in\s+the\s+'
+                        r'(?:USA|U\.S\.A?\.?|United States))\b[^.]{0,160}\.?', re.I)
+OUR_PRIOR = re.compile(r'\b([Oo])ur\s+(own\s+)?(previous|earlier|prior|former|recent)\b')
+WILEY_COLOR = re.compile(r'\s*\[\s*Colou?r\s+figure\s+can\s+be\s+viewed\s+(?:at|in)\b[^\]\[]{0,160}\]', re.I)
+BODY_DOI = re.compile(r'(?:https?://)?(?:dx\.)?(?:doi\.org/|doi:\s*)?\b(10\.\d{4,9})/[^\s)\]>,;]+', re.I)
+DATA_HOSTS = {'10.5281': 'zenodo', '10.6084': 'figshare', '10.1594': 'pangaea', '10.5061': 'dryad', '10.17632': 'mendeley data',
+              '10.4211': 'hydroshare', '10.17605': 'osf', '10.7910': 'dataverse', '10.7914': 'fdsn network', '10.24381': 'copernicus cds',
+              '10.5067': 'nasa daac', '10.5065': 'ncar', '10.15485': 'ess-dive', '10.26022': 'earthchem', '10.4121': '4tu',
+              '10.5285': 'bodc', '10.7289': 'noaa ncei', '10.25921': 'noaa ncei', '10.5066': 'usgs', '10.5069': 'usgs',
+              '10.18739': 'arctic data center', '10.15468': 'gbif', '10.5880': 'gfz data services', '10.1029': 'agu',
+              '10.5194': 'copernicus', '10.22033': 'esgf', '10.26050': 'wdcc', '10.14470': 'gfz data services'}
+CITE_HEADER = re.compile(r'^\s*(?:\[journal\][^\n]{0,40}?|[A-Z][\w.&\s]{0,60}?)\.?\s*(?:19|20)\d\d\s*;\s*\d+\s*(?:\(\d+\))?\s*:\s*'
+                         r'[\w]+(?:\s*[–-]\s*\w+)?\.?\s*$', re.M)
+EDITOR_LABEL = re.compile(r'(?:edited by|(?:production|handling|associate|copy (?:&|and) layout|guest|section|chief|managing)?\s*'
+                          r'editors?\s*:|reviewed by|reviewers?\s*:)', re.I)
+NAME_LINE = re.compile(r"^(?:[A-ZÀ-Þ][\w'’\-À-ÿ]*\.?\s+){1,3}[A-ZÀ-Þ][\w'’\-À-ÿ]+(?:\s*(?:,|and|&)\s*(?:[A-ZÀ-Þ][\w'’\-À-ÿ]*\.?\s+){1,3}"
+                       r"[A-ZÀ-Þ][\w'’\-À-ÿ]+)*\s*,?$")
 
 
 def _head(s: str) -> str:
@@ -208,6 +274,32 @@ def metrics() -> dict:
                 for m in json.loads(p.read_text())['data']:
                     _METRICS.setdefault('g22_' + m['id'], m)
     return _METRICS
+
+
+_ABSTRACTS = None
+
+
+def record_abstract(key: str) -> str:
+    """The paper's abstract from the bibliographic record (derived/{gold,r2}/screen_input.json, rebuilt from OpenAlex's
+    abstract_inverted_index by g06), boilerplate sentences dropped; '' when there is none."""
+    global _ABSTRACTS
+    if _ABSTRACTS is None:
+        _ABSTRACTS = {}
+        for s in ('gold', 'r2'):
+            p = DATA / 'derived' / s / 'screen_input.json'
+            if p.is_file():
+                for x in json.loads(p.read_text())['data']:
+                    _ABSTRACTS.setdefault(x['key'], x.get('abstract') or '')
+    a = re.sub(r'^\s*abstract[\s.:]*', '', _ABSTRACTS.get(key) or '', flags=re.I).strip()
+    return ' '.join(x for x in re.split(r'(?<=[.!?])\s+', a) if x and not BOILER.search(x))
+
+
+def _coverage(part: str, text: str) -> float:
+    """Share of the word 5-grams of `part` (words of 4 or more letters, every third start) found in `text`."""
+    w = re.findall(r'[a-z]{4,}', part.lower())
+    grams = [' '.join(w[i:i + 5]) for i in range(0, max(0, len(w) - 5), 3)]
+    t = ' '.join(re.findall(r'[a-z]{4,}', text.lower()))
+    return sum(g in t for g in grams) / len(grams) if grams else 1.0
 
 
 def source_record(source_id: str | None) -> dict:
@@ -313,9 +405,9 @@ def journal_patterns(journals: list[str]) -> list[re.Pattern]:
 
 
 def patterns(meta: dict) -> dict:
-    journals = [j for j in meta['journals'] if len(j) >= 4]
+    journals = sorted((j for j in meta['journals'] if len(j) >= 4), key=len, reverse=True)   # longest first (v1.2.0)
     pre = [_loose(p) for p in meta['publishers'] if len(p) >= 3]
-    surn, full, insts, raws, orcids = set(), set(), set(), set(), set()
+    surn, full, insts, raws, orcids, units = set(), set(), set(), set(), set(), set()
     for a in meta['authors']:
         for n in a['names']:
             n = re.sub(r'\s+', ' ', n).strip()
@@ -331,6 +423,13 @@ def patterns(meta: dict) -> dict:
                 full.add(f'{first[0]}. {last}'); full.add(f'{last}, {first[0]}.'); full.add(f'{first[0]}.{last}')
         insts |= {i for i in a['institutions'] if len(i) >= 6}
         raws |= {r for r in a['raw_affiliations'] if len(r) >= 12}
+        # v1.2.0: unit segments of the raw affiliation strings ('Asian School of the Environment', 'Laboratoire Magmas et
+        # Volcans'), replaced in the body as [institution]
+        for r in a['raw_affiliations']:
+            for seg in re.split(r'\s*[,;]\s*', r):
+                seg = re.sub(r'^\s*(?:\d+|[a-z])\s+', '', seg).strip(' .')
+                if 12 <= len(seg) <= 90 and AFFIL_WORDS.search(seg) and not COUNTRY.search(seg):
+                    units.add(seg)
         if a['orcid']:
             orcids.add(a['orcid'])
     doi = meta['doi'].lower().replace('https://doi.org/', '')
@@ -338,7 +437,8 @@ def patterns(meta: dict) -> dict:
             'publisher': re.compile('|'.join(sorted(set(pre), key=len, reverse=True))) if pre else None,
             'surnames': sorted(surn, key=len, reverse=True), 'full': sorted(full - {''}, key=len, reverse=True),
             'institutions': sorted(insts, key=len, reverse=True), 'raw_affiliations': sorted(raws, key=len, reverse=True),
-            'orcids': sorted(orcids), 'doi': doi}
+            'institution_names': sorted(insts | units, key=len, reverse=True),
+            'orcids': sorted(orcids), 'doi': doi, 'title': meta.get('title') or ''}
 
 
 def _surname_cite(s: str) -> re.Pattern:
@@ -376,7 +476,9 @@ def scrub(text: str, P: dict, refs: bool) -> str:
         suffix = P['doi'].split('/', 1)[-1]
         if len(suffix) >= 6:  # article number or DOI suffix printed without the prefix (AGU e2021JB023701, Copernicus os-18-979-2022)
             text = re.sub(rf'\b[eE]?{re.escape(suffix)}\b', '[DOI]', text, flags=re.I)
+    text = WILEY_COLOR.sub('', text)     # also in the reference block: pdftotext puts appendices after the references
     if not refs:
+        text = BODY_DOI.sub(_body_doi, text)
         text = URL.sub(lambda m: '[publisher URL]' if any(dm in m.group(0).lower() for dm in DOMAINS) else m.group(0), text)
         text = BARE_URL.sub(lambda m: '[publisher URL]' if any(dm in m.group(0).lower() for dm in DOMAINS) else m.group(0), text)
     text = EMAIL.sub('', text)
@@ -389,12 +491,53 @@ def scrub(text: str, P: dict, refs: bool) -> str:
     for n in P['full']:
         if len(n) >= 4:
             text = re.sub(rf'(?<![A-Za-z]){re.escape(n)}(?![A-Za-z])', '[author]', text)
+    for n in P.get('institution_names', []):
+        text = re.sub(r'(?<![\w-])' + r'\s+'.join(map(re.escape, n.split())) + r'(?![\w-])', '[institution]', text)
+    text = OUR_PRIOR.sub(lambda m: m.group(3).capitalize() if m.group(1) == 'O' else m.group(3), text)   # 'our previous' -> 'previous'
+    text = GOV_NOTICE.sub('', text)
     text = templates(text)
     for rx in P['journal']:
         text = rx.sub('[journal]', text)
     if P['publisher'] is not None:
         text = P['publisher'].sub('[publisher]', text)
-    return text
+    return CITE_HEADER.sub('', text)
+
+
+def _body_doi(m: re.Match) -> str:
+    """A DOI left in the body (data availability, captions): [repository DOI (host)] for known data hosts, else
+    [DOI (other)]; a trailing sentence period is kept."""
+    s, tail = m.group(0), ''
+    while s and s[-1] in '.':
+        s, tail = s[:-1], tail + '.'
+    host = DATA_HOSTS.get(m.group(1))
+    return (f'[repository DOI ({host})]' if host else '[DOI (other)]') + tail
+
+
+def drop_own_citation(text: str, P: dict) -> tuple[str, int]:
+    """pdftotext route: remove the paper's own 'how to cite' box. Lines that are fragments of the paper's title
+    (at least 20 letters and digits, found in the title) are removed, and within 6 lines of one, lines that name one
+    of the paper's authors, a journal name, [journal], [DOI] or a 'volume(issue), pages' string. (number of lines removed)"""
+    nt = re.sub(r'[^0-9a-z]', '', _ascii(P.get('title') or '').lower())
+    if len(nt) < 30:
+        return text, 0
+    lines = text.split('\n')
+    frag = [i for i, ln in enumerate(lines) if not ln.startswith('TITLE:') and
+            len(x := re.sub(r'[^0-9a-z]', '', _ascii(ln).lower())) >= 20 and x in nt]
+    if not frag:
+        return text, 0
+    name_rx = [re.compile(rf'(?<![A-Za-z]){re.escape(n)}(?![A-Za-z])') for n in P['full'] if len(n) >= 4]
+    cite = re.compile(r'\[journal\]|\[DOI\]|\b\d+\s*\(\d+\)\s*,\s*\d+\s*[–-]\s*\d+|how to cite', re.I)
+    drop = set(frag)
+    for i in frag:
+        for j in range(max(0, i - 6), min(len(lines), i + 7)):
+            ln = lines[j]
+            if j not in drop and not MARKLINE.match(ln) and (cite.search(ln) or any(r.search(ln) for r in name_rx)
+                                                             or any(r.search(ln) for r in P['journal'])):
+                drop.add(j)
+    return '\n'.join(ln for j, ln in enumerate(lines) if j not in drop), len(drop)
+
+
+MARKLINE = re.compile(r'^\[p\. \d+\]$')
 
 
 def leakage(body: str, refs: str, P: dict) -> dict:
@@ -415,6 +558,14 @@ def leakage(body: str, refs: str, P: dict) -> dict:
                'ack_phrase': len(ACK.findall(s)) if not is_refs else 0}
         if not is_refs:
             out.update({f'template_{k}': len(rx.findall(s)) for k, rx in TEMPLATE.items()})
+            # v1.2.0 leak cues
+            out['own_institution'] = sum(len(re.findall(r'(?<![\w-])' + r'\s+'.join(map(re.escape, n.split())) + r'(?![\w-])', s))
+                                         for n in P.get('institution_names', []))
+            out['first_person_prior_work'] = len(OUR_PRIOR.findall(s))
+            out['government_notice'] = len(GOV_NOTICE.findall(s))
+            out['citation_header_line'] = len(CITE_HEADER.findall(s))
+            out['wiley_color_note'] = len(WILEY_COLOR.findall(s))
+            out['body_doi'] = len(BODY_DOI.findall(s))
             out['affiliation_words_first_6000'] = len(AFFIL_CHECK.findall(s[:6000]))
         return out
     return {'body': part(body, False), 'references': part(refs, True)}
@@ -540,6 +691,7 @@ def from_pdf(pdf: Path, P: dict) -> tuple[str, str, list]:
     out_pages, dropped, in_refs, ref_lines, drop_left, skip_para = [], [], False, [], 0, False
     front = front_end is None
     affil = False   # inside an affiliation or address block (v1.1.0)
+    editor_left = 0  # name-only lines still to drop after an editor label (v1.2.0)
     last_front_page = max(2, front_end[0] if front_end else 2)
     for i, pg in enumerate(pages, 1):
         body_part, ref_part = [], []
@@ -586,6 +738,15 @@ def from_pdf(pdf: Path, P: dict) -> tuple[str, str, list]:
                 skip_para = True; dropped.append('author contributions (CRediT roles)'); continue
             if re.match(r'^\s*(?:photo|image) (?:credit|courtesy)', s, re.I):
                 continue
+            if editor_left:
+                if NAME_LINE.match(s) and len(s) < 80:
+                    editor_left -= 1; continue
+                editor_left = 0
+            if EDITOR_LABEL.search(s) and len(s) < 120:
+                editor_left = 4
+                rest = EDITOR_LABEL.split(s)[-1].strip()
+                if not rest or NAME_LINE.match(rest) or len(s) < 80:
+                    continue
             if BOILER.search(s) and len(s) < 300:
                 # a citation or copyright notice runs on over several lines: drop to the end of its paragraph
                 skip_para = bool(re.search(r'citation|cite|©|copyright|licen[cs]|open access|published by|received|accepted', s, re.I))
@@ -599,7 +760,7 @@ def from_pdf(pdf: Path, P: dict) -> tuple[str, str, list]:
                     drop_left = 0
                 else:
                     drop_left -= 1; continue
-            if DROP_SEC.match(h) and (len(h) < 60 or re.match(DROP_SEC.pattern + r'\s*[.:]', h, re.I)):
+            if (DROP_SEC.match(h) and len(h) < 60) or DROP_RUNIN.match(h):
                 dropped.append(s[:60]); drop_left = 80; continue
             (ref_part if in_refs else body_part).append(s)
         txt = re.sub(r'\n{3,}', '\n\n', '\n'.join(body_part)).strip()
@@ -609,7 +770,11 @@ def from_pdf(pdf: Path, P: dict) -> tuple[str, str, list]:
         if rtxt:
             ref_lines.append(f'[p. {i}]\n{rtxt}')
     refs = ('References\n' + '\n\n'.join(ref_lines)) if ref_lines else ''
-    return '\n\n'.join(out_pages), refs, dropped
+    body, nb = drop_own_citation('\n\n'.join(out_pages), P)
+    refs, nr = drop_own_citation(refs, P)
+    if nb + nr:
+        dropped.append(f"own citation box ({nb + nr} lines)")
+    return body, refs, dropped
 
 
 # ----------------------------------------------------------------------------------------------------------- build
@@ -621,6 +786,21 @@ def sha(s: str) -> str:
 def build(key: str, pdf: Path, xml_text: str | None = None, refresh: bool = False) -> tuple[str, dict]:
     """(blinded text, meta) for one paper. xml_text is what code_papers.xml_text_for(pdf) returned (None: use the PDF)."""
     pdf = Path(pdf)
+    xml_path, xml_from, fallback, n_body = pdf.with_suffix('.xml'), None, None, None
+    if xml_text:
+        # v1.2.0: regenerate from the XML with the Elsevier-body and table-row options; the .xml.txt is the fallback
+        xml_from = 'xml.txt'
+        if xml_path.is_file():
+            sys.path.insert(0, str(ROOT / 'tools'))
+            from jats_text import parse, convert  # noqa: E402
+            try:
+                xml_text, xml_from = convert(parse(xml_path), descend_sections=True, table_rows=True, availability=True), 'xml'
+            except ET.ParseError:
+                pass
+        n_body = len(re.findall(r'^\[§(?!0 |D\d)[^\]]* ¶\d+\]', xml_text, re.M))   # abstract and availability excluded
+        if n_body < MIN_BODY_PARAS:
+            fallback = f'{n_body} body paragraphs in the XML text (fewer than {MIN_BODY_PARAS}): pdftotext used'
+            xml_text = None
     src = 'xml' if xml_text else 'pdftotext'
     in_sha = sha(xml_text) if xml_text else hashlib.sha256(pdf.read_bytes()).hexdigest()
     ct, cm = CACHE / f'{key}.txt', CACHE / f'{key}.json'
@@ -634,15 +814,26 @@ def build(key: str, pdf: Path, xml_text: str | None = None, refresh: bool = Fals
         body, refs, dropped = from_xml(xml_text, pdf.with_suffix('.xml'))
     else:
         body, refs, dropped = from_pdf(pdf, P)
+    abstract_from_record = False
+    if not xml_text:
+        # v1.2.1: an abstract printed without a heading (Wiley two-column title pages) goes with the front matter cut at
+        # the Introduction heading; the record abstract is put back at the top of page 1, labelled as such
+        rec = record_abstract(key)
+        if rec and _coverage(rec, body) < 0.5:
+            lab = 'Abstract (from the bibliographic record; less than half of it was found in the PDF text) '
+            body = re.sub(r'^(\[p\. \d+\]\n)?', lambda m: (m.group(0) or '') + lab + rec + '\n\n', body, count=1)
+            abstract_from_record = True
     before = leakage(body, refs, P)
     body_s, refs_s = scrub(body, P, refs=False), scrub(refs, P, refs=True)
     after = leakage(body_s, refs_s, P)
-    head = ('Locators: [§n ¶k] section n paragraph k; [Fig. n] / [Table n] captions; [Ref n] reference n.'
+    head = ('Locators: [§n ¶k] section n paragraph k; [Fig. n] / [Table n] captions and table rows; [Ref n] reference n.'
             if src == 'xml' else 'Locators: [p. N] marks the start of PDF page N.')
     title = '' if src == 'xml' else f"TITLE: {meta['title']}\n\n" if meta['title'] else ''
     text = (head + '\n\n' + title + body_s.strip() + '\n\n' + ('§R References\n' if src == 'xml' else '') + refs_s.strip() + '\n')
     m = {'key': key, 'blind_version': BLIND_VERSION, 'built': time.strftime('%Y-%m-%d %H:%M'), 'source': src,
-         'input': str(pdf.with_suffix('.xml.txt') if xml_text else pdf).replace(str(PRIVATE), 'private'),
+         'input': str((xml_path if xml_from == 'xml' else pdf.with_suffix('.xml.txt')) if xml_text else pdf).replace(str(PRIVATE), 'private'),
+         'xml_converter': 'jats_text.convert(descend_sections=True, table_rows=True, availability=True)' if xml_text and xml_from == 'xml' else None,
+         'xml_body_paragraphs': n_body, 'xml_fallback': fallback, 'abstract_from_record': abstract_from_record,
          'input_sha256': in_sha, 'output_sha256': sha(text), 'chars': len(text), 'words': len(text.split()),
          'reference_entries': len(re.findall(r'^\[Ref \d+\]', refs_s, re.M)) if src == 'xml' else None,
          'have_work_record': meta['have_work_record'], 'have_source_record': meta['have_source_record'],
@@ -657,6 +848,23 @@ def build(key: str, pdf: Path, xml_text: str | None = None, refresh: bool = Fals
 def cached(key: str) -> str | None:
     f = CACHE / f'{key}.txt'
     return f.read_text() if f.is_file() else None
+
+
+ARCHIVE = CACHE / 'archive'   # earlier versions, one folder per BLIND_VERSION (archive/1.1.1: the texts advance pilot 1 read)
+
+
+def cached_as_read(key: str, sha256: str | None = None) -> tuple[str | None, dict]:
+    """(text, meta) of the blinded text whose sha256 is the one a coder read (a coding's run.blind_sha256): the current
+    cache when it matches or when no sha256 is given, else the archived version that matches; (None, {}) when none does."""
+    cur, cm = cached(key), CACHE / f'{key}.json'
+    if cur is not None and (sha256 is None or sha(cur) == sha256):
+        return cur, (json.loads(cm.read_text()) if cm.is_file() else {})
+    for d in sorted(ARCHIVE.glob('*'), reverse=True) if ARCHIVE.is_dir() else []:
+        f = d / f'{key}.txt'
+        if f.is_file() and sha(t := f.read_text()) == sha256:
+            m = d / f'{key}.json'
+            return t, (json.loads(m.read_text()) if m.is_file() else {'blind_version': d.name})
+    return None, {}
 
 
 def _queue_pdf(key: str) -> Path | None:

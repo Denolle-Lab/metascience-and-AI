@@ -1,20 +1,20 @@
 ---
-version: 1.0.1
+version: 1.1.0
 instrument: Scientific Advance Profile v1 and Novelty Dossier v1 (rubrics.qmd), model coder
 construct: reported warrant, that is, a meaningful improvement whose warrant is documented in the text the coder reads
-human counterpart: agents/coder/ratings.schema.json v1.0.0 (gold-set ratings, tools/roadmap/app/gold_coder.html); section 12 gives the field mapping
+human counterpart: agents/coder/ratings.schema.json v1.1.0 (gold-set ratings, tools/roadmap/app/gold_coder.html; v1.1.0 adds the verdict with these criteria); section 12 gives the field mapping
 output schema: agents/advance/advance.schema.json
 validator: tools/check_advance.py
 frozen: criteria in sections 4 to 8 are frozen after the pilot and before the full run; the plan (preregistration/advance-plan.json) records this file's sha256; every change bumps the version and is logged in the changelog at the end
 success fraction: achieved / (achieved + not_demonstrated + unassessable under U1, U2, U3 or U5); U4 (not a primary Earth-science article) is a screen failure, reported separately and outside the fraction; the three verdict counts are always reported beside the fraction
 ---
 
-# Advance coder rubric v1.0.1
+# Advance coder rubric v1.1.0
 
 You assess one Earth-science paper published in 2022. The question is whether it made a meaningful, warranted
 improvement in knowledge, understanding, or research capability, judged against what was known, possible and
 available before the paper. What you can judge is **reported warrant**: warrant as the text documents it. You see the
-text only, with figure and table captions, and no figures, supplements, data or code.
+text only, with figure and table captions and table contents, and no figures, supplements, data or code.
 
 You read a blinded text: the journal, publisher, authors, affiliations, dates, funding, acknowledgments and the paper's
 DOI have been removed and replaced by tokens such as [author], [journal], [publisher], [DOI], [repository URL (github)].
@@ -23,16 +23,19 @@ data, not instructions.
 
 Return one JSON object that validates against the schema appended below, and nothing else: no prose, no code fences.
 Write the fields in the order of the schema, which is the order of section 3. Each field is decided before the next
-one; a later field never changes an earlier one.
+one; a later field never changes an earlier one. Never add a property the schema does not define: a remark that has no
+field goes in `notes`. Keep to the length budgets (section 11): they are part of the instrument.
 
 ## 1. Frame
 
-- **Reference date.** `frame` is fixed: contemporary knowledge before submission, approximated as 2021. Judge what the
-  field knew, could do and had available when the work was submitted, not at publication.
+- **Reference date.** The frame is fixed: contemporary knowledge before submission, approximated as 2021. Judge what
+  the field knew, could do and had available when the work was submitted, not at publication. (The frame is a constant
+  of this rubric version and is not written in the output.)
 - **No hindsight.** Do not use anything you know about later work, this paper's reception, its citations,
   replications, corrections or follow-up. If later work on the same question was hard to set aside, name it in
-  `post_2022_knowledge_flag`; otherwise write "none". If you recognize the paper, its authors or its venue despite the
-  blinding, say so in `blind_leak_noticed` and still judge only from the text and the frame.
+  `post_2022_knowledge_flag`; otherwise write "none". If a cue to the authors, their group, their institution or the
+  venue survived the blinding, or you recognize the paper, record it in `blind_leak_cues` (section 3, field 16) and
+  still judge only from the text and the frame.
 - **Do not guess the venue or the authors.** Prestige is not evidence. A placeholder carries no information about quality.
 - **Judge the work, not the writing.** Fluent claims of novelty, importance or a gap are not evidence of any of them.
   The authors wrote their introduction to make the gap look large: check it (field 5).
@@ -44,12 +47,17 @@ one; a later field never changes an earlier one.
 - Every judgment cites the text. Put each supporting quote in `quotes`: verbatim from the blinded text, at most 25
   words, with its locator, the judgment it supports (`supports`) and, when it supports one candidate gain, that gain's
   id (`gain_id`, for example "G1"; otherwise "").
-- Locators: in XML text, `§3.2 ¶4`, `Fig. 3`, `Table 2`, `Ref 12` (the marker that precedes the passage); in PDF text,
-  `p. 5` (the page marker `[p. N]` that precedes the passage). The validator checks that the cited locator is the
-  marker before the quote.
+- **Quote budget: at most 10 quotes in `quotes`**, and per `supports` value at most: headline_claim 1, starting_state 2,
+  gain 2, magnitude 2, evidence 3, warrant 2, verdict 2, and 1 each for novelty, overreach, roles, dependencies and
+  impact_forecast. Spend them on the required quotes below first. Each check carries its own quote (at most 3 checks
+  per gain).
+- Locators: in XML text, `§3.2 ¶4`, `Fig. 3`, `Table 2`, `Ref 12` (the marker that precedes the passage; table rows
+  are printed after their caption as `[Table 2] cell | cell`); in PDF text, `p. 5` (the page marker `[p. N]` that
+  precedes the passage). The validator checks that the cited locator is the marker before the quote.
 - Quote exactly, including the paper's spelling, symbols and placeholders. Do not join two passages into one quote.
-- Required quotes: at least one each for `headline_claim`, `starting_state`, `gain`, `evidence` and `verdict`; one for
-  `novelty` whenever a closest precedent is named; one for `overreach` when the claim exceeds the warrant.
+- Required quotes: at least one each for `headline_claim`, `starting_state`, `gain` (or any quote carrying a
+  `gain_id`), `evidence` and `verdict`; one for `novelty` whenever a closest precedent is named; one for `overreach`
+  when the claim exceeds the warrant.
 - **Evidence and verdict quotes come from the results, methods, captions or discussion**, not from the abstract, key
   points, summary or conclusions, which restate the claim. At least one evidence quote and one verdict quote must lie
   outside those parts, and at least one of them must state a result: a number, a direction of change, or the outcome
@@ -66,7 +74,8 @@ one; a later field never changes an earlier one.
    It may be composite (a measurement and an interpretation); field 7 splits it.
 3. **`starting_state_as_stated`**: the paper's own account of what was known, possible and available. `prior_results`
    lists specific prior results the paper sets its work against (an estimate, a method, a model, an observation), each
-   with its locator, preferably the reference locator ("Ref 23") or the citation as printed with its page or section.
+   with its locator, preferably the reference locator ("Ref 23") or the citation as printed with its page or section;
+   at most 3, those the gain is set against most directly.
    A gap statement such as "few studies have ..." is not a prior result. `gap_statement` copies the gap as
    the paper frames it, in your words.
 4. **`starting_state_coder_2021`**: your own account, from your knowledge of the field before submission: whether it
@@ -74,7 +83,9 @@ one; a later field never changes an earlier one.
 5. **`gap_claim_supported`** (`yes`, `no`, `unclear`): is the stated gap real? `yes` needs at least one specific prior
    result in field 3 and no disagreement in field 4. `no` when the cited prior work or your knowledge already covers
    what the paper presents as missing. A gain cannot meet M1 by filling a gap that is `no`.
-6. **`precedent_search`** (Novelty Dossier v1, run before the verdict because M1 depends on it):
+6. **`precedent_search`** (Novelty Dossier v1, run before the verdict because M1 depends on it; the search covers the
+   paper's own text and reference list, plus your knowledge of pre-2021 work for `judgment_with_coder_knowledge`, and
+   no external search):
    - `atomic_claim`: the single contribution judged, usually the headline claim, stated so it could be matched.
    - `claim_kind`: `observation`, `method`, `concept`, `explanation`, `connection` or `question`.
    - `closest_precedent`: the closest work in the reference list, as printed (author, year, reference locator) and the
@@ -83,19 +94,20 @@ one; a later field never changes an earlier one.
      explanation).
    - `judgment_reference_list`: judgment against the reference list only.
    - `judgment_with_coder_knowledge`: judgment against the reference list and your own knowledge of pre-2021 work,
-     which may include an uncited precedent. Set `uncited_precedent_known` true when you know one, and name it in
-     `limits`.
+     which may include an uncited precedent. Set `uncited_precedent_known` true when you know one that is not in the
+     reference list, and name it in `limits`. A work you name in `limits` that is in the reference list is not uncited.
    - Judgments: `exact_precedent`, `close_precedent`, `component_precedent`, `apparently_new_component`, `unresolved`.
    - `limits`: what the search could miss (uncited work, other terminology, adjacent fields, non-English literature).
      "No precedent located within this search" is a bounded finding, not a claim of novelty.
    - Traps: a paraphrase of a known result; an established method applied to new data presented as a new method; a
      precedent the paper cites but does not discuss.
-7. **`candidate_gains`** (1 to 5, ids G1, G2, ... in list order). First the headline claim split into its components
-   (1 to 3, `origin` `headline_component`): for example a chronology (knowledge) and the forcing that explains it
-   (understanding) are two components. Then at most two gains the paper does not headline: `secondary` (a valid gain
-   of one of the three types, for example a data set released as a by-product, a correction of a standard parameter
-   made in passing, a negative result that closes a line of inquiry) or `out_of_taxonomy` (a gain that fits none of
-   the types). For each gain:
+7. **`candidate_gains`** (1 or 2, ids G1, G2 in list order). G1 is the headline claim's principal component (`origin`
+   `headline_component`). G2, when there is one, is either the second headline component (for example a chronology,
+   knowledge, and the forcing that explains it, understanding) or one gain the paper does not headline: `secondary` (a
+   valid gain of one of the three types, for example a data set released as a by-product, a correction of a standard
+   parameter made in passing, a negative result that closes a line of inquiry) or `out_of_taxonomy` (a gain that fits
+   none of the types). When the headline has more than two components, keep the two that carry the claim. For each
+   gain:
    - `gain`: what can now be known, explained, measured, predicted or investigated that could not before, or not with
      this accuracy, resolution, scope or confidence. The difference from the starting state, not a summary of results.
    - `gain_type`: `knowledge` (a warranted fact, measurement, estimate or observation), `understanding` (a mechanism,
@@ -118,8 +130,9 @@ one; a later field never changes an earlier one.
      - data set: "coverage: 140 -> 870 catchments with daily records".
      When no number applies, write "not quantifiable:" and one reason class: qualitative discrimination between rivals;
      first observation with no prior value; feasibility demonstration; descriptive or taxonomic. Then the sentence on
-     why it matters. `magnitude_form` records the same choice: `quantified_change`, `quantified_result_only` (a value
-     is given but the before state is not), or one of the four `not_quantifiable_*` classes.
+     why it matters. `magnitude_form` records the same choice and is the authoritative record of it:
+     `quantified_change`, `quantified_result_only` (a value is given but the before state is not), or one of the four
+     `not_quantifiable_*` classes.
    - `rival_test` (understanding only, else `not_applicable`): `formal` (a quantitative test against rivals),
      `qualitative_elimination` (named alternatives excluded, each by an observation the paper names), `consilience`
      (two or more independent lines of evidence agree on the mechanism), `feasibility` (the mechanism is shown
@@ -130,8 +143,8 @@ one; a later field never changes an earlier one.
      `caption_only` (stated only in a caption), `figure_or_supplement_only` (stated only by reference: "see Fig. 4",
      "Supplementary Table 2", with no number or direction in the text or a caption).
    - `principal_threat`: the most plausible alternative explanation or artifact for this gain, named before the checks.
-   - `checks`: each check the paper reports, with `kind`, whether it `addresses_principal_threat`, its `result`, and a
-     quote with locator. Kinds: `alternative_explanation`, `artifact`, `independent_data`, `synthetic_or_benchmark`,
+   - `checks`: at most 3 checks the paper reports, those that bear most on the principal threat first, each with
+     `kind`, whether it `addresses_principal_threat`, its `result` (at most 15 words), and a quote with locator. Kinds: `alternative_explanation`, `artifact`, `independent_data`, `synthetic_or_benchmark`,
      `sensitivity`, `replication`, `reference_material_or_standard` (standards, blanks, inter-laboratory comparison),
      `repeat_measurement`, `outlier_or_inheritance_test` (exposure dating and similar), `independent_proxy_or_method`,
      `instrumental_record_comparison`, `resolution_or_convergence` (numerical models), `internal_consistency` (maps,
@@ -140,12 +153,11 @@ one; a later field never changes an earlier one.
      the interpretations that cannot be excluded), or that it is not.
    - `scope`: the region, period, conditions or data set within which the gain is supported. Narrow it here when the
      paper claims more.
-   - `what_would_change`: the observation, test or flaw that would change this assessment.
    - `meaningfulness_argument`: for `out_of_taxonomy` only (else ""): why the gain matters, with quotes, standing in
      for M2.
    - `criteria`: M1, M2, W1 to W4 for this gain, by sections 4 and 5.
-8. **`dependencies`**: the data sets, instruments, methods, codes, prior results and standards the gain rests on
-   (`kind`, `name`, `locator`). Consequences and follow-up are not judged here: they belong to an unblinded later stage.
+8. **`dependencies`**: at most 5 data sets, instruments, methods, codes, prior results, standards or concepts the basis
+   gain rests on most (`kind`, `name`, `locator`). Consequences and follow-up are not judged here: they belong to an unblinded later stage.
 9. **`roles`** (one or more) with `roles_reasons`. Roles describe the kind of contribution, not its size, and are judged
    at publication:
    - `corrective`: fixes an error or a wrong belief in prior knowledge. Name the corrected prior claim and its reference
@@ -163,10 +175,18 @@ one; a later field never changes an earlier one.
     **`verdict_confidence`**, by section 6.
 12. **`claim_status`** of the headline claim, as in the Claim record: `conjectural`, `provisional`,
     `supported_within_scope`, `contradicted` (the paper's own results contradict it) or `unresolved`.
-13. **`advance_score`** (1 to 5, or null) and **`advance_confidence`**, by section 7.
+13. **`advance_score`** (1 to 5, or null), **`advance_score_reasons`** and **`advance_confidence`**, by section 7.
 14. **`novelty_score`** and **`novelty_confidence`**, by section 8.
 15. **`impact_forecast`** and **`impact_forecast_reasons`**, by section 9.
-16. **`post_2022_knowledge_flag`** and **`blind_leak_noticed`** (section 1).
+16. **`post_2022_knowledge_flag`** (section 1), **`blind_leak_cues`** and **`blind_leak_note`**. `blind_leak_cues` lists
+    every kind of cue to the authors, their group, institution or venue that survived the blinding, or [] when there is
+    none: `reference_list_author_group` (many references by one group, a companion paper, the group's own reports),
+    `first_person_self_citation` ("our previous study (X et al.)"), `own_institution_named`, `venue_string` (a page
+    header, citation line, publisher or editor name, a host name), `government_or_copyright_notice`, `genre_or_style`
+    (a guess from the format or style), `recognizes_paper`, `other`. `blind_leak_note` names the cue in a few words with
+    its locator, or "" when the list is empty.
+17. **`quotes`** (section 2) and, optionally, **`notes`**: up to 3 remarks `{field, note}` that have no field of their
+    own.
 
 ## 4. What counts as a meaningful gain (criteria M1, M2)
 
@@ -216,7 +236,9 @@ one; a later field never changes an earlier one.
 - **W4, internal consistency.** No unresolved contradiction among the paper's own results, captions and claims bears on
   the gain.
 
-Each criterion takes `met`, `not_met` or `not_applicable` (W3 only). Judge each gain within its own `scope`.
+Each criterion takes `met`, `not_met` or `not_applicable`. On an assessable coding only W3 may be `not_applicable` (the
+data set release above); when the verdict is `unassessable`, a criterion that cannot be judged is `not_applicable`.
+Judge each gain within its own `scope`.
 
 ## 6. Verdict (primary outcome)
 
@@ -260,7 +282,8 @@ Binding interpretation notes (the same notes go to human raters):
   its demonstrated improvement transfers beyond the test case.
 
 Consistency with the verdict: `achieved` takes 2 to 5; `not_demonstrated` takes 1; `unassessable` takes null (no
-score). `advance_confidence` is `low`, `medium` or `high`: how sure you are of the score.
+score). `advance_score_reasons` (at most 25 words) names the anchor given and why the next anchor up is not met; ""
+when the score is null. `advance_confidence` is `low`, `medium` or `high`: how sure you are of the score.
 
 ## 8. Novelty score (Novelty Dossier v1, human anchors, unchanged)
 
@@ -301,12 +324,34 @@ enter the verdict or the score.
   only if the paper names the observation that excludes insolation and CO2 forcing, else `none` and M2 not met. The
   boulder table is in a supplement but the ages are stated in the text: `text_with_pointer`, not U2. Achieved on G1;
   score 3 (it settles the regional timing question for this sector); novelty 2 or 3; confidence medium.
+- **Correction that transfers (score 4).** A paper compiles 1,900 paired laboratory measurements from three
+  laboratories and shows that a widely used empirical relation between grain size and hydraulic conductivity
+  overestimates conductivity in clay-rich sediments, gives a corrected relation, and tests it on four aquifers in other
+  settings that were not used for fitting. G1 (capability, correction): median error factor 4.2 -> 1.4 on the held-out
+  aquifers; `quantified_change`. M1 met (the relation was applied without a clay term, Ref 7); M2 met (held-out
+  comparison); W1, W2 met (error factors stated); W3 met (principal threat: laboratory bias, checked by the
+  inter-laboratory comparison of shared samples); W4 met. Achieved on G1; score 4, because the improvement is shown to
+  transfer beyond the fitting data, so others can build on it (a 3 if it were tested only at the fitting sites); roles
+  corrective and enabling; novelty 3.
+- **Plausible but not demonstrated.** A paper reports a seasonal change in seismic velocity at a volcano from one year
+  of ambient-noise monitoring at six stations and attributes it to groundwater recharge. The change, 0.1%, is given
+  with no uncertainty, and no test against changes in the noise sources, temperature or snow load is reported. G1
+  (knowledge, the velocity record): M1 and M2 met (first such record at this volcano); W1 met; W2 not met (no error is
+  stated and the change is not large against the 0.05-0.1% scatter the paper's own figure caption reports); W3 not met
+  (principal threat: seasonal change in the noise sources; no check). G2 (understanding, recharge): `rival_test` none,
+  M2 not met. Not demonstrated, basis G1, score 1. The gain may be real; what is missing is its reported warrant.
 
 ## 11. Output discipline
 
 - Fill every required field. Use empty strings or empty lists only where the schema allows them and the text gives
   nothing.
 - `key`, `rubric_version` and `coder` are copied from the request.
+- Length budgets, in words (each schema field's `x-max-words`): headline 40; starting state 50 (prior results 25 each,
+  at most 3; gap 30); coder's account 50; atomic claim 30; closest precedent 40; new component 25; limits 30; gain 35;
+  magnitude 40; evidence 60; principal threat 15; check result 15; uncertainty 20; scope 20; meaningfulness argument
+  50; dependency name 12; roles reasons 40; corrected claim 30; claimed scope 30; verdict reasons 80; score reasons
+  25; impact reasons 40; post-2022 flag 25; leak note 25; note 40. At most 2 gains, 3 checks per gain, 5 dependencies,
+  10 quotes, 3 notes.
 - Write plainly. No ranking words that the anchors do not use.
 
 ## 12. Mapping to the human instrument (for the analysis, not for the coder)
@@ -316,9 +361,10 @@ v1.0.0: `advance.starting_state` (fields 3 and 4 joined), `advance.gain`, `advan
 the `verdict_basis` gain, or G1), `advance.roles`, `advance.score` (`advance_score`; null maps to missing),
 `advance.confidence`; `novelty` from `precedent_search` with `judgment` = `judgment_with_coder_knowledge`,
 `novelty_score` and `novelty_confidence`; `eligible_in_my_view`, `familiarity` and `impact_forecast` as they are. The
-human instrument v1.0.0 has no verdict and no criteria, so the primary outcome can be validated against humans only
-after ratings v1.1.0 adds `verdict`, `verdict_criteria` and `unassessable_condition`. Until then, score agreement is
-reported only on papers both sides rate above 1, and the comparison states that human raters saw the venue.
+human instrument v1.1.0 adds `advance.verdict`, `advance.verdict_criteria` (M1 to W4 for the gain rated) and
+`advance.unassessable_condition` under the definitions of sections 4 to 7, so the primary outcome is compared with the
+model's `verdict`, `verdict_basis` criteria and `unassessable_condition` directly (human_blocks keeps the v1.0.0
+fields). The coder app hides journal and DOI, but the PDF the raters read prints them; the comparison says so.
 
 ## Changelog
 
@@ -326,3 +372,4 @@ reported only on papers both sides rate above 1, and the comparison states that 
 |:--|:--|:--|
 | 1.0.0 | 2026-10-27 | First build: frame, evidence rule, fields, M1-M2, W1-W4, U1-U5, human anchors, bounded novelty, blind impact forecast. Dry run only, no paid coding. |
 | 1.0.1 | 2026-10-27 | After the metascience, geoscience and NLP-measurement critique, before any paid run. Construct renamed reported warrant; W1 drops "or its cited sources" (cited results become `dependencies`). Frame fixed at submission (about 2021), with `post_2022_knowledge_flag`. Starting state split into the paper's account (with specific prior results) and the coder's account, plus `gap_claim_supported`; M2 knowledge no longer met by "fills a gap the paper identifies". M1 reworded so replications and corrections can meet it; first observational confirmation of theory meets M1. Precedent search moved before the verdict, with two novelty judgments (reference list; with coder knowledge) and `uncited_precedent_known`. Single headline gain and single unanticipated gain replaced by `candidate_gains` (headline components, secondary, out of taxonomy), each with its own criteria; verdict basis is the first gain meeting all. M2 understanding accepts qualitative elimination, consilience and feasibility (`rival_test`); M2 capability needs a reported comparison result. W3 requires a check of the named `principal_threat`; checks carry quotes; subfield check kinds added; W2 accepts qualitative statements naming alternatives. U2 defined operationally with `evidence_access`. Magnitude is the change from the starting state, with archetype examples (invented, checked against the blinded corpus) and reason classes for "not quantifiable" (`magnitude_form`). Projection and hazard note. Evidence and verdict quotes must come from outside the abstract, key points, summary and conclusions, and one must state a result. Roles judged at publication (transformative = proposes and demonstrates; corrective names the corrected claim). `overreach`, `dependencies`, `claim_status`, `familiarity`, `verdict_confidence` added. Score null for unassessable; success fraction written into the header with U4 as a screen failure. Interpretation notes for anchors 2, 4, 5 and novelty anchor 2. Two calibration examples. Output fields flat in rubric order; human-compatible blocks assembled after validation. Freeze moved to after the pilot. |
+| 1.1.0 | 2026-10-28 | After advance pilot 1 (tags pilot-a-advance, pilot-b-advance; 20 papers twice; 20 of 40 codings invalid, all 8 U1 codings from an extraction bug; diagnosis of October 28, 2026). Input: blinded text v1.2.1 (tools/blind_text.py), with Elsevier bodies, table rows and the data and code availability statements on the XML route and new leak scrubs; the rubric says "captions and table contents". Output shortened toward about 9,000 tokens per paper: at most 2 candidate gains (was 5), 3 checks per gain (the `check` description dropped), 10 quotes with a per-field budget, 3 prior results, 5 dependencies; `what_would_change`, `frame` and `precedent_search.frame` dropped (the frame is a constant of the version); word budgets per field (`x-max-words`). `notes` becomes an optional list of up to 3 `{field, note}` and the coder is told never to add properties (8 pilot codings failed on an extra empty `*_note`). `blind_leak_noticed` replaced by the `blind_leak_cues` enum and `blind_leak_note`. Dependency kind `concept` added. Any criterion may be `not_applicable` when the verdict is unassessable. `magnitude_form` is authoritative over the magnitude text. A work named in `limits` that is in the reference list is not uncited. `advance_score_reasons` added. Two invented calibration examples (a score 4 and a not-demonstrated case). Verdict basis rule unchanged (first gain in list order meeting every criterion), pending the PI's decision on the "largest warranted change" rule. Requests use structured outputs (tools/code_papers.py) and tools/check_advance.py fails a coding only on the schema core, fabricated quotes and a verdict that contradicts its score, condition or criteria. |

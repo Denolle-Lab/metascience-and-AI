@@ -1,7 +1,8 @@
 // End-to-end test of the gold-set coder packets and the coordinator build (headless Chrome).
 // Run: npm install puppeteer-core@23.11.1 (once, anywhere on NODE_PATH), then
 //      node tools/roadmap/app/e2e_test.js            (OUT=dir for screenshots and files; default ./e2e-out)
-// Checks: a full coding passes the app's checks and validates against both schemas (checked afterwards in Python);
+// Checks: a full coding (with the ratings v1.1.0 verdict) passes the app's checks and validates against both schemas (checked afterwards in Python);
+// the app shows neither journal nor DOI;
 // a co-coder's file is refused on import; editing after a save shows "changed since last save"; restore keeps newer drafts;
 // the coordinator pairs two coders' files; no page errors.
 const puppeteer = require('puppeteer-core');
@@ -66,6 +67,10 @@ async function codeOnePaper(browser, coder, dl, url) {
   await typ('[data-r="novelty.closest_precedent"]', 'Smith 2019'); await typ('[data-r="novelty.new_component"]', 'A new region');
   await page.click('[data-score="novelty"][value="3"]'); await sel('[data-r="novelty.confidence"]', 'medium');
   for (const f of ['starting_state', 'gain', 'magnitude', 'evidence']) await typ(`[data-r="advance.${f}"]`, 'text for ' + f);
+  // ratings v1.1.0: six criteria, then the verdict and its reasons (the verdict control re-renders the form)
+  for (const k of ['M1', 'M2', 'W1', 'W2', 'W3', 'W4']) { await sel(`[data-crit="${k}"]`, 'met'); await page.waitForSelector(`[data-crit="${k}"]`); }
+  await sel('[data-verdict]', 'achieved'); await page.waitForSelector('[data-r="advance.verdict_reasons"]');
+  await typ('[data-r="advance.verdict_reasons"]', 'M1 to W4 met for G1; W3 by the reference station check (p. 5).');
   await page.click('[data-role="cumulative"]'); await page.click('[data-score="advance"][value="2"]');
   await sel('[data-r="advance.confidence"]', 'medium');
   await sleep(500);
@@ -81,7 +86,9 @@ async function codeOnePaper(browser, coder, dl, url) {
   await page.click('#backBtn');
   await page.waitForSelector('table.queue');
   const status = await page.$eval('table.queue tbody tr', el => el.innerText);
-  return {page, key, errors, checks, afterSave, changed, status};
+  const shown = await page.evaluate(() => document.body.innerText);
+  const doi = await page.evaluate(k => JSON.parse(document.getElementById('payload').textContent).papers.find(p => p.key === k).doi, key);
+  return {page, key, errors, checks, afterSave, changed, status, doi_shown: shown.includes(doi)};
 }
 
 (async () => {
@@ -124,7 +131,7 @@ async function codeOnePaper(browser, coder, dl, url) {
   step('const out = {shared');
   const out = {shared: shared.key, refused_cocoder_import: refused, coordinator_errors: cerr,
     coordinator_pairs: /1 coder pairs/.test(coordText),
-    SH: {errors: res.SH.errors, checks_ok: /No errors/.test(res.SH.checks), afterSave: res.SH.afterSave, changed: /Changed since then/.test(res.SH.changed), status: res.SH.status},
+    SH: {errors: res.SH.errors, checks_ok: /No errors/.test(res.SH.checks), afterSave: res.SH.afterSave, changed: /Changed since then/.test(res.SH.changed), status: res.SH.status, doi_shown: res.SH.doi_shown},
     MK: {errors: res.MK.errors, checks_ok: /No errors/.test(res.MK.checks), afterSave: res.MK.afterSave}};
   console.log(JSON.stringify(out, null, 1));
   for (const c of ['SH', 'MK']) { try { fs.unlinkSync(res[c].testPage); } catch (e) {} }
