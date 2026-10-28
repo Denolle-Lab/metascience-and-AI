@@ -1,0 +1,494 @@
+{
+ "key": "g22_W4291015317",
+ "doi": "10.5194/nhess-22-2553-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Belferman et al. 2022, Nat. Hazards Earth Syst. Sci. 22, 2553–2565, published PDF",
+  "Publisher XML full text with section and paragraph locators (tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "hypothesis",
+  "node": "H",
+  "evidence": "Inspired by the results of our previous study, we carefully revise the historical earthquake catalog in the Dead Sea",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML text of the published paper (nhess-22-2553-2022), checked against the PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Ask whether lake-level-induced seismicity can be studied on a historical timescale despite large uncertainties in both lake-level and earthquake records.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Can such interactions be explored on a historical timescale when the two data types suffer from severe uncertainties"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Take over from the authors' 2018 study the hypothesis that Dead Sea water-level hikes moderate recurrence intervals on the Dead Sea Fault.",
+     "page": "§1 ¶3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "shown to be able to moderate the seismicity pattern at the Dead Sea Fault"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Compile published Dead Sea water-level reconstructions and anchor points (Bookman, Migowski, Stern), shift one anchor point by 40 years within its dating error, and compile the historical earthquake catalog from the literature.",
+     "page": "§2.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The compilation of WL curves of the Dead Sea for the last 2 millennia from three recent publications"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Generate an ensemble of 10 million random water-level interpolations through 13 anchor points, bounded by facies constraints and smoothed by a moving average.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the model has generated 10 million WL curves for the last bi-millennial interval, using a uniformly distributed random number generator"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "regularities",
+     "action": "Design the test as a Pearson linear correlation between historical recurrence intervals (M > 5.5) and each interpolated water-level curve, also used to flag outliers.",
+     "page": "§2.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] linear correlation between the RIs of the widely recorded moderate-to-large ( M > 5.5 ) historical earthquakes"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Derive from a 2D poroelastic Mohr–Coulomb strike-slip fault model (from Belferman et al. 2018) a linear dependence of simulated recurrence interval on water-level change.",
+     "page": "§2.2 ¶1–¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Substitution of Eq. (1) into Eq. (3) yields a linear dependence of a simulated RI on a WL change"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fix cohesion (C = 0.08 MPa) and reference recurrence interval (300 yr) numerically so that the model gives the 144-year average recurrence interval.",
+     "page": "§2.2 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the cohesion, C , is not a priori known; hence it is fixed by the empirical correlation between WL and RI"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare all 10 million curves with the historical recurrence intervals; correlation coefficients are normally distributed with mean 0.63 and SD 0.076, and the 10 best curves are kept.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "distributed normally around R = 0.63"
+    },
+    {
+     "n": 9,
+     "node": "P",
+     "mode": "reconstruction",
+     "action": "Identify three outlying historical recurrence intervals (749, 1293, 1834 CE) and re-evaluate the catalog, not the hypothesis.",
+     "page": "§3 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Three outliers from the 13 RIs of the widely recorded historic earthquakes (749, 1293 and 1834 CE in Fig. 1) were identified and reevaluated"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Select the curve with the highest correlation (R = 0.912) against the revised catalog and fit the linear prediction function RI = −5442 − 14WL.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A curve with the highest Pearson coefficient of R = 0.912 was chosen"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Simulate a synthetic 14-event earthquake catalog and stress history from the best-fit curve with the Mohr–Coulomb model.",
+     "page": "§3 ¶2–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a synthetic earthquake history including 14 seismic events was simulated from the best-fit randomly interpolated WL curve"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Check that the 10 most correlated curves share the same rises, drops and maxima in water level.",
+     "page": "§4 ¶1; Figure 2 (p. 2558)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 2 shows a similar pattern of the WL change for the 10 most correlated curves."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare synthetic earthquake dates with historical dates; most match, but two synthetic events (1180, 1753 CE) and three historical outliers do not.",
+     "page": "§4 ¶2; Figure 1 (p. 2555)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The dates of these simulated synthetic earthquakes are comparable with historical earthquakes (Fig. 1e), excluding two events"
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "reconstruction",
+     "action": "Amend the catalog to match the model: add ~1150, 1712 and 551 CE; remove 90, 112 and 659/660 CE; pair 1907 with 1927 rather than 1903; reclassify events in Tables A1–A2.",
+     "page": "§4 ¶3–¶8; §Appendix A ¶2, ¶6–¶7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Summarizing the above amendments, we add to our catalog of historical events the 551, ∼ 1150 and 1712 CE earthquakes"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "reconstruction",
+     "action": "Admit amended (Class A) events only if they are corroborated by seismites in the northern Dead Sea cores (Ein Feshkha, Ein Gedi); this check is reported in Appendix A.",
+     "page": "§Appendix A ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "they are corroborated by evidence from seismites in the northern basin of the Dead Sea"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Show the water-level/recurrence-interval correlation against the literature water-level reconstructions as well as the best-fit curve.",
+     "page": "§4 ¶8; Figure 4 (p. 2560)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The correlation between the WL and RI is noticeable for the various variants of the WL curve reconstruction (Fig. 4)."
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the linear relation RI = −2483 − 6.5WL for the revised catalog and best-fit curve, as consistent with the 2018 correlation.",
+     "page": "§4 ¶9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This linear relationship between WL and RI underscores the previously proposed correlations between these phenomena"
+    },
+    {
+     "n": 18,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Extrapolate the relation to today's −440 m level, giving a 377-year recurrence interval and a next earthquake near 2300 CE if the level stays constant.",
+     "page": "§4 ¶10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we would expect the next earthquake at about ∼ 2300 CE"
+    },
+    {
+     "n": 19,
+     "node": "P",
+     "mode": "theory",
+     "action": "Attribute the remaining misfit to unmodelled smaller or dip-slip earthquakes; argue from cited data that aftershocks are negligible and a strike-slip-only 1D model is justified.",
+     "page": "§4 ¶11–¶14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the deviation might be consistent with a release of elastic energy by smaller earthquakes"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Conclude that a simple forward model gives a convincing water-level/recurrence-interval correlation and that the current lake-level decline will not trigger earthquakes by this mechanism.",
+     "page": "§4 ¶15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "achieves a convincing correlation between WLs and RIs of moderate-to-strong earthquakes on the Dead Sea Fault"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Coupling of Dead Sea lake level and historical earthquake recurrence over 2 ka",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "2",
+   "answer": "No; both series come from traces (shorelines, seismites, historical documents)",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "3",
+   "answer": "Identify plausible lake-level scenarios and the water-level/recurrence-interval relation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival triggering hypothesis tested; only alternative curves and catalog variants",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions from rivals",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: natural lake-level changes and earthquake cycles",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; about 14 earthquake cycles repeated over 2 millennia",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: similar across top-10 curves and literature curves, after catalog revision",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Linear relation kept",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Over the last two millennia at the Dead Sea, earthquake recurrence intervals correlate highly and linearly with lake level (RI = −2483 − 6.5WL for the revised catalog and best-fit curve).",
+  "page": "§0 ¶1; §4 ¶9"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the 10-million-curve ensemble ranked by correlation with the (revised) recurrence intervals, there would be no best-fit lake-level scenario and no high correlation to report.",
+  "page": "§2.1 ¶2; §3 ¶2"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No new data were acquired. The 2018 hypothesis and the model's synthetic events directed the search for and revision of catalog events, and Class A acceptance requires that 'the acceptance regularizes the relation' (§Appendix A ¶3). The correlation could have been low (the ensemble mean of 0.63 was reported before selection), but the best curve was chosen by maximum R and outliers were re-evaluated to improve the fit; no null model or significance test is reported. Nothing was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Pearson product-moment correlation used to rank curves and flag outliers",
+   "kind": "method",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "field": "statistics/computing",
+   "item": "Monte Carlo ensemble from a uniformly distributed random number generator",
+   "kind": "method",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "field": "history",
+   "item": "Historical documentary earthquake reports and catalogs (Amiran, Ambraseys, Russell)",
+   "kind": "data",
+   "page": "§4 ¶3–¶6"
+  },
+  {
+   "field": "history/philology",
+   "item": "Toponym interpretation of 'the town of Filistin' (Elad 1992; Gerber 1998)",
+   "kind": "concept",
+   "page": "§Appendix A ¶7"
+  },
+  {
+   "field": "archaeology",
+   "item": "Archaeological data justifying the 144-year average recurrence interval and event dating",
+   "kind": "data",
+   "page": "§2.2 ¶8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We demonstrate for the first time a high correlation between water level changes and the recorded recurrence intervals of historical earthquakes.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "We demonstrate for the first time that plausible scenarios for the lake level history can fit the record of the historical earthquake recurrence intervals",
+   "page": "§1 ¶6"
+  }
+ ],
+ "limits": "No review file or discussion version was supplied, although the paper records an open discussion (started 24 March 2021) and three referees; no review sequence is coded. The order of work is inferred from the text order. No null model is reported (for example, random or shuffled catalogs), so the significance of R = 0.912, selected as the maximum of 10 million curves, is not assessed (inference: a multiple-comparison problem). Catalog revisions are partly chosen because they improve the fit (Class A criterion 1), so the correlation and the catalog are not independent (inference: circularity); seismite corroboration is the only independent constraint. Cohesion is fixed using the same correlation, and synthetic RIs vs WL fit 'R = 1' by construction. The text gives three different linear relations (Eqs. 5–7) without uncertainties. The raw data are only available on request. Sub-claims and their statuses: the best-fit lake-level curve as a plausible scenario is an estimate without stated resolution (status: none); triggering by lake-level change as the explanation is at most best_explanation, since no rival was tested; the ~2300 CE expectation is an untested extrapolation (no forecast_skill); the catalog reclassifications (Classes A and R) are best_explanation.",
+ "disagreements": [
+  {
+   "target": "Belferman et al. (2018) catalog inclusion of the 659/660 CE earthquake, based on Langgut et al. (2015) epicenter",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The rupture zone is uncertain, and the model does not support triggering shortly before the mid-8th-century lake-level low; replacing the event with 551 CE improves the fit.",
+   "page": "§Appendix A ¶7; §4 ¶6",
+   "quote": "However, this interpretation neglected the possibility that the rupture could have been outside the hydrological effect of the Dead Sea basin."
+  },
+  {
+   "target": "Migowski et al. (2004) correlation of an Ein Gedi seismite with the 1656 CE earthquake",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "Ambraseys' (2009) 1644 CE entry offers a better match; the 1656 event was strong in Tripoli and only felt in Palestine, and its seismite dating relied on deposition rates.",
+   "page": "§Appendix A ¶7",
+   "quote": "Given the 1644 CE entry of Ambraseys (2009), this interpretation should be revised"
+  },
+  {
+   "target": "Ambraseys (2009) reading of 'the town of Filistin' as Jerusalem for the 1644 CE event",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Toponym evidence (Elad 1992; Gerber 1998) suggests al-Ramla or the whole district.",
+   "page": "§Appendix A ¶7",
+   "quote": "While Ambraseys has interpreted it to probably be Jerusalem, it might refer to al-Ramla, the historical capital of the classical district of Filistin"
+  },
+  {
+   "target": "Russell (1985) on 551 CE destruction of Petra",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Newer data contradict the claim about Petra, but a failure in the Dead Sea region is kept as plausible.",
+   "page": "§4 ¶6",
+   "quote": "Newer data contradict the assertion regarding Petra; a failure in the Dead Sea region is still plausible."
+  },
+  {
+   "target": "Bookman et al. (2004) dating of the ~500 CE anchor point",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Migowski et al. (2006) and Stern (2010) place the drop later, and the shift lies within the ±45-year error.",
+   "page": "§2.1 ¶1",
+   "quote": "Because this shift is within the permissible error limits ( ± 45 years), this anchor point is shifted to the left ( + 40 years)."
+  },
+  {
+   "target": "Historical catalogs listing Class R events as damaging Jerusalem (Amiran et al. 1994; Ambraseys 2009)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The events are rejected after discussion of sources, locations and seismite evidence, and because the simulations do not require them.",
+   "page": "§Appendix A ¶6",
+   "quote": "The seven events of Class R are the debated events, rejected here after discussion."
+  },
+  {
+   "target": "Existing explanations of earthquake triggering in the Dead Sea area (not named)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Offered on the basis of the water-level/recurrence-interval correlation alone.",
+   "page": "§1 ¶6",
+   "quote": "we offer an alternative explanation regarding the triggering of earthquakes in the area of the Dead Sea"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Random curve with highest correlation (R = 0.912)",
+   "alternatives": "Other top-10 random curves; literature curves of Bookman et al. 2004, Migowski et al. [...]",
+   "reason": "Highest Pearson correlation with the revised catalog",
+   "effect_reported": "yes",
+   "page": "§3 ¶2; §4 ¶1; §4 ¶8"
+  },
+  {
+   "node": "O",
+   "chosen": "~500 CE anchor point shifted by +40 years",
+   "alternatives": "Original Bookman et al. (2004) dating",
+   "reason": "Migowski et al. (2006) and Stern (2010) place the drop later; within ±45-year error",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Bookman et al. (2004) anchor point at 1400 CE",
+   "alternatives": "Higher water level suggested by Migowski et al. (2006) and Stern (2010)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "P",
+   "chosen": "Admit ~1150 CE earthquake into catalog",
+   "alternatives": "Leave it out (initial catalog)",
+   "reason": "Damage to two monasteries near Jerusalem; mid-12th-century date accepted by Ambraseys (2009)",
+   "effect_reported": "yes",
+   "page": "§4 ¶3"
+  },
+  {
+   "node": "C",
+   "chosen": "Match modeled 1907 CE event to 1927 CE Jericho earthquake",
+   "alternatives": "1903 CE earthquake",
+   "reason": "1927 was stronger and clearly released stress in the Dead Sea",
+   "effect_reported": "no",
+   "page": "§4 ¶5"
+  },
+  {
+   "node": "P",
+   "chosen": "551 CE earthquake",
+   "alternatives": "659/660 CE earthquake",
+   "reason": "Rupture zone of 659/660 uncertain, possibly outside the Dead Sea basin",
+   "effect_reported": "yes",
+   "page": "§4 ¶6"
+  },
+  {
+   "node": "S",
+   "chosen": "33 CE as simulation start",
+   "alternatives": "90 or 112 CE as start, or omitting these early events",
+   "reason": "Recorded in all three seismite sites; the authors also call the choice 'quite arbitrarily'",
+   "effect_reported": "no",
+   "page": "§4 ¶7; §Appendix A ¶4"
+  },
+  {
+   "node": "S",
+   "chosen": "Strike-slip faulting only",
+   "alternatives": "Normal faulting (extensional component)",
+   "reason": "Horizontal principal stresses, GPS-dominated strike-slip loading, similar response of normal faults to water-level change",
+   "effect_reported": "no",
+   "page": "§4 ¶14"
+  },
+  {
+   "node": "S",
+   "chosen": "Aftershocks treated as part of the main shock",
+   "alternatives": "Aftershocks as separate stress-release events",
+   "reason": "Aftershock duration short relative to recurrence intervals; post-seismic moment small (Baer et al. 2008)",
+   "effect_reported": "no",
+   "page": "§4 ¶12–¶13"
+  },
+  {
+   "node": "S",
+   "chosen": "Simple 1D analytical forward model",
+   "alternatives": "3D modeling of tectonic motion coupled with pore pressure evolution",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4 ¶15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Figure 2 shows a similar pattern of the WL change for the 10 most correlated curves.",
+   "page": "§4 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "they are corroborated by evidence from seismites in the northern basin of the Dead Sea",
+   "page": "§Appendix A ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The correlation between the WL and RI is noticeable for the various variants of the WL curve reconstruction (Fig. 4).",
+   "page": "§4 ¶8"
+  }
+ ]
+}

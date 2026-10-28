@@ -28,7 +28,8 @@ Rules, applied in this order
                   tokens, validation failures) are kept under a pseudonym per run tag ('withheld-007'), so total spend
                   reproduces, and the per-paper test-retest similarities in fig03_reliability.json are sorted (the strip
                   plot needs no paper order). Counts per file go to RELEASE.json (no keys are listed).
-  4 quotes        a field that holds a quote from a paper (QUOTE_KEYS) is cut to its first 25 words plus " [...]"
+  4 quotes        a field that holds a quote from a paper (QUOTE_KEYS) is cut to its first 25 words plus " [...]"; a
+                  disagreements[].target (the name of a cited work or position) to its first 20 words plus " [...]"
                   (codebook limit). The marker is a 26th token, so check_coding.validate() still rejects a step or V-check
                   quote that was over the limit, and reruns keep the same valid set.
   5 chained       separate strings of one file can add up to a longer verbatim passage (a V-check quote that continues a
@@ -119,10 +120,11 @@ DENY = [(r'\.pdf$', 'full text (PDF)'),
         (r'_wf_[^/]*\.json$', 'agent review transcripts of private material (slides, coder app)'),
         (r'\.log$', 'run log')]
 # Strings allowed over 60 words: prose written by the model coder or by the scripts, never a paper's text.
-LONG_OK = {'limits', 'action', 'claim', 'pages_convention', 'reason', 'definition', 'caption', 'note', 'rationale'}
+LONG_OK = {'limits', 'action', 'claim', 'pages_convention', 'reason', 'definition', 'caption', 'note', 'rationale', 'rule'}
 LONG_OK_PATHS = {('gates', 'evidence')}
 # Fields that hold a quote from a paper (25-word codebook limit).
 QUOTE_KEYS = {'quote', 'operational_evidence'}
+NAME_MAX = 20   # disagreements[].target names the cited work or position (CODEBOOK section 7)
 # Run logs: an embargoed paper is named there for fetch or exclusion reasons, not for its coding; the identifier alone
 # is replaced.
 INLINE_MD = {'data/roadmap/DECISIONS.md', 'data/roadmap/MANIFEST.md', 'data/roadmap/EXPERIMENTS.md',
@@ -282,6 +284,9 @@ class JsonFilter:
             if is_quote and len(x.split()) > 25:
                 x = ' '.join(x.split()[:25]) + ' [...]'
                 self.c['quotes cut to 25 words'] += 1
+            if key == 'target' and parent == 'disagreements' and len(x.split()) > NAME_MAX:
+                x = ' '.join(x.split()[:NAME_MAX]) + ' [...]'   # a target names a work or position; long ones copy a sentence
+                self.c['disagreement targets cut to 20 words'] += 1
             return x
         return x
 
@@ -321,7 +326,7 @@ def records(x):
 
 
 QUOTED = [re.compile(r'“([^”]+)”'), re.compile(r'"([^"]+)"'), re.compile(r'‘([^’]+)’'),
-          re.compile(r"(?<![A-Za-z])'([^']+?)'(?![A-Za-z])")]
+          re.compile(r"(?<![A-Za-z0-9])'([^']+?)'(?![A-Za-z0-9])")]
 
 
 def long_quotes(text: str) -> list[str]:

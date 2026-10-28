@@ -1,0 +1,422 @@
+{
+ "key": "g22_W4285094807",
+ "doi": "10.1007/s00269-022-01206-5",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4285094807.pdf (published paper, Physics and Chemistry of Minerals 49:30)",
+  "g22_W4285094807.xml.txt (publisher XML full text with section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the ultimate properties and mechanical stability of enstatite have not yet been documented",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4285094807.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of the ultimate (ideal) mechanical properties and mechanical stability of orthoenstatite, which have not been documented, unlike olivine.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ultimate properties and mechanical stability of enstatite have not yet been documented"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "The authors take expectations from the literature: Frenkel's G/2π estimate of ideal shear stress, and the strain-stiffening found by new bond formation in Fe3C, which shows that complex structures may deviate from it.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Jiang and Srinivasan (8) have shown that in Fe3C new bonds are formed during deformation"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "simulation",
+     "action": "The authors design DFT (VASP, PAW, PW91 GGA, 520 eV cutoff, 2×4×6 k-grid) ideal-strength tests with ADAIS: homogeneous strain in 0.5% steps along [100], [010], [001] and six simple shears, relaxing all other stress components at each step.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we performed tensile and shear tests by applying a homogenous strain incrementally by step of 0.5%"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check the ground state of the optimized 80-atom cell: lattice parameters against experiment and elastic constants against Li et al. (2014), noting that GGA underestimates the elastic constants.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Lattice parameters are found in agreement with experimental values"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "simulation",
+     "action": "The authors compute energy–strain curves for the three tensile directions and observe parabolic elastic parts, discontinuities near 5% strain for [100] and [001], and a single drop at 12% for [010].",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For both [100] and [001] tensile tests, we observe a discontinuity in the energy curves near 5% strain."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check that the stress obtained by differentiating the energy agrees with the Hellmann–Feynman stress of the strained cell.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It agrees with the stress state (according to the Hellman–Feynman theorem) of the strained volume"
+    },
+    {
+     "n": 7,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors ask what causes the incidents on the curves before taking the stress maximum as the ideal strength, and choose Mg–O bonds as the indicator.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is necessary to understand the origin of these incidents before discussing the observed mechanical properties"
+    },
+    {
+     "n": 8,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Mg–O bond-length analysis shows simple bond breaking for [010], and an exchange of O3B oxygens on Mg2 with tetrahedral tilting along [001] (5%) and [100] (8%), forming the same modified structure in both tests.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "bonds of two O3 type oxygen atoms in the B layer are exchanged due to the tilting of the tetrahedra"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "exploration",
+     "action": "The authors track an apparent Poisson ratio against strain; it jumps at the bond exchange, and its negative values indicate auxetic behaviour.",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "represents a good indicator of structural changes"
+    },
+    {
+     "n": 10,
+     "node": "E",
+     "mode": "exploration",
+     "action": "The authors show that the modified structure persists as a metastable phase when strain is released (ΔE = 0.121 eV/cell), keeps Pbca symmetry (found with ADDSYM), and has a less distorted Mg2 octahedron and a straightened chain B.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Once formed, it can be kept when stress is released, as a metastable structure."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare the modified structure with published high-pressure polymorphs (HP-OEN1 of Jahn 2008, Pbca-II of Li et al. 2014) and distinguish it by energy and by which tetrahedral layer is affected.",
+     "page": "§3.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The modified structure is different from the high-pressure structures found by Jahn (7) with first principle calculations"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute Cu Kα1 powder diffraction patterns for OEN and the modified structure as an expected experimental signature of the transition.",
+     "page": "§3.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "giving hope to strong changes in the diffraction pattern, and hence an easy signature to evidence a transition"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "exploration",
+     "action": "The authors confirm the metastability of the modified structure from its elastic constants (all positive and meeting the orthorhombic stability criteria), and rerun tensile tests from the relaxed modified structure, which reproduce the post-incident curves.",
+     "page": "§3.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "demonstrating that this portion of the curves after the incidents describes the behavior of this modified structure"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors estimate the ideal tensile strengths of the modified structure (14.8, 7.6 and 25.6 GPa) and normalize them by Young's modulus.",
+     "page": "§3.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ITS along [100] and [001] are 14.8 and 25.6 GPa, respectively."
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "estimation",
+     "action": "The authors revise the definition of the OEN ideal strength: they restrict it to strains before the bond switch, instead of the overall stress maximum.",
+     "page": "§3.5.1 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The scope of the study must therefore be restricted to the strains which precede the bond switching"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors estimate the OEN ideal tensile strengths (8.7, 7.6, 4.5 GPa), normalized values and Poisson ratios.",
+     "page": "§3.5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Loading enstatite along [001] leads to the smallest ITS, i.e., 4.5 GPa at a critical strain of 5%."
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors run six simple-shear tests and estimate ideal shear strengths of 7.39–8.93 GPa (normalized 0.10–0.14).",
+     "page": "§3.5.2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Ideal shear stresses (ISS) range from 7.39 GPa to 8.93 GPa (Table 8)."
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare the normalized shear strengths with published values for oxides and with their own earlier values for forsterite.",
+     "page": "§3.5.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "consistent with ISS value reported for oxides (Ogata et al. 14) and normalized ISS values obtained for forsterite (Gouriet et al. 5)"
+    },
+    {
+     "n": 19,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Bond analysis of the shear tests shows no modified structure; the discontinuities come from Mg2–O3B approach and Mg–O bond breaking.",
+     "page": "§3.5.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Mg–O-bond analysis of this particular shear test does not show a structural modification"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors keep the OEN ideal strengths: tensile strengths are anisotropic and shear strengths nearly isotropic.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the first stress–strain curve maximums correspond to the ITS of OEN, which are 8.7, 7.6, and 4.5 GPa"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "exploration",
+     "action": "The authors keep the claim that a metastable modified structure, formed by Mg–O bond rearrangement, causes strain-stiffening under tension, reported as a first occurrence.",
+     "page": "§4 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, we report the first occurrence of strain-stiffening under tensile loading"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Ideal strengths of orthoenstatite; a strain-induced modified structure emerges under tension",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; ideal strengths are hard to reach experimentally and are computed with DFT",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the ideal tensile and shear strengths along symmetry directions",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No formal rivals; the modified structure is distinguished from the published HP-OEN1 and Pbca-II polymorphs",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct rival predictions stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in silico: imposed homogeneous strain at 0 K",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: ground state checked against experiment, two stress routes agree, modified-structure curves recomputed; no convergence or functional tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: estimates of OEN tensile and shear strengths; modified structure characterized",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Orthoenstatite's ideal tensile strength is highly anisotropic (4.5 GPa along [001] to 8.7 GPa along [100]), while its ideal shear strength is nearly isotropic (7.4–8.9 GPa).",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "E",
+  "mode": "exploration",
+  "sentence": "The Mg–O bond analysis showed that the post-incident parts of the [001] and [100] curves belong to a modified structure; without it, the OEN ideal tensile strengths would have been read from the wrong maxima (e.g. 25.6 instead of 4.5 GPa along [001]).",
+  "page": "§3.3 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The loading directions were chosen systematically (all high-symmetry directions and low-index planes), not directed by a hypothesis (§1 ¶3). The computed strengths face only indirect checks: lattice parameters and elastic constants against experiment and Li et al. (§3.1 ¶1), energy-derived versus Hellmann–Feynman stress (§3.2 ¶3), and normalized shear strengths against oxides and forsterite (§3.5.2 ¶3). No experimental ideal strength could falsify the values. Nothing was fixed in advance; the definition of the OEN ideal tensile strength was revised after the bond analysis (§3.5.1 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "condensed-matter physics",
+   "item": "Density functional theory total-energy calculations (VASP, PAW, PW91 GGA)",
+   "kind": "method",
+   "page": "§2 ¶1"
+  },
+  {
+   "field": "computational materials science",
+   "item": "ADAIS software for automatic derivation of anisotropic ideal strength",
+   "kind": "method",
+   "page": "§2 ¶1"
+  },
+  {
+   "field": "solid-state physics",
+   "item": "Ideal (theoretical) strength concept after Frenkel (1926)",
+   "kind": "concept",
+   "page": "§1 ¶1"
+  },
+  {
+   "field": "materials science",
+   "item": "Strain-stiffening by new bond formation in cementite (Jiang and Srinivasan 2013)",
+   "kind": "concept",
+   "page": "§1 ¶1"
+  },
+  {
+   "field": "chemical crystallography",
+   "item": "ADDSYM tool in Platon (MISSYM algorithm) for detecting missed symmetry",
+   "kind": "method",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "field": "materials science",
+   "item": "Ideal shear strength values for oxides (Ogata et al. 2004)",
+   "kind": "data",
+   "page": "§3.5.2 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we report the first occurrence of strain-stiffening under tensile loading",
+   "page": "§4 ¶6"
+  },
+  {
+   "quote": "the ultimate properties and mechanical stability of enstatite have not yet been documented",
+   "page": "§1 ¶2"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded. The calculations use one functional (GGA PW91), one cutoff and one k-point grid, at 0 K, on iron-free MgSiO3; no convergence, functional or temperature sensitivity is reported. GGA is acknowledged to underestimate the elastic constants. No uncertainties are given for the strengths; the only stated resolution is the 0.5% strain step. Internal inconsistencies in the text: (1) the [010] OEN ideal tensile strength is given as 4.5 GPa at 5.0% (§3.5.1 ¶2) but as 7.6 GPa at 9.5% in Table 6 and §4 ¶3, and as 7.6 GPa at 11% in §3.3 ¶1; (2) the abstract says the modified-structure strengths range 'from 7.6 GPa along [010]', matching Table 5; (3) the Fig. 8 caption says 'forsterite'; (4) §3.4 ¶5 writes 'normalized ISS' for a tensile quantity. These look like editing errors (inference). Sub-claims at other statuses: the metastable modified structure (Pbca, elastic constants, ideal tensile strengths) is characterized by computation only, with estimate_with_resolution for its strengths. The bond-exchange mechanism for strain-stiffening under tension is best_explanation, with no stated rivals. The XRD signature is an untested expectation. Composition is none_fits: this is a computational characterization driven by a question, with an exploratory sub-finding (the modified structure); there are no rivals, no found conditions and no forecast. That the modified structure is not an artefact of the 0 K, defect-free unit cell is not tested (inference). The order of the work is inferred from the order of the text.",
+ "disagreements": [
+  {
+   "target": "High-pressure polymorphs HP-OEN1 (Jahn 2008) and Pbca-II (Li et al. 2014)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The modified structure differs in energy (0.121 eV/cell versus below 0.1 eV/cell for HP-OEN1) and in the affected tetrahedral layer (B versus A).",
+   "page": "§3.4 ¶2",
+   "quote": "The modified structure is different from the high-pressure structures found by Jahn (7) with first principle calculations"
+  },
+  {
+   "target": "Strain-stiffening in cementite under shear (Jiang and Srinivasan 2013)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The tensile tests along [100] and [001] show strain-stiffening under tensile rather than shear loading, caused by Mg–O bond rearrangement.",
+   "page": "§4 ¶6",
+   "quote": "In cementite, this behavior was observed under shear loading. Here, we report the first occurrence of strain-stiffening under tensile loading"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "Ideal tensile strength of OEN taken at the stress maximum before the bond switch to the modified structure",
+   "alternatives": "The overall maximum of the full stress–strain curve",
+   "reason": "[...] along [001] and [100] quickly involve another structure",
+   "effect_reported": "yes",
+   "page": "§3.5.1 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Lattice parameters are found in agreement with experimental values",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The elastic constants calculated here for OEN are consistent with those published by Li et al. (11).",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "compared with experimental data for the OEN",
+   "page": "Table 3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "It agrees with the stress state (according to the Hellman–Feynman theorem) of the strained volume",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "all Cij are positive and meets the criteria for mechanical stability of orthorhombic structure",
+   "page": "§3.4 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "which reproduce very well the behavior obtained previously after 4–5% strain",
+   "page": "§3.4 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "consistent with ISS value reported for oxides (Ogata et al. 14) and normalized ISS values obtained for forsterite (Gouriet et al. 5)",
+   "page": "§3.5.2 ¶3"
+  }
+ ]
+}

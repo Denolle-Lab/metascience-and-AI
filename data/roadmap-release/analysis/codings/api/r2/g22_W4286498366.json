@@ -1,0 +1,443 @@
+{
+ "key": "g22_W4286498366",
+ "doi": "10.1038/s41467-022-31434-w",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4286498366.pdf (published paper, Nature Communications 13:4205, 2022)",
+  "g22_W4286498366.xml.txt (publisher XML converted to located text, jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off figure content cite the figure label with the PDF page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it remains largely unknown how changes in cloudiness, such as those which occur due to atmospheric blocking events12, alter the rate of meltwater production",
+  "page": "§1 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4286498366.xml.txt (with PDF for figure pages)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of how cloudiness changes alter ablation-zone meltwater production now and in the future, noting that existing estimates rely on biased modelled fluxes and that satellite cloud radiative effect (CRE) products are too coarse for the ablation zone.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it remains largely unknown how changes in cloudiness"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build a Random Forest regression (100 trees, solar-zenith bins for SW) trained on CloudSat/CALIPSO cloud enhancement factors with coincident MODIS cloud properties and ERA5 temperature, then apply it to all MODIS swaths 2003–2020 with ERA5 clear-sky fluxes, an albedo cloud correction and a diurnal correction, giving a 1 km CRE product.",
+     "page": "§1 ¶4; §3.3.3 ¶1; §3.4 ¶1; §3.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we use Random Forest Regression to fuse the respective strengths of CloudSat/CALIPSO"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble the archived observations: 2B-FLXHR-LIDAR R05 surface fluxes (June–August 2006–2010), MYD06_L2 cloud properties, MOD10A1 albedo and hourly ERA5 2 m air temperature.",
+     "page": "§3.2 ¶1–2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We derived summer cloud properties from the MODIS Level-2 Cloud product “MYD06_L2” Collection 6.1."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the method's premises. Predicted enhancement factors are scored against the 50% of CloudSat/CALIPSO data held out from training (MAE ±11.7% for SW, ±2.6% for LW). ERA5 clear-sky fluxes are compared with and calibrated to 2B-FLXHR-LIDAR, and the errors are combined into an error budget (±26.7% for CRE_NET).",
+     "page": "§3.6 ¶1–2; §3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We evaluated our predicted cloud enhancement factors against high-quality cloud enhancement factors derived from CloudSat/CALIPSO observations"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "From the product they estimate summer cloud cover, CRE_SW, CRE_LW and CRE_NET at 1 km resolution: a net warming of +21.8 W m−2 for the ice sheet, +23.5 W m−2 for the accumulation zone and +11.4 W m−2 for the ablation zone, with negative CRE on the lower ablation-zone margins.",
+     "page": "§2.1 ¶1; Fig. 1 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "clouds exert a net warming effect on the Greenland Ice Sheet of +21.8 ± 5.9 W m−2 during the summer"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Reported in Methods only: they compare the product for 2011–2013 with in situ CRE at Summit Station (Miller et al. 2015), finding +32.3 against +35.3 W m−2.",
+     "page": "§3.6 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We carried out an independent check on our satellite-derived product by comparing it to high-quality CRE observations acquired by in situ instruments"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the zonal CRE contrast against previous studies, which it corroborates, and argue that the steep spatial gradients within the ablation zone explain earlier conflicting conclusions on the role of clouds.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These steep spatial gradients likely explain why previous studies have arrived at different conclusions about the role of clouds on ice sheet melt5,7."
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Across the 18 summers they fit three sets of relations. Cloudiness has no trend and no correlation with air temperature. Albedo is linearly correlated with air temperature (R2 = 0.76). SWnet and downward LW are regressed on cloudiness by zone (Fig. 2 slopes).",
+     "page": "§2.1 ¶2–3; Fig. 2 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "mean summer albedo is strongly linearly correlated with mean summer air temperatures over our 2003–2020 study period (R2 = 0.76)"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They compare shortwave shading with longwave trapping sensitivities. In the accumulation zone longwave dominates (2.67 against 0.83 W m−2 per 1%). In the ablation zone the two nearly compensate (1.39 against 1.55), leaving ±0.16 W m−2 per 1% cloudiness.",
+     "page": "§2.1 ¶3–4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the shortwave shading response to changing cloudiness is approximately equal to the corresponding response of longwave trapping"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They support the compensation finding with a second analysis of the same record: high-melt years were not significantly cloudier or clearer than low-melt years.",
+     "page": "§2.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This finding is supported by the fact that intense melt years (e.g. 2010, 2012, and 2019) were not significantly cloudier/clearer than low melt years"
+    },
+    {
+     "n": 11,
+     "node": "F",
+     "mode": "observation",
+     "action": "They take blocking days from Ward et al. (2020), identified from MERRA-2 and assigned to four quadrants, as naturally occurring conditions against which to composite the CRE product.",
+     "page": "§2.2 ¶1–2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "combining our high-resolution CRE product with blocking days identified by Ward et al. (2020)25"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Relative to mean summer conditions, they estimate the change in ablation-zone cloudiness and net radiative flux during blocking by quadrant: +11.5 (NW), +4.9 (NE), +4.0 (SW) and −1.6 (SE) W m−2.",
+     "page": "§2.2 ¶2; Fig. 3 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "net radiative fluxes in the ablation zone increase by +11.5 ± 3.1 W m−2, +4.9 ± 1.3 W m−2 and +4.0 ± 1.1 W m−2"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "regularities",
+     "action": "They build an empirical albedo model. Per-grid-cell regressions of MODIS albedo on ERA5 temperature downscaled with MeteoIO IDW-lapse are filtered for significance and sign, then averaged into slopes for nine temperature bands.",
+     "page": "§2.3 ¶1; §3.7 ¶1–2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used observed air temperature-albedo relationships to develop an empirical model that predicts albedo from future air temperature forecasts"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Reported in Methods only: they test the albedo model by predicting albedo from 2003–2014 temperatures, giving R2 = 0.83 and ±0.04 against observed albedo.",
+     "page": "§3.7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find a strong correlation between observed and predicted albedo (R2 = 0.83) with an accuracy of ±0.04 (Fig. S12)."
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They drive the albedo model with bias-normalized near-surface air temperatures from 26 CMIP6 models under several SSPs, with albedo floored at 0.3. Ablation-zone albedo darkens by 0.02–0.14, and they recompute the SWnet-cloudiness sensitivity (±1.94 W m−2 per 1% by 2100 under SSP5-8.5).",
+     "page": "§2.3 ¶1; §3.7 ¶3; Fig. 4 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we find that summer surface albedo in the ablation zone will darken by ~0.02–0.14 depending on the emissions scenario"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the projected shortwave-longwave imbalance with the present one (±0.39 against ±0.16 W m−2) and conclude that sensitivity to cloudiness more than doubles, with longwave sensitivity held at its present value.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "suggests that the sensitivity of ice sheet meltwater production to cloudiness will more than double in a future, warmer climate"
+    },
+    {
+     "n": 17,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute the radiative effects of the same blocking events under 2100 SSP5-8.5 albedo (+15.7, +6.6 and +5.3 W m−2), about 34% more than at present.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An overall ~34% increased radiative impact of atmospheric blocking events compared with the current study period"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the 1 km CRE product as a major advance over coarse satellite grids and sparse in situ stations.",
+     "page": "§2.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The high spatial resolution (1 × 1 km) of our CRE product represents a major advance"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "simulation",
+     "action": "They keep the headline claim: clouds currently have a small net regulatory role on ablation-zone melt, but energy balance will be twice as sensitive to clouds by 2100 and blocking will enhance melt by about 34% more.",
+     "page": "§2.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we project that surface energy balance in the Greenland Ice Sheet ablation zone will be twice as sensitive to clouds than it is today"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Cloud radiative effect in the ablation zone and its sensitivity to cloudiness",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "No; CRE is inferred by fusing CloudSat/CALIPSO and MODIS with a Random Forest",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify CRE at 1 km and the flux-cloudiness sensitivity, now and projected to 2100",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No formal rivals; only prior conflicting conclusions on whether clouds warm or cool melt",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed; no discriminating predictions are stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: interannual cloudiness variation and blocking days occurring in nature",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 18 summers and many blocking days serve as repetitions for the regressions",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; held-out training data, the Summit in situ check and an albedo hindcast, but no sensitivity tests on processing choices",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: compensation now and doubling of sensitivity by 2100 under SSP5-8.5",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Over 2003–2020, a 1% change in summer cloudiness changes net radiative flux in the ablation zone by only ±0.16 W m−2 because shortwave shading and longwave trapping compensate; by 2100 under SSP5-8.5, reduced albedo raises this to ±0.39 W m−2, more than twice as sensitive.",
+  "page": "§0 ¶1; §2.1 ¶4; §2.3 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the Random Forest fusion of CloudSat/CALIPSO fluxes with MODIS cloud properties, there would be no 1 km CRE product resolving the narrow ablation zone, and so no zone-specific sensitivity slopes.",
+  "page": "§1 ¶4"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: all data are archived satellite and reanalysis products, and no hypothesis directed their acquisition (§3.2). Claim: the present-day compensation could have failed (the SW and LW slopes could have differed), and a melt-year comparison supports it (§2.1 ¶4); the 2100 projection faces no test, only an albedo-model hindcast (§3.7 ¶2). Registration: nothing is stated as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Random Forest regression used to fuse sparse active-sensor retrievals with dense passive imagery",
+   "kind": "method",
+   "page": "§1 ¶3; §3.3.3 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "to our knowledge, has not been used to combine remote sensing data for investigations of Greenland Ice Sheet [...]",
+   "page": "§1 ¶3"
+  },
+  {
+   "quote": "We then exploit the unprecedented spatial resolution of our product (1 × 1 km grid cell size)",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "The net radiative effects of summer blocking in the ablation zone, however, have yet to be directly observed.",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "quote": "represents a major advance for understanding interactions between clouds and specific areas of the [...]",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "quote": "at finer spatial resolution and longer time-scales (2003−2020 vs. 2006–2010) than was previously possible",
+   "page": "§3.1 ¶3"
+  }
+ ],
+ "limits": "Sub-claims and their statuses:\n- The CRE product: capability_characterized (held-out MAE, error budget, Summit check).\n- Zonal CRE means and blocking composites: estimate_with_resolution.\n- The 2100 sensitivity: a conditional projection with no stated uncertainty on ±0.39 beyond the Fig. 4 model spread.\n\nPremises and assumptions:\n- The future projection assumes cloudiness does not change, based on a non-significant cloudiness-temperature correlation (§2.1 ¶2; §3.7 ¶1).\n- It also holds downward LW sensitivity fixed at its present value (§2.3 ¶1).\n- No uncertainty is attached to ±0.16 or ±0.39.\n\nValidation gaps:\n- The albedo-model hindcast uses 2003–2014, which overlaps the 2003–2020 regression period. It is therefore not a held-out test (inference from §3.7 ¶1–2).\n- The Summit check is a single accumulation-zone site. No ablation-zone in situ CRE check is reported.\n- No robustness tests vary processing choices: tree number, zenith bins, Key et al. albedo correction, diurnal correction, ablation-zone threshold.\n\nInternal inconsistencies:\n- Blocking days from Ward et al. cover 2003–2018, while the product covers 2003–2020.\n- Methods says three SSPs but lists four (SSP3-7.0 included), and Fig. 4 shows three (§3.7 ¶3).\n\nProcess not visible:\n- No review file was supplied, so changes made in review are invisible. The peer-review note names Stefan Hofer, whose 2017 paper this one implicitly qualifies.\n\nComposition:\n- natures_repetition is chosen because the headline slopes are regressions across 18 found summers.\n- The work also has a strong capability_first element: the claim depends on the new product. The question precedes the capability, so capability_first does not fit strictly.",
+ "disagreements": [
+  {
+   "target": "Earlier CloudSat/CALIPSO CRE products gridded at 2 × 2° or 2 × 1° (refs 7, 8, 11)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue these grids cannot resolve the narrow ablation zone and supply a 1 km product that does.",
+   "page": "§1 ¶2",
+   "quote": "Such products are therefore too coarse to resolve Greenland’s narrow ablation zone7,8,11"
+  },
+  {
+   "target": "Estimates of ablation-zone cloud effects based on modelled radiative fluxes (refs 8, 10, 11)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "They replace modelled fluxes with observation-based satellite CRE.",
+   "page": "§1 ¶1",
+   "quote": "due to a reliance on modeled radiative fluxes which are known to contain biases8, [...]"
+  },
+  {
+   "target": "Previous studies with different conclusions on the role of clouds in ice sheet melt (Hofer et al. 2017; Van Tricht [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The 1 km product shows negative CRE on the lower ablation margins and positive CRE higher up, which the authors offer as the reason for the divergent conclusions; melt years were not cloudier or clearer than low-melt years.",
+   "page": "§2.1 ¶1",
+   "quote": "These steep spatial gradients likely explain why previous studies have arrived at different conclusions about the role of clouds on ice sheet melt5,7."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "2B-FLXHR-LIDAR Release 05",
+   "alternatives": "Release 04",
+   "reason": "more robust partitioning of ice-only and liquid-bearing clouds",
+   "effect_reported": "no",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "MODIS clear-sky albedo corrected upward by 0.05 times cloud fraction (Key et al.)",
+   "alternatives": "uncorrected clear-sky albedo climatology",
+   "reason": "snow/ice albedo is known to be higher under cloud cover",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "ERA5 clear-sky fluxes calibrated by linear regression against 2B-FLXHR-LIDAR",
+   "alternatives": "uncalibrated ERA5 clear-sky fluxes",
+   "reason": "to account for possible bias in the ERA5 reanalysis",
+   "effect_reported": "no",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "No diurnal correction for longwave; instantaneous fluxes treated as daily means",
+   "alternatives": "diurnal correction as applied to shortwave",
+   "reason": "downward longwave shows no predictable diurnal cycle in AWS data or ERA5",
+   "effect_reported": "yes",
+   "page": "§3.5 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Remove non-significant and positive albedo-temperature relationships, then use mean slopes in nine temperature bands",
+   "alternatives": "per-grid-cell regressions including non-significant or positive relationships",
+   "reason": "positive correlations deemed unrealistic; banding captures expected non-linearity",
+   "effect_reported": "no",
+   "page": "§3.7 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "Albedo floor of 0.3 and CMIP6 temperatures normalized by subtracting the mean summer ice-sheet temperature",
+   "alternatives": "no floor; raw CMIP6 temperatures",
+   "reason": "albedo below 0.3 unrealistically low for bare ice; normalization to account for temperature bias",
+   "effect_reported": "no",
+   "page": "§3.7 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "that were not used to train the machine learning algorithm",
+   "page": "§3.6 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We evaluated our clear-sky radiative fluxes by comparing the clear-sky fluxes from ERA5 reanalysis with the 2B-FLXHR-LIDAR product.",
+   "page": "§3.6 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "based on previous comparisons with surface albedo data from PROMICE AWS35",
+   "page": "§3.6 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "The radiative fluxes of the 2B-FLXHR-LIDAR algorithm have been extensively evaluated7,31",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We carried out an independent check on our satellite-derived product by comparing it to high-quality CRE observations acquired by in situ instruments",
+   "page": "§3.6 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "a finding that corroborates previous studies6,16",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "This finding is supported by the fact that intense melt years (e.g. 2010, 2012, and 2019) were not significantly cloudier/clearer than low melt years",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We evaluated our model using temperature data from before our reference period (i. [...] ).",
+   "page": "§3.7 ¶2"
+  }
+ ]
+}

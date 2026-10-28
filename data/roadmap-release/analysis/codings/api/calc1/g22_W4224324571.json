@@ -1,0 +1,563 @@
+{
+ "key": "g22_W4224324571",
+ "doi": "10.1016/j.envc.2022.100533",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4224324571.pdf (published paper, Environmental Challenges 7 (2022) 100533)",
+  "g22_W4224324571.xml.txt (publisher XML via jats_text; abstract and figure/table captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and caption labels (Figure n, Table n). The XML file has no body text, so body steps use printed journal pages (p. n, which equal PDF pages counted from 1) and quote the PDF text.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Nevertheless, no study postulated the reasons for its decline.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4224324571.pdf and g22_W4224324571.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the question of which hydrological components drive Lake Babati's level variability and its consistent decline, framed for management.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to investigate the association and sensitivity of the hydrological components driving the lake level variability"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Took candidate drivers from others: water managers' suspicion that lakeshore boreholes drive the decline, and Mbanguka et al. (2016) on cloudiness and evaporation sensitivity.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "They suspected that the increasing number of boreholes around the lake shores could be driving the observed declines."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Gathered gauge rainfall from three stations, MERRA-2 reanalysis climate data, and the 1976-2020 lake level record from the Internal Drainage Basin Authority; removed outliers and erroneous entries.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Internal Drainage Basin Authority of Tanzania provided the water level records of Lake Babati observed from November 1976 to 2020."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked the MERRA-2 premise against the Babati gauge by Spearman correlation: 0.45 daily, rising to 0.85 monthly.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The daily rainfall from MERRA – 2 and Babati had a Spearman rank correlation coefficient of 0.45"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed the analysis: Spearman rank tests for data quality, Mann-Kendall and Sen's slope for trends, a Pettit change-point test, an HEC-HMS water balance model, Grey Relational Analysis, and stepwise regression with AIC.",
+     "page": "p. 3-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We applied the Mann-Kendall method to test monotonic trends among the climatic data and the lake water level"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Ran an echosounder bathymetric survey at 100 m transect spacing to derive volume-depth and area-depth relations, and installed a pressure transducer to log lake level every 30 min.",
+     "page": "p. 4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, lake depths were measured at 59,060 different points within the lake."
+    },
+    {
+     "n": 7,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Established the decline. A Pettit test found a shift in 1991, with mean level 5.461 m before and 4.829 m after; Mann-Kendall found a significant decline, and Sen's slope gave 0.025 m per year.",
+     "page": "p. 6; Figure 3 (p. 6); Figure 4 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Pettit test for the water level homogeneity also confirmed that a significant change (p < 0.01) occurred in the records"
+    },
+    {
+     "n": 8,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed that improving the outlet after the 1990 flood (lower crest, 4.74 m now against 6.15 m before) increased outflow and lowered the lake. Restricted later analysis to 1991-2020 records.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The improvement of the outlet by expansion and lowering the crest level is thought to have increased the outflow of Lake Babati"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared monthly and seasonal Mann-Kendall and Sen's slopes. The level fell significantly in every month and season, with similar declines in the warmer minor wet season and the major wet season.",
+     "page": "p. 6; Appendix D (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Contrary to expectations, the lake level declined significantly both in the dry and wet seasons."
+    },
+    {
+     "n": 10,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Rejected temperature and cloudiness-driven evaporation as the driver of the decline, against Mbanguka et al. (2016).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This implied that the lake level decline was not strongly dependent on temperatures. This contradicts the findings of Mbanguka et al. (2016)"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked rainfall data quality across stations. Daily correlations were weak and monthly ones strong (Mbulu rs = 0.8807), so gaps in Babati's monthly rainfall were filled from Mbulu.",
+     "page": "p. 6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Rainfall records at Mbulu station were the most strongly correlated to Babati"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared rainfall with lake level. Rainfall showed no significant trend and an insignificant daily Spearman correlation, but a significant correlation when averaged over 9 and 18 months, suggesting a lag.",
+     "page": "p. 7; Figure 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a more in-depth assessment of the rainfall variability using Mann-Kendall trend analysis revealed no significant trends in the rainfall"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Justified MERRA-2 temperatures for Babati by their similar pattern to historical (1923-1947) Mbulu station temperatures.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the close association between temperatures observed earlier at Mbulu and the current Babati temperature justifies using MERRA 2 temperatures"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "observation",
+     "action": "Reported Mann-Kendall trends in MERRA-2 climate variables: minimum temperature rising in almost all months, maximum temperature rising in dry months, wind speed falling, humidity and potential evapotranspiration mostly unchanged.",
+     "page": "p. 7; Appendix D (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In contrast, the minimum temperature increased significantly (p < 0.01) in all months except May."
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated lake evaporation (Penman-Monteith on MERRA-2, 1982-2021; no significant annual trend). Estimated abstraction from census growth, a 50 L per person per day standard, and BAWASA supply of about 7,142 m3 per day.",
+     "page": "p. 7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The lake evaporation was computed using the Penman-Monteith formula based on the MERRA 2 climatic data"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "simulation",
+     "action": "Built an HEC-HMS model (six DEM sub-basins, deficit and constant loss, Snyder unit hydrograph, linear-reservoir baseflow, spillway outflow) and calibrated it to lake levels (NSE 0.95), automatically and then by hand, to generate inflow and outflow.",
+     "page": "p. 3-5; p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an HEC-HMS model was built, calibrated, and its performance validated"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Validated the model on a held-out period (July 2020 to March 2021) of diver-logged lake levels: NSE 0.71 and 0.12% peak error. Noted that peaks are underestimated and offset in time.",
+     "page": "p. 5; Table 3; Figure 6 (p. 9); p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The validation dataset was the rainfall and evapotranspiration data from July 19, 2020, to March 31, 2021."
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Ranked drivers with Grey Relational Analysis against lake level: inflow, then direct rainfall, then evaporation, then outflow.",
+     "page": "p. 8; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The most important driver of the lake level variability was found to be the lake inflow (runoff and baseflow), followed by direct rainfall."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Repeated the GRA with lake storage as the reference series. Inflow and rainfall kept their ranks; evaporation and outflow tied (p = 0.97).",
+     "page": "p. 8; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When GRA was performed with the lake storage as the reference series, the lake inflow and rainfall maintained their first and second order"
+    },
+    {
+     "n": 20,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Rejected groundwater abstraction as the main driver, because abstraction is far smaller than lake evaporation, which ranked only third.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, water abstraction still plays but a very marginal role in controlling the lake level variability."
+    },
+    {
+     "n": 21,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fitted stepwise regressions (AIC, F-tests) of daily lake level and storage on precipitation, inflow, outflow and evaporation for August 2019 to March 2021. Direct rainfall was eliminated (level R2 = 0.6437; storage R2 = 0.7407).",
+     "page": "p. 9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The lake level was not very sensitive to the direct rainfall over the lake, and thus it was eliminated"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Compared the GRA ranking with the regression. They agreed on inflow, outflow and evaporation; the GRA's high rank for rainfall was put down to rainfall's correlation with inflow.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The GRA corroborated these findings as it ranked the lake inflow as the most sensitive parameter"
+    },
+    {
+     "n": 23,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Rejected rainfall variability, and evaporation and inflow trends, as direct causes of the decline, because neither shows a significant trend.",
+     "page": "p. 10; §0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the direct attribution of the lake level decline to the rainfall variability was not significant."
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Kept the spillway-outflow explanation for the decline in wet seasons, and evaporation plus reduced inflow for dry seasons; recommended management of inflow and outflow.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The declining lake level seemed to be related to the outflow controlled by a spillway constructed in the northeast of the lake"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Lake Babati level declining since 1991 (Pettit shift, Mann-Kendall decline of 0.025 m per year)",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Lake level yes; inflow, outflow and evaporation no, they are modelled or computed",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Rank the drivers of level variability and attribute the decline",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Rainfall, temperature or cloudiness-driven evaporation, groundwater abstraction, inflow, spillway outflow",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: a driver should show a trend matching the decline; not formally derived per rival",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "6",
+   "answer": "Found: one lake record and secondary climate data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Wet and dry seasons repeat over 1991-2020; daily data from 2019-2021 used for the regressions",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Model validated on a held-out period; GRA and regression on storage as well as level; GRA and regression agree in part",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Spillway outflow the probable cause; abstraction, rainfall and temperature excluded",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Lake Babati's significant decline is probably due to increased outflow through the improved spillway, while inflow is the most sensitive driver of level variability and abstraction, rainfall and evaporation trends do not explain the decline.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "E",
+  "mode": "exploration",
+  "sentence": "The Pettit and Mann-Kendall analysis placed a level shift in 1991, right after the post-flood outlet improvement; this shift is the main evidence tying the decline to the spillway.",
+  "page": "p. 6; Figure 3 (p. 6)"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data were mostly secondary (gauge records, MERRA-2, lake levels). The bathymetry and diver data served the water balance model, not a stated hypothesis. Rival drivers faced trend tests that could have failed (rainfall and evaporation showed no trend). The spillway claim was never tested against an outflow time series spanning the decline; it rests on the timing of the 1991 shift and on crest elevations. No analysis was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "systems engineering / grey systems theory (applied in finance and manufacturing)",
+   "item": "Grey Relational Analysis",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Stepwise regression with F-tests and the Akaike Information Criterion",
+   "kind": "method",
+   "page": "p. 5-6"
+  },
+  {
+   "field": "statistics / econometrics",
+   "item": "Mann-Kendall trend test, Sen's slope, Spearman rank correlation, Pettit change-point test (XLSTAT Monte Carlo)",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "civil / hydraulic engineering (U.S. Army Corps of Engineers)",
+   "item": "HEC-HMS hydrologic modelling system",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "demography",
+   "item": "2002 and 2012 census population data for abstraction estimates",
+   "kind": "data",
+   "page": "p. 8"
+  },
+  {
+   "field": "water supply engineering",
+   "item": "Design standard of 50 L per person per day water consumption",
+   "kind": "data",
+   "page": "p. 8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Nevertheless, no study postulated the reasons for its decline.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "This study benchmarked the most sensitive hydrological drivers influencing lake level",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "[...] the previous studies has addressed their concern",
+   "page": "p. 2"
+  }
+ ],
+ "limits": "The XML file holds only the abstract and captions, so body locators are printed pages and body quotes come from the PDF. Sub-claim statuses: the decline rate (0.025 m per year) is estimate_with_resolution; the driver ranking is regularity_in_range, fitted only on August 2019 to March 2021 daily data; the HEC-HMS model is capability_characterized for low levels, with peaks poorly captured. The spillway explanation is never tested directly: no long outflow series is computed or measured, and a one-off crest lowering in about 1991 would not obviously explain a continued decline after 1991 (inference). The regression uses inflow and outflow produced by a model calibrated on the same lake levels, so the regression is partly circular (inference); the positive outflow coefficient reflects outflow rising with level, not causation (inference). Internal inconsistencies: significance of the trend is given as p < 0.01 in the abstract but p < 0.05 in Section 3.1; the shift date is July 14, 1991 in the text but July 8, 1991 in the Figure 3 caption; GRA ranks rainfall second while the abstract says rainfall had the least influence, and the conclusions say 'followed by direct rainfall and outflow'. The MERRA-2 temperature check compares against 1923-1947 Mbulu data, a different period. Abstraction is estimated from supply figures, not measured. No review file was supplied, so the process behind the revision is unknown. Composition is none_fits: the walk is closest to trace_series (found conditions, best explanation among stated rivals), but there are no independent traces; it is attribution by elimination on one lake record.",
+ "disagreements": [
+  {
+   "target": "Mbanguka et al. (2016), cloudiness/evaporation sensitivity of Lake Babati level",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "Seasonal Sen's slopes show similar declines in the warmer minor wet season and the major wet season, implying the decline does not depend on temperature.",
+   "page": "p. 6",
+   "quote": "This contradicts the findings of Mbanguka et al. (2016), who reported a [...]"
+  },
+  {
+   "target": "Mbanguka et al. (2016), lake size estimate from five bathymetric transects",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Cites the Ministry of Water area of 15.90 km2 and runs its own dense survey (59,060 points).",
+   "page": "p. 3",
+   "quote": "Mbanguka et al. (2016) estimated the current lake size to be about 7.00 km2 which is an underestimate"
+  },
+  {
+   "target": "Mbanguka et al. (2016), evaporation and runoff control the hydrological balance",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The model shows outflow during the 2019-2020 wet year removing more water than evaporation.",
+   "page": "p. 9",
+   "quote": "Mbanguka et al. (2016), however, missed recognising the influence of the large outflows during high rainfall seasons."
+  },
+  {
+   "target": "Water resources managers' suspicion that lakeshore boreholes drive the decline",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Estimated abstraction is far smaller than lake evaporation, which ranks only third as a driver.",
+   "page": "p. 9",
+   "quote": "[...] of groundwater for urban water supply is far less than the lake's evaporation rates."
+  },
+  {
+   "target": "Hydrochemistry, stable isotope and satellite studies of rift valley lakes",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues these methods cannot quantify climatic and anthropogenic influences where groundwater and surface water are used together; no test of this is offered.",
+   "page": "p. 2",
+   "quote": "these methods cannot explicitly quantify the climatic and anthropogenic influences in catchments where the conjunctive use of groundwater and surface water is adopted"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Spearman rank correlation",
+   "alternatives": "Pearson correlation",
+   "reason": "Wide application for non-normally distributed data such as climatic data; robust to outliers",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "O",
+   "chosen": "MERRA-2 reanalysis",
+   "alternatives": "In-situ station records (incomplete; no temperature)",
+   "reason": "Continuous record since 1980 and closer association with instrumental data",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "I",
+   "chosen": "Deficit and constant rate loss method",
+   "alternatives": "Soil Moisture Accounting method",
+   "reason": "Parsimony: fewer inputs, can be calibrated with available data",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "I",
+   "chosen": "Both basin-lag formulas used to bound the range",
+   "alternatives": "Eq. (1) Snyder/Chow; Eq. (2) USACE; 50-75% of time of concentration",
+   "reason": "To determine the probable ranges for the basin lag",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "I",
+   "chosen": "Automatic calibration first, then manual fine-tuning",
+   "alternatives": "Automatic calibration alone",
+   "reason": "Automatic calibration did not improve the pool level shape; it fitted only the peak pool elevation",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "F",
+   "chosen": "Lake level records from 1991 to 2020",
+   "alternatives": "Full 1976-2020 record",
+   "reason": "Post-shift records represent the current lake level scenario",
+   "effect_reported": "no",
+   "page": "p. 6"
+  },
+  {
+   "node": "V",
+   "chosen": "Gap-filling Babati rainfall at a monthly step with Mbulu data",
+   "alternatives": "Daily step; aggregation longer than a month",
+   "reason": "Association weak daily and decreasing beyond monthly",
+   "effect_reported": "yes",
+   "page": "p. 6"
+  },
+  {
+   "node": "V",
+   "chosen": "Both lake level and lake storage as reference or response",
+   "alternatives": "Lake level only",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "p. 8-9"
+  },
+  {
+   "node": "I",
+   "chosen": "Regression without direct rainfall",
+   "alternatives": "Full four-predictor regression",
+   "reason": "Smaller AIC; rainfall least sensitive",
+   "effect_reported": "yes",
+   "page": "p. 9"
+  },
+  {
+   "node": "C",
+   "chosen": "Stepwise regression's discounting of direct rainfall",
+   "alternatives": "GRA ranking rainfall second",
+   "reason": "Strong correlation of direct rainfall with inflow likely biased the GRA",
+   "effect_reported": "yes",
+   "page": "p. 10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The daily rainfall from MERRA – 2 and Babati had a Spearman rank correlation coefficient of 0.45",
+   "page": "p. 3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "In addition, Sen's slope (shown in Appendix D), a non-parametric method that accounts for the effects of the outliers",
+   "page": "p. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Rainfall records at Mbulu station were the most strongly correlated to Babati",
+   "page": "p. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the close association between temperatures observed earlier at Mbulu and the current Babati temperature justifies using MERRA 2 temperatures",
+   "page": "p. 7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The validation dataset was the rainfall and evapotranspiration data from July 19, 2020, to March 31, 2021.",
+   "page": "p. 5; Table 3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "When GRA was performed with the lake storage as the reference series, the lake inflow and rainfall maintained their first and second order",
+   "page": "p. 8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The prediction of the lake storage (given in Eq. (9)) using the same parameters was more accurate than the lake level",
+   "page": "p. 9"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The GRA corroborated these findings as it ranked the lake inflow as the most sensitive parameter",
+   "page": "p. 10"
+  }
+ ]
+}

@@ -1,0 +1,493 @@
+{
+ "key": "g22_W4281776149",
+ "doi": "10.5194/nhess-22-1931-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Wen et al. 2022, Nat. Hazards Earth Syst. Sci. 22, 1931-1954 (published PDF)",
+  "Publisher XML full text with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "E",
+  "evidence": "Inspired by these findings, in this paper we wanted to take a closer look at the relationship between the EQ times and statistical indexes",
+  "page": "§1 ¶7"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Wen et al. 2022, published paper (PDF and publisher XML text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take over their own earlier finding (Chen and Chen 2016; Chen et al. 2017; GEMSTIP) that skewness and kurtosis of geoelectric data at 20 Taiwanese stations correlate with ML>=5 earthquakes.",
+     "page": "§1 ¶6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Through statistical analyses, they found significant correlations between geoelectric anomalies and these large EQs."
+    },
+    {
+     "n": 2,
+     "node": "E",
+     "mode": "exploration",
+     "action": "In initial explorations they computed C, V, S, K index series and binned them by time-to-failure for the KAOH station, finding sudden shifts that suggest two geoelectric regimes.",
+     "page": "§1 ¶7; Figure 2 (p. 1934)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there are sudden shifts in the average position of the bands, suggesting that there are two regimes (short TTFs and long TTFs)"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose the question of whether hidden Markov modeling of geoelectric series yields hidden-state series with true intermediate-term forecasting skill, judged by statistical significance rather than forecast accuracy.",
+     "page": "§1 ¶9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "decide whether the hidden Markov modeling of geoelectric TSs could provide features (i.e., HS TSs) of true forecasting skill"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They hypothesize two hidden geoelectric states per station (two states chosen after prior catalog-based two-state HMMs) that separate periods of higher and lower EQ probability.",
+     "page": "§1 ¶8; §2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "investigated whether these HS TSs that are obtained purely from geoelectric data can separate time periods of high versus low EQ"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble 7 years (2012-2018) of GEMS self-potential data from 20 stations, downsampled to 0.5 Hz, and the CWB catalog of ML>=3 events using a conservative completeness magnitude of 3.",
+     "page": "§2.1 ¶1-2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we took the completeness magnitude of 3 and analyzed EQs with M L ≥ 3"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "They apply the Butterworth bandpass filter from Chen et al. (2021), compute windowed lag-1 autocorrelation, variance, skewness and kurtosis series for NS and EW components, and remove variance outliers (Supplement S1).",
+     "page": "§2.1 ¶4; §2.2 ¶1-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "applied the same Butterworth filter to our geoelectric TS data before computing the index TSs"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "They tried fitting known distributions and binning each index separately as BWA input, and found the per-component hidden-state series inconsistent with each other.",
+     "page": "§2.4 ¶2-3; Figure 3 (p. 1938)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These posterior probability TSs are different, which is not what we desire."
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "They standardize the 8-dimensional feature vector and discretize it with k-means into Q labels, giving one observation series per station for a single HMM; joint binning was rejected as too large.",
+     "page": "§2.4 ¶4-6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we mapped similar feature vectors to the same label using the k -means clustering algorithm"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate a two-state HMM per station with the Baum-Welch algorithm, running 30 iterations from 15 random initializations and keeping the model with the highest likelihood score.",
+     "page": "§2.5 ¶2-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we ran 15 BWA estimations in parallel for each station, with different random initial parameters"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "They compare the 15 converged runs after aligning state labels by expected absolute difference, showing the consistency of the converged models; the last 4 runs for CHCH did not converge.",
+     "page": "§2.5 ¶4-5; Figure 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also show all 15 HMMs to demonstrate how consistent the converged models are"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "They design the test: classify time points into T1/T2 by posterior probability, grid Taiwan into 16x16 cells, and compute EQ frequencies and the frequency ratio RF per cell, without using catalog information to fit the HMM.",
+     "page": "§2.6 ¶1-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we should not directly compare the EQ frequencies but should instead compare the EQ frequency ratio"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare RF grid maps for CHCH and all 20 stations and find many cells far from 0.5 but no state consistently associated with higher activity across regions.",
+     "page": "§3.1 ¶1-2; Figure 7 (p. 1942); Figure 8 (p. 1943)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Although there is no consistent pattern of any state corresponding to higher EQ activities globally"
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Faced with the mismatch, they revise the interpretation of the states (not the claim of EQ information) and reread S1 and S2 as region-dependent fuzzy labels of tectonic dynamics.",
+     "page": "§3.1 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we should understand S 1 and S 2 as two high-level, fuzzy labels for tectonic dynamics related to EQ activities in different regions"
+    },
+    {
+     "n": 14,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "They define a sign-free discrimination power D = |RF - 0.5| and map it for all 20 stations.",
+     "page": "§3.2 ¶1; Figure 9 (p. 1944)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We defined the discrimination power D for each cell as"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state the rival that high D values could come from random temporal clustering of earthquakes rather than informative states.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We therefore wonder whether regions with high D values are statistically significant or the products of random temporal clustering of EQs"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute the null expectation by simulating 400 hidden-state series per station from the fitted HMM parameters and deriving 400 null D grid maps.",
+     "page": "§3.3 ¶1; Figure 10 (p. 1945)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we chose to directly simulate the HMM using the same model parameters"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare empirical D with the simulated distribution cell by cell to obtain discrimination reliability RD maps, e.g. RD = 0.992 (p = 0.008) at the LIOQ cell.",
+     "page": "§3.3 ¶1-2; Figure 11 (p. 1946)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the empirical HS TS performs better than random guesses (i.e., simulated HS TSs) at separating time periods of low/high EQ frequencies"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "From the spatial pattern of high-RD cells around LIOQ they refine the claim to locally useful information, and sketch time, space and magnitude windows for forecasting use.",
+     "page": "§3.3 ¶3-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This pattern suggests the geoelectric information from LIOQ is approximately local."
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They raise the multiple-testing rival: significant cells could arise by chance among many cells even with no real HS-EQ correlation.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "whether some of these cells can be significant purely by chance, even though there is in reality no persistent correlation between EQs and HSs"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They define the per-station metric REQS (share of EQs in cells with RD >= RD_min) and the global confidence level GCL, and compute null REQS distributions from 400 simulated series per station.",
+     "page": "§3.4 ¶2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "first computing the R EQS values of a station's empirical HS TS as well as of 400 HS TSs simulated using the HMM parameters"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare empirical with simulated REQS for RD_min = 0.95: GCL is close to 1 for 18 stations, and lower for LIOQ and LISH.",
+     "page": "§3.4 ¶4; Figure 12 (p. 1948)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Except for the LIOQ and LISH stations, we can see from Fig. 12 that all the other stations have GCL values close to 1."
+    },
+    {
+     "n": 22,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They reject the chance null model at the global level for most stations.",
+     "page": "§3.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These findings suggest the HS TSs' EQ forecasting utility to be significant at the global level."
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They vary the two hyperparameters (7 window lengths x 4 cluster numbers, 28 points) and recompute REQS and GCL, finding GCL near 1 over broad regions for 19 stations; LISH is poor everywhere.",
+     "page": "§3.5 ¶1-2; Figure 13 (p. 1949); Figure 14 (p. 1949)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for many stations, the GCL values approach 1 across broad regions of the hyperparameter space"
+    },
+    {
+     "n": 24,
+     "node": "R",
+     "mode": "methods",
+     "action": "They select per-station optimal hyperparameters by highest GCL, then highest REQS on ties, and use them for Figs. 7-12.",
+     "page": "§3.5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we selected the hyperparameters with the highest GCL values (1 for many stations); next, in case of ties, we chose the hyperparameter"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "They keep the claim that HMM hidden states from geoelectric series carry EQ-related information with forecasting skill (19 stations with GCL > 0.95), while deferring out-of-sample validation.",
+     "page": "§4 ¶3; §4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the hidden Markov modeling of the index TSs computed from geoelectric TSs is indeed a viable way to extract information"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Two geoelectric regimes in the index distributions versus time-to-failure (KAOH exploration)",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; the regimes are hidden states inferred with an HMM fitted by Baum-Welch",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Decide whether the hidden-state series have statistically significant EQ forecasting skill",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Only null rivals: random temporal clustering of EQs, and chance significance across many cells",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; null distributions of D and REQS from 400 simulated HMM state series per station",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: an existing 7-year record of 20 stations and the CWB catalog",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Earthquakes repeat across many cells and stations, but no new period or held-out data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives hyperparameter variation for 19 of 20 stations; no out-of-sample test",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Null rejected for most stations; claim of EQ information kept",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "confirmed",
+  "claim": "Two-state hidden Markov modeling of geoelectric index series extracts EQ-related information: the hidden states separate periods of higher and lower ML>=3 earthquake frequency better than simulated null states, with GCL > 0.95 for 19 of 20 Taiwanese stations.",
+  "page": "§4 ¶3"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "Simulating 400 null hidden-state series per station from the fitted HMM parameters gave the reference distributions for RD and GCL; without them the RF and D maps could not be told apart from chance clustering.",
+  "page": "§3.3 ¶1; §3.4 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The geoelectric and catalog data predate the study and were not collected under the hypothesis (§2.1 ¶1-2). The claim faced a null test it could fail, and LISH and LIOQ partly failed (§3.4 ¶4). But the test was in-sample: hyperparameters were chosen per station to maximise GCL on the same data (§3.5 ¶3), and no out-of-sample test was possible (§4 ¶5). Nothing was fixed in advance: the hyperparameter search space was 'decided ... based on our experience during the model development stage' (§3.5 ¶1), and RD_min = 0.95 is chosen without stated pre-fixing."
+ },
+ "imports": [
+  {
+   "field": "speech recognition / statistics",
+   "item": "Hidden Markov model with Baum-Welch (expectation maximization) estimation",
+   "kind": "method",
+   "page": "§2.3 ¶2-3"
+  },
+  {
+   "field": "machine learning",
+   "item": "k-means clustering (scikit-learn) to discretize continuous feature vectors",
+   "kind": "method",
+   "page": "§2.4 ¶5-6"
+  },
+  {
+   "field": "signal processing",
+   "item": "Third-order Butterworth bandpass filter (scipy.signal)",
+   "kind": "method",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "field": "statistics",
+   "item": "Monte Carlo null-hypothesis testing with simulated surrogate series (p = 1 - RD, p = 1 - GCL)",
+   "kind": "method",
+   "page": "§3.3 ¶1; §3.4 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "To the best of our knowledge, there is no past HMM study on geoelectric TSs for EQ forecasting.",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "quote": "this paper is the first to demonstrate the ability to do so with statistical confidence",
+   "page": "§4 ¶4"
+  }
+ ],
+ "limits": "No review file or discussion was supplied, so no review sequence is coded; the paper states it was reviewed by two anonymous referees. All tests are in-sample: the authors say out-of-sample validation was impossible with 7 years of data (§4 ¶5). Per-station hyperparameters were chosen to maximise GCL on the test data itself (§3.5 ¶3); no correction for selection across 28 settings x 20 stations is reported (inference: the headline GCLs at optimal settings are optimistically biased, although the broad robustness across the grid in Fig. 14 mitigates this). The null HMM simulations preserve state transition frequencies but not temporal correlations (Figure 10 caption); whether the null fully represents EQ clustering is not tested separately. The only rivals are null models; no substantive physical rival (e.g., cultural or meteorological noise, instrument changes) is tested. The time window is described inconsistently: 'short- to medium-term' (§3.3 ¶4) versus 'intermediate-term' (title, §3.3 ¶5). Sub-claims: (a) locality of station information around LIOQ (§3.3 ¶3) is best_explanation from one map pattern, untested; (b) the active state has proportionally more EQs at all magnitudes (§3.1 ¶2; §3.3 ¶4) rests on Supplement S7, not supplied here, with status none from this coding. The interpretation of the per-component BWA attempt as a failed attempt rests on the authors' wording 'not what we desire' (§2.4 ¶3). Running the analysis across 20 stations was not coded as a replication check, because it is part of the main analysis rather than a check of a prior result. The data network and the GEMSTIP filter come from coauthors' earlier work (inherited).",
+ "disagreements": [
+  {
+   "target": "Past EQ precursor studies that look for specific precursory features (templates, e.g., SES-type) in geoelectric data",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors let the HMM find features in an 8-dimensional feature space with no assumed precursor shape, and validate against a catalog not used in fitting.",
+   "page": "§2.6 ¶1",
+   "quote": "Unlike many past EQ studies looking for specific precursory features within the geoelectric data, we made no specific assumptions"
+  },
+  {
+   "target": "Previous HMM applications to earthquake forecasting (Yip et al. 2018; Chambers et al. 2012; Ebel et al. 2007; Wang and [...]",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper claims priority in showing statistically significant skill via null-model tests, but does not compare its results against those studies directly.",
+   "page": "§4 ¶4",
+   "quote": "there have been previous applications of HMMs for earthquake forecasting, this paper is the first to demonstrate the ability to do so with statistical confidence"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "Two hidden states",
+   "alternatives": "More than two hidden states",
+   "reason": "Two-state HMMs were already successful in modeling regimes of different EQ frequency from catalogs (Yip et al. 2018; Chambers et al. 2012)",
+   "effect_reported": "no",
+   "page": "§1 ¶8"
+  },
+  {
+   "node": "N",
+   "chosen": "k-means clustering of the standardized 8-dimensional feature vector into Q labels",
+   "alternatives": "Parametric distributions (normal, gamma) per component; histogram binning per component with separate HMMs; joint binning of all eight indexes (50 or 10 bins each)",
+   "reason": "Known distributions fit poorly; per-component HMMs gave inconsistent state series; joint binning gives too many possible observations; k-means is cheap and groups similar vectors reliably",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶2-5"
+  },
+  {
+   "node": "I",
+   "chosen": "Best of 15 random Baum-Welch initializations by model likelihood score",
+   "alternatives": "A single BWA estimation",
+   "reason": "BWA converges to local optima that depend on the initial parameters",
+   "effect_reported": "yes",
+   "page": "§2.5 ¶4"
+  },
+  {
+   "node": "O",
+   "chosen": "Completeness magnitude of 3 (ML >= 3)",
+   "alternatives": "Lower completeness magnitudes in the published range of about 2-3",
+   "reason": "Conservative estimate",
+   "effect_reported": "no",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "EQ frequency ratio RF and discrimination power D",
+   "alternatives": "Direct comparison of EQ frequencies between states",
+   "reason": "The spatial distribution of EQs is highly heterogeneous (about 10 to about 1000 EQs per cell)",
+   "effect_reported": "no",
+   "page": "§2.6 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "Uniform RD_min = 0.95 across all cells",
+   "alternatives": "Regionally varying RD_min thresholds",
+   "reason": "Simplicity",
+   "effect_reported": "no",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "node": "R",
+   "chosen": "Per-station hyperparameters [Lw, Q] with highest GCL, ties broken by highest REQS, from a 28-point grid",
+   "alternatives": "Other points of the grid (Lw in {0.02-0.25} d, Q in {30, 40, 60, 80}); a larger and finer grid",
+   "reason": "Computational cost of about 40 min per station per combination; search space chosen from model-development experience",
+   "effect_reported": "yes",
+   "page": "§3.5 ¶1-3"
+  },
+  {
+   "node": "V",
+   "chosen": "No out-of-sample test; significance via simulated null models across the hyperparameter space",
+   "alternatives": "Train/test split of the time series; calibration followed by validation on freshly collected data",
+   "reason": "The 7-year geoelectric series is too short for temporally ordered, intermediate-term validations",
+   "effect_reported": "no",
+   "page": "§4 ¶5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "we also show all 15 HMMs to demonstrate how consistent the converged models are",
+   "page": "§2.5 ¶4; Figure 4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we created 400 simulated HS TSs, which were then used to create 400 grid maps of the discrimination power D",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we proceed to test a given station against the null hypothesis that a random guess (simulated HS TS) can have the same R EQS",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the GCL values are close to 1 across either a large area of the parameter space or almost the entire parameter space",
+   "page": "§3.5 ¶2"
+  }
+ ]
+}

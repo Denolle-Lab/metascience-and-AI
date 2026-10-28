@@ -1,0 +1,353 @@
+{
+ "key": "g22_W4294114280",
+ "doi": "10.1016/j.aosl.2022.100276",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Zhang & Zhou, Atmospheric and Oceanic Science Letters 16 (2023) 100276, pp. 1-5",
+  "Publisher XML text (tools/jats_text.py): abstract (§0 ¶1-¶2) and figure captions (Fig. 1-3) only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and figure captions; for body text, which the supplied XML text does not contain, printed journal pages (identical to PDF pages counted from 1, pp. 1-5); figure-content steps cite the figure with the PDF page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it is still hard to obtain consistent findings, and little attention has been paid to investigating the impact of Saharan dust on TC landfalls",
+  "page": "p. 1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (body text) with publisher XML text (abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how September landfalling North Atlantic TCs relate to Saharan dust, motivated by inconsistent prior findings and the September TC peak.",
+     "page": "p. 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study investigates the relationship of landfalling North Atlantic TCs in September with Saharan dust"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble MERRA2 dust AOD, ERA5, NCEP-2 and ERSST.v5 monthly fields and HURDAT2 September TC tracks for 1980-2019.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The monthly mean MERRA2, ERA5, NCEP, and ERSST.v5 data for 1980–2019 are used in this study."
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Find natural dust conditions by ranking the 40 Septembers by regional dust AOD (10-25N, 20-60W) and splitting them into four quartile groups of 10 years.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "September TC landfalls between 1980 and 2019 are divided into four groups"
+    },
+    {
+     "n": 4,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare landfall counts across dust groups and find an increase with dust AOD (25, 20, 13, 12).",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The number of TC landfalls is 25, 20, 13, and 12 for Groups I, II, III, and IV, respectively"
+    },
+    {
+     "n": 5,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare TC tracks and landfall locations for strongest (I) and weakest (IV) dust groups; east-coast landfalls rise while Caribbean and Gulf landfalls do not change significantly.",
+     "page": "p. 2; Fig. 2 (p. 3)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the number of TC landfalls on the east coast of North America increases significantly with strengthened dust AOD"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Use kernel density estimation of TC occurrence and integrated intensity, normalized, and compare groups I and IV: lower density over the central Atlantic (R1), higher off the US east coast (R2).",
+     "page": "p. 2; Fig. 2 (p. 3)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "TCs accompanied by a strengthened Saharan dust plume tend to appear less frequently over the central tropical North Atlantic"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the R1 suppression against Evan et al. (2006) and report agreement with their inverse dust-TC correlation.",
+     "page": "p. 2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "confirms the earlier findings of Evan et al. (2006)"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compute potential intensity (Bister and Emanuel 2002) from NCEP and ERA5 for strong and weak dust groups; R2 is favorable for intensification under strong dust.",
+     "page": "p. 2; Fig. 2 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A comparison between the strong and weak dust conditions of the potential intensity calculated with NCEP and ERA5"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check the dust effect with CMIP6 piClim-2xdust versus piClim-control experiments (doubled dust emission), computing potential intensity; heavier dust intensifies PI off the east coast.",
+     "page": "p. 2; Fig. 2 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To verify the impact of dust aerosols on TC activity, we compare the potential intensity calculated with the simulation results"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Refine the model result: the favorable region sits at lower latitude in the pre-industrial simulation, attributed to a weaker plume with smaller latitudinal coverage.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the region where the Saharan dust plume favors TC intensification is at a lower latitude than the present-day result"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Extend the comparison to all four groups (continuous increase of R1 density from Group I to IV) and correlate dust AOD with ERA5 and ERSST.v5 SST at each grid point.",
+     "page": "p. 3; Fig. 3 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both the ERA5 and ERSST.v5 SST have pronounced negative correlations with dust AOD over the central tropical North Atlantic."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Repeat the SST correlation with two SST datasets and on a longer timescale (5-year running smoother applied twice) to reduce interannual variability.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculate the correlation not only on the interannual timescale but also on a longer timescale"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare with Miller and Tegen (1998): their June-August SST response is stronger, while the September response is weaker and significant only off Africa.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, their study period was from June to August, while ours is September, when Saharan dust loading lessens."
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "theory",
+     "action": "State the mechanism: dust suppresses SST, and colder SST reduces TC chances, as potential intensity theory and Sun and Zhao (2020) suggest.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Saharan dust plume can suppress the SST, while colder SST may further decrease the chances of TCs"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Relate the climatological eastward SST decrease to the westward shift of TCs; R2 densities decrease from Group I to III.",
+     "page": "p. 4; Fig. 3 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The averaged probability density of TC occurrence and probability density integration of TC intensity in R2 from Group I to III show a decreasing pattern"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "theory",
+     "action": "Group IV breaks the decreasing pattern; the authors add an auxiliary (weaker SST suppression gives more water vapor transported to R2) rather than revise the mechanism.",
+     "page": "p. 4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the results from Group IV do not satisfy the continuous decreasing pattern and are larger than the results from Group III"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "observation",
+     "action": "Support the auxiliary with 800-850 hPa cloud liquid water in R2, which shows the same Group IV departure (Fig. S5).",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the cloud liquid water (800–850 hPa) in R2 from Group IV does not satisfy the continuous decreasing pattern"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Refine by Saffir-Simpson category: category 1 TCs drive the R1 variation, category 4-5 TCs the R2 variation; major-hurricane US landfalls are 6, 5, 0, 2 by group.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The number of landfalling category 4 and 5 TCs in the continental United States is 6, 5, 0, and 2"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the claim that a strengthened Saharan dust plume increases September TC landfalls in North America, especially major hurricanes, by shifting TCs westward to warmer SST.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a strengthened Saharan dust plume can increase TC landfalls in North America, especially major hurricane landfalls in the continental United States"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Covariation of September landfalling North Atlantic TCs with Saharan dust AOD",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "2",
+   "answer": "TC tracks from HURDAT2; dust, SST and potential intensity only from reanalysis and model fields",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Establish the dust-landfall relation and explain it physically",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations stated; only prior inconsistent findings",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct rival predictions computed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: Septembers grouped by dust AOD quartile; set only in CMIP6 2xdust run",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes, 40 Septembers, 10 per dust group",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: two reanalyses for PI, two SST datasets, two timescales, and CMIP6 doubled-dust experiment agree; Group IV mismatch handled by an auxiliary",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: dust increases landfalls via SST-driven westward shift",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In September 1980-2019, years with a strengthened Saharan dust plume have more North Atlantic TC landfalls in North America, especially major hurricane landfalls in the continental United States.",
+  "page": "p. 4; §0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "regularities",
+  "sentence": "Grouping the 40 Septembers by dust AOD quartile and comparing landfall counts and track densities across groups produces the relation on which every later step builds.",
+  "page": "p. 2"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "evidence": "All data are pre-existing reanalyses, archives and CMIP6 output, analysed after the fact. The CMIP6 piClim-2xdust versus control comparison and the grid-point significance contours (95%, 90% for NCEP PI) could have failed. The landfall-count trend (25, 20, 13, 12) gets no significance test, and the Group IV mismatch is absorbed by an auxiliary. Nothing is reported as fixed before the data.",
+  "registration": "no"
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Kernel density estimation (Bowman and Azzalini 1997) for TC track and intensity probability densities",
+   "kind": "method",
+   "page": "p. 2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The supplied XML text holds only the abstract and figure captions, so body steps cite printed pages (same as PDF pages). The supplement (Figs. S1-S5, Table S1) was not supplied; steps resting on it (all-group densities, category breakdown, cloud liquid water, pre-industrial plume) are coded from the main-text description only. No peer-review file was supplied, so there is no review sequence and question 9 is unanswered. Sub-claim statuses: the physical mechanism (dust cools central-Atlantic SST, TCs shift west to warmer water and intensify) is best_explanation, with no stated rivals. The CMIP6 potential-intensity result is a model-consistency check, not an estimate with resolution; the paper does not say which or how many CMIP6 models were used. Inference: other covarying drivers of TC tracks and landfall (ENSO, AMO, vertical shear, steering flow) are not considered, and the landfall-count trend over 10-year groups carries no reported significance. The Group IV departure is explained post hoc. The paper does not say whether the grouping or regions R1/R2 were chosen before looking at the TC densities.",
+ "disagreements": [
+  {
+   "target": "Miller and Tegen (1998), GCM SST response to dust exceeding 95% confidence in the eastern and central tropical North Atlantic",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their June-August result does not carry to September: here the smoothed dust-SST correlation is significant only in a small area off Africa, which the authors attribute to lower September dust loading.",
+   "page": "p. 3",
+   "quote": "[...] of SST to Saharan dust weakens obviously in September."
+  },
+  {
+   "target": "Studies finding an inhibiting effect of Saharan dust on TC activity (Evan et al., 2006; Strong et al., 2018; Reed [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper reproduces suppression over the central Atlantic but reports promotion of intense TCs off the US east coast and more landfalls in dusty years (coder's reading of how the result bears on the cited position).",
+   "page": "p. 4",
+   "quote": "[...] of North America"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "V",
+   "chosen": "Both interannual correlation and correlation after a 5-year running smoother applied twice",
+   "alternatives": "Interannual-only correlation",
+   "reason": "[...] the effect of interannual variability",
+   "effect_reported": "yes",
+   "page": "p. 3; Fig. 3"
+  },
+  {
+   "node": "C",
+   "chosen": "90% confidence level for NCEP potential intensity differences",
+   "alternatives": "95% confidence level, used for the other fields",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "Fig. 2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "To verify the impact of dust aerosols on TC activity, we compare the potential intensity calculated with the simulation results",
+   "page": "p. 2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "This is consistent with the finding derived from the potential intensity calculated with both NCEP [...]",
+   "page": "p. 3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Both the ERA5 and ERSST.v5 SST have pronounced negative correlations with dust AOD over the central tropical North Atlantic.",
+   "page": "p. 3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we calculate the correlation not only on the interannual timescale but also on a longer timescale",
+   "page": "p. 3"
+  }
+ ]
+}

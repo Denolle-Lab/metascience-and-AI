@@ -1,0 +1,473 @@
+{
+ "key": "g22_W4296215865",
+ "doi": "10.1029/2021jc017949",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper (PDF): Huang et al. (2022), Decadal Cooling Events in the South Indian Ocean During the Argo Era, JGR Oceans 127, e2021JC017949"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the potential reasons for this cooling trend have not been clearly explained",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF), Huang et al. 2022",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from prior studies the reported decadal cooling above the thermocline in the tropical SWIO during the warming slowdown, against strong SEIO warming.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] variability above the thermocline in the tropical SWIO displayed a decadal cooling trend"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the aim: the spatial structure of decadal SIO temperature change, focused on SWIO versus SEIO upper-layer contrast and the 400-1,000 m intermediate layer.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The main objective of this study is to investigate the spatial structure of decadal temperature changes in the SIO."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble three gridded observational temperature datasets (EN4, BOA-Argo, IAP), the IPO index, ERA5 and JRA55 atmospheric reanalyses, and the ECCOv4r4 ocean state estimate; apply anomalies, an 8-year Lanczos low-pass filter and a Mann-Kendall test.",
+     "page": "2-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The observational temperature datasets used in this study were derived from three ocean gridded temperature datasets"
+    },
+    {
+     "n": 4,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Run EOF analysis of low-pass-filtered 0-300 m IAP temperature: EOF-1 is subtropical warming and EOF-2 is an east-west dipole with SWIO cooling periods 1992-2000 and 2005-2011.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Empirical Orthogonal Function (EOF) analysis was performed on the 8-year low-pass-filtered upper layer (0–300 m) temperature"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the ECCO reanalysis premise by repeating the EOF on ECCO and comparing its patterns and PCs with IAP.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "thus validating the accuracy of ECCO in reproducing the observed decadal variability in the SIO"
+    },
+    {
+     "n": 6,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Map 2005-2011 upper-300 m temperature trends in EN4, IAP, Argo and ECCO, establishing significant SWIO cooling (10-20°S, 60-90°E) across products.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "all the four products exhibit similar spatial patterns of temperature trends despite some discrepancies in amplitudes"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Correlate regional-mean SWIO upper-layer decadal temperature with the IPO index (r = 0.92 for IAP).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the correlation coefficient between the IAP data set and the IPO index reaches 0.92 during 1992–2017"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate 2005-2011 linear trends per product (-0.37 to -0.59 °C/decade) and diagnose the ECCO upper-300 m heat budget: anticorrelated air-sea flux and advection terms, with flux dominating 2005-2008 and advection dominating 2009-2011.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a heat budget analysis based on ECCO reanalysis was performed for the upper 300 m temperature in the tropical SWIO"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check ECCO surface heat fluxes against JRA55, and latent heat anomalies against ERA5 and JRA55, finding consistent signs and patterns with amplitude differences.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The JRA55 reanalysis data set was used to validate surface heat fluxes of ECCO."
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Decompose latent heat flux anomalies with the bulk formula into wind-speed, humidity-gradient and nonlinear terms, attributing latent heat changes mainly to trade-wind speed variability.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "sea surface wind variability plays a dominant role in determining changes in latent heat flux during 2005–2011"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "theory",
+     "action": "Invoke the published mechanism that wind stress curl changes drive sea level change and meridional migration of tropical-subtropical gyre boundaries.",
+     "page": "9",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "changes in wind stress curl in tropical oceans can also result in sea level fluctuations and the corresponding meridional migrations of the tropical-subtropical gyre boundaries"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Diagnose wind stress curl, SEC axis, SSH isoline and meridional advection in ECCO: the northward gyre expansion warms in 2005-2008, and the southward tropical-gyre expansion cuts meridional heat advection by 67% in 2009-2011.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this southward expansion (contraction) of the tropical (subtropical) gyre induced a 67% decrease in"
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the claim that the 2005-2011 SWIO cooling results from competing air-sea heat flux and ocean heat advection, both tied to low-level atmospheric circulation.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] event in the tropical SWIO during 2005–2011 is a result of the competing effect between air-sea heat flux and ocean heat advection"
+    },
+    {
+     "n": 14,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the second question: decadal variability in the 400-1,000 m intermediate layer, previously unclear.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "however, the decadal variability in the intermediate layer (400–1,000 m) is unclear"
+    },
+    {
+     "n": 15,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Run EOF analysis of 400-1,000 m temperature independently in IAP and ECCO; EOF-1 (~29%) shows basin-wide subtropical variability, and the PCs disagree before 2010 but agree on cooling in 2010-2016.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the EOF analysis was performed independently for the 400–1,000 m mean temperature in the IAP data set and the ECCO simulation"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate 2010-2016 intermediate-layer linear trends from EN4, IAP and Argo (-0.24, -0.18, -0.28 °C/decade).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All the three observational datasets show a consistent cooling trend from 2010 to 2016."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare ECCO with observations in the intermediate layer: ECCO shows biases before 2010 (an abnormal 2006-2009 warming) and better agreement after 2010.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Obvious model biases also extend to the period 2006–2009"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "methods",
+     "action": "Restrict the intermediate-layer process analysis to 2010-2016, where ECCO and observations agree, after the pre-2010 mismatch.",
+     "page": "11",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we only investigated the physical processes during the consistent cooling period of 2010–2016"
+    },
+    {
+     "n": 19,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Map 2010-2016 400-1,000 m trends and zonal-mean transects in four products, showing significant, vertically uniform cooling at 17-30°S.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At depths of 400–1,000 m, there exist vertically uniform and significant cooling trends."
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Diagnose the ECCO 400-1,000 m heat budget and decompose vertical advection into mean and anomaly terms: vertical advection dominates, driven by anomalous vertical velocity w'.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the negative vertical advection (−0.030°C/yr) made a dominant contribution to the cooling trend (−0.0228°C/yr) during 2010–2016"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the w' attribution against the upward shift of isotherms seen in the observational datasets and in ECCO.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is also supported by the upward shift of isotherms during 2010–2016 in the observation datasets and ECCO"
+    },
+    {
+     "n": 22,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Quantify the SWIO cooling's effect on basin-mean SIO warming in 2005-2011 (0.43 to 0.28 °C/decade, a 35% reduction).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After including this cooling signal, the average warming rate in the SIO decreased from 0.43°C/decade to 0.28°C/decade during 2005–2011."
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the claim that vertical advection from anomalous upward velocity dominates the 2010-2016 intermediate-layer cooling.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Results reveal that vertical advection plays a dominant role in decadal cooling in the 400–1,000 m layer of the subtropical SIO."
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Contrast the out-of-phase upper and intermediate SIO tendencies with the vertically uniform South Pacific variability reported by Volkov et al. (2017).",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This feature is different from the case of the SPO where the interannual-to-decadal OHC variability are predominantly vertically uniform"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Two decadal cooling events inside a warming SIO (upper SWIO 2005-2011; subtropical intermediate layer 2010-2016)",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Temperature is observed in gridded datasets; heat budget terms are not observed and are diagnosed from ECCO",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Explain the causes of the cooling by heat budget attribution",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rivals; candidate budget terms (air-sea flux, horizontal and vertical advection, diffusion) are compared",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions derived for rivals",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found in nature (specific decadal periods), not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Cooling repeats across EN4, IAP, Argo and ECCO; ECCO fluxes checked against JRA55 and ERA5; ECCO fails in the intermediate layer before 2010, so the analysis is restricted",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Mechanism attributions kept as budget estimates",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Four anonymous reviewers acknowledged; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Two decadal cooling events occurred in the SIO during the Argo era: upper-300 m SWIO cooling in 2005-2011 (-0.50 ± 0.1 °C/decade), from competing air-sea heat flux and horizontal advection; and 400-1,000 m subtropical cooling in 2010-2016, dominated by vertical advection from anomalous upward velocity.",
+  "page": "1, 13-14"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The ECCO heat budget diagnoses for the upper-300 m SWIO and the 400-1,000 m subtropical layer, with their term decompositions, produce the mechanism claims; without them only the observed cooling would remain.",
+  "page": "7, 13"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data are existing gridded products and reanalyses chosen for a descriptive aim; no hypothesis directed data acquisition. The cooling itself faced cross-dataset checks it could have failed (p. 5-6, 11). The intermediate-layer reanalysis check did fail before 2010, leading to restriction to 2010-2016 (p. 11). The w' attribution was checked against observed isotherm shifts (p. 13). The budget attributions rest on a single closed-budget product (ECCO) and faced no rival test. Nothing was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Empirical Orthogonal Function (principal component) analysis",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Mann-Kendall trend significance test (modified for autocorrelation, Hamed & Rao 1998)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "signal processing",
+   "item": "8-year low-pass Lanczos filter",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Similar cooling patterns were reported in several previous studies (e.g., Li, Han, & Zhang, 2017; Liao et al., 2019), but the relevant causes have not [...]",
+   "page": "6"
+  },
+  {
+   "quote": "in addition to the oceanic process, sea surface heat exchange is also crucial for shaping the decadal changes of SWIO thermal structure",
+   "page": "14"
+  }
+ ],
+ "limits": "No peer-review file was supplied, so no review sequence is coded, although the acknowledgments mention four reviewers. The paper makes no explicit 'first' claims; the novelty entries are 'not explained' and 'also crucial' statements. Composition is none_fits: the walk is a diagnostic attribution study. A question leads to cross-dataset establishment of the phenomenon and then budget diagnosis in one reanalysis, with no stated rivals or crucial test, so it is neither strong_inference nor trace_series (which needs stated rivals). Sub-claims: the existence of both cooling events (replicated across EN4, IAP, Argo and ECCO) is effectively confirmed as a pattern; the upper-layer mechanism (latent heat flux versus gyre-driven advection) is closer to best_explanation, as it rests on ECCO budgets with flux checks against JRA55 and ERA5; the intermediate-layer w' attribution is an estimate restricted to 2010-2016, where ECCO agrees with observations, and its cause is left for future study (p. 14). The budget is in fixed-depth Cartesian coordinates, and the authors note that isopycnal and Subantarctic Mode Water processes may contribute (p. 14). The authors cannot tell whether pre-2010 discrepancies come from sparse observations or model dynamics (p. 15). Inference: the 2005-2011 and 2010-2016 windows appear to have been chosen after inspecting the PCs and time series, not fixed in advance. Budget-term uncertainties are given only as standard deviations (error bars).",
+ "disagreements": [
+  {
+   "target": "Li et al. (2018); Zhang et al. (2018): SIO warming during 1998-2015 attributed to enhanced ITF heat transport",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues the 1998 start reflects yearly means contaminated by the 1997-1998 El Niño; low-pass-filtered decadal signals show warming beginning in 1993.",
+   "page": "4",
+   "quote": "Note that the results in these previous studies were based on the yearly mean temperature"
+  },
+  {
+   "target": "Existing studies (Jin et al., 2018; Schwarzkopf & Böning, 2011) emphasizing oceanic waves and circulation adjustment for SWIO decadal variability",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The ECCO heat budget shows air-sea (latent) heat flux is of similar amplitude to, and anticorrelated with, ocean heat advection (r = -0.83).",
+   "page": "14",
+   "quote": "Existing studies have mainly focused on the dominant contribution of oceanic waves and circulation adjustment to the decadal temperature variability in the [...]"
+  },
+  {
+   "target": "Volkov et al. (2017): vertically uniform interannual-to-decadal OHC variability in the South Pacific",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The SIO upper and intermediate layers are out of phase in 2010-2013 and in phase in 2014-2016, unlike the SPO case.",
+   "page": "14",
+   "quote": "This feature is different from the case of the SPO where the interannual-to-decadal OHC variability are predominantly vertically uniform"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "E",
+   "chosen": "8-year low-pass-filtered decadal signal",
+   "alternatives": "yearly mean temperature (as in previous studies)",
+   "reason": "to remove interannual signals such as the 1997-1998 El Niño cooling",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "E",
+   "chosen": "EOF-1 only for the intermediate layer",
+   "alternatives": "other EOF modes",
+   "reason": "other modes insignificant with small percentage of variance",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "R",
+   "chosen": "process analysis restricted to 2010-2016",
+   "alternatives": "full 1992-2017 period",
+   "reason": "ECCO biases relative to observations before 2010 in the intermediate layer",
+   "effect_reported": "yes",
+   "page": "11"
+  },
+  {
+   "node": "V",
+   "chosen": "ECCO surface heat fluxes for the budget",
+   "alternatives": "JRA55 and ERA5 fluxes",
+   "reason": "none given beyond ECCO's closed budget; the alternatives used as validation",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "I",
+   "chosen": "heat budget in Cartesian coordinates over fixed depths",
+   "alternatives": "heat budget along changing isopycnal surfaces",
+   "reason": "to study the regional heat storage; isopycnal analysis deferred to a next study",
+   "effect_reported": "no",
+   "page": "14"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] the similar patterns and time series for both EOF modes, thus validating the accuracy of ECCO",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "all the four products exhibit similar spatial patterns of temperature trends despite some discrepancies in amplitudes",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The JRA55 reanalysis data set was used to validate surface heat fluxes of ECCO.",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We also checked the latent heat flux anomalies in other datasets (ERA5, JRA55) and found similar spatial distributions.",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "All the three observational datasets show a consistent cooling trend from 2010 to 2016.",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "However, ECCO reproduced the observed results better after 2010",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "is also supported by the upward shift of isotherms during 2010–2016 in the observation datasets and ECCO",
+   "page": "13"
+  }
+ ]
+}

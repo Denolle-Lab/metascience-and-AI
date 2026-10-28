@@ -3,8 +3,8 @@
  "script": "tools/roadmap/figures/fig09_sample.py",
  "date": "2026-10-27",
  "private_root": "private",
- "commit_public": "fc67985",
- "commit_private": "d9422ce",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
  "inputs": [
   {
    "file": "private/data/roadmap/derived/gold/pool.json",
@@ -1401,6 +1401,11 @@
    "file": "private/data/roadmap/derived/r2calc/manifest.jsonl",
    "sha256_16": "3a6daaf38b029027",
    "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/r2",
+   "sha256_16": null,
+   "provenance": null
   }
  ],
  "numbers": {
@@ -1412,12 +1417,12 @@
    "Round 1": {
     "Preselected": 600,
     "Eligible": 525,
-    "Coded": 233
+    "Coded": 374
    },
    "Round 2": {
     "Drawn": 277,
     "Eligible": 222,
-    "Coded": null
+    "Coded": 198
    }
   },
   "coding_tags": {
@@ -1426,18 +1431,26 @@
   },
   "coding_folder_present": {
    "Round 1": true,
-   "Round 2": false
+   "Round 2": true
   },
   "coding_attempted": {
-   "Round 1": 235,
-   "Round 2": 0
+   "Round 1": 379,
+   "Round 2": 202
   },
   "coding_failed_validation": {
    "Round 1": [
-    "g22_W4293915783",
-    "g22_W4306167517"
+    "g22_W4291222803",
+    "g22_W4293213379",
+    "g22_W4295882689",
+    "g22_W4308326731",
+    "g22_W4310898194"
    ],
-   "Round 2": []
+   "Round 2": [
+    "g22_W4225349193",
+    "g22_W4283270991",
+    "g22_W4309556479",
+    "g22_W4313418822"
+   ]
   },
   "first_stage_per_cnp_bin": {
    "Round 1": [
@@ -1478,10 +1491,10 @@
     "n_zero": 0
    },
    "Round 1 Coded": {
-    "n": 233,
-    "median": 0.5457,
-    "q25": 0.3422,
-    "q75": 0.7381,
+    "n": 374,
+    "median": 0.5635,
+    "q25": 0.3481,
+    "q75": 0.7852,
     "n_zero": 0
    },
    "Round 2 Drawn": {
@@ -1496,6 +1509,13 @@
     "median": 0.5504,
     "q25": 0.3384,
     "q75": 0.7798,
+    "n_zero": 0
+   },
+   "Round 2 Coded": {
+    "n": 198,
+    "median": 0.5536,
+    "q25": 0.3359,
+    "q75": 0.7831,
     "n_zero": 0
    }
   },
@@ -1515,10 +1535,10 @@
     "n_zero": 0
    },
    "Round 1 Coded": {
-    "n": 233,
-    "median": -3.8205,
+    "n": 374,
+    "median": -3.8468,
     "q25": -4.2376,
-    "q75": -3.4029,
+    "q75": -3.4111,
     "n_zero": 0
    },
    "Round 2 Drawn": {
@@ -1533,6 +1553,13 @@
     "median": -3.8433,
     "q25": -4.2054,
     "q75": -3.457,
+    "n_zero": 0
+   },
+   "Round 2 Coded": {
+    "n": 198,
+    "median": -3.8461,
+    "q25": -4.2376,
+    "q75": -3.4784,
     "n_zero": 0
    }
   },
@@ -1552,11 +1579,11 @@
     "n_zero": 161
    },
    "Round 1 Coded": {
-    "n": 233,
-    "median": 0.0328,
+    "n": 374,
+    "median": 0.0282,
     "q25": 0.0,
-    "q75": 0.0952,
-    "n_zero": 65
+    "q75": 0.0842,
+    "n_zero": 113
    },
    "Round 2 Drawn": {
     "n": 277,
@@ -1571,6 +1598,13 @@
     "q25": 0.008,
     "q75": 0.0905,
     "n_zero": 54
+   },
+   "Round 2 Coded": {
+    "n": 198,
+    "median": 0.0385,
+    "q25": 0.0102,
+    "q75": 0.089,
+    "n_zero": 45
    }
   },
   "is_oa_by_stage": {
@@ -1593,12 +1627,12 @@
     ]
    },
    "Round 1 Coded": {
-    "k": 194,
-    "n": 233,
-    "share": 0.8326,
+    "k": 306,
+    "n": 374,
+    "share": 0.8182,
     "wilson95": [
-     0.7794,
-     0.8751
+     0.7759,
+     0.854
     ]
    },
    "Round 2 Drawn": {
@@ -1618,63 +1652,120 @@
      0.983,
      1.0
     ]
+   },
+   "Round 2 Coded": {
+    "k": 198,
+    "n": 198,
+    "share": 1.0,
+    "wilson95": [
+     0.981,
+     1.0
+    ]
    }
   },
   "coverage_effect_coded_minus_not_coded": {
    "Round 1": {
-    "n_coded": 233,
-    "n_not_coded": 292,
+    "n_coded": 374,
+    "n_not_coded": 151,
     "cnp_cliffs_delta": [
-     0.0879,
-     -0.0119,
-     0.1858
+     0.2871,
+     0.177,
+     0.3816
     ],
     "cnp_median_diff": [
-     0.0708,
-     -0.0095,
-     0.1777
+     0.197,
+     0.1387,
+     0.2431
     ],
     "novelty_pair_cliffs_delta": [
-     0.0648,
-     -0.0371,
-     0.1685
+     0.0052,
+     -0.0961,
+     0.1086
     ],
     "novelty_pair_median_diff": [
-     0.0651,
-     -0.036,
-     0.175
+     0.0388,
+     -0.1413,
+     0.0975
     ],
     "breadth_refs_cliffs_delta": [
-     0.0303,
-     -0.068,
-     0.1289
+     -0.1087,
+     -0.2182,
+     0.0038
     ],
     "breadth_refs_median_diff": [
-     0.0025,
-     -0.0102,
-     0.0166
+     -0.0194,
+     -0.0442,
+     -0.0013
     ],
-    "is_oa_share_coded": 0.8326,
-    "is_oa_share_not_coded": 0.4589,
-    "is_oa_k_not_coded": 134,
+    "is_oa_share_coded": 0.8182,
+    "is_oa_share_not_coded": 0.1457,
+    "is_oa_k_not_coded": 22,
     "is_oa_cliffs_delta": [
-     0.3737,
-     0.3,
-     0.4457
+     0.6725,
+     0.6036,
+     0.7415
     ],
     "is_oa_share_diff": [
-     0.3737,
-     0.3,
-     0.4457
+     0.6725,
+     0.6036,
+     0.7415
+    ]
+   },
+   "Round 2": {
+    "n_coded": 198,
+    "n_not_coded": 24,
+    "cnp_cliffs_delta": [
+     0.0324,
+     -0.1864,
+     0.2551
+    ],
+    "cnp_median_diff": [
+     0.042,
+     -0.0913,
+     0.1675
+    ],
+    "novelty_pair_cliffs_delta": [
+     -0.2306,
+     -0.4301,
+     -0.0271
+    ],
+    "novelty_pair_median_diff": [
+     -0.101,
+     -0.3685,
+     0.1272
+    ],
+    "breadth_refs_cliffs_delta": [
+     0.1829,
+     -0.0667,
+     0.4209
+    ],
+    "breadth_refs_median_diff": [
+     0.0237,
+     -0.0254,
+     0.0419
+    ],
+    "is_oa_share_coded": 1.0,
+    "is_oa_share_not_coded": 1.0,
+    "is_oa_k_not_coded": 24,
+    "is_oa_cliffs_delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "is_oa_share_diff": [
+     0.0,
+     0.0,
+     0.0
     ]
    }
   },
   "coverage_effect_note": "[estimate, 2.5%, 97.5%]; Cliff's delta drawn in (e); median difference for cnp, novelty_pair, breadth_refs and share difference for is_oa in the caption; percentile bootstrap, 2000 resamples per group, generator np.random.default_rng([2026, round index, metric index]), metrics in the order cnp, novelty_pair, breadth_refs, is_oa",
   "data_issues": [
-   "Round 1: 2 codings fail check_coding.validate() and are left out of Coded: g22_W4293915783, g22_W4306167517"
+   "Round 1: 5 codings fail check_coding.validate() and are left out of Coded: g22_W4291222803, g22_W4293213379, g22_W4295882689, g22_W4308326731, g22_W4310898194",
+   "Round 2: 4 codings fail check_coding.validate() and are left out of Coded: g22_W4225349193, g22_W4283270991, g22_W4309556479, g22_W4313418822"
   ],
   "novelty_pair_min": -4.6667,
   "novelty_pair_min_prior_works": 46415
  },
- "caption": "Who is in the sample. Each row is one stage of one round. Rings: the core ring is the OpenAlex topics of the study's principal investigator (the convenor), the broad ring 8 neighbouring Earth-science subfields. Round 1: 600 papers from 2022 preselected, half per ring, with equal numbers per cnp quintile (120 each) on fixed bins of the OpenAlex citation normalized percentile (cnp, a paper's citation rank among works of the same OpenAlex subfield, year and type; seed 2026), so the sample cnp distribution is near-uniform by design: the sample is stratified on this outcome; 525 passed the eligibility screen. Coding ran on the 235 eligible papers with retrieved full text; 2 codings failed the format check (fields, allowed values, step order, quote length) and are excluded, leaving 233 coded papers (Claude Opus 5.5, codebook 1.5.0). Round 2: 277 open-access papers drawn from the rest of the pool, per ring, with equal numbers per cnp quintile where the pool allowed (60 per quintile, lowest quintile 37; seed 2027); 222 eligible; coding batch not yet returned. (a) Citation normalized percentile. The median of the 2022 candidate pool (0.75) is not drawn: the stratified draws are not a like-for-like comparison with it. (b) Rarity of the leading topic pair, -log10(1 + works published 2017 to 2021 that share it). Papers with the same pair share a value; the left end (-4.67, about 46,000 prior works) is the most common pair, and a value of -3.8 means about 6,300 prior works. (c) Share of classified references outside geoscience, square-root axis; 168 of 600 round 1 papers (28%) have none. Points are papers (jittered vertically); boxes give quartiles and median, whiskers 1.5 times the interquartile range. (d) Open-access share with 95% Wilson intervals (axis starts at 40%). The dashed line is the 2022 candidate pool without convenor co-authored papers (n = 14,071; 79% open access). Round 2 is open access by construction (open-access-only draw), so its rows in (d) carry no information about the screen. (e) Coverage effect: coded papers against eligible papers not coded, as Cliff's delta, P(coded > not coded) minus P(coded < not coded) over all pairs; for open access this equals the difference in shares. Bars are 95% percentile bootstrap intervals (2000 resamples within each group). In round 1, 83% of the 233 coded papers are open access, against 46% of the 292 eligible papers not coded (62% of all 525 eligible), a difference of +37 [+30, +45] percentage points. Median differences, coded minus not coded: cnp +0.07 [-0.01, +0.18], rarity +0.07 [-0.04, +0.17], breadth +0.003 [-0.010, +0.017]. Source: derived/{gold,r2}/metrics.json (OpenAlex, retrieved October 2026), round manifests and model codings; figure date 2026-10-27."
+ "caption": "Who is in the sample. Each row is one stage of one round. Rings: the core ring is the OpenAlex topics of the study's principal investigator (the convenor), the broad ring 8 neighbouring Earth-science subfields. Round 1: 600 papers from 2022 preselected, half per ring, with equal numbers per cnp quintile (120 each) on fixed bins of the OpenAlex citation normalized percentile (cnp, a paper's citation rank among works of the same OpenAlex subfield, year and type; seed 2026), so the sample cnp distribution is near-uniform by design: the sample is stratified on this outcome; 525 passed the eligibility screen. Coding ran on the 379 eligible papers with retrieved full text; 5 codings failed the format check (fields, allowed values, step order, quote length) and are excluded, leaving 374 coded papers (Claude Opus 5.5, codebook 1.5.0). Round 2: 277 open-access papers drawn from the rest of the pool, per ring, with equal numbers per cnp quintile where the pool allowed (60 per quintile, lowest quintile 37; seed 2027); 222 eligible; 198 coded. (a) Citation normalized percentile. The median of the 2022 candidate pool (0.75) is not drawn: the stratified draws are not a like-for-like comparison with it. (b) Rarity of the leading topic pair, -log10(1 + works published 2017 to 2021 that share it). Papers with the same pair share a value; the left end (-4.67, about 46,000 prior works) is the most common pair, and a value of -3.8 means about 6,300 prior works. (c) Share of classified references outside geoscience, square-root axis; 168 of 600 round 1 papers (28%) have none. Points are papers (jittered vertically); boxes give quartiles and median, whiskers 1.5 times the interquartile range. (d) Open-access share with 95% Wilson intervals (axis starts at 40%). The dashed line is the 2022 candidate pool without convenor co-authored papers (n = 14,071; 79% open access). Round 2 is open access by construction (open-access-only draw), so its rows in (d) carry no information about the screen. (e) Coverage effect: coded papers against eligible papers not coded, as Cliff's delta, P(coded > not coded) minus P(coded < not coded) over all pairs; for open access this equals the difference in shares. Bars are 95% percentile bootstrap intervals (2000 resamples within each group). In round 1, 82% of the 374 coded papers are open access, against 15% of the 151 eligible papers not coded (62% of all 525 eligible), a difference of +67 [+60, +74] percentage points. Median differences, coded minus not coded: cnp +0.20 [+0.14, +0.24], rarity +0.04 [-0.14, +0.10], breadth -0.019 [-0.044, -0.001]. Source: derived/{gold,r2}/metrics.json (OpenAlex, retrieved October 2026), round manifests and model codings; figure date 2026-10-27."
 }

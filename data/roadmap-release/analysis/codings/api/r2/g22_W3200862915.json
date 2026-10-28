@@ -1,0 +1,518 @@
+{
+ "key": "g22_W3200862915",
+ "doi": "10.5194/gmd-15-3815-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kukreja et al. 2022, Geosci. Model Dev. 15, 3815–3829, published PDF",
+  "Publisher XML converted to located text (jats_text), g22_W3200862915.xml.txt"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off a figure cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "This paper proposes a new method that combines checkpointing methods with error-controlled lossy compression",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W3200862915.xml.txt (published paper, GMD 15, 3815–3829)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: the gradient computation of FWI has a prohibitive memory footprint, estimated for a SEAM-scale problem, and the paper aims to reduce it.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the focus of this paper is to reduce that requirement"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take over the authors' earlier pyRevolve checkpointing software and their earlier result that lossy checkpoint compression can speed up generic adjoint computations, with a performance model.",
+     "page": "§1.3 ¶2; §1.5 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "In previous work, we introduced the open-source software pyRevolve"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Extend pyRevolve to compress checkpoints with the general-purpose ZFP lossy floating-point compressor under an absolute error tolerance (atol).",
+     "page": "§1.3 ¶2; §1.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For this work, we extended pyRevolve to integrate lossy compression."
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Narrow the question to how checkpoint compression errors affect FWI, through five factors: forward error propagation, gradient error, subsampling, shot stacking and convergence.",
+     "page": "§1.5 ¶3–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this work, we evaluate this method on the specific problem of FWI, specifically the solver convergence and accuracy."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Build the reference problem in Devito: smoothed 3-D SEG overthrust velocity model, 80 shots, 8 Hz Ricker source, 2286 time steps, double precision. Shots are generated with a density-bearing equation to avoid inverse crime.",
+     "page": "§3.1 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use Devito to build an acoustic wave propagation experiment."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Define the error metrics for lossy versus reference fields: PSNR, the angle between vectors, and L2 and L-infinity error norms.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We report errors using the following metrics."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Characterize compressibility over every time step at atol 10^-4 (about 1000x early, falling to about 20x late), and pick the least compressible last time step as the reference field.",
+     "page": "§4.1 ¶1–¶3; Figure 4 (p. 3821)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compress every time step of the reference problem using the same compression setting"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compress the reference wave field over a range of atol settings and compare it with the uncompressed field: PSNR falls predictably as atol rises.",
+     "page": "§4.2 ¶1; Figure 7 (p. 3821)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compressed the reference wave field using different absolute tolerance ( a t o l ) settings"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the compressor premise in the appendix: the L-infinity error against atol shows that ZFP respects the set tolerance.",
+     "page": "§3.1 ¶4; Figure A1 (p. 3827)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This plot verifies that ZFP respects the tolerance we set."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Restart forward propagation from a lossy checkpoint (atol 10^-6) and compare it with the run from the original checkpoint over 250 steps: PSNR dips slightly, then stays constant.",
+     "page": "§4.3 ¶1–¶2; Figure 8 (p. 3822)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This tells us that the numerical method is robust to the error induced by lossy compression"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compute full single-shot gradients with compressed checkpoints at several atol settings and compare them with the reference gradient: PSNR is unchanged up to atol 10^-6 and stays at least 80 dB.",
+     "page": "§4.4 ¶1–¶2; Figure 9 (p. 3822); Figure A2 (p. 3827)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The PSNR remains unchanged until an a t o l of 10 - 6"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Re-express the gradient error with a different metric (angle, and norms against compression factor) and vary the number of time steps (NT 1000/2000/4000): the angle stays about 5×10^-4 rad up to atol 10^-2.",
+     "page": "§4.4 ¶3–¶4; Figure 10 (p. 3823); Figure 11 (p. 3823)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we look at the same experiment but through a different metric"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Vary the number of checkpoints over two orders of magnitude at four atol settings: gradient PSNR depends mainly on atol.",
+     "page": "§4.4 ¶5; Figure 12 (p. 3824)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "does not change much when the number of checkpoints is changed by 2 orders of magnitude"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose an untested explanation: the cross-correlation in the gradient acts as an error-correcting step, because the adjoint runs at full precision.",
+     "page": "§4.4 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is likely that the cross-correlation step in the gradient computation is acting as an error-correcting step"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "Stack gradients over shots and compare with a similarly stacked reference: errors do not accumulate, except at the deliberately extreme atol 10^-1.",
+     "page": "§4.5 ¶1–¶2; Figure 13 (p. 3824)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the cumulative error is not growing with the number of shots"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Run 30-iteration 2-D FWI on a slice of the model with compression at atol 10^-1 and 10^-2 and compare with the reference FWI: convergence trajectories overlap and final images are visually indistinguishable.",
+     "page": "§4.6 ¶1–¶2; Figure 16 (p. 3825); Figure 17 (p. 3825); Figure 18 (p. 3825)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the compressed version does indeed follow a very similar trajectory to the original problem"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run gradient subsampling, an industry memory-reduction method, as a baseline and compare its gradient errors at matched compression factors: lossy checkpoint compression gives much smaller errors.",
+     "page": "§4.7 ¶1–¶3; Figure 19 (p. 3826)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As a comparison baseline, we also use subsampling to reduce the memory footprint"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Speculate that optimization iterations cancel gradient errors and that ZFP's smoothing, near-Gaussian zero-mean errors may act as a regularizer (citing Diffenderfer et al. 2019; Tao et al. 2019).",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is even the possibility that these errors in the gradient act as a regularization"
+    },
+    {
+     "n": 19,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take an expectation from Tao et al. (2019) that SZ errors would be nearly uniform with zero mean, to motivate testing other compressors.",
+     "page": "§5 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "we would expect the errors in SZ to be (nearly) uniformly distributed with a zero mean"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that high compression factors leave FWI convergence and the final solution essentially unaffected.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "by using lossy compression, high-compression factors can be achieved without significantly impacting the convergence or final solution of the inversion solver"
+    },
+    {
+     "n": 21,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose further questions: how compression errors interact with the velocity model and source frequency, and how other compressors such as SZ compare.",
+     "page": "§6 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we would like to study the interaction between compression errors and the velocity model"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Phenomenon: how gradient and inversion errors behave under lossy checkpoint compression in FWI",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; errors are computed directly against an uncompressed reference run",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize the accuracy cost of a memory-saving method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; subsampling is used only as a competing baseline method",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions stated; the error-correction and regularization explanations are speculative",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally (atol, checkpoints, time steps, shots) on a synthetic overthrust problem",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across atol, metric, number of time steps, number of checkpoints, stacking and the subsampling baseline",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method characterized as accurate up to high compression factors",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Reviewed by three referees; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "On the overthrust FWI test, lossy ZFP compression of checkpoints reaches high compression factors (reported up to about 100) with only minor effect on gradients, convergence and the final inverted model, and gives smaller errors than subsampling at similar compression.",
+  "page": "§0 ¶4; §6 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The comparison of compressed against reference FWI convergence and final models carries the claim; without it the paper would show only gradient-level errors.",
+  "page": "§4.6 ¶2"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No hypothesis directed the experiments: they are a characterization programme set by the question in §1.5 ¶4. The claim faced tests it could have failed: errors could have grown during propagation, stacking or convergence, and they did accumulate at atol 10^-1 (§4.5 ¶2). But 'minor impact' is judged visually, with no acceptance threshold stated beforehand. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "computer science (data compression)",
+   "item": "ZFP error-bounded lossy floating-point compressor (Lindstrom 2014)",
+   "kind": "method",
+   "page": "§1.4 ¶3–¶4"
+  },
+  {
+   "field": "applied mathematics (automatic differentiation)",
+   "item": "checkpointing schedules for adjoint computation (revolve; Griewank and Walther 2000)",
+   "kind": "method",
+   "page": "§1 ¶2; §1.3 ¶1"
+  },
+  {
+   "field": "signal processing",
+   "item": "compression as bit-rate reduction; peak signal-to-noise ratio as error metric",
+   "kind": "concept",
+   "page": "§1.4 ¶1; §3.2 ¶1"
+  },
+  {
+   "field": "machine learning",
+   "item": "analogy to activation storage during neural-network backpropagation",
+   "kind": "concept",
+   "page": "§1.1 ¶1"
+  },
+  {
+   "field": "cloud computing",
+   "item": "Azure Kubernetes Service with 20 parallel worker instances",
+   "kind": "instrument",
+   "page": "§3.1 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This paper proposes a new method that combines checkpointing methods with error-controlled lossy compression",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "None of the previously mentioned studies combine compression and checkpointing as we do here.",
+   "page": "§1.4 ¶4"
+  },
+  {
+   "quote": "The combined approach presented in this work provides a novel three-way tradeoff.",
+   "page": "Figure 3"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded; the review statement names three referees (p. 3828). The method's computational side and its performance model come from the authors' earlier work (Kukreja et al. 2019a), coded as inherited. Run-time and peak-memory reductions claimed in the abstract are not measured in this paper.\n\nScope of the tests: all tests use one synthetic model (SEG overthrust), one compressor (ZFP), isotropic acoustic physics and double precision. The convergence test is 2-D only, while the gradient tests are 3-D. Statements that other physics, other media and other misfit functions should not change the result (§5 ¶1) are untested extrapolations.\n\nWithin the document: the abstract's 'up to 100' compression factor sits beside Figure 11, which calls the error negligible only up to CF 16. The forward-propagation restart is at step 550 in §4.3 ¶1 but 'about 500' in the Figure 8 caption. 'Minor impact' and 'visually indistinguishable' are judged by eye, with no quantitative acceptance threshold. The error-correction and regularization explanations (§4.4 ¶6, §5 ¶1) are speculative and status none. That file I/O played no role is posited, not tested (§3.1 ¶2).\n\nSub-claims and their statuses: forward-propagation robustness, capability_characterized; gradient error insensitive to the number of checkpoints, capability_characterized; smaller error than subsampling, capability_characterized (one baseline, one problem).\n\nCoding choices: composition coded capability_first because the walk goes new method, characterization, then new questions, with no rivals. It is in fact a characterization against a reference, so the fit is loose (inference). Computational settings (atol, checkpoint counts) are coded as D and V rather than F, since no hypothesis-led conditions are set (inference).",
+ "disagreements": [
+  {
+   "target": "Weiser and Götschel (2012); Boehm et al. (2016); Marin et al. (2016)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that a general, widely used compressor combined with checkpointing is more broadly applicable than task-specific compressors used instead of checkpointing; they offer no head-to-head test.",
+   "page": "§1.4 ¶4",
+   "quote": "[...] these studies use hand-rolled compression algorithms specific to the corresponding task"
+  },
+  {
+   "target": "Nyquist-theorem justification of gradient subsampling",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "They note the theorem gives no upper error bound, and their own subsampling baseline shows larger errors than their method at similar compression (§4.7).",
+   "page": "§1.2 ¶2",
+   "quote": "it is unclear whether an upper bound on the error has been established for this method"
+  },
+  {
+   "target": "subsampling as an industry memory-reduction method",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Gradient angle and L2 errors against compression factor are compared on the same problem (Fig. 19 against Fig. 11).",
+   "page": "§4.7 ¶3",
+   "quote": "the proposed method produces significantly smaller errors for similar compression factors"
+  },
+  {
+   "target": "on-the-fly Fourier transforms (Witte et al. 2019)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Assertion only; no test offered.",
+   "page": "§1.2 ¶1",
+   "quote": "it is not clear whether this method can provide fine-tuned bounds on the solution' [...]"
+  },
+  {
+   "target": "iterative frequency-domain methods (Knibbe et al. 2014)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Assertion only; no test offered.",
+   "page": "§1.1 ¶4",
+   "quote": "can alleviate the memory limit but are not competitive with time domain methods in the total time to solution"
+  },
+  {
+   "target": "hybrid time/frequency-domain methods (Witte et al. 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Assertion about practical difficulty; no test offered.",
+   "page": "§1.1 ¶5",
+   "quote": "this approach can be challenging because the application code must decide the user's discrete set of frequencies"
+  },
+  {
+   "target": "boundary-saving wave field reconstruction",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from the restriction to time-reversible PDEs; not tested.",
+   "page": "§1.1 ¶2",
+   "quote": "the applicability of this method is limited to time-reversible PDEs"
+  },
+  {
+   "target": "Cyr et al. (2015)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Points out that the cited study did not combine checkpointing and compression; no test.",
+   "page": "§1.4 ¶5",
+   "quote": "they do not consider the combination of checkpointing and compression in a single strategy"
+  },
+  {
+   "target": "common expectation that approximate methods give approximate solutions",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their convergence and final-model comparisons show little change in solution error despite large compression error.",
+   "page": "§5 ¶1",
+   "quote": "while it is common to see approximate methods leading to approximate solutions, this is not what we see in our results"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "ZFP general floating-point lossy compressor",
+   "alternatives": "SZ; application-specific compressors of Weiser and Götschel (2012), Boehm et al. (2016), Marin et al. (2016); lossless ZLib, FPZIP",
+   "reason": "ZFP is general, extensively used and studied, has implementations on many hardware platforms, and suits Devito",
+   "effect_reported": "no",
+   "page": "§1.4 ¶2–¶4; §5 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "time-domain approach with lossy checkpoint compression",
+   "alternatives": "boundary-saving reconstruction; MPI domain decomposition; frequency-domain and hybrid methods",
+   "reason": "boundary method limited to time-reversible PDEs; domain decomposition bounded by interconnect; frequency domain more costly",
+   "effect_reported": "no",
+   "page": "§1.1 ¶2–¶5; §1.2 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "lossy checkpoint compression",
+   "alternatives": "gradient subsampling by factor f",
+   "reason": "subsampling is common in industry and lacks an upper error bound",
+   "effect_reported": "yes",
+   "page": "§1.2 ¶2; §4.7 ¶1–¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "isotropic acoustic wave equation",
+   "alternatives": "TTI anisotropic acoustic equation; other physics",
+   "reason": "simplicity; self-adjoint",
+   "effect_reported": "no",
+   "page": "§2 ¶2–¶4; §5 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "data generated with a density-bearing variant of Eq. 1, inversion with Eq. 1",
+   "alternatives": "same equation for data and inversion",
+   "reason": "avoid inverse crime (Peters et al. 2019)",
+   "effect_reported": "no",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "last time step as reference field",
+   "alternatives": "earlier time steps",
+   "reason": "compressibility is worst at the end of the simulation",
+   "effect_reported": "yes",
+   "page": "§4.1 ¶2–¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "2-D slice FWI with fixed 30 iterations",
+   "alternatives": "3-D FWI; running to convergence criteria",
+   "reason": "to make it a practical test problem and easier to compare experiments",
+   "effect_reported": "no",
+   "page": "§4.6 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This problem solved in double precision is what we shall refer to as the reference problem in the rest of this paper.",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This plot verifies that ZFP respects the tolerance we set.",
+   "page": "Figure A1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we look at the same experiment but through a different metric",
+   "page": "§4.4 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the number of time steps do not appear to change the error by much (for a constant number of checkpoints)",
+   "page": "§4.4 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We also repeated the gradient computation for different number of checkpoints.",
+   "page": "§4.4 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "As a comparison baseline, we also use subsampling to reduce the memory footprint as a separate experiment and track the errors.",
+   "page": "§4.7 ¶1"
+  }
+ ]
+}

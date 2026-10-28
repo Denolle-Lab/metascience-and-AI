@@ -3,19 +3,19 @@
  "script": "tools/roadmap/figures/fig10_cost.py",
  "date": "2026-10-27",
  "private_root": "private",
- "commit_public": "fc67985",
- "commit_private": "d9422ce",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
  "inputs": [
   {
    "file": "private/analysis/codings/api/state.json",
-   "sha256_16": "bbea9eb9f610412e",
+   "sha256_16": "be915eefcd488360",
    "provenance": null
   }
  ],
  "numbers": {
   "rounds_drawn": [
    "round 1",
-   "round 2 (projected, in flight)"
+   "round 2 (measured)"
   ],
   "cap_usd": 250.0,
   "price_per_mtok_usd": {
@@ -64,12 +64,12 @@
    },
    "calc1": {
     "experiment": "E1",
-    "n_valid": 233,
-    "median_usd": 0.3103,
-    "mean_usd": 0.3196,
+    "n_valid": 374,
+    "median_usd": 0.2922,
+    "mean_usd": 0.3019,
     "min_usd": 0.1567,
     "max_usd": 1.0133,
-    "sum_usd": 74.47
+    "sum_usd": 112.92
    },
    "gold-r2": {
     "experiment": "E2",
@@ -88,6 +88,15 @@
     "min_usd": 0.2578,
     "max_usd": 0.7767,
     "sum_usd": 26.76
+   },
+   "r2": {
+    "experiment": "E7",
+    "n_valid": 198,
+    "median_usd": 0.2938,
+    "mean_usd": 0.3007,
+    "min_usd": 0.1502,
+    "max_usd": 0.5752,
+    "sum_usd": 59.54
    }
   },
   "a_x_axis_max_usd": 0.8388,
@@ -131,31 +140,14 @@
     "cumulative_usd": 6.64
    },
    "E1": {
-    "recorded_usd": 74.47,
-    "n_valid": 233,
+    "recorded_usd": 112.92,
+    "n_valid": 374,
     "n_papers": 379,
-    "n_requests": 409,
-    "n_requests_without_cost_record": 31,
+    "n_requests": 421,
+    "n_requests_without_cost_record": 48,
     "n_requests_in_unreferenced_batches": 0,
     "unreferenced_batches": [],
-    "cumulative_usd": 81.11,
-    "n_in_flight": 146,
-    "projected_usd": 46.23,
-    "projected_ci95_usd": [
-     44.48,
-     48.09
-    ],
-    "projected_cumulative_usd": 127.34,
-    "projected_cumulative_ci95_usd": [
-     125.59,
-     129.2
-    ],
-    "projection_basis": "n in flight x mean E1 batch cost per valid coding ($0.3166, n = 232); CI from 5000 bootstrap sums of E1 batch costs, sampling of E1 costs only; projects recorded (valid-coding) spend",
-    "alt_basis_all_batch_mean_usd": 0.3396,
-    "alt_basis_n": 361,
-    "alt_projected_usd": 49.57,
-    "alt_projected_cumulative_usd": 130.68,
-    "e1_mean_incl_full_price_usd": 0.3196
+    "cumulative_usd": 119.56
    },
    "E2": {
     "recorded_usd": 15.72,
@@ -165,7 +157,7 @@
     "n_requests_without_cost_record": 10,
     "n_requests_in_unreferenced_batches": 0,
     "unreferenced_batches": [],
-    "cumulative_usd": 96.83
+    "cumulative_usd": 135.28
    },
    "E3": {
     "recorded_usd": 26.76,
@@ -175,62 +167,45 @@
     "n_requests_without_cost_record": 17,
     "n_requests_in_unreferenced_batches": 0,
     "unreferenced_batches": [],
-    "cumulative_usd": 123.59
+    "cumulative_usd": 162.04
    },
    "E7": {
-    "recorded_usd": 0,
-    "n_valid": 0,
+    "recorded_usd": 59.54,
+    "n_valid": 198,
     "n_papers": 202,
-    "n_requests": 202,
-    "n_requests_without_cost_record": 0,
+    "n_requests": 218,
+    "n_requests_without_cost_record": 20,
     "n_requests_in_unreferenced_batches": 0,
     "unreferenced_batches": [],
-    "cumulative_usd": 123.59,
-    "n_in_flight": 202,
-    "projected_usd": 63.96,
-    "projected_ci95_usd": [
-     61.84,
-     66.02
-    ],
-    "projected_cumulative_usd": 187.55,
-    "projected_cumulative_ci95_usd": [
-     185.43,
-     189.61
-    ],
-    "projection_basis": "n in flight x mean E1 batch cost per valid coding ($0.3166, n = 232); CI from 5000 bootstrap sums of E1 batch costs, sampling of E1 costs only; projects recorded (valid-coding) spend",
-    "alt_basis_all_batch_mean_usd": 0.3396,
-    "alt_basis_n": 361,
-    "alt_projected_usd": 68.59,
-    "alt_projected_cumulative_usd": 192.18,
-    "e1_mean_incl_full_price_usd": 0.3196
+    "cumulative_usd": 221.59
    }
   },
-  "b_total_recorded_usd": 123.59,
-  "b_headroom_to_cap_usd": 126.41,
+  "b_total_recorded_usd": 221.59,
+  "b_headroom_to_cap_usd": 28.41,
   "cd_drivers": {
    "c": {
     "x": "prompt",
-    "n": 362,
-    "n_batch": 361,
-    "pearson_r_batch": 0.908,
-    "share_of_spend": 0.476,
-    "median_tokens": 77866,
-    "min_tokens": 29781,
+    "n": 701,
+    "n_batch": 700,
+    "pearson_r_batch": 0.909,
+    "share_of_spend": 0.455,
+    "median_tokens": 73170,
+    "min_tokens": 25657,
     "max_tokens": 260289,
-    "x_axis_from_thousands": 15.0
+    "x_axis_from_thousands": 10.0
    },
    "d": {
     "x": "output",
-    "n": 362,
-    "n_batch": 361,
-    "pearson_r_batch": 0.844,
-    "share_of_spend": 0.524,
-    "median_tokens": 17069,
+    "n": 701,
+    "n_batch": 700,
+    "pearson_r_batch": 0.83,
+    "share_of_spend": 0.545,
+    "median_tokens": 16660,
     "min_tokens": 9322,
     "max_tokens": 32822,
     "x_axis_from_thousands": 5.0
    }
   }
  },
- "caption": "Cost of coding papers with Claude Opus 5.5. Tokens are the word-piece units a language model reads and writes; cost is billed per token. Cached input is instruction text reused across requests at a reduced price. Batch requests run asynchronously at half price (Anthropic Message Batches API). A valid coding passes the format check of tools/check_coding.py. (a) Cost per valid coding by run, one point per paper, ink tick at the median; rows grouped by experiment: E0 format test (four runs of 6 papers, 4 to 6 valid codings each, codebook 1.4.0), E1 first calculation, E2 test-retest on gold papers, E3 coding with the open review discussion (codebook 1.5.0 for E1 to E3). E1 cost per coding: median $0.31, mean $0.32 (n = 233). The axis stops at $0.84; the one coding run at full price outside the batch API ($1.01) is drawn at the edge. (b) Cumulative spend by experiment in order against the $250 cap enforced at submission; each bar is labelled with its increment and the running total (recorded total $123.59). Row labels give valid codings, distinct papers submitted and requests; requests include resubmissions and retries, so they exceed the number of papers (E1: 409 requests for 379 papers; E2: 60 requests for 51 papers; E3: 75 requests for 61 papers). E0 was submitted twice (2026-10-25 07:56, then 08:13 under the same tags and papers); the first submission (24 requests) has no cost record because the rerun overwrote it, so E0 spend covers the second submission only. Hatched: 202 round-2 requests still in flight, projected at the mean cost of an E1 batch coding ($0.3166, n = 232): ~$64, 95% interval 62 to 66 from 5000 bootstrap sums of E1 batch costs, giving a total of ~$188. The interval reflects sampling of E1 per-paper costs only, not differences between the round-1 and round-2 corpora (round 2 is open access only, spread over 157 journals, with XML for 105 papers) or retries, and it projects recorded (valid-coding) spend, not billed spend. At the mean of all batch codings ($0.34, n = 361; the basis of an earlier ~$52 estimate) the projection is $69 (total $192), above the interval. The estimate printed at submission for the round-2 batches (pages times a fixed token rate) was $142.55, which with the recorded $123.59 would give $266; read it as an upper bound. A further 146 round-1 requests submitted on the figure date are in flight and are not projected here (their requests are counted in the E1 row label). (c, d) Cost per coding against prompt tokens (input plus cache) and output tokens for all 362 valid codings (361 batch, 1 at full price, drawn hollow). Output tokens account for 52% of recorded spend. Cost is a linear function of the token counts, so Pearson r describes how tokens and cost covary across papers, not a causal driver. Cost is token usage times the price table in tools/code_papers.py, halved for batch requests, and is recorded only for codings that passed validation: requests that hit the output limit, failed validation, or were overwritten by a rerun were billed but are not counted, so spend is a lower bound. Cost record read 2026-10-27; file paths in the provenance fields of this file."
+ "caption": "Cost of coding papers with Claude Opus 5.5. Tokens are the word-piece units a language model reads and writes; cost is billed per token. Cached input is instruction text reused across requests at a reduced price. Batch requests run asynchronously at half price (Anthropic Message Batches API). A valid coding passes the format check of tools/check_coding.py. (a) Cost per valid coding by run, one point per paper, ink tick at the median; rows grouped by experiment: E0 format test (four runs of 6 papers, 4 to 6 valid codings each, codebook 1.4.0), E1 first calculation, E2 test-retest on gold papers, E3 coding with the open review discussion (codebook 1.5.0 for E1 to E3). E1 cost per coding: median $0.29, mean $0.30 (n = 374). The axis stops at $0.84; the one coding run at full price outside the batch API ($1.01) is drawn at the edge. (b) Cumulative spend by experiment in order against the $250 cap enforced at submission; each bar is labelled with its increment and the running total (recorded total $221.59). Row labels give valid codings, distinct papers submitted and requests; requests include resubmissions and retries, so they exceed the number of papers (E1: 421 requests for 379 papers; E2: 60 requests for 51 papers; E3: 75 requests for 61 papers). E0 was submitted twice (2026-10-25 07:56, then 08:13 under the same tags and papers); the first submission (24 requests) has no cost record because the rerun overwrote it, so E0 spend covers the second submission only. (c, d) Cost per coding against prompt tokens (input plus cache) and output tokens for all 701 valid codings (700 batch, 1 at full price, drawn hollow). Output tokens account for 55% of recorded spend. Cost is a linear function of the token counts, so Pearson r describes how tokens and cost covary across papers, not a causal driver. Cost is token usage times the price table in tools/code_papers.py, halved for batch requests, and is recorded only for codings that passed validation: requests that hit the output limit, failed validation, or were overwritten by a rerun were billed but are not counted, so spend is a lower bound. Cost record read 2026-10-27; file paths in the provenance fields of this file."
 }

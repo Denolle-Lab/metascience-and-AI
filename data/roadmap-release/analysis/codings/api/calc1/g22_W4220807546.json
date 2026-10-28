@@ -1,0 +1,375 @@
+{
+ "key": "g22_W4220807546",
+ "doi": "10.1029/2021jb022649",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Zhang, Q., Zhang, W., Wu, X., Zhang, J., Kuang, W., & Si, X. (2022). Deep learning for efficient microseismic location using source migration-based imaging. JGR Solid Earth, 127, e2021JB022649 (published PDF, 19 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (these match the printed 'N of 19' journal pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, these methods may not produce accurate results if there are polarity reversals in the surface records for a double-couple or even a general moment [...]",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Zhang et al. 2022, JGR Solid Earth, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem that polarity reversals from shear sources give quasi-symmetric, unfocused migration images, so the maximum imaging condition mislocates events.",
+     "page": "1, 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these methods may not produce accurate results if there are polarity reversals in the surface records"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "methods",
+     "action": "The authors review published remedies (data-domain polarity correction with characteristic functions or moment-tensor inversion, and imaging-domain conditions for TRI) as the existing approaches to the problem.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "previous studies have developed many traditional techniques, which can be divided into two major categories"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors simulate a 2D dip-slip source in a homogeneous medium and show that TRI, Kirchhoff summation and diffraction stacking all give quasi-symmetric images with near-zero value at the true source.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use a simple test to visually demonstrate the problem of polarity reversal for a 2D situation."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors design a 3D U-Net that takes 4D diffraction-stacking images (time as channels) as input and regresses Gaussian labels centred on the true source, treating the network as an imaging condition.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We solve this regression problem by using a 3D U-Net architecture which is modified from the widely used 2D U-Net"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Synthetic waveforms for 800 random double-couple sources on the real 758-geophone array are computed with the coauthor's earlier elastic finite-difference code.",
+     "page": "6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The forward waveforms are computed using the elastic wave finite-difference code developed by Zhang and Chen (2006)"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors add real pre-event field noise at SNR 1 to half the samples, split the data 720/80 into training and validation sets, and train with MSE loss until the loss converges after 200 epochs.",
+     "page": "6, 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we add different realistic noise waveforms to half samples (400 samples) of the training datasets and validation datasets"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "On 80 validation events the network locations are compared with the true locations and with plain diffraction-stacking maxima; most errors are zero and the rest are within one grid cell.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The predicted locations have better consistency with true locations than diffraction stacking locations."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors test the network on 400-sample sets at SNR 1/2 and 1/3 (performance degrades at 1/3) and on inputs built with velocity models perturbed by up to ±15%.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use the trained network to predict the noisy datasets with SNR of 1/2 and 1/3."
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "observation",
+     "action": "Field data recorded during hydraulic fracturing of coalbed methane are taken up and preprocessed (demean, 5-70 Hz band-pass, trace normalization, statics), and an equivalent RMS velocity is calibrated on the first visible event.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "during the hydraulic fracturing of coalbed methane in North China"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The trained network locates two individual field events of higher and lower SNR, then scans 25 s of continuous records in overlapping 320 ms windows with a detection threshold of six times background.",
+     "page": "11-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We further apply the trained network to 25 s continuous surface records."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "For two close detected events the authors overlay predicted P arrivals on the field waveforms to check the locations, and they report a visible event that the procedure missed.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To verify the reliability of these two events detected by our trained network"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors apply the network to 30 min of field data and detect and locate 598 events, mapped in horizontal and vertical sections.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we apply the trained network on 30 min of field data and obtain 598 events with the same threshold"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Without retraining, the network is applied to single synthetic samples from a sparse 50-receiver array and a star-like 120-receiver array, including a sparse-array sample with real noise.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We apply the trained network to these two test samples with different geometries."
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors keep the method as able to detect and locate low-SNR microseismic events, while noting missed detections.",
+     "page": "15-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the application of the field data, our proposed location method can reliably detect and locate microseismic events with low SNR."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Quasi-symmetric, unfocused migration images caused by polarity reversal from shear sources",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; source location is latent and is inferred from migration images",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a learned imaging condition that focuses diffraction-stacking images for location and detection",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Published polarity-correction and imaging-condition methods are cited; only plain diffraction stacking is tested as a baseline",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed as rival predictions; network locations are compared with the baseline's",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set in synthetic tests (known sources); found in field hydraulic-fracturing records",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives SNR 1/2, velocity perturbation and other array geometries; degrades at SNR 1/3; misses some field events",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept as a characterized capability",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A 3D U-Net trained only on synthetic diffraction-stacking images focuses the quasi-symmetric pattern into a Gaussian at the source. It locates synthetic events within about one grid cell at SNR 1 and mostly within 100 m at SNR 1/2, and it detects and locates low-SNR field microseismic events.",
+  "page": "8-9, 15-16"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Recasting focusing of diffraction-stacking images as a regression of Gaussian labels by a 3D U-Net trained on synthetic sources is the step without which the claim would not exist.",
+  "page": "5-6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No hypothesis about nature directed data acquisition. The synthetic data were generated to train and test the method, and the field data came from routine fracturing monitoring. The synthetic tests against known sources could have failed, and at SNR 1/3 they partly did (about 69% within 100 m, Table 2, p. 8). The field application has no reference catalog; the only check is a P-arrival overlay on two events (p. 13). Nothing was fixed in advance: the detection threshold was set after inspection 'because the triggers of events are obvious' (p. 12)."
+ },
+ "imports": [
+  {
+   "field": "computer science / biomedical image analysis",
+   "item": "U-Net convolutional architecture (Ronneberger et al. 2015), originally for cell image segmentation, extended to 3D",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "machine learning",
+   "item": "Deep convolutional neural network regression trained with MSE loss and a scheduled learning rate",
+   "kind": "method",
+   "page": "8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "In this study, we introduce deep learning to predict locations from source migration images instead of from waveforms",
+   "page": "13"
+  },
+  {
+   "quote": "We apply deep learning to the microseismic location using source migration-based imaging and achieve better accuracy and efficiency",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded. (1) The only baseline is plain diffraction-stacking maxima; none of the published polarity-correction or imaging-condition methods reviewed on p. 3 is run for comparison (inference from absence). (2) The 'held-out' validation set comes from the same generator, array and velocity model as the training set. (3) The efficiency claim is not quantified; no runtime or cost comparison is reported (inference from absence). (4) Field results have no ground-truth catalog. The 598-event detection over 30 min is a sub-claim with status none (no uncertainty or false-detection rate given), checked only by a P-arrival overlay on two events, and one visible event was missed. (5) The discussion claim that the procedure is 'less dependent on different velocity models and geometries' is a sub-claim at best_explanation. It rests on single synthetic samples per geometry, while Figure 12 shows location errors rising to roughly 250-280 m at ±15% velocity error. (6) Composition is none_fits: this is a method-development walk (problem, then new method, then synthetic validation, then field demonstration) with no rival hypotheses about nature. capability_first does not fit because the question precedes the capability.",
+ "disagreements": [
+  {
+   "target": "Maximum imaging condition in migration-based location (Kao & Shan 2004; Duncan 2005; Artman et al. 2010)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A 2D simulation (Figure 1) and the validation comparison (Figure 8) show diffraction-stacking maxima displaced from true sources under polarity reversal.",
+   "page": "3, 5, 9",
+   "quote": "migration imaging cannot obtain the true source location by directly using the maximum imaging condition"
+  },
+  {
+   "target": "Traditional constant-threshold source detection",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Asserted from the multi-extremum character of unfocused images; not tested directly, and the paper itself uses a constant threshold on network outputs.",
+   "page": "3",
+   "quote": "the traditional source detection based on a constant threshold often has false triggering due to the multi-extremums"
+  },
+  {
+   "target": "Waveform-based deep learning location (Kriegerowski et al. 2019; Perol et al. 2018; Saad & Chen 2020; Zhang et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that training on migration images separates the velocity dependence from the learning step, supported by single-sample tests on other array geometries.",
+   "page": "13-14",
+   "quote": "the training dataset (synthetic or real waveforms) depends on a correct velocity structure and observation system"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Diffraction stacking as the migration whose images feed the network",
+   "alternatives": "Wave-equation time-reverse imaging; Kirchhoff summation",
+   "reason": "Considering the calculation costs; diffraction stacking is more efficient",
+   "effect_reported": "no",
+   "page": "3-4"
+  },
+  {
+   "node": "H",
+   "chosen": "Correct the migration image with a learned imaging condition",
+   "alternatives": "Correct polarity before migration (characteristic functions, moment tensor inversion, focal mechanism search); hand-designed imaging conditions (cross-correlation, interferometric, energy, geometric-mean)",
+   "reason": "Due to the good performance of the U-Net on feature extraction",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Double-couple sources only in training",
+   "alternatives": "General moment tensor or non-double-couple sources",
+   "reason": "Microseismic events recorded by the surface array are dominated by shear failure",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Detection threshold of six times background",
+   "alternatives": "The usual three times background (Trojanowski & Eisner 2017)",
+   "reason": "Because the triggers of events are obvious",
+   "effect_reported": "no",
+   "page": "12"
+  },
+  {
+   "node": "I",
+   "chosen": "Equivalent RMS velocity calibrated by the first visible event",
+   "alternatives": "Layered velocity model",
+   "reason": "Lack of a useable layer velocity model in the target area",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "V",
+   "chosen": "Apply the network trained on the dense array directly to other geometries",
+   "alternatives": "Retrain with the same geometry as the prediction data, a more accurate velocity model and real noise",
+   "reason": "Theoretically the trained network transfers; retraining is said to be better in practice",
+   "effect_reported": "no",
+   "page": "14"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "After the training, we test the network on the validation datasets to verify the effectiveness of the trained network.",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The predicted locations have better consistency with true locations than diffraction stacking locations.",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we count the location errors of the prediction for 400 synthetic samples with SNR of 1/2 and another 400 samples with SNR of 1/3",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To check the sensitivity of the proposed method against velocity model perturbation",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "overlap the P wave arrivals computed by located events on the waveforms",
+   "page": "13"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We apply the trained network to these two test samples with different geometries.",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We extract the real noise for the same receivers in this sparse array and add the noise to the synthetic waveform.",
+   "page": "14"
+  }
+ ]
+}

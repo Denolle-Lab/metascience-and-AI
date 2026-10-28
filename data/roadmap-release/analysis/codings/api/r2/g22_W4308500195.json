@@ -1,0 +1,443 @@
+{
+ "key": "g22_W4308500195",
+ "doi": "10.1007/s44195-022-00029-9",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Opio et al. 2022, Terrestrial, Atmospheric and Oceanic Sciences 33:29, published PDF (16 pages)",
+  "Publisher XML full text converted with tools/jats_text.py (g22_W4308500195.xml.txt)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure label with the PDF page counted from 1 in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "but no evaluation has so far been done for gaseous species.",
+  "page": "§1 ¶4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Opio et al. 2022 published text (XML, with PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the aim of evaluating a chemical transport model (WRF-chem) for biomass-burning NO2 and CO over data-sparse East Africa, and of reducing its bias with two correction methods.",
+     "page": "§1 ¶4; §1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, such models need to be evaluated to understand their errors and biases before they are considered for future modeling applications."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Obtained OMI tropospheric NO2 columns (cloud fraction below 30%) and MOPITT v8 CO columns as the observational reference.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Only data with < 30% cloud fraction were used."
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran WRF-chem 4.3 at 23 km in monthly runs from 2010 to 2016, with NCEP FNL meteorology, CAM-chem chemical boundaries, MEGAN, EDGAR-HTAP v2.2, FINN v1.5 fire emissions and the RADM2 chemistry.",
+     "page": "§2.2 ¶1; Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Several inputs were required to run WRF-chem."
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed a like-for-like comparison: recomputed OMI NO2 with model air mass factors (Souri et al.), applied MOPITT averaging kernels and a priori to model CO, and regridded observations to the model grid by bilinear interpolation.",
+     "page": "§2.3 ¶1-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the satellite retrieval sensitivity needs to be accounted for in order to minimize the model—observation mismatch"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built two bias-correction methods: a deep convolutional autoencoder (four convolution and pooling layers, Adam optimizer, batch size 1 and 250 epochs chosen after several trial rounds) and additive linear scaling from 48-month means.",
+     "page": "§2.4 ¶1-3; §2.5 ¶1; Table 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The algorithms had two parts, the encoder and the decoder (Fig. 2)."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Fixed the evaluation metrics (NMB, RMSE, Pearson R) and scatter plots for WRF-chem, WRF-LS and WRF-DCA.",
+     "page": "§2.6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Three test metrics were used to evaluate the performance of WRF-chem, WRF-LS and WRF-DCA."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Examined the deseasonalized 2005-2020 satellite time series and identified the NO2 peaks (2010, 2012, 2015) and the single CO peak (June 2015 to May 2016).",
+     "page": "§3.1 ¶1; Fig. 3 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The 2012 peak had the highest NO2 amount."
+    },
+    {
+     "n": 8,
+     "node": "F",
+     "mode": "observation",
+     "action": "Selected the highest-abundance periods (NO2 in 2012; CO from June 2015 to May 2016) as the test conditions, justified as the highest-exposure events.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, these peak periods have been chosen for simulation using WRF-chem."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Set up held-out data for the correction methods: training on non-overlapping years, a separate validation year, and testing on the target period only.",
+     "page": "§3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "data for 2010, 2011, 2013 and 2014 were used for model training while data for 2015 was used for validation"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared seasonal WRF-chem NO2 maps with OMI and found overestimation where no NO2 was observed, a misplaced maximum in DJF and SON, and a correctly placed but overestimated JJA maximum.",
+     "page": "§3.2 ¶1-2; Fig. 4 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When WRF-chem was applied at 23 km resolution, it overestimated NO2 in areas where NO2 was not observed."
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "methods",
+     "action": "Applied WRF-LS and WRF-DCA to the 2012 NO2 test year; both reduced the one-directional overestimation, but both increased the underestimation where the bias ran in two directions.",
+     "page": "§3.2 ¶3-5; Fig. 4 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When the bias correction models, WRF-LS and WRF-DCA were applied, they both reduced the majority of the overestimation bias"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Scored monthly and seasonal NO2 metrics: WRF-chem NMB 3.51; LS cut NMB by 76.5% and DCA by 90.2%; DCA raised the seasonal correlations while LS barely changed them.",
+     "page": "§3.2 ¶6-7; Fig. 5 (p. 9); Fig. 6 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By contrast, WRF-DCA reduced the NMB by an average of 3.2 (90.2%)"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared WRF-chem CO with MOPITT: the maxima were misplaced in SON and MAM, CO above 1.8e18 molecules/cm2 was underestimated, the mean NMB was -0.063 and the correlation was low.",
+     "page": "§3.3 ¶1, ¶3; Fig. 7 (p. 11); Fig. 8 (p. 12); Fig. 9 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 8 shows that WRF-chem underestimated the CO VCD for 8 months and overestimated it for only 4 months."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Scored the corrections for CO: LS changed little, DCA increased the underestimation, and neither improved the correlation.",
+     "page": "§3.3 ¶2-3; Fig. 7 (p. 11); Fig. 9 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In summary, the changes made by WRF-LS and WRF-DCA had no positive impact."
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed explanations for the model biases after the comparison: FINN overestimates NOx fire emissions and underestimates CO, and the RADM2 setup lacks plume rise.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similarly, the underestimation of CO could indicate an underestimation of CO emission in the FINN data."
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Took from Kumar et al. (2012) the expectation that plume-rise parameterization raises CO columns by 10-50%, in support of the plume-rise explanation.",
+     "page": "§4 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "inclusion of parameterization with this function can increase CO column abundances by about 10–50%"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Explained the outcomes of the corrections: CO failed because the training years had no peak of comparable magnitude; two-directional NO2 bias was attributed to small training data; DCA's advantage to non-linearity and spatial filters.",
+     "page": "§4 ¶2-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By contrast, for CO, the target study period was the only CO peak of such magnitude in the entire observation record used."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Retained the characterization of WRF-chem over East Africa: it captures seasonality, overestimates NO2 and underestimates CO, with the bias attributed first to the FINN inventory.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The evaluation highlighted a major overestimation of NO2 and an underestimation of CO over the region"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retained the deep convolutional autoencoder as the stronger correction method on the basis of the NO2 results, noting both methods' sensitivity to the training data.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is thus fit to consider it as the stronger correction method."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Seasonal biomass-burning NO2 and CO over East Africa, seen in satellite columns and MODIS fire counts",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Columns observed by OMI and MOPITT; the model's skill is not, so the model must be evaluated",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize WRF-chem bias and reduce it with bias-correction methods",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses before testing; LS and DCA compared as competing correction methods; emission and plume-rise explanations offered after the fact",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions computed for rival explanations; only correction methods scored on held-out data",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: peak-abundance periods chosen from the satellite record",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "NO2 peaks recur (2010, 2012, 2015); the CO peak is unique in the record, which the authors blame for the CO correction failure",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Corrections tested on held-out years and on a second species (fails for CO); no sensitivity tests of the WRF-chem setup",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "WRF-chem biased (NO2 high, CO low); DCA best for NO2; both corrections fail for CO",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Over East Africa, WRF-chem reproduces the seasonality of biomass-burning NO2 and CO but overestimates NO2 (mean NMB 3.51) and underestimates CO, and a deep convolutional autoencoder reduces the NO2 bias more than linear scaling (NMB down 90.2%), while neither correction improves CO.",
+  "page": "§0 ¶1; §5 ¶2-3"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "Without comparing the retrieval-consistent WRF-chem columns with OMI and MOPITT, there would be no characterization of the model's bias, which is the paper's main claim.",
+  "page": "§3.2 ¶6; §3.3 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The observations were existing satellite archives; the test periods were chosen as the peak-abundance years after inspecting the record (§3.1 ¶2), not by a hypothesis. The model evaluation and the held-out test of the corrections could have failed, and the CO corrections did fail (§3.3 ¶3). However, no adequacy threshold was set in advance, and the bias explanations (FINN, plume rise, training data) were not tested (§4 ¶1-3). The training, validation and test split separates the test years from training (§3.1 ¶3), but the hyperparameters were set 'after several rounds of experiments' without saying on which data (§2.4 ¶3). Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "deep convolutional autoencoder for denoising, used as a bias-correction method",
+   "kind": "method",
+   "page": "§1 ¶5; §2.4 ¶1-2"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "ReLU activation (Nair and Hinton 2010) and the Adam optimizer (Kingma and Ba 2014)",
+   "kind": "method",
+   "page": "§2.4 ¶1, ¶3"
+  },
+  {
+   "field": "computer science / software",
+   "item": "TensorFlow 2 and Keras deep-learning library",
+   "kind": "method",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "field": "image processing / electron microscopy",
+   "item": "bilinear interpolation for co-locating image pixels (Kirkland 2010)",
+   "kind": "method",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "field": "public health",
+   "item": "disease burden of NO2 and CO exposure (WHO 2018), used to justify choosing the peak periods",
+   "kind": "concept",
+   "page": "§1 ¶1; §3.1 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "to simulate, for the first time, the distribution of NO2 during the year 2012 and CO during the period June 2015 to May 2016",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "[...] the first evaluation of a CTM over the region for NO2 and CO from biomass burning.",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "It is the first time that a chemical transport model (CTM) has been applied to study these gas abundances over this region.",
+   "page": "§5 ¶1"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. Composition is none_fits. The walk is a model-evaluation benchmark: simulate, compare with existing satellite records, then apply and score two correction methods. No rivals are posed before the test, no phenomenon is established, and no forecast is frozen. Sub-claims and their statuses: (a) WRF-chem bias characterized, capability_characterized (headline); (b) DCA stronger than LS, capability_characterized for NO2 only, since it fails for CO; (c) FINN emission errors and missing plume rise cause the bias, offered but untested (status none, inference from §4 ¶1); (d) CO corrections failed because the training data lacked a comparable peak, and two-directional NO2 bias stems from small training data, offered but untested ('even though it's not demonstrated in this study', §4 ¶3; status none); (e) the abstract's general claim that deep learning 'has a strong ability to improve the estimates of numerical models' goes beyond the evidence, given the CO result. WRF-chem has no sensitivity tests (inventories, chemistry option, resolution); MOZART with plume rise is only recommended. The autoencoder was trained once, with no repeated stochastic runs reported. The data used for the hyperparameter search is not stated. Inferred inconsistencies in the text: the abstract gives average R of 0.44 (NO2) and 0.13 (CO), but the seasonal values in Fig. 6 average about 0.35 and §3.3 ¶3 states 0.048 for CO. §4 ¶2 cites 'Figure 2' for the training-data magnitudes, but that is the architecture figure (Fig. 3 is meant). The Fig. 1 caption reads 'December to January'. 'Increased by 2' in §2.4 ¶2 means doubled. The data are available on request only; the code is on GitHub.",
+ "disagreements": [
+  {
+   "target": "FINN v1.5 fire emission inventory (Wiedinmyer et al. 2011)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The systematic NO2 overestimate and CO underestimate against OMI and MOPITT are read as signs of biased FINN NOx and CO emissions over East Africa, without a test that isolates the inventory.",
+   "page": "§4 ¶1",
+   "quote": "The overestimation of NO2 could indicate an overestimation of nitrogen oxide (NOx = NO + NO2) fire emissions in [...] ."
+  },
+  {
+   "target": "EDGAR-HTAP v2.2 anthropogenic inventory over Africa (Janssens-Maenhout et al. 2015)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The authors note that the inventory fills Africa with EDGAR v4.3 estimates instead of an actual regional inventory, and call for data campaigns.",
+   "page": "§5 ¶2",
+   "quote": "the EDGAR-HTAP inventory does not have an actual inventory to use over Africa"
+  },
+  {
+   "target": "Expectation that deep-learning bias correction generalizes beyond its training data",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "On CO, whose test-period peak exceeded anything in the training years, the autoencoder worsened the WRF-chem estimates.",
+   "page": "§4 ¶2",
+   "quote": "even though WRF-DCA is based on a deep learning algorithm and is expected to be able to generalize data, it was not able to generalize"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "OMI for NO2 and MOPITT v8 for CO",
+   "alternatives": "SCIAMACHY, GOME-2, TROPOMI (NO2); SCIAMACHY, TROPOMI (CO)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "F",
+   "chosen": "Peak-abundance periods (NO2 in 2012; CO from June 2015 to May 2016)",
+   "alternatives": "other years of 2005-2020",
+   "reason": "highest potential population exposure; important to evaluate high-risk events",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Regrid the coarser satellite data to the 23 km WRF-chem grid",
+   "alternatives": "keep the coarser observation grid",
+   "reason": "retain the higher resolution to give the autoencoder more data points",
+   "effect_reported": "no",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "Batch size 1 and 250 training epochs",
+   "alternatives": "other epoch and batch-size settings tried in several rounds of experiments (not named)",
+   "reason": "best compromise among accuracy, resolution and computational time",
+   "effect_reported": "no",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "node": "R",
+   "chosen": "Both linear scaling and the deep convolutional autoencoder, compared head to head",
+   "alternatives": "each other (traditional linear scaling vs deep learning)",
+   "reason": "LS is easy to apply with low data requirements and adapts to spatial data; DCA is a recent method preferred for gridded data",
+   "effect_reported": "yes",
+   "page": "§1 ¶5; §2.5 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "48 months of training data not overlapping the test period",
+   "alternatives": "the entire non-overlapping data record",
+   "reason": "asserted that the full record would not improve CO, since no comparable peak exists",
+   "effect_reported": "no",
+   "page": "§4 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "RADM2 gas-phase chemistry without plume rise",
+   "alternatives": "MOZART chemistry linked with the plume-rise module",
+   "reason": "none given for the choice; MOZART recommended for future work",
+   "effect_reported": "yes",
+   "page": "§4 ¶1; §5 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] was then tested on data for the year 2012.",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "both WRF-LS and WRF-DCA generated better estimates of the NO2 VCD compared to WRF-Chem",
+   "page": "§3.2 ¶6"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "In summary, the changes made by WRF-LS and WRF-DCA had no positive impact.",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "WRF has been extensively evaluated over the region and has shown reliable performance",
+   "page": "§1 ¶4"
+  }
+ ]
+}

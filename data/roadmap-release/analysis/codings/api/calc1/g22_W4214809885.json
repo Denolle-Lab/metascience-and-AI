@@ -1,0 +1,436 @@
+{
+ "key": "g22_W4214809885",
+ "doi": "10.1029/2021ef002515",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Saunders, Minson & Baltay (2022), How Low Should We Alert? Quantifying Intensity Threshold Alerting Strategies for Earthquake Early Warning in the United States, Earth's Future 10, e2021EF002515 (published PDF, 20 pages; supporting information not supplied)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Appropriate alert thresholds for specific target thresholds previously had not been quantified for the ShakeAlert System.",
+  "page": "18"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Saunders et al. 2022, Earth's Future, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take from the authors' earlier work the expectation that alert regions computed at the target MMI miss locations because of ground-motion variability, even with accurate magnitude.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "This situation creates missed alerts even if the earthquake's magnitude is estimated accurately"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of which alert threshold optimizes the tradeoff between missed and precautionary alerts for each target MMI threshold in ShakeAlert.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our goal is to quantitatively determine optimal ShakeAlert EEW alert thresholds for a range of target levels"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Curate a catalog of 143 USGS ShakeMap v4 maps (M5.0-7.3, 1980-2020, MMI 4.0+ in CA/OR/WA) as ground truth, with gridded population data.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using a catalog of United States Geological Survey (USGS) ShakeMaps as the ground truth"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check catalog completeness by the histogram of MMI along ShakeMap edges, finding the maps complete to MMI 4.0 but possibly underestimating MMI <4.0 extents.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ShakeMaps in our catalog have good completeness at MMI ≥4.0 shaking (Figure 1d)."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the test grid: target thresholds MMI 4.0-6.0 and alert thresholds 0-2.5 MMI units lower in 0.5 steps, with alert-quality categories (correct, missed, precautionary, likely-not-felt below MMI 3.0) by area and population.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we consider a range of alerting strategies where the MMI threshold used to compute the alert region is 0–2.5 MMI units lower than the target"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute circular alert regions for every earthquake and strategy following the ShakeAlert procedure (four NGA-West2 GMPEs averaged, fixed depth, VS30 and source assumptions, Worden et al. 2012 GMICEs, catalog magnitude and epicenter, truncated to state boundaries).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our alert region computation follows the ShakeAlert operational procedure for the alert contour product (Thakoor et al., 2019)"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute expected alert times from P- and S-wave arrivals (1-D velocity model) and magnitude growth with P-wave observation time from Trugman et al. 2019, ignoring system and delivery latencies.",
+     "page": "8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Magnitude is then estimated as a function of the P-wave observation time"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Illustrate the alert-quality calculation on the 1989 M6.9 Loma Prieta ShakeMap, comparing alert regions with the observed MMI distribution by area and population and as a function of alert distance.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The MMI 4.5 alert threshold, the case where the alert threshold equals the target threshold, achieves only 24% and 30% correct alerts"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "observation",
+     "action": "Compare the catalog's magnitude contributions to target-level shaking with the Gutenberg-Richter expectation, noting a skew from under-representation of small events.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is skewed from what is expected in a Gutenberg-Richter earthquake distribution"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Sum alert quality over all catalog earthquakes for each strategy: alert threshold equal to target misses 60-80% of target-level area, and lower alert thresholds trade missed alerts for precautionary alerts.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the alert regions have substantial missed alerts, at 60%–80% missed alerts for alert targets of MMI 4.0–6.0"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the catalog alert-quality totals using population instead of area (Figure S1), with similar results.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "produces similar alert quality results in terms of area (Figure 8) with those in terms of population (Figure S1 in the Supporting Information S1)"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine the precautionary-alert criterion to count only alerts to likely-not-felt locations (MMI <3.0), finding that strategies reaching <5% missed alerts mostly avoid such alerts, except for the MMI 4.0 target.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We next relax the requirement that precautionary alerts occur whenever the experienced MMI is strictly less than the target threshold"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare alert timeliness across strategies (fraction of required alerts by minimum warning time), finding that warning time stops increasing once 100% correct alerts are reached.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compute the fraction of required alerts at a target threshold with a minimum theoretical warning time"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the timeliness analysis by population (Figure S2), with similar results.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the alert timeliness summed over all earthquakes in the catalog produces similar results in terms of area (Figure 9) and population"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the optimal alert thresholds (Table 2): MMI 3.5 for targets MMI 4.5-6.0 and MMI 3.0 for MMI 4.0, which also maximize warning times.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results indicate that the alert thresholds that maximize warning times are the same as the alert thresholds that optimize overall alert quality."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the result with the operational ShakeAlert thresholds: WEA MMI 3.5 matches the optimum (Figure 10, >85% correct for MMI 4.0), MMI 4.5 (Android) suits only very high targets, and MMI 2.5 (apps) over-alerts to not-felt areas.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ShakeAlert System currently issues alerts delivered through the WEA System at the MMI 3.5 alert threshold"
+    },
+    {
+     "n": 17,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Restrict the range of validity to M5.0-7.3 and to the idealized system (accurate source, no latencies), noting that larger events may need line-source alert regions.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For larger earthquakes than those represented in our catalog (i.e., M7.5+ earthquakes), point-source based alert regions may not be sufficient"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Conclude by recommending that ShakeAlert adopt MMI 4.5 as the target threshold with the current MMI 3.5 WEA alert threshold for communicating performance.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we suggest that the ShakeAlert System adopt MMI 4.5 as a target threshold with the current WEA System alert threshold of MMI 3.5"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known tradeoff: median-based alert regions at the target MMI miss target-level shaking",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Shaking is observed via ShakeMaps; alert performance is not observed and must be computed",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Find the optimal alert threshold for each target MMI",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Candidate alerting strategies (0-2.5 MMI below target), not explanatory rivals",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Each strategy gives a different missed/precautionary/timeliness balance",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: historical earthquakes and their ShakeMaps",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats: 143 earthquakes summed into catalog totals",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Area and population metrics give similar results; no held-out events",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "MMI 3.5 alert threshold is optimal for targets MMI 4.5-6.0; MMI 3.0 for MMI 4.0",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "For M5.0-7.3 West Coast earthquakes and an idealized ShakeAlert system, an MMI 3.5 alert threshold is optimal for target thresholds MMI 4.5-6.0 and MMI 3.0 for MMI 4.0, keeping missed alerts below 5%, limiting precautionary alerts mostly to likely-felt locations, and maximizing warning times.",
+  "page": "18"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "Without the catalog-wide comparison of computed alert regions for each strategy against the 143 ShakeMaps (Figure 8), there would be no tradeoff curve from which to pick optimal thresholds.",
+  "page": "12"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are existing USGS ShakeMaps curated for the analysis; no hypothesis directed their acquisition. The finding that alert threshold equal to target misses >60% could have failed. The optimum, however, follows from criteria the authors chose (<5% missed alerts, MMI 3.0 felt cutoff), and nothing shows these were fixed before the results were seen."
+ },
+ "imports": [
+  {
+   "field": "demography / geography",
+   "item": "Gridded Population of the World v4 (CIESIN/SEDAC) 2020 population estimates for population-based alert quality",
+   "kind": "data",
+   "page": "18"
+  },
+  {
+   "field": "risk communication / social science",
+   "item": "Public surveys in Japan and New Zealand on tolerance of over-alerting, used to justify favoring precautionary alerts to felt locations",
+   "kind": "concept",
+   "page": "5"
+  },
+  {
+   "field": "risk communication",
+   "item": "Post-alert messaging terminology (precautionary vs false alert) from McBride et al. 2020",
+   "kind": "concept",
+   "page": "7"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Appropriate alert thresholds for specific target thresholds previously had not been quantified for the ShakeAlert System.",
+   "page": "18"
+  }
+ ],
+ "limits": "Only the published paper was supplied. The supporting information (Figures S1-S2, Table S1) and the review history were not: the acknowledgments thank two anonymous reviewers, but no review sequence can be coded. The analysis assumes accurate magnitude and epicenter, no station geometry, and no latencies beyond magnitude saturation; target shaking is assumed to arrive with the S-wave. There is no held-out set of earthquakes and no out-of-sample test: thresholds are chosen on the same 143-event catalog they are evaluated on. The optimality criteria (<5% missed alerts, MMI 3.0 felt cutoff) are author choices with no reported sensitivity analysis. ShakeMap ground truth may underestimate MMI <4.0 extents, and areas outside ShakeMap boundaries are assumed not felt. The catalog under-represents small events relative to Gutenberg-Richter. Sub-claims: (a) alert threshold equal to target misses >60% of target-level locations, status confirmed (a test it could have failed, within the idealization); (b) optimal thresholds also maximize warning time, status regularity_in_range (M5.0-7.3). Inference: the p. 15 text says 'for the MMI 4.5 target threshold, the difference is 1.5 MMI units', whereas Table 2 assigns 1.5 to MMI 5.0; this is likely a typo. Composition natures_repetition is the closest fit; the work is an optimization over found cases, not the fitting of a physical regularity.",
+ "disagreements": [
+  {
+   "target": "Current ShakeAlert alert-region method (Thakoor et al., 2019; Kohler et al., 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Catalog-wide comparison shows that alert regions computed at the target threshold miss 60-80% of target-level area even with perfect source parameters.",
+   "page": "1",
+   "quote": "The current method for calculating alert regions for the ShakeAlert EEW System does not take into account variabilities and uncertainties in shaking distribution."
+  },
+  {
+   "target": "ShakeAlert stated alerting goals and threshold changes (Cochran & Husker, 2019; Kohler et al., 2020)",
+   "kind": "definition",
+   "stance": "disputes",
+   "support": "The authors note that thresholds were lowered after Ridgecrest with no stated change of target, and propose explicit target thresholds.",
+   "page": "2",
+   "quote": "specific ShakeAlert alerting target intensities for the public have been unclear"
+  },
+  {
+   "target": "Use of 'false alert' or 'false positive' for alerts to sub-target shaking (Meier, 2017; Minson et al., 2018; Cochran et [...]",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "They adopt the 'precautionary alert' terminology from McBride et al. 2020, because an earthquake did occur.",
+   "page": "7",
+   "quote": "While precautionary alerts are typically referred to as False Alerts"
+  },
+  {
+   "target": "Operational MMI 4.5 (Google/Android) and MMI 2.5 (phone apps) ShakeAlert alert thresholds",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Their results imply MMI 4.5 suits only very high targets and is fragile to epicenter errors, while MMI 2.5 sends about 50% of alerts to likely not-felt areas.",
+   "page": "17",
+   "quote": "This suggests that the MMI 2.5 alert threshold is optimized for non-damaging shaking levels that might not be felt by everyone alerted."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "Circular alert perimeter",
+   "alternatives": "Octagonal perimeter used operationally",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "Catalog (ANSS) magnitude and epicenter as if estimated accurately",
+   "alternatives": "Real-time ShakeAlert source estimates with errors",
+   "reason": "focus is on optimizing alert regions, not source characterization",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "Magnitude evolution as the only timing factor (following Minson et al. 2018)",
+   "alternatives": "Including station configuration, telemetry, computation and delivery latencies",
+   "reason": "to quantify the minimum possible alert times set by earthquake physics",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "S",
+   "chosen": "Target shaking assumed to arrive with the S-wave",
+   "alternatives": "Target shaking arriving in the P-wave",
+   "reason": "none given; acknowledged as optimistic",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "Alert thresholds down to MMI 2.0",
+   "alternatives": "MMI 1.5 alert threshold for the MMI 4.0 target",
+   "reason": "MMI is undefined below 2.0",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "O",
+   "chosen": "Locations outside the ShakeMap boundary treated as not felt (MMI <3.0)",
+   "alternatives": "Treating them as felt or unknown",
+   "reason": "conservative assumption",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "R",
+   "chosen": "Both definitions reported: precautionary alerts as all sub-target alerts, and only alerts to MMI <3.0",
+   "alternatives": "A single strict definition",
+   "reason": "people who feel shaking may perceive alerts as correct; public tolerance surveys",
+   "effect_reported": "yes",
+   "page": "13"
+  },
+  {
+   "node": "C",
+   "chosen": "Alert quality by area (main text)",
+   "alternatives": "Alert quality by population (supplement)",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "12"
+  },
+  {
+   "node": "S",
+   "chosen": "Point-source alert regions",
+   "alternatives": "Line-source alert regions (FinDer)",
+   "reason": "sufficient for M5.0-7.3; line sources preferred for M7.5+",
+   "effect_reported": "no",
+   "page": "17"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The ShakeMaps in our catalog have good completeness at MMI ≥4.0 shaking (Figure 1d).",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This is skewed from what is expected in a Gutenberg-Richter earthquake distribution",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "produces similar alert quality results in terms of area (Figure 8) with those in terms of population (Figure S1 in the Supporting Information S1)",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the alert timeliness summed over all earthquakes in the catalog produces similar results in terms of area (Figure 9) and population",
+   "page": "14"
+  }
+ ]
+}

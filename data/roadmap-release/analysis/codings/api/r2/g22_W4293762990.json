@@ -1,0 +1,478 @@
+{
+ "key": "g22_W4293762990",
+ "doi": "10.5194/se-13-1371-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Li et al. 2022, Solid Earth 13, 1371-1391, published PDF",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off a figure or table add the printed journal page of the PDF in parentheses (e.g., Figure 5 (p. 1377)); acknowledgements and review statement, absent from the XML, cite printed PDF pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Therefore, detailed kinematics of the crust and faults in the NETP remain unclear.",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Li et al. 2022, Solid Earth 13, 1371-1391 (XML text and PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses the question of the spatially continuous slip rates of NETP faults. The authors frame it through the systematic mismatch between geological and geodetic rates and the lack of a 3D model with a complex fault system.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a systematic mismatch is typically found between the slip rates calculated from geological records and those obtained from geodetic inversion"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the 3D finite-element geomechanical model: GTOPO30 topography, CRUST1.0 layers, lithospheric and crustal faults from published traces and attitudes, an upper/middle-crust decollement, an 8.46-million-element mesh, and linear elastic rock properties from CRUST1.0 with the Brotons et al. static-modulus conversion.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we introduced a contact surface between the upper and middle crusts into the model and treat it as a decollement layer"
+    },
+    {
+     "n": 3,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrates fault friction by running the model over a series of friction coefficients (0-0.1) and minimizing misfit to GPS. Selects 0.02 for all faults, then adjusts F1 to 0.01 and F3 to 0.1 (final misfit 0.0536; Figure 3a, p. 1376).",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Simulations were performed with a series of friction coefficients (0–0.1), and the results were compared with GPS observations"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Sets the initial stress state with Sheorey's (1994) k-equation, implemented following Hergert (2009). The authors reject the uniaxial strain reference state used in earlier NETP models.",
+     "page": "§2.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this study, we used Eq. (3) to calculate the initial stress state for our model."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checks the modeled initial k-profiles at four test sites against the theoretical Eq. (3) reference (Figure 3b, p. 1376).",
+     "page": "§2.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 3b shows that the modeled initial stress is in agreement with the theoretical result given by Eq. (3)."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Imposes lateral kinematic boundary conditions interpolated from the Wang and Shen (2020) GPS field, constant with depth. The top is free, the bottom slides horizontally, and the model runs for 500 kyr in Abaqus.",
+     "page": "§2.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The lateral boundary conditions of our model were constrained by the GPS velocity field data of Wang and Shen (2020)"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Extracts the modeled horizontal surface velocity field and the slip rates, rakes, and strike and dip components to 20 km depth on F1, F2, F3 and the other faults (Figures 5-9, pp. 1377-1380).",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The calculated horizontal crustal velocities in the study area are shown in Fig. 5."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compares the modeled Haiyuan Fault rates with earlier (8-12 mm/yr) and more recent (3.2-4.5 mm/yr) published estimates. The rates match the recent estimates, and the authors attribute the earlier disagreement to timescale.",
+     "page": "§3.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were much lower than earlier estimates"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Extracts the modeled vertical surface velocities and vertical fault slip rates, showing subsidence in the Yinchuan, Ordos and Sikouzi basins and uplift in the Qilian Block (Figure 10, p. 1381).",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 10a shows the distribution of vertical velocities in the study area."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checks modeled basin subsidence rates against independent paleomagnetic subsidence rates for the Sikouzi (0.22 mm/yr) and Yinchuan (0.32 mm/yr) basins.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both values are consistent with those derived from our simulation."
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopts a published explanation, from Ye et al. 2015, for high vertical slip rates on F1 and F3: compression from NE expansion of the TP and SW subduction of the Alxa Block.",
+     "page": "§3.3 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "These high vertical fault slip rates were thought to be caused by the compression from the NE expansion of the TP Block"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compares modeled velocities with GPS in map view and along the C-C' profile, finding differences within GPS error (Figures 11-12, p. 1383). Compares modeled slip rates with compiled model-independent geological slip rates (Table 3, p. 1382).",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our modeled kinematics agree well with the GPS data."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates potential magnitudes and recurrence intervals for the Jinqianghe, Maomaoshan and Laohushan faults (Tianzhu seismic gap). The estimates combine modeled slip rates with fault length, locking depth, creep rate and coseismic slip, using Purcaru and Shen et al. (Table 4, p. 1383).",
+     "page": "§4.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimated the earthquake magnitude based on the energy accumulated during the time elapsed from the previous event"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compares the estimated recurrence intervals with the elapsed time since the last historical rupture on each fault.",
+     "page": "§4.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A total of 675 and 952 years have elapsed since the last rupture along the Jinqianghe and Maomaoshan faults"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps the claim that the Jinqianghe and Maomaoshan faults have a high near-term hazard and the Laohushan Fault a low one. The authors leave the published M≥8 full-gap rupture scenario for further work.",
+     "page": "§4.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the seismic hazard caused by a large earthquake in the TSG is high in the next few decades"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infers slip-rate deficits on the middle-southern Liupanshan and Guguan-Baoji faults from the modeled velocity field and slip rates. Estimates potential magnitudes of MS 7.2 and 7.1, with recurrence intervals of 1397 and 4365 years (Table 4, p. 1383).",
+     "page": "§4.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimated that the energy accumulated on the middle–southern Liupanshan and Guguan–Baoji faults during the elapsed time is sufficient to generate"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compares the elapsed times (570 and 1400 years) from historical seismicity with the estimated recurrence intervals.",
+     "page": "§4.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are much shorter than their typical recurrence intervals"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps the claim that these segments are a seismic gap in stress accumulation with low near-term likelihood of a large earthquake.",
+     "page": "§4.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the likelihood of a large earthquake on these fault segments in the next few decades is low"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Sets the modeled Maxianshan left-lateral rates (0.2-0.4 mm/yr) against the published 3.73, 0.5-1.72 and 0.93 mm/yr values. The authors notes the near-zero slip at the Maxianshan-Zhuanglanghe junction.",
+     "page": "§4.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the left-lateral strike-slip rates of the Maxianshan Fault may not be as large as previously thought"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps, as speculation, that the junction is in stress accumulation with low near-term risk. This rests on a published recurrence interval of 2250-3590 years and 896 years elapsed.",
+     "page": "§4.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we speculate that the junction of the Maxianshan and Zhuanglanghe faults is currently in a state of stress accumulation"
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopts Zeng et al.'s (2021) seismic source cavity model to read the spatial coupling of active faults, modeled isolated uplift areas, and published crustal low-velocity bodies.",
+     "page": "§4.2.4 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the “seismic source cavity” model recently proposed by Zeng et al. (2021)"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keeps the claim that the Haiyuan, Liupanshan, Lajishan and Daotanghe-Linxia faults have favorable structural conditions for strong earthquakes.",
+     "page": "§4.2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "also have favorable structural conditions for strong earthquakes"
+    },
+    {
+     "n": 23,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Decomposes four modeled velocity profiles into block rotation, computed from published Euler poles, and residual intra-block strain and faulting (Figure 14, p. 1385).",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We analyzed four velocity profiles to compare the contributions of block rotation, faulting, and intra-block strain"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps the claim that block rotation, accounting for more than 80% of the profile velocity gradients, is the primary NETP deformation mechanism, with non-negligible intra-block strain of 1-4 mm/yr.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the block rotation should be the primary mechanism for the deformation of the NETP"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: active NETP faults with large historical earthquakes; their slip rates are disputed",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No: continuous slip rates are latent, inferred from a GPS-driven forward model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate continuous fault slip rates and derive seismic hazard",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals stated for the slip rates; earlier estimates and the uniaxial stress state serve as foils",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: boundary conditions from GPS, geometry and properties from published data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: consistency with GPS (not independent), geological slip rates and paleomagnetic subsidence; friction swept for calibration only; no sensitivity tests on geometry, rheology or boundary conditions",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: slip-rate estimates and hazard ranking",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Published after review; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "A calibrated 3D geomechanical model gives spatially continuous slip rates of NETP faults, consistent with GPS and geology, implying the Jinqianghe–Maomaoshan fault may produce an MS 7.1–7.3 earthquake in coming decades.",
+  "page": "§5 ¶2"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The construction of the 3D geomechanical model with the complex fault system is the step without which no continuous slip rates, and hence no hazard estimate, would exist; it includes friction calibration against GPS, Sheorey initial stress, and GPS boundary conditions.",
+  "page": "§1 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All input data are compiled from published sources and no hypothesis directed their acquisition (§2.1-§2.5). The slip rates and velocities faced comparisons that could have failed: GPS (§4.1 ¶1), geological rates (Table 3), and paleomagnetic subsidence (§3.3 ¶1). These comparisons are qualitative, and the GPS data also set the boundary conditions and friction calibration. Nothing was fixed before the data: friction was tuned to minimize GPS misfit (§2.3 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "engineering (finite-element analysis)",
+   "item": "Abaqus finite-element software",
+   "kind": "method",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "field": "materials and structural engineering",
+   "item": "Empirical static-dynamic elastic modulus correlation of Brotons et al. (2016)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "rock mechanics and mining engineering",
+   "item": "Sheorey (1994) theory for in situ stresses, used for the initial stress state",
+   "kind": "concept",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "field": "engineering and rock mechanics",
+   "item": "Mohr–Coulomb friction law for fault contact surfaces",
+   "kind": "concept",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "field": "software (visualization)",
+   "item": "Tecplot 360 add-on GeoStress for computing slip rates on fault surfaces",
+   "kind": "method",
+   "page": "p. 1386"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "To our knowledge, there is not currently a 3D geomechanical model that considers the complex 3D fault system [...] .",
+   "page": "§1 ¶2"
+  }
+ ],
+ "limits": "No formal uncertainty is given for the modeled slip rates; the ranges are spatial variation, not error. The status estimate_with_resolution is therefore weakly supported.\n\nThe GPS comparison (§4.1 ¶1) is not independent. The same Wang and Shen (2020) field set the boundary conditions and the friction calibration, so it is coded as a control, not a replication.\n\nTable 3 (p. 1382) shows mismatches the text does not address while claiming consistency:\n- MXSF modeled 0.2-0.4 vs geological 0.5-1.72 mm/yr;\n- WD-KXF 0-0.2 vs 1.0 mm/yr;\n- EKLF 3.2-3.8 vs 4.9 mm/yr;\n- EHLSF vertical 0.1-0.5 vs 0.88 mm/yr.\n\nThe friction sweep is a calibration (coded I), not a robustness check. No sensitivity tests are reported for:\n- fault geometry and dip;\n- the decollement;\n- elastic rheology over a 500 kyr run;\n- rock properties;\n- mesh;\n- boundary-condition interpolation.\n\nSub-claims at other statuses:\n- Hazard statements (Jinqianghe–Maomaoshan likely MS 7.1-7.3 in coming decades; low near-term hazard elsewhere): no status. They are deterministic estimates combining modeled rates with literature recurrence data, not scored forecasts, so not forecast_skill.\n- Block rotation as the primary deformation mechanism: estimate_with_resolution (more than 80% of profile gradients), using cited Euler poles.\n- Favorable structural conditions from the seismic source cavity model: at most best_explanation, and speculative.\n- Maxianshan–Zhuanglanghe junction stress accumulation: explicitly called speculation.\n\nComposition is none_fits: the walk is a calibrated forward-model estimation followed by consistency checks and hazard derivation, with no rivals, no crucial test, and no capability-first exploration.\n\nThe abstract names the 'Jinqiangshan–Maomaoshan' fault while the body uses Jinqianghe. §4.2.1 ¶1 cites 'Table 2' for slip rates that appear in Table 3. Both are inferred editorial slips.\n\nThe review statement (p. 1386) names two referees, but no review file was supplied, so no review sequence is coded and no changes after review can be identified.",
+ "disagreements": [
+  {
+   "target": "Earlier geological Haiyuan Fault slip-rate estimates of 8.0-12 mm/yr (Burchfiel et al., 1991; Lasserre et al., 1999; Zhang et al., [...]",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "The modeled Haiyuan rates of about 3.5-4.5 mm/yr match recent estimates of 3.2-4.5 mm/yr, and the authors attribute the older higher values to timescale and the extent of study.",
+   "page": "§3.2.1 ¶1",
+   "quote": "were much lower than earlier estimates"
+  },
+  {
+   "target": "Published Maxianshan Fault left-lateral slip rates: 3.73 (Yuan et al., 2002a), 0.5-1.72 (Song et al., 2006), and 0.93 mm/yr (Liang [...]",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "The modeled rate is 0.2-0.4 mm/yr with a larger thrust component; the authors attribute the published discrepancies to loess cover obscuring fault traces.",
+   "page": "§4.2.3 ¶1",
+   "quote": "the left-lateral strike-slip rates of the Maxianshan Fault may not be as large as previously thought"
+  },
+  {
+   "target": "Uniaxial strain reference initial stress state used in previous NETP numerical models (Zhu et al., 2016)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue k = 1/3 implies a normal-faulting regime everywhere and conflicts with in situ k values (Hergert and Heidbach, 2011); Figure 3b contrasts the two k profiles.",
+   "page": "§2.4 ¶1",
+   "quote": "this assumption contradicts the thrust and strike-slip stress regimes common in the crust."
+  },
+  {
+   "target": "Previous numerical models of the NETP (Pang et al., 2019a, b; Sun et al., 2018, 2019; Zhu et al., 2018; [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors point to the 2D or simplified fault geometry of these models and offer their complex 3D fault system as the improvement.",
+   "page": "§1 ¶2",
+   "quote": "these previous numerical models have been either two-dimensional (2D) or 3D with extremely [...]"
+  },
+  {
+   "target": "Rigid-block assumption in geodetic slip-rate inversions (Shen et al., 2009)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors cite studies showing internal block deformation, and their own profiles find intra-block strain of 1-4 mm/yr.",
+   "page": "§1 ¶2",
+   "quote": "the internal block deformation in the NETP cannot be ignored"
+  },
+  {
+   "target": "Proposal that the Tianzhu seismic gap could rupture in a M≥8.0 event with a 1000-year recurrence (Chen, 2014; J. Liu [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors' segment-wise estimates give MS 6.6-7.3 events, and they state the full-gap scenario needs verification of fault stress state.",
+   "page": "§4.2.1 ¶1",
+   "quote": "further work is needed to verify this assumption, especially on the stress state of the faults"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Effective friction 0.02 for all faults, adjusted to 0.01 on F1 and 0.1 on F3",
+   "alternatives": "A series of uniform friction coefficients from 0 to 0.1",
+   "reason": "Smallest velocity misfit to GPS observations; local adjustments further minimize fitting error",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Sheorey (1994) initial stress state, Eq. (3)",
+   "alternatives": "Uniaxial strain reference state (k = v/(1−v)) used in previous NETP models; Figure 3b shows only its k profile, not its effect on kinematics",
+   "reason": "Uniaxial state implies an extensional regime contradicting thrust and strike-slip regimes and in situ k values; Sheorey k values agree with Continental Deep Drilling Program data",
+   "effect_reported": "no",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Linear elastic rock rheology",
+   "alternatives": "Elastic–viscous behavior",
+   "reason": "Large-scale continental crust exhibits elastic–brittle rather than elastic–viscous behavior (Armijo et al., 2004; Hubert-Ferrari et al., 2003)",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Figure 3b shows that the modeled initial stress is in agreement with the theoretical result given by Eq. (3).",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "Because the k values predicted by this method are consistent with those obtained from the Continental Deep Drilling Program",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Both values are consistent with those derived from our simulation.",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Although there were differences between the modeled and GPS-observed values, the differences were within the margin of error for the GPS data.",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] a comparison of the modeled slip rates and model-independent geological slip rates compiled from previous studies.",
+   "page": "§4.1 ¶2"
+  }
+ ]
+}

@@ -1,0 +1,408 @@
+{
+ "key": "g22_W4211217253",
+ "doi": "10.5194/bg-19-845-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4211217253.pdf (published paper, Biogeosciences 19, 845-859, 2022)",
+  "g22_W4211217253.xml.txt (publisher XML converted with jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); content found only in the PDF (table footnotes, figure content) is cited by caption label with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "no widely recognized methods for judging the importance of each predictor in the surface ocean p CO 2 mapping are available yet",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4211217253.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem that pCO2 predictors are chosen empirically and applied identically everywhere, and that no method exists to judge each predictor's importance.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "no widely recognized methods for judging the importance of each predictor in the surface ocean p CO 2 mapping are available yet"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors state the working hypothesis that drivers, and hence the best predictors, differ between regions. The rival is the globally uniform predictor sets of earlier work.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the predictor that plays a vital role in the surface ocean p CO 2 reconstruction at one region may not be a good predictor"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors assemble SOCATv2020 fCO2 observations, convert them to pCO2, and compile 33 gridded candidate predictors (21 from earlier pCO2 studies, 12 tested for the first time) at 1x1 degree.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this work, 33 predictors were used (Table 1), where 21 were chosen from previous research"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors partition the open ocean into 11 biogeochemical provinces with a 3-by-4 SOM on climatologies, merging small islands, splitting land-separated provinces, and sharing boundary-area samples.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the global ocean was divided into a set of biogeochemical provinces using a self-organizing map (SOM) method"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build a stepwise FFNN algorithm (25-neuron FFNN, fixed random stream, K-fold MAE as loss rather than RMSE) that adds and then removes predictors until MAE stops decreasing.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For finding a better combination of p CO 2 predictors, a stepwise FFNN algorithm was constructed."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors rerun the selection with different random number streams and report that the leading predictors are stable while some trailing predictors change.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, the leading predictors were consistent, and the different predictors were also related."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors run the selection per province twice (with chl a for 2002-2019, without chl a for 1992-2002), train two FFNNs, and build the monthly 1x1 degree pCO2 product for 1992-2019.",
+     "page": "§2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the final product was built based on two FFNNs"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "The authors design the test. Three predictor groups (stepwise; Landschützer 2014; Denvil-Sommer 2019) are run with the same FFNN and samples, scored by year-blocked 4-fold CV and against independent HOT, BATS and ESTOC data.",
+     "page": "§2.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "three results were generated to estimate whether the stepwise FFNN algorithm can effectively find a better combination"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors report the selected, ranked predictor sets for each province and period (Table 3) and read them as indicators of regional pCO2 drivers.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results of the stepwise FFNN algorithm in each province are shown in Table 3."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare the selected predictors with drivers used in the literature. SST, SSS and xCO2 are supported; chl a is redundant in P1 and P5 but top-ranked in P10 and P11.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results of the stepwise FFNN algorithm also supported this."
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "methods",
+     "action": "The authors tune the hidden-layer size per province from 5 to 300 neurons and choose the size with the lowest MAE, lowering global MAE and RMSE to 11.32 and 17.99 µatm.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the optimal FFNN size in each province was considered as the number of neurons when the MAE was lowest"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors map per-grid CV RMSE and mean residuals. They locate high error in the subpolar North Pacific, eastern equatorial Pacific and Antarctic margin, and overestimation in the Indian Ocean.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In most grids, the RMSE was lower than 10 µ atm , and the mean residuals were close to zero"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "The authors compare CV errors of FFNN1 against FFNN2 and FFNN3 globally and per province (Fig. 7, Table 4). FFNN1 is lowest, but close to FFNN3 in several provinces.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The RMSE of FFNN1 was lower than that of FFNN2 (22.95 µ atm ) and FFNN3 (19.17 µ atm )."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors check all three groups against independent time-series stations not in SOCAT (HOT, BATS, ESTOC). FFNN1 has the lowest RMSE and MAE at each station.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the RMSE between FFNN1 outputs and HOT observations was only 9.29 µ atm"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "The authors compare the product's climatology with the SOCAT average and with the Landschützer et al. (2020) climatology. Patterns agree except in the Arctic and near Antarctica.",
+     "page": "§3.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The global spatial distribution pattern of the stepwise FFNN p CO 2 product was basically well consistent with the previous climatology product and SOCAT dataset"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "The authors keep the claim that region-specific stepwise-selected predictors give lower mapping error than globally uniform predictor sets, and release the algorithm and product.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using regional-specific predictors selected by the stepwise FFNN algorithm retrieved a lower predicting error than globally similar predictors"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Global surface ocean pCO2 field, sparsely sampled; drivers may differ by region",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "Only partly; sparse SOCAT cruises, so the field must be mapped from predictors",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Lower mapping error through region-specific predictor selection; a new method and product",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Region-specific stepwise selection vs globally uniform predictor sets (Landschützer 2014; Denvil-Sommer 2019)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: different CV MAE/RMSE and different errors at independent stations",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing observations and SOM-defined provinces; nothing set experimentally",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Largely yes: year-blocked CV, three independent stations, random-seed variation, comparison with an independent climatology",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: region-specific predictors give lower error; a characterized method plus a product with stated error",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessed; no review file or discussion supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A stepwise FFNN that selects predictors within each of 11 SOM provinces maps surface ocean pCO2 with lower error than the predictor sets of Landschützer et al. (2014) and Denvil-Sommer et al. (2019): global CV MAE 11.32 µatm, RMSE 17.99 µatm, and lower RMSE at HOT, BATS and ESTOC.",
+  "page": "§4 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "The like-for-like comparison of the stepwise-selected predictors with the two published predictor sets, using the same FFNN, samples and year-blocked CV, is what makes the 'better predictors' claim exist.",
+  "page": "§3.3 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the region-specific-driver idea shaped the design (province partition, 12 extra candidate predictors), but all data were existing archives (SOCAT, reanalyses, WOA), not acquired for the test. Claim: FFNN1 could have scored worse than FFNN2/FFNN3 in CV (§3.3) and at the independent stations HOT, BATS and ESTOC (§3.4); in some provinces it nearly ties FFNN3. Registration: nothing is stated as fixed before seeing the data. The random seed was 'randomly chosen' (§2.3 ¶1) and network size was tuned on the same CV MAE used to report performance (§3.2 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Feed-forward neural network regression (tan-sigmoid hidden layer, MATLAB)",
+   "kind": "method",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Stepwise (forward-backward) regression for variable selection",
+   "kind": "method",
+   "page": "§0 ¶1"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Self-organizing map clustering to define provinces",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "K-fold cross-validation with year-blocked folds",
+   "kind": "method",
+   "page": "§2.5 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Predictors with the ∗label were here for the first time included in the pCO2 mapping.",
+   "page": "Table 1 (p. 847)"
+  },
+  {
+   "quote": "Our work provided a statistical method for predictor selection for all research based on relationship fitting by machine learning methods.",
+   "page": "§4 ¶1"
+  },
+  {
+   "quote": "no widely recognized methods for judging the importance of each predictor in the surface ocean p CO 2 mapping are available yet",
+   "page": "§1 ¶2"
+  }
+ ],
+ "limits": "No review file or open discussion was supplied, although the paper was in Biogeosciences Discussions and was reviewed by Anna Denvil-Sommer, whose predictor set is one of the baselines. Any review-forced changes are therefore invisible, and no review sequence is coded. The supplement (Fig. S1) was not supplied.\n\nWhat the paper does not show about its own process:\n- No statistical test of whether MAE/RMSE differences between FFNN1 and FFNN3 are significant; several provincial differences are small.\n- Selection used a fixed 25-neuron network. The network size was then tuned on the same CV MAE, while FFNN2 and FFNN3 appear to use the untuned setup. The comparison may favour FFNN1 (inference).\n- The seed-robustness check is reported only qualitatively.\n- The independent stations all lie in subtropical northern gyres (one in P3, two in P5). The claimed advantage is untested at independent sites in polar, equatorial or Southern Ocean provinces, where errors are highest.\n- The 200 m coastal cutoff and the SOM configuration (3-by-4, island merging, manual splitting) are fixed without alternatives tested.\n\nSub-claims and their statuses:\n- The gridded 1992-2019 product: estimate_with_resolution (CV MAE 11.32 µatm, RMSE 17.99 µatm, per-grid error maps).\n- Selected predictors indicate regional pCO2 drivers (e.g. silicate in the Arctic, chl a in the Southern Ocean): best_explanation at most, as an interpretation of a statistical ranking without a mechanistic test.\n\nComposition coded none_fits: the walk is method development followed by benchmark comparison against published predictor sets. This is not capability_first (rivals exist from the start) and not strong_inference (no crucial experiment excludes a rival outright).",
+ "disagreements": [
+  {
+   "target": "Previous pCO2 mapping research that selects predictors empirically and applies one predictor set to all regions",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Region-specific stepwise selection gives lower CV error globally and in most provinces, and lower error at three independent stations.",
+   "page": "§0 ¶1",
+   "quote": "However, the differences between the drivers of surface ocean p CO 2 in different regions were not considered."
+  },
+  {
+   "target": "Landschützer et al. (2014) predictor set (FFNN2)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "With the same FFNN and samples, the 10-predictor set has higher global MAE (15.08 vs 11.32 µatm) and higher station RMSE. The authors attribute part of the gap to the absence of latitude/longitude predictors.",
+   "page": "§3.3 ¶1",
+   "quote": "were more precise than those of FFNN2 (based on 10 predictors from Landschützer et al. 2014)"
+  },
+  {
+   "target": "Widespread use of chlorophyll a as an essential pCO2 predictor (Landschützer et al., 2014; Zeng et al., 2017; Laruelle et [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The stepwise algorithm finds chl a redundant in the Arctic (P1) and north subtropical Atlantic (P5), while ranking it first in the Southern Ocean provinces.",
+   "page": "§3.1 ¶2",
+   "quote": "chl a was considered redundant in that no effective decrease of MAE between FFNN outputs and p CO 2 measurements appeared"
+  },
+  {
+   "target": "Landschützer et al. (2020) pCO2 climatology",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Spatial patterns agree in the equatorial Pacific and Atlantic but differ in the Arctic and parts of the Southern Ocean. The authors attribute this to method or SOCAT version differences, without a test.",
+   "page": "§3.5 ¶1",
+   "quote": "an inconsistent spatial distribution also existed in the Arctic and parts of the Southern Ocean near the Antarctic continent"
+  },
+  {
+   "target": "SOCAT v2020 average values in the Southern Ocean",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The product's higher Southern Ocean values are attributed to winter undersampling in SOCAT, a suggestion without a dedicated test.",
+   "page": "§3.5 ¶1",
+   "quote": "lower average values of the SOCAT dataset in the Southern Ocean may be caused by the [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "MAE as the internal loss function of the stepwise selection",
+   "alternatives": "RMSE",
+   "reason": "RMSE is more sensitive to a few extreme samples, which would get higher weight in predictor selection",
+   "effect_reported": "no",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "One fixed, randomly chosen random number stream with fixed training samples",
+   "alternatives": "Different random number streams",
+   "reason": "So that MAE differences stem entirely from predictor differences",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "Per-province hidden-layer size with the lowest MAE (10 to 35 neurons)",
+   "alternatives": "Sizes from 5 to 300 neurons",
+   "reason": "Avoid insufficient learning capacity with too few neurons and overfitting with too many",
+   "effect_reported": "yes",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Region-specific predictors from the stepwise FFNN (FFNN1)",
+   "alternatives": "Predictor sets of Landschützer et al. (2014) (FFNN2) and Denvil-Sommer et al. (2019) (FFNN3)",
+   "reason": "To estimate whether the stepwise algorithm finds a better predictor combination",
+   "effect_reported": "yes",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Two FFNNs: with chl a for August 2002-August 2019, without chl a for January 1992-July 2002",
+   "alternatives": "A single predictor set for the whole period",
+   "reason": "Chl a gridded data are unavailable before August 2002",
+   "effect_reported": "no",
+   "page": "§2.4 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "When using different random number streams, several predictors at the end of the output list of the stepwise [...] .",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we put the SOCAT samples in chronological order and then divided them into the group of years",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "All validation groups were applied with the same FFNN and same samples from SOCAT, with the only differences being in the predictors.",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the RMSE between FFNN1 outputs and HOT observations was only 9.29 µ atm",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Compared with the previous climatology product (Landschützer et al., 2020), the stepwise FFNN product has similar spatial patterns",
+   "page": "§3.5 ¶1"
+  }
+ ]
+}

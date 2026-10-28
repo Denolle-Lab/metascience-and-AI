@@ -1,0 +1,365 @@
+{
+ "key": "g22_W4311519560",
+ "doi": "10.1111/nrm.12364",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Ghonchepour, Bahremand & Kinar (2023), Natural Resource Modeling 36:e12364, published PDF (23 pages)"
+ ],
+ "pages_convention": "printed journal pages (article pages 'N of 23', identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This procedure can have an important role in hydrological modeling but explicit examples of the approach are not often found in the published literature.",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Ghonchepour et al. 2023, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "After reviewing calibration-avoiding strategies, the authors ask whether KINEROS2 hydrographs of the Dehgin catchment can be simulated with parameter allocation instead of optimization.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we intended to simulate the hydrographs of the Dehgin catchment using the parameter allocation procedure"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They take the parameter allocation framework (initial sensitivity analysis, allocation, few adjusted parameters) from the corresponding author's earlier work (Bahremand 2016; Bahremand et al. 2021).",
+     "page": "3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Bahremand (2016) discussed a logically based specification of model parameters to limit the need for model calibration"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "methods",
+     "action": "They adopt the Goodrich et al. (2012) data criterion for KINEROS2 calibration (10 or more events, sub-hourly soil moisture, gauged flow) and check that the Dehgin data meet it.",
+     "page": "4, 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Goodrich et al. (2012) data criteria are applicable for the Dehgin catchment of Iran"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble 10-min rainfall, Santa Rita flume discharge and soil moisture for 10 storm events (2007-2015), plus DEM, land use and soil maps from the provincial directorate (Table 1).",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] , and soil moisture measurements are available at 10‐min time steps and were used as model inputs"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They delineate and discretize the catchment with AGWA (23 planes, 9 channels) and allocate channel, plane and soil parameters a priori from model manuals, Cowan's method, literature and field observations, lowering interception from 0.65 to 0.31 mm on field evidence (Tables 2-3).",
+     "page": "6-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Parameter allocation for the KINEROS2 model involves three steps: presetting parameters associated with the river channels, presetting parameters of the planes"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run KINEROS2 with the allocated parameters for all 10 events.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After allocating the parameters, the model was used to simulate hydrographs of 10 precipitation events"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare simulated and observed hydrographs by eye and by NSE, R2 and KGE: agreement is acceptable for six events (NSE 0.011-0.83), and the four low-peak events are poorly simulated (Table 5, Figure 4).",
+     "page": "14-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the parameter allocation procedure provides acceptable agreement for six rainfall‐runoff events"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They relate the better performance on large events to the same finding by Hantush and Kalin (2005) and the difficulty of finding a single parameter set to Al-Qurashi et al. (2008).",
+     "page": "15",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Hantush and Kalin (2005) also concluded that the KINEROS2 model makes more reliable results under bigger rainfall events than for smaller events."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They run a one-factor-at-a-time multiplier sensitivity analysis (±10%, ±20%) on three events and rank parameters by CV of peak flow and volume; plane Ks is most sensitive and interception least (Tables 6-7).",
+     "page": "12, 16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hydraulic conductivity is the most sensitive parameter, whereas the least sensitive parameter is an interception."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the sensitivity ranking with published KINEROS2 analyses (Al-Qurashi et al. 2008 and Mirzaei et al. 2013 agree; Hantush and Kalin 2005 rank initial soil moisture first).",
+     "page": "16-17",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "this finding is consistent with the results of this research"
+    },
+    {
+     "n": 11,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Because low-discharge events failed, they manually calibrate the most sensitive auxiliaries, lowering plane Ks (3.7 to 1.7), plane G (to 104.8 mm), Manning's n and channel Ks (61 to 55), and accept values that are physically reasonable but not regionally representative.",
+     "page": "12-13",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The hydraulic conductivity as the most sensitive parameter was decreased to 1.7 m/s."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They evaluate the calibrated model: the small events stay below NSE 0.5, and two previously good events (January 10, 2013; August 4, 2015) turn negative (Table 8, Figure 5).",
+     "page": "17-19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the calibration could not have much impact on improving the model results in simulating the small events"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "As a baseline, they autocalibrate 16 parameters with Particle Swarm Optimization (HydroPSO in R) within environmentally reasonable ranges, without parameter allocation (Table 4).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To demonstrate the need for parameter allocation before calibration, the model was also run using calibration without parameter allocation."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare NSE across allocation, calibration after allocation and autocalibration for all 10 events; autocalibration gives NSE between -0.63 and 0.43 (Table 9).",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Parameter allocation involving a reasonable choice of parameters results in a model that accurately represents hydrological processes for most of the events"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the claim that parameter allocation before limited calibration is effective and that autocalibration without deliberate parameter selection should be avoided.",
+     "page": "19-20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Parameter allocation conducted before limited amounts of model calibration is effective."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Storm runoff hydrographs in an arid catchment; an established phenomenon, not in question",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Discharge measured at a flume; model parameters not observed and allocated from manuals and field data",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Test whether parameter allocation can replace optimization-based calibration for KINEROS2",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Three parameterization strategies: allocation, allocation plus limited calibration, autocalibration (PSO)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No predictions stated in advance; strategies ranked afterwards by NSE/KGE",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: 10 natural storm events, 2007-2015",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats storms of different magnitude; performance differs between large and small events",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Sensitivity analysis on three events; allocation fails on low-peak events; calibration helps some events and harms others",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Allocation adequate for high-magnitude events and better than autocalibration; calibrate only after allocation",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Parameter allocation lets KINEROS2 simulate high-magnitude storm hydrographs in the Dehgin catchment adequately (NSE 0.011-0.83, KGE 0.36-0.98) but not low-magnitude events, and outperforms autocalibration without allocation, which should be avoided.",
+  "page": "1-2, 19-20"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The event-by-event comparison of NSE for allocation, calibration after allocation and HydroPSO autocalibration (Table 9) is what supports the headline claim that allocation should precede calibration and that autocalibration should be avoided.",
+  "page": "19"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The rainfall-runoff data were collected by the Hormozgan directorate (2007-2015) before and independently of the hypothesis; the paper says the data criterion was met and only then 'we intended to simulate' (p. 4). The allocated model could have failed against observed hydrographs and did fail for four low-peak events (p. 15). However, no acceptance threshold was fixed beforehand, there was no split-sample validation (calibration and evaluation use the same 10 events), and the 'acceptable' judgement is partly visual (p. 15). Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "computer science / swarm intelligence",
+   "item": "Particle Swarm Optimization via the HydroPSO package in R 4.1.3",
+   "kind": "method",
+   "page": "13"
+  },
+  {
+   "field": "statistics",
+   "item": "Coefficient of determination (Cheng et al. 2014, measurement-error models)",
+   "kind": "method",
+   "page": "15"
+  },
+  {
+   "field": "agricultural/hydraulic engineering",
+   "item": "Cowan's (1956) method for Manning's roughness coefficient",
+   "kind": "method",
+   "page": "9-10"
+  },
+  {
+   "field": "civil engineering (reservoir design)",
+   "item": "Rippl mass-curve method, cited from Bahremand et al. (2021) for groundwater storage",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "geographic information science",
+   "item": "ArcGIS-based AGWA tool for delineation, discretization and parameterization",
+   "kind": "instrument",
+   "page": "5-6"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This procedure can have an important role in hydrological modeling but explicit examples of the approach are not often found in the published literature.",
+   "page": "3"
+  }
+ ],
+ "limits": "No review file, discussion or earlier version was supplied, so there is no review sequence; the acknowledgments mention anonymous reviewers. Internal inconsistencies in the document:\n- The text gives NSE 0.78 for February 1, 2013 where Table 5 gives 0.83; 0.78 is the April 7, 2013 calibrated value in Table 8.\n- Table 9 reports allocation NSE for all 10 events, four of them negative (e.g. -1.16, -0.9), yet the text and abstract describe 'good agreement' for six events.\n- Units of calibrated Ks are printed as m/s in Section 2.3.1.3 but mm/h in the abstract.\n- The sensitivity analysis varies parameters around 'the optimized values' although it is said to follow allocation.\n- Table 7 lists channel hydraulic conductivity twice.\n- The net capillary drive values quoted from the manual are in cm3/cm3, an inconsistent unit.\nThe HydroPSO objective function, iteration count and stopping rule are not reported. The autocalibration ranges were chosen to be 'environmentally reasonable', so (inference) the baseline is not fully 'without parameter allocation'. There is no independent validation period, and every strategy is scored on the same events it was tuned on. Only one subcatchment was modelled. Data are available only on request.\nSub-claims and their statuses:\n- Plane Ks and G are the most sensitive parameters: regularity_in_range, three events, one catchment.\n- KINEROS2 performs better on large than on small events: regularity_in_range, 10 events.\n- Calibrated Ks and G are physically reasonable but not regionally representative: none, asserted without a test.\n- Autocalibration should be avoided: best_explanation from a single catchment comparison.\nComposition is none_fits: the walk is a method application with a post hoc comparison of three parameterization strategies on found events. No rivals predict different outcomes in advance (not strong_inference), it is not a trace series of rival explanations, and it does not replicate an independent group's result. The framework is the corresponding author's own.",
+ "disagreements": [
+  {
+   "target": "Hantush and Kalin (2005), sensitivity of KINEROS2",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper's own OAT sensitivity ranking on three Dehgin events puts plane Ks first, not initial soil moisture, while agreeing on G and Ks as the next most sensitive.",
+   "page": "20",
+   "quote": "Although Hantush and Kalin (2005) identified initial soil moisture as the most sensitive parameter, which is different from the findings of this research"
+  },
+  {
+   "target": "Traditional automated calibration where model parameters are not intelligently selected by the modeler",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "HydroPSO autocalibration gave NSE between -0.63 and 0.43 across the 10 events, generally below parameter allocation (Table 9).",
+   "page": "19",
+   "quote": "Autocalibration without intelligent and deliberate selection of parameters does not accurately represent hydrological processes, and therefore should be avoided."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "C",
+   "chosen": "Parameter allocation (with limited calibration only afterwards)",
+   "alternatives": "Limited manual calibration after allocation; automated calibration with HydroPSO without allocation",
+   "reason": "To demonstrate the need for parameter allocation before calibration",
+   "effect_reported": "yes",
+   "page": "13, 19"
+  },
+  {
+   "node": "P",
+   "chosen": "Calibrated Ks, G and Manning's n values that improve fit",
+   "alternatives": "Allocated physically regional values (Ks 61 and 3.7 mm/h, G 130.97)",
+   "reason": "Model could not simulate discharges below 1 m3/s; calibrated values 'were useful for model calibration'",
+   "effect_reported": "yes",
+   "page": "12-13, 17"
+  },
+  {
+   "node": "D",
+   "chosen": "Interception 0.31 mm",
+   "alternatives": "0.65 mm midpoint of WetSpa manual ranges",
+   "reason": "Field observation data showed 0.65 mm was too high for rangeland",
+   "effect_reported": "no",
+   "page": "10-11"
+  },
+  {
+   "node": "D",
+   "chosen": "Plane Manning's n = 0.05",
+   "alternatives": "0.035 (Al-Qurashi et al. 2008, desert catchment); 0.055-0.057 (Walnut Gulch, Yatheendradas et al. 2008)",
+   "reason": "Land use maps, field observations and regional literature values; order-of-magnitude agreement",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "D",
+   "chosen": "Channel porosity averaged from 'loamy sand' and 'sand' classes",
+   "alternatives": "A single texture class value",
+   "reason": "To better represent channel conditions representative of a mixture of these two classes",
+   "effect_reported": "no",
+   "page": "12"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Parameters in the model were varied by ±10% and ±20% of the optimized values using a one‐factor‐at‐a‐time approach",
+   "page": "12"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "To demonstrate the need for parameter allocation before calibration, the model was also run using calibration without parameter allocation.",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "this finding is consistent with the results of this research",
+   "page": "17"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Hantush and Kalin (2005) also concluded that the KINEROS2 model makes more reliable results under bigger rainfall events than for smaller events.",
+   "page": "15"
+  }
+ ]
+}

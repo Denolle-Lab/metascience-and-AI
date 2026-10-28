@@ -3,8 +3,8 @@
  "script": "tools/roadmap/figures/fig05_transitions.py",
  "date": "2026-10-27",
  "private_root": "private",
- "commit_public": "fc67985",
- "commit_private": "d9422ce",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
  "inputs": [
   {
    "file": "private/analysis/codings/api/calc1",
@@ -12,8 +12,18 @@
    "provenance": null
   },
   {
+   "file": "private/analysis/codings/api/r2",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
    "file": "private/data/roadmap/derived/calc1/manifest.jsonl",
    "sha256_16": "97c8071e2fe98f5d",
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/r2calc/manifest.jsonl",
+   "sha256_16": "3a6daaf38b029027",
    "provenance": null
   },
   {
@@ -28,10 +38,10 @@
   },
   {
    "file": "private/data/roadmap/derived/calc1/papers_vs_agents.json",
-   "sha256_16": "84e7627445701d0f",
+   "sha256_16": "23d324c172de1ebf",
    "provenance": {
     "script": "g14_papers_vs_agents.py",
-    "commit": "3b4b2d5",
+    "commit": "f155302",
     "date": "2026-10-27",
     "private_root": "private",
     "inputs": [
@@ -50,25 +60,39 @@
  "numbers": {
   "unit": "percent of papers (heatmap cells, colour bar, panel b bars and intervals)",
   "rounds_drawn": [
-   "Round 1"
+   "Round 1",
+   "Round 2"
   ],
   "n_papers": {
-   "Round 1": 233
+   "Round 1": 374,
+   "Round 2": 198
   },
   "n_eligible_in_manifest": {
-   "Round 1": 525
+   "Round 1": 525,
+   "Round 2": 222
   },
   "n_coding_files": {
-   "Round 1": 235
+   "Round 1": 379,
+   "Round 2": 202
   },
   "invalid_codings_left_out": {
    "Round 1": [
-    "g22_W4293915783",
-    "g22_W4306167517"
+    "g22_W4291222803",
+    "g22_W4293213379",
+    "g22_W4295882689",
+    "g22_W4308326731",
+    "g22_W4310898194"
+   ],
+   "Round 2": [
+    "g22_W4225349193",
+    "g22_W4283270991",
+    "g22_W4309556479",
+    "g22_W4313418822"
    ]
   },
   "codings_outside_manifest_left_out": {
-   "Round 1": []
+   "Round 1": [],
+   "Round 2": []
   },
   "n_agent_systems": {
    "opus-b": 31,
@@ -78,205 +102,220 @@
    "opus-b",
    "sonnet-c"
   ],
-  "n_distinct_transitions_round1": 185,
-  "n_never_observed_offdiagonal_round1": 25,
-  "n_transitions_in_10pct_of_papers_round1": 59,
+  "n_distinct_transitions_round1": 195,
+  "n_never_observed_offdiagonal_round1": 15,
+  "n_transitions_in_10pct_of_papers_round1": 55,
   "heatmap_vmax_pct": 60,
   "heatmap_round1_pct": {
-   "NE": 1.29,
-   "NO": 15.02,
-   "NI": 9.87,
-   "NQ": 7.73,
-   "NH": 3.43,
-   "NS": 6.87,
-   "ND": 10.3,
-   "NF": 6.44,
-   "NC": 3.43,
-   "NV": 18.45,
-   "NK": 1.72,
-   "NR": 2.15,
-   "EN": 1.72,
-   "EO": 1.72,
-   "EI": 3.86,
-   "EQ": 0.86,
-   "EH": 3.0,
-   "ED": 0.86,
-   "EC": 3.0,
-   "EV": 2.15,
-   "EX": 0.43,
-   "ON": 15.02,
-   "OE": 6.01,
-   "OI": 36.05,
-   "OQ": 13.73,
-   "OH": 14.59,
-   "OS": 8.15,
-   "OD": 13.3,
-   "OF": 6.01,
-   "OC": 24.89,
-   "OV": 33.48,
-   "OX": 2.58,
-   "OK": 1.72,
-   "OP": 0.43,
-   "OR": 0.86,
-   "IN": 6.44,
-   "IE": 3.43,
-   "IO": 17.17,
-   "IQ": 2.15,
-   "IH": 11.16,
-   "IS": 9.01,
-   "ID": 6.87,
-   "IF": 0.86,
-   "IC": 45.49,
-   "IV": 45.92,
-   "IX": 7.3,
-   "IK": 9.87,
-   "IP": 4.72,
-   "IR": 3.43,
-   "QN": 25.75,
-   "QE": 0.43,
-   "QO": 21.89,
-   "QI": 3.0,
-   "QH": 30.04,
-   "QS": 9.01,
-   "QD": 9.87,
-   "QF": 8.58,
-   "QC": 2.58,
-   "QV": 0.86,
-   "QK": 1.29,
-   "HN": 5.15,
-   "HE": 1.29,
-   "HO": 14.16,
-   "HI": 10.73,
-   "HQ": 13.3,
-   "HS": 14.16,
-   "HD": 12.88,
-   "HF": 4.29,
-   "HC": 28.76,
-   "HV": 9.87,
-   "HX": 12.02,
-   "HK": 11.59,
-   "HP": 0.43,
-   "HR": 3.0,
-   "SN": 4.72,
-   "SO": 8.58,
-   "SI": 7.3,
-   "SQ": 5.15,
-   "SH": 6.01,
-   "SD": 6.87,
-   "SF": 2.58,
-   "SC": 32.19,
-   "SV": 15.45,
-   "SX": 4.29,
-   "SK": 4.72,
-   "SP": 0.43,
-   "SR": 3.86,
-   "DN": 7.3,
-   "DO": 22.75,
-   "DI": 7.3,
-   "DQ": 0.86,
-   "DH": 0.86,
-   "DS": 12.02,
-   "DF": 12.45,
-   "DC": 7.73,
-   "DV": 10.73,
-   "DX": 0.43,
-   "FN": 5.15,
-   "FO": 24.89,
-   "FI": 6.01,
-   "FH": 1.29,
-   "FS": 2.15,
-   "FD": 3.86,
-   "FC": 0.86,
-   "FV": 3.86,
-   "FX": 0.43,
-   "FK": 0.43,
-   "CN": 1.72,
-   "CE": 1.29,
-   "CO": 13.73,
-   "CI": 31.76,
-   "CQ": 3.0,
-   "CH": 28.33,
-   "CS": 15.45,
-   "CD": 3.0,
-   "CF": 1.29,
-   "CV": 54.51,
-   "CX": 23.61,
-   "CK": 43.78,
-   "CP": 14.59,
-   "CR": 20.17,
-   "VN": 9.44,
-   "VE": 3.0,
-   "VO": 25.32,
-   "VI": 36.91,
-   "VQ": 1.29,
-   "VH": 15.02,
-   "VS": 14.59,
-   "VD": 12.02,
-   "VF": 3.86,
-   "VC": 46.35,
-   "VX": 11.16,
-   "VK": 27.04,
-   "VP": 12.88,
-   "VR": 14.59,
-   "XE": 0.43,
-   "XO": 3.0,
-   "XI": 6.87,
-   "XQ": 0.43,
-   "XH": 6.44,
-   "XS": 5.15,
-   "XD": 2.15,
-   "XF": 0.43,
-   "XC": 13.73,
-   "XV": 7.3,
-   "XK": 15.45,
-   "XP": 2.15,
-   "XR": 4.29,
-   "KN": 1.72,
-   "KO": 2.15,
-   "KI": 6.44,
-   "KQ": 3.86,
-   "KH": 7.3,
-   "KS": 6.44,
-   "KD": 1.72,
-   "KF": 0.43,
-   "KC": 19.31,
-   "KV": 8.15,
-   "KX": 1.72,
-   "KP": 2.58,
-   "KR": 12.02,
-   "PO": 1.72,
-   "PI": 4.72,
-   "PQ": 0.43,
-   "PH": 3.0,
-   "PS": 1.29,
-   "PD": 0.43,
-   "PF": 0.43,
-   "PC": 10.3,
-   "PV": 4.29,
-   "PX": 0.86,
-   "PK": 9.44,
-   "PR": 3.0,
-   "RN": 2.15,
-   "RO": 2.15,
-   "RI": 6.44,
-   "RQ": 0.86,
-   "RH": 2.15,
-   "RS": 2.15,
-   "RD": 0.86,
-   "RC": 11.59,
-   "RV": 10.3,
-   "RX": 2.15,
-   "RK": 16.74,
-   "RP": 1.29
+   "NE": 1.34,
+   "NO": 12.83,
+   "NI": 8.56,
+   "NQ": 5.61,
+   "NH": 2.94,
+   "NS": 5.88,
+   "ND": 10.7,
+   "NF": 5.35,
+   "NC": 3.48,
+   "NV": 17.38,
+   "NK": 1.07,
+   "NR": 2.41,
+   "EN": 1.07,
+   "EO": 1.87,
+   "EI": 3.21,
+   "EQ": 1.34,
+   "EH": 2.67,
+   "ES": 0.27,
+   "ED": 0.53,
+   "EF": 0.27,
+   "EC": 5.61,
+   "EV": 2.94,
+   "EX": 0.8,
+   "ON": 14.17,
+   "OE": 6.15,
+   "OI": 35.56,
+   "OQ": 11.5,
+   "OH": 15.51,
+   "OS": 9.36,
+   "OD": 12.3,
+   "OF": 6.42,
+   "OC": 27.27,
+   "OV": 35.03,
+   "OX": 2.41,
+   "OK": 2.14,
+   "OP": 0.27,
+   "OR": 0.53,
+   "IN": 5.08,
+   "IE": 3.21,
+   "IO": 17.11,
+   "IQ": 2.67,
+   "IH": 9.63,
+   "IS": 9.36,
+   "ID": 5.61,
+   "IF": 0.53,
+   "IC": 45.72,
+   "IV": 47.59,
+   "IX": 6.95,
+   "IK": 9.63,
+   "IP": 3.48,
+   "IR": 3.21,
+   "QN": 21.12,
+   "QE": 0.53,
+   "QO": 24.87,
+   "QI": 2.41,
+   "QH": 34.22,
+   "QS": 7.75,
+   "QD": 9.63,
+   "QF": 7.75,
+   "QC": 2.41,
+   "QV": 0.53,
+   "QK": 1.34,
+   "HN": 5.35,
+   "HE": 1.07,
+   "HO": 15.78,
+   "HI": 10.16,
+   "HQ": 12.57,
+   "HS": 17.65,
+   "HD": 13.9,
+   "HF": 4.28,
+   "HC": 30.48,
+   "HV": 9.89,
+   "HX": 13.1,
+   "HK": 12.83,
+   "HP": 1.07,
+   "HR": 4.01,
+   "SN": 3.74,
+   "SE": 0.8,
+   "SO": 8.02,
+   "SI": 6.95,
+   "SQ": 5.08,
+   "SH": 6.42,
+   "SD": 5.35,
+   "SF": 2.41,
+   "SC": 36.9,
+   "SV": 13.9,
+   "SX": 5.61,
+   "SK": 4.55,
+   "SP": 0.8,
+   "SR": 3.74,
+   "DN": 6.15,
+   "DE": 0.27,
+   "DO": 21.12,
+   "DI": 8.56,
+   "DQ": 0.53,
+   "DH": 0.53,
+   "DS": 10.16,
+   "DF": 9.89,
+   "DC": 7.49,
+   "DV": 10.96,
+   "DX": 0.27,
+   "FN": 4.55,
+   "FO": 21.39,
+   "FI": 6.42,
+   "FH": 0.8,
+   "FS": 1.34,
+   "FD": 2.67,
+   "FC": 2.14,
+   "FV": 3.74,
+   "FX": 0.53,
+   "FK": 0.53,
+   "FR": 0.27,
+   "CN": 2.14,
+   "CE": 1.6,
+   "CO": 15.78,
+   "CI": 32.09,
+   "CQ": 4.55,
+   "CH": 33.96,
+   "CS": 17.38,
+   "CD": 3.21,
+   "CF": 1.6,
+   "CV": 54.01,
+   "CX": 25.4,
+   "CK": 44.12,
+   "CP": 15.24,
+   "CR": 18.45,
+   "VN": 8.82,
+   "VE": 4.01,
+   "VO": 29.95,
+   "VI": 37.17,
+   "VQ": 1.6,
+   "VH": 13.9,
+   "VS": 15.78,
+   "VD": 10.16,
+   "VF": 4.01,
+   "VC": 47.59,
+   "VX": 10.7,
+   "VK": 28.61,
+   "VP": 10.96,
+   "VR": 14.97,
+   "XN": 0.27,
+   "XE": 0.53,
+   "XO": 3.48,
+   "XI": 8.29,
+   "XQ": 0.27,
+   "XH": 7.49,
+   "XS": 6.15,
+   "XD": 1.6,
+   "XF": 0.27,
+   "XC": 15.78,
+   "XV": 8.02,
+   "XK": 14.17,
+   "XP": 1.87,
+   "XR": 4.55,
+   "KN": 1.07,
+   "KE": 0.27,
+   "KO": 2.14,
+   "KI": 6.95,
+   "KQ": 3.74,
+   "KH": 7.75,
+   "KS": 5.08,
+   "KD": 1.07,
+   "KF": 0.27,
+   "KC": 18.45,
+   "KV": 8.02,
+   "KX": 2.94,
+   "KP": 1.87,
+   "KR": 12.03,
+   "PN": 0.27,
+   "PE": 0.27,
+   "PO": 1.87,
+   "PI": 4.28,
+   "PQ": 0.53,
+   "PH": 2.67,
+   "PS": 1.34,
+   "PD": 0.53,
+   "PF": 0.8,
+   "PC": 8.29,
+   "PV": 4.28,
+   "PX": 1.07,
+   "PK": 8.82,
+   "PR": 2.41,
+   "RN": 1.87,
+   "RE": 0.53,
+   "RO": 2.67,
+   "RI": 4.81,
+   "RQ": 0.8,
+   "RH": 3.48,
+   "RS": 2.67,
+   "RD": 0.8,
+   "RC": 14.97,
+   "RV": 8.56,
+   "RX": 2.14,
+   "RK": 15.24,
+   "RP": 1.07
   },
   "top_transitions": [
    {
     "edge": "CV",
-    "papers_round1": 127,
+    "papers_round1": 202,
     "pct_round1_est_lo_hi": [
-     54.51,
-     48.07,
-     60.94
+     54.01,
+     48.92,
+     58.83
+    ],
+    "pct_round2_est_lo_hi": [
+     56.06,
+     48.99,
+     63.13
     ],
     "agent_systems_running_it": {
      "opus-b": 3,
@@ -286,42 +325,57 @@
     "g14_no_agent_share": null
    },
    {
-    "edge": "VC",
-    "papers_round1": 108,
+    "edge": "IV",
+    "papers_round1": 178,
     "pct_round1_est_lo_hi": [
-     46.35,
-     39.91,
-     52.79
+     47.59,
+     42.51,
+     52.67
+    ],
+    "pct_round2_est_lo_hi": [
+     46.46,
+     39.39,
+     53.54
     ],
     "agent_systems_running_it": {
      "opus-b": 0,
      "sonnet-c": 0
     },
     "coders_finding_it": 0,
-    "g14_no_agent_share": 0.46
+    "g14_no_agent_share": 0.48
    },
    {
-    "edge": "IV",
-    "papers_round1": 107,
+    "edge": "VC",
+    "papers_round1": 178,
     "pct_round1_est_lo_hi": [
-     45.92,
-     39.48,
-     52.36
+     47.59,
+     42.78,
+     52.67
+    ],
+    "pct_round2_est_lo_hi": [
+     48.48,
+     41.41,
+     55.56
     ],
     "agent_systems_running_it": {
      "opus-b": 0,
      "sonnet-c": 0
     },
     "coders_finding_it": 0,
-    "g14_no_agent_share": 0.46
+    "g14_no_agent_share": 0.48
    },
    {
     "edge": "IC",
-    "papers_round1": 106,
+    "papers_round1": 171,
     "pct_round1_est_lo_hi": [
-     45.49,
-     39.48,
-     51.93
+     45.72,
+     40.64,
+     50.8
+    ],
+    "pct_round2_est_lo_hi": [
+     50.51,
+     43.94,
+     58.08
     ],
     "agent_systems_running_it": {
      "opus-b": 2,
@@ -332,11 +386,16 @@
    },
    {
     "edge": "CK",
-    "papers_round1": 102,
+    "papers_round1": 165,
     "pct_round1_est_lo_hi": [
-     43.78,
-     37.34,
-     50.23
+     44.12,
+     39.04,
+     49.2
+    ],
+    "pct_round2_est_lo_hi": [
+     32.32,
+     26.26,
+     38.89
     ],
     "agent_systems_running_it": {
      "opus-b": 5,
@@ -347,11 +406,16 @@
    },
    {
     "edge": "VI",
-    "papers_round1": 86,
+    "papers_round1": 139,
     "pct_round1_est_lo_hi": [
-     36.91,
-     30.9,
-     43.35
+     37.17,
+     32.35,
+     42.25
+    ],
+    "pct_round2_est_lo_hi": [
+     35.86,
+     29.29,
+     41.93
     ],
     "agent_systems_running_it": {
      "opus-b": 0,
@@ -361,12 +425,37 @@
     "g14_no_agent_share": 0.37
    },
    {
-    "edge": "OI",
-    "papers_round1": 84,
+    "edge": "SC",
+    "papers_round1": 138,
     "pct_round1_est_lo_hi": [
-     36.05,
-     30.04,
-     42.49
+     36.9,
+     32.09,
+     41.98
+    ],
+    "pct_round2_est_lo_hi": [
+     38.38,
+     31.82,
+     45.45
+    ],
+    "agent_systems_running_it": {
+     "opus-b": 1,
+     "sonnet-c": 1
+    },
+    "coders_finding_it": 2,
+    "g14_no_agent_share": null
+   },
+   {
+    "edge": "OI",
+    "papers_round1": 133,
+    "pct_round1_est_lo_hi": [
+     35.56,
+     30.75,
+     40.37
+    ],
+    "pct_round2_est_lo_hi": [
+     32.32,
+     25.76,
+     39.39
     ],
     "agent_systems_running_it": {
      "opus-b": 4,
@@ -377,56 +466,36 @@
    },
    {
     "edge": "OV",
-    "papers_round1": 78,
+    "papers_round1": 131,
     "pct_round1_est_lo_hi": [
-     33.48,
-     27.9,
-     39.48
+     35.03,
+     30.21,
+     39.84
+    ],
+    "pct_round2_est_lo_hi": [
+     34.34,
+     27.78,
+     40.4
     ],
     "agent_systems_running_it": {
      "opus-b": 0,
      "sonnet-c": 0
     },
     "coders_finding_it": 0,
-    "g14_no_agent_share": 0.33
-   },
-   {
-    "edge": "SC",
-    "papers_round1": 75,
-    "pct_round1_est_lo_hi": [
-     32.19,
-     26.61,
-     38.63
-    ],
-    "agent_systems_running_it": {
-     "opus-b": 1,
-     "sonnet-c": 1
-    },
-    "coders_finding_it": 2,
-    "g14_no_agent_share": null
-   },
-   {
-    "edge": "CI",
-    "papers_round1": 74,
-    "pct_round1_est_lo_hi": [
-     31.76,
-     26.18,
-     37.77
-    ],
-    "agent_systems_running_it": {
-     "opus-b": 0,
-     "sonnet-c": 0
-    },
-    "coders_finding_it": 0,
-    "g14_no_agent_share": 0.32
+    "g14_no_agent_share": 0.35
    },
    {
     "edge": "QH",
-    "papers_round1": 70,
+    "papers_round1": 128,
     "pct_round1_est_lo_hi": [
-     30.04,
-     24.03,
-     36.05
+     34.22,
+     29.41,
+     39.04
+    ],
+    "pct_round2_est_lo_hi": [
+     28.28,
+     22.22,
+     34.34
     ],
     "agent_systems_running_it": {
      "opus-b": 5,
@@ -436,54 +505,80 @@
     "g14_no_agent_share": null
    },
    {
-    "edge": "HC",
-    "papers_round1": 67,
+    "edge": "CH",
+    "papers_round1": 127,
     "pct_round1_est_lo_hi": [
-     28.76,
-     22.75,
-     34.33
+     33.96,
+     29.14,
+     38.5
+    ],
+    "pct_round2_est_lo_hi": [
+     34.34,
+     27.78,
+     40.91
     ],
     "agent_systems_running_it": {
-     "opus-b": 3,
-     "sonnet-c": 2
+     "opus-b": 0,
+     "sonnet-c": 3
     },
-    "coders_finding_it": 2,
+    "coders_finding_it": 1,
     "g14_no_agent_share": null
+   },
+   {
+    "edge": "CI",
+    "papers_round1": 120,
+    "pct_round1_est_lo_hi": [
+     32.09,
+     27.54,
+     36.9
+    ],
+    "pct_round2_est_lo_hi": [
+     31.82,
+     25.25,
+     38.38
+    ],
+    "agent_systems_running_it": {
+     "opus-b": 0,
+     "sonnet-c": 0
+    },
+    "coders_finding_it": 0,
+    "g14_no_agent_share": 0.32
    }
   ],
   "edges_one_coder_only": [
    "CV",
-   "IC"
+   "IC",
+   "CH"
   ],
-  "papers_with_merged_repeats_round1": 189,
-  "papers_with_merged_repeats_round1_pct": 81.12,
+  "papers_with_merged_repeats_round1": 307,
+  "papers_with_merged_repeats_round1_pct": 82.09,
   "loop_codebook_versions": [
    "0.1.2"
   ],
   "raw_self_repeat_papers_round1": {
-   "N": 36,
-   "E": 1,
-   "O": 35,
-   "I": 28,
+   "N": 48,
+   "E": 2,
+   "O": 61,
+   "I": 51,
    "Q": 4,
-   "H": 17,
-   "S": 15,
-   "D": 6,
+   "H": 27,
+   "S": 21,
+   "D": 8,
    "F": 1,
-   "C": 68,
-   "V": 50,
-   "X": 8,
-   "K": 26,
-   "P": 3,
-   "R": 2
+   "C": 126,
+   "V": 96,
+   "X": 13,
+   "K": 32,
+   "P": 4,
+   "R": 3
   },
   "bootstrap": {
    "resamples": 2000,
    "seed": 2026,
    "interval": "2.5 and 97.5 percentiles"
   },
-  "g14_n_papers": 233,
-  "g14_note": "g14 (papers_vs_agents.json) shares are on n = 233, this figure on n = 233; the no-agent edge set is checked, the shares differ slightly. Rerun g14 before citing both."
+  "g14_n_papers": 374,
+  "g14_note": "g14 (papers_vs_agents.json) shares are on n = 374, this figure on n = 374; the no-agent edge set is checked, the shares differ slightly. Rerun g14 before citing both."
  },
- "caption": "Node-to-node transitions in the coded final-paper sequences of 233 round-1 papers with valid codings (235 of the 525 eligible papers coded so far; 2 codings failing the format check left out). Papers are from 2022 Earth science, coded by Claude Opus 5.5 with codebook 1.5.0 on graph v0.4.2. Consecutive steps on the same node are merged first, which affects 189 of 233 papers (81%). All values are percent of papers. (a) Share of papers whose sequence contains each directed transition at least once, row node to column node in graph order. The hatched diagonal is empty by construction (repeats on one node are merged); white cells are transitions that never occur (185 of 210 possible transitions occur at least once, 25 never). Numbered cells are the 12 transitions ranked in (b). (b) The 12 most common transitions with 95% percentile bootstrap intervals (2000 resamples over papers). Fill gives whether any of 31 coded AI agent systems runs the transition inside a loop (the cycle of steps the system repeats), as read by two model coders that did not see each other's work, a Claude Opus run (opus-b) and a Claude Sonnet run (sonnet-c), under loop codebook 0.1.2: filled, both coders; hatched, one coder only (the coders disagree on C to V, opus-b 3, sonnet-c 0; I to C, opus-b 2, sonnet-c 0); hollow, no agent loop (V to C, I to V, V to I, O to V, C to I). Right column: number of agent systems running the transition, opus-b / sonnet-c."
+ "caption": "Node-to-node transitions in the coded final-paper sequences of 374 round-1 papers with valid codings (379 of the 525 eligible papers coded so far; 5 codings failing the format check left out). Papers are from 2022 Earth science, coded by Claude Opus 5.5 with codebook 1.5.0 on graph v0.4.2. Consecutive steps on the same node are merged first, which affects 307 of 374 papers (82%). All values are percent of papers. (a) Share of papers whose sequence contains each directed transition at least once, row node to column node in graph order. The hatched diagonal is empty by construction (repeats on one node are merged); white cells are transitions that never occur (195 of 210 possible transitions occur at least once, 15 never). Numbered cells are the 12 transitions ranked in (b). (b) The 12 most common transitions with 95% percentile bootstrap intervals (2000 resamples over papers). Fill gives whether any of 31 coded AI agent systems runs the transition inside a loop (the cycle of steps the system repeats), as read by two model coders that did not see each other's work, a Claude Opus run (opus-b) and a Claude Sonnet run (sonnet-c), under loop codebook 0.1.2: filled, both coders; hatched, one coder only (the coders disagree on C to V, opus-b 3, sonnet-c 0; I to C, opus-b 2, sonnet-c 0; C to H, opus-b 0, sonnet-c 3); hollow, no agent loop (I to V, V to C, V to I, O to V, C to I). Right column: number of agent systems running the transition, opus-b / sonnet-c. Diamonds: round 2 (198 papers)."
 }

@@ -2,8 +2,8 @@
 
 Data, model codings, figures and reports of the roadmap study in this repository (how Earth-science papers move
 through the inquiry graph v0.4.2, coded by a language model under codebook 1.5.0). Built on 2026-10-27 by
-`tools/roadmap/g22_release.py` from the private working tree (public commit fc67985, private commit d9422ce+uncommitted).
-268 files, 24.6 MB. `RELEASE.json` lists every file with its sha256 and size.
+`tools/roadmap/g22_release.py` from the private working tree (public commit f155302+uncommitted, private commit bb870d1+uncommitted).
+618 files, 34.5 MB. `RELEASE.json` lists every file with its sha256 and size.
 
 The folder mirrors the layout of the private tree (`private/` in the scripts' docstrings and provenance blocks is this
 folder), so every path written as `private/...` in a report or provenance block is found here without the `private/`
@@ -34,13 +34,13 @@ prefix.
 | Figure PDFs | the repository does not carry PDFs; PNG and provenance JSON are here |
 
 Quotes. A field that quotes a paper (`quote`, `entry.evidence`) is cut to 25 words, the codebook limit, with " [...]"
-appended; 64 quotes were longer. The marker keeps such a coding invalid under `tools/check_coding.py`, as it was,
+appended; 102 quotes were longer. The marker keeps such a coding invalid under `tools/check_coding.py`, as it was,
 so reruns use the same papers. Separate strings of one coding that continue each other in the paper (a V-check quote
-that picks up where a step quote stops) are cut where together they would pass 25 words; 419 strings were
+that picks up where a step quote stops) are cut where together they would pass 25 words; 1114 strings were
 shortened this way, with " [...] " where words were removed. Every string in the release was then compared with every
 paper text, open-review file and abstract we hold: no verbatim passage, single or chained, is longer than 25 words,
 except bibliographic titles and citation strings. Taken together, the quotes and coded fields of this release reproduce
-a median of 3.9% of the words of a coded paper's text and at most 22.8% (180 paper texts with any 12-word
+a median of 4.2% of the words of a coded paper's text and at most 22.8% (593 paper texts with any 12-word
 match; an upper bound, since paraphrased fields that share 12 words with the paper count too).
 
 ## Embargo
@@ -80,14 +80,14 @@ gives:
 
 | Number | Released (all coded papers) | Rerun from this release |
 |:--|:--|:--|
-| g13 papers coded (round 1, valid) | 233 | 144 |
+| g13 papers coded (round 1, valid) | 374 | 287 |
 | g13 eligible papers | 525 | 435 |
-| g13 coverage | 0.44 | 0.33 |
+| g13 coverage | 0.71 | 0.66 |
 | g13 test-retest pairs | 50 | 7 |
-| g13 entry state problem (papers, share) | [181, 0.78] | [121, 0.84] |
-| g17 papers | 233 | 144 |
-| g17 tests | 245 | 234 |
-| g17 tests with q < 0.1 | 15 | 2 |
+| g13 entry state problem (papers, share) | [296, 0.79] | [238, 0.83] |
+| g17 papers | 374 | 287 |
+| g17 tests | 274 | 245 |
+| g17 tests with q < 0.1 | 38 | 14 |
 
 Scripts that fetch or read full texts (f00, f01, g08, g10, g15, the coding runs) need the withheld files and do not run
 from the release.
@@ -110,5 +110,5 @@ Data and text in this folder: CC BY 4.0 (see `LICENSE`, section 1). Code in `too
 remain with their holders; a quotation here does not license reuse of the source.
 
 Cite as: Denolle, M. (2026). *Roadmap data release: model codings of Earth-science papers on the inquiry graph*
-(release of 2026-10-27, commit fc67985). Denolle Lab, University of Washington.
+(release of 2026-10-27, commit f155302+uncommitted). Denolle Lab, University of Washington.
 https://github.com/Denolle-Lab/metascience-and-AI/tree/main/data/roadmap-release

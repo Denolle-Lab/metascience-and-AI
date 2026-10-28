@@ -1,0 +1,448 @@
+{
+ "key": "g22_W4220933785",
+ "doi": "10.1029/2021jb022480",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kravchinsky & van der Baan (2022), Magnitude-Frequency Distributions and Slip-History Predictions for Earthquakes Using Cellular Automata and Absorbing Markov Chains, JGR Solid Earth 127, e2021JB022480 (published PDF, 18 pp.)"
+ ],
+ "pages_convention": "printed journal pages (n of 18)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Nonetheless, they are somewhat unsatisfactory since it has proven difficult to predict their behavior without extensive modeling or advanced statistical analyses",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Kravchinsky & van der Baan 2022, JGR Solid Earth, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of whether long-range CA temporal statistics can be obtained without extensive CA modeling.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it has proven difficult to predict their behavior without extensive modeling or advanced statistical analyses"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that, given a uniform stationary stress distribution and single-cell initiation, the CA's temporal dynamics are a memoryless mean-field process that an absorbing Markov chain can reproduce.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the proposed stochastic model is a mean-field approximation that replicates the CA temporal statistical behavior"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Derive binomial failure probabilities and build the absorbing Markov transition matrix from the CA parameters (Eqs 1-8, Figure 2), then write exhaustive-search and MCMC algorithms (Figure 3, Appendix A) and a conversion to physical time (Eq 11).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can construct an (N + 1) × (N + 1) square transition matrix M from the binomial distributions P(n|m, N)"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Set the test conditions: L=256, R=16 (N=1,088), seven dissipation values, 10^6 plate updates, CA residual-stress noise, and a 4×10^6 burn-in following Serino et al. (2011).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We demonstrate the temporal mean-field congruence of the CA and the absorbing Markov chains"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute transition matrices for α = 0.05, 0.40 and 0.80 (Figure 5) and derive the expectation that large events favour slow growth and decay along the diagonal.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, larger events are more likely if they involve relatively slow growth and decay rates, instead of rapidly fluctuating slip histories."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Run the CA and the MCMC and record event time series in plate-update and physical time (Figure 6).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As the dissipation parameter increases, the average size of an event decreases."
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare frequency-size distributions from the exhaustive search (up to Scum=18), the MCMC and the CA, and against the mean-field s^-3/2 scaling, across dissipation values (Figure 7).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The exhaustive-search frequency-size distributions (black diamonds) match the MCMC (open circles) and CA (crosses) frequency-size distributions very accurately."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test whether the large-s spread is a finite-size or finite-sampling artifact by running L=512 and 10^7 plate updates (CA and MCMC) and 5×10^7 plate updates (MCMC only) (Appendix B, Figures B1-B2).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find this spread present in the frequency-size distributions for systems of size L = 256 and L = 512"
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Refine the interpretation: the spread is attributed to the discrete walk probabilities rather than to finite size, in agreement with Klein et al. (2000).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We propose that some amount of spread is inherent in the discrete ways an avalanche (CA) or Markov chain (MCMC) may develop"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare mean interevent physical times by event size between the CA and the MCMC (Figure 8).",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The interevent times resulting from both the CA (dotted lines) and MCMC (solid curves) models are in good agreement with each other."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the interevent results against the interoccurrence times of Christensen and Olami (1992) for OFC models, noting similarity but offering a stochastic interpretation.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "find that the average interoccurrence time of large events within a cluster is very small"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the mean-field-theory prediction of a self-similar average slip-history scaling function (Eq 12) from crackling-noise work.",
+     "page": "10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Systems that are close to a critical point are characterized by self-similar scaling functions"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Average slip histories by event size for the CA and the MCMC (Figure 9); find them similar and asymmetric, as the transition-matrix shape predicted.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 9 confirms the earlier statement derived from the shape of the transition matrix M"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Scale the average slip histories by s^1/2, fit Eq 12 to obtain the nonuniversal constants A and B for the MCMC and the CA, and interpret the collapse as a critical state (Figure 10).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We fit Equation 12 for event sizes with the largest total number of avalanches binned"
+    },
+    {
+     "n": 15,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Examine individual slip histories of the largest events in the CA and the MCMC and note their high variability (Figure 11).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The individual slip histories are highly variable with greater fluctuations in size."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Overlay average slip histories on zoomed transition matrices to show a preferred walk through probability space (Figure 12); note that the MCMC is orders of magnitude faster.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "illustrates why on average an avalanche sequences develops along a preferred walk"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Support the uniform stationary-stress premise with Naylor and Main (2008) and with stress snapshots taken from the authors' own CA runs.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Stationarity of the stress distribution was verified by taking model snapshots"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Extrapolate, without a test, that slip-history asymmetry in natural systems comes from the size of the initiating failure rather than from undersampling.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests that in natural systems, the asymmetry observed in the average slip histories originates from the size of the initiation of the rupture"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the absorbing-Markov MCMC replicates the long-range RJB CA's temporal statistics.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The MCMC models are in good agreement with the homogeneous RJB CA in terms of predicted time series, magnitude-frequency distributions, and average slip histories."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Temporal statistics of a long-range RJB cellular automaton: event sizes, interevent times, slip histories",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; CA output is counted directly",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Replicate CA temporal statistics with an absorbing Markov chain",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival models; the CA serves as reference and mean-field scaling as benchmark",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "The Markov model predicts frequency-size distributions, interevent times and asymmetric slip histories from the transition matrix",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in computation (α, L, R, run length)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Agreement holds across dissipation values, lattice sizes and run lengths",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the MCMC is stochastically equivalent to the CA",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The temporal avalanche dynamics of the long-range RJB CA can be replicated by an absorbing Markov chain whose transition matrix assumes a uniform stress distribution; the MCMC matches the CA in time series, magnitude-frequency distributions, interevent times and average slip histories.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the absorbing Markov transition matrix from binomial failure probabilities fixed by the CA parameters is what makes every later comparison and claim possible.",
+  "page": "4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "yes",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The Markov-equivalence hypothesis (p. 2) directed which simulations were run. The MCMC-versus-CA comparison across seven dissipation values (pp. 8-12) could have failed, but agreement is judged visually, with no stated fit criterion. Nothing was fixed in advance; the burn-in copies Serino et al. (2011)."
+ },
+ "imports": [
+  {
+   "field": "mathematics / probability theory",
+   "item": "Absorbing Markov chains and transition matrices (Kemeny & Snell 1960)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Binomial distribution (Papoulis & Pillai 2002)",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "statistics / computational science",
+   "item": "Markov chain Monte Carlo sampling and coin-flip binomial generator (Devroye 1986)",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "mathematics / software",
+   "item": "Integer partitions (Andrews 1976) and MATLAB permutation-with-sum code (Luong 2020) for the exhaustive search",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Crackling noise / mean-field self-similar avalanche scaling function, from Barkhausen noise studies",
+   "kind": "concept",
+   "page": "10"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Markov treatment of the Oslo sandpile model (Corral 2004)",
+   "kind": "concept",
+   "page": "12"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file or earlier version was supplied, so the review sequence is not coded. The paper makes no explicit 'first' or 'previously unknown' statement; novelty is only implied, for example by the contrast with Corral (2004) on p. 13. CA-MCMC agreement is judged visually from overlaid plots; no goodness-of-fit statistic or threshold is reported. The CA code came from Kazemian (acknowledgments); the authors did not build it. The stationarity snapshots of the CA stress are mentioned but not shown (p. 13). Sub-claims sit at other statuses: the critical-state reading from the s^1/2 collapse (p. 11) is best_explanation. The asymmetry attributed to transition-matrix asymmetry (p. 11) is best_explanation. The spread as inherent rather than a finite-sampling effect (p. 9, Appendix B) is best_explanation, partly supported by robustness runs; the 5×10^7 run is MCMC only. The natural-system statement on initiation size (p. 14) is an untested hypothesis. Inference: there is a text-caption inconsistency, with p. 11 giving α = 0.20 for Figure 9b and the caption giving 0.40. No composition fits: the walk is a model-to-model method validation, with a hypothesised approximation tested against the full simulation it simplifies.",
+ "disagreements": [
+  {
+   "target": "Christensen and Olami (1992): interoccurrence time as a measure of correlation buildup",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The Markov model reproduces the CA interevent times as a memoryless stochastic process, implying no correlation buildup is needed.",
+   "page": "10",
+   "quote": "whereas our Markovian model suggests that the sequence of events originates as a stochastic process"
+  },
+  {
+   "target": "Markov-chain approaches to minimalist models (Corral 2004; Białecki 2015; Tejedor et al. 2008; Vázquez-Prada et al. 2002)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Using a stationary uniform distribution instead of full configurations lets the method handle a large-N long-range CA and give avalanche sequences.",
+   "page": "12",
+   "quote": "but this approach is restricted to small model sizes due to the number of configurations rapidly growing [...]"
+  },
+  {
+   "target": "Reading of the characteristic distribution (Youngs & Coppersmith 1985; Parsons et al. 2018) as implying finite-size effects in the largest [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Appendix B runs at L=256 and L=512 show the largest events are limited by dissipation, not system size.",
+   "page": "10",
+   "quote": "we demonstrate that the largest events in both CA and MCMC models are limited in growth by dissipation rather than finite size effects"
+  },
+  {
+   "target": "Position that slip-history asymmetry is an undersampling statistical artifact (cited with Ben-Zion 2008; Mehta et al. 2006)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "A conceptual argument from transition-matrix rows with more initiating failures; no simulation test.",
+   "page": "14",
+   "quote": "rather than being an undersampling statistical artifact"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Long-range RJB CA with 2D redistribution and residual-stress randomness",
+   "alternatives": "OFC model with nearest-neighbour, 1.5D redistribution",
+   "reason": "RJB stress distribution is more uniform, supporting the uniform-stress assumption",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Periodic boundary conditions",
+   "alternatives": "Open boundary conditions",
+   "reason": "Approximates an infinite system without border effects",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Exhaustive search for small Scum and MCMC sampling for the full range",
+   "alternatives": "Exhaustive search only",
+   "reason": "The number of walks grows exponentially, so exhaustive search is limited to low Scum",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "Coin-flip (sum of Bernoulli trials) binomial generator",
+   "alternatives": "Other binomial generators",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "CA residual-stress noise σR = 0.0 ± 0.1 (CA only, not MCMC)",
+   "alternatives": "No noise",
+   "reason": "Noise prevents periodic behaviour in the CA",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "C",
+   "chosen": "Interevent time between events of identical size",
+   "alternatives": "Interoccurrence time between subsequent events (Christensen & Olami 1992)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The exhaustive-search frequency-size distributions (black diamonds) match the MCMC (open circles) and CA (crosses) frequency-size distributions very accurately.",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] parameters of σF = 1.0, σR = 0.0, L = 256, and R = 16 for various dissipation values α",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A low dissipation approaches the mean-field scaling (black line) predicted for a mean-field RJB model",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We note no finite size effects as the CA of size L = 256 (orange crosses) and L = 512 (yellow crosses) are effectively identical",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We further explored the effect of finite size (L < ∞) and finite sampling",
+   "page": "15"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Stationarity of the stress distribution was verified by taking model snapshots",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This observation is in agreement with Klein et al. (2000) who also observed a significant spread",
+   "page": "9"
+  }
+ ]
+}

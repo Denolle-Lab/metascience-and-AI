@@ -1,0 +1,571 @@
+{
+ "key": "g22_W4220788028",
+ "doi": "10.5194/gmd-15-1931-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4220788028.pdf (published paper, Geosci. Model Dev., 15, 1931–1952, 2022)",
+  "g22_W4220788028.xml.txt (publisher XML converted with tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps also give the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Yet, most process-based models do not include a snow module; consequently, their simulations may be biased in cold environments.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4220788028.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem: tree-ring studies and process-based growth models rarely represent snow, and MAIDENiso's hydrology was never adapted to boreal conditions.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the use of MAIDENiso in high-latitude forests has been limited by the fact that its hydrological cycle was never adapted to boreal conditions"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors describe the original MAIDENiso model and its boreal parameterization from their own earlier work, including its snow side-calculation that never entered the water balance.",
+     "page": "§2.1.1 ¶3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The original version of MAIDENiso includes one snow layer, where snow accumulates and melts following changes in atmospheric temperature."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Because the previous version could not predict winter snow accumulation, they build a new snow module: rain/snow partition, canopy snow, a dynamic snow layer, Penman–Monteith sublimation with a constant r_a, soil ice, a CLM5-based thermal conduction model and new isotopic fractionation. Only one new free parameter is added.",
+     "page": "§2.1.2 ¶1–¶9",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we have added a one-dimensional (vertical) thermal conduction model largely based on CLM5"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state the expectation that sublimation fractionation enriches snow δ18O, that the enriched meltwater enters soil water, and that the signal is imprinted in tree-ring cellulose.",
+     "page": "§2.1.2 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "fractionation from snow sublimation is expected to produce a significant enrichment of the δ 18 O isotopes in the snow layer"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design the comparison: the old and new versions are calibrated independently by Bayesian MCMC (50 chains, plausible block), in a fixed order of snow first, then GPP, then δ18O_TRC.",
+     "page": "§2.2 ¶1–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Because the new and the original versions of MAIDENiso behave differently, an independent calibration of the parameters is needed to run each of them."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "They take daily temperature and precipitation for both sites from the NARR reanalysis, because the nearest stations are 100 and 186 km away, and CO2 from Mauna Loa corrected with CarbonTracker.",
+     "page": "§2.3 ¶2–¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "temperature and precipitation data were taken from the NARR (North American Reanalysis) dataset at the coordinates of the studied sites"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They fit linear regressions of precipitation δ18O on temperature and precipitation, separately for snowfall and rainfall, from IsoGSM grid points. Direct use of IsoGSM was discarded because its precipitation was too low.",
+     "page": "§2.3 ¶4–¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calibrated this regression model using meteorological data from the gridded dataset IsoGSM"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble observations from other sources: published δ18O_TRC chronologies (some co-authored), GPP from distant eddy-covariance towers (Uaf, EOBS), SNDP (a station at Tungsten, NARR at Caniapiscau), Hydro-Québec SWE and river discharge.",
+     "page": "§2.4 ¶1–¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "We used published δ 18 O TRC chronologies for Tungsten and Caniapiscau"
+    },
+    {
+     "n": 9,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They fix the evaluation scheme: Pearson r with p<0.05 for δ18O_TRC, Welch t tests between versions, NSE/NNSE and KGE for discharge and snow, with conventional skill benchmarks.",
+     "page": "§2.5 ¶1–¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Values of NSE > 0 ( NNSE > 0.5 ) are typically used as the benchmark to establish a model as a “good” model"
+    },
+    {
+     "n": 10,
+     "node": "F",
+     "mode": "simulation",
+     "action": "They set conditions in two model experiments, following Lavergne et al. (2017): h_air and δ18O_V held constant to isolate the source water, and δ18O_XW held constant to isolate leaf enrichment. Each experiment is compared with the reference runs by R².",
+     "page": "§2.5 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compared the predicted δ 18 O TRC from the reference simulations with those obtained from two experiments"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They validate the snow module in two ways. Split-sample calibration on half-periods (1979–1996, 1997–2013) is scored on the full period with NNSE/KGE. Simulated SWE is compared with independent Caniapiscau SWE observations and with the NARR SWE product.",
+     "page": "§3.1 ¶1; §2.6 ¶1; §3.2 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the calibrations using half-periods produced similar results to the calibration using the full period"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate the sublimation resistance r_a by MCMC at each site: 87.35 s m-1 at Tungsten and 47.88 s m-1 at Caniapiscau.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The calibration process converged and constrained the values of r a (resistance to water vapour transfer) well at both sites"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare simulated runoff plus drainage from both versions with observed Caniapiscau discharge. The snow version reproduces the spring peak timing; NNSE rises from 0.1 to 0.45 and KGE from −1.04 to −0.57.",
+     "page": "§3.2 ¶4; Figure 4 (p. 1939)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the timing of the spring discharge was well reproduced by the MAIDENiso version with snow, while the original version was unable to simulate this peak"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They calibrate the six GPP parameters separately for each model version at the Uaf and EOBS flux towers. Both versions reproduce the timing of GPP and the growing-season mean.",
+     "page": "§3.3 ¶1; §Appendix A ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "GPP was calibrated twice at each station: first for the original version of MAIDENiso and second for the new version with snow."
+    },
+    {
+     "n": 15,
+     "node": "X",
+     "mode": "simulation",
+     "action": "Welch t tests show that GPP does not differ between versions, which excludes GPP weighting as a cause of the δ18O differences between the two versions.",
+     "page": "§3.3 ¶2; §4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Welch t test determined that the GPP simulated by both versions of the model were statistically not different"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare simulated and observed δ18O_TRC. Both versions match the mean level, but only the snow version correlates significantly with interannual variation (r = 0.57 at Tungsten, 0.52 at Caniapiscau, p < 0.01); the snow-free version gives r ≈ 0.27 and 0.14, not significant.",
+     "page": "§3.4 ¶1; Figure 6 (p. 1941)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the observed and simulated δ 18 O TRC were not significantly correlated when snow was absent in the model"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compare the posterior distributions of f0, ε0 and εk between versions. Adding snow raises the dampening factor f0, which they read as a stronger source-water contribution.",
+     "page": "§3.4 ¶2; Table 4; Figure 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "adding snow induced an increase in the dampening factor f 0 at both sites"
+    },
+    {
+     "n": 18,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute δ18O through the model chain (precipitation, xylem water, discharge, leaf, TRC) for both versions. The snow version gives enriched xylem water in spring and higher leaf δ18O, offset by a lower ε0. Welch t tests show the curves differ, and simulated δ18O_P lies below OIPC.",
+     "page": "§3.4 ¶3–¶4; Figure 8 (p. 1942)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The δ 18 O XW values were higher in the version with snow."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the R² of the fixed-input experiments with the reference runs. Leaf enrichment dominates δ18O_TRC at both sites, but adding snow raises the R² of the xylem experiment more and narrows the gap.",
+     "page": "§3.5 ¶1–¶2; Table 5; Figure 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The addition of snow increased the R 2 for both types of experiments but more importantly for the xylem source water experiment."
+    },
+    {
+     "n": 20,
+     "node": "P",
+     "mode": "simulation",
+     "action": "They attribute the unmatched magnitude of the discharge peak to the missing routing model and to basin heterogeneity, an auxiliary, rather than to the snow module.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The magnitude of this peak cannot be compared directly with observations"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the null effect of snow on GPP against published findings that high-latitude tree growth is temperature-limited rather than water-limited.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is in agreement with previous studies showing that in high latitudes soil humidity is not often a major constraint on tree growth"
+    },
+    {
+     "n": 22,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Simulated discharge δ18O shows evaporative enrichment, which conflicts with stream-water studies. They attribute this to the model's simple runoff-plus-drainage discharge with no groundwater, and restrict δ18O_dis to orientational use.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the discharge in MAIDENiso is simply the addition of the runoff and the drainage from the upper soil layers"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They check the calibrated isotope parameters against published values. With snow, f0 (0.48, 0.43) falls in the literature range 0.4–0.5, while without snow f0 is pinned near the 0.3 prior bound; ε0 and εk are set against Farquhar and Lavergne.",
+     "page": "§4.3 ¶2–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in agreement with the range of f 0 = 0.4 –0.5 reported in previous studies"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the dominance of leaf enrichment against Lavergne et al. (2017), and the strong source-water imprint against Field et al. (2021) for Tungsten.",
+     "page": "§4.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results are in agreement with findings and reflect the strong effect of vapour pressure deficit"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the claim that the snow module is required, and improves skill, for predicting tree-ring isotopes and hydrology in snowy environments; inverse-model reconstructions are proposed as future work.",
+     "page": "§4.3 ¶6; §5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The incorporation of the snow module in MAIDENiso is therefore required for predicting tree-ring isotopic composition in forests located in cold environments"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known phenomenon: snow shapes boreal hydrology and source-water δ18O, but the model lacked it",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; model processes are scored through calibrated simulations against SNDP, SWE, discharge, GPP and δ18O_TRC",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize the skill of a snow module in MAIDENiso",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Snow-free original version versus the new snow version",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: spring discharge peak, enriched spring xylem water, δ18O_TRC interannual correlation",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in the model (version swap, fixed-input experiments); field conditions found at two sites",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Two sites and two half-periods stand in for repetition",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Snow module survives split-sample validation and independent SWE; GPP unaffected; no held-out test for δ18O_TRC",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Snow version kept as better than the snow-free version",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable: no review file supplied (reviewed by V. Shishov and one anonymous referee)",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "With the new snow module, MAIDENiso reproduces the spring discharge peak and simulates δ18O_TRC that correlates significantly with observations at two Canadian spruce sites (r = 0.57, 0.52), where the snow-free version did not, with a larger source-water contribution and GPP unchanged.",
+  "page": "§5 ¶1; §0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "The side-by-side comparison of the independently calibrated snow and snow-free versions against observed δ18O_TRC (significant versus non-significant correlation) is what turns the new module into an improvement claim.",
+  "page": "§3.4 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "Action: the stated expectation of sublimation-driven enrichment (§2.1.2 ¶8) and the snow-free deficiency (§2.1.1 ¶3) directed which processes were built and which observations were assembled (SWE for validation, discharge, δ18O_TRC). No data were newly acquired; all were existing chronologies, reanalysis and archives (§2.3–§2.4). Claim: the δ18O_TRC correlation could have stayed non-significant, and the discharge NNSE/KGE could have failed; KGE for discharge in fact stays below the stated skill benchmark (§3.2 ¶4). Registration: conventional thresholds (p<0.05, NNSE>0.5, KGE>−0.41) and the calibration order were fixed in Methods (§2.2 ¶4, §2.5 ¶1, §2.5 ¶4); nothing indicates they were fixed before the data were seen, and there is no preregistration."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Bayesian Markov chain Monte Carlo parameter calibration",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Welch t test for differences between simulated curves",
+   "kind": "method",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "field": "plant physiology",
+   "item": "Farquhar et al. (1980) leaf photosynthesis model scaled to canopy (De Pury and Farquhar 1997)",
+   "kind": "method",
+   "page": "§Appendix A ¶1"
+  },
+  {
+   "field": "plant physiology",
+   "item": "Leuning et al. (1995) stomatal conductance model",
+   "kind": "method",
+   "page": "§Appendix A ¶3"
+  },
+  {
+   "field": "plant biochemistry",
+   "item": "Biochemical fractionation and the dampening factor of oxygen exchange during cellulose synthesis",
+   "kind": "concept",
+   "page": "§Appendix B ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we incorporate a new snow module in MAIDENiso and test the simulated data against real observations.",
+   "page": "§1 ¶5"
+  },
+  {
+   "quote": "The MAIDENiso model is now able to reproduce the spring discharge peak",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "incorporate basic models of snow accumulation and melt driven by air temperature but do not consider processes such as sublimation",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "The inclusion of snow in the model opens new possibilities for reconstructing hydroclimate in cold regions",
+   "page": "§4.4 ¶2"
+  }
+ ],
+ "limits": "No peer-review file or discussion was supplied, so no review sequence is coded, although the paper went through open discussion (GMDD) with two referees (review statement, p. 1949).\n\nThreshold inconsistency: the KGE skill threshold is −0.41 in §2.5 ¶4 but 0.41 in the Table 2 caption and §3.1 ¶1.\n\nDischarge: the improvement claim rests on NNSE rising from 0.1 to 0.45 and KGE from −1.04 to −0.57. Both stay below the paper's own 'good model' benchmarks (NNSE>0.5, KGE>−0.41); the authors note further improvement is needed and blame the missing routing model (P step).\n\nδ18O_TRC: the parameters are calibrated on the same δ18O_TRC series they are scored against. No split-sample or held-out test is reported for δ18O_TRC (only for snow depth), so the correlation gain is in-sample (inference).\n\nSnow validation: at Caniapiscau the SNDP used for calibration and split-sample validation comes from NARR, not observations (§2.4 ¶3). The independent check there is the Hydro-Québec SWE, which overlaps the study period only until 1993.\n\nNon-significant correlations: the snow-free r values (0.27, 0.14) are read off Figure 6 (p. 1941) and are not given in the text.\n\nAttribution of r_a to wind speed (§4.1 ¶1) is untested, because no wind data exist.\n\nOnly two sites and two species are used, and GPP is calibrated at towers 650 and 1023 km away under a species-trait assumption.\n\nSub-claim statuses: snow-module skill is capability_characterized (headline). Leaf enrichment as the main driver of δ18O_TRC and an increased source-water contribution are best_explanation. r_a and f0 values are estimate_with_resolution (posterior ranges in Table 4). No effect of snow on GPP at these sites is regularity_in_range.\n\nComposition: none_fits. The walk is a model-development comparison in which a capability is built to fix a known deficiency and scored against its predecessor. It is close to capability_first, but the rival (the snow-free model) exists from the start and no phenomenon-establishing E step occurs.",
+ "disagreements": [
+  {
+   "target": "NARR snow-pile (SNDP/SWE) product (Mesinger et al., 2006)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "MAIDENiso SWE driven by NARR meteorology matches direct Caniapiscau SWE observations better than NARR's own SWE, which the authors attribute to NARR's documented artificial snow increase.",
+   "page": "§3.2 ¶2",
+   "quote": "the NARR-based SWE estimates showed higher values of the snowpack during the winter months and offsets in the timing of snow accumulation and melting"
+  },
+  {
+   "target": "IsoGSM gridded precipitation (Yoshimura et al., 2008)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "IsoGSM precipitation amounts are too low compared with nearby station observations, so IsoGSM is used only to fit the δ18O_P regression.",
+   "page": "§2.3 ¶5",
+   "quote": "the precipitation amounts derived from IsoGSM were too low compared to the amounts from observations"
+  },
+  {
+   "target": "Evaristo et al. (2015): stream water rarely shows evaporative fractionation",
+   "kind": "result",
+   "stance": "fails_to_replicate",
+   "support": "The model's discharge δ18O does not reproduce the published pattern; the authors concede and attribute this to the model's simple discharge without groundwater, rather than disputing the study.",
+   "page": "§4.3 ¶1",
+   "quote": "This contradicts studies that show that stream water does not usually show signs of [...]"
+  },
+  {
+   "target": "Vaganov–Shashkin (Shishov et al., 2016) and Biome3 (Rathgeber et al., 2003) snow schemes",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from model descriptions: these temperature-driven snow models omit sublimation, energy balance and isotope fractionation.",
+   "page": "§1 ¶4",
+   "quote": "incorporate basic models of snow accumulation and melt driven by air temperature but do not consider processes such as sublimation"
+  },
+  {
+   "target": "Correlation-based tree-ring analyses of snow signals",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argued, not tested: statistical relationships cannot capture inter-seasonal, mechanistic snow effects on δ18O.",
+   "page": "§1 ¶3",
+   "quote": "Correlation-based tree-ring analyses based on statistical relationships cannot take into account this mechanistic level of complexity"
+  },
+  {
+   "target": "Lavergne et al. (2017) snow-free MAIDENiso δ18O_TRC modelling in Quebec",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "In the snow-free model, the δ18O_P regression parameters and the isotope fractionation parameters compensate for missing snow (f0 = 0.41). With snow, f0 rises without compensation and correlations improve, so earlier source/leaf attributions are refined.",
+   "page": "§4.4 ¶1; §4.3 ¶2",
+   "quote": "can provide a more accurate representation of the physical and physiological processes taking place than in earlier studies"
+  },
+  {
+   "target": "Farquhar et al. (1989) fixed kinetic fractionation εk = 26.5 ‰",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Citing Buhay et al. (1996), εk is treated as a free parameter; calibrated values of 11.8–23.4 ‰ differ from 26.5 ‰.",
+   "page": "§Appendix B ¶3; §4.3 ¶3",
+   "quote": "but we consider it undetermined as it can vary over larger ranges"
+  },
+  {
+   "target": "OIPC (Online Isotopes in Precipitation Calculator) monthly δ18O_P",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Simulated δ18O_P follows IsoGSM but is consistently lower than OIPC at both sites; the discrepancy is noted without resolution.",
+   "page": "§3.4 ¶3",
+   "quote": "although it is consistently lower than the monthly data of the OIPC (Online Isotopes in Precipitation Calculator) at both sites"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Linear regression of δ18O_P on temperature and precipitation, fitted to IsoGSM, separately for snow and rain",
+   "alternatives": "Daily δ18O_P values as a direct meteorological input",
+   "reason": "Daily δ18O_P values are often not available; the regression can be reused with other meteorological datasets",
+   "effect_reported": "no",
+   "page": "§2.3 ¶4–¶5"
+  },
+  {
+   "node": "O",
+   "chosen": "NARR temperature and precipitation",
+   "alternatives": "Direct IsoGSM meteorology and δ18O_P; nearest meteorological stations",
+   "reason": "IsoGSM precipitation too low compared with station observations; the nearest stations are 100 and 186 km away",
+   "effect_reported": "no",
+   "page": "§2.3 ¶3; §2.3 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "Calibrate the snow pile on SNDP at both sites; use SWE only for validation",
+   "alternatives": "Calibrate on SWE, the ideal mass-based snow variable",
+   "reason": "SWE available only at Caniapiscau (1971–1993); SNDP keeps the two sites comparable",
+   "effect_reported": "no",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "Constant, site-calibrated aerodynamic resistance r_a",
+   "alternatives": "Wind-dependent r_a",
+   "reason": "Wind data are not usually available at tree-ring sites",
+   "effect_reported": "no",
+   "page": "§2.1.2 ¶4; §4.1 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "GPP parameters calibrated at distant eddy-covariance towers of the same species",
+   "alternatives": "Site-level GPP calibration (implicit: no local flux data)",
+   "reason": "GPP parameters relate more to species traits than to site conditions",
+   "effect_reported": "no",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "GPP-weighted annual δ18O_TRC",
+   "alternatives": "MAIDENiso carbon allocation module (more realistic), constrained by tree-ring width",
+   "reason": "TRW represents only part of total C allocation and has no intra-annual resolution to constrain the allocation module",
+   "effect_reported": "no",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "node": "C",
+   "chosen": "Water discharge as instantaneous runoff plus drainage, scaled by basin area",
+   "alternatives": "A routing model to estimate basin streamflow",
+   "reason": "MAIDENiso does not include a routing model; proposed as future work",
+   "effect_reported": "no",
+   "page": "§2.5 ¶2; §4.1 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The snow module was validated using a split-sample approach.",
+   "page": "§2.6 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "only used the SWE measurements at Caniapiscau to validate the simulations",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "our SWE simulations made by MAIDENiso using as inputs NARR meteorological data were in better agreement with the direct observations of SWE",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "lower for the model without snow ( NNSE = 0.1 ) than for the new model with snow ( NNSE = 0.45 )",
+   "page": "§3.2 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the observed and simulated δ 18 O TRC were not significantly correlated when snow was absent in the model",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A Welch t test determined that the GPP simulated by both versions of the model were statistically not different",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We tested these implementations in two sites in eastern and western Canada",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "in agreement with the range of f 0 = 0.4 –0.5 reported in previous studies",
+   "page": "§4.3 ¶2"
+  }
+ ]
+}

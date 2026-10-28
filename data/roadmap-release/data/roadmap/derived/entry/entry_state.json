@@ -1,7 +1,7 @@
 {
  "_provenance": {
   "script": "g21_entry_state.py",
-  "commit": "3b4b2d5",
+  "commit": "f155302+uncommitted",
   "date": "2026-10-27",
   "private_root": "private",
   "inputs": [
@@ -9,6 +9,7 @@
    "derived/{gold,r2}/metrics.json",
    "derived/topics/topics_journals.json",
    "private/download-queue.json",
+   "private/data/roadmap/derived/entry/audit_sample.json",
    "private/data/roadmap/derived/entry/blind_audit.json"
   ],
   "params": {
@@ -19,123 +20,244 @@
  },
  "data": {
   "n_valid": {
-   "calc1": 233,
-   "r2": 0
+   "calc1": 374,
+   "r2": 198
   },
   "n_invalid_files": {
-   "calc1": 2,
-   "r2": 0,
+   "calc1": 5,
+   "r2": 4,
    "gold-r2": 1
   },
   "distribution": {
    "calc1": {
-    "n": 233,
+    "n": 374,
     "state": {
      "problem": [
-      181,
-      0.777
+      296,
+      0.791
      ],
      "capability": [
-      25,
-      0.107
-     ],
-     "challenged_result": [
-      6,
-      0.026
-     ],
-     "hypothesis": [
-      6,
-      0.026
-     ],
-     "data_without_theory": [
-      5,
-      0.021
+      33,
+      0.088
      ],
      "anomaly": [
-      5,
+      11,
+      0.029
+     ],
+     "hypothesis": [
+      10,
+      0.027
+     ],
+     "data_without_theory": [
+      10,
+      0.027
+     ],
+     "challenged_result": [
+      8,
       0.021
      ],
      "external_goal": [
-      5,
-      0.021
+      6,
+      0.016
      ]
     },
     "node": {
      "Q": [
-      189,
-      0.811
+      305,
+      0.816
      ],
      "N": [
-      27,
-      0.116
+      38,
+      0.102
      ],
      "O": [
-      9,
-      0.039
+      17,
+      0.045
      ],
      "H": [
+      12,
+      0.032
+     ],
+     "F": [
+      2,
+      0.005
+     ]
+    }
+   },
+   "r2": {
+    "n": 198,
+    "state": {
+     "problem": [
+      139,
+      0.702
+     ],
+     "capability": [
+      21,
+      0.106
+     ],
+     "anomaly": [
+      15,
+      0.076
+     ],
+     "hypothesis": [
+      12,
+      0.061
+     ],
+     "challenged_result": [
       7,
-      0.03
+      0.035
+     ],
+     "data_without_theory": [
+      3,
+      0.015
+     ],
+     "external_goal": [
+      1,
+      0.005
+     ]
+    },
+    "node": {
+     "Q": [
+      140,
+      0.707
+     ],
+     "N": [
+      24,
+      0.121
+     ],
+     "O": [
+      16,
+      0.081
+     ],
+     "H": [
+      15,
+      0.076
+     ],
+     "S": [
+      1,
+      0.005
+     ],
+     "E": [
+      1,
+      0.005
      ],
      "F": [
       1,
-      0.004
+      0.005
      ]
     }
    },
    "pooled": {
-    "n": 233,
+    "n": 572,
     "state": {
      "problem": [
-      181,
-      0.777
+      435,
+      0.76
      ],
      "capability": [
-      25,
-      0.107
+      54,
+      0.094
      ],
-     "challenged_result": [
-      6,
-      0.026
+     "anomaly": [
+      26,
+      0.045
      ],
      "hypothesis": [
-      6,
+      22,
+      0.038
+     ],
+     "challenged_result": [
+      15,
       0.026
      ],
      "data_without_theory": [
-      5,
-      0.021
-     ],
-     "anomaly": [
-      5,
-      0.021
+      13,
+      0.023
      ],
      "external_goal": [
-      5,
-      0.021
+      7,
+      0.012
      ]
     },
     "node": {
      "Q": [
-      189,
-      0.811
+      445,
+      0.778
      ],
      "N": [
-      27,
-      0.116
+      62,
+      0.108
      ],
      "O": [
-      9,
-      0.039
+      33,
+      0.058
      ],
      "H": [
-      7,
-      0.03
+      27,
+      0.047
      ],
      "F": [
+      3,
+      0.005
+     ],
+     "S": [
       1,
-      0.004
+      0.002
+     ],
+     "E": [
+      1,
+      0.002
      ]
+    }
+   }
+  },
+  "distribution_round_test": {
+   "state": {
+    "n": 572,
+    "chi2": 14.78,
+    "cramers_v_bc": 0.124,
+    "v_bc_ci": [
+     0.026,
+     0.243
+    ],
+    "p": 0.021,
+    "groups": {
+     "calc1": {
+      "n": 374
+     },
+     "r2": {
+      "n": 198
+     }
+    }
+   },
+   "problem": {
+    "n": 572,
+    "chi2": 5.68,
+    "cramers_v_bc": 0.091,
+    "v_bc_ci": [
+     0.0,
+     0.176
+    ],
+    "p": 0.0168,
+    "groups": {
+     "calc1": {
+      "n": 374,
+      "rate": 0.791,
+      "diff_vs_rest": 0.089,
+      "diff_ci": [
+       0.017,
+       0.163
+      ]
+     },
+     "r2": {
+      "n": 198,
+      "rate": 0.702,
+      "diff_vs_rest": -0.089,
+      "diff_ci": [
+       -0.163,
+       -0.017
+      ]
+     }
     }
    }
   },
@@ -381,41 +503,45 @@
    "changed_pairs": []
   },
   "consistency": {
-   "n": 233,
+   "n": 572,
    "entry_node_is_first_step": [
-    153,
-    0.657
+    372,
+    0.65
    ],
    "entry_node_appears_in_walk": [
-    233,
-    1.0
+    571,
+    0.998
    ],
    "state_by_node": {
     "problem": {
-     "N": 2,
-     "Q": 179
+     "N": 7,
+     "E": 1,
+     "O": 1,
+     "Q": 426
     },
     "capability": {
-     "N": 24,
-     "O": 1
+     "N": 52,
+     "O": 1,
+     "S": 1
     },
     "anomaly": {
-     "O": 4,
-     "Q": 1
-    },
-    "challenged_result": {
+     "O": 20,
      "Q": 5,
-     "H": 1
-    },
-    "hypothesis": {
-     "H": 6
-    },
-    "data_without_theory": {
-     "O": 4,
      "F": 1
     },
+    "challenged_result": {
+     "Q": 10,
+     "H": 5
+    },
+    "hypothesis": {
+     "H": 22
+    },
+    "data_without_theory": {
+     "O": 11,
+     "F": 2
+    },
     "external_goal": {
-     "N": 1,
+     "N": 3,
      "Q": 4
     }
    },
@@ -451,215 +577,298 @@
    },
    "state_enters_at_expected_node": {
     "problem": [
-     179,
-     181,
-     0.989
+     426,
+     435,
+     0.979
     ],
     "capability": [
-     24,
-     25,
-     0.96
+     52,
+     54,
+     0.963
     ],
     "anomaly": [
-     4,
-     5,
-     0.8
+     20,
+     26,
+     0.769
     ],
     "challenged_result": [
-     6,
-     6,
+     15,
+     15,
      1.0
     ],
     "hypothesis": [
-     6,
-     6,
+     22,
+     22,
      1.0
     ],
     "data_without_theory": [
-     4,
-     5,
-     0.8
+     11,
+     13,
+     0.846
     ],
     "external_goal": [
-     5,
-     5,
+     7,
+     7,
      1.0
     ]
    },
    "first_step_node_by_state": {
     "problem": {
-     "Q": 131,
-     "O": 23,
-     "H": 14,
-     "N": 4,
-     "S": 4,
-     "I": 2,
-     "E": 2,
-     "C": 1
+     "Q": 321,
+     "O": 50,
+     "H": 29,
+     "S": 9,
+     "N": 8,
+     "E": 7,
+     "I": 6,
+     "C": 3,
+     "F": 2
     },
     "capability": {
-     "N": 10,
-     "Q": 10,
-     "O": 4,
+     "N": 23,
+     "Q": 20,
+     "O": 8,
+     "S": 2,
      "H": 1
     },
     "anomaly": {
-     "O": 4,
-     "H": 1
+     "O": 13,
+     "Q": 5,
+     "S": 3,
+     "H": 1,
+     "I": 1,
+     "E": 1,
+     "N": 1,
+     "F": 1
     },
     "challenged_result": {
-     "Q": 4,
-     "H": 2
+     "Q": 8,
+     "H": 6,
+     "K": 1
     },
     "hypothesis": {
-     "Q": 3,
-     "O": 2,
-     "H": 1
+     "Q": 11,
+     "O": 5,
+     "H": 4,
+     "K": 1,
+     "I": 1
     },
     "data_without_theory": {
-     "Q": 2,
+     "O": 5,
+     "H": 3,
+     "Q": 3,
      "F": 1,
-     "S": 1,
-     "O": 1
+     "S": 1
     },
     "external_goal": {
      "Q": 3,
-     "H": 1,
-     "N": 1
+     "N": 2,
+     "H": 2
     }
    },
    "first_step_node_move_when_not_entry_node": {
     "problem": {
-     "O cited": 20,
-     "H cited": 12,
-     "S cited": 4,
+     "O cited": 41,
+     "H cited": 27,
+     "S cited": 8,
+     "O inherited": 7,
+     "Q new": 6,
+     "E cited": 6,
+     "I cited": 4,
      "N inherited": 3,
-     "O inherited": 3,
-     "I cited": 2,
-     "E cited": 2,
+     "C cited": 3,
+     "N cited": 2,
+     "I inherited": 2,
+     "O new": 2,
+     "F new": 2,
+     "S inherited": 1,
      "H inherited": 1,
-     "C cited": 1,
-     "Q new": 1,
-     "H new": 1
+     "H new": 1,
+     "E inherited": 1,
+     "N new": 1
     },
     "capability": {
-     "Q new": 10,
-     "O cited": 3,
+     "Q new": 20,
+     "O cited": 7,
+     "S cited": 2,
      "H cited": 1,
      "O inherited": 1
     },
     "anomaly": {
+     "Q new": 4,
+     "O cited": 3,
+     "S cited": 3,
      "H cited": 1,
-     "O cited": 1
+     "O inherited": 1,
+     "I new": 1,
+     "E cited": 1,
+     "N inherited": 1
     },
     "challenged_result": {
+     "H cited": 2,
+     "Q new": 2,
      "Q cited": 1,
      "H inherited": 1,
-     "H cited": 1
+     "K cited": 1,
+     "H new": 1
     },
     "hypothesis": {
-     "Q new": 3,
-     "O cited": 2
+     "Q new": 11,
+     "O cited": 3,
+     "O inherited": 1,
+     "K cited": 1,
+     "O new": 1,
+     "I cited": 1
     },
     "data_without_theory": {
-     "Q new": 2,
+     "H cited": 3,
+     "Q new": 3,
      "F new": 1,
      "S cited": 1
     },
     "external_goal": {
-     "H cited": 1
+     "H cited": 1,
+     "H new": 1
     }
    },
    "problem_first_step_not_Q": {
-    "n": 50,
-    "of_problem": 181,
-    "first_move_cited_or_inherited": 49,
+    "n": 114,
+    "of_problem": 435,
+    "first_move_cited_or_inherited": 108,
     "first_step_node_move": {
-     "O cited": 20,
-     "H cited": 12,
+     "O cited": 41,
+     "H cited": 27,
+     "S cited": 8,
+     "O inherited": 7,
+     "E cited": 6,
      "N inherited": 4,
-     "S cited": 4,
-     "O inherited": 3,
-     "I cited": 2,
-     "E cited": 2,
+     "I cited": 4,
+     "C cited": 3,
+     "N cited": 3,
+     "I inherited": 2,
+     "O new": 2,
+     "F new": 2,
+     "S inherited": 1,
      "H inherited": 1,
-     "C cited": 1,
-     "H new": 1
+     "H new": 1,
+     "E inherited": 1,
+     "N new": 1
     }
    }
   },
   "revisits": {
    "problem": {
-    "n": 181,
+    "n": 435,
     "entry_node_in_walk": [
-     181,
+     435,
      1.0
     ],
     "revisited": [
-     42,
-     0.232
+     89,
+     0.205
     ],
     "later_step_raw": [
-     44,
-     0.243
+     95,
+     0.218
+    ],
+    "revisit_steps": 98,
+    "any_Q_after_first_step": [
+     185,
+     0.425
+    ],
+    "Q_steps_ge2": [
+     89,
+     0.205
+    ],
+    "Q_revisited_collapsed": [
+     86,
+     0.198
+    ],
+    "any_return_after_failure": [
+     131,
+     0.301
+    ],
+    "return_after_failure_at_Q": [
+     0,
+     0.0
+    ],
+    "reframe_after_failure": [
+     0,
+     0.0
+    ],
+    "q_steps_new": 205
+   },
+   "capability": {
+    "n": 54,
+    "entry_node_in_walk": [
+     53,
+     0.981
+    ],
+    "revisited": [
+     38,
+     0.704
+    ],
+    "later_step_raw": [
+     42,
+     0.778
+    ],
+    "revisit_steps": 69,
+    "any_Q_after_first_step": [
+     36,
+     0.667
+    ],
+    "Q_steps_ge2": [
+     7,
+     0.13
+    ],
+    "Q_revisited_collapsed": [
+     6,
+     0.111
+    ],
+    "any_return_after_failure": [
+     20,
+     0.37
+    ],
+    "return_after_failure_at_Q": [
+     0,
+     0.0
+    ],
+    "reframe_after_failure": [
+     0,
+     0.0
+    ],
+    "q_steps_new": 38
+   },
+   "anomaly": {
+    "n": 26,
+    "entry_node_in_walk": [
+     26,
+     1.0
+    ],
+    "revisited": [
+     18,
+     0.692
+    ],
+    "later_step_raw": [
+     18,
+     0.692
     ],
     "revisit_steps": 46,
     "any_Q_after_first_step": [
-     85,
-     0.47
-    ],
-    "Q_steps_ge2": [
-     42,
-     0.232
-    ],
-    "Q_revisited_collapsed": [
-     40,
-     0.221
-    ],
-    "any_return_after_failure": [
-     53,
-     0.293
-    ],
-    "return_after_failure_at_Q": [
-     0,
-     0.0
-    ],
-    "reframe_after_failure": [
-     0,
-     0.0
-    ],
-    "q_steps_new": 94
-   },
-   "capability": {
-    "n": 25,
-    "entry_node_in_walk": [
-     25,
-     1.0
-    ],
-    "revisited": [
      21,
-     0.84
-    ],
-    "later_step_raw": [
-     23,
-     0.92
-    ],
-    "revisit_steps": 39,
-    "any_Q_after_first_step": [
-     17,
-     0.68
+     0.808
     ],
     "Q_steps_ge2": [
-     3,
-     0.12
+     4,
+     0.154
     ],
     "Q_revisited_collapsed": [
-     2,
-     0.08
+     4,
+     0.154
     ],
     "any_return_after_failure": [
-     11,
-     0.44
+     4,
+     0.154
     ],
     "return_after_failure_at_Q": [
      0,
@@ -669,79 +878,38 @@
      0,
      0.0
     ],
-    "q_steps_new": 16
-   },
-   "anomaly": {
-    "n": 5,
-    "entry_node_in_walk": [
-     5,
-     1.0
-    ],
-    "revisited": [
-     4,
-     0.8
-    ],
-    "later_step_raw": [
-     4,
-     0.8
-    ],
-    "revisit_steps": 12,
-    "any_Q_after_first_step": [
-     5,
-     1.0
-    ],
-    "Q_steps_ge2": [
-     2,
-     0.4
-    ],
-    "Q_revisited_collapsed": [
-     2,
-     0.4
-    ],
-    "any_return_after_failure": [
-     0,
-     0.0
-    ],
-    "return_after_failure_at_Q": [
-     0,
-     0.0
-    ],
-    "reframe_after_failure": [
-     0,
-     0.0
-    ],
-    "q_steps_new": 7
+    "q_steps_new": 25
    },
    "challenged_result": {
-    "n": 6,
+    "n": 15,
     "entry_node_in_walk": [
-     6,
+     15,
      1.0
     ],
     "revisited": [
-     1,
-     0.167
+     6,
+     0.4
     ],
     "later_step_raw": [
-     1,
-     0.167
+     6,
+     0.4
     ],
-    "revisit_steps": 1,
+    "revisit_steps": 8,
     "any_Q_after_first_step": [
-     3,
-     0.5
+     11,
+     0.733
     ],
     "Q_steps_ge2": [
-     1,
-     0.167
+     6,
+     0.4
     ],
     "Q_revisited_collapsed": [
-     1,
-     0.167
+     6,
+     0.4
     ],
     "any_return_after_failure": [
-     2,
-     0.333
+     4,
+     0.267
     ],
     "return_after_failure_at_Q": [
      0,
@@ -751,38 +919,38 @@
      0,
      0.0
     ],
-    "q_steps_new": 3
+    "q_steps_new": 14
    },
    "hypothesis": {
-    "n": 6,
+    "n": 22,
     "entry_node_in_walk": [
-     6,
+     22,
      1.0
     ],
     "revisited": [
-     4,
-     0.667
+     14,
+     0.636
     ],
     "later_step_raw": [
-     4,
-     0.667
+     15,
+     0.682
     ],
-    "revisit_steps": 6,
+    "revisit_steps": 22,
     "any_Q_after_first_step": [
-     3,
-     0.5
+     12,
+     0.545
     ],
     "Q_steps_ge2": [
-     0,
-     0.0
+     3,
+     0.136
     ],
     "Q_revisited_collapsed": [
-     0,
-     0.0
+     3,
+     0.136
     ],
     "any_return_after_failure": [
-     3,
-     0.5
+     7,
+     0.318
     ],
     "return_after_failure_at_Q": [
      0,
@@ -792,26 +960,26 @@
      0,
      0.0
     ],
-    "q_steps_new": 3
+    "q_steps_new": 14
    },
    "data_without_theory": {
-    "n": 5,
+    "n": 13,
     "entry_node_in_walk": [
-     5,
+     13,
      1.0
     ],
     "revisited": [
-     4,
-     0.8
+     11,
+     0.846
     ],
     "later_step_raw": [
-     4,
-     0.8
+     11,
+     0.846
     ],
-    "revisit_steps": 9,
+    "revisit_steps": 28,
     "any_Q_after_first_step": [
-     1,
-     0.2
+     6,
+     0.462
     ],
     "Q_steps_ge2": [
      0,
@@ -822,8 +990,8 @@
      0.0
     ],
     "any_return_after_failure": [
-     0,
-     0.0
+     2,
+     0.154
     ],
     "return_after_failure_at_Q": [
      0,
@@ -833,38 +1001,38 @@
      0,
      0.0
     ],
-    "q_steps_new": 1
+    "q_steps_new": 6
    },
    "external_goal": {
-    "n": 5,
+    "n": 7,
     "entry_node_in_walk": [
-     5,
+     7,
      1.0
     ],
     "revisited": [
-     1,
-     0.2
+     3,
+     0.429
     ],
     "later_step_raw": [
-     2,
-     0.4
+     4,
+     0.571
     ],
-    "revisit_steps": 1,
+    "revisit_steps": 3,
     "any_Q_after_first_step": [
-     2,
-     0.4
+     3,
+     0.429
     ],
     "Q_steps_ge2": [
      1,
-     0.2
+     0.143
     ],
     "Q_revisited_collapsed": [
      0,
      0.0
     ],
     "any_return_after_failure": [
-     3,
-     0.6
+     4,
+     0.571
     ],
     "return_after_failure_at_Q": [
      0,
@@ -874,38 +1042,38 @@
      0,
      0.0
     ],
-    "q_steps_new": 1
+    "q_steps_new": 2
    },
    "all": {
-    "n": 233,
+    "n": 572,
     "entry_node_in_walk": [
-     233,
-     1.0
+     571,
+     0.998
     ],
     "revisited": [
-     77,
-     0.33
+     179,
+     0.313
     ],
     "later_step_raw": [
-     82,
-     0.352
+     191,
+     0.334
     ],
-    "revisit_steps": 114,
+    "revisit_steps": 274,
     "any_Q_after_first_step": [
-     116,
-     0.498
+     274,
+     0.479
     ],
     "Q_steps_ge2": [
-     49,
-     0.21
+     110,
+     0.192
     ],
     "Q_revisited_collapsed": [
-     45,
-     0.193
+     105,
+     0.184
     ],
     "any_return_after_failure": [
-     72,
-     0.309
+     172,
+     0.301
     ],
     "return_after_failure_at_Q": [
      0,
@@ -915,186 +1083,1349 @@
      0,
      0.0
     ],
-    "q_steps_new": 125
+    "q_steps_new": 304
    },
    "entry_node_Q": {
-    "n": 189,
+    "n": 445,
     "later_Q_step_raw": [
-     43,
-     0.228
+     91,
+     0.204
     ],
     "Q_revisited_collapsed": [
-     40,
-     0.212
+     87,
+     0.196
     ],
     "later_Q_step_moves": {
-     "new": 44,
-     "cited": 2,
-     "repeat": 1
+     "new": 94,
+     "cited": 3,
+     "repeat": 2
     }
    },
    "return_after_failure_steps": {
-    "n": 101,
+    "n": 235,
     "at_node": {
-     "P": 36,
-     "R": 34,
-     "V": 9,
-     "I": 8,
-     "N": 5,
-     "H": 2,
+     "P": 86,
+     "R": 78,
+     "I": 22,
+     "N": 16,
+     "V": 13,
+     "H": 6,
+     "C": 3,
+     "D": 3,
+     "S": 3,
      "O": 2,
-     "S": 2,
-     "D": 1,
-     "C": 1,
-     "F": 1
+     "F": 2,
+     "X": 1
     },
     "next_node": {
-     "C": 27,
-     "V": 15,
-     "K": 12,
-     "I": 12,
-     "H": 7,
-     "X": 7,
-     "S": 5,
-     "O": 4,
-     "N": 3,
-     "R": 3,
-     "D": 2,
-     "P": 2,
-     "F": 1,
-     "E": 1
+     "C": 56,
+     "V": 41,
+     "I": 35,
+     "K": 25,
+     "O": 14,
+     "H": 13,
+     "S": 11,
+     "X": 10,
+     "R": 8,
+     "P": 5,
+     "N": 5,
+     "D": 5,
+     "F": 3,
+     "E": 3,
+     "end": 1
     }
    }
   },
+  "by_round": {
+   "calc1": {
+    "consistency": {
+     "n": 374,
+     "entry_node_is_first_step": [
+      262,
+      0.701
+     ],
+     "entry_node_appears_in_walk": [
+      374,
+      1.0
+     ],
+     "state_by_node": {
+      "problem": {
+       "N": 4,
+       "O": 1,
+       "Q": 291
+      },
+      "capability": {
+       "N": 32,
+       "O": 1
+      },
+      "anomaly": {
+       "O": 7,
+       "Q": 4
+      },
+      "challenged_result": {
+       "Q": 6,
+       "H": 2
+      },
+      "hypothesis": {
+       "H": 10
+      },
+      "data_without_theory": {
+       "O": 8,
+       "F": 2
+      },
+      "external_goal": {
+       "N": 2,
+       "Q": 4
+      }
+     },
+     "expected_node": {
+      "problem": [
+       "Q"
+      ],
+      "capability": [
+       "N"
+      ],
+      "anomaly": [
+       "E",
+       "O"
+      ],
+      "hypothesis": [
+       "H"
+      ],
+      "challenged_result": [
+       "C",
+       "H",
+       "Q",
+       "V"
+      ],
+      "data_without_theory": [
+       "E",
+       "O"
+      ],
+      "external_goal": [
+       "D",
+       "N",
+       "Q"
+      ]
+     },
+     "state_enters_at_expected_node": {
+      "problem": [
+       291,
+       296,
+       0.983
+      ],
+      "capability": [
+       32,
+       33,
+       0.97
+      ],
+      "anomaly": [
+       7,
+       11,
+       0.636
+      ],
+      "challenged_result": [
+       8,
+       8,
+       1.0
+      ],
+      "hypothesis": [
+       10,
+       10,
+       1.0
+      ],
+      "data_without_theory": [
+       8,
+       10,
+       0.8
+      ],
+      "external_goal": [
+       6,
+       6,
+       1.0
+      ]
+     },
+     "first_step_node_by_state": {
+      "problem": {
+       "Q": 229,
+       "O": 30,
+       "H": 18,
+       "S": 7,
+       "N": 4,
+       "E": 4,
+       "I": 3,
+       "C": 1
+      },
+      "capability": {
+       "N": 17,
+       "Q": 11,
+       "O": 4,
+       "H": 1
+      },
+      "anomaly": {
+       "O": 9,
+       "H": 1,
+       "Q": 1
+      },
+      "challenged_result": {
+       "Q": 5,
+       "H": 3
+      },
+      "hypothesis": {
+       "O": 4,
+       "Q": 3,
+       "H": 2,
+       "K": 1
+      },
+      "data_without_theory": {
+       "H": 3,
+       "Q": 3,
+       "O": 2,
+       "F": 1,
+       "S": 1
+      },
+      "external_goal": {
+       "Q": 3,
+       "N": 2,
+       "H": 1
+      }
+     },
+     "first_step_node_move_when_not_entry_node": {
+      "problem": {
+       "O cited": 27,
+       "H cited": 16,
+       "S cited": 6,
+       "Q new": 4,
+       "E cited": 4,
+       "N inherited": 3,
+       "O inherited": 3,
+       "I cited": 3,
+       "S inherited": 1,
+       "H inherited": 1,
+       "C cited": 1,
+       "H new": 1
+      },
+      "capability": {
+       "Q new": 11,
+       "O cited": 3,
+       "H cited": 1,
+       "O inherited": 1
+      },
+      "anomaly": {
+       "O cited": 2,
+       "H cited": 1,
+       "O inherited": 1
+      },
+      "challenged_result": {
+       "H cited": 2,
+       "Q cited": 1,
+       "H inherited": 1,
+       "Q new": 1
+      },
+      "hypothesis": {
+       "Q new": 3,
+       "O cited": 2,
+       "O inherited": 1,
+       "K cited": 1,
+       "O new": 1
+      },
+      "data_without_theory": {
+       "H cited": 3,
+       "Q new": 3,
+       "F new": 1,
+       "S cited": 1
+      },
+      "external_goal": {
+       "H cited": 1
+      }
+     },
+     "problem_first_step_not_Q": {
+      "n": 67,
+      "of_problem": 296,
+      "first_move_cited_or_inherited": 66,
+      "first_step_node_move": {
+       "O cited": 27,
+       "H cited": 16,
+       "S cited": 6,
+       "N inherited": 4,
+       "E cited": 4,
+       "O inherited": 3,
+       "I cited": 3,
+       "S inherited": 1,
+       "H inherited": 1,
+       "C cited": 1,
+       "H new": 1
+      }
+     }
+    },
+    "revisits": {
+     "problem": {
+      "n": 296,
+      "entry_node_in_walk": [
+       296,
+       1.0
+      ],
+      "revisited": [
+       68,
+       0.23
+      ],
+      "later_step_raw": [
+       72,
+       0.243
+      ],
+      "revisit_steps": 75,
+      "any_Q_after_first_step": [
+       125,
+       0.422
+      ],
+      "Q_steps_ge2": [
+       68,
+       0.23
+      ],
+      "Q_revisited_collapsed": [
+       66,
+       0.223
+      ],
+      "any_return_after_failure": [
+       87,
+       0.294
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 138
+     },
+     "capability": {
+      "n": 33,
+      "entry_node_in_walk": [
+       33,
+       1.0
+      ],
+      "revisited": [
+       25,
+       0.758
+      ],
+      "later_step_raw": [
+       28,
+       0.848
+      ],
+      "revisit_steps": 46,
+      "any_Q_after_first_step": [
+       22,
+       0.667
+      ],
+      "Q_steps_ge2": [
+       3,
+       0.091
+      ],
+      "Q_revisited_collapsed": [
+       2,
+       0.061
+      ],
+      "any_return_after_failure": [
+       15,
+       0.455
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 21
+     },
+     "anomaly": {
+      "n": 11,
+      "entry_node_in_walk": [
+       11,
+       1.0
+      ],
+      "revisited": [
+       7,
+       0.636
+      ],
+      "later_step_raw": [
+       7,
+       0.636
+      ],
+      "revisit_steps": 22,
+      "any_Q_after_first_step": [
+       10,
+       0.909
+      ],
+      "Q_steps_ge2": [
+       2,
+       0.182
+      ],
+      "Q_revisited_collapsed": [
+       2,
+       0.182
+      ],
+      "any_return_after_failure": [
+       0,
+       0.0
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 12
+     },
+     "challenged_result": {
+      "n": 8,
+      "entry_node_in_walk": [
+       8,
+       1.0
+      ],
+      "revisited": [
+       2,
+       0.25
+      ],
+      "later_step_raw": [
+       2,
+       0.25
+      ],
+      "revisit_steps": 2,
+      "any_Q_after_first_step": [
+       5,
+       0.625
+      ],
+      "Q_steps_ge2": [
+       2,
+       0.25
+      ],
+      "Q_revisited_collapsed": [
+       2,
+       0.25
+      ],
+      "any_return_after_failure": [
+       2,
+       0.25
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 5
+     },
+     "hypothesis": {
+      "n": 10,
+      "entry_node_in_walk": [
+       10,
+       1.0
+      ],
+      "revisited": [
+       7,
+       0.7
+      ],
+      "later_step_raw": [
+       8,
+       0.8
+      ],
+      "revisit_steps": 10,
+      "any_Q_after_first_step": [
+       7,
+       0.7
+      ],
+      "Q_steps_ge2": [
+       1,
+       0.1
+      ],
+      "Q_revisited_collapsed": [
+       1,
+       0.1
+      ],
+      "any_return_after_failure": [
+       3,
+       0.3
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 8
+     },
+     "data_without_theory": {
+      "n": 10,
+      "entry_node_in_walk": [
+       10,
+       1.0
+      ],
+      "revisited": [
+       8,
+       0.8
+      ],
+      "later_step_raw": [
+       8,
+       0.8
+      ],
+      "revisit_steps": 21,
+      "any_Q_after_first_step": [
+       4,
+       0.4
+      ],
+      "Q_steps_ge2": [
+       0,
+       0.0
+      ],
+      "Q_revisited_collapsed": [
+       0,
+       0.0
+      ],
+      "any_return_after_failure": [
+       1,
+       0.1
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 4
+     },
+     "external_goal": {
+      "n": 6,
+      "entry_node_in_walk": [
+       6,
+       1.0
+      ],
+      "revisited": [
+       2,
+       0.333
+      ],
+      "later_step_raw": [
+       3,
+       0.5
+      ],
+      "revisit_steps": 2,
+      "any_Q_after_first_step": [
+       3,
+       0.5
+      ],
+      "Q_steps_ge2": [
+       1,
+       0.167
+      ],
+      "Q_revisited_collapsed": [
+       0,
+       0.0
+      ],
+      "any_return_after_failure": [
+       4,
+       0.667
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 2
+     },
+     "all": {
+      "n": 374,
+      "entry_node_in_walk": [
+       374,
+       1.0
+      ],
+      "revisited": [
+       119,
+       0.318
+      ],
+      "later_step_raw": [
+       128,
+       0.342
+      ],
+      "revisit_steps": 178,
+      "any_Q_after_first_step": [
+       176,
+       0.471
+      ],
+      "Q_steps_ge2": [
+       77,
+       0.206
+      ],
+      "Q_revisited_collapsed": [
+       73,
+       0.195
+      ],
+      "any_return_after_failure": [
+       112,
+       0.299
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 190
+     },
+     "entry_node_Q": {
+      "n": 305,
+      "later_Q_step_raw": [
+       68,
+       0.223
+      ],
+      "Q_revisited_collapsed": [
+       65,
+       0.213
+      ],
+      "later_Q_step_moves": {
+       "new": 70,
+       "cited": 2,
+       "repeat": 1
+      }
+     },
+     "return_after_failure_steps": {
+      "n": 159,
+      "at_node": {
+       "R": 58,
+       "P": 56,
+       "I": 13,
+       "V": 10,
+       "N": 7,
+       "H": 4,
+       "C": 3,
+       "O": 2,
+       "D": 2,
+       "S": 2,
+       "X": 1,
+       "F": 1
+      },
+      "next_node": {
+       "C": 39,
+       "V": 24,
+       "I": 20,
+       "K": 19,
+       "H": 12,
+       "O": 10,
+       "X": 8,
+       "S": 5,
+       "N": 5,
+       "P": 4,
+       "R": 4,
+       "E": 3,
+       "D": 3,
+       "F": 2,
+       "end": 1
+      }
+     }
+    }
+   },
+   "r2": {
+    "consistency": {
+     "n": 198,
+     "entry_node_is_first_step": [
+      110,
+      0.556
+     ],
+     "entry_node_appears_in_walk": [
+      197,
+      0.995
+     ],
+     "state_by_node": {
+      "problem": {
+       "N": 3,
+       "E": 1,
+       "Q": 135
+      },
+      "capability": {
+       "N": 20,
+       "S": 1
+      },
+      "anomaly": {
+       "O": 13,
+       "Q": 1,
+       "F": 1
+      },
+      "challenged_result": {
+       "Q": 4,
+       "H": 3
+      },
+      "hypothesis": {
+       "H": 12
+      },
+      "data_without_theory": {
+       "O": 3
+      },
+      "external_goal": {
+       "N": 1
+      }
+     },
+     "expected_node": {
+      "problem": [
+       "Q"
+      ],
+      "capability": [
+       "N"
+      ],
+      "anomaly": [
+       "E",
+       "O"
+      ],
+      "hypothesis": [
+       "H"
+      ],
+      "challenged_result": [
+       "C",
+       "H",
+       "Q",
+       "V"
+      ],
+      "data_without_theory": [
+       "E",
+       "O"
+      ],
+      "external_goal": [
+       "D",
+       "N",
+       "Q"
+      ]
+     },
+     "state_enters_at_expected_node": {
+      "problem": [
+       135,
+       139,
+       0.971
+      ],
+      "capability": [
+       20,
+       21,
+       0.952
+      ],
+      "anomaly": [
+       13,
+       15,
+       0.867
+      ],
+      "challenged_result": [
+       7,
+       7,
+       1.0
+      ],
+      "hypothesis": [
+       12,
+       12,
+       1.0
+      ],
+      "data_without_theory": [
+       3,
+       3,
+       1.0
+      ],
+      "external_goal": [
+       1,
+       1,
+       1.0
+      ]
+     },
+     "first_step_node_by_state": {
+      "problem": {
+       "Q": 92,
+       "O": 20,
+       "H": 11,
+       "N": 4,
+       "I": 3,
+       "E": 3,
+       "S": 2,
+       "C": 2,
+       "F": 2
+      },
+      "capability": {
+       "Q": 9,
+       "N": 6,
+       "O": 4,
+       "S": 2
+      },
+      "anomaly": {
+       "Q": 4,
+       "O": 4,
+       "S": 3,
+       "I": 1,
+       "E": 1,
+       "N": 1,
+       "F": 1
+      },
+      "challenged_result": {
+       "H": 3,
+       "Q": 3,
+       "K": 1
+      },
+      "hypothesis": {
+       "Q": 8,
+       "H": 2,
+       "I": 1,
+       "O": 1
+      },
+      "data_without_theory": {
+       "O": 3
+      },
+      "external_goal": {
+       "H": 1
+      }
+     },
+     "first_step_node_move_when_not_entry_node": {
+      "problem": {
+       "O cited": 14,
+       "H cited": 11,
+       "O inherited": 4,
+       "N cited": 2,
+       "I inherited": 2,
+       "S cited": 2,
+       "C cited": 2,
+       "O new": 2,
+       "Q new": 2,
+       "E cited": 2,
+       "F new": 2,
+       "E inherited": 1,
+       "N new": 1,
+       "I cited": 1
+      },
+      "capability": {
+       "Q new": 9,
+       "O cited": 4,
+       "S cited": 2
+      },
+      "anomaly": {
+       "Q new": 4,
+       "S cited": 3,
+       "I new": 1,
+       "O cited": 1,
+       "E cited": 1,
+       "N inherited": 1
+      },
+      "challenged_result": {
+       "K cited": 1,
+       "H new": 1,
+       "Q new": 1
+      },
+      "hypothesis": {
+       "Q new": 8,
+       "I cited": 1,
+       "O cited": 1
+      },
+      "data_without_theory": {},
+      "external_goal": {
+       "H new": 1
+      }
+     },
+     "problem_first_step_not_Q": {
+      "n": 47,
+      "of_problem": 139,
+      "first_move_cited_or_inherited": 42,
+      "first_step_node_move": {
+       "O cited": 14,
+       "H cited": 11,
+       "O inherited": 4,
+       "N cited": 3,
+       "I inherited": 2,
+       "S cited": 2,
+       "C cited": 2,
+       "O new": 2,
+       "E cited": 2,
+       "F new": 2,
+       "E inherited": 1,
+       "N new": 1,
+       "I cited": 1
+      }
+     }
+    },
+    "revisits": {
+     "problem": {
+      "n": 139,
+      "entry_node_in_walk": [
+       139,
+       1.0
+      ],
+      "revisited": [
+       21,
+       0.151
+      ],
+      "later_step_raw": [
+       23,
+       0.165
+      ],
+      "revisit_steps": 23,
+      "any_Q_after_first_step": [
+       60,
+       0.432
+      ],
+      "Q_steps_ge2": [
+       21,
+       0.151
+      ],
+      "Q_revisited_collapsed": [
+       20,
+       0.144
+      ],
+      "any_return_after_failure": [
+       44,
+       0.317
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 67
+     },
+     "capability": {
+      "n": 21,
+      "entry_node_in_walk": [
+       20,
+       0.952
+      ],
+      "revisited": [
+       13,
+       0.619
+      ],
+      "later_step_raw": [
+       14,
+       0.667
+      ],
+      "revisit_steps": 23,
+      "any_Q_after_first_step": [
+       14,
+       0.667
+      ],
+      "Q_steps_ge2": [
+       4,
+       0.19
+      ],
+      "Q_revisited_collapsed": [
+       4,
+       0.19
+      ],
+      "any_return_after_failure": [
+       5,
+       0.238
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 17
+     },
+     "anomaly": {
+      "n": 15,
+      "entry_node_in_walk": [
+       15,
+       1.0
+      ],
+      "revisited": [
+       11,
+       0.733
+      ],
+      "later_step_raw": [
+       11,
+       0.733
+      ],
+      "revisit_steps": 24,
+      "any_Q_after_first_step": [
+       11,
+       0.733
+      ],
+      "Q_steps_ge2": [
+       2,
+       0.133
+      ],
+      "Q_revisited_collapsed": [
+       2,
+       0.133
+      ],
+      "any_return_after_failure": [
+       4,
+       0.267
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 13
+     },
+     "challenged_result": {
+      "n": 7,
+      "entry_node_in_walk": [
+       7,
+       1.0
+      ],
+      "revisited": [
+       4,
+       0.571
+      ],
+      "later_step_raw": [
+       4,
+       0.571
+      ],
+      "revisit_steps": 6,
+      "any_Q_after_first_step": [
+       6,
+       0.857
+      ],
+      "Q_steps_ge2": [
+       4,
+       0.571
+      ],
+      "Q_revisited_collapsed": [
+       4,
+       0.571
+      ],
+      "any_return_after_failure": [
+       2,
+       0.286
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 9
+     },
+     "hypothesis": {
+      "n": 12,
+      "entry_node_in_walk": [
+       12,
+       1.0
+      ],
+      "revisited": [
+       7,
+       0.583
+      ],
+      "later_step_raw": [
+       7,
+       0.583
+      ],
+      "revisit_steps": 12,
+      "any_Q_after_first_step": [
+       5,
+       0.417
+      ],
+      "Q_steps_ge2": [
+       2,
+       0.167
+      ],
+      "Q_revisited_collapsed": [
+       2,
+       0.167
+      ],
+      "any_return_after_failure": [
+       4,
+       0.333
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 6
+     },
+     "data_without_theory": {
+      "n": 3,
+      "entry_node_in_walk": [
+       3,
+       1.0
+      ],
+      "revisited": [
+       3,
+       1.0
+      ],
+      "later_step_raw": [
+       3,
+       1.0
+      ],
+      "revisit_steps": 7,
+      "any_Q_after_first_step": [
+       2,
+       0.667
+      ],
+      "Q_steps_ge2": [
+       0,
+       0.0
+      ],
+      "Q_revisited_collapsed": [
+       0,
+       0.0
+      ],
+      "any_return_after_failure": [
+       1,
+       0.333
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 2
+     },
+     "external_goal": {
+      "n": 1,
+      "entry_node_in_walk": [
+       1,
+       1.0
+      ],
+      "revisited": [
+       1,
+       1.0
+      ],
+      "later_step_raw": [
+       1,
+       1.0
+      ],
+      "revisit_steps": 1,
+      "any_Q_after_first_step": [
+       0,
+       0.0
+      ],
+      "Q_steps_ge2": [
+       0,
+       0.0
+      ],
+      "Q_revisited_collapsed": [
+       0,
+       0.0
+      ],
+      "any_return_after_failure": [
+       0,
+       0.0
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 0
+     },
+     "all": {
+      "n": 198,
+      "entry_node_in_walk": [
+       197,
+       0.995
+      ],
+      "revisited": [
+       60,
+       0.303
+      ],
+      "later_step_raw": [
+       63,
+       0.318
+      ],
+      "revisit_steps": 96,
+      "any_Q_after_first_step": [
+       98,
+       0.495
+      ],
+      "Q_steps_ge2": [
+       33,
+       0.167
+      ],
+      "Q_revisited_collapsed": [
+       32,
+       0.162
+      ],
+      "any_return_after_failure": [
+       60,
+       0.303
+      ],
+      "return_after_failure_at_Q": [
+       0,
+       0.0
+      ],
+      "reframe_after_failure": [
+       0,
+       0.0
+      ],
+      "q_steps_new": 114
+     },
+     "entry_node_Q": {
+      "n": 140,
+      "later_Q_step_raw": [
+       23,
+       0.164
+      ],
+      "Q_revisited_collapsed": [
+       22,
+       0.157
+      ],
+      "later_Q_step_moves": {
+       "new": 24,
+       "cited": 1,
+       "repeat": 1
+      }
+     },
+     "return_after_failure_steps": {
+      "n": 76,
+      "at_node": {
+       "P": 30,
+       "R": 20,
+       "I": 9,
+       "N": 9,
+       "V": 3,
+       "H": 2,
+       "F": 1,
+       "S": 1,
+       "D": 1
+      },
+      "next_node": {
+       "C": 17,
+       "V": 17,
+       "I": 15,
+       "S": 6,
+       "K": 6,
+       "O": 4,
+       "R": 4,
+       "X": 2,
+       "D": 2,
+       "F": 1,
+       "H": 1,
+       "P": 1
+      }
+     }
+    }
+   }
+  },
+  "audit_sample_reused": true,
   "evidence_location": {
    "problem": {
-    "n": 181,
-    "with_section": 87,
+    "n": 435,
+    "with_section": 184,
     "section_class": {
      "introduction": [
-      56,
-      0.644
+      107,
+      0.582
      ],
      "abstract": [
-      26,
-      0.299
+      67,
+      0.364
      ],
      "later section": [
-      5,
-      0.057
+      10,
+      0.054
      ]
     },
-    "with_page": 97,
+    "with_page": 255,
     "page_in_article": {
      "median": 1.0,
-     "share_page_1": 0.907,
-     "share_page_le_2": 1.0,
+     "share_page_1": 0.882,
+     "share_page_le_2": 0.976,
      "counts": {
-      "1": 88,
-      "2": 9
+      "1": 225,
+      "2": 24,
+      "3": 5,
+      "10": 1
      }
     }
    },
    "capability": {
-    "n": 25,
-    "with_section": 14,
+    "n": 54,
+    "with_section": 27,
     "section_class": {
-     "introduction": [
-      8,
-      0.571
-     ],
      "abstract": [
-      5,
-      0.357
+      13,
+      0.481
+     ],
+     "introduction": [
+      13,
+      0.481
      ],
      "later section": [
       1,
-      0.071
+      0.037
      ]
     },
-    "with_page": 12,
+    "with_page": 28,
     "page_in_article": {
      "median": 1.0,
-     "share_page_1": 0.667,
-     "share_page_le_2": 0.917,
+     "share_page_1": 0.786,
+     "share_page_le_2": 0.929,
      "counts": {
-      "1": 8,
-      "2": 3,
-      "3": 1
+      "1": 22,
+      "2": 4,
+      "3": 1,
+      "4": 1
      }
     }
    },
    "anomaly": {
-    "n": 5,
-    "with_section": 5,
+    "n": 26,
+    "with_section": 16,
     "section_class": {
      "introduction": [
-      3,
-      0.6
+      8,
+      0.5
      ],
      "abstract": [
-      2,
-      0.4
+      4,
+      0.25
+     ],
+     "later section": [
+      4,
+      0.25
      ]
     },
-    "with_page": 0,
+    "with_page": 11,
     "page_in_article": {
-     "median": null,
-     "share_page_1": null,
-     "share_page_le_2": null,
-     "counts": {}
+     "median": 2.0,
+     "share_page_1": 0.455,
+     "share_page_le_2": 0.818,
+     "counts": {
+      "1": 5,
+      "2": 4,
+      "3": 2
+     }
     }
    },
    "challenged_result": {
-    "n": 6,
-    "with_section": 3,
-    "section_class": {
-     "introduction": [
-      2,
-      0.667
-     ],
-     "later section": [
-      1,
-      0.333
-     ]
-    },
-    "with_page": 3,
-    "page_in_article": {
-     "median": 1.0,
-     "share_page_1": 1.0,
-     "share_page_le_2": 1.0,
-     "counts": {
-      "1": 3
-     }
-    }
-   },
-   "hypothesis": {
-    "n": 6,
-    "with_section": 2,
-    "section_class": {
-     "later section": [
-      1,
-      0.5
-     ],
-     "introduction": [
-      1,
-      0.5
-     ]
-    },
-    "with_page": 4,
-    "page_in_article": {
-     "median": 1.5,
-     "share_page_1": 0.5,
-     "share_page_le_2": 0.75,
-     "counts": {
-      "1": 2,
-      "2": 1,
-      "3": 1
-     }
-    }
-   },
-   "data_without_theory": {
-    "n": 5,
+    "n": 15,
     "with_section": 4,
     "section_class": {
      "introduction": [
@@ -1106,18 +2437,77 @@
       0.25
      ]
     },
-    "with_page": 1,
+    "with_page": 11,
     "page_in_article": {
      "median": 1.0,
-     "share_page_1": 1.0,
+     "share_page_1": 0.818,
      "share_page_le_2": 1.0,
      "counts": {
-      "1": 1
+      "1": 9,
+      "2": 2
+     }
+    }
+   },
+   "hypothesis": {
+    "n": 22,
+    "with_section": 13,
+    "section_class": {
+     "introduction": [
+      7,
+      0.538
+     ],
+     "later section": [
+      3,
+      0.231
+     ],
+     "abstract": [
+      3,
+      0.231
+     ]
+    },
+    "with_page": 9,
+    "page_in_article": {
+     "median": 2.0,
+     "share_page_1": 0.444,
+     "share_page_le_2": 0.778,
+     "counts": {
+      "1": 4,
+      "2": 3,
+      "3": 1,
+      "10": 1
+     }
+    }
+   },
+   "data_without_theory": {
+    "n": 13,
+    "with_section": 9,
+    "section_class": {
+     "introduction": [
+      6,
+      0.667
+     ],
+     "abstract": [
+      2,
+      0.222
+     ],
+     "later section": [
+      1,
+      0.111
+     ]
+    },
+    "with_page": 4,
+    "page_in_article": {
+     "median": 1.0,
+     "share_page_1": 0.75,
+     "share_page_le_2": 1.0,
+     "counts": {
+      "1": 3,
+      "2": 1
      }
     }
    },
    "external_goal": {
-    "n": 5,
+    "n": 7,
     "with_section": 5,
     "section_class": {
      "introduction": [
@@ -1129,453 +2519,507 @@
       0.2
      ]
     },
-    "with_page": 0,
+    "with_page": 2,
     "page_in_article": {
-     "median": null,
-     "share_page_1": null,
-     "share_page_le_2": null,
-     "counts": {}
+     "median": 1.0,
+     "share_page_1": 1.0,
+     "share_page_le_2": 1.0,
+     "counts": {
+      "1": 2
+     }
     }
    },
    "all": {
-    "n": 233,
-    "with_section": 120,
+    "n": 572,
+    "with_section": 258,
     "section_class": {
      "introduction": [
-      77,
-      0.642
+      148,
+      0.574
      ],
      "abstract": [
-      34,
-      0.283
+      90,
+      0.349
      ],
      "later section": [
-      9,
-      0.075
+      20,
+      0.078
      ]
     },
-    "with_page": 117,
+    "with_page": 320,
     "page_in_article": {
      "median": 1.0,
-     "share_page_1": 0.872,
-     "share_page_le_2": 0.983,
+     "share_page_1": 0.844,
+     "share_page_le_2": 0.963,
      "counts": {
-      "1": 102,
-      "2": 13,
-      "3": 2
+      "1": 270,
+      "2": 38,
+      "3": 9,
+      "4": 1,
+      "10": 2
      }
     }
    },
    "quote_found_in_xml": {
-    "None": 108,
-    "True": 119,
-    "False": 6
+    "None": 256,
+    "True": 256,
+    "False": 60
    },
    "abstract_or_introduction_share": {
-    "problem": 0.943,
-    "capability": 0.929,
-    "anomaly": 1.0,
-    "challenged_result": 0.667,
-    "hypothesis": 0.5,
-    "data_without_theory": 0.75,
+    "problem": 0.946,
+    "capability": 0.963,
+    "anomaly": 0.75,
+    "challenged_result": 0.75,
+    "hypothesis": 0.769,
+    "data_without_theory": 0.889,
     "external_goal": 1.0
    }
   },
   "evidence_wording": {
    "problem": {
-    "n": 181,
-    "any_gap": 0.492,
+    "n": 435,
+    "any_gap": 0.497,
     "gap_markers": {
-     "however": 36,
-     "unknown or unclear": 19,
-     "need": 13,
-     "remains unclear or unknown": 12,
-     "challenge": 8,
-     "lack": 8,
-     "poorly understood or constrained": 7,
-     "debated or controversial": 5,
-     "not well understood or constrained": 4,
-     "few or limited studies": 3,
-     "little or less is known": 1,
-     "gap": 1,
-     "open question": 1
+     "however": 73,
+     "unknown or unclear": 51,
+     "remains unclear or unknown": 35,
+     "need": 25,
+     "challenge": 20,
+     "lack": 19,
+     "debated or controversial": 19,
+     "poorly understood or constrained": 15,
+     "few or limited studies": 12,
+     "little or less is known": 9,
+     "not well understood or constrained": 6,
+     "gap": 4,
+     "open question": 3
     },
-    "any_aim": 0.094,
+    "any_aim": 0.064,
     "aim_markers": {
-     "here we / this study": 12,
-     "aim or objective": 11,
+     "here we / this study": 21,
+     "aim or objective": 17,
      "we + research verb": 2
     },
-    "any_origin": 0.182,
+    "any_origin": 0.198,
     "origin_markers": {
-     "instrument or method": 12,
-     "event": 11,
-     "data in hand": 8,
-     "prior result": 2,
-     "mandate or benchmark": 1
+     "instrument or method": 39,
+     "event": 25,
+     "data in hand": 19,
+     "prior result": 6,
+     "mandate or benchmark": 4
     },
-    "gap_without_origin": 0.398,
-    "origin_without_gap": 0.088
+    "gap_without_origin": 0.389,
+    "origin_without_gap": 0.09
    },
    "capability": {
-    "n": 25,
-    "any_gap": 0.04,
+    "n": 54,
+    "any_gap": 0.056,
     "gap_markers": {
+     "need": 2,
      "challenge": 1
     },
-    "any_aim": 0.6,
+    "any_aim": 0.556,
     "aim_markers": {
-     "here we / this study": 13,
-     "we + research verb": 5,
-     "aim or objective": 2
+     "here we / this study": 22,
+     "we + research verb": 12,
+     "aim or objective": 5
     },
-    "any_origin": 0.52,
+    "any_origin": 0.519,
     "origin_markers": {
-     "instrument or method": 11,
-     "data in hand": 2,
-     "event": 1
+     "instrument or method": 24,
+     "data in hand": 5,
+     "event": 2,
+     "mandate or benchmark": 1
     },
-    "gap_without_origin": 0.04,
-    "origin_without_gap": 0.52
+    "gap_without_origin": 0.037,
+    "origin_without_gap": 0.5
    },
    "anomaly": {
-    "n": 5,
-    "any_gap": 0.4,
+    "n": 26,
+    "any_gap": 0.192,
     "gap_markers": {
-     "unknown or unclear": 1,
-     "however": 1
+     "however": 4,
+     "unknown or unclear": 1
     },
-    "any_aim": 0.0,
-    "aim_markers": {},
-    "any_origin": 0.4,
+    "any_aim": 0.038,
+    "aim_markers": {
+     "aim or objective": 1,
+     "here we / this study": 1
+    },
+    "any_origin": 0.346,
     "origin_markers": {
-     "prior result": 2
+     "event": 6,
+     "prior result": 2,
+     "data in hand": 1
     },
-    "gap_without_origin": 0.2,
-    "origin_without_gap": 0.2
+    "gap_without_origin": 0.154,
+    "origin_without_gap": 0.308
    },
    "challenged_result": {
-    "n": 6,
-    "any_gap": 0.333,
+    "n": 15,
+    "any_gap": 0.2,
     "gap_markers": {
+     "challenge": 2,
      "lack": 1,
-     "challenge": 1
+     "few or limited studies": 1
     },
-    "any_aim": 0.5,
+    "any_aim": 0.2,
     "aim_markers": {
      "we + research verb": 2,
      "here we / this study": 2,
      "aim or objective": 1
     },
-    "any_origin": 0.667,
+    "any_origin": 0.4,
     "origin_markers": {
-     "instrument or method": 3,
+     "instrument or method": 5,
      "event": 1
     },
-    "gap_without_origin": 0.333,
-    "origin_without_gap": 0.667
+    "gap_without_origin": 0.2,
+    "origin_without_gap": 0.4
    },
    "hypothesis": {
-    "n": 6,
-    "any_gap": 0.0,
-    "gap_markers": {},
-    "any_aim": 0.333,
-    "aim_markers": {
-     "we + research verb": 1,
-     "aim or objective": 1,
-     "here we / this study": 1
+    "n": 22,
+    "any_gap": 0.045,
+    "gap_markers": {
+     "need": 1
     },
-    "any_origin": 0.0,
-    "origin_markers": {},
+    "any_aim": 0.318,
+    "aim_markers": {
+     "here we / this study": 6,
+     "we + research verb": 2,
+     "aim or objective": 1
+    },
+    "any_origin": 0.136,
+    "origin_markers": {
+     "event": 2,
+     "data in hand": 1,
+     "prior result": 1,
+     "instrument or method": 1
+    },
     "gap_without_origin": 0.0,
-    "origin_without_gap": 0.0
+    "origin_without_gap": 0.091
    },
    "data_without_theory": {
-    "n": 5,
+    "n": 13,
     "any_gap": 0.0,
     "gap_markers": {},
-    "any_aim": 0.2,
+    "any_aim": 0.077,
     "aim_markers": {
      "aim or objective": 1,
      "here we / this study": 1
     },
-    "any_origin": 0.8,
+    "any_origin": 0.538,
     "origin_markers": {
-     "data in hand": 3,
-     "event": 1
+     "data in hand": 5,
+     "event": 2
     },
     "gap_without_origin": 0.0,
-    "origin_without_gap": 0.8
+    "origin_without_gap": 0.538
    },
    "external_goal": {
-    "n": 5,
-    "any_gap": 0.4,
+    "n": 7,
+    "any_gap": 0.429,
     "gap_markers": {
-     "need": 2
+     "need": 3
     },
-    "any_aim": 0.2,
+    "any_aim": 0.143,
     "aim_markers": {
      "aim or objective": 1
     },
-    "any_origin": 0.4,
+    "any_origin": 0.286,
     "origin_markers": {
      "data in hand": 1,
      "mandate or benchmark": 1,
      "instrument or method": 1
     },
-    "gap_without_origin": 0.0,
+    "gap_without_origin": 0.143,
     "origin_without_gap": 0.0
    },
    "all": {
-    "n": 233,
-    "any_gap": 0.412,
+    "n": 572,
+    "any_gap": 0.404,
     "gap_markers": {
-     "however": 37,
-     "unknown or unclear": 20,
-     "need": 15,
-     "remains unclear or unknown": 12,
-     "challenge": 10,
-     "lack": 9,
-     "poorly understood or constrained": 7,
-     "debated or controversial": 5,
-     "not well understood or constrained": 4,
-     "few or limited studies": 3,
-     "little or less is known": 1,
-     "gap": 1,
-     "open question": 1
+     "however": 77,
+     "unknown or unclear": 52,
+     "remains unclear or unknown": 35,
+     "need": 31,
+     "challenge": 23,
+     "lack": 20,
+     "debated or controversial": 19,
+     "poorly understood or constrained": 15,
+     "few or limited studies": 13,
+     "little or less is known": 9,
+     "not well understood or constrained": 6,
+     "gap": 4,
+     "open question": 3
     },
-    "any_aim": 0.167,
+    "any_aim": 0.124,
     "aim_markers": {
-     "here we / this study": 29,
-     "aim or objective": 17,
-     "we + research verb": 10
+     "here we / this study": 53,
+     "aim or objective": 27,
+     "we + research verb": 18
     },
-    "any_origin": 0.249,
+    "any_origin": 0.247,
     "origin_markers": {
-     "instrument or method": 27,
-     "event": 14,
-     "data in hand": 14,
-     "prior result": 4,
-     "mandate or benchmark": 2
+     "instrument or method": 70,
+     "event": 38,
+     "data in hand": 32,
+     "prior result": 9,
+     "mandate or benchmark": 6
     },
-    "gap_without_origin": 0.326,
-    "origin_without_gap": 0.163
+    "gap_without_origin": 0.313,
+    "origin_without_gap": 0.156
    }
   },
   "by_group": {
    "available": true,
    "subfield": {
     "table": {
-     "Atmospheric Science": {
-      "n": 74,
-      "problem_share": 0.797,
+     "Geophysics": {
+      "n": 206,
+      "problem_share": 0.748,
       "states": {
-       "problem": 59,
-       "capability": 8,
-       "external_goal": 3,
-       "challenged_result": 2,
-       "anomaly": 2
+       "problem": 154,
+       "capability": 20,
+       "anomaly": 13,
+       "hypothesis": 9,
+       "data_without_theory": 5,
+       "challenged_result": 4,
+       "external_goal": 1
       }
      },
-     "Geophysics": {
-      "n": 64,
-      "problem_share": 0.75,
+     "Atmospheric Science": {
+      "n": 171,
+      "problem_share": 0.766,
       "states": {
-       "problem": 48,
-       "capability": 7,
-       "hypothesis": 3,
-       "challenged_result": 2,
+       "problem": 131,
+       "capability": 15,
+       "anomaly": 8,
+       "challenged_result": 7,
+       "hypothesis": 5,
+       "external_goal": 4,
+       "data_without_theory": 1
+      }
+     },
+     "Oceanography": {
+      "n": 42,
+      "problem_share": 0.667,
+      "states": {
+       "problem": 28,
+       "capability": 6,
+       "data_without_theory": 3,
+       "hypothesis": 2,
        "anomaly": 2,
-       "data_without_theory": 1,
        "external_goal": 1
       }
      },
      "Earth-Surface Processes": {
-      "n": 26,
-      "problem_share": 0.846,
+      "n": 40,
+      "problem_share": 0.825,
       "states": {
-       "problem": 22,
+       "problem": 33,
+       "anomaly": 3,
        "capability": 2,
-       "anomaly": 1,
-       "hypothesis": 1
-      }
-     },
-     "Artificial Intelligence": {
-      "n": 17,
-      "problem_share": 0.765,
-      "states": {
-       "problem": 13,
-       "capability": 2,
-       "challenged_result": 1,
-       "data_without_theory": 1
+       "hypothesis": 2
       }
      },
      "Geochemistry and Petrology": {
-      "n": 15,
-      "problem_share": 0.667,
+      "n": 37,
+      "problem_share": 0.838,
       "states": {
-       "problem": 10,
+       "problem": 31,
        "data_without_theory": 2,
        "hypothesis": 2,
-       "capability": 1
-      }
-     },
-     "Water Science and Technology": {
-      "n": 14,
-      "problem_share": 0.857,
-      "states": {
-       "problem": 12,
        "capability": 1,
        "challenged_result": 1
       }
      },
-     "pooled small groups": {
-      "n": 13,
-      "problem_share": 0.692,
+     "Water Science and Technology": {
+      "n": 26,
+      "problem_share": 0.769,
       "states": {
-       "problem": 9,
+       "problem": 20,
        "capability": 3,
+       "challenged_result": 2,
+       "hypothesis": 1
+      }
+     },
+     "Artificial Intelligence": {
+      "n": 25,
+      "problem_share": 0.8,
+      "states": {
+       "problem": 20,
+       "capability": 2,
+       "data_without_theory": 2,
+       "challenged_result": 1
+      }
+     },
+     "Geology": {
+      "n": 19,
+      "problem_share": 0.895,
+      "states": {
+       "problem": 17,
+       "hypothesis": 1,
        "external_goal": 1
       }
      },
-     "Oceanography": {
-      "n": 10,
-      "problem_share": 0.8,
+     "pooled small groups": {
+      "n": 6,
+      "problem_share": 0.167,
       "states": {
-       "problem": 8,
-       "data_without_theory": 1,
-       "capability": 1
+       "capability": 5,
+       "problem": 1
       }
      }
     },
     "min_group": 10,
     "test_state": {
-     "n": 233,
-     "chi2": 7.58,
-     "cramers_v": 0.128,
+     "n": 572,
+     "chi2": 82.79,
+     "cramers_v": 0.155,
      "v_ci": [
-      0.134,
-      0.302
+      0.146,
+      0.233
      ],
-     "cramers_v_bc": 0.0,
+     "cramers_v_bc": 0.101,
      "v_bc_ci": [
-      0.0,
-      0.248
+      0.086,
+      0.201
      ],
-     "p": 0.919
+     "p": 0.0068
     },
     "test_problem": {
-     "n": 233,
-     "chi2": 3.32,
-     "cramers_v": 0.119,
+     "n": 572,
+     "chi2": 18.1,
+     "cramers_v": 0.178,
      "v_ci": [
-      0.108,
-      0.313
+      0.132,
+      0.276
      ],
-     "cramers_v_bc": 0.0,
+     "cramers_v_bc": 0.133,
      "v_bc_ci": [
-      0.0,
-      0.262
+      0.058,
+      0.249
      ],
-     "p": 0.8616
+     "p": 0.0178
     }
    },
    "family": {
     "table": {
-     "Wiley non-AGU": {
-      "n": 76,
-      "problem_share": 0.882,
+     "AGU": {
+      "n": 124,
+      "problem_share": 0.806,
       "states": {
-       "problem": 67,
-       "capability": 4,
-       "hypothesis": 2,
+       "problem": 100,
+       "capability": 12,
+       "anomaly": 5,
+       "hypothesis": 3,
        "challenged_result": 2,
+       "external_goal": 1,
        "data_without_theory": 1
       }
      },
      "EGU/Copernicus": {
-      "n": 64,
-      "problem_share": 0.703,
+      "n": 102,
+      "problem_share": 0.696,
       "states": {
-       "problem": 45,
-       "capability": 8,
+       "problem": 71,
+       "capability": 16,
        "external_goal": 4,
+       "hypothesis": 3,
+       "challenged_result": 3,
        "anomaly": 3,
+       "data_without_theory": 2
+      }
+     },
+     "Elsevier": {
+      "n": 99,
+      "problem_share": 0.778,
+      "states": {
+       "problem": 77,
+       "anomaly": 6,
+       "hypothesis": 5,
+       "capability": 4,
+       "data_without_theory": 4,
        "challenged_result": 2,
-       "data_without_theory": 1,
-       "hypothesis": 1
+       "external_goal": 1
+      }
+     },
+     "Wiley non-AGU": {
+      "n": 99,
+      "problem_share": 0.848,
+      "states": {
+       "problem": 84,
+       "capability": 7,
+       "challenged_result": 5,
+       "hypothesis": 2,
+       "data_without_theory": 1
       }
      },
      "Springer Nature (non-portfolio)": {
-      "n": 44,
-      "problem_share": 0.682,
+      "n": 94,
+      "problem_share": 0.67,
       "states": {
-       "problem": 30,
-       "capability": 7,
-       "data_without_theory": 3,
-       "challenged_result": 1,
-       "external_goal": 1,
-       "anomaly": 1,
-       "hypothesis": 1
-      }
-     },
-     "pooled small groups": {
-      "n": 19,
-      "problem_share": 0.684,
-      "states": {
-       "problem": 13,
-       "capability": 3,
-       "hypothesis": 2,
-       "challenged_result": 1
-      }
-     },
-     "AGU": {
-      "n": 16,
-      "problem_share": 0.812,
-      "states": {
-       "problem": 13,
-       "capability": 3
+       "problem": 63,
+       "capability": 13,
+       "data_without_theory": 5,
+       "anomaly": 5,
+       "hypothesis": 5,
+       "challenged_result": 2,
+       "external_goal": 1
       }
      },
      "Nature portfolio": {
-      "n": 14,
-      "problem_share": 0.929,
+      "n": 36,
+      "problem_share": 0.75,
+      "states": {
+       "problem": 27,
+       "anomaly": 6,
+       "hypothesis": 3
+      }
+     },
+     "pooled small groups": {
+      "n": 18,
+      "problem_share": 0.722,
       "states": {
        "problem": 13,
+       "capability": 2,
+       "challenged_result": 1,
+       "hypothesis": 1,
        "anomaly": 1
       }
      }
     },
     "min_group": 10,
     "test_state": {
-     "n": 233,
-     "chi2": 15.47,
-     "cramers_v": 0.182,
+     "n": 572,
+     "chi2": 59.36,
+     "cramers_v": 0.132,
      "v_ci": [
-      0.157,
-      0.303
+      0.131,
+      0.197
      ],
-     "cramers_v_bc": 0.108,
+     "cramers_v_bc": 0.083,
      "v_bc_ci": [
-      0.056,
-      0.266
+      0.083,
+      0.169
      ],
-     "p": 0.1136
+     "p": 0.0122
     },
     "test_problem": {
-     "n": 233,
-     "chi2": 12.02,
-     "cramers_v": 0.227,
+     "n": 572,
+     "chi2": 12.5,
+     "cramers_v": 0.148,
      "v_ci": [
-      0.153,
-      0.367
+      0.105,
+      0.251
      ],
-     "cramers_v_bc": 0.174,
+     "cramers_v_bc": 0.107,
      "v_bc_ci": [
-      0.044,
-      0.337
+      0.024,
+      0.229
      ],
-     "p": 0.0308
+     "p": 0.0522
     }
    }
   },

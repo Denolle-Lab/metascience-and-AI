@@ -1,0 +1,443 @@
+{
+ "key": "g22_W4282941289",
+ "doi": "10.1016/j.coldregions.2022.103611",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Clemens-Sewall et al. 2022, FlakeOut, Cold Regions Science and Technology 201, 103611 (published PDF, 7 pages)",
+  "Publisher XML text with section and paragraph locators (jats_text; abstract and captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions, the only parts in the XML text; PDF pages counted from 1 (identical to printed pages 1-7) for body text absent from the XML; figure-content steps cite the caption label as printed plus the PDF page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, common filtering techniques fail to filter wind-blown snow and incorrectly filter data from the true surface",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF body; XML abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the need: TLS surveys of snow on sea ice and tundra must contend with blowing snow, so blowing-snow points must be identified and removed.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which requires identification of blowing snow points in the TLS data."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "methods",
+     "action": "List the rival filtering methods from the literature: early return filtering, radius and statistical outlier removal, ALS ground filters, and DROR and LIOR from autonomous driving.",
+     "page": "1-2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Other common point cloud filtering routines include radius outlier removal and statistical outlier removal"
+    },
+    {
+     "n": 3,
+     "node": "X",
+     "mode": "methods",
+     "action": "Set aside ALS-oriented filters after unreported trials (they missed near-surface points and removed ridge tops), and set aside LIOR on unshown experience of variable return intensity.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we tried a number of ALS-oriented filters, but found them poorly suited"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Collect nine TLS scan positions, about 16.5 million points each, with a Riegl VZ1000 on the MOSAiC floe on 22 February 2020, and remove human artifacts by hand.",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We collected nine TLS scan positions with a Riegl VZ1000"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Record the live conditions at the time of scanning: mild blowing snow after 2-3 cm of fresh snowfall, with wind-blown particles readily visible in the data.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Mild blowing snow conditions were observed at the time of the data collection."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build FlakeOut in three stages: a vertical threshold, a visible-region filter on early returns using the scanner geometry, and a local vertical z-score filter on k-d tree regions.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "FlakeOut, the filter presented here, consists of three stages."
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "methods",
+     "action": "Set the z-score filter parameters (100-point regions, threshold 3.5) after minimal, unreported testing.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Minimal testing suggests that regions of 100 points and a z-score threshold of 3.5 perform well."
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "Develop the validation tools: an importance-sampling Monte Carlo estimator of false positive and false negative rates for rare events, with a proposal distribution built from the filter's own classes, and an interactive VTK interface for classifying points by hand.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we have developed an importance sampling approach for efficiently constructing Monte Carlo estimates"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "methods",
+     "action": "Apply FlakeOut, early return filtering and radius outlier removal (Open3D; radius 0.14 m, nb_points 4) to all nine scans, recording points filtered and runtimes (Table 2); statistical outlier removal proves computationally infeasible.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We applied the FlakeOut filter (Section 2.2), early return filtering, and radius outlier removal"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "Classify by hand at least 100 points drawn from the proposal distribution (qs = 0.5) for each scan position and each filter, as the reference classification.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For each scan position and each filter, we manually classified at least 100 points"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate each filter's false positive rate with a 95% confidence interval through the importance-weighted Monte Carlo estimator (Table 3).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimated false positive according to Section 2.3 (Table 3)"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the estimator's premise by tracking how the FlakeOut false-positive estimate converges as the number of classified points grows (Fig. 4).",
+     "page": "Fig. 4 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "within just 15-20 manually classified points, the Monte Carlo estimate of the false positive rate is sufficiently accurate"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the filters: FlakeOut's false positive rate (2.8e-4) is an order of magnitude below early return (3.7e-3) and radius outlier (4.2e-2); false-negative counts are reported but are too few for statistical comparison.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The false positive rate of FlakeOut is an order of magnitude less than the next best filter"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "methods",
+     "action": "Reject radius outlier removal and other purely distance-based filters (including, by argument, DROR and statistical outlier removal) for near-surface blowing snow, since none of the 476 points radius outlier flagged was a snow particle.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "not a single one was manually classified as such."
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose, without testing, a mechanism for near-surface particles producing last returns: larger particles near the surface plus oblique incidence attenuate the surface return.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "One reason for this may be that mean particle diameter in the blowing snow layer increases towards the surface"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep FlakeOut as a characterized filter for light to moderate blowing snow on sea ice, with its false positive rate, runtime and the estimation tools.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "FlakeOut achieves a false positive rate of 2.8x10-4, an order of magnitude lower than standard techniques"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Wind-blown snow particles contaminate TLS point clouds of snow surfaces",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; the particles are visible in renderings and can be classified by hand",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "A filter that removes blowing snow with a low false positive rate",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Existing filters: early return, radius and statistical outlier removal, ALS filters, DROR, LIOR",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Argued from scanning geometry (baselines should remove distant or shadowed surface points), not computed",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: one field day of mild blowing snow at MOSAiC, nine scans",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: estimator convergence and baseline comparison; no other dataset or condition tested",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "FlakeOut kept, with a false positive rate an order of magnitude below the baselines",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "FlakeOut filters wind-blown snow from TLS data of snow on sea ice with a false positive rate of 2.8x10-4, an order of magnitude lower than standard filters, and the importance-sampling tools make such rare-event rates cheap to estimate.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the geometry-aware filter (the visible-region test on early returns and the local vertical z-score) is what yields the low false positive rate claimed.",
+  "page": "3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The scans were collected during the MOSAiC expedition and the filter was developed afterwards; no hypothesis directed the acquisition. FlakeOut's false positive rate was estimated against independent manual labels and could have exceeded the baselines', but its parameters were set by unreported 'minimal testing', apparently on the same data (inference). Nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "statistics / rare-event simulation",
+   "item": "Importance sampling Monte Carlo estimation (Liu and Liu 2001; Owen 2013)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "False positive and false negative rates as classifier metrics",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "computer science",
+   "item": "Visualization Toolkit (VTK) and Python, used for the filter and the classification interface",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "computer science",
+   "item": "k-d tree decomposition (SciPy)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "computer vision",
+   "item": "Open3D radius outlier removal implementation (Zhou et al. 2018)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "robotics / autonomous driving",
+   "item": "DROR and LIOR snowfall de-noising filters for mobile lidar",
+   "kind": "concept",
+   "page": "2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "To our knowledge, this is the first published filter directly addressing removing wind-blown snow particles from TLS data",
+   "page": "2"
+  },
+  {
+   "quote": "we present FlakeOut, the first filter designed to remove wind-blown snow particles from Terrestrial Laser Scanning (TLS) data.",
+   "page": "6"
+  },
+  {
+   "quote": "we propose a novel filter, FlakeOut",
+   "page": "2"
+  }
+ ],
+ "limits": "The XML text supplied holds only the abstract and the figure and table captions, so body steps cite PDF pages and their quotes come from the PDF text. No review file was supplied, so there is no review sequence. All data come from one field day (nine scans, one floe, mild blowing snow); the results are pooled across scans and no per-scan replication is reported. The claimed applicability to tundra, prairie and ice sheets, and the proposed adaptations for slopes and vegetation, are speculation that was not tested. False negative rates could not be estimated; only raw counts are given. Those counts are inconsistent: the text says four early-return false negatives, Table 4 lists 5. Table 2 prints the radius-outlier count as '7.1e5×105'. The z-score parameters come from unreported 'minimal testing', probably on the same data (inference). The ALS-filter trials and the intensity experience used to set aside LIOR are not shown. DROR and LIOR were not run because their code is not available. The mechanism offered for early-return failure (particle size and attenuation) was not tested.",
+ "disagreements": [
+  {
+   "target": "Common filtering techniques (early return filtering, radius outlier removal, statistical outlier removal)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Their estimated false positive rates are 13 to 150 times higher than FlakeOut's, and radius outlier removal flagged no true snow particle among 476 classified points, though the paper grants that these filters succeed in other applications.",
+   "page": "§0 ¶1",
+   "quote": "common filtering techniques fail to filter wind-blown snow and incorrectly filter data from the true surface"
+  },
+  {
+   "target": "Charron et al. (2018) DROR filter",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argument from scanning geometry only; DROR was not applied because its code is not publicly available.",
+   "page": "6",
+   "quote": "Dynamic Radius Outlier Removal (Charron et al., 2018) addresses point spreading with distance, but not variable point density caused by shadowing and slope aspect."
+  },
+  {
+   "target": "Park et al. (2020) LIOR filter",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors' unshown experience that return intensity varies with surface properties and particle orientation.",
+   "page": "2",
+   "quote": "So LIOR is not expected to be useful in applications that require highly accurate measurements of fine-scale snow surface topography."
+  },
+  {
+   "target": "Precision as the evaluation metric (e.g. Charron et al., 2018)",
+   "kind": "definition",
+   "stance": "disputes",
+   "support": "Precision depends on how common snow particles are in a dataset, whereas false positive and false negative rates are intrinsic to the classifier.",
+   "page": "3",
+   "quote": "We chose not to use the metric precision, which is commonly used (e.g. Charron et al., 2018), because it depends on the prevalence"
+  },
+  {
+   "target": "ALS-oriented ground filters (e.g. Kraus and Pfeifer 1998; Pingel et al. 2013; Zhang et al. 2016)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Unreported trials in which these filters missed near-surface points and removed pressure-ridge tops.",
+   "page": "2",
+   "quote": "we tried a number of ALS-oriented filters, but found them poorly suited for removing isolated points very near the surface"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "False positive and false negative rates",
+   "alternatives": "Precision",
+   "reason": "Precision depends on how common snow particles are in a dataset, so it is less useful for comparing performance across datasets",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "D",
+   "chosen": "Compare against early return filtering and radius outlier removal",
+   "alternatives": "ALS-oriented filters",
+   "reason": "Poorly suited for near-surface points at low scan angles; they removed pressure-ridge tops",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Discuss DROR and LIOR without applying them",
+   "alternatives": "Applying DROR and LIOR directly",
+   "reason": "Code not publicly available",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Drop statistical outlier removal",
+   "alternatives": "Statistical outlier removal",
+   "reason": "Not computationally feasible on point clouds this large",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "Radius outlier parameters radius = 0.14 m, nb_points = 4",
+   "alternatives": "Other parameter sets (any fixed set argued to fail)",
+   "reason": "Chosen so that on a flat surface only returns beyond 150 m would be wrongly filtered",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "Regions of 100 points and a z-score threshold of 3.5",
+   "alternatives": "Other region sizes and thresholds (unspecified)",
+   "reason": "Minimal testing suggests they perform well",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Vertical threshold value set manually or by histogram analysis",
+   "alternatives": "Histogram analysis or manual choice",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Local regions with a fixed number of points, thresholded on the vertical coordinate only",
+   "alternatives": "Fixed radius (radius outlier removal); radius varying with range (DROR)",
+   "reason": "Lets regions vary in size and accounts for shadowing and point spreading with distance",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Importance sampling",
+   "alternatives": "Standard (uniform) Monte Carlo estimator",
+   "reason": "Standard Monte Carlo has large relative error for rare events and would need an intractable number of samples",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "qs = 0.5",
+   "alternatives": "Other values of qs",
+   "reason": "Estimates converged rapidly; faster convergence was not needed",
+   "effect_reported": "no",
+   "page": "5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We assess the accuracy of our approximate classifier by comparing it to manually classified points",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We applied the FlakeOut filter (Section 2.2), early return filtering, and radius outlier removal",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "within just 15-20 manually classified points, the Monte Carlo estimate of the false positive rate is sufficiently accurate",
+   "page": "Fig. 4 (p. 5)"
+  }
+ ]
+}

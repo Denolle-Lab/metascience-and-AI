@@ -1,0 +1,372 @@
+{
+ "key": "g22_W4206260144",
+ "doi": "10.1016/j.ecolind.2022.108546",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Deng et al. 2022, Ecological Indicators 135, 108546 (published PDF)",
+  "Publisher XML text with section and paragraph locators (jats_text): abstract and captions only"
+ ],
+ "pages_convention": "Mixed. XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (Fig. N, Table N, as printed). The XML text holds no body sections, so body steps use printed journal pages (p. N). Figure-content steps cite the figure with its PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, there is no size-fractionated PP model established in the Northern South China Sea (NSCS) yet.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Deng et al. 2022, Ecological Indicators 135, 108546 (PDF and XML abstract/captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the gap: no size-fractionated, vertically resolved PP model exists for the (northern) South China Sea, and Chla-based and vertically uniform approaches are inadequate.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, no size-fractionated PP model has been established in the SCS"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Collected field data on two 2019 cruises across trophic gradients: size-fractionated 14C PP incubations, filter-pad absorption, HPLC pigments, calibrated ac-s absorption profiles and HyperPro-II irradiance profiles (48 samples per size class, 12 radiometric profiles).",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Field surveys were conducted onboard the R/Vs Shiyan 2 and Shiyan 1 in June and September 2019 in the NSCS"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Formulated an absorption-based PP model summed over pico-, nano- and micro-phytoplankton (Eq. 1), with quantum yield, spectrally averaged absorption and available light per size class.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We extended the absorption-based PP model to consider phytoplankton size class."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopted the authors' earlier support-vector-machine model to retrieve phytoplankton size-class fraction profiles from ac-s absorption.",
+     "page": "p. 5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we adopted a PSC model that can provide profiles of PSC fractions from ac-s collected anw(λ) based on support vector machine"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Took the empirical relations linking size-class fraction to aph(435)/aph(676) and to Φmax (Eqs. 3–6) from Xie et al. (2015), Ek values from Uitz et al. (2008), and the tanh quantum-yield form from Bidigare/Marra.",
+     "page": "p. 5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The profiles of aph(435)/aph(676) of different fractions of phytoplankton can then be obtained from the empirical algorithm developed by Xie et al. (2015)"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fitted linear relations between size-fractionated and total absorption line height (Eqs. 9–11, Fig. 3) and between line height and spectrally averaged aph (Eq. 12) to the in situ NSCS samples.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The size-fractionated aLH(676) was estimated from the empirical relationships (Eqs. 9–11) that were fitted using the in-situ measurements collected in the NSCS"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Parameterized available light from measured PAR with an assumed light-saturation switch below 1.5 Zeu and Emax scaled from surface irradiance (Eqs. 13–15, after Behrenfeld & Falkowski 1997a).",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we assume that there is no light saturation when depth is<1.5*Zeu"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "robustness",
+     "action": "Designed the evaluation: a Monte Carlo sensitivity analysis (200 draws from parameter distributions) and statistics (r2, bias, RMSD, MAPD) against in situ PP.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Monte Carlo approach was used to examine sensitivity of algorithm uncertainties similar to Brewin et al. (2017)."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compared model-derived total and size-fractionated PP with the 48 in situ 14C measurements (Fig. 4, Table 2). Agreement: r2 0.95 for total PP and 0.41/0.69/0.83 for pico/nano/micro; slight underestimation overall.",
+     "page": "§0 ¶1; Fig. 4 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Results demonstrated that the estimated size-fractionated PP showed good agreement with in-situ measurement."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the validation statistics beside those of Oliver (2004) and other absorption-based models.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "validation results show good agreement with those reported by Oliver (2004)"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Used the model to derive vertical profiles of total and size-fractionated PP at three stations of contrasting trophic state (S10 oligotrophic, S17 estuarine, S25 shelf).",
+     "page": "p. 6; Fig. 5 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "vertical distributions of size-fractionated and total PP, PAR and aLH, Chla and PSC for three stations with different nutrient levels are depicted"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Checked the S17 size-class fractions against the earlier Pearl River Estuary study of Huang et al. (2005).",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This finding agrees well with the result reported by Huang et al. (2005)."
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Explained the profile shapes as follows: S17 light control near the surface, S25 stratification giving a subsurface maximum, S10 nutrient limitation, and light limitation suppressing the 40-m peak at S25. PP structure is set by the relative magnitude of aLH, ΦE and I.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, photosynthesis at 40 m was light-limited even if the biomass increased."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ran the Monte Carlo sensitivity for a mesotrophic and an oligotrophic case (6%, 12% and 20% deviations on PAR, anw and parameters). The intercept of the aph-ratio–Φmax relation dominated, and micro-PP was most uncertain in oligotrophic water.",
+     "page": "p. 8; Fig. 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The proposed PP model appeared the most sensitive to the intercept in Eq.(6) (Iphi)"
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "methods",
+     "action": "Listed potential biases and limits of scope: empirical size-separation functions, neglected non-photosynthetic absorption, Φmax assumed constant with depth, mismatch between instantaneous PAR and incubation-averaged PP, and applicability only to bio-optically similar regions.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Another potential bias of this model is the mismatch of time scale of PP and PAR"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the absorption-based size-fractionated PP model as a characterized capability for vertical PP estimation in the NSCS and a step toward satellite application.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model proposed in this study showed good performance."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Vertical structure of size-fractionated phytoplankton PP in the NSCS",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Only at discrete depths by laborious 14C incubation; continuous profiles must be inferred from optics",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and evaluate a size-fractionated absorption-based PP model",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival models run; Chla-based and vertically uniform approaches criticized only in argument",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: two cruises across coastal-to-oligotrophic gradient",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Monte Carlo parameter sensitivity; no independent hold-out data",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Model kept as a capability with stated accuracy",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An absorption-based model driven by in situ ac-s absorption and PAR estimates total and size-fractionated PP profiles in the NSCS. Agreement with 14C measurements is r2 0.95 for total PP and 0.41–0.83 for size classes, with MAPD below 32%. Uncertainty is dominated by the aph(435)/aph(676)–Φmax relation.",
+  "page": "p. 9"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "estimation",
+  "sentence": "Without the comparison of modeled and 14C-measured size-fractionated PP (Fig. 4, Table 2), the model's performance would be uncharacterized and there would be no claim.",
+  "page": "p. 6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: sampling was planned to supply model inputs and validation data, not to test a stated hypothesis. Claim: the model could have disagreed with the 14C PP, but no success threshold was set, and the same 48 samples appear to be used to fit Eqs. 9–12 and to validate (p. 5–6). Registration: no hypothesis, analysis plan or threshold is reported as fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "support vector machine for size-class retrieval (via Deng et al. 2019)",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Monte Carlo uncertainty propagation",
+   "kind": "method",
+   "page": "p. 6"
+  },
+  {
+   "field": "radiochemistry",
+   "item": "14C tracer incubation with liquid scintillation counting",
+   "kind": "instrument",
+   "page": "p. 3"
+  },
+  {
+   "field": "analytical chemistry",
+   "item": "HPLC pigment analysis",
+   "kind": "instrument",
+   "page": "p. 4"
+  },
+  {
+   "field": "plant physiology / photochemistry",
+   "item": "quantum yield of carbon fixation and its theoretical maximum (8 electrons per O2)",
+   "kind": "concept",
+   "page": "p. 4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However, there is no size-fractionated PP model established in the Northern South China Sea (NSCS) yet.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Note that the model proposed in this study involved size-specific PP and was validated in both coastal and offshore waters.",
+   "page": "p. 6"
+  }
+ ],
+ "limits": "The XML text supplied holds only the abstract and captions, so body quotes are located by printed page. The introduction calls the evaluation independent (p. 2), yet Eqs. 9–12 were fitted to in situ NSCS samples and validation uses 48 samples per size class; whether these overlap is not stated. Inference: they likely overlap, so the validation is not clearly held-out. No rival model (e.g. the Brewin et al. code acknowledged on p. 9, or a Chla-based model) was run on the same data, so the paper's superiority over Chla-based approaches is asserted, not tested. Table 2 repeats its rows, and pico-PP MAPD equals the all-PP value (23.33%), a possible transcription error. Station S17 appears in Fig. 5 but is not labeled on the Fig. 1 map. The model fails to reproduce the 40-m aLH-related PP peak at S25 (p. 8); this is attributed to light limitation, not checked against 14C at that depth. Sub-claims: the vertical profile shapes and their causes (stratification, nutrient and light limitation) are best_explanation, interpreted from model output at three stations. The sensitivity ranking (Iphi most influential) is estimate_with_resolution within the assumed parameter distributions. Composition is none_fits: the work is a regional method-building and validation study, opened by a question rather than by a new capability, with no rivals and no phenomenon to establish. It is nearest to capability characterization.",
+ "disagreements": [
+  {
+   "target": "Chla-based size-fractionated PP models (Brewin et al. 2017; Uitz et al. 2010; and others)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argument only, citing the larger errors of Chla-based models in optically complex coastal waters; no direct test.",
+   "page": "p. 2",
+   "quote": "those approaches were parameterized using information on phytoplankton size structure inferred from Chla, which may result in great uncertainties in coastal waters"
+  },
+  {
+   "target": "Barnes et al. (2014) size-fractionated PP model",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Cites Ciotti et al. 2002 and Hirata et al. 2008 against assuming the same Chla-specific absorption for all size classes; not tested here.",
+   "page": "p. 2",
+   "quote": "based on the empirical assumption of the same Chla-specific phytoplankton absorption coefficient (a*ph(λ)) for different phytoplankton size classes, which could introduce errors"
+  },
+  {
+   "target": "Tao et al. (2017) size-fractionated absorption-based PP model",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Notes that their model lacked in situ size-fractionated PP for evaluation, which this paper supplies for its own model.",
+   "page": "p. 2",
+   "quote": "Lack of in situ measured size-fractionated PP limited the evaluation of their model."
+  },
+  {
+   "target": "Previous models deriving vertical PP from surface information or assuming vertical uniformity",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Model-derived profiles show subsurface maxima at S10 and S25 (Fig. 5), which a uniform or surface-driven assumption would miss.",
+   "page": "p. 2",
+   "quote": "previous models estimated vertical distributions of PP from surface information or gave depthintegrated PP with an assumption that PP was vertically uniform"
+  },
+  {
+   "target": "Simplest PP models linear in scalar irradiance (Falkowski 1981; Platt 1986)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues such models place maximum photosynthesis at the surface. The paper's light-saturation term reproduces subsurface maxima, though the S17 coastal profile follows the linear form.",
+   "page": "p. 5",
+   "quote": "which cannot describe the phenomena of subsurface maximum of photosynthesis in vertical distribution"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "absorption-based PP formulation",
+   "alternatives": "Chla-based PP models",
+   "reason": "phytoplankton is not the only dominant absorber in coastal waters, so Chla-based errors are larger there",
+   "effect_reported": "no",
+   "page": "p. 2"
+  },
+  {
+   "node": "N",
+   "chosen": "hyperbolic tangent light dependence of quantum yield (Eq. 7) and of light saturation (Eq. 14)",
+   "alternatives": "exponential, rectangular hyperbolic formulations",
+   "reason": "as proposed by Bidigare et al. (1992), Marra et al. (2000), Oliver (2004) and Jassby & Platt (1976)",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "N",
+   "chosen": "own NSCS-fitted relations between size-fractionated and total absorption line height (Eqs. 9–12)",
+   "alternatives": "published algorithms for size-fractionated a*ph and aph (Brewin et al. 2011; Devred et al. 2006; Varunan & Shanmugam 2015)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Results demonstrated that the estimated size-fractionated PP showed good agreement with in-situ measurement.",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The Monte Carlo simulations were performed by randomly varying parameters 200 times whilst keeping the remaining parameters fixed.",
+   "page": "Fig. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This finding agrees well with the result reported by Huang et al. (2005).",
+   "page": "p. 8"
+  }
+ ]
+}

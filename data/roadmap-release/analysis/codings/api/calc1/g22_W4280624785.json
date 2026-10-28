@@ -1,0 +1,414 @@
+{
+ "key": "g22_W4280624785",
+ "doi": "10.1016/j.catena.2022.106329",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kofler et al. 2022, Catena 216, 106329, published PDF (14 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure and table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions. The XML text holds only the abstract and captions, so body text is cited by printed journal pages, which equal PDF pages counted from 1.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The capacity of rock glacier environments to transfer sediment however has remained largely unexplored, in particular beyond the local scale.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Kofler et al. 2022, Catena 216, 106329 (published PDF and XML text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the unexplored question of how much sediment rock glacier fronts can transfer, beyond the local scale.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The capacity of rock glacier environments to transfer sediment however has remained largely unexplored, in particular beyond the local scale."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "The authors draw on published reports of rock glaciers acting as sediment sources, on their acceleration, and on the Kummert et al. connectivity framework.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In the recent past however, scholars increasingly reported cases of rock glaciers being a sediment source as well"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors define sediment transfer capacity as a function of transported volume rate and frontal runout, and set out to build a reproducible GIS-based classification method.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the aim of this study is to propose a simple and reproducible method to classify rock glaciers according to their potential sediment transfer capacity"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors select ice-containing, talus-derived rock glaciers from the South Tyrol inventory in two catchments, and assemble a LiDAR DTM resampled to 10 m and multi-year orthophotos.",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our study considered only rock glaciers, which could be clearly linked to a periglacial debris transport system"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors estimate surface velocity v (IMCORR image correlation with a control-area detection threshold and IQR outlier removal), shear-horizon depth d (65% of DTM-derived thickness) and sediment transport V (Lugon and Stoffel formula); Ultental medians are 0.2 m/yr and 262 m3/yr, Schnalstal medians 0.14 m/yr and 160 m3/yr.",
+     "page": "3-4, 6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "calculated based on the formula proposed by Lugon and Stoffel (2010)"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check IMCORR velocities against dGNSS surveys and estimated d against two inclinometer boreholes at the Lazaun rock glacier; IMCORR underestimates v by 0.17 m/yr on average, and d agrees reasonably (19.8 m estimated vs 17 m measured).",
+     "page": "4, 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An error-estimation was done by comparing generated values of d and v with in-situ data measured on the well-studied Lazaun rock glacier"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare estimated v, d and V with published values for Mattertal and Saastal; the South Tyrol rock glaciers move more slowly and have larger d.",
+     "page": "4, 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Additionally, we compared generated values of d, v and V with data reported for rock glaciers in the Swiss valleys Mattertal and Saastal"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "simulation",
+     "action": "The authors model debris-flow and rockfall runout from a release area of 0.5% of each rock glacier with the GPP tool (random walk, 500 runs, Perla and Scheidegger friction models, literature-based parameters).",
+     "page": "4-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were computed by applying a combined physical-empirical modelling approach"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors vary E, M/D and K across ensembles of 12 rockfall and 16 debris-flow parameter sets; rockfall runout is largely insensitive (most sensitive to K), while debris-flow peaks shift with E.",
+     "page": "5-6, 7, 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to test the sensitivity of K, a range between 50 and 70 % was applied."
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build a two-dimensional classification matrix that combines percentile classes of V and of runout (DF and RF separately) into low, moderate and high transfer capacity, per catchment.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "aggregated to a single index by a twodimensional matrix-based approach"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "regularities",
+     "action": "The authors design a plausibility test: DTM-derived topographic, radiation and source-area variables sampled at 50 points per rock glacier, to relate to the transfer classes in an exploratory analysis.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "empirical relationships between rock glacier sediment transfer and independent geo-environmental control variables were tested"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors compute the index for 41 to 53 rock glaciers per catchment and process type; the low transfer class dominates, and V and L mostly fall in the same class.",
+     "page": "9; Table 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "resulted in a dominance of a low sediment transfer capacity for all four integration schemes in absolute and relative terms"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "regularities",
+     "action": "The authors plot conditional distributions of transfer classes over the environmental variables; high-transfer rock glaciers increase with elevation, and trends for slope, TRI, PISR and exposure differ between catchments.",
+     "page": "9-10; Figure 9 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For both considered catchments, an increase of rock glaciers with an high transfer capacity over elevation could be observed."
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "methods",
+     "action": "The authors attribute the IMCORR-dGNSS mismatch partly to differing monitoring periods, and decline to apply a correction factor based on one site.",
+     "page": "11",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "However, this finding may be treated with caution as the monitored period differed between dGNSS and IMCORR."
+    },
+    {
+     "n": 15,
+     "node": "P",
+     "mode": "synthesis",
+     "action": "The authors explain their higher d relative to the Swiss values by the steepness of the Swiss rock glaciers, rather than revising the thickness method.",
+     "page": "11",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "This may be due to the fact that the rock glaciers analysed by these Authors are very steep"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "regularities",
+     "action": "The authors check whether index-environment relationships hold in both catchments; only altitude and talus coverage behave consistently, and slope alone is judged an insufficient predictor.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A rather consistent behavior of the index was observed only for altitude and talus coverage."
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors retain the low-data-demand, qualitative sediment transfer capacity index as a proposed method, and state that the drivers are only partly captured.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a heuristic, matrix-based aggregation scheme to qualitatively combine the two variables - to obtain a sediment transfer capacity index - was proposed"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Sediment export from rock glacier fronts; known from published case reports",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "No; transferred volumes are not measurable at catchment scale, so proxies are estimated",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Propose and characterize a classification method (index)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing inventory, archival imagery and DTM in two catchments",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: Lazaun reference check, parameter ensembles, ambivalent plausibility across catchments",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Index retained as a qualitative proposed method",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A low-data-demand GIS method combining image-correlation-based sediment transport rates with modelled frontal runout yields a qualitative sediment transfer capacity index for rock glaciers; in both catchments most rock glaciers fall in the low class, and the index's environmental relationships are only partly consistent.",
+  "page": "12"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The matrix-based integration of percentile classes of V and runout L is what turns the two proxies into the sediment transfer capacity index that is the paper's claim.",
+  "page": "6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data are archival (inventory, 2006 LiDAR DTM, orthophotos), so no hypothesis directed their acquisition. The Lazaun comparison could have shown large errors; it showed a 0.17 m/yr underestimation of v and reasonable d (p. 7). The plausibility analysis is exploratory and yielded ambivalent results without a pass/fail criterion (pp. 6, 12). Model parameters were taken from the literature, but nothing is stated as fixed before the data were seen, and the class thresholds are percentiles of the data themselves (p. 6)."
+ },
+ "imports": [
+  {
+   "field": "photogrammetry / image processing",
+   "item": "IMCORR normalized cross-correlation image matching (Bernstein 1983) for displacement vectors",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "remote sensing engineering",
+   "item": "Airborne LiDAR digital terrain model",
+   "kind": "instrument",
+   "page": "3"
+  },
+  {
+   "field": "statistics",
+   "item": "1.5 x IQR outlier rule for removing displacement vectors",
+   "kind": "method",
+   "page": "3-4"
+  },
+  {
+   "field": "statistics",
+   "item": "Random walk stochastic routing with Monte Carlo runs (500)",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The capacity of rock glacier environments to transfer sediment however has remained largely unexplored, in particular beyond the local scale.",
+   "page": "§0 ¶1"
+  }
+ ],
+ "limits": "The supplied XML text holds only the abstract and captions, so nearly all locations are printed/PDF pages. No review file, discussion or earlier version was supplied, so no review sequence is coded; the revision dates (received August 2021, revised February 2022) imply a review round whose content is unknown. The supplementary material (percentile tables, Table A.1) was not supplied. Sub-claims at other statuses: the catchment medians of v, d and V are estimate_with_resolution, with resolution characterized at one site only (Lazaun, v underestimated by 0.17 m/yr). The environmental relationships are at most weak regularities, without a stated range, because they are inconsistent between catchments. The paper states no rival hypotheses, so no X step occurs. Composition is none_fits: the walk is method development followed by application and a plausibility check, not capability_first (no phenomenon is established before a question) and not natures_repetition (no regularity is fitted). Inference: the parameter values and percentile thresholds appear to have been chosen once, with no reported iteration. The paper does not report how many rock glaciers failed image correlation or simulation, beyond counts in Table 5 that exceed the Table 1 counts for Ultental (51-53 vs 50), an unexplained inconsistency. The shear-horizon assumption may underestimate V (p. 11), and the method cannot separate sediment sources from traps (p. 12).",
+ "disagreements": [
+  {
+   "target": "Barsch and Caine (1984), the coarse debris system with rock glaciers as end-members of a closed system",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper cites recent reports of rock glaciers as sediment sources and builds its index around sediment export from rock glacier fronts.",
+   "page": "2",
+   "quote": "the coarse debris system introduced by Barsch and Caine (1984) considers rock glaciers as end-members of a closed system"
+  },
+  {
+   "target": "Kummert and Delaloye (2018), rock glacier thickness and velocity values for Saastal and Mattertal",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The estimated d exceeds the Swiss values and v is lower; the paper attributes this to the Swiss rock glaciers being very steep and warns that thickness estimates may differ between methods.",
+   "page": "11",
+   "quote": "Our obtained values of d are well above of what was reported by Kummert and Delaloye (2018) for [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Talus-derived, ice-containing rock glaciers only",
+   "alternatives": "Glacially-derived (debris) rock glaciers and ice-free landforms",
+   "reason": "Avoids assumptions that would be too unrealistic for glacially-derived rock glaciers",
+   "effect_reported": "no",
+   "page": "2, 10-11"
+  },
+  {
+   "node": "D",
+   "chosen": "DTM resampled to 10 m",
+   "alternatives": "Original 2.5 m resolution",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "For each rock glacier, the image pair (2006-2014 or 2008-2014) with the lowest average displacement in its control area",
+   "alternatives": "The other image pair",
+   "reason": "Lowest threshold of detectable movement",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "Automated IMCORR image correlation, with manual tracking only to correct faulty vectors",
+   "alternatives": "Manual tracking of large boulders (e.g. Scotti et al., 2017)",
+   "reason": "To automatize the image correlation process as much as possible",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "I",
+   "chosen": "Transport above an internal shear horizon at 65% of thickness",
+   "alternatives": "Deformation over the full thickness (plastic deformation only)",
+   "reason": "A widely accepted conceptual model and inclinometer data from six boreholes",
+   "effect_reported": "yes",
+   "page": "3, 11"
+  },
+  {
+   "node": "I",
+   "chosen": "An impact area (30 m buffer) for the rockfall model",
+   "alternatives": "A slope threshold beta, as used for debris flow",
+   "reason": "As proposed by Wichmann (2017)",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "P",
+   "chosen": "No correction factor applied to v or d",
+   "alternatives": "A correction factor derived from the Lazaun comparison",
+   "reason": "A single reference site does not allow a general correction factor",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "N",
+   "chosen": "V combined separately with DF and with RF runout (two indices)",
+   "alternatives": "A single combined runout",
+   "reason": "Runout lengths were expected to differ substantially between DF and RF",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "Relative, percentile-based thresholds per catchment",
+   "alternatives": "Metric thresholds",
+   "reason": "Respects the individual value range of a parameter within a catchment",
+   "effect_reported": "no",
+   "page": "12"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "were mapped as polygons and labelled as “control area” (CA)",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "An error-estimation was done by comparing generated values of d and v with in-situ data measured on the well-studied Lazaun rock glacier",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Additionally, we compared generated values of d, v and V with data reported for rock glaciers in the Swiss valleys Mattertal and Saastal",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In order to test the sensitivity of K, a range between 50 and 70 % was applied.",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "let us assume that they were rather insensitive to the varying input parameters",
+   "page": "7"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "A rather consistent behavior of the index was observed only for altitude and talus coverage.",
+   "page": "12"
+  }
+ ]
+}

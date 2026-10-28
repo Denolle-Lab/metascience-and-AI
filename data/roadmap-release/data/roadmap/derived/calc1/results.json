@@ -1,17 +1,22 @@
 {
  "_provenance": {
   "script": "g13_calc1_results.py",
-  "commit": "3b4b2d5",
+  "commit": "f155302",
   "date": "2026-10-27",
   "private_root": "private",
   "inputs": [
    "private/analysis/codings/api/calc1",
+   "private/analysis/codings/api/r2",
    "private/analysis/codings/api/gold-r2",
+   "private/analysis/codings/api/state.json",
    "derived/calc1/manifest.jsonl",
-   "derived/gold/metrics.json"
+   "derived/r2calc/manifest.jsonl",
+   "derived/gold/metrics.json",
+   "derived/r2/metrics.json"
   ],
   "params": {
-   "codebook": "1.5.0"
+   "codebook": "1.5.0",
+   "min_level": 10
   }
  },
  "data": {
@@ -40,116 +45,120 @@
    }
   },
   "corpus": {
-   "papers_coded": 233,
+   "papers_coded": 374,
    "eligible": 525,
-   "coverage": 0.44,
+   "coverage": 0.71,
    "entry_state": {
     "problem": [
-     181,
-     0.78
+     296,
+     0.79
     ],
     "capability": [
-     25,
-     0.11
+     33,
+     0.09
     ],
-    "challenged_result": [
-     6,
+    "anomaly": [
+     11,
      0.03
     ],
     "hypothesis": [
-     6,
+     10,
      0.03
     ],
     "data_without_theory": [
-     5,
-     0.02
+     10,
+     0.03
     ],
-    "anomaly": [
-     5,
+    "challenged_result": [
+     8,
      0.02
     ],
     "external_goal": [
-     5,
+     6,
      0.02
     ]
    },
    "entry_node": {
     "Q": [
-     189,
-     0.81
+     305,
+     0.82
     ],
     "N": [
-     27,
-     0.12
+     38,
+     0.1
     ],
     "O": [
-     9,
-     0.04
+     17,
+     0.05
     ],
     "H": [
-     7,
+     12,
      0.03
     ],
     "F": [
-     1,
-     0.0
+     2,
+     0.01
     ]
    },
    "outcome": {
     "kept": [
-     226,
+     363,
      0.97
     ],
     "contradicted": [
-     7,
-     0.03
+     9,
+     0.02
+    ],
+    "excluded": [
+     2,
+     0.01
     ]
    },
    "claim_status": {
-    "capability_characterized": [
-     78,
-     0.33
-    ],
     "best_explanation": [
-     72,
-     0.31
+     137,
+     0.37
+    ],
+    "capability_characterized": [
+     111,
+     0.3
     ],
     "estimate_with_resolution": [
-     48,
-     0.21
+     70,
+     0.19
     ],
     "regularity_in_range": [
-     27,
+     45,
      0.12
     ],
     "confirmed": [
-     8,
+     11,
      0.03
     ]
    },
    "composition": {
     "none_fits": [
-     118,
-     0.51
+     174,
+     0.47
     ],
     "trace_series": [
-     55,
-     0.24
+     107,
+     0.29
     ],
     "capability_first": [
-     30,
-     0.13
+     42,
+     0.11
     ],
     "natures_repetition": [
-     22,
-     0.09
+     41,
+     0.11
+    ],
+    "strong_inference": [
+     5,
+     0.01
     ],
     "independent_replication": [
      4,
-     0.02
-    ],
-    "strong_inference": [
-     3,
      0.01
     ],
     "exploration_first": [
@@ -159,183 +168,1348 @@
    },
    "decisive_mode": {
     "methods": [
-     68,
-     0.29
+     89,
+     0.24
     ],
     "estimation": [
-     52,
-     0.22
+     87,
+     0.23
     ],
     "simulation": [
-     26,
+     42,
      0.11
     ],
     "reconstruction": [
-     25,
+     40,
      0.11
     ],
     "observation": [
-     18,
-     0.08
+     33,
+     0.09
     ],
     "hypothesis": [
-     14,
-     0.06
+     28,
+     0.07
     ],
     "regularities": [
-     10,
-     0.04
+     17,
+     0.05
     ],
     "theory": [
-     7,
-     0.03
-    ],
-    "instruments": [
-     6,
+     11,
      0.03
     ],
     "exploration": [
-     4,
+     10,
+     0.03
+    ],
+    "instruments": [
+     8,
      0.02
     ],
     "synthesis": [
-     2,
-     0.01
+     6,
+     0.02
     ],
     "robustness": [
-     1,
-     0.0
+     3,
+     0.01
     ]
    },
    "mode_used_share": {
-    "estimation": 0.75,
-    "exploration": 0.12,
-    "hypothesis": 0.67,
-    "instruments": 0.33,
-    "methods": 0.75,
-    "observation": 0.78,
-    "question": 0.98,
+    "estimation": 0.77,
+    "exploration": 0.14,
+    "hypothesis": 0.72,
+    "instruments": 0.31,
+    "methods": 0.74,
+    "observation": 0.8,
+    "question": 0.97,
     "reconstruction": 0.28,
-    "regularities": 0.29,
-    "robustness": 0.41,
+    "regularities": 0.32,
+    "robustness": 0.39,
     "simulation": 0.49,
-    "synthesis": 0.7,
-    "theory": 0.41
+    "synthesis": 0.72,
+    "theory": 0.48
    },
    "node_used_share": {
-    "N": 0.58,
-    "E": 0.15,
-    "O": 0.92,
-    "I": 0.82,
+    "N": 0.54,
+    "E": 0.18,
+    "O": 0.93,
+    "I": 0.84,
     "Q": 0.98,
-    "H": 0.81,
-    "S": 0.64,
-    "D": 0.7,
-    "F": 0.45,
+    "H": 0.84,
+    "S": 0.66,
+    "D": 0.65,
+    "F": 0.41,
     "C": 0.99,
-    "V": 0.97,
-    "X": 0.48,
+    "V": 0.98,
+    "X": 0.51,
     "K": 1.0,
-    "P": 0.34,
-    "R": 0.56
+    "P": 0.32,
+    "R": 0.55
    },
-   "steps_median": 20,
-   "mode_returns_median": 9,
-   "papers_with_return_after_failure": 0.31,
-   "textbook_route_in_order": 0.0,
-   "papers_with_D_design": 0.7,
+   "steps_median": 20.0,
+   "mode_returns_median": 9.0,
+   "papers_with_return_after_failure": 0.3,
+   "textbook_route_in_order": 0.01,
+   "papers_with_D_design": 0.65,
    "v": {
     "full": [
-     225,
-     0.97
+     365,
+     0.98
     ],
     "none": [
-     8,
-     0.03
+     9,
+     0.02
     ]
    },
-   "triangulation": 0.33,
+   "triangulation": 0.37,
    "v_kinds_performed": {
     "control": [
-     203,
+     324,
      0.87
     ],
     "robustness": [
-     148,
+     238,
      0.64
     ],
     "replication": [
-     119,
-     0.51
+     205,
+     0.55
     ],
     "method": [
-     116,
-     0.5
+     193,
+     0.52
     ],
     "generalization": [
-     51,
-     0.22
+     74,
+     0.2
     ],
     "reproduction": [
-     21,
+     35,
      0.09
     ]
    },
-   "gates_claim_yes": 0.17,
+   "gates_claim_yes": 0.15,
    "gates_action_yes": 0.03
   },
   "access": {
    "coded": {
-    "n": 233,
-    "impact_cnp_median": 0.546,
-    "novelty_median": -3.821,
-    "breadth_refs_median": 0.033,
-    "open_access_share": 0.83
+    "n": 374,
+    "impact_cnp_median": 0.563,
+    "novelty_median": -3.847,
+    "breadth_refs_median": 0.028,
+    "open_access_share": 0.82
    },
    "not_coded": {
-    "n": 292,
-    "impact_cnp_median": 0.475,
+    "n": 151,
+    "impact_cnp_median": 0.366,
     "novelty_median": -3.886,
-    "breadth_refs_median": 0.03,
-    "open_access_share": 0.46
+    "breadth_refs_median": 0.048,
+    "open_access_share": 0.15
    }
   },
   "by_impact_quintile": {
    "1": {
-    "n": 39,
-    "capability_entry": 0.15,
-    "v_full": 0.9,
+    "n": 57,
+    "capability_entry": 0.11,
+    "v_full": 0.93,
     "steps_median": 18,
-    "modes_median": 6
-   },
-   "2": {
-    "n": 43,
-    "capability_entry": 0.12,
-    "v_full": 1.0,
-    "steps_median": 21,
     "modes_median": 7
    },
-   "3": {
-    "n": 58,
-    "capability_entry": 0.1,
-    "v_full": 0.97,
-    "steps_median": 20.0,
+   "2": {
+    "n": 72,
+    "capability_entry": 0.11,
+    "v_full": 0.99,
+    "steps_median": 21.0,
     "modes_median": 7.0
    },
+   "3": {
+    "n": 81,
+    "capability_entry": 0.07,
+    "v_full": 0.98,
+    "steps_median": 20,
+    "modes_median": 7
+   },
    "4": {
-    "n": 50,
-    "capability_entry": 0.08,
-    "v_full": 0.96,
-    "steps_median": 20.5,
+    "n": 82,
+    "capability_entry": 0.1,
+    "v_full": 0.98,
+    "steps_median": 21.0,
     "modes_median": 7.0
    },
    "5": {
-    "n": 43,
-    "capability_entry": 0.09,
+    "n": 82,
+    "capability_entry": 0.06,
     "v_full": 1.0,
-    "steps_median": 23,
-    "modes_median": 8
+    "steps_median": 21.0,
+    "modes_median": 8.0
    }
+  },
+  "round1_split": {
+   "rule": "top-up = valid calc1 codings whose state.json record names a calc1 batch submitted on or after 2026-10-26; first analysis = the other valid calc1 codings",
+   "first_analysis": {
+    "papers_coded": 233,
+    "eligible": 525,
+    "coverage": 0.44,
+    "entry_state": {
+     "problem": [
+      181,
+      0.78
+     ],
+     "capability": [
+      25,
+      0.11
+     ],
+     "challenged_result": [
+      6,
+      0.03
+     ],
+     "hypothesis": [
+      6,
+      0.03
+     ],
+     "data_without_theory": [
+      5,
+      0.02
+     ],
+     "anomaly": [
+      5,
+      0.02
+     ],
+     "external_goal": [
+      5,
+      0.02
+     ]
+    },
+    "entry_node": {
+     "Q": [
+      189,
+      0.81
+     ],
+     "N": [
+      27,
+      0.12
+     ],
+     "O": [
+      9,
+      0.04
+     ],
+     "H": [
+      7,
+      0.03
+     ],
+     "F": [
+      1,
+      0.0
+     ]
+    },
+    "outcome": {
+     "kept": [
+      226,
+      0.97
+     ],
+     "contradicted": [
+      7,
+      0.03
+     ]
+    },
+    "claim_status": {
+     "capability_characterized": [
+      78,
+      0.33
+     ],
+     "best_explanation": [
+      72,
+      0.31
+     ],
+     "estimate_with_resolution": [
+      48,
+      0.21
+     ],
+     "regularity_in_range": [
+      27,
+      0.12
+     ],
+     "confirmed": [
+      8,
+      0.03
+     ]
+    },
+    "composition": {
+     "none_fits": [
+      118,
+      0.51
+     ],
+     "trace_series": [
+      55,
+      0.24
+     ],
+     "capability_first": [
+      30,
+      0.13
+     ],
+     "natures_repetition": [
+      22,
+      0.09
+     ],
+     "independent_replication": [
+      4,
+      0.02
+     ],
+     "strong_inference": [
+      3,
+      0.01
+     ],
+     "exploration_first": [
+      1,
+      0.0
+     ]
+    },
+    "decisive_mode": {
+     "methods": [
+      68,
+      0.29
+     ],
+     "estimation": [
+      52,
+      0.22
+     ],
+     "simulation": [
+      26,
+      0.11
+     ],
+     "reconstruction": [
+      25,
+      0.11
+     ],
+     "observation": [
+      18,
+      0.08
+     ],
+     "hypothesis": [
+      14,
+      0.06
+     ],
+     "regularities": [
+      10,
+      0.04
+     ],
+     "theory": [
+      7,
+      0.03
+     ],
+     "instruments": [
+      6,
+      0.03
+     ],
+     "exploration": [
+      4,
+      0.02
+     ],
+     "synthesis": [
+      2,
+      0.01
+     ],
+     "robustness": [
+      1,
+      0.0
+     ]
+    },
+    "mode_used_share": {
+     "estimation": 0.75,
+     "exploration": 0.12,
+     "hypothesis": 0.67,
+     "instruments": 0.33,
+     "methods": 0.75,
+     "observation": 0.78,
+     "question": 0.98,
+     "reconstruction": 0.28,
+     "regularities": 0.29,
+     "robustness": 0.41,
+     "simulation": 0.49,
+     "synthesis": 0.7,
+     "theory": 0.41
+    },
+    "node_used_share": {
+     "N": 0.58,
+     "E": 0.15,
+     "O": 0.92,
+     "I": 0.82,
+     "Q": 0.98,
+     "H": 0.81,
+     "S": 0.64,
+     "D": 0.7,
+     "F": 0.45,
+     "C": 0.99,
+     "V": 0.97,
+     "X": 0.48,
+     "K": 1.0,
+     "P": 0.34,
+     "R": 0.56
+    },
+    "steps_median": 20,
+    "mode_returns_median": 9,
+    "papers_with_return_after_failure": 0.31,
+    "textbook_route_in_order": 0.0,
+    "papers_with_D_design": 0.7,
+    "v": {
+     "full": [
+      225,
+      0.97
+     ],
+     "none": [
+      8,
+      0.03
+     ]
+    },
+    "triangulation": 0.33,
+    "v_kinds_performed": {
+     "control": [
+      203,
+      0.87
+     ],
+     "robustness": [
+      148,
+      0.64
+     ],
+     "replication": [
+      119,
+      0.51
+     ],
+     "method": [
+      116,
+      0.5
+     ],
+     "generalization": [
+      51,
+      0.22
+     ],
+     "reproduction": [
+      21,
+      0.09
+     ]
+    },
+    "gates_claim_yes": 0.17,
+    "gates_action_yes": 0.03
+   },
+   "top_up": {
+    "papers_coded": 141,
+    "eligible": 525,
+    "coverage": 0.27,
+    "entry_state": {
+     "problem": [
+      115,
+      0.82
+     ],
+     "capability": [
+      8,
+      0.06
+     ],
+     "anomaly": [
+      6,
+      0.04
+     ],
+     "data_without_theory": [
+      5,
+      0.04
+     ],
+     "hypothesis": [
+      4,
+      0.03
+     ],
+     "challenged_result": [
+      2,
+      0.01
+     ],
+     "external_goal": [
+      1,
+      0.01
+     ]
+    },
+    "entry_node": {
+     "Q": [
+      116,
+      0.82
+     ],
+     "N": [
+      11,
+      0.08
+     ],
+     "O": [
+      8,
+      0.06
+     ],
+     "H": [
+      5,
+      0.04
+     ],
+     "F": [
+      1,
+      0.01
+     ]
+    },
+    "outcome": {
+     "kept": [
+      137,
+      0.97
+     ],
+     "excluded": [
+      2,
+      0.01
+     ],
+     "contradicted": [
+      2,
+      0.01
+     ]
+    },
+    "claim_status": {
+     "best_explanation": [
+      65,
+      0.46
+     ],
+     "capability_characterized": [
+      33,
+      0.23
+     ],
+     "estimate_with_resolution": [
+      22,
+      0.16
+     ],
+     "regularity_in_range": [
+      18,
+      0.13
+     ],
+     "confirmed": [
+      3,
+      0.02
+     ]
+    },
+    "composition": {
+     "none_fits": [
+      56,
+      0.4
+     ],
+     "trace_series": [
+      52,
+      0.37
+     ],
+     "natures_repetition": [
+      19,
+      0.13
+     ],
+     "capability_first": [
+      12,
+      0.09
+     ],
+     "strong_inference": [
+      2,
+      0.01
+     ]
+    },
+    "decisive_mode": {
+     "estimation": [
+      35,
+      0.25
+     ],
+     "methods": [
+      21,
+      0.15
+     ],
+     "simulation": [
+      16,
+      0.11
+     ],
+     "reconstruction": [
+      15,
+      0.11
+     ],
+     "observation": [
+      15,
+      0.11
+     ],
+     "hypothesis": [
+      14,
+      0.1
+     ],
+     "regularities": [
+      7,
+      0.05
+     ],
+     "exploration": [
+      6,
+      0.04
+     ],
+     "synthesis": [
+      4,
+      0.03
+     ],
+     "theory": [
+      4,
+      0.03
+     ],
+     "robustness": [
+      2,
+      0.01
+     ],
+     "instruments": [
+      2,
+      0.01
+     ]
+    },
+    "mode_used_share": {
+     "estimation": 0.82,
+     "exploration": 0.17,
+     "hypothesis": 0.81,
+     "instruments": 0.28,
+     "methods": 0.72,
+     "observation": 0.84,
+     "question": 0.96,
+     "reconstruction": 0.28,
+     "regularities": 0.36,
+     "robustness": 0.35,
+     "simulation": 0.48,
+     "synthesis": 0.74,
+     "theory": 0.58
+    },
+    "node_used_share": {
+     "N": 0.48,
+     "E": 0.21,
+     "O": 0.93,
+     "I": 0.88,
+     "Q": 0.98,
+     "H": 0.88,
+     "S": 0.7,
+     "D": 0.57,
+     "F": 0.34,
+     "C": 1.0,
+     "V": 0.99,
+     "X": 0.55,
+     "K": 1.0,
+     "P": 0.29,
+     "R": 0.52
+    },
+    "steps_median": 20,
+    "mode_returns_median": 9,
+    "papers_with_return_after_failure": 0.28,
+    "textbook_route_in_order": 0.01,
+    "papers_with_D_design": 0.57,
+    "v": {
+     "full": [
+      140,
+      0.99
+     ],
+     "none": [
+      1,
+      0.01
+     ]
+    },
+    "triangulation": 0.43,
+    "v_kinds_performed": {
+     "control": [
+      121,
+      0.86
+     ],
+     "robustness": [
+      90,
+      0.64
+     ],
+     "replication": [
+      86,
+      0.61
+     ],
+     "method": [
+      77,
+      0.55
+     ],
+     "generalization": [
+      23,
+      0.16
+     ],
+     "reproduction": [
+      14,
+      0.1
+     ]
+    },
+    "gates_claim_yes": 0.13,
+    "gates_action_yes": 0.03
+   }
+  },
+  "round2": {
+   "corpus": {
+    "papers_coded": 198,
+    "eligible": 222,
+    "coverage": 0.89,
+    "entry_state": {
+     "problem": [
+      139,
+      0.7
+     ],
+     "capability": [
+      21,
+      0.11
+     ],
+     "anomaly": [
+      15,
+      0.08
+     ],
+     "hypothesis": [
+      12,
+      0.06
+     ],
+     "challenged_result": [
+      7,
+      0.04
+     ],
+     "data_without_theory": [
+      3,
+      0.02
+     ],
+     "external_goal": [
+      1,
+      0.01
+     ]
+    },
+    "entry_node": {
+     "Q": [
+      140,
+      0.71
+     ],
+     "N": [
+      24,
+      0.12
+     ],
+     "O": [
+      16,
+      0.08
+     ],
+     "H": [
+      15,
+      0.08
+     ],
+     "S": [
+      1,
+      0.01
+     ],
+     "E": [
+      1,
+      0.01
+     ],
+     "F": [
+      1,
+      0.01
+     ]
+    },
+    "outcome": {
+     "kept": [
+      196,
+      0.99
+     ],
+     "contradicted": [
+      2,
+      0.01
+     ]
+    },
+    "claim_status": {
+     "best_explanation": [
+      81,
+      0.41
+     ],
+     "capability_characterized": [
+      54,
+      0.27
+     ],
+     "estimate_with_resolution": [
+      37,
+      0.19
+     ],
+     "regularity_in_range": [
+      21,
+      0.11
+     ],
+     "confirmed": [
+      5,
+      0.03
+     ]
+    },
+    "composition": {
+     "none_fits": [
+      82,
+      0.41
+     ],
+     "trace_series": [
+      56,
+      0.28
+     ],
+     "capability_first": [
+      28,
+      0.14
+     ],
+     "natures_repetition": [
+      22,
+      0.11
+     ],
+     "independent_replication": [
+      5,
+      0.03
+     ],
+     "strong_inference": [
+      4,
+      0.02
+     ],
+     "exploration_first": [
+      1,
+      0.01
+     ]
+    },
+    "decisive_mode": {
+     "estimation": [
+      58,
+      0.29
+     ],
+     "methods": [
+      34,
+      0.17
+     ],
+     "simulation": [
+      33,
+      0.17
+     ],
+     "observation": [
+      19,
+      0.1
+     ],
+     "reconstruction": [
+      13,
+      0.07
+     ],
+     "hypothesis": [
+      13,
+      0.07
+     ],
+     "instruments": [
+      7,
+      0.04
+     ],
+     "regularities": [
+      6,
+      0.03
+     ],
+     "synthesis": [
+      5,
+      0.03
+     ],
+     "theory": [
+      5,
+      0.03
+     ],
+     "exploration": [
+      3,
+      0.02
+     ],
+     "robustness": [
+      2,
+      0.01
+     ]
+    },
+    "mode_used_share": {
+     "estimation": 0.78,
+     "exploration": 0.19,
+     "hypothesis": 0.81,
+     "instruments": 0.32,
+     "methods": 0.75,
+     "observation": 0.8,
+     "question": 0.97,
+     "reconstruction": 0.24,
+     "regularities": 0.34,
+     "robustness": 0.36,
+     "simulation": 0.51,
+     "synthesis": 0.7,
+     "theory": 0.48
+    },
+    "node_used_share": {
+     "N": 0.56,
+     "E": 0.2,
+     "O": 0.93,
+     "I": 0.8,
+     "Q": 0.97,
+     "H": 0.86,
+     "S": 0.71,
+     "D": 0.71,
+     "F": 0.48,
+     "C": 0.98,
+     "V": 0.96,
+     "X": 0.46,
+     "K": 1.0,
+     "P": 0.33,
+     "R": 0.52
+    },
+    "steps_median": 20.0,
+    "mode_returns_median": 9.0,
+    "papers_with_return_after_failure": 0.3,
+    "textbook_route_in_order": 0.02,
+    "papers_with_D_design": 0.71,
+    "v": {
+     "full": [
+      191,
+      0.96
+     ],
+     "none": [
+      7,
+      0.04
+     ]
+    },
+    "triangulation": 0.39,
+    "v_kinds_performed": {
+     "control": [
+      165,
+      0.83
+     ],
+     "robustness": [
+      134,
+      0.68
+     ],
+     "replication": [
+      113,
+      0.57
+     ],
+     "method": [
+      109,
+      0.55
+     ],
+     "generalization": [
+      32,
+      0.16
+     ],
+     "reproduction": [
+      19,
+      0.1
+     ]
+    },
+    "gates_claim_yes": 0.15,
+    "gates_action_yes": 0.02
+   },
+   "access": {
+    "coded": {
+     "n": 198,
+     "impact_cnp_median": 0.554,
+     "novelty_median": -3.846,
+     "breadth_refs_median": 0.038,
+     "open_access_share": 1.0
+    },
+    "not_coded": {
+     "n": 24,
+     "impact_cnp_median": 0.512,
+     "novelty_median": -3.745,
+     "breadth_refs_median": 0.015,
+     "open_access_share": 1.0
+    }
+   },
+   "by_impact_quintile": {
+    "1": {
+     "n": 29,
+     "capability_entry": 0.1,
+     "v_full": 0.97,
+     "steps_median": 19,
+     "modes_median": 7
+    },
+    "2": {
+     "n": 43,
+     "capability_entry": 0.16,
+     "v_full": 0.95,
+     "steps_median": 21,
+     "modes_median": 7
+    },
+    "3": {
+     "n": 42,
+     "capability_entry": 0.07,
+     "v_full": 0.95,
+     "steps_median": 20.5,
+     "modes_median": 7.0
+    },
+    "4": {
+     "n": 40,
+     "capability_entry": 0.12,
+     "v_full": 0.97,
+     "steps_median": 21.0,
+     "modes_median": 7.5
+    },
+    "5": {
+     "n": 44,
+     "capability_entry": 0.07,
+     "v_full": 0.98,
+     "steps_median": 19.0,
+     "modes_median": 7.0
+    }
+   },
+   "quintile_rule": "rounds.quintile: min(4, int(cnp * 5)) + 1, the g03/g18 rule (round-2 metrics store no quintile)"
+  },
+  "pooled": {
+   "corpus": {
+    "papers_coded": 572,
+    "eligible": 747,
+    "coverage": 0.77,
+    "entry_state": {
+     "problem": [
+      435,
+      0.76
+     ],
+     "capability": [
+      54,
+      0.09
+     ],
+     "anomaly": [
+      26,
+      0.05
+     ],
+     "hypothesis": [
+      22,
+      0.04
+     ],
+     "challenged_result": [
+      15,
+      0.03
+     ],
+     "data_without_theory": [
+      13,
+      0.02
+     ],
+     "external_goal": [
+      7,
+      0.01
+     ]
+    },
+    "entry_node": {
+     "Q": [
+      445,
+      0.78
+     ],
+     "N": [
+      62,
+      0.11
+     ],
+     "O": [
+      33,
+      0.06
+     ],
+     "H": [
+      27,
+      0.05
+     ],
+     "F": [
+      3,
+      0.01
+     ],
+     "S": [
+      1,
+      0.0
+     ],
+     "E": [
+      1,
+      0.0
+     ]
+    },
+    "outcome": {
+     "kept": [
+      559,
+      0.98
+     ],
+     "contradicted": [
+      11,
+      0.02
+     ],
+     "excluded": [
+      2,
+      0.0
+     ]
+    },
+    "claim_status": {
+     "best_explanation": [
+      218,
+      0.38
+     ],
+     "capability_characterized": [
+      165,
+      0.29
+     ],
+     "estimate_with_resolution": [
+      107,
+      0.19
+     ],
+     "regularity_in_range": [
+      66,
+      0.12
+     ],
+     "confirmed": [
+      16,
+      0.03
+     ]
+    },
+    "composition": {
+     "none_fits": [
+      256,
+      0.45
+     ],
+     "trace_series": [
+      163,
+      0.28
+     ],
+     "capability_first": [
+      70,
+      0.12
+     ],
+     "natures_repetition": [
+      63,
+      0.11
+     ],
+     "strong_inference": [
+      9,
+      0.02
+     ],
+     "independent_replication": [
+      9,
+      0.02
+     ],
+     "exploration_first": [
+      2,
+      0.0
+     ]
+    },
+    "decisive_mode": {
+     "estimation": [
+      145,
+      0.25
+     ],
+     "methods": [
+      123,
+      0.22
+     ],
+     "simulation": [
+      75,
+      0.13
+     ],
+     "reconstruction": [
+      53,
+      0.09
+     ],
+     "observation": [
+      52,
+      0.09
+     ],
+     "hypothesis": [
+      41,
+      0.07
+     ],
+     "regularities": [
+      23,
+      0.04
+     ],
+     "theory": [
+      16,
+      0.03
+     ],
+     "instruments": [
+      15,
+      0.03
+     ],
+     "exploration": [
+      13,
+      0.02
+     ],
+     "synthesis": [
+      11,
+      0.02
+     ],
+     "robustness": [
+      5,
+      0.01
+     ]
+    },
+    "mode_used_share": {
+     "estimation": 0.78,
+     "exploration": 0.15,
+     "hypothesis": 0.75,
+     "instruments": 0.31,
+     "methods": 0.74,
+     "observation": 0.8,
+     "question": 0.97,
+     "reconstruction": 0.27,
+     "regularities": 0.33,
+     "robustness": 0.38,
+     "simulation": 0.49,
+     "synthesis": 0.71,
+     "theory": 0.48
+    },
+    "node_used_share": {
+     "N": 0.55,
+     "E": 0.19,
+     "O": 0.93,
+     "I": 0.83,
+     "Q": 0.98,
+     "H": 0.84,
+     "S": 0.68,
+     "D": 0.67,
+     "F": 0.43,
+     "C": 0.99,
+     "V": 0.97,
+     "X": 0.49,
+     "K": 1.0,
+     "P": 0.32,
+     "R": 0.54
+    },
+    "steps_median": 20.0,
+    "mode_returns_median": 9.0,
+    "papers_with_return_after_failure": 0.3,
+    "textbook_route_in_order": 0.01,
+    "papers_with_D_design": 0.67,
+    "v": {
+     "full": [
+      556,
+      0.97
+     ],
+     "none": [
+      16,
+      0.03
+     ]
+    },
+    "triangulation": 0.37,
+    "v_kinds_performed": {
+     "control": [
+      489,
+      0.85
+     ],
+     "robustness": [
+      372,
+      0.65
+     ],
+     "replication": [
+      318,
+      0.56
+     ],
+     "method": [
+      302,
+      0.53
+     ],
+     "generalization": [
+      106,
+      0.19
+     ],
+     "reproduction": [
+      54,
+      0.09
+     ]
+    },
+    "gates_claim_yes": 0.15,
+    "gates_action_yes": 0.03
+   },
+   "papers_by_round": {
+    "round1": 374,
+    "round2": 198
+   },
+   "round_comparison": {
+    "entry_state": {
+     "n": 572,
+     "chi2": 14.78,
+     "cramers_v_bc": 0.124,
+     "v_bc_ci": [
+      0.051,
+      0.241
+     ],
+     "p": 0.0186,
+     "levels_merged_into_other": [
+      "external_goal"
+     ],
+     "q": 0.065
+    },
+    "entry_node": {
+     "n": 572,
+     "chi2": 11.88,
+     "cramers_v_bc": 0.117,
+     "v_bc_ci": [
+      0.0,
+      0.231
+     ],
+     "p": 0.0154,
+     "levels_merged_into_other": [
+      "E",
+      "F",
+      "S"
+     ],
+     "q": 0.065
+    },
+    "outcome": {
+     "n": 572,
+     "chi2": 2.42,
+     "cramers_v_bc": 0.027,
+     "v_bc_ci": [
+      0.0,
+      0.101
+     ],
+     "p": 0.3155,
+     "levels_merged_into_other": [
+      "excluded"
+     ],
+     "q": 0.552
+    },
+    "claim_status": {
+     "n": 572,
+     "chi2": 1.19,
+     "cramers_v_bc": 0.0,
+     "v_bc_ci": [
+      0.0,
+      0.13
+     ],
+     "p": 0.8766,
+     "levels_merged_into_other": [],
+     "q": 0.877
+    },
+    "composition": {
+     "n": 572,
+     "chi2": 3.75,
+     "cramers_v_bc": 0.0,
+     "v_bc_ci": [
+      0.0,
+      0.169
+     ],
+     "p": 0.4431,
+     "levels_merged_into_other": [
+      "exploration_first",
+      "independent_replication",
+      "strong_inference"
+     ],
+     "q": 0.62
+    },
+    "decisive_mode": {
+     "n": 572,
+     "chi2": 13.22,
+     "cramers_v_bc": 0.062,
+     "v_bc_ci": [
+      0.0,
+      0.233
+     ],
+     "p": 0.2875,
+     "levels_merged_into_other": [
+      "robustness"
+     ],
+     "q": 0.552
+    },
+    "steps": {
+     "n": 572,
+     "H": 0.07,
+     "epsilon2": 0.0,
+     "epsilon2_ci": [
+      0.0,
+      0.011
+     ],
+     "p": 0.7944,
+     "median_by_round": {
+      "round1": 20.0,
+      "round2": 20.0
+     },
+     "q": 0.877
+    }
+   },
+   "note": "pooled shares are raw shares over all valid codings of both rounds; the rounds differ in sampling (round 2 open access only, at most 4 papers per journal), so round_comparison mixes sampling and coding drift"
   }
  }
 }

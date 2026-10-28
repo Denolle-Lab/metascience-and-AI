@@ -1,0 +1,562 @@
+{
+ "key": "g22_W4221065755",
+ "doi": "10.1016/j.coastaleng.2022.104114",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Draycott et al. 2022, Coastal Engineering 174, 104114 (published PDF, 16 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML text holds the passage (abstract §0 ¶1; captions cited as printed, e.g. 'Fig. 15'). The supplied XML text lacks the body, so body passages are cited by printed journal pages (p. N, identical to PDF pages counted from 1). Figure-content steps cite the figure with its PDF page in parentheses.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The present work provides results and observations from experiments aimed at assessing the impact that currents have on wave buoy measurements",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Draycott et al. 2022, Coastal Engineering 174, 104114 (published PDF and XML text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "State three aims: the effect of VIM on buoy measurement, the alteration of buoy dynamics by current and wave–current interaction, and whether simple methods can predict wave-induced buoy motions.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The aims of the analysis are (i) to assess the effect of VIM on buoy measurement performance"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the Doppler-shifted dispersion relation and group velocity in a uniform steady current from published wave–current theory as the expectation for current-modified wavenumbers.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In the presence of a uniform and steady current the wavenumber becomes a function of the current speed and angle relative the current"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Pose three rival prediction approaches for buoy motions: standard linear transfer functions ignoring current, transfer functions with current-modified wavenumbers, and a frequency-domain hydrodynamic coefficient (HC) model.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Three methods are assessed."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a static force-balance model for mean buoy position and draught, and a 6-dof linear HC model using the BEM code Nemoh, corrected for Doppler-shifted frequencies, current-modified draught and mooring stiffness matrix.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The open-source boundary element method code Nemoh (Babarit and Delhommeau, 2015) is used to compute"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Manufacture a 0.24 m spherical model buoy with a motion-capture tree, inextensible and flexible moorings (stiffness measured), installed over a floor force plate in the FloWave circular wave–current basin.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model wave buoy was 3D printed in acrylonitrile butadiene styrene (ABS) and waterproofed with an epoxy sealant."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Design a test plan of current-only, wave-only, following, opposing and oblique regular-wave conditions (Table 2) to isolate the frequency response.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Experiments were carried out primarily to characterise the buoy response in simplified wave, current and combined wave–current conditions."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Characterise the generated waves and current in an empty tank with wave gauges and an ADV, and justify the uniform-steady-current premise against measured shear and turbulence and earlier FloWave studies.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Additional open tank testing was conducted to characterise the sea states for both wave and current with the wave buoy removed."
+    },
+    {
+     "n": 8,
+     "node": "F",
+     "mode": "hypothesis",
+     "action": "Set laboratory conditions: current speeds 0.05–0.45 m/s, wave frequencies 0.2–0.7 Hz at 0.03 m amplitude, 0.2 m/s current for combined and oblique cases at 22.5° steps.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Current speeds were varied from 0.05 m/s to 0.45 m/s"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Record mean x and z displacements and mean mooring force versus current speed for both moorings.",
+     "page": "Fig. 4 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Mean positions and force in x for the buoy attached to inextensible and flexible mooring lines."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the statics model (CD = 1) with measured mean positions and force for the flexible line.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The statics model presented in Section 2.2.1 (solid green line) provides a reasonable agreement with the experimental results"
+    },
+    {
+     "n": 11,
+     "node": "P",
+     "mode": "instruments",
+     "action": "Attribute the unexpected higher force on the flexible line, and the model errors, to spatial variation of current velocity away from the single ADV location rather than revising the force-balance model.",
+     "page": "p. 6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "It is speculated that this discrepancy is a result of velocity variations along the"
+    },
+    {
+     "n": 12,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Establish large, irregular, mooring-dependent vortex-induced motions dominant in y from trajectories and standard deviations across current speeds and both moorings, with peak response at 0.2–0.3 m/s.",
+     "page": "p. 6; Figs. 5–6 (pp. 7–8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the total buoy response is due to vortex-induced forcing coupled with the mooring response defined by the stiffness and configuration"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the resonance at normalised velocity near 10 with published VIM of submerged and partially submerged spheres on fixed mountings.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "resonance is observed in a similar region to those in Govardhan and Williamson (2005) and Sareen et al. (2018b)"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Compute y-motion standard deviation over all collinear wave–current runs at 0.2 m/s and find it unchanged from current-only, consistent with semi-submersible VIM literature for small waves.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "collinear wave cases do not appear to break up the vortices significantly"
+    },
+    {
+     "n": 15,
+     "node": "O",
+     "mode": "observation",
+     "action": "Record 6-dof time series for wave-only, opposing, following and oblique cases, observing persisting low-frequency VIM, altered wave heights and group velocities, and pitch changes.",
+     "page": "p. 8; Figs. 7–10 (pp. 9–10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These motions are only semi-periodic and low frequency, and hence vary significantly between the short wave cases."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check buoy heave against surface elevation from a fixed wave gauge at the buoy's mean position.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Despite the VIM, good agreement is still found between the buoy"
+    },
+    {
+     "n": 17,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject nonlinear mooring instability as the source of the complex x motions in favour of VIM.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "low frequency motions are uncorrelated to the wave frequency, present for all wave frequencies and relative wave–current angles"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Extract wave-induced motion amplitudes by FFT over windows chosen from group velocities to exclude ramp-up and tank-wall reflections and minimise leakage.",
+     "page": "pp. 8–9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This enables extraction of wave-induced motion amplitudes directly from"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare VIM and wave-induced spectral peaks and find clear frequency separation except at the lowest wave frequencies.",
+     "page": "p. 11; Figs. 11–14 (pp. 11–13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests the VIM will not affect the interpretation of the wave conditions"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute vertical and horizontal motion amplitudes predicted by the three approaches, using wave-gauge amplitudes as input.",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These predictions take amplitudes extracted from FFTs of wave gauge 3 measurements as the underlying surface elevation amplitudes."
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare predicted and measured heave and find agreement except for high-frequency opposing conditions, where buoy heave exceeds surface elevation and the HC model predicts less.",
+     "page": "p. 11; Fig. 15 (p. 14)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "all prediction methods agree well with each other, and with experiments, other than for high-frequency opposing conditions"
+    },
+    {
+     "n": 22,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude VIM as cause of the heave mismatch and attribute it to a nonlinear dynamic response at higher wavenumbers and steepness, outside the linear HC model.",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is not expected to be a VIM-effect due to the aforementioned large difference in frequencies."
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "methods",
+     "action": "Attribute larger low-frequency surge to mooring resonance, shown by the HC model reproducing it only when mooring stiffness is included.",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which are not predicted when mooring stiffness effects are removed from the model"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Find horizontal motions in opposing current larger than both transfer-function predictions at all frequencies, contrary to expectation, and reasonably captured by the HC model, also for near-opposing oblique cases.",
+     "page": "pp. 11–12; Fig. 15 (p. 14)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is a surprising result"
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Show that adding current-modified wavenumbers to the transfer functions barely changes horizontal predictions at the tested speeds and depths.",
+     "page": "p. 13",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "including current in the transfer-function approaches does not significantly alter the horizontal motion predictions"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "exploration",
+     "action": "Keep the claim that VIM, lacking heave response and separated in frequency, does not affect wave-climate interpretation for most tested conditions, except possibly 0.2–0.25 Hz.",
+     "page": "p. 13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it does not affect the interpretation of the wave climate"
+    },
+    {
+     "n": 27,
+     "node": "R",
+     "mode": "synthesis",
+     "action": "Scope the VIM result to model scale, discussing Reynolds-number scaling and mooring dependence with literature and calling for full-scale work.",
+     "page": "p. 13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An additional challenge in drawing full-scale conclusions on VIM from the presented experiments is that of"
+    },
+    {
+     "n": 28,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute HC-model excitation force, added mass, radiation damping and motions versus current speed, frequency and angle to explain the opposing-current response through larger excitation forces.",
+     "page": "p. 14; Fig. 16 (p. 15)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the hydrodynamic coefficients and the resulting buoy motions have sensitivity to the current even for high frequencies in deep water"
+    },
+    {
+     "n": 29,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Judge transfer-function approaches of limited use for estimating current from buoy motions because of their low sensitivity to current in deep water.",
+     "page": "p. 14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "and hence may be unsuitable for estimating low currents from the motions"
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the HC model as the preferred candidate for buoy processing methodologies, noting its cost of geometry- and mooring-specific transfer functions.",
+     "page": "p. 14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the HC model values appears to be a more favourable candidate for inclusion in buoy processing methodologies"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Current alters wave buoy motions; large VIM found and established across speeds and moorings",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: 6-dof buoy motions by motion capture; mooring force by force plate",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Assess VIM effect, current-altered dynamics, and predictability of wave-induced motions",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Three prediction approaches (TF ignoring current, TF with current, HC model); VIM vs nonlinear instability",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: rivals differ for horizontal motions in opposing currents and at low-frequency mooring resonance",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in the laboratory basin (current speed, wave frequency, relative angle, mooring)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "7",
+   "answer": "VIM unchanged by collinear waves; mooring-stiffness ablation in HC model; buoy heave checked against gauge",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "HC model preferred; TF approaches limited; VIM does not alter wave interpretation for most tested conditions",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "confirmed",
+  "claim": "Among three prediction approaches, the current-corrected HC model alone captures the larger-than-expected horizontal buoy motions in opposing wave–current conditions, while large VIM does not significantly alter wave-climate interpretation for the tested conditions.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "Comparing FFT-extracted horizontal amplitudes in opposing current against the three predictions showed both transfer-function methods under-predicting at all frequencies while the HC model matched, which singles out the HC model.",
+  "page": "pp. 11–12; Fig. 15 (p. 14)"
+ },
+ "composition": "strong_inference",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The test plan of following, opposing and oblique cases was built to compare the stated prediction approaches (p. 2, p. 5). The dataset was also 'in part, collected for validation and calibration of numerical modelling activities' (p. 4). The HC and TF predictions could have failed against measured amplitudes; TF approaches did fail for opposing current (pp. 11–12). Nothing is said to have been fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "naval architecture / marine hydrodynamics",
+   "item": "Nemoh open-source boundary element method solver for hydrodynamic coefficients",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "offshore structural mechanics",
+   "item": "Single-line mooring stiffness matrix following Al-Solihat and Nahon (2016)",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "fluid mechanics",
+   "item": "Vortex-induced vibration of spheres and normalised (reduced) velocity U*",
+   "kind": "concept",
+   "page": "p. 2"
+  },
+  {
+   "field": "motion capture / biomechanics engineering",
+   "item": "Qualisys optical motion capture system with reflective markers for 6-dof motions",
+   "kind": "instrument",
+   "page": "p. 5"
+  },
+  {
+   "field": "signal processing",
+   "item": "Fast Fourier Transform analysis over reflection-free windows",
+   "kind": "method",
+   "page": "p. 8"
+  },
+  {
+   "field": "manufacturing",
+   "item": "3D printing of the model buoy in ABS",
+   "kind": "instrument",
+   "page": "p. 4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "which significantly exceed many other studies assessing VIM of spheres",
+   "page": "p. 13"
+  }
+ ],
+ "limits": "The supplied XML text holds only the abstract and captions, so body text is cited by printed pages. No review file or earlier version was supplied, so no review sequence is coded. Sub-claims sit at other statuses. (1) The VIM conclusion is a regularity_in_range: it holds for the tested model-scale conditions, is uncertain at the lowest frequencies, and full scale is unresolved (pp. 13–15). (2) The mechanism, larger excitation forces from higher wavenumbers, is a best_explanation read off HC-model outputs (Fig. 16), not tested independently. (3) The high-frequency opposing heave excess is left unexplained beyond a suggested nonlinearity (p. 11). The paper does not report failed or discarded runs, how many repeats were made per condition (single short runs are implied, inference), or whether the analysis windows and CD = 1 were fixed before seeing the data. Composition strong_inference is a partial fit: the walk also contains an exploration-first strand establishing VIM (inference).",
+ "disagreements": [
+  {
+   "target": "Standard linear transfer functions treating the buoy as a floating particle (e.g. Benoit et al. 1997), as used by default [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Measured horizontal motions in opposing current exceed both TF predictions at all frequencies, while the HC model captures them.",
+   "page": "p. 12",
+   "quote": "the horizontal motions were expected to be smaller than those predicted using transfer functions ignoring current"
+  },
+  {
+   "target": "VIM of submerged and semi-submerged spheres with fixed mountings (Govardhan and Williamson 2005; Sareen et al. 2018b)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Moored-buoy motions are more complex and mooring-dependent, though resonance occurs at similar normalised velocities.",
+   "page": "p. 13",
+   "quote": "These motions are much more complex than those observed for submerged and"
+  },
+  {
+   "target": "Nonlinear instability and chaotic-response interpretations of moored floaters (Gottlieb and Yim 1992; Umar and Datta 2003)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Low-frequency x motions are uncorrelated with wave frequency, present for all conditions, and consistent with VIM without waves.",
+   "page": "p. 8",
+   "quote": "For our experiments, however, it is evident that the complex"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "Frequency-domain HC model as the candidate for processing methodologies",
+   "alternatives": "Linear transfer functions including current-modified wavenumbers; linear transfer functions ignoring current",
+   "reason": "Improved motion estimates and sensitivity to current over a wider range, at the cost of many geometry- and mooring-specific transfer functions",
+   "effect_reported": "yes",
+   "page": "p. 14"
+  },
+  {
+   "node": "S",
+   "chosen": "Steady, uniform current assumption in dispersion relation and kinematics",
+   "alternatives": "Shear-current dispersion relations (Jonsson et al. 1978; Kirby and Chen 1989; Li and Ellingsen 2019)",
+   "reason": "Vertical shear small at the low velocities used, turbulence small relative to wave velocities, and earlier FloWave work found the assumption effective",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "N",
+   "chosen": "Plain spherical buoy shape",
+   "alternatives": "Buoy-specific geometries (named as further work)",
+   "reason": "To provide a generic shape for validation and calibration of numerical modelling",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "D",
+   "chosen": "Flexible mooring for all wave cases",
+   "alternatives": "Inextensible mooring (used in current-only tests)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "I",
+   "chosen": "FFT extraction over stable, reflection-free windows",
+   "alternatives": "Extraction from time-series measurements",
+   "reason": "Time-series extraction would be challenging due to the low-frequency VIM",
+   "effect_reported": "no",
+   "page": "p. 11"
+  },
+  {
+   "node": "V",
+   "chosen": "HC model with mooring stiffness included",
+   "alternatives": "HC model with mooring stiffness effects removed",
+   "reason": "To identify mooring resonance at low wave frequencies",
+   "effect_reported": "yes",
+   "page": "p. 11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Additional open tank testing was conducted to characterise the sea states for both wave and current with the wave buoy removed.",
+   "page": "p. 5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Previous research in FloWave has found the assumption of a steady and uniform current to be effective",
+   "page": "p. 5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Results for both mooring lines are presented and the mean frequency of oscillation is indicated by the marker shade.",
+   "page": "p. 6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "resonance is observed in a similar region to those in Govardhan and Williamson (2005) and Sareen et al. (2018b)",
+   "page": "p. 7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "collinear wave cases do not appear to break up the vortices significantly",
+   "page": "p. 7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "These findings are in agreement with research on the effect of waves on the VIM response of",
+   "page": "p. 7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Despite the VIM, good agreement is still found between the buoy",
+   "page": "p. 8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "which are not predicted when mooring stiffness effects are removed from the model",
+   "page": "p. 11"
+  }
+ ]
+}

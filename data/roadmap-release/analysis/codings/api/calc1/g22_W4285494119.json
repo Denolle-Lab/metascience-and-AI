@@ -1,0 +1,422 @@
+{
+ "key": "g22_W4285494119",
+ "doi": "10.1029/2022jd036457",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Bhattacharya et al. 2022, JGR Atmospheres 127, e2022JD036457 (published PDF, 22 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Several gaps remain especially in the Indian region.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Bhattacharya et al. 2022, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors state the open problem: models of aerosol over India disagree with each other and underestimate observed loading and seasonal cycles.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Several gaps remain especially in the Indian region."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They take from Pan et al. (2015) the candidate causes of the underestimation: low RH bias, missing nitrate chemistry and underestimated sectoral emissions.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Common problems underpinning these include a low bias in relative humidity (RH) in the boundary layer, lack of nitrate chemistry"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design an intercomparison of three chemistry-climate GCMs (ECHAM-HAM, CAM5, NICAM-SPRINTARS) driven by identical SMoG-India emissions, to isolate differences in model processes.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using identical emissions and comparable model simulation setup, to attempt an evaluation of differences in model processes"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run 2005–2014 simulations with SMoG-India nested in CEDS, ECHAM-HAM and CAM5 nudged to ERA-Interim, and HadISST boundary conditions.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Simulations are performed for 2005–2014, with evolving aerosol emissions from SMoG-India for the Indian domain"
+    },
+    {
+     "n": 5,
+     "node": "R",
+     "mode": "simulation",
+     "action": "The default Asian dust threshold correction gave too little dust and too low AOD against MODIS, so they add an Indian box with its own correction factor.",
+     "page": "3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The correction factor of 1.25 over Asia, including the Indian region, yields low DU emission (2.8 Tg/y) over India"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They run a sensitivity analysis over tuning values for the Indian dust box (details in the supplement).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A sensitivity analysis is done with different tuning values over the Indian box."
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Nudging NICAM-SPRINTARS produced anomalies in magnitude and seasonal cycle, so they use a non-nudged NICAM run instead.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "because nudging was not successful for NICAM-SPRINTARS—induced significant anomalies in magnitude and seasonal cycle"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the simulated seasonal cycles of RH, precipitation, CLWP, cloud fraction, T2, U10 and PBLH with ERA-Interim, IMD, MODIS, CALIPSO and CRU data, reporting biases.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Across different meteorological variables, the models show high positive pattern correlations with ERA-Interim reanalysis meteorology"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the surface RH biases against those of earlier South Asian intercomparisons (Pan et al., 2015) and find them smaller.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The models show better simulation of surface RH than reported in literature"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the global and Indian emission inputs and the online dust and sea-salt emissions with AeroCom multimodel medians.",
+     "page": "8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "global emissions of natural aerosols (DU and SS) are lower in ECHAM-HAM but higher in CAM5"
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "simulation",
+     "action": "They revise the OA/OC ratio from the default 1.4 to an observation-based 1.9 over India, applied to the models and to MERRA-2, after AOD was underestimated over the IGP.",
+     "page": "9",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The OA/OC ratio is revised to 1.9 over the Indian landmass based on observations (Philip et al., 2014) to convert OC into OA."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the corrected ECHAM-HAM AOD with MODIS (pattern correlation, NMB, RMSE) against the default model, and the species fractions with David et al. (2018) ranges.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Annual mean AOD in ECHAM-HAM with the modified optics shows pattern correlation of 0.65, NMB -29%"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the seasonal burdens and the dry and wet deposition of each species with MERRA-2 (Figure 3, Table S4).",
+     "page": "11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The pattern correlations with MERRA-2 data are high for all the models"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They attribute the reduced diversity and bias in anthropogenic aerosol to the regional inventory and to nudging, which improved RH and clouds and so sulfate formation.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This can be attributed to the combined benefits of using a regionally representative emission inventory and meteorological nudging"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They explain the different wet-to-dry deposition ratios between models by the presence or absence of convective wet removal.",
+     "page": "12",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The inclusion of wet removal through convective cloud in ECHAM-HAM is responsible for the higher wet removal in this model"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute residence times of each species over India and globally as burden divided by sink rate.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Residence time (days) of aerosols in the atmosphere is calculated as the ratio of the total columnar loading/burden of a species and its sink rate"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the residence times with AeroCom medians (Gliß et al., 2021).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "CAM5 underestimates the residence time of BC and OA"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They check simulated surface PM2.5 against independent ground data from 119 CPCB stations, and BC, OC and SO4 against literature data at ten stations, using R2 and NMB.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We further validate the annual mean surface concentrations of PM2.5, OC, BC, and SO4 simulated by the three models via a comparison with ground-based observations."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare seasonal surface concentrations of all species with MERRA-2 (Figure 5).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to MERRA-2 data, ECHAM-HAM has lower biases for OA (2.4%) and BC (59%)"
+    },
+    {
+     "n": 20,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They attribute ECHAM-HAM's winter sulfate underestimation to overestimated PBLH, and CAM5's sulfate overestimation to missing convective wet deposition.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The larger seasonal underestimation in ECHAM-HAM in winter (−23% in DJF) is likely from the significantly higher simulations of PBLH"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the simulated vertical profiles (Figure 6) with published lidar profiles and find too much vertical dispersion in the models.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The vertical dispersion of different aerosol species is greater in simulated models, along with a somewhat shallow vertical gradient."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "simulation",
+     "action": "They keep the claim that anthropogenic aerosol is well bounded, with PM within −30% NMB of station data, and name the improvements still needed.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Anthropogenic aerosol estimation was well bounded, both in terms of diversity and bias in the measurements."
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "They keep the regional finding that large emissions drive the longer carbonaceous residence times and the larger carbonaceous AOD fraction over India.",
+     "page": "18",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Larger carbonaceous aerosol predominance over India is driven by larger emissions."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Model diversity and underestimation of aerosol over India",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: AOD and stations observed directly; burdens via MERRA-2 reanalysis",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate GCM simulation of the aerosol lifecycle over India",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rival hypotheses; three models compared",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct rival predictions derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in simulation (identical emissions, nudging, tuning) and compared with 2005–2014 observations",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: independent station data and a dust-tuning sensitivity test",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: performance characterized, with stated biases",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "With a regional inventory, nudging, dust tuning and an Indian OA/OC ratio, the three GCMs bound anthropogenic aerosol over India, with PM within −30% NMB of 119 stations, but underpredict in winter and over-disperse vertically.",
+  "page": "16"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "simulation",
+  "sentence": "The comparison of simulated surface PM2.5 and species with independent ground-station data supplies the quantitative bound (−30% NMB) on which the headline claim rests.",
+  "page": "12"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the regional inventory and nudging address the problems listed by Pan et al. (2015), but no stated hypothesis directed data acquisition; the observations are pre-existing products. Claim: the models could have failed against the station data, but the dust tuning and OA/OC revision were set against the same MODIS AOD later used to judge improvement, and the process attributions (PBLH, convective wet removal) are post hoc and untested. Registration: nothing was fixed in advance; the tuning followed mismatch with the data."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Coefficient of determination (R2), normalized mean bias and RMSE as skill scores",
+   "kind": "method",
+   "page": "13"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied. The supplement (Texts S1–S7, Tables S1–S4, Figures S1–S6) was not supplied, so the dust-tuning sensitivity results and the statistics tables are not visible. Inference: tuning dust and the OA/OC ratio against MODIS and then reporting improved AOD against MODIS is partly circular. MERRA-2, used as the 'observation' for burdens and depositions, is itself a model reanalysis. The station data (2015–2017) do not overlap the simulation period (2005–2014). No rival hypotheses are stated. The process diagnoses are not tested by targeted sensitivity runs: CAM5 sulfate bias attributed to missing convective wet removal and ECHAM winter bias attributed to PBLH (best_explanation). The regional claim that large emissions drive longer carbonaceous residence times and a larger AOD fraction is best_explanation. The vertical over-dispersion is shown against published lidar studies only. The conclusions mention disagreement with CALIPSO, but no direct CALIPSO aerosol comparison is shown in the main text.",
+ "disagreements": [
+  {
+   "target": "Pan et al. (2015), earlier model intercomparison over South Asia",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The nudged models show smaller surface RH underestimation (−6.1% to −16.7%) than the earlier intercomparison reported.",
+   "page": "7",
+   "quote": "compared to those reported in earlier model intercomparison studies over South Asia (Pan et al., 2015)"
+  },
+  {
+   "target": "Literature reports of model diversity and bias in anthropogenic aerosol over India",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Burden and surface comparisons with MERRA-2 and stations show reduced diversity and bias, attributed to the regional inventory and nudging.",
+   "page": "11",
+   "quote": "Overall, there is a reduction in diversity and improved bias from measurements of simulated anthropogenic aerosols in the three models compared to that [...]"
+  },
+  {
+   "target": "Lack of nitrate chemistry as a common cause of underestimation (Pan et al., 2015)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors argue that primary aerosols dominate Indian aerosol mass, so missing nitrate and SOA does not cause a large bias, though they later link winter underprediction partly to missing nitrate.",
+   "page": "11",
+   "quote": "this does not cause a large bias"
+  },
+  {
+   "target": "Default global OA/OC ratio of 1.4 assumed by most models",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "They replace it with an observation-based 1.9 over India (Philip et al., 2014) and report improved AOD.",
+   "page": "9",
+   "quote": "Most of the models (including these two) assume the OA to OC ratio to be 1.4 across the globe."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "Separate Indian dust box with its own tuned threshold correction factor",
+   "alternatives": "Default Asian correction factor of 1.25 covering India",
+   "reason": "The default yields low DU emission (2.8 Tg/y) and low AOD compared with MODIS",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "R",
+   "chosen": "Non-nudged NICAM-SPRINTARS simulation",
+   "alternatives": "Nudged NICAM-SPRINTARS simulation",
+   "reason": "Nudging induced significant anomalies in magnitude and seasonal cycle",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "OA/OC ratio of 1.9 over the Indian landmass",
+   "alternatives": "Default OA/OC ratio of 1.4",
+   "reason": "Based on observations (Philip et al., 2014); the correct ratio should be determined from observations",
+   "effect_reported": "yes",
+   "page": "9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A sensitivity analysis is done with different tuning values over the Indian box.",
+   "page": "3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "using identical emissions and comparable model simulation setup, to attempt an evaluation of differences in model processes",
+   "page": "2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is a much better result than that of the default model",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We further validate the annual mean surface concentrations of PM2.5, OC, BC, and SO4 simulated by the three models via a comparison with ground-based observations.",
+   "page": "12"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This was reported in earlier studies (Verma et al., 2006) that compared the aerosol extinction coefficient (km-1) at Goa",
+   "page": "16"
+  }
+ ]
+}

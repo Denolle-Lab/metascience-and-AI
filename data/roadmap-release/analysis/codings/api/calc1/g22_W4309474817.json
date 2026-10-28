@@ -1,0 +1,464 @@
+{
+ "key": "g22_W4309474817",
+ "doi": "10.1016/j.geogeo.2022.100152",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF (Geosystems and Geoenvironment 2 (2023) 100152, pp. 1-11)",
+  "Publisher XML text with section and paragraph locators (abstract and captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for text present in the XML (abstract §0 ¶1 and caption labels as printed, e.g. Fig. 4); printed journal pages (equal to PDF pages counted from 1) for body text, which the supplied XML text does not contain",
+ "entry": {
+  "state": "data_without_theory",
+  "node": "O",
+  "evidence": "As far as we know, no seismicity catalogs for this time interval exist in the global data centers",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF and publisher XML text",
+   "steps": [
+    {
+     "n": 1,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Reviews published rival accounts of southern Ghana seismicity: stress transfer from the Mid-Atlantic Ridge via the Romanche Fracture Zone (Delteil 1974; Blundell 1976) versus local fault activity with transfer refuted (Bacon and Banson 1979).",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "proposing the hypothesis that the causative stress in southern Ghana is mainly due to the transfer of stresses from Mid-Atlantic Ridge (MAR)"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the aim of evaluating the seismicity of southern Ghana in 2012-2014 from the unprocessed GHDSN recordings.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study aims to evaluate the seismicity of southern Ghana in this period processing the data recorded by the GHDSN network."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopts EQTransformer, an existing attention-based deep-learning detector and phase picker trained on the global STEAD data set.",
+     "page": "5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "EQTransformer was trained on STanford EArthquake Dataset (STEAD) (Mousavi et al., 2019)"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Checks data availability and noise spectra of the six-station GHDSN archive, high-pass filters the microseism noise, and runs EQTransformer with fixed detection and picking thresholds (phase counts in Table 1).",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we implement the original model with threshold values of 0.2, 0.07, and 0.07 for detection, P-picking, and S-picking, respectively"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Validates the EQTransformer output: the embedded associator yields only 19 earthquakes, and low-SNR events show a high false-negative rate.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "validating the results of EQTransformer processing of low signal-to-noise ratio (SNR) events showed a high False Negative Rate (FNR)"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Devises the Conservative Strategy: builds a preliminary list of 388 events from cross-station arrival times (100 s threshold), has an analyst check the waveforms, and keeps 73 events recorded by at least three stations.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we devised a so-called “Conservative Strategy (CS)” including waveform check by an analyst to optimally extract all locatable earthquakes"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Uses the analyst waveform check in the Conservative Strategy to verify the DL detections manually.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This strategy also provided the opportunity to manually verify the results of DL method."
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Locates the 73 events with HYP (SEISAN) using the published constant crustal velocities and computes local magnitudes from Wood-Anderson-simulated amplitudes.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the constant set of velocity values to locate the events at the first step."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compares the preliminary locations with known tectonic features: the epicentres are scattered and the depths spread over 0-120 km, so the initial velocity model is judged inadequate.",
+     "page": "Fig. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The scattered pattern of epicenters and the extensive depth range of [0, 120] km hypocenters manifests the inadequacy of the preliminary velocity model"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverts jointly for a 6-layer 1D velocity model and the hypocentres by two-step grid search (coarse Vp/Vs, then a fine grid on Vp, layer depths and Vp/Vs; minimum RMS 0.478 s) and relocates all events into clusters at 7-15 km depth.",
+     "page": "6-8",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Consequently, we conduct a joint inversion process to estimate an updated 1D velocity model and hypocentral parameters for the detected events."
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Compiles an updated 303-event catalogue for Ghana by merging the new events with Musson (2014), GHGS and ISC reports.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The final catalog consists of 303 events."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compares the new velocity model with the previously reported constant models: the first and last layers are 6% and 26% faster and Vp/Vs rises from 1.65 to 1.70.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The estimated velocity model from the joint inversion highly differs from the previously reported crustal velocities."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checks the inverted Vp/Vs (1.70) and the thickness-weighted mean Vs (3.80 km/s) against independent receiver-function estimates at the stations (Akpan et al. 2016).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The updated value is in agreement with the average estimated Vp/Vs = 1.71"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposes structural interpretations of the clusters: a hidden SE continuation of fault segment 1, a hidden fault between clusters 2 and 4, and a possible second AFZ-CBF junction at cluster 4.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The alignment reinforces the existence of a hidden continuity of this segment in the SE direction, crosscutting the AFZ."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checks the relocated epicentres against the mapped fault segments and against the preliminary-model locations: the fault correlation appears only with the updated model.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This correlation was not observed among the events located by the preliminary velocity model (Fig. 4), indicating the importance of an accurate velocity model"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Sets the seismicity map against prior interpretations: the offshore CBF branch is inactive (agreeing with Bacon and Banson 1979 and Bacon and Quaah 1981), and activity concentrates at the AFZ-CBF double junction.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The offshore branch of the CBF has not shown any activity in the recording period."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compares the reassessed epicentre of the 1939 Accra earthquake with the new clusters; it lies between clusters 3 and 4.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the seismicity map obtained by the DL method supports the new position."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "theory",
+     "action": "Keeps the intraplate stress-concentrator account (Gangopadhyay and Talwani 2003) for the double-junction seismicity.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is in agreement with accumulation of stress in an intraplate setting"
+    },
+    {
+     "n": 19,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Rejects stress transfer from the RFZ to southern Ghana because no seismicity pattern links offshore and onshore structures.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] pattern of seismic activity was observed as a transfer of the tectonic stress by RFZ to the intraplate zone of southern Ghana"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Supports the absence of a seismic bridge over a longer period with the ISC-GEM catalogue map (Fig. 1).",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] confirms the absence of a “bridge” of events linking the MAR and West Africa in a wider time range"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Concludes with an updated velocity model and 73 newly located earthquakes in four clusters in the upper crust, and notes that the 18-month window limits tectonic inference.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A total number of 73 earthquakes with a local magnitude of 2.5 < Ml < 3.9 are located, comprising four main clusters of events"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Local seismicity of southern Ghana in 2012-2014, uncatalogued",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; hypocentres and velocities are inferred from arrival times",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize the seismicity: locations, depths, velocity model, catalogue",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "RFZ stress transfer versus intraplate fault-junction stress concentration",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Only informally: transfer implies offshore or bridging seismicity",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: an 18-month network recording",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "73 events over 18 months; no repetition analysis",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Limited: receiver-function agreement and fault correlation; no threshold sensitivity tests",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "8",
+   "answer": "Estimates kept; RFZ transfer rejected",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "An updated 1D crustal velocity model and 73 newly detected earthquakes (2.5 < Ml < 3.9) are located in four main clusters at 7-15 km depth in the upper crust, correlating with mapped fault zones in southern Ghana.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the joint grid-search inversion for the velocity model and the hypocentres, the events stay scattered over 0-120 km depth with no correlation to the faults, so neither the cluster pattern nor the tectonic interpretation would exist.",
+  "page": "6-8"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data were recorded by a national monitoring network, and no hypothesis directed their acquisition (p. 4). The located seismicity could have failed to correlate with the faults or could have shown offshore or bridging activity, and the velocity model could have disagreed with receiver functions (pp. 9-10). The detection thresholds and grid ranges are reported but not stated as fixed before the data were seen (pp. 5, 7)."
+ },
+ "imports": [
+  {
+   "field": "computer science (deep learning)",
+   "item": "EQTransformer deep neural network with hierarchical attention for detection and phase picking",
+   "kind": "method",
+   "page": "4-5"
+  },
+  {
+   "field": "natural language processing",
+   "item": "Attention mechanism, hierarchical attention networks (Yang et al. 2016, document classification)",
+   "kind": "concept",
+   "page": "4"
+  },
+  {
+   "field": "machine learning",
+   "item": "Transfer learning, considered and ruled out",
+   "kind": "concept",
+   "page": "2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "As a result, 73 earthquakes were detected and reported for the first time.",
+   "page": "10"
+  },
+  {
+   "quote": "To the best of our knowledge, none of these events are reported by the global data centers, ISC and USGS",
+   "page": "6"
+  },
+  {
+   "quote": "This strategy was devised as a unique solution for this region.",
+   "page": "9"
+  },
+  {
+   "quote": "A new stimation of seismogenic depth in the double junction was obtained",
+   "page": "10"
+  }
+ ],
+ "limits": "The supplied XML text holds only the abstract and the captions, so body steps cite PDF pages. The supplement (Appendix A: b-value, magnitude of completeness, uncertainty analysis, azimuthal gaps, Table S1 catalogue) was not supplied, so the stated resolution of the estimates cannot be checked; the claim_status estimate_with_resolution rests on the RMS of 0.478 s and the searched range shown in Fig. 5. The acknowledgments thank two anonymous reviewers, but no review file was supplied, so no review sequence is coded. No sensitivity test of the EQTransformer thresholds or of the analyst step of the Conservative Strategy is reported. The Discussion notes that cluster 3 has an azimuthal gap above 180°. Sub-claims at other statuses: the rejection of RFZ stress transfer rests on an absence of events in an 18-month window plus the ISC-GEM map, so best_explanation at most (inference); the hidden-fault interpretations are hypotheses only. Internal inconsistencies: five clusters (p. 7) versus four clusters (§0 ¶1, Fig. 6); the record starts in September 2012 (§0 ¶1) or October 2012 (pp. 4, 10); the catalogue runs to March 2022 (p. 8) or April 2022 (§0 ¶1); magnitudes are 2.5 ≤ ML ≤ 4.0 (p. 6) or 2.5 < Ml < 3.9 (§0 ¶1); the paper both confirms (p. 10) and refutes (p. 10) Blundell (1976). Composition none_fits: the work applies an existing method to an archived data set and centres on estimation and catalogue-building; the rival exclusion is a secondary, trace-like step, and no listed composition captures this walk. The entry state could also be read as problem, given the poorly identified sources the paper names (inference).",
+ "disagreements": [
+  {
+   "target": "Blundell (1976): RFZ stress transfer activating the AFZ and CBF",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "No seismicity links the offshore structures to the onshore faults in the 18-month record or in the ISC-GEM catalogue.",
+   "page": "10",
+   "quote": "[...] hypothesis of Blundell (1976) linking the activity of AFZ and CBF the RFZ to the RFZ."
+  },
+  {
+   "target": "Stress transfer by major Gulf of Guinea transform faults and offshore activity (Delteil et al. 1974 line)",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "No offshore CBF activity and no bridging events in the relocated seismicity.",
+   "page": "10",
+   "quote": "[...] seismic activity in offshore Ghana and the transfer of stress by major transform faults in the GOG."
+  },
+  {
+   "target": "Previous constant or single-layer crustal velocity models (Bacon and Banson 1979; Bacon and Quaah 1981; Akoto and Anum 1992; Amponsah [...]",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "With the published velocities the locations are scattered and unrealistic; the joint inversion gives faster layers and a higher Vp/Vs that agree with receiver functions.",
+   "page": "9",
+   "quote": "The estimated velocity model from the joint inversion highly differs from the previously reported crustal velocities."
+  },
+  {
+   "target": "Previously reported catalogues (compiled by Musson 2014 and others)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The earlier catalogues were located with an inaccurate velocity model, radio timing and manual tools.",
+   "page": "8",
+   "quote": "The previously reported catalogues were located by a highly inaccurate velocity model."
+  },
+  {
+   "target": "Seismogenic interpretations of previous studies",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper points to inexact timing, inaccurate velocity models and preliminary location methods, which GPS timing and the joint inversion mitigate.",
+   "page": "9",
+   "quote": "The seismogenic interpretations presented in the previous studies, although insightful, are prone to uncertainties"
+  },
+  {
+   "target": "Instrumental and historical catalogues showing the western CBF as silent",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Cluster 4 shows activity at the western termination of the CBF, which the paper attributes to location errors in the earlier catalogues.",
+   "page": "9",
+   "quote": "This part has been almost silent in the reported instrumental and historical catalog."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Conservative Strategy with analyst waveform check",
+   "alternatives": "Phase association code embedded in the EQTransformer package",
+   "reason": "The embedded associator gave only 19 earthquakes and a high false-negative rate",
+   "effect_reported": "yes",
+   "page": "6-7"
+  },
+  {
+   "node": "N",
+   "chosen": "Original pretrained EQTransformer combined with the Conservative Strategy",
+   "alternatives": "Transfer learning on Ghana data",
+   "reason": "The low seismicity rate and the lack of an adequate labeled training set preclude transfer learning",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "O",
+   "chosen": "Thresholds 0.2, 0.07, 0.07 for detection, P and S",
+   "alternatives": "Higher or lower thresholds (trade-off between false positives and false negatives)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "I",
+   "chosen": "Joint 1D velocity and hypocentre inversion",
+   "alternatives": "Published constant velocity model (vp = 5.55, vs = 3.36 km/s)",
+   "reason": "The constant model gave scattered epicentres and unrealistic depths of 0-120 km",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Grid search over the velocity model space",
+   "alternatives": "Gradient-based optimization from an initial model",
+   "reason": "Avoids local minima and does not depend on an input model, given the lack of reliable prior information",
+   "effect_reported": "no",
+   "page": "9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "validating the results of EQTransformer processing of low signal-to-noise ratio (SNR) events showed a high False Negative Rate (FNR)",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This strategy also provided the opportunity to manually verify the results of DL method.",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The updated value is in agreement with the average estimated Vp/Vs = 1.71",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This correlation was not observed among the events located by the preliminary velocity model (Fig. 4)",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] confirms the absence of a “bridge” of events linking the MAR and West Africa in a wider time range",
+   "page": "10"
+  }
+ ]
+}

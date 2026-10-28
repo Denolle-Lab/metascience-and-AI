@@ -1,0 +1,489 @@
+{
+ "key": "g22_W4296619994",
+ "doi": "10.1016/j.ejrh.2022.101215",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4296619994.pdf (published paper, Journal of Hydrology: Regional Studies 44 (2022) 101215)",
+  "g22_W4296619994.xml.txt (publisher XML via jats_text; contains only the abstract and figure/table captions)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶n) and captions (Fig. n, Table n). The XML text holds no body text, so body steps cite printed journal pages (p. N), which equal PDF pages counted from 1. Figure-content steps cite the figure with the PDF page in parentheses.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "further improvement of both the theoretical and practical functions of the model is needed",
+  "page": "p. 2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4296619994.pdf with g22_W4296619994.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem from the literature: degree-day models lack physical mechanisms and need improvement for simulating snowmelt under forest canopies of differing openness. The aim of improving the model for subcanopy snowmelt is restated on p. 3.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "further improvement of both the theoretical and practical functions of the model is needed"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Take from other groups the expectation that, under the canopy, the gain in longwave radiation can exceed the loss of shortwave radiation and so dominate snowmelt.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the increase in longwave radiation can even exceed the decrease in shortwave radiation"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "observation",
+     "action": "Design the field setup: an open sunny-slope station (100%) and four shady-slope stations at 20%, 30%, 40% and 80% canopy openness; openness is measured from fisheye photographs with Gap Light Analyzer.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "as well as shady slopes in areas with differing degrees of openness"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measure snowmelt with a galvanized-iron lysimeter weighed every 2 h (2010) and a tipping-bucket gauge (2012, 2013), and record meteorology with TRM-ZS2 automatic weather stations; filter the data to 20:00-20:00 days and merge nearby stations to remove instrument outliers.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The snowmelt rate was obtained using two methods: a snow lysimeter (observed snowmelt rate) and calculations derived"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "theory",
+     "action": "Adopt two established rivals: the traditional temperature-only degree-day model (Model 1, Finsterwalder and Schunk) and the degree-day model with net shortwave radiation (Model 2, Pellicciotti et al. 2005).",
+     "page": "p. 5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The degree-day model is generally in the form of that first formulated by Finsterwalder and Schunk (1887)"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Construct Model 3: the degree-day model plus a net longwave radiation term and a water recession term driven by the previous day's snowmelt.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An improved degree-day model was constructed based on air temperature, net longwave radiation and water recession."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute subcanopy net longwave radiation through a forward model: Stefan-Boltzmann grey bodies weighted by openness (Essery et al. 2008), the Iziomon emissivity, cloud cover from humidity, and snow-surface temperature from air temperature, with air temperature standing in for canopy temperature.",
+     "page": "pp. 5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "(in this study, the air temperature was used instead of canopy temperature)"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "robustness",
+     "action": "Fix the evaluation design: R2, Ens and PBIAS with rating thresholds taken from Tan et al. (2021); calibrate on 2013 data and verify on 2010 (100% site) and 2012 (20% and 80% sites) data.",
+     "page": "pp. 6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the 2013 data were used for model correction and parameter calibration"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Report the microclimate and snowmelt patterns across openness. Forest sites have lower shortwave and higher net longwave radiation, and calm winds. Snowmelt is slower at higher openness early in the season and faster late in the season.",
+     "page": "pp. 7-9; Fig. 3 (p. 8); Fig. 4 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The net longwave radiation in the forest-covered areas was significantly higher than that of the open side"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate Model 1 (degree-day factor) at all five stations on 2013 data.",
+     "page": "p. 9; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Model 1 was simulated using the relevant data from five stations"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare Model 1 with observations: it performs best at 80% openness, degrades as openness falls, and is rated not satisfied at the open site and at 20% openness.",
+     "page": "p. 9; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the simulated results for the open site was “not satisfied”"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate Model 2 (degree-day factor and shortwave coefficient) at the three stations with shortwave data (20%, 80%, 100%).",
+     "page": "p. 9; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Model 2 was simulated using the data from three stations"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare Model 2 with observations: it is good to very good at the open site and at 80% openness, but not satisfied at 20% openness.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The 20% forest canopy openness area using Model 2 therefore produced result as “not satisfied”."
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the shortwave-augmented model as adequate for low-openness subcanopy sites.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the degree-day model that includes shortwave radiation still needs to be improved for subcanopy areas with a lesser degree of forest canopy [...]"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate Model 3 (degree-day factor, longwave coefficient b, recession constants c and d) at all five stations on 2013 data.",
+     "page": "p. 10; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] was simulated using the relevant data from five stations"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare Model 3 with Models 1 and 2. R2 rises by 5-45% and Ens by 2-41% over Model 1, and R2 by 5-35% over Model 2. At 20% openness R2 rises from 0.45 to 0.90.",
+     "page": "p. 10; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared with Model 1, the results simulated by Model 3 showed that R2"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Verify Model 3 with the 2013 parameters on held-out years (2010 at 100%, 2012 at 20% and 80%), giving R2 0.88-0.96. A suspect data point (17 April 2013) is dropped to show the effect on the metrics.",
+     "page": "p. 10; Table 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Model verification was carried out using data from three stations"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Attribute the residual early-season overestimates and peak-melt underestimates to auxiliaries rather than to Model 3. Named causes are snowpack water-holding capacity, omitted topographic longwave radiation, and lysimeter iron-box heating by penetrating radiation.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the heating of the iron box used to measure snowmelt by penetrative radiation"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Fit the degree-day factor of Model 3 against canopy openness across the four forest stations (R2 = 0.67) and compare with Kuusisto's 0.51; note that the open site does not fit the relation.",
+     "page": "p. 11; Fig. 5 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the correlation between the degree-day factor and the degree of forest canopy openness increased to 0.67"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the Model 3 degree-day factors with published Tianshan values (Zhang et al. 2006b; Gan et al. 2022; Ma and Cheng 2003) and explain the lower values by the added radiation and recession terms.",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reported that the snow degree-day factor of Tianshan Mountain was 3.1"
+    },
+    {
+     "n": 21,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate an observed water recession coefficient from night-time (20:00-08:00) snowmelt as a fraction of daily melt (Eq. 13) at each openness.",
+     "page": "p. 12; Fig. 6 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The actual water recession value was taken to be the quantity of snowmelt observed at night."
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the simulated recession term of Model 3 with the observed recession. The trends agree but the simulated recession is too large, which the authors attribute to an incomplete energy term and to the night-only measurement assumption.",
+     "page": "p. 13; Fig. 6 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the simulated value was consistent with the trend in the actual observed value, but also that the simulated water recession was larger"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Add topography-emitted longwave radiation as an extra component and quantify its share at each openness (1.4-27.5% of canopy longwave); the snowmelt simulation is not significantly improved.",
+     "page": "p. 13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the simulation effect of the snowmelt process was not significantly improved after adding additional topographic radiation as a parameter"
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the premise that air temperature can replace canopy temperature, by regressing air temperature on stem temperature at the 30% and 40% sites (R2 0.94 and 0.97).",
+     "page": "p. 14; Fig. 7 (p. 15)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study used air temperature instead of canopy temperature, due to the complexity of the calculation"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep Model 3 as a more reliable, simple method for simulating subcanopy snowmelt across canopy openness, and propose more stations and remote sensing for basin-wide use.",
+     "page": "p. 14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the improvement of the degree-day model using air temperature, net longwave radiation and the water recession process was clear"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Subcanopy snowmelt differs from open-site melt; longwave radiation and night-time water recession are thought to matter under canopy",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Snowmelt and radiation are observed directly at stations; degree-day factors and recession coefficients are inferred by calibration",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Improve a conceptual degree-day snowmelt model for forest subcanopy",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Three nested rival models: temperature only (Model 1), plus shortwave (Model 2), plus longwave and recession (Model 3)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "The rivals differ in fit quality, especially at low canopy openness",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: natural canopy openness at five stations, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats the melt season (2010, 2012, 2013); held-out years are used for verification",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Model 3 holds on held-out years at three stations (R2 0.88-0.96); adding topographic longwave brings no significant gain",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Model 3 kept; Models 1 and 2 judged inadequate at low openness",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Adding net longwave radiation and a water recession term to the degree-day model gives a simple subcanopy snowmelt model whose performance is characterized: calibration R2 0.83-0.96 at five stations, and verification R2 > 0.88, Ens > 0.87, PBIAS 0.63-8.44% at three stations.",
+  "page": "§0 ¶3"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "The claim rests on comparing the calibrated Model 3 with Models 1 and 2 at stations of differing openness: the large gain at 20% openness (R2 0.45 to 0.90) is what singles out the longwave and recession terms.",
+  "page": "p. 10"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Action: stations were placed across canopy openness, which reflects the published expectation that canopy effects on radiation matter (pp. 2, 4). But the observations span 2010-2013, and nothing states that the Model 3 hypothesis directed their acquisition (inference). Claim: Model 3 was scored on held-out years and could have failed (p. 10). However, the verification covers only three stations (11-13 days each at 20% and 80%), and only Model 3 was verified, not the rivals. Model 3 also has more free parameters than Models 1 and 2, with no penalty applied. Registration: the rating thresholds were taken from Tan et al. (2021) (p. 6). The calibration/validation split was chosen from data continuity (p. 7), and no pre-specification is stated."
+ },
+ "imports": [
+  {
+   "field": "physics",
+   "item": "Stefan-Boltzmann law for grey-body longwave emission from sky, canopy and snow",
+   "kind": "concept",
+   "page": "p. 5"
+  },
+  {
+   "field": "forest ecology",
+   "item": "Hemispherical (fisheye) canopy photography analysed with Gap Light Analyzer to measure canopy openness",
+   "kind": "method",
+   "page": "p. 4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so the review history is unknown. The XML text held only the abstract and captions, so body steps are cited by printed page.\n\nSub-claims at other statuses:\n(a) The degree-day factor increases with canopy openness: regularity_in_range, R2 = 0.67 across four forest stations only, with the open site excluded as non-conforming (p. 11).\n(b) Longwave radiation dominates over shortwave in the low-openness subcanopy: best_explanation, from radiation observations and model fit, not a decisive test (§0 ¶3; p. 10).\n(c) Topographic longwave radiation can be ignored at low openness: best_explanation (p. 13).\n\nInternal inconsistencies:\n- Conclusion 1 says mean daily temperature was higher in forested areas (p. 14), but the Results report it lower (p. 7).\n- Conclusion 3 says topographic longwave radiation improved simulations at high openness (p. 14), but Section 5.3 reports no significant improvement (p. 13).\n- The 100% verification discussion refers to 17 April 2013 data, although that site was verified on 2010 data (pp. 7, 10).\n\nDesign limits:\n- Models 1 and 2 were not verified on held-out years.\n- Model 2 could not be run at 30% and 40% openness for lack of shortwave data.\n- The snowmelt instrument changed between 2010 (lysimeter) and 2012/2013 (tipping bucket) with no stated cross-calibration.\n- The simulated recession term was larger than the observed recession, and this mismatch is unresolved (p. 13).\n- The authors give no data availability (p. 15).\n- Whether the parameter count of Model 3 inflates its fit gain is not examined (inference).",
+ "disagreements": [
+  {
+   "target": "Kuusisto (1980), correlation of degree-day factor with forest coverage of 0.51 in the traditional model",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Model 3 calibrated at four forest stations gives a higher correlation (0.67) between degree-day factor and canopy openness.",
+   "page": "p. 11",
+   "quote": "the correlation between the degree-day factor and the degree of forest canopy openness increased to 0.67"
+  },
+  {
+   "target": "The positive correlation of canopy openness with degree-day factor (Jeníček et al., 2017)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The open-site degree-day factor from Model 3 (0.88) breaks the relation, which the authors attribute to recession and sunny-slope energy differences.",
+   "page": "p. 11",
+   "quote": "which does not conform to the law that the degree-day factor and degree of forest canopy openness are correlated"
+  },
+  {
+   "target": "Zhang et al. (2006b) and Gan et al. (2022), degree-day factors for the Tianshan and the adjacent Kashi basin",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The Model 3 factors are lower, explained by the added radiation and recession terms.",
+   "page": "p. 11",
+   "quote": "the values of the degree-day factor are therefore supposed to be lower than those models that don’t incorporate the radiation term and recession term"
+  },
+  {
+   "target": "Snow-density parameterization of the degree-day factor (Ma and Cheng, 2003; Jeníček et al., 2017; Kuusisto, 1980)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors note that degree-day factors from snow density in the Kunes basin are lower than theirs, owing to different calculation methods.",
+   "page": "p. 11",
+   "quote": "due to different calculation methods, the degree day factors calculated by snow density in the Kunes River Basin were lower than those calculated in this [...]"
+  },
+  {
+   "target": "Shortwave-augmented degree-day model (Pellicciotti et al., 2005)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Model 2 fits the open site and 80% openness well but is not satisfied at 20% openness.",
+   "page": "p. 10",
+   "quote": "the degree-day model that includes shortwave radiation still needs to be improved for subcanopy areas with a lesser degree of forest canopy [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "Model 3 (temperature + net longwave + water recession)",
+   "alternatives": "Model 1 (traditional degree-day); Model 2 (degree-day + net shortwave)",
+   "reason": "Better R2, Ens and PBIAS, especially at low openness",
+   "effect_reported": "yes",
+   "page": "pp. 9-10; Table 4"
+  },
+  {
+   "node": "I",
+   "chosen": "Air temperature as canopy temperature",
+   "alternatives": "Canopy temperature as the weighted mean of trunk, branch and leaf temperature in sun and shade (Pomeroy et al., 2009)",
+   "reason": "Complexity of the calculation",
+   "effect_reported": "no",
+   "page": "p. 14"
+  },
+  {
+   "node": "D",
+   "chosen": "2013 data for calibration; 2010 and 2012 for verification",
+   "alternatives": "Other years for calibration (implied)",
+   "reason": "Good continuity of 2013 data and lack of measurements in 2010 and 2012",
+   "effect_reported": "no",
+   "page": "p. 7"
+  },
+  {
+   "node": "D",
+   "chosen": "2010 data for verification at the 100% site",
+   "alternatives": "2012 data at the 100% site",
+   "reason": "Low continuity of the 2012 data at the 100% site",
+   "effect_reported": "no",
+   "page": "p. 7"
+  },
+  {
+   "node": "V",
+   "chosen": "Verification metrics with the suspect 17 April data included",
+   "alternatives": "Excluding the 17 April 2013 data",
+   "reason": "Possible observational error on that date",
+   "effect_reported": "yes",
+   "page": "p. 10"
+  },
+  {
+   "node": "V",
+   "chosen": "Longwave term without topographic emission",
+   "alternatives": "Adding topography-emitted longwave radiation",
+   "reason": "No significant improvement, small share at low openness, and data hard to obtain",
+   "effect_reported": "yes",
+   "page": "p. 13"
+  },
+  {
+   "node": "C",
+   "chosen": "Degree-day factor parameterized by canopy openness",
+   "alternatives": "Degree-day factor parameterized by snow density (Jeníček et al., 2017; Kuusisto, 1980; Weiss and [...] )",
+   "reason": "Different calculation methods give lower factors in the Kunes basin",
+   "effect_reported": "yes",
+   "page": "p. 11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The data of 2010 and 2012 were used for model verification.",
+   "page": "p. 7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Without considering the April 17, 2013 data, the R2 increased to 0.97, the Ens coefficient increased to 0.93",
+   "page": "p. 10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Similarly, compared with Model 2, the Model 3 simulated R2 results",
+   "page": "p. 10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the simulation effect of the snowmelt process was not significantly improved after adding additional topographic radiation as a parameter",
+   "page": "p. 13"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Simulation of air temperature and trunk temperature in (a) 30% canopy openness and (b) 40% canopy openness.",
+   "page": "Fig. 7 (p. 15)"
+  }
+ ]
+}

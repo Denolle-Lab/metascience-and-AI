@@ -1,0 +1,493 @@
+{
+ "key": "g22_W4307368399",
+ "doi": "10.5194/gi-11-359-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Rollo, Heywood & Hall 2022, Geosci. Instrum. Method. Data Syst. 11, 359–373 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page counted from 1",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this study, we present an improved classification algorithm to detect thermohaline staircases in ocean glider profiles.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from earlier work (C-SALT, thermistor chains, tracer release, seismic oceanography, Argo/VDB) that staircases are known in the tropical North Atlantic.",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The tropical North Atlantic has been known to host thermohaline staircases since the 1970s"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "theory",
+     "action": "Take from earlier work the theoretical and observed conditions for staircase formation, mainly a critical density-ratio range (1 < Rρ < 2 to 2.5), and the energetic processes that suppress staircases.",
+     "page": "§1 ¶5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The density ratio must be within a critical range."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Deploy three Seagliders during EUREC4A (January–February 2020) and collect 1162 profiles; remove dives where the glider stalled.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "yielding a total of 1162 profiles for analysis"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Process the glider profiles (flight model, thermal-lag correction) and compare their temperature and salinity with RV Meteor CTD casts; bin to 1 m and derive Rρ, Turner angle and gradients with a running mean.",
+     "page": "§2.1 ¶2–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "temperature and salinity profiles were compared with CTD casts conducted by the Meteor"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a new open-source classifier that follows VDB's five steps, adding any regular vertical spacing, a user-defined maximum interface height, a temperature-only option, plotting and software tests.",
+     "page": "§2.2 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we built our own classifier following the steps outlined in VDB"
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "methods",
+     "action": "Salinity spikes from residual thermal lag were smoothed with a 5 m running mean, which rounded the step edges; the authors revised the classifier to find step shape from temperature only.",
+     "page": "§2.2 ¶4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "This removed the spikes but smoothed the edges of the steps that the classifier identifies."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the classifier three ways: software tests, a comparison with VDB's output on VDB's demonstration Argo profile, and a run of temperature-only versus temperature–salinity–density preliminary classification on the whole dataset (Tables 2–3); smaller steps near 1 m resolution are missed.",
+     "page": "§2.2 ¶4–¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To evaluate the effect of using only temperature profiles for the preliminary classification of steps"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Apply the classifier to the glider dataset: 14 205 steps, found in 97.7 % of profiles deeper than 300 m, with a mean of 14.3 mixed layers per profile.",
+     "page": "§2.2 ¶8; §3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "thermohaline steps were identified in 97.7 % of profiles that extended below 300 m"
+    },
+    {
+     "n": 9,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Describe how staircasing varies in time and space: two episodes of strong staircasing at the bow tie, stronger staircases to the east, and the passage of fronts before the episodes.",
+     "page": "§3.1 ¶1–¶3; Figure 3 (p. 363); Figure 7 (p. 367)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Staircases with more than three mixed layers greater than 20 m were only observed at the bow tie and only on two occasions"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "exploration",
+     "action": "Compare mixed-layer statistics from two independent gliders (SG637 and SG620) about 5 km apart; the values are similar.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The small differences between values recorded by SG637 and SG620 can be attributed to the distance between the two gliders"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Relate mixed-layer thickness to density ratio across all gliders: the peak is at Rρ ≈ 1.7, with a tail at larger Rρ.",
+     "page": "§3.1 ¶4; Figure 9 (p. 368)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the largest staircases were observed around R ρ = 1.7"
+    },
+    {
+     "n": 12,
+     "node": "Q",
+     "mode": "question",
+     "action": "Note that the density-ratio constraint alone does not explain where staircases occur, for example their absence above 250 m.",
+     "page": "§3.1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This constraint alone does not explain the distribution of thermohaline staircases in the glider profiles we collected."
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "hypothesis",
+     "action": "Build masks of the expected staircase locations from the density-ratio range and from upper limits on the absolute vertical temperature and salinity gradients.",
+     "page": "§3.1 ¶5; Figure 10 (p. 368)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we construct masks of where we expect thermohaline staircases to form"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare the combined masks with the classified mixed layers: no steps larger than 1 m occur where gradients exceed 0.05 °C/m or 0.005 g/kg/m.",
+     "page": "§3.1 ¶5; Figure 11 (p. 368)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These masks suggest that staircases with steps larger than 1 m do not form where the absolute vertical gradients in temperature or salinity exceed"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the key parameters (maximum density gradient +4 %, step height ratio −10 %) on the Argo profile and compare with VDB; state that dataset-level results are robust; report the chosen parameters, set manually.",
+     "page": "§3.1 ¶6; §3.2 ¶3; Figure 5 (p. 365)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results from our classifier are robust to changes in the key parameters, and relative differences within the dataset are preserved."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the observed staircases with C-SALT, Fer et al. and Marmorino et al.: structures are similar, steps slightly smaller at the zone edge, breakdown is rapid, and the Rρ peak agrees.",
+     "page": "§3.3 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The structures we observed during periods of strong staircasing are very similar to those encountered during the C-SALT campaign."
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that strong background vertical gradients prevent staircase formation; name observational limitations as a rival explanation for the missing upper-pycnocline steps.",
+     "page": "§3.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We propose that strong background vertical gradients in temperature and salinity prevent the formation of thermohaline staircases."
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Bin fast-response thermistor profiles from SG620 at 0.2, 1 and 5 m and classify each: coarse bins erase small steps and fine bins discard a 40 m step.",
+     "page": "§3.5 ¶1–¶3; Figure 12 (p. 370); Figure 13 (p. 370)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We binned the temperature profiles at 0.2, 1 and 5 m to test the effect of vertical bin size on the classifier."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Check that the Rρ distribution of thick mixed layers holds across bin sizes; 5 m bins detect no steps at Rρ > 2.5.",
+     "page": "§3.5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is robust to changes in bin size, with a strong peak of thick mixed layers centred around R ρ = 1.7"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the classifier as characterized: it works at any regular vertical spacing and with noisy salinity, it classifies at sub-metre scale, and large bin sizes underestimate staircase incidence.",
+     "page": "§3.4 ¶3; §4 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This improved classifier can operate on datasets at any regular vertical spacing."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Thermohaline staircases, a phenomenon already known in the region",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes, from glider CT profiles, through an automated classifier",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Improve detection and quantification of staircases with gliders",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Strong background gradients versus observational limitations; Rρ alone judged insufficient",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: gradient masks predict where staircases are absent; the rival's predictions are not computed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: field ocean conditions, with fronts passing the glider bow tie",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: many profiles, two strong episodes, three gliders",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: robust to preliminary-classification mode, parameters and bin size, but individual profiles change",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Classifier kept as characterized; gradient hypothesis proposed for future testing",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An improved classifier, built on VDB, detects thermohaline staircases in glider profiles at any regular vertical spacing and with noisy salinity, finding them in 97.7 % of profiles deeper than 300 m.",
+  "page": "§4 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the new classifier, and its temperature-only preliminary classification that copes with spiky glider salinity, no staircase statistics, masks or bin-size analysis would exist.",
+  "page": "§2.2 ¶2–¶4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Data were collected within the EUREC4A campaign, not directed by the gradient hypothesis (§2.1 ¶1). The classifier was compared with VDB on a single Argo profile, and the match was 'closer, but not exactly matching' (§3.1 ¶6). Parameter thresholds were 'guided by previous studies' and 'visual inspection of the resulting classification' (§3.1 ¶6). The gradient-mask thresholds appear to have been set after the data were seen (inference)."
+ },
+ "imports": [
+  {
+   "field": "software engineering",
+   "item": "Version-controlled repository, software tests and a computational notebook for the classifier",
+   "kind": "method",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "field": "scientific computing",
+   "item": "numpy.median and pandas for binning and classification",
+   "kind": "method",
+   "page": "§2.1 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However this study is, to our knowledge, the first of its kind in the tropical North Atlantic.",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "[...] the first study to identify thermohaline staircases in glider profiles algorithmically.",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "this is only the second study to use an automated classifier to identify thermohaline staircases",
+   "page": "§3.2 ¶1"
+  }
+ ],
+ "limits": "No peer-review file or discussion was supplied, so no review sequence is coded, although the paper went through open discussion (inference from the 'Discussion started' date).\n\nThe classifier is validated against VDB on only one Argo profile, and the match is not exact.\n\nThe statement that results are robust to the key parameters is backed in the text by that single profile; a dataset-level parameter sweep is not reported (inference).\n\nThe averaging window is given as 50 m in §2.1 ¶3 and as 100 m in §3.1 ¶6, an unexplained inconsistency.\n\nThe text gives 97.7 % of profiles deeper than 300 m with steps, while Table 2 gives 666 of 682 (97.5 %).\n\n'SG537' in §3.1 ¶2 is presumably SG579.\n\nThe gradient hypothesis is previewed in the Introduction (§1 ¶5) but is derived after the data were seen. It is not tested against its stated rival (observational limitations), and the authors call for future tests (§3.4 ¶3).\n\nSub-claims and their statuses:\n- Gradients limit staircase incidence: best_explanation at most; proposed rather than tested.\n- Large bin sizes underestimate staircase incidence: regularity_in_range, from SG620 thermistor data only.\n- Two strong staircasing episodes: an observation, not a status claim.\n\nWhether the rapid staircase breakdown is temporal or advective is left undetermined (§3.3 ¶1).",
+ "disagreements": [
+  {
+   "target": "van der Boog et al. 2021b (VDB) Argo classifier",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Fast-thermistor data binned at 0.2, 1 and 5 m show that vertical bin size, untested by VDB, strongly affects which staircases are detected.",
+   "page": "§3.2 ¶2",
+   "quote": "VDB did not perform sensitivity analysis on vertical bin size due to the limited nature of Argo profiles"
+  },
+  {
+   "target": "Community position that density ratio is the main control on staircase formation",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "No staircases appear above 250 m despite a favourable Rρ; masks based on temperature and salinity gradients predict staircase incidence better.",
+   "page": "§3.3 ¶2",
+   "quote": "R ρ alone cannot account for the incidence of staircases, since we do not observe staircases shallower than 250 m"
+  },
+  {
+   "target": "Schmitt et al. 1987 and Marmorino et al. 1987 (early coarse-resolution studies)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "5 m binned thermistor data detect no steps at Rρ > 2.5, which suggests coarse sampling missed staircases there.",
+   "page": "§3.5 ¶3",
+   "quote": "[...] sampling resolution, did not detect any staircases at large values of R ρ or in the upper reaches of the pycnocline"
+  },
+  {
+   "target": "Manual or human-reclassified staircase identification (e.g. Durante et al. 2019, 2021; Fer et al. 2010)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that automated classifiers are repeatable and remove subjective labels; this is argued rather than tested.",
+   "page": "§3.2 ¶1",
+   "quote": "Automated classifiers can remove the subjective element from this process"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "Temperature-only preliminary classification",
+   "alternatives": "Temperature–salinity–density preliminary classification (VDB)",
+   "reason": "Noisy salinity, smoothed of spikes, rounds step edges and discards steps",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶4–¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "5 m running-mean (boxcar) salinity filter",
+   "alternatives": "A more sophisticated moving average filter",
+   "reason": "Removes the salinity spikes; the alternative is suggested for future work",
+   "effect_reported": "no",
+   "page": "§2.2 ¶4; §3.5 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "1 m vertical bins for the main dataset",
+   "alternatives": "0.2 m and 5 m bins (tested on fast-thermistor data)",
+   "reason": "Regular depth intervals so features are identified consistently",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶3; §3.5 ¶1–¶3"
+  },
+  {
+   "node": "V",
+   "chosen": "Key parameters: maximum density gradient 0.001 kg m−4, maximum density difference 0.01, maximum interface height 30 m",
+   "alternatives": "VDB defaults; stricter values (density gradient −4 %, step height ratio −10 %)",
+   "reason": "Guided by previous threshold studies and visual inspection",
+   "effect_reported": "yes",
+   "page": "§3.1 ¶6"
+  },
+  {
+   "node": "O",
+   "chosen": "50 m running mean for derived variables",
+   "alternatives": "A smaller averaging interval",
+   "reason": "A smaller interval can be influenced by individual staircase steps",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "O",
+   "chosen": "SG637 for most of the analysis",
+   "alternatives": "SG579 and SG620",
+   "reason": "SG637 recorded the most comprehensive set of observations",
+   "effect_reported": "no",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "H",
+   "chosen": "Strong background gradients prevent staircase formation",
+   "alternatives": "Lack of upper-pycnocline steps due to observational limitations",
+   "reason": "Gradient masks predict staircase incidence better; the rival is not tested",
+   "effect_reported": "no",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "node": "X",
+   "chosen": "Undetermined",
+   "alternatives": "Temporal breakdown of the staircase versus advection of the staircase-zone edge past the bow tie",
+   "reason": "The glider sampling pattern cannot separate the two",
+   "effect_reported": "no",
+   "page": "§3.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "temperature and salinity profiles were compared with CTD casts conducted by the Meteor",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "software tests and validation against synthetic and field data.",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The classifier includes software tests to ensure that this use of temperature only for preliminary classification does not change the identification of staircases.",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "we applied our classifier to the Argo profile used as a demonstration of VDB's algorithm by VDB Fig. A2",
+   "page": "§2.2 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] dataset described in this study using both temperature-only and temperature–salinity–density preliminary classification",
+   "page": "§2.2 ¶6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The small differences between values recorded by SG637 and SG620 can be attributed to the distance between the two gliders",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The results from our classifier are robust to changes in the key parameters, and relative differences within the dataset are preserved.",
+   "page": "§3.1 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "Their analysis showed that VDB's algorithm is most sensitive to changes in the maximum mixed layer density gradient",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The structures we observed during periods of strong staircasing are very similar to those encountered during the C-SALT campaign.",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We binned the temperature profiles at 0.2, 1 and 5 m to test the effect of vertical bin size on the classifier.",
+   "page": "§3.5 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "is robust to changes in bin size, with a strong peak of thick mixed layers centred around R ρ = 1.7",
+   "page": "§3.5 ¶3"
+  }
+ ]
+}

@@ -1,0 +1,434 @@
+{
+ "key": "g22_W4308239187",
+ "doi": "10.1007/s00703-022-00934-1",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Qiu, Liu, He, Zheng 2022, Meteorology and Atmospheric Physics 134:99 (published PDF, 15 pp.)",
+  "g22_W4308239187.xml.txt (publisher XML converted with tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps add the PDF page counted from 1 in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "To avoid huge computation and integral instability may cause by radar reflectivity assimilation, a simple method was introduced",
+  "page": "§1 ¶4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4308239187.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frames the general question of how to use radar observations quantitatively to improve numerical forecasts of severe convection.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "How to improve the forecast skill of the numerical model for thunderstorms and other severe convective weather by quantitatively applying radar observation data"
+    },
+    {
+     "n": 2,
+     "node": "K",
+     "mode": "synthesis",
+     "action": "Reviews other groups' reflectivity assimilation work and takes from it that adjusting temperature and humidity gives longer-lasting improvement than adjusting hydrometeors (Ge et al. 2013).",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Many studies have shown that the duration of the model improvement is short if the cloud physical parameters are adjusted."
+    },
+    {
+     "n": 3,
+     "node": "K",
+     "mode": "methods",
+     "action": "Cites the authors' own earlier work (He et al. 2021, with Qiu as co-author) in which a statistical reflectivity-humidity relation used to adjust initial humidity improved rainfall nowcasts.",
+     "page": "§1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "found that this method can significantly improve the short-term forecast and nowcast skills of heavy rainfall"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Names the practical problems of EnKF reflectivity assimilation: the cost of the microphysical observation operator and model instability from excessive temperature adjustment. Sets the aim of verifying a simpler virtual-observation method on one squall line.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "real-time radar reflectivity assimilation would be affected by extensive computation"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Selects the 18 May 2018 warm-sector squall line over southern Anhui as the test case and describes its synoptic setting (Fig. 1).",
+     "page": "§2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This squall line was occurred in the southern Anhui Province at 00:00 (UTC, the same below) to 12:00 on May 18, 2018"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Describes the observed evolution of the squall line from radar composite reflectivity, 02-12 UTC (Fig. 2).",
+     "page": "§2 ¶2; Fig. 2 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At 07:00–09:00, it reached the maximum and caused a large area of thunderstorms and gusts on the surface."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the observation operator. Level-by-level linear regressions of latent-heat temperature excess on WRF-diagnosed reflectivity, environmental T and RH are fitted from 2017-2019 summer WRF forecasts (Table 1, Fig. 3). A saturation rule (>25 dBZ between LCL and freezing level gives RH 98-100%, Fig. 4) is derived. Together these turn observed reflectivity into virtual T and dew-point observations with 1 °C error.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is necessary to establish statistical relationships between the radar reflectivity intensity and the latent heat release and humidity"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Configures the Penn State WRF-EnKF (32 members, 9/3 km nests, WSM6/YSU/KF schemes, ECMWF boundaries) and designs seven experiments. CNTL assimilates conventional data and radial wind only; REF05-REF35 vary the influence radius; REF_T and REF_Q assimilate temperature or humidity alone.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "7 sets of numerical experiments are designed (Table 2)"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Assimilates the virtual observations hourly at 01, 02 and 03 UTC with the EnKF to produce analysis fields; the 03 UTC ensemble mean initializes the deterministic forecast.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After 1:00, the radar reflectivity data are assimilated, and then, the forecast continues for another hour."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compares analysis composite reflectivity of REF25 and CNTL with observed reflectivity at 01-03 UTC. REF25 places echoes more accurately but too strong; CNTL places them too far east and too weak.",
+     "page": "§4.1 ¶1; Fig. 7 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After radar reflectivity data assimilation using the EnKF two consecutive times, the convective echo location is more accurate, but the intensity is higher"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Maps the REF25 minus CNTL analysis increments of temperature and relative humidity (Fig. 8). Increments sit in strong-echo areas, with RH peaking near 500 hPa and T at 800-700 hPa; the offset is explained by first-guess saturation and the vertical covariance.",
+     "page": "§4.1 ¶2; Fig. 8 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Specifically, the maximum increase of the temperature is close to 1℃, and the maximum increase in relative humidity is approximately 40%."
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retains the interim claim that assimilating virtual T/q observations quickly excites new convective echoes in the convective region.",
+     "page": "§4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "new convective echoes can be quickly excited in the convective region to provide more accurate small and medium scale information for subsequent forecasts"
+    },
+    {
+     "n": 13,
+     "node": "Q",
+     "mode": "question",
+     "action": "Asks whether the new echoes in the analysis lead to forecasts closer to observation.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Are these new convective echoes closer to the observation?"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compares 12 h forecasts from REF25 and CNTL with observed reflectivity at the Anqing, Tongling and Hefei radars (Fig. 9) and computes ETS at the 30 and 40 dBZ thresholds. REF25 is better located and timed, with higher intensity.",
+     "page": "§4.2 ¶2; Fig. 9 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared with CNTL, the location of the squall line forecasted by REF25 is more accurate with higher intensity"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeats the ETS comparison for forecasts initiated after one, two and three assimilation cycles (01, 02, 03 UTC). Improvement over CNTL holds for each, with different durations.",
+     "page": "§4.2 ¶3; Fig. 10 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For 40 dBZ (Fig. 10b), the ETS values after the composite reflectivity data assimilation are generally higher than those of CNTL results without assimilation"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "methods",
+     "action": "Explains the mismatch that the three-cycle forecast (ETS03) is not always best by an over-large, too-strong convective area in the analysis, citing similar findings (Schenkman et al.). The method is kept unrevised.",
+     "page": "§4.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the large and strong convective range of the analysis field may be the main reason"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compares forecast hourly maximum surface wind of REF25 and CNTL with observed gusts (Fig. 11). REF25 gust intensity, location and area are closer to observation, though the area is still too small.",
+     "page": "§4.2 ¶5; Fig. 11 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After the radar reflectivity data assimilation, the forecasted intensity, location, and area of the gust are significantly more accurate than those of the CNTL"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keeps the claim that indirect EnKF reflectivity assimilation improves forecast squall-line intensity, location, influence time and surface wind, most strongly early on.",
+     "page": "§4.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the indirect assimilation of the radar reflectivity using the EnKF can significantly improve the forecast results"
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varies the localization influence radius (5, 15, 25, 35 km) and scores reflectivity ETS (Fig. 12). All radii beat CNTL; larger radii give higher but shorter-lived skill, attributed to over-predicted convection consuming water vapor (consistent with Fierro et al. 2016).",
+     "page": "§4.3 ¶1; Fig. 12 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "ETS values of four experiments after the radar reflectivity data assimilation are higher than those of CNTL"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "methods",
+     "action": "Uses the hourly maximum wind ETS (Table 3), together with reflectivity ETS, to settle on 25 km as the preferred influence radius for this case.",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ETS values of the REF25 and the REF35 are higher than the others"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ablates the virtual observations by assimilating only temperature (REF_T) or only humidity (REF_Q) (Fig. 13, Table 4). Humidity alone nearly matches REF25 for reflectivity, temperature alone barely helps; for wind, both beat CNTL but fall short of REF25. REF_T losses are explained by lapse-rate stabilization and statistical error.",
+     "page": "§4.4 ¶1; Fig. 13 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "REF_T is almost the same as that of CNTL, while the ETS of the REF_Q is basically equivalent to that of the REF25"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "Concludes that the method improves the squall-line forecast (timing, intensity, gusts) for all radii, that 25 km is best, and that humidity virtual observations matter more than temperature.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "New convective echoes can be quickly growing in a short time after radar reflectivity data assimilation"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Asserts, without a run comparison, that the method avoids the direct method's complex operator and matches other indirect (latent heating) methods while being easier to implement.",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to other indirect assimilation methods, e.g., the latent heating method, the method has a similar forecasting effect and easier to implement."
+    },
+    {
+     "n": 24,
+     "node": "R",
+     "mode": "methods",
+     "action": "States the method's shortcomings: no use of reflectivity above 0 °C, and false echoes persist. Proposes future work on clear-sky echoes, ensemble information, vertical covariance and other weather types.",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the lack of assimilation ability of the reflectivity information above the level of 0 ℃"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "A hard-to-predict warm-sector squall line (18 May 2018) and the practical difficulty of assimilating reflectivity",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Reflectivity yes; the temperature and humidity it implies no, so virtual observations are inferred via statistical relations",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Verify the feasibility and skill of an indirect reflectivity assimilation method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; only a no-reflectivity baseline (CNTL) and parameter variants",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Not stated; the expectation is simply improved ETS over CNTL",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Case found (one past event); experiment configurations set in the model",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No; a single event, other weather types deferred to future work",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Improvement over CNTL holds across influence radii, initialization times and the T/q ablation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept as improving forecast skill for this case; 25 km radius preferred",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Indirect EnKF assimilation of virtual temperature and humidity observations converted from radar reflectivity improves the forecast location, influence time, intensity and surface gusts of the 18 May 2018 warm-sector squall line relative to a no-reflectivity control.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "The verification of REF25 forecasts against observed reflectivity and gusts, scored by ETS relative to CNTL, is the only evidence that the method improves forecast skill.",
+  "page": "§4.2 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The aim of verifying the method directed the design of the CNTL/REF experiments (§3.3 ¶2), but the radar and case data already existed. The claim could have failed (REF might not beat CNTL in ETS), but it was tested on one case without significance tests. The preferred 25 km radius was chosen after seeing the results on the same case (§4.1 ¶1, §4.3). Nothing indicates pre-specified thresholds or analyses."
+ },
+ "imports": [
+  {
+   "field": "control engineering / estimation theory",
+   "item": "Kalman filter (ensemble Kalman filter as implemented by Penn State)",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "multiple linear regression for the reflectivity-latent heat relation",
+   "kind": "method",
+   "page": "§3.1 ¶1"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "Sub-claims: (a) 25 km is the best influence radius, capability_characterized for this single case only, tuned on the same case used for verification. (b) Humidity virtual observations matter more than temperature: best_explanation within one case. (c) The mechanisms offered (water-vapor consumption at large radii, lapse-rate stabilization in REF_T, over-strong analysis convection for ETS03) are best_explanation, asserted and not tested. The paper reports one event with no statistical significance or confidence intervals for ETS. The regression fit quality (R², residuals) and any validation of the virtual T/q observations against independent soundings are not reported. The comparison with direct and other indirect methods (§5 ¶4) is asserted without runs. Ensemble spread and the effect of the 1 °C observation-error choice are not shown. Inference: the order of experiments, any failed configurations, and whether radius values were chosen before runs cannot be read from the text. No review file was supplied, so the review history is unknown.",
+ "disagreements": [
+  {
+   "target": "the direct assimilation method of radar reflectivity",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from design (no complex microphysical observation operator, less computation and operator error), not from a side-by-side experiment.",
+   "page": "§5 ¶4",
+   "quote": "[...] method presented in this paper avoids the complex reflectivity observation operator and reduces the indirect error caused by the uncertainty"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "indirect assimilation via temperature/humidity virtual observations",
+   "alternatives": "direct reflectivity assimilation with the microphysical observation operator",
+   "reason": "avoid huge computation and integration instability",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "adjust temperature and humidity profiles",
+   "alternatives": "adjust cloud physical parameters (rain, ice, snow water content)",
+   "reason": "improvement from hydrometeor adjustment is short-lived (Ge et al. 2013)",
+   "effect_reported": "no",
+   "page": "§1 ¶2"
+  },
+  {
+   "node": "R",
+   "chosen": "influence radius 25 km",
+   "alternatives": "5 km, 15 km, 35 km",
+   "reason": "highest overall simulation skill; larger radii decay faster, smaller radii give lower ETS",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "assimilate both temperature and humidity virtual observations",
+   "alternatives": "temperature only (REF_T), humidity only (REF_Q)",
+   "reason": "highest ETS when both are used",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "and the experiment is used as the controlled experiment (CNTL)",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "forecasts are calculated initiated at 01:00, 02:00, and 03:00 on May 18",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Four experiments with influence radius of 5 km, 15 km, 25 km, and 35 km are designed.",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the ETS values of REF_T and REF_Q are higher than that of CNTL but lower than that of REF25",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The similar result appeared in other studies of water vapor assimilation (Schenkman et al. [...] )",
+   "page": "§4.2 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This result is consistent with that in relevant studies (Fierro et al. 11)",
+   "page": "§4.3 ¶1"
+  }
+ ]
+}

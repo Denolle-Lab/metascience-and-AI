@@ -1,0 +1,404 @@
+{
+ "key": "g22_W4293425226",
+ "doi": "10.1029/2022ea002289",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Tsai et al. 2022, Earth and Space Science 9, e2022EA002289, published PDF (19 pages); Supporting Information not supplied; no review file supplied"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "A short-term (30 days before an earthquake) prediction of an earthquake is a big challenge in seismology.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Tsai et al. 2022, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses short-term (30-day) earthquake prediction as an open challenge and frames detecting seismo-ionospheric precursors of M ≥ 6.0 Taiwan earthquakes as a first step.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A short-term (30 days before an earthquake) prediction of an earthquake is a big challenge in seismology."
+    },
+    {
+     "n": 2,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Takes from the literature that pre-earthquake ionospheric anomalies have been reported repeatedly in case and statistical studies (foF2, GPS/GIM TEC, DEMETER, Swarm).",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "These results showed strong statistical evidence of ionospheric precursors."
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Lists published candidate mechanisms for PEIAs (acoustic-gravity waves, radon ionization, stressed-rock currents, imposed zonal electric field) without testing among them.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Possible mechanisms for the generation of PEIAs have been proposed."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopts the Bi-LSTM architecture shown by Sun et al. (2017) to forecast ionospheric TEC better than LSTM.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "can capture the cyclic change of TEC and gives a better TEC forecast in comparison with LSTM and multi-LSTM."
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "States the working assumption that the Bi-LSTM prediction represents normal TEC and that departures of observed TEC from it are mainly caused by earthquakes.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the observed TEC is regarded as an abnormal variation, which is mainly caused by earthquakes in our assumption."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Retrieves CODE GIM TEC at the grid point 120°E, 22.5°N for 2003-2014 and the Central Weather Bureau catalog of earthquakes within 117-123°E, 19.5-25.5°N.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The TEC data are obtained from the GIM, which are retrieved from the Center for Orbit Determination Europe (CODE)"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the input pipeline: converts daily F10.7, SSN and Lyman-α to hourly values weighted by solar elevation angle, interpolates 2-hr TEC to hourly, and uses a 168-hr sliding window to predict the next-hour TEC.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the daily values of the feature inputs of F10.7, SSN and, Lyman-α are converted into hourly values, which depend on the solar elevation angle."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designs the test: 15-day stages and a relative error between adjacent stages (to cancel the cited ~15-day lunar tide and seasonal/solar effects), 22 positive, 13 training and 19 negative periods, with M < 5.3 chosen for training and negative periods to balance the classes.",
+     "page": "5-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "With the choice of two 15-day neighboring stages, the effects of the semimonthly lunar tide on the obtained relative errors will be significantly reduced."
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Trains 13 Bi-LSTM models on the 45-day Stage 1 of each training period and uses them to estimate the expected normal TEC in Stages 1 and 2 of positive and negative periods.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For a training period, only the TEC data in Stage 1 (45 days) are used to train a model."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares relative errors for an example negative period (N3, RE_RMSE 0.1408) and positive period before the M7.1 earthquake of 15 October 2004 (P4, RE_RMSE 0.6085).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The relative error of the positive period is four times larger than that of the negative period shown in Figure 6."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Checks whether rival ionospheric disturbances (a geomagnetic storm in N3, two storms in P22, typhoon Sinlaku in 2008, solar-active versus solar-quiet negative periods) change the classifiers' calls.",
+     "page": "8-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "can identify whether the TEC variations are related to an earthquake or not, even under the influence of a geomagnetic storm"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Selects three of 13 trained models (T5, T7, T10) by the largest median positive-minus-negative relative-error difference, combines them by majority vote, and picks the 15% threshold (from 5-30%) that gives the highest accuracy on the same periods.",
+     "page": "12-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "T5, T10, and T7 are selected as the classifiers before October 2014."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varies the sliding-window length from 1 to 8 days and runs 8 hyperparameter sets per window, reporting the discrimination for N3/P4 and the accuracy distributions.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we survey the influence of window length from 1 day to 8 days in the input layer of the Bi-LSTM models."
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "Fixes the 7-day window (mean accuracy 72.62%) and the best hyperparameters (100 neurons, batch 45, 200 iterations, tanh), suggesting the ~6.5-day EEJ periodicity as a possible physical reason.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the 7-day window is chosen in the input layer of Bi-LSTM for later calculations."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Reruns the fixed scheme with 10 random seeds for each error metric (RE_either, RE_RMSE, RE_MAE) and reports accuracies of 61.90-78.05% and their IQRs.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each box is estimated from the same set of hyperparameters and input features discussed in Section 4.3 but with 10 different random seed numbers."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Scores the ensemble calls against the catalog in a confusion matrix: TP 22, FP 9, FN 0, TN 10; accuracy 78.05%, TPR and NPV 100%, false alarm rate 47.37%, kappa 0.54.",
+     "page": "15-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the matrix, from January 2003 to October 2014, 22 positive (TP) and 9 negative (FP) periods are announced as positive"
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Attributes all nine false positives to geomagnetic storms or substorms lasting more than 7 days and recomputes the indices with those cases excluded (accuracy 100%, false alarm rate 0).",
+     "page": "15-16",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "If all the cases with long-term storms or substorms are removed, the number of FP cases becomes 0 before October 2014."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keeps the claim that the deep-learning scheme detects precursors of all 22 M ≥ 6.0 earthquakes with 78.05% accuracy, and defers testing on post-2015 earthquakes to a later paper.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, a high accuracy of 78.05% is obtained."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Seismo-ionospheric TEC anomalies before large earthquakes, taken as established from prior studies",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; anomaly inferred as deviation of observed TEC from Bi-LSTM-predicted normal TEC",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Classify 30-day periods as preceding an M ≥ 6.0 earthquake or not",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Geomagnetic storms, typhoons, solar activity as non-seismic sources of TEC deviation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "5",
+   "answer": "Not stated as distinct predictions; rivals checked case by case on four examples",
+   "mode_called": "none"
+  },
+  {
+   "question": "6b",
+   "answer": "Conditions found; nature repeats across 22 earthquakes and 19 quiet periods in the archive",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: short storms, typhoon, solar level, seeds and windows varied; long storms produce 9 false positives",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: TPR 100%, accuracy 78.05% (in-sample)",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A three-classifier Bi-LSTM ensemble, using relative TEC prediction errors between adjacent 15-day stages, flags all 22 periods before M ≥ 6.0 Taiwan earthquakes (2003-2014) and 10 of 19 quiet periods, giving accuracy 78.05%, TPR 100% and NPV 100%.",
+  "page": "17"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "The confusion-matrix comparison of the ensemble's YES/NO calls with the earthquake catalog for 41 periods is what produces the accuracy, TPR and NPV that make up the claim.",
+  "page": "15-16"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The earthquake-causes-deviation assumption (p. 3) directed which archival periods were selected (pp. 5-7), but no data were newly acquired. Negative periods could have produced false calls and nine did (p. 16). However, classifiers (p. 13), threshold (p. 14), window and hyperparameters (pp. 14-15) were all chosen to maximise discrimination or accuracy on the same 22 positive and 19 negative periods, with no held-out set. Testing on post-2015 data is deferred (p. 17). Nothing is stated as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "Bidirectional Long Short-Term Memory network (Graves & Schmidhuber 2005; Hochreiter & Schmidhuber 1997)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "machine learning",
+   "item": "Ensemble learning with majority vote of selected classifiers",
+   "kind": "method",
+   "page": "12"
+  },
+  {
+   "field": "machine learning",
+   "item": "Imbalanced-data criterion for choosing class sizes (He & Garcia 2009)",
+   "kind": "concept",
+   "page": "6"
+  },
+  {
+   "field": "statistics / psychometrics",
+   "item": "Confusion matrix, accuracy, TPR, NPV and Cohen's kappa (Cohen 1960)",
+   "kind": "method",
+   "page": "15-16"
+  },
+  {
+   "field": "solar energy engineering",
+   "item": "Solar elevation and declination formulas (Cooper 1969)",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "All selection choices were tuned on the same 41 periods that are then scored: the three classifiers by median RE difference, the 15% threshold by highest accuracy, the 7-day window and hyperparameters by accuracy, and the error metric. No held-out or later period is tested (deferred to a future paper, p. 17). The 78.05% is therefore an in-sample figure (inference: likely optimistic). The 100% 'corrected' accuracy comes from post hoc exclusion of long-storm cases (pp. 16-17). The definition of a YES call shifts between 'earthquake from Day 0 to Day 14' and the 30 days before Day 0 (pp. 7, 14). Only one GIM grid point is used, and there is no spatial control (inference). No baseline other than the negative periods is used: no random classifier, no shuffled earthquake dates, no comparison with a simpler anomaly detector. The positive/negative overlap allowed (p. 5) is not analysed. Sub-claims: insensitivity to short geomagnetic storms, typhoons and solar level rests on four illustrated negative cases plus a summary statement (p. 12), status at best capability_characterized (inference). Attributing the false positives to storms longer than 7 days is best_explanation and is not independently tested. The 7-day window linked to the ~6.5-day EEJ periodicity is a suggestion, status none. Physical mechanisms are listed but none is tested (claim_status none for mechanism). The Supporting Information (period tables S3-S5, further storm/typhoon discussion) was not supplied. No review file was supplied, so no review sequence is coded. No explicit 'first' novelty statements were found. The paper notes the doubts of Akhoondzadeh Hanzaei (2018) about geomagnetic and solar confounds but does not set its result against them explicitly, so no disagreement is coded.",
+ "disagreements": [],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "M < 5.3 as criterion for training and negative periods",
+   "alternatives": "M < 6.0 (67 negative periods) or M < 5.0 (3 negative periods)",
+   "reason": "Absence of PEIA requires small magnitude; class balance with 22 positive periods (He & Garcia 2009)",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "Hourly solar indices weighted by solar elevation angle",
+   "alternatives": "Daily values of F10.7, SSN and Lyman-α",
+   "reason": "Solar impact depends on local time; hourly TEC predicted more precisely",
+   "effect_reported": "no",
+   "page": "1, 4"
+  },
+  {
+   "node": "R",
+   "chosen": "Classifiers T5, T7, T10",
+   "alternatives": "The other ten trained models (T1-T13)",
+   "reason": "Largest median positive-minus-negative relative-error difference; wide RE distributions of T1, T2, T12, T13",
+   "effect_reported": "no",
+   "page": "12-13"
+  },
+  {
+   "node": "R",
+   "chosen": "Threshold 15%",
+   "alternatives": "Thresholds from 5% to 30%",
+   "reason": "Highest accuracy",
+   "effect_reported": "no",
+   "page": "13-14"
+  },
+  {
+   "node": "R",
+   "chosen": "7-day sliding window",
+   "alternatives": "Windows of 1 to 8 days",
+   "reason": "Best N3/P4 discrimination and highest mean accuracy (72.62% versus 64.29-68.15%); possible link to ~6.5-day EEJ periodicity",
+   "effect_reported": "yes",
+   "page": "14-15"
+  },
+  {
+   "node": "R",
+   "chosen": "100 neurons, batch size 45, 200 iterations, tanh",
+   "alternatives": "50 or 100 neurons; batch sizes 45, 60, 72, 120",
+   "reason": "Best accuracy",
+   "effect_reported": "yes",
+   "page": "14-15"
+  },
+  {
+   "node": "R",
+   "chosen": "RE_either error metric",
+   "alternatives": "RE_RMSE or RE_MAE alone",
+   "reason": "More stable than MAE and more accurate than RMSE across random seeds",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "P",
+   "chosen": "Report both all-event and 'corrected' indices",
+   "alternatives": "Including or excluding cases with long-term storms or substorms",
+   "reason": "False positives attributed to storms lasting more than 7 days",
+   "effect_reported": "yes",
+   "page": "16-17"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] variations during the 19 periods, in which there is no earthquake of M ≥ 5.3, are also analyzed.",
+   "page": "3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "can identify whether the TEC variations are related to an earthquake or not, even under the influence of a geomagnetic storm",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A set of the threshold from 5% to 30% is used to test the results.",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we survey the influence of window length from 1 day to 8 days in the input layer of the Bi-LSTM models.",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Two types of error metrics are taken into account: RMSE and MAE.",
+   "page": "7"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "Each box is estimated from the same set of hyperparameters and input features discussed in Section 4.3 but with 10 different random seed numbers.",
+   "page": "15"
+  }
+ ]
+}

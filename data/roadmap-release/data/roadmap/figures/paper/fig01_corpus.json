@@ -3,8 +3,8 @@
  "script": "tools/roadmap/figures/fig01_corpus.py",
  "date": "2026-10-27",
  "private_root": "private",
- "commit_public": "fc67985",
- "commit_private": "d9422ce",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
  "inputs": [
   {
    "file": "private/data/roadmap/derived/gold/pool.json",
@@ -1302,7 +1302,7 @@
   },
   {
    "file": "private/analysis/codings/api/state.json",
-   "sha256_16": "bbea9eb9f610412e",
+   "sha256_16": "be915eefcd488360",
    "provenance": null
   },
   {
@@ -1383,6 +1383,11 @@
    "file": "private/data/roadmap/derived/r2calc/manifest.jsonl",
    "sha256_16": "3a6daaf38b029027",
    "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/r2",
+   "sha256_16": null,
+   "provenance": null
   }
  ],
  "numbers": {
@@ -1391,7 +1396,7 @@
    "Round 2"
   ],
   "pool_2022": 14223,
-  "queue_read_at": "2026-10-27T17:06:16-06:00",
+  "queue_read_at": "2026-10-27T23:31:59-06:00",
   "queue_mtime": "2026-10-27T08:29:14-06:00",
   "queue_sha256": "51366f82130eee443760588c9f8f27ea4c9a5ceafd146bf68906b066f6a37398",
   "queue_entries": 813,
@@ -1401,12 +1406,12 @@
    "Eligible": 525,
    "Full text": 379,
    "Submitted for coding": 379,
-   "Coded": 233
+   "Coded": 374
   },
   "round1_stage_share_pct": {
    "eligible_of_first": 87.5,
    "full_text_of_eligible": 72.2,
-   "coded_of_submitted": 61.5
+   "coded_of_submitted": 98.7
   },
   "round1_screened": 600,
   "round1_adjudicated": 16,
@@ -1426,19 +1431,23 @@
   "round1_excluded_both_screeners_category_differs": 1,
   "round1_coding_tag": "calc1",
   "round1_coding_folder_present": true,
-  "round1_batch_pending": true,
-  "round1_codings_failing_validation": 2,
+  "round1_batch_pending": false,
+  "round1_codings_failing_validation": 5,
   "round1_codings_failing_validation_keys": [
-   "g22_W4293915783",
-   "g22_W4306167517"
+   "g22_W4291222803",
+   "g22_W4293213379",
+   "g22_W4295882689",
+   "g22_W4308326731",
+   "g22_W4310898194"
   ],
   "round1_state_failed_unresolved": [
-   "g22_W4293915783",
-   "g22_W4306167517"
+   "g22_W4291222803",
+   "g22_W4293213379",
+   "g22_W4295882689",
+   "g22_W4308326731",
+   "g22_W4310898194"
   ],
-  "round1_state_failed_resolved_on_resubmission": [
-   "g22_W4306165551"
-  ],
+  "round1_state_failed_resolved_on_resubmission": [],
   "round1_full_text_not_yet_submitted": 0,
   "round1_submitted_without_full_text_now": 0,
   "round2_stages": {
@@ -1446,12 +1455,12 @@
    "Eligible": 222,
    "Full text": 202,
    "Submitted for coding": 202,
-   "Coded": null
+   "Coded": 198
   },
   "round2_stage_share_pct": {
    "eligible_of_first": 80.1,
    "full_text_of_eligible": 91.0,
-   "coded_of_submitted": null
+   "coded_of_submitted": 98.0
   },
   "round2_screened": 277,
   "round2_adjudicated": 4,
@@ -1470,14 +1479,24 @@
   },
   "round2_excluded_both_screeners_category_differs": 0,
   "round2_coding_tag": "r2",
-  "round2_coding_folder_present": false,
-  "round2_batch_pending": true,
-  "round2_codings_failing_validation": 0,
-  "round2_codings_failing_validation_keys": [],
-  "round2_state_failed_unresolved": [],
+  "round2_coding_folder_present": true,
+  "round2_batch_pending": false,
+  "round2_codings_failing_validation": 4,
+  "round2_codings_failing_validation_keys": [
+   "g22_W4225349193",
+   "g22_W4283270991",
+   "g22_W4309556479",
+   "g22_W4313418822"
+  ],
+  "round2_state_failed_unresolved": [
+   "g22_W4225349193",
+   "g22_W4283270991",
+   "g22_W4309556479",
+   "g22_W4313418822"
+  ],
   "round2_state_failed_resolved_on_resubmission": [],
   "round2_full_text_not_yet_submitted": 0,
   "round2_submitted_without_full_text_now": 0
  },
- "caption": "Corpus construction. (a) Papers at each stage, per round, with the share of the stage above in parentheses (none on the submitted bar). Both rounds come from one pool of 14,223 articles published in 2022 and indexed by OpenAlex (an open bibliographic index): research articles with an abstract and at least 15 references, in 16 Earth-science topics and subfields chosen around the study's principal investigator (the convenor), from publishers with a full-text route (Elsevier, Wiley and AGU, Springer Nature, Copernicus, Science Advances, Seismica, Geophysical Journal International, and the Seismological Society of America journals; MDPI, Frontiers, Taylor & Francis and others are not in the pool). The 16 form two rings: the core ring is the convenor's own 8 OpenAlex topics (seismology, seismic waves and imaging, earthquakes and tectonics, seismic sensors, cryosphere, high-pressure geophysics), the broad ring 8 Earth-science subfields. Papers with a convenor co-author are excluded, and the two rounds do not overlap. Round 1 is a random preselection of 600 papers, half per ring, with equal numbers per impact quintile and subfields taken in turn; round 2 is a draw of 277 open-access papers from the papers not preselected in round 1, balanced by ring and impact quintile, taken in turn over publishers, at most four per journal. Eligible: kept by an abstract screen in which two language-model calls judged each abstract without seeing each other's answer, and a third call settled the cases where they disagreed or either was unsure (round 1: 16 of 600; round 2: 4 of 277 settled this way); the screener model id was not recorded, and no person has audited the screen. Full text: a PDF on disk. Round 2 was drawn from open-access papers only, so its higher full-text share reflects the draw, not better retrieval. Submitted: sent for coding as an asynchronous batch request, billed at half price (Anthropic Message Batches API). Coded: a coding by Claude Opus 5.5 (codebook 1.5.0, graph v0.4.2) that passes the format check of tools/check_coding.py: required fields and allowed values, steps numbered in order, quotes of 25 words or fewer. The check says nothing about whether a coding is right; accuracy against human coders is pending. Round 1: 233 papers coded; 146 papers with full text have no valid coding yet: 144 fetched after the first coding batch and 2 whose coding failed the format check; 146 of them were sent in a further batch that had not returned when the figure was made; 1 paper that failed first passed on resubmission; a separate 146 eligible papers have no PDF. Round 2: 202 papers submitted; the coding batch had not returned when the figure was made. (b) Papers excluded at screening, by category, as a share of papers screened in each round; numbers at bar ends are counts. The category is the first screener's when both screeners excluded the paper and the third call's otherwise (the two screeners named different categories for 1 round 1 paper and 0 round 2 papers). These are counts, not estimates, so no uncertainty is shown. Queue read time and hash, seeds and script names are in this file's provenance fields."
+ "caption": "Corpus construction. (a) Papers at each stage, per round, with the share of the stage above in parentheses (none on the submitted bar). Both rounds come from one pool of 14,223 articles published in 2022 and indexed by OpenAlex (an open bibliographic index): research articles with an abstract and at least 15 references, in 16 Earth-science topics and subfields chosen around the study's principal investigator (the convenor), from publishers with a full-text route (Elsevier, Wiley and AGU, Springer Nature, Copernicus, Science Advances, Seismica, Geophysical Journal International, and the Seismological Society of America journals; MDPI, Frontiers, Taylor & Francis and others are not in the pool). The 16 form two rings: the core ring is the convenor's own 8 OpenAlex topics (seismology, seismic waves and imaging, earthquakes and tectonics, seismic sensors, cryosphere, high-pressure geophysics), the broad ring 8 Earth-science subfields. Papers with a convenor co-author are excluded, and the two rounds do not overlap. Round 1 is a random preselection of 600 papers, half per ring, with equal numbers per impact quintile and subfields taken in turn; round 2 is a draw of 277 open-access papers from the papers not preselected in round 1, balanced by ring and impact quintile, taken in turn over publishers, at most four per journal. Eligible: kept by an abstract screen in which two language-model calls judged each abstract without seeing each other's answer, and a third call settled the cases where they disagreed or either was unsure (round 1: 16 of 600; round 2: 4 of 277 settled this way); the screener model id was not recorded, and no person has audited the screen. Full text: a PDF on disk. Round 2 was drawn from open-access papers only, so its higher full-text share reflects the draw, not better retrieval. Submitted: sent for coding as an asynchronous batch request, billed at half price (Anthropic Message Batches API). Coded: a coding by Claude Opus 5.5 (codebook 1.5.0, graph v0.4.2) that passes the format check of tools/check_coding.py: required fields and allowed values, steps numbered in order, quotes of 25 words or fewer. The check says nothing about whether a coding is right; accuracy against human coders is pending. Round 1: 374 papers coded; 5 papers with full text have no valid coding yet: 0 fetched after the first coding batch and 5 whose coding failed the format check; a separate 146 eligible papers have no PDF. Round 2: 198 papers coded; 4 papers with full text have no valid coding yet: 0 fetched after the first coding batch and 4 whose coding failed the format check; a separate 20 eligible papers have no PDF. (b) Papers excluded at screening, by category, as a share of papers screened in each round; numbers at bar ends are counts. The category is the first screener's when both screeners excluded the paper and the third call's otherwise (the two screeners named different categories for 1 round 1 paper and 0 round 2 papers). These are counts, not estimates, so no uncertainty is shown. Queue read time and hash, seeds and script names are in this file's provenance fields."
 }

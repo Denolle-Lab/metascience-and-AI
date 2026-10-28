@@ -1,0 +1,395 @@
+{
+ "key": "g22_W4290844467",
+ "doi": "10.1029/2022jd036708",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Ma et al. (2022), Water Vapor Flux-Profile Relationship in the Stable Boundary Layer Over the Sea Surface, JGR Atmospheres 127, e2022JD036708: published PDF, 14 pp. No review file, open discussion or earlier version supplied."
+ ],
+ "pages_convention": "printed journal pages ('n of 14'), which coincide with PDF pages counted from 1",
+ "entry": {
+  "state": "challenged_result",
+  "node": "H",
+  "evidence": "We found that the assumption that the dimensionless water vapor gradient equals the dimensionless temperature gradient is inaccurate in practical applications",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Ma et al. 2022 published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: overland MOST flux-profile relations are applied over the ocean, while the water vapor function phi_q has rarely been studied.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the application of overland measurements to infer surface fluxes over the open ocean raises questions about the universality of these relationships"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Cite land and water experiments showing that temperature and specific humidity are not highly correlated in the surface layer.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In the ASL, the correlation between the temperature (T), and specific humidity (q) is not high."
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Name the community rival: phi_q = phi_h, as adopted in the COARE bulk flux algorithm (Fairall et al. 1996, 2003; Edson et al. 2013).",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "However, until now, φq(ξ) = φh(ξ) has generally been assumed"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: relate the dimensionless specific humidity gradient to z/L and apply the result in the latent heat flux scheme.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The purpose of this paper is to explore the relationship between"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesize that the dimensionless specific humidity gradient is its own function phi_q of z/L, analogous to phi_m and phi_h.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We suppose that the dimensionless gradient of the specific humidity exhibits a similar relationship with ξ as those of turbulent velocity gradient"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "theory",
+     "action": "Integrate phi_q to derive the stability correction Psi_q (Eq. 9) and bulk expressions for q*, the water vapor flux and the latent heat flux LE (Eqs. 10-13) that depend on phi_q.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The calculation of the latent heat flux, that is, Equation 13, is based on the selection of a dimensionless water vapor gradient φq."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measure from the ship in the South China Sea (Sep-Nov 2020): 10 m ultrasonic anemometer and Li-7500A eddy covariance, four radiosondes a day, and buoy SST; resample the data to 10 Hz with GPS time synchronization and convert RH to specific humidity, chosen because its profile is more monotonic (Figure 1).",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The observation data considered in this paper originated from the South China Sea onboard observation experiments"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "theory",
+     "action": "Argue from Clausius-Clapeyron and the constant-flux approximation (Eq. 24) that phi_q - phi_h need not vanish, so phi_q = phi_h is unreasonable.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "First, we explain why the assumption of φq = φh is unreasonable."
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute radiosonde gradients with dz = 10 m over 0-600 m and hourly covariance fluxes to obtain phi_q - phi_h at each height.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the covariance calculation method to calculate the flux."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare phi_q - phi_h at 60 heights against the zero line predicted by the rival (Figure 2); the height-mean is positive for every sounding.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Through analysis of the overall actual observation conditions, the Δqh values are not equal to 0"
+    },
+    {
+     "n": 11,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject phi_q = phi_h for the observed stable marine boundary layer.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "that is, φq ≠ φh."
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "theory",
+     "action": "Interpret the positive difference with Prandtl mixing-length theory: Kh > Kq and lh > lq, so water vapor is harder to transport vertically than heat (Appendix A).",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The temperature mixing length is larger than the water vapor mixing length."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit phi_q(z/L) = a z/L + b to the radiosonde-flux scatter (Figure 3), with b fixed at 1 for continuity at neutral; this gives a = 0.63, R = 0.87, SSE 188.8 and RMSE 1.6.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The relationship could then be fitted with a = 0.63 and b = 1."
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "theory",
+     "action": "Integrate the linear phi_q to obtain a closed-form Psi_q (Eq. 44) and compare it with Psi_h (Figure 4); keep Psi_h for unstable conditions.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Because the linear form φq was selected, integration of the water vapor stability correction function Ψq could be conveniently achieved"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Insert the new Psi_q into COARE and compare the simulated latent heat flux with covariance observations over 294 h against the original scheme (Figure 5); relative error falls from 13.3% to 11.9%.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The result obtained with the new scheme was closer to the observation."
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attribute the anomalous points in Figure 5 to weather events with large vertical wind speed, precipitation and gusts rather than to the scheme.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There are some point in Figure 5 are abnormal."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Verify the new scheme on 14 ETL flux campaigns (TIWE to EPIC_F99, 7,215 h), comparing its relative error with the original scheme in each 1,000 h segment (Figure 6).",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the relative error of the new scheme was always smaller than that of the original scheme"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the linear phi_q for the stable range, its Psi_q, the improved COARE latent heat flux, and the inference Kh > Kq.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a linear relationship between the dimensionless water vapor gradient and stability parameters was established based on the obtained flux-profile data"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "phi_q departs from phi_h in the stable marine surface and boundary layer",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; phi_q is computed from radiosonde gradients and eddy-covariance fluxes",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Parameterize phi_q against z/L and improve COARE latent heat flux",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "phi_q = phi_h (COARE assumption) versus an independent phi_q",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Rival predicts phi_q - phi_h = 0; observed mean difference is positive",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: ship campaign in the South China Sea, stable stratification",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Repeated radiosonde launches and hourly fluxes supply repeated cases for the fit",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Scheme checked on 14 independent ETL campaigns; the fitted coefficients are not varied",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "8",
+   "answer": "phi_q = phi_h rejected; linear phi_q = 0.63 z/L + 1 kept for the stable range",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "contradicted",
+  "claim_status": "regularity_in_range",
+  "claim": "The COARE assumption phi_q = phi_h does not hold in the stable marine boundary layer; phi_q instead follows a linear relation a z/L + b (a = 0.63, b = 1) in the stable range, and using the resulting Psi_q in COARE lowers the relative error of the simulated latent heat flux.",
+  "page": "10"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "regularities",
+  "sentence": "Fitting the linear phi_q to the radiosonde-flux scatter (Figure 3) produces the parameterization that everything downstream, Psi_q and the COARE test, depends on.",
+  "page": "8"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data came from a general onboard observation experiment (p. 4); nothing says the phi_q hypothesis directed what was acquired. The rival phi_q = phi_h could have survived Figure 2 (p. 7), and the COARE comparisons could have shown no gain (pp. 9-10). However, no tolerance, significance test or uncertainty on a is given, the improvements are small (13.3% to 11.9%; about 0.3-1 point per ETL segment), and b is fixed by assumption. Nothing is stated as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "thermodynamics (physics)",
+   "item": "Clausius-Clapeyron equation for saturation vapor pressure",
+   "kind": "concept",
+   "page": "5"
+  },
+  {
+   "field": "fluid mechanics",
+   "item": "Prandtl mixing-length theory, used to infer Kh > Kq and lh > lq",
+   "kind": "concept",
+   "page": "7"
+  },
+  {
+   "field": "satellite navigation",
+   "item": "GPS clock synchronization of the anemometer and gas analyzer, and an inertial navigator for motion correction",
+   "kind": "instrument",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This paper theoretically determined that the water vapor profile function φq differs from the temperature profile function φh and that φq should be independently parameterized.",
+   "page": "1"
+  },
+  {
+   "quote": "Through physical analysis, we proposed a profile relationship of the water vapor gradient.",
+   "page": "10"
+  },
+  {
+   "quote": "Compared to the previous scheme, the physical significance is more obvious",
+   "page": "9"
+  }
+ ],
+ "limits": "Sub-claims at other statuses. phi_q != phi_h is 'excluded rival' only for this campaign's stable cases. Kh > Kq and lh > lq are deductions from the sign of the mean difference, not independently measured (best_explanation at most). The improved COARE latent heat flux is a skill comparison, not a frozen forecast.\nWhat the paper does not show about its own process:\n- How single-height (10 m) eddy-covariance fluxes are paired with radiosonde gradients up to 600 m, well above the surface layer where constant flux is assumed, is not stated.\n- How many soundings enter Figure 3 is not stated, and no uncertainty is given for a. The plotted z/L range (to ~500) is stated only as 'z/L > 1'.\n- Figure 2 shows only about 13 soundings.\n- b = 1 is imposed rather than tested.\n- No sensitivity tests are reported for dz, the 0-600 m range, the averaging interval, z0q, or the choice between total and turbulent flux.\n- Inference: the sign convention in Figure 5 (mostly positive values) appears inconsistent with the stated mean of -28.7 W m-2.\n- Inference: the ETL verification may use COARE inputs from those campaigns, which were themselves used to tune COARE.\n- The unstable case is left open, with Psi_h retained.\n- No review file was supplied, so referee influence cannot be coded.",
+ "disagreements": [
+  {
+   "target": "phi_q(xi) = phi_h(xi) as adopted in the COARE algorithm (Fairall et al. 1996, 2003; Edson et al. 2013)",
+   "kind": "method",
+   "stance": "contradicts",
+   "support": "A theoretical argument (Eq. 24, Clausius-Clapeyron), a positive mean phi_q - phi_h in the observed profiles (Figure 2), and a lower latent heat flux error with an independent Psi_q (Figures 5 and 6).",
+   "page": "10",
+   "quote": "The assumption that the water vapor and temperature gradients are equal is not accurate [...] ."
+  },
+  {
+   "target": "Traditional assumption that the temperature-humidity correlation coefficient is 1 or -1 (Hill, 1989)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Cites experiments, simulations and theory by others over land and water showing low T-q correlation; no new evidence of its own on this point.",
+   "page": "2",
+   "quote": "Traditionally, it is assumed that the correlation coefficient between temperature and specific humidity is 1 or −1 (Hill, 1989)"
+  },
+  {
+   "target": "Applying overland MOST relationships to infer fluxes over the open ocean",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Motivates marine flux-profile data from the South China Sea campaign; the universality question itself is not tested directly.",
+   "page": "1",
+   "quote": "the application of overland measurements to infer surface fluxes over the open ocean raises questions about the universality of these relationships"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "specific humidity",
+   "alternatives": "relative humidity",
+   "reason": "more consistent and monotonic with height, so it is easier to establish physical laws",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "O",
+   "chosen": "radiosonde profile from 0 to 600 m",
+   "alternatives": "full profile, which exceeds 30,000 m",
+   "reason": "to explore the rules in the boundary layer",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "O",
+   "chosen": "total flux (mean plus covariance terms)",
+   "alternatives": "turbulent (disturbance) flux",
+   "reason": "disturbance flux is relatively small; climate research is more concerned with the total flux",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "intercept b fixed at 1",
+   "alternatives": "b fitted freely (implicit)",
+   "reason": "continuity of Psi_q under neutral conditions",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "C",
+   "chosen": "independent Psi_q from the linear phi_q",
+   "alternatives": "Psi_h used as Psi_q (original COARE)",
+   "reason": "physical significance and improved latent heat flux",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "S",
+   "chosen": "Psi_h retained for unstable conditions",
+   "alternatives": "a new phi_q and Psi_q for instability",
+   "reason": "forms remain unknown, and xi < 0 is rare over the ocean",
+   "effect_reported": "no",
+   "page": "8"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The result obtained with the new scheme was closer to the observation.",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We used the flux data of combine observation to verify the effectiveness of the new scheme in calculating the latent heat flux",
+   "page": "10"
+  }
+ ]
+}

@@ -1,0 +1,419 @@
+{
+ "key": "g22_W4224058691",
+ "doi": "10.1016/j.geog.2021.12.004",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF, Geodesy and Geodynamics 13 (2022) 376-385",
+  "Publisher XML text with jats_text locators (abstract and figure/table captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML contains the text (abstract §0 ¶1 and captions, cited as printed, e.g. 'Fig. 1'). The XML text carries no body sections, so body steps cite printed journal pages (376-385; PDF page 1 = p. 376). Figure-content steps cite the figure with its printed page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Increased seismic activities far from major faults may indicate a new local fault that has not been identified.",
+  "page": "p. 376"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF) with publisher XML text for abstract and captions",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of whether geodetic strain rates, after the deformation of the known major faults is removed, reveal unidentified local faults in East Java.",
+     "page": "p. 376",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Increased seismic activities far from major faults may indicate a new local fault that has not been identified."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Show the 2010-2019 BMKG seismicity catalogue (depth < 50 km) and the mapped faults as the motivating observation.",
+     "page": "Fig. 1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Seismic activities in the eastern part of Java from 2010 to 2019 recorded by the BMKG network"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Process daily GNSS solutions from 24 Ina-CORS stations for 2010-2019 in GAMIT/GLOBK with 15 IGS stations and standard tide and loading corrections, in ITRF2008.",
+     "page": "p. 377",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The data were processed by GAMIT/GLOBK 10.6 software"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Transform the solutions to the Sundaland block frame and fit a linear, seasonal, co-seismic step and post-seismic logarithmic model (Mw > 6 events from the USGS catalogue) by least squares, giving secular velocities with two-sigma uncertainties (Tables 1-2, Fig. 2).",
+     "page": "pp. 377-378",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we decompose the GNSS daily solution considering seasonal, co-seismic, and post-seismic offsets due to earthquake activity to get secular motion"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the logarithmic post-seismic decay time and find that the secular velocities do not change significantly, so post-seismic deformation is judged negligible.",
+     "page": "p. 378",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we tested with several decay time of logarithmic function but the estimated secular motion did not change significantly"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute forward the surface deformation of seven major fault segments with an Okada elastic half-space point source. Fault parameters come from the national earthquake study center report and rupture dimensions from Wells-Coppersmith scaling. Total deformation is divided by an assumed homogeneous 180-year return period to give the interseismic rate (Table 3).",
+     "page": "p. 380",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We calculated surface deformation using assumed possible sources of stress distribution from an earthquake in the fault plane"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Subtract the modelled major-fault deformation from the station velocities to obtain corrected horizontal velocities (Table 4). Report 0.9-12.4 mm/yr velocities with counterclockwise rotation relative to Sundaland, and mixed vertical trends that are attributed to groundwater-driven subsidence (cited).",
+     "page": "p. 380",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we removed interseismic surface deformation of major faults from all GNSS stations in order to estimate secular GNSS velocities"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Interpolate both velocity fields with the VISR algorithm (least squares, Gaussian distance weighting) into principal, maximum shear and dilatation strain rate maps before and after correction. East Java is found to be dominated by compression.",
+     "page": "p. 380",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The interpolation results show that the East Java region is dominated by compression values with different rotation directions."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the dominant compression with previous studies attributing it to the Sunda subduction zone, and attribute the Surabaya-Madura compression to the Kendeng Fault.",
+     "page": "p. 380",
+     "move": "new",
+     "trigger": "author",
+     "quote": "due to the Sunda subduction zone, which is consistent with previous studies"
+    },
+    {
+     "n": 10,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose explanations for three high maximum-shear zones (Fig. 4 (p. 382)): the unmodelled Pati Fault (blue box), 2010 and 2015 Bromo volcanic activity (yellow box), and an unmapped strike-slip fault at the 2015 M 4.2 Madiun earthquake site (green box).",
+     "page": "pp. 380-381",
+     "move": "new",
+     "trigger": "author",
+     "quote": "might be influenced due to the effect of the Pati Fault that has not been considered in this study"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the compressional region near CNGA with the 2015-2016 swarm of 33 M 2.5-3.7 events around Madiun, taken as support for the deformation model.",
+     "page": "p. 381",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Historical seismic activities support our deformation model"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Map the dilatation rate (Fig. 5 (p. 383)), with values down to about -0.141 microstrain/yr and larger compression near CSBY and CSRJ.",
+     "page": "pp. 381-382",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We observe a larger compressional dilatation rate near the CSBY station."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the CSBY compression against cited GPS strain, magnetotelluric and paleoseismic evidence for Kendeng and Pasuruan fault activity.",
+     "page": "p. 382",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "a Magnetotellurics method suggests near-surface fault trace of Kendeng thrust"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Set aside volcanic activity as the cause of the CSRJ compression, because the nearby Buyan-Bratan volcanoes last erupted long ago, leaving an unidentified dip-slip fault as the remaining possibility.",
+     "page": "p. 382",
+     "move": "new",
+     "trigger": "author",
+     "quote": "another possibility of the higher compressional strain rate than surrounding might indicate an unidentified fault with a dip-slip mechanism"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Compare strain maps with and without the major-fault correction and difference them (Fig. 6 (p. 384)). Most areas are unchanged, so the correction has little influence outside a few boxed regions.",
+     "page": "p. 382",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We subtracted the estimate of the strain maps (dilatation and maximum shear strain) before and after major fault decomposition"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Residual compression in the differential shear map conflicts with the Kendeng thrust mechanism. The authors attribute this to unrepresentative major-fault parameters, not to a failed local-fault interpretation.",
+     "page": "p. 382",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The compression contradicts the tectonic activity of Kendeng Fault with the thrust faulting mechanism"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Explain the blue-box change from compression to extension by unmodelled post-seismic deformation of the 2015 M 4.2 earthquake and by volcanic subsidence of the Kendeng Basin. Further geological and geophysical study is called for.",
+     "page": "p. 383",
+     "move": "new",
+     "trigger": "author",
+     "quote": "That might be related to the post-seismic of the M 4.2 earthquake occurred on June 25, 2015"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attribute the red-box and green-box mismatches to unrepresentative Kendeng and Wongsorejo fault characteristics, and to Raung and Ijen volcanic activity, rather than revising the claim.",
+     "page": "p. 383",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the characteristic of the fault we used still unrepresentative"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep two claims: dominant subduction-driven compression, and possible new local fault regions (NE Java to Madura Strait; near CMAG). The authors state that confirmation needs locking-depth, geological and geophysical study.",
+     "page": "p. 384",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The compression pattern in the differential of maximum shear strain rate closed to CMAG station indicated new local fault potential"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Possible unidentified local faults suggested by seismicity away from major faults",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; strain is inferred from GNSS velocities",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Map strain-rate anomalies after removing modelled major-fault deformation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Informal rivals per region: local fault, unmodelled known fault, volcanic activity, post-seismic deformation, wrong fault parameters",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Only qualitative: dilatation for dip-slip, shear for strike-slip; rival predictions not computed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: one interseismic decade of existing CORS data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No repetition by nature exploited",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Decay-time test and before/after correction comparison; mismatches absorbed by auxiliaries",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Possible local fault regions, explicitly unconfirmed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable; no review file (reviewers only acknowledged)",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "East Java strain is dominated by subduction-related compression, and residual compression outside the major faults in the differential maximum shear strain rate may indicate a previously unidentified local fault (near CMAG / NE Java to Madura Strait).",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The forward elastic half-space model of major-fault interseismic deformation, subtracted from the GNSS velocities, produces the differential strain maps on which the local-fault claim rests.",
+  "page": "p. 380"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "no",
+  "registration": "no",
+  "evidence": "The data are an existing Ina-CORS archive processed with standard choices, so no hypothesis directed the acquisition. Anomalies are interpreted after mapping; mismatches with fault mechanisms are absorbed by declaring the fault parameters unrepresentative (pp. 382-383). The claim is hedged as 'possible' and the authors say confirmation needs further study (p. 384). Nothing is reported as fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Least-squares estimation of trajectory-model parameters and Gaussian distance-weighted interpolation (VISR)",
+   "kind": "method",
+   "page": "pp. 378"
+  },
+  {
+   "field": "continuum mechanics (physics)",
+   "item": "Dislocation theory in an elastic half-space with Lamé constants (Okada formulation)",
+   "kind": "concept",
+   "page": "p. 380"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We introduce fault decomposition in this study to obtain actual strain anomaly in the strain maps.",
+   "page": "p. 380"
+  },
+  {
+   "quote": "in previous studies, the strain rate map did not use the latest GNSS observation and were still associated with major faults",
+   "page": "p. 376"
+  }
+ ],
+ "limits": "The XML text has only the abstract and captions, so body steps cite printed pages and quotes are from the PDF text. No review file was supplied; the acknowledgement thanks anonymous reviewers, but their requests cannot be coded. Strain-rate maps carry no uncertainties, and VISR smoothing parameters are not reported (inference from absence).\n\nThe paper contains internal inconsistencies:\n- The abstract gives principal strain below 1 microstrain/yr; the conclusion says larger than 1.\n- The green-box maximum shear is given as 0.94 microstrain/yr (p. 380) versus 0.094 in the abstract.\n- A homogeneous 180-yr return period is called the average (p. 380), although Table 3 lists 180-1827 yr.\n- Reference [27] is cited for a Kendeng thrust mechanism (p. 382) and for a strike-slip mechanism (p. 383).\n\nRivals (volcanic, post-seismic, unmodelled fault, new fault) are named per region, but no rival's prediction is computed. Mismatches are handled by protecting auxiliaries.\n\nSub-claims at other statuses:\n- Secular GNSS velocities: estimate_with_resolution (two-sigma, Tables 1 and 4).\n- Strain-rate fields: estimates without stated uncertainty.\n- Dominant subduction compression: best_explanation, consistent with prior studies.\n- Local faults: explicitly unconfirmed.\n\nComposition none_fits: this is estimation-first anomaly mapping with post hoc regional attribution. No repeated traces stand in for varied auxiliaries, and no crucial test is made.",
+ "disagreements": [
+  {
+   "target": "Fault characteristics of the national earthquake study center report [2] (Pusat Litbang PUPR 2017)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Residual compression in the differential maps after removing the modelled faults is read as showing that the published fault parameters are unrepresentative.",
+   "page": "p. 382",
+   "quote": "[...] that, we can get information that the characteristic of the major fault is unrepresentative [2]."
+  },
+  {
+   "target": "Koulali et al. 2017 [27], Kendeng Fault mechanism",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "A dip-slip compression pattern in the red box conflicts with the strike-slip mechanism proposed there; supported only by the differential dilatation map.",
+   "page": "p. 383",
+   "quote": "However, in that area, Kendeng Fault is proposed as a strike-slip faulting mechanism [ [...] ]."
+  },
+  {
+   "target": "Wongsorejo Fault parameters (thrust mechanism) used in the model",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The green-box change from compression to extension after correction is attributed to unrepresentative fault characteristics and volcanic activity.",
+   "page": "p. 383",
+   "quote": "the characteristic of the fault we used still unrepresentative"
+  },
+  {
+   "target": "Gunawan & Widiyantoro 2019 [5] GPS-derived strain rate map of Java",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The paper uses a newer 2010-2019 GNSS dataset and removes the major-fault signal before computing strain.",
+   "page": "p. 376",
+   "quote": "in previous studies, the strain rate map did not use the latest GNSS observation and were still associated with major faults"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "Forward point-source model from given fault geometry",
+   "alternatives": "Inverse method to estimate fault geometry [8]; finite rectangular sources [9]",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 376"
+  },
+  {
+   "node": "V",
+   "chosen": "Logarithmic post-seismic term (post-seismic deformation judged insignificant)",
+   "alternatives": "Several decay times of the logarithmic function",
+   "reason": "Estimated secular motion did not change significantly",
+   "effect_reported": "yes",
+   "page": "p. 378"
+  },
+  {
+   "node": "S",
+   "chosen": "Homogeneous 180-year earthquake return period for all faults",
+   "alternatives": "Fault-specific periods listed in Table 3 (1036-1827 yr for non-Kendeng faults)",
+   "reason": "To simplify the calculation; based on the average return period in [2]",
+   "effect_reported": "no",
+   "page": "p. 380"
+  },
+  {
+   "node": "I",
+   "chosen": "Horizontal components for strain estimation",
+   "alternatives": "Vertical component",
+   "reason": "Minimum station-fault distance not determined because of heterogeneous fault characteristic information",
+   "effect_reported": "no",
+   "page": "p. 380"
+  },
+  {
+   "node": "X",
+   "chosen": "Unidentified dip-slip fault near CSRJ",
+   "alternatives": "Volcanic activity",
+   "reason": "The Buyan-Bratan volcanoes erupted long ago in the Holocene; the youngest nearby eruption (AD 1257) lies outside the area",
+   "effect_reported": "no",
+   "page": "p. 382"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we tested with several decay time of logarithmic function but the estimated secular motion did not change significantly",
+   "page": "p. 378"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We subtracted the estimate of the strain maps (dilatation and maximum shear strain) before and after major fault decomposition",
+   "page": "p. 382"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Historical seismic activities support our deformation model",
+   "page": "p. 381"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "due to the Sunda subduction zone, which is consistent with previous studies",
+   "page": "p. 380"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "a Magnetotellurics method suggests near-surface fault trace of Kendeng thrust",
+   "page": "p. 382"
+  }
+ ]
+}

@@ -1,59 +1,85 @@
 # Entry state: catch-all check
 
-Script `tools/roadmap/g21_entry_state.py`; data `private/data/roadmap/derived/entry/entry_state.json`. Valid codings read at run time: calc1 233, r2 0 (tools/check_coding.py validate()). Invalid files skipped: calc1 2, r2 0, gold-r2 1. One model coder (Claude, codebook 1.5.0). Definitions of every measure are in the script docstring.
+Script `tools/roadmap/g21_entry_state.py`; data `private/data/roadmap/derived/entry/entry_state.json`. Valid codings read at run time: calc1 374, r2 198 (tools/check_coding.py validate()). Invalid files skipped: calc1 5, r2 4, gold-r2 1. One model coder (Claude, codebook 1.5.0). Definitions of every measure are in the script docstring.
 
 **Question.** Does `problem` record what started the work, or the gap statement every introduction carries (Swales 1990, "create a research space")? The codings alone cannot settle it; they can show whether the label behaves like a default. The blind audit sample at the end is for the direct check.
 
 ## Headline
 
-- `problem` is 78% of 233 valid codings; Q is 81% of entry nodes.
+- `problem` is 76% of 572 valid codings; Q is 78% of entry nodes.
 - Test-retest on 50 gold papers: agreement 0.92, chance agreement 0.655 (one category holds most papers), so alpha 0.768 [0.504, 0.945]. The two runs quote an identical evidence string in 52% of papers and overlapping evidence (one quote contains the other, or token Jaccard at least 0.5) in 74%; same locator 88%. The label repeats somewhat more often than the supporting sentence.
-- For 50 of 181 `problem` papers (28%) the coded walk does not start at Q: O 23, H 14, N 4, S 4, I 2, E 2, C 1. In 49 of them the first step is a cited or inherited result (move cited or inherited): the walk opens on prior work and the question follows. That prior result is a candidate for the real start (challenged_result or anomaly) and is one thing the audit should check.
-- After entry, Q comes back in 23% of `problem` papers; no paper reframes its question after a failure (0 of 233): the 101 returns after failure land on P, R, V, I and other nodes, never on Q.
-- `problem` evidence sits in the abstract or introduction in 94% of the 87 papers with a section, and on the first article page in 91% of the 97 with a page number. 49% of its quotes carry a gap marker and 40% carry a gap marker with no origin marker; for `capability` the figures are 4% and 4%.
+- For 114 of 435 `problem` papers (26%) the coded walk does not start at Q: O 50, H 29, S 9, N 8, E 7, I 6, C 3, F 2. In 108 of them the first step is a cited or inherited result (move cited or inherited): the walk opens on prior work and the question follows. That prior result is a candidate for the real start (challenged_result or anomaly) and is one thing the audit should check.
+- After entry, Q comes back in 20% of `problem` papers; no paper reframes its question after a failure (0 of 572): the 235 returns after failure land on P, R, V, I and other nodes, never on Q.
+- `problem` evidence sits in the abstract or introduction in 95% of the 184 papers with a section, and on the first article page in 88% of the 255 with a page number. 50% of its quotes carry a gap marker and 39% carry a gap marker with no origin marker; for `capability` the figures are 6% and 4%.
 - What the codings cannot show: whether a data set, event, instrument or mandate started a `problem` paper. That is the job of the blind audit sample (section 7).
 
 ## 1. Distribution
 
-**calc1** (n = 233)
+**calc1** (n = 374)
 
 | Entry state | Papers | Share |
 |:--|--:|--:|
-| problem | 181 | 78% |
-| capability | 25 | 11% |
-| challenged_result | 6 | 3% |
-| hypothesis | 6 | 3% |
-| data_without_theory | 5 | 2% |
-| anomaly | 5 | 2% |
-| external_goal | 5 | 2% |
+| problem | 296 | 79% |
+| capability | 33 | 9% |
+| anomaly | 11 | 3% |
+| hypothesis | 10 | 3% |
+| data_without_theory | 10 | 3% |
+| challenged_result | 8 | 2% |
+| external_goal | 6 | 2% |
 
 | Entry node | Papers | Share |
 |:--|--:|--:|
-| Q | 189 | 81% |
-| N | 27 | 12% |
-| O | 9 | 4% |
-| H | 7 | 3% |
-| F | 1 | 0% |
+| Q | 305 | 82% |
+| N | 38 | 10% |
+| O | 17 | 4% |
+| H | 12 | 3% |
+| F | 2 | 0% |
 
-**pooled** (n = 233)
+**r2** (n = 198)
 
 | Entry state | Papers | Share |
 |:--|--:|--:|
-| problem | 181 | 78% |
-| capability | 25 | 11% |
-| challenged_result | 6 | 3% |
-| hypothesis | 6 | 3% |
-| data_without_theory | 5 | 2% |
-| anomaly | 5 | 2% |
-| external_goal | 5 | 2% |
+| problem | 139 | 70% |
+| capability | 21 | 11% |
+| anomaly | 15 | 8% |
+| hypothesis | 12 | 6% |
+| challenged_result | 7 | 4% |
+| data_without_theory | 3 | 2% |
+| external_goal | 1 | 0% |
 
 | Entry node | Papers | Share |
 |:--|--:|--:|
-| Q | 189 | 81% |
-| N | 27 | 12% |
-| O | 9 | 4% |
-| H | 7 | 3% |
+| Q | 140 | 71% |
+| N | 24 | 12% |
+| O | 16 | 8% |
+| H | 15 | 8% |
+| S | 1 | 0% |
+| E | 1 | 0% |
 | F | 1 | 0% |
+
+**pooled** (n = 572)
+
+| Entry state | Papers | Share |
+|:--|--:|--:|
+| problem | 435 | 76% |
+| capability | 54 | 9% |
+| anomaly | 26 | 4% |
+| hypothesis | 22 | 4% |
+| challenged_result | 15 | 3% |
+| data_without_theory | 13 | 2% |
+| external_goal | 7 | 1% |
+
+| Entry node | Papers | Share |
+|:--|--:|--:|
+| Q | 445 | 78% |
+| N | 62 | 11% |
+| O | 33 | 6% |
+| H | 27 | 5% |
+| F | 3 | 0% |
+| S | 1 | 0% |
+| E | 1 | 0% |
+
+Round 1 (calc1) against round 2 (r2), entry state (states under 10 papers merged): bias-corrected Cramer's V 0.124 [0.026, 0.243], permutation p 0.021. Problem against the rest: V 0.091, p 0.0168; problem share calc1 79%, r2 70%. The rounds were drawn differently (round 2 open access only, at most 4 papers per journal), so a difference mixes sampling and coding.
 
 ## 2. Test-retest (calc1 against gold-r2, same model, independent runs)
 
@@ -107,19 +133,19 @@ State and node both the same: 88%. Same evidence quote (identical after case, pu
 
 ## 3. Internal consistency
 
-Entry node equals the node of the first step of the walk in 153 of 233 papers (66%); the entry node appears somewhere in the walk in 100%.
+Entry node equals the node of the first step of the walk in 372 of 572 papers (65%); the entry node appears somewhere in the walk in 100%.
 
 | Entry state | Expected node | At expected node | Entry nodes | First-step nodes |
 |:--|:--|--:|:--|:--|
-| problem | Q | 179/181 (99%) | N 2, Q 179 | Q 131, O 23, H 14, N 4, S 4, I 2, E 2, C 1 |
-| capability | N | 24/25 (96%) | N 24, O 1 | N 10, Q 10, O 4, H 1 |
-| anomaly | E,O | 4/5 (80%) | O 4, Q 1 | O 4, H 1 |
-| challenged_result | C,H,Q,V | 6/6 (100%) | Q 5, H 1 | Q 4, H 2 |
-| hypothesis | H | 6/6 (100%) | H 6 | Q 3, O 2, H 1 |
-| data_without_theory | E,O | 4/5 (80%) | O 4, F 1 | Q 2, F 1, S 1, O 1 |
-| external_goal | D,N,Q | 5/5 (100%) | N 1, Q 4 | Q 3, H 1, N 1 |
+| problem | Q | 426/435 (98%) | N 7, E 1, O 1, Q 426 | Q 321, O 50, H 29, S 9, N 8, E 7, I 6, C 3, F 2 |
+| capability | N | 52/54 (96%) | N 52, O 1, S 1 | N 23, Q 20, O 8, S 2, H 1 |
+| anomaly | E,O | 20/26 (77%) | O 20, Q 5, F 1 | O 13, Q 5, S 3, H 1, I 1, E 1, N 1, F 1 |
+| challenged_result | C,H,Q,V | 15/15 (100%) | Q 10, H 5 | Q 8, H 6, K 1 |
+| hypothesis | H | 22/22 (100%) | H 22 | Q 11, O 5, H 4, K 1, I 1 |
+| data_without_theory | E,O | 11/13 (85%) | O 11, F 2 | O 5, H 3, Q 3, F 1, S 1 |
+| external_goal | D,N,Q | 7/7 (100%) | N 3, Q 4 | Q 3, N 2, H 2 |
 
-First step (node and move) when it is not the entry node: problem: O cited 20, H cited 12, S cited 4, N inherited 3, O inherited 3, I cited 2, E cited 2, H inherited 1, C cited 1, Q new 1, H new 1; capability: Q new 10, O cited 3, H cited 1, O inherited 1; anomaly: H cited 1, O cited 1; challenged_result: Q cited 1, H inherited 1, H cited 1; hypothesis: Q new 3, O cited 2; data_without_theory: Q new 2, F new 1, S cited 1; external_goal: H cited 1.
+First step (node and move) when it is not the entry node: problem: O cited 41, H cited 27, S cited 8, O inherited 7, Q new 6, E cited 6, I cited 4, N inherited 3, C cited 3, N cited 2, I inherited 2, O new 2, F new 2, S inherited 1, H inherited 1, H new 1, E inherited 1, N new 1; capability: Q new 20, O cited 7, S cited 2, H cited 1, O inherited 1; anomaly: Q new 4, O cited 3, S cited 3, H cited 1, O inherited 1, I new 1, E cited 1, N inherited 1; challenged_result: H cited 2, Q new 2, Q cited 1, H inherited 1, K cited 1, H new 1; hypothesis: Q new 11, O cited 3, O inherited 1, K cited 1, O new 1, I cited 1; data_without_theory: H cited 3, Q new 3, F new 1, S cited 1; external_goal: H cited 1, H new 1.
 
 ## 4. Revisits of the entry node
 
@@ -127,78 +153,91 @@ Revisited = the entry node comes back after at least one other node (run-collaps
 
 | Entry state | n | Entry node in walk | Revisited | Any later step there (raw) | Q twice or more (collapsed) | Any return after failure | Reframe after failure |
 |:--|--:|--:|--:|--:|--:|--:|--:|
-| problem | 181 | 100% | 23% | 24% | 22% | 29% | 0% |
-| capability | 25 | 100% | 84% | 92% | 8% | 44% | 0% |
-| anomaly | 5 | 100% | 80% | 80% | 40% | 0% | 0% |
-| challenged_result | 6 | 100% | 17% | 17% | 17% | 33% | 0% |
-| hypothesis | 6 | 100% | 67% | 67% | 0% | 50% | 0% |
-| data_without_theory | 5 | 100% | 80% | 80% | 0% | 0% | 0% |
-| external_goal | 5 | 100% | 20% | 40% | 0% | 60% | 0% |
-| all | 233 | 100% | 33% | 35% | 19% | 31% | 0% |
+| problem | 435 | 100% | 20% | 22% | 20% | 30% | 0% |
+| capability | 54 | 98% | 70% | 78% | 11% | 37% | 0% |
+| anomaly | 26 | 100% | 69% | 69% | 15% | 15% | 0% |
+| challenged_result | 15 | 100% | 40% | 40% | 40% | 27% | 0% |
+| hypothesis | 22 | 100% | 64% | 68% | 14% | 32% | 0% |
+| data_without_theory | 13 | 100% | 85% | 85% | 0% | 15% | 0% |
+| external_goal | 7 | 100% | 43% | 57% | 0% | 57% | 0% |
+| all | 572 | 100% | 31% | 33% | 18% | 30% | 0% |
 
-By entry node rather than state: of the 189 papers that enter at Q, 43 (23%) have a later Q step and 40 (21%) return to Q after another node. Moves of those later Q steps: new 44, cited 2, repeat 1.
+The same per round (the table above is both rounds pooled):
 
-The 101 `return_after_failure` steps sit at P 36, R 34, V 9, I 8, N 5, H 2, O 2, S 2, D 1, C 1, F 1; the step after them is at C 27, V 15, K 12, I 12, H 7, X 7, S 5, O 4, N 3, R 3, D 2, P 2, F 1, E 1.
+| Round | Entry state | n | Entry node first step | Revisited | Any later step there (raw) | Q twice or more (collapsed) | Any return after failure | Reframe after failure |
+|:--|:--|--:|--:|--:|--:|--:|--:|--:|
+| calc1 | all | 374 | 70% | 32% | 34% | 20% | 30% | 0% |
+| calc1 | problem | 296 |  | 23% | 24% | 22% | 29% | 0% |
+| calc1 | capability | 33 |  | 76% | 85% | 6% | 46% | 0% |
+| r2 | all | 198 | 56% | 30% | 32% | 16% | 30% | 0% |
+| r2 | problem | 139 |  | 15% | 16% | 14% | 32% | 0% |
+| r2 | capability | 21 |  | 62% | 67% | 19% | 24% | 0% |
+
+By entry node rather than state: of the 445 papers that enter at Q, 91 (20%) have a later Q step and 87 (20%) return to Q after another node. Moves of those later Q steps: new 94, cited 3, repeat 2.
+
+The 235 `return_after_failure` steps sit at P 86, R 78, I 22, N 16, V 13, H 6, C 3, D 3, S 3, O 2, F 2, X 1; the step after them is at C 56, V 41, I 35, K 25, O 14, H 13, S 11, X 10, R 8, P 5, N 5, D 5, F 3, E 3, end 1.
 
 ## 5. Where the entry evidence sits and how it is worded
 
-Quote located in the XML text: {'None': 108, 'True': 119, 'False': 6} (True = found, False = XML present but quote not found, None = no XML text).
+Quote located in the XML text: {'None': 256, 'True': 256, 'False': 60} (True = found, False = XML present but quote not found, None = no XML text).
 
 | Entry state | n | With section | Abstract | Introduction | Section 1, heading unknown | Later section | With page | Median page in article | Page 1 | Pages 1-2 |
 |:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| problem | 181 | 87 | 30% | 64% | 0% | 6% | 97 | 1.0 | 91% | 100% |
-| capability | 25 | 14 | 36% | 57% | 0% | 7% | 12 | 1.0 | 67% | 92% |
-| anomaly | 5 | 5 | 40% | 60% | 0% | 0% | 0 | None | n/a | n/a |
-| challenged_result | 6 | 3 | 0% | 67% | 0% | 33% | 3 | 1.0 | 100% | 100% |
-| hypothesis | 6 | 2 | 0% | 50% | 0% | 50% | 4 | 1.5 | 50% | 75% |
-| data_without_theory | 5 | 4 | 0% | 75% | 0% | 25% | 1 | 1.0 | 100% | 100% |
-| external_goal | 5 | 5 | 20% | 80% | 0% | 0% | 0 | None | n/a | n/a |
-| all | 233 | 120 | 28% | 64% | 0% | 8% | 117 | 1.0 | 87% | 98% |
+| problem | 435 | 184 | 36% | 58% | 0% | 5% | 255 | 1.0 | 88% | 98% |
+| capability | 54 | 27 | 48% | 48% | 0% | 4% | 28 | 1.0 | 79% | 93% |
+| anomaly | 26 | 16 | 25% | 50% | 0% | 25% | 11 | 2.0 | 46% | 82% |
+| challenged_result | 15 | 4 | 0% | 75% | 0% | 25% | 11 | 1.0 | 82% | 100% |
+| hypothesis | 22 | 13 | 23% | 54% | 0% | 23% | 9 | 2.0 | 44% | 78% |
+| data_without_theory | 13 | 9 | 22% | 67% | 0% | 11% | 4 | 1.0 | 75% | 100% |
+| external_goal | 7 | 5 | 20% | 80% | 0% | 0% | 2 | 1.0 | 100% | 100% |
+| all | 572 | 258 | 35% | 57% | 0% | 8% | 320 | 1.0 | 84% | 96% |
 
 Marker families (regular expressions in the script, `MARKERS`): gap = names a gap or difficulty; aim = states the paper's own aim; origin = points to a concrete starting object (event, dataset, instrument, mission, prior result).
 
 | Entry state | n | Any gap marker | Any aim marker | Any origin marker | Gap without origin | Origin without gap |
 |:--|--:|--:|--:|--:|--:|--:|
-| problem | 181 | 49% | 9% | 18% | 40% | 9% |
-| capability | 25 | 4% | 60% | 52% | 4% | 52% |
-| anomaly | 5 | 40% | 0% | 40% | 20% | 20% |
-| challenged_result | 6 | 33% | 50% | 67% | 33% | 67% |
-| hypothesis | 6 | 0% | 33% | 0% | 0% | 0% |
-| data_without_theory | 5 | 0% | 20% | 80% | 0% | 80% |
-| external_goal | 5 | 40% | 20% | 40% | 0% | 0% |
-| all | 233 | 41% | 17% | 25% | 33% | 16% |
+| problem | 435 | 50% | 6% | 20% | 39% | 9% |
+| capability | 54 | 6% | 56% | 52% | 4% | 50% |
+| anomaly | 26 | 19% | 4% | 35% | 15% | 31% |
+| challenged_result | 15 | 20% | 20% | 40% | 20% | 40% |
+| hypothesis | 22 | 4% | 32% | 14% | 0% | 9% |
+| data_without_theory | 13 | 0% | 8% | 54% | 0% | 54% |
+| external_goal | 7 | 43% | 14% | 29% | 14% | 0% |
+| all | 572 | 40% | 12% | 25% | 31% | 16% |
 
-Gap markers in `problem` evidence: however 36, unknown or unclear 19, need 13, remains unclear or unknown 12, challenge 8, lack 8, poorly understood or constrained 7, debated or controversial 5, not well understood or constrained 4, few or limited studies 3, little or less is known 1, gap 1, open question 1.
+Gap markers in `problem` evidence: however 73, unknown or unclear 51, remains unclear or unknown 35, need 25, challenge 20, lack 19, debated or controversial 19, poorly understood or constrained 15, few or limited studies 12, little or less is known 9, not well understood or constrained 6, gap 4, open question 3.
 
 ## 6. By OpenAlex subfield and journal family
 
-**subfield** (groups under 10 papers pooled). Entry state (states under 10 pooled) by subfield: Cramer's V 0.128 (bias-corrected 0.0), permutation p 0.919. Problem vs other: V 0.119, p 0.8616.
+**subfield** (groups under 10 papers pooled). Entry state (states under 10 pooled) by subfield: Cramer's V 0.155 (bias-corrected 0.101), permutation p 0.0068. Problem vs other: V 0.178, p 0.0178.
 
 | subfield | n | problem | states |
 |:--|--:|--:|:--|
-| Atmospheric Science | 74 | 80% | problem 59, capability 8, external_goal 3, challenged_result 2, anomaly 2 |
-| Geophysics | 64 | 75% | problem 48, capability 7, hypothesis 3, challenged_result 2, anomaly 2, data_without_theory 1, external_goal 1 |
-| Earth-Surface Processes | 26 | 85% | problem 22, capability 2, anomaly 1, hypothesis 1 |
-| Artificial Intelligence | 17 | 76% | problem 13, capability 2, challenged_result 1, data_without_theory 1 |
-| Geochemistry and Petrology | 15 | 67% | problem 10, data_without_theory 2, hypothesis 2, capability 1 |
-| Water Science and Technology | 14 | 86% | problem 12, capability 1, challenged_result 1 |
-| pooled small groups | 13 | 69% | problem 9, capability 3, external_goal 1 |
-| Oceanography | 10 | 80% | problem 8, data_without_theory 1, capability 1 |
+| Geophysics | 206 | 75% | problem 154, capability 20, anomaly 13, hypothesis 9, data_without_theory 5, challenged_result 4, external_goal 1 |
+| Atmospheric Science | 171 | 77% | problem 131, capability 15, anomaly 8, challenged_result 7, hypothesis 5, external_goal 4, data_without_theory 1 |
+| Oceanography | 42 | 67% | problem 28, capability 6, data_without_theory 3, hypothesis 2, anomaly 2, external_goal 1 |
+| Earth-Surface Processes | 40 | 82% | problem 33, anomaly 3, capability 2, hypothesis 2 |
+| Geochemistry and Petrology | 37 | 84% | problem 31, data_without_theory 2, hypothesis 2, capability 1, challenged_result 1 |
+| Water Science and Technology | 26 | 77% | problem 20, capability 3, challenged_result 2, hypothesis 1 |
+| Artificial Intelligence | 25 | 80% | problem 20, capability 2, data_without_theory 2, challenged_result 1 |
+| Geology | 19 | 90% | problem 17, hypothesis 1, external_goal 1 |
+| pooled small groups | 6 | 17% | capability 5, problem 1 |
 
-**family** (groups under 10 papers pooled). Entry state (states under 10 pooled) by family: Cramer's V 0.182 (bias-corrected 0.108), permutation p 0.1136. Problem vs other: V 0.227, p 0.0308.
+**family** (groups under 10 papers pooled). Entry state (states under 10 pooled) by family: Cramer's V 0.132 (bias-corrected 0.083), permutation p 0.0122. Problem vs other: V 0.148, p 0.0522.
 
 | family | n | problem | states |
 |:--|--:|--:|:--|
-| Wiley non-AGU | 76 | 88% | problem 67, capability 4, hypothesis 2, challenged_result 2, data_without_theory 1 |
-| EGU/Copernicus | 64 | 70% | problem 45, capability 8, external_goal 4, anomaly 3, challenged_result 2, data_without_theory 1, hypothesis 1 |
-| Springer Nature (non-portfolio) | 44 | 68% | problem 30, capability 7, data_without_theory 3, challenged_result 1, external_goal 1, anomaly 1, hypothesis 1 |
-| pooled small groups | 19 | 68% | problem 13, capability 3, hypothesis 2, challenged_result 1 |
-| AGU | 16 | 81% | problem 13, capability 3 |
-| Nature portfolio | 14 | 93% | problem 13, anomaly 1 |
+| AGU | 124 | 81% | problem 100, capability 12, anomaly 5, hypothesis 3, challenged_result 2, external_goal 1, data_without_theory 1 |
+| EGU/Copernicus | 102 | 70% | problem 71, capability 16, external_goal 4, hypothesis 3, challenged_result 3, anomaly 3, data_without_theory 2 |
+| Elsevier | 99 | 78% | problem 77, anomaly 6, hypothesis 5, capability 4, data_without_theory 4, challenged_result 2, external_goal 1 |
+| Wiley non-AGU | 99 | 85% | problem 84, capability 7, challenged_result 5, hypothesis 2, data_without_theory 1 |
+| Springer Nature (non-portfolio) | 94 | 67% | problem 63, capability 13, data_without_theory 5, anomaly 5, hypothesis 5, challenged_result 2, external_goal 1 |
+| Nature portfolio | 36 | 75% | problem 27, anomaly 6, hypothesis 3 |
+| pooled small groups | 18 | 72% | problem 13, capability 2, challenged_result 1, hypothesis 1, anomaly 1 |
 
 ## 7. Blind audit sample
 
-60 codings, `derived/entry/audit_sample.json` (with coded state) and `derived/entry/audit_packets/<key>.json` (key, DOI, title, text paths only). By state: problem 36, external_goal 4, anomaly 4, hypothesis 4, data_without_theory 4, challenged_result 4, capability 4. By round: calc1 60. With PDF 60, with XML text 32. Sampled with numpy default_rng(2026): problem 36, the other states spread round robin (all of a state when it has fewer), audit order shuffled.
+60 codings, `derived/entry/audit_sample.json` (with coded state) and `derived/entry/audit_packets/<key>.json` (key, DOI, title, text paths only). By state: problem 36, external_goal 4, anomaly 4, hypothesis 4, data_without_theory 4, challenged_result 4, capability 4. By round: calc1 60. With PDF 60, with XML text 32. Sampled with numpy default_rng(2026): problem 36, the other states spread round robin (all of a state when it has fewer), audit order shuffled. Drawn from the valid codings at the time (problem 181, capability 25, anomaly 5, challenged_result 6, hypothesis 6, data_without_theory 5, external_goal 5); kept as drawn: the blind re-codings exist, so later codings do not redraw it, and the population weights of section 8 use these counts.
 
 ## 8. Blind audit (two blind re-codings of the entry, 60 sampled papers)
 
