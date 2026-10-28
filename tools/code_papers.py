@@ -766,6 +766,9 @@ def cmd_collect(client, args, st: dict) -> None:
                     st['failed'][f'{args.tag}:{k}'] = why
                 print(f'{k}: {why}')
             b['collected'] = True
+            for x in st['batches']:   # save_state replaces st['batches'] with merged copies; mark this batch there too
+                if x['id'] == b['id']:
+                    x['collected'] = True
             save_state(st)
 
 
