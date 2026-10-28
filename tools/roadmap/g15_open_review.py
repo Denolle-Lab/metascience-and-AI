@@ -11,11 +11,19 @@ Outputs, per paper, in private/data/roadmap/review/<key>/
   *.pdf               preprint, AR, ATC, manuscript versions, comment supplements
 and the index private/data/roadmap/derived/review/open_review_index.json
 
+Other paper sets (October 28, 2026): --manifest <jsonl> reads that manifest instead of derived/calc1/manifest.jsonl and
+takes every 10.5194 paper of it (the calc1-coding requirement applies to the default manifest only, since the other
+sets are fetched before coding); --index <json> writes the index there instead of open_review_index.json, so the
+round-1 index is never overwritten. Papers already in the review folder are fetched again only for the page (the
+files on disk are kept).
+
 Run:  python tools/roadmap/g15_open_review.py [--limit N]
+      python tools/roadmap/g15_open_review.py --manifest private/data/roadmap/derived/cop22/draw_manifest.jsonl \
+             --index private/data/roadmap/derived/review/open_review_index_cop22.json
 """
 import html, json, re, subprocess, sys, time, urllib.request
 from pathlib import Path
-from common import ROOT, PRIVATE, DATA, DERIVED, write_json, log
+from common import ROOT, PRIVATE, DATA, DERIVED, write_json, log, rel
 
 UA = {'User-Agent': 'Mozilla/5.0 (metascience seminar, University of Washington)'}
 OUT = DATA / 'review'
@@ -68,9 +76,12 @@ def pdf_lines(f, tag):
 
 
 def main():
-    limit = int(sys.argv[sys.argv.index('--limit') + 1]) if '--limit' in sys.argv else None
-    man = [json.loads(l) for l in (DERIVED / 'calc1' / 'manifest.jsonl').read_text().splitlines()]
-    coded = {p.stem for p in CODED.glob('*.json')}
+    arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
+    limit = int(arg('--limit')) if arg('--limit') else None
+    mpath = Path(arg('--manifest')).resolve() if arg('--manifest') else DERIVED / 'calc1' / 'manifest.jsonl'
+    ipath = Path(arg('--index')).resolve() if arg('--index') else DERIVED / 'review' / 'open_review_index.json'
+    man = [json.loads(l) for l in mpath.read_text().splitlines() if l.strip()]
+    coded = {p.stem for p in CODED.glob('*.json')} if not arg('--manifest') else {m['key'] for m in man}
     todo = [m for m in man if m['doi'].lower().startswith('10.5194/') and m['key'] in coded][:limit]
     index = []
     for m in todo:
@@ -130,10 +141,10 @@ def main():
                     'manuscript_versions': sum('manuscript-version' in g for g in got)})
         index.append(rec)
         print(key, kinds, len(got), 'files')
-    write_json(DERIVED / 'review' / 'open_review_index.json', index, ['derived/calc1/manifest.jsonl', 'Crossref relation has-preprint/has-review', 'Copernicus discussion pages'],
-               {'pause_s': PAUSE})
+    write_json(ipath, index, [rel(mpath), 'Crossref relation has-preprint/has-review', 'Copernicus discussion pages'],
+               {'pause_s': PAUSE, 'index': rel(ipath)})
     ok = [r for r in index if 'comments' in r]
-    log('g15_open_review.py', 'open review records of coded Copernicus papers', len(ok),
+    log('g15_open_review.py', f'open review records of Copernicus papers ({rel(mpath)})', len(ok),
         f'{sum(r["comments"].get("RC", 0) for r in ok)} referee comments; {sum(r["has_track_changes"] for r in ok)} with track changes')
 
 

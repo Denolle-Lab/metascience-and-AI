@@ -1,0 +1,1010 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agents/paperform/paperform.schema.json",
+  "title": "Paper-form coding (codebook agents/paperform/CODEBOOK.md v0.1.0, draft)",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "loc": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Locator as in agents/coder/CODEBOOK.md section 1 ('§3.2 ¶4', '§0 ¶1', 'Figure 3', 'p. 7'), or a front-matter locator ('FM:key_points 2', 'FM:pls', 'FM:highlights 1', 'FM:short_summary', 'FM:graphical') or a back-matter locator ('§D1 ¶1')"
+    },
+    "quote": {
+      "type": "string",
+      "description": "Copied exactly from the source, at most 25 words (checked by the checker, not the schema)"
+    },
+    "located": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "loc",
+        "quote"
+      ],
+      "properties": {
+        "loc": {
+          "$ref": "#/$defs/loc"
+        },
+        "quote": {
+          "$ref": "#/$defs/quote"
+        }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "present",
+        "first",
+        "in_abstract",
+        "abstract_loc",
+        "restated_at"
+      ],
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "first": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/located"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "in_abstract": {
+          "type": "boolean"
+        },
+        "abstract_loc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "restated_at": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/loc"
+          }
+        }
+      },
+      "description": "Codebook section 4. 'first' is the first statement in the body (null when present is false or the only statement is in the abstract)"
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "kind"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "finding",
+            "method",
+            "data",
+            "implication",
+            "context"
+          ]
+        }
+      }
+    },
+    "move": {
+      "enum": [
+        "centrality",
+        "background",
+        "setting",
+        "theory",
+        "gap",
+        "extension",
+        "aim",
+        "approach",
+        "findings_preview",
+        "contribution",
+        "outline",
+        "data",
+        "procedure",
+        "model",
+        "method_check",
+        "justification",
+        "alternative",
+        "result_figure",
+        "result_report",
+        "interpretation",
+        "comparison",
+        "robustness",
+        "summary",
+        "limitation",
+        "implication",
+        "future_work",
+        "other"
+      ]
+    },
+    "role": {
+      "enum": [
+        "abstract",
+        "introduction",
+        "background",
+        "setting",
+        "data",
+        "methods",
+        "data_methods",
+        "results",
+        "results_discussion",
+        "discussion",
+        "conclusions",
+        "appendix",
+        "availability",
+        "declarations",
+        "references",
+        "other"
+      ]
+    },
+    "computed": {
+      "type": "object",
+      "description": "Filled by script (codebook section 10), never by the coder. Open structure in v0.1.0; fixed when the script is written.",
+      "properties": {
+        "script": {
+          "type": "string"
+        },
+        "lexicon_version": {
+          "type": "string"
+        },
+        "words_by_role": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "first_person_per_1000_by_role": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "hedges_per_1000_by_role": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "boosters_per_1000_by_role": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "imrad_pattern": {
+          "type": "string"
+        },
+        "generic_heading_share": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tcs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tcs_components": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "T1",
+            "T2",
+            "T3",
+            "T4",
+            "T5",
+            "T6"
+          ],
+          "properties": {
+            "T1": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "T2": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "T3": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "T4": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "T5": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "T6": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "tcs_venue": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "vai": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Corpus key, e.g. g22_W3123317896"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "codebook_version": {
+      "const": "0.1.0"
+    },
+    "coder": {
+      "type": "string",
+      "description": "Model id or person; for an agent, the run id too"
+    },
+    "version": {
+      "enum": [
+        "submitted",
+        "revised",
+        "published"
+      ]
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "route",
+        "front_matter_supplied",
+        "availability_supplied"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "File or document coded, e.g. 'review/<key>/<stem>.pdf' or 'pdfs/gold/<key>.xml.txt'"
+        },
+        "route": {
+          "enum": [
+            "xml",
+            "pdf",
+            "xml+pdf"
+          ]
+        },
+        "front_matter_supplied": {
+          "type": "boolean"
+        },
+        "availability_supplied": {
+          "type": "boolean"
+        }
+      }
+    },
+    "pages_convention": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "title",
+          "role",
+          "role_basis",
+          "locator",
+          "subsections"
+        ],
+        "properties": {
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/$defs/role"
+          },
+          "role_basis": {
+            "enum": [
+              "title",
+              "content"
+            ]
+          },
+          "locator": {
+            "$ref": "#/$defs/loc"
+          },
+          "subsections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "moves": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "loc",
+          "primary",
+          "secondary"
+        ],
+        "properties": {
+          "loc": {
+            "$ref": "#/$defs/loc"
+          },
+          "primary": {
+            "$ref": "#/$defs/move"
+          },
+          "secondary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/move"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "anchors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gap",
+        "aim",
+        "aim_form",
+        "contribution",
+        "gap_aim_link",
+        "aim_result_link"
+      ],
+      "properties": {
+        "gap": {
+          "$ref": "#/$defs/anchor"
+        },
+        "aim": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/anchor"
+            }
+          ],
+          "description": "plus form, given in aim_form"
+        },
+        "aim_form": {
+          "enum": [
+            "question",
+            "hypothesis",
+            "objective",
+            "demonstration",
+            "description",
+            null
+          ]
+        },
+        "contribution": {
+          "$ref": "#/$defs/anchor"
+        },
+        "gap_aim_link": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "note"
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "direct",
+                "partial",
+                "none",
+                "not_applicable"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "aim_result_link": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "note"
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "answers",
+                "answers_other",
+                "unclear",
+                "not_applicable"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "apparatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key_points",
+        "plain_language_summary",
+        "highlights",
+        "short_summary",
+        "graphical_abstract",
+        "data_availability",
+        "code_availability",
+        "author_contributions"
+      ],
+      "properties": {
+        "key_points": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "items"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/item"
+                  }
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plain_language_summary": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "moves",
+                "adds_beyond_abstract"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "moves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/move"
+                  }
+                },
+                "adds_beyond_abstract": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "highlights": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "items"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/item"
+                  }
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "short_summary": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "kind"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "kind": {
+                  "enum": [
+                    "copernicus_short_summary",
+                    "editorial_summary",
+                    "other",
+                    null
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "graphical_abstract": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "type",
+                "reuses_figure"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "enum": [
+                    "schematic",
+                    "data_figure",
+                    "map",
+                    "photograph",
+                    "composite",
+                    null
+                  ]
+                },
+                "reuses_figure": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_availability": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "location",
+                "content",
+                "quote",
+                "loc"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "location": {
+                  "enum": [
+                    "own_section",
+                    "back_matter",
+                    "acknowledgements",
+                    "methods",
+                    "caption_or_table",
+                    null
+                  ]
+                },
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "repository_identifier",
+                      "repository_url",
+                      "in_paper_or_supplement",
+                      "on_request",
+                      "third_party",
+                      "restricted",
+                      "not_applicable"
+                    ]
+                  }
+                },
+                "quote": {
+                  "$ref": "#/$defs/quote"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code_availability": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "location",
+                "content",
+                "quote",
+                "loc",
+                "custom_code_mentioned"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "location": {
+                  "enum": [
+                    "own_section",
+                    "back_matter",
+                    "acknowledgements",
+                    "methods",
+                    "caption_or_table",
+                    null
+                  ]
+                },
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "repository_identifier",
+                      "repository_url",
+                      "in_paper_or_supplement",
+                      "on_request",
+                      "third_party",
+                      "restricted",
+                      "not_applicable"
+                    ]
+                  }
+                },
+                "quote": {
+                  "$ref": "#/$defs/quote"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "custom_code_mentioned": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "author_contributions": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "present",
+                "loc",
+                "credit_roles"
+              ],
+              "properties": {
+                "present": {
+                  "type": "boolean"
+                },
+                "loc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "credit_roles": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "description": "Codebook section 5. An element is null when the input did not supply the part of the paper that would carry it"
+    },
+    "methods_presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "organization",
+        "evidence",
+        "location",
+        "flowchart",
+        "numbered_steps",
+        "supplement_reliance",
+        "note"
+      ],
+      "properties": {
+        "organization": {
+          "enum": [
+            "chronological",
+            "pipeline",
+            "logical",
+            "mixed",
+            "no_methods"
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/located"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "location": {
+          "enum": [
+            "before_results",
+            "after_discussion",
+            "distributed",
+            "supplement_mostly",
+            null
+          ]
+        },
+        "flowchart": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "numbered_steps": {
+          "type": "boolean"
+        },
+        "supplement_reliance": {
+          "enum": [
+            "none",
+            "some",
+            "most"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "figure_structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "judgement",
+        "evidence"
+      ],
+      "properties": {
+        "judgement": {
+          "enum": [
+            "figure_first",
+            "text_first",
+            "mixed",
+            "no_figures"
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/located"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "tried_dropped": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "loc",
+          "quote",
+          "object",
+          "outcome_stated",
+          "where"
+        ],
+        "properties": {
+          "loc": {
+            "$ref": "#/$defs/loc"
+          },
+          "quote": {
+            "$ref": "#/$defs/quote"
+          },
+          "object": {
+            "enum": [
+              "method",
+              "data",
+              "parameter",
+              "model",
+              "analysis"
+            ]
+          },
+          "outcome_stated": {
+            "type": "boolean"
+          },
+          "where": {
+            "enum": [
+              "main_text",
+              "appendix",
+              "caption",
+              "footnote"
+            ]
+          }
+        }
+      }
+    },
+    "order_of_work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "loc",
+          "quote"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "sequence",
+              "change_of_plan",
+              "prior_existence",
+              "post_hoc",
+              "followup",
+              "review_trace",
+              "writing"
+            ]
+          },
+          "loc": {
+            "$ref": "#/$defs/loc"
+          },
+          "quote": {
+            "$ref": "#/$defs/quote"
+          }
+        }
+      }
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What the input does not show; inference marked as inference"
+    },
+    "computed": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/computed"
+        }
+      ],
+      "description": "null in coder output; filled by script"
+    }
+  },
+  "required": [
+    "key",
+    "doi",
+    "codebook_version",
+    "coder",
+    "version",
+    "document",
+    "pages_convention",
+    "sections",
+    "moves",
+    "anchors",
+    "apparatus",
+    "methods_presentation",
+    "figure_structure",
+    "tried_dropped",
+    "order_of_work",
+    "limits",
+    "computed"
+  ]
+}

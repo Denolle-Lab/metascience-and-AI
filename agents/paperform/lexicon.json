@@ -1,0 +1,30 @@
+{
+  "lexicon": "paper-form stance lexicon",
+  "version": "0.1.0",
+  "status": "draft, not adopted",
+  "date": "2026-10-28",
+  "codebook": "agents/paperform/CODEBOOK.md v0.1.0, section 10",
+  "sources": [
+    "Hyland, K. (1998). Hedging in scientific research articles. John Benjamins. https://doi.org/10.1075/pbns.54",
+    "Hyland, K. (2005). Stance and engagement: A model of interaction in academic discourse. Discourse Studies, 7(2), 173-192. https://doi.org/10.1177/1461445605050365",
+    "Hyland, K. (2001). Humble servants of the discipline? Self-mention in research articles. English for Specific Purposes, 20(3), 207-226. https://doi.org/10.1016/S0889-4906(00)00012-0"
+  ],
+  "matching": "Case-insensitive whole-word match on [a-z]+ tokens of body paragraphs (abstract, sections, appendices), after author-year citations, figure, table, equation and section references are removed as in tools/roadmap/g26_translation.py; captions, front-matter elements and back matter are counted separately. Rates are per 1,000 tokens. Every item is counted as written; no disambiguation. 'polysemous' lists the items that also carry a non-stance sense in Earth-science prose; rates are reported with and without them, and their precision is to be measured on a hand-checked sample before any rate is interpreted.",
+  "self_mention": {
+    "first_person": ["we", "our", "ours", "us", "ourselves", "i", "my", "me", "mine"],
+    "self_reference_noun_phrases": ["the authors", "this study", "this paper", "this work", "the present study", "the present work", "this article", "this manuscript", "here we"]
+  },
+  "hedges": {
+    "modal": ["may", "might", "could", "would"],
+    "adverb": ["possibly", "perhaps", "probably", "likely", "unlikely", "presumably", "plausibly", "apparently", "approximately", "roughly", "relatively", "somewhat", "largely", "generally", "partly", "partially", "potentially", "arguably", "tentatively"],
+    "adjective": ["possible", "probable", "plausible", "uncertain", "unclear", "tentative", "potential"],
+    "verb": ["suggest", "suggests", "suggested", "suggesting", "appear", "appears", "appeared", "seem", "seems", "seemed", "indicate", "indicates", "indicated", "indicating", "assume", "assumed", "speculate", "speculated", "tend", "tends", "estimate", "estimated"],
+    "polysemous": ["may", "could", "would", "approximately", "roughly", "relatively", "generally", "estimate", "estimated", "potential", "potentially", "assume", "assumed"]
+  },
+  "boosters": {
+    "adverb": ["clearly", "certainly", "definitely", "indeed", "obviously", "undoubtedly", "evidently", "conclusively", "always", "never", "strongly", "unambiguously", "undeniably"],
+    "adjective": ["clear", "evident", "certain", "obvious", "conclusive", "robust", "unambiguous"],
+    "verb": ["demonstrate", "demonstrates", "demonstrated", "show", "shows", "showed", "shown", "prove", "proves", "proved", "proven", "confirm", "confirms", "confirmed", "establish", "establishes", "established", "must"],
+    "polysemous": ["show", "shows", "showed", "shown", "clear", "certain", "establish", "establishes", "established", "always", "never", "must", "robust"]
+  }
+}
