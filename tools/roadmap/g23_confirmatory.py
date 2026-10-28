@@ -177,6 +177,8 @@ def test() -> None:
                 r['direction_ok'] = True
             r.update({k: v for k, v in res.items() if k != 'groups'})
         rows.append(r)
+    for r in rows:   # post-freeze fix (serialization only): numpy booleans are not JSON serializable
+        r['direction_ok'] = bool(r['direction_ok'])
     for r, q in zip(rows, g17.bh([r['p'] for r in rows])):
         r['q'] = round(float(q), 4)
         r['verdict'] = ('confirmed' if r['q'] < plan['q_threshold'] and r['direction_ok'] else
