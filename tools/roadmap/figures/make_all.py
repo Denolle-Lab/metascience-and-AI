@@ -3,8 +3,8 @@
 
 Each fig*.py writes private/data/roadmap/figures/paper/<name>.pdf, .png and .json (provenance, numbers drawn, draft
 caption) through paperstyle.save(). Run the analysis scripts first (g13, g14, g16, g17, g19, g20, g21) so the figures and the
-reported numbers come from the same state; then commit the public repo before this run, so the commits recorded in
-every .json are clean.
+reported numbers come from the same state (g23 test for fig14; g24 test and g25 for fig15); then commit the public repo
+before this run, so the commits recorded in every .json are clean.
 
 The public book embeds aggregate figures from assets/roadmap/ (results only, no paper-level identifiers). After the
 figures are written, the PNGs already present there are refreshed from the private copy, but only for figures whose
