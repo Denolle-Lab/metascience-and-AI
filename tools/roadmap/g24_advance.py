@@ -93,7 +93,14 @@ freeze  Refuses when no pilot coding exists under the current RUBRIC.md version 
               primary outcomes and reported.
         Sensitivity (reported, not part of the rule): plain Spearman; partial Spearman controlling for log paper
               words, text route and the number of reported checks; primary with out-of-taxonomy awards removed; every
-              hypothesis against primary-W3.
+              hypothesis against primary-W3; every hypothesis within round x journal family (g20 family(), families
+              with fewer than 10 papers pooled within round), because the leak probes (g25, October 28, 2026) show
+              the coder can name the journal from the blinded text in 83% of papers (and from title and abstract
+              alone in 84%), so venue cannot be hidden and a venue halo cannot be ruled out by blinding.
+        Venue check (reported, outside the family): success fraction and median score by journal family, with the
+              stratified association of verdict with family (bias-corrected Cramer's V within round, permutation p);
+              a family difference mixes real differences in reported warrant with a possible halo, and the report
+              says so.
         Validation gate (40 human-rated gold papers, two raters each, tools/roadmap/g11_human_agreement.py layout):
               (1) human-human alpha (ordinal) on advance score >= 0.667, and alpha (nominal) on the verdict once the
               human instrument records one (ratings v1.1.0); (2) model-human alpha, with the model swapped in for each
@@ -578,6 +585,25 @@ def full_run_folders() -> list[Path]:
             and (any(d.glob('g22_*.json')) or any((d / '_invalid').glob('g22_*')))]
 
 
+def leak_probe_summary() -> dict | None:
+    """The g25 leak-probe results the plan was frozen with (derived/advance/leak_probes.json), or None if not run."""
+    f = OUT / 'leak_probes.json'
+    if not f.is_file():
+        return None
+    d = read_json(f)
+    d = d.get('data', d)
+    v, r = d['venue'], d['recognition']['all80']
+    return {'sha256': sha(f), 'blind_version': d.get('blind_version'),
+            'venue_from_blinded_text': {'journal_top1': v['journal_top1']['rate'], 'family': v['family']['rate'],
+                                        'journal_base_rate': v['journal_top1']['base_rate'], 'n': v['n']},
+            'from_title_and_abstract': {'journal': r['journal']['rate'], 'family': r['family']['rate'],
+                                        'recognized_yes': r['recognized'].get('yes', 0), 'author_hit': r['author_hit']['rate'],
+                                        'citations_rho': r.get('citations_rho'), 'n': r['n']},
+            'reading': ('venue is inferable from content (topic, style, structure), not only from scrubbable strings; '
+                        'the coder rarely claims to recognize a paper, but its citation guesses from title and abstract '
+                        'track real citations, so C1 and C2 cannot separate judgment from recall or topic priors')}
+
+
 def freeze(args) -> None:
     if full_run_folders():
         sys.exit('refusing to freeze: full-run advance codings exist in ' + ', '.join(str(d) for d in full_run_folders()))
@@ -603,7 +629,8 @@ def freeze(args) -> None:
             'blind_version': blind_text.BLIND_VERSION, 'blind_versions_read_in_pilot': p['groups'][p['group_rubric_version']]['blind_versions_read']
             if p.get('groups') else None, 'pilot_versions': p.get('pilot_versions'),
             'pilot_sha256': sha(pj), 'pilot_keys': p['keys'], 'full_run_tag': args.full_tag,
-            'model': 'claude-opus-5-5', 'effort': effort, 'structured_output': True,
+            'model': 'claude-opus-5-5', 'effort': effort, 'structured_output': code_papers.ADVANCE_STRUCTURED,
+            'leak_probes': leak_probe_summary(),
             'max_tokens': max((p['cost'].get('output_tokens') or {}).get('recommended_max_tokens') or 0, code_papers.ADVANCE_MAX_TOKENS),
             'secondary_descriptive': 'headline components warranted (every criterion met) over headline components, assessable papers; outside the H family',
             'success_fraction': 'achieved / (achieved + not_demonstrated + unassessable U1, U2, U3, U5); U4 reported separately; all three verdict counts reported',
@@ -734,6 +761,11 @@ def test(args) -> None:
             'unassessable_conditions': dict(Counter(D[k]['condition'] for k in keys if D[k]['verdict'] == 'unassessable')),
             'by_round': {r: frac([k for k in keys if inq[k]['round'] == r]) for r in ('round1', 'round2')},
             'by_route': {s: frac([k for k in keys if route(k, full[k]) == s]) for s in ('xml', 'pdftotext')},
+            'by_family': {s: frac([k for k in keys if g20.family(inq[k]['metrics']) == s])
+                          for s in sorted({g20.family(inq[k]['metrics']) for k in keys})},
+            'venue_check': g20.assoc_strat([g20.family(inq[k]['metrics']) for k in keys],
+                                           [float(D[k]['achieved']) for k in keys],
+                                           [inq[k]['round'] for k in keys], 'advance|venue'),
             'by_subfield': {s: frac([k for k in keys if (inq[k]['metrics'].get('subfield') or 'unknown') == s])
                             for s in sorted({inq[k]['metrics'].get('subfield') or 'unknown' for k in keys})},
             'score_distribution': dict(Counter(D[k]['score'] for k in keys)),
@@ -765,6 +797,10 @@ def test(args) -> None:
         covs = [np.log1p([read_meta(k, full[k]).get('words', 0) for k in ks]), [float(route(k, full[k]) == 'xml') for k in ks],
                 [D[k]['n_checks'] for k in ks]]
         r['partial_rho_covariates'] = partial_spearman(f, o, covs) if testable else None
+        fams = Counter(g20.family(inq[k]['metrics']) for k in ks)
+        fstrata = [f"{inq[k]['round']}|{g20.family(inq[k]['metrics']) if fams[g20.family(inq[k]['metrics'])] >= MIN_N else g20.POOLED}" for k in ks]
+        rf = g20.stratified(f, o, fstrata, f'advance-family|{h["id"]}') if testable else None
+        r['within_family'] = {x: rf[x] for x in ('rho_within', 'p') if x in rf} if rf else None
         if h['outcome'] == 'achieved':
             r['rho_against_noW3'] = round(g17.spearman(f, [D[k]['achieved_noW3'] for k in ks]), 3) if testable else None
         rows.append(r)
