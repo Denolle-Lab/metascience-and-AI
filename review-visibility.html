@@ -65,7 +65,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-884a2f50e2aeeb4136f82f2e36eddb25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed664982c9c34e9ea6d3e165425e47f9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -321,7 +321,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./roadmap-report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How Earth-science papers describe their research workflows: the roadmap experiments, round 1</span></a>
+ <span class="menu-text">How Earth-science papers describe their research workflows: the roadmap experiments, rounds 1 and 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -418,8 +418,8 @@ div.csl-indent {
 <section id="corpus" class="level2">
 <h2 class="anchored" data-anchor-id="corpus">Corpus</h2>
 <ul>
-<li><strong>Source.</strong> Round 1 of the roadmap corpus: 525 eligible 2022 papers, 233 coded from full text (see <a href="./workflow-outcomes.html">workflows and outcomes</a> and <a href="./topics-journals.html">topics and journals</a>).</li>
-<li><strong>Copernicus journals.</strong> 64 of the 233 are in journals published by Copernicus (DOI prefix 10.5194). All but two are journals of the European Geosciences Union (EGU); European Journal of Mineralogy and Scientific Drilling are published by Copernicus for other societies and have no open discussion, which is why 3 of the 64 have none. 61 have an open discussion; 58 have a review sequence that passed the format check.</li>
+<li><strong>Source.</strong> Round 1 of the roadmap corpus: 525 eligible 2022 papers, 374 coded from full text (see <a href="./workflow-outcomes.html">workflows and outcomes</a> and <a href="./topics-journals.html">topics and journals</a>). The 38 Copernicus papers of round 2 have not been through this analysis.</li>
+<li><strong>Copernicus journals.</strong> 64 of the 374 are in journals published by Copernicus (DOI prefix 10.5194). All but two are journals of the European Geosciences Union (EGU); European Journal of Mineralogy and Scientific Drilling are published by Copernicus for other societies and have no open discussion, which is why 3 of the 64 have none. 61 have an open discussion; 58 have a review sequence that passed the format check.</li>
 <li><strong>Open discussion.</strong> In EGU journals the submitted manuscript is posted as a citable discussion preprint. Referee comments, author replies, community comments and editor comments are posted beside it, and the revised paper is published separately and links back to it <span class="citation" data-cites="poschl2012">(<a href="bibliography.html#ref-poschl2012" role="doc-biblioref">Pöschl 2012</a>)</span>. The record works like OpenReview for geoscience. Across the 61: 134 referee comments, 147 author comments, 6 community comments and 4 editor comments.</li>
 <li><strong>Journals.</strong> The Cryosphere (ice and snow) 33; Natural Hazards and Earth System Sciences (NHESS, hazards), Geoscientific Model Development (GMD, model code), Hydrology and Earth System Sciences (HESS, hydrology) and Biogeosciences (ecosystems and biogeochemistry) 4 each; Atmospheric Chemistry and Physics (ACP) 3; Earth Surface Dynamics (ESurf, landforms) and Earth System Science Data (ESSD, data sets) 2 each; Geoscientific Instrumentation (GI) and Solid Earth 1 each. The result mostly describes one journal.</li>
 </ul>
@@ -490,13 +490,13 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="reading-the-result">Reading the result</h2>
 <ul>
 <li><strong>For geoscientists.</strong> A convention, not misconduct. EGU journals put the whole discussion on the record, on a citable discussion preprint that the final paper links to <span class="citation" data-cites="poschl2012">(<a href="bibliography.html#ref-poschl2012" role="doc-biblioref">Pöschl 2012</a>)</span>; the history exists, just not in the paper. Unless the journal publishes review files, readers of closed-review journals have no such record; some closed-review journals do publish them after acceptance (Nature Communications, for example).</li>
-<li><strong>For NLP researchers.</strong> A loop designed from methods sections sees no review loop. V is among the steps the coded agent loops rarely run: 10% of 31 agent systems against 97% of papers, with Q (question) also at 10% and I (infer) at 5%, H (hypothesize) at 6% and P (protect) at 0%. Refinement (R) goes the other way: agent loops run it more often than papers (68% against 56%). The 31 systems were hand-picked for a comparison talk (14 science agents, 8 general agent patterns, 3 multi-agent, 3 coding, 2 deep-research systems, 1 workflow pattern), coded from their papers and documentation under a separate loop codebook (0.1.2) by two model coders, a Claude Opus run and a Claude Sonnet run. The comparison is between descriptions, not executed runs.</li>
+<li><strong>For NLP researchers.</strong> A loop designed from methods sections sees no review loop. V is among the steps the coded agent loops rarely run: 10% of 31 agent systems against 98% of round-1 papers, with Q (question) also at 10% and I (infer) at 5%, H (hypothesize) at 6% and P (protect) at 0%. Refinement (R) goes the other way: agent loops run it more often than papers (68% against 55%). The 31 systems were hand-picked for a comparison talk (14 science agents, 8 general agent patterns, 3 multi-agent, 3 coding, 2 deep-research systems, 1 workflow pattern), coded from their papers and documentation under a separate loop codebook (0.1.2) by two model coders, a Claude Opus run and a Claude Sonnet run. The comparison is between descriptions, not executed runs.</li>
 <li><strong>The 31 agent systems.</strong> ReAct; Reflexion; Self-Refine; Plan-and-Solve; Tree of Thoughts; LATS; Voyager; BabyAGI; AutoGen, CAMEL and ChatDev (one entry); MetaGPT; Magentic-One; the evaluator-optimizer pattern; coding harnesses (Claude Code, OpenAI SDK); SWE-agent; OpenHands; deep research (OpenAI, Gemini); STORM; Agent Laboratory; Kosmos; Biomni; Virtual Lab; data-to-paper; AIDE; DiscoveryWorld Hypothesizer; Robot Scientist (Adam); Coscientist; Co-Scientist; Robin; The AI Scientist; FunSearch and AlphaEvolve (one entry); Bayesian adaptive design.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/roadmap/fig06_agents.png" class="img-fluid figure-img" alt="Dot plot of node use: papers use Q, V, I, H far more often than agent systems; only R is used more by agents."></p>
-<figcaption>Node use in 233 coded papers against 31 AI agent systems (a), distinct nodes per workflow (b), and common researcher transitions that no agent loop runs (c).</figcaption>
+<figcaption>Node use in 374 coded round-1 papers (round-2 papers as open circles) against 31 AI agent systems (a), distinct nodes per workflow (b), and common researcher transitions that no agent loop runs (c).</figcaption>
 </figure>
 </div>
 </section>
