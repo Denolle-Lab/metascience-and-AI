@@ -44,8 +44,24 @@ Questions and statistics (numpy only)
                   Effect: Cramer's V (0 = independent, 1 = category determines coverage), plain and bias-corrected
                   (Bergsma 2013), each with a 95% percentile bootstrap interval, and per category the coverage rate
                   minus the rate in all other categories, with interval.
-                  Test: permutation of the coverage label (NPERM), statistic Pearson chi-square.
-  3 workflows     among coded papers (rounds pooled), node use, entry state, decisive mode, composition, loop
+                  Test: permutation of the coverage label (NPERM), statistic Pearson chi-square. Sets: each round
+                  alone and, once both rounds have codings, 'pooled' = both rounds with round as a stratum
+                  (assoc_strat(), as in question 3). BH q within each set.
+  Rounds in questions 3 and 4 (design decided by the PI, October 27, 2026: round 1 exploratory, round 2 confirmatory
+                  for the associations frozen in preregistration/round2-confirmatory.json, both rounds also pooled
+                  for description with round as a stratum). Each test is run on three blocks, BH q within each block:
+                    round1             round 1 alone; also the top-level 'rows' of 'workflows' and 'outcomes_by_group'
+                                       (same keys and generator names as earlier runs, so figures keep reading them)
+                    by_round.<round>   each round alone (by_round.round1 is the top-level block)
+                    pooled_stratified  both rounds, round as a stratum: the response is permuted within round; binary
+                                       and categorical features use the sum of within-round Pearson chi-squares, with the
+                                       pooled-table Cramer's V and a Mantel-Haenszel rate difference (weighted mean of the
+                                       within-round group-minus-rest differences, weight n_group n_rest / n_round);
+                                       counts and outcomes use Kruskal-Wallis H on ranks taken within round (aligned
+                                       ranks); bootstrap resamples are drawn within round.
+                  The confirmatory test itself (g23_confirmatory.py test) is not rerun here; it calls assoc(),
+                  numeric_by_group(), stratified() and pool_small(), which this script leaves unchanged.
+  3 workflows     among coded papers (per block above), node use, entry state, decisive mode, composition, loop
                   features and counts from g17 features(), against subfield and family. Groups with fewer than
                   MIN_GROUP coded papers are pooled into POOLED. Binary features: chi-square permutation test,
                   Cramer's V and per-group rate difference from the rest. Whole categorical variables (entry state,
@@ -317,6 +333,123 @@ def pool_small(labels, k=MIN_GROUP):
     return [(POOLED if v in small else v) for v in labels], {v: c[v] for v in small}
 
 
+# ---------- round-stratified versions (pooled description with round as a stratum) ----------
+# assoc(), numeric_by_group() and stratified() above are also called by g23_confirmatory.py and stay unchanged.
+def within_perm(rng, s, base):
+    """Index array that shuffles positions within each stratum (s integer codes, base = argsort(s, stable))."""
+    idx = np.empty(len(s), int)
+    idx[base] = np.lexsort((rng.random(len(s)), s))
+    return idx
+
+
+def within_boot(rng, groups):
+    """Bootstrap index: resample papers within each stratum, keeping stratum sizes."""
+    return np.concatenate([gi[rng.integers(0, len(gi), len(gi))] for gi in groups])
+
+
+def assoc_strat(g, y, s, name):
+    """assoc() with round as a stratum. Statistic: sum over strata of the within-stratum Pearson chi-square of g against
+    y; p from permuting y within strata (NPERM). Effects: bias-corrected Cramer's V of the pooled table (description),
+    and cramers_v_strat = sqrt(statistic / (n (min(k) - 1))), each with an interval from bootstrap resamples drawn within
+    strata (NBOOT). For a 0/1 y, per group: pooled rate, rate per stratum, and the rate minus the rest as the
+    Mantel-Haenszel weighted mean of the within-stratum differences (weight n_group n_rest / n_stratum), with interval."""
+    rng = gen(name)
+    a, la = codes(g); b, lb = codes(y)
+    _, st = np.unique(s, return_inverse=True)
+    sl = sorted(set(s))
+    n, ka, kb, R = len(a), len(la), len(lb), st.max() + 1
+    base = np.argsort(st, kind='stable')
+    groups = [np.flatnonzero(st == r) for r in range(R)]
+
+    def stat(a, b, st):
+        return sum(chi2(a[st == r], b[st == r], ka, kb)[0] for r in range(R))
+    x2 = stat(a, b, st)
+    perm = np.array([stat(a, b[within_perm(rng, st, base)], st) for _ in range(NPERM)])
+    p = (1 + (perm >= x2 - 1e-9).sum()) / (NPERM + 1)
+    binary = set(lb) <= {False, True, 0, 1}
+    yb = np.asarray(y, float) if binary else None
+    dk = max(1, min(ka, kb) - 1)
+
+    def mh(a, yb, st, j):
+        num = den = 0.0
+        for r in range(R):
+            m1, m0 = (a == j) & (st == r), (a != j) & (st == r)
+            n1, n0 = m1.sum(), m0.sum()
+            if n1 and n0:
+                w = n1 * n0 / (n1 + n0)
+                num += w * (yb[m1].mean() - yb[m0].mean()); den += w
+        return num / den if den else np.nan
+    vs, vss, vbs, diffs = [], [], [], []
+    for _ in range(NBOOT):
+        i = within_boot(rng, groups)
+        vs.append(chi2(a[i], b[i], ka, kb)[1])
+        vbs.append(v_bc(a[i], b[i], ka, kb))
+        vss.append(np.sqrt(stat(a[i], b[i], st[i]) / (n * dk)))
+        if binary:
+            diffs.append([mh(a[i], yb[i], st[i], j) for j in range(ka)])
+    r = {'n': n, 'n_by_stratum': {sl[k]: len(gk) for k, gk in enumerate(groups)}, 'stratified_by': 'round',
+         'chi2': round(x2, 2), 'statistic': 'sum over rounds of the within-round Pearson chi-square',
+         'chi2_pooled_table': round(chi2(a, b, ka, kb)[0], 2), 'cramers_v': round(chi2(a, b, ka, kb)[1], 3), 'v_ci': ci(vs),
+         'cramers_v_bc': round(v_bc(a, b, ka, kb), 3), 'v_bc_ci': ci(vbs),
+         'cramers_v_strat': round(float(np.sqrt(x2 / (n * dk))), 3), 'v_strat_ci': ci(vss), 'p': round(float(p), 4)}
+    if binary:
+        diffs = np.array(diffs)
+        r['groups'] = {}
+        for j, lv in enumerate(la):
+            d = mh(a, yb, st, j)
+            r['groups'][lv] = {'n': int((a == j).sum()), 'rate': round(float(yb[a == j].mean()), 3),
+                               'n_by_stratum': {sl[k]: int((a[gk] == j).sum()) for k, gk in enumerate(groups)},
+                               'rate_by_stratum': {sl[k]: round(float(yb[gk][a[gk] == j].mean()), 3) if (a[gk] == j).any() else None
+                                                   for k, gk in enumerate(groups)},
+                               'diff_vs_rest': None if np.isnan(d) else round(float(d), 3),
+                               'diff_vs_rest_unadjusted': round(float(yb[a == j].mean() - yb[a != j].mean()), 3) if 0 < (a == j).sum() < n else None,
+                               'diff_ci': ci(diffs[:, j])}
+    else:
+        r['groups'] = {lv: {'n': int((a == j).sum()), 'n_by_stratum': {sl[k]: int((a[gk] == j).sum()) for k, gk in enumerate(groups)}}
+                       for j, lv in enumerate(la)}
+    return r
+
+
+def aligned_ranks(x, st):
+    """Each value's mid-rank within its stratum scaled to (0, 1) by (n_stratum + 1), then ranked over all papers (1-based)."""
+    sc = np.empty(len(x))
+    for r in np.unique(st):
+        m = st == r
+        sc[m] = (rank(x[m]) + 1) / (m.sum() + 1)
+    return rank(sc) + 1
+
+
+def numeric_by_group_strat(g, x, s, name):
+    """numeric_by_group() with round as a stratum. Values are ranked within round (aligned ranks, so a round that
+    scores higher overall does not count as a group effect); Kruskal-Wallis H and epsilon^2 = H / (n - 1) on those
+    ranks; p from permuting values within round; bootstrap resamples drawn within round. Group medians are of the raw
+    values, pooled and per round."""
+    rng = gen(name)
+    a, la = codes(g); x = np.asarray(x, float)
+    _, st = np.unique(s, return_inverse=True)
+    sl = sorted(set(s))
+    n, ka, R = len(a), len(la), st.max() + 1
+    base = np.argsort(st, kind='stable')
+    groups = [np.flatnonzero(st == r) for r in range(R)]
+    rx = aligned_ranks(x, st)
+    h, e2 = kw(a, ka, rx)
+    perm = np.array([kw(a, ka, rx[within_perm(rng, st, base)])[0] for _ in range(NPERM)])
+    p = (1 + (perm >= h - 1e-9).sum()) / (NPERM + 1)
+    es, meds = [], []
+    for _ in range(NBOOT):
+        i = within_boot(rng, groups)
+        es.append(kw(a[i], ka, aligned_ranks(x[i], st[i]))[1])
+        meds.append([np.median(x[i][a[i] == j]) if (a[i] == j).any() else np.nan for j in range(ka)])
+    meds = np.array(meds)
+    return {'n': n, 'n_by_stratum': {sl[k]: len(gk) for k, gk in enumerate(groups)}, 'stratified_by': 'round',
+            'statistic': 'Kruskal-Wallis H on ranks taken within round', 'H': round(h, 2), 'epsilon2': round(e2, 3),
+            'epsilon2_ci': ci(es), 'p': round(float(p), 4),
+            'groups': {lv: {'n': int((a == j).sum()), 'median': round(float(np.median(x[a == j])), 3), 'median_ci': ci(meds[:, j]),
+                            'median_by_stratum': {sl[k]: round(float(np.median(x[gk][a[gk] == j])), 3) if (a[gk] == j).any() else None
+                                                  for k, gk in enumerate(groups)}}
+                       for j, lv in enumerate(la)}}
+
+
 # ---------- composition ----------
 def share_table(vals, top=None):
     c = Counter(vals); n = sum(c.values())
@@ -404,6 +537,7 @@ def main():
         comp['pooled'] = {st: composition([A[k] for R in rounds.values() for k in R[st]]) for st in STAGES}
 
     # ---- 2 coverage among eligible ----
+    rnd = {k: name for name, R in rounds.items() for k in R['eligible']}    # round of each eligible paper (the stratum)
     cov = []
     sets = list(rounds.items())
     if len(rounds) > 1 and all(R['coded'] for R in rounds.values()):
@@ -418,53 +552,78 @@ def main():
                 continue
             for var in ['subfield', 'field', 'family', 'publisher']:
                 g, pooled = pool_small([A[k][var] for k in base])
-                r = assoc(g, ys, f'cov|{name}|{resp}|{var}')
+                r = (assoc_strat(g, ys, [rnd[k] for k in base], f'cov|{name}|{resp}|{var}') if name == 'pooled'
+                     else assoc(g, ys, f'cov|{name}|{resp}|{var}'))
                 cov.append({'set': name, 'response': resp, 'variable': var, 'overall_rate': round(float(np.mean(ys)), 3),
                             'pooled_into_other': pooled, **r})
-    tested = [r for r in cov if 'p' in r]
-    for r, q in zip(tested, bh([r['p'] for r in tested])):
-        r['q'] = round(float(q), 4)
+    for name, _ in sets:     # BH within each set (round 1, round 2, pooled with round stratum)
+        tested = [r for r in cov if 'p' in r and r['set'] == name]
+        for r, q in zip(tested, bh([r['p'] for r in tested])):
+            r['q'] = round(float(q), 4)
 
-    # ---- 3 workflows by subfield and family (coded, rounds pooled) ----
+    # ---- 3 workflows by subfield and family: round 1, round 2, both rounds with round as a stratum ----
     allc = {k: c for R in rounds.values() for k, c in R['codings'].items()}
     keys = sorted(allc)
     F = {k: features(allc[k]) for k in keys}
-    names = sorted({n for f in F.values() for n in f})
-    wf, groupings = [], {}
-    for var in ['subfield', 'family']:
-        g, pooled = pool_small([A[k][var] for k in keys])
-        groupings[var] = {'groups': dict(Counter(g)), 'pooled_into_other': pooled}
-        for nm in names:
-            vals = [F[k].get(nm, False) for k in keys]
-            if nm.startswith('bin:'):
-                if not (MIN_FEATURE <= sum(vals) <= len(vals) - MIN_FEATURE):
-                    continue
-                r = assoc(g, [bool(v) for v in vals], f'wf|{var}|{nm}')
-                wf.append({'grouping': var, 'feature': nm[4:], 'kind': 'binary', 'prevalence': round(float(np.mean(vals)), 3), **r})
-            else:
-                r = numeric_by_group(g, [float(v) for v in vals], f'wf|{var}|{nm}')
-                wf.append({'grouping': var, 'feature': nm[4:], 'kind': 'count', **r})
-        for whole in ['entry', 'decisive', 'composition']:
-            lv = [next((n.split(' ', 1)[1] for n in F[k] if n.startswith(f'bin:{whole} ')), 'none') for k in keys]
-            lv, lp = pool_small(lv)
-            r = assoc(g, lv, f'wf|{var}|whole {whole}')
-            wf.append({'grouping': var, 'feature': f'{whole} (whole variable)', 'kind': 'categorical', 'levels_pooled': lp, **r})
-    for r, q in zip(wf, bh([r['p'] for r in wf])):
-        r['q'] = round(float(q), 4)
 
-    # ---- 4 outcomes by subfield and family ----
-    oc = []
-    elig_all = [k for R in rounds.values() for k in R['eligible']]
-    for pop, ks in [('coded', keys), ('eligible', elig_all)]:
+    def wf_block(ks, prefix, strat):
+        """Question-3 tests on papers ks; BH within the block. prefix '' keeps the round-1 generator names of earlier runs."""
+        names = sorted({n for k in ks for n in F[k]})
+        s = [rnd[k] for k in ks]
+        A2 = (lambda g, y, nm: assoc_strat(g, y, s, nm)) if strat else assoc
+        N2 = (lambda g, x, nm: numeric_by_group_strat(g, x, s, nm)) if strat else numeric_by_group
+        wf, groupings = [], {}
         for var in ['subfield', 'family']:
-            for o in OUTS:
-                kk = [k for k in ks if A[k][o] is not None]
-                g, pooled = pool_small([A[k][var] for k in kk])
-                r = numeric_by_group(g, [A[k][o] for k in kk], f'oc|{pop}|{var}|{o}')
-                oc.append({'population': pop, 'grouping': var, 'outcome': o, 'field_normalized': NORMALIZED[o],
-                           'overall_median': round(float(np.median([A[k][o] for k in kk])), 3), 'pooled_into_other': pooled, **r})
-    for r, q in zip(oc, bh([r['p'] for r in oc])):
-        r['q'] = round(float(q), 4)
+            g, pooled = pool_small([A[k][var] for k in ks])
+            groupings[var] = {'groups': dict(Counter(g)), 'pooled_into_other': pooled}
+            for nm in names:
+                vals = [F[k].get(nm, False) for k in ks]
+                if nm.startswith('bin:'):
+                    if not (MIN_FEATURE <= sum(vals) <= len(vals) - MIN_FEATURE):
+                        continue
+                    r = A2(g, [bool(v) for v in vals], f'wf|{prefix}{var}|{nm}')
+                    wf.append({'grouping': var, 'feature': nm[4:], 'kind': 'binary', 'prevalence': round(float(np.mean(vals)), 3), **r})
+                else:
+                    r = N2(g, [float(v) for v in vals], f'wf|{prefix}{var}|{nm}')
+                    wf.append({'grouping': var, 'feature': nm[4:], 'kind': 'count', **r})
+            for whole in ['entry', 'decisive', 'composition']:
+                lv = [next((n.split(' ', 1)[1] for n in F[k] if n.startswith(f'bin:{whole} ')), 'none') for k in ks]
+                lv, lp = pool_small(lv)
+                r = A2(g, lv, f'wf|{prefix}{var}|whole {whole}')
+                wf.append({'grouping': var, 'feature': f'{whole} (whole variable)', 'kind': 'categorical', 'levels_pooled': lp, **r})
+        for r, q in zip(wf, bh([r['p'] for r in wf])):
+            r['q'] = round(float(q), 4)
+        return {'papers': 'round 1' if prefix == '' else prefix.rstrip('|').replace('_', ' '),
+                'stratified_by_round': strat, 'n_papers': len(ks),
+                'n_by_round': dict(Counter(rnd[k] for k in ks)), 'groupings': groupings, 'tests': len(wf),
+                'q_below_0.1': sum(r['q'] < 0.1 for r in wf), 'rows': wf}
+
+    def oc_block(pops, prefix, strat):
+        oc = []
+        for pop, ks in pops:
+            for var in ['subfield', 'family']:
+                for o in OUTS:
+                    kk = [k for k in ks if A[k][o] is not None]
+                    g, pooled = pool_small([A[k][var] for k in kk])
+                    x = [A[k][o] for k in kk]
+                    nm = f'oc|{prefix}{pop}|{var}|{o}'
+                    r = numeric_by_group_strat(g, x, [rnd[k] for k in kk], nm) if strat else numeric_by_group(g, x, nm)
+                    oc.append({'population': pop, 'grouping': var, 'outcome': o, 'field_normalized': NORMALIZED[o],
+                               'overall_median': round(float(np.median(x)), 3), 'pooled_into_other': pooled, **r})
+        for r, q in zip(oc, bh([r['p'] for r in oc])):
+            r['q'] = round(float(q), 4)
+        return {'papers': 'round 1' if prefix == '' else prefix.rstrip('|').replace('_', ' '),
+                'stratified_by_round': strat, 'tests': len(oc), 'q_below_0.1': sum(r['q'] < 0.1 for r in oc), 'rows': oc}
+
+    blocks = [(name, '' if name == 'round1' else f'{name}|', False, R['coded'], R['eligible'])
+              for name, R in rounds.items() if R['coded']]
+    if len(blocks) > 1:
+        blocks.append(('pooled_stratified', 'pooled_stratified|', True, keys, [k for R in rounds.values() for k in R['eligible']]))
+    WF = {b: wf_block(ks, pre, strat) for b, pre, strat, ks, _ in blocks}
+    OC = {b: oc_block([('coded', ks), ('eligible', el)], pre, strat) for b, pre, strat, ks, el in blocks}
+    wf1, oc1 = WF['round1'], OC['round1']
+    wf, groupings = wf1['rows'], wf1['groupings']
+    oc = oc1['rows']
 
     # ---- 5 confounding check of g17 associations (round 1, the g17 paper set) ----
     g17 = load(DERIVED / 'outcomes' / 'outcomes.json')
@@ -534,9 +693,13 @@ def main():
            'family_rule': {'rules': [list(x) for x in FAMILY_RULES], 'fallback': 'other',
                            'pool_check': [{'family': f, 'doi_prefix': p, 'publisher': pb, 'n': m} for (f, p, pb), m in fam_check.most_common()]},
            'topics_mapped': {'leading_topics': len(tf), 'unmapped_in_corpus': sorted({r['topic_id'] for r in meta.values()} - set(tf))},
-           'coverage': cov, 'workflows': {'groupings': groupings, 'n_papers': len(keys), 'tests': len(wf), 'q_below_0.1': sum(r['q'] < 0.1 for r in wf),
-                                          'rows': wf},
-           'outcomes_by_group': {'tests': len(oc), 'rows': oc},
+           'coverage': cov,
+           # top-level rows, groupings, n_papers, tests, q_below_0.1: round 1 alone (as before); by_round and
+           # pooled_stratified hold the same structure for each round alone and for both rounds with round as a stratum
+           'workflows': {**wf1, 'by_round': {b: WF[b] for b in WF if b != 'pooled_stratified'},
+                         'pooled_stratified': WF.get('pooled_stratified')},
+           'outcomes_by_group': {**oc1, 'by_round': {b: OC[b] for b in OC if b != 'pooled_stratified'},
+                                 'pooled_stratified': OC.get('pooled_stratified')},
            'subfield_topics': sub_topics,
            'ml_terms_check': {'pattern': ML_TERMS.pattern, 'by_subfield': ml,
                               'note': 'coded papers (rounds pooled): codings whose imports, final-paper step actions or decisive '
@@ -552,8 +715,8 @@ def main():
     md = report(res, rounds)
     (OUT / 'TOPICS.md').write_text(md)
     log('g20_topics_journals.py', 'topics, fields and journals by stage; coverage bias; workflows and outcomes by field and venue; g17 confounding',
-        len(keys), f"r1 coded {n['round1']['coded']}, r2 coded {n.get('round2', {}).get('coded', 0)}; "
-                   f"{len(wf)} workflow tests ({res['workflows']['q_below_0.1']} q<0.1); g17 survivors {surv}")
+        len(keys), f"r1 coded {n['round1']['coded']}, r2 coded {n.get('round2', {}).get('coded', 0)}; workflow tests q<0.1 "
+                   + ', '.join(f"{b} {W['q_below_0.1']}/{W['tests']}" for b, W in WF.items()) + f"; g17 survivors {surv}")
     print(md)
 
 
@@ -608,12 +771,17 @@ def report(res, rounds):
             for k in st1.get(st, {}).get(var, {}).get('counts', {}):
                 if k not in lv:
                     lv.append(k)
-        md += ['| ' + var + ' | pool share | ' + ' | '.join('round 1 ' + st for st in STAGES) + ' | round 2 drawn | round 2 eligible |',
-               '|:--|' + '--:|' * (len(STAGES) + 3)]
+        for st in STAGES:
+            for k in comp.get('round2', {}).get(st, {}).get(var, {}).get('counts', {}):
+                if k not in lv:
+                    lv.append(k)
+        md += ['| ' + var + ' | pool share | ' + ' | '.join('round 1 ' + st for st in STAGES) + ' | '
+               + ' | '.join('round 2 ' + st for st in STAGES) + ' |',
+               '|:--|' + '--:|' * (2 * len(STAGES) + 1)]
         for k in lv:
             cells = [comp['pool'][var]['counts'].get(k, {}).get('share', 0)]
             cells += [st1.get(st, {}).get(var, {}).get('counts', {}).get(k, {}).get('n', 0) for st in STAGES]
-            cells += [comp.get('round2', {}).get(st, {}).get(var, {}).get('counts', {}).get(k, {}).get('n', 0) for st in ['drawn', 'eligible']]
+            cells += [comp.get('round2', {}).get(st, {}).get(var, {}).get('counts', {}).get(k, {}).get('n', 0) for st in STAGES]
             md.append(f'| {k} | {cells[0]:.3f} | ' + ' | '.join(str(x) for x in cells[1:]) + ' |')
     md += ['', 'Pool column is a share; other columns are counts.', '', '### Most frequent journals (coded, all rounds)', '']
     cj = (comp.get('pooled') or comp['round1'])['coded']['journals']
@@ -627,7 +795,10 @@ def report(res, rounds):
                   f"{sh(comp['round1']['eligible'], k)} | {sh(comp['round1']['full_text'], k)} |")
 
     md += ['', '## 2. Coverage bias', '', 'Among eligible papers, is reaching full text, or being coded, associated with field or venue? '
-           f'Categories with fewer than {MIN_GROUP} eligible papers are pooled into "{POOLED}".', '',
+           f'Categories with fewer than {MIN_GROUP} eligible papers are pooled into "{POOLED}". Set "pooled" is both rounds '
+           'with round as a stratum: the statistic sums the within-round chi-squares, coverage labels are shuffled within '
+           'round, and the rate difference is the Mantel-Haenszel weighted mean of the within-round differences. BH q is '
+           'computed within each set.', '',
            "| Set | Response | Variable | n | Overall rate | Cramer's V, bias-corrected [95% CI] | p | q | Largest rate difference (category) |",
            '|:--|:--|:--|--:|--:|:--|--:|--:|:--|']
     for r in res['coverage']:
@@ -639,26 +810,56 @@ def report(res, rounds):
         md.append(f"| {r['set']} | {r['response']} | {r['variable']} | {r['n']} | {r['overall_rate']} | {r['cramers_v_bc']} {fmt_ci(r['v_bc_ci'])} | {r['p']} | {r['q']} | {bs} |")
 
     w = res['workflows']
-    md += ['', '## 3. Workflows by field and venue', '', f"{w['n_papers']} coded papers, rounds pooled. {w['tests']} tests, "
-           f"{w['q_below_0.1']} with q < 0.1.", '']
-    for var, gi in w['groupings'].items():
-        md.append(f"- {var}: groups " + ', '.join(f'{k} ({v})' for k, v in sorted(gi['groups'].items(), key=lambda x: -x[1]))
-                  + (f'; pooled into "{POOLED}": ' + ', '.join(f'{k} ({v})' for k, v in gi['pooled_into_other'].items()) if gi['pooled_into_other'] else ''))
-    md += ['', "Tests with q < 0.1. Effect: bias-corrected Cramer's V for binary and categorical features, epsilon squared for counts.", '',
-           '| Grouping | Feature | Kind | Effect [95% CI] | p | q | Largest rate difference or group medians |', '|:--|:--|:--|:--|--:|--:|:--|']
+    blocks = [('round1', 'Round 1 alone (exploratory)', w)] + \
+             [(b, 'Round 2 alone', W) for b, W in w['by_round'].items() if b != 'round1'] + \
+             ([('pooled_stratified', 'Both rounds, round as a stratum', w['pooled_stratified'])] if w.get('pooled_stratified') else [])
+    md += ['', '## 3. Workflows by field and venue', '',
+           'Each test is run three ways: round 1 alone, round 2 alone, and both rounds with round as a stratum. In the '
+           'stratified version the feature is shuffled within round only, so a difference between the rounds in field mix '
+           'or in coding cannot pass for a field or venue effect. Binary and categorical features: statistic = sum of the '
+           'within-round chi-squares; effect = bias-corrected Cramer\'s V of the pooled table; rate difference = '
+           'Mantel-Haenszel weighted mean of the within-round differences (weight n_group n_rest / n_round). Counts: '
+           'Kruskal-Wallis H on ranks taken within round (aligned ranks), epsilon squared = H / (n - 1); group medians are '
+           'of the raw values. Bootstrap resamples are drawn within round. BH q is computed within each block. The round-2 '
+           'confirmatory test of the round-1 associations is a separate analysis (tools/roadmap/g23_confirmatory.py, '
+           'derived/confirmatory/CONFIRMATORY.md) and is not repeated here.', '']
     eff = lambda r: r.get('cramers_v_bc', r.get('epsilon2'))
-    for r in sorted([r for r in w['rows'] if r['q'] < 0.1], key=lambda r: (r['kind'] == 'count', -eff(r))):
-        e = f"V {r['cramers_v_bc']} {fmt_ci(r['v_bc_ci'])}" if 'cramers_v_bc' in r else f"eps2 {r['epsilon2']} {fmt_ci(r['epsilon2_ci'])}"
-        big = ''
-        if r['kind'] == 'binary':
-            g, v = max(((g, v) for g, v in r['groups'].items() if v.get('diff_vs_rest') is not None), key=lambda x: abs(x[1]['diff_vs_rest']))
-            big = f"{v['diff_vs_rest']:+.2f} {fmt_ci(v['diff_ci'])} ({g}, rate {v['rate']}, n={v['n']})"
-        elif r['kind'] == 'count':
-            big = ', '.join(f"{g} {v['median']:g}" for g, v in sorted(r['groups'].items(), key=lambda x: -x[1]['median']))
-        md.append(f"| {r['grouping']} | {r['feature']} | {r['kind']} | {e} | {r['p']} | {r['q']} | {big} |")
+    for b, title, W in blocks:
+        md += [f'### 3.{blocks.index((b, title, W)) + 1} {title}', '',
+               f"{W['n_papers']} coded papers ({', '.join(f'{k} {v}' for k, v in W['n_by_round'].items())}). "
+               f"{W['tests']} tests, {W['q_below_0.1']} with q < 0.1.", '']
+        for var, gi in W['groupings'].items():
+            md.append(f"- {var}: groups " + ', '.join(f'{k} ({v})' for k, v in sorted(gi['groups'].items(), key=lambda x: -x[1]))
+                      + (f'; pooled into "{POOLED}": ' + ', '.join(f'{k} ({v})' for k, v in gi['pooled_into_other'].items()) if gi['pooled_into_other'] else ''))
+        md += ['', "Tests with q < 0.1. Effect: bias-corrected Cramer's V for binary and categorical features, epsilon squared for counts.", '',
+               '| Grouping | Feature | Kind | Effect [95% CI] | p | q | Largest rate difference or group medians |', '|:--|:--|:--|:--|--:|--:|:--|']
+        for r in sorted([r for r in W['rows'] if r['q'] < 0.1], key=lambda r: (r['kind'] == 'count', -eff(r))):
+            e = f"V {r['cramers_v_bc']} {fmt_ci(r['v_bc_ci'])}" if 'cramers_v_bc' in r else f"eps2 {r['epsilon2']} {fmt_ci(r['epsilon2_ci'])}"
+            big = ''
+            if r['kind'] == 'binary':
+                g, v = max(((g, v) for g, v in r['groups'].items() if v.get('diff_vs_rest') is not None), key=lambda x: abs(x[1]['diff_vs_rest']))
+                big = f"{v['diff_vs_rest']:+.2f} {fmt_ci(v['diff_ci'])} ({g}, rate {v['rate']}, n={v['n']})"
+            elif r['kind'] == 'count':
+                big = ', '.join(f"{g} {v['median']:g}" for g, v in sorted(r['groups'].items(), key=lambda x: -x[1]['median']))
+            md.append(f"| {r['grouping']} | {r['feature']} | {r['kind']} | {e} | {r['p']} | {r['q']} | {big} |")
+        md.append('')
+    if len(blocks) > 1:
+        idx = {b: {(r['grouping'], r['feature']): r for r in W['rows']} for b, _, W in blocks}
+        hit = sorted({k for b in idx for k, r in idx[b].items() if r['q'] < 0.1})
+        md += ['### 3.4 The three blocks side by side', '',
+               'Every test with q < 0.1 in at least one block. Cell: effect, q; "n.t." = not tested in that block (binary '
+               f'feature present in fewer than {MIN_FEATURE} or more than n - {MIN_FEATURE} papers).', '',
+               '| Grouping | Feature | ' + ' | '.join(t for _, t, _ in blocks) + ' |', '|:--|:--|' + ':--|' * len(blocks)]
+        for k in hit:
+            md.append(f'| {k[0]} | {k[1]} | ' + ' | '.join(
+                (f"{eff(idx[b][k])}, q {idx[b][k]['q']}" + (' *' if idx[b][k]['q'] < 0.1 else '')) if k in idx[b] else 'n.t.'
+                for b, _, _ in blocks) + ' |')
+        md += ['', '\\* q < 0.1.', '']
 
-    md += ['', '## 4. Outcomes by field and venue', '', 'Median per group [95% bootstrap CI]. Last row: Kruskal-Wallis epsilon squared '
-           '[95% CI] and BH q. cnp and fwci are subfield-normalized by OpenAlex; novelty_pair and breadth_refs are not.']
+    md += ['', '## 4. Outcomes by field and venue', '', 'Round 1 alone (the top-level rows of outcomes_by_group). Median per group '
+           '[95% bootstrap CI]. Last row: Kruskal-Wallis epsilon squared '
+           '[95% CI] and BH q. cnp and fwci are subfield-normalized by OpenAlex; novelty_pair and breadth_refs are not. '
+           'Section 4.5 compares round 1, round 2 and both rounds with round as a stratum.']
     rows4 = res['outcomes_by_group']['rows']
     for pop in ['coded', 'eligible']:
         for var in ['subfield', 'family']:
@@ -672,6 +873,20 @@ def report(res, rounds):
                     f"{rr[o]['groups'][g]['median']} {fmt_ci(rr[o]['groups'][g]['median_ci'])}" if g in rr[o]['groups'] else '' for o in OUTS) + ' |')
             md.append('| all | ' + str(rr[OUTS[0]]['n']) + ' | ' + ' | '.join(f"{rr[o]['overall_median']}" for o in OUTS) + ' |')
             md.append('| eps2, q | | ' + ' | '.join(f"{rr[o]['epsilon2']} {fmt_ci(rr[o]['epsilon2_ci'])}, q {rr[o]['q']}" for o in OUTS) + ' |')
+    ob = res['outcomes_by_group']
+    oblocks = [('round1', 'Round 1', ob)] + [(b, 'Round 2', O) for b, O in ob['by_round'].items() if b != 'round1'] + \
+              ([('pooled_stratified', 'Both rounds, round stratum', ob['pooled_stratified'])] if ob.get('pooled_stratified') else [])
+    if len(oblocks) > 1:
+        oi = {b: {(r['population'], r['grouping'], r['outcome']): r for r in O['rows']} for b, _, O in oblocks}
+        md += ['', '### 4.5 Round 1, round 2 and both rounds with round as a stratum', '',
+               'Cell: n, Kruskal-Wallis epsilon squared [95% CI], BH q within the block. Stratified block: values ranked '
+               'within round, shuffled within round, resampled within round.', '',
+               '| Population | Grouping | Outcome | ' + ' | '.join(t for _, t, _ in oblocks) + ' |', '|:--|:--|:--|' + ':--|' * len(oblocks)]
+        for k in oi['round1']:
+            md.append(f'| {k[0]} | {k[1]} | {k[2]} | ' + ' | '.join(
+                (f"n {oi[b][k]['n']}, {oi[b][k]['epsilon2']} {fmt_ci(oi[b][k]['epsilon2_ci'])}, q {oi[b][k]['q']}"
+                 + (' *' if oi[b][k]['q'] < 0.1 else '')) if k in oi[b] else '' for b, _, _ in oblocks) + ' |')
+        md += ['', '\\* q < 0.1.']
 
     c = res['confounding']
     md += ['', '## 5. Are the g17 workflow-outcome associations explained by field or venue?', '',

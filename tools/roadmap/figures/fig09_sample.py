@@ -237,6 +237,9 @@ def main():
 
     # ---- (d) open-access share with Wilson intervals ----
     dx = axes[3]
+    dx.set_xlim(0.4, 1.04)            # dot plot of shares: the axis need not start at zero (set first: labels are measured)
+    pool_x = pool_oa_k / pool_n
+    rend, inv = fig.canvas.get_renderer(), dx.transData.inverted()
     oa = {}
     for yy, r, i, lab, ks in rows:
         if ks is None:
@@ -247,13 +250,18 @@ def main():
         p = k / n
         dx.errorbar(p, yy, xerr=[[max(0.0, p - lo)], [max(0.0, hi - p)]], fmt='o', color=STAGE_COLOUR[i], ms=3.6,
                     mec='white', mew=0.5, elinewidth=0.8, capsize=0, zorder=3)
-        dx.text(min(lo, p - 0.012) - 0.025, yy, f'{100 * p:.0f}%', va='center', ha='right', fontsize=ps.SMALL,
-                color=ps.INK, zorder=4, bbox={'boxstyle': 'square,pad=0.08', 'fc': 'white', 'ec': 'none'})
+        # value in % (the axis title gives the unit), left of the interval; if that would cross the dashed pool
+        # line (round 2 at 100%), move it to the left of the line instead
+        xr = min(lo, p - 0.012) - 0.02
+        t = dx.text(xr, yy, f'{100 * p:.0f}', va='center', ha='right', fontsize=ps.SMALL,
+                    color=ps.INK, zorder=4, bbox={'boxstyle': 'square,pad=0.08', 'fc': 'white', 'ec': 'none'})
+        x0 = inv.transform(t.get_window_extent(rend).get_points())[0][0]
+        if x0 < pool_x + 0.01 < xr:
+            t.set_x(pool_x - 0.015)
         oa[f"{r['name']} {r['stages'][i][0]}"] = {'k': k, 'n': n, 'share': round(p, 4),
                                                   'wilson95': [round(lo, 4), round(hi, 4)]}
     numbers['is_oa_by_stage'] = oa
-    dx.axvline(pool_oa_k / pool_n, color=ps.MUTED, linewidth=0.7, linestyle=(0, (3, 2)), zorder=1)
-    dx.set_xlim(0.4, 1.04)            # dot plot of shares: the axis need not start at zero
+    dx.axvline(pool_x, color=ps.MUTED, linewidth=0.7, linestyle=(0, (3, 2)), zorder=1)
     dx.set_xticks([0.4, 0.6, 0.8, 1.0], ['40', '60', '80', '100'])
     dx.set_xlabel('Open access\n(% of papers)')
     ps.grid(dx, 'x')
@@ -315,9 +323,14 @@ def main():
         ex.set_yticks([])
     ex.tick_params(axis='y', length=0, labelsize=ps.SMALL)
     ex.spines['left'].set_visible(False)
-    lim = max([0.3] + [abs(v) for e in cov.values() for f, _ in EFFECTS for v in e[f'{f}_cliffs_delta']])
-    ex.set_xlim(-0.2, math.ceil((lim + 0.05) * 10) / 10)
-    ex.set_xticks([-0.2, 0, 0.2, 0.4][: 2 + int(lim >= 0.2) + int(lim >= 0.4)])
+    # limits from the drawn deltas and their intervals on both sides (a fixed left limit of -0.2 hid round 2's
+    # novelty delta, -0.23 [-0.43, -0.03]); ticks every 0.2, or every 0.4 when the range is wide (narrow panel)
+    vals = [v for e in cov.values() for f, _ in EFFECTS for v in e[f'{f}_cliffs_delta']]
+    xlo = min(-0.2, math.floor((min(vals) - 0.05) * 10) / 10)
+    xhi = max(0.3, math.ceil((max(vals) + 0.05) * 10) / 10)
+    ex.set_xlim(xlo, xhi)
+    step = 0.2 if xhi - xlo <= 0.8 else 0.4
+    ex.set_xticks([round(v, 1) + 0.0 for v in np.arange(math.ceil(xlo / step - 1e-9) * step, xhi + 1e-9, step)])
     ex.set_xlabel("Coded vs not coded,\nCliff's delta")
     ps.grid(ex, 'x')
     ps.panel(ex, 'e', x=-0.02)

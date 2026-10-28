@@ -17,7 +17,7 @@ Terms (CODEBOOK.md 1.5.0, sections 2 and 8; tools/roadmap/g21_entry_state.py doc
 
 Panels
   (a) entry-state shares: batch coder over every valid coding of each round (calc1, and r2 when present), and the
-      blind consensus weighted back to all of round 1 (stratified sample, weight = papers with that batch state /
+      blind consensus weighted back to the 233 first-analysis papers the audit was drawn from (weight = papers with that batch state /
       sampled papers with it), with the stratified bootstrap 95% interval from g21 (2000 draws).
   (b) agreement on entry state and entry node for four pairs of codings: observed agreement against the agreement
       expected by chance (Krippendorff), and Krippendorff's alpha (nominal) with its 95% bootstrap interval over papers.
@@ -179,7 +179,7 @@ def main():
     pc = pe['problem']
     ax_a.text(pc['ci95'][0] - 0.02, off, f"{P(pc['share'])}%", fontsize=ps.SMALL, color=ps.ORANGE,
               ha='right', va='center')
-    ax_a.text(0.36, y[1] + off + 0.05, 'blind consensus, weighted\nto round 1 (95% interval)', fontsize=ps.SMALL,
+    ax_a.text(0.36, y[1] + off + 0.05, 'blind consensus, weighted to\nthe first analysis (95% interval)', fontsize=ps.SMALL,
               color=ps.ORANGE, ha='left', va='center')
     if 'r2' in rounds:
         ax_a.text(0.36, y[3], f"batch coder, round 2 ({d['n_valid']['r2']})", fontsize=ps.SMALL, color=ps.AQUA, va='center')
@@ -360,6 +360,7 @@ def main():
     strata = ba['strata']
     small_txt = ' or '.join(str(v) for v in sorted({v['sampled'] for s, v in strata.items() if s != 'problem'}))
     wa = rel['state']['weighted_agreement']
+    pop_n = sum(v['population'] for v in strata.values())
     pag = ba['operational_start']['by_batch_state']['problem']['agreed']
     made = pag.get('new_method_or_model', 0) + pag.get('new_instrument_or_deployment', 0)
     qe = rv['entry_node_Q']
@@ -378,11 +379,14 @@ def main():
         f"to the batch label and to each other; the sample is stratified, {strata['problem']['sampled']} of the "
         f"{strata['problem']['population']} problem papers and {small_txt} of each other state. "
         'Consensus: the value A and B both gave. '
-        f"(a) Share of papers in each entry state. Filled: batch coder. Open with bar: blind consensus weighted back to all "
-        f"{d['n_valid']['calc1']} round-1 papers (weight = papers with that batch state / sampled papers with it), with a "
+        f"(a) Share of papers in each entry state. Filled: batch coder. Open with bar: blind consensus weighted back to the "
+        f"{pop_n} round-1 papers of the first analysis, from which the audit was drawn (weight = papers with that batch "
+        f"state among those {pop_n} / sampled papers with it), with a "
         f"stratified bootstrap 95% interval (2000 draws); 'coders split' is the weighted share where A and B disagree. "
-        f"Problem falls from {P(d['distribution']['calc1']['state']['problem'][1])}% to {P(pe['problem']['share'])}% "
-        f"[{P(pe['problem']['ci95'][0])}, {P(pe['problem']['ci95'][1])}]; single blind coders give "
+        f"Problem falls from {P(strata['problem']['population'] / pop_n)}% to {P(pe['problem']['share'])}% "
+        f"[{P(pe['problem']['ci95'][0])}, {P(pe['problem']['ci95'][1])}] "
+        f"({P(d['distribution']['calc1']['state']['problem'][1])}% of all {d['n_valid']['calc1']} round-1 papers; the "
+        f"audit has not been extended to the later round-1 codings); single blind coders give "
         f"{P(ba['population_estimate']['A']['problem']['share'])}% (A) and {P(ba['population_estimate']['B']['problem']['share'])}% (B). "
         f"(b) Agreement on entry state (top) and entry node (bottom: the node of the project's research-workflow graph, "
         f"v0.4.2, where the paper enters, e.g. Q question, N new capability) for four pairs of codings, number of papers in "

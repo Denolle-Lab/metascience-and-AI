@@ -75,6 +75,18 @@ Step 9, blind audit (`audit` subcommand; also run at the end of a full run when 
   SUBTYPE_GROUPS  the free-text problem subtypes grouped by their leading words (rules below, first match wins).
   Outputs: entry_state.json key 'blind_audit' (other keys untouched by the audit subcommand) and ENTRY.md section 8.
 
+Per round (added October 27, 2026)
+  Steps 1, 3 and 4 are reported for round 1 (calc1), round 2 (r2) and pooled. The top-level keys distribution.pooled,
+  consistency and revisits are both rounds pooled (fig13 checks them against the codings); by_round.<tag> holds
+  consistency and revisits per round; distribution.<tag> the distribution per round. distribution_round_test: entry state
+  (states under MIN_GROUP papers merged) and problem against the rest by round, chi-square permutation p and
+  bias-corrected Cramer's V (g20 assoc, generator names 'g21 entry state by round', 'g21 problem by round').
+  Steps 5 and 6 stay pooled.
+  The audit sample (step 7) is drawn once. When blind_audit.json holds re-codings and audit_sample.json exists, a full run
+  reads the sample and its composition back instead of redrawing (audit_sample_reused = true), and the packets are left
+  as they are. Step 9 weights use the population the sample was drawn from (audit_sample.json composition 'available':
+  round 1 at 233 papers), not the current number of codings, so the audit numbers stay those of the audited frame.
+
 Run:  python tools/roadmap/g21_entry_state.py          (steps 1-8, and 9 when blind_audit.json exists)
       python tools/roadmap/g21_entry_state.py audit    (step 9 only; does not redraw the sample or rewrite the packets)
 """
@@ -333,44 +345,9 @@ def markers(text):
     return {fam: sorted(k for k, rx in d.items() if rx.search(t)) for fam, d in COMPILED.items()}
 
 
-# ---------- main ----------
-def main():
-    queue = json.loads(QUEUE.read_text())
-    meta = meta_table()
-    R, bad = {}, {}
-    for tag, _ in ROUNDS:
-        R[tag], bad[tag] = load(tag)
-    retest, bad['gold-r2'] = load('gold-r2')
-    pooled = {(tag, k): c for tag in R for k, c in R[tag].items()}
-    n_by = {tag: len(R[tag]) for tag in R}
-
-    # ---- 1 distributions ----
-    dist = {}
-    for name, sel in [(t, [c for (tg, _), c in pooled.items() if tg == t]) for t in R] + [('pooled', list(pooled.values()))]:
-        n = len(sel)
-        if n:
-            dist[name] = {'n': n, 'state': share(Counter(c['entry']['state'] for c in sel), n),
-                          'node': share(Counter(c['entry']['node'] for c in sel), n)}
-
-    # ---- 2 reliability (calc1 vs gold-r2) ----
-    pair = sorted(k for k in retest if k in R['calc1'])
-    rel = {'pairs': len(pair), 'retest_tag': 'gold-r2', 'invalid_retest_files': bad['gold-r2']}
-    if pair:
-        rel['state'] = reliability([R['calc1'][k]['entry']['state'] for k in pair], [retest[k]['entry']['state'] for k in pair], 'state')
-        rel['node'] = reliability([R['calc1'][k]['entry']['node'] for k in pair], [retest[k]['entry']['node'] for k in pair], 'node')
-        rel['state_and_node_both_agree'] = round(sum(R['calc1'][k]['entry']['state'] == retest[k]['entry']['state'] and
-                                                     R['calc1'][k]['entry']['node'] == retest[k]['entry']['node'] for k in pair) / len(pair), 3)
-        rel['same_evidence_quote'] = round(sum(norm(R['calc1'][k]['entry']['evidence']) == norm(retest[k]['entry']['evidence']) for k in pair) / len(pair), 3)
-        # exact identity undercounts: two runs often trim the same sentence differently. Overlap = one normalized quote
-        # contains the other, or token Jaccard >= 0.5.
-        rel['same_evidence_overlap'] = round(sum(overlap(R['calc1'][k]['entry']['evidence'], retest[k]['entry']['evidence']) for k in pair) / len(pair), 3)
-        rel['same_locator'] = round(sum(str(R['calc1'][k]['entry']['page']) == str(retest[k]['entry']['page']) for k in pair) / len(pair), 3)
-        rel['changed_pairs'] = [{'key': k, 'calc1': [R['calc1'][k]['entry']['state'], R['calc1'][k]['entry']['node'], R['calc1'][k]['entry']['evidence']],
-                                 'retest': [retest[k]['entry']['state'], retest[k]['entry']['node'], retest[k]['entry']['evidence']]}
-                                for k in pair if R['calc1'][k]['entry']['state'] != retest[k]['entry']['state']]
-
-    # ---- 3 internal consistency and 4 revisits ----
-    C = list(pooled.values())
+def walk_stats(C):
+    """Steps 3 and 4 (internal consistency, revisits) over a list of valid codings; returns (consistency, revisits,
+    papers per entry state)."""
     cons = Counter(); cross = Counter(); exp_ok = Counter(); by_state_n = Counter(c['entry']['state'] for c in C)
     rev = {s: Counter() for s in STATES}
     raf_at, raf_next = Counter(), Counter()
@@ -444,6 +421,65 @@ def main():
                                 'Q_revisited_collapsed': [q_coll, round(q_coll / len(qe), 3) if qe else None],
                                 'later_Q_step_moves': dict(qmv.most_common())}
     revisits['return_after_failure_steps'] = {'n': sum(raf_at.values()), 'at_node': dict(raf_at.most_common()), 'next_node': dict(raf_next.most_common())}
+    return consistency, revisits, by_state_n
+
+
+# ---------- main ----------
+def main():
+    queue = json.loads(QUEUE.read_text())
+    meta = meta_table()
+    R, bad = {}, {}
+    for tag, _ in ROUNDS:
+        R[tag], bad[tag] = load(tag)
+    retest, bad['gold-r2'] = load('gold-r2')
+    pooled = {(tag, k): c for tag in R for k, c in R[tag].items()}
+    n_by = {tag: len(R[tag]) for tag in R}
+
+    # ---- 1 distributions ----
+    dist = {}
+    for name, sel in [(t, [c for (tg, _), c in pooled.items() if tg == t]) for t in R] + [('pooled', list(pooled.values()))]:
+        n = len(sel)
+        if n:
+            dist[name] = {'n': n, 'state': share(Counter(c['entry']['state'] for c in sel), n),
+                          'node': share(Counter(c['entry']['node'] for c in sel), n)}
+
+    # ---- 2 reliability (calc1 vs gold-r2) ----
+    pair = sorted(k for k in retest if k in R['calc1'])
+    rel = {'pairs': len(pair), 'retest_tag': 'gold-r2', 'invalid_retest_files': bad['gold-r2']}
+    if pair:
+        rel['state'] = reliability([R['calc1'][k]['entry']['state'] for k in pair], [retest[k]['entry']['state'] for k in pair], 'state')
+        rel['node'] = reliability([R['calc1'][k]['entry']['node'] for k in pair], [retest[k]['entry']['node'] for k in pair], 'node')
+        rel['state_and_node_both_agree'] = round(sum(R['calc1'][k]['entry']['state'] == retest[k]['entry']['state'] and
+                                                     R['calc1'][k]['entry']['node'] == retest[k]['entry']['node'] for k in pair) / len(pair), 3)
+        rel['same_evidence_quote'] = round(sum(norm(R['calc1'][k]['entry']['evidence']) == norm(retest[k]['entry']['evidence']) for k in pair) / len(pair), 3)
+        # exact identity undercounts: two runs often trim the same sentence differently. Overlap = one normalized quote
+        # contains the other, or token Jaccard >= 0.5.
+        rel['same_evidence_overlap'] = round(sum(overlap(R['calc1'][k]['entry']['evidence'], retest[k]['entry']['evidence']) for k in pair) / len(pair), 3)
+        rel['same_locator'] = round(sum(str(R['calc1'][k]['entry']['page']) == str(retest[k]['entry']['page']) for k in pair) / len(pair), 3)
+        rel['changed_pairs'] = [{'key': k, 'calc1': [R['calc1'][k]['entry']['state'], R['calc1'][k]['entry']['node'], R['calc1'][k]['entry']['evidence']],
+                                 'retest': [retest[k]['entry']['state'], retest[k]['entry']['node'], retest[k]['entry']['evidence']]}
+                                for k in pair if R['calc1'][k]['entry']['state'] != retest[k]['entry']['state']]
+
+    # ---- 3 internal consistency and 4 revisits ----
+    C = list(pooled.values())
+    consistency, revisits, by_state_n = walk_stats(C)
+    n = len(C)
+    # the same per round (calc1, r2); the top-level keys above are both rounds pooled (fig13 checks them)
+    by_round = {}
+    for tag, _ in ROUNDS:
+        if R[tag]:
+            cr, rr, _ = walk_stats(list(R[tag].values()))
+            by_round[tag] = {'consistency': cr, 'revisits': rr}
+    # does the entry-state distribution differ between rounds? states with fewer than MIN_GROUP papers merged
+    round_test = None
+    if family is not None and all(R[t] for t, _ in ROUNDS):
+        rl = [tag for (tag, _) in pooled]
+        st_all = [c['entry']['state'] for c in pooled.values()]
+        sc = Counter(st_all)
+        round_test = {'state': assoc(rl, [s if sc[s] >= MIN_GROUP else 'other states' for s in st_all], 'g21 entry state by round'),
+                      'problem': assoc(rl, [s == 'problem' for s in st_all], 'g21 problem by round')}
+        for t in round_test:
+            round_test[t] = {k: v for k, v in round_test[t].items() if k in ('n', 'chi2', 'cramers_v_bc', 'v_bc_ci', 'p', 'groups')}
 
     # ---- 5 where the evidence sits, and its wording ----
     W, Mk = {}, {}
@@ -506,70 +542,80 @@ def main():
                 groups[var][t] = {k: v for k, v in groups[var][t].items() if k in ('n', 'chi2', 'cramers_v', 'v_ci', 'cramers_v_bc', 'v_bc_ci', 'p')}
 
     # ---- 7 audit sample, 8 blind packets ----
-    rng = np.random.default_rng(SEED)
-    by_state = {s: sorted(x for x in pooled if pooled[x]['entry']['state'] == s) for s in STATES}
-    quota = {s: 0 for s in STATES}
-    quota['problem'] = min(N_PROBLEM, len(by_state['problem']))
-    others = [s for s in STATES if s != 'problem']
-    left = N_SAMPLE - quota['problem']
-    while left > 0 and any(quota[s] < len(by_state[s]) for s in others):   # round robin: equal spread, all of a small state
-        for s in others:
-            if left and quota[s] < len(by_state[s]):
-                quota[s] += 1; left -= 1
-    sample = []
-    for s in STATES:
-        pool_s = by_state[s]
-        rounds_s = sorted({t for t, _ in pool_s})
-        if len(rounds_s) > 1:   # proportional split by round, largest remainder
-            sizes = {t: sum(1 for x in pool_s if x[0] == t) for t in rounds_s}
-            raw = {t: quota[s] * sizes[t] / len(pool_s) for t in rounds_s}
-            take = {t: int(raw[t]) for t in rounds_s}
-            for t in sorted(rounds_s, key=lambda t: -(raw[t] - take[t]))[:quota[s] - sum(take.values())]:
-                take[t] += 1
-            chosen = []
-            for t in rounds_s:
-                sub = [x for x in pool_s if x[0] == t]
-                chosen += [sub[i] for i in sorted(rng.choice(len(sub), take[t], replace=False))]
-        else:
-            chosen = [pool_s[i] for i in sorted(rng.choice(len(pool_s), quota[s], replace=False))] if quota[s] else []
-        sample += chosen
-    order = rng.permutation(len(sample))   # audit order is shuffled so states are not read in blocks
-    sample = [sample[i] for i in order]
-    rows = []
-    pk = OUT / 'audit_packets'
-    pk.mkdir(parents=True, exist_ok=True)
-    for old in pk.glob('*.json'):
-        old.unlink()
-    for i, (tag, k) in enumerate(sample, 1):
-        c = pooled[(tag, k)]
-        tp = text_paths(k, queue)
-        r = meta.get(k) or {}
-        title = r.get('title') or ((queue.get(k) or {}).get('meta') or {}).get('title')
-        rows.append({'audit_order': i, 'key': k, 'round_tag': tag, 'state': c['entry']['state'], 'node': c['entry']['node'],
-                     'evidence': c['entry']['evidence'], 'page': c['entry']['page'], 'pages_convention': c.get('pages_convention'),
-                     'evidence_section': W[(tag, k)]['section_class'], 'evidence_markers': Mk[(tag, k)],
-                     'first_steps': [[s['node'], s['mode'], s.get('move'), s.get('page')] for s in steps_of(c)[:3]],
-                     'doi': c.get('doi') or r.get('doi'), 'title': title, **{f'text_{a}': b for a, b in tp.items()}})
-        (pk / f'{k}.json').write_text(json.dumps({'key': k, 'doi': c.get('doi') or r.get('doi'), 'title': title,
-                                                  'pdf': tp['pdf'], 'xml_text': tp['xml_text']}, indent=1, ensure_ascii=False))
-    comp = {'n': len(rows), 'by_state': dict(Counter(r['state'] for r in rows)), 'by_round': dict(Counter(r['round_tag'] for r in rows)),
-            'quota': quota, 'available': {s: len(v) for s, v in by_state.items()},
-            'with_pdf': sum(bool(r['text_pdf']) for r in rows), 'with_xml_text': sum(bool(r['text_xml_text']) for r in rows)}
-    write_json(OUT / 'audit_sample.json', {'composition': comp, 'rows': rows},
-               ['private/analysis/codings/api/{calc1,r2}', 'private/download-queue.json', 'derived/{gold,r2}/metrics.json'],
-               {'seed': SEED, 'n': N_SAMPLE, 'problem_quota': N_PROBLEM, 'rule': 'problem 36; other states round robin, all of a state if fewer; '
-                'within a state proportional by round, largest remainder; numpy default_rng(2026); audit order shuffled'})
+    # Once the blind re-codings exist, the sample they audited is fixed: audit_sample.json and the packets are kept as
+    # they are and read back, so adding codings (top-up, round 2) does not redraw the sample under the audit.
+    blind_done = BLIND.is_file() and bool(json.loads(BLIND.read_text())['data'].get('A')) and (OUT / 'audit_sample.json').is_file()
+    if blind_done:
+        S = json.loads((OUT / 'audit_sample.json').read_text())['data']
+        rows, comp = S['rows'], S['composition']
+    else:
+        rng = np.random.default_rng(SEED)
+        by_state = {s: sorted(x for x in pooled if pooled[x]['entry']['state'] == s) for s in STATES}
+        quota = {s: 0 for s in STATES}
+        quota['problem'] = min(N_PROBLEM, len(by_state['problem']))
+        others = [s for s in STATES if s != 'problem']
+        left = N_SAMPLE - quota['problem']
+        while left > 0 and any(quota[s] < len(by_state[s]) for s in others):   # round robin: equal spread, all of a small state
+            for s in others:
+                if left and quota[s] < len(by_state[s]):
+                    quota[s] += 1; left -= 1
+        sample = []
+        for s in STATES:
+            pool_s = by_state[s]
+            rounds_s = sorted({t for t, _ in pool_s})
+            if len(rounds_s) > 1:   # proportional split by round, largest remainder
+                sizes = {t: sum(1 for x in pool_s if x[0] == t) for t in rounds_s}
+                raw = {t: quota[s] * sizes[t] / len(pool_s) for t in rounds_s}
+                take = {t: int(raw[t]) for t in rounds_s}
+                for t in sorted(rounds_s, key=lambda t: -(raw[t] - take[t]))[:quota[s] - sum(take.values())]:
+                    take[t] += 1
+                chosen = []
+                for t in rounds_s:
+                    sub = [x for x in pool_s if x[0] == t]
+                    chosen += [sub[i] for i in sorted(rng.choice(len(sub), take[t], replace=False))]
+            else:
+                chosen = [pool_s[i] for i in sorted(rng.choice(len(pool_s), quota[s], replace=False))] if quota[s] else []
+            sample += chosen
+        order = rng.permutation(len(sample))   # audit order is shuffled so states are not read in blocks
+        sample = [sample[i] for i in order]
+        rows = []
+        pk = OUT / 'audit_packets'
+        pk.mkdir(parents=True, exist_ok=True)
+        for old in pk.glob('*.json'):
+            old.unlink()
+        for i, (tag, k) in enumerate(sample, 1):
+            c = pooled[(tag, k)]
+            tp = text_paths(k, queue)
+            r = meta.get(k) or {}
+            title = r.get('title') or ((queue.get(k) or {}).get('meta') or {}).get('title')
+            rows.append({'audit_order': i, 'key': k, 'round_tag': tag, 'state': c['entry']['state'], 'node': c['entry']['node'],
+                         'evidence': c['entry']['evidence'], 'page': c['entry']['page'], 'pages_convention': c.get('pages_convention'),
+                         'evidence_section': W[(tag, k)]['section_class'], 'evidence_markers': Mk[(tag, k)],
+                         'first_steps': [[s['node'], s['mode'], s.get('move'), s.get('page')] for s in steps_of(c)[:3]],
+                         'doi': c.get('doi') or r.get('doi'), 'title': title, **{f'text_{a}': b for a, b in tp.items()}})
+            (pk / f'{k}.json').write_text(json.dumps({'key': k, 'doi': c.get('doi') or r.get('doi'), 'title': title,
+                                                      'pdf': tp['pdf'], 'xml_text': tp['xml_text']}, indent=1, ensure_ascii=False))
+        comp = {'n': len(rows), 'by_state': dict(Counter(r['state'] for r in rows)), 'by_round': dict(Counter(r['round_tag'] for r in rows)),
+                'quota': quota, 'available': {s: len(v) for s, v in by_state.items()},
+                'with_pdf': sum(bool(r['text_pdf']) for r in rows), 'with_xml_text': sum(bool(r['text_xml_text']) for r in rows)}
+        write_json(OUT / 'audit_sample.json', {'composition': comp, 'rows': rows},
+                   ['private/analysis/codings/api/{calc1,r2}', 'private/download-queue.json', 'derived/{gold,r2}/metrics.json'],
+                   {'seed': SEED, 'n': N_SAMPLE, 'problem_quota': N_PROBLEM, 'rule': 'problem 36; other states round robin, all of a state if fewer; '
+                    'within a state proportional by round, largest remainder; numpy default_rng(2026); audit order shuffled'})
 
-    res = {'n_valid': n_by, 'n_invalid_files': bad, 'distribution': dist, 'reliability': rel, 'consistency': consistency,
-           'revisits': revisits, 'evidence_location': loc, 'evidence_wording': words, 'by_group': groups, 'audit_sample': comp,
+    res = {'n_valid': n_by, 'n_invalid_files': bad, 'distribution': dist, 'distribution_round_test': round_test,
+           'reliability': rel, 'consistency': consistency, 'revisits': revisits, 'by_round': by_round,
+           'audit_sample_reused': blind_done, 'evidence_location': loc, 'evidence_wording': words, 'by_group': groups, 'audit_sample': comp,
            'markers': MARKERS, 'intro_regex': INTRO_RE.pattern,
            'note': 'one model coder (Claude, codebook 1.5.0); test-retest is the same model coding twice; descriptive'}
     inputs = ['private/analysis/codings/api/{calc1,r2,gold-r2}', 'derived/{gold,r2}/metrics.json', 'derived/topics/topics_journals.json',
               'private/download-queue.json']
     # a full run keeps the audit section (step 9) when the blind re-codings exist (in the data release they are withheld
     # while the human coding runs, so the file holds no rows there)
+    if blind_done:
+        inputs.append('private/data/roadmap/derived/entry/audit_sample.json')
     if BLIND.is_file() and json.loads(BLIND.read_text())['data'].get('A'):
-        res['blind_audit'] = audit(pooled, rows)
+        res['blind_audit'] = audit(pooled, rows, comp.get('available'))
         inputs.append('private/data/roadmap/derived/entry/blind_audit.json')
     write_json(OUT / 'entry_state.json', res, inputs, {'codebook': '1.5.0', 'seed': SEED, 'nboot': NBOOT})
     md = report(res)
@@ -618,7 +664,7 @@ def subtype_group(text):
     return 'ungrouped'
 
 
-def audit(pooled, sample_rows):
+def audit(pooled, sample_rows, population=None):
     """Compare the two blind coders (A, B) with each other and with the batch coding of the 60 audit papers.
 
     pooled: {(round_tag, key): coding} of valid codings; sample_rows: audit_sample.json rows (stratified sample, so every
@@ -643,7 +689,9 @@ def audit(pooled, sample_rows):
     bs = {k: batch[k]['state'] for k in keys}
     n = len(keys)
     strata = Counter(bs.values())
-    avail = Counter(c['entry']['state'] for c in pooled.values())
+    # population for the weights: papers per batch state in the frame the sample was drawn from (audit_sample.json
+    # composition 'available', round 1 at 233 papers); the current valid codings only when that is missing
+    avail = Counter(population) if population else Counter(c['entry']['state'] for c in pooled.values())
     w = {s: avail[s] / strata[s] for s in strata}
     wk = np.array([w[bs[k]] for k in keys])
 
@@ -817,10 +865,11 @@ def run_audit():
     for tag, _ in ROUNDS:
         R[tag], _ = load(tag)
     pooled = {(tag, k): c for tag in R for k, c in R[tag].items()}
-    sample = json.loads((OUT / 'audit_sample.json').read_text())['data']['rows']
+    S = json.loads((OUT / 'audit_sample.json').read_text())['data']
+    sample = S['rows']
     old = json.loads((OUT / 'entry_state.json').read_text())
     res = old['data']
-    res['blind_audit'] = audit(pooled, sample)
+    res['blind_audit'] = audit(pooled, sample, S['composition'].get('available'))
     prov = old['_provenance']
     inputs = sorted(set(prov.get('inputs', [])) | {'private/data/roadmap/derived/entry/blind_audit.json', 'derived/entry/audit_sample.json'})
     write_json(OUT / 'entry_state.json', res, inputs, {**prov.get('params', {}), 'audit_step': 'g21_entry_state.py audit'})
@@ -978,6 +1027,13 @@ def report(res):
         L += [f'**{name}** (n = {x["n"]})', '', '| Entry state | Papers | Share |', '|:--|--:|--:|']
         L += [f'| {k} | {v[0]} | {pct(v[1])} |' for k, v in x['state'].items()]
         L += ['', '| Entry node | Papers | Share |', '|:--|--:|--:|'] + [f'| {k} | {v[0]} | {pct(v[1])} |' for k, v in x['node'].items()] + ['']
+    rt = res.get('distribution_round_test')
+    if rt:
+        L += [f"Round 1 (calc1) against round 2 (r2), entry state (states under {MIN_GROUP} papers merged): bias-corrected Cramer's V "
+              f"{rt['state']['cramers_v_bc']} [{rt['state']['v_bc_ci'][0]}, {rt['state']['v_bc_ci'][1]}], permutation p {rt['state']['p']}. "
+              f"Problem against the rest: V {rt['problem']['cramers_v_bc']}, p {rt['problem']['p']}; problem share "
+              + ', '.join(f"{g} {pct(v['rate'])}" for g, v in rt['problem']['groups'].items()) + '. The rounds were drawn differently '
+              '(round 2 open access only, at most 4 papers per journal), so a difference mixes sampling and coding.', '']
     L += ['## 2. Test-retest (calc1 against gold-r2, same model, independent runs)', '']
     if rel['pairs']:
         for f in ['state', 'node']:
@@ -1020,6 +1076,17 @@ def report(res):
             continue
         L += [f"| {s} | {v['n']} | {pct(v['entry_node_in_walk'][1])} | {pct(v['revisited'][1])} | {pct(v['later_step_raw'][1])} | "
               f"{pct(v['Q_revisited_collapsed'][1])} | {pct(v['any_return_after_failure'][1])} | {pct(v['reframe_after_failure'][1])} |"]
+    br = res.get('by_round') or {}
+    if br:
+        L += ['', 'The same per round (the table above is both rounds pooled):', '',
+              '| Round | Entry state | n | Entry node first step | Revisited | Any later step there (raw) | Q twice or more (collapsed) | Any return after failure | Reframe after failure |',
+              '|:--|:--|--:|--:|--:|--:|--:|--:|--:|']
+        for t, b in br.items():
+            for s in ['all', 'problem', 'capability']:
+                v = b['revisits'].get(s)
+                if v:
+                    L += [f"| {t} | {s} | {v['n']} | {pct(b['consistency']['entry_node_is_first_step'][1]) if s == 'all' else ''} | {pct(v['revisited'][1])} | "
+                          f"{pct(v['later_step_raw'][1])} | {pct(v['Q_revisited_collapsed'][1])} | {pct(v['any_return_after_failure'][1])} | {pct(v['reframe_after_failure'][1])} |"]
     qe = rv['entry_node_Q']
     L += ['', f"By entry node rather than state: of the {qe['n']} papers that enter at Q, {qe['later_Q_step_raw'][0]} "
           f"({pct(qe['later_Q_step_raw'][1])}) have a later Q step and {qe['Q_revisited_collapsed'][0]} ({pct(qe['Q_revisited_collapsed'][1])}) "
@@ -1063,7 +1130,10 @@ def report(res):
           f"{a['n']} codings, `derived/entry/audit_sample.json` (with coded state) and `derived/entry/audit_packets/<key>.json` (key, DOI, title, "
           f"text paths only). By state: " + ', '.join(f'{k} {v}' for k, v in a['by_state'].items()) + '. By round: '
           + ', '.join(f'{k} {v}' for k, v in a['by_round'].items()) + f". With PDF {a['with_pdf']}, with XML text {a['with_xml_text']}. "
-          'Sampled with numpy default_rng(2026): problem 36, the other states spread round robin (all of a state when it has fewer), audit order shuffled.', '']
+          'Sampled with numpy default_rng(2026): problem 36, the other states spread round robin (all of a state when it has fewer), audit order shuffled. '
+          'Drawn from the valid codings at the time (' + ', '.join(f'{k} {v}' for k, v in a['available'].items()) + '); '
+          + ('kept as drawn: the blind re-codings exist, so later codings do not redraw it, and the population weights of section 8 use these counts.'
+             if res.get('audit_sample_reused') else 'drawn in this run.'), '']
     if 'blind_audit' in res:
         L += audit_report(res['blind_audit'])
     return '\n'.join(L) + '\n'

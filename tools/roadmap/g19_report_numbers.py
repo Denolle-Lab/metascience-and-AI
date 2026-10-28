@@ -14,7 +14,8 @@ Inputs (paths from the repo root; read only)
   private/data/roadmap/derived/calc1/xml_status.json       publisher XML for round 1
   private/data/roadmap/derived/calc1/papers_vs_agents.json node use by agent loops (g14)
   private/data/roadmap/derived/gold/metrics.json           journal, publisher, is_oa, impact, n_refs (600)
-  private/data/roadmap/derived/outcomes/outcomes.json      g17 tests
+  private/data/roadmap/derived/outcomes/outcomes.json      g17 tests (round 1, pooled by round, the 15 frozen hypotheses)
+  preregistration/round2-confirmatory.json, private/data/roadmap/derived/confirmatory/results.json   frozen plan and g23 result
   private/data/roadmap/derived/review/open_review_index.json, visibility_labels.json, visibility_input/<key>.json
   private/data/roadmap/derived/r2/{preselect,eligibility}.json, derived/r2calc/{manifest.jsonl,xml_status.json}
   private/data/roadmap/download-queue.before-refetch-2026-10-27.json   fetch state on October 27, before the retry
@@ -30,7 +31,10 @@ of the features behind the g17 associations, the rho interval half-width, review
 read, a string scan of the published texts for revision phrases, a paper-level test of absences by node, and the
 round-2 dry-run total. Added after the second review (audit_extra): a between-paper baseline for the test-retest
 similarities, quote existence in the source text, the textbook order as an ordered subsequence, coded against uncoded
-AGU papers, the within-family re-ranked estimate, the E4 labelers' Cohen kappa, the E1 text route and resubmissions.
+AGU papers, the within-family re-ranked estimate, the E4 labelers' Cohen kappa, the E1 text route and resubmissions. Added after the
+round-2 confirmatory test (rounds_pooled, confirmatory): the round-1 split into first analysis and top-up, codings
+excluded after two failed validations, steps, revisits and V status per round and pooled, the g17 pooled and frozen-
+hypothesis summaries, and the confirmatory verdicts by source, outcome, grouping and kind with per-hypothesis effects.
 
 Output
   private/data/roadmap/derived/report_numbers.json   {id: {value, definition, inputs}}, with provenance
@@ -806,6 +810,15 @@ def audit_extra(state: dict, met: dict) -> None:
         'XML files were fetched on October 27, after E1 was submitted (October 25), so the coder did not see them. '
         'valid_codings_by_reported_route uses the coder\'s own `documents` field. Short XML files (under 15,000 characters) are listed.',
         ['derived/calc1/xml_status.json', 'private/analysis/codings/api/state.json', 'private/analysis/codings/api/calc1'])
+    okr2, _ = load_valid('r2')
+    r2_route = Counter('xml' if (any('xml' in d.lower() for d in c.get('documents', []))
+                                 or 'xml' in str(c.get('pages_convention', '')).lower()) else 'pdf' for c in okr2.values())
+    put('text.by_round.reported_route', {'round1': counter(route_counts), 'round2': counter(r2_route),
+                                         'round1_valid': len(ok1), 'round2_valid': len(okr2)},
+        'Valid codings by the input route the coder reports in `documents` or `pages_convention` (xml: PDF plus located '
+        'publisher XML text; pdf: PDF only), round 1 (calc1) and round 2 (r2), same rule as quotes.calc1_existence. '
+        'Reported next to each other because E0 found that the node sequence changes between input formats.',
+        ['private/analysis/codings/api/calc1', 'private/analysis/codings/api/r2'])
 
     # 3. textbook order as an ordered subsequence (gaps allowed) and as a contiguous run, merged node sequences (as g13)
     def subseq(xs_, pat):
@@ -915,7 +928,7 @@ def audit_extra2(met: dict) -> None:
                       'ring': counter(Counter(met[k].get('ring') for k in ks if k in met))}
     put('retest.sample_mix', {'retest_pairs': mix(pairs), 'coded': mix(sorted(ok1))},
         'Journal family (g20 rule), entry state (first coding) and ring of the 50 retest papers (gold papers with full text at E1 '
-        'and both codings valid) against all 233 coded papers.', I + ['derived/gold/metrics.json'])
+        f'and both codings valid) against all {len(ok1)} valid round-1 codings.', I + ['derived/gold/metrics.json'])
     # agent node shares by system family (research systems against general patterns), two coders averaged
     man = {x['key']: x for x in json.loads((PRIVATE / 'analysis' / 'reliability' / 'agents_manifest.json').read_text())}
     AG = PRIVATE / 'analysis' / 'reliability' / 'codings' / 'agents'
@@ -934,6 +947,136 @@ def audit_extra2(met: dict) -> None:
         'research systems (agents_manifest.json family "science") and for general patterns, coding, multi-agent and deep-research '
         'systems; and raw agreement of the two coders on the mark (full, partial, none) over 31 systems x 15 nodes.',
         ['private/analysis/reliability/agents_manifest.json', 'private/analysis/reliability/codings/agents/{opus-b,sonnet-c}'])
+
+
+# ---------------------------------------------------------------- rounds and the confirmatory test (added October 27, 2026)
+def rounds_pooled(state: dict) -> None:
+    """Round-2 and pooled counterparts of the coded-feature numbers, the round-1 split, the codings excluded after two
+    failed validations, and the round-1 and pooled outcome summaries from outcomes.json."""
+    import rounds
+    from check_coding import v_status
+    ok1, bad1 = load_valid('calc1')
+    ok2, bad2 = load_valid('r2')
+    first, top = rounds.round1_split(ok1)
+    I = ['private/analysis/codings/api/calc1', 'private/analysis/codings/api/r2', 'private/analysis/codings/api/state.json']
+    put('round1.split', {'valid': len(ok1), 'first_analysis': len(first), 'top_up': len(top), 'eligible': len(manifest('calc1'))},
+        'Valid round-1 (calc1) codings, split into the first analysis (the 233 the exploratory analysis and the freeze used) and the '
+        f'top-up (state.json record names a calc1 batch submitted on or after {rounds.TOPUP_FROM}; tools/roadmap/rounds.py).', I)
+    put('round2.coded', {'valid': len(ok2), 'eligible': len(manifest('r2calc'))},
+        'Valid round-2 (r2) codings and eligible round-2 papers (derived/r2calc/manifest.jsonl).', I + ['derived/r2calc/manifest.jsonl'])
+    # papers whose coding still fails validation after being sent twice or more
+    sent = Counter()
+    for b in state['batches']:
+        if b['tag'] in ('calc1', 'r2') and b.get('collected'):
+            sent.update(f"{b['tag']}:{k}" for k in b['keys'])
+    excl = {f'{t}:{k}': {'requests': sent[f'{t}:{k}'], 'reason': reason(v)} for t, bad in (('calc1', bad1), ('r2', bad2))
+            for k, v in sorted(bad.items()) if k not in (ok1 if t == 'calc1' else ok2) and sent[f'{t}:{k}'] >= 2}
+    put('coding.excluded_after_two_failures', {'n': len(excl), 'by_tag': counter(Counter(k.split(':')[0] for k in excl)), 'papers': excl},
+        'Papers whose calc1 or r2 coding file fails tools/check_coding.py validate() after the paper was sent to the coder in two or '
+        'more collected batches; excluded from every analysis.', I)
+    # coded features per round and pooled (same rules as coded_features)
+    fp = lambda c: [x['node'] for x in next(q for q in c['sequences'] if q['kind'] == 'final_paper')['steps']]
+    blocks = {'round1': list(ok1.values()), 'round2': list(ok2.values())}
+    blocks['pooled'] = blocks['round1'] + blocks['round2']
+    put('features.steps_median.by_round', {r: {'unmerged': st.median([len(fp(c)) for c in cs]), 'merged': st.median([len(_merged(fp(c))) for c in cs]),
+                                               'n': len(cs)} for r, cs in blocks.items() if cs},
+        'Median final-paper steps per paper, unmerged (g17 "steps") and with consecutive repeats merged (g13), per round and pooled; all valid codings.', I)
+    put('features.revisits_median.by_round', {r: {'g17_unmerged': st.median([g17.features(c)['num:revisits'] for c in cs]),
+                                                  'merged': st.median([_revisits(_merged(fp(c))) for c in cs]), 'n': len(cs)} for r, cs in blocks.items() if cs},
+        'Median revisits per paper (definitions as features.revisits_median), per round and pooled; all valid codings.', I)
+    put('features.v_status.by_round', {r: {'n': len(cs), 'status': counter(Counter(v_status(c)['v'] for c in cs)),
+                                           'triangulation': sum(v_status(c)['triangulation'] for c in cs)} for r, cs in blocks.items() if cs},
+        'V status per paper (check_coding.v_status) and papers with triangulation, per round and pooled; all valid codings.', I)
+    # outcome summaries written by g17
+    o = read_json(DERIVED / 'outcomes' / 'outcomes.json')
+    Io = ['derived/outcomes/outcomes.json']
+    if 'pooled_round_stratified' in o:
+        pr = o['pooled_round_stratified']
+        put('outcomes.pooled.summary', {'papers': pr['papers'], 'tests': pr['tests'], 'q_below_0.1': pr['q_below_0.1'],
+                                        'abs_rho_within_range_q_below_0.1': [min(abs(r['rho_within']) for r in pr['rows'] if r['q'] < 0.1),
+                                                                             max(abs(r['rho_within']) for r in pr['rows'] if r['q'] < 0.1)]
+                                        if pr['q_below_0.1'] else None},
+            'g17 pooled run, round as a stratum: Spearman on ranks computed inside each round, centred within round and pooled; '
+            'permutation of the outcome within round; BH q over the pooled tests. Descriptive.', Io)
+    if o.get('round1_hypotheses'):
+        h = o['round1_hypotheses']
+        put('outcomes.round1_hypotheses.summary', {k: v for k, v in h.items() if k not in ('rows', 'note')} | {'hypotheses': len(h['rows'])},
+            'The 15 frozen g17 hypotheses (H01-H15): how many are at q < 0.1 and with the predicted sign in the round-1 run at the current n; '
+            'with the predicted sign (and also p < 0.05) on the top-up papers alone; at pooled q < 0.1 with the predicted sign; and the '
+            'round-2 verdicts (g23).', Io)
+        put('outcomes.round1_hypotheses.rho', {r['id']: {'first_analysis': r['round1_first_analysis']['rho'],
+                                                         'round1_now': (r['round1_now'] or {}).get('rho'),
+                                                         'top_up': (r['round1_top_up'] or {}).get('rho'),
+                                                         'round2': (r['round2'] or {}).get('rho'),
+                                                         'pooled_within_round': (r['pooled_within_round'] or {}).get('rho_within')} for r in h['rows']},
+            'Spearman rho of each frozen g17 hypothesis at each stage (outcomes.json round1_hypotheses).', Io)
+
+
+def confirmatory() -> None:
+    """Summary of the round-2 confirmatory test (g23 test; read, not rerun): verdicts by source, outcome, grouping and kind,
+    and per hypothesis the round-1 and round-2 effects."""
+    import hashlib
+    plan_p = ROOT / 'preregistration' / 'round2-confirmatory.json'
+    res_p = DERIVED / 'confirmatory' / 'results.json'
+    if not res_p.is_file():
+        return
+    plan = json.loads(plan_p.read_text())
+    res = read_json(res_p)
+    H = {h['id']: h for h in plan['hypotheses']}
+    I = ['preregistration/round2-confirmatory.json', 'derived/confirmatory/results.json']
+    rows = res['rows']
+    put('confirmatory.plan', {'frozen': plan['frozen'], 'family_size': plan['family_size'], 'q_threshold': plan['q_threshold'],
+                              'round2_codings_at_freeze': plan['round2_codings_at_freeze'],
+                              'plan_sha256_matches_results': hashlib.sha256(plan_p.read_bytes()).hexdigest() == res['plan_sha256']},
+        'The frozen plan (public commit b4369fe): date, number of hypotheses, BH threshold, round-2 codings when frozen, and whether the '
+        'plan file now has the sha256 recorded in results.json.', I)
+    put('confirmatory.verdicts', dict(res['verdicts']) | {'papers': res['papers']},
+        'Verdicts of the 43 hypotheses on round 2: confirmed = BH q < 0.1 over the 43 and the predicted direction holds; reversed = q < 0.1 '
+        'and the opposite direction; otherwise not confirmed. papers = valid round-2 codings with metrics.', I)
+    lab = lambda r: H[r['id']]['source']
+    by = lambda key: {k: counter(Counter(r['verdict'] for r in rows if key(r) == k)) for k in sorted({key(r) for r in rows})}
+    put('confirmatory.verdicts_by_source', by(lab),
+        'Verdicts by source: g17 = workflow feature against an outcome metric (Spearman rho); g20 = workflow feature against OpenAlex '
+        'subfield or journal family.', I)
+    g17r = [r for r in rows if lab(r) == 'g17']
+    put('confirmatory.verdicts_by_outcome', {o: counter(Counter(r['verdict'] for r in g17r if H[r['id']]['outcome'] == o))
+                                             for o in sorted({H[r['id']]['outcome'] for r in g17r})},
+        'g17 hypotheses by outcome metric: cnp = OpenAlex citation normalized percentile; fwci = field-weighted citation impact; '
+        'novelty_pair = -log10(1 + prior works sharing the leading topic pair); breadth_refs = share of references outside geoscience.', I)
+    g20r = [r for r in rows if lab(r) == 'g20']
+    gk = lambda r: f"{H[r['id']]['grouping']} {H[r['id']]['kind']}"
+    put('confirmatory.verdicts_by_grouping_kind', {k: counter(Counter(r['verdict'] for r in g20r if gk(r) == k)) for k in sorted({gk(r) for r in g20r})},
+        'g20 hypotheses by grouping (subfield = OpenAlex subfield of the leading topic; family = journal family) and kind (binary feature: '
+        'leading group above or below the rest; count: order of group medians; categorical: association only).', I)
+
+    def eff(d, kind):
+        if kind is None:
+            return {'rho': d.get('rho'), 'ci': d.get('ci'), 'q': d.get('q'), 'n': d.get('n')}
+        if kind == 'count':
+            return {'epsilon2': d.get('epsilon2'), 'ci': d.get('epsilon2_ci'), 'q': d.get('q'), 'n': d.get('n')}
+        return {'cramers_v_bc': d.get('cramers_v_bc'), 'ci': d.get('v_bc_ci'), 'q': d.get('q'), 'n': d.get('n')}
+    per = {}
+    for r in rows:
+        h = H[r['id']]
+        kind = h.get('kind')
+        x = {'source': h['source'], 'feature': h['feature'], 'verdict': r['verdict'], 'direction_ok': r.get('direction_ok'),
+             'round1': eff(h['round1'], kind), 'round2': eff(r, kind)}
+        if h['source'] == 'g17':
+            x |= {'outcome': h['outcome'], 'predicted_sign': h['predicted_sign']}
+        else:
+            x |= {'grouping': h['grouping'], 'kind': kind}
+            if kind == 'binary':
+                x |= {'leading_group': h['predicted']['leading_group'], 'round1_rate_minus_rest': h['predicted']['round1_rate_minus_rest'],
+                      'round2_rate_minus_rest': (r.get('leading_group_round2') or {}).get('diff_vs_rest'),
+                      'round2_rate_minus_rest_ci': (r.get('leading_group_round2') or {}).get('diff_ci')}
+            if kind == 'count':
+                x['round2_median_order_rho'] = r.get('median_order_rho')
+        per[r['id']] = x
+    put('confirmatory.hypotheses', per,
+        'Per hypothesis: round-1 effect (from the frozen plan, 233 papers) and round-2 effect (results.json, 198 papers), with 95% bootstrap '
+        'interval and BH q (round 1: q over the round-1 family it came from; round 2: q over the 43). g17: Spearman rho. g20 binary and '
+        'categorical: bias-corrected Cramer V; binary also the leading group rate minus the rest. g20 count: epsilon^2 = H / (n - 1) from '
+        'Kruskal-Wallis, and the Spearman correlation of round-1 and round-2 group medians.', I)
 
 
 def main() -> None:
@@ -958,8 +1101,11 @@ def main() -> None:
     loop_pilot()
     audit_extra(state, met)
     audit_extra2(met)
+    rounds_pooled(state)
+    confirmatory()
     write_json(OUT, VALUES, ['private/analysis/codings/api/state.json', 'private/analysis/codings/api/{calc1,calc1-review,r2}',
-                             'derived/{gold,calc1,r2,r2calc,review,outcomes}', rel(QUEUE_OCT27), 'private/download-queue.json'],
+                             'derived/{gold,calc1,r2,r2calc,review,outcomes,confirmatory}', 'preregistration/round2-confirmatory.json',
+                             rel(QUEUE_OCT27), 'private/download-queue.json'],
                {'publisher_rule': 'DOI registrant prefix (PREFIX in g19_report_numbers.py); 10.1029 = AGU', 'cap_usd': CAP_USD,
                 'chars_per_token': CHARS_PER_TOKEN, 'max_chars': MAX_CHARS})
     log('g19_report_numbers.py', 'reported numbers recomputed from data (counts, costs, tokens, fetch)', len(VALUES),
