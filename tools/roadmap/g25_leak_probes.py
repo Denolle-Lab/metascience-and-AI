@@ -463,6 +463,9 @@ def collect(args) -> None:
                                         ensure_ascii=False) + '\n')
                     print(f'{k}: {why}')
             b['collected'] = True
+            for x in st['batches']:   # save_state replaces st['batches'] with merged copies; mark this batch there too
+                if x['id'] == b['id']:
+                    x['collected'] = True
             cp.save_state(st)
     for tag in TAGS.values():
         print(f'{tag}: ${cp.spent_usd(st, tag):,.2f} recorded over every returned result')

@@ -885,50 +885,56 @@ def cmd_collect(client, args, st: dict) -> None:
     if wrong:
         print(f'tag "{args.tag}" has batches of another task ({", ".join(sorted(set(wrong.values())))}); '
               f'rerun with --task {next(iter(wrong.values()))}. Nothing collected.'); return
-    for b in pending:
+    # collect batches in the order they end, so one slow batch does not hold back finished ones behind it
+    queue = list(pending)
+    while queue:
+        status = {x['id']: client.messages.batches.retrieve(x['id']) for x in queue}
+        b = next((x for x in queue if status[x['id']].processing_status == 'ended'), None)
+        if b is None:
+            if not args.wait:
+                for x in queue:
+                    r = status[x['id']]; print(f'{x["id"]}: {r.processing_status} ({r.request_counts.processing} processing)')
+                return
+            time.sleep(60); continue
+        queue.remove(b)
         # a review batch carries its review_dir and addendum: the quote checks run here as on `one`
         if b.get('review_addendum'):
             rd = b.get('review_dir') or 'private/data/roadmap/review'
             REVIEW_DIR = str(queue_file(rd))
-        while (r := client.messages.batches.retrieve(b['id'])).processing_status != 'ended':
-            if not args.wait:
-                print(f'{b["id"]}: {r.processing_status} ({r.request_counts.processing} processing)'); break
-            time.sleep(60)
-        else:
-            if any(x['id'] == b['id'] and x.get('collected') for x in load_state()['batches']):
-                print(f'{b["id"]}: already collected by another run; skipped'); continue
-            for res in client.messages.batches.results(b['id']):
-                k = res.custom_id
-                if res.result.type != 'succeeded':
-                    err = getattr(res.result, 'error', None)
-                    detail = getattr(getattr(err, 'error', None), 'message', None) or str(err or '')
-                    st['failed'][f'{args.tag}:{k}'] = f'{res.result.type}: {detail}'[:500]; print(f'{k}: {res.result.type}: {detail[:300]}')
-                    record_attempt(st, args.tag, k, b['id'], None, 0.0, f'{res.result.type}: {detail}')
-                    continue
-                msg = res.result.message
-                u = usage_dict(msg.usage)
-                usd = dollars(u, True, ttl_1h=TASK == 'advance')
-                if msg.stop_reason in ('refusal', 'max_tokens'):
-                    st['failed'][f'{args.tag}:{k}'] = msg.stop_reason
-                    record_attempt(st, args.tag, k, b['id'], u, usd, msg.stop_reason, getattr(msg, 'model', None))
-                    print(f'{k}: {msg.stop_reason}'); continue
-                text = next((x.text for x in msg.content if x.type == 'text'), '')
-                n = len(st['spent'].get(f'{args.tag}:{k}', [])) + 1
-                run = {'model': getattr(msg, 'model', None), 'batch': b['id'], 'attempt': n,
-                       'expected_key': 'P' + b.get('blind', {}).get(k, '')[:10]} if TASK == 'advance' else None
-                ok, why = write_coding(k, text, out, run=run, review=bool(b.get('review_addendum')) if TASK == 'inquiry' else None)
-                record_attempt(st, args.tag, k, b['id'], u, usd, why, getattr(msg, 'model', None))
-                if ok:
-                    st['done'][f'{args.tag}:{k}'] = {'batch': b['id'], 'usage': u, 'usd': round(usd, 4)}
-                    st['failed'].pop(f'{args.tag}:{k}', None)
-                else:
-                    st['failed'][f'{args.tag}:{k}'] = why
-                print(f'{k}: {why}')
-            b['collected'] = True
-            for x in st['batches']:   # save_state replaces st['batches'] with merged copies; mark this batch there too
-                if x['id'] == b['id']:
-                    x['collected'] = True
-            save_state(st)
+        if any(x['id'] == b['id'] and x.get('collected') for x in load_state()['batches']):
+            print(f'{b["id"]}: already collected by another run; skipped'); continue
+        for res in client.messages.batches.results(b['id']):
+            k = res.custom_id
+            if res.result.type != 'succeeded':
+                err = getattr(res.result, 'error', None)
+                detail = getattr(getattr(err, 'error', None), 'message', None) or str(err or '')
+                st['failed'][f'{args.tag}:{k}'] = f'{res.result.type}: {detail}'[:500]; print(f'{k}: {res.result.type}: {detail[:300]}')
+                record_attempt(st, args.tag, k, b['id'], None, 0.0, f'{res.result.type}: {detail}')
+                continue
+            msg = res.result.message
+            u = usage_dict(msg.usage)
+            usd = dollars(u, True, ttl_1h=TASK == 'advance')
+            if msg.stop_reason in ('refusal', 'max_tokens'):
+                st['failed'][f'{args.tag}:{k}'] = msg.stop_reason
+                record_attempt(st, args.tag, k, b['id'], u, usd, msg.stop_reason, getattr(msg, 'model', None))
+                print(f'{k}: {msg.stop_reason}'); continue
+            text = next((x.text for x in msg.content if x.type == 'text'), '')
+            n = len(st['spent'].get(f'{args.tag}:{k}', [])) + 1
+            run = {'model': getattr(msg, 'model', None), 'batch': b['id'], 'attempt': n,
+                   'expected_key': 'P' + b.get('blind', {}).get(k, '')[:10]} if TASK == 'advance' else None
+            ok, why = write_coding(k, text, out, run=run, review=bool(b.get('review_addendum')) if TASK == 'inquiry' else None)
+            record_attempt(st, args.tag, k, b['id'], u, usd, why, getattr(msg, 'model', None))
+            if ok:
+                st['done'][f'{args.tag}:{k}'] = {'batch': b['id'], 'usage': u, 'usd': round(usd, 4)}
+                st['failed'].pop(f'{args.tag}:{k}', None)
+            else:
+                st['failed'][f'{args.tag}:{k}'] = why
+            print(f'{k}: {why}')
+        b['collected'] = True
+        for x in st['batches']:   # save_state replaces st['batches'] with merged copies; mark this batch there too
+            if x['id'] == b['id']:
+                x['collected'] = True
+        save_state(st)
 
 
 def main() -> int:
