@@ -23,7 +23,7 @@ Usage:
   python3 tools/fetch_pdfs.py add KEY [KEY ...]        queue references from references.bib by key
   python3 tools/fetch_pdfs.py add-doi FILE             queue DOIs from a file (one 'doi' or 'key doi' per line)
   python3 tools/fetch_pdfs.py add-manifest FILE.jsonl  queue a corpus manifest from tools/corpus.py (group = corpus name and stratum)
-  python3 tools/fetch_pdfs.py run [--out DIR] [--library DIR ...] [--group PREFIX ...] [--dry-run]
+  python3 tools/fetch_pdfs.py run [--out DIR] [--library DIR ...] [--group PREFIX ...] [--dry-run] [--library-only]
   python3 tools/fetch_pdfs.py list                     rewrite private/download-list.md only
 Nothing fetched here is redistributed; PDFs go to a gitignored folder.
 """
@@ -123,6 +123,14 @@ def save(data: bytes, dest: Path, doi: str, title: str) -> tuple[bool, str]:
     return True, check
 
 
+def name_doi(name: str) -> str | None:
+    """DOI implied by a GeoScienceWorld download name for SSA journals, which some PDFs do not print in a form
+    pdftotext reads: 'SRL-2021361 2804..2817.pdf' is 10.1785/0220210361, 'BSSA-2020229 695..703.pdf' is
+    10.1785/0120200229 (the three-digit manuscript number is zero-padded to four)."""
+    m = re.match(r'(SRL|BSSA)-(\d{4})(\d{3})\b', name)
+    return f"10.1785/{'02' if m.group(1) == 'SRL' else '01'}{m.group(2)}{int(m.group(3)):04d}" if m else None
+
+
 def index_library(dirs: list[Path]) -> dict:
     idx = json.loads(INDEX.read_text()) if INDEX.exists() else {}
     for d in dirs:
@@ -135,6 +143,8 @@ def index_library(dirs: list[Path]) -> dict:
                 continue
             dois = sorted(set(m.rstrip('.,;)').lower() for m in re.findall(r'10\.\d{4,9}/[^\s"<>]+', pdf_text(p))))
             idx[key] = {'mtime': st.st_mtime, 'dois': dois}
+            if not dois and (n := name_doi(p.name)):   # unverified until run checks the title (matches())
+                idx[key]['doi_from_name'] = n
     INDEX.write_text(json.dumps(idx, indent=1))
     return idx
 
@@ -314,6 +324,7 @@ def main() -> int:
     r = sub.add_parser('run'); r.add_argument('--out', type=Path, default=DEFAULT_OUT)
     r.add_argument('--library', type=Path, action='append'); r.add_argument('--dry-run', action='store_true')
     r.add_argument('--group', action='append', help='only queue entries whose group starts with this text (repeatable)')
+    r.add_argument('--library-only', action='store_true', help='match the local library folders only; try no network route')
     sub.add_parser('list')
     args = ap.parse_args()
     q = load_queue(); R = refs()
@@ -342,6 +353,7 @@ def main() -> int:
         args.out.mkdir(parents=True, exist_ok=True)
         idx = index_library(args.library or DEFAULT_LIBRARY)
         by_doi = {d: f for f, v in idx.items() for d in v['dois']}
+        by_name = {v['doi_from_name']: f for f, v in idx.items() if v.get('doi_from_name')}
         for k, v in q.items():
             if v.get('status') == 'have' and v.get('file') and Path(v['file']).exists():
                 continue
@@ -352,7 +364,13 @@ def main() -> int:
             doi = v['doi'].lower()
             if doi in by_doi:
                 v.update(status='have', route='library', file=by_doi[doi]); print(f'{k}: in library'); continue
-            if args.dry_run:
+            if doi in by_name:   # file name only: accept when the first pages carry the title
+                title = R.get(k, {}).get('title') or (v.get('meta') or {}).get('title') or ''
+                check = matches(Path(by_name[doi]), v['doi'], title)
+                if check.startswith('title') or check == 'doi found':
+                    v.update(status='have', route='library (file name)', file=by_name[doi], check=check)
+                    print(f'{k}: in library by file name ({check})'); continue
+            if args.dry_run or args.library_only:
                 print(f'{k}: would try routes'); continue
             title = R.get(k, {}).get('title', '')
             route, tried = routes_for(v['doi'], title, k, args.out)
