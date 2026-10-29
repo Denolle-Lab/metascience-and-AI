@@ -1,0 +1,459 @@
+{
+ "key": "g22_W4283078100",
+ "doi": "10.1016/j.cageo.2022.105176",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4283078100.pdf (published paper, Computers & Geosciences 166, 105176)",
+  "g22_W4283078100.xml.txt (publisher XML via jats_text: abstract and captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions. The supplied XML text holds no body paragraphs, so body text is cited by printed journal pages, which equal the PDF pages counted from 1. Figure-content steps cite the caption label plus the PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "Already existing algorithms, although working, may present several issues.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4283078100.pdf with g22_W4283078100.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the aim: a machine-learning method to locate and characterize the polar night jet (intensity and location) from zonal wind alone, avoiding the fixed-60°N assumption and the cost of 2D methods.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we investigate the application of machine learning techniques for the full characterization of the PNJ as a way to simplify this characterization"
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "methods",
+     "action": "Choose JRA-55 reanalysis and three CMIP6 models (piControl, abrupt4xCO2) whose PNJ states and CO2 responses are known from earlier work, so that the algorithm can be validated against that prior knowledge.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This previous knowledge will allow for a validation of our algorithm"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the ground truth: run 8-connected region growing (boundary at 75% of maximum u) on 200 monthly 10 hPa u images, then have a climate expert correct the regions and discard non-PNJ images.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "expert modification of the images was performed on the results provided by the region growing method"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design a per-grid-point binary classifier with two relative features (normalized u, latitude offset from the u maximum). Choose four candidate classifiers (Naive Bayes, decision tree, random forest, kNN) and set their hyperparameters after unreported tests.",
+     "page": "pp. 4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Regarding the type of classifier, we decided to try four"
+    },
+    {
+     "n": 5,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the four classifiers on a 70/30 hold-out split against the expert ground truth, scoring accuracy and training and prediction time (Table 2).",
+     "page": "p. 5; Table 2 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the amount of images available is divided into hold-out subsets consisting of a 70/30 train-test ratio"
+    },
+    {
+     "n": 6,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the decision tree (95.5% accuracy) as a compromise between accuracy and cost, and retrain it on the full expert dataset to classify all remaining images.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the decision tree classifier was selected going forward as a compromise between accuracy and training and testing computational complexity"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the classified region visually against the expert contour (Fig. 1b), then against time-averaged u and geopotential height composites, where the PNJ lies over the strongest u at the edge of the geopotential drop.",
+     "page": "p. 6; Figure 2 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "confirming the high skill of our algorithm to identify the PNJ"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the climatological PNJ intensity (cosine-weighted u) and u-weighted latitude, with standard deviations, for JRA-55 and the three piControl runs (Table 3).",
+     "page": "p. 6; Table 3 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the climatology of several variables has been obtained to characterize the PNJ in each dataset"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the estimated PNJ latitudes with the 60°N reference of the standard method: all datasets lie near 60°N, and CanESM5 is closest to JRA-55.",
+     "page": "pp. 6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "They show that the obtained PNJ latitude is very close to"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine the output with extreme-event classes: type 1 (mean PNJ latitude below 35°N) and type 2 (low intensity and small area), with thresholds set manually after iterating.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have divided these events into two types, with conditions set manually after iterating."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate type 1 event frequencies and intensities per dataset (Table 4) and show composites in which the classifier tracks the weak, displaced vortex.",
+     "page": "p. 7; Figure 3 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The frequency of these extreme events is evidently low (roughly 1%)"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare with the standard 60°N zonal-mean method (Table 5, Fig. 4). The standard method gives lower intensity and higher spread (significant at 95%), especially when the jet core lies south of 60°N.",
+     "page": "p. 7; Figure 4 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This valuable information is lost when using the standard characterization method."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Apply the classifier to the abrupt4xCO2 runs, estimate changes in PNJ intensity, latitude and type 1 frequency, and test their significance with a Student t-test (Tables 6, 7).",
+     "page": "pp. 7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the same characterization exercise with our AI technique has been applied to the abrupt4xCO2 simulations"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the model-dependent CO2 response and the southward PNJ shift against published results (Ayarzagüena et al. 2020; Zhang et al. 2016) and find them coherent.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are coherent with what is described by Ayarzagüena et al. (2020)"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply the monthly-trained classifier to daily JRA-55 data and compare detected displacement SSWs with multi-scheme classifications in Gerber and Martineau (2022): 6 of 9 unanimous events and 11 of 16 events.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we retrieve more than 70% (6 out of 9) of the unanimously classified as displacement"
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revise the classifier for split (type 2) events, which the original training pool could not support, by adding 84 daily JRA-55 extreme-event images and geopotential height as a feature.",
+     "page": "p. 9",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the pool of data with a PNJ structure of type 2 is not enough to train the classifier"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare onset dates of detected split events with Charlton and Polvani (2007) and Lawrence and Manney (2018) (Table 8): 14 of 17 events recovered.",
+     "page": "p. 9; Table 8 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our algorithm obtains 14 out of 17 split events (82%) of those other two studies combined"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the classifier as a characterized capability: it gives PNJ extension, location, intensity and event type in one step. They concede no advantage over the standard method when only intensity is needed.",
+     "page": "pp. 9-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our algorithm is able to characterize the PNJ in more detail with respect to area and location"
+    },
+    {
+     "n": 19,
+     "node": "N",
+     "mode": "methods",
+     "action": "Show a first extension of the region-growing step to the tropospheric North Atlantic jet at 300 hPa (Fig. 7), with no validation.",
+     "page": "p. 12; Figure 7 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a first attempt of their use to detect the North Atlantic jet (NAJ)"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Polar night jet and polar vortex: a known, established phenomenon",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes, as zonal wind fields in reanalysis and model output; the PNJ region is not directly labelled",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a classification method for PNJ location, intensity and extreme events",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival methods: the standard 60°N zonal-mean method, 2D PV, tracer and moment methods, and CAVE-ART; no rival physical hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: the standard method should underestimate intensity when the jet core is displaced from 60°N",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing reanalysis and CMIP6 runs chosen for known contrasting PNJ states",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats as many winter months and SSW events, used for frequencies and event-list comparisons",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: hold-out accuracy, standard-method comparison, published SSW lists and a daily-data application; no hyperparameter sensitivity reported",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: capability characterized (95.5% accuracy, more detail than the standard method)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A decision-tree classifier trained on expert-labelled 10 hPa zonal wind images identifies the PNJ region, intensity, latitude and perturbed states with 95.5% accuracy, agreeing with zonal-mean and published methods while giving more detail in one step.",
+  "page": "§0 ¶2"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the expert-corrected ground truth built on region-growing segmentations, there would be no training data and no accuracy measure for the classifier.",
+  "page": "p. 4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No hypothesis directed data acquisition, though models were chosen for their known PNJ states to allow validation (p. 3). The classifier faced a hold-out test against expert labels (p. 5), the standard method (p. 7) and published SSW lists (p. 9), all of which it could have failed; no pass threshold was stated. Hyperparameters were set 'after several tests' (p. 5) and event thresholds 'after iterating' (p. 7), so nothing was fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Supervised classifiers (Gaussian Naive Bayes, CART decision trees, random forests, kNN) via scikit-learn",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "computer vision / image processing",
+   "item": "8-connected region growing image segmentation",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "machine learning",
+   "item": "Expert-labelled ground-truth dataset and hold-out train-test split",
+   "kind": "concept",
+   "page": "pp. 4-5"
+  },
+  {
+   "field": "statistics",
+   "item": "Student t-test for significance of changes",
+   "kind": "method",
+   "page": "p. 8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "In this study, we describe a new artificial intelligence technique to characterize the PNJ.",
+   "page": "§0 ¶2"
+  },
+  {
+   "quote": "The kind of ground truth we have built was not previously available",
+   "page": "p. 9"
+  },
+  {
+   "quote": "The ground truth dataset binary-classified images did not previously exist in any public database",
+   "page": "p. 9"
+  },
+  {
+   "quote": "this type of classification has not been performed for stratospheric PNJ images as of now",
+   "page": "p. 11"
+  }
+ ],
+ "limits": "The XML text supplied contains only the abstract and captions, so body steps are located by printed pages. The ground truth rests on one expert, with no inter-annotator agreement reported, and the expert discarded images judged inconsistent with a PNJ. Inference: this may bias accuracy upward. Table 2's caption says the comparison used the CESM2-WACCM 50-image set, while the text describes a 200-image pool, so what was held out is unclear. The visual check in Fig. 1b uses a training image. Hyperparameters (depth 5, k=3, 10 trees), the 75% growth boundary and the event thresholds were set by unreported trials, and no sensitivity tests are shown. Only one ensemble member per model is used. Table 7 omits CanESM5 although the text discusses it. Fig. 5c's caption says type 1 where type 2 appears meant. The authors concede that for intensity alone the method offers no advantage over the faster standard method (p. 9). Sub-claims and their statuses: (a) the model-dependent CO2 response of PNJ intensity and type 1 frequency is estimate_with_resolution, consistent with Ayarzagüena et al. 2020. (b) The CO2-driven PNJ latitude decrease regardless of intensity change is a tentative regularity the authors say needs further study (best_explanation at most). (c) The displacement and split SSW detection rates (6/9, 11/16, 14/17) are capability_characterized for daily JRA-55 only. (d) The North Atlantic jet extension (Fig. 7) is unvalidated.",
+ "disagreements": [
+  {
+   "target": "Standard 60°N, 10 hPa zonal-mean zonal wind method (e.g. Charlton and Polvani 2007; Hardiman et al. 2019; Ayarzagüena et al. [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Table 5 and Fig. 4 show the 60°N method gives lower and more variable intensities, significant at 95%, when the jet core is displaced from 60°N.",
+   "page": "p. 7",
+   "quote": "This valuable information is lost when using the standard characterization method."
+  },
+  {
+   "target": "2D vortex-edge diagnostics (tracer, Lagrangian, PV-based and moment methods)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from their requirements (PV or tracer fields, coordinate changes, integrations) and cost; no direct comparison is performed.",
+   "page": "p. 2",
+   "quote": "the procedure is much more complex than the 60◦ 𝑁 standard methodology"
+  },
+  {
+   "target": "Geopotential-height moment method (Seviour et al. 2013; Rao et al. 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued: it relies on a time-mean zonal-mean geopotential height at fixed 60°N to define the edge, which may differ across datasets; not tested here.",
+   "page": "p. 2",
+   "quote": "leading to inaccurate results in polar vortex characterization"
+  },
+  {
+   "target": "CAVE-ART (Lawrence and Manney 2018)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Split-event dates largely agree (Table 8), but CAVE-ART needs more input fields, time overlap and subjective final interpretation.",
+   "page": "p. 11",
+   "quote": "Lawrence and Manney (2018) uses subjective criteria in the final interpretation of results"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "8-connected region growing",
+   "alternatives": "4-connected region growing",
+   "reason": "closer to a continuous boundary and faster region growth",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "D",
+   "chosen": "Classical classifiers on two features",
+   "alternatives": "Deep learning (CNNs)",
+   "reason": "too large a training dataset would be needed",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "C",
+   "chosen": "Decision tree (max depth 5)",
+   "alternatives": "Gaussian Naive Bayes, random forest, k-Nearest Neighbors",
+   "reason": "compromise between accuracy and training and testing cost; easier to interpret than random forests",
+   "effect_reported": "yes",
+   "page": "p. 5"
+  },
+  {
+   "node": "D",
+   "chosen": "CESM2-WACCM, CanESM5 and IPSL-CM6A-LR",
+   "alternatives": "other CMIP6 models (not named)",
+   "reason": "model tops at or above the stratopause; contrasting PNJ states and opposite CO2 responses known from previous work",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "V",
+   "chosen": "Time-averaged composite fields for validation",
+   "alternatives": "single-month fields",
+   "reason": "composites summarize information and are smoother",
+   "effect_reported": "no",
+   "page": "p. 6"
+  },
+  {
+   "node": "R",
+   "chosen": "Retrain with 84 added daily extreme-event images and geopotential height as a feature",
+   "alternatives": "original monthly u-only classifier",
+   "reason": "too few type 2 structures to train the classifier",
+   "effect_reported": "yes",
+   "page": "p. 9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the amount of images available is divided into hold-out subsets consisting of a 70/30 train-test ratio",
+   "page": "p. 5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "visually validating the high accuracy of the tested classifiers",
+   "page": "p. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "confirming the high skill of our algorithm to identify the PNJ",
+   "page": "p. 6"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "These differences are statistically significant at the 95% confidence level.",
+   "page": "p. 7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "are coherent with what is described by Ayarzagüena et al. (2020)",
+   "page": "p. 8"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "When applying the classifier trained with only monthly data to daily JRA-55 data in DJF",
+   "page": "p. 9"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "our algorithm obtains 14 out of 17 split events (82%) of those other two studies combined",
+   "page": "p. 9"
+  }
+ ]
+}

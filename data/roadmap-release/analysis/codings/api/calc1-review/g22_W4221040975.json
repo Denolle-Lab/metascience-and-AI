@@ -1,0 +1,579 @@
+{
+ "key": "g22_W4221040975",
+ "doi": "10.5194/tc-16-315-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Holube, Zolles & Born 2022, The Cryosphere 16, 315-331 (published PDF)",
+  "Publisher XML full text with section and paragraph locators (jats_text)",
+  "Open discussion of preprint tc-2021-128: RC1, AC1, RC2 (with supplement), AC2"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page; review steps cite the open-discussion locators ([RC1 ¶n], [RC2-S p.n], [AC1 ¶n], [AC2 ¶n])",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the relative importance of climate simulation as compared with other sources of uncertainty remains unclear",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text, with the PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors take from the literature earlier projections of Greenland SMB that downscaled only a few ESMs with PDD models or RCMs (CMIP3, CMIP5, five CMIP6 ESMs in MAR).",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "For CMIP6, simulated the SMB of Greenland using the output of five ESMs."
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose the question of how large climate-projection (ESM) uncertainty is relative to scenario and snow-model parameter uncertainty in 21st-century GrIS SMB.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the relative importance of climate simulation as compared with other sources of uncertainty remains unclear"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They adopt their own previously published, computationally cheap surface energy and mass balance model BESSI on a 10 km Greenland grid with fixed ETOPO1 topography.",
+     "page": "§2.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The Bergen Snow Simulator (BESSI) is a surface energy and mass balance model for glaciated regions with a flexible spatial domain."
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They calibrate BESSI albedo and turbulent-exchange parameters to RACMO SMB under ERA-Interim forcing with seven objective functions and keep the 16-member Pareto optimal set.",
+     "page": "§2.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculate the Pareto optimal set. This yields a total of 16 different solutions"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "simulation",
+     "action": "They prepare forcing from 26 CMIP6 ESMs under four Tier 1 SSPs. Fields are linearly interpolated to the BESSI grid and bias-corrected against ERA-Interim (1979-2014) with the delta method: additive correction, and multiplicative monthly-ratio correction for precipitation.",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "ESM biases are calculated based on the delta method"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design a main ensemble (96 ESM-scenario combinations plus 26 historical runs, each with 16 parameter sets, 1952 simulations) and a single-forcing SSP585 ensemble in which only one input variable is transient.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each of the simulations is conducted with 16 different snow model parameter sets, resulting in 1952 simulations."
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run the main ensemble. Median integrated SMB declines in every scenario, more strongly with higher emissions (2091-2100 median 318 to -226 Gt/yr), and the inter-ESM spread widens with forcing.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The surface mass balance decreases relative to the historical simulations in all scenarios"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "In Appendix A they compare the simplified ice-flow replenishment correction with neglecting ice flow; the difference is under 40 Gt/yr in the end-of-century median.",
+     "page": "§Appendix A ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The difference amounts to less than 40 Gt yr - 1 for all scenarios"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare ERA-Interim-forced and historical ESM-forced SMB. The early-21st-century SMB low under reanalysis is absent in the ESM runs, which they attribute to poor representation of Greenland blocking in the ESMs.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A similar reduction in SMB is not observed when forcing BESSI with historical ESM data"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They map end-of-century SMB anomalies, inter-ESM standard deviation and equilibrium lines. The largest decrease is in the west, and the largest relative inter-ESM spread is near the equilibrium line, more so under SSP585.",
+     "page": "§3.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the choice of ESM is decisive for the SMB in this region"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Following Hawkins and Sutton, they fit fourth-degree polynomials to decadal running means and partition the variance with the law of total variance into ESM, scenario, parameter and internal-variability components, weighting ESMs by historical skill. By 2100 the ESM component is about 62%, scenario about 35%, the rest about 3%.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We split the variance in spatially integrated SMB over all simulations into four different components"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "In Appendix C they recompute the partition with two alternative orderings of the law of total variance (Eqs. C5, C6) and find results close to the chosen Eq. C7. They also show that the polynomial fit spread matches the SMB spread (Figs. C1, C2).",
+     "page": "§Appendix C ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the results of Eqs. () and () do not deviate much"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "To test whether internal variability is misattributed to ESM uncertainty, they force BESSI with 10 realizations of ACCESS-ESM1-5 and apply the same partition. The bias is up to 35% in the first decades but small at century end.",
+     "page": "§3.2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we forced BESSI with 10 different realizations of the ESM ACCESS-ESM1-5"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They apply the variance partition to every grid cell for mid- and end-century decades. ESM uncertainty dominates most of the ice sheet; scenario uncertainty grows at the western margin.",
+     "page": "§3.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The separation of variances can be generalized to every grid cell of the GrIS."
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run single-forcing SSP585 experiments. Temperature and precipitation have the largest effects and spreads, and shortwave radiation is negligible. The sum of single-variable responses falls short of the fully transient run, indicating non-linear amplification.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The interquartile range is largest when temperature or precipitation are the transient variables"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate regional variance partitions and single-forcing responses for west, north and east: scenario share is higher in the west, ESM share higher in the north, and in the east ESM uncertainty is mostly precipitation uncertainty.",
+     "page": "§3.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "therefore, the ESM uncertainty is mostly a precipitation uncertainty"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare with ISMIP6, MAR forced by the same five CMIP6 ESMs (BESSI higher in four of five cases; BESSI range more than three times larger), and MAR CMIP5/CMIP3 projections (Figure 9).",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in four out of five cases BESSI simulates a higher SMB than MAR"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "After listing caveats (structural snow-model uncertainty, conservative total variance, fixed topography, no diurnal cycle, missing blocking), they keep the claim that ESM uncertainty is the largest source of error in GrIS SMB projections.",
+     "page": "§4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ESM uncertainty is the largest source of error in the future projections of the GrIS SMB"
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "methods",
+     "action": "They draw a methodological recommendation: future multi-ESM SMB projections should assess and weight ESM skill in the target region, and subset-based studies may be incomplete.",
+     "page": "§4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "future SMB estimates based on multiple ESMs should explicitly address the quality of the individual simulations in the target region"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion of preprint tc-2021-128 (RC1, AC1, RC2 with supplement, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 1 asks what would restrict the calibrated parameter space, for example comparing fluxes with references. The authors decline, citing the non-uniqueness of multivariate calibration and focus on ESM uncertainty.",
+     "page": "AC1 ¶1",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "A detailed discussion of the BESSI parameter uncertainty could distract from the primary goal of this study"
+    },
+    {
+     "n": 2,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 1 asks about sensitivity to topography (ETOPO versus BedMachine). The authors argue that bed topography does not matter and promise a surface-topography comparison that is not visible in the final paper.",
+     "page": "AC1 ¶2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Using a different bed topography such as BedMachine v3 does not change our results because our model does not simulate ice dynamics."
+    },
+    {
+     "n": 3,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Referee 1 asks how sub-daily forcing would change the results. The final paper adds a caveat that neglecting the diurnal cycle could underestimate refreezing, without new runs.",
+     "page": "RC1 ¶19",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "indicate how the results would change if you use instead of daily, sub-daily forcing reproducing the daily cycle."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 1 asks how the simplified horizontal mass flux affects results. The authors add the comparison with neglecting ice flow (under 40 Gt/yr) and the suggested caveat sentence in Appendix A.",
+     "page": "RC1 ¶20",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "[...] please elaborate on how the simplified horizontal mass flux impacts the results"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 1 asks how fast the bias from the shared spin-up disappears. The authors promise to estimate it (AC1 ¶5), and the final text states that the bias is generally overcompensated after a few years.",
+     "page": "RC1 ¶32",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "How fast does the bias in the identical starting conditions, which may not be consistent with all parameter combinations, disappear?"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Referee 1 notes that combined temperature-longwave effects were inferred from single-variable runs only. The authors soften the claim to 'We conclude that...'.",
+     "page": "RC1 ¶59",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "you have performed only simulations where one variable is transient and not two, or?"
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Referee 2 asks whether parameter perturbations represent snow-model uncertainty, given processes such as bare-ice albedo. The final paper adds caveats that parameter uncertainty does not depict total snow-model uncertainty.",
+     "page": "RC2-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The authors should discuss these potential caveats in further detail"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Referee 2 suggests forcing BESSI with ESM ensemble means. The authors decline because averaging reduces variability and biases SMB.",
+     "page": "AC2 ¶1",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "forcing our snow model with the ensemble mean of each GCM, would lead to a non-negligible bias in SMB"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Referee 2 suggests forcing BESSI with multiple members of one model to compare inter-model and single-model spread. The authors add the 10-realization ACCESS-ESM1-5 test (§3.2 ¶3).",
+     "page": "RC2-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Forcing BESSI with multiple ensemble members from a single model to compare the inter-model vs. single-model spread."
+    },
+    {
+     "n": 10,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Referee 2 questions linear interpolation of forcing and asks for a test with better downscaling. The authors add an explanation that the additive bias correction absorbs topographic differences; no alternative downscaling is tested.",
+     "page": "RC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "test the impact of a different more sophisticated downscaling technique to evaluate the impact on the results"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Referee 2 notes that negligible shortwave influence conflicts with recent studies. The authors add the disagreement with Hofer et al. (2017) and possible reasons in §3.3 ¶2.",
+     "page": "RC2-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The SW radiation having little effect on SMB seems contrary to recent studies"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Spread of projected 21st-century GrIS SMB across forcings and parameters",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; future SMB exists only in model projections",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Partition projection uncertainty into ESM, scenario, parameter and internal components",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rival hypotheses; candidate uncertainty sources only",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set in simulation: factorial forcing and parameter ensemble",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly: split orderings agree; realization test biases early decades but not 2100",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "ESM uncertainty dominates (~62% at 2100); parameter uncertainty negligible",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Yes, minor revision; realization test added at referee request",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "At the end of the 21st century, the choice of ESM explains about 62% of the variance in projected GrIS-integrated SMB, versus about 35% for emission scenario and about 3% for snow-model parameters plus internal variability combined.",
+  "page": "§3.2 ¶3"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The Hawkins-and-Sutton variance partition applied to the 1952-member BESSI ensemble, made affordable by BESSI's efficiency, is what yields the ranking of uncertainty sources.",
+  "page": "§3.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The ensemble design followed an estimation aim, not a stated hypothesis (§1 ¶3, §2.3 ¶1). The ESM-over-scenario ranking could have failed the 10-realization misattribution test, which it passed only for late-century decades (§3.2 ¶3). No analysis plan or threshold was fixed before the runs; the choice of variance split was justified after the fact (§Appendix C ¶4)."
+ },
+ "imports": [
+  {
+   "field": "economics / multi-objective optimization",
+   "item": "Pareto optimal set for multivariate parameter calibration",
+   "kind": "concept",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "field": "probability and statistics",
+   "item": "law of total variance to split ensemble variance into components",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "In our ensemble, the range of uncertainty in the SMB is greater than in previous studies that used fewer ESMs as forcing.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "the high numerical efficiency of BESSI enables a more comprehensive analysis of model uncertainty, for example by extending the ESM pool to 26",
+   "page": "§4 ¶3"
+  }
+ ],
+ "limits": "Composition is none_fits. The walk is a factorial model-ensemble uncertainty partition: no rivals, no found conditions, no forecast frozen before an observation, and no new capability (BESSI is inherited).\n\nSub-claims and their statuses:\n- Scenario SMB projections (Table 1): estimate_with_resolution.\n- Attribution of ESM spread to temperature, then precipitation, from single-forcing runs: best_explanation.\n- Non-linear amplification inferred from the gap between summed single-forcing responses and fully transient runs, without two-variable runs: best_explanation.\n- Regional patterns: estimate_with_resolution.\n\nWhat the document does not show:\n- The future projections are not validated against observations; skill is checked only by bias correction and weighting against ERA-Interim over 1979-2014.\n- Whether the 500-year RACMO calibration was rerun here or inherited from Zolles et al. (2019) and Zolles and Born (2021) is unclear (inference: probably largely inherited).\n- The internal-variability misattribution test uses one ESM only, and the authors state they cannot investigate it systematically.\n- Parameter uncertainty covers three parameters and excludes structural snow-model uncertainty.\n- Total variance is stated to be conservative because bias correction compresses inter-ESM spread.\n- The ESM weighting is applied without reporting how much the weights change the partition (no unweighted alternative shown).\n\nReview record:\n- The promised comparison with the Schaffer et al. (2016) surface topography does not appear in the final text (inference from absence).\n- The spin-up bias estimate appears only as one qualitative sentence.",
+ "disagreements": [
+  {
+   "target": "Hofer et al. (2017), link between amplified melt and increased shortwave radiation",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Single-forcing runs show a negligible shortwave effect; the authors attribute the mismatch to ESMs projecting decreasing shortwave and poorly representing Greenland blocking.",
+   "page": "§3.3 ¶2",
+   "quote": "This does not agree with , who found a link between amplified melt and recent increases in shortwave radiation"
+  },
+  {
+   "target": "Hanna et al. (2020), MAR forced by five CMIP6 ESMs",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "BESSI simulates higher SMB than MAR in four of five same-forcing cases (attributed to BESSI's known positive SMB bias), and the BESSI ensemble range is more than three times larger.",
+   "page": "§4 ¶3",
+   "quote": "in four out of five cases BESSI simulates a higher SMB than MAR"
+  },
+  {
+   "target": "CMIP6 SMB studies using a representative subset of ESMs (Hanna et al., 2020; Hofer et al., 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A 26-ESM ensemble shows ESM spread exceeding scenario spread, so subset selections understate uncertainty.",
+   "page": "§4 ¶5",
+   "quote": "studies that only include a subset of the plausible climate projections and do not quantify the quality of these selected representations may produce an incomplete [...]"
+  },
+  {
+   "target": "Fettweis et al. (2008), multilinear regression of SMB on temperature and precipitation for CMIP3",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that the regression omits non-linear effects, which their single-forcing runs show amplify SMB loss, and so narrows the uncertainty range.",
+   "page": "§4 ¶4",
+   "quote": "can reduce the uncertainty, as non-linear effects are not included there"
+  },
+  {
+   "target": "PDD-based projections forced with CMIP3 and CMIP5 ESMs (Graversen et al., 2011; Yan et al., 2014)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Citing Vizcaino (2014), the authors argue that empirically calibrated PDD models have limited validity in a warming climate, motivating an energy-balance model.",
+   "page": "§1 ¶2",
+   "quote": "PDD models are calibrated to match the present state of the climate and so their validity in a warming climate is limited"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "BESSI surface energy and mass balance model",
+   "alternatives": "PDD models; regional climate models coupled with snow models",
+   "reason": "More physically based than PDD models and cheaper than RCMs, allowing 26 ESMs",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "F",
+   "chosen": "Multiplicative bias correction of precipitation using monthly mean ratios",
+   "alternatives": "Additive (difference) correction; daily-mean ratios",
+   "reason": "Differences would produce negative values; daily means are affected by individual intense events",
+   "effect_reported": "no",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "One shared spun-up firn cover for all parameter sets",
+   "alternatives": "Separate spin-up per parameter set (implied)",
+   "reason": "To save computation time",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Monthly ERA-Interim precipitation climatology redistributed by ESM daily pattern for single-forcing runs",
+   "alternatives": "Daily ERA-Interim climatology",
+   "reason": "Daily climatology gives unrealistic daily small snowfall, overestimating albedo and mass balance by up to 40%",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "SSP585 and the best-calibrated parameter set for single-forcing runs",
+   "alternatives": "Other scenarios and parameter sets (implied)",
+   "reason": "SSP585 is available for all 26 ESMs; the parameter set gives the best RACMO calibration",
+   "effect_reported": "no",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Law-of-total-variance split Eq. (C7)",
+   "alternatives": "Eqs. (C5), (C6), (C8), (C9), (C10)",
+   "reason": "C8-C10 take expectations of variances between scenarios, contrary to expected scenario differences; C5 and C6 give similar results",
+   "effect_reported": "yes",
+   "page": "§Appendix C ¶4"
+  },
+  {
+   "node": "F",
+   "chosen": "Simplified steady-state ice-flow replenishment correction",
+   "alternatives": "Neglecting ice flow; fully dynamical ice sheet model",
+   "reason": "Ice dynamics are not simulated; a dynamic model could empty cells faster, while melt-elevation feedback likely dominates",
+   "effect_reported": "yes",
+   "page": "§Appendix A ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we forced BESSI with 10 different realizations of the ESM ACCESS-ESM1-5",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the results of Eqs. () and () do not deviate much",
+   "page": "§Appendix C ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The spread of the fit matches the spread of the SMB",
+   "page": "§Appendix C ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the results of our SMB simulations are almost independent of the specific parameter combination of BESSI",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The difference amounts to less than 40 Gt yr - 1 for all scenarios",
+   "page": "§Appendix A ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A similar reduction in SMB is not observed when forcing BESSI with historical ESM data",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Comparing our simulations with those of MAR that were forced by the same CMIP6 models",
+   "page": "§4 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The differences between ESMs in the SMB simulations of are comparable to the interquartile range of our study.",
+   "page": "§4 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "The performance of BESSI has been compared with other SMB models",
+   "page": "§2.1 ¶1"
+  }
+ ]
+}

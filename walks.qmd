@@ -1,0 +1,555 @@
+# Walking the graph: eight papers {.unnumbered}
+
+[Drafted]{.status .drafted} [graph v0.4 · steps coded from the full text of the [success set](success-set.qmd) · success score v0 · not yet discussed]{.status-line}
+
+- For each paper: where it **starts**, every **step** the authors took with the node and the mode it belongs to, where it **ends**, and its **success profile**.
+- **Map.** Rust: the node where the paper enters. Teal: nodes it visits. Grey: nodes it never uses.
+- **Strip.** The steps in order. [→]{.walk-key .ar} a step along an edge the graph draws (or a repeat of the same node). [⇢]{.walk-key .ar .jump} a jump the graph reaches only through other nodes.
+- **Table.** One row per step: the node, the mode of inquiry the step belongs to, what the authors did, and the page. Read the table against the paper.
+- Each node's letter is the first letter of its verb: **N** new capability · **E** explore: establish the phenomenon · **O** observe · **I** infer a latent quantity (estimate) · **Q** question · **H** hypothesize · **S** simulate or derive the expectations · **D** design the test · **F** find or set the conditions · **C** compare · **V** vary and replicate · **X** exclude · **K** keep the claim · **P** protect · **R** refine. The [crosswalk](unit.qmd#the-graph) maps each node to the modes it serves.
+- One reader (coder 1, a Claude subagent, codebook v0) coded each paper, from the text alone; two blind model coders recoded them on October 25, 2026 (see "What the walks cannot show"). The order is the order of the paper's account, which may not be the order of the work. Full codings: `private/analysis/success-set/`. Slides: [three of these walks](slides/modes-meeting.html).
+
+## Is the graph right? What these eight say
+
+| Test of graph v0.4 | Result on the eight papers |
+|:--|:--|
+| Every move can be placed on a node | Yes: no coder needed a node outside v0.4 |
+| Transitions follow edges the graph draws | 24 of 83 transitions between the 91 steps (29%); the rest are jumps |
+| The textbook route Q → H → S → D → F → O → C is walked | Never |
+| D, a discriminating test designed before the data | 1 of 8 papers |
+| H, stated rival hypotheses | 5 of 8 papers |
+| Entry at a node other than Q or H | 7 of 8 papers |
+
+- The node set holds; the edges do not. Most science moves between nodes in ways the graph draws only as long detours.
+- The most frequent jumps: **V ⇢ C** in 4 papers; **S ⇢ C** in 4 papers; **C ⇢ P** in 3 papers; **C ⇢ K** in 3 papers; **X ⇢ V** in 2 papers. S ⇢ C is a derivation compared with data already in hand; C ⇢ X and C ⇢ K are verdicts without a control series, which found conditions force.
+- **Next tests.** The same coding on the 24 [matched controls](success-set.qmd#against-matched-controls) and on unsuccessful papers. If ordinary and failed papers walk the same routes, the route does not explain success; if they skip different nodes, the graph has found something.
+- **Candidate changes for v0.5:** draw S → C and C → X, K as edges; or make the graph two-level, modes as the outer graph and the hypothesis pass as one mode's inner loop. The room decides.
+
+## The success score (v0)
+
+- Four dimensions, each scored from 0 to 1 against comparable work, then combined. No measure here is settled; the score is a scaffold the group replaces piece by piece.
+
+| Dimension | v0 measure | Compared against | Status |
+|:--|:--|:--|:--|
+| Impact | Citation percentile | All research articles in the same journal, year, and OpenAlex subfield | Measured |
+| Breadth (polymathy) | Mean of two ranks: share of citers outside geoscience; share of references outside geoscience | The three matched controls | Measured, coarse |
+| Novelty | Rank of CD₅ disruption | The three matched controls | Measured, but CD₅ is a [poor proxy](success-set.qmd#against-matched-controls); to be replaced by the group's rating on the [Novelty Dossier](rubrics.qmd#novelty-dossier-v1) |
+| Advance | The group's blinded rating on the [advance profile](rubrics.qmd#scientific-advance-profile-v1), rescaled to 0–1 | Not yet rated | Pending |
+
+- **Macro score.** The geometric mean of the measured dimensions, each floored at 0.05. A geometric mean does not let a high score on one dimension buy back a near-zero on another, which is what "success on all four" means [@oecd2008]. The arithmetic mean is reported beside it as a sensitivity check.
+- **What the v0 scores can and cannot say.** The recognized four score high because they were chosen on citations. The designated four have 1 to 25 citers each, so their breadth and novelty ranks are noise. The weak novelty proxy sinks Gräff and Xu.
+
+| Paper | Impact | Breadth | Novelty (proxy) | Advance | Macro, geometric | Macro, arithmetic |
+|:--|:--|:--|:--|:--|:--|:--|
+| @shapiro2005 | 0.97 | 0.67 | 1.00 | pending | 0.86 | 0.88 |
+| @sun2026 | 0.86 | 0.00 | n/a | pending | 0.21 | 0.43 |
+| @normandeau2025 | 0.07 | 0.33 | 1.00 | pending | 0.29 | 0.47 |
+| @vine1963 | 0.99 | 1.00 | 0.67 | pending | 0.87 | 0.89 |
+| @rodell2009 | 0.95 | 0.83 | 1.00 | pending | 0.93 | 0.93 |
+| @lam2023 | 0.95 | 1.00 | 1.00 | pending | 0.98 | 0.98 |
+| @graff2025 | 0.57 | 0.83 | 0.00 | pending | 0.29 | 0.47 |
+| @xu2025 | 0.72 | 0.17 | 0.00 | pending | 0.18 | 0.30 |
+
+## Three contrasting walks
+
+### Shapiro et al. (2005): noise becomes a seismometer
+
+- **Start.** A new capability: Green functions recovered from ambient noise, plus the new USArray stations (p. 1615). Enters the graph at **N** (New capability). [@shapiro2005]
+- **End.** K, a capability claim: noise correlations carry shallow and middle crustal structure, mapped at 60–100 km resolution (p. 1617).
+
+```{mermaid}
+%%| label: fig-walk-shapiro2005
+%%| fig-cap: "Graph v0.4 as visited by @shapiro2005. Rust: entry node N. Teal: visited. Grey: never used (D, H, P, Q, R, S, X)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,E,F,I,K,O,V on;
+    class N entry;
+    class D,H,P,Q,R,S,X off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>N</b>New capability</span><span class="ar">→</span><span class="st"><i>2</i><b>N</b>New capability</span><span class="ar jump">⇢</span><span class="st"><i>3</i><b>E</b>Explore</span><span class="ar jump">⇢</span><span class="st"><i>4</i><b>V</b>Vary and replicate</span><span class="ar">→</span><span class="st"><i>5</i><b>F</b>Find conditions</span><span class="ar">→</span><span class="st"><i>6</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>7</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>V</b>Vary and replicate</span><span class="ar jump">⇢</span><span class="st"><i>9</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **N** New capability | Methods | Correlating a random wavefield gives the Green function between two receivers, after acoustics and helioseismology | 1615 |
+| 2 | **N** New capability | Methods | One-bit correlation to suppress anisotropic noise and earthquake signals | 1616 |
+| 3 | **E** Explore | Robustness | Four separate months of 2002 give similar waveforms, distinct between station pairs | 1616 |
+| 4 | **V** Vary and replicate | Robustness | Noise correlations match earthquake Rayleigh waves on the same paths; one month suffices | 1616 |
+| 5 | **F** Find conditions | Observation | Thirty quiet days (no event above M5.8), August–September 2004, 62 stations | 1616 |
+| 6 | **O** Observe | Observation | 1,891 station-pair paths at one sample per second | 1616 |
+| 7 | **I** Infer | Estimation | Group speeds by frequency–time analysis (678 and 891 at 7.5 and 15 s), inverted on a 28 km grid | 1616 |
+| 8 | **V** Vary and replicate | Replication | A second month gives similar maps | 1617 |
+| 9 | **C** Compare | Observation | Slow basins, fast plutonic ranges, the San Andreas contrast, against the geological map | 1617 |
+| 10 | **K** Keep | Methods | Noise correlations retained as a tomographic capability | 1617 |
+
+- **Success profile (v0):** impact 0.97 · breadth 0.67 · novelty proxy 1.00 · advance pending · **macro 0.86**.
+
+### Sun and Davis (2026): boreholes feel the megathrust lock
+
+- **Start.** An unsolved problem: offshore secular strain is hard to measure (p. 1), met with borehole observatories installed on drilling expeditions between 1995 and 2010 (p. 8). Enters the graph at **N** (New capability). [@sun2026]
+- **End.** K then R: strain rates of 0.097–0.686 ×10⁻⁶/yr and full shallow locking at northern Cascadia (pp. 4, 7–8); Barbados left unmodeled (p. 8).
+
+```{mermaid}
+%%| label: fig-walk-sun2026
+%%| fig-cap: "Graph v0.4 as visited by @sun2026. Rust: entry node N. Teal: visited. Grey: never used (D, F, P)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,E,H,I,K,O,Q,R,S,V,X on;
+    class N entry;
+    class D,F,P off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>N</b>New capability</span><span class="ar">→</span><span class="st"><i>2</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>3</i><b>E</b>Explore</span><span class="ar jump">⇢</span><span class="st"><i>4</i><b>H</b>Hypothesize</span><span class="ar jump">⇢</span><span class="st"><i>5</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>Q</b>Question</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>9</i><b>V</b>Vary and replicate</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>11</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>12</i><b>K</b>Keep</span><span class="ar">→</span><span class="st"><i>13</i><b>R</b>Refine</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **N** New capability | Instruments | Borehole observatories with quartz pressure sensors; drift from sensor creep and aging characterized | 1–3, 9 |
+| 2 | **O** Observe | Observation | Multiyear formation and seafloor pressure at four holes on four margins | 2 |
+| 3 | **E** Explore | Observation | All four show "rising secular Pf trends greater than instrumental drift" | 4 |
+| 4 | **H** Hypothesize | Hypothesis | Rivals to tectonic strain: drift, consolidation, compaction, post-drilling recovery, leakage | 3–5, 8 |
+| 5 | **X** Exclude | Robustness | Drift excluded by a seafloor reference, an accidental open-ocean test, and calibrations; drainage too slow | 3–5, 9 |
+| 6 | **I** Infer | Estimation | Pressure rate to strain rate by undrained poroelasticity, 4.21–6.79 kPa per microstrain | 3, 10 |
+| 7 | **Q** Question | Theory | Which along-dip locking gives the observed sign and rate? | 5–6 |
+| 8 | **S** Simulate or derive | Simulation | Finite-element backslip models: at least 90% locking at the trench needed for contraction | 5 |
+| 9 | **V** Vary and replicate | Robustness | Rigidity, elastic mantle, weak asthenosphere, and locked width varied | 5–6 |
+| 10 | **C** Compare | Theory | Cascadia models give 0.08–0.15 against 0.146 ×10⁻⁶/yr observed | 7 |
+| 11 | **X** Exclude | Hypothesis | Ten percent or more shallow creep "would result in dilatational strain ... counter to the observation" | 7 |
+| 12 | **K** Keep | Estimation | Strain rates; full shallow locking at northern Cascadia, inter-slow-slip locking at Costa Rica | 7–8 |
+| 13 | **R** Refine | Synthesis | Barbados left unmodeled; post-drilling recovery not excluded there | 8 |
+
+- **Success profile (v0):** impact 0.86 · breadth 0.00 · novelty proxy n/a · advance pending · **macro 0.21**.
+
+### Normandeau et al. (2025): the seafloor freezes and thaws
+
+- **Start.** An anomaly between repeat surveys: hundreds of small mounds in July 2023, absent shallower than 25 m in 2021 (p. 4). Enters the graph at **O** (Observe). [@normandeau2025]
+- **End.** K, best explanation by analogy: seasonal freeze–thaw of freshened porewater expands and contracts the seafloor (pp. 1, 9–11).
+
+```{mermaid}
+%%| label: fig-walk-normandeau2025
+%%| fig-cap: "Graph v0.4 as visited by @normandeau2025. Rust: entry node O. Teal: visited. Grey: never used (D, F, N, Q, R, V, X)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,E,H,I,K,P,S on;
+    class O entry;
+    class D,F,N,Q,R,V,X off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>2</i><b>E</b>Explore</span><span class="ar jump">⇢</span><span class="st"><i>3</i><b>H</b>Hypothesize</span><span class="ar jump">⇢</span><span class="st"><i>4</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>5</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>P</b>Protect</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **O** Observe | Observation | Multibeam, backscatter, subbottom profiles, 13 cores, porewater, moorings; surveys 2021, July 2023, November 2023, August 2024 | 3–5, 12 |
+| 2 | **E** Explore | Observation | Blisters about 5 m wide present in July 2023, "greatly diminished" in November, back in August 2024 | 4 |
+| 3 | **H** Hypothesize | Hypothesis | Pockmarks from groundwater, gas, or burrowing; frost blisters against all-ice icing blisters | 3–11 |
+| 4 | **I** Infer | Estimation | Water temperature at 30 m inferred from a 60 m mooring after the 30 m mooring was lost | 6, 12 |
+| 5 | **S** Simulate or derive | Theory | Stefan equation: freezing depth 0.32–0.70 m | 10 |
+| 6 | **C** Compare | Theory | Freezing depth matches the frost base at about 40 cm; ice expansion gives at most 0.05 m against 0.2 m of relief | 10 |
+| 7 | **P** Protect | Hypothesis | "The underlying ground ice that forms the blisters may exist over multiple years" | 10 |
+| 8 | **K** Keep | Synthesis | Seasonal freeze–thaw retained, by analogy with frost blisters on land | 9–11 |
+
+- **Success profile (v0):** impact 0.07 · breadth 0.33 · novelty proxy 1.00 · advance pending · **macro 0.29**.
+
+## Five more walks
+
+### Vine and Matthews (1963): reversed blocks and spreading
+
+- **Start.** An unsolved problem: magnetic anomalies over ridges that no model of uniform magnetization explains (p. 947). Enters the graph at **E** (Explore). [@vine1963]
+- **End.** K, best explanation: reversed blocks from spreading under a reversing field, "more plausible" than the alternative (p. 949).
+
+```{mermaid}
+%%| label: fig-walk-vine1963
+%%| fig-cap: "Graph v0.4 as visited by @vine1963. Rust: entry node E. Teal: visited. Grey: never used (D, F, N, R)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,H,I,K,O,P,Q,S,V,X on;
+    class E entry;
+    class D,F,N,R off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>E</b>Explore</span><span class="ar">→</span><span class="st"><i>2</i><b>Q</b>Question</span><span class="ar jump">⇢</span><span class="st"><i>3</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>4</i><b>I</b>Infer</span><span class="ar">→</span><span class="st"><i>5</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>P</b>Protect</span><span class="ar">→</span><span class="st"><i>7</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>9</i><b>H</b>Hypothesize</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>K</b>Keep</span><span class="ar jump">⇢</span><span class="st"><i>11</i><b>H</b>Hypothesize</span><span class="ar">→</span><span class="st"><i>12</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>13</i><b>C</b>Compare</span><span class="ar">→</span><span class="st"><i>14</i><b>V</b>Vary and replicate</span><span class="ar jump">⇢</span><span class="st"><i>15</i><b>P</b>Protect</span><span class="ar jump">⇢</span><span class="st"><i>16</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>17</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **E** Explore | Observation | A three-category anomaly pattern over ridges in three oceans, from earlier surveys | 947 |
+| 2 | **Q** Question | Observation | Why do the central and long-period anomalies exist? | 947 |
+| 3 | **O** Observe | Observation | H.M.S. Owen survey of the Carlsberg Ridge, November 1962 | 947 |
+| 4 | **I** Infer | Estimation | Computer best-fit magnetization of two seamounts | 947 |
+| 5 | **C** Compare | Estimation | The reversed case fits well; the normal case poorly | 947 |
+| 6 | **P** Protect | Hypothesis | The poor normal fit blamed on adjacent topography and weak contour control | 947 |
+| 7 | **S** Simulate or derive | Simulation | Forward profiles across three cross-ridge lines for uniform normal magnetization | 948 |
+| 8 | **X** Exclude | Hypothesis | The uniform model bears "little resemblance to the observed profiles" | 948 |
+| 9 | **H** Hypothesize | Theory | Crust in blocks about 20 km wide, alternately normal and reversed | 948 |
+| 10 | **K** Keep | Theory | "Some 50 per cent of the oceanic crust might be reversely magnetized" | 948 |
+| 11 | **H** Hypothesize | Synthesis | The model as "virtually a corollary of" seafloor spreading plus field reversals | 948 |
+| 12 | **S** Simulate or derive | Simulation | Forward models for the Pacific, the Mid-Atlantic, and the Carlsberg Ridge | 948 |
+| 13 | **C** Compare | Simulation | "The essential form of the anomalies is readily achieved" | 949 |
+| 14 | **V** Vary and replicate | Synthesis | Independent traces: Iceland lavas, reversed basalt in the preliminary Mohole | 949 |
+| 15 | **P** Protect | Hypothesis | Auxiliaries defended: susceptibility contrast, Curie depth "not critical" | 949 |
+| 16 | **X** Exclude | Hypothesis | The same-direction rival set aside on plausibility, not by a test | 949 |
+| 17 | **K** Keep | Hypothesis | Reversed blocks retained as "more plausible" | 949 |
+
+- **Success profile (v0):** impact 0.99 · breadth 1.00 · novelty proxy 0.67 · advance pending · **macro 0.87**.
+
+### Rodell et al. (2009): groundwater loss seen from space
+
+- **Start.** An unsolved problem: "there has been no regional assessment of the rate of groundwater depletion" in northwest India (p. 999). Enters the graph at **Q** (Question). [@rodell2009]
+- **End.** K, an estimate with an explanation: 4.0 ± 1.0 cm/yr, 109 km³ lost, human use the likely cause (p. 1001); then a comparison with the ministry figure.
+
+```{mermaid}
+%%| label: fig-walk-rodell2009
+%%| fig-cap: "Graph v0.4 as visited by @rodell2009. Rust: entry node Q. Teal: visited. Grey: never used (D, E, F, P, R)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,H,I,K,N,O,S,V,X on;
+    class Q entry;
+    class D,E,F,P,R off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>Q</b>Question</span><span class="ar jump">⇢</span><span class="st"><i>2</i><b>N</b>New capability</span><span class="ar">→</span><span class="st"><i>3</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>4</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>5</i><b>H</b>Hypothesize</span><span class="ar">→</span><span class="st"><i>6</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>V</b>Vary and replicate</span><span class="ar">→</span><span class="st"><i>9</i><b>K</b>Keep</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>C</b>Compare</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **Q** Question | Estimation | Rate of groundwater depletion over Rajasthan, Punjab, and Haryana with Delhi, August 2002 to October 2008 | 999 |
+| 2 | **N** New capability | Instruments | 73 monthly GRACE solutions, destriped; smoothing radius tested; scaling 1.95 from a synthetic signal | 1001, M5 |
+| 3 | **O** Observe | Observation | GRACE water-storage series for the region | 1000 |
+| 4 | **I** Infer | Estimation | Groundwater as storage minus the mean of five modeled soil-water runs; error budget 1.0 cm/yr | 1001 |
+| 5 | **H** Hypothesize | Hypothesis | Rivals: soil moisture, surface water, snow, glaciers, biomass; natural variability against human use | 1000–1001 |
+| 6 | **S** Simulate or derive | Simulation | Expected leakage from Himalayan melt and from surrounding trends | 1000 |
+| 7 | **X** Exclude | Hypothesis | Glaciers at most 15%, reservoirs, paddies, snow excluded; soil water 0.4 cm/yr; rainfall near normal | 1000–1001 |
+| 8 | **V** Vary and replicate | Robustness | Seasonal lags match earlier studies; smoothing radius makes insignificant differences | 1001, M5 |
+| 9 | **K** Keep | Estimation | 4.0 ± 1.0 cm/yr retained; human consumption the likely cause | 1001 |
+| 10 | **C** Compare | Synthesis | Larger than the ministry deficit of 13.2 km³/yr | 1001 |
+
+- **Success profile (v0):** impact 0.95 · breadth 0.83 · novelty proxy 1.00 · advance pending · **macro 0.93**.
+
+### Lam et al. (2023): learned weather forecasts
+
+- **Start.** A new capability: machine learning, 39 years of reanalysis, and compute; a benchmark set by others (p. 1). Enters the graph at **N** (New capability). [@lam2023]
+- **End.** K, forecast skill: better than the operational system on 90% of 1,380 targets, deterministic, 10 days, 0.25° (pp. 4–6).
+
+```{mermaid}
+%%| label: fig-walk-lam2023
+%%| fig-cap: "Graph v0.4 as visited by @lam2023. Rust: entry node N. Teal: visited. Grey: never used (E, F, H, I, P, Q)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,D,K,O,R,S,V,X on;
+    class N entry;
+    class E,F,H,I,P,Q off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>N</b>New capability</span><span class="ar jump">⇢</span><span class="st"><i>2</i><b>D</b>Design</span><span class="ar jump">⇢</span><span class="st"><i>3</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>4</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>5</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>X</b>Exclude</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>V</b>Vary and replicate</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>9</i><b>R</b>Refine</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **N** New capability | Methods | Graph neural network on an icosahedral multimesh, 36.7 million parameters, trained on ERA5 1979–2017 | 2–3 |
+| 2 | **D** Design | Robustness | Verification designed first: 69 variable-levels; truth and initial times matched to the operational system | 3 |
+| 3 | **S** Simulate or derive | Simulation | Ten-day rollouts from held-out initial states, 2018 onward | 2–3 |
+| 4 | **O** Observe | Simulation | Forecasts scored against verifying analyses: RMSE and anomaly correlation | 4 |
+| 5 | **C** Compare | Simulation | Better than the operational forecast on 90.3% of 1,380 targets | 4 |
+| 6 | **X** Exclude | Hypothesis | Rival: the gain is only blurring. Blur the operational forecast too: still better on 88.0% | 4 |
+| 7 | **V** Vary and replicate | Robustness | Regions, level exclusions, a second machine-learning baseline (99.2% of 252 targets) | 4 |
+| 8 | **C** Compare | Simulation | Cyclone tracks, atmospheric rivers, and extreme heat, none trained for | 5 |
+| 9 | **R** Refine | Robustness | Retrained on data ending 2017–2020, scored on 2021: more recent data helps | 5 |
+| 10 | **K** Keep | Simulation | Deterministic medium-range skill retained within the stated scope | 5–6 |
+
+- **Success profile (v0):** impact 0.95 · breadth 1.00 · novelty proxy 1.00 · advance pending · **macro 0.98**.
+
+### Gräff et al. (2025): a fibre along the calving front
+
+- **Start.** A new capability: seafloor fibre sensing "not yet used to study ice–ocean interactions" (p. 1). Enters the graph at **N** (New capability). [@graff2025]
+- **End.** K, a "potential" mechanism: calving amplifies submarine melt, to be "investigated further" (p. 8).
+
+```{mermaid}
+%%| label: fig-walk-graff2025
+%%| fig-cap: "Graph v0.4 as visited by @graff2025. Rust: entry node N. Teal: visited. Grey: never used (D, H, P, Q, R, V, X)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,E,F,I,K,O,S on;
+    class N entry;
+    class D,H,P,Q,R,V,X off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>N</b>New capability</span><span class="ar jump">⇢</span><span class="st"><i>2</i><b>F</b>Find conditions</span><span class="ar">→</span><span class="st"><i>3</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>4</i><b>E</b>Explore</span><span class="ar jump">⇢</span><span class="st"><i>5</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **N** New capability | Instruments | A 10 km cable near the front carrying acoustic and temperature sensing; calibrated; its position inverted by MCMC | 2, 10–12 |
+| 2 | **F** Find conditions | Observation | Found conditions: one glacier, 9–29 August 2023, a cable layout parallel to the front | 2, 8 |
+| 3 | **O** Observe | Observation | 21 days, 13 TB, alongside a radar interferometer, a camera, seismometers, 22 CTD casts, a tide gauge | 2, 10 |
+| 4 | **E** Explore | Exploration | A process chain: about 56,000 detachments, several hundred tsunamis, internal waves, iceberg wakes, currents | 3–7 |
+| 5 | **I** Infer | Estimation | Seafloor wave speed 230 ± 40 m/s; tsunami source 3 ± 1 km away; detection threshold about 100 m³ | 3–5, 12–14 |
+| 6 | **S** Simulate or derive | Theory | A three-equation melt model; internal-wave dispersion; the Turner angle | 5, 12–13 |
+| 7 | **C** Compare | Synthesis | Dispersion, tsunami origin, and wave periods match the radar, CTD, and theory | 4, 12–13 |
+| 8 | **K** Keep | Theory | Calving as a melt amplifier, retained as a potential mechanism | 8 |
+
+- **Success profile (v0):** impact 0.57 · breadth 0.83 · novelty proxy 0.00 · advance pending · **macro 0.29**.
+
+### Xu et al. (2025): a supershear rupture in Myanmar
+
+- **Start.** Data on a new event: global records of the 2025 Mandalay earthquake, imaged to obtain "timely" rupture details (p. 476). Enters the graph at **O** (Observe). [@xu2025]
+- **End.** K, a conjunction of favorable conditions as best explanation for 450 km of supershear rupture (pp. 476, 480).
+
+```{mermaid}
+%%| label: fig-walk-xu2025
+%%| fig-cap: "Graph v0.4 as visited by @xu2025. Rust: entry node O. Teal: visited. Grey: never used (D, X)."
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "20px", "fontFamily": "Source Serif 4, Georgia, serif", "lineColor": "#b9c3c6"}, "flowchart": {"htmlLabels": true, "nodeSpacing": 14, "rankSpacing": 22, "curve": "basis", "padding": 6}}}%%
+flowchart LR
+    E["<b>E</b>"] --> Q["<b>Q</b>"]
+    Q --> H["<b>H</b>"]
+    H --> S["<b>S</b>"]
+    S --> D["<b>D</b>"]
+    D --> F["<b>F</b>"]
+    F --> O["<b>O</b>"]
+    O --> I["<b>I</b>"]
+    O --> C{"<b>C</b>"}
+    I --> C
+    C --> V["<b>V</b>"]
+    V --> F
+    V --> X["<b>X</b>"]
+    V --> K["<b>K</b>"]
+    X -.-> P["<b>P</b>"]
+    P -.-> S
+    X --> R["<b>R</b>"]
+    K --> R
+    R --> H
+    C -.-> E
+    O -.-> E
+    N["<b>N</b>"] --> O
+    E -.-> N
+    classDef on fill:#cfe3e8,stroke:#1c6a7f,stroke-width:2px,color:#0f4c5c;
+    classDef entry fill:#f6e0d4,stroke:#a1512b,stroke-width:4px,color:#5a2e17;
+    classDef off fill:#f3f3f1,stroke:#d3d9db,stroke-width:1px,color:#b3bcbf;
+    class C,E,F,H,I,K,N,P,Q,R,S,V on;
+    class O entry;
+    class D,X off;
+```
+
+```{=html}
+<div class="walk"><span class="st entry"><i>1</i><b>O</b>Observe</span><span class="ar">→</span><span class="st"><i>2</i><b>I</b>Infer</span><span class="ar jump">⇢</span><span class="st"><i>3</i><b>E</b>Explore</span><span class="ar">→</span><span class="st"><i>4</i><b>N</b>New capability</span><span class="ar jump">⇢</span><span class="st"><i>5</i><b>V</b>Vary and replicate</span><span class="ar jump">⇢</span><span class="st"><i>6</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>7</i><b>K</b>Keep</span><span class="ar jump">⇢</span><span class="st"><i>8</i><b>Q</b>Question</span><span class="ar">→</span><span class="st"><i>9</i><b>H</b>Hypothesize</span><span class="ar jump">⇢</span><span class="st"><i>10</i><b>F</b>Find conditions</span><span class="ar jump">⇢</span><span class="st"><i>11</i><b>S</b>Simulate or derive</span><span class="ar jump">⇢</span><span class="st"><i>12</i><b>C</b>Compare</span><span class="ar jump">⇢</span><span class="st"><i>13</i><b>P</b>Protect</span><span class="ar jump">⇢</span><span class="st"><i>14</i><b>R</b>Refine</span><span class="ar jump">⇢</span><span class="st"><i>15</i><b>K</b>Keep</span></div>
+```
+
+| # | Node | Mode | What the authors did | Page |
+|:-|:---|:---|:--------------|:--|
+| 1 | **O** Observe | Observation | Three teleseismic arrays, satellite radar, optical imagery, strong motion | 476 |
+| 2 | **I** Infer | Methods | Back-projection of high-frequency radiators; joint finite-fault inversion | 476–477 |
+| 3 | **E** Explore | Observation | Three arrays agree on 4.8–5.0 km/s southward, above the crustal shear speed of 2.5–3.7 km/s | 476 |
+| 4 | **N** New capability | Methods | A synthetic back-projection recovers the southern speed 8–20% low | 476 |
+| 5 | **V** Vary and replicate | Robustness | Nine re-inversions from different starting models | 477 |
+| 6 | **C** Compare | Hypothesis | Mach waves give 3.4–5.8 km/s; fault-parallel motion and onset timing agree | 477–478 |
+| 7 | **K** Keep | Observation | Southern supershear rupture retained | 478 |
+| 8 | **Q** Question | Theory | Why an early transition, and why sustained? | 478 |
+| 9 | **H** Hypothesize | Hypothesis | Eight transition mechanisms from the literature, listed as possible contributors | 478 |
+| 10 | **F** Find conditions | Observation | Found conditions: shear speed 2.9 west against 3.3 km/s east; quiet since 1839; a smooth fault | 479–480 |
+| 11 | **S** Simulate or derive | Theory | Expectations imported from published theory and laboratory work: the bimaterial direction favors supershear | 479–480 |
+| 12 | **C** Compare | Theory | Direction consistent; the shorter northern branch contradicts the simulations | 479 |
+| 13 | **P** Protect | Hypothesis | The northern length explained by five earlier M ≥ 6.8 earthquakes | 479 |
+| 14 | **R** Refine | Theory | Poroelastic contrast, stress, and the free surface added | 479 |
+| 15 | **K** Keep | Synthesis | A conjunction of favorable conditions retained | 480 |
+
+- **Success profile (v0):** impact 0.72 · breadth 0.17 · novelty proxy 0.00 · advance pending · **macro 0.18**.
+
+## What the walks cannot show
+
+- **Loops are under-counted by design.** A published paper reports the work in the order of its argument: between protocol and paper, 62% of trials changed, added, or dropped a primary outcome [@chan2004]. Our coding followed the paper's order and had no field for a failed attempt, a rerun, or a redesign, so a return and a next step look alike.
+- **Loops are at the mode level, for coder 1.** Merging consecutive repeats, the papers return to a node already visited 11 times but to a mode already used 27 times; every paper has at least one return. The [decision tree](decision-tree.qmd) draws the graph at that level.
+- **The blind coders do not confirm it.** Two blind model coders (Opus 5.5 and Sonnet 5.5, paper codebook 1.3.0, October 25, 2026) code 169 and 108 steps on the same eight papers. They find 83 and 33 node returns against 78 and 38 mode returns, so where the loops sit depends on the coder (`private/analysis/reliability/codings/papers/`, final-paper sequences, consecutive repeats merged).
+- **One coder per walk, coding against the graph it tests.** The coder was given the v0.4 nodes, so every step was placed on a node; "no new node needed" is partly an effect of the instruction. The blind coders also get the graph. They agree on which nodes a paper uses at Krippendorff's alpha 0.63, below the 0.67 gate, over 13 papers (`private/analysis/reliability/RESULTS.md`). No person has coded yet.
+- **Granularity varies.** Vine and Matthews have 17 steps, Normandeau and colleagues and Gräff and colleagues 8. Step counts measure the coder as much as the paper.
+- **Labels are not fully consistent.** One Shapiro step is labelled replication where the others use robustness.
+- **Supplements unread** for Shapiro, Lam, Sun, and Xu, where methods and robustness checks usually sit.
+- **Successes only, as walks.** The eight walks are successes. Five matched controls have been coded since (October 21 and 25, 2026); no failure has been coded.
+- **How to see the loops.** Peer-review files, open discussions, and version histories record changes made during the work. On nine papers with such records, 126 loops were found, and 4 of them (3%) can be read as loops in the final paper ([decision tree, section 6](decision-tree.qmd#what-process-documents-show)). For Gräff and colleagues and for Lam and colleagues, a review sequence can now be coded beside the final-paper sequence.
+
+## For students
+
+- Pick a paper you know. Write its start, its steps as a strip, and its end. For each step, name the node, the mode, and the page.
+- Mark the node where the paper entered and the nodes it never needed. Then ask what would have made it a stronger paper, and at which node.

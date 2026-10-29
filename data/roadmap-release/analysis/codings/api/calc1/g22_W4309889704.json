@@ -1,0 +1,445 @@
+{
+ "key": "g22_W4309889704",
+ "doi": "10.1029/2022ea002580",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chen, Wang, Wu, Wang & Gao (2022), MagInfoNet: Magnitude estimation using seismic information augmentation and graph transformer, Earth and Space Science 9, e2022EA002580 (published PDF, 15 pp.)"
+ ],
+ "pages_convention": "printed journal pages (printed as 'N of 15'; page field gives N)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, the generalization and transferability of these traditional methods between seismic data with different attributes are often not ideal",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chen et al. 2022, Earth and Space Science, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the question as how to estimate earthquake magnitude more accurately and with better generalization than traditional amplitude-based workflows and catalog-dependent neural networks.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the generalization and transferability of these traditional methods between seismic data with different attributes are often not ideal"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take over the STEAD data set and MagNet, a single-station deep network from other groups, as the starting capability and the baseline.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "is the first successful deep NN for magnitude estimation using seismic signals recorded by a single station"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that adding arrival and travel times to the waveforms, and using a graph transformer for temporal structure, will raise estimation accuracy; this is argued by analogy with location methods.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "adding arrival and travel times to input data instead of only considering seismic signals helps improve the magnitude estimation accuracy"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build MagInfoNet from two parts: a Pre-Inform module (a ResNet module for waveforms, read as template selection, plus two linear modules for arrival and travel times) and a Mag-Pred module (a ResNet module plus two UniMP graph-transformer layers on a newly defined improved cyclic graph, then an FC output).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose an alternative way of building an improved cyclic graph"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compare the UniMP and BRNN calculation flows analytically, deriving the expectation that UniMP avoids vanishing or exploding gradients and converges faster on long series; on this basis two UniMP layers are selected.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "UniMP only uses the features of center nodes and their adjacent nodes for attention mechanism learning and node message passing"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the test: draw 200,000 STEAD samples at random with a 90/10 train/test split; analyse ML and MD separately; z-normalize arrival times; apply no epicentral-distance filter; use MagNet, RF and MINLSTM (LSTM in place of UniMP) as comparison models.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For statistical balance, 200,000 samples were selected randomly"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare predicted with catalog magnitudes on the 10% test set using R2 and the error standard deviation; MagInfoNet scores highest of the four models on both ML and MD (Figure 6, p. 8).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "increased by about 2.915% and 6.365% from MagNet to MagInfoNet, respectively"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Rerun the comparison with a 50/50 train/test split to check the ranking holds on a larger test set (Figure 7, p. 9).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also allocated a larger proportion of samples for testing set (about 50%) than the commonly used 10%"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare true and estimated magnitudes for two aftershock sequences on maps (Figure 8, p. 10), and compare R2 of all models within five epicentral-distance bins (Figures 9 and 10); the advantage of MagInfoNet over MagNet grows with distance.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results (Figure 10) indicate that MagInfoNet can help stations inmonitoring earthquake events with greater epicentral distances."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Add white Gaussian noise at SNR 100, 20 and 10 dB, repeat the experiments, and compare R2 across models (Figure 11).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For robustness testing, additive white Gaussian noises are added to seismic signals under different SNRs"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the roles of the modules: visualize ResNet-module outputs with t-SNE, and feed the intermediate outputs h and Xin to the last FC layer to compare their R2 with the full model (Figure 12, p. 13).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, the roles of these two modules were verified."
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that MagInfoNet raises R2 on ML and MD, holds up under noise, and has an explainable design.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "maintain certain excellent performance under different input SNRs"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No new phenomenon; a known estimation task (single-station magnitude)",
+   "mode_called": "none"
+  },
+  {
+   "question": "2",
+   "answer": "No; magnitude is estimated from waveforms plus arrival and travel times, against catalog labels",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a more accurate, generalizable and explainable estimation method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival models MagNet, RF, and MINLSTM (an LSTM variant)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions stated; the rivals are ranked by R2",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set computationally: random data splits, distance bins, synthetic noise",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, as reported: 50/50 split, noise levels, distance bins",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: MagInfoNet outperforms the three comparison models",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "MagInfoNet, which combines single-station waveforms with arrival and travel times through ResNet and UniMP modules, estimates STEAD ML and MD magnitudes with higher R2 and lower error spread than MagNet, RF and MINLSTM, especially at larger epicentral distances and low SNR.",
+  "page": "11"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the MagInfoNet architecture (waveforms augmented with arrival and travel times, and UniMP layers on the improved cyclic graph) is the step without which no performance claim exists.",
+  "page": "3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are public STEAD records, not acquired under a hypothesis. The claim faced comparisons with baselines on held-out splits, under noise, and across distance bins that it could have lost. However, no uncertainty, repeated runs or significance tests are reported, and no thresholds or analysis plan were fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "computer vision / machine learning",
+   "item": "Residual neural network (ResNet, He et al. 2016)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "machine learning",
+   "item": "UniMP graph transformer (Shi et al. 2020)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "machine learning",
+   "item": "Transformer multihead dot-product attention (Vaswani et al. 2017)",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "machine learning",
+   "item": "Random forest regressor (baseline)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "machine learning",
+   "item": "Batch normalization, dropout, max pooling, LSTM layers",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "graph signal processing / complex networks",
+   "item": "Cyclic graph and visibility graph representations of time series (Ortega et al. 2018; Lacasa et al. 2008)",
+   "kind": "concept",
+   "page": "7"
+  },
+  {
+   "field": "machine learning",
+   "item": "Unit norm (z-score) normalization",
+   "kind": "method",
+   "page": "11"
+  },
+  {
+   "field": "machine learning",
+   "item": "t-SNE visualization (Van der Maaten & Hinton 2008)",
+   "kind": "method",
+   "page": "12"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Therefore, we propose a novel model, MagInfoNet",
+   "page": "2"
+  },
+  {
+   "quote": "with an improved graph structure designed in our paper",
+   "page": "2"
+  },
+  {
+   "quote": "we propose an alternative way of building an improved cyclic graph",
+   "page": "7"
+  }
+ ],
+ "limits": "Several things the paper does not show. It reports one training run per configuration, with no random seeds, repetitions, or uncertainty on R2. Hyperparameter and architecture choices (layer counts, widths) are given without a search or a reason, beyond the UniMP layer count. All test data come from the same STEAD pool by random split, so no independent data set or region is used. Inference: random splitting may place records of the same event or station in both training and test sets. Inference: the central design hypothesis, that adding arrival and travel times helps, is never tested by removing those inputs; only the UniMP-versus-LSTM swap and the intermediate-output readings act as ablations. Inference: it is not stated whether MagNet was retrained on the same samples. The catalog arrival times used as inputs would have to be available at application time. Sub-claims at other statuses: better performance at larger epicentral distances is a regularity_in_range over 0-25 km bins, without uncertainty; robustness to noise is capability_characterized for synthetic white Gaussian noise only; the claim that the interpretability analysis 'verified' the module roles is at most best_explanation, based on t-SNE density and R2 of intermediate outputs. Composition is none_fits: the walk is a benchmark-style method comparison on a public data set (build method, compare with baselines, vary splits and noise), with no phenomenon established and no rival explanations.",
+ "disagreements": [
+  {
+   "target": "Traditional magnitude estimation methods",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Asserted from the literature; the paper benchmarks no traditional method directly.",
+   "page": "1",
+   "quote": "the generalization and transferability of these traditional methods between seismic data with different attributes are often not ideal"
+  },
+  {
+   "target": "Earlier neural-network magnitude methods (Böse et al. 2012; Käufl et al. 2013 and others)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued that these methods depend on catalog-built input features; no test is offered.",
+   "page": "2",
+   "quote": "these NN methods commonly require a complete earthquake catalog to construct input features for model training"
+  },
+  {
+   "target": "CNN-based deep models for magnitude estimation",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cited arguments (Karim et al. 2018) on training-data dependence and weak handling of time series; addressed empirically only by the comparison with MagNet.",
+   "page": "2",
+   "quote": "the performance of the CNN-based deep models is highly dependent on training data"
+  },
+  {
+   "target": "Visibility graph for seismic series (Lacasa et al. 2008)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "A conceptual argument; the visibility graph is not run as a comparison.",
+   "page": "7",
+   "quote": "However, the VG may lose the progressive relationship in a time series."
+  },
+  {
+   "target": "Bidirectional recurrent networks / LSTM for seismic time series",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "An analytic argument about gradient problems, plus the MINLSTM ablation, which scores lower R2.",
+   "page": "10",
+   "quote": "vanishing gradient and exploding gradient problems could easily [...]"
+  },
+  {
+   "target": "MagNet (Mousavi & Beroza 2020)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Higher R2 and lower error std on STEAD test splits, across distance bins and under added noise.",
+   "page": "11",
+   "quote": "The results show that the performance of MagInfoNet is better than those of other models."
+  },
+  {
+   "target": "MagNet data selection restricted to epicentral distances below 1° (Mousavi & Beroza 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors use unfiltered samples to show broader applicability; the effect of the restriction itself is not tested.",
+   "page": "11",
+   "quote": "Instead of only selecting samples at epicentral distances of less than 1° (Mousavi & Beroza, 2020)"
+  },
+  {
+   "target": "ML-MD conversion relation (Brumbaugh 1989)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors cite physical limitations of the conversion and analyse the two scales separately; no test is offered.",
+   "page": "11",
+   "quote": "There are still physical limitations to the conversion between these two magnitude scales"
+  },
+  {
+   "target": "Seismic denoising before estimation (Liu et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The noise-robustness test is used to argue that denoising is unnecessary; no comparison with denoised input is made.",
+   "page": "12",
+   "quote": "MagInfoNet is robust and can avoid the excessive computational costs of seismic denoising"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Linear modules (two FC layers) for arrival and travel times",
+   "alternatives": "CNN modules",
+   "reason": "tradeoff between the computational performance and the cost of the NN, since A and T have only two and one features",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Improved cyclic graph as the UniMP topology",
+   "alternatives": "Visibility graph (Lacasa et al. 2008)",
+   "reason": "VG may lose the progressive relationship in a time series",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "UniMP graph-transformer layers",
+   "alternatives": "BRNN/LSTM layers (MINLSTM)",
+   "reason": "faster convergence and no vanishing or exploding gradients; gated residual reduces oversmoothing",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "D",
+   "chosen": "Analyse ML and MD separately",
+   "alternatives": "Convert between scales with the Brumbaugh (1989) relation",
+   "reason": "physical limitations to the conversion between magnitude scales",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "D",
+   "chosen": "Unit norm normalization of arrival times",
+   "alternatives": "Raw sample-index arrival times",
+   "reason": "difficult for NNs to learn weights for input values that are too large",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "D",
+   "chosen": "No epicentral-distance filtering",
+   "alternatives": "Selecting samples within 1° epicentral distance (as in Mousavi & Beroza 2020)",
+   "reason": "to reveal generalization ability and broader scope of application",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "V",
+   "chosen": "90/10 train/test split",
+   "alternatives": "50/50 train/test split",
+   "reason": "a larger test set covers more types of seismic signals",
+   "effect_reported": "yes",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We tested the performances based on different models, including the proposed MagInfoNet, MagNet, RF,",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] where LSTM layers (Xue et al., 2022) are used instead of UniMP layers",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We also allocated a larger proportion of samples for testing set (about 50%) than the commonly used 10%",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We then remained and tested these samples in each range",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For robustness testing, additive white Gaussian noises are added to seismic signals under different SNRs",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Thus, the roles of these two modules were verified.",
+   "page": "12"
+  }
+ ]
+}

@@ -1,0 +1,420 @@
+{
+ "key": "g22_W4295882689",
+ "doi": "10.1016/j.aiig.2022.08.001",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF, Artificial Intelligence in Geosciences 3 (2022) 46–52",
+  "Publisher XML text with section and paragraph locators (jats_text); contains only the abstract and the figure and table captions"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions (§0 ¶1, Fig. N, Table N). The XML text has no body sections, so body text is located by printed journal pages (pp. 46–52; PDF page 1 = p. 46).",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This warrants a need for an automated algorithm for first motion polarity determination.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF plus publisher XML text (abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the need for an automated first-motion polarity classifier, because manual picking is slow and error-prone.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This warrants a need for an automated algorithm for first motion polarity determination."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "They cite Hardebeck and Shearer (2002), who found that analyst-picked polarities are wrong about 10–20% of the time.",
+     "page": "p. 46",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the picked polarities are inconsistent with the true polarities about 10%"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They cite earlier automated approaches: threshold-based (Chen and Holland), Bayesian (Pugh et al.), and CNN-based (Ross et al., Hara et al., Uchide). They judge the numerical approaches unable to compete with manual picks.",
+     "page": "p. 46",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "and hence cannot compete with manual picks"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "They design the test data from INSTANCE. They keep single-detection traces with SNR at or above 10 dB and analyst polarity labels (109,748 traces), split them 60:10:30 into training, validation and test, add sign-flipped copies to the training and validation sets, and fix a 64-sample window around the known P arrival.",
+     "page": "p. 47",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we ignore traces with SNR less than 10 dB to ensure minimum discrepancy"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build and train PolarCAP, a supervised 1D-convolutional autoencoder with a softmax classifier on the 16-dimensional latent layer. The loss weights reconstruction 1 and classification 200, with Adam, early stopping and learning-rate reduction.",
+     "page": "p. 47",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use an autoencoder model (Rumelhart et al., 1986)"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare model predictions with analyst labels on the unseen INSTANCE test set and obtain about 98% accuracy for SNR at or above 10 dB (confusion matrices, Fig. 2; Table 1).",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We obtain an accuracy of 0.98 on a completely unseen test dataset of almost 33,000 traces."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "They test performance separately above and below 10 dB SNR, and on the independent SCSN test set of Ross et al. (2018), to check generalization beyond the Italian network.",
+     "page": "pp. 47–48",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This demonstrates the model generalizability."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "They retrain the published models of Ross et al., Hara et al. and Uchide on the same traces with their stated settings, test all models on both datasets at SNR at or above 10 dB, and report that PolarCAP has the highest accuracy (Table 2).",
+     "page": "p. 48",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As one can see PolarCAP outperforms the other models."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "They inspect by hand the 595 INSTANCE traces where model and analyst disagree. In 40.8% the model was right, in 27.6% the analyst was right, and 31.6% were ambiguous.",
+     "page": "p. 48",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for 40.8% of the cases the polarity predicted by the model was correct whereas in 27.6% of the cases the model predicted incorrect polarities"
+    },
+    {
+     "n": 10,
+     "node": "H",
+     "mode": "methods",
+     "action": "They attribute the model's errors to two causes: incorrect P-arrival picks in the metadata, or emergent P onsets.",
+     "page": "p. 48",
+     "move": "new",
+     "trigger": "author",
+     "quote": "was either due to incorrect picking of the first P-arrival"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "They re-pick P arrivals with EPick (Li et al., 2021) on the mis-picked traces and re-run the model, and its predictions then match the assigned polarities. They also note lower prediction probabilities for emergent onsets (Fig. 4).",
+     "page": "pp. 48–50",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in each of these cases the polarities predicted by the model now matched with the assigned polarities."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "They map the misclassification fraction against SNR, magnitude, focal depth, epicentral distance and VS30. They find no SNR or magnitude correlation, errors confined to events shallower than 80 km, and slightly more errors at VS30 below 420 m/s.",
+     "page": "p. 50 (Fig. 5, p. 51)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we did not find any observable correlation between signal-to-noise ratio, magnitude and model accuracy"
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They explain the depth pattern by the more impulsive onsets of deeper earthquakes, citing Bormann et al. (2014).",
+     "page": "pp. 50–51",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is likely to be because deeper earthquakes tend to have a more impulsive"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "To address the mis-pick errors, they revise the training: one fifth of the traces get added copies with a random time shift (normal, standard deviation 10 samples, maximum 30), and the model is retrained.",
+     "page": "p. 51",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we used data augmentation to add a time shift to some of the traces in the training data."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "They retest the retrained model on the same test sets. Accuracy falls on INSTANCE (both SNR classes) and rises on SCSN (+0.25 points at high SNR, +2.81 points at low SNR) (Table 1).",
+     "page": "p. 51",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the use of data augmentation resulted in lower accuracy on the INSTANCE dataset (for both low and high SNR)"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the claim that PolarCAP matches analyst polarities over 98% of the time on unseen traces when P arrivals are known, and that where it disagrees with the metadata it is more often correct.",
+     "page": "p. 51",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the polarity predicted by the model, matches the ones assigned by human analysts over 98% of the times."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "P-wave first-motion polarity, whose manual picks carry a 10–20% error",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes in the waveforms, but the labels come from analysts and can be wrong",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "An automated polarity classifier that matches or beats analysts",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Prior CNN classifiers (Ross, Hara, Uchide) and human analyst picks",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Accuracy, precision and recall on the same held-out test sets",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Set: held-out split, SNR threshold, fixed window around the known P arrival",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Survives the SNR split, the independent SCSN data and error-factor analysis; augmentation effect mixed",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: capability characterized",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "With known P-arrival times, PolarCAP classifies first-motion polarity in agreement with analyst labels for about 98% of unseen traces at SNR of 10 dB or more, generalizes to SCSN data, and outperforms retrained prior CNN models.",
+  "page": "p. 51"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "Testing the trained model against analyst labels on the unseen INSTANCE test set, and on the independent SCSN set, is what turns the architecture into a characterized capability.",
+  "page": "§0 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "Action: existing labelled catalogues (INSTANCE, SCSN) were used, and no hypothesis directed data acquisition. Claim: held-out and independent test sets and retrained baselines could have shown low accuracy or inferiority. Registration: the test split was held out, and the SNR threshold was taken from Ross et al. before training; the window length was tuned and nothing was preregistered."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "autoencoder architecture (Rumelhart et al., 1986)",
+   "kind": "method",
+   "page": "p. 47"
+  },
+  {
+   "field": "computer vision",
+   "item": "convolutional neural networks for image-like pattern recognition",
+   "kind": "concept",
+   "page": "p. 46"
+  },
+  {
+   "field": "machine learning",
+   "item": "Adam optimiser, early stopping, ReduceLROnPlateau, Huber and MSE losses in Keras",
+   "kind": "method",
+   "page": "p. 47"
+  },
+  {
+   "field": "machine learning",
+   "item": "class balancing by data augmentation (Batista et al., 2004)",
+   "kind": "method",
+   "page": "p. 47"
+  },
+  {
+   "field": "machine learning",
+   "item": "confusion matrices, precision and recall metrics (Ting, 2017)",
+   "kind": "method",
+   "page": "p. 47"
+  },
+  {
+   "field": "computing hardware",
+   "item": "NVIDIA A100 GPU",
+   "kind": "instrument",
+   "page": "p. 47"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so there is no review sequence. The XML text holds only the abstract and captions, so body locators are printed pages.\n\nThe abstract says the model achieves higher recall on both polarities, but Table 2 shows lower positive recall than all three rivals on SCSN (97.35 vs 97.53–98.02), and lower negative precision than the rivals on both datasets. This is inference from the table.\n\nTable 1's \"Data without Augmentation\" rows apparently still include the sign-flip augmentation; \"augmentation\" there seems to mean the time shift (inference).\n\nOther gaps in the reported process:\n- No repeated training runs or seeds, so no reproduction.\n- No significance tests for accuracy differences of 0.2–1.3 points.\n- Rival models were retrained by the authors, which may not be optimal for them.\n- The manual reinspection of 595 mismatches was done by the authors, with no inter-rater measure.\n- \"Faster than human analysts\" is not timed against humans.\n- Hyperparameter search beyond window length is not described.\n- The Fig. 2 caption is garbled.\n\nSub-claims and their statuses:\n- The model corrects human errors more often than it errs: best_explanation, based on author inspection.\n- Error causes are mis-picks and emergent onsets: best_explanation.\n- The depth effect comes from impulsive deep onsets: best_explanation, cited.\n- The time-shift augmentation effect is dataset-dependent: no firm conclusion.\n\nComposition is none_fits: the walk is problem-driven method building followed by benchmarking against labels and baselines. It is not capability_first, because the question precedes the capability.",
+ "disagreements": [
+  {
+   "target": "Chen and Holland (2016); Pugh et al. (2016) numerical polarity pickers",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Relies on the assessment of Ross et al. (2018) that such methods need human involvement, few parameters, and miss seismogram complexity.",
+   "page": "p. 46",
+   "quote": "and hence cannot compete with manual picks"
+  },
+  {
+   "target": "Ross et al. (2018); Hara et al. (2019); Uchide (2020) CNN polarity models",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "All models are retrained on the same traces and tested on INSTANCE and SCSN at SNR of 10 dB or more; PolarCAP has the highest accuracy, though not the highest value on every metric.",
+   "page": "Table 2",
+   "quote": "PolarCAP outperforms the other models for both the datasets."
+  },
+  {
+   "target": "Analyst-assigned polarities in the INSTANCE metadata",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Manual reinspection of 595 mismatches finds the model correct in 40.8% versus 27.6% for analysts.",
+   "page": "p. 51",
+   "quote": "it was usually the model that was correct"
+  },
+  {
+   "target": "P-arrival times provided in the INSTANCE metadata",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "EPick re-picks on misclassified traces look more accurate, and with them the model's predictions match the assigned polarities.",
+   "page": "p. 48",
+   "quote": "the P-arrival samples determined by EPick seemed more accurate than those provided in the metadata."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "supervised autoencoder using metadata polarity labels",
+   "alternatives": "unsupervised autoencoder classification (Mousavi et al., 2019)",
+   "reason": "leverage the polarity information provided in the INSTANCE metadata",
+   "effect_reported": "no",
+   "page": "p. 46"
+  },
+  {
+   "node": "Q",
+   "chosen": "classify polarity only, with the P arrival known a priori",
+   "alternatives": "joint P-arrival picking and polarity classification",
+   "reason": "existing algorithms already pick P arrivals to about 0.01 s",
+   "effect_reported": "no",
+   "page": "p. 47"
+  },
+  {
+   "node": "D",
+   "chosen": "train on traces with SNR of 10 dB or more",
+   "alternatives": "include traces with SNR below 10 dB",
+   "reason": "Ross et al. (2018) found polarity accuracy falls exponentially below 10 dB",
+   "effect_reported": "no",
+   "page": "p. 47"
+  },
+  {
+   "node": "D",
+   "chosen": "64-sample window",
+   "alternatives": "powers of 2 between 32 and 1024 samples",
+   "reason": "chosen experimentally; powers of 2 because the autoencoder halves dimensionality at each step",
+   "effect_reported": "no",
+   "page": "p. 47"
+  },
+  {
+   "node": "R",
+   "chosen": "time-shift augmentation of 1/5 of the training traces",
+   "alternatives": "no time-shift augmentation",
+   "reason": "to tackle incorrect P-arrival picks",
+   "effect_reported": "yes",
+   "page": "p. 51"
+  },
+  {
+   "node": "R",
+   "chosen": "no augmentation for emergent onsets",
+   "alternatives": "augmentation to increase emergent traces",
+   "reason": "no information on P-onset quality in the metadata",
+   "effect_reported": "no",
+   "page": "p. 51"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We obtain an accuracy of 0.98 on a completely unseen test dataset of almost 33,000 traces.",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we test it separately on data with SNR above and below 10 dB.",
+   "page": "p. 47"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "it can perform reasonably well on data from Southern California Seismic Network. This demonstrates the model generalizability.",
+   "page": "p. 48"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we train each model on the same traces, while using the same model architecture, training parameters and input data length specified by the respective authors.",
+   "page": "p. 48"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We further investigate the 595 traces from INSTANCE dataset with SNR above 10 dB for which the polarity predicted by PolarCAP and the manually assigned [...]",
+   "page": "p. 48"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "picked the P-arrivals ourselves using the EPick model (Li et al., 2021).",
+   "page": "p. 48"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We looked at the distribution of the incorrectly classified traces in terms of signal-to-noise ratio, magnitude, focal depth, and epicentral distances.",
+   "page": "p. 50"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "After re-training the model on the augmented data, we tested it again on the same test sets.",
+   "page": "p. 51"
+  }
+ ]
+}

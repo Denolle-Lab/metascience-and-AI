@@ -1,0 +1,502 @@
+{
+ "key": "g22_W4317563295",
+ "doi": "10.1093/gji/ggac464",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Stott et al., Machine learning and marsquakes: a tool to predict atmospheric-seismic noise for the NASA InSight mission (PDF, 49 pages; the PDF header marks it as the preprint submitted to Geophys. J. Int.)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (these coincide with the page numbers printed on the manuscript)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This demonstrates that atmospheric injection inhibits the discrimination of data of a seismic origin.",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Stott et al. GJI paper (PDF as supplied)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Report from the MQS catalogue that marsquake detections nearly vanish in the turbulent northern-winter period and cluster in calm evening hours.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "However, between sols 500 and 800 only 27 of these 951 events were observed."
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem of separating seismometer data into atmospherically induced and seismic components.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the separation of the seismometer data into atmospherically induced and seismic origin components is of interest"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the expected wind, pressure and temperature noise injection from the pre-landing noise model and later in situ studies. This includes the drag/lift forcing in Eq. 1.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The impact of wind, pressure and temperature on the seismic data was predicted in the pre-landing noise model of Mimoun et al. (2017)."
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the study as supervised regression from eight atmospheric inputs to three-axis seismic energy envelopes. Two event-class bandwidths are chosen: 0.4-1 Hz and the 2.2-2.6 Hz mode.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we formulate a supervised learning regression style problem, to predict the seismic energy from the atmospheric data"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the preprocessing pipeline. It covers response removal, rotation, band filtering, 10 s envelopes, resampling to 1 sps, deglitching, peak removal, masks, log transform and normalisation, yielding about 30 million samples.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The preprocessing must blend together this data taken at different sampling rates"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Display the input-output scatter matrices for three seasons. These show the atmospheric-seismic relation changing diurnally and seasonally, interpreted with turbulence regimes from Chatain et al.",
+     "page": "9-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It can be seen that the relationship between the seismic data and each of these variables changes over both the Martian sol and season"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Implement global and local Gaussian process regression models and a multilayer perceptron. The GP kernel is selected on test RMSE (Table 1) and the NN architecture by a layer and neuron sweep (Figure 3).",
+     "page": "13-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Four models with different kernels were trained on the LF data to identify the best choice."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the NN for overfitting by comparing training and held-out test loss over 100 epochs.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The test loss is fluctuating around the training loss but follows its trend, indicating there is no overfitting."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the three models' held-out RMSE for LF and HF bands overall (Table 2) and on three exemplar sols (Table 3).",
+     "page": "16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The neural network approach provides the lowest error, followed by the local and then global GP models."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Examine residuals and their distributions across three seasons and turbulence regimes to check that prediction quality is stable. Transient-level and daytime failures are noted.",
+     "page": "17-18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating there is no major change in the prediction quality over the seasons"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "From the models' failure to predict ambient 2.4 Hz variation in quiet periods, suggest that the ambient modulation of the 2.4 Hz mode is not of local atmospheric origin.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "fail to predict the overall ambient variation of the 2.4Hz suggests that it not not generated with local atmospheric effects"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Use the NN noise prediction to compute the log-residual SNR for every catalogued event in both bands (Appendix C). Example events are analysed in Figures 11-12, including phase structure and gust contamination.",
+     "page": "20-23",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This SNR has been calculated for every event (with available data) in the catalogue"
+    },
+    {
+     "n": 13,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Establish from the catalogue-wide SNR (Figure 13) that separable low-frequency energy recurs in HF, VF and 2.4 Hz events.",
+     "page": "23",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is not unique to that event and is a consistent feature which occurs regularly for all types of high frequency event"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude an observational distance bias by plotting SNR against catalogue distance and magnitude (Figure 14). They find no distance dependence but a magnitude correlation.",
+     "page": "23-24",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is no clear dependence on distance for the presence of low frequency energy and so the observation is not because these events are close"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Retain the interpretation that marsquake frequency classes form a continuum rather than disparate groups.",
+     "page": "24",
+     "move": "new",
+     "trigger": "author",
+     "quote": "both the high and low frequency event classes are not disparate groupings and that they instead follow a continuum in frequency content"
+    },
+    {
+     "n": 16,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a detection algorithm with a variable threshold. The residual is detrended with moving medians, thresholded at mean plus 3 SD over 2 h windows, and outliers are required on all three components with positive amplitude.",
+     "page": "24-26",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We propose the following algorithm to calculate a variable threshold"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test detection against the MQS catalogue: 25 of 32 LF/BB and 314 of 377 HF events are recovered. The misses are explained by glitches, contamination, low quality and energy below 0.4 Hz.",
+     "page": "26",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The detection algorithm performed on the LF, 0.4-1Hz, band found 25 of 32 low frequency and broadband quakes"
+    },
+    {
+     "n": 18,
+     "node": "O",
+     "mode": "observation",
+     "action": "Filter the new detections (duration at least 2 min, SNR above 1.2) and review them manually. This yields 9 LF and 25 HF new marsquakes (32 unique) plus 34 possible ones (Tables 4, 5, A2, A3).",
+     "page": "26",
+     "move": "new",
+     "trigger": "author",
+     "quote": "From this group, we propose 9 new marsquakes which are presented in Table 4."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check one new LF event (sol 452) against the confidence interval of the independently trained local GP model (Figure 16).",
+     "page": "26",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is clearly separate from the environment and also exceeds the confidence interval of the local GP model"
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate empirical detectivity by comparing the cumulative distribution of the detection threshold over the mission with the levels reached by detected events (Figure 18).",
+     "page": "27-30",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Tracking this threshold over the mission enables an estimate the detectability of a marsquake similar to one in the catalogue over the mission."
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that the NN noise predictor is a usable tool for event analysis, detection of new marsquakes and detectivity estimation.",
+     "page": "30-32",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This has led to the detection of 32 new marsquakes and a further 34 possible candidates."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Atmospheric noise masks marsquakes diurnally and seasonally",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Seismic energy yes; its atmospheric noise component no, it must be predicted",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Predict seismic noise from weather data to analyse and detect events",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals for the tool; for LF energy in HF events, a distance-related observational bias",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Distance bias predicts a distance dependence; a continuum predicts a magnitude dependence",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: mission data over about 1000 sols, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats through diurnal and seasonal cycles and hundreds of events",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Held-out test RMSE, kernel and architecture sweeps, seasonal residuals, catalogue recovery rate",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Tool kept; continuum and new events offered",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review record supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Neural-network and GP regressions predict the atmospheric seismic noise in the 0.4-1 Hz and 2.2-2.6 Hz bands with held-out RMSE of about 0.067 (NN). The resulting SNR enables event analysis, detection of 32 new marsquakes plus 34 candidates, and empirical detectivity estimates.",
+  "page": "2, 17, 31"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the regression model that predicts seismic energy from atmospheric data (step 7), there would be no residual SNR, no detections and no detectivity estimate.",
+  "page": "13-15"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are archival mission data acquired without any hypothesis of the paper. The tool faced tests it could fail: held-out RMSE (p.13, 15) and recovery of MQS catalogue events (p.26). The continuum claim faced only a distance check (p.23). Detection thresholds (3 SD, SNR>1.2, 2 min) and model choices are not stated as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Gaussian process regression (Williams & Rasmussen 2006) via the GPy library",
+   "kind": "method",
+   "page": "11-13"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Multilayer perceptron neural network in Keras with ReLU and the ADAM optimiser",
+   "kind": "method",
+   "page": "14-15"
+  },
+  {
+   "field": "mathematics",
+   "item": "Universal approximation theorem (Cybenko 1989)",
+   "kind": "concept",
+   "page": "14"
+  },
+  {
+   "field": "fluid mechanics",
+   "item": "Drag/lift force equation",
+   "kind": "concept",
+   "page": "8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This algorithm finds 32 previously undetected marsquakes, with another 34 possible candidates.",
+   "page": "2"
+  },
+  {
+   "quote": "we propose 9 new marsquakes which are presented in Table 4",
+   "page": "26"
+  },
+  {
+   "quote": "The manual review of these detections gives an extra 25 new marsquakes presented in Table 5",
+   "page": "26"
+  }
+ ],
+ "limits": "The supplied PDF carries a preprint header (\"has not yet been peer reviewed\") although it was supplied as the published paper. No review file was supplied, so no review sequence is coded. Sub-claims at other statuses: the frequency-content continuum is best_explanation (only a distance-bias rival is checked). The 32 new marsquakes rest on unspecified manual review and are not confirmed independently. Detectivity is estimate_with_resolution in form, but no uncertainty is given and the authors call it only empirical. The non-atmospheric origin of the ambient 2.4 Hz modulation is a suggestion only. No false-detection rate is quantified, although sources of false detections are listed (p.27). No sensitivity to the detection thresholds (3 SD, 2 h window, SNR 1.2, 2 min) is reported. RMSE values carry no uncertainty, and some local-GP sols were removed from the error calculation (p.16). Inference: the held-out test set is a random 20% of 1-sps samples, so test samples are temporally adjacent to training samples, and the held-out check may overstate skill. The composition is coded capability_first loosely: the paper opens with a stated problem rather than a capability, and the capability then generates the LF-energy observation.",
+ "disagreements": [
+  {
+   "target": "MQS event taxonomy (Clinton et al. 2021)",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "Catalogue-wide SNR shows separable low-frequency energy in HF, VF and 2.4 Hz events, correlated with magnitude but not distance.",
+   "page": "23-24",
+   "quote": "This indicates the presence of separable low frequency energy within these events, in contrast to their taxonomy outlined above."
+  },
+  {
+   "target": "MQS marsquake catalogue (InSight Marsquake Service 2022), completeness",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The detection algorithm with manual review finds 32 events absent from the catalogue, mostly in noisy periods or at low amplitude.",
+   "page": "26-27",
+   "quote": "both difficult to detect by eye and so difficult to be caught by the MQS"
+  },
+  {
+   "target": "MQS catalogue description of event S0395a",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "LF SNR and the spectrogram show low-frequency energy not indicated in the catalogue.",
+   "page": "23",
+   "quote": "the low frequency SNR highlights some energy at low frequencies not indicated in the catalogue"
+  },
+  {
+   "target": "Physical noise models of atmospheric injection (e.g. Mimoun et al. 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that the many interacting factors seen in Figure 2 make a physical model insufficient for event analysis, and motivate ML instead.",
+   "page": "11",
+   "quote": "it is difficult to determine a physical model which is able to predict the seismic signal sufficiently for event analysis"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Exponential + MLP kernel for the GP",
+   "alternatives": "Exponential, RBF, Exponential + MLP x Exponential kernels",
+   "reason": "marginally the lowest test RMSE",
+   "effect_reported": "yes",
+   "page": "13-14"
+  },
+  {
+   "node": "N",
+   "chosen": "NN with 6 layers of 20 neurons",
+   "alternatives": "networks with 2-8 layers and 5-25 neurons",
+   "reason": "little improvement in a more complex model",
+   "effect_reported": "yes",
+   "page": "15-16"
+  },
+  {
+   "node": "C",
+   "chosen": "Neural network for event analysis and detection",
+   "alternatives": "global GP model, local GP model",
+   "reason": "best performing and most robust; GP keeps the advantage of intrinsic confidence intervals",
+   "effect_reported": "yes",
+   "page": "17, 20"
+  },
+  {
+   "node": "N",
+   "chosen": "3000 training samples for each GP model",
+   "alternatives": "larger portion of the ~30 million samples",
+   "reason": "GP training becomes computationally intractable",
+   "effect_reported": "no",
+   "page": "13"
+  },
+  {
+   "node": "D",
+   "chosen": "Exclude magnetic field data from the inputs",
+   "alternatives": "include magnetic field variations",
+   "reason": "not seen to be well correlated with seismic data in event bandwidths",
+   "effect_reported": "no",
+   "page": "8-9"
+  },
+  {
+   "node": "D",
+   "chosen": "Use atmospheric temperature only, to account for air density",
+   "alternatives": "direct VBB temperature sensitivity",
+   "reason": "does not fluctuate on the scale of events",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "D",
+   "chosen": "2.2-2.6 Hz band isolating the 2.4 Hz mode for HF events",
+   "alternatives": "higher frequencies with increasing wind sensitivity",
+   "reason": "the mode is always excited by these events and avoids rising wind sensitivity",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "Exclude SF events",
+   "alternatives": "analyse SF events",
+   "reason": "already detected by an automated algorithm (Dahmen et al. 2021a)",
+   "effect_reported": "no",
+   "page": "4-5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The RMSE was calculated on 20% of the whole mission’s data (test data not used for training)",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The test loss is fluctuating around the training loss but follows its trend, indicating there is no overfitting.",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Four models with different kernels were trained on the LF data to identify the best choice.",
+   "page": "13"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We will first present their individual applications to the data and then compare their performances.",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "indicating there is no major change in the prediction quality over the seasons",
+   "page": "17"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "There is no clear dependence on distance for the presence of low frequency energy",
+   "page": "23"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This found 314 out of 377 of the HF event types in the current MQS catalogue",
+   "page": "26"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "also exceeds the confidence interval of the local GP model, shown in Figure 16",
+   "page": "26"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "other techniques (Charalambous et al. 2021) have also shown it to be heavily contaminated",
+   "page": "26"
+  }
+ ]
+}

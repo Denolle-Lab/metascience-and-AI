@@ -1,0 +1,531 @@
+{
+ "key": "g22_W4289517686",
+ "doi": "10.5194/acp-22-9895-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Poshyvailo-Strube et al., Atmos. Chem. Phys., 22, 9895–9914, 2022",
+  "Publisher XML full text converted to located text (jats_text)",
+  "Open discussion record of preprint acp-2021-934 (RC1, AC1, RC2, AC2 with supplements)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page; review steps cite the review record's own locators",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "In this paper, we investigate the methodology to estimate AoA trends from stratospheric H 2 O and CH 4 .",
+  "page": "§1 ¶6"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text, PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how two common approximations (instantaneous entry propagation, constant AoA–FRF correlation) affect AoA trends estimated from H2O and CH4.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this paper, we investigate the methodology to estimate AoA trends from stratospheric H 2 O and CH 4 ."
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design a proof-of-concept test inside a closed CLaMS model world where the true AoA trend is known, so each approximation's error can be quantified.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we employ a closed model environment (the “model world”) in which the mean stratospheric AoA and its trend are known"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run CLaMS driven by ERA-Interim (setup from earlier work) and compute monthly age spectra with the BIER pulse-tracer method (60 pulses, 10-year spectra with exponential tail).",
+     "page": "§2.1 ¶1; §2.2 ¶2–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, N = 60 different boundary pulse tracers were used."
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take total-hydrogen conservation (H2O + 2CH4 constant) from the literature and derive the three-term trend decomposition (Eq. 6) linking H2O trends to FRF change.",
+     "page": "§2.3 ¶2; §2.3 ¶5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "by using the conservation property of total hydrogen in the stratosphere"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "methods",
+     "action": "Define four rival estimation methods (FULL, C-CORR, APPROX as used in the literature, and an improved approximation) according to which approximations they use.",
+     "page": "§2.4 ¶1–4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There are four methods of AoA trend calculation used in this study"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate each term of Eq. 6 for 1990–2017 with FULL by convolving tropical entry H2O and CH4 with the modelled age spectrum and deriving monthly FRF.",
+     "page": "§3.1 ¶1–5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimate here each term of Eq. () using the full reconstruction method FULL"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the decomposition by comparing the summed contributions with the true CLaMS H2O trend; attribute large Antarctic misfit to dehydration and restrict interpretation there.",
+     "page": "§3.1 ¶6; Figure 3 (p. 9903)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the propagation procedure provides a good estimate of stratospheric H 2 O change and its contributions"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Translate FULL FRF into AoA with monthly varying third-order polynomial AoA–FRF fits and fit linear AoA trends at each grid point.",
+     "page": "§3.2 ¶1–4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a monthly varying correlation between estimated FRF and CLaMS AoA is used"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the FULL AoA trend with the true CLaMS AoA trend for 1990–2017 and find close agreement.",
+     "page": "§3.2 ¶4; Figure 5 (p. 9904)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The estimated AoA trend with FULL is qualitatively and quantitatively highly reliable"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate AoA trends with APPROX following Hegglin et al. (2014): entry trends from the tropical layer, residual circulation term, stationary cubic AoA–FRF fit from 2005–2006.",
+     "page": "§3.3 ¶2–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the approximation method APPROX, each term of Eq. () is approximated."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare APPROX with the true AoA trend for 1990–2017: good overall agreement apart from Antarctic, NH subtropical and lowermost-stratosphere errors.",
+     "page": "§3.3 ¶4; Figure 5 (p. 9904)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, APPROX provides a good estimate of the AoA trend for 1990–2017"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test APPROX on a second period, 1990–2006, where it disagrees substantially with the truth, even in sign.",
+     "page": "§3.3 ¶5; Figure 6 (p. 9906)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the APPROX AoA trend disagrees substantially when compared with the true CLaMS trend"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run sensitivity experiments that remove one approximation at a time: C-CORR versus APPROX isolates instantaneous propagation, and FULL versus C-CORR isolates the constant correlation.",
+     "page": "§3.4 ¶1–4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we perform an additional sensitivity study, where the stationary relationship between FRF and modelled AoA is kept"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "robustness",
+     "action": "Map both approximation effects for both periods; they are comparable in magnitude, period-dependent, and opposite in sign for 1990–2017, so they cancel.",
+     "page": "§3.4 ¶5–8; Figure 7 (p. 9906)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Interestingly, the effects of the approximations can be opposite in sign, cancelling each other out to some extent."
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine approximation (i) by propagating entry mixing ratios with an inverse-Gaussian idealized age spectrum (seven AoA zones, width relation C = 0.7 years), keeping the constant correlation.",
+     "page": "§3.5 ¶1–2; §Appendix B ¶1–2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose using an analytical, parameterized age spectrum for propagating stratospheric entry H 2 O and CH 4 [...]"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the improved approximation with APPROX, C-CORR and the truth for 1990–2006; it improves clearly and approaches C-CORR.",
+     "page": "§3.5 ¶3; Figure 6 (p. 9906)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is a clear improvement in the AoA trend estimation when compared to the pure approximation method APPROX"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Recommend the improved approximation for observational H2O and CH4 data, keeping instantaneous CH4 entry propagation because that term matters little.",
+     "page": "§3.5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence, we encourage the usage of the improved approximation method"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "Evaluate each Eq. 6 term of APPROX and of the improved method against FULL for 1990–2006; the entry H2O term is identified as the main error source.",
+     "page": "§4 ¶1–4; Figure 8 (p. 9908)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As FULL is the most exact method, the circulation terms from the approximate methods are evaluated against it."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that both approximations cause large period-dependent errors and that the idealized-spectrum refinement considerably improves the derived AoA trend.",
+     "page": "§5 ¶2–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This refinement of the method considerably improves the reconstructed stratospheric entry H 2 O contribution"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion record acp-2021-934 (RC1, AC1, RC2, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Referee 1 asked why the CH4 boundary condition switched from NOAA to AIRS in 2011; the authors added the reason and a statement that the discontinuity has negligible effects.",
+     "page": "RC1 ¶8; AC1-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Why is the CH4 boundary condition changed from NOAA to AIRS after 2011?"
+    },
+    {
+     "n": 2,
+     "node": "C",
+     "mode": "robustness",
+     "action": "Referee 1 noted a positive trend bias at young ages in Fig. 7; the authors added a caution that age-spectrum resolution is too coarse just above the tropopause.",
+     "page": "RC1 ¶14; AC1-S p.3–4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The constant FRF-AoA correlation approximation appears to bias the AoA trend too positive over both time periods"
+    },
+    {
+     "n": 3,
+     "node": "R",
+     "mode": "methods",
+     "action": "The referee's suggested simple correction for the positive bias was not attempted; the authors argued the differences cannot be understood simply.",
+     "page": "RC1 ¶14; AC1-S p.3",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "the above mentioned differences in the young air cannot be understood in a simple way"
+    },
+    {
+     "n": 4,
+     "node": "R",
+     "mode": "methods",
+     "action": "Referee 1 asked why seven constant-age zones were used instead of the actual age; the authors kept the zones as a practical choice that needs no model age and only reworded the text.",
+     "page": "RC1 ¶15; AC1-S p.4",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Why not just use the actual age at each location?"
+    },
+    {
+     "n": 5,
+     "node": "Q",
+     "mode": "question",
+     "action": "Referee 2 noted that no actual observations are used; the authors rephrased the abstract to frame the work as a proof of concept in the model world.",
+     "page": "RC2 ¶7; AC2-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "No actual observations (except boundary forcing of methane and water) are used in this paper."
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "methods",
+     "action": "Referee 2 asked to shorten the paper and show only True, FULL and improved approximation; the authors reduced the text but kept all method comparisons.",
+     "page": "RC2 ¶8; AC2-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "For example, near the end perhaps you should show only 3 cases – True, Full and Improve Approx."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "observation",
+     "action": "Referee 2 wondered how observational uncertainty would affect results on real data; the authors deferred application to real observations to future work.",
+     "page": "RC2 ¶9; AC2-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "I look forward to the authors applying this technique to real data"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Referee 2 suggested cutting the figures at ±50° latitude; the authors kept the polar regions so the method's failure there is visible.",
+     "page": "RC2 ¶10; AC2-S p.2–3",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Perhaps cutting the figures at ±50° might be reasonable."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "BDC (mean age of air) trends, known exactly in a CLaMS model world",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; BDC cannot be measured directly and AoA trends must be inferred from tracers",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Assess the error of two common approximations and improve the estimation method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Four estimation methods: FULL, C-CORR, APPROX and improved approximation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; each method yields a different trend map that can be scored against the model truth",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set: model world and analysis periods (1990–2017, 1990–2006) chosen by the authors",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "APPROX fails on the second period; the improved method survives on 1990–2006",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Approximations cause large period-dependent errors; the idealized-spectrum refinement is recommended",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Minor revisions: clarifications and a caution note; the seven-zone and polar-region choices were defended",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The two common approximations cause period-dependent AoA trend errors (up to 5 % per decade above 600 K, more than 10 % below), and propagating entry H2O and CH4 with a parameterized idealized age spectrum considerably improves the estimated AoA trend.",
+  "page": "§5 ¶2–3"
+ },
+ "decisive_move": {
+  "node": "D",
+  "mode": "simulation",
+  "sentence": "Designing the test inside a closed CLaMS model world where the true AoA trend is known is what lets each method's error be measured; without it no method could be scored.",
+  "page": "§1 ¶6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Sensitivity runs (C-CORR, improved method) were designed to isolate the stated approximations (§3.4 ¶1, §3.5 ¶2), but the model output itself was not acquired under a hypothesis. The improved method was scored against the known model truth and could have failed (§3.5 ¶3; §4 ¶3). Nothing is reported as fixed before results were seen: zone values and periods were chosen within the analysis."
+ },
+ "imports": [
+  {
+   "field": "mathematical physics",
+   "item": "Green function (boundary propagator) of the transport operator, read as a transit-time distribution",
+   "kind": "concept",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Inverse Gaussian distribution used as the parameterized age spectrum",
+   "kind": "method",
+   "page": "§3.5 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Finally, we introduce an improvement to the approximation method",
+   "page": "§2.4 ¶4"
+  },
+  {
+   "quote": "As a simple and practical improvement, we propose using an analytical, parameterized age spectrum",
+   "page": "§3.5 ¶1"
+  }
+ ],
+ "limits": "All tests are in a model world. The 'truth' is CLaMS itself, so the methods share the model's transport and chemistry, and no observational noise or sampling is tested; the authors defer real data to future work (AC2-S p.2). FULL uses the model's own AoA to build its monthly correlations, so its agreement with the truth is partly built in (inference). The seven zone AoA values of the improved method are read off the CLaMS AoA climatology (Figure B1, p. 9910), even though the method is described as working without a priori knowledge of model age; this is an inference, not stated by the authors. Only two overlapping periods are tested, and no statistical significance or uncertainty of the trends is reported; agreement is judged visually from maps. Sub-claims: APPROX accuracy depends on period length (regularity_in_range, tested on two periods only); the 1990–2017 agreement of APPROX is explained as cancellation of opposite errors (best_explanation); the Antarctic, the lowermost stratosphere and the region just above the tropopause are excluded from the claim. Composition is coded none_fits because the walk is a synthetic-benchmark comparison of estimation methods against a known model truth, followed by an ablation and a refinement; no listed composition describes this. Review-file changes were mostly clarifications.",
+ "disagreements": [
+  {
+   "target": "APPROX method as used in the literature (Hegglin et al., 2014; Schoeberl et al., 2000, 2005)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "In the model world APPROX matches the truth for 1990–2017 but disagrees substantially, even in sign, for 1990–2006.",
+   "page": "§3.3 ¶5",
+   "quote": "Thus, the accuracy of the estimated AoA changes from APPROX largely depends on the considered period"
+  },
+  {
+   "target": "Apparent validity of APPROX over 1990–2017 (e.g. Hegglin et al., 2014)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Difference maps show the two approximation errors are opposite in sign for 1990–2017 and cancel, which cannot be expected in general.",
+   "page": "§3.4 ¶6",
+   "quote": "However, in general such a cancellation can not be expected."
+  },
+  {
+   "target": "Ratio of 2 between oxidized CH4 and produced H2O in total-hydrogen conservation (Le Texier et al., 1988; Dessler et al., [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites Frank et al. (2018) on the altitude-dependent bias of the ratio and questions its use under future climate.",
+   "page": "§2.3 ¶2",
+   "quote": "a ratio of 2 overestimates the production of H 2 O in the lower stratosphere and somewhat underestimates it in the upper stratosphere"
+  },
+  {
+   "target": "Use of stratospheric H2O to estimate AoA trends",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The model-world biases are large, balanced against comparable uncertainties of SF6 and CO2 estimates and the bias reduction of the refinement.",
+   "page": "§4 ¶5",
+   "quote": "We showed that biases in AoA trends estimated from stratospheric H 2 O can be large, questioning the usefulness of this approach."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "NOAA/ESRL CH4 boundary condition to 2011, then AIRS",
+   "alternatives": "keeping NOAA data throughout",
+   "reason": "better sampling of AIRS data, accepting the discontinuity",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "age-spectrum source region at tropopause ±10 K",
+   "alternatives": "the trace-gas entry region (390–400 K; transition region 380–450 K)",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶3; §3.1 ¶3"
+  },
+  {
+   "node": "R",
+   "chosen": "keep the constant AoA–FRF correlation in the improved method",
+   "alternatives": "a non-stationary AoA–FRF relationship",
+   "reason": "sparseness of stratospheric CH4 measurements",
+   "effect_reported": "yes",
+   "page": "§3.5 ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "width relation constant C = 0.7 years (Hall and Plumb, 1994)",
+   "alternatives": "C = 2.0 years for the lower stratosphere (Hauck et al., 2019)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§3.5 ¶2"
+  },
+  {
+   "node": "R",
+   "chosen": "seven AoA zones",
+   "alternatives": "finer zone division, more zones, or other zone shapes (e.g. triangles)",
+   "reason": "a simple and practical method without a priori knowledge of model age of air",
+   "effect_reported": "no",
+   "page": "§3.5 ¶2; §Appendix B ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "instantaneous propagation kept for the entry CH4 term",
+   "alternatives": "propagating CH4 with the idealized age spectrum",
+   "reason": "limited CH4 observations, and this term has little effect on the AoA trend",
+   "effect_reported": "yes",
+   "page": "§3.5 ¶4; §4 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "FRF climatology from 2005–2006 CH4 with entry CH4 averaged over 2002–2006",
+   "alternatives": "none named",
+   "reason": "relatively constant tropospheric CH4 in that period, following Hegglin et al. (2014)",
+   "effect_reported": "no",
+   "page": "§Appendix A ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "idealized inverse-Gaussian age spectrum",
+   "alternatives": "a chemistry-dependent propagator, or an inversion algorithm fitting the parameterized spectrum",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4 ¶5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compare the stratospheric H 2 O trend reconstructed as the sum of the calculated contributions",
+   "page": "§3.1 ¶6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The estimated AoA trend with FULL is qualitatively and quantitatively highly reliable, when comparing to the reference CLaMS AoA trend.",
+   "page": "§3.2 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "To assess the general applicability of the approximation method APPROX, we consider another period, 1990–2006.",
+   "page": "§3.3 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we perform an additional sensitivity study, where the stationary relationship between FRF and modelled AoA is kept",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the differences among AoA trends estimated with different methods (APPROX, C-CORR, FULL) and for two different periods (1990–2017 and 1990–2006) are analysed",
+   "page": "§3.4 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "As FULL is the most exact method, the circulation terms from the approximate methods are evaluated against it.",
+   "page": "§4 ¶3"
+  }
+ ]
+}

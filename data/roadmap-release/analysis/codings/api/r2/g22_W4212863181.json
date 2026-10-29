@@ -1,0 +1,504 @@
+{
+ "key": "g22_W4212863181",
+ "doi": "10.1111/1365-2478.13189",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper: Aleardi, Vinciguerra, Stucchi & Hojat (2022), Geophysical Prospecting 70, 938–957 (PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Casting a geophysical inverse problem into a Bayesian setting is often discouraged by the computational workload needed to run many forward modelling evaluations.",
+  "page": "938"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem: the cost of repeated finite-element forward runs prevents probabilistic (Bayesian) ERT inversion with uncertainty quantification.",
+     "page": "940",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the computing time needed for multiple forward evaluations (e.g., through a finite element code) hampers the application of probabilistic approaches to solving the ERT problem"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose replacing the 2.5D FE forward operator with a trained residual neural network, with training and validation models drawn from the prior and FE-computed data.",
+     "page": "941",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we reduce the computational burden of the probabilistic ERT inversion by replacing the code for the forward evaluation with a trained ResNet"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the Hansen and Cordua (2017) strategy of adding the network modelling-error covariance Cp, estimated on the validation set, to the noise covariance Cn.",
+     "page": "942",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The modelling error matrix is derived by evaluating the covariance of the difference between desired and actual network outputs"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Reuse the authors' own DEMC sampler with DCT model-space compression from Vinciguerra et al. (2021) for the synthetic inversion.",
+     "page": "943",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we solve the probabilistic electrical resistivity tomography (ERT) inversion using the DEMC algorithm presented in Vinciguerra et al. (2021)"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take the ensemble smoother with multiple data assimilation (Emerick and Reynolds 2013) as the second, cheaper inversion framework.",
+     "page": "943",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "an iterative procedure in which the updated models are used as the prior in the next iteration"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Specify the ResNet architecture (9 convolutional layers, skip connections, leaky ReLU, dropout, batch norm, Adam, 20 epochs), with hyperparameters chosen by trial and error on validation accuracy.",
+     "page": "947",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The final choice has been determined through a trial-and-error procedure and according to the accuracy evaluated on the validation set."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Appendix: train four one-parameter variants of the architecture (filter size, filter count, no first FC layer, ReLU) on the same sets and compare RMSE with the selected network.",
+     "page": "957",
+     "move": "new",
+     "trigger": "author",
+     "quote": "variants of the network represented in Figure 2 in which only one parameter has been Modified"
+    },
+    {
+     "n": 8,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set up a synthetic test: a 50 Ωm block in a 150 Ωm half-space, a 36-electrode Wenner layout, FE data with added Gaussian noise, and a log-Gaussian prior with a Gaussian variogram.",
+     "page": "947",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We simulate a Wenner acquisition layout with 36 electrodes"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the training-set size from 200 to 10,000 and choose 2000 training and 500 validation examples where the validation RMSE stabilizes.",
+     "page": "948",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We observe that the accuracy rapidly increases passing from 200 to 2000 training examples, then it stabilizes if additional examples are provided."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ablate the skip connections: compare validation RMSE of CNN and ResNet as convolutional layers increase; the CNN saturates at seven layers while the ResNet keeps improving.",
+     "page": "949",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Figure 6 shows a direct comparison between the RMSE values computed on the validation set for the ResNet and CNN"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check training against validation RMSE for overfitting, and compare network outputs with FE outputs on held-out validation models.",
+     "page": "950",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The close similarity between the actual and desired output (computed through the FE code) confirms that the network can effectively approximate"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Time 100 forward runs of the ResNet and of the FE code; the ResNet is three orders of magnitude faster.",
+     "page": "951",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it turns out that the ResNet guarantees a time reduction of three orders of magnitudes"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the premises of the error model: Cp is an order of magnitude below Cn, and the modelling error is zero-mean and near-Gaussian on a normal probability plot.",
+     "page": "951",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the data variations related to noise contamination are of one order of magnitude higher than the variations associated with the modelling error"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run the DEMC inversion (15 DCT coefficients, 30 chains, 3000 iterations) with the ResNet forward to estimate the posterior resistivity model and its uncertainty.",
+     "page": "951",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the DEMC sampling starts from prior realizations and makes use of 30 interactive chains evolving for 3000 iterations with a burn-in period of 500"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeat the DEMC inversion with the FE forward operator as a benchmark and compare the most likely models and standard deviations.",
+     "page": "951",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In both inversions, we obtain congruent and extremely similar results, with no significant differences."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare marginal posteriors with the true DCT coefficients, chain convergence, data fit and Table 1 metrics (model RMSE, data RMSE, 90% coverage, run time) for both forward operators.",
+     "page": "952",
+     "move": "new",
+     "trigger": "author",
+     "quote": "compare the marginal prior, posterior and true model parameter values in the DCT domain"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the synthetic result: comparable estimates and uncertainties in about 10 minutes against about 20 hours with FE.",
+     "page": "953",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the proposed approach not only drastically reduces the computational workload of the probabilistic sampling but, more importantly, also provides model estimations and uncertainty assessments comparable"
+    },
+    {
+     "n": 18,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take a field Wenner dataset (48 buried electrodes) from levee monitoring on the Parma River at Colorno, acquired in earlier work with co-author Hojat and corrected for soil cover.",
+     "page": "953",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We now apply the presented approach to invert a field dataset acquired for levee monitoring along the Parma River in Colorno (Italy)."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "methods",
+     "action": "Retrain the same ResNet on 2000 models from the field prior and check the validation-set predictions against FE, Gaussianity of the error, and Cp below Cn.",
+     "page": "953–954",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As demonstrated in Figure 18, the similarity of the ResNet predictions with the corresponding finite-elements (FE) responses extracted from the validation set"
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run ES-MDA (2000 members, 5 iterations, no compression) with the ResNet forward to estimate the field resistivity model and its uncertainty.",
+     "page": "954",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we employ the ES-MDA algorithm with an ensemble of 2000 models initially drawn from the prior assumptions and updated during five consecutive iterations"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "methods",
+     "action": "Benchmark the field ES-MDA result against the same inversion run with the FE forward.",
+     "page": "954",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similar and congruent outcomes are achieved in both cases"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare ResNet and FE predictions on the field posterior models and on the initial and final ensembles, which are realistic models not seen in training.",
+     "page": "954",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "As a further demonstration of the generalization ability of the trained ResNet network"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare field inversion run times: 1 minute with the ResNet against 1.3 hours with FE.",
+     "page": "954",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The computing times for the ES-MDA inversion with the ResNet and FE forward modellings are equal to 1 minute and 1.3 hours, respectively."
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that the ResNet surrogate with propagated modelling error yields estimates and uncertainties comparable to FE at a far lower cost; state limits on layout and prior specificity.",
+     "page": "954",
+     "move": "new",
+     "trigger": "author",
+     "quote": "provides most likely solutions and uncertainty assessments comparable [...] modeling"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No natural phenomenon; a computational bottleneck in Bayesian ERT",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; subsurface resistivity is inferred from apparent resistivity through a forward model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a fast surrogate forward operator for probabilistic ERT",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; FE forward serves as reference, CNN as alternative architecture",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Not applicable; benchmark agreement with FE, not competing predictions",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set in a synthetic test; found in one field dataset",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: training size, architecture variants, FE benchmark in two samplers, field data",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: surrogate characterized as accurate and about 1000x faster",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A trained ResNet forward operator, with its modelling error propagated into the data covariance, gives probabilistic ERT solutions and uncertainties comparable to FE-based inversions at roughly three orders of magnitude lower forward cost, in a synthetic DEMC test and a field ES-MDA test.",
+  "page": "954"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "methods",
+  "sentence": "Rerunning the same DEMC and ES-MDA inversions with the FE forward code as a benchmark is what supports the claim that the surrogate yields comparable posteriors.",
+  "page": "951"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the aim of replacing FE with a surrogate directed the generation of training data from the prior, but no hypothesis directed field data acquisition (the field data are reused). Claim: the ResNet-based posteriors could have diverged from the FE benchmark and the true synthetic model (Table 1, Figs 12–16, 20–22). Registration: hyperparameters were chosen by trial and error on validation accuracy; the RMSE threshold of 30–35 is stated 'according to our experience', with no sign it was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Residual neural network (ResNet) with skip connections (He et al. 2016)",
+   "kind": "method",
+   "page": "939"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Adam optimizer, He initialization, batch normalization, dropout",
+   "kind": "method",
+   "page": "947"
+  },
+  {
+   "field": "neuroscience / electronics",
+   "item": "Leaky ReLU / rectifier activation (Hahnloser et al. 2000)",
+   "kind": "method",
+   "page": "947"
+  },
+  {
+   "field": "statistics",
+   "item": "Bayesian inference with Metropolis–Hastings MCMC and differential evolution Markov chain",
+   "kind": "method",
+   "page": "943"
+  },
+  {
+   "field": "petroleum reservoir engineering / data assimilation",
+   "item": "Ensemble smoother with multiple data assimilation (Emerick and Reynolds 2013)",
+   "kind": "method",
+   "page": "943"
+  },
+  {
+   "field": "software",
+   "item": "Matlab deep learning toolbox",
+   "kind": "instrument",
+   "page": "941"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "as far as the authors are aware, this is the first paper in which machine learning is used to speed up probabilistic ERT inversions",
+   "page": "941"
+  }
+ ],
+ "limits": "No review file was supplied, so the review sequence is not coded. Many hyperparameter experiments are 'not all shown here for brevity'. The CNN degradation on the training set is also 'not shown'. The synthetic prior mean and variance are taken directly from the true model, which favours the test; there is one synthetic model and one field dataset. The field case has no ground truth, so it is checked only against the FE benchmark and the data fit. Reported inversion times exclude training-set generation (about 15 min) and training (under 5 min), which are given separately. The network is valid only for the training layout and prior. Data are available only on request, and no code is released. Coding the field data as 'inherited' assumes the acquisition by co-author Hojat (Hojat et al. 2019b) is the authors' earlier work; this is an inference. composition is none_fits because the walk is a method benchmarked against a reference code, not a listed composition. Sub-claims: the near-Gaussian, unbiased modelling error is estimate_with_resolution on the validation sets; the ResNet outperforming the CNN at depth is regularity_in_range (up to 13 layers, this problem).",
+ "disagreements": [
+  {
+   "target": "Routine deterministic ERT inversion",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that deterministic optimization gives a best model without accurate uncertainty, and offer the probabilistic surrogate approach instead.",
+   "page": "940",
+   "quote": "However, the ERT is routinely solved through deterministic approaches in which optimization algorithms minimize a predefined objective function."
+  },
+  {
+   "target": "The common belief that deeper networks are more accurate",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Fig. 6 shows CNN validation (and training) RMSE saturating at seven layers and degrading beyond, while the ResNet keeps improving.",
+   "page": "939",
+   "quote": "It is usually believed that the deeper the network, the higher is the accuracy"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "ResNet with skip connections",
+   "alternatives": "Standard CNN with the same layers",
+   "reason": "Mitigates vanishing gradient and degradation in deep networks",
+   "effect_reported": "yes",
+   "page": "949"
+  },
+  {
+   "node": "N",
+   "chosen": "2000 training and 500 validation examples",
+   "alternatives": "200, 500, 1000, 3500, 5000, 10000 training examples",
+   "reason": "Accuracy stabilizes after 2000; the improvement from larger sets is not worth the extra cost",
+   "effect_reported": "yes",
+   "page": "948"
+  },
+  {
+   "node": "N",
+   "chosen": "Architecture of Fig. 2 (3x3 filters, leaky ReLU, two FC layers)",
+   "alternatives": "Network 1 (5x5 filters), Network 2 (+5 filters), Network 3 (no first FC layer), Network 4 (ReLU)",
+   "reason": "A reasonable compromise between training cost and accuracy; slightly lower RMSE",
+   "effect_reported": "yes",
+   "page": "957"
+  },
+  {
+   "node": "I",
+   "chosen": "ES-MDA for the field inversion",
+   "alternatives": "DEMC (MCMC) as used in the synthetic case",
+   "reason": "DEMC would need several days of computing time for the field problem",
+   "effect_reported": "no",
+   "page": "953"
+  },
+  {
+   "node": "F",
+   "chosen": "Wenner electrode configuration",
+   "alternatives": "Other electrode configurations",
+   "reason": "The Wenner layout was used for the field acquisition",
+   "effect_reported": "no",
+   "page": "947"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We observe that the accuracy rapidly increases passing from 200 to 2000 training examples, then it stabilizes if additional examples are provided.",
+   "page": "948"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Figure 6 shows a direct comparison between the RMSE values computed on the validation set for the ResNet and CNN",
+   "page": "949"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "variants of the network represented in Figure 2 in which only one parameter has been Modified",
+   "page": "957"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The close similarity between the actual and desired output (computed through the FE code) confirms that the network can effectively approximate",
+   "page": "950"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Similar errors on the validation and training sets prove that overfitting has been prevented.",
+   "page": "950"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we run 100 forwards using both the FE code and the trained network",
+   "page": "951"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The normal probability plot illustrates that, despite some minor deviations, the modelling error distribution can be reasonably assumed to be Gaussian.",
+   "page": "951"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "In both inversions, we obtain congruent and extremely similar results, with no significant differences.",
+   "page": "951"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the 90% coverage ratio quantifies the percentage of resistivity values in the true model that fall within the 90% confidence interval",
+   "page": "953"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "As demonstrated in Figure 18, the similarity of the ResNet predictions with the corresponding finite-elements (FE) responses extracted from the validation set",
+   "page": "953–954"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Similar and congruent outcomes are achieved in both cases",
+   "page": "954"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "the trained network can properly approximate the forward relation even for realistic resistivity models not seen during [...]",
+   "page": "954"
+  }
+ ]
+}

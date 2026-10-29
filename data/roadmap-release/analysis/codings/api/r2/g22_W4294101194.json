@@ -1,0 +1,440 @@
+{
+ "key": "g22_W4294101194",
+ "doi": "10.1029/2022jb024314",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Okazaki, Fukahata & Ueda (2022), Time variable stress inversion of centroid moment tensor data using Gaussian processes, JGR Solid Earth 127, e2022JB024314 (published PDF, 18 pp.)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Consequently, computation is prohibitive for high-dimensional data, which is known as the curse of dimensionality",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Okazaki et al. 2022, JGR Solid Earth, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the aim of estimating the 4-D spatiotemporal variation of regional stress fields from CMT data, which the existing basis function expansion (BFE) method cannot handle computationally.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Modeling the temporal variation of regional stress fields may reveal tectonic loading and stress changes due to large earthquakes."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They take the CMT observation equation and its BFE solution from Terakawa and Matsu'ura (2008) and Gaussian process regression from machine learning (Rasmussen & Williams 2006).",
+     "page": "2-4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] regression analysis, the Gaussian process (GP) has been applied to overcome this problem"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They derive analytically the mean and covariance functions of CMT solutions from the stress covariance through the observation equation (Eqs 17-20, Appendix A) and extend them to time dependence (Eqs 21-22).",
+     "page": "4-5, 16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The expressions of the mean and covariance can be analytically derived as"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They select F-net CMT solutions with M0 > 10^15 Nm from just after the 2011 Tohoku earthquake to the end of 2019, check Gutenberg-Richter behaviour, and convert moment to fault dimension with a constant 3 MPa stress drop.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were obtained from the F-net broadband seismograph network"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "robustness",
+     "action": "In the supplement they vary the scaling exponent and allow variable stress drops between events, and find little effect on the estimates (Figures S1-S2).",
+     "page": "6 (Figures S1-S2)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results show little dependence on the scaling law."
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They invert 2,423 CMTs in a 400 km x 400 km Tohoku region with both BFE and GP, optimize the hyperparameters by marginal likelihood (correlation length 14 km), and report the cost reductions (memory ~1/15, run time 31 s vs 1.2 s).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "First, the two methods are compared using the same data set in the Tohoku region."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They show in the supplement how the estimated field and its confident region change as each hyperparameter is varied (Figures S3-S5).",
+     "page": "6 (Figures S3-S5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figures S3–S5 in Supporting Information S1 show the effect of the hyperparameter values on the estimated results."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "They compare the GP and BFE stress fields on the same data: patterns agree where r > 1 and sigma_n is identical, while in sparse inland areas GP gives near-zero means, which they attribute to the different prior information.",
+     "page": "6, 8 (Figure 1, Figure 2)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BFE (Figures 1c–1e) and GP (Figures 1f–1h) produce similar spatial changes in stress patterns"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "With GP only, they invert 9,965 CMTs for all of Japan simultaneously using geographic distances (correlation length 21 km, run time ~37 s), a problem where BFE does not fit in memory.",
+     "page": "8 (Figure 3, Figure 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Next, the stress state in and around Japan is estimated only by GP."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "They check the Japan-wide product against published results: the correlation length against dense-network inversions, stress types against pre-2011 studies, and SHmax against geodetic strain-rate orientations.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The large-scale distribution of stress types is similar to that of previous studies"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate the 4-D time-dependent stress field for Japan (run time ~40 s) and obtain a correlation time of 15 years, longer than the ~8.8-year data period.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Finally, the 4-D spatiotemporal variation of the stress state is estimated in and around Japan."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They profile the log marginal likelihood against each hyperparameter: correlation times shorter than 10 years are disfavoured, while a long-term-stable solution remains acceptable; supplementary snapshots at several times are similar.",
+     "page": "9 (Figure 5; Figures S6-S8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To examine the dependence of the result on the hyperparameters, the log marginal likelihood is plotted against each hyperparameter in Figure 5."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute the stress change from 1 July 2011 to 1 July 2019 with its uncertainty (Eqs 26-27): changes are insignificant in most regions, small along trenches and around Niigata and Kumamoto, and significant around the Tohoku focal area.",
+     "page": "10-12 (Figure 6, Figure 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is observed around the focal area of the 2011 Tohoku earthquake"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They overlay the coseismic slip model of Yagi and Fukahata (2011) and find the significant changes on the margins of the large-slip areas: toward normal faulting landward and toward reverse faulting trenchward.",
+     "page": "12 (Figure 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The regions with significant stress change coincide with the margins of the large slip areas"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They interpret the gradual return to reverse faulting off Ibaraki and the persisting normal faulting off Fukushima as a possible lasting influence of the 2011 stress changes.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This may indicate a lasting influence of stress changes in this area."
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "They characterize when GP outperforms BFE (N/M < 1, high-dimensional sparse data, large regions, time dependence) and compare model-region design, hyperparameters and priors (Table 3).",
+     "page": "14-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, GP is particularly effective for time-dependent modeling."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "As an experiment, they optimize hyperparameters separately for northeast and southwest Japan and find a correlation length about three times longer in the southwest, which shows the limit of a single stationary prior.",
+     "page": "15 (Table 2)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As an experiment, we search for optimal values of the hyperparameters in northeast Japan"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that GP inversion with the derived covariance makes 3-D and 4-D CMT inversion tractable and agrees with BFE where data are dense, with the stated limits that estimates converge to the prior mean in sparse areas and more hyperparameters must be optimized.",
+     "page": "15-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The inversion with GP is computationally efficient in high-dimensional modeling."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Spatiotemporal pattern of the regional crustal stress field after the 2011 Tohoku earthquake",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "No; stress pattern is latent, inferred from CMT solutions via an observation equation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a computationally tractable GP-based CMT inversion for 3-D/4-D stress fields",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses about stress; the rival is a method (BFE)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed; BFE and GP are compared for agreement, not distinct predictions",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: catalogued post-2011 seismicity (F-net CMTs)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly: agreement with BFE where dense, insensitivity to scaling law, consistency with published stress studies; regional hyperparameter variation exposes a limit",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept as characterized capability; stress features reported as estimates",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A Gaussian-process CMT data inversion, built on an analytically derived covariance between CMT data and stress, gives BFE-consistent stress estimates where data are dense and makes Japan-wide 3-D and 4-D time-dependent stress inversion tractable (seconds rather than infeasible).",
+  "page": "15-16"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The analytical derivation of the CMT-data covariance function and the data-model cross term from the stress covariance through the observation equation is what lets GP be used for inversion rather than regression.",
+  "page": "4-5"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are an existing F-net catalogue selected by a moment threshold; no hypothesis directed acquisition. The method could have failed to reproduce BFE results on the same Tohoku data (p. 8), and the products are checked against published stress and strain studies (p. 8), but no stress-field claim is tested against stated rivals. Nothing was fixed in advance; hyperparameters are optimized on the data."
+ },
+ "imports": [
+  {
+   "field": "machine learning / statistics",
+   "item": "Gaussian process regression (Rasmussen & Williams 2006)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "curse of dimensionality (Bellman 1957)",
+   "kind": "concept",
+   "page": "2"
+  },
+  {
+   "field": "statistics",
+   "item": "Akaike's Bayesian information criterion / marginal likelihood maximization for hyperparameters",
+   "kind": "method",
+   "page": "3-4"
+  },
+  {
+   "field": "machine learning",
+   "item": "nonstationary covariance functions (Paciorek & Schervish 2004), proposed as future remedy",
+   "kind": "concept",
+   "page": "15"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This study presents a new method of centroid moment tensor (CMT) data inversion to estimate time-dependent regional stress fields.",
+   "page": "1"
+  },
+  {
+   "quote": "we make it possible to apply GP to CMT data to estimate a stress field",
+   "page": "2"
+  },
+  {
+   "quote": "GP enables us to perform the inversion analysis for the entire area simultaneously.",
+   "page": "8"
+  }
+ ],
+ "limits": "Only the published paper was supplied; no review file, so no review sequence (the acknowledgments mention five reviewers' comments, but their effect is unknown). The supporting information (Figures S1-S8, source code) was not supplied, so the robustness checks are coded from the main-text descriptions. Sub-claims at other statuses: small-scale (~20 km) stress heterogeneity and long-term (>10 yr) temporal stability are estimate_with_resolution (pp. 8-9, 16). The significant temporal change at the margins of the Tohoku slip area and the 'lasting influence' off Fukushima are best_explanation at most; no rival explanation is stated or tested (pp. 12-13). There is no synthetic or checkerboard recovery test of the GP inversion; validity rests on agreement with BFE and with published studies (inference). The NE/SW experiment shows that a stationary single-hyperparameter prior misfits the regional scales, and the remedy (a nonstationary covariance) is proposed, not done (p. 15). Estimates collapse to the prior mean where data are sparse, so the absence of signal there is not evidence of an absent stress pattern (p. 15).",
+ "disagreements": [
+  {
+   "target": "Wallace-Bott hypothesis underlying focal-mechanism stress inversions (Bott 1959; Wallace 1951)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper cites Pollard et al. (1993) and Twiss & Unruh (1998) on its contested validity, and adopts the Terakawa-Matsu'ura formulation, which does not assume it.",
+   "page": "1-2",
+   "quote": "but its validity has been controversial"
+  },
+  {
+   "target": "Previous stress maps of Japan from pre-2011 earthquakes (Townend & Zoback 2006; Terakawa & Matsu'ura 2010; Yukutake et al. 2015)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The GP estimate reproduces the large-scale pattern but finds normal faulting in the 2011 focal area, which the paper reads as a post-2011 state.",
+   "page": "8",
+   "quote": "[...] focal area of the 2011 event, where the stress state is a normal fault type in this study"
+  },
+  {
+   "target": "BFE CMT inversion with roughness (indirect) prior (Terakawa & Matsu'ura 2008, 2010; Yabuki & Matsu'ura 1992)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Same-data comparison shows that BFE extrapolates finite stress into data-poor areas where GP returns near-zero means, and the paper explains this by the prior.",
+   "page": "8, 15",
+   "quote": "small but finite mean values are estimated by BFE, whereas almost 0 mean values are estimated by GP"
+  },
+  {
+   "target": "Terakawa & Matsu'ura (2010) subdivision of Japan into nine subareas",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "GP inverts the whole region at once in ~37 s, which avoids the subdivision BFE needed for computational cost.",
+   "page": "8",
+   "quote": "[...] model region was divided into nine subareas to reduce the computational cost"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Gaussian process inversion",
+   "alternatives": "basis function expansion (BFE) with B-splines; BFE rewritten in data-space form (Eqs 28-29)",
+   "reason": "computational cost scales with number of data rather than model parameters; BFE infeasible for 4-D and Japan-wide",
+   "effect_reported": "yes",
+   "page": "2, 6, 8, 14"
+  },
+  {
+   "node": "N",
+   "chosen": "GP inversion of regional stress from CMT catalogues",
+   "alternatives": "deep neural networks applied to waveforms of individual earthquakes (Kuang et al. 2021; Uchide 2020; Steinberg et al. 2021)",
+   "reason": "those networks estimate per-event source data; this study inverts regional stress fields",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "O",
+   "chosen": "constant stress drop 3 MPa with L proportional to M0^(1/3)",
+   "alternatives": "other scaling exponents; variable stress drops between events",
+   "reason": "following the empirical relation used in Terakawa and Matsu'ura (2008)",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "hyperparameters at marginal-likelihood optimum",
+   "alternatives": "larger or smaller sigma_s, sigma_l, sigma_n, sigma_t",
+   "reason": "maximizing marginal likelihood; appropriate choice important for reliable estimation",
+   "effect_reported": "yes",
+   "page": "6, 9"
+  },
+  {
+   "node": "I",
+   "chosen": "geographic (spherical) distance in covariance functions",
+   "alternatives": "flat Cartesian distance",
+   "reason": "events span more than 20 degrees, so the sphericity cannot be ignored",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "stationary squared exponential covariance with single Japan-wide hyperparameters",
+   "alternatives": "regionally separate hyperparameters (NE vs SW Japan); nonstationary covariance function",
+   "reason": "none given for the choice; regional experiment shows the limitation, nonstationary kernel suggested",
+   "effect_reported": "yes",
+   "page": "15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The results show little dependence on the scaling law.",
+   "page": "6 (Figures S1-S2)"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Figures S3–S5 in Supporting Information S1 show the effect of the hyperparameter values on the estimated results.",
+   "page": "6 (Figures S3-S5)"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "BFE (Figures 1c–1e) and GP (Figures 1f–1h) produce similar spatial changes in stress patterns",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The optimal correlation length (21 km) approximately coincides with recent results (a few 10 km)",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The large-scale distribution of stress types is similar to that of previous studies",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "is generally consistent with that of the maximum contractive strain rates",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To examine the dependence of the result on the hyperparameters, the log marginal likelihood is plotted against each hyperparameter in Figure 5.",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "As an experiment, we search for optimal values of the hyperparameters in northeast Japan",
+   "page": "15"
+  }
+ ]
+}

@@ -1,0 +1,603 @@
+{
+ "key": "g22_W4224235608",
+ "doi": "10.5194/tc-16-1399-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: The Cryosphere 16, 1399-1407, 2022",
+  "Publisher XML full text with section and paragraph locators (jats_text)",
+  "Open discussion of preprint tc-2021-300: RC1, AC1 (with supplement AC1-S), RC2, AC2 (with supplement AC2-S)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page in parentheses; review steps cite the review record's own locators (RC1 ¶n, AC1-S p.n)",
+ "entry": {
+  "state": "external_goal",
+  "node": "Q",
+  "evidence": "The Müller Ice Cap will soon set the scene for a new drilling project. Therefore, ice thickness estimates are necessary for planning",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (with PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the need to constrain the poorly known Müller Ice Cap thickness, mainly near the divide, so they can choose where to run ground-based radar for a drill site.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is therefore necessary to be selective when deciding where to conduct ground-based radar measurements"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "synthesis",
+     "action": "The authors take from ITMIX1 that thickness models disagree strongly near ice-cap divides and that no approach is known to be preferred on ice caps.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In ITMIX1, large differences are found between the models on ice caps in the vicinity of ice divides"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors assemble inputs: one OIB MCoRDS radar thickness line (30 March 2017), ArcticDEM surface, HIRHAM5 SMB and temperature, ITS_LIVE velocities, and the Farinotti et al. (2019) bedrock as initial guess.",
+     "page": "§2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "only the newest one acquired on 30 March 2017 is used"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "simulation",
+     "action": "The authors compare the long-term HIRHAM5 SMB with in situ White Glacier mass balance by elevation, a premise check that later suggests HIRHAM5 overestimates SMB.",
+     "page": "§2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "compared to in situ measurements from White Glacier"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build SEITMo, a least-squares regression of log thickness on log balance flux and log slope with free a, b, k. Slope uses a 250 m Gaussian smoothing with a 0.01 minimum. Flux is a Quinn et al. multi-direction balance flux with uniform SMB, justified by the first author's thesis.",
+     "page": "§3.1 ¶1; §3.1.1 ¶1; §3.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a simple semi-empirical inversion of the SIA to estimate ice thicknesses from sparse data is tested"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors tune SEITMo on the interior segment of the OIB line, apply a, b, k over the whole ice cap, and convert the result to bedrock elevation.",
+     "page": "§3.1.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the parameters a , b , and k are applied in combination with the surface slope and ice flux over the entire domain"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors run a 10-iteration PISM hybrid inversion at 900 m under steady-state HIRHAM5 forcing. Bedrock is relaxed with an elevation-dependent K, and phi = 10 degrees and E = 6 are chosen by manually inspected RMSE metrics.",
+     "page": "§3.2 ¶1-4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The ice thickness after the 10th iteration is used as the main PISM result"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors invert the velocity-based SIA of Zorzut et al. (2020) by grid-searching the sliding fraction fa (0.001 to 0.999) against the same OIB segment, finding fa = 0.884.",
+     "page": "§3.3 ¶1; §4 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The f a resulting in ice thicknesses with the lowest root mean square error (RMSE) compared to the OIB ice thicknesses"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "The authors compare the three bedrocks with the OIB cross section. PISM overestimates outlet glaciers but matches the central ice cap; Zorzut underestimates at 74-80 km near the divide.",
+     "page": "§4 ¶2; Figure 2 (p. 1403)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PISM overestimates the ice thickness at the outlet glaciers, though it captures the ice thickness over the central ice cap well"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "The authors quantify misfit to OIB over 40-80 km: RMSE 136, 134 and 204 m and MAD 112, 108 and 165 m for SEITMo, PISM and Zorzut.",
+     "page": "§4 ¶4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "are 136, 134, and 204 m for the SEITMo, PISM, and Zorzut, respectively"
+    },
+    {
+     "n": 11,
+     "node": "X",
+     "mode": "estimation",
+     "action": "The authors set the Zorzut velocity-based estimate aside for drill-site selection, attributing its lower performance to slow, noisy velocities near the divide.",
+     "page": "§4 ¶4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It should be noted that the Zorzut thickness has not been included in the DSC selection."
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors propose a drill site candidate from an ensemble of modelled thickness, melt and velocity (from the thesis), with SEITMo resampled to 900 m. Thickness there is 579 m (SEITMo) and 535 m (PISM); Zorzut gives 560 m.",
+     "page": "§4 ¶5; Figure 3 (p. 1404)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the corresponding SEITMo and PISM thicknesses are 579 and 535 m , respectively"
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "methods",
+     "action": "The authors attribute stream-like patterns and thickness spikes in SEITMo to the log formulation at low slope or flux, coarsen its grid before use, and warn against reading a, b, k as SIA physics.",
+     "page": "§5 ¶1-2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Such fine-scale features are not trustworthy in simple models like the SEITMo"
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "estimation",
+     "action": "The authors attribute PISM's outlet-glacier mismatch to the K = 0 choice below 500 m and to HIRHAM5 SMB bias, and say SMB tuning was computationally infeasible.",
+     "page": "§4 ¶2; §5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The outlet glaciers are of course not captured well due to the chosen relaxation parameter"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors inspect the independent Millan et al. (2022) thickness along the OIB line and find it also underestimates thickness near the divide, though less than Zorzut.",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For comparison the ice thickness from was also inspected with respect to the OIB flight line."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors check SEITMo and Zorzut on the part of the OIB line not used for tuning and report good performance there.",
+     "page": "§5 ¶5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "they still perform well on the rest of the flight line"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors characterize SEITMo as matching PISM's fit at much lower computational cost and data demand, and as insensitive to multiplicative SMB errors.",
+     "page": "§5 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "make it an excellent candidate for fast ice thickness estimates"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors keep the drill site candidate as strong, because it rests on an ensemble of estimates, while urging in situ radar, melt and elevation measurements.",
+     "page": "§5 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the DSC is based on an ensemble of thickness estimates, making the site a strong candidate"
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "methods",
+     "action": "The authors propose extending SEITMo to global glacier thickness estimates, which would need regional calibration of the three parameters where no thickness data exist.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the SEITMo method could potentially be applied for global glacier thickness estimates"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion of tc-2021-300 (RC1, AC1, RC2, AC2 with supplements)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 1 objected that freely calibrating a, b and k abandons SIA physics and asked to calibrate n or A instead. The authors renamed the model SEITMo, kept free a, b, k, and cited a thesis Bayesian SIA they left out.",
+     "page": "RC1 ¶4; AC1-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "It would make much more sense to only calibrate parameters like Glen’s exponent n or rate factor A"
+    },
+    {
+     "n": 2,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Referee 1 said the comparison is unbalanced because SEITMo absorbs SMB bias while PISM does not, and asked for SMB tuning in PISM. The authors declined on computational cost and offered to acknowledge it.",
+     "page": "RC1 ¶5; RC1 ¶25; RC1 ¶29; AC1-S p.3; AC1-S p.10",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Adding three variations for two additional parameters for a mass balance offset and scaling would take ~9 times as long."
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Referee 1 noted that K = 0 below 500 m leaves the low bed unadjusted and dominates PISM misfit. The authors restricted the model comparison to high elevations, giving the 40-80 km RMSE and a zoom panel.",
+     "page": "RC1 ¶6; RC1 ¶26; AC1-S p.4; AC1-S p.9",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We will be more careful about our PISM result interpretation and exclude the areas below 500 m from the comparison."
+    },
+    {
+     "n": 4,
+     "node": "K",
+     "mode": "methods",
+     "action": "Referee 1 disputed that SEITMo is insensitive to mass balance. The authors kept the claim, defining insensitivity as calibrating away multiplicative bias.",
+     "page": "RC1 ¶8; RC1 ¶16; AC1-S p.6",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We disagree. It must be fair to state that the new method is insensitive to errors in the different factors"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 1 called the slope threshold arbitrary. The authors explained that the smoothing was chosen to remove sinks and added text, without a parameter search.",
+     "page": "RC1 ¶19; AC1-S p.7; AC1-S p.8",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We have not done that in this paper."
+    },
+    {
+     "n": 6,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Referee 1 asked the authors to acknowledge steady-state forcing as a PISM uncertainty and questioned the calving explanation for the outlet misfit. The authors acknowledged the forcing and reattributed the outlet overestimate to K.",
+     "page": "RC1 ¶22; RC1 ¶27; AC1-S p.8; AC1-S p.10",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I cannot imagine that the calving criterion is of much influence"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 2, with Referee 1 on velocities, asked for a velocity-based SIA inversion following Zorzut et al. (2020) using ITS_LIVE data. The authors added it as the third model.",
+     "page": "RC2 ¶1; RC1 ¶18; AC2-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I would suggest to add this method as a comparison"
+    },
+    {
+     "n": 8,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Referee 2 asked how the drill site was chosen. The authors made documenting the drill site candidate the stated primary goal and added the DSC paragraph.",
+     "page": "RC2 ¶1; AC2-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "a primary goal of the study is to document our reasoning for choosing this particular candidate for a new drill site"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Referee 2 asked how the 2019 consensus estimate fares. The authors computed its RMSE against OIB (151 m; component models 193-198 m) in the reply.",
+     "page": "RC2 ¶3; AC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The consensus estimate has a RMSE of 151 m compared to the Operation IceBridge ice thickness in the non-shaded part of Fig. 2."
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 2 asked why the non-sliding SIA was used without velocities. The authors cited thesis tests in which adding velocities and sliding did not improve the fit.",
+     "page": "RC2 ¶8; AC2-S p.4",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We however found that this did not provide a substantially better fit to the data."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "estimation",
+     "action": "In the reply, the authors report the new Zorzut result: broad agreement, but strong underestimation near the divide at 74-78 km.",
+     "page": "AC2-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Indeed, Zorzut greatly underestimates the ice thickness (see around 74-78 km in the zoom-in figure)."
+    },
+    {
+     "n": 12,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 2 asked to rerun SEITMo with better slope smoothing and to justify the uniform SMB. The authors declined to rerun, citing careful smoothing and thesis SMB tests, and promised more discussion.",
+     "page": "RC2 ¶11; RC2 ¶13; AC2-S p.7; AC2-S p.8",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "I would recommend the authors to run their model again with better slope smoothing parameters"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Ice thickness of the Müller Ice Cap, poorly constrained, needed near the divide for a drill site",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "Only along one OIB radar line; elsewhere latent and inferred",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate thickness map and propose a drill site candidate; compare methods",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Three inversion methods (SEITMo, PISM, Zorzut) as rival estimators, not rival hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Methods differ near the ice divide; velocity-based inversion expected to underestimate there",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing radar line and remote-sensing and climate-model products",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: held-out flight-line segment and a Millan et al. comparison; no sensitivity tests of smoothing or SMB",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "SEITMo and PISM kept as equally good; Zorzut set aside for the DSC; DSC proposed",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Accepted after adding Zorzut, renaming SEITMo and restricting the comparison to high elevation; SMB tuning and smoothing search declined",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "SEITMo and PISM, compared to the OIB line, give matching ice thickness for the central Müller Ice Cap (RMSE 136 and 134 m over 40-80 km) and support a drill site candidate with about 535-579 m of ice, while the velocity-based inversion underestimates thickness near the divide.",
+  "page": "§4 ¶4-5; §6 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Extrapolating the single OIB thickness line to the whole ice cap through the SEITMo regression (and the PISM inversion) produces the thickness map and the drill site candidate; without it there is no claim.",
+  "page": "§3.1.3 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: all data (OIB 2017 line, ArcticDEM, HIRHAM5, ITS_LIVE) pre-existed and were not acquired under a stated hypothesis (§2 ¶1-5). Claim: models are scored against OIB but SEITMo and Zorzut are tuned on the same line, with only the outer segment held out (§5 ¶5), and the DSC itself is untested (§5 ¶6). Registration: PISM parameters and iteration count were chosen by manual inspection with no stopping criterion (§3.2 ¶3); smoothing was 'chosen with care' (§3.1.1 ¶2)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Multiple linear least-squares regression on log-transformed variables to tune SEITMo",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "signal/image processing",
+   "item": "Gaussian filter smoothing of the DEM before slope calculation",
+   "kind": "method",
+   "page": "§3.1.1 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This is a fast new method that differs from existing SIA approaches due to its semi-empirical nature",
+   "page": "§1 ¶2"
+  },
+  {
+   "quote": "However, the new SEITMo is insensitive to mass balance, computationally fast, and provides as good fits as PISM.",
+   "page": "§0 ¶1"
+  }
+ ],
+ "limits": "Composition none_fits: the paper is an estimation-and-method-comparison for an externally set goal (drill site). It has no rival hypotheses, no phenomenon to establish, and no frozen forecast; capability_first is closest but the question precedes the new method.\n\nSub-claims and their statuses:\n- SEITMo performs as well as PISM at lower cost: capability_characterized (§5 ¶5; §6 ¶1).\n- Zorzut underestimates near the divide because of slow, noisy velocities and SIA invalidity at divides: best_explanation (§5 ¶4).\n- The drill site candidate is a strong candidate: recommendation, no test (§5 ¶6).\n- SEITMo is suitable for global estimates: untested suggestion (§6 ¶1).\n\nWhat the paper does not show:\n- Uncertainty is expressed only as RMSE and MAD along one flight line; no spatial uncertainty map.\n- Calibration and validation share the same line, with only a partial hold-out.\n- The DSC ensemble selection (melt, velocity) is done in the first author's MSc thesis (Zinck 2020c) and is not shown here.\n- The uniform-SMB justification is inherited from the thesis.\n- No sensitivity test of smoothing, minimum slope or minimum flux is performed.\n\nReview record:\n- Inference: the consensus-estimate RMSE (151 m) appears only in the reply, not in the published text; the Millan et al. comparison appears in its place.\n- The discussion shows the Zorzut model was added at a referee's request, and the low-elevation exclusion and the attribution of the PISM outlet misfit to K were review-forced; the final-paper sequence codes these as author moves, per the codebook.",
+ "disagreements": [
+  {
+   "target": "Farinotti et al. (2019) consensus bedrock",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The authors note that the flowline and drainage-basin approach leaves gaps between basins and misplaces the ice divide, and use the bedrock only as an initial guess.",
+   "page": "§2 ¶4",
+   "quote": "resulting in missing values in between the basins and also a misinterpretation of the ice divide"
+  },
+  {
+   "target": "HIRHAM5 regional climate model SMB",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Comparison with in situ White Glacier mass balance (Fig. 1) and a known precipitation bias suggest HIRHAM5 overestimates SMB on Axel Heiberg Island.",
+   "page": "§5 ¶3",
+   "quote": "there is an indication that HIRHAM5 in general overestimates the SMB"
+  },
+  {
+   "target": "Velocity-based SIA inversion of Zorzut et al. (2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "RMSE of 204 m versus about 135 m for the other models, and underestimation at 74-80 km, explained by low signal-to-noise velocities near the divide.",
+   "page": "§5 ¶4",
+   "quote": "where Zorzut highly underestimates the ice thickness"
+  },
+  {
+   "target": "Global glacier thickness estimate of Millan et al. (2022)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Inspection against the OIB line shows underestimation near the divide.",
+   "page": "§5 ¶4",
+   "quote": "[...] found to also be underestimated in the vicinity of the ice divide, though not to the same degree as for Zorzut."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Newest OIB flight line (30 March 2017)",
+   "alternatives": "The other, older flight line crossing the ice cap top",
+   "reason": "Tracks practically identical",
+   "effect_reported": "no",
+   "page": "§2 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "ArcticDEM surface elevation everywhere",
+   "alternatives": "OIB surface elevation where available",
+   "reason": "Continuity over the entire ice cap",
+   "effect_reported": "no",
+   "page": "§2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "900 m grid for PISM",
+   "alternatives": "100 m grid used for SEITMo and Zorzut",
+   "reason": "Reduce computational time",
+   "effect_reported": "no",
+   "page": "§2 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "Minimum slope 0.01 (about 0.6 degrees) with 250 m Gaussian smoothing",
+   "alternatives": "2-5 degree minimum slope in other models; optimal smoothing and minimum slope by minimum-misfit search",
+   "reason": "Prevent H going to infinity and surface depressions; a search would raise computational cost",
+   "effect_reported": "no",
+   "page": "§3.1.1 ¶1-2"
+  },
+  {
+   "node": "N",
+   "chosen": "Uniform SMB of one in every ice-covered cell for balance flux",
+   "alternatives": "Spatially varying SMB (HIRHAM5)",
+   "reason": "SMB has little influence (thesis); multiplicative errors are absorbed in k",
+   "effect_reported": "no",
+   "page": "§3.1.2 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Tune SEITMo and Zorzut only on the interior segment of the OIB line",
+   "alternatives": "Entire flight line",
+   "reason": "Interior is of interest; uniform SMB not valid at low elevations",
+   "effect_reported": "yes",
+   "page": "§3.1.3 ¶1; §5 ¶5"
+  },
+  {
+   "node": "I",
+   "chosen": "Constant (steady-state) climate forcing for PISM",
+   "alternatives": "Variable climate forcing, known to work best",
+   "reason": "Limited knowledge of past climate on the MIC",
+   "effect_reported": "no",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Elevation-dependent relaxation parameter K (0 below 500 m, 0.5 above 1000 m)",
+   "alternatives": "Constant K with SMB tuning",
+   "reason": "Prevent overcompensation and ice build-up on western outlet glaciers; SMB tuning computationally infeasible",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2; §5 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Till friction angle 10 degrees and enhancement factor 6",
+   "alternatives": "phi in {10, 20, 30, 40}, E in {1, 3, 6}",
+   "reason": "Best convergence metrics (RMSE against DEM, OIB and velocities)",
+   "effect_reported": "no",
+   "page": "§3.2 ¶3-4"
+  },
+  {
+   "node": "I",
+   "chosen": "10 PISM iterations, metrics manually inspected",
+   "alternatives": "Quantitative stopping criterion",
+   "reason": "Similar to other studies",
+   "effect_reported": "no",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "node": "K",
+   "chosen": "DSC selection from SEITMo and PISM only",
+   "alternatives": "Including the Zorzut thickness",
+   "reason": "Zorzut underestimates near the divide",
+   "effect_reported": "yes",
+   "page": "§4 ¶5"
+  },
+  {
+   "node": "K",
+   "chosen": "SEITMo resampled onto the 900 m PISM grid before extracting DSC thickness",
+   "alternatives": "Native 100 m SEITMo grid",
+   "reason": "Fairer comparison; reduce untrustworthy fine-scale features",
+   "effect_reported": "no",
+   "page": "§4 ¶5; §5 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "compared to in situ measurements from White Glacier",
+   "page": "§2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "it has been shown that the SMB has only little influence on the modelled ice thickness",
+   "page": "§3.1.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "are used to validate all models and to invert the two SIA-based methods",
+   "page": "§2 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the DSC is based on an ensemble of thickness estimates",
+   "page": "§5 ¶6"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "For comparison the ice thickness from was also inspected with respect to the OIB flight line.",
+   "page": "§5 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "they still perform well on the rest of the flight line",
+   "page": "§5 ¶5"
+  }
+ ]
+}

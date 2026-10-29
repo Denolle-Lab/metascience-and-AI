@@ -1,0 +1,548 @@
+{
+ "key": "g22_W4212887013",
+ "doi": "10.1002/ecm.1513",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Liu, Ogle, Lichstein & Jackson 2022, Ecological Monographs 92:e1513 (published paper, PDF, 19 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (these match the printed 'n of 19' journal pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Previous studies, however, have reached contrasting conclusions concerning these estimates",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Liu et al. 2022, Ecological Monographs, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the problem: published pollen productivity estimates differ by orders of magnitude and pollen-source areas differ 100-fold between ERV-type and STEPPS studies.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the appropriate spatial scale for relating lake-pollen data to the surrounding vegetation remains unclear"
+    },
+    {
+     "node": "H",
+     "n": 2,
+     "mode": "hypothesis",
+     "action": "Takes from prior work the hypothesis that the contradictions come from fixed dispersal kernels (ERV) or coarse vegetation data (STEPPS 8 km cells).",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Apparent contradictions in pollen productivity and dispersal may arise due to poorly specified dispersal kernels or inadequate information on landscape heterogeneity"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses three questions: within-taxon variation of productivity across regions (Q1), dispersal characteristics and fit of mechanistic models (Q2), and the importance of local and regional vegetation (Q3).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "how much do pollen productivity estimates vary within taxa across three study regions of different forest types"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Uses surface-sediment pollen from 33 small lakes in three regions and tree surveys within 1 km in five distance rings, collected 1986-1990 and published by coauthor Jackson (2019).",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "modern pollen samples were collected from the top 1 cm of sediments at the center of the lake between 1986 and 1990"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compiles FIA inventory data (2000-2012) into mean taxon basal-area compositions in 100 rings 3 km wide, from 1 to 301 km around each lake.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtained data from the Forest Inventory and Analysis (FIA) program for 349,309 individual trees in 7354 plots"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "observation",
+     "action": "Checks that vegetation change between the 1980s local surveys and the later FIA period, or differences between sampling methods, is small (Appendix S1: Figure S1).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the change in vegetation composition during that decade (and/or difference due to sampling methods) appeared to be small"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds a hierarchical Bayesian multinomial-Dirichlet model with region-level productivities, a taxon-specific local weight, and Prentice-inspired distance weights with estimated b_t, separate for local and regional scales.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the separate, explicit treatment of local versus regional dispersal"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tries other values of the turbulence parameter theta and three alternative specifications of the distance weighting (Model Variants 1-3), then keeps the most parsimonious model.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we tested three additional models that explored different specifications for θ or wl"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fits the model in JAGS with three MCMC chains of 3,000,000 iterations, retaining posterior medians and 95% credible intervals.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We ran three parallel Markov chain Monte Carlo (MCMC) for 3,000,000 iterations"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compares observed with predicted pollen proportions for each taxon (R2 from 0.29 to 0.97) and finds no substantial systematic bias.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Bayesian statistical model captured the relationship between vegetation abundances and pollen assemblages"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates relative pollen productivities at region and taxon level; most taxa are similar across regions (alpha 91 [69, 126]), with up to about twofold differences for Picea, Cupressaceae, Quercus and Pinus.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were similar within the taxon across the three regions of different forests"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Recomputes productivity relative to a reference taxon (Fagus or Tsuga) instead of under the sum-to-one constraint; the patterns are unchanged (Appendix S1: Figures S2, S3).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "remained robust when relative pollen productivity was calculated in relation to a reference taxon"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates the taxon-specific local (within 1 km) pollen contribution gamma: lowest for Abies, Betula, Picea and Populus, highest for Acer rubrum (0.81).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the local contribution is estimated with good confidence"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computes the cumulative local influence expected under predefined weightings: unweighted, 1/distance, 1/distance^2, and Prentice-Sutton with published fall speeds.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "based on pollen fall speeds compiled in Jackson and Lyford (1999)"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compares the estimated local cumulative influence Fl with these predefined functions; most taxa are closest to 1/distance^2 weighting.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We compared these estimated cumulative influences with those based on predefined functions typically used in distance weighting"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Refits with free, empirically estimated weights at each distance (Model Variant 3), which reveals ultralocal influences for Cupressaceae, Fagus and Pinus and a weak one for Populus (Appendix S1: Figure S4).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "empirically estimating these weights (e.g., independent weights to be estimated at each distance for each taxon)"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates regional cumulative influence Flr and the distance to 75% influence: about 50 km for Betula, a few km for most taxa, and a surprisingly local signal for Pinus.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Betula appeared to have the furthest regional dispersal"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares regional dispersal estimated with local vegetation data (Flr) and without it (Fr); omitting local data overestimates regional dispersal for six taxa (Quercus: 3 km versus 70 km).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "regional pollen dispersal of Acer rubrum, Cupressaceae, Larix, Pinus, Quercus, and Tsuga were notably overestimated"
+    },
+    {
+     "n": 19,
+     "node": "P",
+     "mode": "methods",
+     "action": "Explains the counterintuitive Picea result as an artifact of the inflexible dispersal function in the main model, using Model Variant 3, instead of revising the claim.",
+     "page": "12",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "our original model may have misattributed observed Picea pollen to vegetation further away"
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Computes the Localness Index (local contribution divided by the contribution regional dispersal predicts at 1 km); many taxa differ from 1 (Quercus and Tsuga above, Betula and Populus below).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "many taxa have LI values significantly higher or lower than 1"
+    },
+    {
+     "n": 21,
+     "node": "O",
+     "mode": "observation",
+     "action": "Quantifies landscape heterogeneity with squared-chord distances from focal compositions and finds two high-heterogeneity zones, 0-20 m and 1-27 km.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The second zone was at 1–27 km from the lakeshore."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps three answers: productivity is conserved within taxa (less than threefold), most taxa reach 75% influence within a few km, and both local and regional vegetation are needed.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "pollen productivity is largely conserved within taxa across three regions with different forest composition and pattern"
+    },
+    {
+     "n": 23,
+     "node": "X",
+     "mode": "synthesis",
+     "action": "Argues that the source areas of about 100 km found in STEPPS studies may be artifacts of misattribution caused by coarse vegetation data.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This phenomenon may explain the large pollen-source areas"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Sets the consistent Betula productivities found here against the roughly fourfold variation among European ERV estimates and attributes that variation to assumed dispersal.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our result contrasts with the large variation in Betula pollen productivity in Europe found using ERV models"
+    },
+    {
+     "n": 25,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposes untested rival mechanisms for the ultralocal influences: gravity deposition, clump deposition, or other transport processes, plus the growth form of Picea.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This phenomenon could be due to “gravity deposition”"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Concludes that productivity is more conserved than recent syntheses suggest, that dispersal differs between local and regional scales, and calls for both deductive and inductive dispersal models.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it may be much more conserved within pollen taxa than previously suggested"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: conflicting published productivity and dispersal estimates",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No: productivity and dispersal are latent and inferred from pollen and vegetation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate productivity and local and regional dispersal",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Conflicts are real, or artifacts of fixed kernels and coarse vegetation data",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: models with and without local vegetation predict different regional dispersal",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: existing modern sediment and forest data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Repeated across 33 lakes in three forest regions",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: theta, model variants, reference taxa",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as best explanation, with estimates",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Conflicting estimates of pollen productivity and dispersal are, at least in part, artifacts of fixed dispersal assumptions and insufficient spatial resolution of vegetation data; productivity is largely conserved within taxa.",
+  "page": "1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The Bayesian model that combines finely resolved local vegetation with extended regional vegetation and treats local and regional dispersal separately made the with/without-local-data comparison possible, and that comparison carries the claim.",
+  "page": "4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the pollen and local survey data were collected in 1986-1990 for earlier work, and the FIA data are public; the hypothesis about resolution directed how the data were combined, not how they were acquired. Claim: the Fr versus Flr ablation and the regional productivity comparison could have shown no difference, but the STEPPS artifact claim is argued ('may explain'), not tested. Registration: nothing is reported as fixed before the analysis; model variants were selected by parsimony after fitting."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Hierarchical Bayesian multinomial-Dirichlet model fitted by MCMC in JAGS/R",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "atmospheric physics (micrometeorology)",
+   "item": "Sutton/Prentice diffusion-based distance weighting with a turbulence parameter and an atmospheric stability condition",
+   "kind": "concept",
+   "page": "5"
+  },
+  {
+   "field": "forestry",
+   "item": "USDA Forest Inventory and Analysis plot data",
+   "kind": "data",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "By uniquely combining the finely resolved vegetation abundance data at the local scale",
+   "page": "13"
+  },
+  {
+   "quote": "which provides a critical addition to previous studies",
+   "page": "14"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. The data predate the question: they were collected in 1986-1990 for earlier work (inference from p. 4). The choice among model variants is made on parsimony, without a formal model-comparison statistic in the main text; the variants are reported only in Appendix S1, which was not supplied. The headline 'artifact' claim rests on an ablation within the authors' own model (Fr versus Flr). The paper does not refit STEPPS or ERV models on these data, so the explanation of STEPPS source areas is hedged ('may explain'). There is no out-of-sample or held-out validation; model fit is in-sample R2. The mechanisms proposed for ultralocal effects (gravity deposition, clumps, Picea growth form) are untested hypotheses. Sub-claims and their statuses: productivity conserved within taxa (less than threefold), estimate_with_resolution; distance to 75% cumulative influence per taxon, estimate_with_resolution; dispersal differs between local and regional scales (LI different from 1), estimate_with_resolution; heterogeneity zones at 0-20 m and 1-27 km, regularity_in_range for these three regions. Composition is none_fits: the walk is a calibration-type estimation from existing traces, with an internal ablation serving as the test. It has no crucial test among several rivals, no forecast, and no independent replication, and the ablation separates only two readings of one model. The Fr versus Flr ablation is coded as the C step on mode hypothesis rather than as a v_check, because it is the result itself, not a check of a result.",
+ "disagreements": [
+  {
+   "target": "STEPPS model studies (Dawson et al. 2016; Kujawa [...] ; Paciorek & McLachlan 2009)",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "Omitting local vegetation inflates estimated regional dispersal in their model (Fr versus Flr, Figure 6), so coarse 8 km vegetation data can misattribute local pollen to distant vegetation.",
+   "page": "14",
+   "quote": "This phenomenon may explain the large pollen-source areas"
+  },
+  {
+   "target": "Bradshaw & Webb 1985: Pinus pollen largely from regional sources",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "The cumulative influence of Pinus rises steeply near the lake, and Model Variant 3 shows a strong influence from Pinus within 20 m.",
+   "page": "10",
+   "quote": "a surprising finding because Pinus pollen is usually considered to be largely from regional sources"
+  },
+  {
+   "target": "European ERV estimates of Betula productivity (Matthias et al. 2012; Soepboer et al. 2007; Poska et al. 2011)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Betula productivity is similar across the three regions here (0.30, 0.26, 0.23); the authors attribute the fourfold European variation to assumed dispersal.",
+   "page": "14",
+   "quote": "our result contrasts with the large variation in Betula pollen productivity in Europe found using ERV models"
+  },
+  {
+   "target": "Recent syntheses of productivity variability (Li et al. 2018; Mazier et al. 2012)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Within-taxon variation across regions is less than threefold and may be explained by differences in species and environment.",
+   "page": "16",
+   "quote": "it may be much more conserved within pollen taxa than previously suggested"
+  },
+  {
+   "target": "Commonly used distance-weighting functions and the Prentice-Sutton mechanistic model",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Estimated local influence is close to 1/distance^2 for most taxa, but Model Variant 3 shows taxon-specific ultralocal deviations.",
+   "page": "13",
+   "quote": "may not be fully captured by the commonly used distance-weighting functions or mechanistic model of pollen dispersal"
+  },
+  {
+   "target": "Previous studies representing pollen dispersal by a single function",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Localness Index values differ from 1 for many taxa, so dispersal differs between local and regional scales.",
+   "page": "15",
+   "quote": "the actual pattern may be subject to multiple distinct processes and require more complex representations"
+  },
+  {
+   "target": "Evidence from other regions on local Picea representation (Jackson & Smith 1994)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Picea pollen is insensitive to trees within 50 m at these sites; the authors attribute this to stunted lake-margin individuals.",
+   "page": "15",
+   "quote": "which is counterintuitive given its apparent high production, large grain size, and evidence from other regions"
+  },
+  {
+   "target": "The 'background pollen' notion in ERV models",
+   "kind": "definition",
+   "stance": "disputes",
+   "support": "The model lets sites in the same region receive different regional pollen inputs, reflecting heterogeneity at 10-100 km scales.",
+   "page": "3",
+   "quote": "Unlike the notion of “background pollen” in ERV models, sites within the same region in our model may have different pollen"
+  },
+  {
+   "target": "Landscape heterogeneity treated as simple patchiness (Hellman et al. 2009; Sugita 1994)",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "Vegetation is distributed non-randomly with respect to proximity to lakes (Appendix S1: Figure S6).",
+   "page": "14",
+   "quote": "landscape heterogeneity should not be confused with simple patchiness"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Regional rings 3 km wide",
+   "alternatives": "Finer rings",
+   "reason": "FIA plot coordinates are fuzzed by 0.8-1.6 km and some are swapped, so finer rings would not give better resolution",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "theta = 0.1 (unstable atmosphere)",
+   "alternatives": "Other values of theta (Model Variants 1-2)",
+   "reason": "theta = 0.1 remained the most appropriate",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "Taxon-specific b_t estimated with an exponential prior",
+   "alternatives": "Fixed b_t from pollen fall speeds, as in Prentice 1985, Sugita 2007a and others",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "Main model with parametric local and regional distance weights",
+   "alternatives": "Three additional models with different specifications for theta or wl, including free empirical weights (Model Variant 3)",
+   "reason": "Most parsimonious, with less risk of over-parameterization",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "Relative productivities under a sum-to-one constraint",
+   "alternatives": "Productivity relative to a reference taxon (Fagus or Tsuga), as in ERV models",
+   "reason": "Sum-to-one because pollen percentages cannot give absolute productivity",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "N",
+   "chosen": "Semimechanistic statistical model combining fine local and extended regional vegetation",
+   "alternatives": "ERV-type models with a priori dispersal functions; STEPPS with coarse 8 km vegetation cells",
+   "reason": "To combine the strengths of both and overcome their respective limitations",
+   "effect_reported": "yes",
+   "page": "3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the change in vegetation composition during that decade (and/or difference due to sampling methods) appeared to be small",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We explored other values, and θ = 0.1 remained the most appropriate",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we tested three additional models that explored different specifications for θ or wl",
+   "page": "6"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "We ran three parallel Markov chain Monte Carlo (MCMC) for 3,000,000 iterations",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "remained robust when relative pollen productivity was calculated in relation to a reference taxon",
+   "page": "9"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "empirically estimating these weights (e.g., independent weights to be estimated at each distance for each taxon)",
+   "page": "9"
+  }
+ ]
+}

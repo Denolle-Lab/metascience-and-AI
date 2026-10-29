@@ -1,0 +1,476 @@
+{
+ "key": "g22_W4283528724",
+ "doi": "10.1029/2022jc018570",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Bruch, Cordier, Floc'h & Pearson (2022), Water level modulation of wave transformation, setup and runup over La Saline fringing reef, JGR Oceans 127, e2022JC018570 (HAL deposit insu-03868822, PDF with HAL cover page)"
+ ],
+ "pages_convention": "printed journal pages (the 'N of 23' numbering; the HAL cover sheet is unnumbered and not counted)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "this study addresses the question of wave dissipation on La Saline (La Réunion island) fringing reef",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Bruch et al. 2022, JGR Oceans (published version, HAL PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how the La Saline fringing reef dissipates waves and what forces local setup and runup. The stated aim is transfer functions for coastal management.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study addresses the question of wave dissipation on La Saline (La Réunion island) fringing reef"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Deploy a cross-shore transect for 53 days: two OSSI pressure sensors (10 Hz) on the reef slope and reef flat, plus an Aquadopp profiler on the reef slope.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "was deployed for 53 days across La Saline reef from 13-Mar-2017 to 05-May-2017"
+    },
+    {
+     "n": 3,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Correct the pressure records for atmospheric and non-hydrostatic effects and split spectra into GW, IG and VLF bands by FFT. Infer setup and the relative sensor elevation from a regression of water-depth difference on reef-slope Hrms (R2 = 0.95), then tie the sensors to the IGN89 datum.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allowing for an accurate estimate of the vertical position of the RS sensor"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "observation",
+     "action": "Compare the reef-slope wave measurements with WW3/NCEP hindcasts at an offshore node (R2 = 0.87 for wave height). Note that WW3 overestimates moderate conditions and underestimates the P3 swell.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the WW3 results slightly overestimate the significant wave heights during most of the weather conditions"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select three naturally occurring swell events (P1 and P2 moderate, P3 strong) under different tidal ranges and still water levels as the conditions of interest. Neap tides are excluded.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These 3 events were selected in the scope of this study because they highlight highly energetic wave conditions under varying tidal and still water levels"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Set up XBeach surfbeat in 1-D, shore-normal, justified by the low directional spread and by cited XBSB/XBNH comparisons. Force it with measured reef-slope spectra and tides over a smoothed LIDAR/hyperspectral bathymetry.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, the model was run in XBSB mode over a 1-D domain with a primary focus on cross-reef wave processes."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run a mesh convergence test over a range of grid resolutions to check that modelled reef-flat GW and IG heights do not depend on resolution. A 10 m mesh is adopted.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a mesh convergence test was performed"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate the friction coefficients (fw = 0.3; Manning n = 0.02 giving cf of 0.005-0.02) against the observed reef-flat wave heights and setup. Choose the Roelvink & Brøker breaking formulation with default alpha and gamma.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the gravity wave friction and the bed friction coefficients were calibrated so that the best match was found"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Describe the observed spectra: GW energy is almost entirely dissipated across the reef, IG and VLF energy persists or grows on the reef flat (double IG peak, VLF peak near 18.5 min), and the reef acts as a low-pass filter.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reef clearly acts as a low-pass filter maintaining energy in the IG band on the reef flat."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Relate the reef-flat wave parameters to tide and incident wave height across the record. GW attenuation (92-98%) rises toward low tide. The IG ratio grows with water level until a 2.5 m incident-height threshold. VLF shows only weak tidal modulation.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Wave attenuation varied between 92% and 98% from high tide to low tide respectively"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit the Lentz et al. (2016) analytical wave-height decay model to the reef-flat GW heights against depth plus setup (gamma fixed at 0.55). This infers fw = 0.2.",
+     "page": "11-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reinforcing the assumption that the bottom friction plays a key role"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Show that observed setup (0.08-0.86 m, mean 18% of incident height) tracks incident wave height, is in antiphase with the tide, and rises faster above 2.5 m incident height.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The setup variations are in antiphase with the tidal signal"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare modelled and measured reef-flat GW, IG, VLF and setup. Performance is good for GW, IG and setup (R2 > 0.88), with underestimation in P3. VLF is poorly reproduced (R2 = 0.41).",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At the reef flat, the model performance is good"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Use the calibrated model to estimate unmeasured runup (R2%) at the beach, up to about 1 m in P3. Partition the shoreline water level into tide, setup, GW, IG and VLF contributions (Table 2).",
+     "page": "14-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the XBeach model is used to estimate runup"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit multiple linear regression transfer functions linking incident wave height, wave power and water level to reef-flat IG, VLF, setup and runup (Table 3). Setup is 98% wave-driven and 2% tide-driven; runup is 79% wave-driven and 21% tide-driven.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Transfer functions (using multiple linear regressions) are fitted between incident conditions"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the results against other reefs. fw = 0.2 lies within the published range, the low-pass filtering and setup-wave correlation match earlier studies, and the data extend the Lentz model validation to low water levels.",
+     "page": "16-18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This inferred friction factor is within the range of values reported by authors"
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Account for the gap between the model fw (0.3) and the analytical fw (0.2) by the difficulty of resolving bottom friction numerically, rather than revising the model.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Such small differences between both values can find some explanation in the difficulty to numerically resolve bottom friction"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test the first explanation for poor VLF prediction, the 10-min boundary forcing interval, by rerunning with 60 and 180 min intervals. VLF heights do not improve and noise increases, so the 10-min interval is kept.",
+     "page": "18",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "modifications to allow for a delay of 60 min or 180 min between each forcing do not improve VLF height prediction"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "theory",
+     "action": "Propose cited explanations for the setup underestimate in P3: linear-wave-theory radiation stress (Buckley et al. 2015) and missing 3-D current shear (Guérin et al. 2018). Neither is tested.",
+     "page": "18",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Buckley et al. (2015) give a first possible explanation for this using laboratory experiments"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Compare runup from the La Saline transfer function with BEWARE runup for an idealized reef of similar geometry (Pearson et al. 2017, XBeach non-hydrostatic database). The two match well.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparison shows a good match between both."
+    },
+    {
+     "n": 21,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Extrapolate the transfer functions to a 50 cm sea-level rise (RCP4.5). This projects higher reef-flat GW, about 9 cm more IG height and about 30 cm more runup.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Extrapolating from the proposed transfer functions (cf. Table 3) IG significant wave height would increase by 9 cm, and beach runup by 30 cm"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Retain the transfer functions for setup and runup, calibrated for reef-slope Hs up to 4.5 m and depths over the crest up to 1.5 m, as the paper's headline result.",
+     "page": "19, 21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The present study proposes simple-to-use transfer functions to linearly combine contributors such as the water level and incident wave"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Wave transformation, setup and runup over a fringing reef, modulated by the water level",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Wave heights and setup are measured directly; runup is not measured and comes from the calibrated model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Transfer functions linking incident waves and tide to setup and runup",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals stated for the main claim; post hoc cited explanations only for model misfits",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: natural swell events P1-P3 under varying tides",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats tidal cycles and several swell events over 53 days",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: mesh convergence, forcing-interval test and BEWARE comparison pass; VLF reproduction fails",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Transfer functions kept within the calibrated range",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "At La Saline, reef-flat setup and modelled runup scale mainly with offshore gravity-wave height (98% and 79% of variance) and are modulated, in antiphase, by water level (2% and 21%). This is captured by linear transfer functions calibrated for reef-slope Hs up to 4.5 m and crest depths up to 1.5 m.",
+  "page": "15; 19"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Calibrating XBeach on the field data and using it to estimate the unmeasured runup made the runup transfer function and the shoreline water-level partition possible.",
+  "page": "9; 14"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The deployment aimed to 'study wave transformation' with no stated hypothesis directing it (p. 3). The model was compared with field data and could have failed; it did fail for VLF (p. 14). However, calibration and validation use the same 53-day record, and the regression transfer functions are fitted rather than tested on held-out data (pp. 9, 13, 15). Nothing was fixed before the data were seen; the friction coefficients and breaking formulation were chosen for best fit (p. 9)."
+ },
+ "imports": [
+  {
+   "field": "signal processing",
+   "item": "Second-order Butterworth low-pass filter to separate tide from waves",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "signal processing",
+   "item": "Fast Fourier Transform with Hamming windowing and overlapping segments",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Multiple linear regression for transfer functions, with explained-variance partition",
+   "kind": "method",
+   "page": "15"
+  },
+  {
+   "field": "statistics",
+   "item": "Rayleigh distribution assumption to convert Hrms to Hs",
+   "kind": "concept",
+   "page": "9"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the present study completes the validation, by adding much data in the polynomial section of the curve, at low water levels",
+   "page": "17"
+  },
+  {
+   "quote": "Simple-to-use transfer functions relating incident wave characteristics to these hydrodynamic components are proposed.",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file was supplied, so only the final-paper sequence is coded. Runup was never measured; every runup claim, including the 79/21% partition, the Table 2 contributions and the sea-level-rise projection, rests on the calibrated XBeach model. The model was calibrated and validated on the same 53-day record from one transect; no held-out period is reported (inference from pp. 9 and 13). The transfer functions are fitted to a single deployment and season, so their range of validity is stated (p. 19) but not tested elsewhere. Sub-claims at other statuses: (a) the reef acts as a low-pass filter, with 97% GW attenuation: regularity_in_range, consistent with prior studies. (b) fw = 0.2 from the Lentz model: estimate_with_resolution, but no uncertainty is given; it differs from the model's calibrated fw = 0.3. (c) VLF amplification: not reproduced by the model, so no conclusion on mechanism; the double IG peak 'remains to be investigated'. (d) Sea-level-rise impacts: extrapolation beyond the calibrated range, with no status. The paper argues in the introduction for 'multiplying local in situ studies' (p. 2) but concludes from the BEWARE comparison that idealized configurations may suffice (p. 19). The post hoc explanations for setup underestimation are cited, not tested. The mesh-convergence result is asserted without numbers.",
+ "disagreements": [
+  {
+   "target": "Lentz et al. (2016), analytical wave decay model developed on a Red Sea platform reef",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "On a fringing reef the setup is of the same order as the water depth, so it must enter the depth term. The La Saline data fill the low-water-level (polynomial) part of the curve.",
+   "page": "17",
+   "quote": "it is not clear if setup plays a major role in GW height over the reef flat"
+  },
+  {
+   "target": "Studies arguing that local, site-specific studies are needed to capture reef structural complexity (van Dongeren et al. 2013; Quataert et [...]",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Runup from the site-calibrated transfer function matches BEWARE runup for an idealized reef of similar geometry (Figure 10).",
+   "page": "19",
+   "quote": "suggest that idealized configurations of reef systems with good friction parameterization should be enough to reproduce the water level"
+  },
+  {
+   "target": "Expected depth dependence of the VLF (seiche) period from the first-mode estimate",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The observed VLF mean period (18 min) differs from the 15 min first-mode estimate and does not vary with water depth.",
+   "page": "17",
+   "quote": "The expected variation of the mean period of VLF waves with the water depth is not observed"
+  },
+  {
+   "target": "NOAA/NCEP WaveWatch III hindcast at node N1",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Reef-slope measurements show that WW3 overestimates wave heights in moderate conditions and underestimates them in the strong P3 swell.",
+   "page": "5",
+   "quote": "the WW3 results slightly overestimate the significant wave heights during most of the weather conditions"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "XBeach surfbeat (XBSB)",
+   "alternatives": "XBeach non-hydrostatic (XBNH); multi-layer models",
+   "reason": "Much lower computational time; cited studies report comparable setup and runup performance in shallow reef conditions",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "S",
+   "chosen": "1-D shore-normal domain",
+   "alternatives": "2-D model configuration (left for future work)",
+   "reason": "Low directional spread of incident waves (std about 5 degrees)",
+   "effect_reported": "no",
+   "page": "8; 18"
+  },
+  {
+   "node": "V",
+   "chosen": "10 m mesh resolution with 20 m smoothed bathymetry",
+   "alternatives": "A range of mesh resolutions; the original 0.4 m bathymetry",
+   "reason": "Avoid numerical instabilities and long run times; wave transformation found independent of resolution",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Roelvink & Brøker (1993) breaking formulation",
+   "alternatives": "Other breaking formulations (not named)",
+   "reason": "Best modelling results",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "V",
+   "chosen": "10 min boundary forcing interval",
+   "alternatives": "60 min and 180 min forcing intervals",
+   "reason": "Longer intervals did not improve VLF heights (only their periods) and increased surface noise",
+   "effect_reported": "yes",
+   "page": "18"
+  },
+  {
+   "node": "I",
+   "chosen": "Best-fit predictors per variable: wave power P, reef-slope GW height, water level h",
+   "alternatives": "Offshore depth over crest D, distance to crest L, wave period, wave energy, HsTm^2",
+   "reason": "Best fits",
+   "effect_reported": "no",
+   "page": "15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the WW3 results slightly overestimate the significant wave heights during most of the weather conditions",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "a mesh convergence test was performed",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "appears to be a good choice in our study since the average spectrum reveals a local minimum of energy at these frequencies",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "High correlations indicate that the model configuration is well adapted the prediction of",
+   "page": "13"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "close to the fw = 0.2 value inferred by our observations and the Lentz et [...]",
+   "page": "18"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "modifications to allow for a delay of 60 min or 180 min between each forcing do not improve VLF height prediction",
+   "page": "18"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Comparison shows a good match between both.",
+   "page": "19"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "concur that in shallow-water conditions such as over a fringing reef",
+   "page": "8"
+  }
+ ]
+}

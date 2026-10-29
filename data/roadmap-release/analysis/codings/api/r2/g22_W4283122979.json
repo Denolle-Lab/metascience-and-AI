@@ -1,0 +1,540 @@
+{
+ "key": "g22_W4283122979",
+ "doi": "10.1016/j.jappgeo.2022.104735",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF, Journal of Applied Geophysics 204 (2022) 104735, 12 pages",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (Fig. N, Table 1, exactly as printed). The XML text contains no body paragraphs, so body steps cite printed journal pages (p. 1 to p. 12, identical to PDF pages counted from 1). Steps read off figure content cite the figure plus its PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This information is frequently unknown or estimated with significant uncertainty.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF) with publisher XML abstract and captions",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the problem of predicting short-range seismic pulse propagation from weak surface sources at sites with no in situ characterization, and of quantifying the predictions' uncertainty.",
+     "page": "p. 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "knowledge is lacking for near-field and short-range seismic propagation predictions"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopted the thin layer method (Kausel 2000) and the Toro (1995) stochastic layering model (inhomogeneous Poisson layers, correlated Gaussian Vs), and fitted the median Vs profile to Wills et al. (2000) site class D data.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a = 5.86 and b = 0.22 to fit the median profile to the data for site class D"
+    },
+    {
+     "n": 3,
+     "node": "X",
+     "mode": "theory",
+     "action": "Rejected by argument Morozov's (2009) alternative to scattering Q, on the grounds that frequency-independent scattering attenuation is unrealistic, and kept the additive intrinsic-plus-scattering damping model.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the independence of attenuation due to scattering from the frequency looks unrealistic"
+    },
+    {
+     "n": 4,
+     "node": "R",
+     "mode": "methods",
+     "action": "Re-fitted the Wang et al. (1994) Qs-Vs data in log space, because the linear regression gives negative Qs at low Vs, and obtained a lognormal residual model (sigma 0.30).",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This motivated the authors of this paper to re-analyze the data present in (Wang et al., 1994)"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tested the regression residuals for independence from the regressant (Hoeffding test, p = 0.54) and for normality (two-sided Kolmogorov-Smirnov test, p = 0.37).",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the hypothesis that the residuals and the regressant are statistically independent cannot be rejected at the 5% significance level"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Linked Vp/Vs and Qp/Qs to Poisson's ratio (assuming Qk^-1 = 0) and took Poisson's ratio, with separate PDFs above and below the water table, as the independent variable.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we take Poisson's ratio as an independent variable distributed in accordance with different PDFs above and below the water table depth."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Selected site class D USGS boreholes, used Vp = 1500 m/s as a water table indicator, and tested whether Poisson's ratios above and below the water table are independent (Bakirov et al. multivariate test).",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For Poisson's ratios above and below WT, the test statistics value was 1.00, while the critical value"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fitted candidate PDFs (Weibull, beta, lognormal, KDE) to the transformed Poisson's ratios (406 samples above and 367 below the water table) and chose lognormal above and beta below.",
+     "page": "p. 5; Fig. 3 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the lognormal distribution with the best-fit maximum likelihood parameters"
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopted the Boore (2016) piecewise density model and implemented six independent variables (Table 1), sampled with scrambled Sobol sequences into Ne = 255 realizations.",
+     "page": "p. 5–7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Sobol's sequence (Sobol, 1967) is used in this study to design the sampling plans"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computed TLM ensemble frequency responses and vertical PPV PDFs at 2 to 42 m. The PDFs are normal in dB; the mean falls and the spread grows with distance, except an unexpectedly large spread at 2 m.",
+     "page": "p. 7; Fig. 4 (p. 7); Fig. 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For all locations, the PDFs are well described by the normal distributions."
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Attributed the large PPV spread at 2 m to near-field effects.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The authors hypothesize that this can be attributed to the near-field effects."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ran a variance-based global sensitivity analysis (first-order Sobol indices) over the six inputs: Qs and above-water-table Poisson's ratio dominate PPV variance beyond 2 m, and Z1 dominates at 2 m.",
+     "page": "p. 8; Fig. 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the variance in y is almost entirely caused by the uncertainties in two input variables"
+    },
+    {
+     "n": 13,
+     "node": "D",
+     "mode": "observation",
+     "action": "Designed field validation at two NEHRP class D sites: five 4.5 Hz vertical geophones 10 m apart, an instrumented hammer source, and one synchronized recorder.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "at two locations, Site 1 and Site 2, for validation of the modeling method"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "observation",
+     "action": "Recorded eight vertical hammer impacts on moist sand and averaged the geophone particle velocities at 2 to 42 m.",
+     "page": "p. 8; Fig. 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The experimental test consisted of eight hammer impacts directly on the sand."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Checked that the source impulse is repeatable across the eight impacts (peak force 4.8 to 5.6 kN).",
+     "page": "p. 8; Fig. 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All eight plots are close to each other indicating the repeatability of the individual impacts."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared ensemble percentiles with the measured PPV (20 to 120 Hz) at Site 1: data lie within the 95% interval up to about 20 m and attenuate faster than predicted beyond it.",
+     "page": "p. 9; Fig. 7 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "numerical ensemble predictions match reasonably well experimental measurements for geophones located at ranges up to 20 m"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Compared predictions with Site 2, an independent site of the same class: measured PPV is higher than the ensemble and follows the geometric spreading curve.",
+     "page": "p. 10; Fig. 7 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a significant mismatch between the predicted and observed"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Explained the Site 2 mismatch by Qs beyond the error bounds of empirical models, or by Site 2 being a statistical outlier (a soft shallow layer over a rigid layer), keeping the method.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Site 2 may be an outlier belonging to the remaining 2.5-percentile set of probable ensemble members."
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Re-centered the Site 1 ensemble on the estimated site Vs30 (222 m/s instead of 320 m/s); predictions improved up to 20 m but still overpredict at greater range.",
+     "page": "p. 10; Fig. 7 (p. 9)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the calculations were repeated for another ensemble centered on the median profile"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Replaced the Vs-dependent Qs model with a Vs-independent lognormal Qs (median 10); this fits Site 1 better, while Site 2 would need Qs at least an order of magnitude higher.",
+     "page": "p. 10; Fig. 7 (p. 9)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "much higher Qs are needed, at least by the order of magnitude"
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "theory",
+     "action": "Cited reports of much higher Qs in sands (Langston 2003; Wang and Santamarina 2007) as an open alternative to the usual low-Qs assumption.",
+     "page": "p. 10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the question about the true damping ratio of sandy soils is not resolved to the full extent."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the ensemble methodology and the sensitivity ranking, while stating that measured signals can fall outside the predicted range (Site 2) and that in situ characterization is needed for accuracy.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparison with experiments revealed that measured signals are not always within the predicted ranges of variability."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: short-range pulse propagation from a weak surface source, a known phenomenon",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No: site properties are unknown, so signals are predicted with a stochastic forward model",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Ensemble prediction and uncertainty quantification without site characterization",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only alternative model components (scattering Q, Qs model, PDFs)",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Alternative Qs and Vs30 choices give different PPV ranges (Fig. 7c, 7d)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Sites found; hammer source set by the experimenters",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: matches Site 1 up to about 20 m, fails at Site 2",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept, with limits; the Site 2 mismatch is explained post hoc",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A Monte-Carlo ensemble method yields short-range PPV predictions for class D layered sites without in situ characterization. It matched Site 1 within 95% bounds up to about 20 m but not Site 2, and the shear quality factor and the above-water-table Poisson's ratio dominate amplitude uncertainty.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Assembling the stochastic site model (six independent variables with fitted PDFs, sampled by scrambled Sobol sequences) is what makes the ensemble predictions, the sensitivity analysis and the field comparison possible.",
+  "page": "p. 6–7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "The field experiments were run 'for validation of the modeling method' (p. 8), so the model's predictions, not a stated hypothesis, directed data acquisition. The predictions could fail and did fail at Site 2 (p. 10). Input PDFs came from external datasets and were identical for both sites except water table depth (p. 6). The paper does not say they were fixed before the field data were seen, and the Vs30 re-centering and low-Qs runs came after the comparison (p. 10)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Monte-Carlo simulation (Mooney 1997)",
+   "kind": "method",
+   "page": "p. 1"
+  },
+  {
+   "field": "applied mathematics / engineering",
+   "item": "Variance-based global sensitivity analysis, Sobol decomposition and indices (Saltelli et al. 2000; Jansen 1999)",
+   "kind": "method",
+   "page": "p. 7–8"
+  },
+  {
+   "field": "numerical mathematics",
+   "item": "Scrambled Sobol low-discrepancy sequences for sampling plans",
+   "kind": "method",
+   "page": "p. 7"
+  },
+  {
+   "field": "statistics",
+   "item": "Hoeffding test of bivariate independence (Wilding and Mudholkar 2008)",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "statistics",
+   "item": "Two-sided Kolmogorov-Smirnov normality test",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Multivariate nonparametric test of independence (Bakirov et al. 2006)",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Kernel density estimation with cross-validated bandwidth (Silverman 1986)",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "structural engineering",
+   "item": "Thin layer method for layered media (Kausel 2000)",
+   "kind": "method",
+   "page": "p. 2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The XML text holds only the abstract and captions, so body locations are printed pages. No explicit 'first' claims appear; the paper only states a knowledge gap (p. 1). Sub-claims and their statuses: normal PPV distributions in dB, regularity_in_range (model-internal, 255 realizations, class D only). Sensitivity ranking, capability_characterized (model-internal, first-order indices only; the estimation technique and the convergence at Ne = 255 are not reported). Near-field explanation of the 2 m spread, hypothesis supported only as 'plausible' by the sensitivity analysis, not tested. Site 2 outlier or high-Qs explanation, best_explanation offered post hoc without a test. The Site 1 experiment is not described ('only Site 2 will be described in detail'), and how Site 1's Vs30 of 222 m/s was estimated is not stated. Inference: the re-centering and low-Qs variants were chosen after seeing the mismatch. No code or data availability statement, and no review file was supplied. The text refers to Eq. 19 where Eq. 23 is meant (p. 7–8).",
+ "disagreements": [
+  {
+   "target": "Morozov (2009) proposal to dismiss scattering Q",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "A physical argument that scattering by heterogeneities of size L must depend on frequency; no data are offered.",
+   "page": "p. 4",
+   "quote": "the independence of attenuation due to scattering from the frequency looks unrealistic"
+  },
+  {
+   "target": "Wang et al. (1994) linear Qs-Vs regression",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "With sigma = 12.1 the regression implies negative Qs for Vs below 209 m/s, so the authors refit the same data in log space.",
+   "page": "p. 4",
+   "quote": "its use for lower speeds outside this range is problematic."
+  },
+  {
+   "target": "Earthquake site-response practice (1D simulations; SASW/MASW characterization)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The problem's near-field, low-strain, 3D, no-measurement setting makes these techniques inapplicable.",
+   "page": "p. 2",
+   "quote": "one-dimensional numerical simulations, frequently employed in the structure response analyses of earthquakes"
+  },
+  {
+   "target": "Typical empirical Qs models for a given site class",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Site 2 measurements follow geometric spreading and would need Qs about an order of magnitude higher than the models give.",
+   "page": "p. 10",
+   "quote": "the values of the quality factor might be so different that they fall beyond the error bounds of typical empirical models."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "3D layered-medium TLM ensemble without in situ data",
+   "alternatives": "1D site-response simulations; SASW/MASW site characterization",
+   "reason": "Near-field 3D spatial distribution and no on-site measurements",
+   "effect_reported": "no",
+   "page": "p. 2"
+  },
+  {
+   "node": "X",
+   "chosen": "Conventional additive intrinsic plus scattering damping model",
+   "alternatives": "Morozov (2009) geometric-factor attenuation without scattering Q",
+   "reason": "Frequency-independent scattering looks unrealistic",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "N",
+   "chosen": "Wang et al. (1994) intrinsic Qs-Vs relation",
+   "alternatives": "Other Qs models for sediments (Campbell 2009)",
+   "reason": "Many of them involve effective rather than intrinsic Qs",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "R",
+   "chosen": "Log-space regression of Qs on Vs",
+   "alternatives": "Linear-space regression (Wang et al. 1994)",
+   "reason": "Avoids negative Qs at low Vs",
+   "effect_reported": "yes",
+   "page": "p. 4"
+  },
+  {
+   "node": "N",
+   "chosen": "Vp from Poisson's ratio via Vp/Vs relation",
+   "alternatives": "Empirical Vp-Vs polynomial (Brocher 2005)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "N",
+   "chosen": "Qk^-1 = 0",
+   "alternatives": "Considerations challenging this assumption (Morozov 2015)",
+   "reason": "Reported experimental evidence and convention",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "I",
+   "chosen": "Lognormal PDF above water table; beta PDF below",
+   "alternatives": "Weibull, beta (above); lognormal, Weibull (below); KDE",
+   "reason": "Weibull and beta shift the mode toward ν = 0.5 (Vp/Vs to infinity); beta clearly best below",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "N",
+   "chosen": "Boore (2016) piecewise density model",
+   "alternatives": "Gardner rule; Brocher (2005) model",
+   "reason": "Good estimates over a broad Vs range including low speeds",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "N",
+   "chosen": "Scrambled Sobol sequence sampling",
+   "alternatives": "Pseudorandom sampling; Latin hypercube sampling",
+   "reason": "Better coverage of the input space with fewer trials",
+   "effect_reported": "no",
+   "page": "p. 7"
+  },
+  {
+   "node": "V",
+   "chosen": "Variance-based global sensitivity analysis at individual locations",
+   "alternatives": "Global functional sensitivity analysis (Li et al. 2021; Paglia et al. 2020)",
+   "reason": "To show sensitivity at individual locations",
+   "effect_reported": "no",
+   "page": "p. 7"
+  },
+  {
+   "node": "R",
+   "chosen": "Class D median Vs profile (Vs30 = 320 m/s), then site-centered profile (Vs30 = 222 m/s)",
+   "alternatives": "Ensemble centered on the estimated site Vs30",
+   "reason": "Bias of Vs toward larger values raises predicted amplitudes",
+   "effect_reported": "yes",
+   "page": "p. 10"
+  },
+  {
+   "node": "R",
+   "chosen": "Vs-dependent empirical Qs model",
+   "alternatives": "Vs-independent lognormal Qs with median 10",
+   "reason": "More justifiable for near-surface low-Vs sediments",
+   "effect_reported": "yes",
+   "page": "p. 10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the hypothesis that the residuals and the regressant are statistically independent cannot be rejected at the 5% significance level",
+   "page": "p. 4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The p-value for the normality test is 0.37",
+   "page": "p. 5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "For Poisson's ratios above and below WT, the test statistics value was 1.00, while the critical value",
+   "page": "p. 5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the variance in y is almost entirely caused by the uncertainties in two input variables",
+   "page": "p. 8"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "All eight plots are close to each other indicating the repeatability of the individual impacts.",
+   "page": "p. 8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "a significant mismatch between the predicted and observed",
+   "page": "p. 10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the adjusted predictions describe much better the signal arrivals at shorter distances",
+   "page": "p. 10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "another approach for setting Qs factor is considered yielding results shown in Fig. 7(d)",
+   "page": "p. 10"
+  }
+ ]
+}

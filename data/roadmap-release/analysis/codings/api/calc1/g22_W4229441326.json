@@ -1,0 +1,448 @@
+{
+ "key": "g22_W4229441326",
+ "doi": "10.1029/2022jf006623",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Zhu, Ke, Li & Yu (2022), Identification of Unstable Glacier Flow in the Western Tibetan Plateau and Karakoram Using Machine Learning, JGR Earth Surface 127, e2022JF006623 (published PDF, 23 pp.)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 23' pages)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "A novel method was developed for rapidly and accurately identifying unstable glacier flows, including pulse and surge events.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Chose a learning vector quantization (LVQ) neural network, fed with high-frequency Sentinel-1 velocities, as the classifier for unstable glacier flow, arguing it suits small, rare-event training sets better than SVM or BP networks.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "LVQ neural network may be a more suitable method to identify the unstable state of glaciers"
+    },
+    {
+     "n": 2,
+     "node": "F",
+     "mode": "observation",
+     "action": "Selected 32 eastern Pamir glaciers for training and testing and 13 western Karakoram glaciers for application; the known 2015-2019 surges (Karayaylak, Jangmanjiar, Shispare) supplied active-phase samples.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These three surges mentioned above provided some samples of the glacier surface velocity during the active phase."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Derived centre-flowline glacier surface velocities for 2015-2019 by SNAP offset tracking (128 x 128 window) of 127 and 101 Sentinel-1A GRD image pairs at mostly 12- and 24-day intervals.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Sentinel-1A SAR images are used to calculate the glacier surface velocity"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Estimated the velocity error by applying the same offset tracking to stable ground, using the median (0.02-0.05 m/d by interval length) rather than the mean because of outliers.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The same velocity calculation method is applied to stable ground to estimate the glacier velocity error"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Defined the sample labels (normal below 10x the quiescent velocity; pulse for 2-3 intervals above 10x; surge for 4 or more intervals with a moving peak), set a 100x outlier filter, and specified the LVQ1/LVQ2 training (MSE 0.025, 500 iterations).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the velocity of each interval lower than 10 times the velocity of quiescent phase is considered as the normal glacier flow"
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revised the method: replaced full flowline velocities with five summary statistics as input, clustered quiescent velocities into 0.06 and 0.11 m/d classes with one network each, and added a duration-based judgment structure because the original LVQ could not separate pulse from surge.",
+     "page": "7-9",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "However, the identification accuracy of the pulse and surge is unacceptable. Thus, a judging structure is added after the LVQ neural network."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Took the reference labels for the Kongur Tagh subregion from the authors' earlier work and labelled the other three subregions by manual interpretation.",
+     "page": "9",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "glacier pulse and surge events had been identified in our previous work"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Trained on the Jangmanjiar, Kalaxiong and Kuokuosele glaciers and compared the network output on held-out glaciers with the reference labels: 21 of 22 surge intervals (95.5%) and 4 of 4 pulses in the 0.11 class, and 35 of 38 pulse intervals (92.1%) in the 0.06 class; events were also graded mild or violent by velocity ratio.",
+     "page": "10, 12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using machine learning method could identify 21 surge intervals with 95.5% accuracy and all pulse intervals."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Benchmarked LVQ against BP and RBF neural networks on the same velocity data, by accuracy (Table 2) and by ROC/AUC (Figure 5); LVQ scored highest in every class.",
+     "page": "12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "LVQ neural network always had the best recognition effect and good stability."
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "Applied the eastern Pamir-trained 0.11 m/d network to six western Karakoram glaciers, detecting unreported pulses on Kukuar (2017, 2019), Karambar (2017) and Ghulkin (2016), and a surge flanked by pulses on Shispare (2018-2019); detections were checked against the velocity maps.",
+     "page": "12-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ultimately, some pulse events were identified on the Kukuar, Karambar, and Ghulkin Glacier."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the Shispare result against published accounts: the active phase ran from 22 October 2018 to 8 April 2019, not about 1.5 years, and the earlier and later accelerations were reclassified as pulses.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the complete active phase of surge in the Shispare Glacier did not last 1.5 years, as suggested in previous papers"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "observation",
+     "action": "Checked the Shispare classification against independent data: front evolution in histogram-equalized Landsat 8 images (Figure 8) and ASTER DEM elevation change (Figure S5).",
+     "page": "15, 17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Histogram equalized Landsat 8 images clearly revealed the front evolution of the Shispare Glacier"
+    },
+    {
+     "n": 13,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the question of how pulse and surge events relate, using the Shispare sequence as the case.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to analyze the relationship between pulse and surge events in more detail"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopted from the literature the hypothesis that basal roughness controls conversion between pulses and surges, with rate-and-state frictional strength as a related account.",
+     "page": "19",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Turrin et al. (2014) suggested that basal roughness played a key role in the conversion between pulses and surges."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compared the Shispare ratio of average velocity to quiescent velocity (Figure 9) with the basal-roughness account: smaller initial pulses read as the glacier overcoming roughness before surging.",
+     "page": "19-20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the velocity scale of pulse in the initial stage was slightly smaller than that in the end stage"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the LVQ-plus-judgment method as an accurate, efficient identifier of unstable glacier flow, noting that errors cluster near the 10x threshold at event onsets and ends.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The identification accuracies were 95.5% and 92.1% when tested on the eastern Pamir Plateau"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Kept, as speculation, that pulse and surge events can convert into each other under the influence of basal roughness.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the pulse and surge could be converted to each other under the influence of basal roughness"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Unstable glacier flow (pulses and surges) seen as large velocity speedups",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes, through 12/24-day Sentinel-1 offset-tracking velocity series",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Build an automatic, low-cost classifier of glacier flow state",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival classifiers (BP, RBF; SVM argued); for mechanism, only the cited basal-roughness account",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Classifiers differ in accuracy and AUC on the same data; no distinct mechanistic predictions",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Found: satellite-observed events, conditions not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes, many glaciers and intervals in two regions",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Held-out test, baseline classifiers, a second region and independent optical/DEM checks; no threshold sensitivity tests",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept with over 90% accuracy; pulse-surge conversion offered as speculation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not shown; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An LVQ neural network with an added duration-based judgment structure, run on Sentinel-1 velocity series, identifies glacier surge and pulse intervals with 95.5% and 92.1% accuracy against manual interpretation and finds previously neglected pulses.",
+  "page": "20"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "Scoring the network's interval classifications on held-out eastern Pamir glaciers against the manual and earlier labels gives the accuracy figures on which the capability claim rests.",
+  "page": "10, 12"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data acquisition was the Sentinel-1 archive chosen for the method, not directed by a hypothesis. The accuracy test used held-out glaciers and could have failed, but the reference labels come from the same 10x/duration threshold rule the network learns to reproduce (pp. 6, 9-10). The Karakoram application has no quantitative score. No pre-registration; thresholds, clusters and LVQ version were chosen without a stated before-data commitment, and the LVQ version was picked by classification accuracy (p. 6)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Learning vector quantization neural network (Kohonen), LVQ1 and LVQ2",
+   "kind": "method",
+   "page": "3, 6-7"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Back-propagation and radial basis function neural networks as baseline classifiers",
+   "kind": "method",
+   "page": "12"
+  },
+  {
+   "field": "statistics / signal detection",
+   "item": "Receiver Operating Characteristic curves and area under the curve",
+   "kind": "method",
+   "page": "12-13"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "A novel method was developed for rapidly and accurately identifying unstable glacier flows",
+   "page": "1"
+  },
+  {
+   "quote": "Here, a machine-learning algorithm is first used to identify the glacier flow state",
+   "page": "1"
+  },
+  {
+   "quote": "there is no application of the LVQ neural network in glacier identification and classification",
+   "page": "3"
+  },
+  {
+   "quote": "some previously neglected pulses and more detailed surges could be identified",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded; the acknowledgment mentions two anonymous reviewers but not what they changed. The test labels are produced by the same velocity-ratio thresholds the network is trained to mimic, so the accuracy measures agreement with a rule more than with independent ground truth (inference). Test sizes are small (22 surge and 4 pulse intervals in the 0.11 class). Thresholds (10x, 100x), cluster centres (0.06 and 0.11 m/d), window size and network hyperparameters are not varied. The random initial LVQ weights are flagged (p. 21) but not tested by reruns. The argument that clustering has 'limited influence' (p. 18) rests on where errors fall, not on a varied test. The Karakoram application has no accuracy score; its detections are checked only visually against velocity maps and, for Shispare, against Landsat fronts and one ASTER DEM pair. Sub-claims and their statuses: (a) the Shispare active phase lasted from October 2018 to April 2019 rather than about 1.5 years: best_explanation; this partly contradicts Bhambri et al. 2020 and Rashid et al. 2019 and hinges on reclassifying flanking accelerations as pulses, a definitional choice. (b) Pulses and surges convert under basal-roughness control: speculative best_explanation, no rival tested, no basal data. (c) Pulses link to spring and summer temperature and precipitation: untested association. Outcome is coded kept because the headline claim is the capability; the contradiction in (a) is a sub-claim. How the manual interpretation of three subregions was done is not described.",
+ "disagreements": [
+  {
+   "target": "[...] . (2020); Rashid et al. (2019) on the 2018-2019 Shispare surge",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "LVQ classification of 12-day velocities limits the active phase to 22 Oct 2018 to 8 Apr 2019 and reclassifies earlier and later accelerations as pulses; Landsat front evolution and ASTER elevation change are offered as support.",
+   "page": "15",
+   "quote": "the complete active phase of surge in the Shispare Glacier did not last 1.5 years, as suggested in previous papers"
+  },
+  {
+   "target": "Guillet et al. (2022), multi-factor surge-type glacier inventory of High Mountain Asia",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Argues that annual optical velocities and long DEM intervals miss small or short events, which 12/24-day SAR velocities capture.",
+   "page": "2",
+   "quote": "This identification method will ignore the glacier surge with a small velocity scale, especially the glacier pulse event with a short duration."
+  },
+  {
+   "target": "Optical-image glacier velocity measurement (Lovell et al., 2018; Sahu & Gupta, 2019; Scherler et al., 2008)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues that clouds and snow make optical intervals irregular, whereas SAR gives steady intervals; supported by reasoning, not a direct comparison.",
+   "page": "2",
+   "quote": "optical images are easily affected by the presence of clouds and seasonal snow"
+  },
+  {
+   "target": "Feature-based surge and pulse identification (Yasuda & Furuya, 2015; Paul et al., 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Notes that looped moraines and terminus changes are absent on small glaciers, so velocity-based detection misses fewer events; no quantitative comparison.",
+   "page": "18",
+   "quote": "The common methods identifying the surge or pulse are almost based on the remaining features after the events"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "LVQ neural network",
+   "alternatives": "Support vector machine; back-propagation neural network (BP and RBF networks tested later)",
+   "reason": "Training time linear in samples and independent of training-set size; BP needs many data and depends on initial weights; speedup events are rare",
+   "effect_reported": "yes",
+   "page": "3, 12"
+  },
+  {
+   "node": "N",
+   "chosen": "LVQ1 or LVQ2, chosen per case",
+   "alternatives": "LVQ1; LVQ2",
+   "reason": "chosen according to the classification accuracy",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "Median of stable-ground velocity as error",
+   "alternatives": "Mean of stable-ground velocity",
+   "reason": "Outliers make the mean neither representative nor robust",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "Five summary statistics of flowline velocity as input",
+   "alternatives": "All velocity values along the central flowline",
+   "reason": "Long glaciers cause data redundancy and slow running",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "R",
+   "chosen": "One network per cluster of quiescent velocity (0.06 and 0.11 m/d)",
+   "alternatives": "An independent network for each glacier",
+   "reason": "Not enough data and too much time per glacier; better universal applicability",
+   "effect_reported": "no",
+   "page": "8, 18"
+  },
+  {
+   "node": "R",
+   "chosen": "LVQ followed by a duration-based judgment structure",
+   "alternatives": "Original LVQ neural network alone",
+   "reason": "Pulse and surge accuracy of the original LVQ was unacceptable",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "O",
+   "chosen": "Sentinel-1 SAR offset tracking",
+   "alternatives": "Optical-image velocities (Landsat 8, Sentinel-2)",
+   "reason": "Clouds and rain prevent stable optical time intervals",
+   "effect_reported": "no",
+   "page": "2-3"
+  },
+  {
+   "node": "V",
+   "chosen": "MicMac ASTER DEMs",
+   "alternatives": "NASA AST14DMO product",
+   "reason": "Reduces noise and improves precision from 20 to 5 m (cited)",
+   "effect_reported": "yes",
+   "page": "5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The same velocity calculation method is applied to stable ground to estimate the glacier velocity error",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The remaining glacier velocities that were not used as training data sets were all regarded as testing data sets",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Based on the same glacier velocity data, the recognition accuracies of three different neural networks are shown in Table 2.",
+   "page": "12"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "To show its universality, this method was applied to the glaciers of the western Karakoram.",
+   "page": "12"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the sporadic acceleration phenomena identified by the LVQ neural network were just in line with those slow propulsions",
+   "page": "15"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The influence range of elevation change was just consistent with the range of velocity change in Figure 7a.",
+   "page": "17"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The offset tracking technique has shown good performance in velocity estimation in previous [...]",
+   "page": "5"
+  }
+ ]
+}

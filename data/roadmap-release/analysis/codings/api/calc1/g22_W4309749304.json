@@ -1,0 +1,422 @@
+{
+ "key": "g22_W4309749304",
+ "doi": "10.1111/1365-2478.13296",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Qu & Verschuur (2023) An effective scheme of joint migration inversion in the pseudo-time domain. Geophysical Prospecting 71:191-205 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Therefore, a more robust JMI scheme, in which the reflector locations in the calculated image are less dependent on the velocity updates, is desired.",
+  "page": "192"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Qu & Verschuur (2023), published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Introduce joint migration inversion (JMI), developed in the group's earlier work, as an alternative to FWI that separates reflectivity and velocity.",
+     "page": "192",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Joint migration inversion (JMI) was proposed as an alternative velocity inversion method"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem that the depth-velocity ambiguity in alternating JMI updates shifts reflectors with velocity and may cause non-robust inversion.",
+     "page": "192",
+     "move": "new",
+     "trigger": "author",
+     "quote": "may also lead to non-robustness of JMI due to the presence [...]"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take up the pseudo-time (vertical-time) parameterization from reverse-time migration and FWI work by other groups.",
+     "page": "192",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Plessix et al. (2012) and Plessix (2013) propose to apply FWI in the pseudo-time domain"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesize that in pseudo-time, reflector locations in the JMI image will depend less on velocity updates and will only gain focus.",
+     "page": "192",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the locations of reflectors in the estimated reflectivity model will also be less dependent on the velocity updates"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Recap depth-domain full wavefield modelling (reflection, transmission, phase-shift propagation operators) and the least-squares JMI inversion with scalar reflectivity.",
+     "page": "193",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The core of JMI is its forward modelling process named full wavefield modelling (FWMod)."
+    },
+    {
+     "n": 6,
+     "node": "E",
+     "mode": "simulation",
+     "action": "Show with a small one-reflector test (Figure 3) that a too-low velocity places the reflector too shallow in the depth image.",
+     "page": "194",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in the case where the velocities are much lower than the true velocities, reflectors are estimated at shallower depth levels"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Formulate FWMod and JMI in pseudo-time (x, tau) with the depth-time conversion (Eqs. 5-6) and an adapted phase-shift operator (Eq. 9).",
+     "page": "195",
+     "move": "new",
+     "trigger": "author",
+     "quote": "can be realized easily with very few changes to the existing depth domain code"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Repeat the small test in pseudo-time (Figure 4) and compare: the velocity error defocuses the reflector but does not move it.",
+     "page": "195",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the error in the velocity model does not result in location changes of reflectors"
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "methods",
+     "action": "Add a final depth-JMI round, started from the smoothed pseudo-time velocity, to remove artefacts of the linear depth-pseudo-time conversion.",
+     "page": "197",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an additional step of depth JMI is required with a smoothed version of the inverted velocity via pseudo-time JMI as the starting model"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the scalar-reflectivity forward model against finite-difference modelling of the same model (Figure 6); it misses large-offset AVO energy.",
+     "page": "197",
+     "move": "new",
+     "trigger": "author",
+     "quote": "angle-independent FWMod is not able to generate these AVO effects"
+    },
+    {
+     "n": 11,
+     "node": "N",
+     "mode": "methods",
+     "action": "Design an AVO-mitigating workflow in the data comparison: F-K filtering of strong AVO energy and an evanescent-style F-K scaling of the measured data (Figure 7).",
+     "page": "197",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we choose to use a robust AVO mitigating workflow"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design an extreme 2D synthetic test: FWMod data, a homogeneous 1800 m/s initial velocity, and identical settings for depth and pseudo-time JMI.",
+     "page": "198",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the initial velocity model is set to a constant value of 1800 m/s"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the inversions with the true model (Figure 9): depth JMI fails, while pseudo-time JMI recovers a high-quality image.",
+     "page": "198",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the traditional depth JMI fails to give reasonable results"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "Note undulating deep reflectors after conversion back to depth and remove them with one extra depth-JMI round (Figure 9g,h).",
+     "page": "198",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We notice the undulations of the deeper reflectors because the conversion from pseudo-time into depth is not perfect"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Test on a realistic 2D deep-water synthetic with FD-modelled data, on which the original JMI had failed from a poor initial velocity.",
+     "page": "199",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we revisit a realistic two-dimensional (2D) deep water synthetic dataset used in Sun et al. (2019)"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare inverted velocity, image and data residuals of depth and pseudo-time JMI against the true model (Figures 10-11).",
+     "page": "200",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this proposed JMI scheme achieves much better results regarding both velocity and image"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "observation",
+     "action": "Apply both schemes to a preprocessed 2D streamer field dataset from the Vøring basin, starting from an NMO-derived velocity.",
+     "page": "200",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we demonstrate the proposed method on a 2D field dataset from the Vøring basin"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare field inversions and shot-record data residuals (Figures 12-13); pseudo-time JMI gives more reasonable updates and a better data fit.",
+     "page": "202",
+     "move": "new",
+     "trigger": "author",
+     "quote": "pseudo-time JMI can reconstruct the data much better than depth JMI"
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Extend both schemes to a simple 3D synthetic built from the 2D model of Figure 8a.",
+     "page": "202",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we show the potential effectiveness of the proposed method for a 3D case based on a simple synthetic model"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the 3D inversions with the true model (Figure 14).",
+     "page": "204",
+     "move": "new",
+     "trigger": "author",
+     "quote": "3D pseudo-time JMI outperforms 3D depth JMI, especially in the overburden salt area"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep pseudo-time JMI as the more robust scheme, noting the linear-conversion limitation and recommending a follow-up depth-JMI round.",
+     "page": "204",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In all examples, the inverted models using pseudo-time JMI show clear improvements compared to depth JMI."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Depth-velocity ambiguity: reflectors shift with velocity updates in depth JMI",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; velocity and reflectivity are inferred by waveform inversion",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "A more robust JMI scheme (method development)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Depth JMI (baseline) versus pseudo-time JMI",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Reflectors shift in depth versus stay fixed and only focus in pseudo-time",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set: synthetic models with known truth and a chosen initial velocity",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "One field dataset (Vøring basin), no ground truth",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Improvement holds across extreme 2D, realistic 2D, field 2D and simple 3D examples",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Pseudo-time JMI kept as more robust, with a stated conversion limitation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Pseudo-time JMI, followed by one depth-JMI round, gives more reasonable velocity updates and better-focused images than depth JMI in 2D and 3D synthetic examples and a 2D field example.",
+  "page": "204"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Reparameterizing FWMod and JMI in vertical time (Eqs. 5-9) is the capability without which the comparison and the robustness claim would not exist.",
+  "page": "195"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The hypothesis that pseudo-time decouples reflector position from velocity (p. 192) shaped the method and the small tests (Figures 3-4), but the datasets were supplied synthetics or licensed field data, not acquired for the hypothesis. The claim faced comparisons with depth JMI that could have gone the other way, including on a dataset where original JMI had failed (p. 199). Judgements are visual (arrows, boxes) with no quantitative error metric, and on field data there is no ground truth. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "physics (wave physics)",
+   "item": "Evanescent-wave decay in the F-K domain as the template for the AVO scaling function",
+   "kind": "concept",
+   "page": "197"
+  },
+  {
+   "field": "applied mathematics (optimization)",
+   "item": "Multi-scale gradient-descent least-squares optimization",
+   "kind": "method",
+   "page": "198"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we propose a more robust JMI scheme, which parameterizes the reflectivity and velocity models with vertical time, termed pseudo-time JMI",
+   "page": "192"
+  }
+ ],
+ "limits": "No quantitative misfit or model-error measures are given; superiority is judged visually from figures with highlighted arrows and boxes. The field example has no ground truth, so the better data fit and focusing are the only evidence there. The AVO-workflow parameters (filter velocity 2915 m/s, scaling velocity 6582 m/s) are chosen without stated alternatives or a sensitivity test. The artefacts of the linear depth-pseudo-time conversion under strong lateral velocity variation are asserted, not tested with a dedicated example; status: untested limitation. In the realistic and 3D examples the reported pseudo-time result includes the extra depth-JMI round, so the contribution of pseudo-time JMI alone is not isolated there; for the field example it is not stated whether the extra round was applied. The 3D result rests on a simple synthetic; the authors call it potential effectiveness (sub-claim status: capability_characterized, preliminary). Inference: the paper extends conference abstracts (Qu et al. 2020; Qu and Verschuur 2021), so earlier failed attempts or choices of examples are not visible. Data are restricted (Aramco, Equinor), limiting reproduction.",
+ "disagreements": [
+  {
+   "target": "Reflection FWI (Xu et al., 2012) and FWI generally",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue from the literature (no new test) that a single velocity parameter explaining both reflection and propagation makes the inversion more non-linear, and that FWI is costly at high frequencies.",
+   "page": "192",
+   "quote": "it has the problem of using one inversion parameter to explain both the reflection and propagation effects in the data"
+  },
+  {
+   "target": "Original depth JMI implementation (Sun et al., 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "On the same realistic dataset where original JMI failed from a poor initial velocity, pseudo-time JMI recovers better velocity, image and data fit (Figures 10-11).",
+   "page": "199",
+   "quote": "[...] original JMI implementation failed to give reasonable velocity updates when starting from a poor initial velocity"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Pseudo-time (vertical-time) parameterization of JMI",
+   "alternatives": "Conventional depth-domain JMI",
+   "reason": "Depth-velocity ambiguity makes reflector positions depend on velocity updates and causes non-robustness",
+   "effect_reported": "yes",
+   "page": "192"
+  },
+  {
+   "node": "N",
+   "chosen": "Scalar (diagonal) reflectivity operators",
+   "alternatives": "Complete angle-dependent spatial-convolution reflectivity operators",
+   "reason": "The full version gives a large solution space and risks over-parameterization when velocities are also updated",
+   "effect_reported": "no",
+   "page": "193"
+  },
+  {
+   "node": "N",
+   "chosen": "JMI",
+   "alternatives": "FWI, reflection FWI, combined FWI-JMI",
+   "reason": "JMI is more linear through scale separation, includes multiples, and is cost-effective without finite differences",
+   "effect_reported": "no",
+   "page": "192"
+  },
+  {
+   "node": "R",
+   "chosen": "An extra round of depth JMI after pseudo-time JMI",
+   "alternatives": "Direct conversion of pseudo-time models back to depth",
+   "reason": "Imperfect velocity and the linear conversion cause undulating deep reflectors",
+   "effect_reported": "yes",
+   "page": "198"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "a same small-scale test is carried out in the pseudo-time domain and shown in Figure 4a–d",
+   "page": "195"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "a comparison of shot profiles is shown in Figure 6a,c, which are generated using finite-difference (FD) modelling and angle-independent FWMod",
+   "page": "197"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "By starting from an extremely erroneous initial velocity model, the traditional depth JMI fails to give reasonable results",
+   "page": "198"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "[...] demonstrate the effectiveness of the proposed JMI scheme, we revisit a realistic two-dimensional (2D) deep water synthetic dataset",
+   "page": "199"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "It can be clearly observed that pseudo-time JMI can predict the data much better than depth JMI.",
+   "page": "200"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "we demonstrate the proposed method on a 2D field dataset from the Vøring basin",
+   "page": "200"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "we show the potential effectiveness of the proposed method for a 3D case based on a simple synthetic model",
+   "page": "202"
+  }
+ ]
+}

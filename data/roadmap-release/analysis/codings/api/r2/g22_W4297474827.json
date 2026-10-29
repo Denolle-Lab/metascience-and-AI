@@ -1,0 +1,428 @@
+{
+ "key": "g22_W4297474827",
+ "doi": "10.1007/s00024-022-03155-0",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Begnaud et al. 2023, Pure Appl. Geophys. 180, 1235-1252, published PDF",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Comparing location accuracy for 3D seismic velocity models tends to be problematic because each model is usually determined using different inversion parameters and ray-tracing algorithms.",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Begnaud et al. 2023, published text (XML)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem that 3D velocity models cannot be compared fairly for location accuracy because each was built with its own ray tracer and inversion parameters.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparing location accuracy for 3D seismic velocity models tends to be problematic"
+    },
+    {
+     "n": 2,
+     "node": "C",
+     "mode": "methods",
+     "action": "Take from Rowe et al. (2009) the result that predicting travel times with a ray tracer other than the model's own degrades the predictions.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "almost always results in poor travel-time prediction compared to those predictions determined using the original algorithm"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Cite the earlier common-model-format approach of Reiter et al. (2012), which forces one predictor on every model.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Fitting various 3D models into a common model format has been attempted with significant effort"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose the 3DTTLS framework: station/phase lookup surfaces populated with travel-time predictions from each model's own ray-tracing algorithm.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we describe the development of a framework to populate 3D station/phase-specific travel-time lookup surfaces (3DTTLS)"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Describe the IDC's legacy SSSC lookup format and its limits: a lat/lon grid with pole problems, corrections not equidistant from a station, and a single depth.",
+     "page": "§2 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The SSSC format does not allow for variations in corrections with depth"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Use the authors' group's earlier tools: the PCalc prediction calculator, GeoTess tessellated grids, and the Bender pseudo-bending ray tracer.",
+     "page": "§2 ¶3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "To produce full 3D travel-time lookup surfaces, we use the PCalc program"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build 3DTTLS as GeoTess corrections to ak135 with depth variation and path-dependent uncertainty, for first-P and first-S, with station-distance tolerance and user-defined variable gridding.",
+     "page": "§2 ¶4; §3 ¶1-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "3DTTLS are created for each relevant station/phase combination."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the accuracy test against full 3D ray tracing in SALSA3D: 1000 random pseudo-events between 75°S and 75°N at crustal depths, 157 IMS stations, giving 91,955 first-P and 65,037 first-S paths.",
+     "page": "§4 ¶1-2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To compare prediction differences between 3DTTLS and 3D ray tracing, 1000 pseudo"
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "methods",
+     "action": "Set the grid conditions (0.5° spacing to 20°, 1° beyond; constant 2.5 km and 5 km depth spacing; topography included) and build a seismicity-depth model from the ISC catalog to bound depths.",
+     "page": "§4 ¶3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "3DTTLS were created for several grid sizes and depth spacings to investigate possible preferred optimized grid setups."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare lookup and ray-traced travel times by distance: first-P differences are a few to tens of ms; first-S differences are larger, with high standard deviation out to about 25° and variations near the triplication distance.",
+     "page": "§4 ¶5-6; Figure 9 (p. 1243); Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Reducing depth spacing to 2.5 km shows a significant decrease in TTD values"
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "methods",
+     "action": "Because the first-S mismatch was attributed to unresolved small-scale structure, refine the surfaces with variable depth spacing (finer at shallow depths) and 0.5° lateral spacing to 25°.",
+     "page": "§4 ¶6-7; Figure 10 (p. 1244)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we decided to create another version of the 3DTTLS with a finer depth spacing and a 0.5° lateral spacing to 25° distance"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Recompare with the refined surfaces: first-P mean 2.8 ± 68.4 ms; first-S mean similar to the 2.5 km case, with a slightly better median and spread.",
+     "page": "§4 ¶7; Figure 11 (p. 1245); Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For first-S, the mean (136.2 ± 307.7 ms) is similar to the 2.5 km depth spacing example"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Relocate 2279 GT5 validation events with LocOO3D, using full 3D ray tracing and using 3DTTLS with the same 1D distance-dependent uncertainty, and compare mislocations event by event.",
+     "page": "§4 ¶8-9; Figure 13 (p. 1246)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The relocation run using the full 3D ray tracing is slightly favored (51.9%) over the run using 3DTTLS (48.1%)"
+    },
+    {
+     "n": 14,
+     "node": "N",
+     "mode": "methods",
+     "action": "Characterize storage (1.30 GB first-P, 1.09 GB first-S for 157 stations) and single-processor relocation time: about 1.42 times ak135, versus 3-4 orders of magnitude slower for full ray tracing.",
+     "page": "§5 ¶1-3; Figure 14 (p. 1247)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the use of 3DTTLS for locations results in very similar times as those for a 1D model"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeat the timing test on a larger independent set, 14,565 IDC LEB events from 2020-2021, which run about 1.25 times slower than ak135.",
+     "page": "§5 ¶4; Figure 15 (p. 1248)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also tested calculation times using 3DTTLS for a much larger set of events to confirm the above results."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Build surfaces for other models (RSTT natively; DETOX-P2 with Bender; LLNL-G3D with its own ray tracer via exported grid points) to show the framework carries over.",
+     "page": "§6 ¶3-4; Figure 16 (p. 1249)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "To demonstrate how various models can be used to generate 3DTTLS"
+    },
+    {
+     "n": 17,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose two questions any user should answer before comparing 3D models: was the model built for location accuracy, and do its developers supply a travel-time and uncertainty predictor?",
+     "page": "§6 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These questions would need to be answered prior to using any 3D model for comparing seismic location accuracy."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the framework as characterized: travel times comparable to full ray tracing depending on the grid, comparable relocations, 1D-like speed, and a preferred grid setup.",
+     "page": "§7 ¶1-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparisons of travel-time predictions using the 3DTTLS show comparable values to full 3D ray tracing, depending on the grid layout."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No natural phenomenon; a methodological inconsistency in comparing 3D models",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: lookup and ray-traced travel times are computed and differenced directly",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a fast lookup-surface method that uses each model's own ray tracer",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; alternative approaches (common predictor, SSSC, full ray tracing) are argued against or used as references",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set computationally: grid spacing, depth spacing, and synthetic event sets",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, after refining for first-S: holds across depth spacings, in GT5 relocations, and in a larger LEB timing set",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Framework kept as a characterized capability",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; not documented",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "3D travel-time lookup surfaces built in GeoTess with a model's own ray tracer reproduce full 3D ray-tracing travel times (ms-level for first-P, about 100 ms for first-S) and relocations (51.9% vs 48.1% best-located GT5 events) at computation times near those of a 1D model.",
+  "page": "§7 ¶1-2"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The claim rests on the direct comparison of lookup-surface travel times with full 3D ray tracing over about 157,000 paths, refined until the differences were small.",
+  "page": "§4 ¶5-7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "No hypothesis directed the data acquisition; the synthetic paths and grids were chosen to characterize the method (§4 ¶2-3). The travel-time and relocation comparisons could have shown large mismatches, and first-S partly did, which prompted the refinement (§4 ¶6-7). No grid choice, threshold, or acceptance criterion was fixed before the comparisons; the grid setup was chosen after them (§7 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "computational geometry",
+   "item": "triangular tessellation of the sphere with variable resolution (via GeoTess) in place of a regular lat/lon grid",
+   "kind": "method",
+   "page": "§2 ¶3"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file, discussion, or earlier version was supplied, so there is no review sequence; the acknowledgements thank anonymous reviewers, and the paper was revised (September 2022) without a record of the changes. The composition is coded none_fits because the walk enters on a methodological problem and proceeds by design, test, and refine of an engineering capability; no phenomenon is established and no rival hypotheses are posed, so capability_first does not fit strictly. Sub-claims: the relocation equivalence (capability_characterized) is shown only for first-P, and first-S relocations are not tested; the 51.9/48.1 split has no significance test; the timing claims (capability_characterized) come from one machine, and the authors note that timing tests can be inconsistent. The claim that 3DTTLS would add 'the accuracy and precision of a full 3D model' rests on cited earlier work (Begnaud et al. 2020a, 2021), not on this paper. The benefit of path-dependent uncertainty in relocation is asserted but not tested, since both relocation runs used 1D distance-dependent uncertainty. The central motivation, fair comparison of different 3D models, is argued but never exercised: no location accuracy is compared across models. Figure 16 shows only surfaces for RSTT, DETOX-P2 and LLNL-G3D, with no accuracy check, so the generalization check is weak (inference). Because of that weakness, the computed triangulation (method, replication, generalization) overstates the support (inference). The refined surfaces change lateral and depth spacing together, so their separate effects are confounded. The text gives the first-P 5 km median as '17.7 ± 27.3 s', whereas Table 1 implies ms, an apparent typo.",
+ "disagreements": [
+  {
+   "target": "Reiter et al. (2012) common-parameterization model comparison using the Podvin-Lecomte ray tracer",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper argues, citing Rowe et al. (2009) on degraded predictions from non-native ray tracers, that a common ray tracer biases location comparison; it does not test this directly.",
+   "page": "§6 ¶1",
+   "quote": "This use of a common ray-tracing algorithm, unfortunately, can create an inconsistency when comparing models for location accuracy."
+  },
+  {
+   "target": "IDC source-specific station corrections (SSSCs) on a regular lat/lon grid",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper illustrates pole distortion and non-equidistant corrections (Fig. 1 vs Fig. 3) and notes that SSSCs hold a single depth.",
+   "page": "§2 ¶2",
+   "quote": "The SSSC format does not allow for variations in corrections with depth"
+  },
+  {
+   "target": "Position that 3D models' computational requirements make their operational use prohibitive",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Timing tests on 2279 GT5 events and 14,565 LEB events show 3DTTLS relocations within 1.25-1.42 times the 1D ak135 times.",
+   "page": "§7 ¶2",
+   "quote": "For a relatively static network like the IMS, 3DTTLS could be used for standard location calculations as quickly as a 1D model"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Model-specific ray tracer populating lookup surfaces",
+   "alternatives": "Common model format with one predictor for all models (Reiter et al.)",
+   "reason": "A common predictor creates an inconsistency and possible bias from parameterization and ray tracer",
+   "effect_reported": "no",
+   "page": "§1 ¶2-3; §6 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "GeoTess triangular tessellation with depth nodes",
+   "alternatives": "Regular lat/lon SSSC grid at a single depth",
+   "reason": "Avoids pole problems, gives equidistant positions, allows depth variation",
+   "effect_reported": "no",
+   "page": "§2 ¶2-4"
+  },
+  {
+   "node": "N",
+   "chosen": "First-P and first-S mantle phases",
+   "alternatives": "Crustal phases Pg and Sg/Lg",
+   "reason": "Crustal phases require additional theory and study for accurate ray paths and travel times",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Pseudo-events between 75°S and 75°N at crustal depths",
+   "alternatives": "Events including polar latitudes; deeper events",
+   "reason": "Avoid concentrating events at the poles; crustal events are more relevant for explosion monitoring",
+   "effect_reported": "no",
+   "page": "§4 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "Variable depth spacing (finer shallow), bounded by the seismicity-depth model",
+   "alternatives": "Constant 5 km and 2.5 km depth spacing",
+   "reason": "Most efficient for file size and resolution",
+   "effect_reported": "yes",
+   "page": "§4 ¶5-7; §7 ¶1; Table 1"
+  },
+  {
+   "node": "R",
+   "chosen": "Finer depth spacing only at shallow depths",
+   "alternatives": "[...] depth spacing at all depths",
+   "reason": "Not efficient, since vertical heterogeneity is greater at lithospheric depths than deeper",
+   "effect_reported": "no",
+   "page": "§4 ¶7"
+  },
+  {
+   "node": "R",
+   "chosen": "0.5° lateral spacing to 25°",
+   "alternatives": "0.5° lateral spacing to 20°",
+   "reason": "High first-S standard deviation and variations out to about 25°",
+   "effect_reported": "yes",
+   "page": "§4 ¶7"
+  },
+  {
+   "node": "V",
+   "chosen": "1D distance-dependent uncertainty for both relocation runs",
+   "alternatives": "Path-dependent uncertainty stored in the 3DTTLS",
+   "reason": "Path-dependent uncertainty from the 3D covariance matrix is too costly in full ray tracing, so both runs use the same uncertainty for consistency",
+   "effect_reported": "no",
+   "page": "§4 ¶8"
+  },
+  {
+   "node": "N",
+   "chosen": "A unique grid per surface, read once at start",
+   "alternatives": "A common shared grid; reading surfaces as needed",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§5 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "PCalc Bender ray tracer for DETOX-P2",
+   "alternatives": "The model's own ray tracer",
+   "reason": "The model did not come with a stand-alone ray tracer",
+   "effect_reported": "no",
+   "page": "§6 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Figure 9 and Table 1 show a comparison of travel-time difference (TTD) with epicentral distance between the 3DTTLS and full 3D ray tracing",
+   "page": "§4 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Two constant depth spacings were used: 2.5 km and 5 km.",
+   "page": "§4 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We created variable depth spacing surfaces (Fig. 10), with finer spacing at shallower depths and wider spacing at deeper depths",
+   "page": "§4 ¶7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These validation events have epicenters known to within 5 km or better",
+   "page": "§4 ¶8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The relocation run using the full 3D ray tracing is slightly favored (51.9%) over the run using 3DTTLS (48.1%)",
+   "page": "§4 ¶9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We also tested calculation times using 3DTTLS for a much larger set of events to confirm the above results.",
+   "page": "§5 ¶4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "To demonstrate how various models can be used to generate 3DTTLS",
+   "page": "§6 ¶4"
+  }
+ ]
+}

@@ -1,0 +1,318 @@
+{
+ "key": "g22_W4307462114",
+ "doi": "10.1111/1365-2478.13286",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Shan et al. 2023, Geophysical Prospecting 71:102-113, published paper (PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, the separated pure P-wave of this approach is coupled with undesired S-wave in anisotropic media called S-wave artefacts.",
+  "page": "102"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Shan et al. 2023, published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem from the literature: the classic acoustic approximation for anisotropic media leaves S-wave artefacts and is unstable when delta > epsilon, so a pure P-wave equation for HTI media is needed.",
+     "page": "103",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the effect of S-wave in the previous pseudo-acoustic expression cannot be entirely eliminated by setting S-wave vertical phase velocity to zero"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt two published tools: the new acoustic approximation of Xu, Stovas and co-authors (2020) for VTI media, and the auxiliary differential operator of Xu and Zhou (2014, 2015).",
+     "page": "103",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "following the method of the new acoustic approximation"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Derive the HTI Christoffel equation and phase velocities, then set the SV-wave phase velocity to zero to express the axial S-wave velocity as a function of direction, giving a reformulated pure P-wave phase velocity (Eq. 8).",
+     "page": "104",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the axial S-wave phase velocity can be expressed as a function related to propagation directions"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the approximate phase velocity against the exact phase velocities at three azimuths for one HTI model (Figure 1), and compute the relative error versus dip angle (Figure 2).",
+     "page": "104-105",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the calculation results have high accuracy with relative errors of less than 0.13%"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Convert the phase velocity to slowness form, introduce the vertical S-wave expression as an auxiliary operator S, and derive a second-order time-domain pure P-wave equation (Eq. 14), with S computed from the wavefield gradient.",
+     "page": "106-107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "set the expression of vertical S-wave velocity as an auxiliary differential operator"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "theory",
+     "action": "Build a 10th-order space, 2nd-order time finite-difference scheme, derive its stability condition by plane-wave analysis, and add split PML boundary conditions.",
+     "page": "109-110",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Equation (20) shows the stability condition of the derived finite-difference scheme."
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design three kinds of density-normalized synthetic test models (homogeneous, two-layered, BP 2007 benchmark section) for finite-difference simulation.",
+     "page": "111",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we design three kinds of models for the numerical simulation"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Simulate two homogeneous models (epsilon > delta and delta > epsilon) in 2D and 3D and compare the snapshots with the coupled pseudo-acoustic equation of Zhou et al. (2006) (Figures 3-5).",
+     "page": "111",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the equation proposed in this paper can stably simulate the propagation of pure P-wave, whereas another is unstable in the same case"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Simulate a two-layered model with strongly varying anisotropy to test stability at the interface, and extract synthetic records at three azimuths (Figures 6-8).",
+     "page": "111",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "To test the stability of wave propagation at the interface, a two-layered model is designed as the second example."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply the equation to part of the BP 2007 anisotropic benchmark in 2D: wavefield snapshot, synthetic record and reverse time migration image (Figures 9-12).",
+     "page": "111",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the pure P-waveform via the derived equation can stably simulate the wavefield in the complex anisotropic model"
+    },
+    {
+     "n": 11,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the second-order pure P-wave equation is free of S-wave artefacts and simulates HTI P-waves stably and accurately, and assert without testing that it extends to other anisotropic media.",
+     "page": "111-112",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the proposed P-wave equation can stably simulate the Pwaveform in HTI media with high accuracy"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "S-wave artefacts and instability in pseudo-acoustic anisotropic modelling (known from literature)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; studied only through synthetic simulation",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Derive an artefact-free, stable, second-order pure P-wave equation for HTI media",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Coupled pseudo-acoustic equation (Zhou et al. 2006); cubic new acoustic approximation (Xu et al. 2020)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Coupled equation predicts artefacts and instability when delta > epsilon; new equation predicts neither",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set: synthetic models with chosen parameters",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, qualitatively, across homogeneous, layered and BP 2007 models",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method characterized as stable and accurate",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The derived second-order pure P-wave equation for HTI media has no S-wave artefacts and stably simulates P-waves with high accuracy.",
+  "page": "112"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Introducing the direction-dependent vertical S-wave velocity as an auxiliary operator S reduces the cubic pure P-wave relation to a second-order equation (Eq. 14) without redundant solutions.",
+  "page": "106-107"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No data were acquired. The intent to remove artefacts and instability directed the choice of test models (epsilon > delta and delta > epsilon, p. 111). The phase-velocity approximation faced a quantitative test against the exact equation (relative error < 0.13%, p. 105). The wavefield tests are visual judgements without a stated failure criterion. Nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "computational electromagnetics",
+   "item": "Perfectly matched layer absorbing boundary (Berenger 1994)",
+   "kind": "method",
+   "page": "110"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "High-order finite-difference scheme and plane-wave (von Neumann type) stability analysis",
+   "kind": "method",
+   "page": "109-110"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we propose a pure P-wave equation for HTI media",
+   "page": "103"
+  },
+  {
+   "quote": "Finally, an improved pure P-wave equation with a second-order differential form is deduced.",
+   "page": "103"
+  }
+ ],
+ "limits": "PDF only; no review file, so no review sequence. No code or data released ('available from the corresponding author upon reasonable request', p. 112). The only quantitative accuracy check concerns the phase-velocity formula (Eq. 8). The wavefield simulations of Eq. 14 are judged visually, with no error measure against elastic or exact modelling. The RTM image is not compared with a reference image. Extension to TTI and orthorhombic media is asserted but not tested. Computational cost is mentioned but not measured. Internal inconsistencies (inference: labelling errors): the text calls model 2 'epsilon > delta' although it sets epsilon = 0.1 and delta = 0.2; Figure 3 cites Equation (11) for the wave equation; the error check names 'exact Equation (7)' where Eq. 6 is meant. Composition none_fits: this is a method-derivation-then-verification walk. The question precedes the capability and no phenomenon is established, so capability_first does not fit, and there is no crucial test among rivals. Sub-claims: phase-velocity accuracy, relative error < 0.13% for one parameter set (estimate_with_resolution, single model); absence of artefacts and stability (capability_characterized, visual); generality to other anisotropic media (none).",
+ "disagreements": [
+  {
+   "target": "Classic acoustic approximation (Alkhalifah 1998, 2000)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites the literature showing residual S-wave artefacts and instability when delta > epsilon; its own Figure 3 shows the artefacts in the coupled equation.",
+   "page": "103",
+   "quote": "The two sets of conjugate solutions for acoustic approximation wave equation result in the instability of numerical simulation in the condition of 𝛿>𝜀"
+  },
+  {
+   "target": "Phase velocity approximation methods (Fowler 2003; Pestana et al. 2011; Schleicher & Costa 2016 and others)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argument only: the square-root approximation limits accuracy; not tested here.",
+   "page": "103",
+   "quote": "whereas the corresponding assumption limits the simulation accuracy of the simplified equation"
+  },
+  {
+   "target": "New acoustic approximation ( [...] , Stovas & Mikada 2020; Xu, Stovas, Alkhalifah et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Points out the cubic form with redundant roots and offers a second-order reformulation; no direct numerical comparison.",
+   "page": "103",
+   "quote": "However, the form of this new acoustic approximation is quite complicated."
+  },
+  {
+   "target": "Coupled pseudo-acoustic equation (Zhou et al. 2006)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Side-by-side snapshots in homogeneous models show artefacts in model 1 and instability in model 2 for the coupled equation, but not for the new equation.",
+   "page": "111",
+   "quote": "whereas another is unstable in the same case"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Reconstruct Eq. 6 and substitute Eq. 7 to get a simplified pure P-wave phase velocity (Eq. 8)",
+   "alternatives": "Direct substitution of the axial S-wave velocity into the P-wave phase velocity formula, following Xu et al. (2020)",
+   "reason": "The exact solution is cubic with two redundant solutions, and the complicated expression makes numerical simulation harder",
+   "effect_reported": "yes",
+   "page": "104"
+  },
+  {
+   "node": "N",
+   "chosen": "Auxiliary differential operator S (Xu & Zhou 2014, 2015)",
+   "alternatives": "Directly solving the cubic equation for p_z",
+   "reason": "To avoid directly solving the cubic equation",
+   "effect_reported": "no",
+   "page": "106"
+  },
+  {
+   "node": "N",
+   "chosen": "New acoustic approximation combined with an auxiliary operator",
+   "alternatives": "Phase velocity (square-root) approximation methods; auxiliary operator applied to the classic acoustic approximation",
+   "reason": "The square-root approximation limits accuracy; the classic approximation leaves S-wave artefacts",
+   "effect_reported": "no",
+   "page": "103"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Figure 1 plots the curves of pure P-wave phase velocity in Equation (8) and exact phase velocities in Equation (6) at different azimuth angles.",
+   "page": "104"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the calculation results have high accuracy with relative errors of less than 0.13%",
+   "page": "105"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the equation proposed in this paper can stably simulate the propagation of pure P-wave, whereas another is unstable in the same case",
+   "page": "111"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the two homogeneous models are designed to testify the new equation’s stability in the condition of different comparison between the 𝜀 and 𝛿",
+   "page": "111"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To test the stability of wave propagation at the interface, a two-layered model is designed as the second example.",
+   "page": "111"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "the pure P-waveform via the derived equation can stably simulate the wavefield in the complex anisotropic model",
+   "page": "111"
+  }
+ ]
+}

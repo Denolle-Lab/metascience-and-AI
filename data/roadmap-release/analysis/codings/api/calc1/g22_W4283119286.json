@@ -1,0 +1,400 @@
+{
+ "key": "g22_W4283119286",
+ "doi": "10.1029/2022gl099022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Wang et al. 2022, Geophysical Research Letters 49, e2022GL099022 (published paper, PDF, 9 pages)"
+ ],
+ "pages_convention": "printed journal pages (printed 'n of 9', identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "however, spatially and temporally detailed information on the changes in ice phenology on a global scale does not exist",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Wang et al. 2022, GRL, published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Named the gap: field records are too sparse, and no spatially and temporally detailed global quantification of lake ice phenology change exists. The authors set out to build a lake-level database for 1900-2099.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "spatially and temporally detailed information on the changes in ice phenology on a global scale does not exist"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built a dual logistic regression model (DLRM) that fits freeze-up and break-up dates to daily 500-m MODIS MOD10A1 snow-cover time series, weighting each image by its cloud-free fraction.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We developed a dual logistic regression model (DLRM) to determine the ice phenologies for each lake"
+    },
+    {
+     "n": 3,
+     "node": "V",
+     "mode": "methods",
+     "action": "Validated the DLRM phenology dates against in situ GLRIPD field records and against 10-m Sentinel-2 MSI imagery, with Montreal Lake as the worked example (Figure 1, Figure S1).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Validation showed that the MODIS detected lake phenological indicators agreed well with both field records"
+    },
+    {
+     "n": 4,
+     "node": "P",
+     "mode": "methods",
+     "action": "Attributed the larger freeze-up discrepancies between in situ and satellite values to how lakes are defined and to inaccurate geolocation of the in situ data, not to the DLRM (Text S1).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "could have resulted from their inconsistent definition of the lakes or inaccurate geographical information of in situ data"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built a temperature-threshold simulation model for each lake, with a required temperature and a preceding-period length as parameters. The model assumes lake-specific features stay unchanged, so timing depends only on preceding temperatures.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we established simulation models for individual lakes"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrated each lake's model parameters on the 20-year satellite-detected phenologies and ERA5-Land daily mean air temperature.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allow us to calibrate the model parameters for tens of thousands of lakes worldwide"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked that the lake-specific models reproduce observed freeze-up and break-up dates (in situ and satellite), and compared their performance with the generic Weyhenmeyer et al. (2011) model, which they outperformed (Figure S6).",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The simulations using our lake-specific models showed better agreement"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "estimation",
+     "action": "Designed the lake sample from HydroLAKES with these criteria: area >1 km2, north of 23.5°N, a GSWO permanent-water mask, >3 valid pixels, at least ten ice years, and a standard deviation of preceding temperature <2°C. This left 30,063 lakes.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These criteria resulted in a total of 30,063 lakes across the Northern Hemisphere"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Applied the DLRM to all 30,063 lakes to derive yearly freeze-up, break-up and ice duration for 2001-2020 (Figure 2).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We applied the dual logistic regression model to each of the 30,063 selected lakes"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran the lake-specific models on bias-corrected ISIMIP2b temperatures from four GCMs. Runs covered the past (1900-1999) and the future (2021-2099) under RCP 2.6, 6.0 and 8.5, and the four-model mean was stored in the GLIP database.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted similar future simulations under three different anthropogenic greenhouse gas emission scenarios"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "estimation",
+     "action": "Set the analysis: per-lake linear trends with t-tests, trends of annual global medians, and anomalies of 1900-1919 and 2080-2099 relative to 2001-2020. Lakes were defined as ice-free when more than 15 of 20 years had no ice.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the trends were represented as the slopes of the linear regressions for the lake ice phenologies"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated present-period phenology and trends: median freeze-up DOY 294.5, break-up DOY 146.5, and ice duration 217.5 days. Significantly shortened duration in 9.5% of lakes outnumbered significantly prolonged duration in 1.2%, with strong spatial heterogeneity.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The number of lakes with a significantly shortened ice duration (n = 2,853, or 9.5%) was 7.7-fold greater"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared the spatial pattern of 2001-2020 ice trends with air temperature trends, for example October-November cooling in northeastern North America and break-up warming in Europe (Figure S7).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The distributions of lake ice trends between 2001 and 2020 demonstrated spatial agreements with the patterns in air temperature"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tested the temperature-only premise by correlating rates of change in freeze-up and break-up with rates of change in preceding 15-day temperature (P < 0.01, Figure S8).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the changing rates of freeze-up and break-up were significantly correlated with the changing rates of the temperatures in the preceding 15-day period"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated 20th-century global trends from the simulations: +2.2 (freeze-up), -1.9 (break-up) and -4.0 (duration) days per 100 years. These differed significantly from the present period (matched-pair t-test), and 6.0% of lakes showed increased duration.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "lake ice experienced mild but statistically significant warming trends for all three lake ice phenologies"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Explained the local 20th-century ice increases (Rocky Mountains, Tibetan Plateau, Greenland) by regional cooling, citing the authors' own earlier mapping study (X. Wang et al., 2021).",
+     "page": "7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "such sporadic lake ice increases were due to the regional decreases in air temperatures in these regions"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated RCP 8.5 changes: rates more than an order of magnitude above 20th-century rates, a 49.9-day loss in global median duration by 2080-2099, and permanent ice loss in 160 lakes (0.5%).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we expect a global median loss of 49.9 days by the end of the 21st century"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the fraction of lakes losing ice permanently with the independent projection of Sharma et al. (2019), 0.4%, and found it similar.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this fraction is similar to the projection by Sharma et al. (2019)"
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated RCP 6.0 changes (duration anomaly -33.1 days) and RCP 2.6 changes (-17.9 days, rates similar to the 20th century, 19 versus 49 newly ice-free lakes). Change scales with emission severity.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the global median ice duration anomaly would be −17.9 days by the end of the 21st century"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Retained the claim of continuous global lake ice loss and of mitigation through emission control. The GLIP database is offered as baseline information for impact studies.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our GLIP database provides critical baseline information to assess these consequences of historical and future lake ice dynamics"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Lake ice loss under warming is known from sparse long records; the global, lake-level pattern is not.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "The present period (2001-2020) is observed by satellite through the DLRM; the past and future are not observable and are simulated.",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify trends and anomalies in freeze-up, break-up and duration for about 30,000 lakes over 1900-2099.",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations are stated; only a rival model (the generic Weyhenmeyer model) is compared.",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions are found, not set: climate forcing over archived satellite years and GCM scenarios.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats across 20 years and about 30,000 lakes, which allows lake-specific calibration.",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Validated against in situ records, Sentinel-2, a generic-model baseline and temperature-trend correlation; spread across four GCMs is shown.",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: continuous loss of lake ice, with magnitudes per period and per emission scenario.",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Global (Northern Hemisphere) lake ice shows continuous loss from 1900 to 2099: mild but significant 20th-century warming trends, continued warming in about 60% of lakes in 2001-2020, and a projected 49.9-day loss in median ice duration by 2080-2099 under RCP 8.5, much reduced under lower-emission scenarios.",
+  "page": "1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Calibrating a temperature-threshold model for each lake on 20 years of satellite-derived phenology is what lets the record be extended to 1900-2099; without it there is no two-century claim.",
+  "page": "2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: data are archival (MODIS, ERA5-Land, ISIMIP2b) and were acquired without a guiding hypothesis. Claim: the DLRM and the lake models were validated against in situ records, Sentinel-2 and a generic baseline model, and trend significance was tested with t-tests; but the headline past and future estimates are model outputs with no independent test of the 1900-1999 reconstruction reported in the main text. Registration: none reported; the selection thresholds (SD <2°C, ten ice years, >15 of 20 ice-free years) are stated without saying they were fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "logistic regression (dual logistic model fitted to snow-cover time series)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "statistics",
+   "item": "Student's t-test and matched-pair t-test for trend significance",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "computer science / cloud computing",
+   "item": "Google Earth Engine processing platform and data catalog",
+   "kind": "instrument",
+   "page": "8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We provide the first spatially and temporally detailed quantification of the changes in global lake ice across two centuries (1900–2099).",
+   "page": "1"
+  },
+  {
+   "quote": "We provide the first characterization of the changes in global lake ice phenology across two centuries (1900–2099) at lake level",
+   "page": "1"
+  },
+  {
+   "quote": "our analysis contributes the first comprehensive insight into how future global lake ice phenology changes might be mitigated through greenhouse gas emission control",
+   "page": "8"
+  }
+ ],
+ "limits": "The supporting information (Text S1, Figures S1-S8, Table S1) was not supplied, so validation statistics, calibration details and the model comparison are known only from main-text summaries. No review file was supplied; the acknowledgments thank two anonymous reviewers, so no review sequence could be coded.\n\nThe 1900-1999 simulations rest on the stated assumption that lake-specific features (depth, sediment heat flux, inflow) stay unchanged. The main text reports no independent check of the simulated past against century-long in situ records; inference: such a check may sit in Figure S6 but cannot be confirmed. Discrepancies against in situ freeze-up data are attributed to the reference data rather than tested.\n\nThe lake selection (preceding-temperature SD <2°C, ten or more ice years) favours lakes that fit the temperature-only model. Inference: this may bias the sample toward lakes the model fits well. No alternative thresholds are reported. The 'global' results cover only Northern Hemisphere lakes (67% of frozen-lake area). GCM uncertainty is shown only as a standard-deviation band across four models.\n\nSub-claims:\n- Present-period trends are estimate_with_resolution, observed from MODIS.\n- Attribution of spatial trend patterns to air temperature and to the North Atlantic Current is best_explanation, with no rivals stated.\n- Mitigation through emission control is a scenario-conditional estimate_with_resolution.\n- Agreement with the Sharma et al. (2019) ice-free fraction is a consistency check, not a test.",
+ "disagreements": [
+  {
+   "target": "Weyhenmeyer et al. (2011) generic lake ice phenology model",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The lake-specific models agreed better with observations than the generic latitude and temperature model calibrated on Swedish lakes (Figures S6g-S6i).",
+   "page": "3",
+   "quote": "underscoring the importance of incorporating lake-specific features in lake ice simulation models"
+  },
+  {
+   "target": "In situ freeze-up records in the Global Lake and River Ice Phenology Database (B. Benson et al., 2020)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Larger satellite-versus-in-situ freeze-up discrepancies are attributed to inconsistent lake definitions and inaccurate geolocation of the in situ data (Text S1), not to the DLRM.",
+   "page": "2",
+   "quote": "inaccurate geographical information of in situ data, rather than uncertainties in our dual logistic [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Lake-specific temperature-threshold models calibrated per lake",
+   "alternatives": "Generic lake ice phenology model of Weyhenmeyer et al. (2011), with air temperature and latitude as inputs",
+   "reason": "Lake heat storage and heat transport are lake specific, so a generic model is limited; the lake-specific models showed better agreement",
+   "effect_reported": "yes",
+   "page": "2-3"
+  },
+  {
+   "node": "S",
+   "chosen": "Mean of simulations driven by four ISIMIP2b GCMs (HadGEM2-ES, GFDL-ESM2M, IPSL-CM5A-LR, MIROC5)",
+   "alternatives": "Individual GCM-driven simulations",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "4-5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "agreed well with both field records from the Global Lake and River Ice Phenology Database (GLRIPD, [...] )",
+   "page": "2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "MSI images show that the freeze-up and break-up dates were around 30 October and 15 May, which agreed well",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "as gauged by both in situ measurements and satellite observations",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] the performance of our model with the generic lake ice phenology model developed by Weyhenmeyer et al. (2011).",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the changing rates of freeze-up and break-up were significantly correlated with the changing rates of the temperatures in the preceding 15-day period",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "represent standard deviations of the simulations from temperatures projected by four climate models",
+   "page": "5"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "this fraction is similar to the projection by Sharma et al. (2019)",
+   "page": "7"
+  }
+ ]
+}

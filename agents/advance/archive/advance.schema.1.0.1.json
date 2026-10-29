@@ -1,0 +1,687 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Model advance coding of one paper, rubric v1.0.1 (agents/advance/RUBRIC.md). Fields are flat and in the order the rubric judges them (section 3). The blocks compared with human raters (ratings.schema.json v1.0.0: advance, novelty) are assembled after validation into human_blocks by tools/code_papers.py (RUBRIC.md section 12). Consequences and follow-up are not coded here: they are assessed in an unblinded stage 2.",
+ "type": "object",
+ "properties": {
+  "key": {
+   "type": "string"
+  },
+  "rubric_version": {
+   "type": "string",
+   "enum": [
+    "1.0.1"
+   ]
+  },
+  "coder": {
+   "type": "string"
+  },
+  "frame": {
+   "type": "string",
+   "enum": [
+    "contemporary knowledge before submission, approximated as 2021"
+   ]
+  },
+  "eligible_in_my_view": {
+   "type": "string",
+   "enum": [
+    "yes",
+    "no",
+    "unsure"
+   ],
+   "description": "Second check of the eligibility screen: a primary research article whose object is Earth science"
+  },
+  "familiarity": {
+   "type": "string",
+   "enum": [
+    "outside_my_field",
+    "adjacent",
+    "my_field"
+   ]
+  },
+  "headline_claim": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "locator": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "text",
+    "locator"
+   ],
+   "additionalProperties": false
+  },
+  "starting_state_as_stated": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "prior_results": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "result": {
+        "type": "string"
+       },
+       "locator": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "result",
+       "locator"
+      ],
+      "additionalProperties": false
+     }
+    },
+    "gap_statement": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "text",
+    "prior_results",
+    "gap_statement"
+   ],
+   "additionalProperties": false
+  },
+  "starting_state_coder_2021": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "agreement": {
+     "type": "string",
+     "enum": [
+      "agrees",
+      "partly",
+      "disagrees",
+      "cannot_judge"
+     ]
+    }
+   },
+   "required": [
+    "text",
+    "agreement"
+   ],
+   "additionalProperties": false
+  },
+  "gap_claim_supported": {
+   "type": "string",
+   "enum": [
+    "yes",
+    "no",
+    "unclear"
+   ]
+  },
+  "precedent_search": {
+   "type": "object",
+   "properties": {
+    "frame": {
+     "type": "string",
+     "enum": [
+      "the paper's own text and reference list, plus the coder's knowledge of pre-2021 work for judgment_with_coder_knowledge; no external search"
+     ]
+    },
+    "atomic_claim": {
+     "type": "string"
+    },
+    "claim_kind": {
+     "type": "string",
+     "enum": [
+      "observation",
+      "method",
+      "concept",
+      "explanation",
+      "connection",
+      "question"
+     ]
+    },
+    "closest_precedent": {
+     "type": "string"
+    },
+    "new_component": {
+     "type": "string"
+    },
+    "judgment_reference_list": {
+     "type": "string",
+     "enum": [
+      "exact_precedent",
+      "close_precedent",
+      "component_precedent",
+      "apparently_new_component",
+      "unresolved"
+     ]
+    },
+    "judgment_with_coder_knowledge": {
+     "type": "string",
+     "enum": [
+      "exact_precedent",
+      "close_precedent",
+      "component_precedent",
+      "apparently_new_component",
+      "unresolved"
+     ]
+    },
+    "uncited_precedent_known": {
+     "type": "boolean"
+    },
+    "limits": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "frame",
+    "atomic_claim",
+    "claim_kind",
+    "closest_precedent",
+    "new_component",
+    "judgment_reference_list",
+    "judgment_with_coder_knowledge",
+    "uncited_precedent_known",
+    "limits"
+   ],
+   "additionalProperties": false
+  },
+  "candidate_gains": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^G[1-5]$"
+     },
+     "origin": {
+      "type": "string",
+      "enum": [
+       "headline_component",
+       "secondary",
+       "out_of_taxonomy"
+      ]
+     },
+     "gain": {
+      "type": "string"
+     },
+     "gain_type": {
+      "type": "string",
+      "enum": [
+       "knowledge",
+       "understanding",
+       "capability",
+       "none_fits"
+      ]
+     },
+     "projection_or_scenario": {
+      "type": "boolean"
+     },
+     "replication_or_correction": {
+      "type": "string",
+      "enum": [
+       "none",
+       "replication",
+       "correction",
+       "negative_result"
+      ]
+     },
+     "magnitude": {
+      "type": "string"
+     },
+     "magnitude_form": {
+      "type": "string",
+      "enum": [
+       "quantified_change",
+       "quantified_result_only",
+       "not_quantifiable_qualitative_discrimination",
+       "not_quantifiable_first_observation",
+       "not_quantifiable_feasibility",
+       "not_quantifiable_descriptive"
+      ]
+     },
+     "rival_test": {
+      "type": "string",
+      "enum": [
+       "formal",
+       "qualitative_elimination",
+       "consilience",
+       "feasibility",
+       "none",
+       "not_applicable"
+      ]
+     },
+     "evidence": {
+      "type": "string"
+     },
+     "evidence_access": {
+      "type": "string",
+      "enum": [
+       "text_states_result",
+       "text_with_pointer",
+       "caption_only",
+       "figure_or_supplement_only"
+      ]
+     },
+     "principal_threat": {
+      "type": "string"
+     },
+     "checks": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "check": {
+         "type": "string"
+        },
+        "kind": {
+         "type": "string",
+         "enum": [
+          "alternative_explanation",
+          "artifact",
+          "independent_data",
+          "synthetic_or_benchmark",
+          "sensitivity",
+          "replication",
+          "reference_material_or_standard",
+          "repeat_measurement",
+          "outlier_or_inheritance_test",
+          "independent_proxy_or_method",
+          "instrumental_record_comparison",
+          "resolution_or_convergence",
+          "internal_consistency",
+          "retrospective_or_pseudo_prospective_test"
+         ]
+        },
+        "addresses_principal_threat": {
+         "type": "boolean"
+        },
+        "result": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        },
+        "locator": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "check",
+        "kind",
+        "addresses_principal_threat",
+        "result",
+        "quote",
+        "locator"
+       ],
+       "additionalProperties": false
+      }
+     },
+     "uncertainty": {
+      "type": "string"
+     },
+     "scope": {
+      "type": "string"
+     },
+     "what_would_change": {
+      "type": "string"
+     },
+     "meaningfulness_argument": {
+      "type": "string"
+     },
+     "criteria": {
+      "type": "object",
+      "properties": {
+       "M1": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       },
+       "M2": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       },
+       "W1": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       },
+       "W2": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       },
+       "W3": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       },
+       "W4": {
+        "type": "string",
+        "enum": [
+         "met",
+         "not_met",
+         "not_applicable"
+        ]
+       }
+      },
+      "required": [
+       "M1",
+       "M2",
+       "W1",
+       "W2",
+       "W3",
+       "W4"
+      ],
+      "additionalProperties": false
+     }
+    },
+    "required": [
+     "id",
+     "origin",
+     "gain",
+     "gain_type",
+     "projection_or_scenario",
+     "replication_or_correction",
+     "magnitude",
+     "magnitude_form",
+     "rival_test",
+     "evidence",
+     "evidence_access",
+     "principal_threat",
+     "checks",
+     "uncertainty",
+     "scope",
+     "what_would_change",
+     "meaningfulness_argument",
+     "criteria"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1,
+   "maxItems": 5
+  },
+  "dependencies": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "kind": {
+      "type": "string",
+      "enum": [
+       "dataset",
+       "instrument",
+       "method",
+       "code",
+       "prior_result",
+       "standard"
+      ]
+     },
+     "name": {
+      "type": "string"
+     },
+     "locator": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "kind",
+     "name",
+     "locator"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "roles": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "enum": [
+     "corrective",
+     "enabling",
+     "integrative",
+     "cumulative",
+     "transformative"
+    ]
+   },
+   "minItems": 1
+  },
+  "roles_reasons": {
+   "type": "string"
+  },
+  "corrected_prior_claim": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "locator": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "text",
+    "locator"
+   ],
+   "additionalProperties": false
+  },
+  "overreach": {
+   "type": "object",
+   "properties": {
+    "claimed_scope": {
+     "type": "string"
+    },
+    "locator": {
+     "type": "string"
+    },
+    "exceeds_warrant": {
+     "type": "string",
+     "enum": [
+      "no",
+      "partly",
+      "yes"
+     ]
+    }
+   },
+   "required": [
+    "claimed_scope",
+    "locator",
+    "exceeds_warrant"
+   ],
+   "additionalProperties": false
+  },
+  "unassessable_condition": {
+   "type": "string",
+   "enum": [
+    "none",
+    "U1",
+    "U2",
+    "U3",
+    "U4",
+    "U5"
+   ]
+  },
+  "verdict": {
+   "type": "string",
+   "enum": [
+    "achieved",
+    "not_demonstrated",
+    "unassessable"
+   ]
+  },
+  "verdict_basis": {
+   "type": "string",
+   "pattern": "^(G[1-5]|none)$"
+  },
+  "verdict_reasons": {
+   "type": "string"
+  },
+  "verdict_confidence": {
+   "type": "string",
+   "enum": [
+    "low",
+    "medium",
+    "high"
+   ]
+  },
+  "claim_status": {
+   "type": "string",
+   "enum": [
+    "conjectural",
+    "provisional",
+    "supported_within_scope",
+    "contradicted",
+    "unresolved"
+   ]
+  },
+  "advance_score": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "minimum": 1,
+   "maximum": 5
+  },
+  "advance_confidence": {
+   "type": "string",
+   "enum": [
+    "low",
+    "medium",
+    "high"
+   ]
+  },
+  "novelty_score": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 5
+  },
+  "novelty_confidence": {
+   "type": "string",
+   "enum": [
+    "low",
+    "medium",
+    "high"
+   ]
+  },
+  "impact_forecast": {
+   "type": "string",
+   "enum": [
+    "below_median",
+    "around_median",
+    "top_quartile",
+    "top_decile",
+    "no_forecast"
+   ]
+  },
+  "impact_forecast_reasons": {
+   "type": "string"
+  },
+  "post_2022_knowledge_flag": {
+   "type": "string"
+  },
+  "blind_leak_noticed": {
+   "type": "string"
+  },
+  "quotes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "supports": {
+      "type": "string",
+      "enum": [
+       "headline_claim",
+       "starting_state",
+       "gain",
+       "magnitude",
+       "evidence",
+       "warrant",
+       "roles",
+       "dependencies",
+       "overreach",
+       "verdict",
+       "novelty",
+       "impact_forecast"
+      ]
+     },
+     "gain_id": {
+      "type": "string",
+      "pattern": "^(G[1-5])?$"
+     },
+     "quote": {
+      "type": "string"
+     },
+     "locator": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "supports",
+     "gain_id",
+     "quote",
+     "locator"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 5
+  },
+  "notes": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "key",
+  "rubric_version",
+  "coder",
+  "frame",
+  "eligible_in_my_view",
+  "familiarity",
+  "headline_claim",
+  "starting_state_as_stated",
+  "starting_state_coder_2021",
+  "gap_claim_supported",
+  "precedent_search",
+  "candidate_gains",
+  "dependencies",
+  "roles",
+  "roles_reasons",
+  "corrected_prior_claim",
+  "overreach",
+  "unassessable_condition",
+  "verdict",
+  "verdict_basis",
+  "verdict_reasons",
+  "verdict_confidence",
+  "claim_status",
+  "advance_score",
+  "advance_confidence",
+  "novelty_score",
+  "novelty_confidence",
+  "impact_forecast",
+  "impact_forecast_reasons",
+  "post_2022_knowledge_flag",
+  "blind_leak_noticed",
+  "quotes"
+ ],
+ "additionalProperties": false
+}

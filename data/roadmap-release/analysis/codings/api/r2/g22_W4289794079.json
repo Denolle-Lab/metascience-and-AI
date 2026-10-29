@@ -1,0 +1,390 @@
+{
+ "key": "g22_W4289794079",
+ "doi": "10.1029/2022gc010393",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Xu et al. 2022, Geochemistry, Geophysics, Geosystems 23, e2022GC010393, published paper (PDF, 16 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 16; identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it remains unclear whether the elastic properties of Cr-pyrope at high P-T can be calculated from the end-member elastic properties",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Xu et al. 2022, published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the open question: no high-P-T elasticity data exist for Cr-pyrope, and it is unclear whether linear mixing of end-member garnet properties reproduces it.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it remains unclear whether the elastic properties of Cr-pyrope at high P-T can be calculated from the end-member elastic properties"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Take average Archon, Proton and Tecton SCLM bulk compositions from Griffin et al. (2009) and geotherms from Deen et al. (2006).",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The bulk compositions for the Archon, Proton and Tecton were from Griffin et al. (2009)"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Compute mineral proportions and Cr-pyrope compositions along SCLM geotherms with Perple_X. Use the resulting Uvr+Knr range (4-14 mol.%) to choose a representative sample with 12.2 mol.% Uvr.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is necessary to know the major element compositional characteristics of the SCLM Cr-pyrope, which helps to choose a proper Cr-pyrope sample to measure"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Determine the composition of a natural Cr-pyrope from Zhenyuan lamproite (Prp71.0Alm12.6Sps0.7Grs3.5Uvr12.2) by electron microprobe.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Its chemical composition was determined by electron microprobe analysis using a JXA 8230"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "hypothesis",
+     "action": "Set laboratory conditions: a diamond anvil cell with Ne medium and ruby gauge up to 11.0 GPa, and an externally heated DAC from room T to 800 K.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The high-T BLS from room T to 800 K (100 K temperature interval) was performed with an externally heated DAC (EHDAC)"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Collect synchrotron single-crystal XRD for orientation and density, and Brillouin spectra in 10 directions at each P-T point.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BLS spectra were collected at 10 different crystallographic directions from 0 to 90° of the azimuthal angle at every 10°"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infer the elastic constants by fitting velocities to the Christoffel equation, then derive VRH aggregate moduli and velocities. Fit third-order finite strain and linear T models for the P and T derivatives, and a BM3 thermal-P EoS to the densities.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were obtained by fitting the corresponding velocity-orientation data to Equation"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the moduli and derivatives with published BLS and UI values for pyrope and with RPR values for natural Cr-pyropes (Suzuki & Anderson 1983; Babuška et al. 1978).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the compositional variation in natural Cr-pyropes seems to have no significant effect on the room P-T elastic moduli"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Convert the XRD-EoS isothermal bulk modulus to an adiabatic value and check it against the BLS-measured KS0.",
+     "page": "9",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the KS0 calculated from KT0 and the measured KS0 (167.7(8) GPa) show good agreement"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute ρ, KS, G, VP and VS of Prp-Cr#12 at 3-8 GPa and at 1000 and 1600 K two ways: from the directly measured parameters, and from linear mixing of literature end-member parameters (the end-member model).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "then compared the results to those calculated using the elastic parameters interpolated from linear mixing of end-member elastic parameters"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the two calculations: differences of 0.05-2.0% fall within the uncertainties, except for density.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are at the same level as their uncertainties"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute Proton aggregate density and velocities at 3-8 GPa and 1000/1600 K with measured (model#1) versus end-member (model#2) Cr-pyrope parameters.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We calculated the density and velocity of the Proton in two models (model#1 and model#2)."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare model#1 and model#2: differences of 0.05%, 0.03% and 0.1% at 8 GPa and 1600 K are within uncertainties.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using the end-member model elastic parameters of Cr-pyrope has very limited effects on the calculations of density and velocity of the SCLM"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the end-member model as a sufficient approximation for Cr-pyrope at SCLM conditions.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the end-member model provides a sufficient approximation for the elastic properties of Cr-pyrope at the P-T conditions of the SCLM"
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Model the densities, velocities and ρ/V ratios of Archon, Proton and Tecton at 3-8 GPa and 1300/1500 K, using Perple_X mineralogy and end-member elastic parameters.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculated the densities and velocities of the Archon, Proton and Tecton"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the SCLM types. Density rises from Archon to Tecton (1.1-2.4%), velocity differences are within uncertainty, and ρ/VP and ρ/VS are more sensitive to composition.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating that the density of the SCLM increases from Archon to Tecton"
+    },
+    {
+     "n": 17,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Refine the comparison to include the ~200 K temperature increase from metasomatism reported in the literature, comparing Archon at 1300 K with Proton and Tecton at 1500 K.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the temperature increase should be considered when we investigate the effects of chemical evolution on the density and velocity of the SCLM"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the modelled densities with the asthenosphere density profile (Djomani et al. 2001) to discuss delamination, and the velocity drops with the ~1% low-VS anomalies beneath Kaapvaal (Fouch et al. 2004).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the density-P profile of the asthenosphere along 1600 K (Djomani et al., 2001) is shown for comparison."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the conclusions: compositional evolution raises SCLM density but not velocity, and ρ/VP and ρ/VS are better indicators of composition.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the chemical evolution of the SCLM from the Archon to the Tecton significantly increases the density of the SCLM"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "High-P-T elasticity of SCLM Cr-pyrope and validity of linear end-member mixing",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; moduli inferred from Brillouin velocities and XRD densities",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Test whether the end-member linear model reproduces measured Cr-pyrope properties",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Linear end-member mixing vs non-linearity reported in the literature (rival not computed)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Measured-parameter and end-member-model predictions computed at SCLM P-T",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in the laboratory (DAC to 11 GPa, EHDAC to 800 K)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "7",
+   "answer": "One cross-method check (XRD KS0 vs BLS KS0) and literature comparison; single sample",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "End-member model a sufficient approximation; differences within uncertainty",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "confirmed",
+  "claim": "The end-member (linear mixing) model gives a sufficient approximation of Cr-pyrope elastic properties for calculating SCLM density and velocity at SCLM P-T conditions.",
+  "page": "11"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the elastic constants, P-T derivatives and EoS inferred from high-P and high-T Brillouin and XRD data on Prp-Cr#12, there would be no measured reference against which to test the end-member model.",
+  "page": "4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The question about end-member validity and a Perple_X calculation guided the choice of sample composition (p. 3). Data acquisition itself was a standard P-T grid. The test could have failed if differences had exceeded the uncertainties (pp. 9, 11), but those uncertainties (2-3% for KS and G) are large, and the rival was not computed. No hypothesis, threshold or analysis is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "physics (optics/acoustics)",
+   "item": "Brillouin light scattering with a six-pass tandem Fabry-Pérot interferometer",
+   "kind": "instrument",
+   "page": "3"
+  },
+  {
+   "field": "physics (synchrotron science)",
+   "item": "Single-crystal X-ray diffraction at the Advanced Photon Source 13-BM-D",
+   "kind": "instrument",
+   "page": "3"
+  },
+  {
+   "field": "high-pressure physics",
+   "item": "Diamond anvil cell, externally heated BX90 DAC, ruby pressure gauge, Ne gas loading",
+   "kind": "instrument",
+   "page": "3"
+  },
+  {
+   "field": "physics (elasticity of anisotropic solids)",
+   "item": "Christoffel equation fitted by least squares (Every 1980)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "materials mechanics",
+   "item": "Voigt-Reuss-Hill averaging (Hill 1952)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "solid-state physics",
+   "item": "Birch finite-strain theory and third-order Birch-Murnaghan equation of state",
+   "kind": "concept",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "To the best of our knowledge, there is still no elastic property study of Cr-pyrope at high P and high T.",
+   "page": "2"
+  },
+  {
+   "quote": "So far, studies on the elastic properties of binary Uvr-Adr or Uvr-Grs solid solutions are unavailable",
+   "page": "2"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded; the acknowledgments mention two reviewers and an associate editor. The supporting information (Tables S1-S6, Figures S1-S5, Texts S1-S2) was not supplied, so the end-member parameter set and Figure S4 cannot be checked. Only one natural Cr-pyrope composition was measured: no replication on a second sample and no generalization to other Cr contents. The end-member test is agreement within uncertainties of up to 2-3%, so it has limited power to detect non-linearity (inference). The rival non-linear mixing was not computed. The density difference exceeds its uncertainty but is still judged negligible for aggregates. Sub-claims and their statuses: measured elastic parameters of Prp-Cr#12, estimate_with_resolution. The finding that composition raises SCLM density but not velocity is a forward-model result resting on the end-member model and Perple_X: best_explanation (inference). Gravitational instability and delamination of metasomatized SCLM, and the Kaapvaal low-VS anomaly explained by metasomatic heating, are interpretations not tested: best_explanation at most. Composition is none_fits because the walk is a single-hypothesis laboratory test followed by forward modelling. No rivals share a crucial test, no trace series is involved, and the work does not start from a new capability.",
+ "disagreements": [
+  {
+   "target": "Suzuki & Anderson (1983), temperature derivatives of a natural Cr-pyrope (Prp-Cr#6)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper's BLS temperature derivatives of KS and G are less negative than the RPR values for Prp-Cr#6; no explanation is offered.",
+   "page": "8",
+   "quote": "which are smaller than the values of Prp-Cr#12 obtained in this study."
+  },
+  {
+   "target": "Gwanmesia et al. (2007) and Zou, Irifune, et al. (2012), (∂G/∂T)P of pyrope by ultrasonic interferometry",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper's (∂G/∂T)P agrees with BLS values and with Chantel et al. (2016), while these two UI studies report more negative values.",
+   "page": "8",
+   "quote": "However, using the same method, Gwanmesia et al. (2007) and Zou, Irifune, et al. (2012) reported smaller [...]"
+  },
+  {
+   "target": "Chen et al. (1999), pressure derivative of KS of pyrope",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper's (∂KS/∂P)T of 4.3(1) sides with the BLS value and three UI studies against Chen et al.'s higher value.",
+   "page": "7",
+   "quote": "Chen et al. (1999) reported much higher"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Third-order Birch-Murnaghan EoS with the Holland & Powell (2011) thermal-pressure model",
+   "alternatives": "lower-order EoS (implied, not named)",
+   "reason": "pressure derivative of the bulk modulus of garnet is often larger than 4; Figure 6a shows a good fit",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "Proton mineralogy at 6 GPa for the model#1/model#2 aggregate test",
+   "alternatives": "Archon and Tecton, other pressures (implied)",
+   "reason": "the Cr-pyrope composition at 6 GPa is very close to Prp-Cr#12",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "S",
+   "chosen": "Third-order finite strain for olivine and Cr-pyrope moduli; fourth-order for pyroxene bulk moduli and for olivine and pyroxene shear moduli",
+   "alternatives": "third- vs fourth-order finite strain equation",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the compositional variation in natural Cr-pyropes seems to have no significant effect on the room P-T elastic moduli",
+   "page": "7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the KS0 calculated from KT0 and the measured KS0 (167.7(8) GPa) show good agreement",
+   "page": "9"
+  }
+ ]
+}

@@ -1,0 +1,430 @@
+{
+ "key": "g22_W4310490192",
+ "doi": "10.26443/seismica.v1i1.195",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper: Schippkus, Snieder & Hadziioannou (2022), Seismic interferometry in the presence of an isolated noise source, Seismica 1(1), PDF with appended supplementary material (printed pp. 1-12)"
+ ],
+ "pages_convention": "printed journal pages; the appended supplement (printed pp. 9-12) is cited as S plus the supplement page counted from 1, with the printed page in parentheses (S1 = p. 9, S2 = p. 10, S3 = p. 11, S4 = p. 12)",
+ "entry": {
+  "state": "anomaly",
+  "node": "O",
+  "evidence": "there is a second contribution emerging from a location rN in the Northeast of the deployment",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF incl. supplement)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how an isolated noise source that violates the uniform-source assumption contributes to cross-correlation functions and what impact it has.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we investigate the case where the presence of an additional isolated source violates these assumptions"
+    },
+    {
+     "n": 2,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Take from the authors' earlier characterisation of the same region's noise field (wind farms, railways, roads, pumpjacks) the hint that strong isolated sources affect correlations.",
+     "page": "1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Schippkus et al. (2020) already hinted at the potential impact of strong isolated sources on correlation functions in this region."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute cross-correlations between 4907 large-N stations and a central master station: spectral whitening, 1 h windows, linear stack over four weeks, 0.5-1.0 Hz bandpass.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compute cross correlations between all stations and a master station at location rM in the center of the deployment"
+    },
+    {
+     "n": 4,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Establish two distinct contributions in correlation snapshots and the movie: the usual converging/diverging wave at rM, and a second outward-only wave from rN at about -12 s, centred on the Prottes-Ollersdorf wind farm; other wind farms and anthropogenic sources appear negligible.",
+     "page": "2; Figure 2 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The center of this wavefield contribution coincides with the location of the wind farm Prottes-Ollersdorf"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Attribute the second contribution to the wind farm as an isolated source, supported by cited evidence that turbine towers radiate seismic energy in the 0.5-1.0 Hz band.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Wind turbine towers excite seismic energy at frequencies related to the eigenfrequencies of the towers"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive the correlation of a wavefield from uncorrelated boundary sources plus one isolated source, using the cited Wapenaar et al. (2005) identity, to obtain eq. 6 with an extra term; then derive its far-field kinematics (eqs. 7-12): circular wavefronts centred on rN emerging at -|rM-rN|/c and touching the direct waves on the rM-rN line.",
+     "page": "2-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the travel time of the contribution to the correlation wavefield induced by the isolated source is constant on a circle centered on rN"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the predicted touching of wavefronts with the observed snapshots and the movie.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This behavior is confirmed by the touching wavefronts in Figure 2 and the supplemental movie."
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate a constant medium velocity of about 550 m/s from the emergence time of the isolated-source contribution and the distance |rM-rN|.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we assume a constant medium velocity c ≈ 550 m/s"
+    },
+    {
+     "n": 9,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Model the correlation wavefield for a single isolated source and boundary sources, both emitting Ricker wavelets in a homogeneous medium, ignoring amplitude effects.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We approximate the wind farm Prottes-Ollersdorf as a single source"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the modelled snapshots with the observed ones (Fig. 2a vs 2b) and find that the model explains both contributions.",
+     "page": "4; Figure 2 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our model explains the observed contributions to the correlation wavefield."
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Pick group travel times on the modelled correlations for two amplitude cases (isolated source 25% stronger or weaker), map the relative group-velocity errors, and explain the error pattern from waveforms at five stations.",
+     "page": "4-5; Figure 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "measuring group travel times from the modelled correlation functions"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Propose a measurement strategy to avoid bias: choose the causal or acausal side by geometry, plus a windowing function around expected arrival times when the isolated source is stronger.",
+     "page": "5; S1 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "One straightfoward strategy is to avoid measuring where interference occurs by selecting which side of the correlation functions to measure on"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test the strategy on the synthetic correlations: side selection alone, windowing alone, and the two combined; errors are removed except for stations within a wavelet width of rM (supplement only).",
+     "page": "S1 (p. 9); Figures S1-S3 (S2, p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "if we combine the two criteria, we avoid velocity measurement errors for all station pairs"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Set aside uncancelled cross terms as the origin of the spurious arrivals in this data set.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "see no evidence for contributions due to uncancelled cross terms"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "observation",
+     "action": "Vary processing and conditions on the field data: without spectral whitening the wind farm contribution dominates; in early tests restricted to wind speeds below turbine operation, the contribution is reduced but not eliminated.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "both contributions emerge clearly only with spectral whitening applied"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test common post-processing on the synthetics: folding causal and acausal parts gives errors, including too-slow velocities (Fig. S4), that side selection and windowing cannot remove; averaging both sides is argued to be similarly affected.",
+     "page": "6; Figure S4 (S3, p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Folding prevents selection of the appropriate side of the correlation function for measurement and results in irreconcilable errors."
+    },
+    {
+     "n": 17,
+     "node": "R",
+     "mode": "methods",
+     "action": "Advise against folding or similar post-processing unless the isolated-source location is known.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we advise against folding correlations or similar post-processing"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Relax the single-source auxiliary by modelling each wind turbine as an individual uncorrelated source; the fit to the observed correlations appears to improve.",
+     "page": "7; Figure S5 (S4, p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "when we consider each wind turbine in the wind farm separately, the fit with observed correlation functions appears to improve"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "theory",
+     "action": "Keep the claim that an isolated source adds a second correlation contribution that can carry energy comparable to the Green's-function term, interfere with it, and bias travel-time measurements unless causal and acausal parts are treated separately.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We demonstrate that different contributions to the correlation wavefield can carry similar energy and interfere."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: a second, outward-only correlation contribution centred on the wind farm",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: the correlation wavefield is computed from records; the source term is attributed, not measured",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Explain the isolated-source contribution and quantify its effect on velocity measurements",
+   "mode_called": "theory"
+  },
+  {
+   "question": "4",
+   "answer": "Only uncancelled cross terms, mentioned in the Discussion and set aside",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Isolated-source term predicts circular outward-only wavefronts from rN that touch the direct waves on the rM-rN line",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found: a live wind farm in an industrial survey array; not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: whitening, low-wind windows, folding and multi-turbine modelling varied; no independent data set",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as the best explanation, with a synthetic-tested avoidance strategy",
+   "mode_called": "theory"
+  },
+  {
+   "question": "9",
+   "answer": "Reviewers thanked; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "An isolated noise source (the Prottes-Ollersdorf wind farm) adds a correlation contribution emerging from its location at negative lapse time that interferes with the Green's-function terms and can bias surface-wave dispersion measurements, so causal and acausal parts must be treated separately.",
+  "page": "1 (abstract); 7"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "theory",
+  "sentence": "The derivation of eq. 6, with its extra term |NI|^2 G(r,rN)G*(rM,rN), and its kinematics (eq. 9) turns the observed anomaly into a predicted wavefield and underlies both the model comparison and the error analysis.",
+  "page": "2-4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data came from an industrial exploration survey (OMV) not designed for this hypothesis. The derivation was compared with observed snapshots (Fig. 2) and could have mismatched, but the comparison is qualitative and the velocity was fitted from the emergence time itself. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "acoustics",
+   "item": "Green's function retrieval by cross-correlation in an open system (Wapenaar et al. 2005, JASA, eq. 11)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "acoustics",
+   "item": "Diffuse-field emergence of the Green's function (Lobkis & Weaver 2001)",
+   "kind": "concept",
+   "page": "1"
+  },
+  {
+   "field": "petroleum industry exploration",
+   "item": "Large-N exploration-survey data (4907 stations, OMV E&P GmbH) under non-disclosure agreement",
+   "kind": "data",
+   "page": "1"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file or open discussion was supplied; the acknowledgements thank two reviewers, so review-driven changes cannot be coded. The supplemental movie was not available to the coder. The field data are not public (NDA), so the observation cannot be reproduced. The model-observation comparison (Fig. 2, Fig. S5) is visual, with no misfit metric, and the velocity c ≈ 550 m/s was estimated from the emergence time, so that time is not an independent prediction. The low-wind-speed test is reported only as 'early tests', without figures. The velocity-error magnitudes (e.g. at least 10% for most pairs when the isolated source is stronger) and the avoidance strategy are shown only on synthetic correlations, not on field measurements. Sub-claims: the avoidance strategy is capability_characterized on synthetics only; the error pattern is a simulation result without a claim status of its own. The only rival (uncancelled cross terms) is set aside by absence of evidence, not by a distinct test. Composition none_fits: the walk goes anomaly, derivation, qualitative comparison, then consequence simulation, on one found case, which matches no listed composition (inference). No explicit 'first' statements; the paper notes that it is not the first to record isolated sources.",
+ "disagreements": [
+  {
+   "target": "Standard Green's-function retrieval assumptions of uniformly distributed uncorrelated sources (Lobkis & Weaver 2001; Weaver 2010; Wapenaar et al. 2005)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Derivation (eq. 6) and field observations show an additional isolated-source term when the assumption is violated.",
+   "page": "1",
+   "quote": "we investigate the case where the presence of an additional isolated source violates these assumptions"
+  },
+  {
+   "target": "Common practice of discarding deviating velocity measurements as outliers or spurious arrivals",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Synthetic error maps (Fig. 3b) show errors of several percent that would pass outlier screening.",
+   "page": "4",
+   "quote": "Such measurement errors would likely not be identified as clear outliers or spurious arrivals and could bias results."
+  },
+  {
+   "target": "Folding of causal and acausal correlation parts (e.g., Lin et al. 2008; de Ridder & Biondi 2015; Schippkus et al. [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Synthetic folded correlations give errors, including too-slow velocities (Fig. S4), that windowing cannot remove.",
+   "page": "6-7",
+   "quote": "we advise against folding correlations or similar post-processing"
+  },
+  {
+   "target": "Averaging measurements on both correlation sides with a consistency criterion (Stehly et al. 2009; Boué et al. 2014; Zigone et [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued by analogy with the folding result; no separate figure.",
+   "page": "6",
+   "quote": "This approach is similarly adversely affected in the presence of an isolated noise [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Spectral whitening before correlation",
+   "alternatives": "No spectral whitening",
+   "reason": "Both contributions emerge clearly only with whitening; without it the wind farm dominates",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "Wind farm modelled as a single isolated source",
+   "alternatives": "Each wind turbine as an individual source",
+   "reason": "Single source is the edge (worst) case and simpler for the derivation",
+   "effect_reported": "yes",
+   "page": "7; Figure S5 (S4, p. 12)"
+  },
+  {
+   "node": "S",
+   "chosen": "Automatic pick on the side with the stronger envelope",
+   "alternatives": "Picking on the causal part",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "V",
+   "chosen": "Unfolded correlations, side selected by geometry",
+   "alternatives": "Folded correlations; mean of measurements on both sides",
+   "reason": "Folding forces the asymmetric isolated-source contribution to become symmetric and prevents side selection",
+   "effect_reported": "yes",
+   "page": "6; Figure S4 (S3, p. 11)"
+  },
+  {
+   "node": "R",
+   "chosen": "Windowing function centred on the master station",
+   "alternatives": "Windowing function centred on the isolated source",
+   "reason": "The alternative still needs a two-step approach and more precise knowledge of the source location",
+   "effect_reported": "no",
+   "page": "S1 (p. 9)"
+  },
+  {
+   "node": "R",
+   "chosen": "Window half-width equal to the Ricker wavelet half-width",
+   "alternatives": "A wider window, as needed in practice",
+   "reason": "To illustrate the best-case scenario",
+   "effect_reported": "no",
+   "page": "S1 (p. 9)"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Two cases are investigated",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "if we combine the two criteria, we avoid velocity measurement errors for all station pairs",
+   "page": "S1 (p. 9)"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "both contributions emerge clearly only with spectral whitening applied",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "cross-correlations show a reduced but not eliminated wind farm contribution",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In the presence of an isolated noise [...] , folding correlations effectively forces the asymmetric contribution of the isolated source to become symmetric.",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "when we consider each wind turbine in the wind farm separately, the fit with observed correlation functions appears to improve",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This is consistent with previous observations that these wind turbines produce much lower seismic energy",
+   "page": "2"
+  }
+ ]
+}

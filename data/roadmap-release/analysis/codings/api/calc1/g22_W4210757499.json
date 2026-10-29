@@ -1,0 +1,401 @@
+{
+ "key": "g22_W4210757499",
+ "doi": "10.1016/j.jseaes.2022.105127",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Lee 2022, Journal of Asian Earth Sciences 228, 105127, published PDF (9 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML carries the text (abstract §0 ¶1; captions cited as printed, e.g. Fig. 9). The XML text has no body sections, so body steps cite printed journal pages (p. 1–9, identical to PDF pages counted from 1). Figure-content steps cite the caption plus the PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Therefore, investigating how the 331 earthquake ruptured, and why strong long-period ground shaking occurred in northern Taiwan during this event, are important scientific questions",
+  "page": "p. 1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Lee 2022, Journal of Asian Earth Sciences 228, 105127 (published PDF; XML abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Reports the agency-recorded effects of the 2002 Mw 7.1 event: intensity 7 in Yilan, intensity 5 in Taipei 110 km away, and crane collapse at Taipei 101 from long-period shaking.",
+     "page": "p. 1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Due to extremely strong long-period shaking, two cranes on the top floor that was under construction at that time"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses two questions: how the event ruptured, and why strong long-period shaking occurred in northern Taiwan.",
+     "page": "p. 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "why strong long-period ground shaking occurred in northern Taiwan during this event, are important scientific questions"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Assembles data from the live event: 19 teleseismic P waveforms (IRIS), 24 three-component local BATS/TSMIP waveforms, and horizontal GPS coseismic displacements compiled by Chen et al. (2004). Vertical GPS is dropped as too small.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The teleseismic records were taken from the IRIS global seismic network, of which 19 teleseismic P waveforms were selected for study."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Relies on the author's earlier 3D spectral-element Green's-function inversion framework and parallel NNLS, and on earlier evaluations of 1D versus 3D velocity models.",
+     "page": "p. 3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The performance of 1D and 3D velocity models had been in-depth discussed in previous studies"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Sets the two GCMT nodal planes as rival fault geometries: Fault 1 dipping north (strike 292°, dip 32°) and Fault 2 dipping south (strike 77°, dip 63°).",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study considered two fault planes (Fig. 1)."
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Runs the joint weighted inversion on both planes. It uses multiple time windows (32 × 0.8 s), two rake components (121° ± 45°), damping and smoothing, a maximum rupture velocity of 3.5 km/s, 3D SEM Green's functions for the local and GPS data, and PREM for the teleseismic data.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The multiple time-windows approach (Hartzell and Heaton, 1983) was implemented"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares the two fault-plane inversions by misfit and by fit to the north-dipping subduction interface geometry.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the inversion result of Fault 2 had a greater misfit"
+    },
+    {
+     "n": 8,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Sets aside the south-dipping Fault 2 and keeps Fault 1 for all further analysis.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the following discussions focus on Fault 1."
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates the slip distribution and rupture history on Fault 1:\n- three asperities, with maximum slip of about 3 m at 30–45 km depth;\n- rake varying with depth;\n- rupture velocity of about 3.0 km/s, propagating northwest;\n- seismic moment of 7.56 × 10^19 N·m and duration of about 26 s;\n- stress drop of 0.81 MPa.",
+     "page": "p. 4–5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Three asperities can be identified on the complex slip zone."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Checks the solution in three ways:\n- data fits (misfits of 0.227 teleseismic, 0.292 local, 0.144 GPS);\n- aftershock locations against the slip areas;\n- the inferred rupture velocity against the shear-wave velocity of the 3D velocity model (Huang et al. 2014).",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "such a rupture velocity may not be abnormally high"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Runs a forward 3D SEM simulation (3D velocity model, topography, bathymetry) from the inverted source. It compares island-wide waveforms, including stations not used in the inversion and the E-W and N-S components in supplement Fig. S1, and normalized PGA maps against TSMIP observations.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "was performed to verify the source model."
+    },
+    {
+     "n": 12,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Attributes the large waveform and PGA mismatches in the Western Plain to the velocity model's limited resolution of shallow sediments, not to the source model.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the resolution of the velocity model cannot fully reproduce the amplification effect of the sedimentary plain."
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keeps the inverted source model as reproducing low-frequency ground motion island-wide.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the inverted 331 earthquake source rupture model can reproduce the low-frequency (less than 0.5 Hz) ground motion characteristics"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "States two rival classes of causes for the amplified northern-Taiwan motion: path effects (basin, topography, subsurface structure) and source effects (radiation pattern, rupture directivity).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Amplified ground motion can be caused by a variety of factors, including path effects"
+    },
+    {
+     "n": 15,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Designs a four-case simulation ablation:\n- (A) inverted source with the 3D model;\n- (B) inverted source with a homogeneous half-space;\n- (C) the same slip but rupturing eastward, in a half-space;\n- (D) a double-couple point source in a half-space.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a forward simulation test considering four different situations was carried out"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computes synthetic ShakeMaps (norm of the three-component PGA) for the four cases.",
+     "page": "Fig. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ShakeMaps of the four test cases."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares the cases with each other:\n- removing the basin (B) weakens Taipei PGA;\n- reversing directivity (C) weakens northern PGA;\n- the point source (D) puts the north in an enlarged radiation quadrant.",
+     "page": "Fig. 9 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the PGA in the Taipei area is not as strong as in Case A due to the missing basin amplification effect"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Scopes the claim to the 0.05–0.5 Hz displacement band, setting it beside Chen's (2003) Moho-reflected S-wave explanation, which was inferred from high-frequency acceleration data.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result was inferred from the dense high-frequency acceleration data"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keeps source effects (directivity, radiation, long rupture) as the main cause, with low-velocity sediments amplifying motion further in the Taipei Basin, Yilan Plain, and Western Plain.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the source effect was the most significant contributor to the amplified ground motion observed in northern Taiwan."
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Sets the 331 event's depth and asperity location against the historical Mw > 6 events in Table 1, the 2015 0420 event, and the shallow tsunami-earthquake concern of Hsu et al. (2012).",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Most of the large historical events shown in Table 1 were located between depths of 25 km and 45 km"
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "synthesis",
+     "action": "Proposes four future rupture scenarios for the southern Ryukyu zone, drawing on the author's earlier Solomon and Illapel inversions and on global megathrust events:\n- mid-depth rupture;\n- shallow tsunami earthquake;\n- megathrust;\n- deep-to-trench composite megathrust.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "four earthquake scenarios may occur in the south Ryukyu subduction zone in the future"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Strong long-period shaking in northern Taiwan, 110 km from an offshore Mw 7.1 rupture",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; slip history and the cause of the shaking must be inferred from waveforms and GPS",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Rupture process and the cause of the amplified northern ground motion",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Yes: two nodal planes; path effects versus source effects (plus Chen 2003 Moho reflection)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes, via the four simulation cases that switch off basin, directivity, or finite source",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Event conditions found (live event); simulation conditions set in the four cases",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Forward simulation reproduces low-frequency motion, including at held-out stations; Western Plain mismatch attributed to the velocity model",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Source effects are the main cause, with basin amplification secondary",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The long-period strong ground motion in northern Taiwan during the 2002 Mw 7.1 event was caused mainly by source effects (northwestward rupture directivity, radiation pattern, long rupture), further amplified by soft basin sediments.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "Without the four-case ShakeMap simulations that switch off the basin, reverse the rupture direction, and replace the finite source with a point source, there would be no attribution of the northern shaking to source effects.",
+  "page": "p. 7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the data come from permanent networks (IRIS, BATS, TSMIP, TCGA), and no hypothesis directed their acquisition. Claim, partly: two tests could have failed.\n- The source model was checked by forward simulation against stations not used in the inversion (Fig. 8) and against PGA.\n- The source-versus-path attribution rests on simulated cases compared with each other, not with observations.\nRegistration: nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / numerical optimization",
+   "item": "parallelized non-negative least squares solver",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "computational mechanics",
+   "item": "spectral-element method for wave propagation and Green's functions (via Komatitsch et al. 2004)",
+   "kind": "method",
+   "page": "p. 3"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "Sources and locators:\n- The XML text supplied holds only an abstract and the captions. Its abstract differs from the PDF abstract, presumably a highlights or graphical-abstract version (inference).\n- Body steps are therefore located by printed page.\n- The supplement (Fig. S1) was not supplied.\n\nInversion:\n- No resolution or uncertainty test is reported: no checkerboard, bootstrap, or sensitivity to weighting, time windows, smoothing, or the maximum rupture velocity.\n- The rupture-model sub-claim is an estimate without stated resolution. If coded on its own it would be estimate_with_resolution only weakly.\n- The Fault 2 misfit is not given numerically.\n\nSource-versus-path test:\n- Cases B–D are compared with Case A and with each other, not quantitatively with observations.\n- The path rival is not excluded, only ranked below source effects.\n- The claim is restricted to below 0.5 Hz, which leaves Chen (2003) unrefuted at high frequency.\n\nOver-reach and untested parts:\n- The conclusion that southern Ryukyu earthquakes 'may often rupture in the southeast to northwest direction' (p. 9) generalizes from one event and is not tested (inference).\n- The four hazard scenarios are untested hypotheses.\n\nComposition, none_fits: the walk is a single live event, then a joint inversion, then a held-out forward check, then a simulation ablation. There is no repetition over independent traces (trace_series) and no single crucial test that excludes rivals (strong_inference).\n\nProcess: as a single-author paper without a review file, nothing is visible about revisions (received July 2021, revised December 2021).",
+ "disagreements": [
+  {
+   "target": "Chen (2003), Moho-reflected S-wave explanation of high Taipei Basin PGA",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper's low-frequency (0.05–0.5 Hz) simulations attribute the northern shaking to source effects and note that Chen's result came from high-frequency acceleration data.",
+   "page": "p. 7",
+   "quote": "Chen (2003) proposed that the high PGA values recorded in the Taipei Basin during this event were due to the critically reflected S-wave"
+  },
+  {
+   "target": "Hsu et al. (2012), emphasis on shallow Mw 7.5–8.7 tsunami ruptures from trench to 13 km depth",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The 331 hypocenter (33 km) and largest asperity (35–45 km) and most Table 1 events lie at 25–45 km, so the paper argues the mid-depth locked zone also needs attention.",
+   "page": "p. 8",
+   "quote": "However, the hypocentral depth of the 331 earthquake was 33.0 km, and the largest asperity occurred at a depth of 35 [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "X",
+   "chosen": "Fault 1, north-dipping nodal plane (strike 292°, dip 32°)",
+   "alternatives": "Fault 2, south-dipping nodal plane (strike 77°, dip 63°)",
+   "reason": "Fault 1 fits the north-dipping subduction interface; no known south-dipping structure exists; the Fault 2 inversion had a greater misfit",
+   "effect_reported": "yes",
+   "page": "p. 3"
+  },
+  {
+   "node": "F",
+   "chosen": "Horizontal GPS coseismic displacements only",
+   "alternatives": "Including vertical GPS displacements",
+   "reason": "Vertical displacements were too small to yield consistent results, since the event was offshore",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "I",
+   "chosen": "3D SEM Green's functions for local waveforms and GPS; 1D PREM for teleseismic data",
+   "alternatives": "1D velocity model Green's functions",
+   "reason": "Earlier studies showed 3D structure (basins, topography, lateral variation) strongly affects travel times and waveforms",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "H",
+   "chosen": "Shallow aftershock depths reflect location errors from poor azimuthal coverage (favoured tentatively)",
+   "alternatives": "Aftershocks truly in the shallow crust above the interface, induced by the mainshock",
+   "reason": "Poor azimuth coverage of landside stations",
+   "effect_reported": "no",
+   "page": "p. 4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Purple and red lines are synthetic waveforms for the stations used and didn’t used in the source inversion, respectively.",
+   "page": "Fig. 8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The main PGA characteristics of the observation can be reproduced",
+   "page": "p. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the 3D velocity model (Huang et al., 2014) shows that the average Vs at mid-depths in the subduction zone is close to 4.0 km/s",
+   "page": "p. 4–5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "a forward simulation test considering four different situations was carried out",
+   "page": "p. 6"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "The performance of 1D and 3D velocity models had been in-depth discussed in previous studies",
+   "page": "p. 3"
+  }
+ ]
+}

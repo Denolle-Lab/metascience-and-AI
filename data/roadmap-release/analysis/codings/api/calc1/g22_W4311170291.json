@@ -1,0 +1,571 @@
+{
+ "key": "g22_W4311170291",
+ "doi": "10.1029/2022jf006833",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Cross, Fountain, Hoffman & Obryk (2022), Physical Controls on the Hydrology of Perennially Ice-Covered Lakes, Taylor Valley, Antarctica (1996-2013), JGR Earth Surface, accepted manuscript (LANL repository PDF)"
+ ],
+ "pages_convention": "PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "We address the questions of what drives seasonal and long-term changes in lake level, why the lakes respond in individual ways",
+  "page": "4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Cross et al. 2022, accepted manuscript PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the questions of what drives seasonal and long-term lake-level change, why neighbouring lakes respond differently to the same forcing, and what future levels to expect.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "why the lakes respond in individual ways to the same [...]"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from published monitoring the lake-level history since 1903 and 1972, including the decline to 2001, the 2001/2002 flood summer, and Lake Bonney's faster rise.",
+     "page": "7",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Lake Bonney rising at higher rate (+0.32 m yr-1) than Lakes Hoare or Fryxell"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set up a closed-basin lake water balance (meltwater inflow minus lake-ice sublimation times hypsometric lake area), solved daily by finite differences, ignoring snowfall, groundwater, moat evaporation and in-stream losses.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "MATLAB code, adapted from Obryk et al. (2017), is used to numerically solve"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate subaqueous melt from glacier terminus velocities and ice-lake contact area; neglect it for Lake Fryxell (0.1% of inflow); note agreement with an independent Spigel et al. (2018) estimate.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Subaqueous glacial melt was estimated to be 31,800 and 31,500"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the distributed ICEMELT surface energy balance model, modified and parameterized for Taylor Valley in the authors' earlier work, to predict glacier runoff.",
+     "page": "9",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Hoffman et al. (2008, 2014, 2016) modified the model and optimized the parameters for conditions in Taylor Valley."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Compute lake-ice sublimation with ICEMELT's bulk aerodynamic latent-heat formulation, with surface roughness as the only adjustable parameter and separate summer and winter values.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculated sublimation from lake ice using ICEMELT’s calculation of latent heat flux using the bulk aerodynamic method"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Force the model with the inherited MICROMET-interpolated grid from eight LTER stations, and replace in situ glacier albedo with per-glacier daily MODIS albedo, gap-filled and smoothed.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Daily MODIS-derived albedo images (pixel size 500-m) covering Taylor Valley were downloaded"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Compare MODIS albedo with in situ pyranometer albedo on three glaciers; find in situ values 0.18 higher, attribute this to snow patchiness at the point scale, and do not adjust MODIS.",
+     "page": "12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the in situ measurements were higher at all sites than the MODIS albedo by 0.18 on average"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate winter lake-ice roughness to winter sublimation inferred from lake-level decline, and summer roughness to close the lake budget over the record, capped by measured summer ablation.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "winter lake ice sublimation was calibrated by adjusting the value of winter ice roughness"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the initial ICEMELT run (station albedo) with measured streamflow: agreement is good in the cool years 1996-2001 but discharge is underpredicted from 2002.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In warmer summers, starting in 2002, predicted discharge was much smaller than measured."
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Apply MODIS albedo with a valley-wide -7% reduction, motivated by the post-2006 sediment influx hypothesized by Hoffman et al. (2016); this improves post-2007 Fryxell-watershed streamflow.",
+     "page": "14",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Application of MODIS albedo, including a valley-wide albedo reduction of -7%, improved the post-2007 streamflow predictions"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Compare cumulative modeled smooth-ice ablation 1996-2013 with glacier mass-balance stake measurements not used in the albedo adjustment: an underestimate of 3.1 cm w.e.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The cumulative modeled ablation (1996-2013) for the smooth ice sub-domain underestimates measured by -3.1 cm w.e."
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Eastern Kukri Hills discharge stays too low even with unrealistic albedo or extra longwave; apply a wet adiabatic lapse rate near the coast and an elevation-scaled factor on basin runoff.",
+     "page": "14-15",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Near the coast, east of Canada Glacier we applied the wet adiabatic lapse rate."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Score the final meltwater model against all gauged streams (NSE 0.84, r2 0.85, 92% of measured total; annual totals mostly within uncertainty).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The final meltwater model shows good skill in predicting daily streamflow variations"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test an added in-channel evaporation loss; it does not improve the streamflow estimates.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Adjustments to account for evaporation in the stream channels did not improve the estimates."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Find that the calibrated roughness closes the Bonney and Hoare budgets, but closing Fryxell needs a summer roughness (0.05 mm) far below field observations.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The value for Lake Fryxell is orders of magnitude too low based on field observations"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the field impression of lake-ice roughness against an independent LiDAR elevation-variability metric (Fryxell about as rough as Hoare, rougher than Bonney).",
+     "page": "16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These field observations are supported by an independent roughness metric"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Revise Fryxell summer roughness to 7 mm, which leaves an annual inflow deficit of about 450,000 m3 yr-1; winter sublimation calibration errors are below 15% at all lakes.",
+     "page": "17",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We revised the roughness of Lake Fryxell to 7 mm, which caused sublimation losses to exceed inflow gains"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare modeled with measured daily lake-level change 1996-2013 (R2 > 0.87, end-of-period difference < 0.3 m) and interpret the seasonal cycle.",
+     "page": "18-19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The resulting modeled and measured lake level changes showed good correspondence"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Perturb wind speed and albedo by ±10% and air temperature by ±0.275°C over the record; lake volume change is most sensitive to glacier albedo.",
+     "page": "20-21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "changes were made to air temperature, wind speed, and albedo"
+    },
+    {
+     "n": 21,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Partition lake inflow by source (gaged, ungaged, direct runoff, subaqueous, inferred 23% at Fryxell) and estimate mean annual sublimation per lake.",
+     "page": "21-22",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Streams flowing over the valley floor (gaged and ungaged) supply the majority of inflow"
+    },
+    {
+     "n": 22,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose watershed hypsometry, and then glacier-area-weighted specific melt, as explanations for Lake Bonney rising about three times faster than Hoare and Fryxell.",
+     "page": "23",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we first examined the effect of watershed hypsometry given that for the same increase in water volume, lakes in narrow valleys will rise more quickly"
+    },
+    {
+     "n": 23,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute a hypsometric ratio (observed over constant-area level change) and specific melt for each lake (Table 4).",
+     "page": "23",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ratio of the observed level change to the hypothetical change yields the hypsometric effect"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep a combined explanation: Bonney's faster rise comes from larger contributing glacier area plus steep hypsometry, and the Hoare-Fryxell similarity from compensating inflow and lake area.",
+     "page": "24",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is caused by a combination of a larger ice-covered area contributing meltwater and a steep-walled watershed hypsometry"
+    },
+    {
+     "n": 25,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Project lake levels to 2300 under three steady-climate scenarios (whole period, cool 1996-2001, warm 2002-2013 with lowered albedo) by cycling the weather record.",
+     "page": "24-25",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the weather record over the period of interest was continuously cycled for 300 years"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Conclude that the hydrology is limited by energy, not precipitation, because snowfall raises glacier albedo and suppresses melt.",
+     "page": "26",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the hydrology of the valleys is energy, rather than precipitation, limited."
+    },
+    {
+     "n": 27,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State the rival ways to close the Fryxell budget: lower ice roughness, a deep saline aquifer, a Hoare-Fryxell connection (Mikucki 2015), or snow-fed shallow active-layer groundwater.",
+     "page": "28-29",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To close the budget either the roughness of the lake ice needed to be reduced or another source of water was required."
+    },
+    {
+     "n": 28,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude low roughness (contradicts field and LiDAR data), the deep saline aquifer (no seeps, saline pool too shallow, of desiccation origin) and the Hoare connection (would starve Hoare).",
+     "page": "28-29",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, no known surface or subaqueous seeps of the discharge required are known."
+    },
+    {
+     "n": 29,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute by simple mass balance that about 2 mm w.e. per year of snow over the valley-bottom watershed would supply the deficit.",
+     "page": "29",
+     "move": "new",
+     "trigger": "author",
+     "quote": "only 2 mm w.e. snow accumulation per year over Lake Fryxell watershed in the valley bottom would be required"
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Retain the hypothesis of widespread snow-fed shallow groundwater in the active layer supplying 23% of Fryxell inflow, and conclude that the lakes are out of equilibrium with current climate.",
+     "page": "29",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our hypothesis of a wide-spread shallow groundwater system within the active layer"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Closed-basin ice-covered lakes rise and fall, at different rates in neighbouring lakes under the same forcing",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Lake levels, streamflow and albedo are measured; melt and sublimation fluxes must be modeled",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Explain the controls on lake levels and their differences, and project future levels",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "For Bonney's faster rise: hypsometry versus specific melt. For the Fryxell deficit: low roughness, deep aquifer, Hoare connection, shallow groundwater",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly; rivals are judged against field observations, LiDAR and geochemistry, not one crucial test",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural lakes and the 1996-2013 monitoring record",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats over three lakes and 17 water years, including cool and warm periods",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Model checked against stakes and streams; sensitivity tests; LiDAR roughness check",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Water budget kept; groundwater source kept as best explanation; lakes out of equilibrium",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "A calibrated melt-sublimation water balance shows that Taylor Valley lake levels are controlled by glacial melt and lake-ice sublimation, are energy-limited and highly sensitive to glacier albedo, air temperature and wind, and are out of equilibrium with the 1996-2013 climate.",
+  "page": "30-31"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Calibrating lake-ice roughness to close each lake's budget against observed levels turns the coupled ICEMELT-lake model into a quantified water budget; it also exposes the Fryxell deficit on which the groundwater hypothesis rests.",
+  "page": "14"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The input data are long-term LTER monitoring and MODIS products, not collected to test a hypothesis. The model could fail, and did at first: streamflow was underpredicted after 2002 and the Fryxell budget did not close. However, auxiliaries (albedo reduction, lapse rate, basin scaling, roughness) were tuned after the comparisons, and the lake-level fit is partly built in by the summer-roughness calibration. Glacier mass-balance stakes give a partly independent check. Nothing was fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "numerical mathematics",
+   "item": "finite-difference numerical solution of the lake-level ODE in MATLAB",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "optics/physics",
+   "item": "airborne LiDAR elevation data used for DEM, glacier roughness zones and a lake-ice roughness metric",
+   "kind": "instrument",
+   "page": "10"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "challenges the accepted view of the hydrological processes in the Lake Fryxell watershed",
+   "page": "29"
+  }
+ ],
+ "limits": "Only the accepted-manuscript PDF was supplied. There is no review file, although the acknowledgments say referee comments improved the manuscript, so no review sequence is coded. The Supporting Information, which holds details of moat evaporation, the MODIS comparison, streamflow metrics and projections, was not supplied. The good lake-level fit is not an independent test: summer roughness was adjusted to match observed levels (inference). The three runoff adjustments were made after the streamflow mismatch; the paper reports neither held-out validation nor how many alternatives were tried, beyond albedo and longwave (inference). Fitted quantities carry fit statistics but no uncertainty bounds; projections have no uncertainty envelope. Sub-claim statuses: snow-fed shallow groundwater supplying 23% of Fryxell inflow is best_explanation and untested in the field; Bonney's faster rise from glacier area and hypsometry is best_explanation; the projected equilibrium from 2300 is a scenario simulation, not forecast_skill; the sensitivity of lake levels to albedo, temperature and wind is a model sensitivity, not an observed regularity. Composition is none_fits: this is a calibrated process-model budget study on found conditions with post-hoc auxiliary adjustment. It resembles a trace series only for the Fryxell rival elimination.",
+ "disagreements": [
+  {
+   "target": "Mikucki et al. (2015) deep saline groundwater and a hypothesized Hoare-Fryxell hydrologic connection",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "No seeps of the required discharge are known; a saline source would have produced a deeper saline pool than exists, and that pool has a desiccation origin; a Hoare-to-Fryxell connection would require extra water at Hoare, which the model does not need.",
+   "page": "28-29",
+   "quote": "if there was a hydrologic connection between Lakes Hoare and Fryxell as hypothesized by Mikucki (2015), water would"
+  },
+  {
+   "target": "The accepted view of hydrological processes in the Lake Fryxell watershed (negligible groundwater contribution)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The budget deficit of about 450,000 m3 yr-1 remains under any reasonable roughness, and water tracks and wet patches are common; a 2 mm w.e. snow input would suffice.",
+   "page": "29",
+   "quote": "challenges the accepted view of the hydrological processes in the Lake Fryxell watershed"
+  },
+  {
+   "target": "Known dry near-surface conditions and dry adiabatic lapse rate assumed valley-wide (Doran et al. 2002; Hoffman et al. 2014, 2016)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "A wet adiabatic lapse rate was required near the coast to match Kukri Hills streamflow, supported by field observations of clouds drifting in.",
+   "page": "27",
+   "quote": "suggests that the atmosphere is more humid within a few km of the coast compared to the known dry conditions farther up valley"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "MODIS albedo with a valley-wide -7% reduction",
+   "alternatives": "in situ station albedo only (as in Hoffman et al. 2016)",
+   "reason": "in situ albedo underpredicted melt in warm years; sediment influx after 2006 hypothesized",
+   "effect_reported": "yes",
+   "page": "14"
+  },
+  {
+   "node": "I",
+   "chosen": "MODIS albedo left unadjusted",
+   "alternatives": "adjusting MODIS by the in situ bias (in situ 0.18 higher)",
+   "reason": "MODIS pixels integrate a much larger area and are less affected by patchy snow",
+   "effect_reported": "no",
+   "page": "13"
+  },
+  {
+   "node": "R",
+   "chosen": "wet adiabatic lapse rate east of Canada Glacier",
+   "alternatives": "reduced albedo; increased longwave radiation",
+   "reason": "albedo and longwave changes made little difference to Kukri Hills runoff",
+   "effect_reported": "yes",
+   "page": "14-15"
+  },
+  {
+   "node": "R",
+   "chosen": "elevation-scaled factor on basin runoff (+0.5 per 100 m)",
+   "alternatives": "adjusting the various basin microclimate offsets",
+   "reason": "simpler",
+   "effect_reported": "no",
+   "page": "15"
+  },
+  {
+   "node": "R",
+   "chosen": "Fryxell summer roughness 7 mm plus inferred extra inflow",
+   "alternatives": "roughness 0.05 mm closing the budget without extra water",
+   "reason": "0.05 mm contradicts field observations and LiDAR roughness",
+   "effect_reported": "yes",
+   "page": "16-17"
+  },
+  {
+   "node": "V",
+   "chosen": "no in-channel evaporation loss",
+   "alternatives": "adjusting streamflow for channel evaporation",
+   "reason": "did not improve estimates",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "N",
+   "chosen": "hourly model time step",
+   "alternatives": "daily time step",
+   "reason": "daily steps miss important melt events (Hoffman et al., 2014)",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "I",
+   "chosen": "constant subaqueous meltwater flux at Taylor Glacier",
+   "alternatives": "accounting for the 1977-1997 transient advance",
+   "reason": "small additional volume",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "I",
+   "chosen": "Fryxell subaqueous melt ignored",
+   "alternatives": "including subaqueous melt from Canada Glacier",
+   "reason": "would be 0.1% of mean annual inflow",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "V",
+   "chosen": "absolute ±0.275°C air temperature perturbation",
+   "alternatives": "percent perturbation as for wind and albedo",
+   "reason": "meltwater response depends on how close temperature is to 0°C",
+   "effect_reported": "no",
+   "page": "20-21"
+  },
+  {
+   "node": "X",
+   "chosen": "snow-fed shallow active-layer groundwater",
+   "alternatives": "lower lake-ice roughness; deep saline aquifer; Hoare-Fryxell hydrologic connection",
+   "reason": "field observations, absence of seeps, geochemistry of the saline pool, implications for Hoare's budget",
+   "effect_reported": "yes",
+   "page": "28-29"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the in situ measurements were higher at all sites than the MODIS albedo by 0.18 on average",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Modeled glacier ablation was compared to measurements on Taylor and Canada Glaciers",
+   "page": "13"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Modeled glacial runoff was compared to the measured stream runoff.",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Adjustments to account for evaporation in the stream channels did not improve the estimates.",
+   "page": "15"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These field observations are supported by an independent roughness metric",
+   "page": "16"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "changes were made to air temperature, wind speed, and albedo",
+   "page": "20"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "Independently, Spigel et al. (2018) calculated a similar subaqueous water flux from Taylor",
+   "page": "9"
+  }
+ ]
+}

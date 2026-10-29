@@ -1,0 +1,421 @@
+{
+ "key": "g22_W4206479043",
+ "doi": "10.1016/j.rse.2021.112879",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper, Remote Sensing of Environment 270 (2022) 112879 (PDF, 14 pages)",
+  "Publisher full text from XML with section and paragraph locators (jats_text; contains only the abstract and figure/table captions)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (Fig. N, Table N, as printed). The XML text holds no body text, so body steps cite printed journal pages, which equal PDF pages counted from 1 (p. 1-14). Supplementary material was not supplied.",
+ "entry": {
+  "state": "external_goal",
+  "node": "N",
+  "evidence": "highlighting the need for new phytoplankton community composition algorithms that take advantage of this higher spectral resolution",
+  "page": "p. 2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF) with publisher XML text",
+   "steps": [
+    {
+     "n": 1,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "States the spectral gap hypothesis: pigment signals sit on narrow spectral scales (<100 nm) and can be isolated by removing broad-scale optical signals.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "demonstrates the utility of the spectral gap hypothesis for modeling phytoplankton pigments from hyperspectral data"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Compiled 4550 surface HPLC samples from Kramer and Siegel (2019) plus EXPORTS, matched them to hyperspectral Rrs from eight campaigns within ±2 h, smoothed the spectra, restricted them to 400-700 nm and removed noisy spectra by visual QC, leaving 145 matchups.",
+     "page": "p. 2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "resulting in 145 valid matchup samples between HPLC and quality-controlled, hyperspectral Rrs(λ)"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built a generic hyperspectral reflectance model (Gordon et al. 1988 quadratic form with NOMAD-derived aph, adg and bbp parameterizations) to produce residual spectra and their second derivatives.",
+     "page": "p. 3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A generic hyperspectral reflectance model was developed with the goal of enhancing the spectrally narrow phytoplankton signals"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fitted the reflectance model to each measured spectrum, solving for Tchla, adg(443) and bbp(443), then subtracted the modeled from the measured Rrs to form δRrs(λ).",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "through a non-linear fit between measured and modeled reflectance, as in Maritorena et al. (2002)"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Constructed an optimized principal components regression on δRrs''(λ), chosen among several statistical approaches and input variants, optimized by MAD within a 100-fold 75/25 cross-validation.",
+     "page": "p. 5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ultimately, following the approach of Catlett and Siegel (2018), a principal components regression model was constructed."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Ran hierarchical cluster analysis of the 13 measured pigment ratios to Tchla, which separated five pigment groups (diatoms, dinoflagellates, haptophytes, green algae, cyanobacteria).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "hierarchical cluster analysis separates five distinct phytoplankton pigment groups (Fig. 3A)"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Checked the HPLC grouping with EOF analysis and against the global analysis of Kramer and Siegel (2019).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The same phytoplankton pigment groups emerged from the EOF analysis"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked the reflectance model premise: qualitatively through the residual shapes, and quantitatively by comparing its Tchla retrieval with HPLC Tchla and with the OC4v6 algorithm (R2 0.86 vs 0.75).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The performance of the hyperspectral reflectance model was further evaluated by comparing the model retrieval of Tchla with measured HPLC Tchla"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "exploration",
+     "action": "Correlated δRrs(λ) and its first and second derivatives with the pigment concentrations across wavelengths, finding significant correlations across the visible spectrum.",
+     "page": "p. 6-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "nearly all pigments were significantly correlated with δRrs(λ) and its first and second derivatives across the visible spectrum"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated the 13 pigment concentrations from δRrs''(λ) with the PCR model, reporting cross-validated R2 and normalized MAD (Table 2) and the median reconstructions against HPLC (Fig. 6).",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "regression modeling approach with relatively high accuracy and low error"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Assessed skill on the held-out 25% in each of 100 cross-validations and checked that reconstruction error showed no dependence on the source campaign.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There were no clear relationships between the data source (e.g., the individual field campaign) and the pigment reconstruction (Fig. 6)."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared cluster and EOF structure of the modeled pigments with the measured pigments: the same five groups were recovered, with shifts such as Perid clustering near the cyanobacterial pigments.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the same five pigment clusters found in the measured pigment dataset (Fig. 3A) are also identified from hierarchical cluster analysis of the modeled pigment dataset"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeated the PCR modeling with the combined first and second derivatives of measured Rrs instead of the residual, with comparable results (Figs. S6-8, Table S1).",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "principal components regression modeling was repeated using the combined first and second derivatives of the measured hyperspectral reflectance"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the pigment distributions of the 145-sample matchup set with the 4550-sample global HPLC dataset (Fig. 7, two-sample t-tests), finding the matchup set skewed to low Tchla.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The mean pigment concentrations and ranges are significantly different for Tchla, Fuco, Perid, and HexFuco"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Rebuilt the δRrs'' model at 5 nm and 10 nm spectral resolution: 5 nm performed comparably to 1 nm, while 10 nm was notably worse.",
+     "page": "p. 10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "at 10 nm resolution, the results are notably worse for all modeled pigments"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Replicated the resolution results with first and second derivatives of measured Rrs (Figs. S13-15; Tables S4, S5).",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results can be replicated using both the first and second derivatives of the measured hyperspectral reflectance"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept PCR on hyperspectral reflectance as a strong candidate for pigment retrieval at 1-5 nm resolution, limited to the dataset it was developed on.",
+     "page": "p. 12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our results suggest that principal components regression modeling is a strong candidate for retrieving phytoplankton pigment composition"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Pigment-related signals on narrow spectral scales in reflectance residuals, correlated with pigments across 400-700 nm",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; pigments are inferred from Rrs through a statistical model trained on HPLC",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Retrieve phytoplankton pigment concentrations from hyperspectral Rrs ahead of PACE",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; only alternative statistical approaches and model inputs",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "None stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: in situ data compiled from eight existing field campaigns",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly: held-out cross-validation, alternative inputs and 5 nm resolution hold; performance degrades at 10 nm",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: PCR is a strong candidate; five pigment groups recovered; best at ≤5 nm",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Thirteen phytoplankton pigments, representing five pigment-based groups, can be modeled from hyperspectral Rrs with principal components regression; the model recreates observed pigment relationships and performs best at ≤5 nm resolution.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the residual-plus-second-derivative principal components regression model, which turns hyperspectral Rrs into pigment estimates, is the step without which no pigment retrieval claim exists.",
+  "page": "p. 3-6"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data were compiled from existing campaigns (p. 2-3), so the spectral gap hypothesis did not direct acquisition. The model faced held-out cross-validation that it could have failed (p. 6, Table 2), but no success threshold was set beforehand and weaker pigments (Zea R2 = 0.37, green algal pigments ~0.4) are still kept through their co-variation (p. 8). The visual QC (p. 3) and the 0.80 linkage cutoff for the modeled pigments versus 0.65 for the measured pigments (Fig. 3) appear to be set after seeing the data (inference). Nothing was registered."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Principal components regression (Massy 1965)",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Hierarchical clustering with Ward's linkage and correlation distance",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Second-order finite difference derivatives of spectra",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "analytical chemistry",
+   "item": "High-performance liquid chromatography pigment analysis (Van Heukelem and Thomas 2001)",
+   "kind": "instrument",
+   "page": "p. 2"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "k-fold cross-validation (100 random 75/25 splits) with MAD optimization",
+   "kind": "method",
+   "page": "p. 6"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "though it has not been applied for modeling phytoplankton pigment concentrations",
+   "page": "p. 11"
+  }
+ ],
+ "limits": "The XML text supplied contains only the abstract and captions, so all body locations are printed pages from the PDF. The supplement (Figs. S1-S15, Tables S1-S6), which holds the alternative-model and resolution results, was not supplied. Those checks are coded from the main-text summaries. No review file was supplied, although three reviewers and an editor are thanked (p. 12), so no review sequence is coded. The paper says it 'tested' the spectral gap hypothesis (p. 12). However, models built on derivatives of the measured Rrs, without the residual step, performed comparably (p. 8, p. 11). Inference: the residual-specific part of that hypothesis is therefore not singled out by a decisive test, and is at most best_explanation. Sub-claims: the resolution dependence (≤5 nm good, 10 nm worse) is regularity_in_range. The five-group pigment structure is a regularity, constrained by the HPLC validation set. Per-pigment retrievals are estimate_with_resolution, with low skill for Zea and the green algal pigments. Applicability is restricted to the low-chlorophyll open-ocean 'base state' of a 145-sample set that differs from the global HPLC distribution (p. 10). The visual QC removed about 19% of spectra (33 of 178), with no reported test of how this affected the results. The composition fits capability_first only loosely: the walk is method building and characterization with no rivals, and there is no exploration phase before a question.",
+ "disagreements": [
+  {
+   "target": "OC4v6 chlorophyll algorithm (O'Reilly et al., 1998)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "On the same 145 samples, the hyperspectral reflectance model gives higher R2 (0.86 vs 0.75) and a slope closer to 1 (0.96 vs 0.87) against HPLC Tchla.",
+   "page": "p. 6",
+   "quote": "the performance of the hyperspectral reflectance model improves upon the OC4v6 algorithm performance"
+  },
+  {
+   "target": "Catlett and Siegel (2018) model optimization by maximizing R2",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper optimizes by mean absolute difference, following Seegers et al. (2018) and McKinna et al. (2021), but reports no comparison with R2 optimization.",
+   "page": "p. 6",
+   "quote": "This approach differs from Catlett and Siegel (2018) where models were optimized by maximizing Pearson’s squared correlation coefficient"
+  },
+  {
+   "target": "Kramer and Siegel (2019) global pigment groups",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Cluster analysis of the 145-sample subset recovers nearly the same groups but separates diatom pigments from dinoflagellate pigments.",
+   "page": "p. 10",
+   "quote": "this analysis separated diatom pigments from dinoflagellate pigments"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Principal components regression",
+   "alternatives": "Hierarchical cluster analysis of spectra; network-based community detection",
+   "reason": "Accounts for the high collinearity across phytoplankton bio-optical signatures",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "N",
+   "chosen": "Second derivative of the Rrs residual, δRrs''(λ), at 1 nm",
+   "alternatives": "First and second derivatives of measured Rrs; inputs at varied spectral resolution",
+   "reason": "The best models performed similarly; this one had excellent performance and one spectral input",
+   "effect_reported": "yes",
+   "page": "p. 6"
+  },
+  {
+   "node": "N",
+   "chosen": "Optimization by minimizing mean absolute difference",
+   "alternatives": "Maximizing R2, as in Catlett and Siegel (2018)",
+   "reason": "Following Seegers et al. (2018) and McKinna et al. (2021)",
+   "effect_reported": "no",
+   "page": "p. 6"
+  },
+  {
+   "node": "O",
+   "chosen": "Spectral range 400-700 nm",
+   "alternatives": "Wider ranges (including UV) measured by some campaigns",
+   "reason": "Range common to all campaigns",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "O",
+   "chosen": "Removing spectra with high noise-to-signal ratios in ~610-660 nm",
+   "alternatives": "Retaining them, since they were suitable for other analyses",
+   "reason": "The derivative approach magnifies noise, so only real features should be amplified",
+   "effect_reported": "no",
+   "page": "p. 3"
+  },
+  {
+   "node": "V",
+   "chosen": "1 nm (and 5 nm) spectral resolution",
+   "alternatives": "5 nm and 10 nm resolution",
+   "reason": "Hyperspectral data add degrees of freedom, but neighbouring wavelengths are correlated",
+   "effect_reported": "yes",
+   "page": "p. 10-11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The same phytoplankton pigment groups emerged from the EOF analysis",
+   "page": "p. 6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] Tchla was compared to both Tchla derived from the OC4v6 chlorophyll algorithm",
+   "page": "p. 6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The modeling approach was validated using a 100-fold cross-validation procedure for each pigment.",
+   "page": "p. 6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "There were no clear relationships between the data source (e.g., the individual field campaign) and the pigment reconstruction (Fig. 6).",
+   "page": "p. 8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Similarly, the same major pigment-based taxonomic groups separated from the EOF analysis",
+   "page": "p. 8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "principal components regression modeling was repeated using the combined first and second derivatives of the measured hyperspectral reflectance",
+   "page": "p. 8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "at 10 nm resolution, the results are notably worse for all modeled pigments",
+   "page": "p. 11"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "These results can be replicated using both the first and second derivatives of the measured hyperspectral reflectance",
+   "page": "p. 11"
+  }
+ ]
+}

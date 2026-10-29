@@ -1,0 +1,559 @@
+{
+ "key": "g22_W4292544827",
+ "doi": "10.1029/2021tc007174",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Bi et al. (2022), Recovering Surface Slip Distribution Along the Sertengshan Piedmont Fault (Northern China) From Airborne LiDAR Data, Tectonics 41, e2021TC007174, published PDF (17 pp.); no supplement, review file or earlier version supplied"
+ ],
+ "pages_convention": "printed journal pages (n of 17), which coincide with PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "require further investigation along this fault to assess the potential seismic hazards in the Hetao Graben",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Bi et al. 2022, Tectonics, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem: the rupture history, recurrence and slip per event of the Sertengshan Piedmont Fault are poorly constrained, given short historical records and uncertain trench records.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "require further investigation along this fault to assess the potential seismic hazards in the Hetao Graben"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Take up earlier paleoseismic results from 13 trenches, with event counts, coseismic slip and recurrence, as the prior record of past events.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "a total of 13 trenches have been excavated at different sites to investigate the paleoearthquakes on this fault"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Acquire UAV airborne LiDAR along about 185 km of the fault (Riegl VUX-1LR, more than 4 points/m2), classify ground points and grid them into a 1-m bare-earth DEM.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By gridding the ground point cloud, a 1-m-resolution bare-earth LiDAR-DEM was generated."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check the DEM's vertical accuracy against 50 ground check points surveyed with Trimble GPS.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the vertical accuracy of the LiDAR data is demonstrated to be better than 10 cm"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Map major and secondary fault traces at 1:2000 on the DEM, and divide the fault into four segments at step-overs (1.5 and 3 km) and a ~25° bend.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the fault was divided into four major segments (segments 1–4)"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "reconstruction",
+     "action": "Map geomorphic surfaces and extract scarp-normal profiles about every 200 m using stated exclusion rules. Fit hanging-wall and footwall lines by least squares and measure 601 vertical displacements (0.7 to 72.3 m) with RMS-propagated uncertainties.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we measured a total of 601 vertical displacements along about 185 km of the Sertengshan Piedmont Fault"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "reconstruction",
+     "action": "Compare the LiDAR displacements with earlier field measurements at 30 sites (Yang et al. 2002, 2003; L. Chen et al. 2003).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "displaying a nearly 1:1 fit with a high correlation coefficient of 0.98"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Represent each displacement by a Gaussian PDF and sum them into a COPD for each segment (0–15 m only), with a 0.5 m bin chosen after unreported tests. Read off five to seven peaks per segment, with half-widths as uncertainties.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After many tests, a bin size of 0.5 m was chosen to generate the COPD plot in our study."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare the decay of the COPD peaks with the exponential decay of offsets reported for strike-slip faults, and attribute the difference to better preservation of dip-slip scarps.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the COPD peaks do not always decay exponentially as commonly observed for strike-slip faults in our study"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Interpret the evenly spaced COPD peaks (~2 m increments, close to the smallest peak) as at least five to seven repeated large earthquakes. A missing peak on segment 1 is suggested to come from few measurements.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the four individual segments all display five to seven pronounced COPD peaks, which are separated by a similar slip increment of ∼2 m"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the mean slip per event for each segment with the Monte Carlo method of Zielke et al. (2015) over the COPD peak values and their uncertainties.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimated the average slip of the large events to be 2.1 ± 1.0, 2.1 ± 0.9, 2.4 ± 1.1, and 2.2 ± 1.2 m"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the slip per event with independent coseismic slip from earlier trenches (1.2–2.6 m) and from scarp morphology for the most recent event (Rao et al. 2020, 1.8–2.5 m).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This derived average slip per event is in good agreement with the 1.2–2.6 m of coseismic vertical displacements"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Compute the coefficient of variation of slip per event from the COPD peaks, and set it beside cited values for the Fuyun fault and the Carrizo Plain.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The resulting CVs are 0.11, 0.15, 0.22, and 0.23 for the four fault segments respectively"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compute the coefficient of variation of recurrence intervals from the 13-trench records (0.64, 0.46, 0.11, 0.29) and compare it with the slip CV, finding recurrence less regular than slip.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the recurrence interval of surface-rupturing earthquakes is distinctly less regular than the slip per event"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offer two explanations for the discrepancy: partial-rupture events recorded in trenches but hidden in the COPD, and uncertainty in early dating and the limited number of trench sites.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which may result from the different recording capacity of the geomorphic and paleoseismic markers"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "reconstruction",
+     "action": "Reconstruct slip distributions of several recent events from 3-km-bin COPDs (0–10 m) by graphically fitting lines across bins, constrained by trench slip and event counts.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the binned-COPD method was employed to tentatively reconstruct the surface slip distributions of the several recent events"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compare the reconstructed profiles with published rupture slip profiles: they show high-frequency variation along strike and slip deficits at step-overs and the bend.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also observe slip decrease at the step-over zone or fault bend between different segments"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State two rival scenarios for the 25° bend: all four segments rupture together, or the bend stops ruptures so that at most two segments break.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In terms of the fault bend between segments 2 and 3, there may be two possible scenarios."
+    },
+    {
+     "n": 19,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compute what the four-segment scenario predicts from Wells and Coppersmith (1994) scaling: Mw ~7.8, and more slip than the observed ~2 m.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the derived average slip of ∼2 m is also too small for displacement-length scaling of a 185-km-long rupture"
+    },
+    {
+     "n": 20,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the full 185-km rupture scenario as atypical for continental normal faults and inconsistent with the slip, and prefer ruptures that stop at the bend.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we prefer the latter scenario where the ruptures have stopped at this main bend"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare trench records with the binned-COPD events: slip matches, but some trench event counts disagree, which is read as partial-rupture events (W3, E5) hidden in the COPD.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "some of the number of events recorded in the paleoseismic trenches do not agree with those resolved from the binned-COPD plots"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep a bimodal rupture model (full two-segment plus partial ruptures) over the classic characteristic earthquake model, while noting that more than two slip modes remain possible.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our reconstructed slip distributions provide further support for the hypothesis of prior research"
+    },
+    {
+     "n": 23,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the magnitude of full two-segment ruptures (70–115 km) from rupture-length and average-displacement scaling (assuming a 50° dip) and from seismic moment (Hanks and Kanamori, 20 km width).",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a preferred magnitude of Mw 7.3–7.5 was yielded for the full-rupture earthquakes"
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Recompute the magnitude with the generalized moment-magnitude scale of Das et al. (2019) as an alternative relation, and treat all estimates as minima.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "from which we derived a magnitude of Mw 7.2–7.4"
+    },
+    {
+     "n": 25,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the average vertical slip rate from ~2 m per event and the ~4,000-yr recurrence from earlier trenches, and find it within the published range of 0.19–2.2 mm/yr.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimated an average vertical slip rate (i.e., the uplift rate) of ∼0.5 mm/yr for the fault"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Conclude: five to seven large full-rupture events with ~2 m regular slip, bimodal rupture behaviour, and Mw 7.1–7.5 for full ruptures.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is inferred that at least five to seven large full-rupture earthquakes have broken the Sertengshan Piedmont Fault"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Displaced landforms (fault scarps on terraces and fans) record repeated past ruptures on the fault",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "2",
+   "answer": "No; past earthquakes are known only from geomorphic and trench traces",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the number of events, slip per event, rupture extent and magnitude for hazard assessment",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Yes, in the discussion: rupture through the bend versus stopping at it; partial ruptures versus dating error as causes of the recurrence-interval CV; bimodal versus characteristic model",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Only for the bend scenarios: scaling predicts Mw ~7.8 and more slip for a 185-km rupture",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: conditions are past ruptures preserved in landforms",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; nature repeats ~2 m slip increments over five to seven events on four segments",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: DEM checked against GPS, displacements against field data (R=0.98), slip per event against trenches, magnitudes across several relations; bin-size tests not reported",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: regular ~2 m slip per event, bimodal rupture, Mw 7.1–7.5 minimum for full ruptures",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "At least five to seven large earthquakes have ruptured the Sertengshan Piedmont Fault with a regular vertical slip increment of about 2 m (2.1–2.4 m per segment, coefficient of variation of slip 0.11–0.23), and full two-segment ruptures imply Mw 7.1–7.5.",
+  "page": "11, 14"
+ },
+ "decisive_move": {
+  "node": "O",
+  "mode": "reconstruction",
+  "sentence": "Without the dense set of 601 LiDAR-derived vertical displacements, measured on landforms of different ages along the whole fault, there would be no COPD peaks, no slip-per-event estimate and no slip reconstruction.",
+  "page": "7"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The LiDAR survey was motivated by the open problem and by the limits of the earlier trenches, not by a stated hypothesis (p. 2). The displacement data were checked against independent field measurements (p. 8), and the slip per event against trench and scarp-morphology values (p. 11); either check could have failed. The core reading of COPD peaks as discrete events is an assumption, not tested against a rival. The bin size was chosen 'after many tests' (p. 8), and the binned reconstruction was fitted graphically with trench constraints built in (p. 12). Nothing was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "optics / remote-sensing engineering",
+   "item": "Airborne laser scanning (LiDAR, Riegl VUX-1LR) on a fixed-wing UAV",
+   "kind": "instrument",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Least-squares linear regression of hanging-wall and footwall surfaces, with error propagation of RMS misfits",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "statistics",
+   "item": "Gaussian probability density functions summed into a cumulative probability density (COPD)",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "statistics",
+   "item": "Coefficient of variation (Std/Mean) as a measure of regularity",
+   "kind": "concept",
+   "page": "11"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Most studies have focused on faults that are dominated by strike-slip motion, while normal or reverse faults that exhibit dominantly dip-slip motion were rarely investigated",
+   "page": "2"
+  },
+  {
+   "quote": "the LiDAR data provides a more precise vision of the fault traces due to its higher spatial resolution",
+   "page": "5"
+  },
+  {
+   "quote": "Our study not only deepens the understanding of the rupture behavior of dip-slip normal faults around the stable Ordos Block",
+   "page": "15"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so there is no review sequence. The supplement (Figures S1–S2, Table S1, Text S1) was not supplied; measurement sites and data were coded from the main text only. The paper makes no explicit 'first' claim; the novelty entries are gap and precision statements. Process the document does not show: (1) The bin-size tests behind the 0.5 m choice are not reported, and the effect of the bin on peak positions or counts is not shown. (2) Profile selection was manual, following stated exclusion rules; how many candidate profiles were discarded is not reported. (3) The binned-COPD reconstruction was done by graphical line-fitting, has no stated uncertainty, and builds in trench slip and event counts, so its agreement with the trenches is partly circular (inference). (4) Reading COPD peaks as discrete earthquakes, and the ~2 m increment as characteristic slip, is taken from the literature and not tested against alternatives such as clustering from erosion or surface-age distributions (inference). (5) No new dating; recurrence and slip rate rest on earlier thermoluminescence-dated trenches. Sub-claim statuses: number of events and slip per event, estimate_with_resolution (headline); regular slip (CV), regularity_in_range across four segments; rupture stopping at the bend, best_explanation over the four-segment rival; bimodal rupture model, best_explanation (more than two slip modes left open); Mw 7.1–7.5, estimate_with_resolution, stated as minimum values; slip rate ~0.5 mm/yr, a rough estimate without uncertainty. Composition: trace_series was chosen. natures_repetition is a close alternative because the headline is a regularity across repeated events, but the regularity is not fitted as a relation with a stated range of validity.",
+ "disagreements": [
+  {
+   "target": "Early classic characteristic earthquake model (Schwartz & Coppersmith, 1984)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Binned-COPD reconstruction shows partial-rupture events besides full ruptures, and trench event counts exceed the COPD events.",
+   "page": "13",
+   "quote": "[...] (full-rupture and partial-rupture) model may be more appropriate to describe fault rupture behavior than the early classic characteristic earthquake model"
+  },
+  {
+   "target": "Exponential decay of preserved offsets reported on strike-slip faults (Haddon et al., 2016; Klinger et al., 2011; Zielke et al., [...]",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "COPD peak heights on segments 1 and 3 do not decay exponentially, which the authors attribute to better preservation of dip-slip scarps.",
+   "page": "9",
+   "quote": "the COPD peaks do not always decay exponentially as commonly observed for strike-slip faults in our study"
+  },
+  {
+   "target": "Earlier paleoseismic trench records on the [...] al., 2003; He et al., 2018; Wu et al., 1996; [...]",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The recurrence-interval CV from the trenches is much less regular than the slip CV, and trench event counts disagree with the binned-COPD in places; attributed to dating limits and partial ruptures.",
+   "page": "2",
+   "quote": "there may be large uncertainties in the paleoseismic records due to the limitation of early dating accuracy and finite trenching sites"
+  },
+  {
+   "target": "Published vertical slip rates of 0.19–2.2 mm/yr (L. Chen et al., 2003; Yang et al., 2002, 2003; H. Zhang et [...]",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The wide range is attributed to thermoluminescence dating uncertainty; the paper's ~0.5 mm/yr falls within it.",
+   "page": "14",
+   "quote": "[...] large variation may mainly be caused by the uncertainties in the slip rate determination"
+  },
+  {
+   "target": "Early field- and aerial-photo-based displacement datasets (McGill & Sieh, 1991; Sieh & Jahns, 1984; Wallace, 1968)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Low resolution and density are said to make slip reconstructions non-unique, which motivates dense LiDAR measurement.",
+   "page": "2",
+   "quote": "the reconstructions of along-fault slip distributions and accumulation processes are usually non-unique based on these early datasets"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Single unaveraged topographic profiles",
+   "alternatives": "Profiles averaged over a width to smooth high-frequency DEM noise (e.g., Johnson et al., 2018)",
+   "reason": "High accuracy of the LiDAR-DEM",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "I",
+   "chosen": "Gaussian PDF for each displacement",
+   "alternatives": "Rectangular and asymmetric triangular distributions (Madden et al., 2013; Salisbury et al., 2015)",
+   "reason": "none given beyond Gaussian being the most commonly used",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "COPD computed separately for each segment",
+   "alternatives": "COPD for the whole fault (implied)",
+   "reason": "Different segments may have different rupture behavior",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Displacements of 0–15 m only (~80% of data)",
+   "alternatives": "All 601 displacements",
+   "reason": "Larger displacements on older, eroded surfaces have larger uncertainties",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Bin size of 0.5 m",
+   "alternatives": "Smaller or larger bin sizes (after many tests)",
+   "reason": "Makes primary peaks pronounced without making the curve too noisy",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Binned-COPD reconstruction in 3-km bins, limited to 0–10 m",
+   "alternatives": "Larger displacement range",
+   "reason": "Increasing uncertainties of larger cumulative displacements (Lin et al., 2020)",
+   "effect_reported": "no",
+   "page": "12"
+  },
+  {
+   "node": "X",
+   "chosen": "Ruptures stop at the 25° bend (at most two segments)",
+   "alternatives": "All four segments rupture together through the bend (~185 km)",
+   "reason": "Mw ~7.8 is uncommon for continental normal faults, and ~2 m slip is too small for a 185-km rupture",
+   "effect_reported": "yes",
+   "page": "13"
+  },
+  {
+   "node": "K",
+   "chosen": "Bimodal rupture model (full and partial ruptures)",
+   "alternatives": "Characteristic earthquake model; more than two slip modes (partial-segment, spillover, full-segment, as at Wasatch and Lost River)",
+   "reason": "Partial-rupture events and trench-COPD mismatch in event counts; more modes left possible",
+   "effect_reported": "no",
+   "page": "13"
+  },
+  {
+   "node": "I",
+   "chosen": "Fault dip of 50°",
+   "alternatives": "Reported dip range 40°–60° (Yang et al., 2002)",
+   "reason": "none given (mid-range assumption)",
+   "effect_reported": "no",
+   "page": "14"
+  },
+  {
+   "node": "I",
+   "chosen": "Overall range Mw 7.1–7.5 from several relations",
+   "alternatives": "Surface rupture length scaling (7.3–7.5), average displacement scaling (7.1), Hanks & Kanamori moment (7.3–7.5), Das et al. (2019) scale (7.2–7.4)",
+   "reason": "Das et al. scale improves consistency over a wider range; all reported",
+   "effect_reported": "yes",
+   "page": "14"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the vertical accuracy of the LiDAR data is demonstrated to be better than 10 cm",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "displaying a nearly 1:1 fit with a high correlation coefficient of 0.98",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "After many tests, a bin size of 0.5 m was chosen to generate the COPD plot in our study.",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "This derived average slip per event is in good agreement with the 1.2–2.6 m of coseismic vertical displacements",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the slip observations from the paleoseismic trenches generally match well with those measured from the morphology of [...]",
+   "page": "13"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "The regularity of surface slip has also been discovered on a lot of other faults worldwide",
+   "page": "11"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "from which we derived a magnitude of Mw 7.2–7.4",
+   "page": "14"
+  }
+ ]
+}

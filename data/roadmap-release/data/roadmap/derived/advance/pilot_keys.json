@@ -1,0 +1,110 @@
+{
+ "_provenance": {
+  "script": "g24_advance.py",
+  "commit": "f155302+uncommitted",
+  "date": "2026-10-27",
+  "private_root": "private",
+  "inputs": [
+   "private/analysis/codings/api/calc1",
+   "private/analysis/codings/api/r2",
+   "derived/gold/metrics.json",
+   "derived/r2/metrics.json",
+   "private/data/roadmap/blind"
+  ],
+  "params": {}
+ },
+ "data": {
+  "keys": [
+   "g22_W4313303918",
+   "g22_W4214809885",
+   "g22_W4223595027",
+   "g22_W4307126197",
+   "g22_W4297093781",
+   "g22_W4293367304",
+   "g22_W4310253034",
+   "g22_W4205830859",
+   "g22_W4310437831",
+   "g22_W4292722101",
+   "g22_W4297883802",
+   "g22_W4205292752",
+   "g22_W4290667674",
+   "g22_W4307648544",
+   "g22_W4309890751",
+   "g22_W4205648916",
+   "g22_W4309333314",
+   "g22_W4282839350",
+   "g22_W4308562635"
+  ],
+  "by_archetype": {
+   "hazard_or_forecast": [
+    "g22_W4313303918",
+    "g22_W4214809885",
+    "g22_W4223595027",
+    "g22_W4307126197"
+   ],
+   "methods": [
+    "g22_W4297093781",
+    "g22_W4293367304",
+    "g22_W4310253034",
+    "g22_W4205830859"
+   ],
+   "reconstruction": [
+    "g22_W4310437831",
+    "g22_W4292722101",
+    "g22_W4297883802"
+   ],
+   "observational": [
+    "g22_W4205292752",
+    "g22_W4290667674",
+    "g22_W4307648544",
+    "g22_W4309890751"
+   ],
+   "model_or_mechanism": [
+    "g22_W4205648916",
+    "g22_W4309333314",
+    "g22_W4282839350",
+    "g22_W4308562635"
+   ]
+  },
+  "pool": 501,
+  "pool_by_archetype": {
+   "model_or_mechanism": 56,
+   "hazard_or_forecast": 15,
+   "methods": 136,
+   "reconstruction": 141,
+   "observational": 69,
+   "other": 84
+  },
+  "rounds": {
+   "round1": 12,
+   "round2": 8
+  },
+  "sources": {
+   "xml": 10,
+   "pdftotext": 10
+  },
+  "subfields": {
+   "Geophysics": 8,
+   "Artificial Intelligence": 1,
+   "Atmospheric Science": 6,
+   "Oceanography": 1,
+   "Earth-Surface Processes": 1,
+   "Geochemistry and Petrology": 1,
+   "Water Science and Technology": 1,
+   "Geology": 1
+  },
+  "pool_subfields": {
+   "Atmospheric Science": 153,
+   "Oceanography": 36,
+   "Geophysics": 194,
+   "Artificial Intelligence": 21,
+   "Geology": 13,
+   "Earth-Surface Processes": 33,
+   "Geochemistry and Petrology": 31,
+   "Water Science and Technology": 19,
+   "Ocean Engineering": 1
+  },
+  "rule": "Helper, before the pilot. 20 papers with a valid inquiry coding, none of the 100 gold-set papers, 4 per\n        archetype: hazard or forecast (title vocabulary), methods (claim status capability_characterized),\n        reconstruction (composition trace_series), observational (composition natures_repetition or claim status\n        regularity_in_range), model or mechanism (claim status best_explanation); within an archetype, alternately\n        XML and PDF text routes. Each slot takes, among the papers of its archetype and route, the one whose\n        OpenAlex subfield and then round are furthest below their share of the pool (proportional allocation over\n        the 20 slots), ties broken by a permutation from default_rng(2029). A paper goes to the first archetype it\n        fits in that order. Writes derived/advance/pilot_keys.json and prints the --keys list. Papers with a known\n        later correction or failed replication cannot be found from the data here; swap 2 or 3 in by hand if known.",
+  "seed": 2029
+ }
+}

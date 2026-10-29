@@ -1,0 +1,544 @@
+{
+ "key": "g22_W4214769187",
+ "doi": "10.1007/s00382-022-06184-6",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Madsen et al. 2022, Climate Dynamics 59:1189-1211",
+  "Publisher XML full text with section and paragraph locators (g22_W4214769187.xml.txt, jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "Here, we present a new model system, EC-Earth-PISM, that includes an interactive Greenland Ice Sheet.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text with section and paragraph locators (g22_W4214769187.xml.txt, jats_text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors frame the question from cited observations of accelerating Greenland mass loss: is the fixed-ice-sheet assumption of global climate models adequate under warming?",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The rapidly responding GrIS challenges the assumption of fixed ice sheets in global climate models."
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "They take expectations from the literature: melt-albedo and elevation feedbacks, and Greenland freshwater weakening the AMOC and damping Arctic warming.",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This weakened circulation reduces the oceanic heat supply to the Northern North Atlantic region, and eventually dampens Arctic warming"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "simulation",
+     "action": "They modify the EC-Earth v2.3 land surface scheme for coupling: an ice mask, ice thermal properties below the snow, a wet-snow albedo decay to 0.6 that enables the melt-albedo feedback, and ice surface melt.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the EC-Earth surface scheme has been modified to account for the presence of the ice sheet in the surface energy and mass balance calculations"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "simulation",
+     "action": "They adopt the existing PISM v0.5 hybrid SIA/SSA ice sheet model, with a geometric calving rule at the 100 m shelf-break contour, and justify its use by earlier studies.",
+     "page": "§2.3 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The ice sheet model PISM (version 0.5) is a 3D hybrid stress balance model"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "simulation",
+     "action": "They build an annual file-exchange two-way coupling: SMB by conservative remapping without downscaling, temperature with a lapse rate, and topography, ice mask, calving and basal melt fluxes returned to EC-Earth.",
+     "page": "§2.4 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The coupling of EC-Earth and PISM occurs at the script level with exchange of files between the two models once per simulation year"
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "simulation",
+     "action": "They initialize the system with a 100 ka stand-alone PISM pre-spin-up under the pre-industrial EC-Earth climatology, followed by a 130-year coupled spin-up.",
+     "page": "§2.5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After 100 ka, a quasi-stationary ice sheet state is achieved"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They compare the initial modelled ice sheet with the observed area and volume and find it too large, mainly attributed to SMB computed at coarse resolution.",
+     "page": "§2.5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The modelled ice sheet is larger than the observed ice sheet."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design piControl, Abrupt4xCO2 and 1pctCO2 runs of 350 years, each with both EC-Earth-PISM and the uncoupled EC-Earth (fixed present-day Greenland topography).",
+     "page": "§2.6 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "one control and two climate warming experiments are performed with both EC-Earth-PISM and EC-Earth"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They evaluate the pre-industrial ice sheet: elevation contours stable, velocities compared with MEaSUREs (Fig. 2), and a small drift compared with the observed sea-level contribution.",
+     "page": "§2.7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It compares relatively well with the MEaSUREs velocity"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They define the comparison: means over years 301-350, with a grid-point difference counted significant when it exceeds one standard deviation of the reference run.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "differences are considered significant, if the difference between the 50-year averages (301–350) is larger than one standard deviation"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run all six experiments and compute the GrIS-integrated mass balance components for both model versions (Table 1).",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The components contributing to the mass balance of the GrIS are shown in Table 1 for all experiments"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "They compare pre-industrial SMB, snowfall and run-off with CESM2, CESM2.1-CISM2.1 and the GrSMBMIP ensemble, and find run-off underestimated by more than half.",
+     "page": "§3.1.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the relatively high SMB in EC-Earth-PISM under pre-industrial conditions results from a relatively low estimate of surface melt and run-off"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare warming responses: run-off rises eightfold in EC-Earth-PISM through the melt-albedo feedback, and by less than half that amount in EC-Earth with its fixed albedo.",
+     "page": "§3.1.1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In EC-Earth, the surface run-off increases by less than half the amount in EC-Earth-PISM"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "They compare modelled calving and basal melt with observed Greenland discharge estimates, and note that the run-off/calving partitioning is wrong.",
+     "page": "§3.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The modelled calving and basal melt compares well with recent estimates of Greenland discharge"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the freshwater flux response between model versions: about 55% larger increase with the interactive ice sheet.",
+     "page": "§3.1.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The freshwater flux from the GrIS increases about 55% more in EC-Earth-PISM than in EC-Earth"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check mass conservation of the coupling by integrating mass balance on both the IFS and the PISM grids (+10 vs ~23 Gt/yr), and conclude the coupling is not fully mass-conserving.",
+     "page": "§3.1.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The coupling between EC-Earth and PISM is thus not fully mass-conserving."
+    },
+    {
+     "n": 17,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They diagnose GrIS mass loss in the warming runs: about 500 Gt/yr, converging to 1.4 mm SLE/yr once CO2 peaks.",
+     "page": "§3.1.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the GrIS loses mass at a nearly constant rate of 1.4 mm SLE/year in both warming experiments"
+    },
+    {
+     "n": 18,
+     "node": "X",
+     "mode": "simulation",
+     "action": "They reject the fixed-ice EC-Earth representation for warming conditions: it gains mass because the melt-albedo feedback is missing and the 10 m snow cut-off fails.",
+     "page": "§3.1.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results show that EC-Earth cannot simulate a realistic Greenland mass balance under climate change conditions"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare climate responses between versions: Arctic near-surface air temperature about 1 °C colder, about twice the winter sea ice, and colder, fresher surface ocean with the interactive ice sheet (Figs. 6-10).",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the stabilized temperature averaged over the high latitudes is about 1 ºC colder in EC-Earth-PISM than in EC-Earth"
+    },
+    {
+     "n": 20,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They adopt the Deep Mixed Volume proxy of Brodeau and Koenigk, with basin thresholds in four regions, to measure deep convection.",
+     "page": "§3.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the definition of Deep Mixed Volume (DMV) in Brodeau and Koenigk (16) is used to assess the deep water formation strength"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare deep convection between versions: weaker with the interactive ice sheet in all basins, and shifting north under warming.",
+     "page": "§3.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In all basins, deep convection is weaker in EC-Earth-PISM because the surface water is fresher."
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "They check the northward shift of convection against the RCP8.5 ensemble result of Brodeau and Koenigk.",
+     "page": "§3.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result agrees with the northward movement of deep water formation reported in Brodeau and Konigk (16) for the RCP8.5 scenario."
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare AMOC at 30° N: similar decline in both versions but slower recovery with the interactive ice sheet (12.1 vs 13.8 Sv in Abrupt4xCO2).",
+     "page": "§3.4 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the recovery is slower in EC-Earth-PISM"
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "They compare the AMOC effect with freshwater hosing experiments and find a similar reduction at a much smaller (~30 mSv) flux.",
+     "page": "§3.4 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In EC-Earth-PISM, we find a similar reduction in the AMOC recovery"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "simulation",
+     "action": "They retain the claim that the melt-albedo feedback drives an eightfold melt increase and a 55% larger freshwater flux that alters Arctic climate.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the melt-albedo feedback plays an important role, causing the surface melt to increase by a factor of eight"
+    },
+    {
+     "n": 26,
+     "node": "R",
+     "mode": "simulation",
+     "action": "They note that ablation-zone feedbacks are underestimated (mass loss about one third of an elevation-class model) and name refinements: SMB downscaling, multi-layer snow, physical calving, higher resolution.",
+     "page": "§4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests the need for applying a more sophisticated downscaling of the SMB to the resolution of the ice sheet model"
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "simulation",
+     "action": "They keep the headline claim that interactive ice sheets matter for Arctic climate projections, and infer that fixed-ice GCMs overestimate northern warming.",
+     "page": "§4 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the results presented here stress that an interactive GrIS is important for understanding and assessing climate change in the Arctic"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Accelerating Greenland mass loss (cited observations) and its possible climate feedbacks",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; the future coupled response can only be simulated",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Assess how an interactive GrIS changes the climate response to 4xCO2",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "Fixed-ice EC-Earth versus interactive EC-Earth-PISM",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; they differ in run-off, freshwater flux, Arctic temperature, sea ice and AMOC",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in the model: piControl, Abrupt4xCO2 and 1pctCO2 forcing",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; two forcing pathways agree, but there are single realizations and no parameter sensitivity tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Interactive GrIS changes the response; the fixed-ice model cannot simulate a realistic mass balance",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Under 4xCO2 forcing, an interactive Greenland ice sheet with an active melt-albedo feedback gives a 55% larger increase in freshwater flux, a colder Arctic, more winter sea ice and a delayed AMOC recovery than a fixed-ice model.",
+  "page": "§4 ¶3"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "simulation",
+  "sentence": "Building the two-way coupled EC-Earth-PISM, including the wet-snow albedo scheme that activates the melt-albedo feedback, produced the coupled-versus-fixed contrast on which every result rests.",
+  "page": "§2.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The paired with/without-ice-sheet experiments were designed to expose the ice sheet's influence (§2.6 ¶2), but no hypothesis with predicted sign or size was stated beforehand; the aim is to 'explore'. The coupled-minus-uncoupled differences could have been insignificant under the one-standard-deviation criterion (§3 ¶1), so the existence claim faced a weak test. The melt-albedo attribution was not tested by switching the feedback off. Nothing is stated as fixed before the runs."
+ },
+ "imports": [
+  {
+   "field": "physics",
+   "item": "Stefan–Boltzmann radiation law in the skin-layer surface energy balance",
+   "kind": "concept",
+   "page": "§2.2.3 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we present a new model system, EC-Earth-PISM, that includes an interactive Greenland Ice Sheet.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "The work demonstrates the first step towards the development of a fully coupled climate-ice sheet model that includes an interactive GrIS.",
+   "page": "§4 ¶1"
+  }
+ ],
+ "limits": "Sub-claim statuses: the model is capability_characterized (stable pre-industrial ice sheet and climate, with stated biases: ice sheet too large, run-off underestimated, mass not conserved in partial grid boxes); the ~500 Gt/yr mass loss is a single-run model output with interannual spread only, not an estimate_with_resolution; the melt-albedo attribution is best_explanation, inferred from the albedo-scheme difference and not isolated by a feedback-off experiment. The two model versions also differ in initial Greenland topography (the uncoupled runs use fixed present-day topography), which the paper notes confounds the temperature and precipitation differences over Greenland; it is not separated from the ice-sheet effect. Each configuration is a single realization, with no initial-condition ensemble and no parameter sensitivity tests (e.g., the 0.6 bare-ice albedo). Significance is a one-standard-deviation criterion rather than a formal test. The supplementary Figs. S1-S5 (global stability, topography, vertical temperature, deep convection) were not supplied and are coded from main-text descriptions only. No review file was supplied, so no review sequence is coded; the acknowledgements say the reviewers' comments improved the manuscript, but what changed is unknown. Composition none_fits: the walk is a capability build followed by a with/without-component comparison (a mechanism-denial design) between two model versions. Rivals exist from the start, so it is not capability_first. There is a single comparative test with no crucial-test exclusion structure, so it is not strong_inference.",
+ "disagreements": [
+  {
+   "target": "The assumption of fixed or non-responding ice sheets in global climate models (community practice, CMIP)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Cited observations of rapid GrIS mass loss, plus the paper's own finding that the fixed-ice EC-Earth gains mass under warming and misses the melt-albedo feedback.",
+   "page": "§1 ¶2",
+   "quote": "The rapidly responding GrIS challenges the assumption of fixed ice sheets in global climate models."
+  },
+  {
+   "target": "GCMs without interactive ice sheets (most CMIP models)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The coupled runs give larger freshwater flux and less Arctic warming than the uncoupled twin model; this is extrapolated to other GCMs by inference.",
+   "page": "§4 ¶7",
+   "quote": "it is likely that these models underestimate the mass loss of the ice sheets under increased levels of CO2 and hence overestimate the northern hemispheric [...]"
+  },
+  {
+   "target": "Freshwater hosing experiments (Haskins et al.; Swingedouw et al. 2012, 2014)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A coupled freshwater flux of about 30 mSv delays AMOC recovery by an amount similar to that in 100 mSv hosing experiments.",
+   "page": "§3.4 ¶7",
+   "quote": "These experiments are usually performed with a much stronger, unrealistic freshwater input to kick the AMOC response."
+  },
+  {
+   "target": "Muntjewerf et al. (2020b), CESM2.1-CISM2.1 1pctCO2 results",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Precipitation increases 67% versus 32%, and mass loss is about one third of theirs; the authors attribute this to their own coarse SMB and to model uncertainty, not to an error in the other study.",
+   "page": "§3.1.1 ¶4",
+   "quote": "which is large compared to the precipitation changes of 32% found in Muntjewerf et al (72) for a similar scenario"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Minimum albedo of 0.6 for bare ice and melting snow",
+   "alternatives": "Observed bare-ice albedo of 0.565 (Wehrlé et al.) and 0.45–0.57 (Ryan et al.); more elaborate parameterizations (Helsen et al.)",
+   "reason": "Described as 'a rather conservative estimate'; no further reason given",
+   "effect_reported": "no",
+   "page": "§2.2.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "SMB computed at atmospheric resolution and remapped conservatively, without downscaling",
+   "alternatives": "Positive degree-day model, energy balance interface with downscaling, elevation classes, regional grid refinement",
+   "reason": "This simple procedure ensures that the SMB is consistent with the atmospheric model",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Geometric calving at the continental shelf break (100 m contour)",
+   "alternatives": "Physical calving model based on stress balance divergence in fjords",
+   "reason": "Current observations show ice does not advance into the deep ocean",
+   "effect_reported": "no",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Single-layer snow scheme without refreezing",
+   "alternatives": "Multi-layer snow model with compaction and refreezing; more sophisticated albedo parameterization",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4 ¶4"
+  },
+  {
+   "node": "V",
+   "chosen": "Pre-industrial drift not subtracted from results",
+   "alternatives": "Subtracting the drift",
+   "reason": "Drift is small compared with the estimated sea-level contribution over the last century",
+   "effect_reported": "no",
+   "page": "§2.7 ¶3"
+  },
+  {
+   "node": "V",
+   "chosen": "Mass balance integrated on the IFS grid",
+   "alternatives": "Integration on the finer PISM grid",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§3.1.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "one control and two climate warming experiments are performed with both EC-Earth-PISM and EC-Earth",
+   "page": "§2.6 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The modelled ice sheet is larger than the observed ice sheet.",
+   "page": "§2.5 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Fig. S1 demonstrates the stability of the global mean temperature in the pre-industrial experiment",
+   "page": "§2.5 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "It compares relatively well with the MEaSUREs velocity",
+   "page": "§2.7 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This drift is small compared to the estimated sea-level contribution over the last century of 0.6 mm SLE/year",
+   "page": "§2.7 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "differences are considered significant, if the difference between the 50-year averages (301–350) is larger than one standard deviation",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "For comparison, van Kampenhout et al. (202) estimate an SMB of 508 ± 73 Gt/years (1961–1990) using the CESM2 model",
+   "page": "§3.1.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The modelled calving and basal melt compares well with recent estimates of Greenland discharge",
+   "page": "§3.1.2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "estimating on the finer grid of PISM results in a slightly bigger mass gain of ~ 23 Gt/year",
+   "page": "§3.1.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] both abrupt and gradual 4xCO2 scenarios, the melt-albedo feedback plays an important role",
+   "page": "§4 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This result agrees with the northward movement of deep water formation reported in Brodeau and Konigk (16) for the RCP8.5 scenario.",
+   "page": "§3.4 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "In EC-Earth-PISM, we find a similar reduction in the AMOC recovery",
+   "page": "§3.4 ¶7"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "Results have shown that the model realistically simulates the past evolutions and present state of the Greenland and Antarctic ice sheets.",
+   "page": "§2.3 ¶3"
+  }
+ ]
+}

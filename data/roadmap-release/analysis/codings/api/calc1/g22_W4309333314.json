@@ -1,0 +1,389 @@
+{
+ "key": "g22_W4309333314",
+ "doi": "10.1029/2022gl101272",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Nakayama, Hirata, Goldberg & Greene (2022), What Determines the Shape of a Pine-Island-Like Ice Shelf?, Geophysical Research Letters 49, e2022GL101272 (published PDF, 9 pages); Supporting Information not supplied"
+ ],
+ "pages_convention": "printed journal pages (printed as 'n of 9'; identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Despite the importance of ice-shelf geometry, we know little about what determines ice shelf shape",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Nakayama et al. 2022, GRL, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of what determines ice-shelf shape, noting that ocean models fix cavity geometry, ice models parameterize melt, and coupled runs target sea-level projections.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we know little about what determines ice shelf shape"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "theory",
+     "action": "Take up the 1-D coupled flow-plume result of Sergienko et al. (2013) that advection and melting dominate the mass balance, and note its width-averaged limitation.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "ice thickness advection and ice shelf melting are dominant terms in the ice shelf mass balance equation for a warm ice shelf cavity"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design an idealized Pine-Island-like coupled MITgcm configuration (CTRL, 60 yr, 1 km grid) adapted from Jordan et al. (2017), an ice-only control (IOCTRL) forced by recorded CTRL melt, and 250/500/1000 m resolution runs.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This model is almost identical to Jordan et al. (2017)"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run CTRL to steady state, obtaining warm mCDW intrusion, melt of about 100 m/yr near the grounding line, a steep-then-gradual shelf profile, and a divergent across-flow ice velocity.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "steady ice shelf shape shows a steep slope close to the grounding line, and gradual thinning away from the grounding line"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check the CTRL ocean, melt, shape, and ice-velocity features against Jordan et al. (2017) and against Pine Island observations (shape from Shean 2018; velocity about 1.5 times faster in observations).",
+     "page": "2, 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These features are similar to Jordan et al. (2017)."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Verify that the uncoupled ice-only control reproduces the coupled steady-state shape, so that it can serve as the base for ablations.",
+     "page": "4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "matches with the CTRL case with mean differences of 1.25 ± 0.4 m"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run ice-only knock-out experiments (Table 1): across-flow velocity zeroed, uniform 20 m/yr melt, fixed 2000 m/yr velocity, and melt applied only within 10 or 20 km of the grounding line.",
+     "page": "3, 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Same as IOCTRL but eastward ice velocity fixed to zero"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the ablation shapes and velocities with IOCTRL along the centerline and at the ice front, attributing the steep and gradual thinning and the transverse flatness to specific factors.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "suggesting that ice movement in the across-flow direction does not change ice shelf shape along the centerline"
+    },
+    {
+     "n": 9,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the attribution: acceleration and melting form the along-flow profile, and a melt-advection balance forms the flat across-flow shape.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The relatively flat ice-shelf shape along the cross-flow direction is created as a balance between ice shelf melting and ice advection"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the horizontal resolution of the coupled model (250, 500, 1000 m, 20 yr runs): shapes are qualitatively similar, while peak grounding-line melt rises with resolution.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ice shelf shapes are qualitatively similar for the 250, 500, and 1000-m cases"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Integrate the steady 1-D mass-balance terms -M/v and -v_yH/v over CTRL to estimate the cumulative thinning by melting and by acceleration along the centerline.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In total, ice acceleration and ice shelf melting contribute to 331 and 716 m of along-flow ice-shelf thinning, respectively."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check that the summed 1-D terms reproduce the CTRL shape (about 70 m difference at the front), so that transverse terms can be neglected to first order.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ice shelf shape obtained by summing these two effects together is similar to CTRL"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Partition the melt-driven thinning by ice-base depth (Figure 3b), finding about 250 m of thinning from shallow (100-500 m) melting and 37% of melting deeper than 700 m.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shallow depth (100–500 m) ice shelf melting contributes to ice shelf thinning by ∼250 m"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Combine the grounding-line-only melt experiments (front thickened by about 150 and 190 m) with the depth partition to argue that shallow melting sets the front thickness.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] two results suggest that ice shelf melting at shallow depths can substantially impact ice shelf thickness at the front"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that the shallow melting is driven by outflowing relatively cold water rather than by surface water entering the cavity; this is not tested.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "likely driven by outflowing relatively cold water"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Apply the 1-D decomposition to the real Pine Island Ice Shelf along three flowlines, using observed velocity (ITS_LIVE), melt (Adusumilli 2020), and geometry (Morlighem 2020), with velocity assumed to double every 40 years.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ice acceleration only contributes to ice shelf thickness reduction within 5 km from the grounding line, presenting qualitatively similar results with simulations."
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Attribute the 100-200 m mismatches on B-B' and C-C', and the absence of acceleration thinning there, to auxiliary assumptions rather than to the decomposition.",
+     "page": "7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Such differences are likely caused by the assumption of spatially constant ice shelf melting, no grounding line movement, and 1-D ice flow."
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infer shallow-depth melt thinning from the observed thickness change along the flowlines: 50-150 m on A-A' and B-B', none obvious on C-C'.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "ice shelf melting occurs at shallow depths thinning the ice shelf by 50–150 m along A-A′ and B-B′"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the conclusion that melting and stretching shape the shelf (about 75% and 25% of thinning in the idealized case) and that shallow melting modulates front thickness.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Based on observational data, we confirm that ocean melting and ice acceleration are the two main terms shaping the ice shelf."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Steep-then-gradual along-flow ice-shelf profile and a transversely flat front in a Pine-Island-like shelf",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "Shape is observed, but melt versus stretching contributions cannot be separated directly by remote sensing",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Identify the processes setting ice-shelf shape",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Candidate factors: melting, along-flow acceleration, across-flow advection, grounding-line versus shallow melt",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Knock-out ice-only experiments give distinct shapes for each removed factor",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in an idealized model (ablations via IOCTRL)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives a resolution sensitivity test, the 1-D reconstruction of CTRL, and qualitative application to Pine Island observations (with mismatches on two flowlines)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: melting and acceleration dominate along flow; melt-advection balance across flow; shallow melt thins the front",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; two anonymous reviewers are acknowledged",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "In an idealized Pine-Island-like ice shelf, ocean melting and acceleration-driven stretching both thin the shelf from grounding line to front (about 75% and 25%), the balance of melting and ice advection flattens it across flow, and shallow (100-500 m) melting thins the front by about 250 m.",
+  "page": "8"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The ice-only knock-out experiments, made possible by an uncoupled control that reproduces the coupled shape, isolate each factor's effect on the shelf shape; without them the attribution would rest only on the 1-D diagnostic.",
+  "page": "5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The ablations (Table 1) were designed around candidate factors, but no hypothesis was stated beforehand. The attribution could have failed in the 1-D reconstruction of CTRL (about 70 m misfit), the resolution test, and the Pine Island flowline check, but no pass/fail threshold was set, and mismatches on B-B' and C-C' were attributed to assumptions. Nothing was pre-registered."
+ },
+ "imports": [],
+ "novelty_claims": [],
+ "limits": "No review file or Supporting Information was supplied, so the resolution-run details, Figures S2-S5, and the Pine Island processing are not seen. Composition none_fits: the walk is a model-based attribution by ablation followed by a qualitative observational application; it is neither strong inference (no crucial test among stated rivals) nor a trace series. The headline split (about 75%/25%) has no uncertainty. Inference: 716/(716+331) is about 68%, not 75%, so the conclusion figure does not obviously follow from the reported numbers. The shallow-melt contribution (about 250 m, 'more than one-third') is an estimate without resolution. The proposed outflowing-cold-water driver of shallow melt is a hypothesis left untested. Ice boundary conditions (no-slip versus partial slip) and grounding-line ice flux were not varied (left to future work). The grounding line is fixed and the shelf may not advance. Simulated velocity is about 1.5 times slower than observed. In the Pine Island check, acceleration contributes nothing on two of three flowlines, contrary to the simulations, and mismatches of 100-200 m are attributed to auxiliaries without testing. Inference: the inflow rate '80 km3 s−1' and the velocity unit 'km−1' look like typos.",
+ "disagreements": [
+  {
+   "target": "Sergienko et al. (2013) 1-D flow-plume model",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors agree with its along-flow result but argue that width averaging and a plume representation cannot capture spatially varying ocean circulation, which their 3-D coupled model resolves.",
+   "page": "2",
+   "quote": "[...] -averaged nature of the study and use of a plume to represent ice-ocean interaction limits their ability"
+  },
+  {
+   "target": "Prevailing focus on grounding-line melting as the dominant control on ice-shelf behavior",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Grounding-line-only melt experiments thicken the front by 150-190 m, and the depth partition attributes about 250 m of thinning to shallow melt.",
+   "page": "8",
+   "quote": "despite that ice-ocean interactive processes only close to grounding zones have attracted much attention in the past decades"
+  },
+  {
+   "target": "Shallow melting driven by surface water entering cavities (Jacobs et al. 1992; Hattermann et al. 2012)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors assert, without a dedicated test, that in this warm cavity shallow melting is driven by outflowing cold water instead.",
+   "page": "6",
+   "quote": "Such shallow depth melting is not driven by surface water entering the ice shelf cavities"
+  },
+  {
+   "target": "Altimetry-based remote sensing of ice-shelf thinning",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that altimetry assumptions give high uncertainty near grounding lines, motivating the model-based separation of the two terms.",
+   "page": "1-2",
+   "quote": "altimetry-based thinning measurements rely on many assumptions leading to high uncertainty especially close to grounding lines"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "North-south domain extent of 100 km",
+   "alternatives": "160 km as in Jordan et al. (2017)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "1000 m horizontal resolution for CTRL",
+   "alternatives": "250 m and 500 m",
+   "reason": "none given (resolution tested as sensitivity)",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "No-slip ice boundary condition and constant grounding-line ice flux",
+   "alternatives": "Partial slip; different ice flux at the grounding line",
+   "reason": "Aim is the along-flow shape, so the simple Jordan et al. (2017) case is used; sensitivity left for future work",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "H",
+   "chosen": "Shallow melt driven by outflowing relatively cold water",
+   "alternatives": "Surface water entering the ice-shelf cavity",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These features are similar to Jordan et al. (2017).",
+   "page": "2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Similar features can be detected in observations, despite that the observed ice velocity of the Pine Island Ice Shelf is about 1.5 times faster",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "matches with the CTRL case with mean differences of 1.25 ± 0.4 m",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Ice shelf shapes are qualitatively similar for the 250, 500, and 1000-m cases",
+   "page": "5"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The ice shelf shape obtained by summing these two effects together is similar to CTRL",
+   "page": "6"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "Ice acceleration only contributes to ice shelf thickness reduction within 5 km from the grounding line, presenting qualitatively similar results with simulations.",
+   "page": "7"
+  }
+ ]
+}

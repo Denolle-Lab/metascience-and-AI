@@ -1,0 +1,641 @@
+{
+ "key": "g22_W4306165551",
+ "doi": "10.5194/tc-16-4319-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4306165551.pdf (published paper, The Cryosphere 16, 4319-4341, 2022)",
+  "g22_W4306165551.xml.txt (publisher XML converted with tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the question of how this process is affected by the typical spatial and temporal scales within a catchment remains",
+  "page": "§1 ¶7"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4306165551.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the aim: assess the role of horizontal advection of sensible and latent heat in snowmelt, both for a real snow patch (field) and in an idealized patchy system (DNS).",
+     "page": "§1 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we aim to assess the role of horizontal advection of the sensible and latent heat in snowmelt"
+    },
+    {
+     "n": 2,
+     "node": "F",
+     "mode": "observation",
+     "action": "Chose a single ~50 m snow patch in the Finseelvi catchment during the live 2019 melt season: flat, no complex topography, wind direction constant, with a flux tower 2.5 km away.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Selection of the location was based on the following criteria: a relatively flat surface and the absence of complex topographical features nearby"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Took 1087 smartphone photos of the upwind and downwind edges over 5 days and built daily DEMs and orthoimages with MicMac SfM. A 7-step post-processing (cluster removal, median filter, bare-ground vertical correction, snow masking, 50 cm cap) followed, and three density samples were taken from a snow pit.",
+     "page": "§2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A total of 1087 pictures (610 for the upwind edge, 477 for the downwind edge) were taken from various positions at both edges"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Designed idealized DNS runs with 15, 30 and 60 m typical patch sizes (P15m, P30m, P60m) at constant snow cover fraction, plus a no-buoyancy control (P15m-NB) to isolate stability effects.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To assess the impact of the snow patch size, we varied λ sn in our simulations."
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set simulation conditions by a Buckingham Pi dimensional analysis. Harder et al. (2017) measurements were mapped onto the Moser et al. (1999) channel flow (Pr = 1, Re = 1.1e4, SCF = 0.25, Ri_sn = 0.66), with flux and time rescaling to reality and Fourier-generated periodic surfaces.",
+     "page": "§3.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a dimensional analysis is performed according to Buckingham's Pi theorem"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Used the MicroHH 2.0 DNS code, built and shown in the authors' earlier work to reproduce turbulent channel flow.",
+     "page": "§3.4 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "showed that MicroHH is able to reproduce this turbulent channel flow"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measured vertical melt of about 23 cm at the upwind edge and about 3 cm at the downwind edge; the downwind reference date was shifted to 12 June because bare-ground coverage was low on 11 June.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the snow surface decreased by approximately 23 cm, whereas for the downwind edge, this decrease was approximately 3 cm"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked DEM accuracy against stable bare-ground reference cells and propagated their standard errors, giving melt errors of ±2.0 cm (upwind) and ±0.4 cm (downwind); the 13 to 14 June height increase was judged not significant.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allows us to estimate the melt with an error of ± 2.0 and ± 0.4 cm, respectively, for the upwind and downwind edges"
+    },
+    {
+     "n": 9,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Found that the minimum radiation-driven melt (3.9 cm) exceeded the observed downwind melt; attributed the mismatch to uncertainty in the net radiation estimate rather than to the attribution scheme.",
+     "page": "§4.1 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "so this mismatch is most likely caused by uncertainties in the net radiation estimates"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inferred the turbulent-flux melt at the upwind edge (13.0 to 18.2 cm; 73 to 102 W m-2) as the residual of observed melt minus radiation-driven melt. Radiation melt came from Eqs. 1-2 with tower radiation, albedo 0.6 and 0.8, and measured density.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimate these fluxes at the upwind edge to be between 73 and 102 ± 11 W m - 2"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the inferred flux magnitudes with Mott et al. (2018), Olyphant and Isard (1988) and Harding (1986).",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] same order as those found in other studies in somewhat similar conditions"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Used the specific humidity difference (≥0.9 g kg-1) to argue a significant latent heat share, and gave 60-80% as the turbulent contribution at the upwind edge. Extrapolated with Schlögl et al. (2018b) relations to at most ~10% of catchment melt.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we estimate the contribution of the fluxes to the total melt to be maximally on the order of 10 %"
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Argued that incoming radiation at the patch is overestimated by tower data (topographic shading, longwave decrease with altitude, albedo and slope differences), protecting the residual attribution.",
+     "page": "§4.1 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "It is likely that the incoming radiation for the entire snow patch is overestimated, due to topography."
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computed time-averaged surface sensible heat flux fields: downward over snow with a maximum (~-500 W m-2) at the leading edge decaying downwind, and upward over bare ground.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The leading edge of the snow patch shows the highest fluxes towards the surface"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared simulated leading-edge fluxes with the field-derived turbulent fluxes and found them much larger, which they attributed to the ideal simulated conditions.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to our own observations, the sensible heat fluxes at the leading edge are much larger than the observed combined turbulent heat fluxes."
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computed domain-averaged snow fluxes across runs: about 15% reduction for doubled and about 25% for quadrupled patch size, the highest snow flux in P15m-NB, and total fluxes equal across patch sizes.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The heat fluxes of the simulation with a doubled snow patch size (P30m) are decreased by approximately 15 % relative to the P15m simulation."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the patch-size result against Schlögl et al. (2018a), who found only a minor effect, and Marsh et al. (1999), who agreed; attributed the difference to ARPS resolution and violated Monin-Obukhov assumptions.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "who report only a minor influence of snow patch size on the amount of melt"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fitted the per-patch decay of surface sensible heat flux with distance from the leading edge on log-log axes as a power law H_sn = C_sn x^-0.35 (Figure 7).",
+     "page": "§5.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the fluxes decay over distance from the leading edge according to a power law"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared simulated edge fluxes (≈500 and 200-300 W m-2) with field estimates: upwind values about 5 times larger.",
+     "page": "§5.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At the upwind edge, the simulated sensible heat fluxes are approximately 5 times larger than the derived contribution"
+    },
+    {
+     "n": 20,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attributed the overestimate to idealized simulation conditions versus non-ideal field conditions (e.g., nighttime melt included).",
+     "page": "§5.3 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the simulations are based on highly ideal conditions for turbulence-driven melt and local-scale advection of sensible and latent heat"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared the downwind edge: field data imply negligible turbulent melt while the simulations keep 200-300 W m-2, so the simulated decay is too weak.",
+     "page": "§5.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, the simulated decay of the sensible heat flux seems to be an underestimation in comparison to field observations."
+    },
+    {
+     "n": 22,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Established that the power law and C_sn are approximately the same across patches and patch-size runs, so patch length alone explains the reduced mean flux for larger patches.",
+     "page": "§5.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The power laws are approximately the same for each patch and simulation"
+    },
+    {
+     "n": 23,
+     "node": "X",
+     "mode": "simulation",
+     "action": "Used the no-buoyancy run to exclude stability as a control on the decay rate; stability only alters leading-edge flux magnitude.",
+     "page": "§5.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "suggesting that stability has little influence on the decay of the surface heat fluxes, i.e., shear turbulence dominates"
+    },
+    {
+     "n": 24,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Diagnosed vertical temperature and wind profiles along a P30m patch (Figure 8): the decay follows decreasing IBL temperature gradients, while wind speed and roughness stay constant.",
+     "page": "§5.3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The decay of the sensible heat fluxes is a consequence of the decreasing temperature gradients in the IBL"
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared simulated horizontally advected heat with Harder et al. (2017): similar values over the first 3.6 m, but their drop to ~20% over the next 4.8 m is not reproduced. Also compared with the Granger et al. (2002) exponent (≤ -0.47 vs -0.35).",
+     "page": "§5.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This reduction is not found in the comparable simulation with a similar dominant snow patch pattern."
+    },
+    {
+     "n": 26,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varied the integration height of the advection integral (2 m vs 4 m); at 4 m, advected heat ≈ the vertical surface flux with the same -0.35 decay.",
+     "page": "§5.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When considering a 4 m integration height, the horizontally advected sensible heat is approximately equal to the vertical sensible turbulent heat fluxes"
+    },
+    {
+     "n": 27,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked SfM melt estimates against rough visual field estimates and against error magnitudes in time-lapse photogrammetry studies.",
+     "page": "§6 ¶4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The melt estimates obtained with SfM photogrammetry are in line with our expectations based on rough visual estimates made during the field campaign"
+    },
+    {
+     "n": 28,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attributed the weak simulated decay to auxiliaries rather than to the claim: low Re_tau (590 vs ~6e6) giving diffusive IBL fluxes, and scaling inaccuracies (wind measured at 1.8 m, atmospheric temperature 7.9 vs 6.4 °C).",
+     "page": "§6 ¶5",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Adjusting Re τ possibly affected the surface momentum fluxes, of which thus also the heat fluxes."
+    },
+    {
+     "n": 29,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Kept the field estimate: turbulent fluxes contributed 60-80% of upwind-edge melt, and at most ~10% catchment-wide.",
+     "page": "§7 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the snowmelt at the upwind edge is estimated to be between 60 % and 80 %"
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Kept the simulation claim: the flux decays by a constant power law caused by air cooling over the patch, is independent of patch size, and gives 15% and 25% lower mean flux for doubled and quadrupled patch size.",
+     "page": "§7 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Domain-averaged sensible heat fluxes even reduced by 15 % and 25 %, respectively, with a doubling and a quadrupling"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Wind-driven advection of sensible and latent heat enhancing leading-edge melt of patchy snow, known from the literature",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Melt observed directly by SfM; turbulent flux contribution not observed, inferred as residual from radiation melt",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the turbulent contribution in the field and explain decay and patch-size dependence with idealized DNS",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "Only implicit rivals: radiation-only vs turbulent melt; stability vs shear control of decay",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: radiation-only predicts equal edge melt; NB run separates stability from shear effects",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found in field (one patch, 5 days); set in DNS (patch size, buoyancy on/off)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Not used; a single patch, no repeated natural cases",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: albedo bounds, integration height, NB ablation; no Re or resolution sensitivity; simulated decay weaker than measured",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept with caution: power-law decay and patch-size reduction in idealized range; field 60-80% estimate",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Published after open review; review file not supplied, so not coded",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In idealized DNS, sensible heat flux into snow decays from the leading edge as a constant power law (~x^-0.35) driven by declining IBL temperature gradients, independent of patch size, so doubling and quadrupling typical patch size reduces average flux into snow by about 15% and 25%.",
+  "page": "§7 ¶2"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "Running DNS with typical patch sizes of 15, 30 and 60 m at fixed snow cover fraction produced the patch-size reduction and the shared power-law decay; without these runs the headline claim would not exist.",
+  "page": "§5.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the expectation of leading-edge enhancement directed measuring both upwind and downwind edges (§1 ¶7, §2 ¶2), but no explicit hypothesis was stated. Claim: the field residual could have shown no turbulent contribution, and the simulations were compared with field data and Harder et al. (2017). The mismatches (simulated decay too weak, fluxes 5x too large) were absorbed by protecting auxiliaries (§5.3 ¶2, §6 ¶5-6), and the patch-size claim itself was not tested against independent data. Registration: nothing reported as fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "fluid dynamics",
+   "item": "Direct numerical simulation as a turbulence-resolving tool",
+   "kind": "method",
+   "page": "§1 ¶6"
+  },
+  {
+   "field": "physics / engineering",
+   "item": "Buckingham Pi theorem dimensional analysis for physical similarity",
+   "kind": "method",
+   "page": "§3.2.1 ¶1"
+  },
+  {
+   "field": "fluid dynamics",
+   "item": "Moser et al. (1999) turbulent channel flow at Re_tau = 590 as simulation template and spin-up",
+   "kind": "data",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "field": "computer vision / photogrammetry",
+   "item": "Structure-from-motion multiview stereopsis with MicMac",
+   "kind": "method",
+   "page": "§2 ¶3"
+  },
+  {
+   "field": "consumer electronics",
+   "item": "Xiaomi A2 smartphone camera as imaging instrument",
+   "kind": "instrument",
+   "page": "§2 ¶3"
+  },
+  {
+   "field": "signal processing",
+   "item": "Fourier-space random-phase noise with prescribed 2D power spectra and inverse FFT to generate periodic surfaces",
+   "kind": "method",
+   "page": "§Appendix B ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this is one of the first studies to use DNS to investigate the role of the vertical turbulent heat fluxes",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "quote": "estimates of a multiple-day contribution of the turbulent heat fluxes to [...] melt of a single snow patch are lacking",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "No review file or open-discussion record was supplied, although the paper went through TCD open discussion (received 2021, revised 2022). How the referees shaped the paper cannot be coded, so no review sequence was coded.\n\nThe field part rests on a single patch over 5 days, with no replication across patches or seasons. Density comes from one pit on one day. Radiation comes from a tower 2.5 km away and 150 m lower, which the authors argue overestimates radiation. The turbulent contribution is a residual, so it absorbs all radiation errors.\n\nSub-claim statuses:\n- Field estimate (60-80% of upwind melt): estimate_with_resolution, with wide bounds from the albedo range.\n- Catchment ≤10% figure: an extrapolation with cited relations (Schlögl et al. 2018b), not measured.\n- Latent heat share: only indicated by humidity differences, not quantified.\n- Mechanism (temperature gradient, not wind or stability, controls decay): best_explanation within the idealized system.\n\nThe simulations disagree with the field data and with Harder et al. (2017) on decay rate and IBL height. The authors protect the claim via low Re_tau and scaling inaccuracies; no higher-Re or resolution test was run. Inference: the -0.35 exponent may be a low-Re artifact, as the authors concede (§6 ¶5).\n\nOther caveats in the paper:\n- §6 ¶2 says the authors decided not to directly compare simulations and observations, yet §5 and §7 ¶3 make such comparisons.\n- The P60m domain ratio (δ/λelem = 0.83) is below its design value, accepted because results showed no clear deviation.\n- A minor long-term trend remains in all runs (§5.2 ¶3).\n\nComposition is none_fits: the walk is a field estimate by residual plus idealized simulation experiments varying one parameter, without stated rival hypotheses or a crucial test. Inference: it is closest to a trace series of one case combined with simulation-based exploration.",
+ "disagreements": [
+  {
+   "target": "Schlögl et al. (2018a)",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "DNS runs show 15% and 25% lower mean snow flux for doubled and quadrupled patch sizes, against their reported minor patch-size effect.",
+   "page": "§5.2 ¶1",
+   "quote": "who report only a minor influence of snow patch size on the amount of melt"
+  },
+  {
+   "target": "Schlögl et al. (2018a) ARPS large-eddy modelling",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue ARPS resolution is too coarse to resolve the thin stable IBL and that Monin-Obukhov assumptions are violated, limitations DNS avoids; no direct test is offered.",
+   "page": "§5.2 ¶1",
+   "quote": "Potentially, the differences from are caused by the inability of ARPS to fully resolve the leading edge [...]"
+  },
+  {
+   "target": "Harder et al. (2017) advected heat decay and IBL height",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The simulation matches first-3.6 m advected heat but not the reported drop to ~20% further downwind, and gives higher IBL heights; the authors attribute this to their own low Re and scaling choices.",
+   "page": "§5.3 ¶6",
+   "quote": "This reduction is not found in the comparable simulation with a similar dominant snow patch pattern."
+  },
+  {
+   "target": "Granger et al. (2002) boundary-layer integration power law",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The simulated advected heat decays with exponent -0.35 versus their exponents reaching -0.47.",
+   "page": "§5.3 ¶6",
+   "quote": "through boundary-layer integration, our advected heat decays less"
+  },
+  {
+   "target": "Harding (1986) and Mott et al. (2018) on negligible latent heat flux",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "High relative humidity and specific humidity differences ≥0.9 g kg-1 during the campaign are used to argue a significant latent heat contribution, by analogy with Harder et al. (2017).",
+   "page": "§4.1 ¶2",
+   "quote": "For our observations, however, it is expected the latent heat flux also had a significant contribution from the high relative humidity"
+  },
+  {
+   "target": "Atmospheric boundary layer models and large-eddy simulations relying on Monin-Obukhov assumptions",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "A literature argument that horizontal homogeneity and constant-flux assumptions are violated over patchy snow, motivating DNS.",
+   "page": "§1 ¶6",
+   "quote": "These methods assume horizontal homogeneity and constant turbulent fluxes throughout the surface layer, but these assumptions are violated for a patchy snow cover"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Both albedo 0.6 and 0.8",
+   "alternatives": "a single albedo value (Harding 1986 reports ~0.8)",
+   "reason": "to account for uncertainty in the albedo due to spatial and temporal variations",
+   "effect_reported": "yes",
+   "page": "§2 ¶7"
+  },
+  {
+   "node": "O",
+   "chosen": "Only grid cells continuously snow covered with a recorded height change each day",
+   "alternatives": "all snow-covered cells",
+   "reason": "reduce the chance of cells being random scatter and exclude shallow snow",
+   "effect_reported": "no",
+   "page": "§2 ¶5"
+  },
+  {
+   "node": "O",
+   "chosen": "Treat each edge as a point",
+   "alternatives": "consider the spatial distribution of melt",
+   "reason": "issue with the sizes of the covered areas",
+   "effect_reported": "no",
+   "page": "§2 ¶6"
+  },
+  {
+   "node": "O",
+   "chosen": "Downwind reference 12 June 16:00",
+   "alternatives": "11 June 17:00 reference",
+   "reason": "low coverage of bare ground pixels on 11 June for vertical correction",
+   "effect_reported": "yes",
+   "page": "§4 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Base simulations on Harder et al. (2017) measurements",
+   "alternatives": "own Finseelvi observations",
+   "reason": "availability of relatively high-resolution measurements and similarity to an idealized system",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Sensible heat flux only",
+   "alternatives": "including the latent heat flux, which MicroHH allows",
+   "reason": "one of the first DNS studies of these systems",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "node": "F",
+   "chosen": "Prandtl number 1",
+   "alternatives": "atmospheric value 0.71",
+   "reason": "negligible impacts on the flow and simpler scaling (Kawamura et al. 1998)",
+   "effect_reported": "no",
+   "page": "§3.2.1 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "Re_tau = 590 (Moser et al. 1999)",
+   "alternatives": "field Re_tau ~6e6; Moser runs at Re_tau 180 and 395",
+   "reason": "computational cost; Moser showed similar bulk statistics at 395 and 590",
+   "effect_reported": "no",
+   "page": "§6 ¶5"
+  },
+  {
+   "node": "F",
+   "chosen": "Shear-driven rescaling of surface buoyancy flux (B0 = u b_sn)",
+   "alternatives": "buoyancy-driven or mixed scaling",
+   "reason": "shear-driven turbulence assumed dominant near the surface",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "Atmospheric temperature 7.9 °C from Harder et al. (2017)",
+   "alternatives": "6.4 °C near-surface temperature from Harder's graphs",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§6 ¶6"
+  },
+  {
+   "node": "V",
+   "chosen": "Advection integral over 2 m and 4 m",
+   "alternatives": "2 m only, as in Harder et al. (2017)",
+   "reason": "2 m misses changes in the vertical temperature profile and underestimates advected heat",
+   "effect_reported": "yes",
+   "page": "§5.3 ¶6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "allows us to estimate the melt with an error of ± 2.0 and ± 0.4 cm, respectively, for the upwind and downwind edges",
+   "page": "§4 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We use both of these values in the following calculations to account for the uncertainty in the albedo",
+   "page": "§2 ¶7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "an additional simulation is performed in which the system is the same as in the P15m simulation except that stability effects are excluded",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "When considering a 4 m integration height, the horizontally advected sensible heat is approximately equal to the vertical sensible turbulent heat fluxes",
+   "page": "§5.3 ¶6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Thus, the simulated decay of the sensible heat flux seems to be an underestimation in comparison to field observations.",
+   "page": "§5.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The melt estimates obtained with SfM photogrammetry are in line with our expectations based on rough visual estimates made during the field campaign",
+   "page": "§6 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the measurements done by in a wind tunnel also show similar shapes for the temperature profiles above snow patches",
+   "page": "§7 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "showed that MicroHH is able to reproduce this turbulent channel flow",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "the bulk statistics, i.e., the means and variances, for at least the initial neutral channel flow are hardly affected",
+   "page": "§3.4 ¶2"
+  }
+ ]
+}

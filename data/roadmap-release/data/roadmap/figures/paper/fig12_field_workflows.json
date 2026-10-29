@@ -1,0 +1,2523 @@
+{
+ "figure": "fig12_field_workflows",
+ "script": "tools/roadmap/figures/fig12_field_workflows.py",
+ "date": "2026-10-27",
+ "private_root": "private",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
+ "inputs": [
+  {
+   "file": "private/data/roadmap/derived/topics/topics_journals.json",
+   "sha256_16": "4fd391c890068bef",
+   "provenance": {
+    "script": "g20_topics_journals.py",
+    "commit": "f155302+uncommitted",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "derived/gold/{pool,preselect,metrics,eligibility}.json",
+     "derived/r2/{preselect,metrics,eligibility}.json",
+     "derived/calc1/manifest.jsonl",
+     "derived/r2calc/manifest.jsonl",
+     "private/download-queue.json",
+     "private/analysis/codings/api/{calc1,r2}",
+     "derived/outcomes/outcomes.json",
+     "OpenAlex /topics"
+    ],
+    "params": {
+     "MIN_GROUP": 10,
+     "MIN_FEATURE": 10,
+     "NBOOT": 2000,
+     "NPERM": 5000,
+     "SEED": 2026
+    }
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/confirmatory/results.json",
+   "sha256_16": "a5705f178137bc2a",
+   "provenance": {
+    "script": "g23_confirmatory.py",
+    "commit": "713de69+uncommitted",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "preregistration/round2-confirmatory.json",
+     "derived/r2/metrics.json",
+     "private/analysis/codings/api/r2"
+    ],
+    "params": {}
+   }
+  },
+  {
+   "file": "preregistration/round2-confirmatory.json",
+   "sha256_16": "80f01a88d2b06edc",
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/gold/metrics.json",
+   "sha256_16": "1d0af68985f41d5e",
+   "provenance": {
+    "script": "g04_metrics.py",
+    "commit": "3d1cf29",
+    "date": "2026-10-25",
+    "inputs": [
+     "derived/gold/preselect.json",
+     "private/analysis/success-set/breadth/topic_audit.csv"
+    ],
+    "params": {}
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/calc1/manifest.jsonl",
+   "sha256_16": "97c8071e2fe98f5d",
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/calc1",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/r2/metrics.json",
+   "sha256_16": "7a426303d91f4c28",
+   "provenance": {
+    "script": "g04_metrics.py",
+    "commit": "7901bcd",
+    "date": "2026-10-27",
+    "inputs": [
+     "derived/gold/preselect.json",
+     "private/analysis/success-set/breadth/topic_audit.csv"
+    ],
+    "params": {}
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/r2calc/manifest.jsonl",
+   "sha256_16": "3a6daaf38b029027",
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/r2",
+   "sha256_16": null,
+   "provenance": null
+  }
+ ],
+ "numbers": {
+  "n_coded_pooled": 572,
+  "n_coded_g20": 572,
+  "n_by_round": {
+   "round2": 198,
+   "round1": 374
+  },
+  "block_a_b": "pooled_stratified (both rounds, round as a stratum)",
+  "subfield_columns": {
+   "All": 572,
+   "Geophysics": 206,
+   "Atmospheric Science": 171,
+   "Oceanography": 42,
+   "Earth-Surface Processes": 40,
+   "Geochemistry and Petrology": 37,
+   "Water Science and Technology": 26,
+   "Artificial Intelligence": 25,
+   "Geology": 19
+  },
+  "subfields_pooled_not_shown": {
+   "Ocean Engineering": 6
+  },
+  "a_rates": {
+   "N  New capability": {
+    "rate_by_column": {
+     "All": 0.545,
+     "Geophysics": 0.544,
+     "Atmospheric Science": 0.585,
+     "Oceanography": 0.476,
+     "Earth-Surface Processes": 0.35,
+     "Geochemistry and Petrology": 0.324,
+     "Water Science and Technology": 0.577,
+     "Artificial Intelligence": 0.88,
+     "Geology": 0.579
+    },
+    "g20_q_subfield": 0.0015,
+    "g20_cramers_v_bc": [
+     0.204,
+     [
+      0.149,
+      0.299
+     ]
+    ],
+    "outlined": [
+     "Earth-Surface Processes",
+     "Geochemistry and Petrology",
+     "Artificial Intelligence"
+    ]
+   },
+   "E  Explore": {
+    "rate_by_column": {
+     "All": 0.185,
+     "Geophysics": 0.131,
+     "Atmospheric Science": 0.205,
+     "Oceanography": 0.333,
+     "Earth-Surface Processes": 0.275,
+     "Geochemistry and Petrology": 0.108,
+     "Water Science and Technology": 0.192,
+     "Artificial Intelligence": 0.12,
+     "Geology": 0.368
+    },
+    "g20_q_subfield": 0.0306,
+    "g20_cramers_v_bc": [
+     0.147,
+     [
+      0.077,
+      0.272
+     ]
+    ],
+    "outlined": [
+     "Geophysics",
+     "Oceanography"
+    ]
+   },
+   "O  Observe": {
+    "rate_by_column": {
+     "All": 0.928,
+     "Geophysics": 0.922,
+     "Atmospheric Science": 0.912,
+     "Oceanography": 0.952,
+     "Earth-Surface Processes": 1.0,
+     "Geochemistry and Petrology": 0.946,
+     "Water Science and Technology": 0.846,
+     "Artificial Intelligence": 0.92,
+     "Geology": 1.0
+    },
+    "g20_q_subfield": 0.5292,
+    "g20_cramers_v_bc": [
+     0.041,
+     [
+      0.0,
+      0.199
+     ]
+    ],
+    "outlined": []
+   },
+   "I  Infer": {
+    "rate_by_column": {
+     "All": 0.827,
+     "Geophysics": 0.859,
+     "Atmospheric Science": 0.789,
+     "Oceanography": 0.786,
+     "Earth-Surface Processes": 0.975,
+     "Geochemistry and Petrology": 0.892,
+     "Water Science and Technology": 0.808,
+     "Artificial Intelligence": 0.76,
+     "Geology": 0.737
+    },
+    "g20_q_subfield": 0.0108,
+    "g20_cramers_v_bc": [
+     0.162,
+     [
+      0.097,
+      0.285
+     ]
+    ],
+    "outlined": [
+     "Earth-Surface Processes"
+    ]
+   },
+   "Q  Question": {
+    "rate_by_column": {
+     "All": 0.979,
+     "Geophysics": 0.976,
+     "Atmospheric Science": 0.988,
+     "Oceanography": 0.976,
+     "Earth-Surface Processes": 0.975,
+     "Geochemistry and Petrology": 0.946,
+     "Water Science and Technology": 1.0,
+     "Artificial Intelligence": 1.0,
+     "Geology": 1.0
+    },
+    "g20_q_subfield": 0.4848,
+    "g20_cramers_v_bc": [
+     0.067,
+     [
+      0.0,
+      0.335
+     ]
+    ],
+    "outlined": []
+   },
+   "H  Hypothesize": {
+    "rate_by_column": {
+     "All": 0.844,
+     "Geophysics": 0.874,
+     "Atmospheric Science": 0.83,
+     "Oceanography": 0.881,
+     "Earth-Surface Processes": 0.85,
+     "Geochemistry and Petrology": 0.838,
+     "Water Science and Technology": 0.731,
+     "Artificial Intelligence": 0.68,
+     "Geology": 0.947
+    },
+    "g20_q_subfield": 0.3544,
+    "g20_cramers_v_bc": [
+     0.076,
+     [
+      0.0,
+      0.234
+     ]
+    ],
+    "outlined": []
+   },
+   "S  Simulate or derive": {
+    "rate_by_column": {
+     "All": 0.68,
+     "Geophysics": 0.738,
+     "Atmospheric Science": 0.637,
+     "Oceanography": 0.738,
+     "Earth-Surface Processes": 0.7,
+     "Geochemistry and Petrology": 0.649,
+     "Water Science and Technology": 0.538,
+     "Artificial Intelligence": 0.56,
+     "Geology": 0.632
+    },
+    "g20_q_subfield": 0.1895,
+    "g20_cramers_v_bc": [
+     0.064,
+     [
+      0.0,
+      0.221
+     ]
+    ],
+    "outlined": []
+   },
+   "D  Design": {
+    "rate_by_column": {
+     "All": 0.673,
+     "Geophysics": 0.665,
+     "Atmospheric Science": 0.725,
+     "Oceanography": 0.643,
+     "Earth-Surface Processes": 0.575,
+     "Geochemistry and Petrology": 0.541,
+     "Water Science and Technology": 0.808,
+     "Artificial Intelligence": 0.72,
+     "Geology": 0.579
+    },
+    "g20_q_subfield": 0.3548,
+    "g20_cramers_v_bc": [
+     0.062,
+     [
+      0.0,
+      0.22
+     ]
+    ],
+    "outlined": []
+   },
+   "F  Find conditions": {
+    "rate_by_column": {
+     "All": 0.432,
+     "Geophysics": 0.417,
+     "Atmospheric Science": 0.444,
+     "Oceanography": 0.476,
+     "Earth-Surface Processes": 0.425,
+     "Geochemistry and Petrology": 0.405,
+     "Water Science and Technology": 0.385,
+     "Artificial Intelligence": 0.36,
+     "Geology": 0.526
+    },
+    "g20_q_subfield": 0.7909,
+    "g20_cramers_v_bc": [
+     0.0,
+     [
+      0.0,
+      0.17
+     ]
+    ],
+    "outlined": []
+   },
+   "C  Compare": {
+    "rate_by_column": {
+     "All": 0.99,
+     "Geophysics": 0.985,
+     "Atmospheric Science": 0.988,
+     "Oceanography": 0.976,
+     "Earth-Surface Processes": 1.0,
+     "Geochemistry and Petrology": 1.0,
+     "Water Science and Technology": 1.0,
+     "Artificial Intelligence": 1.0,
+     "Geology": 1.0
+    },
+    "g20_q_subfield": "not tested",
+    "g20_cramers_v_bc": null,
+    "outlined": []
+   },
+   "V  Vary or replicate": {
+    "rate_by_column": {
+     "All": 0.97,
+     "Geophysics": 0.961,
+     "Atmospheric Science": 0.988,
+     "Oceanography": 0.976,
+     "Earth-Surface Processes": 0.925,
+     "Geochemistry and Petrology": 0.973,
+     "Water Science and Technology": 1.0,
+     "Artificial Intelligence": 1.0,
+     "Geology": 0.895
+    },
+    "g20_q_subfield": 0.1275,
+    "g20_cramers_v_bc": [
+     0.071,
+     [
+      0.0,
+      0.248
+     ]
+    ],
+    "outlined": []
+   },
+   "X  Exclude": {
+    "rate_by_column": {
+     "All": 0.493,
+     "Geophysics": 0.549,
+     "Atmospheric Science": 0.427,
+     "Oceanography": 0.524,
+     "Earth-Surface Processes": 0.675,
+     "Geochemistry and Petrology": 0.568,
+     "Water Science and Technology": 0.231,
+     "Artificial Intelligence": 0.28,
+     "Geology": 0.579
+    },
+    "g20_q_subfield": 0.0073,
+    "g20_cramers_v_bc": [
+     0.171,
+     [
+      0.115,
+      0.278
+     ]
+    ],
+    "outlined": [
+     "Geophysics",
+     "Atmospheric Science",
+     "Earth-Surface Processes",
+     "Water Science and Technology",
+     "Artificial Intelligence"
+    ]
+   },
+   "K  Keep": {
+    "rate_by_column": {
+     "All": 1.0,
+     "Geophysics": 1.0,
+     "Atmospheric Science": 1.0,
+     "Oceanography": 1.0,
+     "Earth-Surface Processes": 1.0,
+     "Geochemistry and Petrology": 1.0,
+     "Water Science and Technology": 1.0,
+     "Artificial Intelligence": 1.0,
+     "Geology": 1.0
+    },
+    "g20_q_subfield": "not tested",
+    "g20_cramers_v_bc": null,
+    "outlined": []
+   },
+   "P  Protect": {
+    "rate_by_column": {
+     "All": 0.323,
+     "Geophysics": 0.306,
+     "Atmospheric Science": 0.409,
+     "Oceanography": 0.333,
+     "Earth-Surface Processes": 0.25,
+     "Geochemistry and Petrology": 0.243,
+     "Water Science and Technology": 0.115,
+     "Artificial Intelligence": 0.32,
+     "Geology": 0.263
+    },
+    "g20_q_subfield": 0.1227,
+    "g20_cramers_v_bc": [
+     0.106,
+     [
+      0.041,
+      0.232
+     ]
+    ],
+    "outlined": []
+   },
+   "R  Refine": {
+    "rate_by_column": {
+     "All": 0.537,
+     "Geophysics": 0.476,
+     "Atmospheric Science": 0.602,
+     "Oceanography": 0.571,
+     "Earth-Surface Processes": 0.55,
+     "Geochemistry and Petrology": 0.432,
+     "Water Science and Technology": 0.577,
+     "Artificial Intelligence": 0.64,
+     "Geology": 0.474
+    },
+    "g20_q_subfield": 0.5366,
+    "g20_cramers_v_bc": [
+     0.057,
+     [
+      0.0,
+      0.218
+     ]
+    ],
+    "outlined": []
+   },
+   "estimation": {
+    "rate_by_column": {
+     "All": 0.253,
+     "Geophysics": 0.316,
+     "Atmospheric Science": 0.222,
+     "Oceanography": 0.214,
+     "Earth-Surface Processes": 0.175,
+     "Geochemistry and Petrology": 0.297,
+     "Water Science and Technology": 0.231,
+     "Artificial Intelligence": 0.08,
+     "Geology": 0.368
+    },
+    "g20_q_subfield": 0.1915,
+    "g20_cramers_v_bc": [
+     0.107,
+     [
+      0.045,
+      0.227
+     ]
+    ],
+    "outlined": []
+   },
+   "methods": {
+    "rate_by_column": {
+     "All": 0.215,
+     "Geophysics": 0.248,
+     "Atmospheric Science": 0.193,
+     "Oceanography": 0.167,
+     "Earth-Surface Processes": 0.075,
+     "Geochemistry and Petrology": 0.108,
+     "Water Science and Technology": 0.269,
+     "Artificial Intelligence": 0.68,
+     "Geology": 0.053
+    },
+    "g20_q_subfield": 0.0015,
+    "g20_cramers_v_bc": [
+     0.26,
+     [
+      0.179,
+      0.364
+     ]
+    ],
+    "outlined": [
+     "Earth-Surface Processes",
+     "Geochemistry and Petrology",
+     "Artificial Intelligence",
+     "Geology"
+    ]
+   },
+   "simulation": {
+    "rate_by_column": {
+     "All": 0.131,
+     "Geophysics": 0.112,
+     "Atmospheric Science": 0.222,
+     "Oceanography": 0.143,
+     "Earth-Surface Processes": 0.05,
+     "Geochemistry and Petrology": 0.027,
+     "Water Science and Technology": 0.077,
+     "Artificial Intelligence": 0.12,
+     "Geology": 0.0
+    },
+    "g20_q_subfield": 0.1401,
+    "g20_cramers_v_bc": [
+     0.165,
+     [
+      0.099,
+      0.264
+     ]
+    ],
+    "outlined": []
+   },
+   "reconstruction": {
+    "rate_by_column": {
+     "All": 0.093,
+     "Geophysics": 0.073,
+     "Atmospheric Science": 0.07,
+     "Oceanography": 0.0,
+     "Earth-Surface Processes": 0.425,
+     "Geochemistry and Petrology": 0.135,
+     "Water Science and Technology": 0.0,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.211
+    },
+    "g20_q_subfield": 0.0015,
+    "g20_cramers_v_bc": [
+     0.326,
+     [
+      0.216,
+      0.452
+     ]
+    ],
+    "outlined": [
+     "Oceanography",
+     "Earth-Surface Processes",
+     "Water Science and Technology",
+     "Artificial Intelligence"
+    ]
+   },
+   "observation": {
+    "rate_by_column": {
+     "All": 0.091,
+     "Geophysics": 0.068,
+     "Atmospheric Science": 0.088,
+     "Oceanography": 0.167,
+     "Earth-Surface Processes": 0.1,
+     "Geochemistry and Petrology": 0.189,
+     "Water Science and Technology": 0.077,
+     "Artificial Intelligence": 0.04,
+     "Geology": 0.053
+    },
+    "g20_q_subfield": 0.1651,
+    "g20_cramers_v_bc": [
+     0.062,
+     [
+      0.0,
+      0.238
+     ]
+    ],
+    "outlined": []
+   },
+   "hypothesis": {
+    "rate_by_column": {
+     "All": 0.072,
+     "Geophysics": 0.063,
+     "Atmospheric Science": 0.058,
+     "Oceanography": 0.119,
+     "Earth-Surface Processes": 0.025,
+     "Geochemistry and Petrology": 0.108,
+     "Water Science and Technology": 0.115,
+     "Artificial Intelligence": 0.04,
+     "Geology": 0.211
+    },
+    "g20_q_subfield": 0.4332,
+    "g20_cramers_v_bc": [
+     0.075,
+     [
+      0.0,
+      0.251
+     ]
+    ],
+    "outlined": []
+   },
+   "regularities": {
+    "rate_by_column": {
+     "All": 0.04,
+     "Geophysics": 0.024,
+     "Atmospheric Science": 0.076,
+     "Oceanography": 0.024,
+     "Earth-Surface Processes": 0.05,
+     "Geochemistry and Petrology": 0.027,
+     "Water Science and Technology": 0.038,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.0
+    },
+    "g20_q_subfield": 0.6665,
+    "g20_cramers_v_bc": [
+     0.054,
+     [
+      0.0,
+      0.192
+     ]
+    ],
+    "outlined": []
+   },
+   "theory": {
+    "rate_by_column": {
+     "All": 0.028,
+     "Geophysics": 0.024,
+     "Atmospheric Science": 0.023,
+     "Oceanography": 0.048,
+     "Earth-Surface Processes": 0.05,
+     "Geochemistry and Petrology": 0.027,
+     "Water Science and Technology": 0.038,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.053
+    },
+    "g20_q_subfield": 0.5882,
+    "g20_cramers_v_bc": [
+     0.0,
+     [
+      0.0,
+      0.19
+     ]
+    ],
+    "outlined": []
+   },
+   "instruments": {
+    "rate_by_column": {
+     "All": 0.026,
+     "Geophysics": 0.024,
+     "Atmospheric Science": 0.018,
+     "Oceanography": 0.0,
+     "Earth-Surface Processes": 0.0,
+     "Geochemistry and Petrology": 0.0,
+     "Water Science and Technology": 0.077,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.0
+    },
+    "g20_q_subfield": 0.0015,
+    "g20_cramers_v_bc": [
+     0.517,
+     [
+      0.255,
+      0.736
+     ]
+    ],
+    "outlined": [
+     "Oceanography",
+     "Earth-Surface Processes",
+     "Geochemistry and Petrology",
+     "Artificial Intelligence",
+     "Geology"
+    ]
+   },
+   "exploration": {
+    "rate_by_column": {
+     "All": 0.023,
+     "Geophysics": 0.029,
+     "Atmospheric Science": 0.006,
+     "Oceanography": 0.048,
+     "Earth-Surface Processes": 0.05,
+     "Geochemistry and Petrology": 0.027,
+     "Water Science and Technology": 0.038,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.0
+    },
+    "g20_q_subfield": 0.6314,
+    "g20_cramers_v_bc": [
+     0.0,
+     [
+      0.0,
+      0.203
+     ]
+    ],
+    "outlined": []
+   },
+   "synthesis": {
+    "rate_by_column": {
+     "All": 0.019,
+     "Geophysics": 0.019,
+     "Atmospheric Science": 0.012,
+     "Oceanography": 0.071,
+     "Earth-Surface Processes": 0.0,
+     "Geochemistry and Petrology": 0.054,
+     "Water Science and Technology": 0.0,
+     "Artificial Intelligence": 0.0,
+     "Geology": 0.0
+    },
+    "g20_q_subfield": 0.2465,
+    "g20_cramers_v_bc": [
+     0.075,
+     [
+      0.0,
+      0.256
+     ]
+    ],
+    "outlined": []
+   },
+   "other": {
+    "rate_by_column": {
+     "All": 0.009,
+     "Geophysics": 0.0,
+     "Atmospheric Science": 0.012,
+     "Oceanography": 0.0,
+     "Earth-Surface Processes": 0.0,
+     "Geochemistry and Petrology": 0.0,
+     "Water Science and Technology": 0.038,
+     "Artificial Intelligence": 0.04,
+     "Geology": 0.053
+    },
+    "g20_q_subfield": "not tested",
+    "g20_cramers_v_bc": null,
+    "outlined": []
+   }
+  },
+  "a_outlined_cells": [
+   [
+    "N  New capability",
+    "Earth-Surface Processes"
+   ],
+   [
+    "N  New capability",
+    "Geochemistry and Petrology"
+   ],
+   [
+    "N  New capability",
+    "Artificial Intelligence"
+   ],
+   [
+    "E  Explore",
+    "Geophysics"
+   ],
+   [
+    "E  Explore",
+    "Oceanography"
+   ],
+   [
+    "I  Infer",
+    "Earth-Surface Processes"
+   ],
+   [
+    "X  Exclude",
+    "Geophysics"
+   ],
+   [
+    "X  Exclude",
+    "Atmospheric Science"
+   ],
+   [
+    "X  Exclude",
+    "Earth-Surface Processes"
+   ],
+   [
+    "X  Exclude",
+    "Water Science and Technology"
+   ],
+   [
+    "X  Exclude",
+    "Artificial Intelligence"
+   ],
+   [
+    "methods",
+    "Earth-Surface Processes"
+   ],
+   [
+    "methods",
+    "Geochemistry and Petrology"
+   ],
+   [
+    "methods",
+    "Artificial Intelligence"
+   ],
+   [
+    "methods",
+    "Geology"
+   ],
+   [
+    "reconstruction",
+    "Oceanography"
+   ],
+   [
+    "reconstruction",
+    "Earth-Surface Processes"
+   ],
+   [
+    "reconstruction",
+    "Water Science and Technology"
+   ],
+   [
+    "reconstruction",
+    "Artificial Intelligence"
+   ],
+   [
+    "instruments",
+    "Oceanography"
+   ],
+   [
+    "instruments",
+    "Earth-Surface Processes"
+   ],
+   [
+    "instruments",
+    "Geochemistry and Petrology"
+   ],
+   [
+    "instruments",
+    "Artificial Intelligence"
+   ],
+   [
+    "instruments",
+    "Geology"
+   ]
+  ],
+  "a_decisive_whole_variable": {
+   "cramers_v_bc": 0.24,
+   "ci": [
+    0.211,
+    0.333
+   ],
+   "p": 0.0002,
+   "q": 0.0015
+  },
+  "a_decisive_other_modes": {
+   "robustness": 5
+  },
+  "b_family_groups": {
+   "Wiley non-AGU": 99,
+   "EGU/Copernicus": 102,
+   "pooled small groups": 18,
+   "AGU": 124,
+   "Elsevier": 99,
+   "Springer Nature (non-portfolio)": 94,
+   "Nature portfolio": 36
+  },
+  "b_family_pooled": {
+   "AAAS": 1,
+   "Oxford": 9,
+   "SSA": 3,
+   "other": 5
+  },
+  "b": {
+   "steps": {
+    "epsilon2": 0.058,
+    "epsilon2_ci": [
+     0.031,
+     0.11
+    ],
+    "p": 0.0002,
+    "q": 0.0015,
+    "median_ci_by_family": {
+     "Nature portfolio": [
+      23.0,
+      21.0,
+      25.0
+     ],
+     "AGU": [
+      22.0,
+      21.0,
+      23.0
+     ],
+     "EGU/Copernicus": [
+      24.0,
+      22.0,
+      25.0
+     ],
+     "Elsevier": [
+      22.0,
+      21.0,
+      23.0
+     ],
+     "Springer Nature (non-portfolio)": [
+      22.0,
+      21.0,
+      24.0
+     ],
+     "Wiley non-AGU": [
+      20.0,
+      19.0,
+      21.0
+     ],
+     "pooled small groups": [
+      21.0,
+      19.0,
+      23.0
+     ]
+    }
+   },
+   "revisits": {
+    "epsilon2": 0.044,
+    "epsilon2_ci": [
+     0.023,
+     0.09
+    ],
+    "p": 0.0002,
+    "q": 0.0015,
+    "median_ci_by_family": {
+     "Nature portfolio": [
+      12.0,
+      11.0,
+      14.0
+     ],
+     "AGU": [
+      12.0,
+      10.0,
+      13.0
+     ],
+     "EGU/Copernicus": [
+      13.0,
+      12.0,
+      14.0
+     ],
+     "Elsevier": [
+      12.0,
+      11.0,
+      12.0
+     ],
+     "Springer Nature (non-portfolio)": [
+      12.0,
+      11.0,
+      13.0
+     ],
+     "Wiley non-AGU": [
+      10.0,
+      9.0,
+      11.0
+     ],
+     "pooled small groups": [
+      10.0,
+      8.5,
+      12.0
+     ]
+    }
+   },
+   "cnp": {
+    "epsilon2": 0.062,
+    "epsilon2_ci": [
+     0.038,
+     0.113
+    ],
+    "p": 0.0002,
+    "q": 0.0003,
+    "median_ci_by_family": {
+     "Nature portfolio": [
+      0.713,
+      0.58,
+      0.791
+     ],
+     "AGU": [
+      0.624,
+      0.537,
+      0.701
+     ],
+     "EGU/Copernicus": [
+      0.598,
+      0.557,
+      0.708
+     ],
+     "Elsevier": [
+      0.557,
+      0.41,
+      0.694
+     ],
+     "Springer Nature (non-portfolio)": [
+      0.498,
+      0.397,
+      0.585
+     ],
+     "Wiley non-AGU": [
+      0.439,
+      0.382,
+      0.527
+     ],
+     "pooled small groups": [
+      0.488,
+      0.349,
+      0.66
+     ]
+    }
+   },
+   "fwci": {
+    "epsilon2": 0.063,
+    "epsilon2_ci": [
+     0.039,
+     0.116
+    ],
+    "p": 0.0002,
+    "q": 0.0003,
+    "median_ci_by_family": {
+     "Nature portfolio": [
+      1.147,
+      0.722,
+      1.516
+     ],
+     "AGU": [
+      0.74,
+      0.478,
+      1.101
+     ],
+     "EGU/Copernicus": [
+      0.694,
+      0.568,
+      1.044
+     ],
+     "Elsevier": [
+      0.578,
+      0.289,
+      0.853
+     ],
+     "Springer Nature (non-portfolio)": [
+      0.433,
+      0.289,
+      0.592
+     ],
+     "Wiley non-AGU": [
+      0.296,
+      0.166,
+      0.475
+     ],
+     "pooled small groups": [
+      0.418,
+      0.185,
+      0.867
+     ]
+    }
+   }
+  },
+  "c_d_rows": [
+   {
+    "feature": "steps",
+    "outcome": "cnp",
+    "n": 374,
+    "g17": [
+     0.174,
+     0.071,
+     0.276
+    ],
+    "g17_q": 0.014,
+    "panel": "c",
+    "subfield": [
+     0.175,
+     0.074,
+     0.279,
+     0.0071,
+     true
+    ],
+    "family": [
+     0.109,
+     0.007,
+     0.212,
+     0.0583,
+     true
+    ],
+    "subfield x family": [
+     0.139,
+     0.036,
+     0.248,
+     0.0263,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H10",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "revisits",
+    "outcome": "cnp",
+    "n": 374,
+    "g17": [
+     0.168,
+     0.07,
+     0.269
+    ],
+    "g17_q": 0.023,
+    "panel": "c",
+    "subfield": [
+     0.172,
+     0.07,
+     0.273,
+     0.0084,
+     true
+    ],
+    "family": [
+     0.111,
+     0.015,
+     0.211,
+     0.0558,
+     true
+    ],
+    "subfield x family": [
+     0.153,
+     0.045,
+     0.264,
+     0.0205,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H07",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "novelty claims",
+    "outcome": "cnp",
+    "n": 374,
+    "g17": [
+     0.163,
+     0.058,
+     0.263
+    ],
+    "g17_q": 0.025,
+    "panel": "c",
+    "subfield": [
+     0.161,
+     0.061,
+     0.262,
+     0.0084,
+     true
+    ],
+    "family": [
+     0.149,
+     0.041,
+     0.249,
+     0.0192,
+     true
+    ],
+    "subfield x family": [
+     0.152,
+     0.045,
+     0.263,
+     0.0177,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "decisive simulation",
+    "outcome": "cnp",
+    "n": 374,
+    "g17": [
+     0.149,
+     0.054,
+     0.235
+    ],
+    "g17_q": 0.062,
+    "panel": "c",
+    "subfield": [
+     0.139,
+     0.05,
+     0.227,
+     0.0205,
+     true
+    ],
+    "family": [
+     0.121,
+     0.025,
+     0.211,
+     0.0363,
+     true
+    ],
+    "subfield x family": [
+     0.125,
+     0.021,
+     0.216,
+     0.041,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H12",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "distinct modes",
+    "outcome": "cnp",
+    "n": 374,
+    "g17": [
+     0.13,
+     0.028,
+     0.237
+    ],
+    "g17_q": 0.088,
+    "panel": "c",
+    "subfield": [
+     0.137,
+     0.035,
+     0.244,
+     0.0233,
+     true
+    ],
+    "family": [
+     0.077,
+     -0.027,
+     0.182,
+     0.1614,
+     false
+    ],
+    "subfield x family": [
+     0.091,
+     -0.024,
+     0.199,
+     0.1196,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "steps",
+    "outcome": "fwci",
+    "n": 374,
+    "g17": [
+     0.178,
+     0.074,
+     0.276
+    ],
+    "g17_q": 0.009,
+    "panel": "c",
+    "subfield": [
+     0.171,
+     0.068,
+     0.276,
+     0.0071,
+     true
+    ],
+    "family": [
+     0.11,
+     0.013,
+     0.214,
+     0.057,
+     true
+    ],
+    "subfield x family": [
+     0.135,
+     0.024,
+     0.248,
+     0.0308,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H09",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "revisits",
+    "outcome": "fwci",
+    "n": 374,
+    "g17": [
+     0.171,
+     0.07,
+     0.274
+    ],
+    "g17_q": 0.02,
+    "panel": "c",
+    "subfield": [
+     0.168,
+     0.067,
+     0.268,
+     0.008,
+     true
+    ],
+    "family": [
+     0.111,
+     0.017,
+     0.211,
+     0.0559,
+     true
+    ],
+    "subfield x family": [
+     0.148,
+     0.04,
+     0.261,
+     0.0228,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H08",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "decisive simulation",
+    "outcome": "fwci",
+    "n": 374,
+    "g17": [
+     0.157,
+     0.065,
+     0.243
+    ],
+    "g17_q": 0.041,
+    "panel": "c",
+    "subfield": [
+     0.14,
+     0.052,
+     0.227,
+     0.02,
+     true
+    ],
+    "family": [
+     0.128,
+     0.036,
+     0.214,
+     0.0284,
+     true
+    ],
+    "subfield x family": [
+     0.126,
+     0.025,
+     0.221,
+     0.0377,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H05",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "novelty claims",
+    "outcome": "fwci",
+    "n": 374,
+    "g17": [
+     0.147,
+     0.037,
+     0.247
+    ],
+    "g17_q": 0.064,
+    "panel": "c",
+    "subfield": [
+     0.151,
+     0.047,
+     0.259,
+     0.0177,
+     true
+    ],
+    "family": [
+     0.135,
+     0.024,
+     0.238,
+     0.0233,
+     true
+    ],
+    "subfield x family": [
+     0.142,
+     0.035,
+     0.258,
+     0.0228,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "distinct modes",
+    "outcome": "fwci",
+    "n": 374,
+    "g17": [
+     0.143,
+     0.038,
+     0.246
+    ],
+    "g17_q": 0.06,
+    "panel": "c",
+    "subfield": [
+     0.138,
+     0.035,
+     0.243,
+     0.0218,
+     true
+    ],
+    "family": [
+     0.087,
+     -0.021,
+     0.195,
+     0.1105,
+     false
+    ],
+    "subfield x family": [
+     0.091,
+     -0.017,
+     0.199,
+     0.117,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "imports",
+    "outcome": "novelty_pair",
+    "n": 374,
+    "g17": [
+     0.152,
+     0.05,
+     0.249
+    ],
+    "g17_q": 0.029,
+    "panel": "c",
+    "subfield": [
+     0.091,
+     -0.015,
+     0.193,
+     0.1046,
+     false
+    ],
+    "family": [
+     0.143,
+     0.039,
+     0.245,
+     0.0182,
+     true
+    ],
+    "subfield x family": [
+     0.08,
+     -0.033,
+     0.186,
+     0.1536,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "mode observation",
+    "outcome": "novelty_pair",
+    "n": 374,
+    "g17": [
+     0.145,
+     0.038,
+     0.248
+    ],
+    "g17_q": 0.068,
+    "panel": "c",
+    "subfield": [
+     0.111,
+     0.009,
+     0.212,
+     0.0537,
+     true
+    ],
+    "family": [
+     0.134,
+     0.025,
+     0.231,
+     0.0223,
+     true
+    ],
+    "subfield x family": [
+     0.1,
+     -0.026,
+     0.205,
+     0.0839,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H13",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "import fields",
+    "outcome": "novelty_pair",
+    "n": 374,
+    "g17": [
+     0.132,
+     0.032,
+     0.233
+    ],
+    "g17_q": 0.083,
+    "panel": "c",
+    "subfield": [
+     0.078,
+     -0.021,
+     0.187,
+     0.1527,
+     false
+    ],
+    "family": [
+     0.125,
+     0.022,
+     0.23,
+     0.0308,
+     true
+    ],
+    "subfield x family": [
+     0.068,
+     -0.048,
+     0.174,
+     0.2284,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "composition trace_series",
+    "outcome": "novelty_pair",
+    "n": 374,
+    "g17": [
+     -0.135,
+     -0.234,
+     -0.035
+    ],
+    "g17_q": 0.088,
+    "panel": "c",
+    "subfield": [
+     -0.151,
+     -0.251,
+     -0.05,
+     0.0177,
+     true
+    ],
+    "family": [
+     -0.118,
+     -0.224,
+     -0.017,
+     0.0453,
+     true
+    ],
+    "subfield x family": [
+     -0.099,
+     -0.209,
+     0.009,
+     0.0972,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "mode reconstruction",
+    "outcome": "novelty_pair",
+    "n": 374,
+    "g17": [
+     -0.135,
+     -0.232,
+     -0.037
+    ],
+    "g17_q": 0.086,
+    "panel": "c",
+    "subfield": [
+     -0.144,
+     -0.248,
+     -0.038,
+     0.0177,
+     true
+    ],
+    "family": [
+     -0.121,
+     -0.22,
+     -0.023,
+     0.0375,
+     true
+    ],
+    "subfield x family": [
+     -0.088,
+     -0.192,
+     0.021,
+     0.1238,
+     false
+    ],
+    "survives_of_3": 2
+   },
+   {
+    "feature": "imports",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.547,
+     0.466,
+     0.616
+    ],
+    "g17_q": 0.009,
+    "panel": "d",
+    "subfield": [
+     0.512,
+     0.426,
+     0.595,
+     0.0023,
+     true
+    ],
+    "family": [
+     0.538,
+     0.454,
+     0.614,
+     0.0023,
+     true
+    ],
+    "subfield x family": [
+     0.507,
+     0.411,
+     0.588,
+     0.0023,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H02",
+     "verdict": "confirmed"
+    }
+   },
+   {
+    "feature": "import fields",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.505,
+     0.422,
+     0.584
+    ],
+    "g17_q": 0.009,
+    "panel": "d",
+    "subfield": [
+     0.483,
+     0.392,
+     0.566,
+     0.0023,
+     true
+    ],
+    "family": [
+     0.497,
+     0.409,
+     0.576,
+     0.0023,
+     true
+    ],
+    "subfield x family": [
+     0.482,
+     0.39,
+     0.567,
+     0.0023,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H01",
+     "verdict": "confirmed"
+    }
+   },
+   {
+    "feature": "decisive methods",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.26,
+     0.157,
+     0.36
+    ],
+    "g17_q": 0.009,
+    "panel": "d",
+    "subfield": [
+     0.192,
+     0.088,
+     0.292,
+     0.0023,
+     true
+    ],
+    "family": [
+     0.24,
+     0.13,
+     0.34,
+     0.0023,
+     true
+    ],
+    "subfield x family": [
+     0.191,
+     0.083,
+     0.311,
+     0.007,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H04",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "composition capability_first",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.203,
+     0.097,
+     0.302
+    ],
+    "g17_q": 0.009,
+    "panel": "d",
+    "subfield": [
+     0.101,
+     -0.009,
+     0.2,
+     0.0586,
+     true
+    ],
+    "family": [
+     0.196,
+     0.094,
+     0.298,
+     0.0023,
+     true
+    ],
+    "subfield x family": [
+     0.11,
+     0.001,
+     0.227,
+     0.0587,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H03",
+     "verdict": "confirmed"
+    }
+   },
+   {
+    "feature": "V check kinds",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.156,
+     0.051,
+     0.251
+    ],
+    "g17_q": 0.052,
+    "panel": "d",
+    "subfield": [
+     0.122,
+     0.012,
+     0.231,
+     0.0349,
+     true
+    ],
+    "family": [
+     0.151,
+     0.051,
+     0.248,
+     0.0177,
+     true
+    ],
+    "subfield x family": [
+     0.144,
+     0.032,
+     0.255,
+     0.0218,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H14",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "node N new capability",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.15,
+     0.054,
+     0.243
+    ],
+    "g17_q": 0.046,
+    "panel": "d",
+    "subfield": [
+     0.088,
+     -0.014,
+     0.188,
+     0.1138,
+     false
+    ],
+    "family": [
+     0.141,
+     0.048,
+     0.233,
+     0.0218,
+     true
+    ],
+    "subfield x family": [
+     0.095,
+     0.001,
+     0.202,
+     0.107,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "mode methods",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.133,
+     0.039,
+     0.231
+    ],
+    "g17_q": 0.087,
+    "panel": "d",
+    "subfield": [
+     0.099,
+     -0.003,
+     0.201,
+     0.0839,
+     true
+    ],
+    "family": [
+     0.117,
+     0.012,
+     0.21,
+     0.0378,
+     true
+    ],
+    "subfield x family": [
+     0.102,
+     0.004,
+     0.219,
+     0.0839,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "entry capability",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     0.123,
+     0.017,
+     0.226
+    ],
+    "g17_q": 0.098,
+    "panel": "d",
+    "subfield": [
+     0.084,
+     -0.021,
+     0.19,
+     0.1192,
+     false
+    ],
+    "family": [
+     0.124,
+     0.017,
+     0.234,
+     0.0358,
+     true
+    ],
+    "subfield x family": [
+     0.096,
+     -0.024,
+     0.211,
+     0.1058,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "decisive estimation",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.128,
+     -0.226,
+     -0.032
+    ],
+    "g17_q": 0.092,
+    "panel": "d",
+    "subfield": [
+     -0.095,
+     -0.196,
+     0.003,
+     0.0897,
+     true
+    ],
+    "family": [
+     -0.12,
+     -0.213,
+     -0.022,
+     0.0382,
+     true
+    ],
+    "subfield x family": [
+     -0.097,
+     -0.202,
+     0.002,
+     0.1058,
+     false
+    ],
+    "survives_of_3": 2
+   },
+   {
+    "feature": "steps",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.137,
+     -0.234,
+     -0.033
+    ],
+    "g17_q": 0.087,
+    "panel": "d",
+    "subfield": [
+     -0.109,
+     -0.218,
+     0.003,
+     0.0609,
+     true
+    ],
+    "family": [
+     -0.141,
+     -0.241,
+     -0.031,
+     0.0202,
+     true
+    ],
+    "subfield x family": [
+     -0.139,
+     -0.246,
+     -0.032,
+     0.027,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "node H hypothesize",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.139,
+     -0.24,
+     -0.037
+    ],
+    "g17_q": 0.062,
+    "panel": "d",
+    "subfield": [
+     -0.105,
+     -0.201,
+     -0.005,
+     0.0586,
+     true
+    ],
+    "family": [
+     -0.131,
+     -0.238,
+     -0.031,
+     0.0263,
+     true
+    ],
+    "subfield x family": [
+     -0.091,
+     -0.196,
+     0.024,
+     0.1231,
+     false
+    ],
+    "survives_of_3": 2
+   },
+   {
+    "feature": "decisive reconstruction",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.145,
+     -0.226,
+     -0.06
+    ],
+    "g17_q": 0.058,
+    "panel": "d",
+    "subfield": [
+     -0.114,
+     -0.208,
+     -0.017,
+     0.0529,
+     true
+    ],
+    "family": [
+     -0.149,
+     -0.236,
+     -0.061,
+     0.0182,
+     true
+    ],
+    "subfield x family": [
+     -0.144,
+     -0.237,
+     -0.033,
+     0.031,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "distinct modes",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.159,
+     -0.262,
+     -0.058
+    ],
+    "g17_q": 0.029,
+    "panel": "d",
+    "subfield": [
+     -0.101,
+     -0.205,
+     0.003,
+     0.0836,
+     true
+    ],
+    "family": [
+     -0.143,
+     -0.235,
+     -0.035,
+     0.0205,
+     true
+    ],
+    "subfield x family": [
+     -0.087,
+     -0.187,
+     0.037,
+     0.1252,
+     false
+    ],
+    "survives_of_3": 2,
+    "round2": {
+     "hypothesis": "H06",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "mode synthesis",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.173,
+     -0.275,
+     -0.07
+    ],
+    "g17_q": 0.014,
+    "panel": "d",
+    "subfield": [
+     -0.116,
+     -0.216,
+     -0.008,
+     0.043,
+     true
+    ],
+    "family": [
+     -0.159,
+     -0.259,
+     -0.05,
+     0.0171,
+     true
+    ],
+    "subfield x family": [
+     -0.114,
+     -0.203,
+     0.008,
+     0.0681,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H11",
+     "verdict": "confirmed"
+    }
+   },
+   {
+    "feature": "mode reconstruction",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.174,
+     -0.264,
+     -0.078
+    ],
+    "g17_q": 0.018,
+    "panel": "d",
+    "subfield": [
+     -0.129,
+     -0.225,
+     -0.035,
+     0.0284,
+     true
+    ],
+    "family": [
+     -0.176,
+     -0.27,
+     -0.07,
+     0.0057,
+     true
+    ],
+    "subfield x family": [
+     -0.161,
+     -0.265,
+     -0.058,
+     0.0192,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "node I infer",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.177,
+     -0.28,
+     -0.065
+    ],
+    "g17_q": 0.02,
+    "panel": "d",
+    "subfield": [
+     -0.15,
+     -0.247,
+     -0.043,
+     0.0179,
+     true
+    ],
+    "family": [
+     -0.184,
+     -0.285,
+     -0.079,
+     0.0057,
+     true
+    ],
+    "subfield x family": [
+     -0.151,
+     -0.248,
+     -0.033,
+     0.0205,
+     true
+    ],
+    "survives_of_3": 3,
+    "round2": {
+     "hypothesis": "H15",
+     "verdict": "not confirmed"
+    }
+   },
+   {
+    "feature": "composition trace_series",
+    "outcome": "breadth_refs",
+    "n": 374,
+    "g17": [
+     -0.203,
+     -0.293,
+     -0.111
+    ],
+    "g17_q": 0.009,
+    "panel": "d",
+    "subfield": [
+     -0.159,
+     -0.253,
+     -0.06,
+     0.0177,
+     true
+    ],
+    "family": [
+     -0.203,
+     -0.289,
+     -0.106,
+     0.0023,
+     true
+    ],
+    "subfield x family": [
+     -0.169,
+     -0.266,
+     -0.072,
+     0.0177,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "mode methods",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     0.278,
+     0.11,
+     0.423
+    ],
+    "g17_q": 0.071,
+    "panel": "d",
+    "subfield": [
+     0.291,
+     0.096,
+     0.452,
+     0.0218,
+     true
+    ],
+    "family": [
+     0.264,
+     0.087,
+     0.429,
+     0.027,
+     true
+    ],
+    "subfield x family": [
+     0.334,
+     0.111,
+     0.523,
+     0.0201,
+     true
+    ],
+    "survives_of_3": 3
+   },
+   {
+    "feature": "claim gate yes",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     0.263,
+     0.057,
+     0.431
+    ],
+    "g17_q": 0.072,
+    "panel": "d",
+    "subfield": [
+     0.178,
+     -0.013,
+     0.388,
+     0.1232,
+     false
+    ],
+    "family": [
+     0.275,
+     0.065,
+     0.475,
+     0.0218,
+     true
+    ],
+    "subfield x family": [
+     0.218,
+     0.017,
+     0.467,
+     0.1105,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "decisive methods",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     0.258,
+     0.046,
+     0.451
+    ],
+    "g17_q": 0.079,
+    "panel": "d",
+    "subfield": [
+     0.165,
+     -0.036,
+     0.335,
+     0.1501,
+     false
+    ],
+    "family": [
+     0.198,
+     -0.017,
+     0.411,
+     0.0839,
+     true
+    ],
+    "subfield x family": [
+     0.166,
+     -0.034,
+     0.365,
+     0.1816,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "steps",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     -0.263,
+     -0.451,
+     -0.054
+    ],
+    "g17_q": 0.083,
+    "panel": "d",
+    "subfield": [
+     -0.158,
+     -0.373,
+     0.073,
+     0.1501,
+     false
+    ],
+    "family": [
+     -0.262,
+     -0.456,
+     -0.046,
+     0.0308,
+     true
+    ],
+    "subfield x family": [
+     -0.168,
+     -0.424,
+     0.085,
+     0.1614,
+     false
+    ],
+    "survives_of_3": 1
+   },
+   {
+    "feature": "revisits",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     -0.272,
+     -0.459,
+     -0.071
+    ],
+    "g17_q": 0.071,
+    "panel": "d",
+    "subfield": [
+     -0.19,
+     -0.386,
+     0.027,
+     0.0915,
+     true
+    ],
+    "family": [
+     -0.277,
+     -0.477,
+     -0.07,
+     0.0218,
+     true
+    ],
+    "subfield x family": [
+     -0.197,
+     -0.429,
+     0.06,
+     0.1188,
+     false
+    ],
+    "survives_of_3": 2
+   },
+   {
+    "feature": "mode reconstruction",
+    "outcome": "breadth_citers",
+    "n": 97,
+    "g17": [
+     -0.303,
+     -0.464,
+     -0.114
+    ],
+    "g17_q": 0.042,
+    "panel": "d",
+    "subfield": [
+     -0.247,
+     -0.424,
+     -0.036,
+     0.0282,
+     true
+    ],
+    "family": [
+     -0.354,
+     -0.492,
+     -0.192,
+     0.0071,
+     true
+    ],
+    "subfield x family": [
+     -0.22,
+     -0.392,
+     -0.073,
+     0.0597,
+     true
+    ],
+    "survives_of_3": 3
+   }
+  ],
+  "c_d_survivors": {
+   "subfield": 31,
+   "family": 36,
+   "subfield x family": 24
+  },
+  "c_d_survivors_ci_excludes_zero": {
+   "subfield": 25,
+   "family": 35,
+   "subfield x family": 21
+  },
+  "c_d_lost_by_stratum": {
+   "subfield": [
+    [
+     "imports",
+     "novelty_pair"
+    ],
+    [
+     "import fields",
+     "novelty_pair"
+    ],
+    [
+     "node N new capability",
+     "breadth_refs"
+    ],
+    [
+     "entry capability",
+     "breadth_refs"
+    ],
+    [
+     "claim gate yes",
+     "breadth_citers"
+    ],
+    [
+     "decisive methods",
+     "breadth_citers"
+    ],
+    [
+     "steps",
+     "breadth_citers"
+    ]
+   ],
+   "family": [
+    [
+     "distinct modes",
+     "cnp"
+    ],
+    [
+     "distinct modes",
+     "fwci"
+    ]
+   ],
+   "subfield x family": [
+    [
+     "distinct modes",
+     "cnp"
+    ],
+    [
+     "distinct modes",
+     "fwci"
+    ],
+    [
+     "imports",
+     "novelty_pair"
+    ],
+    [
+     "import fields",
+     "novelty_pair"
+    ],
+    [
+     "mode reconstruction",
+     "novelty_pair"
+    ],
+    [
+     "node N new capability",
+     "breadth_refs"
+    ],
+    [
+     "entry capability",
+     "breadth_refs"
+    ],
+    [
+     "decisive estimation",
+     "breadth_refs"
+    ],
+    [
+     "node H hypothesize",
+     "breadth_refs"
+    ],
+    [
+     "distinct modes",
+     "breadth_refs"
+    ],
+    [
+     "claim gate yes",
+     "breadth_citers"
+    ],
+    [
+     "decisive methods",
+     "breadth_citers"
+    ],
+    [
+     "steps",
+     "breadth_citers"
+    ],
+    [
+     "revisits",
+     "breadth_citers"
+    ]
+   ]
+  },
+  "c_d_round2": {
+   "tested": 15,
+   "confirmed": 4,
+   "plan": "preregistration/round2-confirmatory.json",
+   "results": "private/data/roadmap/derived/confirmatory/results.json"
+  },
+  "g20_workflow_tests": 130,
+  "g20_workflow_q_below_0.1": 45,
+  "data_issues": []
+ },
+ "caption": "Workflows and outcomes by field and venue, and whether the workflow-outcome associations hold within field and venue. Panels a and b: the 572 research articles published in 2022 and coded by a language model (Claude Opus 5.5, codebook 1.5.0) in both sampling rounds (374 in round 1, 198 in round 2), analysed with round as a stratum: shares and medians pool both rounds, and each test compares papers only with papers of the same round (chi-square summed over rounds, or Kruskal-Wallis on ranks taken within round; the response is permuted within round), so a different field or venue mix in the two rounds cannot by itself create an association. Panels c and d: the 38 workflow-outcome associations with q < 0.1 over the 274 workflow-outcome tests on the 374 round-1 papers, recomputed within field and venue on the same papers; c holds the citation and novelty outcomes, d the breadth outcomes. Each paper is coded as a sequence of steps; each step carries a node, the kind of move in the modes-of-inquiry graph (N new capability, E explore, O observe, I infer a latent quantity, Q question, H hypothesize rivals, S simulate or derive expectations, D design the test, F find or set conditions, C compare, V vary or replicate, X exclude a rival, K keep the claim, P protect the claim by revising an auxiliary assumption, R refine), and a mode of inquiry, the kind of epistemic work the step serves (methods: new inference or computational capability; estimation: a latent quantity with uncertainty; simulation: model forecasts or consequences; reconstruction: a past event from its traces; observation: describing a phenomenon; hypothesis: testing among rivals; regularities: an empirical relation with its range; theory: consequences derived from first principles; instruments: building or characterizing an apparatus or sensor; exploration: establishing that a phenomenon is real; synthesis: combining results across studies; robustness: varying conditions to see whether a result holds; question: posing or sharpening the question). A node is one of 15 kinds of move; a mode of inquiry is one of 13 kinds of epistemic work the move serves. The decisive move is the single step, with its mode of inquiry, without which the paper's main claim would not exist. Field is the subfield of the paper's leading topic in OpenAlex (an open bibliographic database), a machine label from title, abstract, venue and citations. OpenAlex files topics, not papers, under subfields, so a subfield label names its dominant leading topic where one topic holds at least 60% of the subfield's coded papers: the subfield Artificial Intelligence holds only the seismology topic (OpenAlex files Seismology and Earthquake Studies under Computer Science), and Atmospheric Science is mostly the cryosphere topic (glaciology, mainly The Cryosphere). Venue is the journal family, grouped by DOI prefix and publisher (AGU apart from Wiley; Copernicus, mostly European Geosciences Union journals). (a) Share of papers in each subfield that use each node at least once (upper block) and whose decisive move is in each mode of inquiry (lower block; modes of inquiry with fewer than 10 papers summed as other, so columns sum to 100%). Subfields with fewer than 10 coded papers (Ocean Engineering 6) appear in All only. The q column is the Benjamini-Hochberg adjusted p (BH q; rows with q < 0.1 are expected to include at most about 10% false discoveries) of the round-stratified permutation chi-square test of that row against subfield, adjusted over all 130 workflow tests on both rounds (every binary, count and categorical feature, tested once against subfield and once against journal family); n.t. marks rows not tested because fewer than 10 or more than n - 10 papers have the feature (nodes C, K). Cramér's V for the decisive mode of inquiry as a whole is bias-corrected, computed on the table pooled over both rounds: 0 when it is independent of subfield and 1 when subfield determines it. An outlined cell has row q < 0.1 and a 95% bootstrap interval (resampled within round) of its rate minus the rate in all other papers, averaged over rounds with Mantel-Haenszel weights, that excludes zero, above or below (a 0 can be outlined). Nodes with q < 0.1: N, E, I, X. (b) Median workflow length (steps in the coded sequence, consecutive steps on the same node counted separately), revisits (steps whose node already occurred earlier in that sequence, so a consecutive repeat counts), cnp (OpenAlex citation normalized percentile, 0 to 1: a paper's citation count ranked among works of the same OpenAlex subfield, year and type) and fwci (field-weighted citation impact: citations divided by the mean for works of the same subfield, year and type; log axis, dashed line at 1 = world average; citations are skewed, so the median paper sits below 1) by journal family over both rounds, with 95% bootstrap intervals (2000 resamples of papers within round). Epsilon squared is the share of rank variance explained by family (Kruskal-Wallis rank analysis of variance on ranks taken within round), with BH q. Families sorted by median cnp: Nature portfolio 23 steps and cnp 0.71, Wiley, non-AGU 20 steps and cnp 0.44. Family is associated with both workflow length and citation, consistent with the weaker length-citation associations within family in (c). (c, d) The 38 associations between a workflow feature and an outcome with q < 0.1 over the 274 workflow-outcome tests on the 374 round-1 papers (black), recomputed within strata on the same papers (coloured). Row labels: (n) marks a count; steps and revisits as in (b); decisive, the decisive mode of inquiry as in (a); mode, at least one step in that mode of inquiry; node, at least one step on that node; entry, the coded entry state of the paper; claim gate yes, the main claim faced a test it could have failed; distinct modes, number of different modes of inquiry in the sequence; novelty claims, number of the authors' 'first' or 'previously unknown' statements the coder quotes; items borrowed, the count of concepts, methods, instruments or data borrowed from other fields that the coder lists (codebook section 6); fields borrowed from, number of distinct source fields (these two against breadth_refs are a convergent validity check of the coder, the same thing measured from the text and from the reference list, not workflow-outcome findings); composition capability first, the paper builds a new capability before posing its question; composition trace series, conditions found rather than set, with observations repeated over independent traces of past events; kinds of V check, number of distinct kinds of check the paper performs itself (replication on new data, a second method, varied parameters, a control or reference, a new context, a rerun). Outcomes: cnp and fwci as in (b), which correlate at 0.99, so their rows repeat one signal; novelty_pair, -log10(1 + number of 2017-2021 works sharing the paper's leading pair of OpenAlex topics), higher is rarer; breadth_refs, share of classified references outside geoscience; breadth_citers, share of citing works outside geoscience, only for papers with at least 10 citers other than the authors (n = 97). cnp and fwci are normalized within subfield by OpenAlex; novelty_pair and breadth are not. Effect is Spearman rank correlation, ink for all papers together; coloured points recompute it within strata (ranks centred inside each subfield, journal family, or subfield-by-family cell, so only variation inside a stratum counts), with stratified bootstrap intervals (2000) and permutation p from shuffling outcomes within strata (5000). Filled circle: survives, same sign and BH q < 0.1 over the 114 stratified tests; open circle: does not. The survives column counts the stratifications a row survives. Survivors: 31 of 38 within subfield, 36 within family, 24 within subfield by family (25, 35 and 21 with an interval excluding zero). Not surviving within subfield: 7 (2 novelty, 5 breadth: items borrowed with novelty_pair; fields borrowed from with novelty_pair; Node N (new capability) with breadth_refs; entry: capability with breadth_refs; claim gate: yes with breadth_citers; decisive: methods with breadth_citers; steps with breadth_citers). Within family: 2 (2 citation: distinct modes with cnp; distinct modes with fwci). Within subfield by family: 9 of the rows above plus 5 (mode: reconstruction with novelty_pair; decisive: estimation with breadth_refs; Node H (hypothesize) with breadth_refs; distinct modes with breadth_refs; revisits with breadth_citers). Squares, round 2: the 15 rows that the frozen plan (preregistration/round2-confirmatory.json, public commit b4369fe) selected at the first round-1 analysis (233 papers) and tested once on the 198 round-2 papers, labelled with the plan's hypothesis number; filled, confirmed (BH q < 0.1 over the 43 frozen hypotheses and the predicted sign); open, not confirmed. 4 of 15 are confirmed, all with breadth_refs. The other 23 rows reached q < 0.1 only once round 1 grew to 374 papers and have no out-of-sample test. For geoscientists: holding field fixed removes 7 rows (2 novelty, 5 breadth); holding venue fixed removes 2 (2 citation) and shrinks the citation rows of length and revisits (steps with cnp 0.17 overall, 0.11 within family); neither shows that a workflow causes an outcome. For NLP researchers: panels c and d are a check for confounding within the sample that produced the associations, not a replication; the squares are the only out-of-sample test. Exploratory: one model coder, small cells, citations at about four years. OpenAlex retrieved October 2026; figure date 2026-10-27."
+}

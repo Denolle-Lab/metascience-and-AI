@@ -1,0 +1,410 @@
+{
+ "key": "g22_W4313401619",
+ "doi": "10.1016/j.jastp.2022.105997",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Grieco, Pérot, Murtagh (2023), Long-term mesospheric record of EPP-IE NO measured by Odin/SMR, J. Atmos. Sol.-Terr. Phys. 242, 105997 (published PDF, Chalmers repository copy with cover page)"
+ ],
+ "pages_convention": "printed journal pages (printed page 1 = PDF page 2; the repository cover page is not counted)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "There are still significant uncertainties on the estimated amount of EPP-IE NO.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Grieco et al. 2023, published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of how much EPP-IE NO descends through the polar winter mesosphere, given uncertain estimates and underestimation in climate models.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] estimations, we measure the total winter flux of EPP-IE NO descending through three isentropic levels in the mesosphere"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors take from the literature two controls of EPP-IE variability: geomagnetic activity in the SH (Randall et al. 2007) and dynamics, especially SSW-ES events, in the NH.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "interannual variability of EPP-IE NO in the Southern Hemisphere (SH) is mainly explained by changes in the level of geomagnetic activity"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take Odin/SMR v3.0 level 2 mesospheric NO limb observations from 2006/07 onward, drop the sparse earlier years, and add SMR v3.0 temperature for stratopause height.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we use version 3.0 of SMR level 2 NO data, which results from a recent reprocessing"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors reject a tracer-correlation design (SMR CO/H2O) for lack of coincidences and adopt a background-subtraction method after Holt et al. (2012), using MERRA-2 for vortex edge and descent rate.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the number of available coincidences between these observations and NO observations were not sufficient to do so"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors regrid to 2600-4000 K isentropes, keep nighttime data (SZA criterion) and subtract an October/April in-vortex median background with bounded uncertainty. Vortex area comes from the MERRA-2 PV gradient (Nash et al. 1996) and descent rate from w = θ/T·Q.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This value is assumed as a background concentration, corresponding to the NO amount already present in the vortex in early winter."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check the MERRA-2-derived descent rates against magnitudes and seasonal evolution published in other studies.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The obtained descent rates magnitude and winter-time evolution are in accordance with the ones presented in other studies"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors multiply excess NO by vortex area and descent rate to get daily fluxes, sum them over each winter with linear interpolation across gaps, and propagate errors statistically.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These calculations result in the number of NO molecules crossing each considered isentropic surface"
+    },
+    {
+     "n": 8,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors state the rival source of NO enhancement, local production by solar proton events (EPP-DE), and flag SPE days with a GOES proton flux threshold.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the observed NO concentration might therefore not only originate from EPP-IE but also significantly be affected by local production at the considered levels"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "observation",
+     "action": "The authors compare the SSW-ES NH winter 2018-19 with the quiet SH winter 2010 (vortex area, descent rate, NO, flux): daily fluxes are up to an order of magnitude higher after the SSW-ES.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparing Figs. 2 and 3 helps us understand how the flux of nitric oxide descending through the mesosphere during winter-time is affected by dynamics."
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors compute daily flux series and total winter fluxes for 15 NH and 6 SH winters (Tables 3-4). Citing a likely underestimate from sunlit parcels and data gaps, they report the median plus 1σ as most representative.",
+     "page": "5-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we will discuss values corresponding to the median plus one standard deviation, rather than the median itself"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors add winter-mean Ap index and SMR stratopause height time series to identify elevated-stratopause winters in each hemisphere.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This has been done to clearly identify winters which are characterised by an ES."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "The authors compare total fluxes across winters with stratopause height and Ap. The three highest NH fluxes fall in SSW-ES winters despite low Ap, while quiet-winter fluxes follow the Ap trend.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These more dynamically quiet winters present fluxes changing with time at trends which resemble the ones from the Ap index time series."
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "regularities",
+     "action": "The authors refine the reading of exceptions: vertical flux decrease through vortex leakage and NO-to-NO2 conversion, winters with larger lower-level descent (not shown), and 2015-16 through stronger descents.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This can be due to possible leakage from the vortex, especially during winters affected by a SSW."
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "The authors attribute NH 2011-12 high fluxes to SPEs, plus a modest ES, and drop them from EPP-IE. They exclude SPEs as the cause in other SPE-affected winters, which show no particularly high fluxes.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "therefore we will not consider the NO observed being EPP-IE origin in this case"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "The authors compare their fluxes with three independent estimates: MIPAS EPP-NOy fluxes (Funke et al. 2014) for overlapping winters, model results (Sinnhuber et al. 2018), and SH EPP-NOx amounts (Randall et al. 2007). They find consistent order of magnitude and inter-annual variability except NH 2008-09 and SH 2008, with systematically lower values.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is therefore possible to directly compare our fluxes at these two levels with the ones from Funke et al. (2014)"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "estimation",
+     "action": "The authors attribute the systematically lower fluxes to auxiliaries (NO not representative of NOy; the method's intrinsic underestimation) rather than revising the estimates.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Causes for the smaller fluxes obtained by us with respect to EPP-NOy could be that NO is not representative of NOy at the considered altitudes."
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors keep the long-term EPP-IE NO flux record and the conclusion that dynamics controls variability in SSW-ES winters and geomagnetic activity in quiet winters.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results suggest that the EPP-IE NO flux variability is mainly controlled by dynamics during the SSW-ES winters"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "EPP-produced NO descending in the polar winter vortex (EPP-IE), an established phenomenon",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; flux is inferred from SMR NO, MERRA-2 vortex area and descent rate",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify total winter EPP-IE NO fluxes over 15 years and explain their variability",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Dynamics (SSW-ES) vs geomagnetic activity as controls; SPE local production as a rival source",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: SSW-ES winters should show high flux regardless of Ap; quiet winters should track Ap",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: natural winters with or without SSW-ES and with varying Ap",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes, nature repeats over 15 NH and 6 SH winters",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Checked only against published estimates (MIPAS, models, Randall 2007) and literature descent rates; no sensitivity tests",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: flux record with uncertainties; dynamics/geomagnetic attribution as the best explanation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Fifteen years of Odin/SMR nighttime NO give total winter EPP-IE NO fluxes, with error-propagated uncertainties, through 2600, 3300 and 4000 K (NH 2006-07 to 2020-21, SH 2007-2012). Fluxes are highest in SSW-ES winters (490-1000 Mmol at 4000 K) and lower in quiet winters, where they follow geomagnetic activity.",
+  "page": "6-9"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the background-subtraction flux estimate (in-vortex NO excess × MERRA-2 vortex area × descent rate, integrated per winter) applied to the SMR record, no EPP-IE NO flux record would exist.",
+  "page": "3-4"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The paper uses routine SMR observations; no stated hypothesis directed their acquisition. The flux estimates faced external comparison with MIPAS (Funke 2014) and Randall (2007), which could have disagreed and partly did (SH values much lower). The dynamics-vs-Ap attribution rests on visual resemblance of trends, with no statistical test. Nothing is reported as fixed before the data were seen; the choice of the median plus 1σ was made after the underestimation was discussed."
+ },
+ "imports": [
+  {
+   "field": "physics / measurement statistics",
+   "item": "Statistical error propagation (Taylor 1982)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "space physics / heliophysics",
+   "item": "GOES SEM proton flux data and SWPC >10 MeV threshold for identifying SPE days",
+   "kind": "data",
+   "page": "3"
+  },
+  {
+   "field": "radio astronomy",
+   "item": "Odin sub-millimetre radiometer, shared with astronomical observations until 2007",
+   "kind": "instrument",
+   "page": "2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this is the first time EPP-IE NO has been quantified using its NO data set",
+   "page": "1"
+  },
+  {
+   "quote": "[...] estimate had never been calculated for the most recent winters which are included in this study",
+   "page": "1"
+  },
+  {
+   "quote": "At the moment, Odin/SMR is the only instrument ensuring a global coverage of mesospheric NO observations within a [...]",
+   "page": "1"
+  },
+  {
+   "quote": "EPP-IE NO has been quantified for the first time using the unique Odin/SMR NO data set.",
+   "page": "9"
+  }
+ ],
+ "limits": "Process limits:\n- The SMR v3.0 NO data have no proper validation study; support is only cited and inherited (Kiviranta et al. 2018, the authors' group).\n- The paper reports no sensitivity test of its own processing choices: background month, vortex-edge definition, nighttime criterion, interpolation over gaps. Uncertainties are statistical propagation plus a bounded background range.\n- Several supporting statements are 'not shown' (descent rates greater at lower levels; stronger descents in 2015-16).\n\nSub-claim statuses:\n- The attribution sub-claim (dynamics dominates in SSW-ES winters, geomagnetic activity in quiet winters) is at best_explanation status. It rests on visual resemblance to Ap trends and stratopause peaks, with no correlation statistic.\n- The comparison with Funke et al. (2014) shows SH fluxes 2-5 times lower. This is handled by protecting auxiliaries (NO vs NOy, in-vortex vs hemispheric, method underestimate), not by testing them.\n- The 2600 K values do not represent NOx.\n\nOther:\n- The acknowledgements mention two anonymous reviewers, but no review file was supplied, so no review sequence is coded.\n- Inference: the median-plus-1σ reporting choice was made post hoc to offset a suspected underestimate.",
+ "disagreements": [
+  {
+   "target": "Funke et al. (2014), MIPAS EPP-NOy fluxes",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Tables 5-6 compare overlapping winters: SMR fluxes are considerably lower for all SH winters and NH 2007-08, and the inter-annual variability differs for NH 2008-09 and SH 2008. The authors attribute the differences to NO vs NOy and to in-vortex vs hemispheric fluxes.",
+   "page": "8",
+   "quote": "for all SH winters and for NH winter 2007–08 our fluxes are considerably lower than the ones measured by Funke et al. (2014)"
+  },
+  {
+   "target": "Sinnhuber et al. (2018), modelled EPP-NOy",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "A qualitative comparison of inter-annual variability agrees except for NH 2008-09 and SH 2008; no direct flux comparison was possible.",
+   "page": "8",
+   "quote": "The inter-annual variability of their results resembles the one from Funke et al. (2014) and ours"
+  },
+  {
+   "target": "Randall et al. (2007), SH EPP-NOx amounts at 45 km",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Different years and species prevent a quantitative comparison; the values are of the same order of magnitude but lower.",
+   "page": "8",
+   "quote": "They are of the same order of magnitude – although lower – as the ones obtained by Randall et al. (2007)."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Background subtraction method (after Holt et al. 2012)",
+   "alternatives": "Tracer correlation method using SMR CO and H2O",
+   "reason": "The linear correlation between NO and the tracers was not clear because of insufficient coincident observations",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "I",
+   "chosen": "Vortex edge from the maximum MERRA-2 potential vorticity gradient with a wind constraint (Nash et al. 1996)",
+   "alternatives": "Vortex edge from tracer concentration gradients (Harvey et al. 2015, 2018)",
+   "reason": "Insufficient temporal and spatial sampling of coincident SMR tracer measurements; the stated downside is that the reanalysis is unconstrained by observations at these altitudes",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "I",
+   "chosen": "Report the median plus 1σ as representative fluxes",
+   "alternatives": "The median itself",
+   "reason": "The method likely underestimates fluxes because of parcels sunlit hours earlier and data gaps",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Nighttime observations only (SZA criterion)",
+   "alternatives": "Including daytime observations",
+   "reason": "Mesospheric NO is photodissociated within a day in sunlight",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "Use data from late 2006 onward; SH winters only 2007-2012",
+   "alternatives": "Include pre-2007 observations and SH winters after 2013",
+   "reason": "Pre-2007 NO was measured one day per month; SH winters after 2013 have important standby data gaps",
+   "effect_reported": "no",
+   "page": "2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The obtained descent rates magnitude and winter-time evolution are in accordance with the ones presented in other studies",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "It is therefore possible to directly compare our fluxes at these two levels with the ones from Funke et al. (2014)",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the values we found are consistent with the ones found by Randall et al. (2007).",
+   "page": "8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The inter-annual variability of their results resembles the one from Funke et al. (2014) and ours",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "presented a variability in accordance with that observed by independent instruments such as SOFIE",
+   "page": "2"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "was validated against a tracer correlation method",
+   "page": "4"
+  }
+ ]
+}

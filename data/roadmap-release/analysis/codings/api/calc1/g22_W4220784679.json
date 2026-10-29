@@ -1,0 +1,530 @@
+{
+ "key": "g22_W4220784679",
+ "doi": "10.1029/2021ms002785",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Hwong, Sherwood & Fuchs (2022), Can We Use 1D Models to Predict 3D Model Response to Forcing in an Idealized Framework? JAMES 14, e2021MS002785 (published PDF, 28 pp.)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "few studies have attempted to directly evaluate to what extent understanding obtained with a SCM used in RCE conditions carries over to a 3D model",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Hwong et al. 2022, JAMES, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of whether behaviour learned in a single-column model in RCE carries over to a 3D model in regional RCE.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] this question by using a 3D model run in regional RCE"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose convective organization as a likely factor controlling 1D-3D comparability.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is reason to believe that convective organization might be an important factor to consider when comparing the results of 1D and 3D models"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design the test: WRF SCM versus a 20x20 multi-column model at 100 km, with five convection schemes, comparing mean states, linear responses and doubled-CO2 adjustments.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used a multi-column model (MCM) setup as a stepping stone for a 3D setup"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Vary the wind-nudging target from zero to 5 m/s and report that the main conclusions are insensitive.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the main conclusions of our study were not sensitive to this change"
+    },
+    {
+     "n": 5,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Initial MCM runs reveal that the degree of organization depends on the convection scheme, which becomes a confounder for the comparison.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our initial MCM experiments revealed that convective organization depends on the choice of convection scheme."
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set eight configurations (SST hot spot, wind shear, water-vapour homogenization, each with idealized or interactive radiation) to steer organization across schemes.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In total, eight experimental configurations were tested (Table 1)."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the linear response function perturbation procedure (tendency perturbations, M and M^-1 matrices) from the authors' earlier study H21.",
+     "page": "6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We followed the procedures of H21, which we briefly summarize here."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design doubled-CO2 runs at fixed SST and a test of whether SCM M^-1 matrices times the radiative forcing predict the CO2 adjustment responses.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to verify the usefulness of the LRF method in predicting model responses to other types of forcings"
+    },
+    {
+     "n": 9,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Map organization patterns across schemes and configurations (Figures 1-2); NSAS and BMJ organize without interactive radiation, NTIEDTKE and CAMZM stay disorganized with it.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our results suggest that the convection scheme can exert a stronger influence than interactive radiation in determining convective organization"
+    },
+    {
+     "n": 10,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject cloud amount as the explanation for weak organization in NTIEDTKE and CAMZM; leave small domain size as the suspected cause.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we have found no correlations between simulated cloud amounts and the degree of organization"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Vary scheme parameters: raise the CAMZM CAPE trigger, lower NSAS entrainment and switch off NSAS evaporation of precipitation, then record the effect on organization (results partly not shown).",
+     "page": "7-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "increasing the CAPE triggering threshold of CAMZM to a higher value (from 70 to 600 J kg−1) leads to significantly higher degree of organization"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Quantify organization with org_pw, the spatial variance of precipitable water scaled by its mean (Figure 3, Table 2).",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use the spatial variance of precipitable water scaled by its average value"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the org_pw metric against a second metric, the subsidence fraction.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is a high correlation between the two metrics (r = 0.78)."
+    },
+    {
+     "n": 14,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Select intrad_hotspot as all_org and idealrad_qvhomo as all_disorg, the configurations giving uniform organization or disorganization across schemes.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "intrad_hotspot appears to lead to organization across all five schemes, while idealrad_qvhomo consistently leads to disorganization"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare SCM and MCM mean-state theta_es and RH profiles, precipitation PDFs and linear response profiles for the all_org and all_disorg cases (Figures 4-8).",
+     "page": "11-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The SCM–MCM mean-state discrepancy appears to widen with increasing organization in the MCM simulations."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Fit a linear mixed-effects model across all schemes and configurations relating log org_pw to SCM-MCM response deviation, with schemes and configurations as random effects.",
+     "page": "13-16",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Our lme model confirms a strong effect of orgpw on SCM-MCM-deviation (p < 0.001; Figure 9b)."
+    },
+    {
+     "n": 17,
+     "node": "Q",
+     "mode": "question",
+     "action": "Ask whether differences between pairs of schemes in the SCM predict the same pair differences in the MCM (a model-as-truth framing).",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "can the relative difference between a pair of schemes in SCM predict anything meaningful about the difference between them in their corresponding MCM setup?"
+    },
+    {
+     "n": 18,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Add perturbation experiments at 650 hPa to the 850 hPa runs to obtain 80 data points per lme model.",
+     "page": "16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted an additional set of experiments where we applied perturbations at 650 hPa"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Fit lme_org and lme_disorg relating SCM pair differences to MCM pair differences (Figure 10).",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The statistical analysis reveals there is evidence for using SCM-pair-difference to predict MCM-pair-difference (p = 0.004)."
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the claim that SCM pair differences are largely preserved in the MCM even when convection is organized, with a caveat for moisture responses.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the SCM can still serve as a useful tool to investigate a scheme's linear responses in an RCE state"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Test the organization-comparability result under a different forcing, comparing SCM with organized and disorganized MCM responses to doubled CO2 (Figure 11).",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using a different forcing scenario, this section again highlights the role of convective organization in influencing SCM-MCM comparability"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare LRF-predicted with simulated SCM doubled-CO2 temperature and RH responses; the match is close for every scheme except BMJ (Figure 12a-j).",
+     "page": "18-19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the SCMs (Figures 12a–12j), the simulated and predicted profiles are strikingly similar, except for the BMJ scheme."
+    },
+    {
+     "n": 23,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that threshold-related nonlinearity near the freezing level explains the BMJ mismatch (not tested).",
+     "page": "19-20",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Here, we suspect that nonlinearity in the BMJ scheme may provide some clues to its discrepant behavior."
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare MCM doubled-CO2 responses with predictions from the SCM matrices times the MCM forcing; the agreement is poor when organized and better when disorganized.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "simulated and predicted profiles differ considerably when the MCM is organized"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the claim that SCM LRF matrices predict doubled-CO2 adjustment responses, and in disorganized 3D cases as well.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results confirm the relevance of the LRF framework in predicting model adjustment responses in a climate change scenario"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "regularities",
+     "action": "State four conclusions, with the headline that more organization in the MCM means less SCM-MCM comparability.",
+     "page": "21",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Convective organization in turn has a strong impact on SCM–MCM comparability, with more organization associated with less comparability."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "SCM-MCM behaviour comparability; convective organization emerges in MCM runs",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; all quantities come from model output",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Assess whether SCM RCE tests inform 3D behaviour, and whether the LRF predicts 2xCO2 response",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Organization versus mean-state temperature difference; domain size versus cloud amount for organization",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Organized versus disorganized MCM predicted to differ in SCM-MCM deviation",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set: eight organization configurations, perturbation runs, 2xCO2",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Holds across five schemes, two perturbation levels, a second forcing and wind nudging",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: comparability declines with organization within idealized RCE",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In idealized RCE, more organized convection in the 3D (multi-column) model goes with larger deviations from SCM behaviour in mean state, linear responses and 2xCO2 adjustments, while disorganized cases are nearly identical; the authors caution that this may not hold with strong large-scale forcing or over land.",
+  "page": "21"
+ },
+ "decisive_move": {
+  "node": "F",
+  "mode": "simulation",
+  "sentence": "Setting configurations that force all schemes to organize (intrad_hotspot) or disorganize (idealrad_qvhomo), with organization spread across eight configurations, is what allows organization to be separated as the factor controlling SCM-MCM comparability.",
+  "page": "5, 10"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The organization hypothesis (p. 3) guided the choice of all_org and all_disorg configurations (pp. 5, 10). That design was also driven by the unexpected scheme dependence found in initial runs. The org_pw effect on deviation faced an lme test that could have shown no effect (p < 0.001, p. 16), as did the pair-difference test (p = 0.004, p. 17). Nothing is reported as fixed before the data: the log transform was chosen after initial results showed nonlinearity (p. 15), and predictors were chosen after a collinearity check (p. 16)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "linear mixed-effects (lme) regression with random effects for schemes, configurations, perturbation levels and quadrants",
+   "kind": "method",
+   "page": "13"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "as far as we know, this is the first study that shows the vertical distribution of this forcing in terms of AERF",
+   "page": "18"
+  },
+  {
+   "quote": "we believe this is the first study to show this can be specifically attributed to convection schemes",
+   "page": "22"
+  }
+ ],
+ "limits": "Only the published paper was supplied; no review file, so there is no review sequence, although the acknowledgments mention three reviewers. Several sensitivity results are reported as preliminary or 'not shown': the CAMZM CAPE threshold, NSAS entrainment and the 5 m/s wind nudging. The paper does not say how the linearity of the M^-1 matrices was ensured. The M^-1 matrices were built only in the SCM, for resource reasons, so the MCM LRF prediction relies on SCM matrices. The domain size (2,000 km square) may be too small for realistic circulations, and organization is induced artificially by configuration. The organized and disorganized cases used for 2xCO2 differ by scheme, with no reason given. Sub-claim statuses: conclusion 1, that convection schemes control organization comparably to radiation, is best_explanation, since the root causes are not disentangled. Conclusion 3, that SCM pair differences are preserved in the MCM, is regularity_in_range, weaker for moisture. Conclusion 4, that SCM LRF matrices predict 2xCO2 adjustments, is capability_characterized, failing for BMJ. The BMJ nonlinearity explanation is an untested hypothesis. Inference: the eight configurations were partly chosen through iterative experimentation not fully reported.",
+ "disagreements": [
+  {
+   "target": "Studies finding radiative (longwave) feedback key to convective organization (Arnold & Randall 2015; Coppin & Bony 2015; Holloway & Woolnough [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Two schemes organize under fixed homogeneous radiation and two stay disorganized with interactive radiation, suggesting the convection scheme can outweigh radiative feedback in parameterized models.",
+   "page": "7",
+   "quote": "NSAS and BMJ produce relatively organized convection even in the case of prescribed uniform radiation"
+  },
+  {
+   "target": "Use of near-RCE single-column linear responses to characterize or parameterize behaviour at larger scales (Kuang 2010, 2018) and SCM RCE [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The lme fit across schemes and configurations shows that SCM-MCM linear-response deviation grows with MCM organization (p < 0.001).",
+   "page": "16",
+   "quote": "an SCM cannot automatically be expected to be able to accurately capture the linearized behavior of a more realistic 3D setup"
+  },
+  {
+   "target": "Past studies finding organization in global atmospheric models to be model-dependent (Wing 2019; Wing et al. [...] )",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "With dynamics and other physics held fixed in WRF, changing only the convection scheme changes organization strongly.",
+   "page": "22",
+   "quote": "we believe this is the first study to show this can be specifically attributed to convection schemes"
+  },
+  {
+   "target": "Moisture-memory aggregation when evaporation of precipitation is suppressed (Holloway & Woolnough 2016; Muller & Bony 2015)",
+   "kind": "result",
+   "stance": "fails_to_replicate",
+   "support": "Setting the NSAS evaporation factor to zero gave no significant change in organization, attributed to the scheme lacking explicit cold pools.",
+   "page": "9",
+   "quote": "However, we did not find any significant change in the organization degrees of NSAS"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "20x20 grid at 100 km (2,000 km square domain)",
+   "alternatives": "larger domain allowing large-scale circulations",
+   "reason": "balance between large-scale circulation and computational cost given many simulations",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "winds relaxed to zero",
+   "alternatives": "nudging winds to 5 m/s",
+   "reason": "prevent wind shear from developing (following Chua et al. 2019; Tompkins & Semie 2017)",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "YSU PBL and WSM6 microphysics for all schemes",
+   "alternatives": "other PBL and microphysics schemes",
+   "reason": "H21 found them to play only a minor role in RCE responses",
+   "effect_reported": "no",
+   "page": "4-5"
+  },
+  {
+   "node": "D",
+   "chosen": "LRF matrices built in SCM only",
+   "alternatives": "matrix runs in MCM",
+   "reason": "resource intensity of the matrix runs",
+   "effect_reported": "no",
+   "page": "6, 21"
+  },
+  {
+   "node": "X",
+   "chosen": "small domain size as suspected cause of weak organization in NTIEDTKE and CAMZM",
+   "alternatives": "lower cloud amounts reducing sensitivity to interactive radiation",
+   "reason": "no correlation found between cloud amount and degree of organization",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "O",
+   "chosen": "org_pw (scaled spatial variance of precipitable water)",
+   "alternatives": "subsidence fraction",
+   "reason": "simplicity; the two metrics correlate at r = 0.78",
+   "effect_reported": "yes",
+   "page": "9-10"
+  },
+  {
+   "node": "F",
+   "chosen": "intrad_hotspot as all_org and idealrad_qvhomo as all_disorg",
+   "alternatives": "other six configurations (ctrl, wind shear, hot spot or qv homogenization with the other radiation)",
+   "reason": "these give relatively similar organization or disorganization across all five schemes",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "C",
+   "chosen": "log-transformed org_pw and delta-RH in the lme",
+   "alternatives": "untransformed variables",
+   "reason": "initial results show a nonlinear relationship",
+   "effect_reported": "no",
+   "page": "15"
+  },
+  {
+   "node": "C",
+   "chosen": "org_pw as predictor",
+   "alternatives": "delta-RH (SCM-MCM) as predictor",
+   "reason": "high collinearity (r = 0.87); RH difference likely a result of aggregation",
+   "effect_reported": "no",
+   "page": "16"
+  },
+  {
+   "node": "D",
+   "chosen": "perturbations at 850 and 650 hPa",
+   "alternatives": "single perturbation level (850 hPa)",
+   "reason": "obtain more data points and improve statistical confidence",
+   "effect_reported": "no",
+   "page": "16"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the main conclusions of our study were not sensitive to this change",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "We did not examine sensitivity to these schemes since H21 found them to play",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "increasing the CAPE triggering threshold of CAMZM to a higher value (from 70 to 600 J kg−1) leads to significantly higher degree of organization",
+   "page": "7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "There is a high correlation between the two metrics (r = 0.78).",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we conducted an additional set of experiments where we applied perturbations at 650 hPa",
+   "page": "16"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "Using a different forcing scenario, this section again highlights the role of convective organization in influencing SCM-MCM comparability",
+   "page": "18"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "This is found across five convection schemes and applies to simulated mean states, linear responses to small tendency perturbations",
+   "page": "1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "In constructing the M−1 matrices we have ensured that the schemes' responses are linear to a large extent.",
+   "page": "19"
+  }
+ ]
+}

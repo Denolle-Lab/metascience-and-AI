@@ -1,0 +1,510 @@
+{
+ "key": "g22_W4280574190",
+ "doi": "10.1038/s41586-022-04672-7",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Licciardi, Bletery, Rouet-Leduc, Ampuero & Juhel 2022, 'Instantaneous tracking of earthquake growth with elastogravity signals', Nature 606, 319-324: published article with Methods and Extended Data Figs 1-11 (PDF, 20 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (PDF p. 1 = journal p. 319; Methods on pp. 7-9; Extended Data Figs 1-11 on pp. 10-20)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Standard early warning systems based on seismic waves fail to rapidly estimate the size of such large earthquakes",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Licciardi et al. 2022, Nature 606, 319-324 (published PDF with Methods and Extended Data)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem that early warning systems saturate and lag for Mw > 8 earthquakes, and ask whether PEGS can serve operational early warning.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Standard early warning systems based on seismic waves fail to rapidly estimate the size of such large earthquakes"
+    },
+    {
+     "n": 2,
+     "node": "E",
+     "mode": "observation",
+     "action": "Cite the earlier detection and modelling of prompt elastogravity signals on real seismograms, including the speed-of-light propagation, the absence of saturation and the Mw > 8 detectability limit.",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Recently discovered speed-of-light prompt elastogravity signals (PEGS) have raised hopes that these limitations may be overcome"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesize that PEGS, recorded before P-waves on existing broadband seismometers, carry the information needed to track the time-dependent magnitude of large earthquakes faster than P-wave-based systems.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Nevertheless, PEGS could prove beneficial for EEWS."
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set out the rival approaches from the literature (point-source P-wave EEWS, finite-fault seismic EEWS, GNSS-based EEWS including deep learning) and their limits in latency, saturation and prior assumptions.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Over the last decade, finite-fault EEWS based on global navigation satellite system (GNSS) data have emerged as a new tool"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "observation",
+     "action": "Design the test: the Japanese subduction zone and its dense broadband network, point-source synthetics with empirical noise for training, and Tohoku-Oki as the real target.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We focus on the Japanese subduction zone because"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute 500,000 synthetic PEGS waveforms by normal-mode summation for Slab2.0 sources with uniformly drawn Mw and pseudo-empirical STFs, add empirical noise from 259 days of recordings, filter, clip and scale them (Methods pp. 7-8).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The training database is made of 500,000 synthetic earthquake sources distributed along the Japanese megathrust"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build PEGSNet, a LeNet-like multi-station CNN, with a random-start-time labelling strategy so that it learns Mw(t) from pre-P data; train it with the Huber loss and Adam on a 70/20/10 split and select the model by validation loss (Methods p. 8).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PEGSNet is a deep CNN that combines convolutional layers and fully connected layers in sequence"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare sliding-window predictions on the held-out synthetic test set with the true Mw(t) labels, using a success threshold of ±0.4 magnitude units, and map accuracy and residuals by time and magnitude.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PEGSNet can track the moment released by earthquakes with final Mw above 8.6 with good accuracy"
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine the claim by setting a conservative lower sensitivity limit of Mw 8.3 and explaining the early-time underestimation for Mw 9 events.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we place a conservative lower limit on PEGSNet sensitivity to Mw at 8.3"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Split the test set into network noise-level quartiles and recompute accuracy maps, showing that the sensitivity limit depends on noise (Extended Data Fig. 5).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it can be reduced to about 7.9 or 8.0 (Extended Data Fig. 5)"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Retrain and test on noise-free synthetics to obtain an upper limit on performance and isolate the intrinsic latency of the model and data (Extended Data Fig. 6; Methods p. 8).",
+     "page": "4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "A test performed on noise-free synthetics shows that at least 15 s after origin are needed by the model to reliably predict Mw"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "observation",
+     "action": "Retrieve and preprocess real broadband records of the 2011 Mw 9.0 Tohoku-Oki earthquake, cut at the theoretical P-wave arrival (Methods pp. 8-9).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tested PEGSNet on real data from the 2011 Mw 9.0 Tohoku-Oki earthquake."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run PEGSNet in a retrospective playback, estimating Mw(t) each second from the previous 315 s of pre-P data.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "made an Mw prediction at each second starting at the earthquake origin time and using only the previous 315 s of data"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the Tohoku Mw(t) track with a reference STF and with JMA, FinDer2 and BEFORES (plus G-larmS and ElarmS in Extended Data Fig. 7) for latency and accuracy, for example an alert at Mw 8.0 at 53 s against about 61 s for BEFORES.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After around 55 s, PEGSNet is always closer to the ‘true’ STF than the other algorithms"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Rerun the Tohoku playback with preprocessing repeated at every time step, as an online system would do, and find the same predictions (Methods only, Extended Data Fig. 11).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the resulting PEGSNet predictions obtained using the two workflows are essentially indistinguishable from each other"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Generate 1,000 synthetic Tohoku-like examples from the reference STF and test-set noise, and show that the real-data track lies within the expected variability (Extended Data Fig. 8).",
+     "page": "5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "This is further corroborated by a test on synthetic data generated using the ‘true’ Tohoku-Oki earthquake STF"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Replace the pre-P Tohoku waveforms with real noise while keeping the P-wave arrivals; predictions stay at a baseline of about 6.5, showing that the result is driven by PEGS (Extended Data Fig. 9).",
+     "page": "5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The resulting prediction of Mw(t) never exceeds the lower sensitivity limit of PEGSNet"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Apply PEGSNet to all Mw ≥ 7 subduction earthquakes in the region since 2003: the Mw 8.2 Hokkaido event reaches its final Mw after about 2 min and the Mw < 8 events stay at noise level (Extended Data Fig. 10; Methods p. 9).",
+     "page": "5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "For Mw < 8 earthquakes, PEGSNet predictions converge toward the noise baseline"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that PEGS allow instantaneous tracking of moment release for Mw > 8.3 megathrust earthquakes and propose PEGSNet as a complement to existing EEWS and tsunami warning.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have demonstrated instantaneous tracking of moment release for large earthquakes (Fig. 3)."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "PEGS, already established by others (cited), as a carrier of magnitude information",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; Mw(t) is inferred from pre-P waveforms through a trained CNN",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Real-time, zero-latency tracking of Mw(t) for early warning",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Existing EEWS: point-source P-wave (JMA), seismic finite-fault (FinDer2), GNSS finite-fault (BEFORES)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "PEGS-based system predicted to track Mw without P-wave delay or saturation; rivals lag or saturate",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: archival records of the 2011 Tohoku-Oki earthquake replayed",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Partly: other Mw ≥ 7 events since 2003, but only Tohoku exceeds the 8.3 limit",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: noise-substitution, synthetic Tohoku, online-workflow and noise-level tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: capability characterized for Mw > 8.3 with stated accuracy and latency",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Peer review reports exist but were not supplied; not coded",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A deep learning model trained on synthetic PEGS plus empirical noise tracks the moment magnitude of large (Mw > ~8.3) earthquakes instantaneously from pre-P-wave broadband data, outperforming existing EEWS on the 2011 Tohoku-Oki playback after about 55 s.",
+  "page": "1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building PEGSNet with a random-start-time labelling strategy on a 500,000-event synthetic database with real noise is what turns the weak pre-P PEGS into a time-dependent magnitude estimate; without it there is no Tohoku track to compare.",
+  "page": "3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "The hypothesis that PEGS carry magnitude information directed the synthetic database design and the restriction of input to the pre-P window (pp. 2-3), but the real data were archival. The Tohoku playback and the noise-substitution test (p. 5, Extended Data Fig. 9) could have failed. The train/validation/test split, the model selection by validation loss and the ±0.4 success threshold were fixed before testing (pp. 4, 8), but the Tohoku outcome was known in advance and nothing was preregistered."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Convolutional neural networks (deep learning)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "computer science / computer vision",
+   "item": "LeNet-like CNN architecture with images built from multi-station waveforms",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "Huber loss for regression training",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "computer science / optimization",
+   "item": "Adam stochastic optimizer",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "computer science / software",
+   "item": "PyTorch deep learning library",
+   "kind": "method",
+   "page": "9"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Our model unlocks ‘true real-time’ access to the rupture evolution of large earthquakes",
+   "page": "1"
+  },
+  {
+   "quote": "have raised hopes that these limitations may be overcome6,7, but have not been tested for [...]",
+   "page": "1"
+  },
+  {
+   "quote": "Our results promote PEGS as a new class of observables",
+   "page": "5"
+  },
+  {
+   "quote": "PEGS data represent a new and independent source of information to constrain the magnitude in real time.",
+   "page": "5"
+  }
+ ],
+ "limits": "Only the published PDF was coded; the peer review reports (mentioned on p. 9) were not supplied, so no review sequence is coded. The real-data validation above the sensitivity limit rests on one event (Tohoku-Oki); the Mw 8.2 Hokkaido event is called less reliable (p. 9), and the Mw < 8 events only show agreement with the noise baseline. The playback is retrospective, with the outcome known, so this is not forecast verification. P-wave arrivals are theoretical and assumed known (p. 8). The 'true' STF reference is the senior author's own source model (ref. 40), so the benchmark is not fully independent (inference). The comparison EEWS curves are taken from other groups' published outputs, not rerun here. Code is available only on request (p. 9). Sub-claims: location estimates (errors of about 25-30 km after about 50 s, relying on P arrivals) are at estimate_with_resolution (p. 4); the lower sensitivity limit of 8.3, reducible to 7.9-8.0 at low noise, is regularity_in_range on synthetics (p. 4). Composition is none_fits because the walk is a method-validation chain (question and rivals first, then capability, held-out synthetic test, then retrospective real-data benchmark against existing systems); it is not capability_first, since the question and rivals precede the capability, and not forecast_verification, since nothing was frozen before the event.",
+ "disagreements": [
+  {
+   "target": "Previous works suggesting PEGS detectability only above Mw 8 (refs 15, 16)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The test-set maps set a conservative limit at 8.3 that falls to about 7.9-8.0 under low network noise (Extended Data Fig. 5).",
+   "page": "1",
+   "quote": "previous works have suggested a limit for PEGS detectability to earthquakes with magnitude (Mw) above 8 (refs. 15,16)"
+  },
+  {
+   "target": "Theoretical studies proposing gravity-based EEWS with future gravity-gradient sensors (refs 11, 12)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper shows that PEGS on currently deployed broadband seismometers already support early warning.",
+   "page": "1",
+   "quote": "Recent theoretical studies have shown the potential for earthquake early warning systems (EEWS) that are based on the gravity signals"
+  },
+  {
+   "target": "Seismic-based EEWS (JMA, FinDer2, ElarmS) for great earthquakes",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "On the Tohoku playback, PEGSNet reaches the final Mw while the seismic systems saturate or underestimate (Fig. 3, Extended Data Fig. 7).",
+   "page": "5",
+   "quote": "PEGSNet does not suffer from the magnitude saturation issue that instead affects the seismic-based EEWS"
+  },
+  {
+   "target": "GNSS-based finite-fault EEWS (BEFORES, G-larmS)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "PEGSNet issues an Mw 8.0 alert about 8 s earlier and stays within 0.3 Mw from 55 s rather than 100 s, without prior assumptions on data or slip.",
+   "page": "5",
+   "quote": "in contrast to GNSS-based EEWS, PEGSNet does not require prior assumptions on the data"
+  },
+  {
+   "target": "Deep learning model based on GNSS data (Lin et al., ref. 29)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from design: the GNSS model needs slip-distribution priors, while PEGS are insensitive to rupture spatial complexity.",
+   "page": "2",
+   "quote": "Although it proved promising, as for other finite-fault approaches, it requires a priori assumptions on slip distribution."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "Uniform Mw distribution from 5.5 to 10",
+   "alternatives": "Gutenberg-Richter distribution",
+   "reason": "Avoid a sampling bias toward over-represented magnitudes",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "S",
+   "chosen": "Random pseudo-empirical STFs (Meier et al. model)",
+   "alternatives": "Simple triangular STFs",
+   "reason": "Triangular STFs might not suffice for realistic ruptures (ref. 16)",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "S",
+   "chosen": "Point sources",
+   "alternatives": "Finite-source rupture descriptions",
+   "reason": "Finite-source effects shown to be within data uncertainties (cited ref. 15)",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "Simple, classic LeNet-like CNN",
+   "alternatives": "A wealth of other deep learning architectures",
+   "reason": "Goal is to show feasibility of PEGS-based EEWS",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Multi-station approach",
+   "alternatives": "Single-station approach used in earlier studies",
+   "reason": "Take advantage of the large synthetic database",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Deep learning on raw seismograms",
+   "alternatives": "Classical machine learning models with a priori features",
+   "reason": "Explore a larger function space without building features",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "Stations sorted by longitude",
+   "alternatives": "Other ways of concatenating station waveforms (active research area)",
+   "reason": "Found this approach to be effective",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "D",
+   "chosen": "Theoretical P-wave arrival times",
+   "alternatives": "Any existing P-wave triggering algorithm",
+   "reason": "PEGSNet does not perform triggering; arrivals assumed known",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "V",
+   "chosen": "Preprocess once, then slice",
+   "alternatives": "Preprocess at each time step (online workflow)",
+   "reason": "Speed up the testing procedure",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "C",
+   "chosen": "Best-performing algorithm of each type in main text (JMA, FinDer2, BEFORES)",
+   "alternatives": "G-larmS and ElarmS",
+   "reason": "Only best-performing algorithm for each type shown",
+   "effect_reported": "yes",
+   "page": "16"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "As in Fig. 2a, but computed on subsets of the test set",
+   "page": "14"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Training and testing on noise-free synthetic data provides an upper limit of PEGSNet performance.",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "compared with a ‘true’ STF calibrated against various different data types",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the resulting PEGSNet predictions obtained using the two workflows are essentially indistinguishable from each other",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This is further corroborated by a test on synthetic data generated using the ‘true’ Tohoku-Oki earthquake STF",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we keep the P-wave arrival information but substitute the actual recorded waveforms in the pre-P-wave time [...]",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We also tested PEGSNet on all the subduction earthquakes (dip-slip mechanism within 40 km from the megathrust)",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "The difference in PEGS predictions associated with the source finiteness was shown to be within data uncertainties",
+   "page": "2"
+  }
+ ]
+}

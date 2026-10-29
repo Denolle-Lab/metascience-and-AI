@@ -1,0 +1,513 @@
+{
+ "key": "g22_W4280567327",
+ "doi": "10.1029/2021ea002156",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Römer-Stange et al. 2022, Boulder Detection in the Shallow Sub-Seafloor by Diffraction Imaging With Beamforming on Ultra-High Resolution Seismic Data—A Feasibility Study, Earth and Space Science 9, e2021EA002156 (published PDF, 24 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 24' page numbers)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Despite the growing interest, reliable and efficient object detection methods are still not established.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Römer-Stange et al. 2022, Earth and Space Science, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem. Boulders (0.3–4.1 m) in the shallow sub-seafloor threaten offshore wind installations, magnetic and EM methods fail for nonferrous objects, and no efficient seismic detection method exists.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reliable and efficient object detection methods are still not established"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "The authors take Wu and Aki's scattering theory, which says objects 0.1–10 wavelengths in size produce large-angle point diffractions. This sets the expected signal and the need for a ~1,000 Hz source.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "an object produces large-angle Point-Diffractions (PD) caused by resonance if the size of an object is in the range of 0.1–10 times the wavelength"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors formulate the imaging method: Common-Fault-Point gathering, Diffraction-Move-Out correction (Eq. 1), and semblance-weighted delay-and-sum beamforming as a discrete Radon transform (Eqs. 2–3).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Common-Fault-Point (CFP) gathers are the basis for efficient diffraction imaging and localization in this study."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "instruments",
+     "action": "The authors design the acquisition system: a rigid 8 × 3 m hydrophone tow frame, spaced 1 m along-track and 0.66 m across-track to avoid aliasing at 1,000 Hz, with a sparker source, GPS and a motion reference unit.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The proposed array has a dimension of 8 m across-track and 3 m along-track"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "instruments",
+     "action": "Beam-pattern analysis gives the expected array performance: −3 dB beam width 9.5°, main sidelobe −13 dB, ~10 m separability to 100 m depth (Eq. 7), and a narrower along-track beam width with a 20 m synthetic aperture.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shows the full BW of 9.5° that can be achieved with the array"
+    },
+    {
+     "n": 6,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors generate a full 3D finite-difference synthetic data set (Madagascar) for a Baltic Sea velocity model. It has inclined reflectors, an undulating basement and one boulder at 60 m depth.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A geologically complex 3D model study of the proposed data acquisition has been implemented"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "On the synthetic data the authors develop the processing sequence: NMO plus SVD eigenvector reflection suppression, CFP sorting, DiffMO, stack, envelope, semblance weighting, a 1 m CFP grid, and a 50% stretch mute limiting the swath to 80°.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the reflections are attenuated using the eigenvector diffraction enhancement scheme proposed by Bansal and Imhof (2016)"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "The authors compare the beamformed 3D synthetic volume with the known model. The amplitude maximum lies at 60.8 m against the modeled 60 m, with residual edge artifacts and short-path multiples.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the amplitude maximum is found at 60.8 m corresponding very well to the modeled point diffractor at a depth of 60 m"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors test lateral resolution on a 2.5D synthetic profile with 12 boulder pairs at 90 m depth, separations increasing 1–6 m. Pairs are resolved from 5 m separation.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "at a distance of 5 m two individual maxima can be observed"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design the field validation around seafloor boulders identifiable by multibeam echo sounder (MBES), because validating buried diffractors would require excavation.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "seafloor boulders were used as diffraction targets"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors map the 80 × 80 m survey area north of Helgoland (He525, March 2019) with simultaneously acquired MBES bathymetry and backscatter. They identify three seafloor anomalies (~1–2 m boulders and boulder clusters) and a minor topographic step.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Three MBES anomalies were identified in the bathymetric map"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors acquire profile GeoB19-112 with the tow frame and process it into a 3D diffraction cube (0.5 m CFP grid). Field adaptations include static corrections, 5–20 m source-CFP selection, random selection of 500 traces per CFP, and water-column RMS velocity.",
+     "page": "12",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "some adaptions to the field data set were necessary"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "observation",
+     "action": "The authors check the beamforming RMS map and inline and crossline sections against the MBES anomalies. The strongest peak is at anomaly 3 and weaker maxima are at anomalies 1 and 2, with across-track smearing, sidelobe noise, salt-and-pepper noise, and clusters at the topographic step.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the strongest peak of the RMS values is found at the location of MBES anomaly 3"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors add random horizontal receiver-positioning errors along the profile in the 2.5D ERROR scenario (Figure A2). Imaging stays robust below 1.5 m error in noise-free synthetics.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "revealed that the diffraction imaging proved robust if the error remained below 1.5 m"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors vary the beamforming velocity from 1,400 to 1,700 m/s (~10%) in the ERROR scenario (Figure A3). Detection is unaffected, but over- or underestimated velocity shifts the diffractor position.",
+     "page": "16",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The ability to detect point diffractions in the data was unaffected."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "theory",
+     "action": "The authors compare field diffraction strength with the size-resonance expectation of Wu and Aki. The ~2 m single boulder (anomaly 3) gives the strongest diffraction, and the smaller paired boulders give weaker ones.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The singular and large MBES anomaly 3 causes the strongest diffraction."
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors list untested rival explanations for two features. For the southern high amplitudes: topographic step, buried objects or noise. For the lateral offset between seismic and MBES targets: systematic positioning error, resonance lag, velocity model or traveltime equation.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the high amplitudes in the beamforming results in the South could be due to the topographic step, buried objects, or increased noise level"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors conclude that the acquisition system and DiffMO beamforming sequence localize point diffractors: buried ones in model data and seafloor boulders in field data.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The presented results illustrate the successful localization of PDs such as boulders using the proposed acquisition system and the DiffMO processing sequence"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Point diffractions from decimetre-to-metre objects (boulders) in near-surface sediment, expected from scattering theory",
+   "mode_called": "theory"
+  },
+  {
+   "question": "2",
+   "answer": "Buried boulders not directly observable; seafloor boulders observable by MBES serve as ground truth",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a detection capability (acquisition system plus processing)",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals to the main claim; ad hoc alternatives listed for secondary features (southern anomalies, target offset)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions derived for the listed alternatives",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in synthetic models (known boulders, separations, errors); found in field at a seafloor boulder site",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives positioning errors <1.5 m and ~10% velocity errors in synthetics; field ground truth qualitatively matches",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Capability judged feasible and characterized (beam width, ~5 m synthetic resolution, 80° swath)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Peer reviewed (reviewers acknowledged) but no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A rigid 8 × 3 m hydrophone tow frame with a ~1,000 Hz sparker, combined with SVD reflection suppression, CFP/DiffMO semblance-weighted beamforming and a synthetic aperture, can detect and localize point diffractors such as boulders: buried ones in synthetic data (resolved at ≥5 m separation, 80° swath) and 1–2 m boulders on the North Sea seafloor in field data.",
+  "page": "19"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "instruments",
+  "sentence": "The dedicated design of a rigid, densely sampled planar hydrophone array with accurate 3D positioning is what makes CFP beamforming of weak diffractions possible; without it neither the synthetic nor the field results exist.",
+  "page": "7"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Action gate: the scattering expectation (Wu & Aki) and the industry target (localization better than 5–10 m to 100 m, p. 2) directed the source frequency and array design. The field data were collected on an equipment-test cruise rather than to test a hypothesis. Claim gate: the synthetic tests against known boulder positions and the field comparison against MBES-mapped seafloor boulders could have failed. However, no detection threshold, false-positive rate or quantitative localization error was set for the field test, and the buried-target and 100 m depth claims were not field-tested. Registration gate: design requirements were stated before design (inference from p. 2), but no analysis choices or success criteria were fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "array signal processing / sonar engineering",
+   "item": "Delay-and-sum (Bartlett) beamforming and beam-pattern analysis (Mucci 1984; Krim & Viberg 1996; Hodges 2010)",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "sonar engineering",
+   "item": "Synthetic aperture sonar approach to extend along-track aperture",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "optics / physics",
+   "item": "Rayleigh criterion for angular resolution",
+   "kind": "concept",
+   "page": "6"
+  },
+  {
+   "field": "physics (wave optics)",
+   "item": "Huygens-Fresnel principle: object as secondary source of a spherical wave",
+   "kind": "concept",
+   "page": "2"
+  },
+  {
+   "field": "linear algebra",
+   "item": "Singular Value Decomposition for reflection suppression",
+   "kind": "method",
+   "page": "10"
+  },
+  {
+   "field": "signal processing",
+   "item": "Classification of the semblance-weighted method as a statistically optimum beamformer (Veen & Buckley 1988)",
+   "kind": "concept",
+   "page": "16"
+  },
+  {
+   "field": "navigation engineering",
+   "item": "Two-antenna GPS and motion reference unit (Ekinox Subsea INS) for receiver positioning",
+   "kind": "instrument",
+   "page": "7"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "In this study, we present a novel marine seismic acquisition and processing strategy specifically aimed to image objects greater than approx. 0.3 m",
+   "page": "2"
+  },
+  {
+   "quote": "The newly developed processing sequence of the data has been realized in GLOBE Claritas with custom scripts in MATLAB/Python",
+   "page": "7"
+  },
+  {
+   "quote": "A novel marine seismic acquisition system for the dedicated acquisition and imaging of diffractions has been designed in this study",
+   "page": "19"
+  },
+  {
+   "quote": "the data redundancy is beneficial to build trust for this novel approach",
+   "page": "18"
+  }
+ ],
+ "limits": "The headline claims of detection of objects >0.3 m down to 100 m below the array rest on scattering theory, beam-pattern calculation and noise-free synthetics. The synthetics used a Baltic Sea model that was not repeated for the North Sea field setting (p. 6). The field test covers only three seafloor targets in one area. Its comparison with MBES is qualitative: there is no detection threshold, no false-positive count, and the lateral offset between seismic and MBES targets is unquantified. Sub-claims and their statuses: ~5 m lateral separability is an estimate_with_resolution from synthetic data only; field detection of seafloor boulders is best_explanation for anomaly 3, with anomalies 1–2 and the southern amplitudes ambiguous. The sparker is modeled as a point source, ignoring its radiation pattern. Rival explanations for the secondary features are listed but not tested. Initial beam-pattern models of spiral versus linear arrays are mentioned but not shown. The industrial use (Fraunhofer IWES Manta Ray program) is reported without data. Reviewers are acknowledged but no review file was supplied, so no review sequence is coded. Entry could alternatively be coded external_goal, given the offshore-wind requirement (inference). Composition capability_first is the nearest fit; the walk starts from a named problem rather than from a capability in hand (inference).",
+ "disagreements": [
+  {
+   "target": "Geomagnetic and electromagnetic standard pre-construction survey methods (as assessed in Carbon Trust 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue from cited material properties (Hansen et al. 2005; Santamarina et al. 2005) that potential-field anomalies of boulders are too small and decay with burial; no own test.",
+   "page": "2",
+   "quote": "do not produce reliable results for both nonferrous and nonconductive objects and in great burial depths"
+  },
+  {
+   "target": "High-frequency hydroacoustic sub-seafloor object detection systems (inclined parametric echosounders, synthetic aperture sonars, Acoustic Corer)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors cite reported penetration below 10 m (up to 30 m for the Acoustic Corer) and argue that a 1,000 Hz sparker penetrates sufficiently; no direct comparison is made.",
+   "page": "2",
+   "quote": "these systems are limited by low sub-seafloor signal penetration due to the high signal frequencies used"
+  },
+  {
+   "target": "Conventional CMP reflection processing practice",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue that the diffracted wavefield carries information about small objects and build a dedicated CFP processing scheme to exploit it.",
+   "page": "3",
+   "quote": "Diffractions are treated as noise in this processing approach"
+  },
+  {
+   "target": "2D diffraction imaging (Ford et al. 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that off-axis diffractions cannot be focused in 2D and that a planar array allows full 3D localization; supported by argument, not by a side-by-side test.",
+   "page": "15",
+   "quote": "When only 2D data as shown in Ford et al. (2021) is acquired and used for diffraction imaging, the localization of diffractors is not precise"
+  },
+  {
+   "target": "Reported SAS positioning-error tolerance (Belkacem et al. 2006)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The authors' noise-free synthetic test shows robustness up to 1.5 m error against the ~0.2 m implied by the SAS tolerance; they caution that field tolerance is likely smaller.",
+   "page": "16",
+   "quote": "SAS systems are reported to tolerate positioning errors equaling an eighth of a period or a signal wavelength"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Sparker source with ~1,000 Hz central frequency",
+   "alternatives": "High-frequency systems (parametric echosounders, SAS, Acoustic Corer); lower frequencies of 100–1,000 Hz",
+   "reason": "Generates point diffractions for 0.3–4 m objects with the best resolution in that range and sufficient penetration for offshore wind planning",
+   "effect_reported": "no",
+   "page": "15"
+  },
+  {
+   "node": "N",
+   "chosen": "Regular linear (grid) hydrophone arrangement",
+   "alternatives": "Spiral sensor arrangements",
+   "reason": "Initial beam-pattern models showed the highest resolution for linear arrangements, consistent with Repetto et al. (2005)",
+   "effect_reported": "yes",
+   "page": "16"
+  },
+  {
+   "node": "N",
+   "chosen": "8 × 3 m physical array with synthetic aperture extension along-track",
+   "alternatives": "Larger physical array (e.g., 20 m along-track)",
+   "reason": "Maximum manageable size for small to medium research vessels; SAS reduces along-track beam width equivalently",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "Relatively large rigid tow frame with fixed hydrophones",
+   "alternatives": "Unnamed alternative solutions",
+   "reason": "Only a rigid frame allows accurate positioning of mounted hydrophones using GPS and motion sensors",
+   "effect_reported": "no",
+   "page": "16"
+  },
+  {
+   "node": "N",
+   "chosen": "Planar array for 3D imaging",
+   "alternatives": "2D line acquisition as in Ford et al. (2021)",
+   "reason": "Precise 3D localization; avoids diffraction shadows from off-axis diffractions",
+   "effect_reported": "no",
+   "page": "15"
+  },
+  {
+   "node": "N",
+   "chosen": "Eigenvector (SVD) diffraction enhancement after NMO (Bansal & Imhof 2016)",
+   "alternatives": "Radon transforms, plane-wave destruction filters, adaptive subtraction",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "Beamforming (semblance-weighted Radon transform) for imaging",
+   "alternatives": "Migration, Radon-transform imaging",
+   "reason": "Swath coverage and efficiency; CFPs can lie outside the area covered by reflection points",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "Semblance-weighted stack envelope",
+   "alternatives": "Plain stack envelope without semblance weighting",
+   "reason": "Improved resolution and suppression of multiple energy",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "N",
+   "chosen": "Second-order traveltime equation (Eq. 1)",
+   "alternatives": "More exact traveltime calculation equations as in Guigné et al. (2014)",
+   "reason": "Viable first approximation below 30°–40° incidence with low lateral velocity variation",
+   "effect_reported": "no",
+   "page": "17"
+  },
+  {
+   "node": "O",
+   "chosen": "Fold normalized by random selection of 500 traces per CFP",
+   "alternatives": "Using all available traces (considerably more than 500)",
+   "reason": "Avoid acquisition footprint; neighbouring CFPs get different traces, raising statistical validity",
+   "effect_reported": "no",
+   "page": "16"
+  },
+  {
+   "node": "O",
+   "chosen": "Conventional reflection velocity analysis and water-column RMS velocity",
+   "alternatives": "Velocity model derived from the diffracted wavefield (Preine et al. 2020)",
+   "reason": "Additional computational effort not necessary; conventional approaches sufficient",
+   "effect_reported": "no",
+   "page": "18"
+  },
+  {
+   "node": "S",
+   "chosen": "Sparker modeled as a point source in synthetics",
+   "alternatives": "Modeling the multi-electrode radiation pattern (Giordano et al. 2020)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "15"
+  },
+  {
+   "node": "D",
+   "chosen": "Seafloor boulders mapped by MBES as ground truth",
+   "alternatives": "Validation of buried diffractors by excavation",
+   "reason": "Excavation unrealistic in the scope of the study",
+   "effect_reported": "no",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the amplitude maximum is found at 60.8 m corresponding very well to the modeled point diffractor at a depth of 60 m",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "there are clear maxima in the processed 3D diffraction amplitude volume",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The field data set provides ground truthing for the proposed acquisition and processing",
+   "page": "17"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "revealed that the diffraction imaging proved robust if the error remained below 1.5 m",
+   "page": "16"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The ability to detect point diffractions in the data was unaffected.",
+   "page": "16"
+  }
+ ]
+}

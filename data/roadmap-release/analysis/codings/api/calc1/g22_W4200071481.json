@@ -1,0 +1,475 @@
+{
+ "key": "g22_W4200071481",
+ "doi": "10.1029/2021jb023701",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Xu, Lebedev & Meier (2022), Imaging the Earth Using Time-Domain Surface-Wave Measurements: Evaluation and Correction of the Finite-Frequency Phase Shift, JGR Solid Earth 127, e2021JB023701 (published PDF, 21 pages)"
+ ],
+ "pages_convention": "printed journal pages (article pages 'n of 21', identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "To our knowledge, there are no recent systematic reviews on the phase shifts due to the narrow-band approximation and their effects on the measurements",
+  "page": "4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Xu, Lebedev & Meier (2022), published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of how accurate time-domain (narrow-band filtered) phase-velocity measurements of surface waves are, given that they implicitly assume monochromatic signals.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we focus on the accuracy of phase velocity measurements using the time-domain methods"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "The authors take known phase shifts from earlier work (pi/4 source shift, caustic and polar shifts, near-field deviations, group-velocity narrow-band errors) and Herrmann's (1973) and Wielandt and Schenk's (1983) treatments of the narrow-band effect on phase.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Herrmann (1973) showed an additional phase term in the mathematical representation of Gaussian filtered surface waves"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "theory",
+     "action": "The authors name and define the finite-frequency phase shift as the offset between peaks of narrow-band filtered and monochromatic surface waves (Eq. 2), which must be corrected along with the pi/4 delay.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it originates from a replacement of an infinitesimally narrow frequency band by a finite-width band"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Using a toy superposition of three equal-amplitude monochromatic waves (0.99, 1.00, 1.01 Hz), they show that peaks stay aligned for a linear dispersion curve and misalign for a curved one (Figure 2).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By contrast, when the dispersion curve is not linear, the two peaks have a slight misalignment."
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "They derive an explicit expression for the phase shift of Gaussian-filtered ballistic surface waves using stationary phase and second-order Taylor expansions under far-field and narrow-band assumptions (Eqs. 5-19), identifying four controlling factors.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can derive an explicit expression for the finite-frequency phase shift assuming the far field approximation and narrow frequency bands."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "theory",
+     "action": "They check the premise that the pi/4 advance of noise cross-correlations cancels the pi/4 delay of frequency integration by comparing a broadband ak135 synthetic with its monochromatic component at 901.27 s (Figure 4).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A good consistency is observed between the monochromatic and broadband surface waves at 901.27 s, confirming their alignment in terms of phase."
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "theory",
+     "action": "They extend the derivation to noise cross-correlation functions and to two-station methods, obtaining the same formula for the finite-frequency phase shift (Eqs. 27 and 30).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "surface waves from noise interferometry share the identical formula for the finite-frequency phase shift with surface waves from earthquakes and active sources"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build a numerical method that computes the phase shift from a dispersion curve by measuring phase travel times on Hankel-function synthetics against the far-field prediction, plus a correction formula (Eq. 32), and illustrate it at 250 km with ak135 (Figure 5), noting a low-frequency anomaly.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To evaluate the finite-frequency phase shift accurately without the far-field and narrow-band assumptions, we now compute it numerically."
+    },
+    {
+     "n": 9,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute the phase shift and phase-velocity perturbation for a simplified Dublin Basin model over 0.5-4 km and 1-25 Hz (Figures 6-8).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We now compute the phase shift in a high-frequency scenario, relevant for the surface wave imaging of the shallow crust."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "theory",
+     "action": "They compare the computed phase-shift pattern with the analytic prediction: anomalies coincide with peaks of the second derivative of the wavenumber, amplitudes scale with distance, and the distance and frequency dependence cancels in phase velocity.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These are the frequencies of the two peaks in the second derivative of the wavenumber"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They vary the Gaussian filter width parameter gamma at 2.5 km for four center frequencies (Figure 9) and show that the shift shrinks with narrower filters and converges to a near-field value.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The finite-frequency phase shift is larger if a smaller γ is used, when the width of filter widens to include more frequencies"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They repeat the evaluation in a long-period setting (ak135, 100-3000 km, 25-100 s), citing Wielandt and Schenk's earlier long-period observation (Figures 10-11).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We evaluated the finite-frequency phase shift within the distance range of 100–3000 km"
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "methods",
+     "action": "They refine the measurement with ridge jumping (jumping to adjacent ridges with 1.5 times higher amplitude), which reduces the phase shift about 18-fold relative to a single ridge.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ridge jumping may produce discontinuities in the observed phase shift (Figure 10b), but it can reduce the phase shift at higher frequencies"
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "theory",
+     "action": "A negative near-field shift contradicts the sign predicted from the positive second derivative of the wavenumber, so they attribute it to a separate near-field phase shift and separate the two components (Figure 12, Eq. 33).",
+     "page": "13",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The inconsistency is caused by a different type of phase shift, which we refer to as the near-field phase shift."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "They test the correction premise with an inaccurate dispersion curve: a measured curve, one with 1% noise, and a curve smoothed by least-squares 1-D inversion (Figure 13).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Adding 1% of noise produces a wrong estimation (Figure 13e), but after a dispersion inversion, the inverted dispersion curve gives a reasonable good estimation"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They vary spectral amplitude decay and dispersion curvature in the three-frequency example to show how amplitude bias combines with the finite-frequency shift (Figure 14).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Bias caused by variations in phase velocity and spectral amplitude can superpose either constructively or destructively."
+    },
+    {
+     "n": 17,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They invert dispersion curves with and without the phase shift, using identical settings, and show velocity-model differences of about 1.4% (high-frequency) and 0.95% (long-period) (Figures 15-16).",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The seismic velocity models yielded by inversion of the dispersion data show consistent difference"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "They compare the time-domain method with a frequency-domain phase-unwrapping method across gamma; the latter shows no finite-frequency shift, only a constant near-field offset (Figure 17).",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can see that the phase shift associated with the frequency domain method is at constant values for different γ."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that the finite-frequency shift (about pi/60 to pi/16) biases time-domain phase velocities by about 0.2-0.8% and can be corrected with the numerical method using a dispersion curve from an inverted model.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The finite-frequency phase shift can cause non-negligible phase-velocity perturbations of around 0.2% in long-period (25–100 s) studies"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "A systematic phase shift in narrow-band time-domain phase-velocity measurements",
+   "mode_called": "theory"
+  },
+  {
+   "question": "2",
+   "answer": "No; quantified only through synthetics and derivation",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the shift and provide a correction method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; the competing component is the near-field phase shift, separated from the finite-frequency shift",
+   "mode_called": "theory"
+  },
+  {
+   "question": "5",
+   "answer": "Eq. 27 predicts sign from k'' and scaling with distance, frequency and filter width; near-field shift negative at small distance/wavelength",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set numerically (models, distances, filter widths) in synthetic experiments",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across filter width, distance, frequency band, noisy dispersion curves, amplitude spectra and method",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: shift characterized and correction recipe given",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Reviewers thanked but no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Time-domain phase-velocity measurements carry a finite-frequency phase shift of about pi/60 to pi/16 (0.2%-0.8% velocity error) under common settings, and it can be evaluated and corrected numerically from a smooth dispersion curve.",
+  "page": "18"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The numerical method, which measures phase travel times on Hankel-function synthetics against the far-field prediction, produces the magnitudes (0.2%-0.8%) and the correction recipe; the analytic formula alone rests on far-field and narrow-band approximations.",
+  "page": "10"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No data were acquired; the derived formula (Eq. 27) directed the design of the synthetic experiments (distances, frequencies, gamma). The analytic prediction could have failed against the numerical results and did fail in sign in the near field (p. 13); the authors resolved this with an auxiliary near-field term rather than revising the formula. Nothing is reported as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics",
+   "item": "stationary phase (saddle point) approximation of integrals",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "asymptotic forms of Bessel and Hankel functions (Gradshteyn & Ryzhik)",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "signal processing",
+   "item": "Gaussian narrow-band filtering and Fourier transform conventions",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "computer science / software",
+   "item": "Matplotlib plotting package",
+   "kind": "method",
+   "page": "19"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we identify a finite-frequency phase shift in the phase travel time that causes systematic errors in time-domain, phase-velocity measurements.",
+   "page": "1"
+  },
+  {
+   "quote": "In this study, we identify a source of errors in the measurements that has not received much notice so far.",
+   "page": "1"
+  },
+  {
+   "quote": "To our knowledge, there are no recent systematic reviews on the phase shifts due to the narrow-band approximation",
+   "page": "4"
+  }
+ ],
+ "limits": "All results come from synthetic data (Dublin Basin simplified model, ak135). No real data set is corrected, so the effect on actual tomography is not shown. Sub-claims at other statuses: the explicit formula (Eq. 19/27) holds only under far-field and narrow-band approximations, and its scaling was checked against numerics (status regularity_in_range, inference); the velocity-model differences of 1.4% and 0.95% are estimates for two synthetic cases only (estimate_with_resolution without stated uncertainty); the claim that frequency-domain methods are free of the shift rests on one comparison (Figure 17). The acknowledgements thank Levshin, Liu, the Associate Editor and the Editor for comments that improved the manuscript, but no review file was supplied, so changes made in review cannot be coded (no review sequence). Composition is none_fits: the walk is theory derivation followed by numerical characterization of a measurement bias and its correction, with no rival hypotheses, no found conditions and no real-data replication. It is close to capability_first, but the capability is built after the theory, not before the question. Inference: the near-field component appears to have been noticed during the numerical work (p. 10, 'We found that this low-frequency anomaly'), not anticipated.",
+ "disagreements": [
+  {
+   "target": "Wielandt and Schenk (1983)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Synthetic computations at interstation distances of a few km show the error is observable at much shorter periods than the 200 s they suggested; their limit holds only for distances of thousands of km.",
+   "page": "4",
+   "quote": "For small distances (e.g., 4 km), we show in this paper that the error is observable at periods longer than [...] ."
+  },
+  {
+   "target": "Time-domain phase-velocity measurement methods (frequency-time analysis; e.g., Bensen et al., 2007; Yao et al., 2006)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The derivation and numerical tests show that the implicit monochromatic assumption biases phase velocities by 0.2%-0.8% unless corrected.",
+   "page": "2",
+   "quote": "The time-domain methods for the determination of the phase velocity implicitly assume that the narrow-band signals represent the monochromatic surface waves"
+  },
+  {
+   "target": "Shapiro and Singh (1999), systematic error due to amplitude-spectrum variations",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The derivation shows a phase shift that is non-zero even for constant amplitude spectra, so it is a separate error source from the one Shapiro and Singh identified.",
+   "page": "4",
+   "quote": "the phase shift is non-zero even for constant amplitude spectra"
+  },
+  {
+   "target": "Herrmann (1973)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper develops the implications for phase-velocity measurement of the additional phase term Herrmann noted but did not discuss.",
+   "page": "3",
+   "quote": "but he did not discuss its further implication"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Dispersion curve from a reference model inverted from the data",
+   "alternatives": "Average dispersion curve of the data set",
+   "reason": "The dispersion curve it generates is free of unphysical bumps",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "N",
+   "chosen": "Same phase-velocity measurement method as used for the real measurements",
+   "alternatives": "A different measurement method for the correction synthetics",
+   "reason": "To avoid introducing errors due to the difference in the measurement methods",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "S",
+   "chosen": "Taylor expansion at the center frequency (narrow-band approximation)",
+   "alternatives": "Stationary phase approximation with complex saddle points",
+   "reason": "Not trivial to evaluate with stationary phase when saddle points move into the complex domain",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "S",
+   "chosen": "Frequency-dependent filter width alpha = 2*pi*f*gamma^2",
+   "alternatives": "Constant alpha",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "12"
+  },
+  {
+   "node": "V",
+   "chosen": "Moderate gamma (filter width), with correction",
+   "alternatives": "Large gamma (very narrow filters)",
+   "reason": "A large gamma may reduce the signal-to-noise ratio in the filtered surface waves",
+   "effect_reported": "yes",
+   "page": "12"
+  },
+  {
+   "node": "R",
+   "chosen": "Ridge jumping (multiple ridges)",
+   "alternatives": "Single 0th ridge",
+   "reason": "Reduces the phase shift at higher frequencies",
+   "effect_reported": "yes",
+   "page": "13"
+  },
+  {
+   "node": "V",
+   "chosen": "Time-domain methods as the focus",
+   "alternatives": "Frequency-domain (phase-unwrapping) methods",
+   "reason": "Time-domain methods are most popular due to their simplicity",
+   "effect_reported": "yes",
+   "page": "17"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "When the phase velocity dispersion curve is linear, the peak in the narrow-band surface wave arrives at the same time as the peak",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A good consistency is observed between the monochromatic and broadband surface waves at 901.27 s",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These are the frequencies of the two peaks in the second derivative of the wavenumber",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The finite-frequency phase shift is larger if a smaller γ is used, when the width of filter widens to include more frequencies",
+   "page": "12"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We evaluated the finite-frequency phase shift within the distance range of 100–3000 km",
+   "page": "12"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The phase shift can be observed in long-period measurements as well",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The ridge jumping may produce discontinuities in the observed phase shift (Figure 10b), but it can reduce the phase shift at higher frequencies",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Adding 1% of noise produces a wrong estimation (Figure 13e), but after a dispersion inversion, the inverted dispersion curve gives a reasonable good estimation",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Bias caused by variations in phase velocity and spectral amplitude can superpose either constructively or destructively.",
+   "page": "15"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We can see that the phase shift associated with the frequency domain method is at constant values for different γ.",
+   "page": "17"
+  }
+ ]
+}

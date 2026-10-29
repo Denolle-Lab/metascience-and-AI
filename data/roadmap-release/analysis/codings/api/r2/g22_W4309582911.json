@@ -1,0 +1,395 @@
+{
+ "key": "g22_W4309582911",
+ "doi": "10.1007/s00477-022-02332-w",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4309582911.pdf (published paper, Stochastic Environmental Research and Risk Assessment 37:1247-1264)",
+  "g22_W4309582911.xml.txt (publisher XML converted to located text, jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page of the PDF in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this work we test seven feature importance measures combining model-agnostic methods and global SA indices",
+  "page": "§1 ¶6"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4309582911.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the literature gap: studies point to the relevance of sub-basins for the catchment storm hydrograph, but no quantitative framework describes their dynamics.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a quantitative framework to describe their dynamics, and eventually, inform monitoring of critical sub-catchment compartments is still lacking"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Selects seven feature importance measures from machine learning and global sensitivity analysis, three of them used in hydrology for the first time, as the capability to be tested.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] first time in hydrology, we employ Shapley feature importance"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses two questions: whether one or more sub-basins dominate the catchment response, and whether dominant sub-basins have distinctive morpho-hydrological characteristics.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Does one (or more) sub-basin exist that contributes more than others to the catchment-scale hydrological response?"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Defines the three given-data SA indices (variance-, density- and cdf-based, after Plischke et al.) and four ML measures (conditional PFI, Shapley PFI, ALE-index T', ALE-IMP) with their estimators, and states that the SA measures will be used to confirm the ML findings.",
+     "page": "§2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In Section 2.1 we describe three sensitivity measures from SA: variance-based, density-based and distribution-based methods."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designs a proof-of-concept test: a watershed with simulated sub-basin discharges, an ML forecaster of outlet discharge, and importance measures applied to see whether they single out the influential sub-basins.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We aim to investigate whether the feature importance measures are able to distinguish the sub-basin influence"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembles inputs for the Samoggia River basin (Italy): 20 m DEM, CORINE 2018 land cover, a soil map, and hourly rainfall from three gauges for 2014-2016.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "rainfall observations are downloaded from Emilia Romagna regional agency for environmental protection website"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Runs HEC-HMS in its simplest configuration (spatially homogeneous Thiessen rainfall, SCS-CN, SCS unit hydrograph, Muskingum routing) on 15 sub-basins to generate 15+1 synthetic hourly discharge series, and summarizes their statistics.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The synthetic hydrologic scenario is carried out using the software HEC-HMS"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "methods",
+     "action": "Trains ridge regression, random forest, gradient boosting and a neural network on an 80/20 split of the normalized sub-basin series, tuning hyperparameters by grid search with k-fold cross-validation.",
+     "page": "§3.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tune the ML models using grid search method"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compares the four models on test-set MAE, RMSE and R2 (Table 4) and selects the random forest as the forecasting tool.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Random Forest is the best performing model according to all three measures compared to all other models."
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Computes the four ML measures from random-forest predictions and the three SA indices directly from the data; the ML measures single out a few sub-basins, while the SA indices assign substantial importance to all sub-basins, which the authors attribute to correlation.",
+     "page": "§4.3 ¶3; Figure 4 (p. 1258)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results of the ML feature importance measures show that only a few sub-basins are influential for forecasting the watershed outlet discharge."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Ranks sub-basins under each measure, aggregates a mean ranking (Kuncheva), and groups them into three dominant (W300, W290, W280), three moderate (W240, W210, W270) and nine minor sub-basins (Table 5).",
+     "page": "§4.3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we can identify three groups of sub-basins based on their importance"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checks the ranking in three ways: agreement between ML and SA rankings, random forests retrained on an incremental sequence of sub-basins in ranked order (Table 6: R2 0.88 with the top three), and a model trained only on the non-relevant sub-basins (R2 0.27).",
+     "page": "§4.3 ¶5-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Such correspondence produces more confidence about which sub-basins are important for forecasting the flow discharge at the catchment outlet."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeats model selection, importance analysis and incremental configurations with a 3-hour lag (Appendix: Fig. 5, Tables 7-9) and reports results in line with the lag-0 case.",
+     "page": "§4.2 ¶2; Table 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For offering a more complete overview of the hydrological response the case of lag"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Answers question 1: the importance measures identify the group of sub-basins that most influence the catchment-scale response.",
+     "page": "§4.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "feature importance measures have allowed us to identify the group of sub-basins that influence the catchment-scale hydrological response the most."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compares the ranking with the sub-basin properties in Table 2 (area, slope, CN, mean and minimum elevation, flow length, Tc): area does not discriminate, minimum elevation and Tc agree, and slope and elevation agree partly.",
+     "page": "§4.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the sub-basin contributing areas do not allow us to distinguish the role of the sub-basins"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposes post hoc hypotheses: upstream location and contributing area explain the three dominant sub-basins, and low concentration time explains W240 and W210.",
+     "page": "§4.4 ¶3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is possible to make some reasonable hypotheses"
+    },
+    {
+     "n": 17,
+     "node": "Q",
+     "mode": "question",
+     "action": "Leaves question 2 open, deferring it to future work with a fully distributed, calibrated model of a large basin driven by long synthetic rainfall.",
+     "page": "§4.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to properly answer the second question of the paper, a more descriptive modelling approach should be applied"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Concludes that feature importance measures can dissect sub-basin roles, with uses in early warning, instrument siting and semi-distributed model set-up.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our study demonstrates that feature importance measures have a great potential for investigating the sub-basin role"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Contribution of individual sub-basins to outlet discharge, in a synthetic HEC-HMS scenario",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; importance is inferred from an ML forecaster and SA indices",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Test whether feature importance measures identify dominant sub-basins (proof of concept)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals for question 1; candidate morpho-hydrological controls compared only post hoc for question 2",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct rival predictions derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in simulation (simplest HEC-HMS set-up, homogeneous rainfall)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: seven measures agree; incremental and non-relevant-only configurations; 3-hour lag",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Three dominant sub-basins kept; question 2 unresolved",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review material supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "In a synthetic HEC-HMS scenario for the Samoggia basin, seven feature importance measures consistently identify three dominant sub-basins (W300, W290, W280); these alone yield R2 of about 0.88 in forecasting outlet discharge, showing the measures can dissect sub-basin roles.",
+  "page": "§5 ¶2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Computing the seven importance measures on the random-forest forecaster and on the data produces the ranking; without it there is neither the dominant-sub-basin claim nor the demonstration of the method.",
+  "page": "§4.3 ¶3"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data were synthetic, generated to test the method; no hypothesis about which sub-basins dominate directed their generation (§3 ¶1). The ranking faced checks it could have failed: agreement across seven measures, incremental configurations, a non-relevant-only control and a 3-hour lag (§4.3 ¶5-8, §4.2 ¶2). It was not compared with the contributions known from the simulator itself. The two questions were stated beforehand (§1 ¶6), but no thresholds, groupings or analysis plan were fixed before the results; the three groups are defined after inspection (§4.3 ¶5)."
+ },
+ "imports": [
+  {
+   "field": "game theory / economics",
+   "item": "Shapley value, via Shapley permutation feature importance",
+   "kind": "concept",
+   "page": "§2.2.2 ¶1"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "Random forest, gradient boosting, ridge regression, neural network, grid search with k-fold cross-validation",
+   "kind": "method",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "field": "statistics / machine learning interpretability",
+   "item": "Permutation and conditional permutation feature importance (Breiman; Strobl et al.)",
+   "kind": "method",
+   "page": "§2.2.1 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Accumulated local effects (ALE) plots and ALE-based importance indices",
+   "kind": "method",
+   "page": "§2.2.3 ¶1"
+  },
+  {
+   "field": "reliability engineering / operations research",
+   "item": "Global sensitivity indices (variance-, density-, cdf-based) estimated by the given-data approach",
+   "kind": "method",
+   "page": "§1 ¶5"
+  },
+  {
+   "field": "pattern recognition",
+   "item": "Mean-rank aggregation across an ensemble of importance measures (Kuncheva)",
+   "kind": "method",
+   "page": "§4.3 ¶4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...] first time in hydrology, we employ Shapley feature importance (Casalicchio et al. 20), ALE-indices (Borgonovo et al. 2022) and ALE-based feature importance",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "we have applied seven feature importance measures, three of them for the first time in hydrology",
+   "page": "§5 ¶2"
+  }
+ ],
+ "limits": "1. Synthetic data and no ground truth. The test is on synthetic HEC-HMS output with spatially homogeneous rainfall, yet the importance ranking is never checked against the sub-basin contributions known from the simulator, so whether the measures are right is not shown. The checks show only agreement among measures and predictive sufficiency.\n2. No uncertainty on the estimates. No uncertainty is reported for any importance estimate (no repeated random-forest seeds or bootstrap). Sub-claim status: the ranking is an estimate without stated resolution.\n3. Weak discrimination by the SA indices. The SA indices are nearly flat across sub-basins (Figure 4, p. 1258), so their agreement with the ML ranking rests on small differences.\n4. Inconsistent text on question 2. Answers to question 2 are post hoc hypotheses (sub-claim status: none or tentative best_explanation; question 2 is left unresolved, §4.4 ¶5), and the text contradicts itself:\n- §4.4 ¶3 invokes watershed dimension above average, while §5 ¶2 says contributing area has a marginal role.\n- §4.4 ¶3 places W260 in the italic group and gives it the same distance to the outlet, but Table 5 shows it in the bold group and Table 2 gives a shorter flow length.\n- §4.4 ¶2 refers to Table 3 for characteristics that are in Table 2.\n5. Process not shown. The documents do not show how many hyperparameter grids, lags or measure settings (for example K=100 intervals, RMSE as loss) were tried before those reported; inference: only the reported choices are visible.\n6. No review material. No review file was supplied, so no review sequence is coded.\n7. Composition. Coded capability_first only loosely: the method is tested first and there are no rivals, but there is no phenomenon-establishing phase.",
+ "disagreements": [],
+ "alternatives_considered": [
+  {
+   "node": "C",
+   "chosen": "Random forest (mtry=15, 500 trees)",
+   "alternatives": "Ridge regression, gradient boosting machine, single-layer neural network",
+   "reason": "Best performing model on MAE, RMSE and R2 on the test data",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Conditional permutation feature importance",
+   "alternatives": "Standard (marginal) permutation feature importance; other alternatives in the literature (Casalicchio et al., Candes et al.)",
+   "reason": "PFI may mislead when there is strong statistical dependence among features",
+   "effect_reported": "no",
+   "page": "§2.2.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Simplest HEC-HMS configuration (Thiessen homogeneous rainfall, SCS-CN, SCS UH, Muskingum)",
+   "alternatives": "Other HEC-HMS options and modules; a fully distributed hydrological model (deferred to future work)",
+   "reason": "Nature of the proof of concept; homogeneous rainfall assumed to emphasize the role of sub-basins",
+   "effect_reported": "no",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "Lag 0 for the main analysis",
+   "alternatives": "Lag 3 hours",
+   "reason": "none given for lag 0; lag 3 offered for a more complete overview of the hydrological response",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Hyperparameters with the smallest cross-validated error",
+   "alternatives": "Other hyperparameter combinations in the predefined grid",
+   "reason": "Smallest validation error averaged over the k folds",
+   "effect_reported": "no",
+   "page": "§3.3 ¶6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Interestingly, employing ML and SA feature importance measures one can obtain rankings that are in agreement [...] .",
+   "page": "§4.3 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we investigate the predictive accuracy of the optimal ML model fitting an incremental sequence of Model Configurations built by including one sub-basin at a time",
+   "page": "§4.3 ¶6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "if we were to include only the non-relevant sub-basins, we would obtain the following values of the performance measures",
+   "page": "§4.3 ¶8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For such time response the results are in line with results for the lag",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We divide the feature-output data into 80% training and 20% testing.",
+   "page": "§4.2 ¶1"
+  }
+ ]
+}

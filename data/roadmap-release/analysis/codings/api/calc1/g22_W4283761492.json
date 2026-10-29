@@ -1,0 +1,489 @@
+{
+ "key": "g22_W4283761492",
+ "doi": "10.5194/tc-16-2629-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF, The Cryosphere 16, 2629–2642, 2022",
+  "Publisher XML converted to located text (g22_W4283761492.xml.txt, jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Being able to remove or account for the off-nadir orthorectification error is highly desirable",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text with PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors name systematic orthorectification error in cross-track Sentinel-2 pairs as the obstacle to dense glacier velocity records. Standard practice therefore discards these pairs.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A particular problem for Sentinel-2 feature tracking is the presence of systematic orthorectification errors."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors review published correction methods and state the limits of each: Rosenau re-orthorectification, Ressl and Pfeifer ray projection with the PlanetDEM, and Altena and Kääb flow-direction mapping.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A range of solutions have been implemented to account for orthorectification errors in medium-resolution optical satellite imagery."
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors set the aim: a simple method that needs no prior knowledge of Δh and still gives spatially complete corrected velocity fields.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it would be desirable to develop a method that, like Altena and Kääb (2017), remains simple and computationally efficient"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "theory",
+     "action": "The authors state the working premises. Orthorectification error is a fixed displacement offset for each relative-orbit pair; other errors are random and do not correlate with orbit pairing.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As orthorectification error is a function of satellite geometry, it should result in a consistent offset"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors downloaded all Sentinel-2 L2A scenes with cloud cover below 50% for four glacier areas of interest, up to 23 August 2021. They then reprojected, mosaicked and clipped them.",
+     "page": "§2.1.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We downloaded all bottom-of-atmosphere corrected Level-2A (L2A) Sentinel-2 data with a cloud cover < 50 %"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors produced 100 m velocity fields by feature tracking with a modified SETSM directional weighted filtering algorithm. It runs on orthorectified images and is seeded with InSAR velocities from 2016–2017.",
+     "page": "§2.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the purpose of this research, we modified the algorithm to use orthorectified images directly"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors built a reference flow field from the median of all repeat-track pairs. Each orbit-pair offset field is the median difference between measured and expected displacement, computed only for pairs with at least five fields.",
+     "page": "§2.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Empirical orbit-pair offset fields are generated as the median offset for each orbit pair."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors bounded the error from assuming a constant Δh over 2017–2021, using surface elevation change rates from Smith et al. (2020). The worst-case offset errors are ±0.2 to ±1.3 m.",
+     "page": "§2.1.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "even using worst-case assumptions, offset vector errors range between ± 0.2 and ± 1.3 m"
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors subtracted the orbit-pair offsets from displacements over ice only. They removed pixels whose flow direction departs more than 20° from the reference field.",
+     "page": "§2.1.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "areas within the GrIMP ice mask are filtered where flow directions are > 20 ∘ offset from the reference flow field"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors used bedrock (stable ground) velocity RMSE as the error estimate for each field. Fields with a systematic bedrock bias were discarded.",
+     "page": "§2.1.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "RMSEs tended to be low, with the median RMSE consistently beneath < 0.5 m d - 1 for the study glaciers"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors sampled 1 km × 1 km sites and fitted a Gaussian process regression with seasonal and short-term kernels. Error estimates enter the fit, which gives a continuous velocity with uncertainty bounds.",
+     "page": "§2.2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use Gaussian process (GP) regression (Rasmussen and Williams, 2006; Hugonnet et al., 2021) to estimate a continuous uncertainty-bounded time-series velocity"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "The authors designed the checks. The Viewfinder minus GrIMP DEM difference serves as a Δh proxy, and the Sentinel-1 MEaSUREs and ITS_LIVE Landsat 8 velocities are filtered to match the Sentinel-2 thresholds.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As orthorectification errors scale with Δ h , we compare generated offset maps to DEM difference as a proxy for Δ h ."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "theory",
+     "action": "The authors compared Helheim offset fields across orbit pairs with viewing-geometry theory. Repeat pairs show negligible offset, the most separated orbits show the largest offset, and the vectors lie along the epipolar line.",
+     "page": "§3.1 ¶1; Figure 3 (p. 2634)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shows that the behaviour of empirical offset fields are consistent with theory"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "theory",
+     "action": "The authors tested whether offset magnitude correlates with the Δh proxy (R² = 0.67) and whether offset direction follows the sign of Δh at Helheim.",
+     "page": "§3.1 ¶2; Figure 4 (p. 2634)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can thus validate that our offsets are meaningful by comparing them to the DEM difference"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors compared corrected and uncorrected Sentinel-2 velocities with independent Sentinel-1 and ITS_LIVE records. This covers the Jakobshavn 2019 slowdown maps and the time series at 16 sites, including GP-fit agreement statistics.",
+     "page": "§3.1 ¶3; §3.2 ¶1–¶3; Figures 5–7 (pp. 2635–2640)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In all cases, the corrected velocity data converge near the reference Sentinel-1 time series."
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "estimation",
+     "action": "The authors refined the range of performance. Sentinel-2 resolves a two-week slowdown that the sparser records miss, but Landsat 8 is more precise below about 4 m/d.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Landsat 8 record displays a higher precision at lower velocity values"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors keep the claim that the correction reduces variance from metres to decimetres. It also raises the density of short-baseline observations by up to a factor of 7.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The empirical corrections described in this paper demonstrably reduce the influence of systematic orthorectification error on Sentinel-2-derived glacier velocity fields"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "estimation",
+     "action": "The authors qualify the reference. Sentinel-1 is not a true reference, because each of the three datasets likely carries its own spatially variable systematic bias.",
+     "page": "§4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is likely that systematic biases are present in all three datasets and are spatially variable on a kilometre scale"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "theory",
+     "action": "The authors conclude that the error pattern at Helheim is consistent with Sentinel-2 being orthorectified from data sources also present in the Viewfinder Panoramas DEM.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we show that orthorectification errors over Helheim Glacier are consistent with Sentinel-2 data being orthorectified using data sources present in the Viewfinder Panoramas"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors set the DEM-origin finding beside Kääb et al. (2016), who found similar agreement in northern Norway.",
+     "page": "§4.2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This finding agrees with that of Kääb et al. (2016)"
+    },
+    {
+     "n": 21,
+     "node": "R",
+     "mode": "methods",
+     "action": "The authors limit the offsets to data before 23 August 2021, when ESA changed geolocation and DEM. They propose analytical correction with the GLO-90 DEM for later data.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The empirical offsets derived in this study are only applicable up to 23 August 2021."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors conclude that the empirical method corrects cross-track Sentinel-2 velocity fields and gives spatially continuous velocities at four Greenland outlet glaciers.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we demonstrate an empirical method of correcting for systematic orthorectification error in glacier velocity fields derived from cross-track image pairs"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Systematic offsets of tens of metres in cross-track Sentinel-2 displacement fields; known from the literature.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No: the offset is latent, inferred as the difference from a repeat-track reference flow field.",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Correct the error so cross-track pairs give dense, continuous velocity records.",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Only implicit: other error sources (matching, coregistration) are assumed random and uncorrelated with orbit pairing.",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "The orthorectification origin predicts zero offset for repeat pairs, vectors along the epipolar line, and magnitude and sign following Δh.",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: archive imagery and the orbit-pair geometries the satellites provide.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: Δh-proxy correlation, bedrock RMSE, agreement with Sentinel-1 and ITS_LIVE, and a worst-case bound on the constant-Δh assumption.",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept; performance characterized against independent records.",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; the review statement names only the editor and two referees.",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Median orbit-pair offsets from a repeat-track reference field correct systematic orthorectification error in cross-track Sentinel-2 glacier velocities. Corrected GP fits differ from Sentinel-1 by a median 0.08 m/d, and 90.5% of Sentinel-1 values lie within GP error.",
+  "page": "§5 ¶1; §3.2 ¶2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the empirical orbit-pair offset fields (the median of measured minus expected displacement per orbit pair) no corrected cross-track velocities would exist.",
+  "page": "§2.1.2 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the orthorectification premise (offset fixed per orbit pair) directed how archive fields were grouped and differenced (§2 ¶2), but no new data were acquired for a hypothesis. Claim: the corrected velocities could have disagreed with independent Sentinel-1 and ITS_LIVE records, and offsets could have failed to correlate with Δh (§3.1 ¶2; §3.2 ¶2–¶3). Registration: no pre-registration is reported. Thresholds such as n ≥ 5, 20°, 70% coverage, 5 m/d and exclusion of 2 d baselines are justified after seeing the data (§2.1.2 ¶2; §2.2.1 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Gaussian process regression (Rasmussen and Williams 2006) with seasonal and rational quadratic kernels",
+   "kind": "method",
+   "page": "§2.2.2 ¶1"
+  },
+  {
+   "field": "computer science",
+   "item": "scikit-learn GaussianProcessRegressor implementation",
+   "kind": "method",
+   "page": "§2.2.2 ¶2"
+  },
+  {
+   "field": "photogrammetry / computer vision",
+   "item": "epipolar line of the satellite viewing geometry",
+   "kind": "concept",
+   "page": "§1 ¶4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file, open discussion or earlier version was supplied, so there is no review sequence. The review statement names the referees (Altena, Mouginot) but not what they asked for. The Supplement (Figs. S1–S5, Tables S1–S3) was not supplied; agreement statistics are taken from the main text. The authors make no explicit 'first' or 'previously unknown' statements. The Δh-proxy test of the orthorectification hypothesis is done only at Helheim Glacier. Sub-claims at other statuses: the DEM-origin finding (PlanetDEM shares sources with the Viewfinder DEM) is best_explanation, Helheim only, with further testing called for (§4.2 ¶1); the GP time series are estimate_with_resolution with a 2σ band (Figure 7); the orbit-pair offsets are an estimate assuming constant Δh, bounded to ±0.2–1.3 m (§2.1.2 ¶3). Inference: the reference flow field comes from repeat-track pairs of the same Sentinel-2 archive, and the paper does not discuss whether this makes the offsets and the corrected product interdependent. Inference: no sensitivity test of the filtering thresholds is reported. The comparison reference (Sentinel-1) is itself acknowledged to be biased (§4.1 ¶3). Validity dates are inconsistent: the abstract and §5 give the study period as 2017–2021 but also cite 2015–2021 as the period of validity. Composition is none_fits because the walk enters from a named problem and question, builds and characterizes a correction method, and validates it against independent records. It is a method-development-and-validation walk, not capability_first (the question precedes the capability) and not independent_replication.",
+ "disagreements": [
+  {
+   "target": "Nagy et al. (2019) recommendation not to use cross-track pairs",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Corrected cross-track velocities agree with Sentinel-1 and ITS_LIVE to decimetres per day, so cross-track pairs become usable.",
+   "page": "§1 ¶2",
+   "quote": "whilst Nagy et al. (2019) recommend not using cross-track pairs at all"
+  },
+  {
+   "target": "Kääb et al. (2016) recommendation to restrict cross-track tracking to displacements an order of magnitude above the error",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Empirical correction reduces the error enough to use cross-track and short-baseline pairs, raising density by up to a factor of 7.",
+   "page": "§1 ¶2",
+   "quote": "Kääb et al. (2016) recommend that feature tracking using cross-track image pairs should be performed only for ice displacements that are at least 1 order"
+  },
+  {
+   "target": "Altena and Kääb (2017) simplified flow-direction correction",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue their method gives spatially continuous fields without the geometry-dependent gaps of the flow-direction mapping.",
+   "page": "§1 ¶4",
+   "quote": "Hence, the final corrected velocity field is discontinuous, depending on the relationship between satellite geometry and surface topography."
+  },
+  {
+   "target": "Ressl and Pfeifer (2018) analytical offset prediction",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The analytical method needs the commercial PlanetDEM and a contemporaneous reference DEM, neither practical for changing glaciers; the empirical method needs neither.",
+   "page": "§1 ¶3",
+   "quote": "However, this method not only requires access to the PlanetDEM (which is a commercial product)"
+  },
+  {
+   "target": "Rosenau et al. (2015) re-orthorectification approach",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The non-orthorectified L1B product is not released for Sentinel-2, so the approach cannot be transferred.",
+   "page": "§1 ¶3",
+   "quote": "However, the non-orthorectified product (L1B) for Sentinel-2 is not made available, meaning that this approach is not viable."
+  },
+  {
+   "target": "MEaSUREs Sentinel-1 and ITS_LIVE Landsat 8 velocities as reference records",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Pairwise agreement among the three records changes from site to site, which the authors attribute to different orthorectification DEMs.",
+   "page": "§4.1 ¶3",
+   "quote": "it is likely that systematic biases are present in all three datasets and are spatially variable on a kilometre scale"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Empirical orbit-pair offset correction from a repeat-track reference field",
+   "alternatives": "Re-orthorectification (Rosenau et al. 2015); analytical ray projection with PlanetDEM and a reference DEM (Ressl and Pfeifer 2018); flow-direction mapping (Altena and Kääb 2017)",
+   "reason": "L1B not available; PlanetDEM commercial and contemporaneous reference DEM hard to obtain; flow-direction mapping gives discontinuous fields",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Offsets estimated over the whole 2017–2021 period, assuming constant Δh",
+   "alternatives": "Offsets on shorter timescales such as annually",
+   "reason": "Shorter windows leave fewer cross-track pairs meeting the threshold and give lower-quality offset fields",
+   "effect_reported": "yes",
+   "page": "§2.1.2 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Offset field built only for orbit pairs with at least five velocity fields",
+   "alternatives": "Offset fields from fewer than five fields",
+   "reason": "Quality is notably degraded with fewer than five fields",
+   "effect_reported": "yes",
+   "page": "§2.1.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Exclude 2 d temporal baselines from the time series",
+   "alternatives": "Include 2 d baselines",
+   "reason": "Errors significantly greater than at any other baseline (Fig. S3)",
+   "effect_reported": "yes",
+   "page": "§2.2.1 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Gaussian process regression for a continuous time series",
+   "alternatives": "Monthly averaging; Kalman filtering (King et al. 2018)",
+   "reason": "GP keeps weekly-scale variation and gives a time-varying confidence interval",
+   "effect_reported": "yes",
+   "page": "§4.1 ¶2"
+  },
+  {
+   "node": "C",
+   "chosen": "Sentinel-1 presented as the 'true' reference velocity",
+   "alternatives": "Landsat 8 ITS_LIVE as reference",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§4.1 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "even using worst-case assumptions, offset vector errors range between ± 0.2 and ± 1.3 m",
+   "page": "§2.1.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A first-order estimate of error is taken as the root mean square error (RMSE) of the absolute velocity of the bedrock area",
+   "page": "§2.1.4 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Offset fields for repeat orbit pairs (Fig. 3a, e, i) have negligible offset",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "with a strong, positive correlation ( R 2 = 0.67 , p < 0.01 ) between the two variables",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "an observation that is in line with contemporaneous Sentinel-1 observations",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Comparing our corrected velocity data to the uncorrected dataset shows the improvement that our empirical correction has",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "90.5 % of Sentinel-1 values lie within the error of the Sentinel-2 GP fit",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Across all sites, the median difference between the ITS_LIVE record and the GP fit is 0.12 m d - 1",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "[...] estimated from the Viewfinder DEM and Sentinel-2 offsets for a test site in northern Norway",
+   "page": "§4.2 ¶1"
+  }
+ ]
+}

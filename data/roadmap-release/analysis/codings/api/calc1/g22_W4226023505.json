@@ -1,0 +1,342 @@
+{
+ "key": "g22_W4226023505",
+ "doi": "10.1007/s41742-022-00397-7",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Caporale, Gil-Alana & Sauci (2022) Int J Environ Res 16:27, published PDF (11 pp.)",
+  "Publisher XML full text converted with tools/jats_text.py (section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page in parentheses; footnote 2 is missing from the XML text and is cited by PDF page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "In particular, there is very limited evidence concerning US tide gauge records.",
+  "page": "§2 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Cite the NOAA report (Zervas 2009) and Sweet et al. (2017) showing regionally non-uniform US sea level trends, higher on the East coast than the West coast.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "in the case of the US, there are important differences between the Eastern and Western coastline"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: apply fractional integration to obtain new findings on sea level trends at US tide gauge stations, motivated by policy needs.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this paper applies a fractional integration approach to obtain new findings on sea level trends for different tide gauge stations on the US coastline"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "theory",
+     "action": "Adopt from the literature the premise that geophysical and climate series show long-range dependence, best modelled by stochastic long-memory processes (Hurst, Mandelbrot, ARFIMA).",
+     "page": "§2 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "stochastic long-memory processes appear to be the most appropriate for geophysical/climate time series"
+    },
+    {
+     "n": 4,
+     "node": "E",
+     "mode": "synthesis",
+     "action": "Review prior findings of long-range dependence in tide gauge records (Barbosa et al. 2008; Dangendorf et al. 2014) and the closest study, Royston et al. (2018), with ARFIMA noise trend models.",
+     "page": "§2 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "they found LRD in all cases except Newlyn"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take monthly PSMSL RLR tide gauge series, January 1950 to December 2018 (828 observations), for 41 US stations, some converted from annual.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use the \"Revised Local Reference (RLR)\" data set from the Permanent Service for Mean Sea Level"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set the error-process rivals: I(0) as in standard trend regression, I(1) after first differencing, or fractional I(d).",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "many time series, especially climatological ones, are neither I(0) nor I(1) but I(d) where d is a fractional value"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Specify regression model (2): linear trend with I(d) errors and seasonal monthly AR(1) disturbances, estimated with a frequency-domain Whittle function following Robinson's (1994) tests.",
+     "page": "§3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use a Whittle function in the frequency domain following the testing approach of Robinson (52)"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate d with 95% non-rejection bands for each station under three deterministic specifications: none, intercept only, intercept plus linear trend (Table 2).",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Table 2 displays the estimated values of d from Eq. (2) under three different assumptions"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Select a preferred specification per station by the statistical significance of the deterministic terms.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our preferred specification, which has been selected on the basis of the statistical significance of the deterministic terms"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate intercept, trend coefficient, and seasonal AR coefficient for the selected models, with t-tests on the transformed regression (Table 3).",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "noting that ut is I(0) by assumption, standard t-tests apply here"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Classify stations by trend sign and significance and map them (Table 4, Fig. 1): 25 positive (East and Gulf), 4 negative (North West), 12 insignificant (West).",
+     "page": "§4 ¶3; Figure 1 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This evidence confirms the important role played by geographical location in the determination of the sea level."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the d estimates with the integer rivals: all lie in (0, 1), between 0.29 and 0.75.",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which confirms that the series are fractionally integrated and supports the hypothesis of long-memory behaviour"
+    },
+    {
+     "n": 13,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the unit-root I(1) rival because all d bands lie significantly below 1, implying mean reversion; I(0) is implicitly rejected because the bands exclude 0.",
+     "page": "§4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "since the estimated value of d is in all cases significantly below 1 mean-reversion occurs"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Group stations into three persistence classes and map them by coast (Table 5, Fig. 2): low persistence on the East coast, highest on the West coast.",
+     "page": "§4 ¶5; Figure 2 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "22 stations are in the first category with a low degree of persistence, and virtually all of them are located on the East coast"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the claims: all series fractionally integrated, with significant positive trends on the East and Gulf coasts, negative in the North West, and highest persistence on the West coast; derive policy implications.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results indicate that all series are fractionally integrated"
+    },
+    {
+     "n": 16,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose future questions: nonlinear trends or breaks, and fractional cycles with spectral poles away from zero frequency.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the possibility of nonlinear (time) trends would be worth investigating"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Trends and persistence in US tide gauge sea level, 1950-2018",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; d and trend are latent, inferred through a fractional integration model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the trend coefficient and the persistence (d) at each station",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Implicit rivals for the error process: I(0), I(1), I(d)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; the d confidence bands discriminate among d=0, d=1 and 0<d<1",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found, not set: archival tide gauge records",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats across 41 stations; grouped by coast",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Not tested; no robustness, replication, or control checks",
+   "mode_called": "none"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: estimates of d and trends with geographic pattern",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "All 41 US tide gauge series are fractionally integrated with d in (0, 1); significant positive trends appear on the East and Gulf coasts, negative ones in the North West, and persistence is highest on the West coast.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the Whittle/Robinson estimation of d and the trend coefficient under I(d) errors, neither the persistence classes nor the trend significance would exist.",
+  "page": "§4 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Stations were selected from the archive on data availability (§5 ¶1), not by a hypothesis. The d bands and trend t-tests could have come out at d=0, d=1 or insignificant, so the estimates faced a test (§4 ¶4-5). The geographic interpretation and policy implications faced none. The specification was chosen after estimation by the significance of the deterministic terms (§4 ¶2), and nothing was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "econometrics / time-series statistics",
+   "item": "Fractional integration and ARFIMA models (Granger & Joyeux 1980)",
+   "kind": "method",
+   "page": "§2 ¶2"
+  },
+  {
+   "field": "econometrics",
+   "item": "Robinson (1994) efficient tests of nonstationary hypotheses with a Whittle frequency-domain function",
+   "kind": "method",
+   "page": "§3 ¶6"
+  },
+  {
+   "field": "macroeconometrics",
+   "item": "Version of Robinson's tests from Gil-Alana & Robinson (1997), developed for macroeconomic series",
+   "kind": "method",
+   "page": "§3 ¶6"
+  },
+  {
+   "field": "mathematics (fractal geometry)",
+   "item": "Self-similarity and fractal dimension (Mandelbrot 1967; Mandelbrot & Van Ness 1968), cited as background",
+   "kind": "concept",
+   "page": "§2 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this paper applies a fractional integration approach to obtain new findings on sea level trends for different tide gauge stations on the US coastline",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "No check of any result is performed: no robustness to the seasonal AR(1) choice, the sample period, or the station set; no alternative estimator; no synthetic control; no comparison with NOAA or Royston et al. trend values. The three deterministic specifications in Table 2 are used for model selection, not as a robustness check, so they are not coded as V.\n\nThere are internal inconsistencies:\n- The abstract says positive trends at 29 stations and none at the remaining 8, while the results report 29 significant (25 positive, 4 negative) and 12 insignificant (§0 ¶1 vs §4 ¶3).\n- §4 ¶3 places all 12 insignificant stations on the West coast, although they include Honolulu and Ketchikan.\n- §4 ¶5 places the intermediate-persistence class on the Gulf or West coast, but Table 5 lists 396_WIL (Wilmington) in it.\n- §4 ¶5 says intervention is most needed on the West coast and Gulf, while §5 ¶2 says authorities should focus on the East coast and Gulf.\n\nThe units of the trend coefficient are not stated (inference: mm per month on RLR data). Vertical land motion and glacial isostatic adjustment, a plausible cause of the negative Alaskan trends, are not discussed (inference). Neither is the effect of converting annual series to monthly.\n\nThe headline claim is coded estimate_with_resolution. Sub-claims:\n- The geographic pattern of trends and persistence is regularity_in_range (41 US stations, 1950-2018; no range beyond is tested).\n- The policy implications have status none; they are asserted, not tested.\n\nComposition is none_fits because this is an application of an established econometric estimator to archival series. No capability is built, no rival set faces a crucial test beyond the implicit I(0)/I(1)/I(d) comparison, and no regularity is fitted as a function. natures_repetition is the closest fit.\n\nData are available from the authors on request; code is not shared. Footnote 2 (Mann-Kendall) is absent from the XML text and is cited by PDF page.",
+ "disagreements": [
+  {
+   "target": "Standard linear trend regression assuming I(0) errors, or first-differencing under I(1)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper argues from the literature that climatological series are I(d), and its d estimates all fall strictly between 0 and 1.",
+   "page": "§3 ¶2",
+   "quote": "However, this set-up implicitly assumes that the error term, xt is integrated of order 0"
+  },
+  {
+   "target": "Classical Mann-Kendall trend test",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A footnote states that the test requires no serial correlation, an assumption stronger than I(0); no analysis is offered.",
+   "page": "p. 3 (footnote 2)",
+   "quote": "in the classical Mann–Kendall trend test, the data should have no serial correlation, which is an even stronger asusmption that I(0)"
+  },
+  {
+   "target": "Unit root methods requiring Monte Carlo critical values",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper asserts that Robinson's test has a standard normal limit distribution unaffected by deterministic terms; no comparison is run.",
+   "page": "§3 ¶6",
+   "quote": "the limit distribution is standard normal, unlike in the case of unit root methods when Monte Carlo simulations have to be carried out"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Fractional integration I(d) model",
+   "alternatives": "ARMA/ARIMA models with integer differencing (I(0) or I(1))",
+   "reason": "More general; does not restrict the difference parameter to an integer value",
+   "effect_reported": "no",
+   "page": "§3 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Whittle function in the frequency domain with Robinson (1994) tests",
+   "alternatives": "Other methods and standard procedures requiring prior differencing; unit root methods",
+   "reason": "Tests any real d without prior differencing; standard normal limit unaffected by deterministic terms or error specification",
+   "effect_reported": "no",
+   "page": "§3 ¶6"
+  },
+  {
+   "node": "C",
+   "chosen": "Per-station preferred deterministic specification (intercept only, or intercept and linear trend)",
+   "alternatives": "No deterministic terms; intercept only; intercept and linear time trend",
+   "reason": "Statistical significance of the deterministic terms",
+   "effect_reported": "yes",
+   "page": "§4 ¶2"
+  }
+ ],
+ "v_checks": []
+}

@@ -1,0 +1,360 @@
+{
+ "key": "g22_W4295181163",
+ "doi": "10.1016/j.ejrh.2022.101199",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "He et al. 2022, Journal of Hydrology: Regional Studies 43, 101199 (published PDF, 14 pages)",
+  "Publisher XML converted to located text (jats_text); contains only the abstract, figure captions and table captions"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML holds the text (abstract §0, captions). Body text is absent from the XML, so body steps cite printed journal pages (PDF pages 1-14). Figure-content steps cite the figure with the PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Currently, there is a lack of effective quantitative assessment methods for the hydrological regulation of glaciers",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "He et al. 2022, published PDF and publisher XML text",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Name the gap. No quantitative method exists for the intensity and dynamics of glacier regulation of streamflow; the static Hopkinson-Young test only detects whether regulation is present.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "however, the intensity of glacier regulation cannot be identified, and the dynamics of this regulation cannot be characterized."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "theory",
+     "action": "Adopt the community consensus as the frame: glacier runoff rises to a peak and then declines, so the regulating function weakens or disappears.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "glacier runoff increases but rapidly decreases after reaching a peak"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Narrow the question to the Tianshan Mountains, where no study addresses glacier runoff regulation. State the aim of quantifying regulation dynamics from 1971 to 2100.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "no reports studies have been published to improve understanding the glacier runoff regulation in Tianshan mountains"
+    },
+    {
+     "n": 4,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select two contrasting basins as found conditions: the upper Manas on the north slope (12% glacier cover) and the upper Muzati on the south slope (48.2% glacier cover).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we selected the upstream regions of the Manas and Muzati River basins as typical watersheds"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble the data: daily forcing from 22 CMA stations (1971-2013), monthly discharge at two gauges, the first and second Chinese Glacier Inventories, soil data, a 30 m DEM, and five CMIP6 GCMs under three SSPs downscaled by quantile delta mapping.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "recorded at 22 meteorological stations in or around the study area from 1971 to 2013"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Use the VIC-CAS model with its glacier sub-grid scheme, developed in the corresponding author's earlier work: degree-day melt by elevation band and V-A scaling.",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Zhao et al. (2015) proposed a sub-gridded scheme for coupled glacier hydrological processes"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate the model in two steps. Fit glacier parameters (degree-day factors, slope-ablation factor) to half of the inventory glaciers in each size class, then fit soil and baseflow parameters to observed monthly runoff for 1971-1990.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were calibrated against the observed monthly runoff from 1971 to 1990 for the UMNS and UMZT"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the Mann-Kendall and Sen's slope trend tests and the Hopkinson-Young coefficient-of-variation comparison. Define a new index GlacierR = CB/CW, where a smaller value means stronger regulation, computed by decade.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we defined the glacier hydrology regulation index (GlacierR) to characterize the intensity of the regulation function provided by glaciers"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check model performance on the held-out validation period (1991-2010) and on held-out glaciers. Ns is 0.89 for UMNS and 0.94-0.96 for UMZT; results agree with the earlier calibration by Zhao et al. (2020).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also obtained excellent results for the UMZT"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "Estimate trends in annual precipitation and temperature for the historical period (stations) and for 2014-2100 (downscaled GCMs) with Mann-Kendall and Sen's slope (Fig. 3, Table 2).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The precipitation and temperature showed a significant rising trend in the UMNS and UMZT"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infer streamflow and glacier runoff with VIC-CAS, interannually and by decade, historically and under three SSPs. Glacier runoff declines in both basins, with a glacier-runoff tipping point in the 2010s (Figs. 4-6).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results showed that the tipping point of glacier runoff in the UMNS occurred in the 2010 s (2011–2020)."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compute and compare GlacierR between basins and periods: historical 0.30 (UMZT) versus 0.78 (UMNS), with projected weakening of 52.1-66.9% in UMZT and 3.0-14.0% in UMNS (Fig. 7).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The glacier hydrological regulation index (GlacierR) of the UMZT and UMNS was 0.30, and 0.78, respectively."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute decadal GlacierR from the 1970s to the 2090s. The strongest decade (taken as the tipping point) is the 1970s in UMNS and the 1980s in UMZT (Fig. 8).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The tipping point of glaciers’ hydrological regulation functions in the UMNS appeared ten years earlier than in the UMZT."
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Attribute the different tipping points to differing glacier-area scale (12% versus 48% cover, more small glaciers in UMNS) and to rates of warming, citing prior studies, without a test.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are associated with the different scales of glacier area and rates of temperature increase"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute monthly GlacierR. Regulation peaks in summer (August 0.68 in UMNS, July 0.30 in UMZT) and weakens under all SSPs (Fig. 9).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The glaciers had the strongest hydrological regulation function in August, with a GlacierR of 0.68."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Compare historical streamflow trends and glacier-runoff contribution rates (23.24% UMNS, 65.55% UMZT) with independent studies: Luo 2013 and Wang 2019 give 25% and 27%; Zhao 2020 gives 66.6%.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the annual glacier flow contribution in the Manas River Basin was 25 %,and 27 %, respectively"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose three reasons for the basin difference (glacier-runoff contribution, streamflow components, and a south slope about 2 °C warmer) and name temperature change as essential, supported only by cited correlations.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The difference in temperature change is an essential reason for glaciers’ hydrological regulation in the UMNS and UMZT."
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "methods",
+     "action": "State the index's limitation: it uses only streamflow and glacier runoff and misses interannual variation. Recommend adding glacier-area temperature and precipitation in future work.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the method has limitations as it only considers streamflow and glacier runoff"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the headline estimate: regulation weakens on both slopes under all SSPs, is stronger in UMZT, and falls 66.9% in UMZT by 2061-2100 under SSP1-2.6.",
+     "page": "§0 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the glaciers’ hydrological regulation function will decrease by 66.9 % between 2061 and 2100 under SSP1–2.6"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Glacier hydrological regulation of streamflow, taken as established by prior basin studies",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "No; glacier runoff and GlacierR come from VIC-CAS simulations",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify regulation intensity and its dynamics, 1971-2100, in two basins",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals to the main claim; post hoc explanations of the basin difference only",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found (two contrasting basins); future conditions set as SSP scenarios in the model",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Only model calibration and validation, plus agreement with other studies' contribution rates",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as a projected estimate of weakening regulation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Glacier hydrological regulation is stronger in the south-slope UMZT than in the north-slope UMNS, weakens in both under SSP1-2.6, SSP2-4.5 and SSP5-8.5, and falls by 66.9% in UMZT by 2061-2100 under SSP1-2.6.",
+  "page": "§0 ¶3"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The VIC-CAS simulation separating glacier runoff from total streamflow, historically and under CMIP6 forcing, supplies every input to GlacierR; without it no regulation estimate exists.",
+  "page": "6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data acquisition was not directed by a hypothesis; existing station, gauge, inventory and CMIP6 data were assembled (p. 3-4). Only the hydrological model faced a test it could fail, the held-out validation period and held-out glaciers (p. 4-5). The projected weakening of GlacierR and the basin contrast faced no test. Nothing was fixed in advance, and no threshold or uncertainty criterion for GlacierR is stated."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Mann-Kendall non-parametric trend test",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Sen's slope estimator",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Coefficient of variation, ratio-form index CB/CW",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "ecology / environmental economics (ecosystem services; inference)",
+   "item": "Cryosphere service concept, framing regulation as a service function",
+   "kind": "concept",
+   "page": "1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "no reports studies have been published to improve understanding the glacier runoff regulation in Tianshan mountains",
+   "page": "3"
+  },
+  {
+   "quote": "However, no studies have yet focused on the glaciers’ runoff regulation in the Tianshan mountains to support water resources management.",
+   "page": "11"
+  },
+  {
+   "quote": "we defined the glacier hydrology regulation index (GlacierR) to characterize the intensity of the regulation function provided by glaciers",
+   "page": "5"
+  }
+ ],
+ "limits": "The XML text holds only the abstract and captions, so body steps cite printed pages and body quotes are copied from the PDF text. No review file was supplied, so no review sequence is coded.\n\nComposition is none_fits: this is a model-based estimation and projection study with no rivals, no crucial test, and two found basins without a fitted regularity.\n\nThe paper does not show:\n- uncertainty for the headline GlacierR changes. Error bars in Figs. 8 and 9 appear to be the spread across five GCMs (inference), but the text gives none.\n- a reason for choosing the five GCMs, or a test of QDM downscaling.\n- an operational definition of 'tipping point'. It is used both for the 2010s glacier-runoff peak and for the strongest-regulation decade (1970s/1980s).\n- a clear definition of CW. CW is called 'the CB minus the coefficient of variation glacial meltwater runoff', which conflicts with Eq. 5.\n- any test of the attributions in steps 14 and 17. They are hypotheses supported only by cited correlations; status at most best_explanation, untested.\n\nInternal inconsistencies:\n- The Conclusions give glacier-runoff reductions of 32.9% (UMNS) and 44.1% (UMZT), the reverse of Section 3.3.2.\n- The historical UMNS glacier-runoff trend (MK -1.31) is not significant in Table 2, though the text reports a decreasing trend.\n- Validation Ns and R2 are printed with % signs.\n\nSub-claims and their statuses:\n- Historical and projected glacier-runoff declines: estimate_with_resolution (model-based).\n- Seasonal regulation peak in summer: estimate_with_resolution.\n- Basin difference explained by glacier cover and warming: untested hypothesis.\n\nThe cross-study comparison (step 16) is coded as checks performed here because the paper makes the comparison; the comparison values come from cited studies.",
+ "disagreements": [
+  {
+   "target": "Hopkinson and Young (1998) coefficient-of-variation method",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues the static CB versus CW test detects regulation but cannot measure its intensity or dynamics, and builds GlacierR = CB/CW computed by decade to fill that gap.",
+   "page": "2",
+   "quote": "however, the intensity of glacier regulation cannot be identified, and the dynamics of this regulation cannot be characterized."
+  }
+ ],
+ "alternatives_considered": [],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "1971–1990 as the calibration period, and 1991–2010 as the validation period.",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "half of the glaciers in each size class were randomly selected as model parameters",
+   "page": "4"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "The results of the VIC-CAS model for the calibration and validation periods are consistent with the previous study (Zhao et al., 2020).",
+   "page": "5"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the annual glacier flow contribution in the Manas River Basin was 25 %,and 27 %, respectively",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Similar studies were reported in other studies in the Manas River Basin (Wang et al., 2019b; Ding et al., 2020)",
+   "page": "11"
+  }
+ ]
+}

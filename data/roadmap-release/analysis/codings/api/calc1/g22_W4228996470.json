@@ -1,0 +1,597 @@
+{
+ "key": "g22_W4228996470",
+ "doi": "10.5194/tc-16-1765-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4228996470.pdf (The Cryosphere 16, 1765-1778, 2022)",
+  "g22_W4228996470.xml.txt (publisher XML via jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "none of these studies have tracked the snow surface topography throughout a snow season, nor have they examined the effects of snow surface topography on [...]",
+  "page": "§1 ¶4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4228996470.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how snow surface topography affects snow albedo. Distinguish intrinsic from apparent albedo and note that the distinction is often ignored.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an understanding of how snow surface topography affects snow albedo is imperative"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Take from the literature the mechanisms by which roughness lowers albedo (effective illumination angle, photon trapping) and the claim that standard albedo models ignore within-field-of-view illumination variation.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Warren et al. (1998) report that sastrugi can reduce albedo by altering the angle of incidence for direct solar radiation and by trapping photons"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Restrict the analysis to clear days with deep, optically thick snowpack at CUES, timed to the satellite overpass.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "only clear days with a deep, optically thick snowpack were examined"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Find by experiment the radiometer height (about 1 m) that minimizes both field-of-view contamination and self-shadowing, and keep the adjustable arm at that height.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By experiment, we found that the combination of these two artifacts is minimized when the radiometer is ∼ 1 m above the snow"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check PSP and SPN1 irradiance against SMARTS simulations (R² ≥ 0.99), and compare fixed-arm with adjustable-arm reflected radiation to show contamination by non-snow objects on the fixed arm.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The comparison between SMARTS and the measurements yields R 2 ≥ 0 .99 for both the PSP and the SPN1"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Scan the snow surface hourly with an automated terrestrial laser scanner through water year 2021, filter the point clouds, and grid them to 1 cm surfaces masked to the radiometer footprint.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Riegl VZ-400 laser scanner automatically scanned the snow surface every hour during the 2021 water year"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build uncorrected, planar and spatial albedo calculations. The spatial calculation uses per-point illumination, view factor and order-of-scattering multiple reflections, with an empirical function from SMARTS and two-stream simulations, and solves for intrinsic albedo.",
+     "page": "§2.2 ¶9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "comparing the model to the measurement enables solving for the intrinsic wavelength-integrated snow albedo"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Obtain Sentinel-2 Level 2A surface reflectance, convert it to broadband albedo, and process it with SPIReS for fractional snow cover and snow properties.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Bottom-of-atmosphere (surface, Level 2A) reflectance estimates from the Sentinel-2A/B (S2) multispectral instrument were obtained."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Estimate the S2 broadband albedo uncertainty from repeat acquisitions over a bare-ground reference pixel, and compare it with a published S2 validation.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Broadband albedo uncertainty from S2 (0.036) was estimated based on maximum differences between acquisitions for a bare-ground target pixel"
+    },
+    {
+     "n": 10,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select a flat, nearly fully snow-covered S2 target pixel 2.2 km from CUES, and assume its snow conditions match those at CUES.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It would have been preferable to select a pixel immediately adjacent to CUES, but none met those criteria."
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measure in situ reflectance spectra with a field spectrometer and a Spectralon panel on clear days.",
+     "page": "§2.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Spectra Vista HR-1024i was used with a Spectralon panel with 0.99 albedo over the 250–2500 nm wavelength range for irradiance measurement."
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Produce the season-long series of uncorrected, planar-corrected and intrinsic albedos (broadband and nIR) from the scanned topography.",
+     "page": "§3 ¶1; Figure 6 (p. 1772)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In situ albedos from CUES from the water year 2021 are shown in Fig. 6"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the result that intrinsic albedo exceeds apparent albedo with earlier, shorter studies, and explain the seasonal pattern of the corrections.",
+     "page": "§3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "agreeing with previous work over more limited timespans"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Quantify the mean intrinsic-minus-apparent difference over 110 days and the share of the loss due to photon trapping. Note that the magnitudes exceed the Larue et al. (2020) estimates.",
+     "page": "§3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the differences amounted to - 0.056 in the broadband albedo and - 0.052 in the near infrared"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare intrinsic with planar-corrected albedo, showing that the standard planar correction captures slope but not roughness.",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "accounts for surface slope but not for roughness"
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "methods",
+     "action": "Refine the recommendation: use terrain correction plus a shade endmember for moderate-resolution sensors, and a shade endmember alone for fine resolution because of DEM errors.",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, a shade endmember without any terrain correction may produce the most accurate results for these locations."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare S2 narrow-to-broadband albedo with CUES uncorrected albedo, concluding that the satellite sees apparent albedo.",
+     "page": "§3 ¶6; Figure 7 (p. 1773)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] albedo conversions confirm that the apparent albedo is being seen from space."
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesize, from the distinct spectral signatures of impurities, grain size and shade, that a spectrally resolved instrument can separate roughness darkening from impurity darkening.",
+     "page": "§3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an instrument with sufficient spectral resolution and accuracy should be able to discriminate between the causes of darkening"
+    },
+    {
+     "n": 19,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Design the test as SPIReS runs on S2 imagery under two impurity assumptions (dirty endmembers versus clean snow), both with a shade endmember.",
+     "page": "§3 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] hypothesis, SPIReS was run on S2 imagery with dirty snow endmembers and with a clean snow assumption."
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Invert grain size, impurity and shade fraction from S2 and feed them into the shade-aware albedo model to obtain modeled albedos for comparison with CUES.",
+     "page": "§3 ¶7; Figure 8 (p. 1774)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] size and impurity concentration estimates were then used in the updated broadband snow albedo that now accounts for shade."
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare both S2 runs with CUES albedo. Both match within error, with the clean run substituting shade for dust, so the multispectral sensor cannot discriminate the two causes.",
+     "page": "§3 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "With overlapping error bars for each scene, the resulting albedos are indistinguishable within measured error"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Run the spectral mixture model on independent field-spectrometer spectra as validation, finding wide spatial variability.",
+     "page": "§3 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In situ spectroscopic measurements (also in Table 2) provide some validation"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Find that spectrometer-based solutions consistently return nonzero shade and nonzero dust, so the spectrometer discriminates the two darkening sources.",
+     "page": "§3 ¶8; Figure 9 (p. 1774)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is a consistent ability to discriminate between darkening caused by impurities and by shade"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that shade must be accounted for, even for field-spectrometer measurements and in albedo models.",
+     "page": "§3 ¶9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shade needs to be included in snow albedo models"
+    },
+    {
+     "n": 25,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Simulate with radiative transfer the intrinsic-minus-apparent albedo difference across shade fractions, grain sizes, zenith angles and impurities.",
+     "page": "§3 ¶10; Figure 10 (p. 1774)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is a positive relationship: as f shade increases, the difference between intrinsic and apparent albedo increases, but the scatter also increases."
+    },
+    {
+     "n": 26,
+     "node": "R",
+     "mode": "methods",
+     "action": "Update the Bair et al. (2019) lookup tables and albedo model to output apparent albedo as a function of shade fraction.",
+     "page": "§3 ¶10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the lookup tables and albedo model presented in Bair et al. (2019) have been updated to include f shade"
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the seasonal mean difference (0.056; 0.022 after planar correction) and express it as equivalent dust concentrations (63 and 22 ppm).",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "equivalent to the decrease in broadband albedo caused by 63 ppm dust for typical snow in spring"
+    },
+    {
+     "n": 28,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the conclusion that multispectral impurity estimates are separable from roughness only for relatively dirty snow with high snow fraction.",
+     "page": "§4 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "impurity estimates from multispectral sensors are only distinguishable from surface roughness effects for relatively dirty snow"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Apparent snow albedo diverges from intrinsic albedo over rough melting snow",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; intrinsic albedo is latent and inferred from scanned topography and a reflection model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the intrinsic-apparent difference over a season and its implications for remote sensing",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Darkening by roughness/shade versus by low impurity concentrations",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; impurities act in the visible-nIR, grain size in the nIR/SWIR, and shade across the whole spectrum",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found: one season at one site, clear days, a nearby S2 pixel",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; S2 clean and dirty runs both fit, the spectrometer separates the causes, and the spatial variability is large",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: seasonal difference estimate; shade must be modeled; multispectral sensors cannot separate low impurities from shade",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Over 110 days of water year 2021 at CUES, intrinsic broadband albedo averaged 0.056 greater than apparent albedo (0.052 in the nIR; 0.022 if planar topography is corrected), and multispectral sensors see apparent albedo but cannot separate roughness darkening from low impurity concentrations.",
+  "page": "§0 ¶1; §3 ¶4"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The spatial correction model, which combines hourly laser-scanned topography with per-point illumination, view factor and multiple reflections to solve for intrinsic albedo from measured apparent albedo, is what makes the season-long divergence estimate possible.",
+  "page": "§2.2 ¶9"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The scanner, radiometer and S2 data were collected routinely at CUES; no stated hypothesis directed their acquisition. The discrimination hypothesis is stated in the Results (§3 ¶6) and then tested with S2 clean/dirty runs and spectrometer spectra, which could have failed. The headline difference estimate faced no test it could fail beyond agreement with prior work. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "planetary science / geology (Viking Lander spectral mixture modeling)",
+   "item": "Shade endmember in spectral mixture analysis (Adams et al., 1986)",
+   "kind": "method",
+   "page": "§1 ¶2"
+  },
+  {
+   "field": "radiometry / optics",
+   "item": "Bihemispherical reflectance definitions (Nicodemus et al., 1977)",
+   "kind": "concept",
+   "page": "§1 ¶1"
+  },
+  {
+   "field": "solar energy engineering",
+   "item": "SMARTS v2.9.8 spectral irradiance model",
+   "kind": "method",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "field": "solar energy engineering",
+   "item": "Radiometer footprint of about 8.7h (Sailor et al., 2006)",
+   "kind": "concept",
+   "page": "§2.1 ¶5"
+  },
+  {
+   "field": "robotics",
+   "item": "Point cloud noise filter (Rusu et al., 2008)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "photogrammetry / geomatics",
+   "item": "Morphological filter for point clouds (Pingel et al., 2013)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "physics (optics)",
+   "item": "Mie scattering coupled with two-stream radiative transfer",
+   "kind": "method",
+   "page": "§2.4 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...]",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "To our knowledge, CUES is the only site where snow albedo is measured using an adjustable albedo arm.",
+   "page": "§2.1 ¶5"
+  }
+ ],
+ "limits": "The study covers one site and one season; the authors themselves call for other snow climates and dirtier snowpacks (§4 ¶6). The S2 target pixel lies 2.2 km from CUES, and similarity of conditions is assumed, not shown. No uncertainty is given for the inferred intrinsic albedo or the 0.056 mean difference beyond manufacturer error bars on the measurements; no error budget for the spatial model is reported. The discrimination hypothesis is stated after the seasonal results; the data were not collected to test it (inference). Spectrometer tests are reported for 11-12 May 2021 only (Table 2, Figure 9), so how general the discrimination is cannot be judged from the text. The Lambertian assumption is argued for, not tested. No review file was supplied, though the paper was reviewed by two anonymous referees and an editor; no review sequence is coded. Composition is none_fits: the walk is a new estimation method applied to a season of found conditions, followed by a post hoc two-way test of darkening causes. It is neither a trace series of independent cases nor capability-first in the codebook sense. Sub-claims: the multispectral sensor cannot discriminate shade from low dust (best_explanation, one scene pair); the spectrometer can discriminate (best_explanation, few spectra); the updated shade-aware albedo model and lookup tables (capability_characterized, not independently validated); the shade-fraction relationship in Figure 10 (regularity_in_range, simulated).",
+ "disagreements": [
+  {
+   "target": "Widely used snow albedo models (Warren, 1982 and successors)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argues that the models output intrinsic albedo without accounting for illumination variation within the field of view, then shows the seasonal intrinsic-apparent gap and updates a model to include shade.",
+   "page": "§1 ¶2",
+   "quote": "the widely used albedo models cited above do not account for varying illumination within the field of view, meaning their results can be positively biased"
+  },
+  {
+   "target": "Multiple-viewing-geometry and within-pixel-variability approaches (Corbett and Su, 2015; Kuchiki et al., 2011; Lyapustin et al., 2010; Nolin and Payne, 2007; [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "States that these approaches suit high-latitude snowpacks but not dynamic midlatitude mixed pixels; no new evidence is given.",
+   "page": "§1 ¶4",
+   "quote": "ill-suited towards dynamic midlatitude snowpacks with mixed pixels where the snow cover can change between satellite overpasses"
+  },
+  {
+   "target": "Snow albedo measurements at other tower sites (Elder et al., 2009; Landry et al., 2014; Lejeune et al., 2019; Lhermitte [...]",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Examines published images of tower arms and contrasts fixed-arm with adjustable-arm measurements at CUES (Fig. 3).",
+   "page": "§2.1 ¶5",
+   "quote": "shows non-snow objects within the downlooking radiometer's field of view at every site"
+  },
+  {
+   "target": "Larue et al. (2020) estimate of roughness-induced albedo decrease",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The seasonal intrinsic-apparent difference at CUES (0.056 broadband) exceeds the −0.02 to −0.03 reported for low-SSA snow, which the authors attribute to extensive ablation hollows.",
+   "page": "§3 ¶4",
+   "quote": "in the snow studied here with extensive ablation hollows, the magnitudes are greater"
+  },
+  {
+   "target": "Planar correction used in previous research (Bair et al., 2018; Painter et al., 2012b)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The season-long intrinsic albedo is generally above the planar-corrected albedo (mean gap 0.022), showing that sub-slope roughness is missed.",
+   "page": "§3 ¶5",
+   "quote": "[...] planar correction that has been performed in previous research (Bair et al., 2018; Painter et al., 2012b) accounts for surface slope but not for [...]"
+  },
+  {
+   "target": "Energy balance models using intrinsic albedos",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Recommends apparent albedo, based on the measured intrinsic-apparent divergence and the updated shade-aware model.",
+   "page": "§4 ¶4",
+   "quote": "The apparent albedo produced should be used in energy balance models where intrinsic albedos have been previously used."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Downlooking radiometer kept about 1 m above the snow",
+   "alternatives": "Higher (larger field of view including tower and trees) or closer (arm shadow)",
+   "reason": "Found by experiment to minimize the combined artifacts",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "PSPs for irradiance and reflected radiation; SPN1 only for the diffuse ratio",
+   "alternatives": "SPN1 global irradiance",
+   "reason": "Different response and biases (thermal offsets); no downlooking SPN1, so the same radiometer type is used for both",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Adjustable-arm downlooking radiometers for reflected radiation",
+   "alternatives": "Fixed-arm radiometers 8 m above ground",
+   "reason": "Non-snow objects contaminate the fixed-arm field of view",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "node": "I",
+   "chosen": "Spatial (rough-surface) correction yielding intrinsic albedo",
+   "alternatives": "Uncorrected and planar-corrected albedo",
+   "reason": "Planar correction accounts for slope but not roughness",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Lambertian surface assumption",
+   "alternatives": "Directional reflectance quantities",
+   "reason": "Nadir instruments at midday; backscatter rises with roughness; ablation hollows lack orientation; sub-pixel topography is unknown at remote sensing scale",
+   "effect_reported": "no",
+   "page": "§2.2 ¶11"
+  },
+  {
+   "node": "F",
+   "chosen": "Flat, nearly fully snow-covered S2 pixel 2.2 km from CUES",
+   "alternatives": "A pixel immediately adjacent to CUES",
+   "reason": "No adjacent pixel met the criteria",
+   "effect_reported": "no",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "Dust as the predominant light-absorbing impurity",
+   "alternatives": "Other pollutants (e.g., soot)",
+   "reason": "Chemical analyses from CUES (Sterle et al., 2013)",
+   "effect_reported": "no",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "Shade endmember without terrain correction for fine-resolution sensors; terrain correction plus shade for 0.5-1 km pixels",
+   "alternatives": "Terrain correction at fine resolution",
+   "reason": "Vertical DEM errors approach pixel size and are compounded in slope and aspect",
+   "effect_reported": "no",
+   "page": "§3 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "SPIReS runs under both dirty-snow and clean-snow assumptions",
+   "alternatives": "Single impurity assumption",
+   "reason": "To test whether the multispectral sensor can separate shade from dust",
+   "effect_reported": "yes",
+   "page": "§3 ¶7"
+  },
+  {
+   "node": "R",
+   "chosen": "Updated lookup tables and albedo model including shade fraction",
+   "alternatives": "A simple adjustment for shade",
+   "reason": "Scatter increases with shade fraction, so a simple adjustment is not possible",
+   "effect_reported": "no",
+   "page": "§3 ¶10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The comparison between SMARTS and the measurements yields R 2 ≥ 0 .99 for both the PSP and the SPN1",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the downlooking radiometers on the adjustable boom have greater values than those on the fixed arm",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Broadband albedo uncertainty from S2 (0.036) was estimated based on maximum differences between acquisitions for a bare-ground target pixel",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This uncertainty is close to a validation effort of S2 over dark and bright soils that showed band-wise errors up to 0.040",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "agreeing with previous work over more limited timespans",
+   "page": "§3 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "SPIReS was run on S2 imagery with dirty snow endmembers and with a clean snow assumption",
+   "page": "§3 ¶7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "In situ spectroscopic measurements (also in Table 2) provide some validation",
+   "page": "§3 ¶7"
+  }
+ ]
+}

@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold-set coder</title>
+<!-- Template: tools/roadmap/app/gold_coder.html. Data is embedded by tools/roadmap/g09_human_coding_app.py, which builds
+     one coder packet per coder (mode "coder", locked to that coder, only their papers, no metrics, no pairings)
+     and one coordinator build (mode "coordinator", comparison only). Runs from disk, offline; nothing is sent anywhere. -->
+<style>
+:root{
+  --bg:#f5f4f2; --panel:#ffffff; --ink:#153742; --muted:#5b6b70; --line:#d9d6d0; --accent:#0f4c5c; --accent-ink:#ffffff;
+  --soft:#e8eff0; --warn:#8a5a00; --warn-bg:#fdf3dc; --err:#a1302b; --err-bg:#fbe7e5; --ok:#2e6b4f; --ok-bg:#e3f1ea;
+  --build:#4b2e83; --test:#164d64; --decide:#85754d; --shade:rgba(10,20,25,.45);
+  --serif:"Source Serif 4","Source Serif Pro",Georgia,serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#10191c; --panel:#172429; --ink:#dfe8ea; --muted:#9aaaae; --line:#2b3b40; --accent:#5fa8b8; --accent-ink:#0b1416;
+  --soft:#1d2f35; --warn:#f0c46a; --warn-bg:#3a2f12; --err:#f19a93; --err-bg:#3d1d1b; --ok:#8fd3b0; --ok-bg:#183327;
+  --build:#a690d6; --test:#6fb3c9; --decide:#cdbb8c; --shade:rgba(0,0,0,.6); }}
+:root[data-theme="dark"]{
+  --bg:#10191c; --panel:#172429; --ink:#dfe8ea; --muted:#9aaaae; --line:#2b3b40; --accent:#5fa8b8; --accent-ink:#0b1416;
+  --soft:#1d2f35; --warn:#f0c46a; --warn-bg:#3a2f12; --err:#f19a93; --err-bg:#3d1d1b; --ok:#8fd3b0; --ok-bg:#183327;
+  --build:#a690d6; --test:#6fb3c9; --decide:#cdbb8c; --shade:rgba(0,0,0,.6); }
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0}
+h1{font-size:22px} h2{font-size:19px;margin:0 0 6px} h3{font-size:16px}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:5px 10px}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.ghost{border-color:transparent;background:transparent;padding:3px 6px}
+button:disabled{opacity:.45;cursor:default}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 7px;width:100%}
+textarea{min-height:56px;resize:vertical}
+select{padding:4px 6px}
+label{display:block;font-size:13px;color:var(--muted);margin:8px 0 3px}
+.small{font-size:12.5px;color:var(--muted)}
+.def{font-size:12.5px;color:var(--muted);margin-top:3px;min-height:1em}
+header.top{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+header.top .sp{flex:1}
+nav.tabs button{border:none;background:transparent;padding:6px 10px;border-bottom:2px solid transparent;border-radius:0}
+nav.tabs button.on{border-bottom-color:var(--accent);color:var(--accent);font-weight:600}
+main{padding:16px;max-width:1500px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 300px;grid-template-areas:"paper form checks";gap:14px;align-items:start}
+.layout .paper{grid-area:paper} .layout #form{grid-area:form} .layout .checksbox{grid-area:checks}
+@media (max-width:1180px){.layout{grid-template-columns:minmax(0,1fr) 270px;grid-template-areas:"paper paper" "form checks"}.layout .paper{position:static!important;max-height:none}}
+@media (max-width:760px){.layout{grid-template-columns:1fr;grid-template-areas:"paper" "checks" "form"}.side{position:static!important;max-height:none!important}}
+.side{position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto}
+.secnav a{display:flex;justify-content:space-between;padding:4px 8px;border-radius:5px;text-decoration:none;color:var(--ink);font-size:14px}
+.secnav a:hover{background:var(--soft)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-left:6px;flex:none;align-self:center}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.err{background:var(--err)}
+table{border-collapse:collapse;width:100%}
+th,td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:top;font-size:14px}
+th{font-size:12.5px;color:var(--muted);font-weight:600}
+.queue tr{cursor:pointer} .queue tr:hover td{background:var(--soft)}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.pill.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.pill.err{background:var(--err-bg);color:var(--err);border-color:transparent}
+.step{display:grid;grid-template-columns:30px 150px 210px minmax(0,1fr) 84px;gap:6px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.step .row2{grid-column:2 / -1;display:grid;grid-template-columns:200px 120px minmax(0,1fr) auto;gap:6px}
+@media (max-width:1000px){.step{grid-template-columns:30px 1fr 1fr}.step textarea[data-s="action"]{grid-column:2 / -1}.step input[data-s="page"]{grid-column:2 / -1}.step .row2{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.step,.step .row2{grid-template-columns:1fr}.step textarea[data-s="action"],.step input[data-s="page"],.step .row2{grid-column:auto}}
+.step .n{font-weight:700;color:var(--muted);padding-top:6px}
+.wc{font-size:11.5px;color:var(--muted);text-align:right} .wc.bad{color:var(--err);font-weight:600}
+.strip{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:14px;color:#fff;font-weight:700;font-size:13px;padding:0 6px}
+.chip.build{background:var(--build)} .chip.test{background:var(--test)} .chip.decide{background:var(--decide)} .chip.blank{background:var(--line);color:var(--muted)}
+.msg{font-size:13px;padding:4px 8px;border-radius:5px;margin:3px 0}
+.msg.err{background:var(--err-bg);color:var(--err)} .msg.warn{background:var(--warn-bg);color:var(--warn)} .msg.ok{background:var(--ok-bg);color:var(--ok)}
+.hint{font-size:13px;color:var(--muted);background:var(--soft);border-radius:6px;padding:8px 10px;margin:6px 0 10px}
+.listitem{border:1px solid var(--line);border-radius:6px;padding:8px;margin:6px 0}
+.rowflex{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.scale{display:flex;gap:6px;flex-wrap:wrap}
+.scale label{display:flex;gap:6px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:0;color:var(--ink);font-size:13px;flex:1 1 170px;cursor:pointer}
+.scale input{width:auto;margin-top:3px}
+.checks label{display:inline-flex;gap:5px;align-items:center;margin-right:12px;color:var(--ink)}
+.checks input{width:auto}
+details summary{cursor:pointer;color:var(--accent);font-size:14px}
+.banner{background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px;margin-bottom:12px;font-size:14px}
+.banner.err{background:var(--err-bg);color:var(--err)}
+.center{max-width:760px;margin:30px auto}
+.drop{border:2px dashed var(--line);border-radius:8px;padding:24px;text-align:center;color:var(--muted)}
+.drop.on{border-color:var(--accent);color:var(--accent)}
+.num{font-variant-numeric:tabular-nums}
+.tree td input{min-width:160px}
+#drawer{position:fixed;inset:0;background:var(--shade);display:none;z-index:20}
+#drawer.on{display:block}
+#drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(720px,96vw);background:var(--bg);overflow:auto;padding:14px;box-shadow:-4px 0 20px rgba(0,0,0,.2)}
+fieldset.ro{opacity:.6;pointer-events:none}
+fieldset{border:none;margin:0;padding:0;min-width:0}
+</style>
+</head>
+<body>
+<script id="payload" type="application/json">/*__DATA__*/null</script>
+<header class="top">
+  <h1 id="apptitle">Gold-set coder</h1>
+  <nav class="tabs" id="tabs"></nav>
+  <span class="sp"></span>
+  <span class="small" id="who"></span>
+  <button class="ghost" id="themeBtn" title="Switch light or dark">◐</button>
+</header>
+<main id="app"></main>
+<div id="drawer"><div class="panel"><div class="rowflex"><h2 style="flex:1">Codebook</h2><button id="drawerClose">Close</button></div><div id="drawerBody"></div></div></div>
+<script>
+(function(){
+'use strict';
+const P = JSON.parse(document.getElementById('payload').textContent || 'null');
+const app = document.getElementById('app');
+if(!P){ app.innerHTML = '<div class="center card"><h2>No data</h2><p>This is the template. Build the packets with <code>python tools/roadmap/g09_human_coding_app.py</code>.</p></div>'; return; }
+const MODE_APP = P.mode;            // 'coder' or 'coordinator'
+const TAB_ID = Math.random().toString(36).slice(2);
+
+// ---------- storage ----------
+let storageOk = true;
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ storageOk = false; showStorageBanner(); return false; } },
+  keys(prefix){ try{ return Object.keys(localStorage).filter(k => k.startsWith(prefix)); }catch(e){ return []; } }
+};
+const NS = 'goldcoder.v2.' + (P.meta.packet || 'all') + '.';
+storageOk = store.set(NS + 'probe', 1);
+function showStorageBanner(){ const b = document.getElementById('storageBanner'); if(b) b.style.display = 'block'; }
+
+// IndexedDB keeps the chosen save folder across reloads (Chrome and Edge)
+const idb = {
+  open(){ return new Promise((res, rej) => { try{ const r = indexedDB.open('goldcoder', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }catch(e){ rej(e); } }); },
+  async get(k){ try{ const db = await this.open(); return await new Promise(res => { const t = db.transaction('kv').objectStore('kv').get(k); t.onsuccess = () => res(t.result); t.onerror = () => res(undefined); }); }catch(e){ return undefined; } },
+  async set(k, v){ try{ const db = await this.open(); await new Promise(res => { const t = db.transaction('kv', 'readwrite').objectStore('kv').put(v, k); t.onsuccess = () => res(); t.onerror = () => res(); }); }catch(e){} }
+};
+
+// ---------- vocabulary ----------
+const S = P.schema, RS = P.ratings_schema, SP = S.properties;
+const NODE = Object.fromEntries(P.nodes.map(n => [n.id, n]));
+const MODE = Object.fromEntries(P.modes.map(m => [m.id, m]));
+const DEF = P.definitions || {};
+const ENUM = {
+  entryState: SP.entry.properties.state.enum, node: SP.entry.properties.node.enum,
+  mode: SP.sequences.items.properties.steps.items.properties.mode.enum,
+  move: SP.sequences.items.properties.steps.items.properties.move.enum,
+  trigger: SP.sequences.items.properties.steps.items.properties.trigger.enum,
+  treeQ: SP.tree.items.properties.question.enum, treeMode: SP.tree.items.properties.mode_called.enum,
+  outcome: SP.end.properties.outcome.enum, status: SP.end.properties.claim_status.enum,
+  composition: SP.composition.enum, gate: SP.gates.properties.action.enum,
+  importKind: SP.imports.items.properties.kind.enum, disKind: SP.disagreements.items.properties.kind.enum,
+  disStance: SP.disagreements.items.properties.stance.enum, effect: SP.alternatives_considered.items.properties.effect_reported.enum,
+  vkind: SP.v_checks ? SP.v_checks.items.properties.kind.enum : [],
+};
+const PAGE_CONV = ['XML section and paragraph locators (jats_text)', 'XML locators, PDF pages for figure content', 'printed journal pages',
+  'PDF pages counted from 1', 'printed article pages (e.g. "3 of 14")'];
+const ROLES = ['corrective','enabling','integrative','cumulative','transformative'];
+const RA = RS.properties.advance.properties;
+const VERDICTS = RA.verdict ? RA.verdict.enum : [];
+const CONDS = RA.unassessable_condition ? RA.unassessable_condition.enum.filter(x => x !== 'none') : [];
+const CRITS = RA.verdict_criteria ? Object.keys(RA.verdict_criteria.properties) : [];
+const HAS_VERDICT = VERDICTS.length > 0 && P.meta.ratings_version !== '1.0.0';
+const NOTES = P.rating_notes || [];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lab = v => (DEF[v] && DEF[v].label) || String(v).replace(/_/g,' ');
+const defOf = v => (DEF[v] && DEF[v].def) || '';
+const words = s => (String(s||'').trim().match(/\S+/g) || []).length;
+const localDate = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+const coderName = id => (P.coders.find(c => c.id === id) || {}).name || id;
+function hashStr(s){ let h = 2166136261; for(let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(16); }
+const contentHash = d => hashStr(JSON.stringify(d.coding) + '|' + JSON.stringify(Object.assign({}, d.ratings, {rated_on: ''})));
+
+// ---------- state ----------
+const coder = MODE_APP === 'coder' ? P.coder : null;
+let view = MODE_APP === 'coordinator' ? 'coord' : store.get(NS + 'view', 'queue');
+let current = store.get(NS + 'current', null);
+let dirHandle = null;
+let D = null, saveTimer = null, pendingKey = null, readOnly = false, lastActive = 0;
+
+function draftKey(k){ return NS + 'draft.' + coder + '.' + k; }
+function emptyCoding(p){
+  return { key:p.key, doi:p.doi, codebook_version:P.meta.codebook_version, coder: coderName(coder) + ' (' + coder + '), human',
+    documents:['final paper'], pages_convention:'', entry:{state:'', node:'', evidence:'', page:''},
+    sequences:[{kind:'final_paper', source_document:'final paper', steps:[]}], tree:[], end:{outcome:'', claim_status:'', claim:'', page:''},
+    decisive_move:{node:'', mode:'', sentence:'', page:''}, composition:'', gates:{action:'', claim:'', registration:'', evidence:''},
+    imports:[], novelty_claims:[], limits:'', disagreements:[], alternatives_considered:[], v_checks:[] };
+}
+function emptyRatings(p){
+  return { key:p.key, doi:p.doi, ratings_version:P.meta.ratings_version, coder: coderName(coder) + ' (' + coder + ')', rated_on:'',
+    minutes_spent:0, eligible_in_my_view:'', familiarity:'',
+    novelty:{atomic_claim:'', claim_kind:'', closest_precedent:'', new_component:'', judgment:'', score:0, confidence:''},
+    advance: Object.assign({starting_state:'', gain:'', magnitude:'', evidence:'', roles:[], score:0, confidence:''},
+      HAS_VERDICT ? {verdict:'', verdict_reasons:'', unassessable_condition:'', verdict_criteria: Object.fromEntries(CRITS.map(k => [k, '']))} : {}),
+    impact_forecast:'', notes:'' };
+}
+// the ratings file as saved: the condition is "none" unless unassessable; unassessable has no score and no criteria
+function ratingsOut(r){
+  const o = JSON.parse(JSON.stringify(r));
+  if(!HAS_VERDICT) return o;
+  o.ratings_version = P.meta.ratings_version;
+  const a = o.advance;
+  if(a.verdict === 'achieved' || a.verdict === 'not_demonstrated') a.unassessable_condition = 'none';
+  if(a.verdict === 'unassessable'){ a.score = null; delete a.verdict_criteria; if(a.unassessable_condition === 'none') a.unassessable_condition = ''; }
+  return o;
+}
+// the verdict the six criteria imply for the gain rated (section 6 of the advance rubric)
+function impliedVerdict(a){
+  const c = a.verdict_criteria || {};
+  if(CRITS.some(k => !c[k])) return '';
+  if(CRITS.some(k => c[k] === 'not_met')) return 'not_demonstrated';
+  return 'achieved';
+}
+// fill any missing field from the empty template, so a partial draft can never break rendering
+function fill(t, v){
+  if(Array.isArray(t)) return Array.isArray(v) ? v : t;
+  if(t && typeof t === 'object'){ const o = (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; Object.keys(t).forEach(k => { o[k] = fill(t[k], o[k]); }); return o; }
+  return (v === undefined || v === null || typeof v !== typeof t) ? t : v;
+}
+function newStep(){ return {n:0, node:'', mode:'', action:'', page:'', move:'', trigger:'', quote:''}; }
+function normalize(d, p){
+  d.coding = fill(emptyCoding(p), d.coding); d.ratings = fill(emptyRatings(p), d.ratings);
+  d.coding.sequences = d.coding.sequences.filter(s => s && typeof s === 'object').map(s => ({kind: s.kind || 'review', source_document: s.source_document || '', steps: (Array.isArray(s.steps) ? s.steps : []).map(st => fill(newStep(), st))}));
+  if(!d.coding.sequences.some(s => s.kind === 'final_paper')) d.coding.sequences.unshift({kind:'final_paper', source_document:'final paper', steps:[]});
+  d.coding.tree = d.coding.tree.filter(t => t && typeof t === 'object').map(t => fill({question:'', answer:'', mode_called:''}, t));
+  d.activeMs = d.activeMs || 0; return d;
+}
+function loadDraft(k){
+  const p = P.papers.find(x => x.key === k);
+  const d = store.get(draftKey(k), null);
+  return normalize(d || {coding: emptyCoding(p), ratings: emptyRatings(p), started: new Date().toISOString(), savedFiles: null, activeMs: 0}, p);
+}
+function persist(){
+  if(!D || readOnly) return;
+  const k = pendingKey || current; pendingKey = null;
+  D.updated = new Date().toISOString(); D.tab = TAB_ID;
+  store.set(draftKey(k), D);
+}
+function touch(){ const now = Date.now(); if(D && now - lastActive < 120000) D.activeMs += now - lastActive; lastActive = now; }
+function persistSoon(){ touch(); pendingKey = current; clearTimeout(saveTimer); saveTimer = setTimeout(() => { saveTimer = null; persist(); refreshSide(); }, 250); }
+function flush(){ if(saveTimer){ clearTimeout(saveTimer); saveTimer = null; persist(); } }
+window.addEventListener('beforeunload', flush);
+document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'hidden') flush(); });
+// another tab writing the same paper: stop editing here
+window.addEventListener('storage', e => {
+  if(!D || !current || view !== 'code' || e.key !== draftKey(current) || !e.newValue) return;
+  let other; try{ other = JSON.parse(e.newValue); }catch(_){ return; }
+  if(other.tab && other.tab !== TAB_ID){ readOnly = true; clearTimeout(saveTimer); saveTimer = null;
+    const f = document.getElementById('formfs'); if(f) f.classList.add('ro');
+    const b = document.getElementById('tabBanner'); if(b) b.style.display = 'block'; }
+});
+
+// ---------- validation ----------
+function vSchema(schema, data, path, out){
+  const t = schema.type;
+  if(t === 'object'){
+    if(typeof data !== 'object' || data === null || Array.isArray(data)){ out.push([path,'must be an object']); return; }
+    (schema.required||[]).forEach(r => { if(!(r in data)) out.push([path.concat(r), 'is required']); });
+    const props = schema.properties || {};
+    Object.keys(data).forEach(k => { if(props[k]) vSchema(props[k], data[k], path.concat(k), out); else if(schema.additionalProperties === false) out.push([path.concat(k), 'is not allowed by the schema']); });
+  } else if(t === 'array'){
+    if(!Array.isArray(data)){ out.push([path,'must be a list']); return; }
+    data.forEach((x,i) => vSchema(schema.items, x, path.concat(i), out));
+  } else if(t === 'string'){
+    if(typeof data !== 'string'){ out.push([path,'must be text']); return; }
+    if(schema.enum && !schema.enum.includes(data)) out.push([path, data === '' ? 'choose a value' : 'is not an allowed value']);
+  } else if(t === 'boolean'){
+    if(typeof data !== 'boolean') out.push([path, 'choose yes or no']);
+  } else if(t === 'integer'){
+    if(!Number.isInteger(data)){ out.push([path,'must be a whole number']); return; }
+    if(schema.minimum !== undefined && data < schema.minimum) out.push([path, schema.minimum === 1 ? 'choose a score' : 'must be at least ' + schema.minimum]);
+    if(schema.maximum !== undefined && data > schema.maximum) out.push([path, 'must be at most ' + schema.maximum]);
+  }
+}
+const SECOF = {pages_convention:'doc', documents:'doc', key:'doc', doi:'doc', codebook_version:'doc', coder:'doc', entry:'entry', sequences:'steps', tree:'tree',
+  end:'end', decisive_move:'end', composition:'end', gates:'gates', imports:'extras', novelty_claims:'extras', limits:'extras', disagreements:'disagree', alternatives_considered:'disagree', v_checks:'vchecks'};
+const LISTNAME = {imports:'Import', novelty_claims:'Novelty claim', disagreements:'Disagreement', alternatives_considered:'Alternative', v_checks:'V check'};
+function friendly(path, c){
+  const [a, b, x, y, z] = path;
+  if(a === 'sequences'){ const s = c.sequences[b]; const tag = s && s.kind === 'final_paper' ? 'Final paper' : 'Review sequence';
+    if(x === 'steps' && y !== undefined) return `${tag} step ${y+1}: ${String(z||'').replace(/_/g,' ')}`; return tag; }
+  if(a === 'tree' && typeof b === 'number') return `Tree question ${(c.tree[b]||{}).question || b+1}: ${String(x||'').replace(/_/g,' ')}`;
+  if(LISTNAME[a] && typeof b === 'number') return `${LISTNAME[a]} ${b+1}: ${String(x||'').replace(/_/g,' ')}`;
+  return path.map(p => String(p).replace(/_/g,' ')).join(' › ');
+}
+function checkCoding(c){
+  const out = [];
+  const se = []; vSchema(S, c, [], se);
+  se.forEach(([p,m]) => out.push({sec: SECOF[p[0]] || 'doc', level:'err', text: friendly(p, c) + ' ' + m}));
+  const need = (v, where, sec, what) => { if(!String(v||'').trim()) out.push({sec, level:'err', text: where + ': ' + (what || 'location is missing (every claim carries a page or locator)')}); };
+  need(c.pages_convention, 'Document', 'doc', 'state the page or locator convention');
+  need(c.entry.page, 'Entry', 'entry'); need(c.entry.evidence, 'Entry', 'entry', 'quote the sentence that establishes the entry state');
+  if(words(c.entry.evidence) > 25) out.push({sec:'entry', level:'err', text:'Entry evidence is ' + words(c.entry.evidence) + ' words (at most 25)'});
+  if(c.sequences.filter(s => s.kind === 'final_paper').length !== 1) out.push({sec:'steps', level:'err', text:'Exactly one final-paper sequence is needed'});
+  c.sequences.forEach(s => {
+    const tag = s.kind === 'final_paper' ? 'Final paper' : 'Review sequence';
+    if(!s.steps.length) out.push({sec:'steps', level:'err', text: tag + ': no steps yet'});
+    s.steps.forEach((st, i) => {
+      const w = tag + ' step ' + (i+1);
+      need(st.page, w, 'steps'); need(st.action, w, 'steps', 'describe the action');
+      if(words(st.quote) > 25) out.push({sec:'steps', level:'err', text: w + ': quote is ' + words(st.quote) + ' words (at most 25)'});
+      if(st.move === 'repeat' && (i === 0 || s.steps[i-1].node !== st.node)) out.push({sec:'steps', level:'warn', text: w + ': "repeat" means the same node as the step just before'});
+      if(i > 0 && st.node && s.steps[i-1].node === st.node && s.steps[i-1].mode === st.mode && st.move !== 'repeat' && st.move !== 'return_after_failure')
+        out.push({sec:'steps', level:'warn', text: w + ': same node and mode as the step before; consecutive actions on the same node and mode are one step'});
+      if(s.kind === 'final_paper' && ['review_forced','declined'].includes(st.move)) out.push({sec:'steps', level:'warn', text: w + ': in the final paper, code moves from the published text alone'});
+      if(s.kind === 'final_paper' && ['referee','editor','commenter'].includes(st.trigger)) out.push({sec:'steps', level:'warn', text: w + ': a referee, editor or commenter trigger belongs in the review sequence'});
+    });
+  });
+  const fp = c.sequences.find(s => s.kind === 'final_paper');
+  if(fp && fp.steps.length){
+    const n = fp.steps.length;
+    if(n < 8 || n > 30) out.push({sec:'steps', level:'warn', text: n + ' steps. A letter usually has 8 to 20 and an article with Methods 12 to 30; check the granularity rule'});
+    if(c.decisive_move.node && !fp.steps.some(s => s.node === c.decisive_move.node)) out.push({sec:'end', level:'warn', text:'The decisive move’s node does not appear in the final-paper steps'});
+  }
+  const qs = c.tree.map(t => t.question);
+  if(new Set(qs).size !== qs.length) out.push({sec:'tree', level:'err', text:'A tree question is answered twice'});
+  if(!c.tree.length) out.push({sec:'tree', level:'warn', text:'No tree question answered yet (record each question the paper answers)'});
+  c.tree.forEach(t => need(t.answer, 'Tree question ' + t.question, 'tree', 'answer is empty'));
+  need(c.end.page, 'End', 'end'); need(c.end.claim, 'End', 'end', 'state the claim in one sentence');
+  need(c.decisive_move.page, 'Decisive move', 'end'); need(c.decisive_move.sentence, 'Decisive move', 'end', 'one sentence');
+  need(c.gates.evidence, 'Gates', 'gates', 'give the evidence for the three answers');
+  c.imports.forEach((x,i) => { need(x.field, 'Import ' + (i+1), 'extras', 'field is empty'); need(x.item, 'Import ' + (i+1), 'extras', 'item is empty'); need(x.page, 'Import ' + (i+1), 'extras'); });
+  c.novelty_claims.forEach((x,i) => { need(x.quote, 'Novelty claim ' + (i+1), 'extras', 'quote is empty'); need(x.page, 'Novelty claim ' + (i+1), 'extras');
+    if(words(x.quote) > 25) out.push({sec:'extras', level:'err', text:'Novelty claim ' + (i+1) + ' is over 25 words'}); });
+  c.disagreements.forEach((x,i) => { const w = 'Disagreement ' + (i+1); need(x.target, w, 'disagree', 'target is empty'); need(x.support, w, 'disagree', 'support is empty');
+    need(x.quote, w, 'disagree', 'quote is empty'); need(x.page, w, 'disagree'); if(words(x.quote) > 25) out.push({sec:'disagree', level:'err', text: w + ' quote is over 25 words'}); });
+  c.alternatives_considered.forEach((x,i) => { const w = 'Alternative ' + (i+1); need(x.chosen, w, 'disagree', 'what was chosen is empty');
+    need(x.alternatives, w, 'disagree', 'the alternatives are empty'); need(x.reason, w, 'disagree', 'reason is empty (write "none given" if the paper gives none)'); need(x.page, w, 'disagree'); });
+  c.v_checks.forEach((x,i) => { const w = 'V check ' + (i+1); need(x.page, w, 'vchecks'); if(words(x.quote) > 25) out.push({sec:'vchecks', level:'err', text: w + ' quote is over 25 words'}); });
+  const hasV = c.sequences.some(s => s.kind === 'final_paper' && s.steps.some(st => st.node === 'V'));
+  if(hasV && !c.v_checks.some(x => x.performed_here === true)) out.push({sec:'vchecks', level:'err', text:'The final paper has V steps: list at least one check performed in this paper (section 3a)'});
+  if(!hasV && c.v_checks.some(x => x.performed_here === true)) out.push({sec:'vchecks', level:'warn', text:'Checks performed here but no V step in the final paper: add the V step(s) or mark the checks as cited'});
+  if(!String(c.limits||'').trim()) out.push({sec:'extras', level:'warn', text:'Limits: say what the paper does not show about its own process (or write "none noted")'});
+  return out;
+}
+function checkRatings(r0){
+  const r = ratingsOut(r0);
+  const out = []; const se = []; vSchema(RS, r, [], se);
+  se.forEach(([p,m]) => out.push({sec:'ratings', level:'err', text: p.map(x => String(x).replace(/_/g,' ')).join(' › ') + ' ' + m}));
+  ['atomic_claim','closest_precedent','new_component'].forEach(f => { if(!String(r.novelty[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Novelty: ' + f.replace(/_/g,' ') + ' is empty'}); });
+  ['starting_state','gain','magnitude','evidence'].forEach(f => { if(!String(r.advance[f]||'').trim()) out.push({sec:'ratings', level:'err', text:'Advance: ' + f.replace(/_/g,' ') + ' is empty'}); });
+  if(!r.advance.roles.length) out.push({sec:'ratings', level:'err', text:'Advance: choose at least one contribution role'});
+  if(!(r.minutes_spent > 0)) out.push({sec:'ratings', level:'err', text:'Minutes spent: enter the time you spent (the recorded active time is shown under the field)'});
+  const a = r.advance, E = t => out.push({sec:'ratings', level:'err', text: t});
+  if(!HAS_VERDICT){ if(!(a.score >= 1)) E('Advance score: choose a score'); return out; }
+  if(a.verdict !== 'unassessable' && !(a.score >= 1)) E('Advance score: choose a score');
+  if(!String(a.verdict_reasons||'').trim()) E('Verdict: give the reasons (two to four sentences naming the decisive criteria and the evidence, with locations)');
+  if(a.verdict === 'achieved'){
+    const iv = impliedVerdict(a);
+    if(iv === 'not_demonstrated') E('Verdict achieved needs every criterion met (W3 may be not applicable): ' + CRITS.filter(k => a.verdict_criteria[k] === 'not_met').join(', ') + ' not met');
+    if(a.score === 1) E('Achieved takes an advance score of 2 to 5 (a score of 1 means no warranted gain)');
+  }
+  if(a.verdict === 'not_demonstrated'){
+    if(impliedVerdict(a) === 'achieved') E('Verdict not demonstrated needs at least one criterion not met; all six are met, so the verdict is achieved');
+    if(a.score > 1) E('Not demonstrated takes an advance score of 1');
+  }
+  if(a.verdict === 'unassessable' && !CONDS.includes(a.unassessable_condition)) E('Unassessable: name the condition (U1 to U5)');
+  if(r.eligible_in_my_view === 'no' && !(a.verdict === 'unassessable' && a.unassessable_condition === 'U4')) E('Eligibility is no: the verdict is unassessable, condition U4 (still complete every field)');
+  if(a.unassessable_condition === 'U4' && r.eligible_in_my_view !== 'no') E('U4 means not a primary Earth-science research article: answer no to the eligibility question, or choose another condition');
+  if(a.verdict === 'unassessable' && a.unassessable_condition === 'U5') out.push({sec:'ratings', level:'warn', text:'U5 is for use sparingly: say exactly what is missing in the verdict reasons'});
+  return out;
+}
+function errorCount(d){ return checkCoding(d.coding).filter(x => x.level === 'err').length + checkRatings(d.ratings).filter(x => x.level === 'err').length; }
+function paperStatus(k){
+  const raw = store.get(draftKey(k), null);
+  if(!raw) return {label:'not started', cls:''};
+  const d = normalize(raw, P.papers.find(x => x.key === k)); const e = errorCount(d);
+  const sv = d.savedFiles;
+  if(sv && sv.complete && sv.hash === contentHash(d)) return {label: sv.how === 'folder' ? 'saved' : 'downloaded: move both files to my_codings', cls: sv.how === 'folder' ? 'ok' : 'warn'};
+  if(sv && sv.hash !== contentHash(d)) return {label:'changed since last save', cls:'warn'};
+  if(!e) return {label:'complete, not saved', cls:'warn'};
+  return {label:'in progress (' + e + ' to fix)', cls:'err'};
+}
+
+// ---------- shell ----------
+document.getElementById('themeBtn').onclick = () => { const cur = document.documentElement.getAttribute('data-theme'); const dark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark'); store.set(NS+'theme', dark ? 'light':'dark'); };
+const th = store.get(NS+'theme', null); if(th) document.documentElement.setAttribute('data-theme', th);
+const drawer = document.getElementById('drawer');
+document.getElementById('drawerClose').onclick = () => drawer.classList.remove('on');
+drawer.onclick = e => { if(e.target === drawer) drawer.classList.remove('on'); };
+document.addEventListener('keydown', e => { if(e.key === 'Escape') drawer.classList.remove('on'); });
+function openDrawer(){ document.getElementById('drawerBody').innerHTML = helpHTML(); drawer.classList.add('on'); }
+
+function go(v, k){ flush(); view = v; if(k !== undefined) current = k; readOnly = false; store.set(NS+'view', view); store.set(NS+'current', current); render(); window.scrollTo(0,0); }
+function renderTabs(){
+  const tabs = MODE_APP === 'coordinator' ? [['coord','Agreement'],['help','Codebook']] : [['queue','My papers'],['code','Code'],['help','Codebook']];
+  document.getElementById('tabs').innerHTML = tabs.map(([v,t]) => `<button data-v="${v}" class="${view===v?'on':''}" ${v==='code'&&!current?'disabled':''}>${t}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => go(b.dataset.v));
+  document.getElementById('who').textContent = MODE_APP === 'coordinator' ? 'Coordinator build' : coderName(coder);
+  document.getElementById('apptitle').textContent = MODE_APP === 'coordinator' ? 'Gold-set agreement' : 'Gold-set coder';
+}
+function banners(){ return `<div class="banner err" id="storageBanner" style="display:${storageOk?'none':'block'}">This browser is not keeping drafts (storage blocked or full). Save files now and often; use a normal, not a private, window.</div>`; }
+function render(){
+  renderTabs();
+  if(MODE_APP === 'coordinator'){ return view === 'help' ? renderHelp() : renderCoord(); }
+  if(view === 'code' && current) return renderCode();
+  if(view === 'help') return renderHelp();
+  renderQueue();
+}
+
+// ---------- queue ----------
+function renderQueue(){
+  const mine = P.order;
+  const rows = mine.map((k, i) => {
+    const p = P.papers.find(x => x.key === k), st = paperStatus(k);
+    return `<tr data-k="${k}"><td class="num">${i+1}</td><td>${esc(p.title)}<div class="small">2022 · ${esc(p.key)}</div></td>
+      <td>${p.pdf ? `<a href="${esc(p.pdf)}" target="_blank">PDF</a>` : '<span class="small">no PDF yet</span>'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank">located text</a>` : ''}</td><td><span class="pill ${st.cls}">${st.label}</span></td></tr>`;
+  }).join('');
+  const done = mine.filter(k => paperStatus(k).cls === 'ok').length;
+  app.innerHTML = `${banners()}
+  <div class="card"><div class="rowflex"><h2 style="flex:1">My papers</h2><span class="small">${done} of ${mine.length} saved</span>
+    <button id="pick">${dirHandle ? 'Saving to: ' + esc(dirHandle.name) : 'Choose the my_codings folder'}</button>
+    <button id="backup">Back up all drafts</button><label class="small" style="margin:0;cursor:pointer;text-decoration:underline">restore a backup<input type="file" id="restore" accept=".json" style="display:none"></label></div>
+    <p class="small">Work in this order. Open the PDF (or the located text) beside this window; both are in this packet. The app hides each paper’s journal and DOI; the PDF still shows them. Judge the work, not the venue: prestige is not evidence. Do not look the paper up online (publisher page, Google Scholar, the authors’ pages) before you have saved your ratings: those pages show the venue’s standing and citation counts. Save into this packet’s <code>my_codings</code> folder; when you finish a batch, send that folder to Marine.</p>
+    <table class="queue"><thead><tr><th>#</th><th>Paper</th><th>Full text</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  app.querySelectorAll('tr[data-k]').forEach(tr => tr.onclick = e => { if(e.target.tagName === 'A') return; go('code', tr.dataset.k); });
+  document.getElementById('pick').onclick = pickFolder;
+  document.getElementById('backup').onclick = backupAll;
+  document.getElementById('restore').onchange = restoreBackup;
+}
+async function restoreHandle(){
+  const h = await idb.get('dir.' + NS);
+  if(h && h.queryPermission){ try{ const st = await h.queryPermission({mode:'readwrite'}); if(st === 'granted' || st === 'prompt') dirHandle = h; }catch(e){} }
+}
+async function pickFolder(){
+  if(!window.showDirectoryPicker){ notice('This browser cannot write into a folder. Use Chrome or Edge, or move each downloaded file into my_codings yourself.'); return false; }
+  try{ dirHandle = await window.showDirectoryPicker({mode:'readwrite', id:'goldcoder'}); await idb.set('dir.' + NS, dirHandle); if(view === 'queue') render(); return true; }catch(e){ return false; }
+}
+function notice(t, cls){ const el = document.createElement('div'); el.className = 'banner' + (cls ? ' ' + cls : ''); el.textContent = t; app.prepend(el); window.scrollTo(0,0); setTimeout(() => el.remove(), 9000); }
+function download(name, obj){
+  const blob = new Blob([JSON.stringify(obj, null, 1) + '\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+async function writeFolder(name, obj){
+  if(!dirHandle) return false;
+  try{
+    if(dirHandle.queryPermission && (await dirHandle.queryPermission({mode:'readwrite'})) !== 'granted'){ if((await dirHandle.requestPermission({mode:'readwrite'})) !== 'granted') return false; }
+    const fh = await dirHandle.getFileHandle(name, {create:true}); const w = await fh.createWritable(); await w.write(JSON.stringify(obj, null, 1) + '\n'); await w.close(); return true;
+  }catch(e){ return false; }
+}
+function backupAll(){
+  flush();
+  const all = {}; store.keys(NS + 'draft.' + coder + '.').forEach(k => all[k.split('.').pop()] = store.get(k, null));
+  download('gold-coder-backup.' + coder + '.' + localDate() + '.json', {coder, packet: P.meta.packet, made: new Date().toISOString(), drafts: all});
+}
+function restoreBackup(ev){
+  const f = ev.target.files[0]; ev.target.value = ''; if(!f) return;
+  f.text().then(t => {
+    const b = JSON.parse(t);
+    if(b.coder !== coder){ notice('That backup belongs to ' + coderName(b.coder) + ', not to you. Nothing was restored.', 'err'); return; }
+    let taken = 0, kept = 0;
+    Object.entries(b.drafts || {}).forEach(([k, d]) => {
+      if(!P.order.includes(k) || !d) return;
+      const local = store.get(draftKey(k), null);
+      if(!local || (d.updated || '') > (local.updated || '')){ store.set(draftKey(k), d); taken++; } else kept++;
+    });
+    render(); notice(`Restored ${taken} draft(s) from the backup; kept ${kept} newer draft(s) already in this browser.`);
+  }).catch(() => notice('Could not read that backup file.', 'err'));
+}
+
+// ---------- coding form ----------
+const SECTIONS = [['doc','Document'],['entry','Entry'],['steps','Steps'],['tree','Tree reading'],['end','End and decisive move'],['gates','Gates'],['vchecks','V checks (NASEM)'],['extras','Imports, novelty claims, limits'],['disagree','Disagreements and alternatives'],['ratings','Ratings (blind)']];
+function opt(list, val, labelFn, blank){ return (blank ? `<option value="">${blank}</option>` : '') + list.map(v => `<option value="${esc(v)}" ${v===val?'selected':''}>${esc((labelFn||lab)(v))}</option>`).join(''); }
+const nodeLabel = id => id + ' · ' + NODE[id].verb;
+const modeLabel = id => MODE[id] ? MODE[id].title : id;
+const CHOOSE = 'choose…';
+
+function renderCode(){
+  const p = P.papers.find(x => x.key === current);
+  if(!p || !P.order.includes(current)){ go('queue'); return; }
+  D = loadDraft(current); lastActive = Date.now();
+  app.innerHTML = `${banners()}<div class="banner err" id="tabBanner" style="display:none">This paper was changed in another tab or window. Editing is stopped here so the two do not overwrite each other. <button id="reloadDraft">Load the latest version</button></div>
+  <div class="layout">
+    <aside class="side card paper"><div class="small">Paper</div><h3 style="margin:2px 0 6px">${esc(p.title)}</h3>
+      <div class="small">2022 · ${esc(p.key)}</div>
+      <div class="small" style="margin-top:4px">The app hides the journal and DOI. The PDF shows them: judge the work, not the venue, and do not look the paper up.</div>
+      <div class="small">${p.pdf ? `<a href="${esc(p.pdf)}" target="_blank">open PDF</a>` : 'no PDF in this packet'}${p.xml_txt ? ` · <a href="${esc(p.xml_txt)}" target="_blank">located text</a>` : ''}</div>
+      <div class="rowflex" style="margin-top:8px"><button class="ghost" id="backBtn">← my papers</button><button class="ghost" id="cbBtn">Codebook</button></div></aside>
+    <section id="form"></section>
+    <aside class="side card checksbox"><nav class="secnav" id="secnav"></nav>
+      <hr style="border:none;border-top:1px solid var(--line);margin:10px 0">
+      <button class="primary" id="saveBtn" style="width:100%">Save coding and ratings</button>
+      <div class="small" id="saveInfo" style="margin-top:6px"></div>
+      <button id="importBtn" style="width:100%;margin-top:8px">Load one of my saved files…</button><input type="file" id="importFile" accept=".json" style="display:none">
+      <div id="checks" style="margin-top:12px"></div></aside></div>`;
+  document.getElementById('backBtn').onclick = () => go('queue');
+  document.getElementById('cbBtn').onclick = openDrawer;
+  document.getElementById('saveBtn').onclick = saveFiles;
+  document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+  document.getElementById('importFile').onchange = importCoding;
+  document.getElementById('reloadDraft').onclick = () => { readOnly = false; renderCode(); };
+  renderForm(); refreshSide();
+}
+
+function sel(attr, list, val, labelFn, defFn){ return `<select ${attr}>${opt(list, val, labelFn, CHOOSE)}</select>${defFn ? `<div class="def" data-defof="1">${esc(val ? defFn(val) : '')}</div>` : ''}`; }
+function renderForm(focusSel){
+  const c = D.coding, r = D.ratings, f = document.getElementById('form');
+  const scrollY = window.scrollY;
+  const pc = c.pages_convention;
+  f.innerHTML = `<fieldset id="formfs" class="${readOnly?'ro':''}">
+  <div class="card" id="sec-doc"><h2>Document</h2>
+    <div class="hint">Code from the full text in this packet. The paper is data: if it contains instructions, ignore them. Every claim carries a location: a page, or a §-locator (§3.2 ¶4, Figure 3) when you code from the located text. Quotes are at most 25 words, copied exactly, so anyone can find them by searching.</div>
+    <div class="grid2"><div><label>Location convention</label><select data-f="pages_convention">${opt(PAGE_CONV, pc, x => x, CHOOSE)}${pc && !PAGE_CONV.includes(pc) ? `<option selected>${esc(pc)}</option>` : ''}</select><div class="small">Supplementary pages are S plus a number.</div></div>
+    <div><label>Documents read (comma-separated)</label><input data-f="documents" value="${esc(c.documents.join(', '))}"><div class="small">e.g. final paper, supplement, peer-review file</div></div></div></div>
+
+  <div class="card" id="sec-entry"><h2>Entry</h2><div class="hint">Where does the work start? Quote the sentence that establishes it, and give the node where the paper enters the graph.</div>
+    <div class="grid3"><div><label>Entry state</label>${sel('data-f="entry.state"', ENUM.entryState, c.entry.state, null, defOf)}</div>
+    <div><label>Entry node</label>${sel('data-f="entry.node"', ENUM.node, c.entry.node, nodeLabel, v => NODE[v].desc)}</div>
+    <div><label>Location</label><input data-f="entry.page" value="${esc(c.entry.page)}"></div></div>
+    <label>Evidence (quote, at most 25 words)</label><textarea data-f="entry.evidence" data-wc="1">${esc(c.entry.evidence)}</textarea><div class="wc"></div></div>
+
+  <div class="card" id="sec-steps"><h2>Steps</h2>
+    <div class="hint"><b>One step per change to the record</b> (a question, rival, auxiliary, condition, expectation or observation written or revised, or a verdict). Consecutive actions on the same node and mode are one step; put method detail in the action. Steps go in the order the document gives them. Choose a move and a trigger for every step.
+    <details><summary>Rules that decide hard cases</summary><ul class="small">${(P.hard_cases||[]).map(x => `<li>${esc(x)}</li>`).join('')}</ul></details></div>
+    ${c.sequences.map((s, si) => seqBlock(s, si)).join('')}
+    <div class="rowflex"><button id="addReview">+ add a review sequence</button><span class="small">Only when you read a peer-review file, open discussion or earlier version.</span></div></div>
+
+  <div class="card" id="sec-tree"><h2>Tree reading</h2><div class="hint">For each question of the decision tree that the paper answers, record the answer in a few words and the mode the answer called (choose "none" only if no mode was called).</div>
+    <table class="tree"><thead><tr><th style="width:34%">Question</th><th style="width:70px">Answered</th><th>Answer</th><th style="width:200px">Mode called</th></tr></thead><tbody>
+    ${P.questions.filter(q => ENUM.treeQ.includes(q.n)).map(q => { const t = c.tree.find(x => x.question === q.n); return `<tr><td><b>${esc(q.n)}.</b> ${esc(q.q)}<div class="small">${esc(q.sub)}</div></td>
+      <td><input type="checkbox" data-tq="${esc(q.n)}" ${t?'checked':''} style="width:auto" aria-label="question ${esc(q.n)} answered"></td>
+      <td>${t ? `<input data-tqa="${esc(q.n)}" value="${esc(t.answer)}">` : ''}</td>
+      <td>${t ? `<select data-tqm="${esc(q.n)}">${opt(ENUM.treeMode, t.mode_called, m => m==='none'?'none':modeLabel(m), CHOOSE)}</select>` : ''}</td></tr>`; }).join('')}
+    </tbody></table></div>
+
+  <div class="card" id="sec-end"><h2>End and decisive move</h2>
+    <div class="grid3"><div><label>Outcome</label>${sel('data-f="end.outcome"', ENUM.outcome, c.end.outcome, null, defOf)}</div>
+    <div><label>Claim status</label>${sel('data-f="end.claim_status"', ENUM.status, c.end.claim_status, null, defOf)}</div>
+    <div><label>Location</label><input data-f="end.page" value="${esc(c.end.page)}"></div></div>
+    <label>The headline claim, one sentence</label><textarea data-f="end.claim">${esc(c.end.claim)}</textarea>
+    <div class="small">A contradicted claim is a success; no conclusion is failure. Sub-claims at other statuses go in Limits.</div>
+    <h3 style="margin-top:14px">Decisive move</h3><div class="small">The node and mode without which the claim would not exist.</div>
+    <div class="grid3"><div><label>Node</label>${sel('data-f="decisive_move.node"', ENUM.node, c.decisive_move.node, nodeLabel, v => NODE[v].desc)}</div>
+    <div><label>Mode</label>${sel('data-f="decisive_move.mode"', ENUM.mode, c.decisive_move.mode, modeLabel, v => MODE[v] ? MODE[v].purpose : '')}</div>
+    <div><label>Location</label><input data-f="decisive_move.page" value="${esc(c.decisive_move.page)}"></div></div>
+    <label>One sentence</label><textarea data-f="decisive_move.sentence">${esc(c.decisive_move.sentence)}</textarea>
+    <label>Composition</label>${sel('data-f="composition"', ENUM.composition, c.composition, null, defOf)}</div>
+
+  <div class="card" id="sec-gates"><h2>Gates</h2>
+    <div class="grid3"><div><label>Action</label>${sel('data-f="gates.action"', ENUM.gate, c.gates.action)}<div class="def">${esc(defOf('gate_action'))}</div></div>
+    <div><label>Claim</label>${sel('data-f="gates.claim"', ENUM.gate, c.gates.claim)}<div class="def">${esc(defOf('gate_claim'))}</div></div>
+    <div><label>Registration</label>${sel('data-f="gates.registration"', ENUM.gate, c.gates.registration)}<div class="def">${esc(defOf('gate_registration'))}</div></div></div>
+    <label>Evidence for the three answers</label><textarea data-f="gates.evidence">${esc(c.gates.evidence)}</textarea></div>
+
+  <div class="card" id="sec-vchecks"><h2>V checks (NASEM 2019)</h2>
+    <div class="hint">List every check of a result, one entry per check. V is full when at least one check done in this paper is not a reproduction; partial when the only checks done here are reproductions. Triangulation is computed later from the kinds. ${esc(['v_reproduction','v_replication','v_method','v_robustness','v_control','v_generalization'].map(k => lab(k) + ': ' + defOf(k)).join(' '))}</div>
+    ${c.v_checks.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Kind</label><select data-l="v_checks.${i}.kind">${opt(ENUM.vkind, x.kind, null, CHOOSE)}</select></div>
+      <div><label>Done in this paper?</label><select data-vph="${i}"><option value="">${CHOOSE}</option><option value="yes" ${x.performed_here===true?'selected':''}>yes, performed here</option><option value="no" ${x.performed_here===false?'selected':''}>no, cited</option></select></div>
+      <div><label>Location</label><input data-l="v_checks.${i}.page" value="${esc(x.page)}"></div><div></div></div>
+      <label>Quote (at most 25 words)</label><input data-l="v_checks.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div>
+      <button class="ghost" data-del="v_checks.${i}">remove</button></div>`).join('')}
+    <button data-add="v_checks">+ V check</button></div>
+
+  <div class="card" id="sec-extras"><h2>Imports, novelty claims, limits</h2>
+    <h3>Imports from outside Earth science</h3><div class="small">Concepts, methods, instruments or data, with the field they come from.</div>
+    ${c.imports.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Field</label><input data-l="imports.${i}.field" value="${esc(x.field)}"></div><div><label>Item</label><input data-l="imports.${i}.item" value="${esc(x.item)}"></div>
+      <div><label>Kind</label><select data-l="imports.${i}.kind">${opt(ENUM.importKind, x.kind, null, CHOOSE)}</select></div><div><label>Location</label><input data-l="imports.${i}.page" value="${esc(x.page)}"></div></div>
+      <button class="ghost" data-del="imports.${i}">remove</button></div>`).join('')}
+    <button data-add="imports">+ import</button>
+    <h3 style="margin-top:14px">Novelty claims</h3><div class="small">The authors’ own "first" or "previously unknown" statements, quoted.</div>
+    ${c.novelty_claims.map((x,i) => `<div class="listitem"><div class="grid2" style="grid-template-columns:1fr 130px"><div><label>Quote</label><input data-l="novelty_claims.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div></div><div><label>Location</label><input data-l="novelty_claims.${i}.page" value="${esc(x.page)}"></div></div>
+      <button class="ghost" data-del="novelty_claims.${i}">remove</button></div>`).join('')}
+    <button data-add="novelty_claims">+ novelty claim</button>
+    <label style="margin-top:14px">Limits: what the document does not show about its own process; mark inference as inference; sub-claims at other statuses</label><textarea data-f="limits">${esc(c.limits)}</textarea></div>
+
+  <div class="card" id="sec-disagree"><h2>Disagreements and alternatives</h2>
+    <h3>Disagreements with published work</h3><div class="small">Every place the paper sets its result against published work or a community position.</div>
+    ${c.disagreements.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Target (as named)</label><input data-l="disagreements.${i}.target" value="${esc(x.target)}"></div>
+      <div><label>Kind</label><select data-l="disagreements.${i}.kind">${opt(ENUM.disKind, x.kind, null, CHOOSE)}</select></div>
+      <div><label>Stance</label><select data-l="disagreements.${i}.stance">${opt(ENUM.disStance, x.stance, null, CHOOSE)}</select></div><div><label>Location</label><input data-l="disagreements.${i}.page" value="${esc(x.page)}"></div></div>
+      <label>Support (one sentence on the evidence)</label><input data-l="disagreements.${i}.support" value="${esc(x.support)}">
+      <label>Quote</label><input data-l="disagreements.${i}.quote" data-wc="1" value="${esc(x.quote)}"><div class="wc"></div>
+      <button class="ghost" data-del="disagreements.${i}">remove</button></div>`).join('')}
+    <button data-add="disagreements">+ disagreement</button>
+    <h3 style="margin-top:14px">Alternatives considered</h3><div class="small">Every fork the authors say they chose among: a method, a parameter, a model, a dataset, a rival. Forks the paper does not mention are not coded.</div>
+    ${c.alternatives_considered.map((x,i) => `<div class="listitem"><div class="grid4"><div><label>Node</label><select data-l="alternatives_considered.${i}.node">${opt(ENUM.node, x.node, nodeLabel, CHOOSE)}</select></div>
+      <div><label>Chosen</label><input data-l="alternatives_considered.${i}.chosen" value="${esc(x.chosen)}"></div><div><label>Alternatives (as named)</label><input data-l="alternatives_considered.${i}.alternatives" value="${esc(x.alternatives)}"></div>
+      <div><label>Location</label><input data-l="alternatives_considered.${i}.page" value="${esc(x.page)}"></div></div>
+      <div class="grid2" style="grid-template-columns:1fr 230px"><div><label>Reason (as given, or "none given")</label><input data-l="alternatives_considered.${i}.reason" value="${esc(x.reason)}"></div>
+      <div><label>Effect of the alternative reported?</label><select data-l="alternatives_considered.${i}.effect_reported">${opt(ENUM.effect, x.effect_reported, null, CHOOSE)}</select></div></div>
+      <button class="ghost" data-del="alternatives_considered.${i}">remove</button></div>`).join('')}
+    <button data-add="alternatives_considered">+ alternative</button></div>
+
+  <div class="card" id="sec-ratings"><h2>Ratings (blind)</h2>
+    <div class="hint">Rate what the paper contributed, judged against what the field knew, could do and had available before submission (about 2021), without hindsight. Do not look up its citations, its publisher page or any metric before rating. Judge the work, not the writing or the venue. Novelty follows the Novelty Dossier v1 and advance the Scientific Advance Profile v1 (rubrics page of the seminar book); the verdict and its six criteria are the same as the model coder’s (advance rubric 1.0.1, sections 4 to 7). Definitions are under each control and in the Codebook drawer.</div>
+    <div class="grid2" style="margin-bottom:6px"><div><label>Is this an Earth-science research article, in your view? (second check of the screen)</label><select data-r="eligible_in_my_view">${opt(['yes','no','unsure'], r.eligible_in_my_view, null, CHOOSE)}</select></div>
+    <div class="small" style="align-self:end">A primary research article (not a review, comment or editorial) whose object of study is Earth science. If no, still finish, and say why in Notes.</div></div>
+    <div class="grid3"><div><label>Your familiarity with this subfield</label><select data-r="familiarity">${opt(['outside_my_field','adjacent','my_field'], r.familiarity, null, CHOOSE)}</select></div>
+    <div><label>Minutes spent (coding and rating)</label><input type="number" min="0" step="1" data-r="minutes_spent" value="${r.minutes_spent || ''}"><div class="def" id="activeTime"></div></div>
+    <div><label>Impact forecast, against 2022 papers in its subfield</label><select data-r="impact_forecast">${opt(['below_median','around_median','top_quartile','top_decile','no_forecast'], r.impact_forecast, null, CHOOSE)}</select></div></div>
+    <h3 style="margin-top:14px">Novelty</h3>
+    <div class="grid2"><div><label>Atomic claim: the single contribution being judged</label><textarea data-r="novelty.atomic_claim">${esc(r.novelty.atomic_claim)}</textarea></div>
+    <div><label>Kind of claim</label><select data-r="novelty.claim_kind">${opt(['observation','method','concept','explanation','connection','question'], r.novelty.claim_kind, null, CHOOSE)}</select>
+      <label>Judgment against the closest precedent</label><select data-r="novelty.judgment">${opt(['exact_precedent','close_precedent','component_precedent','apparently_new_component','unresolved'], r.novelty.judgment, null, CHOOSE)}</select></div></div>
+    <div class="grid2"><div><label>Closest precedent you know (work and overlapping result)</label><textarea data-r="novelty.closest_precedent">${esc(r.novelty.closest_precedent)}</textarea></div>
+    <div><label>New component: what goes beyond the precedent, in which respect</label><textarea data-r="novelty.new_component">${esc(r.novelty.new_component)}</textarea></div></div>
+    <label>Novelty score</label><div class="scale">${scale('novelty', r.novelty.score, ['Routine: known approach, known question, expected result','A new case or setting for a known approach','A new combination, or a clearly new result in a known frame','A new question, phenomenon, method or capability','Redirects how a problem is approached'])}</div>
+    <div style="max-width:260px"><label>Confidence</label><select data-r="novelty.confidence">${opt(['low','medium','high'], r.novelty.confidence, null, CHOOSE)}</select></div>
+    <h3 style="margin-top:14px">Advance</h3>
+    <div class="grid2"><div><label>Starting state: what was known, possible and available before</label><textarea data-r="advance.starting_state">${esc(r.advance.starting_state)}</textarea></div>
+    <div><label>Gain: what can now be known, explained, measured, predicted or investigated</label><textarea data-r="advance.gain">${esc(r.advance.gain)}</textarea>${HAS_VERDICT ? '<div class="def">The gain the verdict rests on: of the gains that meet all six criteria below, the one with the largest change from the starting state (ties: the headline claim first); if none does, the headline gain.</div>' : ''}</div></div>
+    <div class="grid2"><div><label>Magnitude and significance</label><textarea data-r="advance.magnitude">${esc(r.advance.magnitude)}</textarea><div class="def">The change from the starting state, not the result value: before -> after (units), against the scale it matters at; then why it matters. Or "not quantifiable:" and the reason.</div></div>
+    <div><label>Evidence: what warrants the gain, at what uncertainty and scope</label><textarea data-r="advance.evidence">${esc(r.advance.evidence)}</textarea></div></div>
+    ${HAS_VERDICT ? verdictBlock(r.advance) : ''}
+    <label>Contribution role (one or more)</label><div class="checks">${ROLES.map(x => `<label title="${esc(defOf('role_' + x))}"><input type="checkbox" data-role="${x}" ${r.advance.roles.includes(x)?'checked':''}>${x}</label>`).join('')}</div>
+    <label>Advance score${HAS_VERDICT ? ' (achieved: 2 to 5; not demonstrated: 1; unassessable: no score)' : ''}</label><div class="scale">${scale('advance', HAS_VERDICT && r.advance.verdict === 'unassessable' ? 0 : r.advance.score, ['No warranted gain beyond what was known','A small, local gain','A clear gain for one subfield','A substantial gain others will build on','Resolves a recognized problem or opens a new line of work'], HAS_VERDICT && r.advance.verdict === 'unassessable')}</div>
+    ${NOTES.length ? `<details style="margin-top:6px" open><summary>Notes that bind the ratings (the same notes the model coder follows)</summary><ul class="small">${NOTES.map(x => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
+    <div style="max-width:260px"><label>Confidence</label><select data-r="advance.confidence">${opt(['low','medium','high'], r.advance.confidence, null, CHOOSE)}</select></div>
+    <label>Notes</label><textarea data-r="notes">${esc(r.notes)}</textarea></div></fieldset>`;
+  bindForm();
+  window.scrollTo(0, scrollY);
+  if(focusSel){ const el = f.querySelector(focusSel); if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:'nearest'}); } }
+  showActive();
+}
+function showActive(){ const el = document.getElementById('activeTime'); if(el && D) el.textContent = 'Recorded active time on this paper: ' + Math.round(D.activeMs / 60000) + ' min'; }
+function scale(name, val, anchors, off){ return anchors.map((a,i) => `<label${off ? ' style="opacity:.45;cursor:default"' : ''}><input type="radio" name="sc-${name}" data-score="${name}" value="${i+1}" ${val===i+1?'checked':''} ${off?'disabled':''}><span><b>${i+1}</b> ${esc(a)}</span></label>`).join(''); }
+const critOpts = k => RA.verdict_criteria.properties[k].enum;
+function verdictBlock(a){
+  const iv = impliedVerdict(a), un = a.verdict === 'unassessable';
+  const crit = CRITS.map(k => `<div><label>${esc(lab('crit_' + k))}</label><select data-crit="${k}" ${un?'disabled':''}>${opt(critOpts(k), a.verdict_criteria[k], v => v.replace(/_/g,' '), CHOOSE)}</select>
+    <div class="def">${k === 'M2' ? `<details><summary style="font-size:12.5px">by gain type</summary>${esc(defOf('crit_M2'))}</details>` : esc(defOf('crit_' + k))}</div></div>`).join('');
+  return `<h3 style="margin-top:14px">Verdict</h3>
+    <div class="hint">Decide first whether the paper can be assessed (U1 to U5). If it can, judge the six criteria for the gain written above, then the verdict. The verdict is achieved when that gain meets all six (W3 may be not applicable), and not demonstrated when every gain in the paper fails at least one. Unassessable is not a hedge for a hard case: if you can judge, judge, and lower the confidence.</div>
+    <div class="grid3">${crit}</div>
+    <div class="grid2" style="margin-top:6px"><div><label>Verdict</label><select data-verdict="1">${opt(VERDICTS, a.verdict, v => lab('verdict_' + v), CHOOSE)}</select><div class="def">${esc(a.verdict ? defOf('verdict_' + a.verdict) : '')}</div>
+      ${iv && !un ? `<div class="small">Your criteria imply: <b>${esc(lab('verdict_' + iv))}</b></div>` : ''}</div>
+    <div>${un ? `<label>Unassessable condition</label><select data-r="advance.unassessable_condition" data-cond="1">${opt(CONDS, a.unassessable_condition, v => lab('unassessable_' + v), CHOOSE)}</select><div class="def">${esc(a.unassessable_condition && a.unassessable_condition !== 'none' ? defOf('unassessable_' + a.unassessable_condition) : '')}</div>` : ''}</div></div>
+    <label>Verdict reasons: two to four sentences naming the decisive criteria and the evidence, with locations</label><textarea data-r="advance.verdict_reasons">${esc(a.verdict_reasons)}</textarea>`;
+}
+function seqBlock(s, si){
+  const isFP = s.kind === 'final_paper';
+  return `<div class="listitem" style="border-color:${isFP?'var(--accent)':'var(--line)'}"><div class="rowflex"><h3 style="flex:1">${isFP ? 'Final paper' : 'Review sequence'}</h3>
+    ${isFP ? '' : `<label class="small" style="margin:0">source document <input data-seqsrc="${si}" value="${esc(s.source_document)}" style="width:240px;display:inline-block"></label><button class="ghost" data-delseq="${si}">remove sequence</button>`}</div>
+    ${s.steps.map((st, i) => `<div class="step" data-si="${si}" data-i="${i}"><div class="n">${i+1}</div>
+      <select data-s="node" title="${st.node ? esc(NODE[st.node].desc) : 'node'}" aria-label="step ${i+1} node">${opt(ENUM.node, st.node, nodeLabel, 'node…')}</select>
+      <select data-s="mode" title="${st.mode && MODE[st.mode] ? esc(MODE[st.mode].purpose) : 'mode'}" aria-label="step ${i+1} mode">${opt(ENUM.mode, st.mode, modeLabel, 'mode…')}</select>
+      <textarea data-s="action" placeholder="What the authors did, one sentence" style="min-height:40px">${esc(st.action)}</textarea>
+      <input data-s="page" placeholder="location" value="${esc(st.page)}">
+      <div class="row2"><select data-s="move" aria-label="step ${i+1} move">${opt(ENUM.move, st.move, null, 'move…')}</select><select data-s="trigger" aria-label="step ${i+1} trigger">${opt(ENUM.trigger, st.trigger, null, 'trigger…')}</select>
+        <div><input data-s="quote" data-wc="1" placeholder="quote, at most 25 words (or leave empty)" value="${esc(st.quote)}"><div class="wc"></div></div>
+        <div class="rowflex" style="gap:2px"><button class="ghost" data-act="up" title="move up" aria-label="move step up">↑</button><button class="ghost" data-act="down" title="move down" aria-label="move step down">↓</button><button class="ghost" data-act="ins" title="insert a step below" aria-label="insert step below">+</button><button class="ghost" data-act="del" title="delete" aria-label="delete step">×</button></div></div></div>`).join('')}
+    <button data-addstep="${si}">+ step</button></div>`;
+}
+function setPath(obj, path, val){ const ks = path.split('.'); let o = obj; ks.slice(0,-1).forEach(k => o = o[k]); o[ks[ks.length-1]] = val; }
+function wc(el){ const box = el.parentElement.querySelector('.wc') || el.nextElementSibling; if(box && box.classList && box.classList.contains('wc')){ const n = words(el.value); box.textContent = n + ' / 25 words'; box.classList.toggle('bad', n > 25); } }
+const hasContent = o => Object.entries(o).some(([k, v]) => !['n','kind','source_document'].includes(k) && (Array.isArray(v) ? v.length : String(v||'').trim()));
+function confirmLoss(o, what){ return !hasContent(o) || window.confirm('Delete this ' + what + '? What you typed in it will be lost.'); }
+function bindForm(){
+  const c = D.coding, r = D.ratings, f = document.getElementById('form');
+  const rerender = s => { persist(); renderForm(s); refreshSide(); };
+  const defUpdate = (el, fn) => { const d = el.parentElement.querySelector('[data-defof]'); if(d && fn) d.textContent = el.value ? fn(el.value) : ''; };
+  const DEFS = {'entry.state': defOf, 'entry.node': v => NODE[v].desc, 'end.outcome': defOf, 'end.claim_status': defOf, 'decisive_move.node': v => NODE[v].desc,
+    'decisive_move.mode': v => MODE[v] ? MODE[v].purpose : '', 'composition': defOf};
+  f.querySelectorAll('[data-f]').forEach(el => { const path = el.dataset.f; const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { const v = path === 'documents' ? el.value.split(',').map(x => x.trim()).filter(Boolean) : el.value; setPath(c, path, v); if(el.dataset.wc) wc(el); defUpdate(el, DEFS[path]); persistSoon(); }); if(el.dataset.wc) wc(el); });
+  f.querySelectorAll('[data-l]').forEach(el => { const [list, i, field] = el.dataset.l.split('.'); const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { c[list][+i][field] = el.value; if(el.dataset.wc) wc(el); persistSoon(); }); if(el.dataset.wc) wc(el); });
+  const blanks = {imports:{field:'',item:'',kind:'',page:''}, novelty_claims:{quote:'',page:''}, disagreements:{target:'',kind:'',stance:'',support:'',page:'',quote:''},
+    alternatives_considered:{node:'',chosen:'',alternatives:'',reason:'',effect_reported:'',page:''}, v_checks:{kind:'', performed_here:null, quote:'', page:''}};
+  f.querySelectorAll('[data-add]').forEach(b => b.onclick = () => { const L = b.dataset.add; c[L].push(Object.assign({}, blanks[L])); rerender(`[data-l^="${L}.${c[L].length-1}."]`); });
+  f.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const [list, i] = b.dataset.del.split('.'); if(!confirmLoss(c[list][+i], 'entry')) return; c[list].splice(+i, 1); rerender(); });
+  f.querySelectorAll('.step').forEach(row => { const si = +row.dataset.si, i = +row.dataset.i, st = c.sequences[si].steps[i];
+    row.querySelectorAll('[data-s]').forEach(el => { const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+      el.addEventListener(ev, () => { st[el.dataset.s] = el.value; if(el.dataset.wc) wc(el);
+        if(el.dataset.s === 'node' && el.value) el.title = NODE[el.value].desc; if(el.dataset.s === 'mode' && MODE[el.value]) el.title = MODE[el.value].purpose; persistSoon(); });
+      if(el.dataset.wc) wc(el); });
+    row.querySelectorAll('[data-act]').forEach(b => b.onclick = () => { const steps = c.sequences[si].steps; const a = b.dataset.act; let to = i;
+      if(a === 'del'){ if(!confirmLoss(steps[i], 'step')) return; steps.splice(i,1); to = Math.min(i, steps.length - 1); }
+      if(a === 'up'){ if(i === 0) return; [steps[i-1], steps[i]] = [steps[i], steps[i-1]]; to = i - 1; }
+      if(a === 'down'){ if(i >= steps.length-1) return; [steps[i+1], steps[i]] = [steps[i], steps[i+1]]; to = i + 1; }
+      if(a === 'ins'){ steps.splice(i+1, 0, newStep()); to = i + 1; }
+      renumber();
+      const focus = to < 0 ? null : (a === 'ins' ? `.step[data-si="${si}"][data-i="${to}"] [data-s="node"]` : `.step[data-si="${si}"][data-i="${to}"] [data-act="${a}"]`);
+      rerender(focus); });
+  });
+  f.querySelectorAll('[data-addstep]').forEach(b => b.onclick = () => { const si = +b.dataset.addstep, s = c.sequences[si]; s.steps.push(newStep()); renumber(); rerender(`.step[data-si="${si}"][data-i="${s.steps.length-1}"] [data-s="node"]`); });
+  const ar = document.getElementById('addReview'); if(ar) ar.onclick = () => { c.sequences.push({kind:'review', source_document:'peer-review file', steps:[]}); if(!c.documents.includes('peer-review file')) c.documents.push('peer-review file'); rerender(); };
+  f.querySelectorAll('[data-delseq]').forEach(b => b.onclick = () => { const s = c.sequences[+b.dataset.delseq]; if(s.steps.length && !window.confirm('Remove this review sequence and its ' + s.steps.length + ' step(s)?')) return; c.sequences.splice(+b.dataset.delseq, 1); rerender(); });
+  f.querySelectorAll('[data-vph]').forEach(el => el.addEventListener('change', () => { c.v_checks[+el.dataset.vph].performed_here = el.value === '' ? null : el.value === 'yes'; persistSoon(); }));
+  f.querySelectorAll('[data-seqsrc]').forEach(el => el.addEventListener('input', () => { c.sequences[+el.dataset.seqsrc].source_document = el.value; persistSoon(); }));
+  f.querySelectorAll('[data-tq]').forEach(cb => cb.onchange = () => { const q = cb.dataset.tq;
+    if(cb.checked){ if(!c.tree.find(t => t.question === q)) c.tree.push({question:q, answer:'', mode_called:''}); c.tree.sort((a,b) => ENUM.treeQ.indexOf(a.question) - ENUM.treeQ.indexOf(b.question)); }
+    else { const t = c.tree.find(x => x.question === q); if(t && String(t.answer).trim() && !window.confirm('Clear your answer to question ' + q + '?')){ cb.checked = true; return; } c.tree = c.tree.filter(t => t.question !== q); }
+    rerender(cb.checked ? `[data-tqa="${q}"]` : `[data-tq="${q}"]`); });
+  f.querySelectorAll('[data-tqa]').forEach(el => el.addEventListener('input', () => { c.tree.find(t => t.question === el.dataset.tqa).answer = el.value; persistSoon(); }));
+  f.querySelectorAll('[data-tqm]').forEach(el => el.addEventListener('change', () => { c.tree.find(t => t.question === el.dataset.tqm).mode_called = el.value; persistSoon(); }));
+  f.querySelectorAll('[data-r]').forEach(el => { const path = el.dataset.r; const ev = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(ev, () => { let v = el.value; if(path === 'minutes_spent'){ v = Math.max(0, parseInt(v || '0', 10) || 0); } setPath(r, path, v); persistSoon(); }); });
+  f.querySelectorAll('[data-score]').forEach(el => el.addEventListener('change', () => { r[el.dataset.score].score = parseInt(el.value, 10); persistSoon(); }));
+  f.querySelectorAll('[data-crit]').forEach(el => el.addEventListener('change', () => { r.advance.verdict_criteria[el.dataset.crit] = el.value; rerender(`[data-crit="${el.dataset.crit}"]`); }));
+  f.querySelectorAll('[data-verdict]').forEach(el => el.addEventListener('change', () => { const a = r.advance; a.verdict = el.value;
+    if(a.verdict === 'unassessable'){ if(!CONDS.includes(a.unassessable_condition)) a.unassessable_condition = r.eligible_in_my_view === 'no' ? 'U4' : ''; }
+    else a.unassessable_condition = a.verdict ? 'none' : '';
+    rerender('[data-verdict]'); }));
+  f.querySelectorAll('[data-cond]').forEach(el => el.addEventListener('change', () => { rerender('[data-cond]'); }));
+  f.querySelectorAll('[data-role]').forEach(el => el.addEventListener('change', () => { const roles = new Set(r.advance.roles); el.checked ? roles.add(el.dataset.role) : roles.delete(el.dataset.role);
+    r.advance.roles = ROLES.filter(x => roles.has(x)); persistSoon(); }));
+}
+function renumber(){ D.coding.sequences.forEach(s => s.steps.forEach((st,i) => st.n = i+1)); }
+
+function refreshSide(){
+  if(!D) return;
+  const issues = checkCoding(D.coding).concat(checkRatings(D.ratings));
+  const nav = document.getElementById('secnav');
+  if(nav){ nav.innerHTML = SECTIONS.map(([id, t]) => { const mine = issues.filter(x => x.sec === id); const cls = mine.some(x => x.level === 'err') ? 'err' : (mine.length ? 'warn' : 'ok');
+      return `<a href="#sec-${id}" data-sec="${id}"><span>${t}</span><span class="dot ${cls}" title="${mine.length} to check"></span></a>`; }).join('');
+    nav.querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); document.getElementById('sec-' + a.dataset.sec).scrollIntoView({behavior:'smooth', block:'start'}); }); }
+  const fp = D.coding.sequences.find(s => s.kind === 'final_paper');
+  const chips = fp ? fp.steps.map(st => st.node ? `<span class="chip ${NODE[st.node].group}" title="${esc(st.node + ' ' + NODE[st.node].verb + (st.mode ? ' · ' + modeLabel(st.mode) : ''))}">${st.node}</span>` : '<span class="chip blank">?</span>').join('') : '';
+  const errs = issues.filter(x => x.level === 'err'), warns = issues.filter(x => x.level === 'warn');
+  const box = document.getElementById('checks');
+  if(box) box.innerHTML = `<h3>Walk (final paper)</h3><div class="small" style="margin:2px 0 6px">entry ${D.coding.entry.node ? `<span class="chip ${NODE[D.coding.entry.node].group}" style="height:22px;min-width:22px">${D.coding.entry.node}</span>` : '?'} · ${fp ? fp.steps.length : 0} steps</div>
+    <div class="strip">${chips || '<span class="small">no steps yet</span>'}</div>
+    <div class="small" style="margin-top:6px"><span class="chip build" style="height:14px;min-width:14px"></span> build and observe <span class="chip test" style="height:14px;min-width:14px"></span> test <span class="chip decide" style="height:14px;min-width:14px"></span> decide</div>
+    <h3 style="margin-top:14px">Checks</h3>
+    ${errs.length ? `<div class="small">${errs.length} to fix, ${warns.length} to check</div>` : '<div class="msg ok">No errors.' + (warns.length ? '' : ' Ready to save.') + '</div>'}
+    ${errs.slice(0,40).map(x => `<div class="msg err">${esc(x.text)}</div>`).join('')}${errs.length > 40 ? `<div class="small">… and ${errs.length-40} more</div>` : ''}
+    ${warns.map(x => `<div class="msg warn">${esc(x.text)}</div>`).join('')}`;
+  const info = document.getElementById('saveInfo');
+  if(info){ const sv = D.savedFiles; const changed = sv && sv.hash !== contentHash(D);
+    info.innerHTML = sv ? `Last saved ${esc(sv.when.slice(0,16).replace('T',' '))} (${sv.how === 'folder' ? 'to ' + esc(sv.folder||'my_codings') : 'downloaded'}${sv.complete ? '' : ', as an unfinished draft'}).${changed ? ' <b style="color:var(--warn)">Changed since then: save again.</b>' : ''}` : (storageOk ? 'Draft kept in this browser; not saved to a file yet.' : '<b style="color:var(--err)">Draft NOT kept: storage blocked.</b>'); }
+  showActive();
+}
+
+async function saveFiles(){
+  flush(); renumber();
+  const errs = errorCount(D);
+  if(errs && !window.confirm(errs + ' problem(s) remain. Save an unfinished draft file (named .draft, not counted as done)?')) return;
+  D.ratings.rated_on = localDate();
+  const base = current + '.' + coder + (errs ? '.draft' : '');
+  if(!dirHandle && window.showDirectoryPicker){ notice('Choose this packet’s my_codings folder once; the app will remember it.'); if(!(await pickFolder())) return; }
+  let how = 'folder';
+  const R = ratingsOut(D.ratings);
+  const ok1 = await writeFolder(base + '.coding.json', D.coding), ok2 = ok1 && await writeFolder(base + '.ratings.json', R);
+  if(!(ok1 && ok2)){ download(base + '.coding.json', D.coding); download(base + '.ratings.json', R); how = 'download'; }
+  D.savedFiles = {when: new Date().toISOString(), how, folder: dirHandle ? dirHandle.name : null, complete: !errs, hash: contentHash(D)};
+  persist(); renderForm(); refreshSide();
+  if(how === 'download') notice('Saved as downloads. Move both files into my_codings. If the browser added "(1)" to a name, replace the older file and remove the "(1)".');
+}
+function importCoding(ev){
+  const file = ev.target.files[0]; ev.target.value = ''; if(!file) return;
+  file.text().then(t => {
+    let obj; try{ obj = JSON.parse(t); }catch(e){ notice('That file is not JSON. Nothing was changed.', 'err'); return; }
+    if(!obj || obj.key !== current){ notice('That file is for ' + (obj && obj.key) + ', not this paper. Nothing was changed.', 'err'); return; }
+    if(!String(obj.coder || '').includes('(' + coder + ')')){ notice('That file was written by ' + (obj.coder || 'an unknown coder') + '. You can load only your own files, so codings stay independent. Nothing was changed.', 'err'); return; }
+    const isR = !!obj.ratings_version, isC = !!obj.codebook_version;
+    if(!isR && !isC){ notice('Not a coding or ratings file. Nothing was changed.', 'err'); return; }
+    const p = P.papers.find(x => x.key === current);
+    if(isR){ obj.ratings_version = P.meta.ratings_version; if(obj.advance && obj.advance.score === null) obj.advance.score = 0; D.ratings = fill(emptyRatings(p), obj); } else { obj.codebook_version = P.meta.codebook_version; D.coding = fill(emptyCoding(p), obj); }
+    normalize(D, p); persist(); renderForm(); refreshSide(); notice('Loaded your ' + (isR ? 'ratings' : 'coding') + ' file; check the list on the right for anything to complete.');
+  }).catch(() => notice('Could not read that file. Nothing was changed.', 'err'));
+}
+
+// ---------- help ----------
+function helpHTML(){
+  const dl = keys => `<table><tbody>${keys.map(k => `<tr><td style="width:190px"><b>${esc(lab(k))}</b></td><td>${esc(defOf(k))}</td></tr>`).join('')}</tbody></table>`;
+  return `<div class="card"><h2>Nodes of graph ${esc(P.meta.graph)}</h2><table><tbody>${P.nodes.map(n => `<tr><td style="width:56px"><span class="chip ${n.group}">${n.id}</span></td><td style="width:140px">${esc(n.verb)}</td><td>${esc(n.desc)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>The thirteen modes of inquiry</h2><table><tbody>${P.modes.map(m => `<tr><td style="width:230px"><b>${esc(m.title)}</b><div class="small">${esc(m.id)}</div></td><td>${esc(m.purpose)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>Entry states</h2>${dl(ENUM.entryState)}</div>
+    <div class="card"><h2>Moves</h2>${dl(ENUM.move)}</div>
+    <div class="card"><h2>Outcomes and claim status</h2>${dl(ENUM.outcome)}${dl(ENUM.status)}</div>
+    <div class="card"><h2>Compositions</h2>${dl(ENUM.composition)}</div>
+    <div class="card"><h2>Gates</h2>${dl(['gate_action','gate_claim','gate_registration'])}</div>
+    ${HAS_VERDICT ? `<div class="card"><h2>Advance verdict</h2>${dl(VERDICTS.map(v => 'verdict_' + v))}<h3 style="margin-top:10px">Unassessable conditions</h3>${dl(CONDS.map(v => 'unassessable_' + v))}<h3 style="margin-top:10px">Criteria for the gain rated</h3>${dl(CRITS.map(k => 'crit_' + k))}</div>` : ''}
+    ${NOTES.length ? `<div class="card"><h2>Notes that bind the ratings</h2><ul>${NOTES.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
+    <div class="card"><h2>Hard cases</h2><ul>${(P.hard_cases||[]).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
+    <div class="card"><h2>Decision tree ${esc(P.meta.tree||'')}</h2><table><tbody>${P.questions.map(q => `<tr><td style="width:40px"><b>${esc(q.n)}</b></td><td>${esc(q.q)}<div class="small">${esc(q.sub)}</div></td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h2>How to work</h2><ol>
+      <li>Read the whole paper once before coding. Then code the entry, the steps in the order the paper gives them, the tree, the end, and the rest.</li>
+      <li>Code what the paper says the authors did, not what you think they did. Mark anything you infer in Limits.</li>
+      <li>Rate novelty and advance after coding, without looking up the paper online. The app hides the journal and DOI; the PDF shows them. Judge the work, not the venue.</li>
+      <li>Save both files into this packet’s <code>my_codings</code> folder. Do not discuss a paper with anyone until you have saved it.</li>
+      <li>Disagreements are data: never revise a saved coding after talking with a co-coder. If you find your own mistake later, edit and save again, and say what changed in Limits.</li></ol>
+      <p class="small">Codebook v${esc(P.meta.codebook_version)} · ratings v${esc(P.meta.ratings_version)} · built ${esc(P.meta.built)} from commit ${esc(P.meta.commit)}.</p></div>`;
+}
+function renderHelp(){ app.innerHTML = helpHTML(); }
+
+// ---------- coordinator ----------
+const runs = xs => xs.filter((x,i) => i === 0 || x !== xs[i-1]);
+function editDist(a, b){ const d = Array.from({length:b.length+1}, (_,j) => j); for(let i=1;i<=a.length;i++){ let prev = d[0]; d[0] = i; for(let j=1;j<=b.length;j++){ const t = d[j]; d[j] = Math.min(d[j]+1, d[j-1]+1, prev + (a[i-1] !== b[j-1] ? 1 : 0)); prev = t; } } return d[b.length]; }
+const jacc = (a, b) => { const A = new Set(a), B = new Set(b); const u = new Set([...A, ...B]); return u.size ? [...A].filter(x => B.has(x)).length / u.size : 1; };
+function seqOf(c, f){ const s = (c.sequences||[]).find(s => s.kind === 'final_paper'); return s ? runs(s.steps.map(x => x[f])) : []; }
+function agree(a, b){ const na = seqOf(a,'node'), nb = seqOf(b,'node'), ma = seqOf(a,'mode'), mb = seqOf(b,'mode');
+  const sim = (x, y) => 1 - editDist(x, y) / Math.max(x.length, y.length, 1);
+  return {entry_node: a.entry.node === b.entry.node, entry_state: a.entry.state === b.entry.state, outcome: a.end.outcome === b.end.outcome,
+    decisive_mode: a.decisive_move.mode === b.decisive_move.mode, node_set_jaccard: jacc(na, nb), mode_set_jaccard: jacc(ma, mb),
+    node_seq_similarity: sim(na, nb), mode_seq_similarity: sim(ma, mb), steps: [na.length, nb.length]}; }
+const initials = s => (String(s||'').match(/\(([A-Z]{2,3})\)/) || [])[1] || String(s||'?');
+let coordFiles = [], coordSkipped = [];
+function renderCoord(){
+  const cod = coordFiles.filter(x => x.kind === 'c'), rat = coordFiles.filter(x => x.kind === 'r');
+  const byKey = {}; cod.forEach(x => ((byKey[x.obj.key] = byKey[x.obj.key] || {})[initials(x.obj.coder)] = x.obj));
+  const pairs = [];
+  Object.entries(byKey).forEach(([k, byC]) => { const cs = Object.keys(byC).sort(); for(let i=0;i<cs.length;i++) for(let j=i+1;j<cs.length;j++) pairs.push({key:k, ca:cs[i], cb:cs[j], a:byC[cs[i]], b:byC[cs[j]], m:agree(byC[cs[i]], byC[cs[j]])}); });
+  const ratBy = {}; rat.forEach(x => ((ratBy[x.obj.key] = ratBy[x.obj.key] || {})[initials(x.obj.coder)] = x.obj));
+  const mean = f => pairs.length ? pairs.reduce((s, p) => s + (typeof p.m[f] === 'boolean' ? +p.m[f] : p.m[f]), 0) / pairs.length : NaN;
+  const fmt = x => Number.isNaN(x) ? 'n/a' : x.toFixed(2);
+  const title = k => (P.papers.find(x => x.key === k) || {}).title || k;
+  app.innerHTML = `<div class="card"><h2>Agreement between coders</h2>
+    <p class="small">Drop the coders’ <code>.coding.json</code> and <code>.ratings.json</code> files (draft files are ignored). When a coder has two files for a paper, the more recently modified file wins. Metrics follow <code>tools/check_coding.py agree</code>. The analysis of record is <code>tools/roadmap/g11_human_agreement.py</code>, run on the committed files; this view is for progress checks.</p>
+    <div class="drop" id="drop">Drop files here, or <label style="display:inline;color:var(--accent);cursor:pointer;text-decoration:underline">choose files<input type="file" id="files" multiple accept=".json" style="display:none"></label></div>
+    <p class="small">${cod.length} codings and ${rat.length} ratings loaded; ${pairs.length} coder pairs.${coordSkipped.length ? ' Skipped: ' + esc(coordSkipped.join('; ')) : ''}</p></div>
+    ${pairs.length ? `<div class="card"><h3>Mean over ${pairs.length} pairs</h3><div class="grid4">
+      ${['entry_node','entry_state','outcome','decisive_mode','node_set_jaccard','mode_set_jaccard','node_seq_similarity','mode_seq_similarity'].map(f => `<div>${f.replace(/_/g,' ')} <b class="num">${fmt(mean(f))}</b></div>`).join('')}</div>
+      <button id="csv" style="margin-top:10px">Download table (CSV)</button></div>
+    <div class="card"><table><thead><tr><th>Paper</th><th>Coders</th><th>Entry</th><th>Outcome</th><th>Decisive mode</th><th>Node set</th><th>Node seq.</th><th>Steps</th><th>Novelty</th><th>Advance</th><th>Verdict</th></tr></thead><tbody>
+      ${pairs.map(p => { const R = ratBy[p.key] || {}; const sc = (c, f) => R[c] && R[c][f].score != null ? R[c][f].score : '–'; const vd = c => R[c] && R[c].advance.verdict ? R[c].advance.verdict.replace(/_/g,' ') + (R[c].advance.verdict === 'unassessable' ? ' ' + R[c].advance.unassessable_condition : '') : '–'; return `<tr><td>${esc(title(p.key))}<div class="small">${esc(p.key)}</div></td><td>${esc(p.ca)} / ${esc(p.cb)}</td>
+        <td>${p.m.entry_node ? '✓' : '✗'} ${esc(p.a.entry.node)}/${esc(p.b.entry.node)}</td><td>${p.m.outcome ? '✓' : '✗'}</td><td>${p.m.decisive_mode ? '✓' : '✗'}</td>
+        <td class="num">${fmt(p.m.node_set_jaccard)}</td><td class="num">${fmt(p.m.node_seq_similarity)}</td><td class="num">${p.m.steps.join(' / ')}</td>
+        <td class="num">${sc(p.ca,'novelty')} / ${sc(p.cb,'novelty')}</td><td class="num">${sc(p.ca,'advance')} / ${sc(p.cb,'advance')}</td><td class="small">${esc(vd(p.ca))} / ${esc(vd(p.cb))}</td></tr>`; }).join('')}</tbody></table></div>` : ''}`;
+  const drop = document.getElementById('drop');
+  const take = files => Promise.all([...files].filter(f => !/\.draft\./.test(f.name)).map(f => f.text().then(t => ({t, name: f.name, mod: f.lastModified})))).then(list => {
+    list.forEach(({t, name, mod}) => { let o; try{ o = JSON.parse(t); }catch(e){ coordSkipped.push(name + ' (not JSON)'); return; }
+      const okC = o && o.codebook_version && o.entry && o.end && o.decisive_move && Array.isArray(o.sequences), okR = o && o.ratings_version && o.novelty && o.advance;
+      if(!o || !o.key || !(okC || okR)){ coordSkipped.push(name + ' (not a complete coding or ratings file)'); return; }
+      const kind = okR ? 'r' : 'c', who = initials(o.coder);
+      const prev = coordFiles.find(x => x.kind === kind && x.obj.key === o.key && initials(x.obj.coder) === who);
+      if(prev && prev.mod > mod) return;
+      coordFiles = coordFiles.filter(x => x !== prev); coordFiles.push({kind, obj:o, mod}); });
+    renderCoord(); });
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add('on'); }; drop.ondragleave = () => drop.classList.remove('on');
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove('on'); take(e.dataTransfer.files); };
+  document.getElementById('files').onchange = e => take(e.target.files);
+  const q = v => '"' + String(v).replace(/"/g, '""') + '"';
+  const csv = document.getElementById('csv'); if(csv) csv.onclick = () => {
+    const head = ['key','coder_a','coder_b','entry_node','entry_state','outcome','decisive_mode','node_set_jaccard','mode_set_jaccard','node_seq_similarity','mode_seq_similarity','steps_a','steps_b'];
+    const lines = [head.join(',')].concat(pairs.map(p => [q(p.key), q(p.ca), q(p.cb), +p.m.entry_node, +p.m.entry_state, +p.m.outcome, +p.m.decisive_mode, p.m.node_set_jaccard, p.m.mode_set_jaccard, p.m.node_seq_similarity, p.m.mode_seq_similarity, p.m.steps[0], p.m.steps[1]].join(',')));
+    const blob = new Blob([lines.join('\n') + '\n'], {type:'text/csv'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'gold-agreement.' + localDate() + '.csv'; a.click(); };
+}
+
+(async () => { if(MODE_APP === 'coder') await restoreHandle(); render(); })();
+})();
+</script>
+</body>
+</html>

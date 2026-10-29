@@ -1,0 +1,17 @@
+# Conda environment for the Python tools in tools/ (selection, downloads, coding, analysis).
+# Create:  mamba env create -f environment.yml   (or: conda env create -f environment.yml)
+# Update:  mamba env update -f environment.yml --prune
+# Use:     conda activate metascience
+name: metascience
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pyyaml            # tools/validate.py, tools/export_modes.py
+  - jsonschema        # validating codings and ratings (gold-set coder)
+  - segno             # QR codes for talk slides (pip)
+  - matplotlib        # tools/ai_readiness/plot_report.py
+  - poppler           # pdftotext, used by tools/fetch_pdfs.py to check each PDF is the paper
+  - pip:
+      - anthropic     # tools/code_papers.py (Claude API batch coding)

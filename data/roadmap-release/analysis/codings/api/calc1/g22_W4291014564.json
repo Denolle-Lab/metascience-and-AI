@@ -1,0 +1,474 @@
+{
+ "key": "g22_W4291014564",
+ "doi": "10.1016/j.atmosres.2022.106391",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Feng et al. 2022, Atmospheric Research 280, 106391 (published PDF, 13 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML carries text (abstract §0, captions as printed, e.g. 'Fig. 3'); the XML text holds no body paragraphs, so body steps cite printed journal pages (identical to PDF pages counted from 1); figure-content steps cite the caption label with the PDF page in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "The Geostationary Interferometric Infrared Sounder (GIIRS) onboard China's FengYun-4A geostationary satellite provides an unprecedented opportunity to observe the three-dimensional thermodynamic structure of typhoons",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Feng et al. 2022, Atmospheric Research 280, 106391 (published PDF and XML text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Introduce the FY-4A GIIRS, the first geostationary hyperspectral infrared sounder, built and characterized by others, as the capability that opens the work.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "FY-4A is the first geostationary weather satellite to carry the Geostationary Interferometric Infrared Sounder"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the questions left open by Yin et al. (2021): GIIRS impact on more typhoon cases, the mechanism of that impact, and the unstudied assimilation of GIIRS retrieved profiles.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In addition, the assimilation of the vertical temperature and moisture profile retrieved from the GIIRS radiance observations has not been studied yet"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Run field campaigns of targeted observation for five live typhoons (2020-2021): sensitive regions come from CNOP and the GIIRS scanning path is adjusted to cover them.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the operational scanning path of the GIIRS was adaptively adjusted to observe the aforementioned sensitive regions and their surroundings"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Retrieve temperature profiles from GIIRS radiances, using regression and physical retrievals in clear sky and dual-regression in cloudy sky (algorithms of other groups).",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Both the statistical regression retrieval algorithm and the nonlinear physical retrieval algorithm developed by Li et al. (2000) are implemented under clear sky conditions"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Preprocess the retrievals: keep quality flag 0 only, set error standard deviations of 2.0-4.0 K tuned in preliminary experiments, and superob to a 0.3° by 0.3° prism over two model layers and 30 min.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is approximately optimal in our preliminary experimental evaluation"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the sensitivity of track forecasts to the superob horizontal box size around 30 km in a preliminary evaluation (not shown).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our preliminary evaluation showed limited sensitivity of the TC track forecasts to the selection of"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Configure HWRF v3.9a on the two outer domains (18/6 km) with GSI-based EnVar on D02, non-cycling cold start from GFS/GEFS, full ensemble covariance from 20 members, and fixed localization.",
+     "page": "3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We do not run cycling DA experiments"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Design paired data-denial experiments for each of eight cases: BASE (operational observations) and BASE+GIIRS (BASE plus superobbed GIIRS temperature profiles), verified against CMA best track, GDAS winds and CPC precipitation.",
+     "page": "4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we designed two experiments for each Typhoon case for comparison"
+    },
+    {
+     "n": 9,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Produce free forecasts of 1.25 to 4 days from both analyses for each case.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "with an output frequency of 6 h"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare track forecasts with best track: BASE+GIIRS is better beyond two days in five of eight cases and similar in the Maysak and Higos cases; mean error is lower beyond 2.5 days.",
+     "page": "6; Fig. 2 (p. 4); Fig. 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BASE+GIIRS presents better typhoon track forecasts than BASE mainly beyond two days for five out of eight cases"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Test the mean track-error difference with a paired t-test: it is significant at the 0.05 level at 3 to 3.5 days.",
+     "page": "6; Fig. 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is statistically significant at the 0.05 level of the paired t-test."
+    },
+    {
+     "n": 12,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that the case dependence (small impact for Maysak) comes from a more skillful BASE forecast and a more accurate first guess.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The limited DA impact of the GIIRS temperature retrieval for typhoon Maysak can be attributed to the relatively more skillful track"
+    },
+    {
+     "n": 13,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Select the contrasting Chan-hom (large impact) and Maysak (small impact) cases for the mechanism diagnostics.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "by analyzing and comparing these two cases"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "observation",
+     "action": "Map and count the assimilated observations: operational data are sparse and far from the vortex; GIIRS data are dense (over 50,000 per case) but sparse near the vortex and at 250-400 hPa.",
+     "page": "6; Fig. 4 (p. 6); Fig. 5 (p. 7); Fig. 6 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the GIIRS data from the FY-4A satellite provide a much denser observation network"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the first-guess and analysis fit to the GIIRS retrievals (|O-B| against |O-A|): about 25% reduction for Chan-hom, about 10% for Maysak, and 7-27% across all cases, which supports the first-guess hypothesis.",
+     "page": "7; Table 3; Fig. 7 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a more accurate analysis field can be obtained for the temperature by assimilating the temperature retrieval from GIIRS"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "theory",
+     "action": "Invoke steering-flow control of TC motion as the frame for the mechanism.",
+     "page": "7",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "It is widely understood that the movement of TCs is dominantly governed by the steering flow."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compute the initial 500-hPa steering flow: BASE+GIIRS has a southward increment of about 1 m/s, consistent with its more southerly Chan-hom track.",
+     "page": "7; Fig. 8 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is consistent overall with the southerly shift in the TC track in BASE+GIIRS"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "theory",
+     "action": "Diagnose the chain from temperature to height to wind through the hydrostatic relationship (correlation about -0.4 along the transect); differences are much smaller for Maysak (not shown); the steering-flow difference persists and grows in the forecast.",
+     "page": "8; Fig. 9 (p. 9); Fig. 10 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This indicates the influence of assimilating temperature observations on the GH analysis through the hydrostatic relationship."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Verify the 2.5-day Chan-hom wind forecasts against GDAS: RMSE falls by about 10% at 500 hPa and about 33% at 1000 hPa near the coast.",
+     "page": "9; Fig. 11 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BASE+GIIRS clearly shows a better wind forecast than BASE at mid-levels"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Extend the wind verification to all eight cases: RMSE is 1-2 m/s lower beyond 2.5 days, but the difference is not statistically significant.",
+     "page": "9; Fig. 12 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the sample-mean wind RMSE of BASE+GIIRS and BASE are very close within the first 2.5 days"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Verify Chan-hom 24-h land precipitation against CPC gauge analysis: BASE+GIIRS overpredicts the eastern center less.",
+     "page": "9; Fig. 13 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BASE+GIIRS presents a much smaller area with precipitation >120 mm than BASE for the eastern center"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Score precipitation for all cases with the threat score (>50 mm): five of eight cases improve and the mean TS is about 7.6% higher.",
+     "page": "11; Fig. 14 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Five out of the eight cases show improved prediction skill of BASE+GIIRS"
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the claim that assimilating GIIRS temperature retrievals improves typhoon track forecasts beyond about 2.5 days, by up to 100 km on average, with case dependence.",
+     "page": "§0 ¶2; 12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the assimilation of the additional satellite retrieval generally improves the typhoon track forecasts relative to those with simply the operational observations assimilated"
+    },
+    {
+     "n": 24,
+     "node": "R",
+     "mode": "instruments",
+     "action": "Attribute the limited intensity impact to sparse near-eyewall retrievals and 16 km resolution, and point to all-sky retrievals and the higher-resolution FY-4B GIIRS.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The development of more accurate all-sky retrieval algorithms is crucial to enhance the utility of the GIIRS observations"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Impact of a new geostationary hyperspectral sounder's temperature retrievals on typhoon forecasts",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; temperature is retrieved by inversion and its impact is seen only through model forecasts",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate track, wind and rain forecast impact and its mechanism",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "Only an implicit null (no improvement over BASE); no named rivals",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "BASE versus BASE+GIIRS track errors against best track",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in the computer (paired data-denial runs) on typhoons found and observed live",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6b",
+   "answer": "Eight cases from five typhoons repeat the comparison",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: significant at 3-3.5 days, case-dependent (5 of 8); wind gains not significant",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: track improvement beyond 2.5 days, about 100 km",
+   "mode_called": "simulation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "confirmed",
+  "claim": "Assimilating FY-4A GIIRS temperature-profile retrievals in HWRF EnVar reduces typhoon track errors beyond about 2.5 days by up to about 100 km on average (significant at 3-3.5 days), with case dependence.",
+  "page": "§0 ¶2; 12"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "Without the paired BASE versus BASE+GIIRS track comparison against best track across eight cases, with its paired t-test, there would be no impact claim.",
+  "page": "6; Fig. 3 (p. 5)"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the GIIRS scan was steered to CNOP sensitive regions on the premise that observing them improves forecasts (p. 2), but this paper does not test that premise. Claim: the paired comparison could have shown no gain; three of eight cases showed none, and significance was tested (p. 6). Registration: the error standard deviations and superob settings were chosen in preliminary experiments (p. 2), and nothing is reported as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "paired t-test for significance of track-error differences",
+   "kind": "method",
+   "page": "6"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "provides an unprecedented opportunity to observe the three-dimensional thermodynamic structure of typhoons",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "FY-4A is the first geostationary weather satellite to carry the Geostationary Interferometric Infrared Sounder",
+   "page": "2"
+  },
+  {
+   "quote": "the assimilation of the vertical temperature and moisture profile retrieved from the GIIRS radiance observations has not been studied yet",
+   "page": "2"
+  },
+  {
+   "quote": "These field campaigns provide unprecedented opportunities to comprehensively investigate the impact of the FY-4A GIIRS retrievals",
+   "page": "2"
+  }
+ ],
+ "limits": "The XML text holds only the abstract and captions, so body steps are located by printed page. Results described as 'not shown': the preliminary tuning of error standard deviations, the superob sensitivity, and the Maysak mechanism fields. The analysis fit is checked only against the assimilated retrievals themselves; the authors say no independent observations were available. The mechanism is diagnosed in one case (Chan-hom), with Maysak as an unshown contrast; sub-claim status: best_explanation. The wind and precipitation improvements are 'potential', and the wind differences are not significant; sub-claim status: none/suggestive. The effectiveness of the retrieval algorithm is inferred only indirectly from forecast gains; sub-claim status: weak capability_characterized. Only eight cases are used, all from non-cycled cold-start runs, and intensity is not improved. The headline is coded confirmed against an implicit null, since no named rival exists (inference). The composition is none_fits because the walk is an observing-system (data-denial) experiment: a computer-set A/B comparison over cases found in nature, following a new capability, with the question posed before any phenomenon is established. No review file was supplied.",
+ "disagreements": [
+  {
+   "target": "Yin et al. (2021), direct GIIRS radiance assimilation for Typhoon Maria (2018)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Yin et al. studied a single case and did not examine the mechanism; this paper tests eight cases with retrievals and diagnoses the mechanism, finding case-dependent gains.",
+   "page": "2",
+   "quote": "more cases are needed to evaluate the impacts of assimilating GIIRS data on TC analyses and forecasts"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Observation error std 2.0 K above 600 hPa increasing linearly to 4.0 K at the surface",
+   "alternatives": "other error settings tried in preliminary experiments (not named)",
+   "reason": "approximately optimal in preliminary experimental evaluation",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Superobbing to thin observations",
+   "alternatives": "assimilating the quality-flag-0 retrievals at full resolution",
+   "reason": "full resolution may not be optimal for the model configuration; superobbing better matches model resolution",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Superob box of 0.3° (about 30 km)",
+   "alternatives": "other box sizes around 30 km",
+   "reason": "about five times the 6-km grid size",
+   "effect_reported": "yes",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Superob interval of 30 min",
+   "alternatives": "other time intervals",
+   "reason": "approaches optimum performance as concluded in Yin et al. (2021)",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Only the outer two nested domains (18/6 km)",
+   "alternatives": "operational three domains (18/6/2 km)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Non-cycling cold-start DA",
+   "alternatives": "cycling DA experiments",
+   "reason": "GEFS products in the archive only available at 0000Z and 1200Z",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "D",
+   "chosen": "Full ensemble covariance without static covariance",
+   "alternatives": "hybrid combining static background error covariance",
+   "reason": "Lu et al. (2017b) and Feng and Wang (2019) found the static component degraded TC DA and prediction",
+   "effect_reported": "no",
+   "page": "3-4"
+  },
+  {
+   "node": "Q",
+   "chosen": "Assimilating retrieved temperature profiles",
+   "alternatives": "direct assimilation of GIIRS radiances (as in Yin et al. 2021)",
+   "reason": "retrieval assimilation has not been studied yet",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Chan-hom and Maysak for mechanism diagnostics",
+   "alternatives": "other cases",
+   "reason": "contrast between significant and very limited track impact",
+   "effect_reported": "no",
+   "page": "6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Our preliminary evaluation showed limited sensitivity of the TC track forecasts to the selection of",
+   "page": "2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we designed two experiments for each Typhoon case for comparison",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is statistically significant at the 0.05 level of the paired t-test.",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the sample-mean wind RMSE of BASE+GIIRS and BASE are very close within the first 2.5 days",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Five out of the eight cases show improved prediction skill of BASE+GIIRS",
+   "page": "11"
+  }
+ ]
+}

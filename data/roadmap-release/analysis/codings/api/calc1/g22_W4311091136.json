@@ -1,0 +1,442 @@
+{
+ "key": "g22_W4311091136",
+ "doi": "10.1016/j.hydroa.2022.100144",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Tsuruta & Schnorbus 2022, Journal of Hydrology X 17, 100144 (12 pages)",
+  "Publisher XML converted to located text (jats_text): contains only the abstract (§0 ¶1) and figure and table captions"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML holds the text (abstract §0 ¶1, captions); the XML lacks the body, so body text is cited by PDF pages counted from 1 (these equal the printed journal pages 1-12); figure and table content cited by caption label plus PDF page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "our collective understanding of the impacts of calibration/validation approaches and glacier dynamics representations on GHM uncertainty is still relatively underdeveloped",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (body) and publisher XML text (abstract, captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Following van Tiel et al.'s (2020) call for systematic study of GHM calibration, the authors ask how calibration procedure and glacier-dynamics representation affect projected streamflow in a partially glacierized basin.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our collective understanding of the impacts of calibration/validation approaches and glacier dynamics representations on GHM uncertainty is still relatively underdeveloped"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built a new fully-coupled GHM by modifying Raven's source code so landuse changes during a run from RGM output, coupling UBCWM hydrology on 200 m HRUs to the RGM ice-dynamics model, with tracer routing of glacier melt.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we modified Raven’s source code to allow landuse change to be determined during a simulation"
+    },
+    {
+     "n": 3,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked that the choice to initialize newly barren HRUs with zero soil moisture does not affect outlet hydrology.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "simulations show that the hydrology at a basin’s outlet is insensitive to this initialization"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembled existing data: PNWNAmet gridded forcing, BC Hydro naturalized flows, Schiefer et al. (2007) basin-scale thinning rates and glacier area change, glacier DEMs from Clarke et al. (2015), and a modified land-cover map.",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Simulated streamflow at the outlet is compared to naturalized flows provided by BC Hydro."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed the comparison: three calibration procedures (ND static glaciers with a mass-balance membership function; Z with RGM dynamics and thinning rate; ZA with thinning rate plus area change) and a one-way OW projection that reuses the ND parameter set.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We simulate projections of the future hydrology of the Cheakamus Basin using three separate sets of parameterizations obtained through three different calibration procedures"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrated 15 parameters for 1985-1999 with NSGA-II against four streamflow metrics plus each procedure's glacier metrics, ran 30 iterations of 60 parameterizations, verified Pareto convergence, and kept a six-member subset per procedure.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is used to find Pareto optimal parameterizations consisting of 15 calibrated parameters"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compared calibration-period simulations with observed streamflow and glacier metrics (Table 2) and judged the fit similar across procedures and adequate, while noting poor fits to winter low flows and to peaks.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Calibration and validation performance of the six selected Pareto optimal parameterizations was similar across all three procedures"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Validated the selected parameterizations against held-out 2000-2008 streamflow, using the hydrograph in Fig. 3.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Over the validation period, daily Nash–Sutcliffe Efficiency was within 0.58–0.64"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared the procedures' spread of Pareto-optimal parameter values (Table 3) and used F-sigma tests on validation-period output variance across all 60 parameterizations (Table 5, Fig. 5); Z constrained the high-sensitivity parameters most tightly.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it appears that the distribution of Pareto optimal values using procedure Z is generally tightest"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran RCP8.5 projections for 1981-2098 with six downscaled CMIP5 GCMs and six parameterizations for each of the OW, ND, Z and ZA procedures (36 runs each).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we project the Cheakamus Basin’s future hydrology under Representative Concentration Pathway 8.5 from 1981 through 2098"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared the projections with the conceptual expectation of earlier snowmelt and lower summer flow; all procedures project nearly total glacier loss by end-century (Fig. 4, p. 8).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "consistent with one another as well as with the conceptual model of increasing radiative forcings leading to an earlier spring onset of snowmelt"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "robustness",
+     "action": "Compared variability across procedures: between-to-within variability ratios for forcings versus parameterizations (Table 6), Welch t-tests on the sign and significance of baseline-to-end-century changes (Table 4), and t-tests on change magnitudes between procedures (Table 7, p. 9).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The sign and significance of projected changes agree across all projection procedures"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated effect sizes of GCM forcing and calibration/projection procedure on projected changes with two-way ANOVA; procedure explains as much variance as forcing, or more, for three of four variables (Fig. 8, p. 10).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two-factor ANOVA shows both forcings and projection procedures explain a significant (α = 0.05) amount of variation"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "In the Discussion, found that fully-coupled calibration gave tighter output variance than static calibration, but that the extra area constraint (ZA) gave no benefit, against the conceptual expectation that it would.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the additional constraint on glacier area that defines the difference between Z and ZA does not appear to positively influence calibration results"
+    },
+    {
+     "n": 15,
+     "node": "P",
+     "mode": "methods",
+     "action": "Explained the missing benefit of the area constraint by an auxiliary, the short calibration period with near-zero observed area change and thick glaciers, rather than revising the expectation.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The absence of any benefit from the addition of an area constraint may relate to the relatively short calibration period"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the finding that calibration/projection uncertainty rivals GCM uncertainty against prior studies that found GCM choice to be the dominant source.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "choice of GCM has generally been found to be the largest source of uncertainty in the modelling chain"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "robustness",
+     "action": "Kept the claim that RCP8.5 forcing makes the sign and significance of change insensitive to procedure, while magnitudes differ significantly.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "make the sign and significance of changes to the basin’s hydrology insensitive to the calibration and projection procedures studied"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept a preference for the two-way GHM calibrated with dynamic glaciers and thinning rates (Z), chosen on three stated principles (internal consistency, minimal output variance, fewer data requirements).",
+     "page": "§0 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "calibration using dynamic glaciers and a thinning rate constraint is preferable for the new GHM"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "calibration-induced uncertainty in GHM summer-streamflow projections in a partially glacierized basin",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "no; future changes cannot be observed, only simulated (projections cannot be compared to observations)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "compare the effects of calibration procedure and coupling structure on projections",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "4",
+   "answer": "four rival procedures (ND, Z, ZA, OW) as methodological choices; no rival hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "differences in output variance and in change magnitude, tested with F and t tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "6",
+   "answer": "conditions set in silico by the choice of procedure and of GCM forcing",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "sign and significance survive variation of procedure and GCM; magnitudes do not",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "kept: sign robust, magnitude sensitive; procedure Z preferred",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "no review file supplied; the paper only thanks two anonymous reviewers",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Across calibration/projection procedures the sign and significance of projected summer hydrological change in the Cheakamus Basin are insensitive to procedure, but the magnitude of change differs significantly, with procedure-related variance comparable to GCM-related variance.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "robustness",
+  "sentence": "Comparing the 36-member projection ensembles of the four procedures with t-tests on sign, significance and magnitude of change (Tables 4 and 7) is what produces the headline claim of robust sign and procedure-sensitive magnitude.",
+  "page": "7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No stated hypothesis directed data acquisition: all observations are existing data sets chosen for availability (p. 2, p. 4). The claim faced tests it could have failed: the t-tests could have shown disagreement in sign or significance, and the F and t tests could have shown no procedure effect (pp. 6-9). The projections themselves cannot be tested against observations (p. 11). The α = 0.05 thresholds and the three principles for choosing a preferred procedure are stated, but nothing shows they were fixed before the results (p. 11)."
+ },
+ "imports": [
+  {
+   "field": "evolutionary computation / computer science",
+   "item": "NSGA-II non-dominated sorting genetic algorithm for multi-objective calibration",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "fuzzy logic control / electrical engineering",
+   "item": "bell-shaped membership function (Zhao & Bose 2002) used as a mass-balance calibration metric",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "statistics",
+   "item": "Welch's unequal-variance t-test, F-sigma test of variances, two-way ANOVA effect sizes",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "statistics / sensitivity analysis",
+   "item": "Morris method to identify high-sensitivity parameters",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Newton's root-finding algorithm for reach storage routing",
+   "kind": "method",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we 1) present a new, fully-coupled GHM",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "we use a new GHM that represents the full coupling of the UBC Watershed Model (UBCWM) to the regional glaciation model",
+   "page": "2"
+  }
+ ],
+ "limits": "The XML text holds only the abstract and the captions, so most locators are PDF pages; quotes from body text are copied from the PDF text layer. No review file was supplied, so no review sequence is coded, although the acknowledgments mention two anonymous reviewers and an internal review by F. Zwiers. Composition is none_fits: this is a single-basin model-sensitivity study that varies methodological auxiliaries (calibration procedure, coupling structure) and forcings in silico. There are no rival hypotheses, no crucial test, no trace series and no frozen forecast. Sub-claims at other statuses: (a) Z is preferred and the two-way GHM has benefits over the one- [...] (capability_characterized), based only on within-ensemble variance and stated principles, not on agreement with observations; the authors say projections cannot be compared to observations (p. 11). (b) ANOVA effect sizes for procedure versus forcing (estimate_with_resolution, but no uncertainty is given for the effect sizes; Fig. 8). (c) Nearly total glacier loss by end-century (best_explanation within RCP8.5 only). The Morris sensitivity analysis used to select parameters is mentioned but not shown (pp. 5-6). The selection of six of 60 parameterizations by 'combined metric performance' is not specified further (p. 5). Only one scenario (RCP8.5), one basin and one glacier evolution for OW are used. The authors explicitly decline to generalize (p. 11). Inference: the ZA null result is protected by an auxiliary (short calibration period) that the paper does not test.",
+ "disagreements": [
+  {
+   "target": "Previous studies of uncertainty in hydrological projections (Kay et al., [...] and Davies, 2009; Najafi et al., 2011)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The two-way ANOVA effect sizes show calibration/projection procedure explains as much variance as GCM choice, or more, for three of four variables; the authors note those studies did not vary calibration procedure.",
+   "page": "11",
+   "quote": "choice of GCM has generally been found to be the largest source of uncertainty in the modelling chain"
+  },
+  {
+   "target": "Conceptual expectation that constraining glacier area helps calibration by avoiding compensating errors",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "ZA shows no smaller variance than Z for any property, and the glacier area evolutions of Z and ZA are very similar (Table 5, Fig. 4).",
+   "page": "10",
+   "quote": "Conceptually, one would expect constraining glacier area to be beneficial to a model"
+  },
+  {
+   "target": "Tsuruta and Schnorbus (2021): streamflow insensitive to the precise path of glacier area dynamics",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue internal dynamics may produce a wider range than the earlier study, and find that OW and the coupled procedures differ significantly in projected low-flow and CV magnitudes (Table 7); the paper does not link this explicitly back to the 2021 result.",
+   "page": "5",
+   "quote": "we nonetheless wish to explore the effects of running the fully-coupled model (with glacier dynamics on) during the calibration period"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "gridded PNWNAmet forcing for calibration and validation",
+   "alternatives": "climate station forcings, which operational simulations suggest may fit better",
+   "reason": "similarity in structure to the gridded GCM forcings that drive the projections",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "UBCWM as the hydrological model",
+   "alternatives": "other hydrological models reviewed by Beckers et al. (2009)",
+   "reason": "physically based, analytically represents snow and glacier melt, and runs within Raven",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "zero initial soil moisture for newly barren HRUs",
+   "alternatives": "other initializations (implied)",
+   "reason": "simplicity; outlet hydrology insensitive to the choice",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "S",
+   "chosen": "one Clarke et al. (2015) glacier evolution, the one closest to the median, for the OW projections",
+   "alternatives": "the six glacier evolutions projected by Clarke et al. (2015)",
+   "reason": "Tsuruta and Schnorbus (2021) found the choice of glacier evolution negligible",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "reuse the ND parameterization set for the one-way (OW) projections",
+   "alternatives": "a separate calibration for the one-way model",
+   "reason": "saves computational cost; observed 1985-1999 area change minimal; allows direct one-way versus two-way comparison",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "I",
+   "chosen": "subset of six of the 60 Pareto-optimal parameterizations for validation and projection",
+   "alternatives": "the full set of 60",
+   "reason": "combined metric performance",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "K",
+   "chosen": "procedure Z (fully coupled, calibrated with glacier dynamics and thinning rate)",
+   "alternatives": "ND, ZA, OW",
+   "reason": "internal consistency, minimal output variation between optimal parameterizations, fewest data requirements",
+   "effect_reported": "yes",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "simulations show that the hydrology at a basin’s outlet is insensitive to this initialization",
+   "page": "3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Validation is based on performance against streamflow observations over the 2000–2008 (water year) period.",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "analyze the effects different calibration techniques have on the model’s summer streamflow projections",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] the fully-coupled GHM results to projections using a one-way GHM",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "is simulated using forcing data from six Coupled Model Intercomparison Project Phase 5 [...]",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "consistent with one another as well as with the conceptual model of increasing radiative forcings leading to an earlier spring onset of snowmelt",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "Tsuruta and Schnorbus (2021) found the choice of glacier evolution negligible relative to the variation associated with meteorological forcings and parameterization",
+   "page": "5"
+  }
+ ]
+}

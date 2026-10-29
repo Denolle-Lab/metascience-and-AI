@@ -1,0 +1,696 @@
+{
+ "key": "g22_W4282552976",
+ "doi": "10.5194/acp-22-7575-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Wang et al. 2022, Atmos. Chem. Phys. 22, 7575-7592",
+  "Publisher XML converted to located text (jats_text), DOI 10.5194/acp-22-7575-2022",
+  "Open discussion of preprint acp-2021-750: RC1, AC1, RC2, AC2 with supplements"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); for steps read off figures, the figure label plus the printed journal page in parentheses; review steps cite the review record's own locators (RC1-S p.n, AC2-S p.n, RC2 ¶n)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, questions remain regarding whether and how PM 2.5 concentrations directly related to atmospheric general circulation.",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML located text and PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the open question of whether and how surface PM2.5 relates to the atmospheric general circulation, noting that no study has linked wave activity to PM2.5.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, questions remain regarding whether and how PM 2.5 concentrations directly related to atmospheric general circulation."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They adopt the AWA-regression approach the same group developed for ozone (Sun et al. 2019) and add quantile regression for PM2.5, with detrended and deseasonalized daily residuals.",
+     "page": "§2 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "This study is a followup study to Sun et al. (2019), using the same approach used there to analyze ozone"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "They compile summer IMPROVE PM2.5 from 150 stations (1988-2014) and ERA-Interim 500 hPa geopotential height, and choose three representative sites matched to an earlier ozone study.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All stations with at least 1000 valid PM 2.5 values between 1988 and 2014 are collected in this study"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They take existing CESM CAM4-Chem CCMI output: a MERRA-driven hindcast (REFC1SD), free-running current and future CO2 runs (GCM2000, GCM2100), and an RCP future-emissions run (REFC2).",
+     "page": "§2.2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "We compare the IMPROVE data with output from the Community Earth System Model (CESM) as simulated for the Chemistry-Climate Model Initiative (CCMI)"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute anticyclonic local finite-amplitude wave activity from Z500 using equivalent latitude and integrals of northward contour displacement.",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To calculate AWA, we adopt the procedures in Chen et al. (2015) and Huang and Nakamura (2016)."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They check the model premise by correlating simulated and observed monthly climatological PM2.5 at the three sites (r > 0.80).",
+     "page": "§3 ¶1; Figure 2 (p. 7581)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for current PM 2.5 is found between observations and simulations of monthly mean climatological averages"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They map 20-year summer mean AWA and PM2.5 and their differences across scenarios (hindcast minus coupled, future minus current).",
+     "page": "§3 ¶2; Figure 3 (p. 7581)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The 20-year averaged AWA on summer days exhibits a maximum over the southwestern US (Fig. 3a; shaded)."
+    },
+    {
+     "n": 8,
+     "node": "E",
+     "mode": "regularities",
+     "action": "They regress daily PM2.5 at three sites on AWA at every grid point and find positive coefficients near the sites.",
+     "page": "§3.1 ¶1; Figure 4 (p. 7583)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the PM 2.5 concentrations are positively correlated with AWA in the areas close to the sites"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the observed regression patterns with those from the hindcast and the coupled runs: the hindcast is similar, the coupled run less so.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall the model simulates similar spatial patterns to the observations for the case of the reanalysis-driven simulations (REFC1SD) but does less well"
+    },
+    {
+     "n": 10,
+     "node": "P",
+     "mode": "simulation",
+     "action": "They attribute the coupled-model mismatch to uncertain emissions, model process errors and internal variability, rather than to the AWA-PM2.5 relation.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which may be driving these inconsistencies between modeled and observed relationships"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They compute composite AWA for days above the 90th percentile of PM2.5, compare it with the regression maps, and justify the 90th-percentile threshold by comparing composites at other quantiles (Fig. S1).",
+     "page": "§3.1 ¶2; Figure 5 (p. 7584)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The pattern for the composite AWA corresponding to daily PM 2.5 above the 90th quantile is most similar to regression coefficients"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They extend both metrics to every station and grid point across the observed and four simulated datasets, and find positive connections throughout the US.",
+     "page": "§3.2 ¶1; Figure 6 (p. 7585)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "PM 2.5 concentrations are positively correlated with AWA throughout the US but with varying strengths (Fig. 6)."
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "theory",
+     "action": "They propose that anticyclonic conditions (subsidence, light wind, no rain, inversions) account for the positive link.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is likely accounted for by arid weather and sinking inversions"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the link against published stagnation-PM2.5 and ozone studies and find them consistent.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is consistent with the PM 2.5 sensitivity study of Tai et al. ( [...] )."
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "regularities",
+     "action": "At AREN1 they fit linear and quantile regressions (10th-90th percentiles) of PM2.5 on impact-region AWA; the 90th-percentile slope is about 3 times the 10th, with overall r = 0.36.",
+     "page": "§3.3 ¶1; Figure 7 (p. 7586)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the 90th percentile of PM 2.5 is approximately 3 times more sensitive to the averaged AWA over the impact region"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They test whether the higher-quantile sensitivity holds at all 150 sites by differencing the 90th- and 50th-percentile slopes at the 5 % level.",
+     "page": "§3.3 ¶2; Figure 7 (p. 7586)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Out of the 150 sites, 145 sites show that 90th-percentile PM 2.5 increases more than the 50th percentile of PM 2.5"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the quantile result with Porter et al. (2015) and find it partly consistent.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results are to some extent consistent with those from Porter et al. (2015)"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "In the GCM2000 run they regress interannual PM2.5 on the projection of AWA anomalies onto the regression pattern; R² reaches 0.75 depending on grid box.",
+     "page": "§3.4 ¶1; Figure 8 (p. 7586)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This means that the projected value (using only AWA changes) captures up to 75 % of the interannual variability in PM 2.5"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the R² values with Wise and Comrie (2005) for the southwest.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "here we see a comparable relationships across the southwest, although these studies use different methodologies"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They predict future PM2.5 change from the projected AWA change using current-climate slopes (Eq. 7), assuming the relation is stationary.",
+     "page": "§3.4 ¶2; Figure 9 (p. 7587)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we assume that the linear relationship between the predictors and PM 2.5 does not change very much in the future"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the AWA-predicted change with the simulated GCM2100 minus GCM2000 change as a fraction; it exceeds 50 % in the western US.",
+     "page": "§3.4 ¶3; Figure 10 (p. 7587)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The impact of AWA change alone on summer PM 2.5 concentrations is likely to be quite significant (above 50 %) in the western US"
+    },
+    {
+     "n": 22,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They examine the future change in Z500 (Fig. S2): a 25-55 m rise with an anticyclonic pattern over the western US.",
+     "page": "§3.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "can account for the PM 2.5 variability resulting from changes in AWA"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the projected western increase against published projections of mixed sign and region, and attribute the discrepancies to differences in model formulation.",
+     "page": "§3.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The discrepancy between studies mentioned above and the results given here is most likely attributable to differences in model formulation."
+    },
+    {
+     "n": 24,
+     "node": "P",
+     "mode": "simulation",
+     "action": "They attribute the mismatch between predicted (west) and simulated (east) change to the AWA change pattern and to meteorological drivers the univariate linear model omits; they note speciation is unavailable.",
+     "page": "§3.4 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This discrepancy mostly results from the distribution of projected AWA change (Fig. 3)."
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "regularities",
+     "action": "They keep the claim that summer PM2.5 is positively linked to local AWA across the US, more strongly at high percentiles, with regional variation.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This analysis demonstrates that PM 2.5 is positively linked to the local anticyclonic finite-amplitude wave activity over the past 2 decades during JJA"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion acp-2021-750 (RC1, AC1, RC2, AC2 and supplements)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "D",
+     "mode": "observation",
+     "action": "Referee 1 asked why the three representative sites were chosen; the authors added the matching to the Sun et al. (2017) ozone sites and the clean-air status of LAVO1.",
+     "page": "RC1-S p.1; AC1-S p.1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "How to choose the three sites (i.e., AREN1, SIPS1, and LAVO1) as the representative stations of different part of the country and why?"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 1 asked for the AWA equations; the authors added equations 1-4 to Section 2.3.",
+     "page": "RC1-S p.1; AC1-S p.7",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "it’s better to list the equation(s) used to calculate AWA (or LWA)"
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Referee 1 asked why Wise and Comrie found lower R²; the authors tabulated the differences and added a sentence calling the results comparable despite different methods.",
+     "page": "RC1-S p.1; AC1-S p.5-6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "why Wise and Comrie (2005) show much lower coefficient of determinations (i.e., 0.1-0.5) than this study (i.e., 0.75)?"
+    },
+    {
+     "n": 4,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Referee 1 asked for a PM2.5 comparison with Porter et al. (2015); the authors rewrote the comparison to focus on PM2.5.",
+     "page": "RC1-S p.1; AC1-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "how about the comparison of PM2.5 results in this study with that in Porter et al. (2015)?"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Referee 1 flagged swapped simulation names; the authors corrected the Figure 6 caption and clarified the Figure 9 and 10 captions.",
+     "page": "RC1-S p.1; AC1-S p.2-5, p.8",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Please go through the entire paper and make sure that the case terms are not messed up."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 2 asked for speciated PM2.5; the authors declined because the model output lacks speciation and deferred it to future work.",
+     "page": "RC2 ¶1; AC2-S p.1",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Without any individual treatment of speciated PM2.5"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Referee 2 asked for the mechanisms and covariance with local meteorology; the authors added the future Z500 change (Fig. S2) and literature, without quantifying covariance with local variables.",
+     "page": "RC2 ¶1; AC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "these correlations are never shown, quantified, nor discussed in any detail"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "observation",
+     "action": "Referee 2 questioned the 1000-observation threshold and the year range; the authors explained the station coverage and added Table S1, without changing the selection.",
+     "page": "RC2 ¶1; AC2-S p.4",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "1000 observations between 1988 and 2014 seems like a very low threshold for data availability"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Referee 2 asked whether the free-running and specified-dynamics runs agree in overlapping years; the authors argued the years are arbitrary and that 20-year climatologies are comparable, with no new check.",
+     "page": "RC2 ¶1; AC2-S p.4-5",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Do the overlapping years between them (2006-2010) show good agreement in AWA?"
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 2 asked for a clearer composite method; the authors expanded Section 2.6 with a description and precedents.",
+     "page": "RC2 ¶1; AC2-S p.5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "This description needs some serious clarification."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Referee 2 questioned the use of full-year monthly climatologies to validate the model instead of daily JJA comparisons; the authors kept Figure 2.",
+     "page": "RC2 ¶1; AC2-S p.5-6",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "what is the relevance of including full annual cycles of PM2.5?"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "observation",
+     "action": "Referee 2 questioned LAVO1 and suggested a Midwest or Great Plains site; the authors justified the existing sites and added none.",
+     "page": "RC2 ¶1; AC2-S p.6-7",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "wouldn't it be beneficial to have at least one site within one or both of them?"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Referee 2 questioned the word 'correlation' for composites and the value of Fig. 5; the authors reworded to 'connection' and added composites at the 30th-90th quantiles (Fig. S1) to justify the 90th threshold.",
+     "page": "RC2 ¶1; AC2-S p.8-9",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I don't really see the benefit of including/discussing both regressions (Fig 4) and high PM2.5 filtered subset (Fig 5)"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Referee 2 asked the authors to acknowledge the weak overall correlation (r = 0.36) at AREN1; they added a sentence that other drivers dominate there.",
+     "page": "RC2 ¶1; AC2-S p.11-12",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "it must be noted that this lack of overall correlation implies other (and likely MUCH more important) drivers"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Referee 2 asked for a formal test of the difference between the 90th- and 50th-percentile slopes; the authors applied a Z-test (Paternoster et al. 1998) and replotted Fig. 7b.",
+     "page": "RC2 ¶1; AC2-S p.12-13",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "More robust tools to evaluate and compare quantile regression coefficients are available, and should be used to establish significance here."
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 2 doubted the 75 % R² and the switch to interannual variance; the authors explained that daily R² reached only 0.56, so they reported the interannual 0.75, and added the period to the text.",
+     "page": "RC2 ¶1; AC2-S p.13-14",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "75% explained variability seems VERY high to my eye, given previous figures and results."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: a positive daily link between summer PM2.5 and nearby anticyclonic wave activity",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No: AWA is computed from Z500, and the link is inferred by regression and compositing",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize the PM2.5-AWA relation by site, region and quantile, and test its use for projection",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rival hypotheses; other meteorological drivers and speciation are acknowledged only",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "None derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found in the observational record; model scenarios (CO2, emissions) set by CCMI protocols",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: many summer days at 150 stations and grid points, across five datasets",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly: holds across obs and hindcast, both metrics and 145 of 150 sites; weaker in the coupled run",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as a regularity for summer over the US",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Published after minor and major revisions; several referee requests declined",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In US summers, daily PM2.5 is positively connected to local anticyclonic wave activity at nearly all stations; higher PM2.5 percentiles are more sensitive, and the strength varies regionally.",
+  "page": "§4 ¶1-¶2"
+ },
+ "decisive_move": {
+  "node": "E",
+  "mode": "regularities",
+  "sentence": "Without the regression of daily IMPROVE PM2.5 on gridded reanalysis AWA, which showed positive coefficients near the sites, there would be no relation to generalize, composite, or project.",
+  "page": "§3.1 ¶1"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data are archival (IMPROVE, ERA-Interim, existing CCMI runs); no hypothesis directed their acquisition. The relation could have failed in the obs-versus-model consistency checks (§3.1 ¶1), across stations (§3.3 ¶2) and in the predicted-versus-simulated future change (§3.4 ¶3, ¶6). Partial failures (coupled run, east-west mismatch) were protected by auxiliary explanations, and no null model was used beyond 5 % significance. Nothing was fixed in advance, and the review record shows the 90th-percentile threshold and interannual R² were chosen after comparing alternatives (§3.1 ¶2; AC2-S p.13)."
+ },
+ "imports": [
+  {
+   "field": "econometrics/statistics",
+   "item": "Quantile regression (Koenker and Bassett 1978)",
+   "kind": "method",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Influential-observation reasoning (Cook 1979) and coefficient of determination (Kutner et al. 2004)",
+   "kind": "concept",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "field": "epidemiology/public health",
+   "item": "Health effects of PM2.5 (mortality, cardiovascular) as motivation",
+   "kind": "concept",
+   "page": "§1 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However, no previous studies have investigated how wave activity can lead to changes in PM 2.5 concentrations",
+   "page": "§1 ¶3"
+  },
+  {
+   "quote": "Such an exploration of PM 2.5 from atmospheric motion can provide new insights into understanding the mechanism of PM 2.5 changes",
+   "page": "§1 ¶5"
+  },
+  {
+   "quote": "This study presents new perspectives to explore both the observed and simulated PM 2.5 responses to climate change.",
+   "page": "§4 ¶2"
+  }
+ ],
+ "limits": "Sub-claims at other statuses: higher-quantile sensitivity (regularity_in_range, strongest in the northeast, though AREN1 has r = 0.36); up to 75 % of interannual variance explained in GCM2000 (estimate, no uncertainty given); future PM2.5 increase from AWA change in the western US, up to 0.92 µg m-3 (model-based estimate under an assumed stationary relation, no uncertainty given; closest to estimate_with_resolution but without resolution). The abstract says 'Changes between current and future climates in AWA can explain up to 75 %', but §3.4 ¶1 computes the R² from present-climate interannual variability; the mismatch is an inference from comparing the two passages. The abstract's 'up to R = 0.65' is not located in the main text. The paper does not record that the interannual R² was preferred because daily R² reached only 0.56 (AC2-S p.13); that fork appears only in the review record and is therefore not coded in alternatives_considered. The Z-test used for Fig. 7b (AC2-S p.12) is not described in the published Methods. Table 1 still lists model years for GCM2000 and GCM2100, although AC1-S p.8 says they were removed. 'Where meteorology dominates' is not defined in the paper; AC2-S p.13 defines it from LAVO1 in Fig. 2. No check of free-running against specified-dynamics AWA in overlapping years; no speciation; no quantified covariance of AWA with local meteorology; the univariate linear model omits other drivers. The conclusion that AWA is positively correlated 'at every available station' is not directly shown station by station; Fig. 7b shows 5 sites with slope differences of zero or below, by inference. Whether model simulation and composite results were planned before the observational results were seen is not stated.",
+ "disagreements": [
+  {
+   "target": "Tagaris et al. (2007)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The AWA-predicted future PM2.5 increase sits in the western US rather than the Midwest found by Tagaris et al.",
+   "page": "§3.4 ¶3",
+   "quote": "but our signal is in the west"
+  },
+  {
+   "target": "Avise et al. (2009)",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "The paper projects meteorology-driven PM2.5 increases where Avise et al. found reductions; it attributes the discrepancy to model formulation without testing that.",
+   "page": "§3.4 ¶5",
+   "quote": "In contrast, Avise et al. (2009) found that changes in meteorology tend to reduce summertime PM 2.5 concentrations"
+  },
+  {
+   "target": "Tagaris et al. (2007) and Racherla and Adams (2006) on the climate-only PM2.5 response",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "Other models give small or eastern responses; the paper attributes the difference to model formulation and the lack of consistency across studies.",
+   "page": "§3.4 ¶5",
+   "quote": "while Tagaris et al. (2007) found that climate change, alone, with no emissions increase or controls affects the US PM 2. [...]"
+  },
+  {
+   "target": "Simulated constant-emissions future change and Tai et al. (2012) projections",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The AWA-predicted change differs from the simulated change, which peaks in the east; the paper explains this by the AWA change pattern and omitted meteorological drivers.",
+   "page": "§3.4 ¶6",
+   "quote": "is different from the simulated future change in PM 2.5 from the constant-emissions run, which simulate the most significant change in the eastern US"
+  },
+  {
+   "target": "Porter et al. (2015)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Higher-quantile sensitivity agrees with Porter et al., but Porter's temperature sensitivities peak only in the east.",
+   "page": "§3.3 ¶2",
+   "quote": "but with PM 2.5 sensitivities to temperature peaks entirely in the east due to the regionality of PM 2.5 speciation"
+  },
+  {
+   "target": "Wise and Comrie (2005)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their R² of 0.1-0.5 is called comparable in the southwest despite a higher maximum here, with differences in method and period noted.",
+   "page": "§3.4 ¶1",
+   "quote": "although these studies use different methodologies as well as considering different time periods"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "V",
+   "chosen": "Composite at days above the 90th percentile of PM2.5",
+   "alternatives": "Composites at other quantiles (Fig. S1)",
+   "reason": "The 90th-percentile composite is most similar to the regression coefficients",
+   "effect_reported": "yes",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Anticyclonic wave activity (AWA)",
+   "alternatives": "Total and cyclonic LWA",
+   "reason": "Summer LWA over the US is dominated by its anticyclonic component (Sun et al. 2019)",
+   "effect_reported": "no",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "MERRA Z500 for the REFC1SD AWA analysis",
+   "alternatives": "ERA-Interim Z500",
+   "reason": "Should be very similar, since both use largely the same observations",
+   "effect_reported": "no",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "node": "V",
+   "chosen": "Both regression coefficients and composite AWA",
+   "alternatives": "Either metric alone",
+   "reason": "Showing the consistency of the approaches",
+   "effect_reported": "yes",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Quantile regression alongside linear regression",
+   "alternatives": "Linear regression only",
+   "reason": "To measure whether some percentiles are more influenced by AWA than others",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "for current PM 2.5 is found between observations and simulations of monthly mean climatological averages",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "offer a test of the consistency between observational and model relationships in characterizing the response of PM 2.5 to AWA",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "for the different observational or model combinations, showing the consistency of the approaches",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "by comparing different quantiles (Fig. S1 in the Supplement)",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "PM 2.5 concentrations are positively correlated with AWA throughout the US but with varying strengths",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "applies to the other sites, we calculate the difference of the 90th-percentile quantile regression coefficient",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the fraction of predicted JJA PM 2.5 change in total JJA PM 2.5 change from the simulation is calculated in Fig. 10",
+   "page": "§3.4 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "[...] et al. (2019) show considerable variation in the AWA pattern between different ensemble simulations",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This is consistent with the PM 2.5 sensitivity study of Tai et al. ( [...] ).",
+   "page": "§3.2 ¶2"
+  }
+ ]
+}

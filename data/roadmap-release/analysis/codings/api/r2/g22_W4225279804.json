@@ -1,0 +1,442 @@
+{
+ "key": "g22_W4225279804",
+ "doi": "10.5194/npg-29-171-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kriegmair et al. 2022, Nonlin. Processes Geophys. 29, 171-181, published PDF",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "A particularly difficult problem in the representation of unresolved processes is the so-called gray zone",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (npg-29-171-2022)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question whether a neural network can directly learn the model error caused by unresolved gray-zone scales.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we explore the possibility of using a neural network to directly learn the error caused by unresolved scales."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the exact-difference training-target approach of Yuval and O'Gorman (2020): the same model at high and low resolution, started from identical initial conditions, differenced after one low-resolution time step.",
+     "page": "§1 ¶6",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "compute exact differences after a single low-resolution time step by starting both model versions from the same initial conditions"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "simulation",
+     "action": "Use the modRSW idealized convective-scale model of Kent et al. (2017) as testbed, adding a relaxation term to remove a model-intrinsic drift in the domain-mean wind.",
+     "page": "§2.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The modRSW model used in this research represents an extended version of the 1D shallow water equations"
+    },
+    {
+     "n": 4,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set the experimental conditions by selecting two orography realizations giving a regular and a chaotic dynamical regime.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "two realizations of the orography are selected to represent the regular and more chaotic dynamical behaviors"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Generate training data (HR run coarse-grained by factor 4, one LR step, exact differences as targets; 30 d training, 26 d validation) and build a five-layer convolutional ANN trained with Adam on an MSE loss with an optional weak mass-conservation penalty (Eq. 1).",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each LR1 state is integrated forward for a single time step, using the modRSW model on LR with the coarse grained orography"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Check sensitivity of results to hyperparameters (loose tuning), to random initial weights (five repeated trainings) and to the epoch number (last five epochs), and sample 25 ANN realizations per setup.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is desirable to measure the sensitivity of our results to the realization of these quantities"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the verification: RMSE, SME and bias with SD decomposed into time and ANN parts, for single time step predictions and 48 h forecasts from 50 independent initial conditions, with an uncorrected LR run as reference.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the main scores that are used to verify the efficacy of the ANNs are the root mean squared error"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare ANN-corrected and uncorrected single-step predictions against model truth: RMSE reduced by 84-97 %, LR biases in u and r removed, but a small SME in h is introduced.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The improvements achieved by the ANN with respect to LR in terms of RMSE are substantial"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare 48 h forecasts with and without the coupled ANN: clear benefit until the LR error saturates, then LRANN error keeps growing, with a detrimental impact after about 1 d in the chaotic case.",
+     "page": "§4.1 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "For the chaotic case, this leads to a detrimental impact of the ANN after about 1 d."
+    },
+    {
+     "n": 10,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Attribute the forecast deterioration to accumulated mass errors of the non-conserving ANN, which bias the wind through momentum conservation and alter threshold crossings.",
+     "page": "§4.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The divergence of the SME of h is the result of applying ANNs that, in contrast to the model, do not conserve mass."
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "methods",
+     "action": "Try to correct the mass violation by post-processing the ANN corrections (subtracting the spatial mean; rescaling positive or negative corrections); neither approach improved the forecasts.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Neither of these simple approaches led to improvements."
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Instead impose mass conservation in a weak sense in training, using penalty weightings wmass = 1, 10, 100, 1000.",
+     "page": "§4.2 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We, therefore, included mass conservation in a weak sense in the training process of the ANN"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare single-step predictions across weightings: the mass error falls, and the expected RMSE tradeoff is not observed.",
+     "page": "§4.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Clearly, the mass conservation penalty term in the loss function has the desired effect of reducing the mass error for both orographies."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare 48 h forecasts across weightings: more than 15 h of forecast quality gained in the chaotic case and at least 30 h in the regular case.",
+     "page": "§4.2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "For the chaotic case, more than 15 h in forecast quality is gained."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Test the mass-error mechanism: wind-bias divergence is delayed with larger wmass, and correlations show the wind bias anticorrelated and the rain bias correlated with the mass bias as forecasts evolve.",
+     "page": "§4.2 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "as the forecast evolves, the wind bias becomes almost completely anticorrelated to the mass bias"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesize, without testing, that weaker correlations at large wmass reflect other causes of domain-mean wind and rain biases, such as orography or the state of u and r.",
+     "page": "§4.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We hypothesize that, as the mass bias weakens, other causes for introducing domain mean biases in the wind and rain field become more significant."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Decompose forecast-error variability by weighting: ANN-realization variability dominates at small wmass, and initial-condition variability takes over as wmass increases.",
+     "page": "§4.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it demonstrates a decrease in the sensitivity of the forecast to the training process of the ANN"
+    },
+    {
+     "n": 18,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Visually examine forecast animations and a 6 h snapshot: LR convective events are wider, shallower and misplaced, while the ANNs sharpen gradients and catch small events, with wmass = 100 closest to truth.",
+     "page": "§4.2 ¶5; Figure 13 (p. 179)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ANNs are capable of sharpening the gradients of the convective events, leading to highly accurate forecasts of convective events up to 6–12 h."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that ANN correction improves gray-zone forecasts and that the weak mass constraint reduces biases, extends skill and makes the approach more robust.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We found that reducing the mass error reduces the biases in the wind and rain field, leading to further forecasts improvements."
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the mass-conservation benefit beside similar findings in data-assimilation studies (Zeng et al. 2017; Ruckstuhl and Janjić 2018; Ruckstuhl et al. 2021).",
+     "page": "§5 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Such a positive effect of mass conservation was also found in"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Gray-zone error of a low-resolution model with partially resolved convection, mimicked in modRSW",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: the error is obtained exactly as the HR minus LR difference after one step",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Assess feasibility of an ANN correction coupled to the LR model",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; competing mass-correction approaches (post-processing vs weak constraint) compared",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Mass-error hypothesis predicts delayed wind and rain bias divergence with larger wmass",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in silico: two orographies, penalty weightings varied",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes across 25 ANN realizations, two regimes and held-out validation data; sensitivity to training falls with wmass",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: ANN improves forecasts up to about 1 d; weak mass constraint extends skill",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A convolutional ANN trained on exact one-step HR minus LR differences corrects gray-zone error in the modRSW model, improving forecasts up to about 1 d. A weak mass-conservation penalty delays the deterioration (more than 15 h extra in the chaotic case, at least 30 h in the regular case) and reduces sensitivity to training.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Generating exact training targets by integrating coarse-grained HR states one LR step and differencing makes the learned correction, and so the claim, possible.",
+  "page": "§2.2 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the mass-error hypothesis (§4.1 ¶4) directed the weighted-penalty experiments, but the main training data were generated without a hypothesis. Claim: the ANN forecasts were scored against an uncorrected LR reference and could fail; they did fail after about 1 d in the chaotic case (§4.1 ¶3). An expected RMSE tradeoff was not observed (§4.2 ¶2). Registration: nothing is reported as fixed before the data, and hyperparameters were loosely tuned (§2.3 ¶4)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "convolutional artificial neural networks",
+   "kind": "method",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Adam optimization algorithm",
+   "kind": "method",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "field": "computer science / software",
+   "item": "Keras Python deep-learning library",
+   "kind": "instrument",
+   "page": "§2.3 ¶4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file or open-discussion text was supplied, although the paper was in open discussion and names two referees (Brajard, Faranda), so no review sequence is coded. The weak-constraint loss (Eq. 1) is already defined in the Methods; the order in which the post-processing attempts and the penalty were actually tried is inferred from the Results narrative (inference). The post-processing results, the loose hyperparameter tuning and the penalty's share of the loss are reported but not shown. The work is confined to one idealized 1D model with two orographies, assumes all model error comes from unresolved scales (§5 ¶2), and has no real-atmosphere test. Sub-claims at other statuses: the mass-error mechanism linking h bias to u and r biases is best_explanation (supported by correlations, no stated rival); the secondary hypothesis about other bias causes is untested (none). Composition is none_fits because the walk runs question, then method construction, then baseline comparison, then failure diagnosis and refinement: a method-development loop that is neither capability_first (the question comes first) nor strong_inference (no rivals).",
+ "disagreements": [
+  {
+   "target": "Brenowitz and Bretherton (2019) coarse-graining approach to subgrid tendencies",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that the approach is sensitive to grid and time step and only approximates the true resolution difference, and they adopt exact one-step differences instead; no comparison is run.",
+   "page": "§1 ¶6",
+   "quote": "the resulting subgrid tendencies are only an approximation and may not represent the real difference between the low- and high-resolution model"
+  },
+  {
+   "target": "Studies emulating the entire model with machine learning (Brunton et al. 2016; Pathak et al. 2018; Dueben and Bauer 2018 [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper argues from practicality that full-model replacement is not yet operationally feasible, so it replaces only uncertain parameterizations.",
+   "page": "§1 ¶6",
+   "quote": "replacing an entire numerical weather prediction model for operational use is not yet within our reach"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Exact one-step differences between coarse-grained HR and LR runs from identical initial conditions",
+   "alternatives": "Coarse-graining by subtracting coarse-grained advection from local tendencies (Brenowitz and Bretherton 2019)",
+   "reason": "Alternative is sensitive to grid and time step and only approximates the real HR-LR difference",
+   "effect_reported": "no",
+   "page": "§1 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "ANN as replacement for uncertain parameterizations, learned from high-resolution simulations",
+   "alternatives": "Emulating the entire model; learning from expensive physics-based parameterization schemes",
+   "reason": "Replacing an entire NWP model operationally is not yet within reach",
+   "effect_reported": "no",
+   "page": "§1 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "Coarse-graining factor 4",
+   "alternatives": "Larger coarse-graining factor (Faranda et al. 2021 show the factor matters)",
+   "reason": "A larger factor would make the grid larger than typical cloud size, turning the problem into parameterizing unseen features",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Convolutional ANN",
+   "alternatives": "Dense networks",
+   "reason": "Convolutional networks reflect the spatial invariance and localization of the physical dynamics",
+   "effect_reported": "no",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Five hidden layers, 32 filters, kernel size 3, Adam with learning rate 1e-3, batch 256, 1000 epochs",
+   "alternatives": "Other architectures and hyperparameters tried in a loose tuning procedure (not named)",
+   "reason": "No strong sensitivities were detected",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "node": "R",
+   "chosen": "Weak mass-conservation penalty in the training loss",
+   "alternatives": "Post-processing the ANN corrections: subtracting the spatial mean of h corrections; scaling positive or negative h corrections",
+   "reason": "Neither post-processing approach led to improvements",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "Range of penalty weightings, with wmass = 100 highlighted in the snapshot",
+   "alternatives": "wmass = 0, 1, 10, 100, 1000",
+   "reason": "Varied to examine the effect of the constraint",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Training data from HR simulations",
+   "alternatives": "HR data from observations via data assimilation (Brajard et al. 2021)",
+   "reason": "Cost of HR data and accounting for other model errors; unclear which error source matters more",
+   "effect_reported": "no",
+   "page": "§5 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The ANN architecture and hyperparameters were selected based on a loose tuning procedure where no strong sensitivities were detected.",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "we repeat the training of each ANN presented in this paper, with randomly chosen initial weights, five times",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Since the MSE appears sensitive to both the initial weights and the epoch number, we use both to sample the total ANN variability",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the subsequent 30 d are used for training, and the remaining 26 d are used for validation purposes",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "As a reference, a LR simulation without ANN corrections (LR) is run in parallel.",
+   "page": "§3 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "two realizations of the orography are selected to represent the regular and more chaotic dynamical behaviors",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "as the weighting increases, the variability due to the initial conditions takes over",
+   "page": "§4.2 ¶4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Such a positive effect of mass conservation was also found in",
+   "page": "§5 ¶1"
+  }
+ ]
+}
