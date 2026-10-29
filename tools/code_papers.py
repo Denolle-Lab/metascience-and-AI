@@ -723,7 +723,8 @@ def cmd_submit(client, args, st: dict, keys: list[str] | None = None, max_tokens
         prewarm(client, args.effort, nature=bool(nat))   # with a Nature paper, both system blocks (the first is the shared prefix)
         b = client.messages.batches.create(requests=reqs)
         st['batches'].append({'id': b.id, 'tag': args.tag, 'keys': chunk, 'submitted': time.strftime('%Y-%m-%d %H:%M'),
-                              'codebook': codebook_version(), 'effort': args.effort, 'max_tokens': max_tokens, 'collected': False})
+                              'codebook': codebook_version(), 'effort': args.effort, 'max_tokens': max_tokens, 'collected': False,
+                              'task': TASK})
         if TASK == 'advance':
             st['batches'][-1].update({'rubric': rubric_version(), 'blind': {k: blinds[k][1]['output_sha256'] for k in chunk}})
         if TASK == 'inquiry' and REVIEW_DIR:   # what each review request read, by sha256 (the AR text is kept on disk)
@@ -878,7 +879,13 @@ def cmd_collect(client, args, st: dict) -> None:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:
         print(f'another collector of tag "{args.tag}" is running; not starting a second one'); return
-    for b in [b for b in st['batches'] if b['tag'] == args.tag and not b.get('collected')]:
+    pending = [b for b in st['batches'] if b['tag'] == args.tag and not b.get('collected')]
+    # a batch's task: recorded since October 29; before that, an advance batch is the one that carries a rubric version
+    wrong = {b['id']: t for b in pending if (t := b.get('task') or ('advance' if b.get('rubric') else None)) and t != TASK}
+    if wrong:
+        print(f'tag "{args.tag}" has batches of another task ({", ".join(sorted(set(wrong.values())))}); '
+              f'rerun with --task {next(iter(wrong.values()))}. Nothing collected.'); return
+    for b in pending:
         # a review batch carries its review_dir and addendum: the quote checks run here as on `one`
         if b.get('review_addendum'):
             rd = b.get('review_dir') or 'private/data/roadmap/review'
