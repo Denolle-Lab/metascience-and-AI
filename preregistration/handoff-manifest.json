@@ -1,11 +1,13 @@
 {
  "_provenance": {
   "script": "g33_handoff.py",
-  "commit": "f7ca019",
+  "commit": "d4404d1",
   "date": "2026-10-28",
   "private_root": "private",
   "inputs": [
    "private/data/roadmap/handoff/inquiry/handoff.json",
+   "private/data/roadmap/handoff/review/handoff.json",
+   "private/data/roadmap/handoff/inquiry-cop22/handoff.json",
    "private/data/roadmap/handoff/advance/handoff.json"
   ],
   "params": {}
@@ -235,10 +237,261 @@
     "sha256sums_sha256": "a98e9571a3d1210cca05ec3d5ea9f27d094a17e32c3da03ea2841f4a4ff9209e"
    },
    "review": {
-    "status": "not frozen"
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "d4404d1",
+    "codebook_version": "1.5.0",
+    "files": {
+     "agents/coder/CODEBOOK.md": {
+      "sha256": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/coding.schema.json": {
+      "sha256": "171b00fa6aa95792da21cf7da56e1b56202bcd7eeeb9a7fd5d926b78ef9a93ea",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/definitions.json": {
+      "sha256": "250d184cd561e97a84dab25c5b91f20f622d462ba96498ad47c9aeda4ef43bb8",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "agents/coder/REVIEW_ADDENDUM.md": {
+      "sha256": "ed51ceb31cf32dbac87c8c55cc6fa77047f1cdc74c2c69942085f1950388dd78",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "agents/coder/review_addendum.schema.json": {
+      "sha256": "c5fadd7d048edec3d022672b577ee26ed6f9477d6c419c5e3cc5d220de93e91c",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/check_coding.py": {
+      "sha256": "68eb90e8e69f3479605f60e7c6618418365a765612a489e221239ec742cb5864",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "a49143ef30a6dffd10275ea789bf1b7725cac6b5247c5ff13778fad85feefef0",
+      "last_commit": "662ef5a",
+      "modified_since_commit": false
+     },
+     "tools/code_papers_open.py": {
+      "sha256": "7b8f36a779bbe5de097c5aaa5ddad5607b2fea1e44e071ff60b10ecf002989cc",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g15_open_review.py": {
+      "sha256": "1270f58d9832449cef90b473742dd7fef8126ace214c67ead11c6b3f6d59a3df",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g27_author_responses.py": {
+      "sha256": "ce1ffbb7ed3cf212d4c0702b93c6fe4a4a65d0786ea553ba93ec0485cedcd61e",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g34_reconstruction.py": {
+      "sha256": "7242c0d401b82cab4834639b26a6415d2181933bb5554035b6301e474c7423d8",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "4507a2f8929a1227fce2e01a6125072aa89856b0ea30c29e211d90d37da68676",
+    "system_chars": 38765,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 64000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "high",
+     "max_tokens": 64000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the PDF as a document (text and page images), the located XML text when there is one, the open-review record, the author-responses document (AR pages not in the record) and the review addendum in the system prompt"
+    },
+    "validator": "check_coding.validate(coding, review=True, texts=code_papers.review_texts(key), checks=check_coding.DISCLOSURE_CHECKS) with code_papers.REVIEW_DIR = private/data/roadmap/review; then check_coding.kept_disclosures(coding, texts) (rule item: a disclosure failing a quote check is dropped and counted, the coding stays valid); g34 adds the C2 checks (review_addendum_version 1.0.0, >= 1 review step by a referee, editor or commenter)",
+    "compare": "python tools/check_coding.py agree-dir private/analysis/codings/api/<review tag> private/analysis/codings/open/<tag>; disclosures: tools/roadmap/g30_disclosure_agreement.py --codings private/analysis/codings/open/<tag>; the plan: tools/roadmap/g34_reconstruction.py features --set NAME=<inquiry>,<tag>,plan,open",
+    "n_papers": 245,
+    "text_source": {
+     "xml": 244,
+     "pdftotext": 1
+    },
+    "n_over_open_max_chars": 0,
+    "n_xml_for_open_model_not_for_claude": 0,
+    "est_input_tokens": {
+     "median": 58436,
+     "p90": 93255,
+     "max": 257543,
+     "over_65536": 94,
+     "over_131072": 8,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 1,
+    "n_excluded": 11,
+    "n_skipped": 0,
+    "claude_outputs": {
+     "calc1-review-v2:invalid": 1,
+     "calc1-review-v2:valid": 4
+    },
+    "batches": [
+     {
+      "id": "msgbatch_01QhNfQMBJWQPgWb3ua81dFE",
+      "tag": "calc1-review-v2",
+      "n": 5,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_011KaWJ7a7t8UWd4UCVWSF24",
+      "tag": "calc1-review-v2",
+      "n": 2,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 64000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01A9k87igkJ54dCiy5Z3U7xW",
+      "tag": "calc1-review-v2",
+      "n": 56,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01HSFRKsZmkGEm86Dcuzipew",
+      "tag": "r2-review-v2",
+      "n": 36,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     }
+    ],
+    "papers_jsonl_sha256": "86b7c0e71fdf60f8afc511367dc0df53a9c4ba190c5253826c7600f338536f02",
+    "set_sha256": "f3a0c92fb8e2aa2e21e953ff4fed882fa03c7c9de9eadcb70c1739a6a919de7b",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "d0e8e0a8bf41d64bf7473f78787054940a653246d2d2f5399af78496a0a3699a"
    },
    "inquiry-cop22": {
-    "status": "not frozen"
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "d4404d1",
+    "codebook_version": "1.5.0",
+    "files": {
+     "agents/coder/CODEBOOK.md": {
+      "sha256": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/coding.schema.json": {
+      "sha256": "171b00fa6aa95792da21cf7da56e1b56202bcd7eeeb9a7fd5d926b78ef9a93ea",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/definitions.json": {
+      "sha256": "250d184cd561e97a84dab25c5b91f20f622d462ba96498ad47c9aeda4ef43bb8",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/check_coding.py": {
+      "sha256": "68eb90e8e69f3479605f60e7c6618418365a765612a489e221239ec742cb5864",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "a49143ef30a6dffd10275ea789bf1b7725cac6b5247c5ff13778fad85feefef0",
+      "last_commit": "662ef5a",
+      "modified_since_commit": false
+     },
+     "tools/code_papers_open.py": {
+      "sha256": "7b8f36a779bbe5de097c5aaa5ddad5607b2fea1e44e071ff60b10ecf002989cc",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "9e8d9aad8c91f67b4ac1be8bc714153eea8387738be405e5e8cc9e4106dfc462",
+    "system_chars": 29568,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 32000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "high",
+     "max_tokens": 32000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the PDF as a document (text and page images), the located XML text when there is one"
+    },
+    "validator": "python tools/check_coding.py validate <coding.json>",
+    "compare": "python tools/check_coding.py agree-dir private/analysis/codings/api/cop22 private/analysis/codings/open/<tag>",
+    "n_papers": 148,
+    "text_source": {
+     "xml": 147,
+     "pdftotext": 1
+    },
+    "n_over_open_max_chars": 0,
+    "n_xml_for_open_model_not_for_claude": 0,
+    "est_input_tokens": {
+     "median": 31633,
+     "p90": 41780,
+     "max": 51877,
+     "over_65536": 0,
+     "over_131072": 0,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 0,
+    "n_excluded": 4,
+    "n_skipped": 0,
+    "claude_outputs": {},
+    "batches": [],
+    "papers_jsonl_sha256": "462694cd7793856a5d9d03eda704d48f5438516ad14d606ddbc8ac30197f67f3",
+    "set_sha256": "4da262a185d2b694a9be988951027b5cfe34e1546a78e4f09c67ca888575d3d9",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "dded379a9d76d0002fcf629a5af417eaee13799288e370a18f05adb22767f079"
    },
    "advance": {
     "status": "frozen",
