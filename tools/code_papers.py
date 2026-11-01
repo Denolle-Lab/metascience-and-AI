@@ -294,7 +294,8 @@ def spent_usd(st: dict, tag: str | None = None) -> float:
 def save_state(st: dict) -> None:
     """Merge this run's state into the file under an exclusive lock, so two runs (e.g. collectors for two tags) cannot
     overwrite each other's records: files, done and failed are unions with this run winning on shared keys, a key done
-    in either copy leaves failed, and batches merge by id with 'collected' true if either copy has it."""
+    in either copy leaves failed, a failure is restated from the paper's latest attempt, and batches merge by id with
+    'collected' true if either copy has it."""
     BASE.mkdir(parents=True, exist_ok=True)
     with open(STATE.with_suffix('.lock'), 'w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
@@ -314,6 +315,11 @@ def save_state(st: dict) -> None:
             sp[k] = sp.get(k, []) + new
         for k in disk['done']:
             disk['failed'].pop(k, None)
+        # a run's copy of another tag's failure can be stale (collectors of two tags save in turn): a failure always
+        # states the outcome of the paper's latest recorded attempt
+        for k in disk['failed']:
+            if sp.get(k) and sp[k][-1].get('outcome') and not sp[k][-1]['outcome'].startswith('ok'):
+                disk['failed'][k] = sp[k][-1]['outcome'][:500]
         byid = {b['id']: b for b in disk.get('batches', [])}
         for b in st.get('batches', []):
             byid[b['id']] = {**byid.get(b['id'], {}), **b, 'collected': bool(b.get('collected') or byid.get(b['id'], {}).get('collected'))}
