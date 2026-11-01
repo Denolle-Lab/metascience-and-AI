@@ -1,0 +1,408 @@
+{
+ "key": "g22_W4283165407",
+ "doi": "10.1186/s40623-022-01657-8",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Andajani et al. 2022, Earth, Planets and Space 74:97 (published PDF, 16 pages)",
+  "g22_W4283165407.xml.txt (publisher XML converted with tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off figure content cite the figure caption label as printed in the XML text with the PDF page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Among these perturbations, the impact of variations in sea level on velocity changes inferred from seismic interferometry of ambient noise is not well known.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4283165407.xml.txt (published text; PDF for figure pages)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the question of how sea level variations affect ambient-noise seismic velocity changes, building on Wang et al. (2017) and known ocean loading of the Japanese crust.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is less well known how changes in sea level, such as its current global sea level rise, affect seismic velocity changes."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Stated the expectation that ocean influence on seismic velocity is strongest at the coast and decays with distance inland, and set out to estimate its spatial scale.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The influence of the ocean should be strongest in the coastal environment and should decrease with increasing distance to the ocean."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembled 2015–2017 records from 99 Hi-net stations (306 pairs) and JMA sea level and atmospheric pressure gauges; computed daily mean sea level, assuming non-tidal processes dominate.",
+     "page": "§2 ¶1; §2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used seismic data for 99 Hi-net seismic stations in Chugoku and Shikoku"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimated dv/v from the coda of vertical-component noise cross-correlations (0.1–0.9 Hz, 100 s window from d/1 km/s) by stretching, with a sliding 1-year reference and 10-day current stacks.",
+     "page": "§2 ¶2–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Seismic velocity changes were estimated with stretching interpolation method"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked the quality of the dv/v estimates by their stretching correlation coefficients (lowest ~0.5; 210 of 306 pairs above 0.6) against values used in published studies.",
+     "page": "§2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Most of the station pairs (210 of 306) have stretching correlation coefficients greater than 0.6"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Named atmospheric pressure loading, correlated with sea level (r up to -0.68), as a rival influence on seismic velocity that loads both inland and coastal regions.",
+     "page": "§3 ¶1; §4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is necessary to distinguish the imprint of the sea level variations on seismic velocity changes from the influence of atmospheric pressure fluctuations"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Designed a band search (10 days to 3 years) for periods where station-averaged sea level and pressure are decorrelated (|r| < 0.1, insignificant at alpha = 0.001 by t-test), yielding 12.5–274 days.",
+     "page": "§4 ¶1–¶4; Fig. 3 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We searched for the period bands where the sea level cycle was most weakly correlated with atmospheric pressure."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Bandpass-filtered sea level and dv/v, kept pair correlations significant at p < 0.001, grouped pairs into 92 coastal-distance clusters, and averaged absolute correlations; a decreasing trend appeared at 64–274 days.",
+     "page": "§5 ¶1–¶2; Fig. 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The resulting scatterplot indicated a trend of decreasing correlations with increasing coastal distance in the time series filtered within the range of 64–274 days"
+    },
+    {
+     "n": 9,
+     "node": "D",
+     "mode": "regularities",
+     "action": "Set a linear-regression t-test (alpha = 0.001, n = 92 clusters) of averaged absolute correlation against distance to choose the band, followed by a leave-one-out jackknife.",
+     "page": "§6 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "testing the hypothesis of a linear relationship between the correlation coefficient and distance to the coast"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared the regression across many period bands: R mostly negative and significant for sub-bands near 52–274 days, weaker and not significant when the shortest period is below 52 days.",
+     "page": "§7 ¶1; Fig. 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When the shortest period is smaller than 52 days (e.g., 50- 274 and 41–274 days), the correlation turns weaker"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Ran the jackknife over the 92 clusters for the 64–274-day band: all replications gave R between -0.4 and -0.45 with p < 0.001.",
+     "page": "§7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For this period band, the correlation for all 92 jackknife replications varies within -0.4 to -0.45"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Selected 64–274 days as the optimum band (R = -0.42, p = 0.000099) and built an interpolated correlation map.",
+     "page": "§7 ¶2; Fig. 7 (p. 10); Fig. 8 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Based on these results, we selected 64–274 days as the optimum period band (Fig. 7a)."
+    },
+    {
+     "n": 13,
+     "node": "O",
+     "mode": "observation",
+     "action": "Mapped pair-level correlations in the chosen band: 126 pairs significantly negative and 62 significantly positive; correlations stronger near the coast.",
+     "page": "§7 ¶3; §8.1 ¶1; Fig. 9 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "126 station pairs had statistically negative correlations"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Excluded atmospheric pressure: in the same band, pressure versus dv/v shows no distance trend (R = 0.14, p = 0.2).",
+     "page": "§9 ¶1; Fig. 7 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating that the trend in Fig. 7a is unlikely to reflect the perturbation from the atmospheric pressure."
+    },
+    {
+     "n": 15,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Argued against rainfall: annual precipitation shows no clear trend with coastal distance, although its 64–274-day cycle resembles sea level, so an infiltration effect is hard to evaluate.",
+     "page": "§9 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the decreasing trend in Fig. 7 is not associated with the amount of precipitation."
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compared load magnitudes in the band: Earth tide ~170 Pa (from cited tide amplitudes), atmospheric pressure ~800 Pa, sea level ~17 cm or ~1700 Pa; concluded the ocean dominates the forcing.",
+     "page": "§9 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These comparisons show that the magnitude of the sea-level change is larger than the contribution from atmospheric pressure variations and earth tides."
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "theory",
+     "action": "Proposed the mechanism, drawing on cited GPS loading studies (van Dam 1997; Wahr 2013): ocean loading bends the land and dominant vertical stress compresses the subsurface, changing inland stress and dv/v.",
+     "page": "§10 ¶1–¶3; Fig. 10 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "seismic velocity changes could be ascribed to inland stress changes due to sea level variation."
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offered three untested rival factors for positive versus negative correlations: in situ stress state, dominant crack orientation, and hydraulic conductivity or lithology.",
+     "page": "§11 ¶1–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we consider several possible factors that may cause such variations, for example, the in situ stress state, the orientation of cracks, and hydraulic conductivity."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Kept the claim that sea level affects coastal dv/v with distance decay, called the study exploratory, and called for a quantitative ocean-mass-redistribution model.",
+     "page": "§11 ¶5; §12 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results support the hypothesis that seismic velocity changes in coastal regions are affected by variations in sea level."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Whether sea level variations imprint on ambient-noise dv/v; the effect is not well known",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; dv/v is inferred from coda stretching of noise correlations",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the spatial scale of ocean influence through decay with coastal distance",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Atmospheric pressure, rainfall, Earth tides; later three rival factors for sign",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: the ocean predicts distance decay, pressure loads inland and coast alike; bands chosen to decorrelate them",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: 2015–2017 archived network records, no control over loading",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: seasonal cycles over 3 years and 92 distance clusters stand in for repetition",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Jackknife stable; the trend weakens in wider bands and pressure control shows no trend",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: distance-decay regularity in the 64–274 day band; mechanism interpretive",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In the 64–274-day band, the station-cluster-averaged absolute correlation between sea level and seismic velocity change decreases with distance from the coast (R = -0.42, p = 0.000099) over coastal distances of about 0–45 km in Chugoku–Shikoku, 2015–2017.",
+  "page": "§7 ¶2"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "regularities",
+  "sentence": "Regressing cluster-averaged absolute correlations against coastal distance across many period bands is what produced the significant distance-decay trend, and with it the chosen band.",
+  "page": "§7 ¶1–¶2"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the data are archived Hi-net and JMA records; the distance-decay hypothesis shaped the analysis (distance clusters) but not the acquisition (§2 ¶1, §5 ¶2). Claim: the regression t-test at alpha = 0.001 could fail and did fail for many bands (§7 ¶1), and a pressure control was run (§9 ¶1). However, the reported band was chosen because it maximized |R| among many tested bands, with no stated correction for multiple comparisons (§7 ¶2). Registration: thresholds (alpha = 0.001, |r| < 0.1) are justified in the text, but nothing is stated as fixed before the data were seen; the band was selected post hoc (§4 ¶3–¶4, §7 ¶2)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Student's t-test of Pearson correlation and choice of significance level",
+   "kind": "method",
+   "page": "§4 ¶2–¶3"
+  },
+  {
+   "field": "statistics",
+   "item": "Jackknife (leave-one-out) re-estimation of correlation",
+   "kind": "method",
+   "page": "§6 ¶2"
+  },
+  {
+   "field": "economics/accounting (Kim and Choi 2019, Abacus)",
+   "item": "Decision-theoretic choice of a low significance level for large samples",
+   "kind": "concept",
+   "page": "§4 ¶3"
+  },
+  {
+   "field": "medicine (Thiese et al. 2016)",
+   "item": "P-value interpretation and sample-size effects",
+   "kind": "concept",
+   "page": "§4 ¶3"
+  },
+  {
+   "field": "medicine (Akoglu 2018; Schober et al. 2018)",
+   "item": "Interpretation of correlation strength (R >= 0.4 as moderate)",
+   "kind": "concept",
+   "page": "§8.1 ¶1"
+  },
+  {
+   "field": "acoustics (Hadziioannou et al. 2009; Pacheco and Snieder 2005, 2006)",
+   "item": "Stretching method and scattered-wave sensitivity kernels",
+   "kind": "method",
+   "page": "§2 ¶2; §5 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Among these perturbations, the impact of variations in sea level on velocity changes inferred from seismic interferometry of ambient noise is not well known.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "We show that consideration of station’s distance from the coast helps to distinguish the influence of sea level on seismic velocity monitoring.",
+   "page": "§12 ¶1"
+  }
+ ],
+ "limits": "Headline claim: regularity_in_range (distance decay in the 64–274-day band).\n\nSub-claims at lower status:\n- The imprint reaches 'at least dozens of kilometers' inland: regularity_in_range, bounded by the ~45 km station range.\n- Ocean loading causes vertical compression and inland stress change: best_explanation at most. It rests on cited GPS loading studies and a load-magnitude comparison, not a test.\n- Crack orientation, in situ stress and lithology or permeability explain the signs: status none. These are untested possibilities, and the authors call the work exploratory (§11 ¶5).\n\nWhat the document does not show:\n- The search over period bands is a large garden of forking paths: the band was picked by maximal |R| among many tested bands (Table S1), with no correction for multiple testing (inference).\n- Station pairs share stations, so the 92 distance clusters are not independent samples (inference).\n- Only pair correlations with p < 0.001 entered the clusters, a selection step whose effect is not reported.\n- Absolute values merge the 126 negative and 62 positive pairs, so the regularity is in correlation magnitude, not sign.\n- The rainfall rival is only partly excluded: its cycle resembles sea level in this band, and the paper says an infiltration effect is hard to evaluate (§9 ¶2).\n- No quantitative loading model is compared with the data.\n- No replication in another region or period, and no alternative dv/v method.\n- No review file was supplied, so no review sequence is coded.\n\nA minor inconsistency: the abstract gives 0.0036–0.0155 cycle/day for 64–274 days. No explicit disagreement with published work is stated; Wang et al. (2017) is built on, not disputed.",
+ "disagreements": [],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "64–274-day band",
+   "alternatives": "Other bands within 12.5–274 days, e.g. 46–274, 41–274, 52–274, 110–274, 78–219 days (Table S1)",
+   "reason": "Highest absolute R (-0.42) with p < alpha = 0.001, and stable under the jackknife",
+   "effect_reported": "yes",
+   "page": "§7 ¶1–¶2; §5 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Significance level alpha = 0.001",
+   "alternatives": "0.005 named as another low level",
+   "reason": "A low significance level is preferred for a large sample size (1096 days)",
+   "effect_reported": "no",
+   "page": "§4 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Coda window start at d/v_min with v_min = 1 km/s",
+   "alternatives": "Direct surface-wave velocity of ~2 km/s",
+   "reason": "A slower velocity selects coda rather than direct surface waves",
+   "effect_reported": "no",
+   "page": "§2 ¶2"
+  },
+  {
+   "node": "H",
+   "chosen": "None singled out; all three retained as possible",
+   "alternatives": "In situ stress state; crack orientation; hydraulic conductivity or lithology",
+   "reason": "Difficult to interpret the correlation sign based on a simple model",
+   "effect_reported": "no",
+   "page": "§11 ¶1–¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Most of the station pairs (210 of 306) have stretching correlation coefficients greater than 0.6",
+   "page": "§2 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] wider filtering period bands (e.g., 46–274 to 41–274 days), the decreasing trend was weaker (Fig. 5b and 5c).",
+   "page": "§5 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For this period band, the correlation for all 92 jackknife replications varies within -0.4 to -0.45",
+   "page": "§7 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "As checked by the Student’s t-test, a correlation > 0.1 is statistically significant at level of significance of 0.001.",
+   "page": "§8.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This plot displays no appreciable trend nor statistically significance",
+   "page": "§9 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the absence of a clear trend between total precipitation and distance from the [...]",
+   "page": "§9 ¶2"
+  }
+ ]
+}

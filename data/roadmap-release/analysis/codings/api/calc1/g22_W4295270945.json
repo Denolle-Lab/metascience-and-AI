@@ -1,0 +1,462 @@
+{
+ "key": "g22_W4295270945",
+ "doi": "10.1029/2022ea002454",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Averbuch, Sabatini & Arrowsmith (2022), Evidence for Short Temporal Atmospheric Variations Observed by Infrasonic Signals: 2. The Stratosphere, Earth and Space Science 9, e2022EA002454 (published PDF, 11 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This paper aims to quantify how fast infrasound signals change due to variations in the stratosphere.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Averbuch et al. 2022, Earth and Space Science, e2022EA002454 (published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "E",
+     "mode": "exploration",
+     "action": "The authors take from the Kulichkov/Bush active-source experiments that infrasound signals vary over 10-20 min intervals, attributed to turbulence, planetary waves and internal gravity waves.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "In these studies, the authors show that variations in infrasound signals are evident at all time intervals."
+    },
+    {
+     "n": 2,
+     "node": "E",
+     "mode": "exploration",
+     "action": "The authors invoke their own Part 1 study, which showed short-timescale variations of tropospheric infrasound recorded 54 km from an active source.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Similar observations were made by Averbuch et al. (2022) for tropospheric signals recorded at a distance of 54 km"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of the timescale of infrasound decorrelation caused by stratospheric variability, for temporal resolution of atmospheric probing and prediction error.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This paper aims to quantify how fast infrasound signals change due to variations in the stratosphere."
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "observation",
+     "action": "The authors place a seven-element array (WCT) 256 km west of the McAAP demolition pits, sited to catch only stratospheric returns, plus a four-element source-reference array (MCB) about 4 km from the pits.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The location was chosen to allow studying the stratospheric waveguide that facilitates westward propagation during this time of the year."
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors record repeated detonations at 20 s intervals from June to September 2021 and select 2 days with high-SNR signals for analysis.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We focus on 2 days with high signal-to-noise ratio(SNR) signals out of the acquisition period."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors reuse the analysis pipeline (beamforming, EGF deconvolution, cross-correlation) developed in Part 1.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The methods used in this paper are primarily the same ones used in Averbuch et al. (2022)."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors beamform both arrays, estimate crosswinds from back-azimuth deviations, and deconvolve the MCB best beam from the WCT best beam to get a source-receiver EGF every 20 s. They convolve the EGF with a 2 Hz Ricker wavelet, cross-correlate the synthetics, and take dominant periods with a Lomb-Scargle periodogram.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Doing this for each detonation provides us with the atmosphere's EGF as a function of time"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute normal-mode narrowband and broadband propagation through range-averaged ERA5 effective sound speed profiles at 15:00, 16:00 and 17:00 UTC.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Broadband simulation results are utilized to show the predicted variations of waveforms over time."
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "methods",
+     "action": "The authors replace Part 1's parabolic-equation solver and MERRA2 atmosphere with normal modes and ERA5, because the former cannot handle stratospheric propagation angles and altitudes.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This method is limited to small propagation angles and is inappropriate for simulating stratospheric propagation."
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "For 21 July 2021, the authors find that EGFS waveforms (mainly the slow phase) decorrelate and recorrelate over minutes, with correlation and energy fluctuating at periods of 172, 317 and 740 s.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Spectral analysis of the correlation coefficient time series shows that the fluctuations are associated with periods of 172, 317, and 740 s."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check that the EGFS variability also appears in the raw WCT recordings.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similar behavior is observed in the corresponding recordings (Figure 2b)."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare the best-matching 21 July EGFS with the normal-mode waveforms: the fast phase is adequately predicted, the slow phase differs, and the EGFS relative timing falls between the 16:00 and 17:00 predictions.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparison to the EGFS (Figure 3d) shows that the waveform of the fast phase is adequately predicted."
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "simulation",
+     "action": "The authors attribute the slow-phase mismatch to small-scale inhomogeneities missing from the atmospheric models, rather than to the propagation model.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, the difference between the waveforms is assumed to be related to small-scale atmospheric inhomogeneities that the atmospheric models do not capture."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors compare crosswinds estimated from beamforming (-2.1 to -12.6 m/s) against ERA5 crosswinds at the refraction altitudes (0 to -12 m/s).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, there is good agreement between the observations and models."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "observation",
+     "action": "The authors repeat the analysis on a second day, 30 August 2021, and find similar decorrelation episodes with periods of 208, 384 and 746 s that also track signal energy.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Results from 30 August 2021, show similar features to the ones shown in Section 4.1."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare the 30 August simulations, which show large hourly variability in a weak duct, with the EGFS: only the slow phase matches the 16:00 prediction.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A comparison with the EGFS shows that the EGFS with the highest correlation has two phases and only the slow one matches the simulated signal."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors compare the 30 August beamforming crosswinds against ERA5 crosswinds and find overlapping ranges.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Although the predicted and computed crosswinds have different values, they do overlap."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors keep the claim that stratospheric infrasound waveforms, energy, back azimuth and travel time vary on timescales from tens of seconds to minutes.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is shown that infrasonic waveforms, energy, back azimuth, and propagation time vary in timescales ranging between tens of seconds and minutes."
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "After the fact, the authors propose internal gravity waves as the driver of the long-period variations, and partial reflections from small-scale inhomogeneities as the cause of the extra phases in the weak duct.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The long periods (317 and 740 s) suggest that IGW induced the atmospheric perturbations that, in return, perturbed the waveforms."
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors contrast with Part 1: stratospheric correlation and energy share trends, whereas tropospheric ones did not, which suggests a single driving mechanism in the stratosphere.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This observation is in contrast to the observed variations of the tropospheric signals made by Averbuch et al. (2022)"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare the simulations with the other EGFS and find a stark discrepancy, concluding that hourly NWP fields cannot capture the minute-scale atmosphere.",
+     "page": "8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the stark discrepancy between the waveforms shows how different the actual atmosphere can be from the models and how fast it changes"
+    },
+    {
+     "n": 22,
+     "node": "S",
+     "mode": "theory",
+     "action": "From the 21 July profiles, the authors derive that a lower effective-sound-speed gradient at the return altitudes brings the stratospheric pair together, and predict that the two phases overlap at low gradients.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is predicted that for low gradients, the two phases will overlap."
+    },
+    {
+     "n": 23,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose new questions for future work: IGW characterization, the drivers of the short periods, and why correlation and energy co-vary.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "While answering this question, other questions unfolded."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Minute-scale variation of stratospheric infrasound caused by atmospheric variability, reported by earlier active-source studies",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; atmospheric change is inferred through the EGF and its decorrelation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the decorrelation timescales and dominant periods",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals stated before the data; IGW and small-scale inhomogeneities proposed post hoc",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Normal-mode simulations on hourly ERA5 give expected waveforms to compare against",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: repeated military detonations every 20 s; array sited to capture the stratospheric duct",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Sources repeat 52 times per day; two days analysed",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Second day shows similar features; raw recordings agree; crosswinds agree with ERA5",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: timescales of tens of seconds to minutes, periods 172-746 s",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Stratospheric infrasound signals 256 km from a repetitive source vary on timescales from tens of seconds to minutes, in waveform, correlation and energy, with dominant periods of about 172-746 s.",
+  "page": "6"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Deconvolving the source-reference beam from the far-array beam for each detonation gives an EGF every 20 s, whose decorrelation yields the timescales; without it there is no claim.",
+  "page": "3"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the WCT site was chosen for an expected westward stratospheric waveguide (p. 2), but no hypothesis about the timescales directed acquisition. Claim: the data could have shown no minute-scale variation, and the simulations and crosswinds were compared against observations (pp. 4-6). The comparisons were qualitative, with no stated criterion. Registration: nothing was fixed before the data. The two days were selected afterwards for high SNR (p. 2), and the beamforming parameters were tuned to maximise SNR (p. 3)."
+ },
+ "imports": [
+  {
+   "field": "astronomy",
+   "item": "Lomb-Scargle periodogram (Scargle 1982; astropy)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "ocean acoustics",
+   "item": "normal-mode propagation modelling (Jensen et al., Computational Ocean Acoustics)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "physical acoustics",
+   "item": "effective sound speed approximation for moving inhomogeneous media (Godin 2002)",
+   "kind": "concept",
+   "page": "4"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Chebyshev collocation for eigenvalue computation (Sabatini & Cristini 2019)",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so no review sequence is coded. The dominant periods are given without uncertainties or significance tests, so the 'resolution' in the claim status rests on the 20 s sampling and the 20 min window. The authors note that the periods cannot be extrapolated beyond 20 min per day (p. 8). Only 2 of about 100 days were analysed, chosen for high SNR; how many other days show the same behaviour is not reported (inference: a possible selection effect). The IGW and inhomogeneity explanations are posed after the data and not tested (p. 8). The authors leave open whether the slow-phase effect is a case study or a general phenomenon. The simulation comparison shows only the single best-correlated EGFS, and correlation coefficients are 0.43 and 0.35. The repetition is anthropogenic (scheduled detonations), not natural, so natures_repetition is the nearest fit: what is fitted across the repetitions is a timescale estimate, not a regularity.",
+ "disagreements": [
+  {
+   "target": "Averbuch et al. (2022), Part 1: The troposphere",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "On both days stratospheric correlation coefficients and energy follow the same trends, whereas tropospheric ones in Part 1 behaved differently.",
+   "page": "8",
+   "quote": "This observation is in contrast to the observed variations of the tropospheric signals made by Averbuch et al. (2022)"
+  },
+  {
+   "target": "Averbuch et al. (2022) method choices (Green's function parabolic equation, MERRA2)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The parabolic equation is limited to small angles and MERRA2 ends below the stratopause, so both are unsuitable for stratospheric returns.",
+   "page": "4",
+   "quote": "The MERRA2 product has limited atmospheric levels and ends below the stratopause."
+  },
+  {
+   "target": "Forensic waveform modelling with hourly NWP atmospheric models",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Observed waveforms change on timescales much shorter than the hourly NWP resolution, and the simulations depart strongly from most EGFS.",
+   "page": "8",
+   "quote": "the timescales at which the waveforms change are much shorter than the available atmospheric models' temporal resolution"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "2 days (21 July, 30 August 2021)",
+   "alternatives": "other days of the June-September 2021 acquisition",
+   "reason": "high signal-to-noise ratio",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "I",
+   "chosen": "1-5 Hz band, 15 s window, 95% overlap, 2 m/s and 1° grid",
+   "alternatives": "other beamforming parameters (not named)",
+   "reason": "chosen after showing to yield the highest SNR values",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "S",
+   "chosen": "range-averaged effective sound speed profile",
+   "alternatives": "profiles extracted every 50 km along the path",
+   "reason": "no significant variations were observed between the profiles",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "S",
+   "chosen": "normal modes",
+   "alternatives": "Green's function parabolic equation (used in Part 1)",
+   "reason": "parabolic equation limited to small propagation angles, inappropriate for stratospheric propagation",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "S",
+   "chosen": "ECMWF ERA5 reanalysis",
+   "alternatives": "NASA MERRA2 (used in Part 1)",
+   "reason": "MERRA2 ends below the stratopause; ERA5 goes up to the mesosphere",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "C",
+   "chosen": "the EGFS with highest correlation to the 16:00 UTC simulation",
+   "alternatives": "the other EGFS",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Similar behavior is observed in the corresponding recordings (Figure 2b).",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Thus, there is good agreement between the observations and models.",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Results from 30 August 2021, show similar features to the ones shown in Section 4.1.",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Although the predicted and computed crosswinds have different values, they do overlap.",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "In these studies, the authors show that variations in infrasound signals are evident at all time intervals.",
+   "page": "2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Similar observations were made by Averbuch et al. (2022) for tropospheric signals recorded at a distance of 54 km",
+   "page": "2"
+  }
+ ]
+}

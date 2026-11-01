@@ -1,0 +1,442 @@
+{
+ "key": "g22_W4293224822",
+ "doi": "10.1029/2021jd036202",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chen et al. (2022), The Contribution of Local Anthropogenic Emissions to Air Pollutants in Lhasa on the Tibetan Plateau, JGR Atmospheres 127, e2021JD036202 (published PDF, 20 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 20, identical to PDF pages counted from 1); supporting information cited as S1 where the main text refers to it",
+ "entry": {
+  "state": "anomaly",
+  "node": "Q",
+  "evidence": "However, these numerical models usually fail to capture the high concentrations of air pollutants in cities on the plateau.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chen et al. 2022, JGR Atmospheres, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Cite surface observations showing pollutant concentrations in Lhasa and Nagqu similar to those in Eastern Chinese cities.",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "were similar to those in economically developed cities in Eastern China"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Compile reported CO, SO2 and NO2 means for Lhasa, Tibet, BTH, YRD, PRD, Europe and the USA, with the authors' own 2019 values added (Table 1).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "have shown that the concentrations of CO, SO2, and NO2 in Lhasa and the TP are on the same order of magnitude"
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Cite earlier WRF-Chem and GEOS-Chem studies whose simulated NO2, SO2 and CO on the TP fall well below observations.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "these numerical models usually fail to capture the high concentrations of air pollutants in cities on the plateau"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of which factors control the model-observation gap and urban air quality on the TP.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "quantitative study of the factors controlling air quality in the highlands is urgently needed"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State three rival causes of the underestimation: coarse model resolution, underestimated long-range transport, and an insufficient local emission inventory.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Possible reasons for model underestimations of air pollutants on the TP are (a) the model's coarse spatial resolution"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design the WRF-Chem 3.9.1 experiments: 27 km and 3 km control runs with MEIC/MIX inventories, emission-reallocation runs, emission-removal runs for India and Eastern China, and scaled Lhasa-emission runs (Table 2).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The simulations with various spatial resolution and emission scenarios are listed in Table 2."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check the simulated meteorology against ERA5-Land reanalysis over the TP and against seven balloon soundings in Lhasa (Figures S1-S2, Table S1), finding pressure and temperature biases and surface wind overestimated by about 1.5 m/s.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the model simulation agreed well with the sounding observations on the vertical structure of both temperature and pressure"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run the 27 km control simulation (f27km) with the standard inventory over China for 3-15 August 2016.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "simulated concentrations of these gaseous pollutants on the TP were 1 and 2 orders of magnitude lower than in Eastern China"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare f27km against 367 city stations (Table 3, Figures 4-5): agreement is better in Eastern China, and CO, SO2 and PM2.5 in Lhasa are strongly underestimated.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model underestimated the observed concentration of CO, SO2, and PM2.5 in Lhasa by about 57%, 91%, and 78%, respectively."
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Test the resolution rival with a 3 km Lhasa domain (f3km-lhasa), with emissions redistributed into the urban area (Figure 3).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Simulations with a higher resolution of 3 × 3 km"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare f3km-lhasa with the Lhasa observations: NO2 now matches, but SO2, CO and PM2.5 stay underestimated.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "while other pollutants, including SO2, CO, and PM2.5, remained underestimated"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the spatial allocation of the same total CO emission, across the whole valley versus the downtown sites (f3km-lhasa-a/b, Figure 6): underestimation is 61% versus 52%.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "adjusting the emission intensity near the observation sites when the total amount of emissions remains unchanged was not adequate to reproduce the observed concentrations"
+    },
+    {
+     "n": 13,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject resolution and emission allocation as sufficient explanations for the CO, SO2 and PM2.5 gap; resolution is retained as the explanation for NO2.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results demonstrate that the simulated CO concentrations were underestimated in both cases."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Extend the 3 km comparison to all four seasons of 2016 (Figure 7, Figure S3): CO, SO2 and PM2.5 are underestimated in every season, NO2 agrees with a 19% bias, and the winter bias is linked to meteorology.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model underestimated the surface concentration of CO, SO2, and PM2.5 in Lhasa in all seasons"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare TP emissions across eight inventories (Table 4) with observed concentrations: every inventory has TP emissions orders of magnitude below Eastern China and India, which contrasts with the comparable concentrations.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the critically low emissions on the TP contrast with the observations that indicate pollutant concentrations in Lhasa comparable to those in Eastern China"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Cite Zheng et al. (2019) for a mechanism behind the low-inventory rival: residential energy use is missing from Tibetan energy statistics.",
+     "page": "11",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the current Tibetan energy statistics yearbook fails to record residential energy use including fossil and biofuels for cooking and heating purposes"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run four scaled-emission simulations (f_lhasa-add-test1-4), fit linear concentration-emission relations at the six sites (Figure 8, R2 > 0.99), and read off the emission intensity that matches the observed means.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our best-estimate emission intensities were a factor of 6, 15, and 8 higher than the standard emission inventory in Lhasa"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Run the selected scaled scenario f_lhasa-add and compare it with the observed mean CO, SO2 and PM2.5 (Figure 9, Table 5).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "were within the uncertainties of the observations"
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the simulated diurnal CO cycle, with and without the added emissions, against observations (Figure 10): the morning traffic peak is reproduced only weakly without the extra emissions.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "without additional emission showed a similar but much weaker peak"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Test the long-range transport rival by removing TP plus India or TP plus Eastern China emissions in 27 km runs and differencing them (f_no-TP minus f_no-TP-and-In or f_no-TP-and-EC).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The surface emissions of CO, NO2, SO2, and PM2.5 from remote areas (Eastern China and India) were omitted in the sensitivity experiments"
+    },
+    {
+     "n": 21,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject long-range transport as the cause (Figure 11): India contributes at most 7.96% and Eastern China at most 1.82% of Lhasa surface concentrations.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "long-range transport from India contributed 3.24%, 0.26%, 0.11%, and 7.96% to the ground-level CO, NO2, SO2, and PM2.5 concentrations in Lhasa"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the result beside Duo et al. (2015), whose particle observations and back-trajectories found local sources dominant, and beside studies of South Asian transport to the remote southern TP.",
+     "page": "15",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "it was concluded that local sources of pollution in Lhasa controlled the pollution during the sampling period"
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the claim that insufficient local emissions are the main cause, with the inventory for Lhasa underestimated by about 85% (CO), 93% (SO2) and 88% (PM2.5) in August 2016.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the emissions of CO, SO2, and PM2.5 in the standard emission inventory in August 2016 were underestimated by 85%, 93%, and 88% in Lhasa"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Lhasa pollutant concentrations comparable to Eastern China; models with standard inventories underestimate them",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Concentrations observed directly; emissions and source contributions are latent",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the contributions of resolution, long-range transport and local emissions to the model gap",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Three rivals: coarse resolution, long-range transport, insufficient inventory",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: each rival implies a different sensitivity-run outcome (finer grid, emission removal, emission scaling)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in the model through sensitivity simulations; atmospheric conditions found (August 2016, six urban sites)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Underestimation persists across emission reallocation, all seasons, and the diurnal cycle; NO2 resolved by resolution",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Insufficient local emissions are the main cause; inventory too low by about 85/93/88% for CO/SO2/PM2.5",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Insufficient local anthropogenic emissions in the standard inventory, not model resolution or long-range transport (under 10%), are the main reason WRF-Chem underestimates CO, SO2 and PM2.5 in Lhasa, and the inventory may be about 85%, 93% and 88% too low in August 2016.",
+  "page": "1, 17"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The scaled-emission simulations, with linear concentration-emission fits at the six Lhasa sites, turn the residual model-observation gap into the emission-underestimation factors that form the headline claim.",
+  "page": "13"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The three stated rivals (p. 2) directed the design of the sensitivity simulations (Table 2), but all observations were existing monitoring-network, reanalysis and sounding data. The resolution and transport tests could have failed the emission explanation (pp. 7-8, 15). The emission estimate itself is obtained by tuning emissions to the observations (p. 13), so it could not fail. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [],
+ "novelty_claims": [
+  {
+   "quote": "Previous studies have focused on remote regions of the TP, whereas this study focuses on Lhasa",
+   "page": "15"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. Composition is none_fits: the rivals are each tested by a separate model sensitivity experiment rather than one shared crucial test (not strong inference), and the surviving rival is then quantified by tuning emissions to match the data. The emission-underestimation estimate has no stated uncertainty or resolution; the paper only notes qualitatively that the six urban sites may not be representative (p. 13). The estimate is therefore coded inside a best_explanation headline rather than as estimate_with_resolution.\n\nSub-claims and their statuses: long-range transport contributes less than 10% to Lhasa (best_explanation, a single 13-day model experiment, no uncertainty); the standard NOx inventory is sufficient (best_explanation, from 19% bias at 3 km, p. 8).\n\nThe model overestimates surface wind by about 1.5 m/s, which the authors say can cause underestimation of concentrations (p. 7). This meteorological auxiliary is not varied, so part of the gap attributed to emissions could be meteorological (inference).\n\nInternal inconsistencies in the reported numbers:\n- Underestimation is given as 59/92/79% (abstract), 57/91/78% (p. 7) and 65/78/99/72% (p. 17) for CO, NO2, SO2 and PM2.5.\n- Scaling factors are 6/15/8 in the text (p. 13) but 7/14/8 for f_lhasa-add in Table 2.\n- Table 3's title gives 3-10 August, the text 3-15 August.\n- In Figure 10 the legend colours appear to conflict with the annotated means (the red Sim-3km curve tracks the observations although Sim-3km is annotated as 173.87).\n\nThese suggest revisions not fully reconciled (inference). The study covers one month (August 2016) with only six urban stations; remote TP sites are not evaluated.",
+ "disagreements": [
+  {
+   "target": "Previous studies showing South Asia is the main source of pollutants transported to the southern TP (Chen et al. 2018; [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Emission-removal sensitivity runs give India below 8% and Eastern China below 2% of Lhasa surface concentrations, so for the city local emissions dominate.",
+   "page": "15",
+   "quote": "Previous studies have focused on remote regions of the TP, whereas this study focuses on Lhasa"
+  },
+  {
+   "target": "Standard bottom-up emission inventory for Lhasa (MEIC 2016)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "With the inventory the model underestimates CO, SO2 and PM2.5 even at 3 km and with emissions concentrated downtown; matching observations requires emissions several to 15 times higher.",
+   "page": "15",
+   "quote": "the emission source inventories of CO, SO2, and PM2.5 in downtown Lhasa were underestimated by 85.45%, 92.97%, and 87.58%, respectively"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "MEIC 2016 for China (MIX outside China)",
+   "alternatives": "EDGAR, ECLIPSE, CEDS, TRACE-P, INTEX-B, REAS, MIX",
+   "reason": "MEIC has the highest CO, SO2 and NOx emissions on the TP, and EDGAR, ECLIPSE and CEDS poorly capture recent emission trends in China (McDuffie et al. 2020)",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "S",
+   "chosen": "3 × 3 km Lhasa domain for local-emission analysis",
+   "alternatives": "27 × 27 km domain",
+   "reason": "27 km grid boxes (~730 km2) cannot resolve the six downtown stations within ~554 km2",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "V",
+   "chosen": "Emissions allocated to urban land-cover grids",
+   "alternatives": "Same total spread over the entire Lhasa valley (f3km-lhasa-a) or concentrated downtown around the sites (f3km-lhasa-b)",
+   "reason": "To diagnose the uncertainty of emission reallocation",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "f_lhasa-add (scenario best matching observations)",
+   "alternatives": "f_lhasa-add-test1 to test4 with different scaling factors",
+   "reason": "Best agreement with observed CO, SO2 and PM2.5",
+   "effect_reported": "yes",
+   "page": "13"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The simulated surface pressure, temperature, and wind speed from August 3 to 10, 2016, by the WRF-Chem model were compared with the ERA5-Land reanalysis data",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the model simulation agreed well with the sounding observations on the vertical structure of both temperature and pressure",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The simulated mean concentrations generally agreed better in Eastern China than in other parts of the country.",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Simulations with a higher resolution of 3 × 3 km",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Taking CO as an example, Figure 6 shows the simulation results after redistributing the emissions into urban areas of different sizes.",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The model underestimated the surface concentration of CO, SO2, and PM2.5 in Lhasa in all seasons",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "without additional emission showed a similar but much weaker peak",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The surface emissions of CO, NO2, SO2, and PM2.5 from remote areas (Eastern China and India) were omitted in the sensitivity experiments",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "Sensitivity simulations show that meteorological deviations introduce biaes of 10%–25% in modeled tropospheric ozone, CO, and NOx (Kumar et al., 2012).",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "it was concluded that local sources of pollution in Lhasa controlled the pollution during the sampling period",
+   "page": "15"
+  }
+ ]
+}

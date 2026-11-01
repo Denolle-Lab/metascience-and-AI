@@ -1,0 +1,397 @@
+{
+ "key": "g22_W4225469074",
+ "doi": "10.5194/npg-29-37-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Polzin et al. 2022, Nonlin. Processes Geophys. 29, 37-52, published PDF",
+  "g22_W4225469074.xml.txt (publisher XML converted by tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal pages in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "The work opens from a recently published method (DBMR, Gerber and Horenko 2017) that the authors apply to atmospheric data: \"A recent algorithmic framework called [...]",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4225469074.xml.txt (published text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Introduce Direct Bayesian Model Reduction (DBMR), a low-rank categorical Bayesian relation model developed by Gerber and Horenko, as the tool for the work.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A recent algorithmic framework called Direct Bayesian Model Reduction (DBMR) provides a computationally scalable probability-preserving identification of reduced models"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: a conceptual stochastic, categorical description of smaller scale vertical velocity linked to a large-scale flow variable, as a step toward parametrization.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our aim is the development of a model combining the deterministic large-scale atmospheric flow with a conceptual stochastic description of small-scale convection."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Review the DBMR formulation: full transition matrix by maximum likelihood, latent-state factorization Λ = λΓ, relaxed concave likelihood, and alternating maximization.",
+     "page": "§2.3 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "achieves both estimation and reduction in one step"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the parcel-theory relation CAPE ~ w_max^2/2 as the physical expectation linking large-scale CAPE to vertical motion.",
+     "page": "§3.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Parcel theory predicts"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take hourly COSMO-REA6 reanalysis for July-August 1995-2015 and compute 12 h mean CAPE over the northwest 500 km quadrant and vertical velocity at 600 hPa on smaller boxes (S = 1302).",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For our studies, the COSMO-REA6 reanalysis data set is used"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "estimation",
+     "action": "Discretize input and output: 10 quantile CAPE categories; vertical velocities mapped to updraft, no draft, downdraft with a symmetric ±0.0048 m/s interval; output as counts of boxes per class; day and night run separately.",
+     "page": "§3.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using empirical 1 / n quantiles as category boundaries"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit DBMR for K latent states, keep the maximum-likelihood run per K, and compare exact and relaxed log-likelihoods across K for model selection.",
+     "page": "§3.3 ¶1; Figure 4 (p. 43)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For each K, the run with the maximum log-likelihood is presented."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Rerun the stochastic optimization 100 times with random initializations for each K to guard against local optima of the relaxed likelihood.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We ran DBMR 100 times (with random initializations) for every fixed number K [...] ."
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate K = 2 latent states (high and low CAPE, contiguous affiliations) and the conditional distributions of up- and downdraft counts on 16 boxes of 125 km, for day and night.",
+     "page": "§4.1.1 ¶1; Figure 5 (p. 44); Figure 6 (p. 45)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the latent states are found by the algorithm itself"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Note qualitatively that widening the vertical-draft interval moves probability mass away from the diagonal; the comparison is not shown.",
+     "page": "§4.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A comparison of different sizes of intervals for vertical draft is not shown here."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Re-estimate with output on 15 km boxes (1024 boxes), with up- and downdraft counts reduced to three sections each to limit estimation error.",
+     "page": "§4.1.3 ¶1; Figure 7 (p. 46); Figure 8 (p. 47)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use 15 km × 15 km grid boxes on the convective scale for the output of DBMR."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Compare the 15 km conditional distributions with the 125 km results and report qualitative consistency.",
+     "page": "§4.1.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The smaller scale analysis gives consistent results with the analysis, where the output is on the mesoscale"
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Refine to K = 3 latent states (high, mean, low CAPE) and describe the hierarchy of conditional up/downdraft distributions and their day-night differences.",
+     "page": "§4.2 ¶1; Figure A1 (p. 49); Figure A2 (p. 50)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A hierarchy of three different probability configurations arises for updraft, downdraft, and no draft."
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the latent states as reduced large-scale states by their probabilistic impact on vertical motion, and read the day-night difference as stronger daytime convection.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These are interpreted as reduced states for the large-scale atmospheric dynamics with respect to their probabilistic impact on vertical motion."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Smaller scale up- and downdraft activity conditioned on large-scale CAPE",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; the relation is latent, estimated from reanalysis via a categorical Bayesian model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate conditional probabilities and reduced latent states as groundwork for a stochastic parametrization",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions compared",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: existing reanalysis, July-August 1995-2015, one quadrant",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 1302 twelve-hour samples each for day and night serve as repetitions for the frequency estimates",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; qualitatively consistent across output scale and K; interval variation not shown; no cross-validation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Probabilistic CAPE-draft relation kept as an estimate (proof of concept)",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "DBMR applied to COSMO-REA6 summer data yields a probabilistic relation between large-scale CAPE, reduced to high/low (or high/mean/low) latent states, and the numbers of smaller scale up- and downdrafts, for day and night at 125 km and 15 km output resolution.",
+  "page": "§5 ¶2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The DBMR fit of the CAPE categories to latent states and of the conditional up/downdraft count distributions (K = 2, 125 km output) produces the relation that the claim reports.",
+  "page": "§4.1.1 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "no",
+  "registration": "no",
+  "evidence": "Data are existing reanalysis chosen for convenience and expected convective activity (\"We only worked with 2 months in order not to have too much data\", §3.1 ¶2), not directed by a stated hypothesis. No rival or failure criterion; performance quantification is set aside (\"it is probably not very helpful at this stage\", §3.3 ¶1). Category number chosen \"by subjective physical plausibility\" (§3.2.1 ¶1) and the draft interval from the data histogram (§3.2.3 ¶1; Figure 3), so nothing was fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / computational statistics (Gerber and Horenko 2017)",
+   "item": "Direct Bayesian Model Reduction (DBMR) and its MATLAB toolkit",
+   "kind": "method",
+   "page": "§1 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Maximum likelihood estimation of a categorical transition matrix (empirical frequency estimator)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics (causal inference, Holland 1986)",
+   "item": "Requirement that data be acceptably randomized when estimating conditional probabilities",
+   "kind": "concept",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Kernel density estimation for latent-state CAPE distributions",
+   "kind": "method",
+   "page": "§4.1.3 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Model selection criteria (cross-validation, AIC, BIC, L-curve), named but not applied",
+   "kind": "method",
+   "page": "§3.3 ¶1"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, though the paper was edited and reviewed by two referees (p. 51), so no review sequence is coded. No uncertainty or confidence bounds are reported for the estimated conditional probabilities; the status estimate_with_resolution rests on the stated spatial resolutions (125 km and 15 km output, 500 km input, 12 h means) only, and is generous. No cross-validation or performance score (§3.3 ¶1). The interval-variation check is reported qualitatively and not shown (§4.1.2 ¶2). Only one quadrant (northwest Germany) and one season window are analysed; no generalization to the other quadrants or months. The day-night physical interpretation (stronger daytime convection, §4.3 ¶3) is a sub-claim at roughly best_explanation, without stated rivals. The method sub-claim (DBMR is usable for this meteorological application, a proof of concept, §3.3 ¶1) is at most partly capability_characterized, since performance is not quantified. The text contains internal inconsistencies: §4.1.2 ¶2 says updrafts 'below 10 %' while §5 ¶3 says 'higher than 10 %'; §5 ¶4 gives the high section as '84 to 1024'; the Figure 3 caption ties the interval to the 75th percentile while §3.2.3 calls it symmetric. Choosing K = 2 is not justified by the reported log-likelihood curve (largest gain from K = 2 to 3, maximum at K = 6); this is inference from §3.3 ¶1. Composition none_fits: the walk applies an imported method to estimate a latent relation, with no establishing of a phenomenon, no rivals, and no frozen forecast, so neither capability_first nor trace_series fits. No 'first' statements concern the authors' own work; 'novel computational framework' (§2 ¶1) refers to the cited DBMR.",
+ "disagreements": [
+  {
+   "target": "Data-driven stochastic parametrizations using CAPE as a large-scale driver (Khouider et al. 2010; Dorrestijn et al. 2013a, b)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper cites the computational cost of these approaches as a limitation and offers DBMR's low-rank estimation as cheaper; no direct comparison is run.",
+   "page": "§1 ¶2",
+   "quote": "[...] high computing capacities, and the costs to process large quantities of data can become a limiting factor."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "n = 10 input CAPE categories",
+   "alternatives": "other input category numbers (varied, values not named)",
+   "reason": "subjective physical plausibility; available data (~130 points per category)",
+   "effect_reported": "no",
+   "page": "§3.2.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "category boundaries at empirical 1/n quantiles",
+   "alternatives": "other spacing options (implied, not named)",
+   "reason": "(almost) equally populated categories",
+   "effect_reported": "no",
+   "page": "§3.2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "July and August",
+   "alternatives": "May to August",
+   "reason": "not to have too much data",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "northwest (first) quadrant of the Germany domain",
+   "alternatives": "the other quadrants, including pre-alpine southern regions",
+   "reason": "flat northern surface expected to be more homogeneous than regions with forced uplifting",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "symmetric no-draft interval ±0.0048 m/s",
+   "alternatives": "larger intervals for vertical draft",
+   "reason": "based on the histogram of mean vertical velocities",
+   "effect_reported": "yes",
+   "page": "§4.1.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "K = 2 (main text) and K = 3 (appendix) latent states",
+   "alternatives": "K up to 10; model selection by cross-validation, AIC, BIC, or L-curve",
+   "reason": "none given for K = 2; largest likelihood gain from K = 2 to 3 noted",
+   "effect_reported": "yes",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "no quantitative performance assessment",
+   "alternatives": "cross-validation study with an adequate score",
+   "reason": "probably not very helpful at this stage; usefulness to be judged in circulation model simulations",
+   "effect_reported": "no",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "three sections each for up- and downdraft counts at 15 km output",
+   "alternatives": "full count categories",
+   "reason": "avoid increase of estimation error with quadratically growing output categories",
+   "effect_reported": "no",
+   "page": "§4.1.3 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "reduced DBMR model",
+   "alternatives": "full Bayesian model (empirical frequency estimator)",
+   "reason": "fewer parameters and smaller estimation error for finite data",
+   "effect_reported": "no",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "simultaneous 12 h means for input and output",
+   "alternatives": "2-4 h temporal shift of the input",
+   "reason": "deferred to future studies with higher temporal resolution",
+   "effect_reported": "no",
+   "page": "§4.3 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "CAPE as large-scale driver",
+   "alternatives": "Dynamic State Index (DSI), available moisture, vertical wind shear",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§1 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "We ran DBMR 100 times (with random initializations) for every fixed number K [...] .",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We noticed that in the case that the interval for vertical draft in Sect. is increased, fewer data points are in the classifications",
+   "page": "§4.1.2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The smaller scale analysis gives consistent results with the analysis, where the output is on the mesoscale",
+   "page": "§4.1.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] of latent states K is further increased, the latent states can be clustered in groups of high, low, and medium CAPE categories.",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We varied input numbers and choose n = 10 by subjective physical plausibility.",
+   "page": "§3.2.1 ¶1"
+  }
+ ]
+}

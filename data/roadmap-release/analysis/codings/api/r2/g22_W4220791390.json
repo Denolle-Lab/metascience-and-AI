@@ -1,0 +1,620 @@
+{
+ "key": "g22_W4220791390",
+ "doi": "10.5194/nhess-22-849-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kanai et al. 2022, Nat. Hazards Earth Syst. Sci. 22, 849-868 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page of the PDF in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, it is still challenging to define the scale of a TIH, because even if a dense network of global navigation satellite system (GNSS) receivers [...]",
+  "page": "§1 ¶6"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text), with PDF for figure pages",
+   "steps": [
+    {
+     "n": 1,
+     "node": "H",
+     "mode": "theory",
+     "action": "The authors take from earlier work the physical mechanism of tsunami ionospheric hole (TIH) formation: tsunami-generated acoustic waves move plasma downward, which causes recombination and a drop in TEC.",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The downward plasma causes recombination, and ion production is suppressed, resulting in a decrease in TEC"
+    },
+    {
+     "n": 2,
+     "node": "C",
+     "mode": "regularities",
+     "action": "The authors take from Kamogawa et al. (2016) the positive correlation between initial-tsunami height and the rate of TEC depression across tsunami cases.",
+     "page": "§1 ¶6",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "They discovered a positive correlation between the initial-tsunami height and the rate of TEC depression."
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem of defining the scale of a TIH from sparse, moving, non-uniform TEC measurement points.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is still challenging to define the scale of a TIH"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors propose a statistical surface-fitting method that estimates TEC where there are no measurements and uses the hole volume, with uncertainty, as the TIH measure.",
+     "page": "§1 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose to use its volume as a measure of the TIH"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "The authors check the 300 km thin-shell ionosphere assumption against the Kokubunji ionogram peak height (306 km) reported for the event day.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result suggests that the assumption of a hypothetical thin ionosphere at an altitude of 300 km in our analysis is reasonable."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors derive slant TEC from dual-frequency GEONET phase delays, remove a quadratic pre-event baseline, project to vertical, and apply a 300 s backward moving average to keep the depression signal.",
+     "page": "§2.1 ¶2–6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "TEC between the GNSS satellites and the GNSS receivers can be estimated from the phase delay of these two types of radio signals"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build the pipeline: k-nearest-neighbour outlier removal, then Gaussian process regression with a Matérn (ν=5/2) kernel plus nugget, accelerated with INLA-SPDE on a finite-element mesh of about 5200 elements.",
+     "page": "§2.1 ¶7; §2.2 ¶1–5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We employ here the Matérn kernel with an additional nugget that accounts for some noise about the observations"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors benchmark computational time for INLA-SPDE against standard GP regression (43.1 s versus 763.9 s mean).",
+     "page": "§2.2 ¶6; Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "whereas the average computational time based on the standard GP regression method is more than 10 min"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors display measured TEC at four times and show that the measurement points move, are non-uniform, and that a single minimum value cannot capture TIH width or anisotropy.",
+     "page": "§3 ¶1; Figure 3 (p. 853)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the measurement points are moving and are not uniformly distributed in the targeting range"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "instruments",
+     "action": "The authors validate the two detected outliers with a 3D plot, a semi-variogram cloud, and GSI records showing that those receivers or antennas were later replaced; the outliers are removed from all analyses.",
+     "page": "§3.1 ¶1–4; Figure 4 (p. 854)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to validate further, we create a semi-variogram cloud"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors fit the TEC surface with uncertainty to the full data at 06:08:30 and estimate TEC on a 0.01° grid, capturing an anisotropic TIH offset from the epicentre.",
+     "page": "§3.2 ¶2; Figure 5 (p. 855)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The fitted surface in Fig. c is an almost perfect fit to the TEC data observed by the satellites."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare the fitted TIH shape and region with the initial tsunami from the T. Saito et al. (2011) inversion and find them almost the same.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the shape and region of the TIH region are almost the same as those of the initial tsunami shown by the simulation"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors refit using random 5% subsets of receivers (40 receivers, 10 random draws); they compare minimum values, TIH maps and TIH volumes with the full-data case and compute the probability that a draw misses the TIH.",
+     "page": "§3.3 ¶1–8; Table 2; Figure 6 (p. 857); Figure 7 (p. 858)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "10 experiments were conducted to randomly select 5 % of receivers"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors map TIH expansion at the −2, −3 and −4 TECU thresholds and track the maximum expansion distance in eight directions from the tsunami source over time.",
+     "page": "§3.4 ¶1–4; §3.5 ¶1–6; Figure 8 (p. 859); Figure 9 (p. 860)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the expansion of the TIH in the eastern and southwestern directions is more pronounced than in the other directions"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors overlay the −3 and −4 TECU TIH regions on the T. Saito et al. (2011) initial-tsunami inversion and find that they mostly overlap.",
+     "page": "§3.6 ¶1; Figure 10 (p. 861)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the initial tsunami estimated by using inversion analysis mostly overlaps with the TIH where the TEC reduction is large"
+    },
+    {
+     "n": 16,
+     "node": "X",
+     "mode": "estimation",
+     "action": "Using the uncertainty map, the authors reject larger estimation uncertainty as the cause of the TIH extending east of the initial-tsunami area.",
+     "page": "§3.6 ¶2–3; Figure 11 (p. 861)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is unlikely that this was the reason for capturing the non-overlapping phenomenon"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "theory",
+     "action": "The authors propose that the eastward extension arises because the initial-tsunami height peaks on the Japan Trench and acoustic effects spread evenly east and west from there.",
+     "page": "§3.6 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the initial-tsunami height is highest on the Japan Trench"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "The authors check the TIH overlap against two further independent initial-tsunami estimates (Ohta et al. 2012; Takagawa and Tomita 2012), digitised by eye.",
+     "page": "§3.6 ¶5; Figure 12 (p. 862)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "where these initial tsunamis are roughly estimated by looking at them"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare TEC depth profiles with initial-tsunami height along the latitude and longitude of maximum height, and as time series, using data supplied by T. Saito.",
+     "page": "§3.7 ¶1–6; Figure 13 (p. 863); Figure 14 (p. 863)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the longitude with the largest decrease in TEC and the longitude with the highest initial-tsunami height roughly match"
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors compute the TIH volume time series, with one-sided 80% and 99% CIs, by trapezoidal quadrature over the negative-TEC region of the fitted surface, for full and sparse data.",
+     "page": "§3.8 ¶1–2; Figure 15 (p. 864)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "computed by the trapezoidal quadrature method for the region where TEC estimated by surface fitting has a negative value"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors compute the volume with both standard GP regression and INLA-SPDE, and average the sparse-data volumes over 10 random selections to remove seed effects.",
+     "page": "§3.8 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In Fig. a, surface fitting is implemented with simple GP regression, while the INLA-SPDE method is applied to the GP regression process in Fig. b."
+    },
+    {
+     "n": 22,
+     "node": "D",
+     "mode": "estimation",
+     "action": "The authors set a provisional warning threshold of 200 000 TECU km² (about 10–20% of the maximum TIH volume), reasoning from the depression ratios in Kamogawa et al. (2016).",
+     "page": "§3.8 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a provisional threshold is set to 200 000 TECU km 2"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "estimation",
+     "action": "The authors compare threshold-crossing times for the fitted surface and its 80% and 99% CIs, for full and sparse data, and find a warning within 15 min with only 1–4 min of delay due to uncertainty.",
+     "page": "§3.8 ¶5; Figure 15 (p. 864)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "delays for advisories of only, respectively, 1–2 or 2–4 min"
+    },
+    {
+     "n": 24,
+     "node": "N",
+     "mode": "methods",
+     "action": "Because the INLA-SPDE meshing sometimes fails for sparse data, the authors fall back on standard GP regression, which runs in under 10 s for the sparse case.",
+     "page": "§3.8 ¶6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "our implementation of the INLA-SPDE method sometimes fails due to the geometric meshing optimized for larger data sets"
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare the smaller northward than southward expansion with Heki and Ping (2005) and with 3D simulations (Zettergren et al.), and contrast it with the 2D simulation of Shinagawa et al. (2013).",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is confirmed that the northward expansion is smaller than the southward expansion, no matter at which threshold level"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors keep the claim that the method computes TIH volume in real time with uncertainty, robust to sparse non-uniform data, and usable for warnings.",
+     "page": "§4 ¶1; §4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compute the volume of the ionospheric depression generated by a tsunami, in real time and with enough confidence to issue warnings"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "TIH after the 2011 Tohoku-Oki tsunami, established in prior work",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; TEC is sampled at sparse moving points, so the full hole must be inferred",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate TIH volume with uncertainty in real time for tsunami warning",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No formal rivals; the single-minimum-value metric is set aside, and an uncertainty artifact is rejected for the eastward extension",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: one live event (Tohoku-Oki 2011) in the archived GEONET data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Not yet; one event only, other tsunamis deferred to future work",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Yes; 5% random receiver subsets, GP versus INLA-SPDE, and repeated draws",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method characterised; warning threshold crossed within 15 min",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Gaussian process surface fitting (GP or INLA-SPDE) computes the volume of the tsunami ionospheric hole with uncertainty in real time, even from 5% of GEONET receivers, and crosses a provisional warning threshold within 15 min of the 2011 Tohoku-Oki earthquake.",
+  "page": "§3.8 ¶5–6; §4 ¶11"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the GP regression with Matérn kernel and INLA-SPDE, which interpolates TEC with uncertainty over unmeasured areas, there would be no TIH volume or confidence interval to threshold.",
+  "page": "§2.2 ¶1–4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are archived GEONET observations of one event, not acquired under a hypothesis. The sparse-data test could have failed: volumes from 5% subsets could have diverged from the full-data volumes (§3.3 ¶8). The overlap with the initial tsunami is judged visually, without a metric (§3.6 ¶5: 'roughly estimated by looking at them'). The 200 000 TECU km² threshold was set as 10–20% of the maximum TIH volume of this same event (§3.8 ¶4), so it was fixed after the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Gaussian process regression with Matérn kernel (Rasmussen and Williams 2006)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "SPDE approach with integrated nested Laplace approximation and Gauss–Markov random fields (Lindgren et al. 2011; Rue et al. 2009)",
+   "kind": "method",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "field": "computer science / pattern recognition",
+   "item": "k-nearest neighbour algorithm for outlier detection (Cover and Hart 1967)",
+   "kind": "method",
+   "page": "§2.1 ¶7"
+  },
+  {
+   "field": "animal science (equine GPS study, Sato et al. 2017)",
+   "item": "Hubeny's distance formula, cited via an equine-science paper",
+   "kind": "method",
+   "page": "§3.5 ¶1"
+  },
+  {
+   "field": "statistics / astrophysics",
+   "item": "model discrepancy (Brynjarsdóttir and O'Hagan 2014) and history matching (Vernon et al. 2014), proposed for future inversion",
+   "kind": "concept",
+   "page": "§4 ¶11"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We develop a new method to analyze the total electron content (TEC) depression in the ionosphere after a tsunami occurrence.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "We show here for the first time that our method of estimating the entire TIH by GP regression can be used to estimate the initial-tsunami [...]",
+   "page": "§3.6 ¶1"
+  },
+  {
+   "quote": "Our method is the first to demonstrate that we can calculate the volume of TIHs accurately in real time",
+   "page": "§3.8 ¶6"
+  },
+  {
+   "quote": "we have confirmed for the first time that the westward expansion of the TIH with TEC less than - 3",
+   "page": "§4 ¶5"
+  },
+  {
+   "quote": "shows for the first time that the TIH reflects the shape of the initial tsunami at that fixed latitude and longitude",
+   "page": "§4 ¶5"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: (1) The TIH overlaps the initial-tsunami region (best_explanation): the comparison is visual, and two of the three references were digitised by eye; no overlap metric is reported. (2) Directional expansion and asymmetry of the TIH (estimate without stated resolution): uncertainty is not propagated into the expansion distances. (3) A warning within 15 min (provisional): the threshold is derived from this same event's maximum volume and is not validated on other events. Only one tsunami is analysed; generalization is asserted ('very likely ... around the world') but not tested. The relation between volume and tsunami size is deferred to future work. Several processing choices are not varied: the 300 km shell height, the 300 s filter, the quadratic baseline window, the kNN k and the Matérn ν. Inference: the full-data surface is treated as the reference truth for the sparse tests, so the sparse test checks consistency, not accuracy. No supplement content or review file was coded. The paper reports two anonymous referees, but no review sequence could be coded.",
+ "disagreements": [
+  {
+   "target": "Kamogawa et al. (2016), minimum observed TEC value as the scale of a TIH",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Table 2 shows the minimum value varying across random receiver subsets while the TIH volume stays stable; the fitted surfaces show width and anisotropy that a single value cannot capture.",
+   "page": "§4 ¶3",
+   "quote": "using one specific data point such as the minimum observed value as a scale of a TIH is insufficient to characterize the initial wave"
+  },
+  {
+   "target": "Previous papers based on unfiltered observation data reporting that the TIH stops above the tsunami source",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Threshold-based expansion maps and distance time series show that the −2 TECU region expands over time.",
+   "page": "§4 ¶5",
+   "quote": "a more detailed analysis in our study shows that the TIH with a threshold of TEC variation below - 2 expands over time"
+  },
+  {
+   "target": "Liu et al. (2019, 2020), TEC-based tsunami source estimation",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The GP surface covers the whole target area, so it estimates a source region rather than a point.",
+   "page": "§3.6 ¶1",
+   "quote": "these studies estimate the tsunami source [...]"
+  },
+  {
+   "target": "Shinagawa et al. (2013), 2D simulation of the TIH",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The observed larger southward than northward TEC decrease agrees with the 3D simulations (Zettergren et al.) rather than the 2D one.",
+   "page": "§4 ¶4",
+   "quote": "While the results of the 2D simulations did not show a relatively large decrease in TEC to the south"
+  },
+  {
+   "target": "Heki and Ping (2005), expectation of an even east–west spread",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The TIH extends east of the initial-tsunami area; this is attributed to the height maximum on the Japan Trench, after an uncertainty artifact is ruled out.",
+   "page": "§3.6 ¶4",
+   "quote": "According to this principle, the TIH is expected to spread evenly in the east–west direction of the tsunami generation area."
+  },
+  {
+   "target": "Seismology-based initial-tsunami estimation for warnings (community practice)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Cites the underestimated Mw 7.9 initial value for Tohoku, tsunami earthquakes, and gap–slip mismatches as motivation for a seismology-independent measure.",
+   "page": "§1 ¶3",
+   "quote": "the initial-tsunami wave cannot be precisely inferred from seismic information alone"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "INLA-SPDE approximation of the GP",
+   "alternatives": "standard covariance-based GP regression",
+   "reason": "computational cost O(n^3) versus O(n^(3/2)); reported greater accuracy and robustness for ozone mapping",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶4; §2.2 ¶6; Table 1"
+  },
+  {
+   "node": "N",
+   "chosen": "standard GP regression for the sparse-data case",
+   "alternatives": "INLA-SPDE",
+   "reason": "INLA-SPDE meshing, optimised for large data sets, sometimes fails on sparse data",
+   "effect_reported": "yes",
+   "page": "§3.8 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "Matérn smoothness ν = 5/2",
+   "alternatives": "other smoothness values (not named)",
+   "reason": "twice differentiable, conforms to the physical TEC reduction",
+   "effect_reported": "no",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "about 5200 mesh elements",
+   "alternatives": "larger or smaller meshes",
+   "reason": "too large is computationally heavy; too small gives a poor surface approximation",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶5; Figure 2"
+  },
+  {
+   "node": "N",
+   "chosen": "TIH volume as the scale measure",
+   "alternatives": "single data point such as the minimum TEC value",
+   "reason": "a single point accounts for neither width nor anisotropy",
+   "effect_reported": "yes",
+   "page": "§3 ¶1; §3.3 ¶6–8"
+  },
+  {
+   "node": "O",
+   "chosen": "thin-shell ionosphere at 300 km",
+   "alternatives": "other shell heights (not named)",
+   "reason": "peak electron density near 300 km; Kokubunji ionogram showed 306 km",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "earthquake time set to 05:46:30 UTC",
+   "alternatives": "JMA origin time 05:46:18 UTC",
+   "reason": "30 s data resolution",
+   "effect_reported": "no",
+   "page": "§2.1 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "Euclidean distance and k = square root of the number of points for kNN",
+   "alternatives": "other metrics and k (not named)",
+   "reason": "simple but effective choices",
+   "effect_reported": "no",
+   "page": "§2.1 ¶7"
+  },
+  {
+   "node": "D",
+   "chosen": "provisional threshold of 200 000 TECU km² (10–20% of maximum volume)",
+   "alternatives": "lower thresholds",
+   "reason": "a conservative estimate from the depression ratios of Kamogawa et al. (2016)",
+   "effect_reported": "yes",
+   "page": "§3.8 ¶4; §4 ¶11"
+  },
+  {
+   "node": "C",
+   "chosen": "warning based on one-sided 80% or 99% CI of the volume",
+   "alternatives": "fitted surface without uncertainty",
+   "reason": "to issue warnings at a high level of confidence",
+   "effect_reported": "yes",
+   "page": "§3.8 ¶5"
+  },
+  {
+   "node": "X",
+   "chosen": "initial-tsunami height maximum on the Japan Trench explains the eastward TIH extension",
+   "alternatives": "larger estimation uncertainty east of the initial-tsunami area",
+   "reason": "uncertainty there is only slightly larger; acoustic waves spread evenly east and west from the trench",
+   "effect_reported": "no",
+   "page": "§3.6 ¶3–4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This result suggests that the assumption of a hypothetical thin ionosphere at an altitude of 300 km in our analysis is reasonable.",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "whereas the average computational time based on the standard GP regression method is more than 10 min",
+   "page": "§2.2 ¶6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "to validate further, we create a semi-variogram cloud",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "either the antennas of the receiver or the receiver itself was replaced by a new one",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the location and range of the TIH are adequately estimated and consistent with those of the full-data case",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "10 experiments were conducted to randomly select 5 % of receivers",
+   "page": "§3.3 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "across all cases the values are very close to one another, at each time of the three selected times",
+   "page": "§3.3 ¶8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "it is unlikely that this was the reason for capturing the non-overlapping phenomenon",
+   "page": "§3.6 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "where these initial tsunamis are roughly estimated by looking at them",
+   "page": "§3.6 ¶5"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "In Fig. a, surface fitting is implemented with simple GP regression, while the INLA-SPDE method is applied to the GP regression process in Fig. b.",
+   "page": "§3.8 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This iterative process is intended to exclude a possible influence of the random seed used in the sparse-data selection",
+   "page": "§3.8 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "also show that the TIH forms over a similar time period",
+   "page": "§3.8 ¶4"
+  }
+ ]
+}

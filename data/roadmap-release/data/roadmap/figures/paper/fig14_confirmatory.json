@@ -1,0 +1,1675 @@
+{
+ "figure": "fig14_confirmatory",
+ "script": "tools/roadmap/figures/fig14_confirmatory.py",
+ "date": "2026-10-27",
+ "private_root": "private",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
+ "inputs": [
+  {
+   "file": "preregistration/round2-confirmatory.json",
+   "sha256_16": "80f01a88d2b06edc",
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/confirmatory/results.json",
+   "sha256_16": "a5705f178137bc2a",
+   "provenance": {
+    "script": "g23_confirmatory.py",
+    "commit": "713de69+uncommitted",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "preregistration/round2-confirmatory.json",
+     "derived/r2/metrics.json",
+     "private/analysis/codings/api/r2"
+    ],
+    "params": {}
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/calc1/manifest.jsonl",
+   "sha256_16": "97c8071e2fe98f5d",
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/r2calc/manifest.jsonl",
+   "sha256_16": "3a6daaf38b029027",
+   "provenance": null
+  },
+  {
+   "file": "agents/coder/definitions.json",
+   "sha256_16": "acdb8c57918d236c",
+   "provenance": null
+  },
+  {
+   "file": "private/data/roadmap/derived/topics/topics_journals.json",
+   "sha256_16": "4fd391c890068bef",
+   "provenance": {
+    "script": "g20_topics_journals.py",
+    "commit": "f155302+uncommitted",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "derived/gold/{pool,preselect,metrics,eligibility}.json",
+     "derived/r2/{preselect,metrics,eligibility}.json",
+     "derived/calc1/manifest.jsonl",
+     "derived/r2calc/manifest.jsonl",
+     "private/download-queue.json",
+     "private/analysis/codings/api/{calc1,r2}",
+     "derived/outcomes/outcomes.json",
+     "OpenAlex /topics"
+    ],
+    "params": {
+     "MIN_GROUP": 10,
+     "MIN_FEATURE": 10,
+     "NBOOT": 2000,
+     "NPERM": 5000,
+     "SEED": 2026
+    }
+   }
+  }
+ ],
+ "numbers": {
+  "family_size": 43,
+  "verdicts": {
+   "confirmed": 12,
+   "reversed": 0,
+   "not confirmed": 31
+  },
+  "q_threshold": 0.1,
+  "round1_papers_in_plan": [
+   233
+  ],
+  "round2_papers": 198,
+  "eligible_round1": 525,
+  "eligible_round2": 222,
+  "plan_frozen": "2026-10-27",
+  "plan_commit_public": "b4369fe",
+  "post_freeze_fix_commit_public": "cb6dcfd",
+  "results_provenance": {
+   "script": "g23_confirmatory.py",
+   "commit": "713de69+uncommitted",
+   "date": "2026-10-27",
+   "private_root": "private",
+   "inputs": [
+    "preregistration/round2-confirmatory.json",
+    "derived/r2/metrics.json",
+    "private/analysis/codings/api/r2"
+   ],
+   "params": {}
+  },
+  "plan_sha256_in_results": "80f01a88d2b06edc5efeae3eb4fabcf2004e2c6cc647d705e9bf61f0536bee5f",
+  "strip_per_kind": {
+   "Citations": {
+    "hypotheses": [
+     "H05",
+     "H07",
+     "H08",
+     "H09",
+     "H10",
+     "H12"
+    ],
+    "confirmed": 0,
+    "reversed": 0,
+    "tested": 6
+   },
+   "Novelty": {
+    "hypotheses": [
+     "H13"
+    ],
+    "confirmed": 0,
+    "reversed": 0,
+    "tested": 1
+   },
+   "Breadth": {
+    "hypotheses": [
+     "H01",
+     "H02",
+     "H03",
+     "H04",
+     "H06",
+     "H11",
+     "H14",
+     "H15"
+    ],
+    "confirmed": 4,
+    "reversed": 0,
+    "tested": 8
+   },
+   "Subfield": {
+    "hypotheses": [
+     "H30",
+     "H31",
+     "H32",
+     "H33",
+     "H34",
+     "H35",
+     "H36",
+     "H37",
+     "H38",
+     "H39",
+     "H40",
+     "H41",
+     "H42",
+     "H43"
+    ],
+    "confirmed": 6,
+    "reversed": 0,
+    "tested": 14
+   },
+   "Journal family": {
+    "hypotheses": [
+     "H16",
+     "H17",
+     "H18",
+     "H19",
+     "H20",
+     "H21",
+     "H22",
+     "H23",
+     "H24",
+     "H25",
+     "H26",
+     "H27",
+     "H28",
+     "H29"
+    ],
+    "confirmed": 2,
+    "reversed": 0,
+    "tested": 14
+   }
+  },
+  "panel_a": [
+   {
+    "id": "H07",
+    "label": "Node revisits (count)",
+    "round1": {
+     "effect": 0.211,
+     "ci": [
+      0.086,
+      0.335
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.009,
+     "ci": [
+      -0.134,
+      0.156
+     ],
+     "q": 0.942,
+     "p": 0.8982,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H10",
+    "label": "Steps (count)",
+    "round1": {
+     "effect": 0.227,
+     "ci": [
+      0.085,
+      0.351
+     ],
+     "q": 0.034,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.022,
+     "ci": [
+      -0.121,
+      0.161
+     ],
+     "q": 0.9092,
+     "p": 0.7556,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H12",
+    "label": "Decisive mode of inquiry: simulation",
+    "round1": {
+     "effect": 0.202,
+     "ci": [
+      0.074,
+      0.32
+     ],
+     "q": 0.041,
+     "n": 233
+    },
+    "round2": {
+     "effect": -0.031,
+     "ci": [
+      -0.176,
+      0.136
+     ],
+     "q": 0.9002,
+     "p": 0.6671,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H05",
+    "label": "Decisive mode of inquiry: simulation",
+    "round1": {
+     "effect": 0.211,
+     "ci": [
+      0.078,
+      0.33
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": -0.03,
+     "ci": [
+      -0.182,
+      0.126
+     ],
+     "q": 0.9002,
+     "p": 0.6699,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H08",
+    "label": "Node revisits (count)",
+    "round1": {
+     "effect": 0.217,
+     "ci": [
+      0.078,
+      0.336
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.011,
+     "ci": [
+      -0.133,
+      0.158
+     ],
+     "q": 0.942,
+     "p": 0.878,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H09",
+    "label": "Steps (count)",
+    "round1": {
+     "effect": 0.23,
+     "ci": [
+      0.107,
+      0.349
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.026,
+     "ci": [
+      -0.111,
+      0.169
+     ],
+     "q": 0.9092,
+     "p": 0.7149,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H13",
+    "label": "Uses observation (mode of inquiry)",
+    "round1": {
+     "effect": 0.207,
+     "ci": [
+      0.076,
+      0.334
+     ],
+     "q": 0.045,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.005,
+     "ci": [
+      -0.13,
+      0.134
+     ],
+     "q": 0.9667,
+     "p": 0.9442,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H01",
+    "label": "Fields borrowed from (count)",
+    "round1": {
+     "effect": 0.512,
+     "ci": [
+      0.406,
+      0.611
+     ],
+     "q": 0.025,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.478,
+     "ci": [
+      0.359,
+      0.58
+     ],
+     "q": 0.0029,
+     "p": 0.0002,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H02",
+    "label": "Borrowed from other fields (count)",
+    "round1": {
+     "effect": 0.566,
+     "ci": [
+      0.463,
+      0.658
+     ],
+     "q": 0.025,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.515,
+     "ci": [
+      0.397,
+      0.619
+     ],
+     "q": 0.0029,
+     "p": 0.0002,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H03",
+    "label": "Composition: capability first",
+    "round1": {
+     "effect": 0.217,
+     "ci": [
+      0.083,
+      0.347
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.176,
+     "ci": [
+      0.04,
+      0.314
+     ],
+     "q": 0.0559,
+     "p": 0.013,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H04",
+    "label": "Decisive mode of inquiry: methods",
+    "round1": {
+     "effect": 0.223,
+     "ci": [
+      0.088,
+      0.356
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.111,
+     "ci": [
+      -0.034,
+      0.249
+     ],
+     "q": 0.2707,
+     "p": 0.1196,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H06",
+    "label": "Distinct modes of inquiry (count)",
+    "round1": {
+     "effect": -0.224,
+     "ci": [
+      -0.342,
+      -0.104
+     ],
+     "q": 0.027,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.022,
+     "ci": [
+      -0.115,
+      0.164
+     ],
+     "q": 0.9092,
+     "p": 0.7612,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H11",
+    "label": "Uses synthesis (mode of inquiry)",
+    "round1": {
+     "effect": -0.222,
+     "ci": [
+      -0.349,
+      -0.091
+     ],
+     "q": 0.04,
+     "n": 233
+    },
+    "round2": {
+     "effect": -0.175,
+     "ci": [
+      -0.31,
+      -0.03
+     ],
+     "q": 0.0579,
+     "p": 0.0148,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H14",
+    "label": "Kinds of V check (count)",
+    "round1": {
+     "effect": 0.201,
+     "ci": [
+      0.076,
+      0.328
+     ],
+     "q": 0.045,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.116,
+     "ci": [
+      -0.016,
+      0.257
+     ],
+     "q": 0.2605,
+     "p": 0.103,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H15",
+    "label": "Uses node I (Infer)",
+    "round1": {
+     "effect": -0.181,
+     "ci": [
+      -0.306,
+      -0.049
+     ],
+     "q": 0.085,
+     "n": 233
+    },
+    "round2": {
+     "effect": -0.017,
+     "ci": [
+      -0.172,
+      0.132
+     ],
+     "q": 0.9367,
+     "p": 0.809,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   }
+  ],
+  "panel_b": [
+   {
+    "id": "H43",
+    "label": "Kinds of V check (count)",
+    "round1": {
+     "effect": 0.113,
+     "ci": [
+      0.067,
+      0.22
+     ],
+     "q": 0.0069,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.059,
+     "ci": [
+      0.026,
+      0.147
+     ],
+     "q": 0.2263,
+     "p": 0.0842,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H23",
+    "label": "Kinds of V check (count)",
+    "round1": {
+     "effect": 0.093,
+     "ci": [
+      0.049,
+      0.194
+     ],
+     "q": 0.0069,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.028,
+     "ci": [
+      0.011,
+      0.112
+     ],
+     "q": 0.5889,
+     "p": 0.3561,
+     "n": 198
+    },
+    "direction": "undefined",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H24",
+    "label": "Distinct modes of inquiry (count)",
+    "round1": {
+     "effect": 0.068,
+     "ci": [
+      0.031,
+      0.156
+     ],
+     "q": 0.0328,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.063,
+     "ci": [
+      0.027,
+      0.173
+     ],
+     "q": 0.1045,
+     "p": 0.0316,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H25",
+    "label": "Distinct nodes (count)",
+    "round1": {
+     "effect": 0.081,
+     "ci": [
+      0.041,
+      0.182
+     ],
+     "q": 0.0111,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.021,
+     "ci": [
+      0.01,
+      0.108
+     ],
+     "q": 0.794,
+     "p": 0.5355,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H26",
+    "label": "Fields borrowed from (count)",
+    "round1": {
+     "effect": 0.064,
+     "ci": [
+      0.028,
+      0.153
+     ],
+     "q": 0.0463,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.013,
+     "ci": [
+      0.007,
+      0.09
+     ],
+     "q": 0.9092,
+     "p": 0.7548,
+     "n": 198
+    },
+    "direction": "undefined",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H27",
+    "label": "Borrowed from other fields (count)",
+    "round1": {
+     "effect": 0.071,
+     "ci": [
+      0.034,
+      0.172
+     ],
+     "q": 0.0324,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.009,
+     "ci": [
+      0.007,
+      0.084
+     ],
+     "q": 0.942,
+     "p": 0.895,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H28",
+    "label": "Node revisits (count)",
+    "round1": {
+     "effect": 0.114,
+     "ci": [
+      0.059,
+      0.221
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.038,
+     "ci": [
+      0.017,
+      0.13
+     ],
+     "q": 0.3571,
+     "p": 0.185,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H29",
+    "label": "Steps (count)",
+    "round1": {
+     "effect": 0.149,
+     "ci": [
+      0.082,
+      0.257
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.043,
+     "ci": [
+      0.016,
+      0.137
+     ],
+     "q": 0.2774,
+     "p": 0.129,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   }
+  ],
+  "panel_c": [
+   {
+    "id": "H30",
+    "label": "Composition: trace series; higher in Earth-Surface Processes",
+    "round1": {
+     "effect": 0.309,
+     "ci": [
+      0.217,
+      0.465
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.239,
+     "ci": [
+      0.144,
+      0.387
+     ],
+     "q": 0.0325,
+     "p": 0.0068,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H31",
+    "label": "Decisive mode of inquiry: methods; higher in Seismology (OpenAlex: Artificial Intelligence)",
+    "round1": {
+     "effect": 0.294,
+     "ci": [
+      0.191,
+      0.449
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.119,
+     "ci": [
+      0.0,
+      0.318
+     ],
+     "q": 0.3791,
+     "p": 0.2116,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H32",
+    "label": "Decisive mode of inquiry: reconstruction; higher in Earth-Surface Processes",
+    "round1": {
+     "effect": 0.355,
+     "ci": [
+      0.206,
+      0.538
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.442,
+     "ci": [
+      0.0,
+      0.677
+     ],
+     "q": 0.0064,
+     "p": 0.0006,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H33",
+    "label": "Uses estimation (mode of inquiry); higher in Oceanography",
+    "round1": {
+     "effect": 0.241,
+     "ci": [
+      0.124,
+      0.411
+     ],
+     "q": 0.0324,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.185,
+     "ci": [
+      0.0,
+      0.402
+     ],
+     "q": 0.1591,
+     "p": 0.0518,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H34",
+    "label": "Uses methods (mode of inquiry); lower in Earth-Surface Processes",
+    "round1": {
+     "effect": 0.323,
+     "ci": [
+      0.212,
+      0.489
+     ],
+     "q": 0.0052,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.145,
+     "ci": [
+      0.0,
+      0.331
+     ],
+     "q": 0.2707,
+     "p": 0.1156,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H35",
+    "label": "Uses reconstruction (mode of inquiry); higher in Earth-Surface Processes",
+    "round1": {
+     "effect": 0.332,
+     "ci": [
+      0.242,
+      0.477
+     ],
+     "q": 0.0035,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.257,
+     "ci": [
+      0.143,
+      0.401
+     ],
+     "q": 0.0215,
+     "p": 0.003,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H36",
+    "label": "Uses simulation (mode of inquiry); lower in Geochemistry and Petrology",
+    "round1": {
+     "effect": 0.213,
+     "ci": [
+      0.118,
+      0.386
+     ],
+     "q": 0.0534,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.194,
+     "ci": [
+      0.078,
+      0.368
+     ],
+     "q": 0.0817,
+     "p": 0.0228,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H37",
+    "label": "Uses node D (Design); lower in Geochemistry and Petrology",
+    "round1": {
+     "effect": 0.213,
+     "ci": [
+      0.108,
+      0.399
+     ],
+     "q": 0.0647,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.011,
+     "ci": [
+      0.0,
+      0.282
+     ],
+     "q": 0.6796,
+     "p": 0.4267,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H38",
+    "label": "Uses node I (Infer); higher in Oceanography",
+    "round1": {
+     "effect": 0.283,
+     "ci": [
+      0.155,
+      0.448
+     ],
+     "q": 0.008,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.174,
+     "ci": [
+      0.0,
+      0.377
+     ],
+     "q": 0.1961,
+     "p": 0.0684,
+     "n": 198
+    },
+    "direction": "opposite",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H39",
+    "label": "Uses node N (New capability); higher in Seismology (OpenAlex: Artificial Intelligence)",
+    "round1": {
+     "effect": 0.278,
+     "ci": [
+      0.188,
+      0.427
+     ],
+     "q": 0.0069,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.0,
+     "ci": [
+      0.0,
+      0.26
+     ],
+     "q": 0.7907,
+     "p": 0.5149,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H40",
+    "label": "Uses node P (Protect); lower in Water Science and Technology",
+    "round1": {
+     "effect": 0.194,
+     "ci": [
+      0.104,
+      0.371
+     ],
+     "q": 0.0914,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.0,
+     "ci": [
+      0.0,
+      0.234
+     ],
+     "q": 0.9367,
+     "p": 0.8278,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H41",
+    "label": "Composition (whole variable)",
+    "round1": {
+     "effect": 0.153,
+     "ci": [
+      0.146,
+      0.309
+     ],
+     "q": 0.0463,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.191,
+     "ci": [
+      0.155,
+      0.334
+     ],
+     "q": 0.0283,
+     "p": 0.0046,
+     "n": 198
+    },
+    "direction": "none set",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H42",
+    "label": "Decisive mode of inquiry (whole variable)",
+    "round1": {
+     "effect": 0.17,
+     "ci": [
+      0.17,
+      0.297
+     ],
+     "q": 0.0069,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.211,
+     "ci": [
+      0.166,
+      0.349
+     ],
+     "q": 0.0029,
+     "p": 0.0002,
+     "n": 198
+    },
+    "direction": "none set",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H16",
+    "label": "Composition: capability first; higher in AGU",
+    "round1": {
+     "effect": 0.198,
+     "ci": [
+      0.032,
+      0.4
+     ],
+     "q": 0.0647,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.117,
+     "ci": [
+      0.0,
+      0.316
+     ],
+     "q": 0.3567,
+     "p": 0.1742,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H17",
+    "label": "Composition: trace series; lower in AGU",
+    "round1": {
+     "effect": 0.203,
+     "ci": [
+      0.107,
+      0.361
+     ],
+     "q": 0.0647,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.114,
+     "ci": [
+      0.0,
+      0.325
+     ],
+     "q": 0.3571,
+     "p": 0.191,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H18",
+    "label": "Decisive mode of inquiry: reconstruction; higher in Wiley, non-AGU",
+    "round1": {
+     "effect": 0.199,
+     "ci": [
+      0.121,
+      0.336
+     ],
+     "q": 0.0647,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.091,
+     "ci": [
+      0.0,
+      0.308
+     ],
+     "q": 0.4107,
+     "p": 0.2388,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H19",
+    "label": "Uses methods (mode of inquiry); higher in AGU",
+    "round1": {
+     "effect": 0.221,
+     "ci": [
+      0.118,
+      0.371
+     ],
+     "q": 0.0374,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.0,
+     "ci": [
+      0.0,
+      0.281
+     ],
+     "q": 0.8309,
+     "p": 0.5797,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   },
+   {
+    "id": "H20",
+    "label": "Uses simulation (mode of inquiry); lower in Springer Nature, other",
+    "round1": {
+     "effect": 0.287,
+     "ci": [
+      0.181,
+      0.429
+     ],
+     "q": 0.0052,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.268,
+     "ci": [
+      0.141,
+      0.435
+     ],
+     "q": 0.0206,
+     "p": 0.0024,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H21",
+    "label": "Uses node N (New capability); higher in AGU",
+    "round1": {
+     "effect": 0.24,
+     "ci": [
+      0.135,
+      0.384
+     ],
+     "q": 0.013,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.24,
+     "ci": [
+      0.111,
+      0.413
+     ],
+     "q": 0.0325,
+     "p": 0.0062,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "confirmed"
+   },
+   {
+    "id": "H22",
+    "label": "Uses node P (Protect); higher in Copernicus (EGU)",
+    "round1": {
+     "effect": 0.238,
+     "ci": [
+      0.115,
+      0.395
+     ],
+     "q": 0.0104,
+     "n": 233
+    },
+    "round2": {
+     "effect": 0.0,
+     "ci": [
+      0.0,
+      0.205
+     ],
+     "q": 0.9966,
+     "p": 0.9966,
+     "n": 198
+    },
+    "direction": "held",
+    "verdict": "not confirmed"
+   }
+  ],
+  "citation_hypotheses_round2_rho_range": [
+   -0.031,
+   0.026
+  ],
+  "confirmed_ids": [
+   "H01",
+   "H02",
+   "H03",
+   "H11",
+   "H20",
+   "H21",
+   "H30",
+   "H32",
+   "H35",
+   "H36",
+   "H41",
+   "H42"
+  ],
+  "q_below_threshold_direction_not_held": [],
+  "direction_held_q_not_below": [
+   "H04",
+   "H07",
+   "H08",
+   "H09",
+   "H10",
+   "H13",
+   "H14",
+   "H15",
+   "H16",
+   "H17",
+   "H18",
+   "H19",
+   "H22",
+   "H24",
+   "H25",
+   "H31",
+   "H34",
+   "H39",
+   "H40",
+   "H43"
+  ],
+  "round2_leading_group": {
+   "H16": {
+    "group": "AGU",
+    "n": 29,
+    "rate": 0.172,
+    "diff_vs_rest": 0.036,
+    "diff_ci": [
+     -0.099,
+     0.197
+    ]
+   },
+   "H17": {
+    "group": "AGU",
+    "n": 29,
+    "rate": 0.172,
+    "diff_vs_rest": -0.129,
+    "diff_ci": [
+     -0.274,
+     0.033
+    ]
+   },
+   "H18": {
+    "group": "Wiley non-AGU",
+    "n": 22,
+    "rate": 0.136,
+    "diff_vs_rest": 0.08,
+    "diff_ci": [
+     -0.054,
+     0.238
+    ]
+   },
+   "H19": {
+    "group": "AGU",
+    "n": 29,
+    "rate": 0.793,
+    "diff_vs_rest": 0.053,
+    "diff_ci": [
+     -0.119,
+     0.21
+    ]
+   },
+   "H20": {
+    "group": "Springer Nature (non-portfolio)",
+    "n": 50,
+    "rate": 0.38,
+    "diff_vs_rest": -0.167,
+    "diff_ci": [
+     -0.315,
+     -0.005
+    ]
+   },
+   "H21": {
+    "group": "AGU",
+    "n": 29,
+    "rate": 0.724,
+    "diff_vs_rest": 0.198,
+    "diff_ci": [
+     0.007,
+     0.377
+    ]
+   },
+   "H22": {
+    "group": "EGU/Copernicus",
+    "n": 38,
+    "rate": 0.342,
+    "diff_vs_rest": 0.017,
+    "diff_ci": [
+     -0.147,
+     0.195
+    ]
+   },
+   "H30": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.728,
+    "diff_ci": [
+     0.67,
+     0.791
+    ]
+   },
+   "H31": {
+    "group": "Artificial Intelligence",
+    "n": 1,
+    "rate": 1.0,
+    "diff_vs_rest": 0.832,
+    "diff_ci": [
+     0.78,
+     0.883
+    ]
+   },
+   "H32": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.949,
+    "diff_ci": [
+     0.918,
+     0.979
+    ]
+   },
+   "H33": {
+    "group": "Oceanography",
+    "n": 20,
+    "rate": 0.6,
+    "diff_vs_rest": -0.203,
+    "diff_ci": [
+     -0.415,
+     0.028
+    ]
+   },
+   "H34": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 0.0,
+    "diff_vs_rest": -0.759,
+    "diff_ci": [
+     -0.82,
+     -0.694
+    ]
+   },
+   "H35": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.774,
+    "diff_ci": [
+     0.714,
+     0.832
+    ]
+   },
+   "H36": {
+    "group": "Geochemistry and Petrology",
+    "n": 8,
+    "rate": 0.5,
+    "diff_vs_rest": -0.005,
+    "diff_ci": [
+     -0.386,
+     0.385
+    ]
+   },
+   "H37": {
+    "group": "Geochemistry and Petrology",
+    "n": 8,
+    "rate": 0.875,
+    "diff_vs_rest": 0.17,
+    "diff_ci": [
+     -0.125,
+     0.342
+    ]
+   },
+   "H38": {
+    "group": "Oceanography",
+    "n": 20,
+    "rate": 0.6,
+    "diff_vs_rest": -0.226,
+    "diff_ci": [
+     -0.464,
+     -0.001
+    ]
+   },
+   "H39": {
+    "group": "Artificial Intelligence",
+    "n": 1,
+    "rate": 1.0,
+    "diff_vs_rest": 0.447,
+    "diff_ci": [
+     0.381,
+     0.515
+    ]
+   },
+   "H40": {
+    "group": "Water Science and Technology",
+    "n": 9,
+    "rate": 0.222,
+    "diff_vs_rest": -0.111,
+    "diff_ci": [
+     -0.363,
+     0.222
+    ]
+   }
+  },
+  "confirmed_binary_with_round2_leading_group_under_10": {
+   "H30": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.728,
+    "diff_ci": [
+     0.67,
+     0.791
+    ]
+   },
+   "H32": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.949,
+    "diff_ci": [
+     0.918,
+     0.979
+    ]
+   },
+   "H35": {
+    "group": "Earth-Surface Processes",
+    "n": 3,
+    "rate": 1.0,
+    "diff_vs_rest": 0.774,
+    "diff_ci": [
+     0.714,
+     0.832
+    ]
+   },
+   "H36": {
+    "group": "Geochemistry and Petrology",
+    "n": 8,
+    "rate": 0.5,
+    "diff_vs_rest": -0.005,
+    "diff_ci": [
+     -0.386,
+     0.385
+    ]
+   }
+  },
+  "round2_leading_group_under_10_exact_rate_ci": {
+   "H30": {
+    "k": 3,
+    "n": 3,
+    "rate_ci95_clopper_pearson": [
+     0.29,
+     1.0
+    ]
+   },
+   "H31": {
+    "k": 1,
+    "n": 1,
+    "rate_ci95_clopper_pearson": [
+     0.03,
+     1.0
+    ]
+   },
+   "H32": {
+    "k": 3,
+    "n": 3,
+    "rate_ci95_clopper_pearson": [
+     0.29,
+     1.0
+    ]
+   },
+   "H34": {
+    "k": 0,
+    "n": 3,
+    "rate_ci95_clopper_pearson": [
+     0.0,
+     0.71
+    ]
+   },
+   "H35": {
+    "k": 3,
+    "n": 3,
+    "rate_ci95_clopper_pearson": [
+     0.29,
+     1.0
+    ]
+   },
+   "H36": {
+    "k": 4,
+    "n": 8,
+    "rate_ci95_clopper_pearson": [
+     0.16,
+     0.84
+    ]
+   },
+   "H37": {
+    "k": 7,
+    "n": 8,
+    "rate_ci95_clopper_pearson": [
+     0.47,
+     1.0
+    ]
+   },
+   "H39": {
+    "k": 1,
+    "n": 1,
+    "rate_ci95_clopper_pearson": [
+     0.03,
+     1.0
+    ]
+   },
+   "H40": {
+    "k": 2,
+    "n": 9,
+    "rate_ci95_clopper_pearson": [
+     0.03,
+     0.6
+    ]
+   }
+  },
+  "confirmed_breakdown": {
+   "convergent_validity": [
+    "H01",
+    "H02"
+   ],
+   "whole_variable_no_direction": [
+    "H41",
+    "H42"
+   ],
+   "leading_group_under_10": [
+    "H30",
+    "H32",
+    "H35"
+   ],
+   "sign_only": [
+    "H36"
+   ],
+   "directional_full_sample_or_group_of_20_plus": [
+    "H03",
+    "H11",
+    "H20",
+    "H21"
+   ]
+  },
+  "not_confirmed_breakdown": {
+   "opposite_sign": [
+    "H05",
+    "H06",
+    "H12",
+    "H27",
+    "H28",
+    "H29",
+    "H33",
+    "H37",
+    "H38"
+   ],
+   "direction_undefined": [
+    "H23",
+    "H26"
+   ],
+   "leading_group_of_1": [
+    "H31",
+    "H39"
+   ]
+  },
+  "population": {
+   "round2_journals": 114,
+   "esp": [
+    37,
+    3
+   ],
+   "seismology_group": [
+    24,
+    1
+   ],
+   "round1_papers_now": 374,
+   "first_analysis_family": {
+    "AGU": 16,
+    "Elsevier": 9
+   },
+   "elsevier_round2": 29,
+   "freeze_timeline_local": {
+    "r2_batches_submitted": [
+     "01:37",
+     "08:40"
+    ],
+    "plan_pushed": "16:45",
+    "first_r2_coding_downloaded": "20:55"
+   }
+  }
+ },
+ "caption": "Round-2 confirmatory test of the 43 associations frozen in preregistration/round2-confirmatory.json (public commit b4369fe, 2026-10-27), written when no round-2 coding had been collected or read: the two main round-2 batches were submitted at 01:37 and 08:40 local time, the plan was pushed at 16:45, and the first round-2 coding was downloaded at 20:55; the freeze refuses to run if any round-2 coding file exists, and found 0. Round 1 is exploratory: the 233 papers valid at the first analysis (tag calc1, of 525 eligible), whose estimates the plan froze; later round-1 codings do not enter this test. Round 2 is confirmatory: 198 of 222 eligible papers (tag r2) with a coding that passes tools/check_coding.py validate(); no other exclusion. Round 2 is a different population: open access only, at most 4 papers per journal, 114 journals, drawn by publisher rotation rather than by the subfield rotation of round 1, so it holds 3 Earth-Surface Processes papers against 37 of the 374 round-1 papers, and 1 seismology paper against 24. The plan's groups come from the 233 first-analysis papers, which held only 16 AGU and 9 Elsevier papers; Elsevier is therefore not a named family, and its 29 round-2 papers go to the pooled small groups. Coded by claude-opus-5-5 under codebook 1.5.0; test by tools/roadmap/g23_confirmatory.py test, which wrote its output once. The only code change after the freeze (public commit cb6dcfd) converts numpy booleans to Python booleans for the JSON output; it changes no data, statistic or rule. Top: one square per hypothesis, filled when confirmed; 12 confirmed, 0 reversed, 31 not confirmed (citations 0 of 6, novelty 0 of 1, breadth 4 of 8, subfield 6 of 14, journal family 2 of 14). The 12 confirmed rows are of four kinds: 2 are the convergent validity check of the coder (H01, H02); 2 are whole-variable associations with no direction (H41, H42); 3 rest on round-2 leading groups of fewer than 10 papers (H30, H32, H35; Earth-Surface Processes, 3 papers, the same papers in each row); 1 holds by sign only (H36); and 4 are directional confirmations on the full sample or on a leading group of at least 20 papers (H03, H11, H20, H21). Among the 31 not confirmed, 9 changed sign without reaching q < 0.1 (H05, H06, H12, H27, H28, H29, H33, H37, H38), 2 count rows have an undefined direction (H23, H26), and 2 rest on a single round-2 paper (H31, H39). Rule: one family of 43 tests; q is the Benjamini-Hochberg adjusted p value over the 43 round-2 permutation p values (5000 permutations, floor 1/5001 = 0.0002), the smallest false-discovery rate at which that test would be called significant; q < 0.1 means the test belongs to a set in which at most about 10% of findings are expected to be false. A hypothesis is confirmed when q < 0.1 and the predicted direction holds, reversed when q < 0.1 and the direction is opposite, and not confirmed otherwise. Intervals are 95% percentile bootstrap intervals (2000 resamples over papers). (a) The 15 feature-outcome hypotheses: Spearman rho, the rank correlation between a workflow feature of the coded paper (a count, or 0/1 for present or absent) and an OpenAlex outcome: cnp, the citation normalized percentile among works of the same subfield, year and type, 0 to 1; FWCI, citations over the mean of those works; novelty_pair, the rarity of the paper's two leading topics as a pair; breadth_refs, the share of classified references outside geoscience. cnp and FWCI correlate at 0.99, so the six citation rows are three associations. The prediction is the round-1 sign. All six citation hypotheses have round-2 rho between -0.031 and 0.026. Borrowed from other fields counts the concepts, methods, instruments or data from outside Earth science that the coder lists, and fields borrowed from counts their distinct source fields; their correlation with breadth_refs is a convergent validity check of the coder (the same property read from the text and from the reference list), not a workflow-outcome finding. (b, c) The 28 field and venue hypotheses: a workflow feature against OpenAlex subfield or journal family (groups of at least 10 round-1 papers; other papers pooled). (b) Count features: epsilon squared, Kruskal-Wallis H / (n - 1), the share of the count's rank variance explained by the grouping; the direction holds when round-2 group medians rank the shared named groups in the round-1 order (Spearman correlation of the medians > 0; 'undefined' in the Direction column when tied medians leave it uncomputable, scored as not held). (c) Binary and categorical features: Cramer's V, bias-corrected (Bergsma 2013), from the chi-square of the feature-by-group table, 0 = independent, 1 = the group determines the feature. The label names the round-1 leading group (largest absolute rate minus the rate in all other papers) and whether its rate was higher or lower; the direction holds when the round-2 difference has the same sign, while q comes from the test over all groups. Whole-variable rows (all levels of composition or of the decisive mode of inquiry) carry no direction. Bias-corrected V and epsilon squared cannot fall below 0, so read their intervals as spread, not as tests; the V intervals are percentiles of the resampled bias-corrected V, which is biased upward under resampling, so an interval can sit above its own estimate, and with a 3-paper group the resamples that omit it give V near 0 (H32: interval reaching 0.0 beside q 0.006). For round-2 leading groups of fewer than 10 papers the bootstrap interval of the rate difference is degenerate when every paper of the group agrees (each resample of 3 of 3 is 3 of 3), so exact Clopper-Pearson 95% intervals of the leading-group rate are given instead: H30 Earth-Surface Processes, 3 of 3, [0.29, 1.00]; H31 Seismology (OpenAlex: Artificial Intelligence), 1 of 1, [0.03, 1.00]; H32 Earth-Surface Processes, 3 of 3, [0.29, 1.00]; H34 Earth-Surface Processes, 0 of 3, [0.00, 0.71]; H35 Earth-Surface Processes, 3 of 3, [0.29, 1.00]; H36 Geochemistry and Petrology, 4 of 8, [0.16, 0.84]; H37 Geochemistry and Petrology, 7 of 8, [0.47, 1.00]; H39 Seismology (OpenAlex: Artificial Intelligence), 1 of 1, [0.03, 1.00]; H40 Water Science and Technology, 2 of 9, [0.03, 0.60]. Bold labels: confirmed. A mode of inquiry is one of 13 kinds of epistemic work a step serves (observation, simulation, synthesis across studies, reconstruction from traces, and others); the decisive mode of inquiry is that of the single step without which the paper's main claim would not exist; composition is the coded overall pattern of the walk (trace series: conditions found in nature rather than set, with observations repeated over independent natural records such as sediment cores, deposits or landforms, ending in the best explanation among stated rivals, where a trace is a natural record, not a seismic trace; capability first: the method or instrument is built before the question is posed); nodes are the 15 kinds of move of graph v0.4.2, one per step (N New capability, I Infer, D Design, P Protect, V Vary or replicate). Subfield names are OpenAlex's; the subfield Artificial Intelligence holds only the topic Seismology and Earthquake Studies. One model coder; no causal reading."
+}

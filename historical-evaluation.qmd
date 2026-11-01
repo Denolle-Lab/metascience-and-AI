@@ -62,6 +62,31 @@
 - Assessment: recovery in physical units where available, uncertainty, localization of error, and one scientifically relevant new question enabled.
 - Exposure: source familiarity remains possible. A constructed artifact is a diagnostic control, not a new finding about the published work.
 
+## A success set (v0, drafted October 20, 2026)
+
+- **Working set.** The convenor supplied full texts for eight papers on October 20, 2026; that set, its metrics, mode codings, and case specifications are on [Success set](success-set.qmd). This section keeps the selection rule and the first candidate list.
+- **Purpose.** Ten Earth-science papers the group treats as clear successes: a breakthrough, impactful, novel, and interdisciplinary. They are positive test cases for the [advance profile](rubrics.qmd#scientific-advance-profile-v1) and the mode agents: a scoring rule or an agent that cannot recognize these as advances fails.
+- **Selection rule, applied to 14 candidates.** Published in *Nature*, *Science*, or *AGU Advances*. At or above the 99th percentile of field-normalized citations. Interdisciplinary uptake or input: at least 20% of citing works, or at least 25% of references, outside Earth and environmental science. Novelty and breakthrough are recorded, not used as gates: the CD₅ index is unreliable for these papers (below), and a secondary account is not yet on file for three of them.
+- **Measures.** OpenAlex, retrieved October 20, 2026, anonymously; the same CD₅ formula as `tools/indicators.py`, without the n_k term, over all citers in the five-year window. Field shares use OpenAlex's primary-topic field of each citing or cited work. Full numbers: `private/success-set-indicators.json`.
+
+| Paper | Advance | Decisive modes | Citation percentile | Citers outside Earth and environmental science | Main outside fields | CD₅ without n_k | Secondary account |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| @vine1963 | Magnetic stripes record seafloor spreading | Instruments, observation, theory, hypothesis | 99.3 | 33% | Biology 22% (likely misclassified), physics | 0.00 (110 citers) | @oreskes1999 |
+| @molina1974 | CFCs destroy stratospheric ozone | Theory, prediction, hypothesis | 100 | 48% | Chemistry, engineering, physics | −0.11 (266) | @christie2001 |
+| @alvarez1980 | An impact ended the Cretaceous | Observation, hypothesis, synthesis | 99.99 | 44% | Physics 27% | +0.12 (216) | @schulte2010; @cleland2002 |
+| @farman1985 | The Antarctic ozone hole | Instruments, observation, hypothesis | 100 | 23% | Physics, biology, medicine | +0.64 (340) | @christie2001 |
+| @massonnet1993 | Radar interferometry maps an earthquake's displacement | Instruments, method, observation | 100 | 73% | Engineering 72% | −0.43 (122) | @burgmann2000 |
+| @shapiro2005 | Tomography from ambient noise | Method, replication, observation, estimation | 99.99 | 8%; 29% of references | Physics of diffuse fields, in references | −0.61 (390) | @snieder2013 |
+| @rodell2009 | Groundwater depletion seen from space | Instruments, estimation | 99.97 | 24% | Agriculture, engineering | −0.30 (477) | None on file |
+| @rockstrom2009 | Planetary boundaries | Synthesis, theory | 100 | 49% | Social sciences, agriculture, business | +0.26 (2,146) | None on file |
+| @lindsey2019 | Seismology on dark telecommunication fiber | Instruments, method, observation | 99.96 | 59% | Engineering 50%, computer science | −0.31 (436) | @arrowsmith2022 |
+| @lam2023 | Learned medium-range weather forecasts beat operational systems | Method, simulation and prediction, robustness | 99.99 | 38% | Computer science, physics, engineering | −0.11 (1,428) | None on file |
+
+- **Near misses, kept as contrasts.** Three are breakthroughs by any reading but fail the interdisciplinary rule because their uptake stayed inside geoscience: @dragert2001 (7% of citers outside), @hays1976 (14%), @petit1999 (19%). The one *AGU Advances* candidate, @diamond2020, misses the citation rule (98.1th percentile). Hays shows the rule's blind spot: an astronomical theory tested with ocean cores is interdisciplinary in its content, not in who cited it.
+- **CD₅ does not identify these breakthroughs.** Six of ten are negative, scored as developing rather than disruptive, and one is zero; the ozone hole scores highest, and the paper that founded noise tomography scores lowest. This is the [Wilson and Sykes disagreement](metrics.qmd) again, on ten more papers. The index without n_k is also biased, and OpenAlex's reference coverage for citers before about 1990 is thin.
+- **What the set cannot do alone.** It cannot test whether a metric or agent *discriminates* success without matched non-breakthrough papers. Three matched controls per paper are now on [Success set](success-set.qmd#against-matched-controls); they show that the 99th-percentile rule above selects *Nature* and *Science* papers, not breakthroughs.
+- **Contamination.** All ten are canonical and almost certainly in any model's training data. Use them for reproduction and reassessment, and for checking that a scoring rule recognizes an advance, not for blind decision reconstruction ([below](#contamination-and-evidence-access)).
+
 ## From a specification to a frozen packet
 
 1. Identify exact artifacts, rights/access, version and dates; separate public and private files.

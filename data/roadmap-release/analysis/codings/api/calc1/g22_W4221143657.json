@@ -1,0 +1,454 @@
+{
+ "key": "g22_W4221143657",
+ "doi": "10.1029/2022gl098645",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kong et al. 2022, Geophysical Research Letters 49, e2022GL098645 (published paper, PDF, 10 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the learned features may have no clear physical meaning, and therefore may not generalize well to new regions",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Kong et al. 2022, GRL, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question whether deep-learning explosion-earthquake classifiers transfer to new regions, given that their learned features lack physical meaning.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the learned features may have no clear physical meaning, and therefore may not generalize well to new regions"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State that combining physics-based features with deep-learning features in one model will improve performance, especially in new regions.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By incorporating the physics-based features, the combined deep learning model improves on the performance compared to the deep learning model alone"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble local records of chemical explosions and earthquakes from four existing experiments (SPE, BASE, MSH, SSIP), then preprocess and augment them to about 351,000 records.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Four datasets with local seismic observations of single-fired underground chemical explosions and earthquakes are used in this study."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test an alternative bandpass (10-18 Hz) against the 1-20 Hz preprocessing band and find similar results.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also tested 10–18 Hz, the same band that we calculated the P/S ratio, and the results are similar"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a two-branch network: a CNN branch on three-component waveforms and a fully connected branch on physics parameters (P/S ratio, optionally ML-MC), concatenated before a decision layer.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The proposed deep learning model contains two branches (Figure 1) to take advantage of both deep learning and physics-based parameters."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the test: compare the two-branch model with single-branch WF and PS models by ROC/AUC, under a random split and under a leave-one-region-out split for transportability.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The second method reserves one region for testing and uses the other three study regions for training"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "methods",
+     "action": "Compute 10-18 Hz P/S ratios with an SNR>2 quality cutoff, following the authors' earlier procedure in Wang et al. (2021).",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "P/S ratios are calculated from 10 to 18 Hz filtered three-component waveforms"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Add the ML-MC depth discriminant to the physics branch (Supporting Information) and find a slight improvement; the main text keeps P/S only because few ML-MC measurements pass quality control.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "provides design and testing for using the P/S ratio and the depth discriminant ML–MC to improve the results slightly"
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set up Grad-CAM visualization of the deep-learning branch and add a spectrogram-input model to examine frequency bands, with heatmaps aggregated in distance bins.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Gradient-weighted Class Activation Mapping (Grad-CAM) is applied to understand what features are important to the deep learning branch"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the models on test data from the training regions: WF and WF+PS both reach AUC 0.99 and PS alone reaches 0.87.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "both reach an AUC of 0.99. In contrast, using the P/S ratio alone (PS) leads to AUC = 0.872."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the models on held-out SSIP data: all degrade, PS only slightly, and WF+PS (0.872) beats WF (0.845) and PS (0.817).",
+     "page": "6-7",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the WF + PS model performs better than either single-branch model"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the leave-one-region-out test for all four regions, each with five random initializations; WF+PS is best in every held-out region.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We validate the above observations and ensure they are generic through four sets of tests"
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that physics-based features add information that deep learning does not capture, especially for new regions.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the physics-based features still can provide extra information that are not fully captured by deep learning"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "exploration",
+     "action": "Read the distance-binned Grad-CAM weights on time series: P and S windows dominate, with more reliance on P coda and S at far distances for earthquakes and on P for near explosions.",
+     "page": "Figure 3 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the P and S waves, including the time between the two arrivals, exhibit higher weights than other parts of the waveform"
+    },
+    {
+     "n": 15,
+     "node": "O",
+     "mode": "exploration",
+     "action": "Read the spectrogram Grad-CAM: the model uses high-frequency P and low-frequency S energy, mostly below 15 Hz, unlike the 10-18 Hz P/S band.",
+     "page": "Figure 4 (p. 7-8)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The model relies on high-frequency P wave and low-frequency S wave energy to make the decisions"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that the decay of dominant frequency with distance for earthquakes reflects their magnitude distribution (small, high-corner-frequency events nearby).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We speculate such distance-frequency dependence is associated with earthquake magnitudes"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "exploration",
+     "action": "Compare with the magnitude-distance distributions (Figures S18-S19): explosion magnitudes are flat with distance, while earthquake magnitudes increase with distance, consistent with the explanation.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the magnitude of explosions remains comparable across all distances, while the earthquakes show a positive correlation"
+    },
+    {
+     "n": 18,
+     "node": "O",
+     "mode": "methods",
+     "action": "Plot physics-branch error rates in P/S bins: the model associates larger P/S with explosions.",
+     "page": "Figure 4 (p. 7-8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model learns that larger P/S values are associated with explosion records"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare what the model learned (P/S behaviour, reliance on P and S phases) with established seismological knowledge and find agreement.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The learning of the model from the physics-parameter branch aligns with the human knowledge"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the two-branch approach as a proof of concept, noting the missing-P/S problem and sensitivity to the choice of training data.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the analysis shown here acts as a proof of concept, demanding extra work to implement it to real-world applications"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Explosion-earthquake discrimination at local distances; deep-learning classifiers may not transfer to new regions",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Source labels are known; classifier performance is measured directly by ROC/AUC on test data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "A single-station classifier that transfers to new regions",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Waveform-only CNN, P/S-only model, and the combined two-branch model",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "If physics features add transferable information, WF+PS should beat WF on held-out regions while matching it within regions",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally through data splits (random versus leave-one-region-out)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Holds across four held-out regions and five random initializations; also robust to filter band and to adding ML-MC",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Two-branch model best in every held-out region; claim kept as a proof of concept",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A two-branch model that adds high-frequency P/S ratios to a waveform CNN discriminates explosions from earthquakes better than either branch alone, especially in regions absent from training (AUC 0.87-0.92 versus 0.84-0.88 for CNN alone).",
+  "page": "7"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "robustness",
+  "sentence": "The leave-one-region-out tests over all four regions, with five random initializations each, establish that the gain from physics features appears in new regions; the random split alone showed no benefit.",
+  "page": "7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The data were pre-existing and not acquired for this hypothesis. The transportability hypothesis did direct the design of the held-out-region splits (p. 4). The WF+PS model could have failed to beat WF on held-out regions; the gaps are 0.02-0.05 AUC (Figure 2, p. 5). No preregistration or fixed threshold is reported; the 10-18 Hz band and SNR>2 cutoff come from earlier work."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Convolutional neural networks, with dropout and ReLU/softmax layers",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "computer vision",
+   "item": "Grad-CAM (Selvaraju et al. 2017)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "machine learning",
+   "item": "Adam optimizer and sparse categorical cross-entropy loss, with early stopping",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "pattern recognition / statistics",
+   "item": "ROC curves and AUC (Fawcett 2006)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "computer science",
+   "item": "TensorFlow deep-learning framework",
+   "kind": "method",
+   "page": "9"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This paper presents a new method to distinguish earthquakes from explosions using seismic data.",
+   "page": "1"
+  },
+  {
+   "quote": "Such visualization provides a window into the black-box nature of the machine-learning models and offers new insight",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. Only one CNN architecture and one set of hyperparameters are reported; there are no ablations of network size, learning rate, or dropout. The SNR cutoff and the augmentation scheme (5 versus 21 random start times) are not varied. No statistical test is given for the WF+PS versus WF gaps; the spread over five initializations is the only uncertainty shown. In MSH, PS alone (0.90) is close to WF+PS (0.92). It is inferred, not stated, that the P/S measurements themselves were produced in Wang et al. (2021); hence the inherited move at step 7. The ML-MC test, the Grad-CAM examples, and the magnitude distributions appear only in the supplement, which was not supplied; they are coded from the main-text description. Sub-claims at other statuses: the Grad-CAM reading of which phases and frequencies matter is exploratory and is called a preliminary interpretation by the authors (status none or best_explanation); the magnitude explanation for the earthquake frequency-distance decay is labelled speculation and is supported only by consistent distributions (best_explanation). Composition is none_fits: the walk is a method benchmark with baseline models, a held-out-region test, and post-hoc interpretation. It has no rival explanations of a phenomenon (not strong_inference) and does not begin with a new capability before any question (not capability_first).",
+ "disagreements": [
+  {
+   "target": "Deep learning discrimination studies reporting high accuracy (e.g., Linville et al., 2019) evaluated on same-distribution data",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "In-region tests give AUC 0.99, but every held-out region degrades sharply, showing that same-distribution evaluation overstates performance.",
+   "page": "8",
+   "quote": "the machine learning models evaluated on the same distribution data may only reveal a limited picture, and may eventually fail in new data cases"
+  },
+  {
+   "target": "Random splitting of the whole data set into training and testing, the common approach that has been used [...]",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The leave-one-region-out split reveals transportability limits and a physics-feature benefit that the random split hides (Figure 2a versus 2b-f).",
+   "page": "4",
+   "quote": "The latter method allows for better evaluation of model transportability with or without the physics parameter branch."
+  },
+  {
+   "target": "The reputation of deep learning models for automatically extracting useful features",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Adding P/S ratios improves held-out AUC over the waveform-only CNN in all four regions.",
+   "page": "7",
+   "quote": "[...] have the reputation of automatically extracting useful features, the physics-based features still can provide extra information"
+  },
+  {
+   "target": "The 10-18 Hz band for P/S ratios (Wang et al., 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Spectrogram Grad-CAM shows the model relying on different, mostly lower, frequency bands for P and S, which suggests dynamic bands.",
+   "page": "7",
+   "quote": "focus on different frequency bands for P and S phases (mostly below 15 Hz) other than the band we calculated the P/S ratio"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "1-20 Hz bandpass for waveform preprocessing",
+   "alternatives": "10-18 Hz, the band used for the P/S ratio",
+   "reason": "Results are similar, so only 1-20 Hz is shown",
+   "effect_reported": "yes",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Both a random split and a leave-one-region-out split",
+   "alternatives": "Random split alone (the common approach)",
+   "reason": "The leave-one-region-out split better evaluates model transportability",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "P/S ratio alone in the physics branch (main text)",
+   "alternatives": "P/S ratio plus the ML-MC depth discriminant",
+   "reason": "Limited number of ML-MC measurements after quality control",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "Waveform input for the main deep-learning branch",
+   "alternatives": "Spectrogram input (added for Grad-CAM frequency analysis)",
+   "reason": "To understand the role of different frequency bands",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "R",
+   "chosen": "None implemented; the problem of missing P/S ratios is left open",
+   "alternatives": "Fall back on a separately trained single deep-learning branch, or add a binary availability mask feature to the physics branch",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "8"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we also tested 10–18 Hz, the same band that we calculated the P/S ratio, and the results are similar",
+   "page": "2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "provides design and testing for using the P/S ratio and the depth discriminant ML–MC to improve the results slightly",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compare the performance of the two-branch model with that from a single-branch model",
+   "page": "4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "cases where testing data is from a different region, Salton Seismic Imaging Project (SSIP), rather than the three training regions",
+   "page": "5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We validate the above observations and ensure they are generic through four sets of tests",
+   "page": "7"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "for five random initialization with mean (solid lines) and standard deviation (shaded areas)",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The learning of the model from the physics-parameter branch aligns with the human knowledge",
+   "page": "9"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "[...] , which shows decent results across four different regions in Wang et al., 2020",
+   "page": "7"
+  }
+ ]
+}

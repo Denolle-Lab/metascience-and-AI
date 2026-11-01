@@ -1,0 +1,460 @@
+{
+ "key": "g22_W4212831233",
+ "doi": "10.5194/tc-16-625-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4212831233.pdf (published paper, The Cryosphere 16, 625-646, 2022)",
+  "g22_W4212831233.xml.txt (publisher XML text with section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page in parentheses",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "This study evaluates the potential of Sentinel-1 (S-1) synthetic aperture radar (SAR) time series for monitoring SC depletion and snowmelt",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4212831233.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem that small-scale spatiotemporal heterogeneity of Arctic snow cover during melt is poorly known.",
+     "page": "§1.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "knowledge about SC distribution is still limited, especially at small spatiotemporal scales"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Take up the freely available Sentinel-1 C-band SAR (10-20 m, 6 d repeat) as the capability that could meet this requirement, citing its known wet-snow sensitivity.",
+     "page": "§1.2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "SAR data have become an attractive alternative"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Cite Marin et al. (2020): three candidate explanations for the runoff-phase backscatter increase (surface roughness, grain and ice intrusions, subpixel snow-free patches).",
+     "page": "§1.2 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This steady increase is not fully understood yet, but three possible explanation are described by"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose a new time-series approach adapting Nagler's method, with thresholds relative to the seasonal minimum and a backscatter derivative, to be validated against time-lapse imagery.",
+     "page": "§1.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We here propose a novel approach, which adapts Nagler’s method to the seasonal evolution of the SAR signal"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Acquire all dual-pol IW S-1 scenes for 2017-2018 over Zackenberg (97) and Kobbefjord (94), plus daily time-lapse camera images, ArcticDEM and PlanetScope scenes.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we investigated all S-1 single look complex (SLC) data interferometric wide swath mode (IW) acquisitions"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the S-1 processing chain (terrain-flattened gamma0, 20 m) and the threshold algorithm: SOR at the seasonal minimum, EOS when backscatter exceeds the minimum by t for three acquisitions, with refreeze filters.",
+     "page": "§3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "EOS S-1 is determined as the DOY, where the backscatter exceeds the seasonal minimum"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Add a derivative-based EOS detector (temporally filtered, 1 dB and 3 dB rules), an end-of-season snow-patch rule (HV autumn maximum > minimum + 9 dB, EOS after 15 August), and SC map derivation.",
+     "page": "§3.1 ¶4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we also implement an approach using the derivative of the backscatter time series to detect EOS"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Build the reference product: time-lapse images aligned, classified by histogram-minimum thresholding, orthorectified with georef_webcam and GCPs, then aggregated to 20 m SC fraction.",
+     "page": "§3.2 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Orthorectified SC maps are generated from time-lapse camera images to validate the S-1 EOS and SC products"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check the reference product: orthorectification RMSE against GCPs (9.4 m and 5.3 m), and Zackenberg SC fraction against GeoBasis in situ SC fraction (R2 = 0.98, RMSE 3.7 %).",
+     "page": "§3.2 ¶3; Figure 6 (p. 633)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tested the accuracy of the orthorectification procedure using 25 (26) GCPs to assure the correct location of the projected maps"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare absolute and rescaled S-1 backscatter with same-day SC fraction around SOD and EOD. In ZRA backscatter rises before SC decrease; in KRA it does not; in both it rises linearly with SC decrease.",
+     "page": "§4.1 ¶1; Figure 7 (p. 635)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A sharp increase in intensity within the last 10–15 d before SOD"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the threshold t (2-8 dB HV, 2-10 dB HH) and polarization; score SC maps against the camera reference with confusion matrices and ROC per site and year.",
+     "page": "§4.2 ¶1; Figures 8-10 (pp. 636-637)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We assessed the seasonal SC development for each threshold t in combination with each polarization"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run the same assessment for the derivative approach and compare it with the optimal threshold configurations.",
+     "page": "§4.2 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "In Zackenberg, the derivative approach works equally well for both polarizations, and the difference to the optimum threshold configuration is low."
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "methods",
+     "action": "Fix a global configuration (HV, 4 dB) with the best ROC across sites and years, plus the HV derivative, for further analysis; flag the threshold assessment as weaker because it was tuned on the same reference.",
+     "page": "§4.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use the global threshold configuration that shows the best ROC response for both sites and years (HV – 4 dB)"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Score seasonal confusion-matrix metrics of the chosen products against camera SC maps; overall accuracy always above 75 %; error sources traced to threshold offsets and a late snowfall.",
+     "page": "§4.2 ¶3; Figure 13 (p. 639)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "overall accuracy is always above 75 % and in more than half of the cases above 90 %"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare pixel-wise EOS with camera EOS (R2, RMSE, MAE, offset histograms); the derivative improves ZRA EOS; KRA R2 < 0 because EOS varies little in the camera view.",
+     "page": "§4.2 ¶4; Figure 13 (p. 639)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Using the derivative increases the accuracy to an R 2 score of 0.63"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Weigh rival explanations for the drivers of the backscatter rise and for the absent pre-SOD rise in KRA (acquisition time vs. faster, patchier snow depletion), using the SOD-EOD duration as evidence.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "could be either due to the different acquisition time in the morning but is more likely caused by systematic differences in SC distribution"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Note from the ROC results that the threshold can vary by about 1 dB around the optimum and still give good results, supporting the 4 dB global threshold.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The seasonal defined threshold can vary about ± 1 dB around the optimum while still giving good results"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "Argue transfer across a high- and a low-Arctic site, two contrasting snow years, and ascending and descending orbits with different acquisition times.",
+     "page": "§5.3 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The derivative adapts well to different environmental settings (high and low Arctic) and different seasonal conditions (high and low snow depths)."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Retain that both snowpack changes and decreasing fractional SC drive the runoff-phase backscatter increase.",
+     "page": "§6 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "changes in the snowpack (e.g., grain size and number, surface roughness) as well as the decrease in fractional SC are drivers"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the method as characterized: EOS within one or two S-1 repeat cycles for most pixels, and SC map overall accuracy above 75 %; transfer to vegetated areas left open.",
+     "page": "§6 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "SC maps are generated with an overall accuracy of always more than 75 %"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Seasonal drop and runoff-phase rise of C-band backscatter over melting snow (known from Marin et al. 2020)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No for SC from SAR; SC fraction observed directly only by terrestrial time-lapse cameras, built into a reference product",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize an S-1 time-series method for SOR, EOS and SC maps during melt",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival drivers of the backscatter rise (snowpack changes vs. subpixel snow-free fraction); for KRA, acquisition time vs. snow distribution",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: timing of the backscatter rise relative to SC decrease (SOD) separates snowpack change from fractional SC",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: two sites and two melt seasons (2017, 2018), not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats across two sites and two contrasting snow years",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, within the tested range: thresholds, polarizations, derivative method, sites and orbits; weaker in KRA EOS",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept as capability characterized; drivers of the backscatter rise kept as best explanation",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Sentinel-1 time series with a global HV 4 dB threshold or a backscatter derivative map snow cover depletion and EOS at 20 m and 6 d, with SC map overall accuracy above 75 % against orthorectified time-lapse reference maps.",
+  "page": "§0 ¶1; §6 ¶3"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the seasonal-minimum threshold and derivative algorithm built on the S-1 backscatter time series there would be no SC or EOS product to characterize; the camera reference made the characterization possible.",
+  "page": "§3.1 ¶3"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "S-1 scenes and camera images were collected comprehensively for 2017-2018, not directed by a stated hypothesis (§2.2 ¶1). The products were scored against an independent camera reference and could have failed (§4.2 ¶3-¶4). Nothing was fixed before the data: the global threshold was selected on the same reference used to assess it ('considered weaker as it was conducted with the same reference', §3.3.2 ¶1). Derivative parameters (1 dB, 3 dB) and the 9 dB rule were set by the authors without a stated pre-registration; the 9 dB rule was set 'in accordance with our observations' (§3.1 ¶4)."
+ },
+ "imports": [
+  {
+   "field": "signal processing / computer vision",
+   "item": "Discrete Fourier transform image registration (imreg_dft) to align time-lapse images",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "field": "signal detection theory / statistics",
+   "item": "Receiver operating characteristic (ROC) from TP and FP rates to select threshold and polarization",
+   "kind": "method",
+   "page": "§3.3.2 ¶1"
+  },
+  {
+   "field": "image processing",
+   "item": "Histogram minimum (bimodal) thresholding for classifying snow in camera images",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We here present a novel empirical approach based on the temporal evolution of the SAR signal",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "We here propose a novel approach, which adapts Nagler’s method to the seasonal evolution of the SAR signal",
+   "page": "§1.2 ¶3"
+  },
+  {
+   "quote": "a SC product with this spatiotemporal resolution (20 m – 6 d) is, to the best of our knowledge, not presented",
+   "page": "§6 ¶3"
+  }
+ ],
+ "limits": "Sub-claims at other statuses. The drivers of the backscatter increase (snowpack changes plus decreasing fractional SC) are a best_explanation (§5.1 ¶1, §6 ¶2). Attributing the absent pre-SOD rise in KRA to faster, patchier depletion rather than morning acquisition is a best_explanation without a decisive test. Transfer to other low-vegetation areas is an expectation, not tested (§6 ¶3).\n\nTesting. The HV 4 dB configuration was tuned and assessed on the same reference, and the authors call that assessment weaker. Only two sites and two years were used; 2017 in ZRA is truncated by the start of dual-pol acquisitions. KRA EOS agreement is poor (R2 < 0). Autumn and episodic snowfall cannot be detected.\n\nProcess not shown. The paper was reviewed by four anonymous referees, but no review file was supplied, so no review sequence is coded. The document does not report how the fixed parameters (1 dB, 3 dB, 2 dB refreeze rule, the four-acquisition filter window, the 1 July and 15 August dates) were chosen, nor whether other algorithm variants were tried and dropped (inference: likely set during development on the same sites). The 9 dB end-of-season rule rests on 'visual assessment' and the authors' own observations. Code is available only on request.",
+ "disagreements": [
+  {
+   "target": "Standard 2 to 3 dB threshold of Nagler's method (Nagler and Rott 2000; Nagler et al. 2016; Snapir et al. [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A different threshold basis (seasonal minimum vs. snow-free or dry-snow reference) and terrain-corrected gamma0 motivate a threshold sweep; the optimal global HV threshold found is 4 dB in ZRA and 2-3 dB in KRA.",
+   "page": "§3.3.2 ¶1",
+   "quote": "Using the standard threshold (2 to 3 dB) in Nagler's method might not be suited due to the different threshold basis"
+  },
+  {
+   "target": "Nagler's method as current standard, and most previous SAR snow studies (per Tsai et al. 2019b)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Using the full time series avoids manual selection of a snow-free or dry-snow reference image and its deterioration by end-of-season snow and firn.",
+   "page": "§5.3 ¶1",
+   "quote": "we avoid the manual selection of reference images for Nagler’s method and omit challenges like finding a completely snow-free or dry-snow scene"
+  },
+  {
+   "target": "Supervised classification approach of Tsai et al. (2019a, c)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Comparable overall accuracies in low-vegetation areas at finer resolution (20 m vs. 100 m) with a simpler, faster approach that needs no interferometric or polarimetric features.",
+   "page": "§5.3 ¶1",
+   "quote": "Even though the spatial resolution is lower in their approach (100 m), resulting overall accuracies for similar low-vegetation areas are comparable"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "Both threshold-based and derivative-based EOS detection reported; derivative preferred for transfer",
+   "alternatives": "Threshold-based approach with user-defined t",
+   "reason": "Derivative needs no a priori threshold optimization and adapts to settings and seasons",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "R",
+   "chosen": "HV polarization",
+   "alternatives": "HH polarization",
+   "reason": "Optimal threshold varies less between years in HV, so a global threshold is more robust",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "R",
+   "chosen": "Global threshold t = 4 dB",
+   "alternatives": "Thresholds 2-8 dB (HV) and 2-10 dB (HH); season- and site-dependent thresholds",
+   "reason": "Best ROC response across both sites and years; season-dependent thresholds need in situ reference data",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Brightness histogram for camera snow classification",
+   "alternatives": "Blue band (Salvatori et al. 2011)",
+   "reason": "Avoid misclassification of lakes and ponds reflecting the sky",
+   "effect_reported": "no",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Temporal filter (four-acquisition window) only, for the derivative",
+   "alternatives": "Spatial filter",
+   "reason": "Keep the same high spatial resolution as the threshold approach; an equal number of images reduces S-1A/B systematic differences",
+   "effect_reported": "no",
+   "page": "§3.1 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "9 dB HV autumn rule for end-of-season snow-covered patches",
+   "alternatives": "none named",
+   "reason": "HV snow-free summer intensity observed not to exceed the seasonal minimum by more than this value",
+   "effect_reported": "no",
+   "page": "§3.1 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "Single orbit per site, analysed separately",
+   "alternatives": "Combining several S-1 orbits for a denser time series",
+   "reason": "Differences in local incidence angle and acquisition times",
+   "effect_reported": "no",
+   "page": "§5.2 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] root mean square error (RMSE) of the orthorectification was 9.4 m (5.3 m) in Zackenberg (Kobbefjord)",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "SC fraction maps from the time-lapse imagery in Zackenberg are validated with not-orthorectified in situ data",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We validate EOS and SC derived from S-1 time series (2017 and 2018) with a reference dataset",
+   "page": "§1.2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we investigated a threshold range from 2 to 8 dB for HV and from 2 to 10 dB for HH polarization",
+   "page": "§3.3.2 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] carried out the same assessment for the derivative approach to compare the results with the best threshold approach",
+   "page": "§3.3.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The seasonal defined threshold can vary about ± 1 dB around the optimum while still giving good results",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The derivative adapts well to different environmental settings (high and low Arctic) and different seasonal conditions (high and low snow depths).",
+   "page": "§5.3 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "the characteristic seasonal pattern has been observed in the Alps as well as around the globe",
+   "page": "§5.3 ¶1"
+  }
+ ]
+}

@@ -1,0 +1,482 @@
+{
+ "key": "g22_W4311046772",
+ "doi": "10.1007/s11004-022-10037-7",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF, Math Geosci (2023) 55:377–400",
+  "Publisher XML converted to located text (g22_W4311046772.xml.txt)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); PDF pages added in parentheses only for content read off tables or figures, or for text absent from the XML (data availability statement, table footnotes)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "The main contribution of this work is to use and develop new statistical machine-learning methods for the seismic event classification problem.",
+  "page": "§1 ¶4"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text with PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "The study takes the existing Åknes geophone event database: 16 s windows from 8 three-component geophones, triggered by an amplitude threshold and labelled by experts into eight classes, plus 1611 unlabelled 2021 events.",
+     "page": "§2 ¶5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Based on expert opinion, every event is then labeled into one of eight classes, as described in Table 1."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors describe how the classes differ in spectrograms (duration, envelope shape, frequency content) and how records vary between sensors for the same event.",
+     "page": "§3 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "There are apparent differences in the signals."
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors ask how all 24 time series per event can be used to improve classification.",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a natural question is then ’how one can use all this information?’"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors state two assumptions behind ensemble prediction: each time series carries enough information alone, and aggregating the spectrograms weakens useful information. These set ensemble prediction against early aggregation.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "If spectrograms of the 24 time series are aggregated, useful information on some of the 24 spectrograms might be weakened."
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build the ensemble prediction (Algorithm 1): during training a random single-channel spectrogram is drawn per event; at test time the softmax outputs of all 24 channels are averaged.",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Pseudocode for the ensemble prediction is presented in Algorithm 1."
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors propose that representations must encode temporal transitions, which VIbCReg lacks.",
+     "page": "§5 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The necessity of encoding the temporal transition can be observed given several samples from our dataset in Fig. 2."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build VNIbCReg, a self-supervised method that combines VIbCReg with TNC, adds a correlation term to the TNC loss and adds sensor invariance across the 24 channels; λ, μ, ν are taken from earlier work and ρ is set by grid search.",
+     "page": "§5 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "TNC is adopted into VIbCReg, resulting in VNIbCReg"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design the experiments: stratified 80/20 split, three seeds, SciPy spectrograms (0.08 s window, single channel, rectangular), weighted SNR aggregation for the non-ensemble case, AlexNet versus ResNet34, Adam optimizer, accuracy and confusion matrices. They report that the Langet and Silverberg preprocessing overfit in their runs.",
+     "page": "§6.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the dataset is split by stratified random sampling into 80% for training and 20% for testing"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "On aggregated spectrograms, the authors compare AlexNet with ResNet34, with and without class weights (Table 2: about 0.87 versus 0.88), and adopt class weights from then on.",
+     "page": "§6.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Table 2 shows that ResNet outperforms AlexNet in terms of accuracy"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "The authors compare ensemble prediction with aggregated spectrograms (Table 3): ResNet34 rises from 0.878 to 0.928 and AlexNet from 0.867 to 0.916. Confusion matrices (Fig. 12) and per-channel examples (Fig. 13) are shown.",
+     "page": "§6.3 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "ResNet34 with the ensemble prediction performs the best in terms of accuracy."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check that the ensemble gain holds across the two architectures.",
+     "page": "§6.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The noticeable test accuracy improvement compared with Table 2 is seen for both [...] ."
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design an ablation over intermediate variants between VIbCReg and VNIbCReg (random versus neighboring crop, original versus modified TNC loss), with a randomly initialised encoder as baseline.",
+     "page": "§6.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The evaluation on the intermediate variants is conducted to find out how much contribution each component that is added on VIbCReg to form VNIbCReg makes."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "In linear evaluation (Table 4), the authors compare SSL encoders with RandInit (0.642): TNC scores 0.499, VIbCReg 0.476 and VNIbCReg 0.716.",
+     "page": "§6.3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "VIbCReg does not perform so well here"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Ablation result: adding neighboring crop and the TNC loss raises linear accuracy step by step, and the modified loss raises it further.",
+     "page": "§6.3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a significant improvement is achieved in the linear evaluation"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "In fine-tuning evaluation (Table 5) on 5%, 10% and 80% of the labels, VNIbCReg is best with few labels (0.717 and 0.824 versus RandInit 0.185 and 0.528). RandInit is best at 80% (0.928).",
+     "page": "§6.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "VNIbCReg results in the highest test accuracy in the small dataset regime"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check that the method ranking is the same under the two evaluation protocols (linear and fine-tuning) and across label fractions.",
+     "page": "§6.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The performance ranking order of the fine-tuning evaluation between VIbCReg, VNIbCReg, and the intermediate variants remains the same as in the linear evaluation."
+    },
+    {
+     "n": 17,
+     "node": "X",
+     "mode": "methods",
+     "action": "The authors reject early aggregation of the 24 channels as the default practice.",
+     "page": "§7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "early aggregation to improve the signal-to-noise ratio is not necessarily beneficial"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors keep two claims: ensemble prediction gives substantial accuracy gains, and SSL pretraining helps when labels are scarce.",
+     "page": "§7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Self-supervised learning methods also gave good performance for our case, particularly so when labeled training data lacks."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Distinct classes of microseismic events at the Åknes rock slope, already labelled by experts",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; recorded by geophones, but class labels come from expert judgement",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "A better automatic classifier (a method), not a geophysical claim",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Methods compete: aggregation versus ensemble, AlexNet versus ResNet34, SSL variants versus random initialisation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No quantitative predictions stated beforehand; rivals are ranked by held-out test accuracy",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally: splits, architectures, augmentations, label fractions",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: three seeds, two architectures, two evaluation protocols, three label fractions; no independent data",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Ensemble prediction kept; VNIbCReg kept for small labelled sets",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Ensemble prediction over the 24 single-channel spectrograms raises held-out accuracy on the eight-class Åknes dataset from 0.878 to 0.928 (ResNet34) and from 0.867 to 0.916 (AlexNet), compared with aggregated spectrograms.",
+  "page": "§6.3 ¶3; Table 3 (p. 394)"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The ensemble-versus-aggregation comparison on held-out data (Table 3) is the step without which the headline claim would not exist.",
+  "page": "§6.3 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data and labels were collected by routine threshold-triggered monitoring before this study (§2 ¶5), so no hypothesis directed acquisition. The ensemble and SSL claims faced held-out test comparisons that could have shown no gain (Tables 3–5), but no threshold or analysis plan was fixed in advance. ρ was set by grid search and the preprocessing was chosen after seeing lower accuracy with the alternative (§5 ¶8, §6.1 ¶3); the paper does not say whether this tuning used the test split."
+ },
+ "imports": [
+  {
+   "field": "computer vision / machine learning",
+   "item": "ResNet34 and AlexNet convolutional architectures",
+   "kind": "method",
+   "page": "§4.1 ¶3"
+  },
+  {
+   "field": "machine learning",
+   "item": "Non-contrastive self-supervised learning (VICReg, VIbCReg)",
+   "kind": "method",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "field": "medical time-series machine learning",
+   "item": "Temporal Neighborhood Coding (TNC)",
+   "kind": "method",
+   "page": "§4.2 ¶4"
+  },
+  {
+   "field": "statistics",
+   "item": "Ensemble prediction / averaging (Hastie et al.)",
+   "kind": "method",
+   "page": "§5 ¶3"
+  },
+  {
+   "field": "signal processing",
+   "item": "Short-time Fourier spectrograms (Cohen 1989; SciPy)",
+   "kind": "method",
+   "page": "§3 ¶2"
+  },
+  {
+   "field": "machine learning software",
+   "item": "Adam optimizer and PyTorch",
+   "kind": "method",
+   "page": "§6.1 ¶7"
+  },
+  {
+   "field": "machine learning",
+   "item": "Linear and fine-tuning evaluation protocols for SSL",
+   "kind": "method",
+   "page": "§6.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "VNIbCReg is an SSL method proposed for the event classification in this paper.",
+   "page": "§5 ¶1"
+  },
+  {
+   "quote": "Ensemble prediction substantially improves on the state-of-the-art classification for this Åknes case study.",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "denotes the modified TNC loss proposed in this work.",
+   "page": "Table 4"
+  }
+ ],
+ "limits": "Labels are expert judgements, which the authors say are not ground truth (§2 ¶5). Data availability mentions a cross-check against the NORSAR bulletin (p. 397), but no inter-rater agreement is reported. All tests use random splits of one site's archive; there is no held-out time period or other site, and the generalisation to reservoirs and DAS data (§7 ¶3) is asserted, not tested. Uncertainty is three seeds without significance tests. The AlexNet–ResNet gap (0.867 vs 0.878) lies within about one standard deviation (Table 2). Sub-claim: VNIbCReg pretraining improves accuracy with 5–10% of the labels (capability_characterized, Table 5). At 80% labels, however, RandInit (0.928) beats every SSL variant, so SSL gives no gain with full labels. Inference: the paper does not state whether SSL fine-tuning used ensemble prediction. Inference: hyperparameter and preprocessing choices may have been made on test performance; the paper is silent on a validation split. Step 1 is coded inherited because co-author Langet produced the labelled database (Langet and Silverberg 2022); this is an inference. Composition none_fits: the walk is method benchmarking (new methods, then compared against baselines on a fixed labelled archive), which matches none of the listed compositions. No review file was supplied.",
+ "disagreements": [
+  {
+   "target": "Langet and Silverberg (2022) spectrogram preprocessing (1 s window, 95% overlap, 3×224×224 RGB)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors report that this preprocessing overfit and gave lower accuracy in their experiments, and argue that squishing spectrograms into square RGB images loses information; no table of these runs is shown.",
+   "page": "§6.1 ¶3",
+   "quote": "The sliding window length and overlap give monotonous spectrograms i.e. low-resolution spectrogram, and it leads to an overfitting which give lower accuracy in our experiments."
+  },
+  {
+   "target": "Early-averaging approaches in signal processing (Ovanger 2021; Langet and Silverberg 2022)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Ensemble prediction without pre-aggregation beats aggregated spectrograms by about 5 accuracy points for both architectures (Table 3).",
+   "page": "§7 ¶2",
+   "quote": "The lesson learned from this is that early aggregation to improve the signal-to-noise ratio is not necessarily beneficial."
+  },
+  {
+   "target": "AlexNet as the standard CNN in previous Åknes studies (Langet and Silverberg 2022)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "ResNet34 scores slightly higher than AlexNet with about a third of the parameters (Tables 2–3).",
+   "page": "§6.3 ¶2",
+   "quote": "Table 2 shows that ResNet outperforms AlexNet in terms of accuracy"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Ensemble prediction over 24 single-channel spectrograms",
+   "alternatives": "Aligning and aggregating the time series into one average spectrogram per event",
+   "reason": "No information loss from pre-aggregation; better uncertainty assessment",
+   "effect_reported": "yes",
+   "page": "§3 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "ResNet34",
+   "alternatives": "AlexNet; ResNet18",
+   "reason": "Representation size of 512 as in VIbCReg; larger capacity than ResNet18; three times fewer parameters than AlexNet",
+   "effect_reported": "yes",
+   "page": "§6.1 ¶6"
+  },
+  {
+   "node": "D",
+   "chosen": "0.08 s window, 12.5% overlap, single-channel rectangular spectrograms",
+   "alternatives": "1 s window, 95% overlap, 3×224×224 RGB images (Langet and Silverberg 2022)",
+   "reason": "Low-resolution spectrograms overfit and gave lower accuracy; squishing loses information",
+   "effect_reported": "yes",
+   "page": "§6.1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Weighted aggregation by inverse SNR (Ovanger 2021)",
+   "alternatives": "Aggregation over spectrograms below a user-defined noise threshold (Langet and Silverberg 2022)",
+   "reason": "Does not require any user-specific threshold",
+   "effect_reported": "no",
+   "page": "§6.1 ¶4"
+  },
+  {
+   "node": "C",
+   "chosen": "Class weights used (noise class excluded)",
+   "alternatives": "No class weights",
+   "reason": "Correct classification is slightly more evenly distributed over classes",
+   "effect_reported": "yes",
+   "page": "§6.3 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Noise class excluded from the class-weight calculation",
+   "alternatives": "Including the noise class",
+   "reason": "Only 8 samples and no shared pattern",
+   "effect_reported": "no",
+   "page": "§6.3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Neighboring crop and random crop only",
+   "alternatives": "Additional augmentation methods",
+   "reason": "To compare RC and NC clearly",
+   "effect_reported": "no",
+   "page": "§6.1 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "Modified TNC loss with correlation term",
+   "alternatives": "Original TNC loss",
+   "reason": "Improves representation quality by correlating neighbours and decorrelating non-neighbours",
+   "effect_reported": "yes",
+   "page": "§5 ¶8"
+  },
+  {
+   "node": "D",
+   "chosen": "λ, μ, ν = 10 from Lee and Aune (2021); ρ = 13 by grid search",
+   "alternatives": "Other hyperparameter values (grid for ρ)",
+   "reason": "Suggested values from earlier work; grid search",
+   "effect_reported": "no",
+   "page": "§5 ¶8"
+  },
+  {
+   "node": "D",
+   "chosen": "50 epochs and weight decay 0.0001 for the Table 2 experiment",
+   "alternatives": "100 epochs as in the general setup",
+   "reason": "To prevent severe overfitting",
+   "effect_reported": "no",
+   "page": "§6.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "all the experimental cases are run three times with different random seeds",
+   "page": "§6.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The noticeable test accuracy improvement compared with Table 2 is seen for both [...] .",
+   "page": "§6.3 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "RandInit refers to a case where an encoder is randomly-initialized and frozen without any pre-training and used for the linear evaluation",
+   "page": "Table 4 (p. 396)"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The evaluation on the intermediate variants is conducted to find out how much contribution each component that is added on VIbCReg to form VNIbCReg makes.",
+   "page": "§6.3 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The performance ranking order of the fine-tuning evaluation between VIbCReg, VNIbCReg, and the intermediate variants remains the same as in the linear evaluation.",
+   "page": "§6.3 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] noticeable points in the result is the high test accuracy in a small dataset regime (i.e. n of 5% and 10%)",
+   "page": "§6.3 ¶6"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "proper labeling was ensured by cross-checking with a reviewed seismic bulletin (NORSAR 1971)",
+   "page": "p. 397"
+  }
+ ]
+}

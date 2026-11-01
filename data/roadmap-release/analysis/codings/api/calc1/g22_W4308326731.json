@@ -1,0 +1,400 @@
+{
+ "key": "g22_W4308326731",
+ "doi": "10.1016/j.aiig.2022.10.002",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Li et al. 2022, Artificial Intelligence in Geosciences 3, 115-122",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions; printed journal pages (115-122) for body text, because the supplied XML text contains only the abstract and the captions",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "Reliable seismic phase identification is often challenging especially in the circumstances of low-magnitude events or poor signal-to-noise ratio.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF with XML text (abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the need for more robust automated detection and phase identification for low-SNR, low-magnitude events, given limits of template matching and STA/LTA and growing data volumes.",
+     "page": "p. 115",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "STA/LTA might not perform well for the signals with low signal-to-ratio (SNR) and low magnitudes."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Reviews prior deep-learning detectors and pickers (CNN/GPD, CapsNet, CapsPhase, U-Net, BiLSTM) and the cited weaknesses of pooling layers and capsule networks.",
+     "page": "p. 116",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the use of a pooling layer at the deeper network could increase the risk of more information loss"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds a 1D ResNet34 adapted from He et al. (2016) that classifies 4 s three-component windows as P, S or noise, with separate models for detection and phase classification.",
+     "page": "p. 116",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we develop 1D ResNet34 based on the residual module (He et al., 2016) for the defined tasks"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Takes the preprocessed SCEDC labelled window dataset (1.5 million each of P, S and noise windows; -0.81 < M < 5.7; distances < 100 km) from Ross et al. (2018).",
+     "page": "p. 117",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This dataset was first used in Ross et al. (2018)"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designs train/test splits matched to CapsNet (50%/25%) and CapsPhase (90%/5%), with Adam optimizer, cross-entropy loss, dropout 0.2, 50 epochs, and no augmentation or ensembles.",
+     "page": "p. 117",
+     "move": "new",
+     "trigger": "author",
+     "quote": "50% of the whole dataset is used for model training and 25% of the data is utilized for testing."
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "methods",
+     "action": "Selects the network depth by comparing the test accuracy of 1D-ResNet18, 34 and 50 and keeps ResNet34.",
+     "page": "p. 118",
+     "move": "new",
+     "trigger": "author",
+     "quote": "1D-ResNet34 (98.70%) performs better than both 1D-ResNet18 (98.63%)"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compares SCEDC test accuracy, precision, recall and F1 with values reported for CapsNet and CapsPhase (Tables 1-3); 98.83% vs 98.40% for detection and 98.70% vs 98.67% for phase classification.",
+     "page": "p. 118",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our proposed model achieves better performance for earthquake detection than CapsNet (Saad and Chen, 2020)"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "observation",
+     "action": "Inspects misclassified SCEDC windows (Fig. 4) and attributes the errors to resemblance between classes, amplitude or frequency changes in noise, and noisy signals.",
+     "page": "p. 119",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the resemblance between data belonging to different classes could lead to misclassification"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Builds a STEAD local-event subset (8111 windows per class, M 1-3, < 100 km, S-P > 6 s) and tests SCEDC-trained 1D-ResNet against the published CapsPhase model without a threshold: 95.68% vs 94.39%.",
+     "page": "p. 119",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To further investigate the model generalization ability, the proposed model is evaluated on the STEAD dataset"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Retrains 1D-ResNet on 75% of SCEDC to match GPD and compares both on the STEAD subset: 95.54% vs 95.48%.",
+     "page": "p. 120",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Compared with GPD, 1D-ResNet achieves a slight improvement."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Adds Gaussian noise at several standard deviations to the STEAD subset and compares the accuracy of the three pre-trained models (Table 6).",
+     "page": "p. 120",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the same subset of the STEAD dataset used for model generalization evaluation in the study is masked by Gaussian noise"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Tests 1D-ResNet on STEAD windows whose P and S arrivals are shifted randomly 1-3 s from the window start; accuracy drops to 80.66% (Fig. 8).",
+     "page": "p. 121",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The testing accuracy, as expected in this case, was reduced to 80.66%"
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keeps the claim that 1D-ResNet outperforms previous deep-learning approaches and baselines on noisier data, and proposes it for noisy low-magnitude waveforms.",
+     "page": "p. 121",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Extensive experimental results verify that the 1D-ResNet achieves a better performance than previous deep learning-based approaches"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known phenomenon: P, S and noise windows in seismograms; no new phenomenon is posed",
+   "mode_called": "none"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; catalogue-labelled waveform windows",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "A more accurate and robust classifier for detection and phase identification",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival methods (CapsNet, CapsPhase, GPD), not rival hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Only accuracy differences on shared test sets, with no uncertainties given",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Set: test splits chosen, synthetic noise added, arrivals shifted",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: holds on STEAD and under added noise; drops to 80.66% with off-centre arrivals",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: 1D-ResNet slightly outperforms the prior models",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A 1D ResNet34 classifies 4 s seismic windows as P, S or noise with about 98.7-98.8% accuracy on SCEDC and about 95.5-95.7% on a STEAD subset, slightly better than CapsNet, CapsPhase and GPD, including under added Gaussian noise.",
+  "page": "p. 121"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the 1D ResNet34 classifier is the move without which no performance claim exists; every later step benchmarks it.",
+  "page": "p. 116"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: no hypothesis directed data acquisition; existing labelled datasets (SCEDC, STEAD) were reused. Claim: the benchmark comparisons could have shown ResNet to be worse, but the margins are small (e.g., 95.54% vs 95.48%) and no uncertainty or significance test is given. Registration: network depth was chosen by test accuracy (p. 118) and nothing was fixed in advance, apart from the data splits copied from prior work."
+ },
+ "imports": [
+  {
+   "field": "computer vision / machine learning",
+   "item": "Residual neural network (ResNet) with skip connections, He et al. 2016",
+   "kind": "method",
+   "page": "p. 116"
+  },
+  {
+   "field": "engineering (valve acoustic signal analysis)",
+   "item": "1D ResNet for time series, Sha et al. 2022",
+   "kind": "method",
+   "page": "p. 116"
+  },
+  {
+   "field": "machine learning",
+   "item": "Capsule networks and dynamic routing (Sabour et al. 2017) as comparison concept",
+   "kind": "concept",
+   "page": "p. 116"
+  },
+  {
+   "field": "machine learning software",
+   "item": "PyTorch, Adam optimizer, cross-entropy loss, dropout",
+   "kind": "method",
+   "page": "p. 117"
+  },
+  {
+   "field": "computing hardware",
+   "item": "NVIDIA A100 GPU",
+   "kind": "instrument",
+   "page": "p. 117"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "Accuracy, confusion matrix, precision, recall, F1-score",
+   "kind": "method",
+   "page": "p. 117"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so no review sequence is coded; the acknowledgments mention reviewers (p. 122). The XML text contains only the abstract and captions, so body steps are cited by printed page. Internal inconsistencies (my inference from the printed numbers): the abstract claims 'around 4% improvement in earthquake detection', but Table 1 shows 98.83% vs 98.40%. In Table 2, the 1D-ResNet earthquake F1 of 99.12% does not follow from precision 99.18% and recall 98.06%, and the CapsNet noise F1 of 98.70% does not follow from 97.96% and 97.30%. The text lists noise levels 0.01, 0.05, 0.1 and 0.5, but Table 6 shows 0.15. The text mentions confusion matrices 'for the three methods', but only two are shown. The phase-identification split is 90% train / 5% test, with the remaining 5% unexplained. The SCEDC comparisons use CapsNet and CapsPhase numbers quoted from the original papers rather than rerun, so identical test sets are not shown. Depth selection used test-set accuracy, with no separate validation set reported. No variance across training runs or seeds is reported. Possible overlap between the STEAD subset and SCEDC Southern California records is not discussed. Composition none_fits: the walk is benchmark-driven method development (problem, new method, comparison against baselines, transfer and noise tests) with no rival hypotheses, no phenomenon-establishing exploration and no frozen forecast. Sub-claim at a weaker status: suitability for arrival-time picking on continuous waveforms is asserted but not tested (p. 116, p. 121), status none.",
+ "disagreements": [
+  {
+   "target": "Template matching and STA/LTA conventional detection",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cited literature only; the paper does not test these methods.",
+   "page": "p. 115",
+   "quote": "STA/LTA might not perform well for the signals with low signal-to-ratio (SNR) and low magnitudes."
+  },
+  {
+   "target": "CNN-based phase pickers using pooling layers",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argument from cited works on information loss and vanishing gradients; tested indirectly through the comparison with GPD.",
+   "page": "p. 116",
+   "quote": "the use of a pooling layer at the deeper network could increase the risk of more information loss"
+  },
+  {
+   "target": "Capsule networks (CapsNet, CapsPhase; Saad and Chen 2020, 2021)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Cites Peer et al. (2021) and Xi et al. (2017) on capsule-network limits, then reports small accuracy gains over CapsNet and CapsPhase on SCEDC and STEAD.",
+   "page": "p. 116",
+   "quote": "Capsule networks also suffer from performance issues when dealing with larger datasets including complex data"
+  },
+  {
+   "target": "CapsPhase (Saad and Chen 2021) performance",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Runs the published CapsPhase model on the STEAD subset: 94.39% vs 95.68% for 1D-ResNet, with better S-phase identification.",
+   "page": "p. 119",
+   "quote": "The overall testing accuracies of the used two methods are 94.39% (CapsPhase), and 95.68% (1D-ResNet), respectively."
+  },
+  {
+   "target": "Generalized phase detection, GPD (Ross et al. 2018)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Retrains on the same 75% of SCEDC and tests on STEAD: 95.54% vs 95.48%.",
+   "page": "p. 120",
+   "quote": "Compared with GPD, 1D-ResNet achieves a slight improvement."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "1D ResNet with residual blocks",
+   "alternatives": "CNN with pooling (GPD), capsule networks (CapsNet, CapsPhase)",
+   "reason": "Pooling causes information loss, deep CNNs suffer vanishing gradients, and capsule networks have limited representation and struggle with large complex data",
+   "effect_reported": "yes",
+   "page": "p. 116"
+  },
+  {
+   "node": "N",
+   "chosen": "Short-window classification without arrival-time labels",
+   "alternatives": "Continuous waveforms with arrival-time labels (Zhu and Beroza 2019; Mousavi et al. 2020; Li et al. 2021; Chakraborty et al. 2021, 2022)",
+   "reason": "Reduces the effort and time of arrival-time labelling",
+   "effect_reported": "no",
+   "page": "p. 116"
+  },
+  {
+   "node": "N",
+   "chosen": "Two tasks (detection, phase identification) implemented separately",
+   "alternatives": "Hierarchical classifier (left to future work)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 116"
+  },
+  {
+   "node": "D",
+   "chosen": "No data augmentation and no ensemble methods",
+   "alternatives": "Data augmentation; ensembles",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 117"
+  },
+  {
+   "node": "D",
+   "chosen": "Imbalanced detection training set produced by relabelling P and S as earthquake",
+   "alternatives": "Balanced training set as in CapsNet",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 117"
+  },
+  {
+   "node": "R",
+   "chosen": "1D-ResNet34",
+   "alternatives": "1D-ResNet18, 1D-ResNet50",
+   "reason": "Highest test accuracy (98.70%), with fewer parameters than ResNet50",
+   "effect_reported": "yes",
+   "page": "p. 118"
+  },
+  {
+   "node": "V",
+   "chosen": "No output threshold for CapsPhase in the STEAD comparison",
+   "alternatives": "Threshold used in the original CapsPhase work",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 119"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "1D-ResNet34 (98.70%) performs better than both 1D-ResNet18 (98.63%)",
+   "page": "p. 118"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "here, the result of CapsNet is stated from Saad and [...] )",
+   "page": "p. 118"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "To further investigate the model generalization ability, the proposed model is evaluated on the STEAD dataset",
+   "page": "p. 119"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the best-saved model of CapsPhase published by the authors is directly used without model retraining",
+   "page": "p. 119"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "75% of the SCEDC dataset is used to retrain the proposed 1D-ResNet, which is the same as GPD",
+   "page": "p. 120"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the same subset of the STEAD dataset used for model generalization evaluation in the study is masked by Gaussian noise",
+   "page": "p. 120"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we created a subset of the STEAD where both P- and S-waves are randomly located from 1 s to 3 s after the [...]",
+   "page": "p. 121"
+  }
+ ]
+}

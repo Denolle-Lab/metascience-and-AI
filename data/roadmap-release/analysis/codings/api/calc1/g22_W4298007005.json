@@ -1,0 +1,397 @@
+{
+ "key": "g22_W4298007005",
+ "doi": "10.1016/j.csr.2022.104855",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper (PDF): Bahamondes Dominguez et al., Continental Shelf Research 249 (2022) 104855"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "only recently has it been demonstrated, through discrete measurements, that dissolved iron also plays an important role in the ecosystem of the region",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from Birchill et al. (2017) the observational finding that dFe, not only nitrate, limits phytoplankton growth in the Celtic Sea.",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Birchill et al. (2017) demonstrated that"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how dFe and DIN co-limit phytoplankton growth and primary production over the full seasonal cycle and between years at the Central Celtic Sea site.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use a 1-D model to understand the importance of"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Extend the authors' 1-D S2P3 v8.0 shelf-sea model with a dissolved iron pool, phytoplankton iron currency, benthic dFe flux and a minimum-type Michaelis-Menten co-limitation (Felim, Nlim).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "has been developed to introduce dFe as a co-limiting nutrient"
+    },
+    {
+     "n": 4,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set the model conditions: NCEP daily reanalysis forcing, POLCOMS tidal constituents, 140 one-metre levels, 1960 start with five-year spin-up, and initial DIN and dFe taken from observed CTD and November 2014 bottom dFe.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Daily meteorological data from the National Centers for Environmental Predictions (NCEP) Reanalysis data"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "robustness",
+     "action": "Define the diagnostic N^perc_lim, the percentage of time-depth points that are N-limited rather than Fe-limited, for use in the sensitivity analysis.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A percentage of time-depth points where the system is nitrate limited was calculated as"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate unconstrained parameters (KN, KFe, Rm, etc.) by one-at-a-time trial-and-error over hundreds of runs against SSB observations, within ranges from the literature, focusing on Birchill et al. dFe profiles.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use a trial-and-error approach informed by literature values to perform an exhaustive comparison"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the calibrated model with dFe profiles from cruises DY018, DY029 and DY033, CTD nitrate+nitrite profiles, SmartBuoy SST and chlorophyll, and zooplankton biomass; agreement is good in November and July and poorer in April and for zooplankton in 2014.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "provide an independent dataset to validate this new model and its calibration"
+    },
+    {
+     "n": 8,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attribute the mismatches to auxiliaries (bloom timing, daily-mean versus instantaneous sampling, NH4 missing from CTD data, 32 km NCEP resolution, missing temperature dependence of grazing) and do not revise the model.",
+     "page": "5",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "There might be many reasons to explain the differences between observations and the model output"
+    },
+    {
+     "n": 9,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Retain the tuned model as adequate to capture the amplitude and timing of the nutrient and chlorophyll observations.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the tuning of our new model can capture the amplitude and timing of the nutrient and chlorophyll observations"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run the control model for 1965-2015 and describe the seasonal surface cycles and monthly mean profiles of dFe, DIN, chlorophyll and NPP (Figs. 5-7).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The modelled seasonal average depth profiles (between 1965 to 2015) of dFe, DIN, and Chl-a"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare modelled spring NPP with published in situ and satellite PP estimates, find the observed estimates higher, and attribute this to satellite PP parameterisation.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These observed PP estimates are higher than the modelled values"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Infer the limiting nutrient through time and depth from Felim versus Nlim (Figs. 8, 9, A.1): dFe limits the spring bloom (April-July at depth) and DIN limits summer surface growth; the pattern recurs over 50 simulated years.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This paper focuses on investigating the nutrient co-limitation of phytoplankton growth at the CCS location."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run 16 one-at-a-time sensitivity experiments (KN and KFe across literature ranges, Nrate and Ferate ±50%) and compare N^perc_lim, Nlim, Felim and NPP with the control run.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "where each parameter was varied individually to understand how sensitive NPP is to those changes"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the spring Fe-limitation result as robust, since the timing of Fe limitation varies little across experiments; note that NPP is most sensitive to the benthic flux rates.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests that the results showing that the spring bloom is mainly Fe-limited are robust."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the results against Birchill et al. (2017) and other regions (Arctic, California Current) and find them consistent.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results shown in this work are similar to those in Birchill et al. (2017) in terms of nutrient co-limitation"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Take the expected response to the detrital remineralisation rate from the literature instead of running that sensitivity test.",
+     "page": "14",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "we would expect to see the same behaviour in this work, so this is not replicated in this study"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Conclude that the site is Fe-limited in spring and N-limited in summer, and that dFe should be a state variable in temperate shelf-sea models.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results are robust and allow us to show when the region is Fe-limited (spring) or N-limited (summer)."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Seasonal dFe-DIN co-limitation in the Celtic Sea, reported from discrete observations by Birchill et al. (2017)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; nutrient limitation is latent and is inferred through a calibrated 1-D model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Resolve the full seasonal and inter-annual pattern of co-limitation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No explicit rivals; nitrate-only limitation is an implicit background view",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set in the model (parameters, forcing); forcing taken from reanalysis",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "50 simulated years repeat the seasonal pattern",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, under parameter sensitivity experiments for spring Fe limitation; timing shifts with benthic fluxes",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: Fe limits the spring bloom, DIN limits summer growth",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "At the Central Celtic Sea site, the modelled limitation pattern shows dissolved iron limiting the spring bloom and DIN limiting summer growth, robust to nutrient-parameter variation, so dFe should be included in shelf-sea models.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The time-depth inference of Felim versus Nlim from the calibrated, dFe-enabled model is what produces the seasonal co-limitation claim.",
+  "page": "9"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No new data were acquired: all observations come from earlier UK SSB cruises (p. 4). The claim faced parameter sensitivity tests that could have moved the timing of Fe limitation (p. 11), but no rival was stated, and calibration and validation draw on the same Birchill et al. dFe data (p. 4). Parameters were tuned by trial-and-error against the data, so nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "biochemistry (enzyme kinetics)",
+   "item": "Michaelis-Menten saturating uptake and Monod-type growth",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "population ecology",
+   "item": "Holling type 2 / Ivlev grazing functional response",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "plant/algal physiology",
+   "item": "Geider et al. (1998) variable-stoichiometry photo-acclimation model",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "analytical chemistry",
+   "item": "flow injection with chemiluminescence detection for dissolved Fe (in the cited Birchill et al. data)",
+   "kind": "instrument",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The paper makes no explicit 'first' or 'previously unknown' statement; it credits Birchill et al. (2017) with first suggesting the co-limitation (p. 14). The same Birchill et al. dFe data are used both to calibrate (p. 4: to 'find the closest match to the vertical profiles of dFe data') and to validate the model, which the paper calls 'independent'. By inference, the validation is not independent of the calibration. Calibration was trial-and-error, with no reported objective function or skill metric. The 'hundreds of experiments' and their rejected parameter sets are not shown. Uncertainty on the limitation pattern is qualitative: there is a sensitivity spread and an inter-annual standard deviation, but no formal error. Sensitivity was one-at-a-time, with no interaction tests. The remDOM sensitivity, atmospheric Fe input, and multiple plankton functional types were not tested. The model mismatches (April dFe profiles, DIN, zooplankton in 2014, lower spring PP) are explained by auxiliaries without tests. Sub-claim at a different status: NPP is more sensitive to the benthic flux rates than to the half-saturation constants (regularity_in_range within the tested ±50% and literature ranges, p. 11). The process before submission is not visible: no review file was supplied.",
+ "disagreements": [
+  {
+   "target": "Celtic Sea studies treating nitrate as the limiting nutrient (e.g. Sharples et al., 2001; Williams et al., 2013a,b) and models [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Model diagnostics show dFe limiting the spring bloom while DIN limits summer growth.",
+   "page": "1",
+   "quote": "it should not be neglected as a state variable when modelling the Celtic Sea or other temperate shelf seas"
+  },
+  {
+   "target": "Assumption that shelf seas are Fe replete",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Modelled and observed surface dFe falls to near zero during and after the spring bloom.",
+   "page": "2",
+   "quote": "Shelf seas are assumed to be Fe replete due to riverine and groundwater inputs"
+  },
+  {
+   "target": "Satellite ocean-colour PP estimates for April (Curran et al., 2018)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Modelled spring NPP is lower than the satellite estimates, which the authors attribute to satellite parameterisation without a test.",
+   "page": "7",
+   "quote": "this could be due to sub-optimal parameterisation in the satellite PP estimation process"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Calibrated values KN = 0.1, KFe = 0.5, Rm = 3.0 and others (Table 1)",
+   "alternatives": "Literature ranges KN 0.1-2.5, KFe 0.04-0.67, Rm 2-3.9 (or 0.3-0.5 for microzooplankton), remDOM 0.004-0.2, wDOM 0.08-0.8",
+   "reason": "Most representative of the wide range of processes at the CCS location, by trial-and-error against observations",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "±50% variation of Nrate and Ferate",
+   "alternatives": "Literature-based ranges, as used for KN and KFe",
+   "reason": "Insufficient observations for Nrate and Ferate to provide a reliable range",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "S",
+   "chosen": "No sensitivity run for remDOM",
+   "alternatives": "Varying the detrital remineralisation rate",
+   "reason": "Literature shows a linear response, so the same behaviour is expected",
+   "effect_reported": "no",
+   "page": "14"
+  },
+  {
+   "node": "N",
+   "chosen": "Fixed N:Fe ratio with no detrital iron state variable",
+   "alternatives": "Separate detrital iron pool",
+   "reason": "For simplicity",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "Variable stoichiometry (Geider et al., 1998)",
+   "alternatives": "Constant stoichiometry, as in many large-scale models",
+   "reason": "Nutrient limitation is linked to intracellular stoichiometric variability",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "One phytoplankton and one zooplankton functional group",
+   "alternatives": "Multiple phytoplankton species or functional types",
+   "reason": "Further sophistication can lead to poorly constrained scenarios with more parameters to validate",
+   "effect_reported": "no",
+   "page": "14"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "allow us to compare them with the daily averaged output of the model (red line)",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Some discrepancies are shown between the modelled DIN and observed profiles of nitrate plus nitrite",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These observed PP estimates are higher than the modelled values",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This seasonal nutrient co-limitation pattern is observed during the 50-year model simulation",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "where each parameter was varied individually to understand how sensitive NPP is to those changes",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The results shown in this work are similar to those in Birchill et al. (2017) in terms of nutrient co-limitation",
+   "page": "13"
+  }
+ ]
+}

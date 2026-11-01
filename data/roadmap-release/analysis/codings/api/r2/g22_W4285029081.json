@@ -1,0 +1,383 @@
+{
+ "key": "g22_W4285029081",
+ "doi": "10.1002/qj.4344",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper (PDF): Hubans, Berre, Bouteloup & Loo (2022), Q J R Meteorol Soc 148:3099-3114"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the goal of this article is to examine information on model-error contributions that may be provided by analysis differences",
+  "page": "3100"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF), pp. 3099-3114",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of what analysis differences from two deep-convection parametrisations in ARPEGE tell about model-error contributions to analysis errors, compared with observation-error contributions.",
+     "page": "3100",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the goal of this article is to examine information on model-error contributions that may be provided by analysis differences"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take up the linearised error-contribution formalism from Berre (2019), a co-author's earlier work, as the starting framework.",
+     "page": "3100",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "a formalism relying on a linearised expansion of error contributions has been proposed by Berre (2019)"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive a linearised expansion of analysis error over successive DA cycles into accumulated, propagated and damped model-error and observation-error contributions (Eqs 10-13), and an analogous expansion for analysis differences between two model versions and perturbed observations (Eqs 17-20).",
+     "page": "3101-3103",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "in order to expand the analysis error as the sum of three contributions"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "estimation",
+     "action": "Derive how model-difference and analysis-difference variances relate to model-error variances through the inter-model error correlation rho (Eqs 21-24, Appendix A1), and assume the two versions are unbiased and of equal quality.",
+     "page": "3103-3104, 3114",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ideal situation for a multiphysics approach corresponds to the case where the two model versions (a) are unbiased"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design four ARPEGE 4D-Var cycling experiments for October 2019 (TDK reference with the Tiedtke-Bechtold scheme; BGT with the Bougeault scheme; TDK'o and BGT'o with observation perturbations), all started from the same analysis, giving three sets of analysis differences.",
+     "page": "3105-3106",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For this study, four sets of analyses are compared and discussed."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Run the cycling and plot the time evolution of global RMS analysis differences for 850 hPa specific humidity from the model change and from observation perturbations (Figure 2).",
+     "page": "3106",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The amplitudes of analysis differences appear to grow relatively quickly during the first 16 cycles"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the growth followed by stabilisation after 4-5 days with the accumulation (sum) and damping (I - KH) terms of the formalism, for both model-induced and observation-induced differences.",
+     "page": "3106",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is consistent with the sum operator appearing in Equation (19)"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Explain the 4-day saturation time with the converging power-series coefficient T'^2 of about 0.8, estimated empirically in Berre (2019).",
+     "page": "3107",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "it has been empirically estimated to be close to"
+    },
+    {
+     "n": 9,
+     "node": "K",
+     "mode": "theory",
+     "action": "Retain that accumulation and damping processes identified for observation-perturbation differences also hold for differences induced by the convection-scheme change.",
+     "page": "3107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "remain valid for analysis departures induced by model differences between two parametrisations of deep convection"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "theory",
+     "action": "State that the growth-and-stabilisation behaviour holds for all other model variables, not only 850 hPa humidity (not shown).",
+     "page": "3107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which are valid not only for specific humidity but also for all the other variables"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "estimation",
+     "action": "Fix the statistics period to the 27 days after the initial 4-day spin-up so that model differences have stabilised.",
+     "page": "3107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in order to ensure that model differences have had enough time to develop and stabilize"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute tropical (20S-20N) mean vertical profiles of RMS analysis differences from the convection change and from observation perturbations, as estimates of the two error contributions, for temperature, humidity and zonal wind (Figure 3).",
+     "page": "3107-3108",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As deep convection is particularly active in the Tropics, we will first examine average amplitudes of differences in this region."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the profiles: convection-induced differences are of similar amplitude to observation-induced ones, somewhat smaller above 950 hPa, larger in the lower boundary layer, and more different for wind.",
+     "page": "3107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "tend to have similar effects in amplitudes as differences resulting from the perturbation of observations"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Vary the assumed inter-scheme error correlation rho analytically (0, 0.5, 0.7) to bound the model-error standard deviation implied by the differences within about +/-30%.",
+     "page": "3107",
+     "move": "new",
+     "trigger": "author",
+     "quote": "may be considered to provide estimates of model error contributions"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Map one-month RMS analysis differences for 500 hPa temperature from the convection change and from observation perturbations (Figure 4).",
+     "page": "3108-3109",
+     "move": "new",
+     "trigger": "author",
+     "quote": "analysis difference amplitudes are relatively large over the Tropics, but in a non-uniform way"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the maps with observation density (Figure 5) and convective activity: small differences where observations are dense, as the damping operators predict; large differences in poorly observed convective regions; low convection-induced differences over polar regions without deep convection.",
+     "page": "3108-3109",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this corresponds to regions that benefit from high densities of observations"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute tropical profiles of analysis differences from combined observation perturbations and model change (TDK - BGT'o) (Figure 6).",
+     "page": "3109-3110",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allow some effects to be examined when accumulating both observation perturbations and model differences"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the combined differences with AEARP full analysis-error standard deviations as a reference: generally smaller as expected, but near the surface close to or larger than AEARP, which suggests AEARP underestimates boundary-layer error.",
+     "page": "3110",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This may be an indication that analysis error standard deviations tend to be underestimated by AEARP in the boundary layer"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Note that combined RMS is much smaller than the sum of the separate RMS values, and propose nonlinear causes (first-guess quality-control thresholds, nonlinear model response and dissipation), without testing them.",
+     "page": "3110-3111",
+     "move": "new",
+     "trigger": "author",
+     "quote": "one can think of two nonlinear aspects that can explain this result"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the combined-difference map (Figure 7) with Figure 4: values are larger where convection is active and uncertain (southern Africa, Amazonia, Caribbean, Gulf of Mexico).",
+     "page": "3111",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This confirms that the representation of uncertainties in the parametrisation of deep convection is complementary to the simulation of observation error contributions"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Conclude that deep-convection uncertainty contributions are comparable to observation-error contributions in the Tropics, larger in the boundary layer and in poorly observed convective regions, and that the inter-model error correlation is crucial for inferring amplitudes.",
+     "page": "3111-3112",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Corresponding average RMS values of differences in the Tropics appear to have similar amplitudes to those produced by observation perturbations"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Contributions of deep-convection parametrisation uncertainty to NWP analysis errors",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; true errors are unknown and are simulated through analysis differences",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate model-error contributions and examine the multiphysics plus observation-perturbation method",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses stated; only candidate nonlinear explanations after the fact",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Formalism predicts accumulation then stabilisation, and damping where observations are dense",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Set: model scheme swapped and observations perturbed in numerical DA experiments",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: analytic variation of rho, other variables (not shown), AEARP reference; one month only",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: convection contributions comparable to observation contributions in Tropics, larger in boundary layer",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "In ARPEGE, analysis differences from swapping deep-convection schemes show convection-uncertainty contributions to tropical analysis errors of similar amplitude to observation-error contributions, larger in the boundary layer and in poorly observed convective regions; these estimate model-error contributions within about +/-30% if the inter-scheme error correlation lies between 0 and 0.7.",
+  "page": "3099, 3107, 3111-3112"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Computing RMS analysis differences between the Tiedtke-Bechtold and Bougeault cycling experiments (Figure 3), read through the formalism as model-error contributions, is what yields the claim.",
+  "page": "3107-3108"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The derived formalism shaped the experiment design (all runs started from the same analysis, so initial differences are zero, Eq. 18, p. 3102-3103), but no hypothesis about the amplitudes directed the runs. The formalism's expected accumulation and stabilisation (Figure 2) and damping where observations are dense (Figures 4-5) could have failed, and the AEARP comparison (p. 3110) is a reference check. The headline amplitude claim is descriptive and has no stated failure criterion. Nothing is reported as fixed before the data; the 27-day averaging window was chosen after seeing Figure 2 (p. 3107)."
+ },
+ "imports": [
+  {
+   "field": "mathematics",
+   "item": "Schur (elementwise) product in the variance expansion",
+   "kind": "concept",
+   "page": "3104"
+  },
+  {
+   "field": "statistics",
+   "item": "linear regression decomposition of one model error on the other, with an uncorrelated residual",
+   "kind": "method",
+   "page": "3114"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The formalism is similar to Berre (2019), but it is applied to initial condition errors, instead of background errors.",
+   "page": "3100"
+  }
+ ],
+ "limits": "Single study month (October 2019) and a single pair of convection schemes; no replication over another period or season. The inter-scheme error correlation rho is not estimated, only bounded by assumption, and conditions (a) unbiased and (b) equal quality are assumed, not tested (p. 3103). The claim that the cycling behaviour holds for all variables is stated without figures (p. 3107). Agreement between experiments and formalism is qualitative, with no quantitative test of the predicted damping. The nonlinear explanations for non-additivity (p. 3111) are proposed and not tested. Sub-claims at other statuses: the formalism and method for reading accumulation and damping from analysis differences, capability_characterized; damping by observation density explaining spatial patterns, best_explanation; AEARP underestimation of boundary-layer analysis error, best_explanation (tentative, stated as 'may be an indication'); nonlinear causes of non-additivity, none (hypothesis only). Composition is none_fits (inference): the walk is a derivation, then one numerical experiment, then descriptive comparison, with no rivals (not strong_inference), no frozen forecast scored against a reference (not forecast_verification), and no new capability opening the work (not capability_first). No review file was supplied, so referee influence and any revisions between submission (13 January 2022) and acceptance cannot be coded.",
+ "disagreements": [
+  {
+   "target": "Analysis-error standard deviations provided by the operational AEARP ensemble data assimilation system",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Near the surface, the combined observation-plus-convection analysis differences are close to or exceed the AEARP error estimates for moisture and temperature, which suggests AEARP misrepresents convection uncertainty in the boundary layer.",
+   "page": "3110",
+   "quote": "This may be an indication that analysis error standard deviations tend to be underestimated by AEARP in the boundary layer"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Multiphysics approach (two deep-convection schemes) combined with observation perturbations",
+   "alternatives": "Stochastic perturbation of physical tendencies; stochastic kinetic energy backscatter; stochastic parameter perturbation; subgrid-scale stochasticity schemes; additive perturbations and multiplicative inflation",
+   "reason": "A detailed presentation of these approaches is beyond the scope of the article; a comparison with stochastic parameter perturbations is left to future work",
+   "effect_reported": "no",
+   "page": "3100, 3112"
+  },
+  {
+   "node": "D",
+   "chosen": "Statistics over the 27 days following the initial 4-day spin-up",
+   "alternatives": "Statistics over the whole period including the growth phase (implied)",
+   "reason": "To ensure that model differences have had enough time to develop and stabilise",
+   "effect_reported": "no",
+   "page": "3107"
+  },
+  {
+   "node": "V",
+   "chosen": "Inter-scheme model-error correlation rho assumed in the range 0 to 0.7",
+   "alternatives": "rho = 0 (uncorrelated), rho = 0.5, rho = 0.7, rho close to 1, rho = -1 (fully anti-correlated)",
+   "reason": "Discussed as plausible cases; schemes may share design assumptions",
+   "effect_reported": "yes",
+   "page": "3104, 3107"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "which are valid not only for specific humidity but also for all the other variables",
+   "page": "3107"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] a ±30% margin, if model error correlations are within the range between 0 and 0.7",
+   "page": "3107"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These analysis difference mean amplitudes can also be compared with analysis error standard deviations",
+   "page": "3110"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "values are quite low over polar regions, which are not affected by deep convection",
+   "page": "3109"
+  }
+ ]
+}

@@ -1,0 +1,432 @@
+{
+ "key": "g22_W4281489626",
+ "doi": "10.1029/2022gl097785",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Witsil et al. 2022, Geophysical Research Letters 49, e2022GL097785, LANL accepted-manuscript cover plus published version (PDF, 11 pages); Supporting Information S1 not supplied"
+ ],
+ "pages_convention": "PDF pages counted from 1 (p. 1 is the LANL cover sheet; journal page '1 of 10' is PDF p. 2)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the infrasound community lacks extensive training datasets to build and test ML models that could deploy in generalized settings",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Witsil et al. 2022, GRL, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the need to detect explosions on cheap single-element infrasound microphones, where array processing is unavailable and ground-truth training data are lacking.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "new technologies must be developed and applied to these data."
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the work so the training catalog is built for what the HRR experiment would record, so the method can be tested against a controlled ground-truth experiment.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are able to test the validity of the method with a well-known and controlled experiment"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Take the 2012 Humming Roadrunner experiment, with six chemical charges of 9 to 45 t TNT recorded on 51 local stations and 13 regional arrays, as the test conditions; the experiment was run by others.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "six charges ranging between 9 and 45 metric tons equivalent of trinitrotoluene (TNT) were detonated"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit a source model to near-field HRR data to obtain 14 source time functions, and model atmospheric uncertainty with 50 perturbed ground-to-space profiles (5 m/s standard deviation).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We generated a total of 14 source time functions by fitting the model defined in Equation 2"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute effective sound speeds, transmission loss and ducting (stratospheric returns to the west after 200 km, thermospheric returns in all directions after 350 km), then propagate the sources with NCPAprop modal expansion to make 28,000 waves.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Source waveforms are propagated through each stratified atmosphere using modal expansion via the software NCPAProp"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check, qualitatively, that the modeled waveforms resemble the observed HRR recordings in amplitude, number of returns, duration and polarity.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Modeled waveforms qualitatively agree with the variety of observed HRR recordings"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the training catalog by adding recorded TA noise to the 28,000 propagated waves (synthetic events) and drawing 28,000 separate TA waveforms as non-events, 56,000 waveforms in all.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We therefore superimpose (element-wise addition) recorded data onto the 28,000 propagated waves, thus forming a catalog of synthetic events"
+    },
+    {
+     "n": 8,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopt the published expectation that classifier success depends on training-data quality more than on the algorithm, which motivates training two different models.",
+     "page": "5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The success of a ML model is largely determined not by the algorithm but by the quality of training data"
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Train a simple ANN on 14 defined time- and frequency-domain features (253 parameters) and a TCN on learned features (288,559 parameters) to separate events from non-events.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ANN has a total of 253 learned parameters whereas the TCN has 288,559"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Report synthetic validation accuracies of 90% for the ANN and 97% for the TCN.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The trained ANN correctly discriminates between synthetic events and non-events with an overall validation accuracy of 90%."
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the real-data test: feed 100 s overlapping windows from one microphone at each of the 13 HRR arrays to both models and classify with a 50% detection threshold.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We deployed the ANN and TCN on waveforms collected from the HRR experiments to test how each model generalizes to real-world data."
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "observation",
+     "action": "Label the HRR ground truth algorithmically with an array-based F-ratio detector (at least three sensors) to avoid labeling bias.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "HRR explosion signals are algorithmically identified using an F-ratio detector similar to Green et al. (2018)"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the single-microphone ML predictions with the F-ratio labels for five detonations using accuracy, ROC AUC, TP and TN (Table 1).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both the TCN and ANN models achieve overall accuracies >92% where >60% of events and >97% of non-events were correctly predicted"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check consistency across the five HRR detonations (standard deviations of 10% or less), noting that class imbalance likely skews accuracies.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "standard deviations for each metric were <=10% suggesting robust predictions across all HRR explosions"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the station-by-station HRR5 detections with the propagation predictions: true positives at western stations where stratospheric ducting was expected, false negatives to the north and east.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both models correctly predict events on the majority of western stations where favorable stratospheric ducting conditions were expected"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare the two architectures on real data and find closely similar predictions despite the TCN's better synthetic validation score.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The TCN and ANN share surprisingly similar predictions over the HRR data."
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attribute the lower event (TP) accuracy and the performance ceiling to auxiliaries rather than to the approach: atmospheric models, missing terrain, wind-shear and thermospheric-duct effects, and single-microphone SNR.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the atmospheric models likely do not capture the true conditions observed during HRR"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "methods",
+     "action": "Propose refinements: an ensemble across all microphones (majority vote or correlated probabilities) and higher-fidelity propagation, more accurate atmospheres and more data.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we expect accuracies would improve if we deployed the ML models on all available microphones and identified events with an ensemble method"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that ML models trained entirely on physics-based synthetics give single-element networks a new detection capability, and release the catalog as a benchmark.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The success of the ML models trained entirely on physics-based synthetic data add new detection capabilities"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "methods",
+     "action": "Outline generalization to other regions and times (grids of atmospheres), other source types, and near-field data in place of source models.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Atmospheres can be modeled at different locations and times"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Explosion infrasound reaching regional stations through atmospheric ducts; taken as established",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Not directly on single microphones; detection needs a trained classifier",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "A detection capability for single-element microphones, trained without real labeled data",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only two classifier architectures",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Propagation modeling predicts which station directions should record arrivals",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set by others in the HRR ground-truth experiment and used as found",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Five detonations recorded at 13 arrays act as repeats",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Consistent across five detonations and two architectures (SD of 10% or less)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Capability kept: >92% accuracy, >60% TP, >97% TN on real HRR data",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; acknowledgments mention one pre-submission external reviewer",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "ANN and TCN classifiers trained entirely on physics-based synthetic infrasound detect all five HRR explosions on single microphones across most of the 13 arrays, with >92% accuracy, >60% of events and >97% of non-events correct.",
+  "page": "7"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the 56,000-waveform training catalog from propagated physics-based synthetics plus recorded noise is what lets a classifier be trained without real labeled explosions.",
+  "page": "4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "No hypothesis directed data acquisition: the HRR data were recorded by others in 2012. The authors chose HRR as the test scope and built the synthetics to match it (p. 3). The real-data test could have failed against independent F-ratio labels (p. 6). The models were trained, and the 50% threshold set, before HRR deployment, but sources and atmospheres were fitted to HRR data (pp. 3-4) and the metrics come from the best-TP microphone per array (p. 6). Nothing was formally preregistered."
+ },
+ "imports": [
+  {
+   "field": "computer science (machine learning)",
+   "item": "supervised artificial neural network and temporal convolutional network classifiers",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "computer science (neural computation)",
+   "item": "adding noise to training data to improve generalization (An 1996; Bishop 1995)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics / signal detection theory",
+   "item": "receiver operating characteristic area under curve and confusion-matrix metrics",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "physical acoustics",
+   "item": "NCPAprop modal-expansion propagation software",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "training a ML model entirely on synthetics is a novel concept in the infrasound community",
+   "page": "3"
+  },
+  {
+   "quote": "The open-source catalog of synthetic events and non-events offers a new benchmark data set for the infrasound community",
+   "page": "9"
+  },
+  {
+   "quote": "The success of the ML models trained entirely on physics-based synthetic data add new detection capabilities",
+   "page": "9"
+  }
+ ],
+ "limits": "Supporting Information S1 (feature definitions, atmosphere generation, F-ratio settings, ROC details, Figure S4) was not supplied, so steps resting on it are coded from main-text summaries. Inference: the real-data test is not fully independent of training, because the source time functions were fitted to HRR near-field data and the atmospheres were modeled for HRR conditions. Inference: reporting metrics from the microphone with the highest TP accuracy at each array is a post hoc selection that likely inflates TP; the paper does not report averages over microphones. Table 1 lists HRR1, 3, 4, 5 and 6; the omission of HRR2 is not explained. The HRR experiment's conditions were set by others, not found; it is coded F/observation/cited. The composition is coded capability_first, although the question (step 1) comes before the capability; the walk is a methods-development paper characterized against ground truth, with no rivals. Sub-claims: TCN outperforms ANN on synthetic validation, 97% vs 90% (estimate_with_resolution, synthetic only); real-world performance is limited by training-data fidelity rather than architecture (best_explanation, inferred from ANN/TCN similarity, not tested); lower TP is due to atmosphere, propagation and single-microphone SNR (best_explanation, untested); the ensemble across microphones would improve accuracy (expectation, not performed). No review file, so no review sequence.",
+ "disagreements": [
+  {
+   "target": "Current detection practice relying on multi-element arrays and array processing (e.g., the IMS)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Single-microphone classifiers trained on synthetics detect the majority of HRR explosion signals that the array-based F-ratio detects.",
+   "page": "2",
+   "quote": "Current detection technologies typically require expensive and hard to maintain arrays comprising multiple microphones deployed in close proximity."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Both a simple ANN with defined features and a TCN with learned features",
+   "alternatives": "ANN (defined features) versus TCN (learned features)",
+   "reason": "To assess the quality of the synthetic events; a variety of models should perform similarly if the training data are good",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "Training data scoped to the HRR experiment and region",
+   "alternatives": "A comprehensive global catalog of events",
+   "reason": "Limits computational expense and allows testing against a well-known controlled experiment",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "Algorithmic F-ratio detector for the ground-truth labels",
+   "alternatives": "Labeling events (implicitly, by hand)",
+   "reason": "To avoid labeling bias",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "Detection threshold of 50%",
+   "alternatives": "A modified threshold to limit misclassified events in operational settings",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "A single microphone per array",
+   "alternatives": "All available microphones combined with an ensemble method (majority voting or correlating class probabilities)",
+   "reason": "The study deliberately targets single-element deployments; the ensemble is outside the scope of this work",
+   "effect_reported": "no",
+   "page": "9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Modeled waveforms qualitatively agree with the variety of observed HRR recordings",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The trained ANN correctly discriminates between synthetic events and non-events with an overall validation accuracy of 90%.",
+   "page": "6"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "To assess the quality of the synthetic events, we trained a relatively simplistic artificial neural network (ANN) and more complex temporal convolution neural network (TCN).",
+   "page": "5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We deployed the ANN and TCN on waveforms collected from the HRR experiments to test how each model generalizes to real-world data.",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "HRR explosion signals are algorithmically identified using an F-ratio detector similar to Green et al. (2018)",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "standard deviations for each metric were <=10% suggesting robust predictions across all HRR explosions",
+   "page": "7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The TCN and ANN share surprisingly similar predictions over the HRR data.",
+   "page": "9"
+  }
+ ]
+}

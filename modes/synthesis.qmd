@@ -1,50 +1,50 @@
 ---
 mode_id: synthesis
-mode_version: "0.4.0"
+mode_version: "0.5.0"
 mode_status: drafted
 ---
 
-# Synthesis and reconstruction {.unnumbered}
+# Cross-study synthesis {.unnumbered}
 
-[Drafted]{.status .drafted} [human-editable specification · v0.4.0 · no agent-performance claim]{.status-line}
+[Drafted]{.status .drafted} [human-editable specification · v0.5.0 · split from "Synthesis and reconstruction" on October 21, 2026 · no agent-performance claim]{.status-line}
 
 ## Epistemic purpose
 
-- Integrate evidence into a constrained historical account or a new scientific connection.
+- Integrate results from many studies or data sets into a pooled estimate, a reconciled account, or a connection between literatures that no single study supports.
 
 ## When this mode helps
 
-- Different traces, studies, or representations bear on an account. Reconstruction can involve new sampling or experiments; no-intervention is not a recognition rule.
+- Several studies measure the same quantity with different methods, sites, or teams, and disagree or are too small alone; or two literatures address one problem without citing each other.
+- Not this mode: reconstructing one past event from its physical traces, which is [reconstruction from traces](reconstruction.qmd).
 
 ## Agent actions and representations
 
-- Assemble sources and dependencies; propose rival accounts; align time and scale; assess trace preservation; identify discriminating evidence; test a proposed connection.
-- Inputs: the question, available evidence and provenance, constraints, prior claims, and remaining budget.
-- Outputs: inspectable artifacts, updated question/evidence state, and a [claim record](../rubrics.qmd#claim-record) when a substantive claim is made.
+- State the inclusion rule before searching; record every study screened and why it was kept or dropped; extract effect sizes or estimates with their uncertainties; model dependence between studies (shared data, shared teams, shared methods); test heterogeneity; report the pooled result with its spread.
+- Inputs: the question, the inclusion rule, the study records and their provenance, the budget.
+- Outputs: the study table, the dependence structure, the pooled estimate or connection, and a [claim record](../rubrics.qmd#claim-record).
 
 ## Evidence and claim scope
 
-- Trace provenance, dependence, and compatibility must support the account’s scope. An event may be unique while its traces and analysis admit independent checks.
-- Distinguish a warranted decision at the time from a claim’s later assessed adequacy; append follow-up without rewriting the original record.
+- The pooled claim holds only for the population of studies the rule admitted. Dependent studies count once. A literature connection is a hypothesis until a test supports it.
+- Distinguish a warranted decision at the time from a claim's later assessed adequacy; append follow-up without rewriting the original record.
 
 ## Transitions and stopping
 
-- Seek a discriminating trace through hypothesis assessment; use estimation for dates or physical quantities; return to exploration when accounts remain underconstrained.
-- Neighbouring profiles: [hypothesis](hypothesis.qmd), [estimation](estimation.qmd), [exploration](exploration.qmd), [robustness](robustness.qmd).
+- Stop when the pooled estimate is stable to the inclusion of any single study and the dependence structure is stated. Hand disagreements to [hypothesis assessment](hypothesis.qmd); hand pooled quantities to [estimation](estimation.qmd) when a forward model is needed; hand a connection to [theory](theory.qmd) for a mechanism.
+- On [graph v0.4.2](../unit.qmd#the-graph): a composition, many O records compared at C and combined at K. In the [decision tree](../decision-tree.qmd), question 3 (aim: a pooled estimate) and question 7 (agreement across independent data and methods).
 
 ## Characteristic failure
 
-- Treat correlated traces as independent; replace primary records with retellings; mistake a plausible literature connection for a tested result.
+- Count dependent studies as independent; let the inclusion rule drift after seeing results; pool incompatible quantities; mistake a plausible literature connection for a tested result.
 
 ## Human evidence and borrowing
 
-- @atwater1987 and @nelson1996 provide Cascadia cases; @cleland2001 and @cleland2002 supply methodological arguments. Historical chronology must be sourced rather than inferred from article order.
-- Cross-field comparison: @swanson1986 motivates connecting separate literatures; @nersessian2022 supplies a process comparison for integration. Neither guarantees transfer to a particular Earth-science question.
-- Science of process/impact: @shi2023 associates content/context surprise with citation impact; @sourati2023 studies human-aware discovery. These motivate transfer hypotheses, not a universal breadth recipe.
-- The actions and transitions above are design hypotheses derived from these sources, not established optimal policies. Missing process chronology remains unknown.
+- Defined for ecology and evolution by the meta-analysis literature [@gurevitch2018] and organized in synthesis centres [@carpenter2009]. Synthesis-centre papers drew 82.7 against 42.9 mean citations [@hackett2021].
+- Geoscience cases: a reference Earth model fitted to many data types at once [@dziewonski1981]; a reconciled ice-sheet mass balance across altimetry, gravimetry, and input-output methods [@shepherd2012]; four decades of Antarctic mass balance [@rignot2019].
+- Connecting separate literatures: @swanson1986 motivates literature-based discovery; @nersessian2022 compares integration processes. One agent system's synthesis statements were 57.9% accurate against 85.5% for its data analyses [@mitchener2025].
+- The actions above are design hypotheses derived from these sources, not established optimal policies.
 
 ## Evaluation against past work
 
-- Produce a better-constrained history or an independently supported connection. Include dependent traces, a plausible incompatible account, and an integration that fails an assumption check.
-- Use the [historical evaluation](../historical-evaluation.qmd) to choose a source record, preserve evidence boundaries, and assess a meaningful gain. A synthetic control tests a constructed case, not a historical discovery.
-- [Assessment definitions](../glossary.qmd#terms-of-assessment) · [Agent implementation](../agent-design.qmd)
+- Reproduce a published synthesis from its study list: same pooled value within its stated spread, and the same verdict when one study is removed. Include a planted dependent pair and a study that fails the inclusion rule.
+- [Assessment definitions](../glossary.qmd#terms-of-assessment) · Agent implementation

@@ -1,0 +1,399 @@
+{
+ "key": "g22_W4220944224",
+ "doi": "10.1002/lom3.10486",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Takeshita et al. 2022, Limnol. Oceanogr.: Methods 20: 281-287 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Thus, improvements or modifications in analytical methods that minimizes sample handling should lead to more accurate and consistent pHspec measurements",
+  "page": "282"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Takeshita et al. 2022, Limnol. Oceanogr.: Methods 20: 281-287 (published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Cite the 26-laboratory CRM intercomparison showing wide spread in pHspec, worse and skewed high at lower pH.",
+     "page": "282",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The consistency was worse at lower pH (7.55), and skewed toward higher pH values."
+    },
+    {
+     "node": "H",
+     "n": 2,
+     "mode": "hypothesis",
+     "action": "Adopt the cited conclusion that CO2 loss during sample handling is a major contributor to interlaboratory variability.",
+     "page": "282",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "they concluded that a major contributor to this variability was carbon dioxide (CO2) loss due to sample [...]"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the aim of a simple method that minimizes sample handling to improve pHspec accuracy and consistency.",
+     "page": "282",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, improvements or modifications in analytical methods that minimizes sample handling should lead to more accurate and consistent pHspec measurements"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Build the spec-in-a-bottle apparatus: a 250-mL borosilicate media bottle as the optical cell in a 3-D printed holder, with a fan-magnet stirrer, solenoid dye pump, NIST-traceable thermometer and Arduino/LabVIEW control.",
+     "page": "282",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A 250-mL borosilicate glass media bottle (Pyrex; McMaster 4787T62) was used for the sampling bottle and spectrophotometric cell"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Define the protocol: three dye additions, pH corrected to 20 C with CO2SYS using estimated TA, and the original sample pH taken as the y-intercept of pH versus Aiso.",
+     "page": "282",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The pH of the original sample before dye addition was calculated as the y-intercept from a least-squares linear regression"
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "observation",
+     "action": "Collect 91 samples from 1000 m to the surface on the 2019 C3PO cruise off Central California and analyse them within 4 h, unpoisoned.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We assessed the performance of this approach on the Central California Coast pH and Oxygen (C3PO) cruise in 2019"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check precision with duplicate samples (n = 7) and bottle-to-bottle consistency across about 30 media bottles.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Approximately 30 different media bottles were used for this analysis, demonstrating good bottle to bottle reproducibility."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the comparison: the same Niskin samples are analysed on a standard automated benchtop system (Carter et al. 2013 design) with the same purified mCP dye.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] the same Niskin bottles were analyzed for pH using a standard benchtop system based on the design of Carter et al. 2013."
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate an aggregated dye perturbation relationship by regressing per-sample perturbation slopes on pH across the cruise (Fig. 2), and apply it to the pH after the third addition.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an average dye perturbation relationship was obtained from measurements made throughout the cruise"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare pHSIAB with pHstandard: mean difference 0.003 ± 0.0033 with per-sample correction and 0.002 ± 0.0023 with aggregated correction (Fig. 3).",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There was good agreement between pHSIAB and pHstandard from the cruise on average"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the dye perturbation correction (individual versus aggregated) and examine agreement and reproducibility by pH range.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Slightly better agreement and reproducibility was observed with the aggregated dye perturbation correction approach"
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that SIAB agrees with the standard method to ±0.01 (range), mostly better than ±0.005, approaching climate quality and meeting weather quality.",
+     "page": "283",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these results demonstrate that pH measurements that are consistent to the standard method"
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offer rival explanations, left unresolved, for the pH-dependent offset and the larger uncertainty at high pH: dye-correction bias, biological change in unpoisoned samples, dye pH near sample pH, and particles lowering precision (Fig. 4).",
+     "page": "283-284",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Alternatively, it could reflect real changes in sample pH due to biological activity prior to analysis"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "Recommend the aggregated dye perturbation approach for nominal seawater, which also allows a single dye injection.",
+     "page": "284",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we recommend using the aggregated dye perturbation approach if possible, to produce more reproducible pH values."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Assess how errors in input TA propagate into the temperature correction, computing ΔpH/ΔT across TA and DIC (Fig. 5).",
+     "page": "284",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ΔpH/ΔT is most sensitive to uncertainties in TA when TA is equal to DIC."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Check cruise residuals against sample temperature: no trend within ±3 C of 20 C.",
+     "page": "284",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "On our cruise, there was no discernable trend in the residual between pHSIAB and pHstandard"
+    },
+    {
+     "n": 17,
+     "node": "R",
+     "mode": "methods",
+     "action": "Restrict the scope: per-sample dye correction and matched dye ionic strength for wide-salinity (estuarine) samples, plus notes on dye cost and bottle size.",
+     "page": "285",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An aggregated approach for dye perturbation correction is not practical for samples spanning a large range of salinity"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "instruments",
+     "action": "Give operational recommendations: on-site or short-term storage only, reject about 5% of bottles with noisy blanks, caution on other glass types and fiber-optic spectrometers.",
+     "page": "285",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We also found it helpful to reject bottles that produced noticeably noisy absorbance spectra for the blank solutions"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Interlaboratory pHspec inconsistency attributed to CO2 loss during sample handling (cited)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "pH measured directly by spectrophotometry in the sample bottle",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a handling-free pHspec method",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "4",
+   "answer": "No rival claims; rival explanations for the pH-dependent offset are listed but left open",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not addressed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found on a hydrographic cruise; samples split between the new and the standard system",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across dye-correction approach, bottles, TA error and sample temperature",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method meets weather quality and approaches climate quality",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Spectrophotometric pH measured directly in the sample bottle agrees with a standard automated benchtop system to 0.003 ± 0.0033 (1σ), comfortably meeting weather quality and approaching climate quality.",
+  "page": "281, 283"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "Without the cruise comparison of SIAB against the standard benchtop system on the same Niskin samples, the method's performance would not be characterized.",
+  "page": "283"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "The cited CO2-loss explanation motivated the method design (p. 282), but the cruise data were collected to compare methods, not to test that explanation. The comparison with the standard system could have failed the GOA-ON thresholds (p. 283). Those weather (±0.02) and climate (±0.003) thresholds were fixed beforehand by GOA-ON (p. 281); nothing else was preregistered."
+ },
+ "imports": [
+  {
+   "field": "electronics / engineering",
+   "item": "Arduino-controlled MOSFET, LabVIEW control, computer-fan magnetic stirrer",
+   "kind": "instrument",
+   "page": "282"
+  },
+  {
+   "field": "engineering",
+   "item": "3-D printed cell holder",
+   "kind": "instrument",
+   "page": "282"
+  },
+  {
+   "field": "analytical chemistry",
+   "item": "UV-vis spectrophotometry (Agilent 8453) with sulfonephthalein indicator dye",
+   "kind": "method",
+   "page": "282"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file was supplied, so no review sequence is coded. The paper never directly tests its motivating premise that SIAB reduces CO2-loss error: both systems were run by experts and no comparison with a transfer-based manual method is made (inference). Accuracy is judged against another spectrophotometric system, not a CRM. The cause of the pH-dependent mean offset is left open between dye-correction bias and biological change in unpoisoned samples. Sub-claims and their statuses: duplicate precision of ±0.002 (estimate_with_resolution); temperature error negligible within 3 C (regularity_in_range); the benefits of high throughput and estuarine applicability are asserted, not tested (none). The paper contains no explicit 'first' statements. Composition is coded capability_first because no rival exists before the capability is characterized, although the paper opens from a literature problem rather than from the capability.",
+ "disagreements": [
+  {
+   "target": "Liu et al. 2015 (fiber-optic pH in BOD bottles)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The paper notes that Liu et al. did not report pH reproducibility, and that accuracy with fiber-optic spectrometers is uncertain because of bandwidth and stray light.",
+   "page": "285",
+   "quote": "While their study does not report the reproducibility of pH measurements"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Aggregated dye perturbation correction (recommended for nominal seawater)",
+   "alternatives": "Per-sample dye perturbation correction",
+   "reason": "Better agreement and reproducibility, especially at pH > 7.9, and a shorter analysis",
+   "effect_reported": "yes",
+   "page": "283-284"
+  },
+  {
+   "node": "N",
+   "chosen": "TA estimated from regional S-TA relationships or global algorithms",
+   "alternatives": "Direct measurement of TA",
+   "reason": "ΔpH/ΔT is not particularly sensitive to TA errors in open ocean waters",
+   "effect_reported": "yes",
+   "page": "282, 284"
+  },
+  {
+   "node": "N",
+   "chosen": "Reference temperature 20 C",
+   "alternatives": "25 C",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "282"
+  },
+  {
+   "node": "N",
+   "chosen": "Purified mCP",
+   "alternatives": "Unpurified mCP with published correction protocols",
+   "reason": "Accuracy; unpurified dye is cheaper given about five times more dye use",
+   "effect_reported": "no",
+   "page": "285"
+  },
+  {
+   "node": "N",
+   "chosen": "250-mL round borosilicate bottle",
+   "alternatives": "Smaller bottles, square bottles, soda lime glass",
+   "reason": "Glass curvature may cause refraction errors; other glass types untested",
+   "effect_reported": "no",
+   "page": "285"
+  },
+  {
+   "node": "N",
+   "chosen": "Agilent 8453 benchtop spectrophotometer",
+   "alternatives": "Fiber-optic spectrometers (Ocean Optics USB4000)",
+   "reason": "Unclear accuracy because of bandwidth resolution and stray light",
+   "effect_reported": "no",
+   "page": "285"
+  },
+  {
+   "node": "F",
+   "chosen": "Unpoisoned samples analysed within 4 h",
+   "alternatives": "Poisoned samples",
+   "reason": "Samples were run soon after collection",
+   "effect_reported": "no",
+   "page": "283"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "Duplicate samples were taken to assess overall precision",
+   "page": "283"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Approximately 30 different media bottles were used for this analysis, demonstrating good bottle to bottle reproducibility.",
+   "page": "283"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] the same Niskin bottles were analyzed for pH using a standard benchtop system",
+   "page": "283"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "regardless of the method used for dye perturbation correction",
+   "page": "283"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The ΔpH/ΔT is most sensitive to uncertainties in TA when TA is equal to DIC.",
+   "page": "284"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "On our cruise, there was no discernable trend in the residual between pHSIAB and pHstandard",
+   "page": "284"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "[...] been demonstrated to be robust",
+   "page": "283"
+  }
+ ]
+}

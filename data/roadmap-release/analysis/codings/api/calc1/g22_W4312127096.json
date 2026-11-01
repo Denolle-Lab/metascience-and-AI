@@ -1,0 +1,654 @@
+{
+ "key": "g22_W4312127096",
+ "doi": "10.5194/gmd-15-8869-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Wang & Qiao 2022, Geosci. Model Dev. 15, 8869-8897",
+  "Publisher XML converted to located text (jats_text), g22_W4312127096.xml.txt"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this situation, it is desirable to design a flexible DA scheme that follows the grid-independent analysis of the LETKF and can perform both hybrid [...]",
+  "page": "§1 ¶5"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4312127096.xml.txt (publisher XML text), PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Proposed Local DA, a grid-independent LETKF-like scheme that can do hybrid and multiscale analysis without a large static ensemble.",
+     "page": "§1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is desirable to design a flexible DA scheme that follows the grid-independent analysis of the LETKF"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed four issues: local hybrid and multiscale analysis, spatial continuity, impact of hybrid covariance and multiscale localization, and cycling performance. Also posed two LETKF comparison aims.",
+     "page": "§1 ¶11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study focuses on the following main issues: (i) how to locally conduct the hybrid and multiscale analysis"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Formulated the cost function on observed grid points and the explicit local correlation matrix C_oo with trace rescaling alpha. Thinned observations to keep the matrix size controllable.",
+     "page": "§2.1.1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use a simple thinning approach to control the matrix size in this study, as described in the Appendix."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "In an early test (not shown), disabled thinning; Local DA became very time-consuming and analysis error rose because the uncorrelated observation-error assumption failed.",
+     "page": "§Appendix A ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our early test (not shown) indicates that Local DA becomes very time-consuming when the thinning process is disabled"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Chose a locally applied conjugate gradient solver, capped at 100 iterations, over matrix decomposition.",
+     "page": "§2.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Local DA adopts an iterative algorithm, namely, the conjugate gradient (CG) method (Shewchuk, 1994)"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked the rank of the localized error-sample matrix (not shown): full rank in most cases, otherwise above 97 % of full rank.",
+     "page": "§2.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our early test (not shown) indicates that X ^ o is a full rank matrix in most cases."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopted the Tang et al. (2014) linearization of nonlinear observation operators, which computes the observation prior from the ensemble-mean model state.",
+     "page": "§2.1.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Local DA adopts the alternative approach proposed by Tang et al. (2014)."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared the chosen operator approximation against the ensemble mean of observation priors in an early test (not shown): reflectivity analysis error fell by about 2 dBZ.",
+     "page": "§2.1.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Eq. (10) reduces the analysis error of reflectivity by approximately 2 dBZ in our early test (not shown)."
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built model-space multiscale localization (bandpass decomposition, per-scale radii, no cross-scale covariance), observation-space and double-space localization, the hybrid static/ensemble correlation, and the workflow.",
+     "page": "§2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We perform localization for each scale independently to construct the multiscale correlation matrix."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared N-column with one-column analysis (not shown): slightly higher error, acceptable for N < 9, wall clock about 1/N. Five-column analysis was adopted.",
+     "page": "§2.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the N -column analysis is slightly rasterized (not shown), leading to slightly higher errors than the one-column analysis"
+    },
+    {
+     "n": 11,
+     "node": "F",
+     "mode": "hypothesis",
+     "action": "Set the OSSE conditions with a WRF 5 km truth simulation of Typhoon In-fa (2021) initialized from GFS analysis.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The third typhoon of the 2021 western Pacific season, In-fa, is selected for the OSSEs performed herein."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Checked the truth run against CMA observations of typhoon central pressure and location, following the Hoffman and Atlas (2016) OSSE criterion.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The simulated typhoon's central location also agrees with the CMA observation."
+    },
+    {
+     "n": 13,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed the test: a synthetic multiscale network (sounding, wind profiler, PWV, three radars) with perturbed observations, a 15-member time-lagged ensemble, 14 single-analysis configurations including LETKF, and three cycling experiments.",
+     "page": "§3.3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A total of 14 experiments for deterministic analyses at 00:00 UTC on 26 July 2021 are examined."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tested a 36-member ensemble, which gave lower analysis errors than the 15-member one (results not shown).",
+     "page": "§3.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The authors have tested a larger ensemble with 36 members and obtained lower analysis errors than the 15-member counterpart."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "Mapped CG iteration counts and cost-function reduction across the domain for Hybrid_5band. Found slower convergence where observations are dense and no severe discontinuity between local analyses.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results also indicate that no severe discontinuity occurs in Hybrid_5band, which is desired."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Reran Hybrid_5band with radar data only and with a 500-iteration cap. This isolated radar data as the cause of non-convergence; all minimizations converged within 300 steps.",
+     "page": "§4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we rerun Hybrid_5band using only radar data and observe that only 4 % of all minimizations require more than 100 steps to converge"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared domain-averaged RMSE against truth for all configurations and the background (BAK), in observation space (Table 4) and model space (Table 5).",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All experiments reduce the errors in the observation space after DA, but their differences are significant (Table 4)."
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "From the scale-decomposed hybrid results, proposed that restricting small-scale ensemble correlation to a small radius reduces analysis error.",
+     "page": "§4.2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "constraining the small-scale ensemble correlation in a small radius may be conducive to the small analysis error"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared 2-, 3- and 5-band multiscale localization, with and without hybrid covariance, against Ens_noFLTR by scale (Fig. 8).",
+     "page": "§4.2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the small-scale analysis error becomes lower than that of Ens_noFLTR for all examined variables (Fig. 8)"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the small-scale restriction assumption and judged three or five scales sufficient. Noted that qv error increased with more bands.",
+     "page": "§4.2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result confirms the assumption that restricting the impact of small-scale correlation in a small region is beneficial."
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared double-space localization configurations by scale (Fig. 9) and by DTE maps at three levels (Fig. 10).",
+     "page": "§4.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In contrast, Ens_noFLTR_DSL substantially reduces the analysis error of ps at all scales."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept double-space localization as a supplement that reduces spurious small-scale increments.",
+     "page": "§4.2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "double-space localization may serve as a supplement to pure model-space localization, which determines the level of analysis error"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked Local DA with observation-space localization against the LETKF on the same data, by scale-decomposed error (Fig. 11) and mu increment maps (Fig. 12). The analyses were similar.",
+     "page": "§4.2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, in the case of using observation-space localization, Local DA can produce an analysis similar to the LETKF."
+    },
+    {
+     "n": 24,
+     "node": "P",
+     "mode": "methods",
+     "action": "Explained the higher qv error with more bands, and the scale dependence of gains, through the time-lagged ensemble's spread-RMSE relationship, rather than revising the small-scale restriction claim.",
+     "page": "§4.2.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, it is not irrational for Ens_5band and Hybrid_5band to produce a higher analysis error for q v than Ens_2band."
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared hourly surface-pressure tendency in cycling experiments against the truth's balanced tendency (Fig. 15).",
+     "page": "§4.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hybrid_5band_DSL_6h produces a much smaller ps tendency than Ens_ noFLTR_6h"
+    },
+    {
+     "n": 26,
+     "node": "V",
+     "mode": "methods",
+     "action": "Varied the cycling interval to 3 h. The ps tendency was not suppressed, which limited the cycling benefit to intervals long enough for spin-up.",
+     "page": "§4.3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When the cycling interval becomes shorter (Hybrid_5band_DSL_3h), the ps tendency cannot be effectively suppressed as Hybrid_5band_DSL_6h does."
+    },
+    {
+     "n": 27,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared the forecast and analysis RMSE evolution over cycles for u, v, qv and ps (Fig. 16), and maps of forecast error at 18:00 UTC (Fig. 17).",
+     "page": "§4.3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ens_noFLTR_6h fails to decrease the forecast error after the second cycle, while Hybrid_5band_DSL_6h successively reduces the forecast and analysis error"
+    },
+    {
+     "n": 28,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the benefit of hybrid covariance with multiscale localization in cycling DA. Supported it with the evolution of ensemble spread versus RMSE (Fig. 18).",
+     "page": "§4.3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The above result confirms the benefit of using the hybrid covariance and multiscale localization."
+    },
+    {
+     "n": 29,
+     "node": "N",
+     "mode": "methods",
+     "action": "Characterized OpenMP parallel scaling from 1 to 32 cores (Fig. 19), run time (225 s on 16 cores), the share of cost by step, and memory use (about 4 GB, versus hundreds of MB for the LETKF).",
+     "page": "§4.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the wall clock time is reduced by approximately 50 % upon doubling the number of cores"
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "methods",
+     "action": "Stated five conclusions: no severe discontinuity, affordable explicit matrix with thinning, hybrid gain, multiscale and double-space gains, and acceptable efficiency.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Local DA can effectively utilize the hybrid covariance to produce a better analysis than the analysis using ensemble covariance with a fixed localization radius."
+    },
+    {
+     "n": 31,
+     "node": "R",
+     "mode": "methods",
+     "action": "Restricted the double-space localization claim to noisy background covariance. Advised against it for well-sampled ensembles and for 4-D DA.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Despite the encouraging results, whether to use double-space localization should be considered case by case."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No natural phenomenon; the object is the analysis error of a new DA method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "Yes within the OSSE: truth is known, so errors are computed directly",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize Local DA (hybrid, multiscale, double-space localization, parallel efficiency)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival configurations: ensemble-only, static, hybrid, multiscale bands, observation-space and double-space localization, LETKF",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Partly; only loose expectations stated in advance, and the small-scale hypothesis was formed post hoc from results",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Set: synthetic truth run and synthetic observation network (OSSE)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: ensemble size, iteration cap, radar-only run, cycle interval and N-column were varied; single case; several checks not shown",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: hybrid + multiscale + double-space localization gives the lowest error; LETKF-like when using observation-space localization",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; not assessable",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "In a perfect-model typhoon OSSE with a 15-member time-lagged ensemble, Local DA produces lower analysis error with hybrid covariance plus multiscale and double-space localization than with ensemble covariance at fixed radius. Its local CG solution shows no severe discontinuity, and its parallel efficiency is acceptable.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "Comparing the RMSE against the known truth across the 14 configurations (Tables 4-5, then by scale in Figs. 7-9) is what turns the formulated scheme into a characterized capability.",
+  "page": "§4.2 ¶1"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the experiment set was directed by the features and comparison aims stated in §1 ¶11, not by a specific hypothesis. Claim: errors against a known truth could have shown no gain, and some configurations did fail (Ens_noFLTR_DSL in §4.2 ¶3; qv errors above BAK in §4.2.3 ¶1; the 3 h cycling run in §4.3.1 ¶3). Registration: localization radii were 'tuned for the case in which Typhoon In-fa made landfall' (§3.3.2 ¶1), and nothing was fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "numerical linear algebra / computer science",
+   "item": "Conjugate gradient method (Shewchuk 1994)",
+   "kind": "method",
+   "page": "§2.1.2 ¶1"
+  },
+  {
+   "field": "computer science (parallel computing)",
+   "item": "OpenMP shared-memory parallelization",
+   "kind": "method",
+   "page": "§4.4 ¶1"
+  },
+  {
+   "field": "control engineering / applied mathematics",
+   "item": "Kalman filter framework underlying the LETKF (Hunt et al. 2007, Physica D)",
+   "kind": "concept",
+   "page": "§1 ¶4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...] first paper to report on Local DA",
+   "page": "§1 ¶11"
+  },
+  {
+   "quote": "Note that the LETKF of Wang et al. (2021) can also realize double-space localization, but this application has not yet been [...] .",
+   "page": "§1 ¶10"
+  },
+  {
+   "quote": "it would be interesting to note the performance of the double-space localization approach, which has not yet been investigated",
+   "page": "§2.2 ¶7"
+  },
+  {
+   "quote": "As the first study to present Local DA, this paper focuses on its idea and basic formulation.",
+   "page": "§5 ¶2"
+  }
+ ],
+ "limits": "Evidence base: one simulated typhoon case in a perfect-model OSSE. There is no real-data test and no second case, so generalization is not shown. Several supporting checks are reported only as 'not shown': rank of the error-sample matrix, the observation-operator test, the N-column degradation, the 36-member ensemble, thinning disabled, and convective-area errors. Parameters were tuned on the same case, and the authors state many parameters are untested (§5 ¶2). The word 'significant' in §4.2 ¶1 is not backed by a statistical test. Cause unknown: the authors cannot explain why Static_BE and Hybrid_noFLTR are nearly identical (§4.2.1 ¶2). No review file or discussion was supplied, so no review sequence is coded. Sub-claims and their statuses: the LETKF similarity under observation-space localization is capability_characterized from one comparison; the small-scale restriction assumption is best_explanation, formed post hoc (steps 18-20) and protected by the spread argument (step 24); the cycling benefit is capability_characterized only for a 6 h interval. Inference: the label LDA_HBC_MSL in §4.4 ¶1 is not defined and probably denotes a hybrid multiscale configuration. Coding choices: the OSSE truth run is coded as F on mode hypothesis, following the codebook rule for set conditions, though it is a numerical experiment. capability_first fits only partly, since rival configurations were designed together with the method rather than after a phenomenon was established.",
+ "disagreements": [
+  {
+   "target": "Lei et al. (2021) EnKF-based hybrid scheme using a large (800-member) static ensemble",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue such large ensembles are often unaffordable and offer the explicit correlation matrix with a preset static correlation instead; they show hybrid gains with a 15-member ensemble.",
+   "page": "§1 ¶5",
+   "quote": "The large ensemble ( > = 800 ) is not always available in practice because of the limited computational and storage resources."
+  },
+  {
+   "target": "Common EnKF practice of approximating H from the departure of observation priors from their ensemble mean",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "They follow Tang et al. (2014) and Yang et al. (2015) and report an early test (not shown) in which the alternative reduced reflectivity error by about 2 dBZ.",
+   "page": "§2.1.3 ¶1",
+   "quote": "However, for nonlinear observation operators, there is an alternative, namely, the observation prior calculated using the ensemble mean of [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Hybrid by direct combination of ensemble and static covariances (Hamill and Snyder 2000)",
+   "alternatives": "Ensemble control variable in a variational framework; averaging EnKF and variational analyses; large static ensemble (Lei et al. 2021)",
+   "reason": "Explicitly constructed correlation matrix makes it straightforward; to evaluate the idea in a realistic scenario",
+   "effect_reported": "no",
+   "page": "§1 ¶7"
+  },
+  {
+   "node": "D",
+   "chosen": "OSSEs with simulated observations",
+   "alternatives": "Real observations",
+   "reason": "To avoid issues associated with the quality control of observations",
+   "effect_reported": "no",
+   "page": "§1 ¶12"
+  },
+  {
+   "node": "N",
+   "chosen": "Stochastic perturbed-observation ensemble update",
+   "alternatives": "Deterministic approach",
+   "reason": "Local DA mainly concerns the deterministic analysis at this stage",
+   "effect_reported": "no",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "Control variable transform using the error correlation matrix",
+   "alternatives": "Square root of the background error covariance (variational practice)",
+   "reason": "Square root expensive for large C_oo; irregular observations make a recursive filter infeasible",
+   "effect_reported": "no",
+   "page": "§2.1.1 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "Conjugate gradient iterative solver",
+   "alternatives": "Matrix (eigenvalue) decomposition as in the LETKF",
+   "reason": "Decomposition time-consuming or infeasible when C_oo is large (K could be 10^3 or higher)",
+   "effect_reported": "no",
+   "page": "§2.1.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Maximum of 100 CG iterations",
+   "alternatives": "500 iterations",
+   "reason": "Computational efficiency",
+   "effect_reported": "yes",
+   "page": "§2.1.2 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "Observation prior from ensemble-mean model state (Tang et al. 2014)",
+   "alternatives": "Ensemble mean of observation priors",
+   "reason": "Better results in Tang et al. (2014) and Yang et al. (2015) for remote-sensing data",
+   "effect_reported": "yes",
+   "page": "§2.1.3 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Bandpass as difference of two Gaussian low-pass analyses (Maddox 1980)",
+   "alternatives": "Many ways to realize the bandpass filter",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Five-column analysis",
+   "alternatives": "One-column analysis; larger N",
+   "reason": "Wall clock time close to 1/N; degradation acceptable for N < 9",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "Ring-and-quadrant horizontal thinning",
+   "alternatives": "No thinning",
+   "reason": "Cost control and uncorrelated observation errors",
+   "effect_reported": "yes",
+   "page": "§Appendix A ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "15-member time-lagged ensemble",
+   "alternatives": "36-member ensemble",
+   "reason": "Hybrid analysis is beneficial with a small or poor ensemble; limited computational resources",
+   "effect_reported": "yes",
+   "page": "§3.3.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Two, three and five scale bands tested",
+   "alternatives": "No decomposition (fixed radius)",
+   "reason": "To examine the sensitivity of Local DA to the configuration of multiscale analysis",
+   "effect_reported": "yes",
+   "page": "§3.3.2 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "6 h cycling interval as main experiment",
+   "alternatives": "3 h interval",
+   "reason": "3 h used to show the impact of imbalanced analysis on forecast",
+   "effect_reported": "yes",
+   "page": "§3.3.2 ¶4"
+  },
+  {
+   "node": "C",
+   "chosen": "Scale decomposition of errors",
+   "alternatives": "Errors in the convective area (reflectivity > 10 dBZ)",
+   "reason": "Differences are similar to those between small- and large-scale errors (not shown)",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "OpenMP parallelization",
+   "alternatives": "MPI-OpenMP hybrid scheme",
+   "reason": "OpenMP is sufficient for this study; the hybrid scheme is in progress",
+   "effect_reported": "no",
+   "page": "§4.4 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Our early test (not shown) indicates that Local DA becomes very time-consuming when the thinning process is disabled",
+   "page": "§Appendix A ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Our early test (not shown) indicates that X ^ o is a full rank matrix in most cases.",
+   "page": "§2.1.2 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Eq. (10) reduces the analysis error of reflectivity by approximately 2 dBZ in our early test (not shown).",
+   "page": "§2.1.3 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "[...] consistent with that of Yang et [...] ).",
+   "page": "§2.1.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the N -column analysis is slightly rasterized (not shown), leading to slightly higher errors than the one-column analysis",
+   "page": "§2.4 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The simulated typhoon's central location also agrees with the CMA observation.",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The authors have tested a larger ensemble with 36 members and obtained lower analysis errors than the 15-member counterpart.",
+   "page": "§3.3.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] of setting the maximum number of iterations to 500 for Hybrid_5band, all minimizations converge within 300 iteration steps.",
+   "page": "§4.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "All experiments reduce the errors in the observation space after DA, but their differences are significant (Table 4).",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The benefit of using hybrid covariance is consistent with many previous studies (e.g., Wang et al., 2009, 2013b; Tong et al., 2020).",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Overall, in the case of using observation-space localization, Local DA can produce an analysis similar to the LETKF.",
+   "page": "§4.2.4 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "When the cycling interval becomes shorter (Hybrid_5band_DSL_3h), the ps tendency cannot be effectively suppressed as Hybrid_5band_DSL_6h does.",
+   "page": "§4.3.1 ¶3"
+  }
+ ]
+}

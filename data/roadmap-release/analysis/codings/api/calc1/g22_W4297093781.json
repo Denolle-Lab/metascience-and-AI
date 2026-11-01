@@ -1,0 +1,454 @@
+{
+ "key": "g22_W4297093781",
+ "doi": "10.1016/j.jag.2022.103030",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Xiao et al. 2022, International Journal of Applied Earth Observation and Geoinformation 114, 103030 (published PDF, 23 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML text supplies the passage (abstract §0 ¶1 and captions, cited by caption label as printed, e.g. Fig. 11). The supplied XML text contains no body paragraphs, so body passages are cited by printed journal pages, which equal PDF pages counted from 1 (p. 1 to p. 23). Figure-content steps cite the figure and the PDF page, e.g. Fig. 11 (p. 11).",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "vegetation interference limits the accuracy of available snow cover information from satellite observations",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Xiao et al. 2022, published PDF (body) and publisher XML text (abstract, captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the aim: an FSC retrieval algorithm from MODIS surface reflectance that performs well in vegetated areas.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The aim of this study was to develop a robust and enhanced [...]"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Reviews published FSC approaches (NDSI regression, spectral unmixing, machine learning) and their reported failure under dense vegetation and off-nadir viewing.",
+     "page": "p. 3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "fail to predict FSC with high accuracy under dense vegetation cover"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Acquires 28 MODIS-Landsat-8 image pairs over North America across one snow season, plus MODIS land cover, tree cover, LST and albedo products, with cloud and water screening.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study acquired 28 MODIS–Landsat image pairs from October 2015 to May 2016 across North America."
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Derives 500 m reference FSC by classifying Landsat-8 snow with SNOMAP and aggregating the binary map within a 750 m radius of each MODIS pixel centre, with Fmask cloud screening.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reference 500 m resolution FSC maps (cf. Fig. 2c) were produced by aggregating the Landsat-8 binary maps in a 750 m radius circle"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "States the hypothesis that adding vegetation-snow, location-geometry and auxiliary variables to the commonly used inputs improves FSC accuracy.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To test the hypothesis that other snow-related variables improve the accuracy of FSC retrieval"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Assembles 27 candidate predictors in four categories (Generality, Vegetation-Snow, Location and Geometry, Auxiliary) and inspects their cross-correlation with FSC.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The predictor variables were divided into the following four categories"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the Full-Model: 20 Extremely Randomized Trees sub-models trained on 20 stratified random training samples, separately for forest and non-forest types, combined by the minimum-standard-deviation subset of 11 predictions.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose an approach to obtain N retrieval models by repeated training with the ERT method based on N different training samples"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Designs the test of the hypothesis: a Trimmed-Model trained on the same samples with only the 10 Generality inputs, evaluated on the same held-out validation scenes.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "training datasets with 10 input variables (B1-B7, NDSI, NDVI, and LC) were created by excluding the additional variables"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tests whether the 20 sub-models differ by training sample using repeated-measures ANOVA and per-scene accuracy metrics (Fig. 6, Table D).",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the predictor values of the 20 FSC retrieval models did not differ statistically"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimates Gini-index importance of predictors across 40 runs; NDSI and NDFSI rank first and second in both forest and non-forest models, which the authors did not expect for NDFSI.",
+     "page": "p. 11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the NDSI and the NDFSI ranked first and second in terms of importance in all cases"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares Full-Model and Trimmed-Model on the five independent validation scenes (Table 3, Fig. 9); the Full-Model has about 10% lower error, but forest pixels keep larger errors.",
+     "page": "p. 13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Full-Model are more consistent with the Landsat reference FSC values"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Breaks validation errors down by land cover type and FVC class (Fig. 10); the improvement holds for FVC up to 0.6 but not in dense forest.",
+     "page": "p. 13; Fig. 10 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A similar improvement was seen in the sensitivity test (Fig. 10)"
+    },
+    {
+     "n": 13,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopts the published canopy adjustment (Eq. 10), which assumes snow under the canopy matches the visible gap fraction 1 − FVC.",
+     "page": "p. 10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Eq. (10) can be used for forest canopy adjustment (Rittger et al., 2020b)"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Because the Full-Model left a VZA-FVC error pattern, applies Eq. 10 across VZA and FVC bins and compares RMSE before and after; errors are not generally reduced and grow for FVC > 0.5.",
+     "page": "p. 13; Fig. 11 (p. 11)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the proposed FSC retrieval model (Full-Model) did not completely remove the coupled impact of VZA and FVC"
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "methods",
+     "action": "Restricts the adjustment to 'Recommend' conditions (VZA 45-70°, FVC 0-0.3), labels dense forest 'Not recommend' and medium cover 'Undetermined' (Fig. 11d).",
+     "page": "p. 13; Fig. 11 (p. 11)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "This demonstrates that Eq. (10) alone may not fully eliminate the influence of the VZA-FVC effect when estimating FSC."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compares Full-Model with the rule-restricted adjusted output (Full-Model_corr) on the five validation scenes (Table 4, Fig. 12); errors fall slightly in every scene.",
+     "page": "p. 13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After performing the “Recommend” adjustments, the error of the FSC estimates was reduced in the five validation scenes"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checks Full-Model_corr against the operational MOD10A1 FSC baseline on the validation scenes, by FVC class, by error maps, and by binarized metrics at a 0.5 threshold (Tables 5, Figs. 13-17).",
+     "page": "p. 13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Generally, the Full-Model corr showed a better capability for predicting the spatial variability of snow cover than MOD10A1"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "methods",
+     "action": "Attributes the canopy adjustment's limited success partly to errors in the Landsat/SNOMAP reference and to the gap-fraction assumption, rather than revising the retrieval claim.",
+     "page": "p. 16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "without considering the reference FSC error, the direct adoption of a canopy adjustment approach may not yield the expected better results"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keeps the claim that the integrated multi-variable ERT algorithm with restricted canopy adjustment outperforms the Trimmed-Model and MOD10A1; calls for more scenes and VZA-FVC samples.",
+     "page": "p. 17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the proposed algorithm offers better performance for FSC prediction, by an average of 11 %, compared to the Trimmed-Model"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Fractional snow cover in vegetated MODIS pixels is poorly retrieved because of canopy obscuration and viewing angle",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; FSC is inferred from reflectance and referenced to Landsat-derived FSC",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a robust FSC retrieval algorithm for vegetated areas",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Full-Model (27 inputs) vs Trimmed-Model (10 common inputs); MOD10A1 standard FSC as baseline",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "If the added variables help, the Full-Model has lower validation RMSE than the Trimmed-Model",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: 28 archived scenes across one snow season; VZA-FVC conditions are binned as they occur in the data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives 20 training-sample draws and land-cover/FVC breakdowns; fails in dense forest (FVC > 0.6); canopy adjustment holds only in a restricted range",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the algorithm is characterized as more accurate than the Trimmed-Model and MOD10A1 on held-out scenes",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An ensemble of 20 ERT sub-models using multi-source predictors, with canopy adjustment restricted to VZA 45-70° and FVC 0-0.3, estimates MODIS FSC in vegetated North America with about 11% lower RMSE than the Trimmed-Model and about 40% lower RMSE than MOD10A1 against Landsat reference FSC.",
+  "page": "p. 17"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the integrated 20-sub-model ERT retrieval with the added vegetation-snow, geometry and auxiliary predictors is what produces the product whose accuracy is claimed.",
+  "page": "p. 9"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The stated hypothesis (p. 5) directed predictor selection and the Trimmed-Model ablation, but not the choice of the 28 archived scenes. The Full-Model vs Trimmed-Model and MOD10A1 comparisons use five held-out validation scenes and could have failed. However, the 'Recommend' canopy-adjustment rule was derived from those same validation scenes (Fig. 11) and then scored on them (Table 4, Table 5). Nothing was fixed before the data: ERT defaults were used, and N = 20 and t = 11 were set 'For simplicity' (p. 10)."
+ },
+ "imports": [
+  {
+   "field": "machine learning (computer science)",
+   "item": "Extremely Randomized Trees ensemble regression (Geurts et al. 2006)",
+   "kind": "method",
+   "page": "p. 9"
+  },
+  {
+   "field": "machine learning / bioinformatics",
+   "item": "Gini-index variable importance (Jiang et al. 2009)",
+   "kind": "method",
+   "page": "p. 9"
+  },
+  {
+   "field": "statistics",
+   "item": "Repeated measures analysis of variance (RANOVA) F-test",
+   "kind": "method",
+   "page": "p. 11"
+  },
+  {
+   "field": "statistics",
+   "item": "Binary classification metrics including Cohen's kappa, F1-score, precision and recall",
+   "kind": "method",
+   "page": "p. 10"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we propose an approach to obtain N retrieval models by repeated training with the ERT method based on N different training samples",
+   "page": "p. 9"
+  },
+  {
+   "quote": "The NDFSI has rarely been used for FSC inversion, and, as such, we did not expect this to be the second largest contributor.",
+   "page": "p. 11"
+  }
+ ],
+ "limits": "1. Source coverage: the supplied XML text contains only the abstract and captions. Body steps are therefore located by printed/PDF page, and no body quote could be checked against XML. No review file or earlier version was supplied, so there is no review sequence (the acknowledgements thank anonymous reviewers).\n2. Composition: coded none_fits. This is a method-development walk (problem → capability → ablation test → baseline comparison). It is not capability_first, because no phenomenon is established before the question. It is not strong_inference, because only one ablation rival and one operational baseline are compared.\n3. Circular tuning (inference): the 'Recommend' canopy-adjustment conditions were chosen from RMSE changes on the five validation scenes (Fig. 11). The rule was then evaluated on those same scenes (Table 4), and the MOD10A1 comparison (Table 5) uses the same adjusted output. The canopy-adjustment gain is therefore an in-sample result.\n4. Sub-claims at other statuses:\n- The canopy adjustment rule: capability_characterized only within VZA 45-70° and FVC 0-0.3, in-sample; 'Undetermined' for FVC 0.3-0.5 and 'Not recommend' above 0.5.\n- No significant improvement in dense forest (FVC > 0.6).\n- Variable importance ranking (NDSI, NDFSI): an estimate whose transferability the authors themselves doubt (p. 15).\n5. Reference data: the Landsat/SNOMAP reference FSC is not validated against ground data here. Its limits are only discussed, from cited work (p. 16).\n6. Missing tests: no significance test is reported for the Full-Model vs Trimmed-Model difference. ERT hyperparameters, N and t were not varied, and only one snow season (2015-2016) was used.\n7. Reported numbers are inconsistent (inference: reporting error):\n- The conclusions give 'OA = 0.921 vs 0.784' under dense vegetation (p. 17), whereas Results give OA 0.962 vs 0.896 and kappa 0.921 vs 0.783 (p. 14).\n- The combined RMSE 0.124 vs 0.202 is attributed to dense vegetation in the conclusions.\n- The abstract's 11% and the results' 'approximate 10 %' differ.\n8. Data are available only on request.",
+ "disagreements": [
+  {
+   "target": "MOD10A1 V6 FSC from the NDSI linear relation (Salomonson and Appel 2006; Riggs and Hall 2015)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "On five held-out Landsat-referenced scenes, MOD10A1 FSC has higher RMSE, especially at higher FVC, and lower binary accuracy than Full-Model_corr (Tables 5, Figs. 13-17).",
+   "page": "p. 13",
+   "quote": "Overall, there were significant improvements with the Full-Model corr algorithm compared to MOD10A1 in the combined validation data"
+  },
+  {
+   "target": "MODIS snow cover product V6 NDSI range of 0 to 100",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Cites Xin et al. (2012) finding negative NDSI for snow pixels in forest and argues the range underestimates snow area; the paper extends NDSI below 0 but does not quantify the effect.",
+   "page": "p. 14",
+   "quote": "provides NDSI data with a range of 0 to 100 (Riggs and Hall, 2015) and neglects the cases where the NDSI"
+  },
+  {
+   "target": "Canopy adjustment Eq. (10) of Rittger et al. (2020b)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Applying Eq. (10) across VZA-FVC bins did not reduce errors overall and increased them for FVC > 0.5, so its use is restricted to a stated range (Fig. 11).",
+   "page": "p. 13",
+   "quote": "This demonstrates that Eq. (10) alone may not fully eliminate the influence of the VZA-FVC effect when estimating FSC."
+  },
+  {
+   "target": "Importance-based feature selection for model inputs (Belgiu and Dragu 2016; Xiao et al. 2021; Yang et al. 2021)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argues importance rankings depend on training sample and method, citing Kuter (2021); no test is performed here.",
+   "page": "p. 15",
+   "quote": "model variable feature selection methods may be arbitrary"
+  },
+  {
+   "target": "Use of Landsat-derived reference FSC as 'true' observations in FSC studies",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Cites Metsämäki et al. (2015), Hall et al. (1995) and Kuter et al. (2018) on SNOMAP errors for patchy snow and forest; no new evidence.",
+   "page": "p. 16",
+   "quote": "Landsat-based FSC reference maps may not represent the actual ground snow, especially in forested areas"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Extremely Randomized Trees",
+   "alternatives": "random forest",
+   "reason": "ERT randomly chooses split nodes and uses the entire training sample, may mine more information, gives better results, and over-fitting is negligible",
+   "effect_reported": "no",
+   "page": "p. 9"
+  },
+  {
+   "node": "N",
+   "chosen": "Integration of 20 sub-models trained on different training samples",
+   "alternatives": "individual sub-models (Model_1 to Model_20)",
+   "reason": "to mitigate dependence on training sample quality and improve robustness",
+   "effect_reported": "yes",
+   "page": "p. 11"
+  },
+  {
+   "node": "D",
+   "chosen": "Full-Model with 27 predictors",
+   "alternatives": "Trimmed-Model with 10 Generality predictors",
+   "reason": "to test whether the additional variables improve FSC retrieval",
+   "effect_reported": "yes",
+   "page": "p. 10"
+  },
+  {
+   "node": "D",
+   "chosen": "All predictors retained, no feature selection",
+   "alternatives": "importance-based feature selection",
+   "reason": "rankings depend on the training sample and method, so selection may be arbitrary and poorly transferable",
+   "effect_reported": "no",
+   "page": "p. 15"
+  },
+  {
+   "node": "R",
+   "chosen": "Canopy adjustment only under VZA 45-70° and FVC 0-0.3",
+   "alternatives": "applying Eq. (10) to all pixels",
+   "reason": "Eq. (10) did not reduce errors overall and raised them in dense forest (Fig. 11)",
+   "effect_reported": "yes",
+   "page": "p. 13"
+  },
+  {
+   "node": "D",
+   "chosen": "NDSI range extended below 0",
+   "alternatives": "MOD10A1 NDSI range 0 to 100",
+   "reason": "snow pixels in forest can have negative NDSI (Xin et al. 2012)",
+   "effect_reported": "no",
+   "page": "p. 15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the predictor values of the 20 FSC retrieval models did not differ statistically",
+   "page": "p. 11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "In the validation of the independent dataset, there was a noticeable improvement in FSC estimation for different land-cover and vegetation-cover types",
+   "page": "§0 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "training datasets with 10 input variables (B1-B7, NDSI, NDVI, and LC) were created by excluding the additional variables",
+   "page": "p. 10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A similar improvement was seen in the sensitivity test (Fig. 10)",
+   "page": "p. 13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "suggest that the errors of all the adjusted FSC values were not obviously reduced",
+   "page": "p. 13"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Generally, the Full-Model corr showed a better capability for predicting the spatial variability of snow cover than MOD10A1",
+   "page": "p. 13"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "with higher OA (0.962 vs 0.896) and Kappa coefficients (0.921 vs 0.783)",
+   "page": "p. 14"
+  }
+ ]
+}

@@ -1,0 +1,614 @@
+{
+ "key": "g22_W4210306964",
+ "doi": "10.1029/2021jd035699",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Rahimi et al. (2022), Evaluation of a Reanalysis-Driven Configuration of WRF4 Over the Western United States From 1980 to 2020, JGR Atmospheres 127, e2021JD035699 (published PDF, 21 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 21), which coincide with PDF pages counted from 1; supplementary figures are cited as printed (Figure S#), supplement not supplied",
+ "entry": {
+  "state": "external_goal",
+  "node": "N",
+  "evidence": "We are conducting these analyses to set the stage for downscaling GCMs, so we focus on making sure the biases are acceptable.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Rahimi et al. 2022 published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Designed the downscaling framework: each water year run in parallel from the reanalysis state with 1 month of spin-up, on one-way nested 45-km, 9-km and two 3-km grids, with an initial literature-based WRF 4.1.3 configuration (NARR0).",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We downscaled each year of integration separately and in parallel; each model year was initialized to the driving reanalysis' state."
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "methods",
+     "action": "Chose an average water year (WY2010) as the test year and SNOTEL precipitation and SWE, GAGES-II streamflow and Daymet precipitation as references for scoring configurations.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We chose the water year 2010 (WY2010), a year in which the WUS experienced average precipitation and snow amounts, as our test year."
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared NARR0 with SNOTEL and found large dry biases in annual precipitation and April 1 SWE on the 9-km grid.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Dry biases in annual accumulated precipitation (140 mm in the station-mean; Figure 2a)"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "methods",
+     "action": "Proposed smoothed 9-km topography (73 m low elevation bias) as a candidate explanation of the dry biases.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a mean low surface-elevation bias in WRF of 73 m, which results from unrealistically smoothed topography on the 9-km grid"
+    },
+    {
+     "n": 5,
+     "node": "X",
+     "mode": "methods",
+     "action": "Downscaled NARR0 to 3 km, where the elevation bias is under 5 m, and found SWE still low by over 100 mm, ruling out terrain smoothing as the only cause.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating that insufficient elevation resolution by WRF at 9-km is not the only source of SWE and precipitation underprediction across the Sierra Nevada"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared summer precipitation with Daymet and found spurious wet artifacts along the eastern and southern 9-km boundaries.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These artifacts are particularly prominent along the eastern and southern 9-km grid boundaries compared to Daymet"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked that single-year test biases match those of an earlier 34-year test run, justifying single-year sensitivity testing.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these single-season biases in the NARR0 experiment are quite similar to those in the 34-year mean seasonal biases of an earlier test experiment"
+    },
+    {
+     "n": 8,
+     "node": "R",
+     "mode": "methods",
+     "action": "Ran NARR-driven sensitivity experiments varying microphysics, diffusion, snow partitioning, damping, nudging (disabled on 9 km, which reversed the precipitation bias), PBL levels and forcing interval.",
+     "page": "6-7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "in experiment NARR0_e spectral nudging was entirely disabled on the 9-km grid. As a result, its precipitation bias is reversed"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Found that wet precipitation and dry SWE biases persisted through the NARR series.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Wet precipitation and dry SWE biases persisted through NARR1_c (Figure S2), despite a wide range of physics, dynamics, and other model-configuration options"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "methods",
+     "action": "Switched the driving reanalysis to ERA5 and added the 45-km outer domain, which reduced the precipitation bias, though the two changes were confounded.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the precipitation bias magnitude is reduced relative to NARR1_c"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "methods",
+     "action": "Hypothesized that nudging only larger waveforms gives WRF freedom to develop sharper gradients and heavier precipitation; this was not tested.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] spectrally nudging larger waveforms in ERA0 relative to NARR0 allows WRF more freedom to integrate its own higher-resolution features"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "methods",
+     "action": "Removed boundary artifacts by stopping specific-humidity nudging on the 45-km grid, then changed cumulus to Tiedtke and Noah-MP opt_rad to 1 (plus minor diffusion and forcing changes), arriving at ERA2_e.",
+     "page": "6-7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "these were eliminated by disabling spectral nudging of specific humidity on the 45-km grid in ERA1"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tested microphysics sensitivity on the 3-km California grid (Thompson, P3, Morrison) and found precipitation insensitive to the scheme.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "further testing on the 3-km California grid revealed that simulated precipitation was also insensitive to the MP scheme used"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared simulated streamflow with GAGES-II and found persistent positive biases throughout testing, attributed to short spin-up or Noah-MP options.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "WRF poorly simulates streamflow at GAGES-II sites even though the Pearson correlation coefficients generally increase"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared the parallel 1-month spin-up run with a continuous run having 4 years of spin-up: precipitation and temperature differences were minimal, soil properties differed.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted a 21st test in which WRF was initialized on August 1, 2005 and integrated continuously through September 1, 2010"
+    },
+    {
+     "n": 16,
+     "node": "N",
+     "mode": "methods",
+     "action": "Applied ERA2_e to downscale ERA5 over 1980-2020 on all grids, with CMIP6 greenhouse-gas concentrations.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we dynamically downscaled ERA5 to 9-km from August 1, 1980 through September 1, 2020"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Evaluated 40-year 9-km precipitation against PRISM: biases mostly under 2 mm/d, a winter wet bias at high elevations, a coastal dry bias, and a summer wet bias in the Southwest.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "absolute biases are largest at the highest elevations across the WUS"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared 850 hPa humidity, 500 hPa vertical velocity and IVT with ERA5: patterns were reproduced, with a positive IVT bias that grows with IVT magnitude.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "WRF simulations exhibit a positive IVT bias that increases with increasing IVT magnitudes"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "methods",
+     "action": "Proposed causes of the IVT bias (missing subgrid orographic and gravity wave drag; one-way nesting mishandling monsoon impulses) without testing them here.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We hypothesize that this spurious IVT anomaly may be the result of one-way nesting mishandling impulses associated with the North American Monsoon during JJA"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared 2 m temperature with PRISM: mostly under 1°C bias, a cold bias at high elevations, a warm minimum-temperature bias, possibly due to hourly sampling.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "annual 2 m temperature biases are generally less than 1°C (Figure S5a) on the 9-km grid compared to PRISM"
+    },
+    {
+     "n": 21,
+     "node": "Q",
+     "mode": "question",
+     "action": "Asked whether increased resolution adds value for orographic snow, atmospheric rivers, downslope winds and coastal meteorology.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we evaluate added value (or lack thereof) associated with increased resolution across both 3-km WRF domains"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared SWE at 45, 9 and 3 km with SNOTEL, UA and SNODAS over the SN and NRM: skill increases with resolution, but meltout is delayed about 2 weeks at 3 km.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to SNOTEL site-averaged daily SWE during the 40-year period, the 3-km WRF experiment outperforms its lower-resolution counterparts across both subregions"
+    },
+    {
+     "n": 23,
+     "node": "H",
+     "mode": "methods",
+     "action": "Weighed explanations of the 3-km precipitation wet bias (LSM shortcomings versus SNOTEL undercatch) and judged 3 km likely closest to reality.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "SNOTEL gauges suffer from a well-documented undercatch issue that may lead to artificially high simulated biases in both precipitation and snow"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "methods",
+     "action": "Detected 286 landfalling atmospheric rivers and compared IVT and precipitation with ERA5 and PRISM, including the three wettest events: timing and structure were captured, with higher IVT.",
+     "page": "12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "WRF experiments effectively capture California-averaged precipitation timing compared to ERA5 and PRISM"
+    },
+    {
+     "n": 25,
+     "node": "V",
+     "mode": "methods",
+     "action": "Varied the MSLP-gradient percentile threshold that defines Santa Ana and Diablo events and found results insensitive.",
+     "page": "14 (Figure S8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results are fairly insensitive to the threshold of MSLP-gradient percentile used to define events (Figure S8)."
+    },
+    {
+     "n": 26,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared daily wind speed and humidity on downslope-wind days with station data, reanalyses and gridMET: Santa Ana winds improved with resolution, Diablo winds did not.",
+     "page": "14-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For Diablo Winds, improvements with resolution are negligible in terms of RH and WS and downscaling ERA5 may even subtract value."
+    },
+    {
+     "n": 27,
+     "node": "C",
+     "mode": "methods",
+     "action": "Computed seasonal RMSE of 2 m temperature and 10 m winds at six coastal stations: winds, and to a lesser degree temperature, improve with resolution.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is a general improvement in the simulation of winds and to a lesser degree temperature with increasing resolution for all seasons"
+    },
+    {
+     "n": 28,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeated the coastal analysis for specific times of day and with a 4-point mean instead of bilinear interpolation; conclusions held.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Applying the same methodology, but for specific times of day, leads to almost identical results for all variables considered"
+    },
+    {
+     "n": 29,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept ERA2_e and the 40-year product as a characterized benchmark for downscaled GCMs, with its biases listed and its limits stated (WRF 4.1.3, this region, not for land-surface analysis).",
+     "page": "17-18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "identify a superior WRF design for simulating weather and climate across the WUS"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Systematic biases of WRF downscaling configurations over the western US",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; biases are measured directly against SNOTEL, PRISM, Daymet, stations and reanalyses",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a downscaling configuration as a benchmark before downscaling GCMs",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Alternative configuration options and a few bias explanations (terrain smoothing, nudging, undercatch, one-way nesting)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly; only the terrain-smoothing explanation faced a discriminating 3-km test",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Set: configuration options varied in 20 single-year model runs",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Yes for spin-up, microphysics, event threshold, interpolation and time of day; streamflow not",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Configuration kept with biases characterized; resolution generally adds value",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The tested ERA2_e WRF configuration downscales ERA5 over the western US for 1980-2020 with quantified, mostly acceptable biases, and higher resolution generally adds value for snow, ARs, Santa Ana winds and coastal meteorology.",
+  "page": "17-18"
+ },
+ "decisive_move": {
+  "node": "R",
+  "mode": "methods",
+  "sentence": "The chain of single-year sensitivity experiments that changed nudging, reanalysis, nesting, cumulus and land-surface options until ERA2_e is the step without which the characterized configuration would not exist.",
+  "page": "6-7"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Sensitivity runs targeted the options judged most likely to affect precipitation (nudging, cumulus), guided by bias diagnosis rather than a stated hypothesis. The 40-year evaluation could have revealed large biases, and Diablo winds and streamflow did show failures, but no acceptance threshold was stated ('biases are acceptable', p. 2). Options were chosen sequentially after seeing each result, and nothing was fixed in advance beyond the choice of an average test year."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Pearson correlation and root-mean-square error as skill scores",
+   "kind": "method",
+   "page": "7, 16"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we sample a wide range of WRF configurations not previously tested over the WUS",
+   "page": "2"
+  },
+  {
+   "quote": "In creating this product, we now have a benchmark by which to evaluate the fidelity of dynamically downscaled GCMs",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file was supplied, so there is no review sequence. The supplement was not supplied: checks shown only in Figures S1-S8 (3-km NARR0 SWE, threshold insensitivity, soil differences) are taken from the main-text description. The earlier 34-year test run is described only qualitatively and its configuration is not given. The paper speaks of 20 tests but Table 2 lists 21 runs including NARR0, and the 21st spin-up test is separate; the text names the experiment without humidity nudging 'ERA1' where Table 2 calls it ERA0_a. The reanalysis and 45-km grid changes were made together, so their effects are confounded, as the authors state. No pass/fail criterion for acceptable bias is given. The entry is coded external_goal by inference: the goal (a benchmark for downscaled GCMs) is stated by the authors within a project funded by the California Energy Commission. Composition capability_first fits imperfectly: the walk is an iterative tuning-and-characterization loop rather than establishing a phenomenon, and no rival exists for the headline claim. Sub-claims at other statuses: that the 3-km wet precipitation bias over the Sierra Nevada reflects SNOTEL undercatch is best_explanation, since it was not tested; the causes of the IVT bias (missing drag, one-way nesting) are untested hypotheses (none); the statement that the summer Southwest wet bias is absent in downscaled GCM runs is 'not shown'. Table 3 coordinates for Travis AFB (34.12°N, 119.12°W) appear inconsistent with its location; this is an inference about a possible typo.",
+ "disagreements": [
+  {
+   "target": "Previous WRF downscaling studies over sectors of the WUS (Liu et al. 2017; Scalzitti et al. 2016; Walton et al. [...]",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors note that these studies used varied schemes without reported systematic testing, and show that WRF realism is very sensitive to such choices.",
+   "page": "2",
+   "quote": "However, thorough testing of these options was not indicated in many of these studies."
+  },
+  {
+   "target": "Spectral nudging precedent for the inner grid (Spero et al. 2014, 2018; Liu et al. 2017; Zobel et al. 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Nudging on the 9-km grid gave far too little snow and precipitation, and disabling it reversed the bias; the authors align with Wang and Kotamarthi's advocacy of weaker nudging.",
+   "page": "17",
+   "quote": "We thus advocate for weak or disabled spectral nudging on similar grids."
+  },
+  {
+   "target": "Liu et al. (2011) sensitivity of WRF precipitation to microphysics",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Two schemes at 9 km and three at 3 km showed little sensitivity, with the caveat that a wider set of schemes might differ.",
+   "page": "7",
+   "quote": "although this result is subject to change when considering a wider array of MP schemes (Liu et [...] )"
+  },
+  {
+   "target": "Standard of multi-year land-surface spin-up",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A continuous run with 4 years of spin-up differed little in precipitation and temperature from the 1-month spin-up run, though soil properties differed.",
+   "page": "17",
+   "quote": "Our parallelization approach has generally minimal consequences on simulated precipitation and surface air temperature when compared to a simulation with 4 years of spin-up."
+  },
+  {
+   "target": "SNOTEL gauge precipitation and SWE as the reference",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Citing documented gauge undercatch, the authors argue that the apparent 3-km wet bias may be an observational artifact.",
+   "page": "12",
+   "quote": "it is likely that, of the three domains, the 3-km domain is in fact the closest to reality in both SWE and precipitation"
+  },
+  {
+   "target": "ERA5 reanalysis precipitation",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Compared with PRISM on AR days, 9-km and 3-km WRF precipitation is more accurate than ERA5, which the authors attribute to smoothing from ERA5's precipitation assimilation.",
+   "page": "13",
+   "quote": "Despite the IVT discrepancy, 9-km and 3-km WRF clearly simulate a more accurate spatial distribution of precipitation than ERA5."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Parallel yearly runs with 1 month of spin-up",
+   "alternatives": "Continuous integration with multi-year spin-up",
+   "reason": "Reduce wall-clock time",
+   "effect_reported": "yes",
+   "page": "3, 8"
+  },
+  {
+   "node": "D",
+   "chosen": "Single water year (WY2010) for testing",
+   "alternatives": "Testing over climate time scales",
+   "reason": "Biases are systematic and appear within seasons, as an earlier 34-year run showed",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "Spectral nudging disabled on the 9-km grid",
+   "alternatives": "Nudging on the 9-km grid; a smaller relaxation coefficient",
+   "reason": "Bias reversal and SWE improvement; the smaller coefficient was not tested",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "ERA5 forcing with a 45-km outer domain",
+   "alternatives": "NARR forcing directly to 9 km",
+   "reason": "Reduced precipitation bias, with the two changes confounded",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "No specific-humidity nudging on the 45-km grid",
+   "alternatives": "Nudging u, v, T and q",
+   "reason": "Removed boundary precipitation artifacts",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "Tiedtke/Zhang et al. (2011) cumulus",
+   "alternatives": "Kain (2004); scale-aware KF",
+   "reason": "Reduced precipitation and SWE biases",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "R",
+   "chosen": "P3 microphysics",
+   "alternatives": "Thompson; Morrison double-moment",
+   "reason": "Results insensitive to the scheme",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "R",
+   "chosen": "Noah-MP opt_rad = 1",
+   "alternatives": "Default opt_rad = 3; opt_snf, wet-bulb and Jordan threshold options, opt_sfc, opt_rsf",
+   "reason": "Improved the low SWE bias",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "One-way nesting",
+   "alternatives": "Two-way nesting; wider boundary relaxation zone",
+   "reason": "Two-way nesting is substantially more computationally expensive",
+   "effect_reported": "no",
+   "page": "10, 18"
+  },
+  {
+   "node": "N",
+   "chosen": "Excluding subgrid topographic wind effects and gravity wave drag",
+   "alternatives": "Including these parameterizations",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "D",
+   "chosen": "75th-percentile MSLP gradient to define downslope-wind days",
+   "alternatives": "Higher thresholds; additional wind speed and humidity percentile filters",
+   "reason": "Higher thresholds made results noisier but qualitatively similar",
+   "effect_reported": "yes",
+   "page": "14"
+  },
+  {
+   "node": "C",
+   "chosen": "Daily averages for wind events",
+   "alternatives": "Sub-daily evaluation",
+   "reason": "none given; named as a possible cause of the Diablo result",
+   "effect_reported": "no",
+   "page": "16"
+  },
+  {
+   "node": "C",
+   "chosen": "Bilinear interpolation to stations",
+   "alternatives": "4-point mean",
+   "reason": "Avoid artificially smoothing out added value",
+   "effect_reported": "yes",
+   "page": "16"
+  },
+  {
+   "node": "C",
+   "chosen": "Hourly output for daily minimum and maximum temperature",
+   "alternatives": "Higher-frequency sampling",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "these single-season biases in the NARR0 experiment are quite similar to those in the 34-year mean seasonal biases of an earlier test experiment",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "further testing on the 3-km California grid revealed that simulated precipitation was also insensitive to the MP scheme used",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we conducted a 21st test in which WRF was initialized on August 1, 2005 and integrated continuously through September 1, 2010",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we dynamically downscaled ERA5 to 9-km from August 1, 1980 through September 1, 2020 and evaluated its biases",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We also make use of the University of Arizona's (UA's) gridded product by Broxton et al. (2016)",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Our results are fairly insensitive to the threshold of MSLP-gradient percentile used to define events (Figure S8).",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Applying the same methodology, but for specific times of day, leads to almost identical results for all variables considered",
+   "page": "16"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "using a 4-point mean instead of bilinear interpolation increases similarities between the 45-km, 9-km, and 3-km results",
+   "page": "16"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "was also simulated in Liu et al. (2017)",
+   "page": "10"
+  }
+ ]
+}

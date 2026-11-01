@@ -1,0 +1,513 @@
+{
+ "key": "g22_W4280633430",
+ "doi": "10.1029/2021jf006570",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Goldberg & Holland (2022), JGR Earth Surface 127, e2021JF006570, published paper (PDF, 19 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (these match the printed 'n of 19' journal pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "It remains unclear the degree to which the initialization strategy (as well as structural aspects of ice-sheet models) influences multidecadal-scale evolution",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Goldberg & Holland (2022) published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the question of whether climate forcing or the initial (initialized) state more strongly controls multidecadal ice-stream evolution in a coupled ice-ocean model.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An aim of this study is to understand whether forcing or initial state more strongly controls the multidecadal evolution of ice streams."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Took the strong 2011–2015 thinning, high melt and grounding-line retreat of Pope, Smith and Kohler glaciers from published satellite records as the target system.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A large proportion of the PSK catchment underwent strong thinning rates between 2011 and 2015"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Configured a synchronously coupled MITgcm ocean / STREAMICE ice-sheet model of the PSK region at 1 km resolution with BedMachine v2 geometry, a velocity-dependent melt parameterization and two sliding laws (Weertman, Coulomb-limited), using the coupling scheme of Goldberg et al. (2018).",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The coupling between ice and ocean is synchronous"
+    },
+    {
+     "n": 4,
+     "node": "R",
+     "mode": "methods",
+     "action": "Kept numerical adjustments (modified Leith viscosity, increased subglacial vertical viscosity) adopted after earlier experiments crashed from boundary-current instability.",
+     "page": "5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Two adjustments were made to counter this effect"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Stated the expectation that velocity-only (snapshot) initialization leaves thinning trends unconstrained and introduces long-lived transients, motivating a thinning-constrained (transient) alternative.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This introduces unphysical transients that might take decades to dissipate"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverted the basal friction and ice-stiffness fields from MEaSUREs v2 velocities with an adjoint-based cost-function minimization (snapshot initialization), for each sliding law.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A common approach is to solve an inverse problem where misfit with observed velocities is found with respect"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Extended the inversion to fit CryoSat-2 grounded thinning over 2011–2015 with a time-dependent adjoint (transient initialization), forced by time-mean melt from an ocean-only run.",
+     "page": "6",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "controlling misfit between modeled and observed thinning over a finite reference period of time"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Designed a factorial experiment: 2 initializations × 2 sliding laws × 2 ocean-forcing scenarios (Historical repeat of 2011–2015; Warm repeat of 2007), each run for 54 years.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To summarize, there are four initializations: One for each sliding law and type of initialization."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compared initializations with observed velocity and thinning: the snapshot runs fit velocity but thinning poorly; the transient runs cut the thinning misfit about four-fold at a cost of 1.5–2× in velocity misfit.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the resulting grounded thinning rates are a poor match with observations"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Revised the cost-function regularization weights for the transient initializations after cost reduction proved negligible, and lowered the prior weight further for Weertman to improve the thinning fit.",
+     "page": "8",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "it was found that the cost-function lowering was negligible without an increase in"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran all coupled initialization/sliding-law pairs from 2011 to 2015 with identical Kimura et al. (2017) boundary forcing.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "each sliding-law/initialization pair is initially run to 2015"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared 2011–2015 coupled thinning with CryoSat observations: TR_W matched, but TR_C thinned far more than its initialization near the grounding line.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "grounded thinning is far greater for the Coulomb-limited, transient-initialized model (TR_C) than that seen in the actual initializations"
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed two untested explanations for the TR_C mismatch (melt fluctuations versus melt in newly ungrounded areas, both amplified by Coulomb-limited sliding) and left their resolution beyond scope.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore it is possible that either (a) fluctuations in melt affect buttressing more strongly in the Coulomb-limited case"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Tested the coupled runs against held-out 2011–2021 CryoSat thinning not used in initialization; transient Weertman fit best, and Historical and Warm forcing gave nearly identical results.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for a period that was not used to constrain any of the initializations"
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran the eight coupled experiments for 50 years beyond 2015 and computed volume-above-floatation loss, basal mass loss and grounded area in the IDI region.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 5a compares annually averaged rates of change of Volume above Floatation"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared trajectories across runs and against the observed 29.7 km3/a: transient runs were closer early on; differences were set by initialization over the first decade and by forcing thereafter, with snapshot runs lagging by about a decade.",
+     "page": "10-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "From these trajectories a separation of time scales is apparent."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeated the analysis with the Weertman sliding law and found the same qualitative separation of time scales, with quantitatively different loss rates.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Qualitatively, the results are very similar: trends in the VAF loss rate are initially determined by the initialization type"
+    },
+    {
+     "n": 18,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Examined modeled bottom temperature, the melt-depth scatter, speed change and Dotson melt-through to show bathymetric control on warm-water access (the Smith sill, the Pope shallow bed).",
+     "page": "12-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Warm (>1°C) water is transported from the eastern Amundsen through a deep trough underlying the western margin of Crosson"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the weak modeled melt-depth relation (R2 0.1) and the retreat with Seroussi et al. (2017) and Lilien et al. (2018), checking R2 for each ice shelf separately and attributing the Kohler West difference to a depth-dependent melt parameterization.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In contrast, modeling of ice-ocean interactions under Thwaites ice shelf in Seroussi et al. (2017) yielded a melt-depth relationship"
+    },
+    {
+     "n": 20,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offered possible explanations (sill blocking of warm water, buttressing of a narrow inlet, no inland deepening) for the absence of runaway retreat under Warm forcing.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A possible reason for the lack of “runaway retreat” may be that warm bottom waters are not always free to circulate within the cavity"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Kept the claim that thinning-constrained initialization improves the near-term state, but forcing dominates after 1–2 decades, while cumulative retreat remains initialization-sensitive.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After approximately 1–2 decades, however, the evolution of the system is largely determined by large-scale forcing rather than the initialization method."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Coupled ice-ocean evolution of PSK glaciers; initialization transients versus forcing",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; ice parameters inferred by inversion, future evolution simulated",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Whether initial state or forcing controls multidecadal evolution",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Initialization-controlled versus forcing-controlled evolution; sliding law as structural factor",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not derived in advance; read off factorial runs",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set: numerical experiments with 2×2×2 factorial design",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes across sliding laws; TR_W passes held-out 2011–2021 thinning",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Initialization dominates 1–2 decades, then forcing; cumulative retreat affected by both",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "For the PSK glaciers over 2011–2065, thinning-constrained initialization gives near-term volume loss closer to observations, but after about 1–2 decades forcing rather than initialization controls volume-loss rates, although 50-year cumulative grounding-line retreat varies about as much with initialization as with forcing, for both sliding laws.",
+  "page": "16"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The 50-year factorial coupled runs (two initializations × two sliding laws × two forcings) produced the trajectories from which the separation of time scales was read; without them there is no claim.",
+  "page": "10-12"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The initialization-versus-forcing question directed the factorial simulation design (p. 2, 7), but all observations were pre-existing products. The near-term skill could fail against held-out 2011–2021 CryoSat thinning (p. 10), and TR_C partly did. The headline time-scale separation is a model-internal result with no observational test. Nothing was stated as fixed before the runs; regularization weights were tuned after inspecting fits (p. 8)."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / numerical optimization",
+   "item": "M1QN3 large-scale quasi-Newton optimization software",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "computer science (algorithmic differentiation)",
+   "item": "adjoint model generated with OpenAD for gradient-based inversion",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "fluid dynamics (large eddy simulation)",
+   "item": "modified Leith viscosity (Fox-Kemper & Menemenlis 2008)",
+   "kind": "method",
+   "page": "5"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we use a novel model of ice-ocean interaction and consider different ways of initializing the model",
+   "page": "1"
+  },
+  {
+   "quote": "The coupling in our model is synchronous, in contrast with previous coupled modeling studies of Amundsen Sea glaciers.",
+   "page": "15"
+  },
+  {
+   "quote": "Neither of these studies considered the effects of ocean circulation in controlling present and future melt rates",
+   "page": "2"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so the review sequence is not coded, although the acknowledgments thank the editor and three reviewers. Each configuration is a single deterministic run, with no ensemble or uncertainty on retreat or volume loss. The headline claim is restricted to PSK and to two idealized forcing scenarios, and the authors note it may not hold for less stable systems such as Thwaites. It is unclear whether the instability adjustments (p. 5) were made in this study's preliminary runs or in earlier work; coding them as inherited is inference. The TR_C short-term mismatch is explained by two untested hypotheses. The regularization weights for the transient initializations were tuned after the fits were seen.\n\nSub-claims and their statuses: (1) TR_W reproduces held-out 2011–2021 thinning: confirmed against held-out data, but only for one configuration. (2) About 30 km of grounding-line retreat at Smith and Kohler under Warm forcing (about 5 mm sea-level equivalent): estimate without stated uncertainty. (3) The Smith sill and Kohler buttressing limit runaway retreat: best_explanation, speculative. (4) Dotson channel melt-through plays little role in retreat: best_explanation within the model, with calving and breakup excluded. (5) The sliding law has a strong, sustained effect on volume loss: regularity_in_range, with two laws only.\n\nThe coupling-parameter sensitivity (MWCT and related settings) relies on Goldberg et al. (2018), not on tests done here.",
+ "disagreements": [
+  {
+   "target": "Depth-dependent melt parameterizations used in ice-sheet studies of Amundsen glaciers (e.g., Dos Santos et al. 2021; Favier et al. 2014; [...]",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argued from physics and later supported by the weak modeled melt-depth correlation (R2 ≈ 0.1) in the coupled runs.",
+   "page": "2",
+   "quote": "Such parameterizations largely neglect the influence of the ocean circulation in ice-shelf cavities"
+  },
+  {
+   "target": "Seroussi et al. (2017) melt-depth relationship under Thwaites (R2 0.87)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The coupled model gives R2 0.1 overall (0.17 Dotson, 0.04 Crosson), and the authors offer geometry and velocity-dependent melt as possible reasons.",
+   "page": "15",
+   "quote": "In contrast, modeling of ice-ocean interactions under Thwaites ice shelf in Seroussi et al. (2017) yielded a melt-depth relationship"
+  },
+  {
+   "target": "Lilien et al. (2018) projected retreat of Kohler West",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "The coupled runs show about 5 km of retreat versus their 10 km followed by fast retreat, attributed to their spatially uniform melt imposing high grounding-line melt.",
+   "page": "15",
+   "quote": "Whereas their study saw moderate (10 km) retreat until 2080"
+  },
+  {
+   "target": "Goldberg et al. (2015): early-21st-century PSK retreat controlled by dynamic state rather than ice-shelf thinning",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Reconciled by noting that the grounding line has moved from a broad ice plain into narrow troughs, where retreat is more coupled to buttressing.",
+   "page": "14",
+   "quote": "Those results are not inconsistent with the findings of the present study."
+  },
+  {
+   "target": "Snapshot (velocity-only) initialization common in coupling studies (Naughten et al. 2021; Seroussi et al. 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Snapshot runs converge with transient runs at long times but miss near-term volume loss (21.5 vs observed 29.7 km3/a).",
+   "page": "16",
+   "quote": "it may be important to incorporate decadal-scale observations into coupled initialization, rather than relying on “snapshot” calibrations"
+  },
+  {
+   "target": "Asynchronous coupling schemes that fill new cavity cells with a predefined profile (Goldberg et al. 2012a)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The modeled sill under Smith and the cooler upstream waters show that cavity flooding must respect topographic barriers.",
+   "page": "15",
+   "quote": "A scheme which initializes new parts of the cavity with a predefined profile (Goldberg et al., 2012a) could have a temperature bias"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Both snapshot (velocity-only) and transient (velocity plus 2011–2015 thinning) initialization, as an experimental factor",
+   "alternatives": "snapshot versus transient initialization",
+   "reason": "The snapshot approach leaves thinning unconstrained and introduces transients",
+   "effect_reported": "yes",
+   "page": "5-6"
+  },
+  {
+   "node": "D",
+   "chosen": "Both Weertman and Coulomb-limited sliding laws",
+   "alternatives": "Weertman; Coulomb-limited Weertman",
+   "reason": "To examine effects of the basal sliding law (ice-bed interaction)",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "I",
+   "chosen": "2011–2015 reference period for thinning constraint",
+   "alternatives": "longer CryoSat-2 record",
+   "reason": "Kimura et al. (2017) forcing ends in 2015; adjoint cost scales with time steps",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Control parameters limited to basal friction and ice stiffness",
+   "alternatives": "bed topography as an additional control parameter (Perego et al. 2014)",
+   "reason": "none given (future strategies could consider it)",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "I",
+   "chosen": "Smaller prior-weight parameter for transient Weertman than for transient Coulomb-limited",
+   "alternatives": "same prior-weight parameter as Coulomb-limited",
+   "reason": "A better fit to thinning observations could be achieved",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "N",
+   "chosen": "Synchronous ice-ocean coupling",
+   "alternatives": "asynchronous coupling with geometry updates and cavity extrapolation",
+   "reason": "Accurate flooding of newly exposed cavity; asynchronous is judged unlikely to differ much",
+   "effect_reported": "no",
+   "page": "4, 15"
+  },
+  {
+   "node": "N",
+   "chosen": "Coupled ocean model for sub-shelf melt",
+   "alternatives": "ice-sheet model with depth-dependent melt parameterization",
+   "reason": "Parameterizations neglect cavity circulation, giving deficient melt distribution and response",
+   "effect_reported": "yes",
+   "page": "2, 15"
+  },
+  {
+   "node": "N",
+   "chosen": "BedMachine Antarctica v2 ice thickness and bathymetry",
+   "alternatives": "Bedmap2 and Millan et al. (2017) used in Goldberg et al. (2019)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "3-4"
+  },
+  {
+   "node": "S",
+   "chosen": "No sea-ice or atmospheric surface forcing",
+   "alternatives": "including surface forcing",
+   "reason": "Impact over the small open-ocean area on deep waters expected to be minor",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "2007 annual cycle as Warm forcing",
+   "alternatives": "other years of the Kimura et al. (2017) output",
+   "reason": "Year with the highest melt rates in that model (post spin-up)",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "Minimum water column thickness of 2 m and a 5 m melt threshold",
+   "alternatives": "other coupling-parameter values",
+   "reason": "Sensitivity outside scope; Goldberg et al. (2018) found a negligible effect",
+   "effect_reported": "no",
+   "page": "4-5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "for a period that was not used to constrain any of the initializations",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Each initialization and coupled experiment described below is carried out twice, once with each sliding law.",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "restricting the analysis to either Dotson or Crosson yields",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "showed that a number of parameters relating to the coupling scheme",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "the comparison of modeled 2011–2015 melt against satellite data in Goldberg et al. (2019) is taken to indicate reasonable agreement",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "In Goldberg et al. (2019), 2 years was determined to be adequate spin-up time for this domain.",
+   "page": "6"
+  }
+ ]
+}

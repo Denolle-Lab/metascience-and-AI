@@ -1,0 +1,531 @@
+{
+ "key": "g22_W4210320490",
+ "doi": "10.1029/2021ea002036",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Averbuch, Ronac-Giannone, Arrowsmith & Anderson (2022), Evidence for Short Temporal Atmospheric Variations Observed by Infrasonic Signals: 1. The Troposphere, Earth and Space Science 9, e2021EA002036 (published PDF, 17 pp.)"
+ ],
+ "pages_convention": "printed journal pages (n of 17; these coincide with PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The dynamical nature of the atmosphere and the use of infrasound as a forensic tool lead to the following questions:",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Averbuch et al. 2022, Earth and Space Science, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose four questions: the infrasound decorrelation timescale, the sensitivity of signal features, whether atmospheric specifications explain the observations, and links to specific phenomena.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] the timescale of infrasound decorrelation?"
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "observation",
+     "action": "They design a campaign recording a repeating detonation source with a source-reference array (MCA, about 7 km away) and tropospheric-return arrays at EOC, 54 km away.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using a specifically designed measurement campaign, we will try to answer these questions for infrasound propagation in the tropospheric waveguide"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "They record the McAAP ammunition detonations (20-s intervals, two pit areas) from January to March 2021 and select 3 days with 127 high-SNR events.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Out of the acquisition period, we focus on 3 days (January 20 and February 2 and 5, 2021) consisting of 127 events with high SNR"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They apply time-domain delay-and-sum beamforming with Fisher statistics (1-10 Hz, 15-s windows) to obtain back azimuth, apparent velocity, SNR and best beams.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this study, time domain beamforming is used for the array analysis."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They compare the observed back-azimuth and apparent-velocity variability with the array response, find it below the resolution, and drop these parameters; they also check that EOCR and EOCL best beams agree and keep EOCR.",
+     "page": "4; Appendix A pp. 12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, the variance of the array resolution is larger than the observed variability (Appendix A)."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build empirical Green's functions by spectral deconvolution of the MCA source-reference beam from the EOC beam, then convolve them with a 3 Hz Ricker wavelet to form EGF-based synthetics (EGFS).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The atmosphere's EGF is obtained by deconvolving the source reference (MCA best beam) from the observed signal (EOC best beam)."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the premise that MCA is an unmodulated source reference: a later sensor 4 km from the pits, high inter-detonation correlations, broadband simulations below 10 km, and a cited result (Kim et al. 2018).",
+     "page": "4; Appendix B p. 14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Deploying another reference sensor 4 km north of the pits supports this hypothesis"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They set up GFPE narrowband and broadband simulations through MERRA2 profiles retrieved via G2S at 16:34, 17:34 and 18:34 UTC each day, using a range-averaged ceff profile.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In comparison to the EGFS, we use the parabolic wave equation to simulate acoustic signals from McAAp to EOC through realistic atmospheric conditions."
+    },
+    {
+     "n": 9,
+     "node": "E",
+     "mode": "exploration",
+     "action": "For January 20, they cross-correlate the EGFS against the first trace of each set and find phase changes, correlation decay within tens of seconds, and time-delay patterns partly tied to the pit-area geometry.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In both sets, the correlations coefficients decrease within tens of seconds (Figures 2c and 2d)."
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "For January 20, the simulations predict a low-altitude waveguide with multipathing, increasing amplitude and decreasing arrival time.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The atmospheric conditions for this day predict a low-tropospheric waveguide bounded between the ground and 2 km"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the EGFS with the GFPE-B waveform for January 20: the primary phase matches, while the predicted preceding phases are unclear or overestimated.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It can be seen that the atmospheric model predicts the general structure of the primary phase."
+    },
+    {
+     "n": 12,
+     "node": "E",
+     "mode": "exploration",
+     "action": "For February 2 (one set from area 2), they find a waveform that deforms over time and correlation that varies within tens of seconds; the last trace is used as reference because the first is noisy.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Also here, the correlation coefficient varies within tens of seconds."
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "simulation",
+     "action": "For February 2, the simulations predict energy trapped in the first kilometre and a decreasing arrival time.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As in Section 4.1, a low-altitude waveguide traps the energy in the first kilometer of the atmosphere"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the EGFS with the GFPE-B for February 2 and find good agreement on the main signal; perturbations and dispersion are not captured, which they attribute to unresolved small-scale structure or local noise.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparing the EGFS to the GFPE-B shows a good agreement (Figure 5d)."
+    },
+    {
+     "n": 15,
+     "node": "E",
+     "mode": "exploration",
+     "action": "For February 5, they find two phases, a first-phase amplitude that grows, decreasing correlation, and geometry-related time-delay patterns, repeating the behaviour seen on the other days.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As in Sections 4.1 and 4.2, the correlation coefficients decrease in time, and the time delays have distinct patterns."
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "For February 5, the simulations predict two paths: a 3-5 km refraction and a near-ground waveguide whose phase is predicted to decay over time.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The atmospheric models predict two phases arriving at EOC"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the EGFS with the GFPE-B for February 5: the second phase is predicted correctly, but the first phase's amplitude is underestimated and its predicted decay is the opposite of what is observed.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "while the atmospheric models predict the disappearance of the first phase, the observations show the opposite."
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that the model underestimates low-altitude wind and that increasing wind near 1 km traps more energy, which would explain the growing first arrival.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, increasing wind at this altitude can explain the increase in amplitudes of the first arrival."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compute the transmission loss of the EGFS for each day; the January 20 trend agrees with the simulations, but the February fluctuations are not explained by the predicted ceff changes.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the predicted variations of the effective speed of sound profiles in Figures 3, 5, and 7 cannot explain such fluctuation."
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate the periods of the transmission-loss fluctuations with a Lomb-Scargle periodogram and find 100-160 s on all days.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Results show that the characteristic periods range between 100 and 160 s for all days."
+    },
+    {
+     "n": 21,
+     "node": "Q",
+     "mode": "question",
+     "action": "They ask whether a specific atmospheric phenomenon causes the fluctuations.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "raises the question of whether a particular atmospheric phenomenon can explain them."
+    },
+    {
+     "n": 22,
+     "node": "H",
+     "mode": "theory",
+     "action": "From the literature they bring in candidate mechanisms (clear-air turbulence, turbulent kinetic energy, gravity-wave wind perturbations).",
+     "page": "9-10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Therefore, the wind speed will fluctuate due to the passage of gravity waves."
+    },
+    {
+     "n": 23,
+     "node": "X",
+     "mode": "theory",
+     "action": "They exclude gravity waves as the direct cause because the typical Brunt-Väisälä period (about 340 s) is a lower limit that exceeds the observed 100-160 s periods.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the observed fluctuations in Figure 8 are not directly related to gravity waves."
+    },
+    {
+     "n": 24,
+     "node": "S",
+     "mode": "theory",
+     "action": "They compute the time delay expected from the linear geometry of area 2 alone, at celerities of 330 and 350 m/s.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the maximum expected time delay is 0.113 s."
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "theory",
+     "action": "They compare the observed area-2 time delays for all 3 days with the geometric expectation and find an excess.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence, the shape of the area explains only part of the observed time delays."
+    },
+    {
+     "n": 26,
+     "node": "X",
+     "mode": "theory",
+     "action": "They reject lower sound speed as the explanation of the excess delay (it gives nonphysical values) and attribute the excess to increasing effective sound speed aloft.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] -of-sound values to explain the excess time delays lead to nonphysical values."
+    },
+    {
+     "n": 27,
+     "node": "C",
+     "mode": "simulation",
+     "action": "They compare the model-predicted decrease in arrival time with the excess delays: similar on January 20 and February 5, underestimated on February 2.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "on January 20 and February 5, 2021, the models predicted a similar delay time, and they underestimated it on February 2, 2021."
+    },
+    {
+     "n": 28,
+     "node": "K",
+     "mode": "exploration",
+     "action": "They keep the claim that infrasound decorrelates and travel times change over tens of seconds to minutes because of temperature and wind variations, and leave the mechanism of the energy fluctuations open.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It has been shown that infrasound decorrelation time is in the order of tens of seconds to minutes."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Short-timescale (seconds-minutes) variability of tropospheric infrasound returns",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: signals observed directly; atmospheric changes reached only through EGFs after removing the source",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Establish the decorrelation timescale and feature sensitivity; test whether atmospheric models explain them",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "4",
+   "answer": "Rivals stated only in the discussion: source geometry vs atmospheric celerity for delays; gravity waves and turbulence for the energy fluctuations",
+   "mode_called": "theory"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: geometry gives at most 0.113 s of delay; gravity-wave periods are at least 340 s",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: scheduled ammunition detonations and the ambient atmosphere",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: 127 detonations at 20-s intervals over 3 days",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: source-reference checks, two arrays, celerity varied, three days; no formal uncertainty",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Variability kept; gravity waves excluded as direct cause; mechanism left open",
+   "mode_called": "exploration"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Waveforms, phases, propagation times and energy of tropospheric infrasound returns at 54 km (1-10 Hz) change within tens of seconds to minutes; the changes are attributed to temperature and wind variations that atmospheric models only partly capture.",
+  "page": "1; 12"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building source-receiver empirical Green's functions by deconvolving the MCA source-reference beam from the EOC beam for every detonation removes source effects, so any change in the series can be attributed to the atmosphere.",
+  "page": "4"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the campaign was designed around stated questions, not a stated hypothesis (p. 2). Claim: the comparison with GFPE simulations could have failed and partly did (February 5 first phase, February 2 delays, pp. 8, 12). The variability claim itself is descriptive, and the gravity-wave exclusion is a test that could have failed (p. 10). Registration: nothing was fixed before the data; the 3 days were selected afterwards for high SNR and distinct behaviour (p. 3)."
+ },
+ "imports": [
+  {
+   "field": "astronomy (time-series analysis, Astropy)",
+   "item": "Lomb-Scargle periodogram for unevenly sampled data",
+   "kind": "method",
+   "page": "9"
+  },
+  {
+   "field": "ocean/outdoor acoustics and optics (split-step propagation, Feit & Fleck optical fibres)",
+   "item": "Green's function Parabolic Equation split-step propagation model",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "mathematical physics (scalar wave theory)",
+   "item": "Convolution theorem and Green's function deconvolution of a source-time function",
+   "kind": "concept",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Fisher statistics for array signal detection",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "To the best of our knowledge, this question has not been addressed before.",
+   "page": "9"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: (1) the attribution of all observed variations to temperature and wind is best_explanation, since no direct atmospheric measurement was made (p. 12). (2) The excess time delay implies increasing effective sound speed; this is best_explanation after excluding lower sound speed (p. 11). (3) Gravity waves are excluded as the direct cause of the 100-160 s energy fluctuations; status excluded, resting on a typical Brunt-Väisälä period rather than a measured one (p. 10). (4) The fluctuation periods of 100-160 s are an estimate with no uncertainty reported (p. 9). (5) Atmospheric models partly explain the observations; this is a qualitative comparison, and the correlation coefficients quoted in the captions are low (0.029-0.046; pp. 7, 9, 11). The mechanism of the energy fluctuations is left open (p. 12). Process not shown: how the 3 days were chosen among the acquisition days beyond 'high SNR' and different behaviour (possible selection; inference). Whether other days contradict the pattern is not shown. The 4-km source-reference check was made months later (July 2021), not during the campaign (p. 14). Some supporting simulations are 'not shown here' (p. 4). Composition fit: the repetition comes from an anthropogenic detonation schedule rather than nature, and no formal regularity is fitted, so natures_repetition is approximate. No review file was supplied; the acknowledgments mention anonymous reviewers (p. 15), but their effect cannot be coded.",
+ "disagreements": [
+  {
+   "target": "Atmospheric specifications (NASA MERRA2 via the NCPA G2S server) used for propagation modelling",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "EGFS on February 5 show a first phase that grows while the model predicts it decays, and the model underestimates the February 2 delay; the authors attribute this to underestimated low-altitude wind and to the models' hourly or coarser time resolution.",
+   "page": "8",
+   "quote": "while the atmospheric models predict the disappearance of the first phase, the observations show the opposite."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "time-domain beamforming (Shani-Kadmiel et al. 2021 code)",
+   "alternatives": "frequency-domain beamforming implementations",
+   "reason": "none given beyond reuse of existing code",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "O",
+   "chosen": "1-10 Hz band, 15-s window, 95% overlap, 2 m/s and 1° grid",
+   "alternatives": "lower- and higher-frequency components present in the signals",
+   "reason": "these processing parameters yield the highest SNR values",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "O",
+   "chosen": "EOCR roof-array best beams",
+   "alternatives": "EOCL line-array best beams",
+   "reason": "differences between the best beams are negligible",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "array best beam",
+   "alternatives": "single-station recording",
+   "reason": "minimizes the effect of incoherent local noise on the EGFs",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "discard back azimuth and apparent velocity",
+   "alternatives": "use them to study atmospheric variability",
+   "reason": "variance of the array resolution exceeds the observed variability",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "S",
+   "chosen": "GFPE split-step parabolic equation (narrow-angle)",
+   "alternatives": "other propagation methods (implied by the narrow-angle limitation)",
+   "reason": "tropospheric propagation angles are below 12°, so the narrow-angle restriction is satisfied",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "range-averaged ceff profile",
+   "alternatives": "range-dependent profiles extracted every 5 km",
+   "reason": "no significant change in ceff along the propagation path",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "E",
+   "chosen": "last trace as cross-correlation reference for February 2",
+   "alternatives": "first trace (used on the other days)",
+   "reason": "the first trace is noisy",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "S",
+   "chosen": "celerity of 330 m/s for the geometric delay",
+   "alternatives": "350 m/s",
+   "reason": "sensitivity check",
+   "effect_reported": "yes",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "However, the variance of the array resolution is larger than the observed variability (Appendix A).",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The differences between the best beams from EOCR and EOCL are negligible.",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "One can see that besides the low-amplitude coda, the waveforms perfectly match.",
+   "page": "14"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "broadband simulations (Section 3.3) at different azimuths show that for frequencies below 15 Hz and propagation distance below 10 km, there is no multipathing",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "similar observations by Kim et al. (2018) show that for local infrasound propagation, no significant modulation of the signal is observed",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "As in Sections 4.1 and 4.2, the correlation coefficients decrease in time, and the time delays have distinct patterns.",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A maximum time delay of 0.107 s is obtained by changing the value to 350 [...] ).",
+   "page": "11"
+  }
+ ]
+}

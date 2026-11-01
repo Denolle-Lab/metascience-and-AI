@@ -1,0 +1,349 @@
+{
+ "key": "g22_W4283825762",
+ "doi": "10.1029/2022gl097962",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chaudhuri & Ghosh 2022, Geophysical Research Letters 49, e2022GL097962 (published PDF, 11 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Their activity offshore, however, remains elusive.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chaudhuri & Ghosh 2022, GRL, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of whether slow-earthquake (VLFE) activity occurs offshore Cascadia. Known slow events are onshore, in the deeper transition zone, and the offshore trench is quiet in regular seismicity.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Their activity offshore, however, remains elusive."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take as background the published detections of VLFEs downdip of the locked zone in Cascadia and in other subduction zones.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "VLFEs have been detected downdip of the locked zone in Cascadia"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select Cascadia Initiative OBS broadband stations near the trench with quality continuous data, January to May 2014. The window is chosen to cover the early-2014 ETS event; the PNSN tremor catalog and the Stone et al. (2018) offshore earthquake catalog are added for comparison.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study utilizes 3 component broadband data from the Cascadia Initiative (7-D) network of ocean bottom seismometers (OBS)."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Determine the horizontal-channel orientations of the free-fall OBSs from teleseismic Rayleigh-wave arrival angles (DLOPy), keeping only events with cross-correlation above 0.8. Remove the instrument response and band-pass the data at 0.02-0.05 Hz.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use the Doran Laske Orientation Python (DLOPy) module"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run a grid-search centroid moment tensor inversion over a 0.1° x 0.1° x 5 km grid with a laterally homogeneous velocity model, using 90 s windows stepped every 1 s. The best variance-reduction fit gives location, depth, mechanism and moment, detecting discrete VLFEs. The strategy follows Ghosh et al. (2015).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The study employs a grid search centroid moment tensor inversion method (CMTI)."
+    },
+    {
+     "n": 6,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Use the CMTI-detected VLFEs as templates in SEC-C matched filtering of the continuous data. The threshold is the daily median plus 5 MAD. This yields 698 repeat detections across 12 families, and stacking the detections gives cleaner VLFE waveforms.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After we detect and locate distinct VLFE events using the CMTI method, we use them as template events."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run matched filtering on 100 random background-noise windows with each template's station configuration. This builds noise catalogs, checks that detections are not chance correlations, and sets the threshold.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We perform an extensive matched filtered analysis of background noise to inform the cross-correlation threshold"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Report 12 distinct offshore VLFEs (Mw 3.2-3.9) spanning about 550 km along strike and about 200 km along dip, recurring over the analysed months, with regional average depths and mechanisms (Figure 4).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We observe a total of 12 distinct VLFEs located offshore Cascadia as shown in Figure 4a."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the northern VLFE depths and mechanisms with the expected subduction-interface geometry. A 22 km depth is consistent with the plate interface, and VLFE 12 shows the expected low-angle thrust.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "One of the nodal planes of VLFE 12 indicates a low angle thrust fault which is also expected."
+    },
+    {
+     "n": 10,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Attribute the mismatched normal-faulting mechanism of VLFE 11 to an unstable sub-horizontal nodal plane, low SNR and poor OBS azimuthal coverage, rather than revising the interpretation.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is likely a result of a sub-horizontal nodal plane that can be a bit unsteady"
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "estimation",
+     "action": "State the resolution of the estimates: horizontal locations are robust, but depth is poorly constrained by the sparse network and the CMTI method.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the resolution in depth is not well constrained due to the inherent limitations of the CMTI method"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the VLFEs with three external data sets. Oregon strike-slip mechanisms match mapped USGS offshore faults. No obvious tremor accompanies the VLFEs. An Oregon cluster lies at the edge of a Stone et al. (2018) earthquake cluster, without temporal coherence.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A cluster of VLFEs occur right at the edge of a cluster of regular fast earthquakes in map view."
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Explain the Oregon strike-slip VLFEs from cited literature: aseismic slip in the Siletzia terrane, under-consolidated fluid-rich sediments raising pore pressure and widening the transition zone, oblique subduction, transpression and Gorda plate deformation. Infer that slow and fast earthquakes interact.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is plausible that the VLFEs here play an important role in accommodating stress in this area."
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "synthesis",
+     "action": "By analogy with well-instrumented Japanese VLFEs and the cited slow-slip origin of VLFEs, speculate that the poorly located Cascadia VLFEs lie near the plate interface and record slow slip.",
+     "page": "8",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "we speculate that these VLFEs offshore Cascadia are also occurring near the plate interface and a result of slow slip."
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "synthesis",
+     "action": "Keep the claim that widespread offshore VLFEs indicate a frictionally heterogeneous seismogenic zone hosting both slow and fast earthquakes, challenging the canonical homogeneous view.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Widespread activity of offshore VLFEs suggests a more heterogenous seismogenic zone capable of producing both slow and fast earthquakes"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Offshore VLFEs in Cascadia, not previously detected",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No; inferred by moment-tensor fits to OBS waveforms",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Detect and characterize offshore VLFE activity",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "4",
+   "answer": "Only chance noise correlation for detections; causal explanations listed as co-contributors, not rivals",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "None derived for the tectonic explanations",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: 2014 OBS deployment spanning an ETS episode",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 12 families repeat over about 5 months (698 detections)",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "7",
+   "answer": "Detections survive a background-noise control; no independent data set",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as best explanation via consistency with cited tectonics",
+   "mode_called": "synthesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Widespread discrete VLFEs occur offshore Cascadia (12 families, Mw 3.2-3.9), indicating a frictionally heterogeneous seismogenic zone that hosts slow earthquakes alongside regular ones.",
+  "page": "8"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The grid-search CMTI fit of synthetic to observed OBS waveforms detects and locates the discrete offshore VLFEs; without it there would be no templates, no matched-filter catalog and no claim.",
+  "page": "3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Action: no stated hypothesis directed acquisition. Data were chosen for proximity to the trench, data quality and coverage of the 2014 ETS (p. 2). Claim: detections faced a background-noise matched-filter test they could have failed (p. 4), but the heterogeneous-seismogenic-zone interpretation rests on consistency with cited studies, not on a test. Registration: the frequency band, 90 s window and median+5 MAD threshold rule were taken from prior studies (pp. 3-4), but the threshold was also informed by the noise tests, and no hypothesis was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "signal processing / mathematics",
+   "item": "Hilbert transform of the vertical component, correlated with the radial component for OBS orientation",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "computer science (time-series data mining)",
+   "item": "Super-Efficient Cross-correlation (SEC-C) fast matched-filtering algorithm",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Median absolute deviation detection threshold",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "These are the first discrete offshore VLFEs observed in [...]",
+   "page": "4"
+  },
+  {
+   "quote": "We discover widespread occurrence of discrete VLFEs offshore Cascadia using ocean-bottom seismometers.",
+   "page": "1"
+  },
+  {
+   "quote": "a significant amount of stress is released by these slowly slipping events that are not taken into account so far",
+   "page": "7"
+  }
+ ],
+ "limits": "No peer-review file or earlier version was supplied, so there is no review sequence.\n\nComposition is none_fits. The walk is question-led detection: data, inversion, matched-filter repetition, noise control, then interpretation by consistency with cited tectonic studies. No stated rivals share a crucial test, so it is not strong_inference or trace_series. It is not capability_first, because the question precedes the data, and the OBS network is existing community data.\n\nSub-claim statuses:\n- VLFE horizontal locations and magnitudes: estimate_with_resolution, but the depth resolution is stated as poor and no uncertainties are given.\n- Plate-interface slow-slip origin: speculative (the authors' word), resting only on analogy with Japan.\n- Slow-fast earthquake interaction: a 'strong indication' from spatial adjacency alone; the authors report no temporal coherence.\n- Moment-release significance: asserted, not quantified.\n\nWhat the paper does not show about its own process:\n- The noise test is reported qualitatively ('minimal false hits'), with no false-detection rate given.\n- There is no independent data set or alternative detection method.\n- There are no synthetic resolution tests.\n- The text cites a Figure 5b that does not exist in the published figure, which has a single panel.\n- The analysed span is given as January-May 2014 (5 months) in the main text but as 6 months in the Plain Language Summary.\n- How the 12 templates were chosen from the CMTI output (variance-reduction cutoff) is not stated (inference).",
+ "disagreements": [
+  {
+   "target": "Canonical view of the Cascadia seismogenic zone as a frictionally homogeneous fault segment producing only regular fast earthquakes",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The paper rests this on the spatial distribution of the 12 offshore VLFE families near the trench and their adjacency to regular earthquake clusters and a slow-slip patch; no direct test of frictional properties is made.",
+   "page": "8",
+   "quote": "It challenges a canonical view of a frictionally homogeneous seismogenic zone bounded by transition zones on both up- [...] ."
+  },
+  {
+   "target": "Prior accounting of stress release offshore Cascadia, based on sparse regular microseismicity",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper argues that the detected offshore VLFEs release stress not previously counted, but it gives no cumulative moment estimate.",
+   "page": "7",
+   "quote": "a significant amount of stress is released by these slowly slipping events that are not taken into account so far"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "DLOPy Rayleigh-wave arrival-angle orientation",
+   "alternatives": "gyro-based orientation as used for land seismometers",
+   "reason": "orientation of free-fall OBSs is challenging and gyro orientation applies on land",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "V",
+   "chosen": "Detections treated as real VLFEs",
+   "alternatives": "noise correlated with the template just by chance",
+   "reason": "matched filtering of 100 background-noise windows gives minimal false hits at the 5 MAD threshold",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "Threshold of median plus 5 times MAD",
+   "alternatives": "other threshold levels (implied by the stated trade-off with detection level)",
+   "reason": "minimal false hits and a reasonable compromise with the level of detection",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "P",
+   "chosen": "VLFE 11 normal mechanism treated as an artifact of an unstable sub-horizontal nodal plane, low SNR and poor azimuthal coverage",
+   "alternatives": "genuine normal faulting",
+   "reason": "sub-horizontal nodal plane can be unsteady, combined with low SNR and poor OBS coverage",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "H",
+   "chosen": "VLFEs near the plate interface as a result of slow slip",
+   "alternatives": "sources on faults within the oceanic crust or overriding plate (implied by poorly constrained depth and cited offshore faults)",
+   "reason": "analogy with Japanese VLFEs located near the interface and the recognized slow-slip origin of VLFEs",
+   "effect_reported": "no",
+   "page": "8"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "First, we choose 100 random time windows consisting of background noise.",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "of their nodal planes being in generally consistent with the offshore mapped faults in the area",
+   "page": "7"
+  }
+ ]
+}

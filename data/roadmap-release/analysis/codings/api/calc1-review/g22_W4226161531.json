@@ -1,0 +1,592 @@
+{
+ "key": "g22_W4226161531",
+ "doi": "10.5194/tc-16-1431-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF (The Cryosphere 16, 1431–1445, 2022)",
+  "Publisher XML full text with section and paragraph locators (jats_text)",
+  "Open review record of preprint tc-2021-345 (RC1, AC1, RC2, AC2)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page in parentheses; review steps cite the review record's own locators ([ID ¶n], [ID-S p.n])",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Whether some glaciers are more sensitive to basal lubrication than others owing to their geometry is not well known.",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (with PDF for figure pages)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses the open question of whether glacier geometry and flow make some marine-terminating glaciers more sensitive to multi-year basal lubrication.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Whether some glaciers are more sensitive to basal lubrication than others owing to their geometry is not well known."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "theory",
+     "action": "Takes the author's earlier glacier perturbation model (Zheng et al. 2019), itself built on Nye, Bindschadler and Felikson et al., as the theoretical base.",
+     "page": "§1 ¶3; §2 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We use an existing glacier perturbation model"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Replaces the initial thinning with a uniform step reduction of basal friction. Assumes pure sliding with a Weertman law (m = 3), U1 >> H1 (justified by cited observations) and α0′ ≈ 0. Derives the initial thinning and acceleration rates, both set by J0, and the Péclet number Pe/ℓ. Predicts that glaciers with high |J0| and low Pe are most vulnerable.",
+     "page": "§2.1 ¶1–§2.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Glaciers with a high | J 0 | and a low Pe ( ∼ 0 or negative) are more vulnerable to basal lubrication"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Designs the test: compute Pe/ℓ and J0 from 1996–1998 geometry and speed, then compare them with the 20-year speed change and frontal retreat records in Greenland and Austfonna.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To test if the model is suitable for evaluating marine-terminating glaciers, we derive observed Pe / ℓ and J 0"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembles the Felikson et al. (2021) flowlines for 187 GrIS basins with GIMP surface elevation, BedMachine v3 bed, and manually sampled ITS_LIVE speeds for 1998 and 2018.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we manually sample the annually mosaicked ITS_LIVE glacier speed data from 1998 and 2018, respectively"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Filters the flowlines, interpolates speed gaps, smooths with a Savitzky–Golay filter (12.5 km window, 0–3 km from the terminus excluded) and computes Pe/ℓ and J0 along each flowline.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we smooth the surface elevation, bed elevation, glacier speed data, and their derivatives using the Savitzky–Golay filter"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measures terminus retreat for each glacier from the Wood et al. (2021) retreat data in QGIS, so that retreat-driven speedups can be separated from lubrication-driven ones.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use QGIS to manually measure the terminus retreat between 1988 and 2018 for each glacier at its center flowline."
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembles the 1996 Austfonna DEM, the 1995–1996 velocity and the 1996 thickness from ITMIX for 8 of 11 marine outlets. Builds flowlines from 2018 ITS_LIVE velocity and applies the same workflow.",
+     "page": "§3.2 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we use the Ice Thickness Models Intercomparison eXperiment (ITMIX) data set"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares profiles for two single basins: destabilized Jakobshavn Isbræ (Pe/ℓ near 0, very negative J0) and stable Alangordliup Sermia (Pe/ℓ about 10 times larger, |J0| about 10 m/yr).",
+     "page": "§4.1 ¶1–¶2; Figure 3 (p. 1437); Figure 4 (p. 1438)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results are supportive for glacier 0277 having a stable condition during the study period."
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Chooses values at 3 km from the terminus for the intercomparison, because crevasses form near the front, J0 differs little in slow upper reaches, and the smoothing is limited near the front. This leaves 104 valid GrIS basins.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we select the data at 3 km from the terminus for the following intercomparison"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Plots J0 against Pe/ℓ for the 104 GrIS basins and classifies them by a ±300 m/yr speed-change threshold. Compares the two groups with kernel density estimates and Kolmogorov–Smirnov tests (p = 0.003 for J0, p = 0.006 for Pe/ℓ).",
+     "page": "§4.2 ¶2–¶3; Figure 5 (p. 1439); Figure 6 (p. 1440)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the difference is statistically significant found by the Kolmogorov–Smirnov statistic"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Stratifies by terminus retreat. For retreat > 0.5 km the separation weakens (p = 0.366 and 0.050). For retreat ≤ 0.5 km, J0 separates the groups strongly (p = 2×10^-5) but Pe/ℓ does not (p = 0.255).",
+     "page": "§4.2 ¶3; Figure 6 (p. 1440)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, it is clear to see two groups divided by the value of J 0 in the plot"
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Treats outlier glacier 0207, which has a positive J0 above 100 m/yr, as a large-|J0| case despite its opposite sign, attributing the sign to a bed steeper than the surface.",
+     "page": "§4.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "glacier 0207 is considered an example with large | J 0 | , despite having a different sign than the other glaciers"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Applies the analysis to 8 Austfonna glaciers. Faster-changing basins sit at low Pe/ℓ and J0, qualitatively as in the GrIS, although |J0| is only 0–10 m/yr because the ice moved slowly in 1996.",
+     "page": "§4.2 ¶5; Figure 7 (p. 1441)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similar to the GrIS, glaciers with higher speed change (basin-3, -5, -7, and -10) roughly occupy the lower left side of the panel"
+    },
+    {
+     "n": 15,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Explains the mismatches with auxiliary conditions: retreat dominating for retreating glaciers, lubrication possibly absent during the period, the terminus window possibly unrepresentative, and an ice-stream-like regime for surge basin-3.",
+     "page": "§5.1 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "possibly because instead of changing basal conditions, it is the retreat dominating the flow dynamics of these glaciers"
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "theory",
+     "action": "Refines the account: thick, fast ice gives low Pe and high |J0|; the thickness gradient pulls the other way; J0, unlike Pe, is tied specifically to basal sensitivity; melt from strain or geothermal heating is not modelled.",
+     "page": "§5.2 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "J 0 as a new term in the lubrication-induced perturbation model seems to be exclusively related to the basal sensitivity"
+    },
+    {
+     "n": 17,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derives feedback implications (speedup lowers Pe and raises |J0|; thinning acts the other way), illustrated with the Vavilov collapse result from the author's own earlier work.",
+     "page": "§5.3 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "both Pe and J 0 are temporally changing variables"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keeps the claim that 1996–1998 Pe/ℓ and J0 correlate with the subsequent speed change, especially for nonsurge and non-retreating glaciers, as the model predicts. Recommends monitoring vulnerable glaciers that have not yet accelerated.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The results show that Pe / ℓ and J 0 correlate with the flow speed change during 1996/1998 and 2018"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open review record of preprint tc-2021-345 (RC1, AC1, RC2, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 1 asked whether interpolated NoData vertices still count as NoData. The author added a sentence clarifying that end vertices are not extrapolated.",
+     "page": "RC1-S p.2; AC1-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We do not extrapolate the glacier speed; therefore, the NoData vertices at both ends of the flowline are still preserved after this step."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Referee 1 asked why the Austfonna flowlines come from 2018 ITS_LIVE rather than ITMIX. The author explained that ITMIX has only scalar speed, with no new analysis.",
+     "page": "RC1-S p.2; AC1-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "The ITMIX data set contains only flow speed but not flow velocity (i.e. only scalar values available)"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Referee 1 asked why land-terminating glaciers were excluded. The author defended this as his choice, without new work.",
+     "page": "RC1-S p.2; AC1-S p.2",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "Yes, it is a choice of the author as land-terminating glaciers should follow the same physical framework"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Referee 1 asked for reasons to focus near the front. The author added a paragraph in Section 4.2 justifying the terminus window.",
+     "page": "RC1-S p.2; AC1-S p.2–p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have added a paragraph in Section 4.2 about the justifications above."
+    },
+    {
+     "n": 5,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Referee 1 asked about the different kernel spreads in Figure 6. The author reattributed them to terminus retreat and small sample size and rewrote Section 4.2.",
+     "page": "RC1-S p.2; AC1-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have rewritten a great portion of Section 4.2 to reflect these changes and thoughts."
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "theory",
+     "action": "Referee 1 cited Gagliardini and Werder (2018) against the claim that land-terminating glaciers are insensitive to meltwater. The author removed that part of the sentence.",
+     "page": "RC1-S p.2; AC1-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have removed the latter half of the sentence about land-terminating glaciers for a more focused discussion."
+    },
+    {
+     "n": 7,
+     "node": "Q",
+     "mode": "question",
+     "action": "Referee 2 asked for the physical basis of a 'permanent' basal change. The author expanded the introduction's motivation on multi-year melt routing through moulins and crevasses.",
+     "page": "RC2-S p.1; AC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have updated the manuscript (mostly for the introduction section) with the thoughts above"
+    },
+    {
+     "n": 8,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Referee 2 said the conclusions overreached for Austfonna and for the single terminus distance. The author narrowed the discussion and conclusion claims.",
+     "page": "RC2-S p.1–p.2; AC2-S p.2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have modified the discussion section so that it aligns with the results better and more conservatively."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 2 asked to control for terminus retreat and to try a percent speed-change threshold. The author added the Wood et al. (2021) retreat stratification and two figures, and put a percent-threshold histogram only in the Jupyter Book.",
+     "page": "RC2-S p.2; AC2-S p.3–p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have retrieved the terminal retreat data from Wood et al."
+    },
+    {
+     "n": 10,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Referee 2 flagged that Køge Bugt (0207) conflicted with the J0 interpretation. The author defended reading |J0| as the key quantity, replaced the Figure 3 example with Jakobshavn Isbræ, and added the 0207 discussion.",
+     "page": "RC2-S p.2; AC2-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "As long as J0 is away from zero, basal lubrication would lead to an initial forcing of elevation change"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Referee 2 asked whether the group distributions differ significantly. The author ran two-sample Kolmogorov–Smirnov tests and added them to Section 4.2.",
+     "page": "RC2-S p.2; AC2-S p.5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have performed a two-sample, two-sided Kolmogorov–Smirnov test for both J0 and Pe/ℓ"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Referee 2 asked for justification of the 3 km and 3–5 km positions. The author explained the smoothing limit and the illustrative use of 3–5 km in the response, without new analysis.",
+     "page": "RC2-S p.3; AC2-S p.5",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "I have experimented with different length segments"
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "theory",
+     "action": "Referee 2 queried the sign of the J0 range. The author kept 1500 m/yr as an absolute value and added a note where the |J0| notation first appears.",
+     "page": "RC2-S p.3; AC2-S p.5",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I have added a note in the paragraph below Eq. 13 where the |J0| notation first appears in the text."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: some marine-terminating glaciers speed up after their beds are lubricated; known from published events.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No: vulnerability is inferred through Pe/ℓ and J0 computed from geometry and speed.",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Explain which glaciers are vulnerable to lubricated beds, using a physical perturbation model.",
+   "mode_called": "theory"
+  },
+  {
+   "question": "4",
+   "answer": "Partly: terminus retreat (ocean forcing) against basal lubrication as the cause of speedup.",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: the lubrication model predicts separation by J0 and Pe/ℓ, tested within non-retreating glaciers.",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found, not set: the 1998–2018 speed changes and retreats of existing glaciers.",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: repeated across 104 GrIS basins and 8 Austfonna basins.",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: J0 separation holds for non-retreating glaciers; separation is weak for retreating glaciers; Austfonna agrees only qualitatively.",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the correlation matches the model prediction.",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "Yes, after review-forced retreat stratification, KS tests and narrowed claims.",
+   "mode_called": "robustness"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Glaciers with lower Pe/ℓ and more negative (larger |J0|) J0 in 1996–1998 were more likely to change speed by 2018, especially nonsurge glaciers without significant retreat, as the basal-lubrication perturbation model predicts.",
+  "page": "§6 ¶1"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "theory",
+  "sentence": "Deriving J0 and Pe/ℓ from the lubrication-perturbation model supplies the two quantities whose observed values are then compared with speed change; without this derivation the claim would not exist.",
+  "page": "§2.2 ¶6"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The model directed which quantities were computed and compared (§3 ¶1), but the data are existing public archives chosen for availability (§3 ¶1). The claim could have failed: no separation, or a separation explained by retreat alone. KS tests and the retreat stratification were run (§4.2 ¶3), and the retreating subset did not separate. The ±300 m/yr threshold was 'arbitrarily' chosen after the data to balance group sizes (§4.2 ¶3). The 3 km window was set by processing limits. The review record shows the retreat analysis and KS tests were added after review (AC2-S p.3, p.5)."
+ },
+ "imports": [
+  {
+   "field": "fluid dynamics / heat and mass transport",
+   "item": "Péclet number (advection–diffusion ratio)",
+   "kind": "concept",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "field": "analytical chemistry / signal processing",
+   "item": "Savitzky–Golay smoothing filter",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Kolmogorov–Smirnov two-sample test",
+   "kind": "method",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "field": "statistics",
+   "item": "Gaussian kernel density estimation",
+   "kind": "method",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "field": "computing / open-source software",
+   "item": "Jupyter Book and MyBinder executable workflow",
+   "kind": "method",
+   "page": "§1 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This paper presents a 1D physical framework for glacier dynamic vulnerability assuming sudden basal lubrication as an initial perturbation.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Compared with the past models, the expression of Pe in this model has an additional term",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "quote": "J 0 as a new term in the lubrication-induced perturbation model seems to be exclusively related to the basal sensitivity",
+   "page": "§5.2 ¶2"
+  }
+ ],
+ "limits": "Sub-claims and their status:\n- Austfonna pattern: a qualitative regularity on n = 8 glaciers with no statistical test (§4.2 ¶5).\n- Pe/ℓ separation for non-retreating glaciers: not significant (p = 0.255).\n- Retreating subset: separation weak (§4.2 ¶3).\n- Feedback implications (§5.3): derived only, not tested.\n\nWhat the paper does not establish:\n- Lubrication actually occurring at each glacier is assumed, not shown (§5.1 ¶2).\n- Geometry representing 1998 comes partly from 2003–2009 GIMP elevations and 1993–2016 bed data (§3.1 ¶1).\n\nInconsistencies and undocumented choices:\n- The retreat window is stated as 1988–2018 in §3.1 ¶2 but 1998–2018 in the Figure 6 caption.\n- The alternatives behind the threshold and the 3 km window are not reported in the paper. The percent-threshold check exists only in the Jupyter Book, according to AC2-S p.4.\n\nHow the record grew (from the review file):\n- The retreat stratification, KS tests and narrowed claims entered at review.\n- In the final_paper sequence these are coded as author steps, as the codebook requires.\n- Figure-readability edits requested by both referees are not coded as steps.\n\nComposition (coder's inference):\n- natures_repetition is chosen because conditions are found and repeated across basins with no power to set them.\n- But the walk is theory-first: the expectation is derived, then compared. The claim is a best explanation against the retreat rival, not a fitted regularity with a stated range, so trace_series is also arguable.",
+ "disagreements": [
+  {
+   "target": "Sea-level models of glacier dynamic loss (e.g., Nick et al. 2013) that focus on the terminus",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The model shows lubrication can destabilize glaciers, and J0 separates accelerating from stable non-retreating GrIS glaciers.",
+   "page": "§1 ¶2",
+   "quote": "models of glacier dynamic loss for estimating sea-level rise usually focus on the glacier terminus and overlook the changing basal conditions"
+  },
+  {
+   "target": "Attribution of glacier speedups mainly to terminus retreat (King et al. 2020) and ocean forcing",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "For glaciers with retreat ≤ 0.5 km, J0 separates the speed-change groups (p = 2×10^-5), supporting lubrication as a primary cause for those glaciers.",
+   "page": "§5.1 ¶1",
+   "quote": "the clear separation of J 0 (Fig. c) supports basal lubrication as a primary cause of glacier speedups"
+  },
+  {
+   "target": "Seasonal-scale framing of basal lubrication studies (e.g., Zwally et al. 2002; Bartholomew et al. 2010)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Cites multi-year moulin and crevasse routing and surge events to argue that bed conditions evolve over years, then models a permanent change.",
+   "page": "§1 ¶2",
+   "quote": "To date, the response to basal lubrication is mostly studied on a seasonal scale"
+  },
+  {
+   "target": "Previous perturbation-theory Péclet number formulations (Felikson et al. 2017, 2021; Zheng et al. 2019)",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "The derivation adds a U0′/U0 term tied to spatially varying basal conditions, so Pe must be recomputed as flow changes.",
+   "page": "§2.2 ¶4",
+   "quote": "Compared with the past models, the expression of Pe in this model has an additional term"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "Neglect α0′ (set it ≈ 0)",
+   "alternatives": "Keep the α0′/α0 term in Eq. 15",
+   "reason": "The term is small (about an order below the others) and highly sensitive to local slope change",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "node": "S",
+   "chosen": "Express the Péclet number as Pe/ℓ",
+   "alternatives": "Pe for a particular perturbation length",
+   "reason": "To evaluate the general tendency to dissipate any length of perturbation",
+   "effect_reported": "no",
+   "page": "§2.2 ¶4"
+  },
+  {
+   "node": "I",
+   "chosen": "m = 3 with the Weertman hard-bed sliding law",
+   "alternatives": "Other values of m and other sliding laws",
+   "reason": "Results are insensitive because basins are compared empirically on one plot (citing Felikson et al. 2021)",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "GrIS and Austfonna",
+   "alternatives": "Other Arctic regions (not named)",
+   "reason": "The needed surface, bed and speed data are publicly available",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "8 of 11 Austfonna marine outlets",
+   "alternatives": "Including basin-2, -8 and -9",
+   "reason": "Their length is roughly equal to the smoothing window",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Values at 3 km from the terminus",
+   "alternatives": "Upper regions, or a wider range of flowline distance",
+   "reason": "Crevasses and moulins form near the terminus; J0 differs little upstream; smoothing limit near the front",
+   "effect_reported": "no",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "C",
+   "chosen": "±300 m/yr absolute speed-change threshold",
+   "alternatives": "Other threshold values (not named in the paper)",
+   "reason": "Chosen arbitrarily to give the classes roughly equal sample sizes",
+   "effect_reported": "no",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "node": "C",
+   "chosen": "Group significant slowdowns with speedups by absolute speed change",
+   "alternatives": "Treat accelerating and decelerating glaciers separately",
+   "reason": "A glacier vulnerable to lubrication would also be sensitive to recovering basal conditions",
+   "effect_reported": "no",
+   "page": "§4.2 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we further group the glaciers by the distance of terminus retreat",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the difference is statistically significant found by the Kolmogorov–Smirnov statistic",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We perform the same analysis for the marine-terminating glaciers of Austfonna",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "the results will be insensitive to the selected value of m and the sliding law",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "I have added the histogram to the Figure 6 Jupyter Book page for a comparison with the existing histogram",
+   "page": "AC2-S p.4"
+  }
+ ]
+}

@@ -1,0 +1,348 @@
+{
+ "key": "g22_W4281984534",
+ "doi": "10.1186/s40677-022-00215-4",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Gunawan et al. 2022, Geoenvironmental Disasters 9:14, published PDF (12 pages)",
+  "g22_W4281984534.xml.txt, publisher XML converted with tools/jats_text.py"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Thus, the fault responsible for the 2019 Banten earthquake is not well-known.",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4281984534.xml.txt (with PDF for figure pages)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take the USGS hypocentre (49 km depth) and focal mechanism, which give two candidate nodal planes (strike 69° dipping south, strike 201° dipping west).",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The focal mechanisms of the earthquake suggest two possible fault source directions."
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose the question of which fault ruptured, because seismic profiles in the region do not show the fault.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, the fault responsible for the 2019 Banten earthquake is not well-known."
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state four rival fault models: two strikes from the focal mechanism, each with a shallow and a deep top depth.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study investigated four fault models responsible for the 2019 Banten earthquake using two possible fault strikes"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They process Ina-CORS GNSS data with GipsyX (PPP) and GAMIT, extract coseismic offsets from five days before and after the event, and average the two solutions.",
+     "page": "§2.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For each coseismic displacement analysis process obtained from GipsyX and GAMIT, we took the average value"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "They set the fault geometries: dips of 54° and 49°, a 40 km length from the first author's scaling relation, 5 km subfaults, top depths of 1 km (A) or 25 km (B), and a 50 km bottom.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In both models, the length of the fault is 40 km, which is estimated using an earthquake scaling relationship for dip-slip faulting system"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They invert the GNSS offsets for slip on each of the four geometries with sdm2013, using Okada half-space Green's functions and Laplacian smoothing.",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we utilised sdm2013 (Wang et al. 24; 25) to estimate the coseismic slip distribution"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "They take records from eight BIG tide gauges, remove the tide with a 3-30 min FFT bandpass filter, and smooth with a 15-min moving average.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted a de-tiding process to separate the data from its tidal components"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "They take the BMKG aftershock catalogue to test whether the mainshock raised stress where the aftershocks occurred.",
+     "page": "§2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Aftershocks obtained from the Indonesian Agency for Meteorology, Climatology and Geophysics (BMKG) network were used"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They relocate the aftershocks with teleseismic double-difference (teletomoDD) in a nested regional-global 3D velocity model; the relocation shifts and the residuals before and after are shown in Figs. 8-9.",
+     "page": "§2.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the DD method for the teleseismic distance, named teletomoDD, which uses a nested regional-global 3D velocity model"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare the GNSS misfit (MAE) of the four slip models (1A 2 mm, 1B 3 mm, 2A/2B ~4 mm) and their geodetic moments (Mw 7.0 for Model 1, Mw 6.8 for Model 2).",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Misfit from Model 2A and Model 2B are ~ 4 mm, which is higher than Model 1A and Model 1B."
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They simulate the tsunami (TSUNAMI-N3, Mansinha-Smylie seafloor uplift) from each of the four slip models; only shallow Model 1A gives a significant wave.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Tsunami waveforms at the tide gauges are simulated using each of the estimated coseismic slip models."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "hypothesis",
+     "action": "They compare the simulated waveforms with the filtered tide-gauge records (independent data): Model 1A fits best, at ~2 cm amplitude; they attribute noise at SERA and BINU to shallow harbour sites.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "tsunami waveform of fault Model 1A is comparable and better fits the tide gauge data than the other model"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "observation",
+     "action": "They count only five aftershocks in two weeks and compare this with the 2006 Mw 7.8 Java tsunami earthquake.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, during the two weeks after the mainshock, only five aftershocks of the 2019 Banten earthquake were recorded."
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They compute the Coulomb stress change from each of the four slip models, with effective friction 0.8.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using the relocated aftershocks, we investigated [...] possibility that the mainshock raised stress in the surrounding region and triggered aftershocks."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "hypothesis",
+     "action": "They check the relocated aftershocks against the stress patterns: aftershocks fall in positive ΔCFF only for Model 1A, and in negative ΔCFF for the other three models.",
+     "page": "§3.3 ¶3; Fig. 10 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the correlation between positive values of ΔCFF with aftershocks location fit well for fault Model 1A (Fig. 10b)"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "They keep a shallow rupture on the ENE-WSW plane, supported by the GNSS, tsunami and stress-transfer results.",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our investigation suggests that the 2019 Banten earthquake occurred on an ENE-WSW fault direction, where the fault ruptured at a shallow depth."
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "They explain why the earlier seismic survey did not image an ENE-WSW structure (the survey line runs parallel to the fault), instead of revising the claim.",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This happened because the geophysical survey line (SO 137-27 in Fig. 2 of Susilohadi et al. 19) is parallel to the fault structure"
+    },
+    {
+     "n": 18,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They exclude the NEN-SWS models as poor predictors of displacement near the epicentre; the deep-top models were already disfavoured by the tsunami and stress results.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The fault models with the direction of NEN-SWS poorly predict displacement nearest to the epicentre."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Mw 7.0 intraslab earthquake at 49 km depth on an unknown fault",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; slip is latent and inferred from GNSS offsets",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Identify the ruptured nodal plane and its rupture depth",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Yes; four fault models (two strikes x two top depths)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; differing GNSS misfit, tsunami waveforms and ΔCFF patterns",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found; a single live event recorded by existing networks",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No; one event, not repeated",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; consistent with tide gauges and aftershocks, but no parameter sensitivity tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Shallow ENE-WSW rupture kept; NEN-SWS and deep models rejected",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The 2019 Mw 7.0 Banten intraslab earthquake ruptured a shallow portion of an ENE-WSW-striking, south-dipping fault, which is preferred over three rival fault models on GNSS misfit, tsunami waveform fit and aftershock stress triggering.",
+  "page": "§4 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "The comparison of GNSS misfit and geodetic moment across the four inverted fault models is what first singles out Model 1A (shallow ENE-WSW); the tsunami and Coulomb analyses only add support to that choice.",
+  "page": "§3.1 ¶2"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the GNSS, tide-gauge and BMKG data came from standing networks; the rival planes shaped the modelling, not the data acquisition (§2.1 ¶1, §2.3 ¶1, §2.4 ¶1). Claim: the tide-gauge and aftershock checks could in principle have failed, but the tsunami signal is ~2 cm with unremovable noise at some gauges (§3.2 ¶2), only five aftershocks are available (§3.3 ¶1), and the GNSS misfits differ by 1-2 mm against ±1 mm data error (Fig. 2). Registration: nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "signal processing",
+   "item": "FFT bandpass filtering (3-30 min) and moving-average smoothing of tide-gauge records",
+   "kind": "method",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Mean absolute error as the model misfit metric",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "applied mathematics (inverse theory)",
+   "item": "Regularized least squares with a finite-difference Laplacian smoothing operator",
+   "kind": "method",
+   "page": "§2.2 ¶2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file, open discussion or earlier version was supplied, so no review sequence is coded; the acknowledgements mention an editor and two anonymous reviewers (PDF p. 11). The paper reports no slip uncertainties, resolution or checkerboard tests, no value or choice method for the smoothing factor, and no sensitivity to dip, fault length, rigidity or the friction coefficient (0.8 only). The GNSS offsets are 3-5 mm with ±1 mm errors from a handful of stations (about five vectors are shown in Fig. 2, p. 3); inference: the misfit differences of 2, 3 and 4 mm may not be statistically distinct. The MAE formula is printed without an absolute value. The tsunami comparison is qualitative, with no fit metric, and Fig. 4 shows only Model 1A against the data. The GipsyX and GAMIT solutions are averaged rather than compared, so their agreement is not reported. Data are available only on request. Sub-claims: the 'very few aftershocks' observation is a description compared with one other event (status: none beyond observation); 'stress transfer of Model 1A explains aftershocks' is best_explanation, based on five events. Choosing trace_series is a judgement: the event is live, not past, but the claim rests on independent data types standing in for varied auxiliaries, and is the best explanation among stated rivals with no decisive test.",
+ "disagreements": [
+  {
+   "target": "Susilohadi et al. 2009 seismic survey of the Sunda Strait",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The authors argue that the survey missed the ENE-WSW structure because survey line SO 137-27 runs parallel to the fault; they offer no new imaging to support this.",
+   "page": "§3.3 ¶4",
+   "quote": "The geophysical survey conducted in this particular region, however, did not identify an ENE-WSW structure, which was responsible for the 2019 Banten earthquake"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "X",
+   "chosen": "ENE-WSW plane, strike 69°, dip 54° south (Model 1)",
+   "alternatives": "NEN-SWS plane, strike 201°, dip 49° west (Model 2)",
+   "reason": "Lower GNSS misfit, Mw 7.0 geodetic moment, better tsunami fit, aftershocks in positive ΔCFF",
+   "effect_reported": "yes",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "X",
+   "chosen": "Shallow top depth of 1 km (Model A)",
+   "alternatives": "Deep top depth of 25 km (Model B)",
+   "reason": "Lower GNSS misfit; only the shallow model generates a tsunami matching the tide gauges; aftershocks in positive ΔCFF",
+   "effect_reported": "yes",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Average of the GipsyX and GAMIT coseismic displacements",
+   "alternatives": "GipsyX solution alone or GAMIT solution alone",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.1 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "tsunami waveform of fault Model 1A is comparable and better fits the tide gauge data than the other model",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] models, aftershocks were located in the negative values of ΔCFF (Figs. 10d, 11b, d).",
+   "page": "§3.3 ¶3"
+  }
+ ]
+}

@@ -1,0 +1,396 @@
+{
+ "key": "g22_W4213169803",
+ "doi": "10.1029/2021gl096483",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Sills, Durfy & de Souza (2022), Are significant tornadoes occurring later in the year in southern Ontario?, Geophysical Research Letters 49, e2021GL096483 (published PDF, 7 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "anomaly",
+  "node": "O",
+  "evidence": "Over the last decade or more, Ontario's severe weather community has noted anecdotally that tornadoes now seem to occur later in the season here.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Sills, Durfy & de Souza (2022), GRL 49, e2021GL096483",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Report the anecdotal impression of a later tornado season in Ontario, backed by the three post-2004 November tornadoes and the late-September 2018 EF3 outbreak.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] three November tornadoes on record in Ontario occurred after 2004"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of a long-term trend in the month of maximum tornado occurrence in Ontario, and whether neighboring US states show the same trend.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the present study investigates the long-term trend in the month of maximum tornado occurrence"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Take from US studies (Long & Stoy 2014; Lu et al. 2015) the expectation that the seasonal tornado peak has shifted earlier in the central US.",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "peak tornado frequency has shifted earlier by 7 days"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Use the authors' quality-controlled Ontario tornado database (1875-2019; year, month and damage rating), compiled from historical newspaper searches and storm surveys.",
+     "page": "1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The data set contains the year, month and damage rating for each verified tornado event from 1875 to 2019."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Inspect the counts of all versus F/EF2+ tornadoes over time (Figure 1), attribute the rise in weak tornadoes to anthropogenic reporting artifacts, and restrict the sample to southern Ontario (south of 46°N) F/EF2+ events.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the study uses only southern Ontario events rated F/EF2+ (N = 202)."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compile Michigan and New York F/EF2+ tornado data from Grazulis (1875-1995) and NOAA (1996-2019), and describe how their seasonality differs from Ontario's.",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] neighboring US states of Michigan and New York (see Figure 2) were compiled from two sources"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Fix the processing: recorded month, all tornadoes rather than tornado days, the mode of rolling 10-year periods at 5-year intervals, a tie-break by summed F/EF ratings, autocorrelation tests, then a Spearman trend test.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Rolling 10-year periods are used to smooth short-term fluctuations and highlight longer-term trends"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Produce the processed mode-month series for southern Ontario (Figure 3): May to July until 1960, then mostly August.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The mode month ranges mainly from May to July between 1875 and 1960, after which August predominates."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test the series for autocorrelation (MATLAB; Figure 4 exceedance thresholds) and partial autocorrelation to check the premise of the Spearman test.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] (Figure 4) though partial autocorrelation is present (not shown)."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Apply Spearman's test to the 1875-2019 Ontario series: a weak positive trend, significant only at the 90% level.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Spearman's test indicates a weak positive correlation (rho = 0.319) statistically significant at the 90% [...]"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Treat the 1890 September mode (a tie-break result) as a possible outlier and rerun Spearman's test on 1895-2019.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "results improve with a moderate positive correlation (rho = 0.518) statistically significant at the 99% confidence interval"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the size of the shift by splitting the 24 points in half and comparing medians and modes (5.5 and 5 versus 8 and 8).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To estimate the magnitude of this positive trend, the 24 points from the 1895 to 2019 period are divided in half"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Apply the same methods to Michigan and New York combined, to each state separately, and over 1895-2019: no significant trend in any of them.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the null hypothesis (i.e., that there is no trend) cannot be rejected (p-value = 0.513)"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the claim of a statistically significant positive long-term trend in the F/EF2+ mode month for southern Ontario, with a magnitude of two to three months.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The preceding analysis confirms that a long-term positive trend in the mode month for F/EF2+ tornadoes exists for southern Ontario"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the results against US studies: earlier central-US peaks (Long & Stoy; Lu et al.), summer increases in neighboring states (Gensini & Brooks), and fall increases (Moore).",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This contrasts with the studies of Long and Stoy (2014) and Lu et al. (2015)"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive what a teleconnection cause (ENSO, NAO) would predict, a periodic and wider regional effect, which the regional pattern does not show.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "then the effect would be periodic and seen over a larger region than just southern Ontario"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose, without testing it, that warming Great Lakes advecting warm air onshore in late summer and early fall drive the shift.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "relatively warm air would be advected onshore during late summer and early fall when the Lakes are still warm"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "regularities",
+     "action": "State the range of the regularity: the shift cannot go far past September, and any periodicity cannot be detected with the available data.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is a limit to how far the peak tornado activity can shift toward the fall months."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Anecdotal later tornado season in Ontario; late-season events after 2004",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Tornado months are recorded; the trend in mode month is derived statistically",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "3",
+   "answer": "Detect a long-term trend in the month of peak F/EF2+ tornado frequency",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Only the null of no trend is tested; causal rivals (teleconnections, lake warming) are discussed but not tested",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions are tested for the causal rivals; only the trend versus no trend",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found in the historical tornado record (1875-2019)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; annual tornado seasons repeat and are summarised in rolling 10-year modes",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Holds when the 1890 point is dropped (stronger at 1895-2019); not found in Michigan or New York",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: a moderate positive trend significant at 99% for 1895-2019, magnitude 2-3 months",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "The mode month of F/EF2+ tornadoes in southern Ontario has a statistically significant positive long-term trend (rho = 0.518, p = 0.0096 for 1895-2019), estimated at two to three months later, with no such trend in Michigan or New York.",
+  "page": "5"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "regularities",
+  "sentence": "Spearman's test on the rolling 10-year mode-month series for southern Ontario F/EF2+ tornadoes, made significant at 99% by restricting the series to 1895-2019, produces the trend claim.",
+  "page": "4"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The data are existing archives compiled independently of the question (action no). The Spearman null of no trend could have failed and did fail for Michigan and New York (claim yes). Nothing is reported as fixed in advance, and the 1890 outlier was removed after the first test gave only 90% significance (registration no)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Spearman rank correlation test (R package)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "statistics / signal processing",
+   "item": "Autocorrelation and partial autocorrelation tests (MATLAB routine)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "history / journalism",
+   "item": "Historical newspaper accounts used to find older tornado events",
+   "kind": "data",
+   "page": "1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the study is the first to identify a robust long-term trend in the frequency of significant tornadoes for any region of Canada",
+   "page": "1"
+  },
+  {
+   "quote": "no past research work investigates this aspect of tornado climatology in Canada",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file was supplied, so the review history is unknown. The Methods say Spearman is applied 'if no autocorrelcation is found', yet partial autocorrelation is reported as present (not shown) and the test is still applied; how this was resolved is not stated. The 99% headline rests on removing the 1890 point after the full-period test gave only 90% significance; inference: a post-hoc choice. N = 187 is given for 1895-2019 while the test uses 24 mode points; the effective sample for the test is small. The magnitude of 'two to three months' comes from medians and modes of the two halves, with no uncertainty interval, so it is not coded as estimate_with_resolution. The text cites Figure 4 for the Michigan-New York increase after 1970, apparently meaning Figure 5; the Figure 4 title reads '(SON)', unexplained. Inference: possible referencing errors. Sub-claims: the Michigan increase since 1970 is a suggestion with no status; the extension to weaker tornadoes is asserted without a test (status none); the Great Lakes warming cause is an untested hypothesis (status none); the teleconnection cause is argued against by reasoning, not excluded by test. The tie-break rule and the 10-year/5-year choices are given without sensitivity tests.",
+ "disagreements": [
+  {
+   "target": "Long and Stoy (2014) and Lu et al. (2015), earlier peak in the central US tornado season",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper finds a later peak in southern Ontario and no significant trend in Michigan and New York, using the same mode-month Spearman analysis.",
+   "page": "5",
+   "quote": "This contrasts with the studies of Long and Stoy (2014) and Lu et al. (2015) showing an earlier peak in the central US tornado season"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Only southern Ontario F/EF2+ tornadoes",
+   "alternatives": "All verified tornadoes including F/EF0-1",
+   "reason": "Anthropogenic artifacts increased the number of verified weak tornadoes",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "D",
+   "chosen": "Recorded month as the peak-occurrence unit",
+   "alternatives": "Some number of days or weeks",
+   "reason": "Low number of events early in each data set; easier to process and understand",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "D",
+   "chosen": "All tornadoes",
+   "alternatives": "Tornado days",
+   "reason": "Increases sample size and emphasizes multiple tornadoes during single-day outbreaks",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "V",
+   "chosen": "1895-2019 period for the headline result",
+   "alternatives": "Full 1875-2019 period",
+   "reason": "The 1890 September mode may be an outlier resulting from a tie-breaker",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "Combined Michigan-New York data set",
+   "alternatives": "Michigan and New York analysed individually",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] (Figure 4) though partial autocorrelation is present (not shown).",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "so Spearman's test is applied using a somewhat shorter period from 1895 to 2019 (N = 187)",
+   "page": "4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "the null hypothesis (i.e., that there is no trend) cannot be rejected (p-value = 0.513)",
+   "page": "5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The Michigan and New York data sets are analyzed individually as well (not shown)",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Spearman's test results for the Michigan, New York and combined Michigan-New York data sets over the 1895–2019 period do not differ substantively",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Brooks and Doswell (2001) found similar results with tornadoes in the United States.",
+   "page": "2"
+  }
+ ]
+}

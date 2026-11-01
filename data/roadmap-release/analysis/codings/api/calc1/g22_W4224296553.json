@@ -1,0 +1,587 @@
+{
+ "key": "g22_W4224296553",
+ "doi": "10.1007/s10950-021-10035-y",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4224296553.pdf (published paper, J Seismol 26:731-756)",
+  "g22_W4224296553.xml.txt (publisher XML full text with section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the caption label as printed with the PDF printed journal page in parentheses; acknowledgements (not in XML) cited by printed journal page",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Yet, in comparison to invasive methods, non-invasive surface wave methods suffer from highly variable standards of practice",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4224296553.xml.txt (with PDF for figure content)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem: practitioners estimate dispersion data and its uncertainty (or ignore it) in idiosyncratic ways. A standard workflow is needed to produce dispersion data with robust uncertainty for propagation into Vs inversion.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "non-invasive surface wave methods suffer from highly variable standards of practice"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the workflow and the open-source Python package swprocess. It implements preprocessing, four wavefield transforms, interactive trimming, resampling and dispersion statistics.",
+     "page": "§1 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we have developed an open-source Python package called swprocess"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Record 24-channel MASW waveforms at a noisy site, with ten sledgehammer impacts at a 20 m offset.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "acquired at this noisy site with a vertical sledgehammer source located 20 m off of the end of the array"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare four preprocessing choices on the noisy-site records using the same FDBF transform: no stacking, muting, frequency-domain stacking and time-domain stacking. Time-domain stacking resolves additional R0 data above 50 Hz and the R1 mode.",
+     "page": "§2.1 ¶2; Fig. 4 (p. 737)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The four preprocessing techniques discussed above are first compared at a site with significant background noise"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeat the preprocessing comparison at a quiet site. Preprocessing mainly changes bandwidth: stacking or muting extends the band down to 5 Hz, against 12 Hz without stacking, while phase velocities stay consistent.",
+     "page": "§2.1 ¶3; Fig. 6 (p. 739)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "except now at a different site with minimal background noise"
+    },
+    {
+     "n": 6,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep time-domain stacking of three to five impacts per source location as the recommended preprocessing, and use it for the rest of the paper.",
+     "page": "§2.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we strongly recommend stacking MASW records in the time domain from at least three to five distinct source impacts"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply four wavefield transforms (FK/FDBF-plane, slant-stack, phase-shift, FDBF-cylindrical) to the same stacked record. Results are consistent but not identical, with mode- and band-specific differences, so the transform choice is a source of epistemic uncertainty.",
+     "page": "§2.2 ¶2; Fig. 7 (p. 740)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A quick comparison of the four panels reveals reasonably consistent estimates of the site’s R0 and R1 dispersion data across the four transformations"
+    },
+    {
+     "n": 8,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the use of multiple wavefield transformations as a way to account for transform-related epistemic uncertainty, and implement all four in swprocess.",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the authors strongly recommend that multiple transformations be considered"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Process vertical and radial components of the same Rayleigh wavefield, and Rayleigh and Love wavefields at another site. Vertical and radial agree where they overlap; Love data are broadband and clear where the Rayleigh data are ambiguous.",
+     "page": "§2.3 ¶1; Fig. 8 (p. 741); Fig. 9 (p. 741)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the vertical and radial wavefields show good agreement where they overlap"
+    },
+    {
+     "n": 10,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the recommendation to acquire complementary multi-component data, because it reduces uncertainty in mode interpretation.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the authors strongly recommend the acquisition of complementary, multi-component data whenever time and resources permit"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "methods",
+     "action": "Set out rival published rules for the maximum resolvable MASW wavelength: λa,max = L (Foti et al.) versus 3L (Park), plus source-to-array-center rules (Li and Rosenblad; Yoon and Rix).",
+     "page": "§2.4 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "has been the topic of some disagreement in the literature"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply the multi-source-offset technique (Cox and Wood) with offsets of 5, 10 and 20 m on both sides of a 46 m array. Data agree above about 10 Hz; below that, the close offsets drift low, a symptom of near-field effects.",
+     "page": "§2.4 ¶2; Fig. 10 (p. 744)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the choice of source offset is a clear source of dispersion uncertainty that should be quantified"
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep multiple source offsets, rather than a fixed λa,max rule, for identifying near-field effects and quantifying uncertainty, since near-field effects are site specific.",
+     "page": "§2.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we recommend using dispersion data obtained from multiple source offsets"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Active-only example: combine 6 offsets × 4 transforms into 24 independent observations and interactively trim to the R0 segment. Resample at 12 points in the log-wavelength domain, then compute mean ± standard deviation, assuming normality and equal weights.",
+     "page": "§3 ¶4; Fig. 11 (p. 746)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for the present example with one array, six source offsets, and four wavefield transformations, we have 24 independent observations"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Relate the increase of uncertainty at low frequencies to blind-study findings of 5-10% COV that rises at low frequency (Cox et al. 2014; Garofalo et al. 2016).",
+     "page": "§3 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Several blind studies have shown that it is common for dispersion data to have coefficients of variation (COV) on the order of 5 to 10%"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Rely on Wathelet et al.'s published evaluation of classic, high-resolution and RTBF beamforming rather than re-evaluating them. Choose RTBF in Geopsy for passive processing.",
+     "page": "§4.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "As these techniques have already been evaluated by Wathelet et al. (32), we will not repeat any such evaluations here"
+    },
+    {
+     "n": 17,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the passive processing parameters so that each block set can be treated as an independent observation: fixed-length blocks of at least 30 periods at the lowest frequency, 4N blocks per set, overlap allowed to reach at least 30 sets, and minimum recording times.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the authors prefer the use of fixed-length time blocks"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "Vary the number of exported peaks (N_MAXIMA = 1 versus 5) on two MAM arrays. Diagnose the gap at 0.84 Hz with an f-kx-ky slice: Geopsy suppresses unrealistic peaks above about 3500 m/s, so the third peak supplies the R0 value.",
+     "page": "§4.3 ¶1; Fig. 12 (p. 750)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By selecting multiple peaks, we obtain a nearly continuous R0 mode and a much more complete R1 mode"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the recommendation to export multiple peaks (N_MAXIMA = 5 as a working compromise), leaving the final value to the analyst.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we strongly recommend that multiple peaks be considered when processing passive surface wave dispersion data"
+    },
+    {
+     "n": 20,
+     "node": "D",
+     "mode": "observation",
+     "action": "Design the combined field experiment at a new site: one MASW array with six offsets and Rayleigh plus Love sources, and three concentric MAM arrays (50, 300 and 1000 m) sized so that their resolution limits overlap.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These diameters were selected such that the theoretical resolution limits for each array resided close to one another"
+    },
+    {
+     "n": 21,
+     "node": "O",
+     "mode": "observation",
+     "action": "Acquire and process the data into raw Rayleigh and Love dispersion data: MASW records stacked and transformed with the four transforms, and MAM records processed with RTBF in Geopsy using fixed blocks, 32-block sets, 30 sets and N_MAXIMA = 5.",
+     "page": "§5 ¶3; Fig. 13 (p. 752); Fig. 14 (p. 752)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The ambient vibration data acquired from the three MAM arrays was processed using the RTBF method in Geopsy"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check agreement between independent arrays. MAM fundamental-mode data overlap across arrays and match MASW at about 12 Hz (Rayleigh) and 20 Hz (Love). The known high-velocity bias of MAM 2 Love data near λa,max is noted for trimming.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shows a reasonably clear fundamental mode trend that overlaps well across MAM arrays and lines up well with the MASW data at approximately 12 Hz"
+    },
+    {
+     "n": 23,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Trim each mode segment, remove duplicate MAM peaks, and build observation matrices (R0 with 114 observations, R1 with 54). Compute mean ± σ dispersion statistics for R0, R1 and L0 at 8 to 21 points.",
+     "page": "§5 ¶5; Fig. 13 (p. 752); Fig. 14 (p. 752)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the observation matrix for R0 (see Fig. 13c and d) contains 114 observations"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the workflow as a step toward a standardized, open-source procedure. Note that correlation coefficients for incomplete observation matrices remain unresolved.",
+     "page": "§5 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the workflow presented in this paper represents an important step forward toward a standardized procedure"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Acquisition and processing choices change experimental dispersion data and its uncertainty",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; dispersion is extracted from wavefield transforms of records",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and demonstrate a workflow and software for dispersion with uncertainty",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival processing options (stacking, transforms, offsets, peaks, λmax rules), not rival hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No formal predictions; options compared by image clarity, bandwidth and consistency",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Field data found at real sites; processing conditions set by the analyst",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes; dispersion is consistent across transforms, offsets, components, arrays and sites, with stated differences",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Workflow and recommendations kept",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The swprocess workflow turns active and passive surface wave records into dispersion data with mean ± σ uncertainty. It accounts for the source offsets, arrays, block sets and wavefield transforms that the paper shows affect the dispersion estimates.",
+  "page": "§6 ¶1"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "methods",
+  "sentence": "Showing that processing choices such as the wavefield transform (and likewise source offset and preprocessing) change the dispersion estimate is what justifies treating each combination as an independent observation, and so justifies the uncertainty statistics.",
+  "page": "§2.2 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: no stated hypothesis directed data acquisition. The illustrative datasets were 'acquired by the authors over the past 5 years' (§1 ¶7), and the combined-site arrays were sized for resolution overlap, not to test a hypothesis (§5 ¶1). Claim: consistency across independent arrays and sites could have failed (§5 ¶3), but no known-truth benchmark (synthetic data or invasive Vs) is tested. Registration: nothing is reported as fixed before the data were seen; trimming is subjective and analyst-driven (§3 ¶3)."
+ },
+ "imports": [
+  {
+   "field": "signal processing",
+   "item": "Shannon-Nyquist sampling theorem as the analogue for the spatial aliasing limit λa,min = 2x",
+   "kind": "concept",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "field": "signal processing (array processing)",
+   "item": "High-resolution frequency-wavenumber beamforming (Capon 1969, Proc IEEE)",
+   "kind": "method",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "field": "software engineering",
+   "item": "Registry design pattern for user-defined preprocessing workflows and transforms",
+   "kind": "method",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "field": "software engineering",
+   "item": "Factory design pattern and object-oriented programming advice (acknowledged)",
+   "kind": "method",
+   "page": "p. 754"
+  },
+  {
+   "field": "statistics",
+   "item": "Normal-distribution representation of phase velocity at each statistical point, with sample standard deviation and correlation coefficients",
+   "kind": "concept",
+   "page": "§3 ¶4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this work presents a well-documented, production-tested, and easy-to-adopt workflow for developing estimates of experimental surface wave dispersion data with robust measures of uncertainty",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "While, to our knowledge, no commercial software package allows users to choose between various wavefield transformation methods",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "quote": "most commercial software packages used for surface wave processing do not provide analysts with the ability to perform interactive trimming",
+   "page": "§3 ¶3"
+  },
+  {
+   "quote": "the workflow presented in this paper represents an important step forward toward a standardized procedure, complete with open-source tools",
+   "page": "§5 ¶6"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. The workflow is demonstrated on a few unnamed example sites with no known-truth benchmark (synthetic data, invasive Vs) and no inter-analyst test of the subjective interactive trimming. The robustness of the resulting uncertainty to trimming choices is not quantified; the paper only notes that data below 10 Hz were left in. For passive data, only one processing method (RTBF) is used, so passive epistemic uncertainty from method choice is not shown. Correlation coefficients for incomplete observation matrices are deferred to future work. Inversion is not shown. Inference: the illustrative datasets were collected for other projects and then selected to illustrate points, so the selection process is unreported. Sub-claim statuses: (a) time-domain stacking gives the broadest bandwidth — regularity_in_range, two sites (noisy and quiet); (b) wavefield transforms give consistent but non-identical dispersion — capability_characterized, one record with a 1 m offset; (c) multiple peaks fill gaps caused by Geopsy's suppression of high-velocity peaks — best_explanation, from one f-k slice; (d) R0, R1 and L0 mean ± σ at the example sites — estimate_with_resolution. Composition coded none_fits: the walk is problem-driven method development illustrated by worked examples. No phenomenon is established before the question and there are no rival hypotheses. capability_first is the nearest fit, but the entry is a practice problem, not a new instrument.",
+ "disagreements": [
+  {
+   "target": "Common practice of estimating dispersion uncertainty idiosyncratically or ignoring it",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper shows that preprocessing, transform, offset and peak-picking choices change the dispersion data, and offers a standardized workflow in response.",
+   "page": "§0 ¶1",
+   "quote": "quantifying its uncertainty (or ignoring it in many cases), and performing inversions to obtain Vs profiles in their own unique [...]"
+  },
+  {
+   "target": "Common use of a single source location per MASW array",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "In Fig. 10, close offsets (5 and 10 m) are biased low below about 10 Hz, an effect a single offset could not reveal.",
+   "page": "§1 ¶2",
+   "quote": "Although it may be common for some to use only a single source location per array, the authors, for reasons discussed later, strongly recommend using [...]"
+  },
+  {
+   "target": "Fixed λa,max guidelines (Foti et al. 2018: L; Park 2005: 3L; Li and Rosenblad 2011; Yoon and Rix 2009)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Near-field effects are site specific, so the authors identify contaminated data visually from multiple offsets rather than by a fixed geometric rule.",
+   "page": "§2.4 ¶2",
+   "quote": "near-field effects are also known to be site specific"
+  },
+  {
+   "target": "Binning of experimental dispersion data (Cox and Wood 2011)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Three reasons are given: binning depends on raw sampling, mixes adjacent observations, and is inconsistent with smooth theoretical curves. No quantitative comparison is shown.",
+   "page": "§3 ¶4",
+   "quote": "we prefer to resample rather than bin the experimental dispersion data, as proposed by others previously"
+  },
+  {
+   "target": "Wathelet et al. (2018) frequency-dependent 100-period block lengths",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Fixed-length blocks are preferred so that each block set can be treated as an independent observation for statistics. No comparison of results is shown.",
+   "page": "§4.2 ¶1",
+   "quote": "the authors prefer the use of fixed-length time blocks where the length of each block is selected to contain at least 30 periods"
+  },
+  {
+   "target": "Naming of the McMechan and Yedlin (1981) transform as ω-p or p-f transform (Louie 2001)",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "The alternative names are too general and could describe any of the transforms discussed.",
+   "page": "§2.2 ¶1",
+   "quote": "we prefer using the more specific name of slant-stack transform"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "V",
+   "chosen": "Time-domain stacking of 3-5 impacts per source location",
+   "alternatives": "No stacking; no stacking with time-domain muting; frequency-domain (f-v) stacking; muting combined with stacking (mentioned, not illustrated)",
+   "reason": "Higher SNR and the broadest frequency bandwidth, especially at noisy sites",
+   "effect_reported": "yes",
+   "page": "§2.1 ¶4"
+  },
+  {
+   "node": "V",
+   "chosen": "Combine all four wavefield transforms (FK/FDBF-plane, slant-stack, phase-shift, FDBF-cylindrical)",
+   "alternatives": "A single transform",
+   "reason": "Transforms differ in practice; combining them gives clearer R0/R1 estimates and accounts for epistemic uncertainty",
+   "effect_reported": "yes",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "Multiple source offsets (5, 10, 20 m on both sides) with visual identification of near-field effects",
+   "alternatives": "Fixed λa,max rules (L, 2L, 3L, source-to-array-center distance); a single optimal offset",
+   "reason": "Near-field effects are site specific, and an optimal offset cannot be determined a priori",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Leave scattered data below 10 Hz in the trimmed R0 set",
+   "alternatives": "Trim additional data below 10 Hz",
+   "reason": "To show the impact of analyst choices; the cost is larger uncertainty",
+   "effect_reported": "no",
+   "page": "§3 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Exclude two potential higher modes at high frequency",
+   "alternatives": "Include them as mode segments",
+   "reason": "Bandlimited and apparent only in the far-side 20 m offset",
+   "effect_reported": "no",
+   "page": "§3 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Resampling in the log-wavelength-velocity domain",
+   "alternatives": "Binning; linear or logarithmic sampling in other domains (frequency-velocity, frequency-slowness)",
+   "reason": "Binning depends on raw sampling and mixes observations; resampling matches smooth theoretical curves; follows Vantassel and Cox (2021a)",
+   "effect_reported": "no",
+   "page": "§3 ¶4"
+  },
+  {
+   "node": "I",
+   "chosen": "Equal statistical weights for all observations",
+   "alternatives": "Custom weights, e.g. FDBF-cylindrical weighted above slant-stack",
+   "reason": "Simplicity",
+   "effect_reported": "no",
+   "page": "§3 ¶4"
+  },
+  {
+   "node": "I",
+   "chosen": "Normal distribution at each statistical point",
+   "alternatives": "Any other distribution, e.g. lognormal",
+   "reason": "Based on Lai et al. (2005)",
+   "effect_reported": "no",
+   "page": "§3 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "Single MASW array for the active-only example",
+   "alternatives": "Multiple arrays deployed across the site for additional aleatory uncertainty",
+   "reason": "Simplicity; left to the analyst's discretion",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "RTBF in Geopsy for passive processing",
+   "alternatives": "Classic beamforming (FK); high-resolution beamforming (Capon)",
+   "reason": "Authors' experience that RTBF is superior; prior evaluation by Wathelet et al. (2018)",
+   "effect_reported": "no",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Fixed-length blocks of at least 30 periods at the lowest frequency, 4N blocks per set, with overlap allowed to reach 30 or more sets",
+   "alternatives": "Frequency-dependent 100-period blocks; non-overlapping block sets",
+   "reason": "Allows each block set to be an independent observation; limited recording time",
+   "effect_reported": "no",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "N_MAXIMA = 5",
+   "alternatives": "N_MAXIMA = 1 (single highest peak); other values left to the analyst",
+   "reason": "Better mode resolution and mitigation of spurious peaks; compromise against file size and computational cost",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The four preprocessing techniques discussed above are first compared at a site with significant background noise",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "except now at a different site with minimal background noise",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The four wavefield transformations discussed above are compared for a time-domain stacked MASW seismic record in Fig. 7.",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the vertical and radial wavefields show good agreement where they overlap",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the choice of source offset is a clear source of dispersion uncertainty that should be quantified",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "By selecting multiple peaks, we obtain a nearly continuous R0 mode and a much more complete R1 mode",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "To investigate the root cause of the missing data, we present a slice in the f-kx-ky space at 0.84 Hz",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "As these techniques have already been evaluated by Wathelet et al. (32), we will not repeat any such evaluations here",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "we note that the data from this real site is unique from all data presented previously",
+   "page": "§5 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "shows a reasonably clear fundamental mode trend that overlaps well across MAM arrays and lines up well with the MASW data at approximately 12 Hz",
+   "page": "§5 ¶3"
+  }
+ ]
+}

@@ -1,0 +1,570 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Blind human ratings of one paper, ratings v1.1.0 (Novelty Dossier v1 and Scientific Advance Profile v1, rubrics.qmd; verdict and criteria as in agents/advance/RUBRIC.md v1.0.1, sections 4 to 7). Files written under v1.0.0 still validate: the verdict fields are required, and the verdict rules applied, only when ratings_version is 1.1.0.",
+ "type": "object",
+ "properties": {
+  "key": {
+   "type": "string"
+  },
+  "doi": {
+   "type": "string"
+  },
+  "ratings_version": {
+   "type": "string",
+   "enum": [
+    "1.0.0",
+    "1.1.0"
+   ]
+  },
+  "coder": {
+   "type": "string"
+  },
+  "rated_on": {
+   "type": "string"
+  },
+  "minutes_spent": {
+   "type": "integer"
+  },
+  "familiarity": {
+   "type": "string",
+   "enum": [
+    "outside_my_field",
+    "adjacent",
+    "my_field"
+   ]
+  },
+  "novelty": {
+   "type": "object",
+   "properties": {
+    "atomic_claim": {
+     "type": "string"
+    },
+    "claim_kind": {
+     "type": "string",
+     "enum": [
+      "observation",
+      "method",
+      "concept",
+      "explanation",
+      "connection",
+      "question"
+     ]
+    },
+    "closest_precedent": {
+     "type": "string"
+    },
+    "new_component": {
+     "type": "string"
+    },
+    "judgment": {
+     "type": "string",
+     "enum": [
+      "exact_precedent",
+      "close_precedent",
+      "component_precedent",
+      "apparently_new_component",
+      "unresolved"
+     ]
+    },
+    "score": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 5
+    },
+    "confidence": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ]
+    }
+   },
+   "required": [
+    "atomic_claim",
+    "claim_kind",
+    "closest_precedent",
+    "new_component",
+    "judgment",
+    "score",
+    "confidence"
+   ],
+   "additionalProperties": false
+  },
+  "advance": {
+   "type": "object",
+   "properties": {
+    "starting_state": {
+     "type": "string"
+    },
+    "gain": {
+     "type": "string"
+    },
+    "magnitude": {
+     "type": "string"
+    },
+    "evidence": {
+     "type": "string"
+    },
+    "roles": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "corrective",
+       "enabling",
+       "integrative",
+       "cumulative",
+       "transformative"
+      ]
+     }
+    },
+    "score": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 1,
+     "maximum": 5,
+     "description": "Advance anchors 1-5 for the gain the verdict rests on. Under v1.1.0: achieved takes 2 to 5, not_demonstrated takes 1, unassessable takes null (RUBRIC.md section 7). Under v1.0.0 an integer is required."
+    },
+    "confidence": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ]
+    },
+    "verdict": {
+     "type": "string",
+     "enum": [
+      "achieved",
+      "not_demonstrated",
+      "unassessable"
+     ],
+     "description": "Primary outcome (RUBRIC.md section 6). achieved: no unassessable condition holds and the gain rated here meets M1, M2, W1, W2, W4 and W3 (W3 may be not_applicable). not_demonstrated: no unassessable condition holds and every gain in the paper fails at least one criterion; the gain rated here is the headline gain. unassessable: one of U1 to U5 holds."
+    },
+    "verdict_reasons": {
+     "type": "string",
+     "description": "Two to four sentences naming the decisive criteria and the evidence, with locators."
+    },
+    "unassessable_condition": {
+     "type": "string",
+     "enum": [
+      "none",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5"
+     ],
+     "description": "none unless the verdict is unassessable. U1 incomplete text; U2 every headline result stated only in figures or supplements; U3 starting state cannot be established; U4 not a primary Earth-science research article (screen failure, outside the success fraction); U5 other, named in verdict_reasons."
+    },
+    "verdict_criteria": {
+     "type": "object",
+     "description": "Criteria for the gain rated here (RUBRIC.md sections 4 and 5). Required for achieved and not_demonstrated; omitted for unassessable.",
+     "properties": {
+      "M1": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met"
+       ],
+       "description": "Beyond the starting state: new content, or a change in the confidence, scope or standing of a known result."
+      },
+      "M2": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met"
+       ],
+       "description": "Meaningful for its gain type (knowledge, understanding, capability)."
+      },
+      "W1": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met"
+       ],
+       "description": "Follows from data and analysis reported in this paper, not from cited sources or assertion."
+      },
+      "W2": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met"
+       ],
+       "description": "Uncertainty stated or bounded, or the gain large compared with plausible error."
+      },
+      "W3": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met",
+        "not_applicable"
+       ],
+       "description": "At least one reported check addresses the principal threat; not_applicable only for a data set release whose quality control is documented."
+      },
+      "W4": {
+       "type": "string",
+       "enum": [
+        "met",
+        "not_met"
+       ],
+       "description": "No unresolved contradiction among the paper's own results, captions and claims bears on the gain."
+      }
+     },
+     "required": [
+      "M1",
+      "M2",
+      "W1",
+      "W2",
+      "W3",
+      "W4"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "required": [
+    "starting_state",
+    "gain",
+    "magnitude",
+    "evidence",
+    "roles",
+    "score",
+    "confidence"
+   ],
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "verdict": {
+        "const": "achieved"
+       }
+      },
+      "required": [
+       "verdict"
+      ]
+     },
+     "then": {
+      "properties": {
+       "unassessable_condition": {
+        "const": "none"
+       },
+       "score": {
+        "type": "integer",
+        "minimum": 2
+       },
+       "verdict_criteria": {
+        "properties": {
+         "M1": {
+          "const": "met"
+         },
+         "M2": {
+          "const": "met"
+         },
+         "W1": {
+          "const": "met"
+         },
+         "W2": {
+          "const": "met"
+         },
+         "W3": {
+          "enum": [
+           "met",
+           "not_applicable"
+          ]
+         },
+         "W4": {
+          "const": "met"
+         }
+        }
+       }
+      },
+      "required": [
+       "verdict_criteria"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "verdict": {
+        "const": "not_demonstrated"
+       }
+      },
+      "required": [
+       "verdict"
+      ]
+     },
+     "then": {
+      "properties": {
+       "unassessable_condition": {
+        "const": "none"
+       },
+       "score": {
+        "const": 1
+       },
+       "verdict_criteria": {
+        "anyOf": [
+         {
+          "properties": {
+           "M1": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "M1"
+          ]
+         },
+         {
+          "properties": {
+           "M2": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "M2"
+          ]
+         },
+         {
+          "properties": {
+           "W1": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "W1"
+          ]
+         },
+         {
+          "properties": {
+           "W2": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "W2"
+          ]
+         },
+         {
+          "properties": {
+           "W3": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "W3"
+          ]
+         },
+         {
+          "properties": {
+           "W4": {
+            "const": "not_met"
+           }
+          },
+          "required": [
+           "W4"
+          ]
+         }
+        ]
+       }
+      },
+      "required": [
+       "verdict_criteria"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "verdict": {
+        "const": "unassessable"
+       }
+      },
+      "required": [
+       "verdict"
+      ]
+     },
+     "then": {
+      "properties": {
+       "unassessable_condition": {
+        "enum": [
+         "U1",
+         "U2",
+         "U3",
+         "U4",
+         "U5"
+        ]
+       },
+       "score": {
+        "type": "null"
+       }
+      },
+      "not": {
+       "required": [
+        "verdict_criteria"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  "impact_forecast": {
+   "type": "string",
+   "enum": [
+    "below_median",
+    "around_median",
+    "top_quartile",
+    "top_decile",
+    "no_forecast"
+   ]
+  },
+  "notes": {
+   "type": "string"
+  },
+  "eligible_in_my_view": {
+   "type": "string",
+   "enum": [
+    "yes",
+    "no",
+    "unsure"
+   ],
+   "description": "Second check of the eligibility screen: a primary research article whose object is Earth science"
+  }
+ },
+ "required": [
+  "key",
+  "doi",
+  "ratings_version",
+  "coder",
+  "rated_on",
+  "minutes_spent",
+  "eligible_in_my_view",
+  "familiarity",
+  "novelty",
+  "advance",
+  "impact_forecast",
+  "notes"
+ ],
+ "additionalProperties": false,
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "ratings_version": {
+      "const": "1.1.0"
+     }
+    },
+    "required": [
+     "ratings_version"
+    ]
+   },
+   "then": {
+    "properties": {
+     "advance": {
+      "required": [
+       "verdict",
+       "verdict_reasons",
+       "unassessable_condition"
+      ]
+     }
+    }
+   },
+   "else": {
+    "properties": {
+     "advance": {
+      "properties": {
+       "score": {
+        "type": "integer"
+       }
+      },
+      "not": {
+       "anyOf": [
+        {
+         "required": [
+          "verdict"
+         ]
+        },
+        {
+         "required": [
+          "verdict_reasons"
+         ]
+        },
+        {
+         "required": [
+          "unassessable_condition"
+         ]
+        },
+        {
+         "required": [
+          "verdict_criteria"
+         ]
+        }
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "ratings_version": {
+      "const": "1.1.0"
+     },
+     "eligible_in_my_view": {
+      "const": "no"
+     }
+    },
+    "required": [
+     "ratings_version",
+     "eligible_in_my_view"
+    ]
+   },
+   "then": {
+    "properties": {
+     "advance": {
+      "properties": {
+       "unassessable_condition": {
+        "const": "U4"
+       }
+      }
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "ratings_version": {
+      "const": "1.1.0"
+     },
+     "advance": {
+      "properties": {
+       "unassessable_condition": {
+        "const": "U4"
+       }
+      },
+      "required": [
+       "unassessable_condition"
+      ]
+     }
+    },
+    "required": [
+     "ratings_version",
+     "advance"
+    ]
+   },
+   "then": {
+    "properties": {
+     "eligible_in_my_view": {
+      "const": "no"
+     }
+    }
+   }
+  }
+ ]
+}

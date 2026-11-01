@@ -1,0 +1,512 @@
+{
+ "key": "g22_W4280603759",
+ "doi": "10.1029/2021jb023458",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Zhou, Meng, Zhang & Ampuero (2022), Seismic waveform-coherence controlled by earthquake source dimensions, JGR Solid Earth 127, e2021JB023458 (published PDF, 16 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 16' pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Rupture size is a fundamental earthquake source parameter that is challenging to infer independently from far-field seismological observations.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Zhou et al. 2022 published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem of constraining rupture size from far-field data, given the L versus Vr trade-off in teleseismic finite-fault inversions.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Rupture size is a fundamental earthquake source parameter that is challenging to infer independently from far-field seismological observations"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from earlier studies that coherence decays with interstation distance and frequency, attributed there to crustal scattering of local phases.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Previous work indicates that waveform coherence decays dramatically with increasing interstation distance and frequency"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State the hypothesis that finite source size controls the decay of interstation coherence of teleseismic waves.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To demonstrate the hypothesis that source size controls the decay pattern of interstation coherence"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive, for a 1-D unilateral Haskell source, the interstation coherence as a cosine of rupture length times projection difference plus a site-effect term, and predict faster decay for larger events.",
+     "page": "3–4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "faster coherence decay as a function of projection difference is expected for larger earthquakes in the same passband"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select 192 teleseismic Mw > 6.2 events at 30–90° recorded by the eastern USArray (chosen for its simple crust), with SNR > 2.5, three passbands and P-wave alignment.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In total, 192 events are incorporated into the analysis"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute normalized cross-correlation for all station pairs in gCMT-duration windows, bin by 50 km of distance, and bootstrap the median coherence.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we group station pairs into bins of interstation distances, with an interval of 50 km"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare three deep Okhotsk events (Mw 6.7, 7.7, 8.3) with similar paths and find that coherence decays faster with distance for larger magnitudes, as predicted.",
+     "page": "6; Figure 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As the magnitudes (and therefore earthquake rupture sizes) increase, we observe a significant coherence decay"
+    },
+    {
+     "n": 8,
+     "node": "P",
+     "mode": "theory",
+     "action": "Explain the observed CC < 1 at zero distance, which the model does not predict, by station spacing and by site effects absorbed in the error-difference term δ.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Such local scattering difference can be described by the ’error difference’ term in Equation 6."
+    },
+    {
+     "n": 9,
+     "node": "D",
+     "mode": "methods",
+     "action": "Restrict the source analysis to the 0.25–0.5 and 0.5–1 Hz bands, where CC > 0.7 at minimum distance, and drop 1–2 Hz.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we choose for our further analysis of source effect the two lower frequency bands, 0.25–0.5 and 0.5–1 Hz"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit acos(CC) linearly against projection difference to estimate rupture length L from the slope, with uncertainty propagated from the CC errors.",
+     "page": "6; Figure 4 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We perform a linear fitting using Equation 8 to find the best ωL/2c (slope) and δ (intercept) for each earthquake."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check that the estimated L does not depend on the frequency band: this holds for Mw 8.3 but fails for Mw 7.7, and the Mw 6.7 slope is too flat to constrain L.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Theoretically, the estimated rupture length should be independent of the measurement frequency band. This is verified for the Mw 8.3 earthquake"
+    },
+    {
+     "n": 12,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Narrow the method's domain to elongated ruptures and large events, since small events are dominated by path and scattering effects.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Therefore, the simple model is only suitable for earthquakes with elongated rupture (L/W ≫ 1)."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the Mw 8.3 estimate (49 km) with published back-projection (145 km) and finite-fault (195–220 km) lengths, and find an underestimate.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We notice that the estimated rupture length L is underestimated."
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "theory",
+     "action": "Apply a bilateral-rupture correction (factor 2, giving 98 km) and attribute the remaining gap to aspect ratio and slip heterogeneity.",
+     "page": "7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The interference effect of bilateral rupture fronts underestimates the rupture length by 1/2"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit log L against Mw (k-value) in three subduction zones for M6.2+ and M7+, using mainly the 0.25–0.5 Hz band.",
+     "page": "8; Figure 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we fit the linear scaling relation between log L and Mw in two magnitude ranges: M6.2+ and M7+"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the theoretical k-values of the end-member scaling models (L-model 0.75, W-model 1.5, quasi equal-dimensional 0.5) from earlier work.",
+     "page": "9",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the L-model with D ∝ L, implying n = 2 and k = 0.75"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the coherence-derived k-values with published scaling studies from finite-fault, geodetic and geological data.",
+     "page": "9; Figure 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The k-values estimated by array-coherence decay measurements in the three subduction zones show good consistency with those studies"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep array coherence decay as a proxy for the rupture size of Mw > 7 earthquakes; M6 estimates only give the order of magnitude.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the array coherence decay is a good proxy of rupture size of large earthquakes (Mw > 7)"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose seismogenic-width saturation, slab geometry or rheology, and scale-dependent rigidity or stress drop as explanations of the regional k-value variation, left untested.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Different distributions of seismogenic width controlled by variations of slab geometry and along-dip rheology may also be responsible for regional variation of k-values"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the monochromatic approximation against numerical narrow-band integration for 20, 50 and 100 km ruptures; it agrees in the two selected bands.",
+     "page": "10; Figure 7 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the coherence patterns are consistent between numerical narrow-band integration and theoretical monochromatic simulation"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run synthetic tests varying rupture speed (2.5–4 km/s) and aspect ratio (2-D Haskell model) to see how the estimated L changes.",
+     "page": "11–12; Figures 8 and 9",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "[...] rupture speed is minor since the coherence decay pattern is nearly identical for rupture speed of 2.5, 3, 3.5 and 4 km/s"
+    },
+    {
+     "n": 22,
+     "node": "R",
+     "mode": "methods",
+     "action": "State the valid L/W range for a 20% error (L/W > 5 at 50 km, > 2.5 at 100 km), which explains the method's suitability for Mw > 7.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "If we consider that 20% uncertainty of the rupture length is acceptable, L/W needs to be greater than 5 for L = 50 km"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run a 2-D synthetic test of unilateral versus bilateral 10×50 km ruptures; the 1-D estimator underestimates bilateral ruptures by about 30%.",
+     "page": "13; Figure 10 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Rupture size estimation using a 1-D source model for bilateral rupture will lead to a rupture size underestimation of 30%."
+    },
+    {
+     "n": 24,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Reinterpret the coherence-derived size as that of the main asperity rather than the whole rupture, to account for the underestimates.",
+     "page": "13–14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The coherence measured rupture size may be more representative of the main asperity than the entire rupture."
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that coherence decay is a new observable that roughly estimates rupture length, with Mw > 7 scaling exponents between 0.5 and 0.75.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Assuming a simple elongated Haskell's source model, the array coherence decay can be used to roughly estimate the rupture size L."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Teleseismic coherence decays faster with distance for larger-magnitude events",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; rupture length is latent and inferred through the Haskell forward model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate rupture size independently of rupture speed; test moment-size scaling",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Informal rivals: finite-source effect versus path and site scattering; scaling end-member models",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Source effect predicts magnitude-dependent slope at similar paths; scattering predicts frequency-dependent intercept",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural earthquakes recorded by an existing array, with similar paths",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 192 events in three subduction zones",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; robust to rupture speed and band choice, but biased by bilateral rupture and aspect ratio, and underestimates published lengths",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as an approximate rupture-size proxy for Mw > 7",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The decay rate of teleseismic array waveform coherence with projection difference is controlled by source size and can roughly estimate rupture length (best for Mw > 7, elongated ruptures), with known underestimation from bilateral rupture, aspect ratio and slip heterogeneity.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "theory",
+  "sentence": "Deriving from the Haskell model that acos(CC) is linear in projection difference with slope ωL/2c, independent of rupture speed, is what turns an observed coherence pattern into a rupture-size estimator.",
+  "page": "3–6"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The finite-source hypothesis guided the choice of the eastern USArray (simple crust), teleseismic events, passbands and the projection-difference variable, but the data are archival. The linear relation and the band-independence could have failed, and partly did (Mw 7.7 band discrepancy, underestimated lengths); these mismatches were absorbed by post hoc corrections and domain restrictions. Nothing was preregistered; band and magnitude choices were made after inspecting the data (pp. 6, 8)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Bootstrap resampling of station pairs (Efron & Tibshirani 1994)",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "physics data analysis",
+   "item": "Error propagation theorem (Bevington & Robinson 2002)",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "earthquake engineering / applied mechanics",
+   "item": "Spatial coherence of ground motion (Zerva & Zervas 2002)",
+   "kind": "concept",
+   "page": "2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...] a novel observational constraint on source size based on the decay rate of wavefield coherence across a seismic array.",
+   "page": "1"
+  },
+  {
+   "quote": "Our observation captures a unique pattern of array waveform coherence",
+   "page": "1"
+  },
+  {
+   "quote": "We develop a novel method using array waveform coherence to estimate the earthquake rupture size",
+   "page": "1"
+  },
+  {
+   "quote": "we report a new observation of the relation between earthquake rupture size and the decay rate of interstation waveform coherence",
+   "page": "14"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so the review sequence is not coded. Supplement Figure S1 (fits for M7+ events) was not supplied. The method is never checked event by event against independent rupture lengths beyond the single Mw 8.3 case, and that case is underestimated even after the bilateral correction. The bilateral factor of 2 is applied post hoc to one event only. The analysis choices (passbands, M7+ subset, 0.25–0.5 Hz for scaling) were made after the data were seen; it is inference that they were tuned to the observed stability. The rivals to the finite-source explanation (path effects, scattering) are argued for but not formally excluded. Sub-claims at other statuses: the finite-source explanation of the magnitude dependence is best_explanation; the k-value of 0.5–0.75 for Mw > 7 in three subduction zones (0.25–0.5 Hz) is regularity_in_range; the 98 km Mw 8.3 length is an estimate_with_resolution with a known bias. The regional k-variation hypotheses are proposed but untested. Composition: natures_repetition is the closest fit (found events repeated by nature, with a scaling regularity fitted), but the walk is also a hypothesis-derived method development checked by synthetic tests.",
+ "disagreements": [
+  {
+   "target": "Teleseismic finite-fault inversions (Ji et al., 2002; Ide, 2007)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The derivation shows that the monochromatic coherence decay rate does not depend on rupture speed, and synthetic tests confirm a minor speed effect, so the method avoids the L versus Vr trade-off.",
+   "page": "2",
+   "quote": "it is remarkable that the waveform coherence decay rate does not depend on rupture velocity"
+  },
+  {
+   "target": "Local-phase coherence studies attributing incoherence to crustal scattering (Langston, 2014; Zerva & Zervas, 2002)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "For teleseismic waves with simple, shared paths, the magnitude-dependent decay is attributed to finite-source effects rather than scattering.",
+   "page": "2",
+   "quote": "In contrast, teleseismic waveforms involve rather simple path effects"
+  },
+  {
+   "target": "Gomberg et al. (2016) k = 0.78 for M7 class (L-model)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The coherence-derived M7+ k-values (0.50–0.61) are interpreted as a transition between the quasi equal-dimensional and L-model scalings.",
+   "page": "9",
+   "quote": "We argue that M7+ earthquakes are in the transition of two scaling relations of small-magnitude (M6 class, quasi equal-dimensional)"
+  },
+  {
+   "target": "Back-projection rupture-size estimates",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues that coda waves and scattering make rupture termination uncertain in back-projection, so coherence can serve as a cross-validation.",
+   "page": "14",
+   "quote": "Back-projection can generally map the trajectory of the rupture, but coda waves and scatterings can generate uncertainties in determining when the earthquake stops"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "F",
+   "chosen": "USArray in the Eastern United States",
+   "alternatives": "Western United States and Europe arrays",
+   "reason": "Simpler crustal structure, so coherence is less affected by array-side scattering",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "0.25–0.5 and 0.5–1 Hz bands",
+   "alternatives": "1–2 Hz band",
+   "reason": "CC > 0.7 at minimum interstation distance; higher frequencies are more affected by site effects and scattering",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "P",
+   "chosen": "Both explanations retained, with site effects represented by the error-difference term δ",
+   "alternatives": "Extrapolation below the ~30 km minimum station spacing; spatially variable site effects",
+   "reason": "Intercept decreases with frequency, consistent with site and local scattering",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Scaling analysed mainly in 0.25–0.5 Hz",
+   "alternatives": "0.5–1 Hz",
+   "reason": "More stable estimates, possibly because of smaller scattering and path effects",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "M7+ subset for k-value estimation",
+   "alternatives": "M6.2+ full set",
+   "reason": "Smaller uncertainties; M6 events less affected by finite-source effects and nearer to corner frequencies",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Elongated unilateral 1-D rupture model",
+   "alternatives": "Bilateral rupture model or 2-D rupture model with inversion",
+   "reason": "Real bilateral ruptures are rarely symmetric, and front interference adds waveform complexity and uncertainty",
+   "effect_reported": "yes",
+   "page": "13"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Theoretically, the estimated rupture length should be independent of the measurement frequency band. This is verified for the Mw 8.3 earthquake",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "teleseismic back-projection gives a rupture size of around 145 km",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The k-values estimated by array-coherence decay measurements in the three subduction zones show good consistency with those studies",
+   "page": "9"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the coherence patterns are consistent between numerical narrow-band integration and theoretical monochromatic simulation",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] rupture speed is minor since the coherence decay pattern is nearly identical for rupture speed of 2.5, 3, 3.5 and 4 km/s",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We conduct a synthetic test using different rupture lengths and different aspect ratios in 0.25–0.5 Hz",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Rupture size estimation using a 1-D source model for bilateral rupture will lead to a rupture size underestimation of 30%.",
+   "page": "13"
+  }
+ ]
+}

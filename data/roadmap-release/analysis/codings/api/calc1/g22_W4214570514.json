@@ -1,0 +1,381 @@
+{
+ "key": "g22_W4214570514",
+ "doi": "10.1029/2021ea002112",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper: Ogunbo & Shin (2022), Earth and Space Science 9, e2021EA002112 (PDF, 10 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 10' article pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Numerical modeling of the 3D acoustic wave equation regularly faces a trade-off between accuracy and efficiency.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: numerical dispersion forces a trade-off between accuracy and computational efficiency in 3D acoustic wave modeling.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "computational efficiency competes with accuracy when numerical methods, like the finite difference and the finite element methods,"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Take from the literature the expected performance of existing approaches: fine-grid finite differences, higher-order operators, and the spectral element method's 4.5 grid points per wavelength and its inefficiency.",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Seriani and Priolo (1991) reported the high accuracy of the SEM in terms of 4.5 grid points per wavelength unit"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: a low-order interpolation scheme on not-too-fine grids that keeps dispersion error small, achieved by optimizing the tri-linear cube element matrices.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ideally, in principle we should seek a scheme that utilizes low order interpolation function with not-too-fine grids"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Derive the tri-linear cube element stiffness and mass matrices, assemble them at an inner node, write the plane-wave normalized phase velocity objective, and minimize it with the Jo et al. (1996) method to obtain optimized coefficients (Table 2).",
+     "page": "2-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the numerical method presented in Jo et al. (1996) to minimize the objective function in Equation 26."
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compute the normalized phase velocity over propagation angle, azimuth and grid size for the consistent, lumped, eclectic and optimized matrices (Figure 2).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The normalized phase velocity plots in Figure 2 (using the display software from She, 2019) demonstrate the dispersive effects of the different matrices."
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare numerical anisotropy and the grid points per wavelength each scheme needs for a given velocity error.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "4 grid points per wavelength unit sampling are required to produce 0.45% error in velocities"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design a homogeneous 3D test (1,500 m/s, 100^3 elements, first-derivative Gaussian source, PML, 61 frequencies) with the analytic Green's function as reference.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the analytic 3D Green's function, in the frequency-domain, in a homogeneous velocity medium can be computed"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Overlay trace 70 from each matrix set on the analytic trace and judge dispersion and amplitude errors.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the normalized optimized trace rids the energy of dispersion error, with accompanying higher resolution than others"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Vary source-receiver offset in the homogeneous model and check that the optimized traces still match the analytic traces (Figure 3b).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reductions in the dispersion error and increased resolution are maintained even as source-receiver offset increases."
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design an unbounded 2-layer 3D test (1,500/2,500 m/s, 25 m grid, PML) with Officer's (1958) closed-form solution to test the reflected energy.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this velocity model will facilitate the validation of the accuracy of the optimized matrices on reflected energy"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare trace 70, with direct and reflected waves, from each matrix set against the closed-form solution (Figure 4a).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the optimized trace matches appreciably well with the analytical trace"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the optimized traces against the analytic traces at near, mid and far offsets in the 2-layer model (Figure 4b-d).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the same conclusion cannot be said of the other matrices, whose accuracies deteriorate with offsets"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply the optimized matrices to the 3D SEG salt model (60 m cubes, 7 Hz source, Dirichlet top, 36 frequencies) and inspect the shot gather qualitatively, with no reference solution.",
+     "page": "7-8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The SEG salt velocity model is a highly faulted, and laterally extensive high velocity salt body"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the optimized scheme's 4 grid points per wavelength against the published 4.5 points of the high-order spectral element method.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] do not only outperform the published 4.5 grid points per wavelength unit sampling of the high-order spectral element method"
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "theory",
+     "action": "Estimate relative computation time from a bandwidth formula, t = (B^2)^s/2, using grid points per wavelength (optimized 4 vs eclectic 6.21).",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Consequently, the optimized method is at least 3.7 faster than the eclectic method."
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the optimized matrices model the 3D acoustic wave field accurately and efficiently, outranking the consistent, lumped and eclectic matrices.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The optimized results outrank solutions produced with the consistent, lumped and eclectic matrices in accuracy and resolution."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Numerical dispersion error, which sets the accuracy-efficiency trade-off of FE/FD schemes",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; dispersion is computed by plane-wave analysis and by comparing seismograms with analytic solutions",
+   "mode_called": "theory"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize optimized tri-linear FE matrices",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Consistent, lumped and eclectic matrices (Marfurt 1984); SEM, cited only",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; different phase velocity, anisotropy and grid points per wavelength",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Set: synthetic homogeneous, 2-layer and SEG salt models",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across offsets and two analytic models; SEG case qualitative only",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: optimized matrices accurate and efficient",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Two anonymous reviewers acknowledged; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Optimized tri-linear cube finite-element mass and stiffness matrices need about 4 grid points per wavelength for 0.45% velocity error (0.15% anisotropy) and match analytic solutions across all offsets in homogeneous and 2-layer models, outperforming consistent, lumped and eclectic matrices.",
+  "page": "5; 9"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Deriving and minimizing the normalized phase-velocity objective for the tri-linear cube element produced the optimized coefficients (Table 2), on which every later comparison depends.",
+  "page": "2-5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The expectation that optimized coefficients reduce dispersion directed the design of the synthetic tests (pp. 2, 5). The homogeneous and 2-layer seismograms were compared with analytic solutions, a test the optimized scheme could have failed (pp. 6-7). Nothing was fixed in advance; the optimization range (angles, grid sizes) is not stated."
+ },
+ "imports": [
+  {
+   "field": "engineering / applied mathematics",
+   "item": "Variational finite element formulation and shape-function element matrices (Norrie & de Vries 1978)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "mathematical physics",
+   "item": "Analytic 3D frequency-domain Green's function (Arfken & Weber 2005)",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "computational physics",
+   "item": "Perfectly matched layer (PML) absorbing boundary condition",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "acoustics",
+   "item": "Closed-form 2-layer sound transmission solution (Officer 1958)",
+   "kind": "method",
+   "page": "7"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we present a methodology that simultaneously optimizes both the accuracy and the computational efficiency of the finite element method",
+   "page": "1"
+  },
+  {
+   "quote": "the optimized accuracy is persistent across all source-receiver offsets, a performance observably absent from other finite element matrices",
+   "page": "1"
+  },
+  {
+   "quote": "[...] do not only outperform the published 4.5 grid points per wavelength unit sampling of the high-order spectral element method",
+   "page": "8"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied; a related conference paper by the same authors (Ogunbo & Shin 2021, IMAGE proceedings) is cited and may be an earlier version of this work (inference). The ranges of propagation angle, azimuth and grid size over which the objective was minimized are not stated, so the dispersion figures (Figure 2) may partly score the scheme on its own optimization target (inference). The minimization method is inherited from Jo et al. (1996), on which Shin is a coauthor. Error thresholds are mixed: the rivals' grid points are reported at 1% error, the optimized scheme's at 0.45%. The SEM comparison uses a cited figure, not a head-to-head run, and the claim that the scheme returns 'higher resolution images than the SEM' has no SEM computation behind it. The SEG salt result is qualitative, with no reference solution or rival matrices. The 3.7x speed-up is an estimate from a bandwidth formula, not measured run time. The usefulness for multi-parameter (density, bulk modulus) inversion is asserted, not tested. No code is released. Sub-claim statuses: speed-up, an estimate from a formula with no stated uncertainty (none); SEM outperformance, an untested cross-study comparison (none); inversion utility (none).",
+ "disagreements": [
+  {
+   "target": "High-order spectral element method (Seriani & Priolo 1991)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Compares its own 4 grid points per wavelength at 0.45% error with the published SEM figure of 4.5 points, without running SEM.",
+   "page": "8",
+   "quote": "[...] do not only outperform the published 4.5 grid points per wavelength unit sampling of the high-order spectral element method"
+  },
+  {
+   "target": "Lumped, consistent and eclectic finite element matrices (Marfurt 1984)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Dispersion analysis and comparisons with analytic seismograms show these matrices disperse more, with errors growing with offset.",
+   "page": "8",
+   "quote": "This is not so for the lumped, consistent, and the eclectic matrices that trade-off accuracy for efficiency and vice versa."
+  },
+  {
+   "target": "Finite difference methods",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues that FE with optimized matrices allows simultaneous density and bulk-modulus sensitivity computation; no FD computation or inversion is performed.",
+   "page": "8",
+   "quote": "In comparison with the finite difference method, the optimized matrices offer accurate multi-parameterization inversion"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Finite element method",
+   "alternatives": "Finite difference method",
+   "reason": "FE allows simultaneous computation of sensitivity matrices for density and bulk modulus in multi-parameter inversion",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "Optimized low-order (tri-linear) element matrices on coarse grids",
+   "alternatives": "Fine grids; higher-order Taylor-series operators; high-order spectral element method",
+   "reason": "Fine grids are inefficient in 3D, higher-order operators corrupt results (Marfurt 1984), and SEM is inefficient (Seriani & Oliveira 2007)",
+   "effect_reported": "no",
+   "page": "1-2"
+  },
+  {
+   "node": "C",
+   "chosen": "Optimized matrices",
+   "alternatives": "Consistent, lumped and eclectic matrices",
+   "reason": "Least dispersion and anisotropy at 4 grid points per wavelength",
+   "effect_reported": "yes",
+   "page": "5-7"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "quantify the accuracy of the optimized matrices relative to the lumped, consistent and eclectic matrices presented in Marfurt (1984)",
+   "page": "2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Results from using the different matrices are compared with the analytical solution in Figure 3.",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The reductions in the dispersion error and increased resolution are maintained even as source-receiver offset increases.",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "this velocity model will facilitate the validation of the accuracy of the optimized matrices on reflected energy",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We note that although the optimized matrices maintain accuracy of the results [...]",
+   "page": "7"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The SEG salt velocity model is a highly faulted, and laterally extensive high velocity salt body",
+   "page": "7"
+  }
+ ]
+}

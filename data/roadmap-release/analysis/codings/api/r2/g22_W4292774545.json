@@ -1,0 +1,530 @@
+{
+ "key": "g22_W4292774545",
+ "doi": "10.1007/s11001-022-09492-y",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Warwel, Hübscher, Ahlrichs, Schnabel (2022), Marine Geophysical Research 43:35",
+  "Publisher XML full text converted with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "hypothesis",
+  "node": "H",
+  "evidence": "They suggested that this might also hold for bent-up structures not accompanied by visible valleys",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text locators)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose two aims: locate glacial tunnel valleys and estimate the magnitude of Cenozoic basin exhumation in the Bays of Kiel and Mecklenburg.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, we investigate the locations of glacial tunnel valleys and estimate the magnitude of the basin exhumation during the Cenozoic."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Two rival readings of the bent-up structures are taken from the authors' own earlier work: real structures beneath low-velocity infill (Al Hseinat and Hübscher) versus velocity pull-ups from high-velocity infill, possibly beneath unresolved valleys (Frahm et al.).",
+     "page": "§1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "They suggested that this might also hold for bent-up structures not accompanied by visible valleys"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compaction theory from the literature is adopted: velocity serves as a proxy for maximum burial, so exhumation predicts velocities higher than expected for the present depth.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "results in apparent overcompaction relative to the present depth of burial and thus, higher than expected velocities at this depth"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Nineteen long-offset (2700 m streamer) 2D profiles are selected from the BalTec MSM52 dataset collected by the authors' group, and the published stratigraphic framework of Ahlrichs et al. is used.",
+     "page": "§3.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we selected 19 seismic profiles covering the Bay of Kiel and Bay of Mecklenburg"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "A U-Net picker for first arrivals is built (Adam optimizer, batch normalization) and trained on 2301 manually picked shot gathers from one profile, and PSTomo_eq is modified to allow a changing inversion grid size.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we employ a ML algorithm that is inspired from and follows the general architecture of the U-Net from Ronneberger et al. (61)"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "The trained picker is applied to a held-out test subset of 400 manually labelled shot gathers and scored against the 4 ms manual picking accuracy.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is the case for over 91% of the picked travel-times."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Travel-time tomography is run on the ML picks for all profiles: 16 iterations, a common 1D starting model, grid refinement and regularization. The resulting velocity models have final RMS misfits of 3 to 5 ms.",
+     "page": "§3.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtain velocity models with final RMS errors varying between 3 ms and 5 ms"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checkerboard tests at two grid sizes (2100 × 80 m and 4000 × 120 m) are run on selected profiles to assess resolution. Models are judged well resolved in the upper ~200 m and less reliable below.",
+     "page": "§3.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We therefore assume the velocity models within the first approximately 200 m to be reliable and well resolved."
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Laterally confined positive velocity anomalies are identified in the shallow parts of almost all velocity models.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Almost all velocity models reveal laterally constraint positive velocity anomalies within the upper parts of the velocity models."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "The velocity models are superposed on the interpreted seismic images. The anomalies sit above bent-up structures, sometimes with and sometimes without visible valleys, and their amplitude scales with bent-up size (35 anomalies in total).",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All of these anomalies spatially correlate to observable bent-up structures in the seismic images (time domain) directly below the anomalies"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Linear V0-k velocity-depth relations are fitted by regression to per-CMP mean depth and velocity of the Upper Cretaceous unit, with the Bay of Kiel split into north and south.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we determine linear velocity-depth relations by using Eq. 1"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "theory",
+     "action": "The fitted trends are compared with Japsen's (2000) Chalk baseline trend for strata assumed not to have been uplifted. Velocities are 320 to 440 m/s higher than the baseline.",
+     "page": "§4.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All velocity-depth relations from this study considerably differ from the reference baseline trend."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The velocity anomalies and gradients are converted into burial depth anomalies (−385 ± 12, −480 ± 6, −475 ± 5 m). The errors are noted as covering only the regression.",
+     "page": "§4.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtain burial depth anomalies of approximately − 385 ± 12 m in the southern Bay of Kiel"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "The anomaly locations are compared with the previously published map of bent-up structures (Al Hseinat and Hübscher 2017), shown in Fig. 8.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the locations of observed positive velocity anomalies correlate closely to previously published bent-up structures"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "hypothesis",
+     "action": "Frahm et al.'s pull-up conclusion for bent-ups beneath visible valleys is re-derived with an independent method: automated refraction tomography instead of offset-dependent imaging.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study confirms the conclusion of Frahm et al. (15) by the application of the automated refraction-tomography"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "methods",
+     "action": "Anomalies that extend below valley bases are attributed to a tomography limitation (velocity inversion and regularization), and partial anomalies to complex valley infill. The auxiliaries are revised, not the pull-up claim.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Methodical restrictions in the refraction tomography cause the continuation of the velocity anomalies beyond the valley bases into greater depths"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "The prediction for bent-ups without visible valleys is tested: positive anomalies are found at about two thirds of these locations.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In about two thirds of the locations of bent-up structures without visible valleys above, we observed positive velocity anomalies"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "methods",
+     "action": "The missing anomalies at the remaining third are explained by deposits too thin for the tomography to resolve, since these bent-ups are smaller.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is likely that the thickness of the shallow high-velocity deposits is insufficient for the tomography to resolve velocity anomalies"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "The pull-up explanation is kept, including bent-ups beneath unresolved valleys, and bent-up structures plus positive velocity anomalies are adopted as an indicator of tunnel valleys.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We regard the combination of bent-up structures and positive velocity anomalies as an adequate indicator for glacial tunnel valleys"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "The indicator is extended to the Bay of Mecklenburg, where several tunnel valleys are inferred from anomalies above bent-up structures.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we assume that several glacial tunnel valleys exist in that area as well"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Overcompaction is kept as the reading of the burial anomalies: about 475 m of exhumation in Mecklenburg and 385 to 480 m in Kiel. Unquantified assumptions (linear trend, pore fluids, deep model uncertainty) are listed, so the values are treated as magnitude estimates.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we interpret the obtained burial depth anomalies as estimates of the general magnitude of the exhumation"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The estimates are compared with independent results: migration velocity analysis (Schnabel et al., 450 m), well-based chalk velocities (Japsen; Ørslev-1 483 m, Rødby-1 634 m) and Rasmussen (~600 m).",
+     "page": "§5.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] investigated exhumation during the Cenozoic at the northern margin of the NGB and adjacent areas have come to comparable estimations"
+    },
+    {
+     "n": 23,
+     "node": "R",
+     "mode": "estimation",
+     "action": "The estimate is refined into a spatial pattern: exhumation increases northward towards the basin margin, consistent with higher values farther north.",
+     "page": "§5.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this trend shows increased exhumation towards the basin margin, whereas the southward directed basin center is less affected"
+    },
+    {
+     "n": 24,
+     "node": "H",
+     "mode": "reconstruction",
+     "action": "Candidate timing events for the exhumation are taken from the literature: late Eocene–Oligocene inversion, Paleocene domal uplift and Neogene uplift phases.",
+     "page": "§5.2 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "From the literature, those exhumation events are known from other areas in Central Europe"
+    },
+    {
+     "n": 25,
+     "node": "X",
+     "mode": "reconstruction",
+     "action": "Late Eocene–Oligocene timing is excluded for the study area because contemporaneous E–W extension is observed there.",
+     "page": "§5.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is therefore unlikely that the estimated Cenozoic large-scale exhumation occurred during this time"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "reconstruction",
+     "action": "Following Rasmussen (2009), a significant Neogene share of the exhumation is kept, with a Paleocene contribution increasing southward. The authors state they cannot assign the exhumation to a specific event.",
+     "page": "§5.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we assume that a significant amount of the observed exhumation in our study area took place during the Neogene"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Bent-up structures beneath and without tunnel valleys; overcompacted Upper Cretaceous chalk",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; velocities inferred by ML-picked refraction tomography",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Locate tunnel valleys and estimate Cenozoic exhumation",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Real structures beneath low-velocity infill vs velocity pull-ups from high-velocity infill; timing rivals for exhumation",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Pull-ups imply shallow positive velocity anomalies above bent-ups (inferred; not stated as a formal prediction)",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing long-offset seismic profiles",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: held-out pick test, checkerboard tests, agreement with independent exhumation estimates; no sensitivity tests on starting model or baseline",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Pull-up explanation kept as best explanation; exhumation 385–480 m as magnitude estimate",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; not documented",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Previously observed bent-up structures in the southwestern Baltic Sea are velocity pull-up imaging artifacts caused by high-velocity infill of glacial tunnel valleys, including valleys too small to resolve seismically.",
+  "page": "§6 ¶2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the ML-picked refraction tomography velocity models, neither the shallow positive anomalies above bent-ups nor the Upper Cretaceous velocity-depth trends used for exhumation would exist.",
+  "page": "§3.3 ¶3"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Frahm et al.'s pull-up hypothesis directed the analysis of velocity anomalies above bent-ups (§1 ¶2, §4 ¶1), but the seismic data were acquired earlier for other purposes (§3.1 ¶1). The claim could have failed if no anomalies appeared above bent-ups without visible valleys; one third showed none, and this was absorbed by a resolution auxiliary (§5.1 ¶2). No analysis or threshold is said to have been fixed before the data were seen, apart from the 4 ms pick-accuracy criterion (§3.3 ¶2)."
+ },
+ "imports": [
+  {
+   "field": "computer science (biomedical image segmentation)",
+   "item": "U-Net convolutional network architecture (Ronneberger et al. 2015)",
+   "kind": "method",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "machine learning",
+   "item": "Adam stochastic optimizer (Kingma and Ba 2014)",
+   "kind": "method",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "machine learning",
+   "item": "Batch normalization",
+   "kind": "method",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "numerical linear algebra",
+   "item": "LSQR conjugate gradient solver (Paige and Saunders 1982)",
+   "kind": "method",
+   "page": "§3.2 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "provide new insights into the magnitude of the Cenozoic basin exhumation and the locations of glacial tunnel valleys",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "We provide strong indications that these misinterpretations of imaging artifacts are related to tunnel valleys",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "this method represents an efficient alternative to time-consuming velocity analysis and depth migration of seismic images",
+   "page": "§6 ¶2"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: Cenozoic exhumation of ~475 m (Mecklenburg) and 385–480 m (Kiel) is estimate_with_resolution, with errors from the regression only and larger actual uncertainty acknowledged (§4.2 ¶3, §5.2 ¶1). The ML picker plus tomography is capability_characterized (>91% of picks within 4 ms; ~200 m reliable depth) (§3.3 ¶2, ¶4). The predominantly Neogene timing is best_explanation (§5.2 ¶4). Tunnel valleys in the Bay of Mecklenburg are an extrapolation of the indicator without independent observation (§5.1 ¶2). Process gaps: the rival of low-velocity infill is never tested explicitly; its rejection is implied by the positive anomalies (inference). The missing anomalies at one third of the no-valley bent-ups are protected by a resolution auxiliary that is asserted, not tested with a synthetic. No sensitivity tests are reported for the starting velocity model, regularization, the choice of the Japsen baseline, or the linear trend form. Both rival readings (Al Hseinat and Hübscher; Frahm et al.) come from groups including coauthors, so they are coded inherited. The comparisons with Schnabel et al., Japsen and Rasmussen are coded as checks performed here because the comparison is made in this paper, although the compared results are cited (inference). Schnabel et al. probably used overlapping seismic data, so that check is coded as method, not replication (inference). No review file was supplied; the acknowledgements name reviewers Japsen and Rasmussen, whose results are the comparison targets, but what they requested is unknown.",
+ "disagreements": [
+  {
+   "target": "Al Hseinat and Hübscher (2014, 2017): bent-up structures as real structures with low-velocity gassy valley infill",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "Shallow positive velocity anomalies from refraction tomography sit above the mapped bent-up structures, which indicates high-velocity infill causing pull-ups.",
+   "page": "§0 ¶1",
+   "quote": "[...] velocities in the overburden and do not represent actual reflectors."
+  },
+  {
+   "target": "Rasmussen (2009), Japsen (1998) and the Rødby-1 well exhumation estimates",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The study's estimates are smaller; the authors attribute the difference to spatial distance from the study area.",
+   "page": "§5.2 ¶3",
+   "quote": "the results from Rasmussen (59), Japsen (35) and the Rødby-1 well are slightly larger"
+  },
+  {
+   "target": "Late Eocene–Oligocene inversion phase in Central Europe (Kley 2018) as a cause of exhumation",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Contemporaneous E–W extension observed in the study area (Ahlrichs et al. 2021) makes large-scale exhumation then unlikely there.",
+   "page": "§5.2 ¶4",
+   "quote": "it is therefore unlikely that the estimated Cenozoic large-scale exhumation occurred during this time"
+  },
+  {
+   "target": "Velocity analysis of multi-channel seismic reflection data in shallow water",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Refraction tomography is argued to avoid NMO-stretch and over-critical reflections; no direct comparison on the same profiles is shown.",
+   "page": "§5.1 ¶2",
+   "quote": "the method is not limited by physical constraints such as NMO-stretch or over-critical reflections"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Adam optimizer with batch normalization",
+   "alternatives": "optimization setup of Ronneberger et al. (2015)",
+   "reason": "more time efficient, easy to implement, little memory; batch normalization improves optimization and regularization",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Modified PSTomo_eq with inversion grid size changing during iterations",
+   "alternatives": "fixed inversion grid (original PSTomo_eq)",
+   "reason": "avoid stability issues and allow a small inversion grid size",
+   "effect_reported": "no",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "Stop training after 40 epochs",
+   "alternatives": "more training epochs",
+   "reason": "training and validation error start to diverge",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Identical depth-only starting velocity model for all profiles",
+   "alternatives": "profile-specific starting models (implied)",
+   "reason": "for simplicity; based on previous knowledge of the velocity structure",
+   "effect_reported": "no",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Regularization as a compromise between RMS misfit and smoothness",
+   "alternatives": "minimizing RMS error vs smoother models",
+   "reason": "find a compromise between minimizing the RMS error and calculating smooth velocity models",
+   "effect_reported": "no",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Split the Bay of Kiel into southern and northern parts",
+   "alternatives": "single Bay of Kiel trend",
+   "reason": "include possible north-south variations across the northern basin margin",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Linear velocity-depth relation",
+   "alternatives": "relations accounting for pore fluids, geothermal conditions or chemical processes",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Refraction travel-time tomography for velocities",
+   "alternatives": "migration velocity analysis, offset-depending seismic imaging, well information",
+   "reason": "not limited by NMO-stretch or over-critical reflections in shallow water; data-driven and time-efficient",
+   "effect_reported": "yes",
+   "page": "§1 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we apply the fully trained algorithm to the test subset to quantify the picking performance",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we perform checkerboard tests for selected profiles",
+   "page": "§3.3 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Similar results are obtained using a checkerboard grid of [...] .",
+   "page": "§3.3 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "this study confirms the conclusion of Frahm et al. (15) by the application of the automated refraction-tomography",
+   "page": "§5.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Schnabel et al. (64) derived burial depth anomalies from migration velocity analysis and estimated 450 m of Cenozoic exhumation for the Bay of Mecklenburg.",
+   "page": "§5.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "at the Rødby-1 and Ørslev-1 wells located north of the Bay of Mecklenburg was determined with 634 m and 483 m",
+   "page": "§5.2 ¶2"
+  }
+ ]
+}

@@ -1,0 +1,463 @@
+{
+ "key": "g22_W4281957237",
+ "doi": "10.1016/j.jhydrol.2022.127995",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Rodríguez-Murillo & Filella 2022, Journal of Hydrology 610, 127995 (11 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure and table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (Fig. N, Table N). The XML holds no body text, so body steps cite printed journal pages ('p. N', identical to PDF pages counted from 1). Figure-content steps cite the caption label with the PDF page in parentheses.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The role of hydrology on such loads and fluxes is clear, but the effect of temperature is difficult to investigate, particularly in big rivers.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (body) and publisher XML text (abstract, captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: separate the roles of discharge and temperature on silicate and carbonate weathering loads and fluxes in 20 Swiss catchments, and look for other drivers.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the present work we aim to understand the roles of discharge and temperature on the loads and weathering fluxes"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "Take the theoretical temperature and discharge dependences of carbonate and silicate dissolution from the literature and summarise them in the Supplementary Information.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "it is important to be acquainted with the theoretical processes of carbonate and silicate dissolution and their temperature and discharge dependences"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take long-term (1974–2015) two-weekly, discharge-weighted concentration, load, water temperature and discharge series for 20 stations from the NADUF monitoring programme.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "All data are taken from the NADUF (Swiss National River Monitoring and Survey Programme)"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Choose SA and Ca loads as proxies for silicate and carbonate weathering, ignore silicate-derived Ca, and compute carbonate Ca (Cacar) by subtracting sulphate from total Ca.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have chosen Ca and SA loads as representative of carbonate and silicate weathering, respectively."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the Cacar proxy against alkalinity, which correlates with Cacar + Mg (Fig. SI1).",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The perfect correlation of alkalinity with (Cacar + Mg) concentrations (Fig. SI1) confirms the validity of our approach."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the analysis: univariate and multiple linear regressions of loads and concentrations on discharge and temperature per station, with water temperature as a surrogate for basin temperature; cross-basin flux regressions on six candidate variables with at most three predictors, keeping the best R2; Seasonal Mann-Kendall trend tests.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Multiple linear regression, when the conditions for its application are met, can discriminate between the influences of discharge and temperature."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit load–discharge regressions per station; bi-weekly and annual loads increase with discharge, with high significance, at all stations (Fig. 2, Table SI1).",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Solute loads depend principally on discharge in all stations."
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit univariate regressions of annual loads on temperature for 19 stations; every significant relation is negative, for Cacar at ten stations and for SA at six (Fig. 3).",
+     "page": "p. 5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Cacar and SA annual loads decrease generally when temperature increases."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run regression diagnostics: collinearity (VIF < 5), Newey-West heteroskedasticity correction, Shapiro-Wilk residual normality, and transformations (T2, centred T, logarithms, interaction terms) for the bi-weekly series.",
+     "page": "p. 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Independent variables have been checked for colinearity calculating the variance inflation factor (VIF)."
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "Drop the bi-weekly series, whose residuals stay non-normal after the transformations, and restrict the multiple regressions to annual loads at the 15 stations with more than ten years of data.",
+     "page": "p. 5",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We thus decided to use the annual loads only, to eliminate this problem."
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate standardized coefficients of discharge and temperature in multiple regressions of annual loads (Table 4). Temperature is mostly non-significant or small. It is significantly positive for SA at five stations and for Cacar at one, and negative at a few stations.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Five stations present a significant positive effect on SA loads (TI, GE, ME, RR, VN) and one on Cacar loads (GL)."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the multiple regressions on discharge-normalized annual concentrations (Table SI2); they reproduce the load results for SA and show no significant temperature effect for Cacar.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "negative in MU and CH, as it was the case with loads."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare carbonate weathering intensities and SA fluxes with published values (Gaillardet et al. 2018; West et al. 2005; Hosein et al. 2004); they are typical, or within the range of alpine catchments.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "have been compared to published weathering data in other basins."
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit cross-basin multiple regressions of fluxes. SA flux is best explained by runoff, [SA] and impounded water E (R2 = 0.871). Cacar flux is best explained by temperature, E and runoff (R2 = 0.509).",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The best regression for SA fluxes is that with R, [SA] and E"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Test for temporal trends with Seasonal Mann-Kendall (Table 5); only SA at PS, CH and IM and Cacar at CH show significant decreases.",
+     "page": "p. 8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Very few significant temporal trends have been found in the data series considered"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the negative univariate load–temperature relations against the positive correlations of Gislason et al. (2009), and judge the two not directly comparable (basaltic basins, low temperatures).",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Their results, however, cannot be considered as directly comparable to ours because their basins were almost 100% basaltic"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Explain the gap between univariate and multiple regression results by the negative discharge–temperature relation at all stations (Fig. 4).",
+     "page": "Fig. 4 (p. 9)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "An explanation for the differences between univariate and multiple regression results can rely on the negative relationship of discharge and temperature in all stations"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that the larger temperature effects at stations below big lakes reflect SA perturbation in the lakes, and at CH a decrease of discharge and SA load over the period.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Perturbation of SA dynamics in large lakes is the cause for the other."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the within-basin claim: discharge dominates annual loads of SA and Cacar, and the temperature acceleration of dissolution is hidden by it.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The acceleration of silicate and carbonate dissolution as temperature increases is hidden by the effect of discharge."
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the positive temperature effect on Cacar fluxes (up to 12.4 °C) with the increasing limb of the theoretical 'banana' concentration–temperature relation (T < 15 °C).",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "thus agreeing with theoretical expectations."
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that impounded-water fraction E stands in for temperature in the SA flux regression, because high-temperature-effect stations lie below big lakes.",
+     "page": "p. 9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is probable that variables such as E substitute for the effect of temperature in the general regression of SA fluxes."
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the absence of load trends with the documented rise in water temperature (Zobrist et al. 2018) and read it as consistent with a small temperature effect.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The general significant increase of water temperature (Zobrist et al., 2018) is not mirrored by an increase of weathering in the basins"
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Conclude that the temperature influence, net of discharge, differs from the univariate one. It is positive at several basins for SA and mostly non-significant for Cacar. Runoff and lithology drive SA fluxes, temperature drives Cacar fluxes, and impounded water acts negatively on both.",
+     "page": "p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This ‘real’ influence of temperature is positive in several basins for SA and mostly non-significant for Cacar."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Dependence of riverine weathering-product loads on discharge and temperature",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "2",
+   "answer": "No; weathering read through SA and Cacar load proxies",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Separate temperature from discharge effects on loads and fluxes",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Discharge versus temperature as drivers; no formal rival hypotheses",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "5",
+   "answer": "Not stated; univariate and multiple regressions contrasted",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing NADUF series at 20 stations",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; repeated years and basins of contrasting characteristics",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; concentration regressions and diagnostics agree",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Discharge dominant; net temperature effect small, positive at some SA stations",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Across 15 to 20 Swiss alpine and perialpine basins (mean water temperatures about 5 to 12.4 °C), discharge dominates annual SA and Cacar loads. Net of discharge, temperature is positive at several basins for SA and mostly non-significant for Cacar, although the univariate relations are negative.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The multiple regressions of annual loads on discharge and temperature (Table 4) produce the 'real' temperature effect that reverses the univariate reading; without them the headline claim would not exist.",
+  "page": "p. 6"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data were pre-existing NADUF series (p. 2), so no hypothesis directed acquisition. The temperature coefficient could have come out significant, but no rival prediction was stated in advance. The best regressions were chosen afterwards by highest R2 among all one- to three-variable combinations (p. 5). The switch from bi-weekly to annual loads was made after the residuals were seen (p. 5)."
+ },
+ "imports": [
+  {
+   "field": "econometrics",
+   "item": "Newey-West heteroskedasticity and autocorrelation consistent covariance correction",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "behavioural statistics (Multivariate Behavioral Research)",
+   "item": "Green (1991) rule for the number of predictors per sample size",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics",
+   "item": "Shapiro-Wilk normality test and variance inflation factor",
+   "kind": "method",
+   "page": "p. 5"
+  },
+  {
+   "field": "statistics (environmental monitoring)",
+   "item": "Seasonal Mann-Kendall trend test (Gibbons and Coleman 2001)",
+   "kind": "method",
+   "page": "p. 5"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The XML text holds only the abstract and captions, so body steps cite printed pages and quotes are copied from the PDF text. The supplementary file (Tables SI1–SI2, Figs. SI1–SI4, theory summary) was not supplied, so the alkalinity check and the full univariate results are coded from main-text descriptions. No review file was supplied, so there is no review sequence.\n\nSub-claims at other statuses:\n- Cross-basin flux regressions (runoff, lithology, E; temperature for Cacar): regularity_in_range across 20 basins, with Cacar R2 = 0.509 and runoff non-significant.\n- Lake perturbation as the cause of positive SA temperature effects below big lakes, and E substituting for temperature: best_explanation, stated as 'probable', not tested.\n- Absence of trends at 18 of 20 stations: estimate, consistent with but not testing the small-effect claim.\n\nInference on process: the best-R2 selection over many predictor combinations and per-station significance testing at 15 stations raise multiple-comparison issues the paper does not address. Water temperature is used as a surrogate for basin temperature without a test. The paper states no explicit 'first' claims.",
+ "disagreements": [
+  {
+   "target": "Univariate load–temperature correlation analyses",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The univariate negative relations disappear or turn positive once discharge enters the regression, which the authors attribute to the negative discharge–temperature coupling (Fig. 4).",
+   "page": "p. 9",
+   "quote": "just evaluating univariate load-temperature correlations might give misleading information on the influence of temperature on loads"
+  },
+  {
+   "target": "Gislason et al. (2009)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Gislason found positive load–temperature correlations in Icelandic rivers; the authors find negative univariate relations and limit the comparison by lithology, temperature range and human influence.",
+   "page": "p. 8",
+   "quote": "Their results, however, cannot be considered as directly comparable to ours because their basins were almost 100% basaltic"
+  },
+  {
+   "target": "Hosein et al. (2004) 'Swiss Alps' SiO2 flux as cited in West et al. (2005)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The published value (9.91 t SiO2 km-2 yr-1) exceeds the authors' average; they attribute the gap to its two small glaciated crystalline catchments.",
+   "page": "p. 6",
+   "quote": "However, Hosein’s value is not directly comparable to ours as it corresponds to two small glaciated crystalline catchments."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Annual loads for the multiple regressions",
+   "alternatives": "Bi-weekly loads, with T2, centred T, log-transformed load and discharge, interaction terms (QT, QT2, TT2), untransformed loads and QB",
+   "reason": "Residuals of the bi-weekly series remained non-normal",
+   "effect_reported": "yes",
+   "page": "p. 5"
+  },
+  {
+   "node": "D",
+   "chosen": "Multiple linear regression on discharge and temperature",
+   "alternatives": "Univariate regression on temperature or on discharge",
+   "reason": "Discharge and temperature are coupled; univariate regression assumes independent, additive effects",
+   "effect_reported": "yes",
+   "page": "p. 9"
+  },
+  {
+   "node": "I",
+   "chosen": "Best regression by highest R2, at most three predictors",
+   "alternatives": "All other combinations of one, two and three of the six candidate variables",
+   "reason": "Highest R2; predictor limit following Green (1991)",
+   "effect_reported": "no",
+   "page": "p. 5"
+  },
+  {
+   "node": "D",
+   "chosen": "Water temperature as surrogate for basin temperature",
+   "alternatives": "Soil temperature",
+   "reason": "Soil temperature data are not available",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "D",
+   "chosen": "Carbonate Ca computed by subtracting sulphate from total Ca",
+   "alternatives": "Total Ca",
+   "reason": "A significant portion of Ca comes from calcium sulphates, especially at alpine stations",
+   "effect_reported": "no",
+   "page": "p. 2"
+  },
+  {
+   "node": "D",
+   "chosen": "15 stations with more than ten years of data for annual regressions; MF excluded from annual univariate regressions",
+   "alternatives": "All 20 stations",
+   "reason": "Too few years for two independent variables; MF has only three complete years",
+   "effect_reported": "no",
+   "page": "p. 5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The perfect correlation of alkalinity with (Cacar + Mg) concentrations (Fig. SI1) confirms the validity of our approach.",
+   "page": "p. 2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "VIF are always less than five, which ensures a tolerable collinearity",
+   "page": "p. 5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We also used the loads and the variable QB instead of their logarithms, but this does not eliminate the non-normality [...] .",
+   "page": "p. 5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "negative in MU and CH, as it was the case with loads.",
+   "page": "p. 6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "are typical of carbonated basins (Gaillardet et al., 2018).",
+   "page": "p. 6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "is not mirrored by an increase of weathering in the basins, in line with [...] .",
+   "page": "p. 10"
+  }
+ ]
+}

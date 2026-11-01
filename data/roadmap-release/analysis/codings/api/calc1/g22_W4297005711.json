@@ -1,0 +1,581 @@
+{
+ "key": "g22_W4297005711",
+ "doi": "10.1029/2021jf006439",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Armstrong et al. (2022), Declining basal motion dominates the long-term slowing of Athabasca Glacier, Canada, JGR Earth Surface 127, e2021JF006439 (published PDF, 22 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 22), which equal PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "little is known about how basal motion and its sensitivity to subglacial hydrology changes over long (>50 year) timescales",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Armstrong et al. 2022, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors name the gap in multidecadal basal-motion studies and pose the question of how basal motion changes over multidecadal timescales during geometric change.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we seek to provide long-term observational constraints on how basal motion changes over multidecadal timescales"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors assemble and digitize the 1959-1967 ice thickness, elevation, slope, surface-velocity and borehole basal-velocity data of Paterson (1962) and Raymond (1969), and transform them to UTM with a 29 m vertical datum shift.",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Our work utilizes data sets describing the geometry and flow of Athabasca Glacier in the 1950s and 1960s"
+    },
+    {
+     "n": 3,
+     "node": "V",
+     "mode": "observation",
+     "action": "The authors check the historical survey elevations and slopes against an independent 1966 photogrammetric (SfM) DEM, which needs the same datum offset.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "agrees well with the surface elevation and slope estimates of Paterson (1962)"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors run a ski-based 7 MHz radio echo sounding survey in March 2019, convert travel time to depth and hand-pick bed returns to map modern ice thickness.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We conducted a detailed ski-based radio echo sounding (RES) survey of Athabasca Glacier ice thickness between 4 and 7 March 2019."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "The authors characterize RES uncertainty: they vary the radar wave speed (167-171 x 10^6 m/s) and compare 340 radargram bed picks with waveform picks, finding a 1.74 m bias and ±7.9 m total uncertainty.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we randomly selected 20 radargram-derived bed picks for 17 different radar profiles"
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors measure modern surface velocity with seven on-glacier PPP GPS stations in 2020, Landsat 8 feature tracking (2018-2019) and RADARSAT-2 offset tracking (2011).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We maintained seven on-glacier GPS from March 11 to 21 July 2020"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "instruments",
+     "action": "The authors estimate satellite velocity uncertainty from apparent motion on stable ground, and bias-correct the satellite products (+7 and +3 m/a) to match springtime GPS.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We apply a bias correction to force agreement with the springtime GPS-derived velocities"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors tune the satellite velocities to different GPS time windows to bracket the unknown modern annual velocity (+3/-2 m/a).",
+     "page": "8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We tested the robustness of our results to uncertainty in the modern annual velocity by tuning the satellite-derived velocities to different timespans"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors fly an airborne LiDAR survey in August 2019 and derive a de-noised (LOWESS-smoothed) surface slope along the centerline from the gridded DEM.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we completed an airborne LiDAR survey of Athabasca Glacier on 28 August 2019"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors compute the local driving stress and longitudinally averaged driving stress with the Kamb and Echelmeyer (1986) coupling length.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We account for longitudinal stress gradient coupling using the method of Kamb and Echelmeyer (1986)"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors vary the longitudinal coupling length scale to test sensitivity of the results (reported in the supplement, Text S3/S4).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tested the sensitivity of our results to varying the coupling length scales"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The geometric Nye/Li shape factor in the shape-factor-modified SIA overestimates the borehole-observed deformation rates, so the authors tune a dynamically adjusted shape factor f = 0.46 to the borehole data.",
+     "page": "10",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We account for this discrepancy by tuning a “dynamically adjusted” shape factor f = 0.46"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "The authors bound deformation velocity by spanning the shape factor from fN to 0.75 fN and by testing alternative Glen-law rheology parameters (n, A), including Raymond's field values.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We assess the effect of uncertainty in ice rheology on our velocity modeling using a range of rate factors (A) and exponents (n)"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "observation",
+     "action": "The authors difference historical and modern profiles: about 60 m of thinning, about 0.9° of steepening, a small change in averaged driving stress and a fairly uniform 15 m/a slowing.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the terminal 3 km of Athabasca Glacier has thinned by 59.6 m (median) over 1959–2019"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "observation",
+     "action": "The authors check the surface-lowering estimates against point geophysical estimates of ice thickness change.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These surface lowering rates agree well with point estimates of ice thickness change from geophysics"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors estimate basal motion in both periods as the residual of observed surface velocity minus modeled deformation, and compute its change with high and low bounds.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The spatial distribution of basal motion, determined as the residual of the observed surface velocity and modeled deformation velocity"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "estimation",
+     "action": "The authors retain the attribution that declining basal motion explains most of the slowdown (46%-145% across the reach).",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is attributable to declining basal motion"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors compare the slowdown with Raymond's (1971) observed historical deformation rate: surface slowing exceeds twice the deformation, so basal motion must dominate even if deformation ceased.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "declining basal motion must dominate the glacier's long-term slowing, even if internal deformation has entirely ceased"
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Using a Weertman sliding law (m = 3), the authors estimate the change in slip coefficient (C2020/C1961 ≈ 0.25-0.6), meaning basal friction increased over most of the reach.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Basal friction increased over ∼90% of the study reach between the historical and modern data sets"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "theory",
+     "action": "For both periods the authors compute the hydraulic potential gradient over a range of fw (0.6-1) and reason from creep-closure theory what the geometry change implies for drainage efficiency.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Throughout the study reach, the hydraulic potential gradient has become more negative between 1966 and 2020"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors compare the 1957 ablation-season outflow of Sunwapta Lake (Mathews, 1964) with 2005-2018 gauge data and infer that meltwater discharge has increased.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this suggests that the water discharge from the glacier has increased considerably in the modern period"
+    },
+    {
+     "n": 22,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors hypothesize a switch from distributed to channelized drainage in the overdeepened middle reach, and propose that this reach slows the upper reach by stress-gradient coupling.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We hypothesize that the increase in basal “stickiness” in this region reflects a switch"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "The authors set the friction increase against Greenland and Alaska slowdown studies and Findelengletscher, and argue that geometric change amplifies hydrologic effects.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The apparent increase in basal friction throughout the majority of the study reach is consistent with earlier works"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "The authors keep, as a consistent explanation, an increase in basal friction driven by hydraulic gradient and thinning that raises drainage efficiency.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The decline in basal motion appears to be driven by an increase in basal friction associated with an increase in the hydraulic potential gradient"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Multidecadal thinning and slowing of Athabasca Glacier, established by differencing two epochs",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Surface velocity and geometry yes; modern basal motion not observed, so it is inferred as a residual",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Attribute the slowdown to basal motion versus internal deformation, and explain the change",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Declining deformation versus declining basal motion; for the mechanism, geometric versus meltwater-flux hydrologic change (treated as joint)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: deformation alone cannot account for slowing that exceeds twice the historical deformation rate",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: two survey epochs (1959-67 and 2019-20) on one glacier",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No repetition across glaciers or epochs beyond two snapshots",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, across shape factor, rheology, coupling length and modern-velocity tuning",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: declining basal motion dominates the slowdown; the hydrologic mechanism is a consistent explanation",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Declining basal motion accounts for most (91% on average, 46% at minimum) of the ~15 m/a (-45%) surface slowing of Athabasca Glacier over 1961-2020.",
+  "page": "18"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The borehole-calibrated, shape-factor-modified SIA, which gives deformation velocity and basal motion as a residual in both epochs, is what turns the observed slowdown into an attribution to basal motion.",
+  "page": "10"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The 2019-2020 field and remote-sensing campaign was directed by the question of how basal motion changed, not by a stated hypothesis (p. 2). The attribution could have failed: if slowing had not exceeded twice the historical deformation rate, or if bounds over shape factor and rheology had overlapped zero (pp. 13-14, 18). The hydrologic mechanism is argued as consistent, not tested. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "electrical engineering / radar physics",
+   "item": "7 MHz monopulse radio echo sounding system (Kentech transmitter, homebuilt receiver, National Instruments digitizer)",
+   "kind": "instrument",
+   "page": "6"
+  },
+  {
+   "field": "signal processing",
+   "item": "Seven-point Gaussian convolution smoothing of survey positions",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "statistics",
+   "item": "Outlier-resistant LOWESS smoothing of slope profiles",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "optics / surveying engineering",
+   "item": "Airborne full-waveform LiDAR scanner (Riegl Q-780) with Applanix inertial unit",
+   "kind": "instrument",
+   "page": "8"
+  },
+  {
+   "field": "materials science (ice rheology)",
+   "item": "Glen power-law flow law parameters n and A",
+   "kind": "concept",
+   "page": "10"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "unique historical borehole observations capable of constraining basal motion across an entire flow-transverse cross-section",
+   "page": "2"
+  },
+  {
+   "quote": "Athabasca Glacier presents a unique opportunity to assess long-term changes in the distribution of glacier basal motion",
+   "page": "4"
+  },
+  {
+   "quote": "Our work seeks to add to this body of literature and address these shortcomings.",
+   "page": "2"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: the hydrologic mechanism (higher hydraulic gradient, thinning and greater meltwater flux driving channelized drainage and higher friction) is best_explanation, never tested against a rival that could fail. The 1.6-4x friction increase is estimate_with_resolution, conditional on a Weertman law with m = 3. The upper-reach coupling explanation is a posited hypothesis (p. 16). Generalization to other glaciers is speculative (p. 14). The paper states these limits itself (pp. 17-18): no modern direct observation of basal motion; velocity windows under one year, open to aliasing by interannual variability; no subglacial water-pressure data; a modified SIA rather than full Stokes. The 1957 outflow comparison rests on one year. Composition is none_fits: a two-epoch repeat survey of one glacier with model-based attribution has no crucial test among rivals and no series of independent traces; trace_series is the nearest fit. Four reviewers and an associate editor are acknowledged as having strengthened the manuscript (p. 19), but no review file was supplied, so no review sequence is coded. Which robustness tests (for example the velocity-tuning or coupling-length tests) were added at review is unknown (inference).",
+ "disagreements": [
+  {
+   "target": "Positive-feedback hypotheses of melt-driven acceleration (Parizek & Alley, 2004; Zwally et al., 2002)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The authors observe long-term increasing basal friction and declining basal motion under warming, which implies a stabilizing rather than destabilizing feedback.",
+   "page": "16",
+   "quote": "it may provide a stabilizing mechanism to limit future glacier mass loss, in contrast to earlier hypotheses"
+  },
+  {
+   "target": "Large-scale glacier and ice-sheet models with time-invariant basal friction (e.g., Gillet-Chaulet et al., 2012; Larour et al., 2012)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The inferred slip coefficient changes by up to an order of magnitude over ~60 years, so a friction field tuned at one time may not apply at others.",
+   "page": "16",
+   "quote": "most glacier models implicitly or explicitly assume constant sensitivity of basal motion to external forcings"
+  },
+  {
+   "target": "Observational analyses using a fixed shape factor and friction coefficient (e.g., Dehecq et al., 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The borehole calibration shows the geometric shape factor overestimates deformation by ~25%, and the shape factor is sensitive to basal motion.",
+   "page": "17",
+   "quote": "Leaving the shape factor fixed in time does not account for its sensitivity to basal motion"
+  },
+  {
+   "target": "Hydrology-only attribution of glacier slowdown (Sole et al., 2013; Tedstone et al., 2015; Burgess et al., 2013; Truffer et al., [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The steepening-driven change in hydraulic potential gradient suggests geometric change adds to the hydrologic mechanism.",
+   "page": "16",
+   "quote": "long-term geometric change may amplify, rather than mitigate, these hydrologic effects"
+  },
+  {
+   "target": "Previous multidecadal basal-motion studies (Vincent & Moreau, 2016; Thomson & Copland, 2017; Satyabala, 2016)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The authors list shortcomings (no direct historical basal motion, short spans, polythermal ice, icefall setting, no hydrology) that their borehole-constrained ~60-year comparison addresses.",
+   "page": "2",
+   "quote": "While the aforementioned studies provide a strong foundation for understanding the multidecadal evolution of basal motion, a substantial knowledge gap remains."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Paterson's Period C velocities (Sept 1959-July 1960)",
+   "alternatives": "Other Paterson measurement periods",
+   "reason": "Low uncertainty, near-annual coverage without compositing, many stakes (n = 55)",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "O",
+   "chosen": "PPP GPS processing",
+   "alternatives": "PPK processing with a static base station (e.g., TRACK)",
+   "reason": "Similar accuracy, and possibly cleaner time series where valley walls block satellites",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "O",
+   "chosen": "Unmigrated RES bed picks",
+   "alternatives": "Migrated radar data",
+   "reason": "Only centerline thickness and a parabolic fit are used, and shape-factor robustness is already explored",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "O",
+   "chosen": "Landsat correlation chip of 24 pixels (360 m)",
+   "alternatives": "Smaller chip sizes",
+   "reason": "Smaller chips give less reliable velocities because of spurious correlations",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Surface velocities in the Kamb & Echelmeyer coupling equations",
+   "alternatives": "Column-integrated velocities (original formulation)",
+   "reason": "none given; sensitivity tested by varying l",
+   "effect_reported": "yes",
+   "page": "9"
+  },
+  {
+   "node": "I",
+   "chosen": "Range from geometric fN to dynamically adjusted f = 0.75 fN",
+   "alternatives": "Geometric shape factor alone; slip-induced shape factor computed explicitly",
+   "reason": "Geometric fN overestimates borehole deformation by 135%; tuned f agrees with the full-Stokes value of 0.44",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "I",
+   "chosen": "Standard rheology n = 3, A = 2.4e-24 Pa^-3 s^-1",
+   "alternatives": "Raymond's (1969) field-fit n = 3.6-4.2 and corresponding A",
+   "reason": "Gives a conservative (low) estimate of basal motion and its change",
+   "effect_reported": "yes",
+   "page": "11"
+  },
+  {
+   "node": "I",
+   "chosen": "Weertman-type sliding law ub = C<τd>^m with m = 3",
+   "alternatives": "Regularized Coulomb or water-pressure-dependent sliding laws (Helanow et al., 2021; Schoof, 2005)",
+   "reason": "Water-pressure distribution is unknown at Athabasca Glacier",
+   "effect_reported": "no",
+   "page": "14"
+  },
+  {
+   "node": "I",
+   "chosen": "Shape-factor-modified shallow ice approximation",
+   "alternatives": "Higher-order or full-Stokes model",
+   "reason": "Allows broad exploration of parameter space; supported by Adhikari & Marshall (2012)",
+   "effect_reported": "no",
+   "page": "18"
+  },
+  {
+   "node": "S",
+   "chosen": "fw range 0.6-1 (fw = 0.8 shown)",
+   "alternatives": "Single assumed flotation fraction",
+   "reason": "Subglacial water often near overburden in overdeepenings; the range captures seasonal pressure variation",
+   "effect_reported": "yes",
+   "page": "15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "agrees well with the surface elevation and slope estimates of Paterson (1962)",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We assess potential error due to wave speed uncertainty by computing bed return depths using wave speeds ranging from 167 to 171",
+   "page": "6"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We assess the additional uncertainty associated with digitizing radargrams rather than individual waveforms by comparing bed picks made using each method.",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We estimate the uncertainty of these data sets by examining the distribution of apparent displacement on stable ground",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We tested the robustness of our results to uncertainty in the modern annual velocity by tuning the satellite-derived velocities to different timespans",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We tested the sensitivity of our results to varying the coupling length scales",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we use the range of deformation velocities produced by varying f from its geometrically predicted value",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We assess the effect of uncertainty in ice rheology on our velocity modeling using a range of rate factors (A) and exponents (n)",
+   "page": "10"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "This value is very close to the f = 0.44 value Adhikari and Marshall (2012",
+   "page": "10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "These surface lowering rates agree well with point estimates of ice thickness change from geophysics",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "declining basal motion must dominate the glacier's long-term slowing, even if internal deformation has entirely ceased",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The effect of varying fw is shown by the filled area [...] .",
+   "page": "15"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "a shape factor-modified SIA captured 98% of the effect of lateral stresses simulated in a full Stokes flow model",
+   "page": "18"
+  }
+ ]
+}

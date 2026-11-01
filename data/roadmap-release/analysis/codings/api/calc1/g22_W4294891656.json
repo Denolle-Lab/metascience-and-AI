@@ -1,0 +1,460 @@
+{
+ "key": "g22_W4294891656",
+ "doi": "10.1029/2022gl099580",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Deng & Levander (2022), Autocorrelation R2 on Mars, Geophysical Research Letters 49, e2022GL099580 (published PDF, 9 pages; Supporting Information not supplied)"
+ ],
+ "pages_convention": "printed journal pages (article pages 'n of 9'); Supporting Information figures cited by figure number on the main-text page that reports them",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "suggests the potential for a similar analysis for InSight seismic data",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Deng & Levander 2022, GRL, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take from other groups the single-station low-frequency autocorrelation method that recovers Earth-orbiting Rayleigh waves (R2), and its proposed transfer to InSight data.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This was subsequently extended to extract the Earth orbiting Rayleigh waves from a single-station-based autocorrelation"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Obtain InSight SEIS continuous data (Feb 2019 to Mar 2021) from IRIS and remove glitches with SEISglitch, then deconvolve the response, filter, rotate to Z-N-E and cut into 584 daily segments.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we applied the open-source Python package SEISglitch (Scholz et al., 2020) to detect and remove the quasi-periodic glitches in the raw SEIS data"
+    },
+    {
+     "n": 3,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test that glitch removal mitigates glitches without introducing artifacts (Figures S2 and S3).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We performed tests to determine that the glitch removal method can mitigate the effects of glitches without introducing additional artifacts"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Recompute and stack the autocorrelations with 12-hr epochs instead of 1-day epochs to check the phase identification (Figure S4).",
+     "page": "2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We also computed and stacked the autocorrelations using 12-hr epochs"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute daily vertical-component autocorrelograms (0.005-0.01 Hz) after temporal and spectral normalization, select epochs with RMSR_S (508 of 584 kept), and stack linearly and with tf-PWS (power 2).",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The daily autocorrelograms were computed by the inverse Fourier transform of the power spectra of the vertical-component ambient noise signals"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the RMSR_S signal and noise windows (Figure S5) and the tf-PWS exponent (Figure S6); the window tests give almost identical results.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "shows tests of different signal and noise window selections in RMSR_S"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run a synthetic test of the ability of tf-PWS to enhance coherent signals (Figure S7).",
+     "page": "3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "a synthetic test designed to demonstrate the efficiency of tf-PWS to enhance coherent signals"
+    },
+    {
+     "n": 8,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Identify a signal at about 6,000 s lag, interpreted as R2, in both linear and tf-PWS stacks; it is clearer with RMSR_S (Figure 1).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A signal that we interpret as the Mars orbiting Rayleigh wave R2 is prominent at ∼6,000 s"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Run bootstrap stacks on subsets of the data to test the robustness of the R2 identification (Figure S8).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Bootstrap calculations using a subset of the whole data set further suggest the R2 phase identification is robust"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measure R2 group velocities between 115 and 200 s by FTAN on the RMSR_S plus tf-PWS stack (Figures 2b and S9).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we applied FTAN (Bensen et al., 2007; Levshin et al., 1992) to calculate the group velocities between 115 and 200 s"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute synthetic group dispersion curves for the Stähler et al. (2021) suite of 1-D models, from mean-3σ to mean+3σ.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We calculated synthetic group velocity dispersion curves for a set of velocity models (Figure 2a)"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the FTAN group velocities with the model predictions; the observations match the mean-3σ model.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The FTAN-measured group velocities are compatible with the velocity model 3 standard deviations lower than the mean velocity"
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute DSM synthetic Green's functions over the range of radii allowed by ellipticity, then convolve them with a source wavelet taken from the autocorrelation near zero lag to make synthetic R2 seismograms for each model.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we simulated and then calculated a weighted mean of the synthetic Green's functions for a range of radii between the polar and equatorial radius"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Check that the ellipticity-weighted synthetic is almost identical to the mean-radius synthetic (Figure S10).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The mean synthetic was almost identical to the synthetic Green's functions using the mean Martian radius"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Cross-correlate the observed R2 with each synthetic; time lags are positive down to mean-2σ and change sign at mean-3σ, so the upper mantle is slower than the mean model.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The time lags are positive for velocity models from 3 standard deviations above the mean to 2 standard deviations lower than the mean velocity"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Run a Monte Carlo inversion from the mean-3σ model over 40-700 km depth (range set by sensitivity kernels): 10 random perturbations per iteration, keep the best fit, stop after 3 iterations when the misfit rises.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For each iteration, we randomly perturbed the starting velocity model 10 times and calculated the DSM"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the final-model synthetic with the observed R2; the correlation coefficient rises from 0.831 to 0.914 and the time shift falls by a factor of 5 (Figure 3f).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "increases the correlation coefficients and reduces the absolute correlation time shifts between the observed and synthetic R2 waveforms by a factor of 5"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check that the final model fits independent body-wave traveltime picks made with different picking methods (Figures S14 and S15).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our final model can fit the body wave traveltime picks derived using different picking methods"
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Describe the revised S-wave model: faster than the starting model below 200 km, slower above 200 km, with an LVZ to about 400 km.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the S-wave velocity has been increased compared to the starting model at depths >200 km and is reduced at depths <200 km"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the about-400 km S-wave LVZ against the cited marsquake S-shadow zone, the Khan et al. (2021) geophysical inversion, and the Xu et al. (2021) laboratory velocities, and find them consistent.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "consistent with the S-body wave shadow zone observed in the Marsquake data"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Retain the R2-fitted upper mantle model, with an S-wave LVZ to about 400 km and velocities slower than the Stähler et al. mean model.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The S-wave LVZ extends to a depth of ∼400 km in the Martian upper [...]"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: an R2 arrival at about 6,000 s in the stacked InSight autocorrelations",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "No: mantle velocity is inferred by fitting synthetics to R2",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Constrain the 1-D Martian upper mantle velocity (40-700 km)",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "A suite of Stähler et al. (2021) 1-D models, mean-3σ to mean+3σ",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: synthetic dispersion curves and R2 time lags differ across the models",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: the ambient noise field at one station; nothing set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "R2 identification survives epoch length, RMSR_S windows, tf-PWS exponent, stacking method, bootstrap and ellipticity; the final model fits independent body-wave picks",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Upper mantle slower than the mean model; S-wave LVZ to about 400 km",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable: no review file supplied (acknowledgments name an editor and reviewers)",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "R2 waves recovered by InSight autocorrelation yield a Martian upper mantle model slower than the Stähler et al. (2021) mean, with an S-wave low-velocity zone extending to about 400 km depth.",
+  "page": "6"
+ },
+ "decisive_move": {
+  "node": "E",
+  "mode": "exploration",
+  "sentence": "Without identifying the R2 arrival at about 6,000 s in the stacked single-station autocorrelations, there is no waveform to compare with synthetics or to invert.",
+  "page": "3"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are the mission's continuous record, not collected to test a hypothesis. The model comparison could have failed: time lags change sign across the suite, and the final model is checked against independent body-wave picks (p. 5). The LVZ result itself is only checked for consistency with cited studies. Processing parameters (G = 1.02, tf-PWS power 2 'empirically', windows) were chosen without pre-registration (p. 3)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Bootstrap resampling of the daily autocorrelations to test the robustness of the R2 identification",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "statistics / computational physics",
+   "item": "Monte Carlo random-perturbation search for the velocity model",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "The Supporting Information (Figures S1-S15, Text S2, Table S1) was not supplied, so the checks reported there are coded from the main text's description only. The Monte Carlo search is small (10 models per iteration, 3 iterations) and reports no posterior or uncertainty, so 'estimate_with_resolution' is generous: resolution is implied only by sensitivity kernels (Figure S12) and uncertainty is not quantified. Non-uniqueness of the single-path R2 fit is not discussed. The inversion is 1-D and uses a single station. Sub-claims: R2 is recoverable from InSight noise autocorrelation (capability_characterized, supported by robustness tests); the upper mantle is slower than the Stähler et al. mean (best_explanation among the model suite); LVZ consistency with the shadow zone and laboratory data (best_explanation, from cited work). The glitch-origin critique of the authors' earlier PcP observation is deferred to another manuscript. Inference: the paper went through review (an editor and two reviewers are acknowledged), but what review changed cannot be seen.",
+ "disagreements": [
+  {
+   "target": "Stähler et al. (2021) mean Martian velocity model",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Group velocities and R2 waveform time lags fit the mean-3σ model and not the mean; a Monte Carlo refinement improves the fit further.",
+   "page": "6",
+   "quote": "the upper mantle shear velocity structure is slower than the mean model derived from the joint inversion of multiple geophysical datasets"
+  },
+  {
+   "target": "Barkaoui et al. (2021) and Kim et al. (2021): the authors' earlier PcP observation may arise from glitches",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "No evidence is given in this paper; the authors say they comment in another manuscript, and here they apply glitch removal with artifact tests.",
+   "page": "1",
+   "quote": "some researchers have suggested that the observation of the PcP phase (Deng & Levander, 2020) may originate from the quasi periodic seismic glitches"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "tf-PWS stack with RMSR_S selection",
+   "alternatives": "linear stacking; stacking without RMSR_S",
+   "reason": "shows the most prominent R2 signal",
+   "effect_reported": "yes",
+   "page": "3-4"
+  },
+  {
+   "node": "O",
+   "chosen": "tf-PWS power 2",
+   "alternatives": "other tf-PWS exponents (Figure S6)",
+   "reason": "a common selection for Earth data analysis",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "signal window 5,600-6,400 s, noise window 4,800-5,500 s, G = 1.02",
+   "alternatives": "other signal and noise window selections (Figure S5)",
+   "reason": "none given; the tests give almost identical results",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "1-day epochs",
+   "alternatives": "12-hr epochs",
+   "reason": "none given; 12-hr epochs used to demonstrate robustness",
+   "effect_reported": "yes",
+   "page": "2"
+  },
+  {
+   "node": "S",
+   "chosen": "ellipticity-weighted mean of synthetics over polar-to-equatorial radii",
+   "alternatives": "single mean Martian radius",
+   "reason": "travel distance varies with ellipticity",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "mean-3σ Stähler et al. model as starting model",
+   "alternatives": "other models in the Stähler et al. suite (mean+3σ to mean-2σ)",
+   "reason": "best fit to the observed R2",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "I",
+   "chosen": "three Monte Carlo iterations",
+   "alternatives": "further iterations",
+   "reason": "misfit increased upon further perturbation",
+   "effect_reported": "yes",
+   "page": "4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We performed tests to determine that the glitch removal method can mitigate the effects of glitches without introducing additional artifacts",
+   "page": "2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We also computed and stacked the autocorrelations using 12-hr epochs",
+   "page": "2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "shows tests of different signal and noise window selections in RMSR_S",
+   "page": "3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Figure S6 in Supporting Information S1 shows tests for different exponents in the tf-PWS",
+   "page": "3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "a synthetic test designed to demonstrate the efficiency of tf-PWS to enhance coherent signals",
+   "page": "3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "with both linear (Figures 1a and 1b) and tf-PWS stacking (Figures 1c and 1d)",
+   "page": "3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Bootstrap calculations using a subset of the whole data set further suggest the R2 phase identification is robust",
+   "page": "3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The mean synthetic was almost identical to the synthetic Green's functions using the mean Martian radius",
+   "page": "3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "our final model can fit the body wave traveltime picks derived using different picking methods",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "providing independent evidence to support the presence of an S-wave LVZ within the Martian lithosphere",
+   "page": "5"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "has been predicted from laboratory measurement of seismic velocity for several representative Martian upper mantle compositions",
+   "page": "5"
+  }
+ ]
+}

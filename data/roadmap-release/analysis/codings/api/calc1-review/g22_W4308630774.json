@@ -1,0 +1,559 @@
+{
+ "key": "g22_W4308630774",
+ "doi": "10.5194/tc-16-4637-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Rohmer et al. 2022, The Cryosphere 16, 4637-4657 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)",
+  "Open discussion of egusphere-2022-435: RC1, AC1 (with supplement), RC2, AC2 (with supplement)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page counted from 1; review record cited by its own locators ([ID ¶n], [ID-S p.n])",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "As the primary objective of this work is to evaluate the relevance of the “SHAP” approach, we focus on a subset of the original GrIS [...]",
+  "page": "§2 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: process-based multi-model sea-level projections need to be interpretable for coastal adaptation, so the authors ask why the models give particular results.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "improving their interpretability is of high interest"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose adopting SHAP local attribution from machine learning, combined with cross-validation of an ML proxy and dependence-aware techniques, to decompose ensemble members' projections into contributions of modelling assumptions.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose a SHAP-based procedure combined with a cross-validation procedure"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Extract 55 MIROC5 RCP8.5-forced Greenland ice-sheet experiments from the ISMIP6 ensemble of Goelzer et al. (2020), giving the time evolution of sea-level contributions relative to 2015.",
+     "page": "§2 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "a total of 55 numerical experiments were extracted to analyse the time evolution of sea-level changes with respect to 2015"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Define nine inputs (the modelling assumptions shared by all models) and group sparse categories so that each category has at least two experiments, as cross-validation requires.",
+     "page": "§2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The analysis is focused on nine main modelling assumptions related to different aspects of the modelling chain"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Characterize the experimental design from input histograms: it is unbalanced and incomplete, for example with gaps in κ.",
+     "page": "§2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 2 shows that the design of experiments is unbalanced"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the four-step procedure: ML proxies (LIN, RF, XGB), leave-one-out selection by MRAE+RAE, kernel SHAP with CTREE conditioning for dependent mixed-type inputs, and aggregation at three levels with error thresholds (AE, MAE, RAEn).",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we replace f by a machine-learning-based proxy (named the ML model) built using the MME results"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit CTREE models with each input in turn as response (Bonferroni-adjusted, 95% threshold) to estimate the dependence structure among the inputs.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "all inputs are statistically dependent with the exception of κ for which the tree model is empty"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Train 40 ML proxies (9 RF, 30 XGB, 1 LIN over hyperparameter grids) to predict sea-level contribution at each time.",
+     "page": "§4.2 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we train a series of ML models to predict sl across time"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the premise that the ML proxy can replace the ensemble chain by leave-one-out cross-validation, tracking MRAE over time.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To assess the predictive capability of the considered ML models at each time instant, we apply a leave-one-out cross-validation approach"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "methods",
+     "action": "Global performance did not ensure accurate predictions for extreme members, so the authors refine model selection per member by jointly minimising global and local error.",
+     "page": "§4.2 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we apply the filtering approach (described in Sect. 3.2) based on the joint minimisation of the global and of the local performance indicators"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the post-selection proxy error with the target: MRAE averages below 10% over time, with a maximum below 15% in 2040.",
+     "page": "§4.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the MRAE criterion (shown in blue in Fig. 5a) reaches values below 10 % on average over time"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute Level 1 SHAP decompositions of selected 2100 predictions (six cases) relative to the base value of 10.8 cm, greying contributions below the absolute prediction error.",
+     "page": "§4.3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 6 provides the SHAP-based decomposition of the ML-based prediction"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare the attribution for the largest member with physical expectation: the largest absolute κ (strong glacier retreat) contributes +4.89 cm.",
+     "page": "§4.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 6a confirms the physically expected result regarding κ influence"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Level 2 dependence plots for 2100 against ±MAE: κ influence declines quasi-linearly (about -8 cm per unit); grid-size influence is low below 5 km (minimum) and 16 km (maximum) and larger for coarser grids; ice-flow and B bed dataset matter most among categorical choices.",
+     "page": "§4.3.2 ¶2; Figure 7 (p. 13); Figure 8 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A clear trend can be noticed: κ influence decreases with increasing value in a quasi-linear manner"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Level 3: normalized absolute SHAP values over 2020-2100 against RAEn quartiles. Initialisation type dominates early and initial year later; κ matters after 2030/2040; the grid-size effect is time-invariant; numerics, SMB and bed are negligible.",
+     "page": "§4.3.3 ¶2; Figure 9 (p. 15)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "it is the initialisation type that has the largest impact in the medium term (before 2050/2060)"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the aggregated findings as guidance for ensemble protocols: resolution matters, influence varies with time, numerics and bed matter little, and further experiments are recommended in sparse ranges.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results confirm the need for simulations that are sufficiently spatially resolved"
+    },
+    {
+     "n": 17,
+     "node": "X",
+     "mode": "methods",
+     "action": "Exclude linear regression and ANOVA as the analysis route, citing the non-linearity found in Sect. 4.2 and the incomplete design (a full factorial would need 3200 runs).",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "applying more commonly used statistical methods, namely the linear regression model or the ANOVA-based approach, would hardly be feasible"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Re-run ML fitting, selection and SHAP for the largest 2100 member (Case a) nine times, each time removing one input variable, to test sensitivity to variable selection.",
+     "page": "§5 ¶6; Figure 10 (p. 15)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted a robustness analysis by re-running the local attribution approach (and ML model fitting and selection)"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the κ contribution as robust. Initial SMB and bed contributions stay consistent but more variable; contributions below the error threshold are not robust.",
+     "page": "§5 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "confirms the high robustness of the large κ contribution (regardless of the selection of the input variables)"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion egusphere-2022-435: RC1, AC1 and supplement, RC2, AC2 and supplement",
+   "steps": [
+    {
+     "n": 1,
+     "node": "D",
+     "mode": "methods",
+     "action": "RC1 called the input selection ad hoc (only six factors), so the authors re-ran the analysis adding maximum grid size, initial year and bed topography dataset, giving nine inputs.",
+     "page": "AC1-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "the analysis has been re-conducted with these 3 new variables (maximum grid size, initial year and type of bed topography dataset)"
+    },
+    {
+     "n": 2,
+     "node": "V",
+     "mode": "methods",
+     "action": "To include unbalanced categorical inputs, the authors replaced 10-fold cross-validation with leave-one-out cross-validation.",
+     "page": "AC1-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "we propose to rely on a leave-one-out cross validation procedure instead of a 10-fold one"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "methods",
+     "action": "RC1 suggested adding model identity as a factor to capture hidden differences; the authors declined because some ModelID categories occur once and cannot be cross-validated.",
+     "page": "AC1-S p.5",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "we chose not to implement this option"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "robustness",
+     "action": "RC1 asked for a leave-one-factor-out test of sensitivity to factor choice; the authors added the robustness analysis for Case (a) (new Figure 10).",
+     "page": "AC1-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We have implemented this option and we now use the results to support the discussion"
+    },
+    {
+     "n": 5,
+     "node": "R",
+     "mode": "methods",
+     "action": "RC1 found per-member model selection confusing; the authors revised it to jointly minimise global MRAE and local RAE, which lowered the prediction error for Case (a).",
+     "page": "AC1-S p.8",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The best performing ML model is now selected with respect to two performance indicators"
+    },
+    {
+     "n": 6,
+     "node": "R",
+     "mode": "methods",
+     "action": "RC1 found the quality metrics confusing; the authors removed Q² and assigned AE, MAE, MRAE, RAE and RAEn to specific analysis levels.",
+     "page": "AC1-S p.9",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Q² was thus removed from the analysis."
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "simulation",
+     "action": "RC1 asked why AOGCM choice was excluded; the authors explained the methodological aim and limited RCP2.6 runs and added only a future-work statement.",
+     "page": "AC1-S p.10",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "our primary objective is the test the feasibility of our approach for a given MME study"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Following RC1, the authors greyed out Figure 6 contributions below the absolute prediction error, making the error threshold explicit in the Level 1 diagnostics.",
+     "page": "AC1-S p.12",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Figure 6 (and the caption) has been modified in alignment with this suggestion"
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Both referees judged the smoothing fits in Fig. 7 to overfit sparse parameter regions; the authors removed them and redefined the grid-size result as a zone of low influence, adding a recommendation for runs at 3-4 km.",
+     "page": "AC1-S p.14; AC2-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We agree that the smoothing regression in Fig. 7b may add some confusion and we have removed it."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "RC1 asked to quantify how far input dependence is alleviated; the authors relied on prior SHAP-CTREE studies and deferred the question.",
+     "page": "AC1-S p.14",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We believe that this open question deserves a more extensive analysis that is beyond our scope here."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "RC2 asked whether the negative contribution at low |κ| depends on the forcing scenario; the authors did not test another scenario, citing too few RCP2.6 runs.",
+     "page": "AC2-S p.3",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "the validity of this hypothesis can hardly be explored"
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "synthesis",
+     "action": "Both referees asked for clearer implications for model development; the authors expanded the Discussion into user-specific lessons and narratives.",
+     "page": "AC1-S p.2; AC2-S p.4",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "The discussion section (Sect. 5) has further been expanded to better highlight the lessons drawn from our analysis"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Inter-model differences in GrIS sea-level projections attributable to modelling choices",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; contributions are latent, inferred via an ML proxy and Shapley values",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate SHAP for attributing ensemble projections to modelling assumptions",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations; only alternative methods (OAT, ANOVA, linear regression)",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions; one physical expectation for κ is checked",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Found: pre-existing ISMIP6 ensemble, design not set by the authors",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: leave-one-out proxy validation; variable-removal robustness for one member only",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method shown useful; contributions estimated relative to proxy error",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Yes, after adding variables, revised selection, robustness test, removed smoothing",
+   "mode_called": "robustness"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A SHAP-based procedure (ML proxy validated by leave-one-out cross-validation, CTREE-conditioned Shapley values) can quantify, in sea-level units and relative to proxy error, the influence of modelling assumptions on individual members and on aggregated time-varying sensitivity of the Greenland MME.",
+  "page": "§6 ¶1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the procedure (an ML surrogate selected by cross-validation plus dependence-aware kernel SHAP) is what produces every attribution; without it no claim about individual modelling choices exists.",
+  "page": "§3.1 ¶3"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the ensemble pre-existed (Goelzer et al. 2020) and was selected only for having enough runs to validate the method (§2 ¶3). Claim: the proxy faced leave-one-out tests it could fail (§4.2 ¶1-3), and its first selection rule was revised after local mismatches (§4.2 ¶2). Contributions below the error threshold are flagged, and one member was tested for robustness to variable selection (§5 ¶6). The attributions themselves are not tested against the true model or against rivals. Registration: error thresholds come from the same cross-validation; nothing is stated as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "machine learning (explainable AI)",
+   "item": "SHAP local attribution (Lundberg and Lee 2017), kernel SHAP via R package shapr",
+   "kind": "method",
+   "page": "§1 ¶4"
+  },
+  {
+   "field": "cooperative game theory",
+   "item": "Shapley value (Shapley 1953)",
+   "kind": "concept",
+   "page": "§1 ¶5"
+  },
+  {
+   "field": "machine learning",
+   "item": "random forest and extreme gradient boosting regression (ranger, xgboost)",
+   "kind": "method",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "field": "statistics",
+   "item": "conditional inference trees (CTREE, Hothorn et al. 2006) for dependence-aware Shapley values (Redelmeier et al. 2020)",
+   "kind": "method",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "field": "statistical learning",
+   "item": "leave-one-out cross-validation (Hastie et al. 2009)",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This study should however be seen as a first assessment of the potential of the SHAP-based approach",
+   "page": "§6 ¶2"
+  }
+ ],
+ "limits": "Entry could also be coded `problem` (interpretability is framed first, §1 ¶2). `capability` was chosen because the stated primary objective is to evaluate SHAP (§2 ¶3). For the same reason `capability_first` fits only loosely: the question precedes the capability and no phenomenon is established by repetition. `none_fits` is a defensible alternative.\n\nSub-claims and their statuses: the κ quasi-linear trend (about -8 cm per unit, §4.3.2 ¶2) is a regularity_in_range, limited to sampled κ with gaps between -0.97 and -0.37. The resolution zones (<5 km minimum, <16 km maximum), the time-dependent dominance of initialisation, initial year and κ, and the negligible numerics and bed effects (§4.3.3) are estimate_with_resolution, conditional on proxy error. All are for one AOGCM and scenario (MIROC5 RCP8.5, 55 runs) only. The κ attribution for Case (a) is consistent with physical expectation, but this is a single comparison, not a test.\n\nThe attributions are relative to the ensemble mean, not to observations; RC1 ¶2 raised this. They are never checked against the true model function. Robustness to variable selection is shown for one member only. Hidden factors (model identity) are not tested.\n\nThe leave-one-out cross-validation is coded as `replication` because the codebook lists held-out data there. Coding it as `control` (held-out true values as reference) is an equally plausible reading (inference).\n\nThe review record shows that the discussion version used six inputs, 10-fold cross-validation, Q² and smoothing fits. The authors state that contributions changed but the conclusions did not (AC1-S p.4); the earlier results are not shown in the paper.\n\nText slips: in §4.3.1 Case (f) is named twice, apparently for Case (e). §4.3.3 ¶4 cites 'Fig. 6h' where Fig. 9i is meant (inference). The paper reports no seeds, timing, or failed model configurations beyond the selection rule.",
+ "disagreements": [
+  {
+   "target": "one-factor-at-a-time local attribution (example: Edwards et al., 2021)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Cites Štrumbelj and Kononenko (2014) on dependence on base case, variation magnitude and non-linearity; no direct comparison is performed.",
+   "page": "§1 ¶4",
+   "quote": "Though simple and efficient, this approach presents several shortcomings"
+  },
+  {
+   "target": "ANOVA-based variance decomposition and linear regression for MME uncertainty partitioning",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Non-linearity shown by the poorer LIN cross-validation results (Sect. 4.2) and an incomplete, unbalanced design (55 runs versus 3200 for full factorial).",
+   "page": "§5 ¶4",
+   "quote": "applying more commonly used statistical methods, namely the linear regression model or the ANOVA-based approach, would hardly be feasible"
+  },
+  {
+   "target": "standard kernel SHAP assuming independent inputs (Lundberg and Lee 2017; per Aas et al., 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Input dependence is shown by CTREE (Sect. 4.1), and the problem is cited from Aas et al. (2021); the effect is not quantified here.",
+   "page": "§3.4 ¶1",
+   "quote": "the interpretation of the SHAP decomposition provided by the kernel SHAP method might give wrong answers (Aas et al., 2021)"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "R",
+   "chosen": "per-member selection of the ML model minimising MRAE + RAE(i)",
+   "alternatives": "single model chosen on global MRAE; LIN, RF and XGB families over hyperparameter grids; future super-learner or model class reliance",
+   "reason": "global performance does not ensure accurate local predictions, especially for extreme sl values",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "leave-one-out cross-validation",
+   "alternatives": "independent test set",
+   "reason": "In the absence of such an independent dataset",
+   "effect_reported": "no",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "SHAP (Lundberg and Lee 2017)",
+   "alternatives": "other local attribution methods (Molnar et al., 2020); one-factor-at-a-time",
+   "reason": "strong theoretical basis and multiple use in application areas",
+   "effect_reported": "no",
+   "page": "§3.1 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "kernel SHAP with CTREE conditioning (Redelmeier et al., 2020)",
+   "alternatives": "kernel SHAP under input independence",
+   "reason": "dependence among inputs cannot be neglected",
+   "effect_reported": "no",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "significance-test splitting (Hothorn et al., 2006)",
+   "alternatives": "splitting by information measure such as Gini",
+   "reason": "avoid selection bias towards covariates with many possible splits or missing values",
+   "effect_reported": "no",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "MIROC5 RCP8.5 subset (55 runs)",
+   "alternatives": "full GrIS MME across AOGCMs and scenarios",
+   "reason": "a sufficient number of MME results are available to validate our approach",
+   "effect_reported": "no",
+   "page": "§2 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "nine modelling assumptions shared by all models",
+   "alternatives": "velocity type, surface/thickness, geothermal heat flux (Table A1, bold)",
+   "reason": "not commonly shared across the different models",
+   "effect_reported": "no",
+   "page": "§2 ¶4"
+  },
+  {
+   "node": "X",
+   "chosen": "tree-based regression (RF, XGB) with SHAP",
+   "alternatives": "linear regression model; ANOVA",
+   "reason": "non-linear relationship and incomplete, unbalanced design",
+   "effect_reported": "yes",
+   "page": "§5 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "To assess the predictive capability of the considered ML models at each time instant, we apply a leave-one-out cross-validation approach",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "contributions falling within this range (outlined by the dashed horizontal red lines in Fig. 7) indicate that they cannot be distinguished from the predictive error",
+   "page": "§4.3.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "at each iteration, with one of the nine input variables being removed in turn",
+   "page": "§5 ¶6"
+  }
+ ]
+}

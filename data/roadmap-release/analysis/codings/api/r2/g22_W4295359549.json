@@ -1,0 +1,484 @@
+{
+ "key": "g22_W4295359549",
+ "doi": "10.1029/2022ef002776",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Su et al. 2022, Earth's Future 10, e2022EF002776, published PDF (19 pages); Supporting Information not supplied"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The future water availability of the region, and even today's runoff regime, however, are both hotly debated and inadequately quantified.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Su et al. 2022, Earth's Future, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of the present runoff regime and the future annual, seasonal and extreme flows of four meltwater-dominated western Third Pole basins. The authors cite divergent prior estimates and the lack of extreme-flow studies in the Aral Sea and Tarim basins.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The future water availability of the region, and even today's runoff regime, however, are both hotly debated and inadequately quantified."
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design the study: quantify the present regime with VIC-glacier, then project 21st-century flows in four basins with a 22-GCM ensemble under RCP4.5 and RCP8.5.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, the ensemble of monthly precipitation and temperature projections from 22 GCMs"
+    },
+    {
+     "n": 3,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Adopt corrected 10 km gridded precipitation and temperature for UYK, USD and UAD. These data were generated in the group's earlier work (Kan et al. 2018; Huang et al. 2022) from gauges, gradients, AWS and corrected reanalysis.",
+     "page": "5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we used daily gridded precipitation and temperature data at 10 × 10 km grids from recently generated and well constrained gridded data"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Correct MERRA-2 precipitation for the upper Indus by inverse modeling, using observed runoff, glacier area and glacier mass change as multiple criteria.",
+     "page": "5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "In the UI, the daily gridded precipitation for 1980–2015 were generated through corrections of the reanalysis data of MERRA-2"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Validate the generated climate data against independent precipitation gauges, and by inverse hydrological modeling against discharge, snow cover fraction and glacier change. Details are in SI Figures S1–S8.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The generated climate data was extensively validated through: (a) comparing independent precipitation gauges with the corresponding grids"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Use the VIC land-surface model coupled with a degree-day glacier melt scheme and volume-area scaling (VIC-glacier). The model was developed and applied in the group's earlier work.",
+     "page": "5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The improved VIC (termed as VIC-glacier) has been successfully used in the upstream basin of major rivers in the Tibetan Plateau"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate in two steps to limit equifinality. Glacier degree-day parameters are constrained by glacier area and mass change; then binf and d2 are calibrated and validated against observed streamflow (NSE, Er, CC).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The model calibration and validation were conducted using a two-step approach to overcome equifinality problems."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the model's simulated snow cover fraction against MODIS-estimated snow cover fraction (SI Figure S8).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We further evaluated the VIC-glacier model simulations by comparing the VIC-simulated Snow Cover Fraction (SCF) and the Moderate Resolution Imaging Spectroradiometer (MODIS)-estimated SCF"
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set the future forcing: 22 CMIP5 GCMs are bias-corrected and downscaled with BCSD (quantile mapping, local scaling, temporal disaggregation), giving 44 daily transient scenarios for 2006–2099.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The raw monthly GCM outputs for 2006–2099 were downscaled and bias corrected to transient daily temperature and precipitation timeseries"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "Define the extreme-flow indices. Floods: annual maximum daily discharge fitted to Pearson III by L-moments, at 10-, 50- and 100-year return periods. Droughts: maximum consecutive drought days and pooled deficit volume below a daily 80th-percentile threshold.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used annual maximum consecutive drought days (CDD) and annual total pooled deficit volume (PDV)"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate the present-day runoff composition (rainfall, snowmelt, glacier runoff) and seasonality in each basin from the constrained model.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the USD (glacier coverage of 0.9%), seasonal snowmelt (41%) and rainfall (49%) dominate the flow regime"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the upper Indus glacier contribution (22%) with earlier estimates of 40–48% (APHRODITE forcing) and 5.1–11.5% (ERA reanalysis forcing), and attribute the differences to the precipitation input.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This is less than previous model estimates of 40%–48%"
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Project annual total runoff and its components through the 21st century for each basin under both RCPs from the 22-member ensemble.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the first half of the 21st century, mean annual total runoff increases in all basins under both RCPs"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Project seasonal flow shifts: earlier snowmelt peak and drier summers in USD, little change in UAD, and summer increases in UI and UYK.",
+     "page": "9",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "In the USD, we project increasing spring runoff"
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Project changes in flood magnitudes at the three return periods and in drought duration and deficit for each basin and RCP.",
+     "page": "11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the 2070–2099 daily maximum under RCP8.5, for example, is projected to increase by 67%"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the projected increase in upper Indus high flows with Lutz et al. (2016) and Wijngaard et al. (2017): the direction agrees, the magnitude does not.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The general increase in high flows in the UI are in line with previous studies"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test sensitivity of runoff composition to precipitation input and to the ice degree-day factor in UI and UYK (SI Figure S22a–d).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the glacier runoff contribution tends to increase with the decrease of precipitation"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the projected glacier runoff with Rounce, Hock and Shean (2020) and Wortmann et al. (2022). They agree, except in the UI under RCP8.5.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our projected evolution of glacier runoff is generally in line with Rounce, Hock, and Shean (2020) in the UYK, USD, and UAD"
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the VIC parameters binf and d2 over their ranges, and assess the GCM spread. Patterns of seasonal shifts and extremes are reported as consistent among GCMs.",
+     "page": "13",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "basin-wide patterns and trends of seasonal shifts and extreme flows are generally consistent among the GCMs"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Infer from the group's earlier CMIP6 evaluation (Li et al. 2021) that the projected extremes would be more severe under CMIP6 scenarios. No CMIP6 runs are performed.",
+     "page": "14",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "our projected summer drought and wet and dry extremes under RCP4.5 and RCP8.5 here, are expected to become even more severe"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the claim that the four basins face contrasting water futures dictated by their hydroclimatic regimes, with Syr Darya the most threatened.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our analysis illustrates contrasting patterns of hydrological response to projected climate changes in the 21st century across the four basins"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Runoff regime and its future change in four western Third Pole basins",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; glacier, snow and rain contributions are latent and inferred through a calibrated model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Project annual, seasonal and extreme flows to 2099",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rival hypotheses; only divergent prior estimates",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in the model: 22 GCMs by 2 RCPs, downscaled forcing",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Sensitivity to precipitation, DDF, VIC parameters and GCM spread; patterns reported consistent",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: contrasting water futures across basins",
+   "mode_called": "simulation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Under RCP4.5 and RCP8.5 the four basins diverge. Upper Indus and Yarkant water supply rises with glacier melt and precipitation, while Syr Darya faces lower summer flows (−16 to −30%) and stronger floods and droughts; ranges are given as ensemble spread.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The claim exists only because the calibrated VIC-glacier model was driven by 44 downscaled, bias-corrected GCM scenarios to produce transient daily runoff projections for each basin.",
+  "page": "7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No hypothesis directed data acquisition; the data are existing gauges, reanalysis, glacier inventories and GCM output. The historical model faced validation against independent gauges, streamflow, MODIS snow cover and glacier change, which it could have failed (pp. 5-6). The 21st-century projections cannot be tested against outcomes. Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "L-moment fitting of the Pearson Type III distribution for return-period floods (Hosking 1990)",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "statistics",
+   "item": "Quantile-mapping bias correction within BCSD downscaling",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "demography",
+   "item": "UN World Population Prospects projections for Central Asia",
+   "kind": "data",
+   "page": "14"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This work is first to systematically assess the transient flow evolution at annual, seasonal, and daily (both wet and dry discharge extremes) scales",
+   "page": "4"
+  },
+  {
+   "quote": "The following novel components are expected to advance our understanding of present and future hydrological process",
+   "page": "4"
+  },
+  {
+   "quote": "Here, we close this knowledge gap",
+   "page": "3"
+  }
+ ],
+ "limits": "The Supporting Information (Texts S1-S2, Figures S1-S22, Tables S1-S11) was not supplied. Calibration and validation scores, the split between calibration and validation periods, and the sensitivity figures are therefore not seen; the checks are coded from main-text descriptions. No review file was supplied, so there is no review sequence.\n\nComposition is none_fits. This is a scenario-projection study with no stated rivals and no crucial test. The four basins serve as contrasting cases, not as repetitions of one regularity. The projections are not frozen and scored against later observations, so the walk is not forecast_verification.\n\nThe headline status estimate_with_resolution rests on the ensemble ±1 SD and the GCM ranges. Sub-claims:\n- The present-day flow composition (e.g. UI glacier contribution 22%) is estimate_with_resolution, conditioned on the corrected precipitation.\n- The CMIP6 statement (more severe extremes expected) has status none: it is an expectation inherited from Li et al. 2021, not computed here.\n\nTwo limitations are acknowledged: debris-covered glaciers are omitted, and the glacier scheme is simpler than the rest of the model. Inference: the UI precipitation was corrected with runoff and glacier data that were also used for calibration, so the climate-data validation and the model calibration are partly not independent.",
+ "disagreements": [
+  {
+   "target": "Lutz et al. (2014); Zhang et al. (2013) upper Indus glacier contribution of 40–48%",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The new estimate of 22% uses bias-corrected precipitation; the earlier estimates used APHRODITE precipitation, later found to be underestimated.",
+   "page": "8",
+   "quote": "This is less than previous model estimates of 40%–48% (Lutz et al., 2014; Zhang et al., 2013)"
+  },
+  {
+   "target": "Khanal et al. (2021); Wijngaard et al. (2017) upper Indus glacier contribution of 5.1–11.5%",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The higher estimate is attributed to those studies' reanalysis precipitation inputs; prior work found ERA5 overestimates precipitation.",
+   "page": "8",
+   "quote": "[...] than the model estimates of 5.1%–11.5% using the ERA-interim or ERA5 reanalysis precipitation"
+  },
+  {
+   "target": "Recent TP modeling studies that use reanalysis precipitation directly or treat it as a calibrated parameter (Khanal et al. 2021; [...]",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Known uncertainties in reanalysis precipitation leave the results uncertain; the paper uses gauge-constrained, validated precipitation instead.",
+   "page": "2",
+   "quote": "the known uncertainties in the reanalysis precipitation leave the modeling results or real precipitation distribution in the study regions highly uncertain"
+  },
+  {
+   "target": "Regional or global glacier assessments (Huss & Hock 2018; Pritchard 2019; Rounce et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Those assessments consider only glacier water yields; the paper models runoff from non-glacierized areas as well.",
+   "page": "2",
+   "quote": "tend to only consider water yields from glaciers, with runoff processes in non-glacierized areas either omitted or greatly simplified"
+  },
+  {
+   "target": "Lutz et al. (2016); Wijngaard et al. (2017) projected upper Indus high flows",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The direction of the increase agrees; the magnitudes differ, which the paper attributes to different scenarios and approaches.",
+   "page": "12",
+   "quote": "[...] in magnitude exist due to the different climate scenarios and approaches used"
+  },
+  {
+   "target": "Rounce, Hock, and Shean (2020) glacier runoff projections for the upper Indus under RCP8.5",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The projections agree in the other basins and for the UI under RCP4.5 only; this implies a difference for the UI under RCP8.5, which is not explained.",
+   "page": "13",
+   "quote": "generally in line with Rounce, Hock, and Shean (2020) in the UYK, USD, and UAD (UI only for [...] )"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Gauge- or criteria-corrected gridded precipitation (Kan 2018; Huang 2022; inverse-modeled MERRA-2)",
+   "alternatives": "APHRODITE gauge-based data; ERA-interim/ERA5 reanalysis used directly; reanalysis precipitation treated as a calibrated parameter",
+   "reason": "Reanalysis and gauge products are poorly representative at high elevation and need correction",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "Calibrate only binf and d2",
+   "alternatives": "Baseflow parameters Ds, Ws, Dsmax and first soil depth d1",
+   "reason": "Baseflow parameters are generally less sensitive; d1 is usually set to 5–10 cm",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "Ensemble of 22 GCMs",
+   "alternatives": "Single GCMs or a GCM selection",
+   "reason": "The multi-model ensemble mean agrees better with observations than any single model",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Degree-day glacier melt scheme",
+   "alternatives": "Physically based energy-balance glacier models (e.g. Hock & Holmgren 2005)",
+   "reason": "None given explicitly; energy-balance models are expected to do better as more data become available",
+   "effect_reported": "no",
+   "page": "13"
+  },
+  {
+   "node": "F",
+   "chosen": "CMIP5 RCP4.5 and RCP8.5",
+   "alternatives": "CMIP6 SSP2-4.5 and SSP5-8.5",
+   "reason": "CMIP6 improvements are marginal in this region and its biases persist",
+   "effect_reported": "yes",
+   "page": "14"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "comparing independent precipitation gauges with the corresponding grids",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "inverse hydrological modeling against the discharge, snow cover fraction, and glacier area/mass change observations in the study basins",
+   "page": "5"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the VIC related parameters were calibrated and validated to observed streamflow",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "comparing the VIC-simulated Snow Cover Fraction (SCF) and the Moderate Resolution Imaging Spectroradiometer (MODIS)-estimated SCF",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "40% decreases in precipitation resulting in 15% and 29% increases in the glacier runoff contribution in the UI and UYK",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Sensitivity tests show that the absolute changes are about 1.3%–3.2% in average annual glacier runoff",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The changes of model relative error (Er) are within 8% when the infiltration parameter binf varies from 0.05 to 0.4",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "basin-wide patterns and trends of seasonal shifts and extreme flows are generally consistent among the GCMs",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Our projected evolution of glacier runoff is generally in line with Rounce, Hock, and Shean (2020)",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The general increase in high flows in the UI are in line with previous studies (Lutz et al., 2016; Wijngaard et al., 2017)",
+   "page": "12"
+  }
+ ]
+}

@@ -1,0 +1,428 @@
+{
+ "key": "g22_W4226044217",
+ "doi": "10.1785/0220220037",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Huot et al., Detection and characterization of microseismic events from fiber-optic DAS data using deep learning, arXiv:2203.07217v1 (PDF, 27 pages), supplied as the published paper"
+ ],
+ "pages_convention": "PDF pages counted from 1 (they coincide with the page numbers printed on the arXiv preprint)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, the accurate detection of microseismic signals in continuous DAS data is challenging and time-consuming.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "arXiv:2203.07217v1 PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem of automatically detecting microseismic events in large, noisy continuous DAS records, where thresholding and template matching are unsuitable.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "DAS data are generally unsuitable for thresholding-based detection methods because individual DAS channels are noisier than conventional borehole instruments"
+    },
+    {
+     "n": 2,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Take from other groups' work that CNN detectors trained on synthetic events underperformed human labeling and surface catalogs, and used small datasets.",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Both methods were found relatively successful but underperformed when compared to human labeling"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Use DAS strain-rate data recorded in 2015 along a horizontal well during zipper-fracturing of two offset wells (58 stages); the setup is described in the authors' earlier papers.",
+     "page": "6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The acquisition setup and reservoir properties are summarized in Lellouch et al. (2019, 2020b)."
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the detector: manually pick 6,786 events over two stages plus an equal number of inspected noise windows; median-subtract, band-pass, decimate, clip and normalize; split the windows 8:1:1 by time; define modular VGG-type and ResNet-type CNNs controlled by hyperparameters.",
+     "page": "5, 7-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We create a unique curated catalog of 6,786 manually-selected microseismic events and choose an equal number of random noise examples."
+    },
+    {
+     "n": 5,
+     "node": "R",
+     "mode": "methods",
+     "action": "Tune architecture and training hyperparameters jointly by Bayesian optimization (GPyOpt) on the evaluation loss, selecting a small five-block VGG-type network; deeper networks overfit.",
+     "page": "13-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As shown in Figure 4, our best-performing model is a VGG-type model with five convolutional blocks."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the tuning against a random-search baseline over 90 experiments, and retrain and re-evaluate the selected model five times to report mean and standard error.",
+     "page": "13, 15 (Figure 5, Table 2)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To validate the convergence of our hyperparameter tuning, we compare it to a random search of the hyperparameter space"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Score the trained model on the held-out benchmark test set (accuracy, AUC, precision, recall).",
+     "page": "15 (Table 2)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our trained machine learning model achieves 98.6% accuracy on our benchmark test dataset, with a precision of 99.92% and a recall of 97.58%"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run the model with a sliding window over the continuous data of a manually labeled stage and compare it with the manual catalog; precision is lower than on the test set.",
+     "page": "15-16 (Figure 6, Table 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As we examine the metrics over continuous data for this stage (Table 3), we see that it achieves lower precision than for the test dataset."
+    },
+    {
+     "n": 9,
+     "node": "P",
+     "mode": "observation",
+     "action": "Treat the apparent false positives as weak events missed in the manual catalog, revising the reference labels rather than the detector.",
+     "page": "16 (Table 3 footnote)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "[...] an indicator of false positives, but close analysis reveals them as actual events"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Confirm the flagged weak events with an independent 2-D continuous wavelet transform analysis that shows coherent guided-wave energy.",
+     "page": "16-17 (Figure 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A 2-D continuous wavelet transform (CWT) workflow, as described by Huot et al. (2019), shows coherent energy confirming these as actual microseismic events"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "Apply the detector to ten stimulation stages (20 hours), producing more than 100,000 detections.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We run the detections over ten different stages, which represent 20 hours of continuous data."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Judge generalization to unlabeled stages at other positions along the well by whether detected event density ramps up and decays as expected within each stage.",
+     "page": "18-19 (Figures 8, 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] the event density pattern well and shows the ramping up and slowing down that we expect during each stage."
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "theory",
+     "action": "Adopt the authors' earlier result that guided waves arise only for sources inside or near the low-velocity reservoir and travel horizontally, which constrains event location from a single fiber.",
+     "page": "18-20",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Huff et al. (2020) showed that, for microseismic events, guided waves are generated only if the source is located inside or close"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Locate the detected events from apex position and guided-wave dispersion (Lellouch et al. 2022 method), discarding unlocatable events, and map fracture growth directions.",
+     "page": "20-21 (Figure 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We apply this location methodology to the 115,270 detected events."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check that the inferred fracture growth direction repeats consistently across stages in both offset wells.",
+     "page": "20 (Figure 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The fracture growth direction is consistent across stages and non-perpendicular to the wells"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the growth direction with the authors' earlier perforation-shot analysis, which shows different behavior for each offset well.",
+     "page": "20",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Further confirmation of this fracture growth direction is provided by the analysis of the perforation shots’ arrivals"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the automated CNN workflow detects DAS microseismicity more accurately and efficiently than manual picking and generalizes across stages.",
+     "page": "21-22",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We detect microseismic events recorded over DAS fiber with accuracy and efficiency much greater than that could be achieved through manual detection."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Microseismic events recorded by a downhole DAS fiber during hydraulic stimulation",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: many events are faint, near noise level, and need a detector",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "An automated, accurate detector for continuous DAS data",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only rival methods (thresholding, template matching, synthetic-trained CNNs)",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: live stimulation stages recorded continuously",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: many stages repeat the stimulation; ten are processed",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Held-out test, five retrainings, random-search baseline, CWT check, ten unlabeled stages",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Detector capability kept and characterized by classification metrics",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A Bayesian-optimized small CNN trained on a curated field catalog detects microseismic events in continuous DAS data with about 98.6% benchmark accuracy, finds weak events missed by manual labeling, and scales to over 100,000 detections across ten stages.",
+  "page": "2, 15, 21-22"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the curated field catalog of about 6,800 events and noise windows, together with the modular CNN pipeline, is what makes the detector and every later result possible.",
+  "page": "5, 7-12"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "The data were acquired in 2015 for stimulation monitoring, not directed by a hypothesis (p. 6). The held-out test set, split by time before evaluation (p. 9), could have shown poor performance. On continuous data the lower precision was resolved by reclassifying false positives as missed events, with a CWT check (p. 16), so that test partly protected the claim. No hypothesis or threshold was fixed in advance; only the data split was."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Convolutional neural networks (VGG and ResNet designs from the ImageNet Challenge)",
+   "kind": "method",
+   "page": "10-11"
+  },
+  {
+   "field": "machine learning / statistics",
+   "item": "Bayesian optimization with Gaussian processes (Snoek et al. 2012; GPyOpt library)",
+   "kind": "method",
+   "page": "13"
+  },
+  {
+   "field": "machine learning",
+   "item": "TensorFlow, Adam optimizer, batch normalization, dropout, ReLU and Leaky ReLU",
+   "kind": "method",
+   "page": "12-13"
+  },
+  {
+   "field": "photonics / optical engineering",
+   "item": "Fiber-optic distributed acoustic sensing with an OTDR interrogator (Silixa iDAS)",
+   "kind": "instrument",
+   "page": "6"
+  },
+  {
+   "field": "signal processing",
+   "item": "2-D continuous wavelet transform",
+   "kind": "method",
+   "page": "16-18"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We create a unique curated catalog of 6,786 manually-selected microseismic events",
+   "page": "5"
+  },
+  {
+   "quote": "they do not offer the type of modular architecture exploration we present here",
+   "page": "5"
+  },
+  {
+   "quote": "This dataset is an order of magnitude larger than previous DAS-based microseismic datasets",
+   "page": "22"
+  },
+  {
+   "quote": "yields overall better results than other microseismic detections up to date",
+   "page": "21"
+  },
+  {
+   "quote": "even detects low-amplitude events missed during manual labeling",
+   "page": "2"
+  }
+ ],
+ "limits": "The supplied document is the arXiv preprint (v1), not the typeset journal version; no review file was supplied, so there is no review sequence. Reported numbers are mixed: the headline 98.6% accuracy sits between the best model (98.68%) and the five-retraining mean (98.59%), and the 99.92% precision is the best-model value, not the mean (99.33%). The continuous-data validation (p. 15) uses one of the two stages that supplied the training, evaluation and test windows, so it is not independent data. The missed-event reinterpretation is shown for two examples (Figure 7) plus a statement of 'hundreds'; the precision is not recomputed after relabeling. Generalization to ten stages is judged only qualitatively, from event-density shape, with no labels. The claim of better results than other DAS detectors (p. 21) rests on no comparison on common data. Sub-claim: fracture growth directions and stress orientation from event locations (p. 20) are best_explanation, with no location uncertainties reported; the location method and the perforation-shot confirmation are inherited from the authors' companion papers. Composition: capability_first is the closest fit for this method paper, but the walk enters from a named problem and never reaches a rival or hypothesis (inference). The data are proprietary (p. 23); only the code is shared.",
+ "disagreements": [
+  {
+   "target": "Stork et al. (2020) and Binder and Chakraborty (2019): CNN detectors trained on synthetic DAS microseismic events",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors train on a large manually labeled field catalog instead, arguing that dispersive guided waves are hard to synthesize, and report higher benchmark accuracy; they do not compare the methods on common data.",
+   "page": "4-5, 21-22",
+   "quote": "These studies were also limited to relatively small datasets containing hundreds of events at most."
+  },
+  {
+   "target": "Thresholding-based, channel-by-channel and trace-by-trace detection methods",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Individual DAS channels are noisy and many events are as weak as the noise (Figure 2), so the authors use 2-D spatio-temporal CNN detection instead.",
+   "page": "4, 8, 21",
+   "quote": "Conventional signal processing approaches, such as trace-by-trace analysis, do not work well for DAS data"
+  },
+  {
+   "target": "Manual picking as the reference catalog",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Detections counted as false positives against the manual catalog are shown by CWT analysis to be real weak events, so the catalog-based metrics understate the model's performance.",
+   "page": "16",
+   "quote": "the metrics on the continuous data are not entirely representative of the network’s performance as it picks uncatalogued weak events correctly"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Manually labeled field-data training set",
+   "alternatives": "Synthetic training events from forward modeling (as in Stork et al. 2020; Binder and Chakraborty 2019)",
+   "reason": "Dispersive guided waves in this dataset are difficult to replicate synthetically without expensive 3-D wave-equation modeling",
+   "effect_reported": "no",
+   "page": "5, 22"
+  },
+  {
+   "node": "N",
+   "chosen": "2-D CNN classification of spatio-temporal windows",
+   "alternatives": "Thresholding-based detection; template matching",
+   "reason": "Channels are too noisy for thresholding; events vary in location, focal mechanism and propagation, so templates fail",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "R",
+   "chosen": "Bayesian optimization of hyperparameters",
+   "alternatives": "Grid search; random search",
+   "reason": "Grid search suffers from the curse of dimensionality; random search ignores information from earlier experiments",
+   "effect_reported": "yes",
+   "page": "12-13"
+  },
+  {
+   "node": "R",
+   "chosen": "Small five-block VGG-type network",
+   "alternatives": "ResNet-type modular networks; deeper networks",
+   "reason": "Best evaluation loss; deeper networks tended to overfit",
+   "effect_reported": "yes",
+   "page": "13-15"
+  },
+  {
+   "node": "N",
+   "chosen": "CNN as the detector",
+   "alternatives": "CWT decomposition as feature space with learned thresholds",
+   "reason": "Shared weights and pooling make CNNs more memory-efficient than CWT, which has a 5-D output",
+   "effect_reported": "no",
+   "page": "18"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "To validate the convergence of our hyperparameter tuning, we compare it to a random search of the hyperparameter space",
+   "page": "13"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "Mean and standard error for each of the metrics obtained by re-training and re-evaluating the model five times.",
+   "page": "15 (Table 2)"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Our trained machine learning model achieves 98.6% accuracy on our benchmark test dataset",
+   "page": "15"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We validate our model’s performance over continuous data by running it over one of the manually-labeled stages.",
+   "page": "15"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "A 2-D continuous wavelet transform (CWT) workflow, as described by Huot et al. (2019), shows coherent energy confirming these as actual microseismic events",
+   "page": "16"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "[...] good generalization performance from training on two stages to scaling to multiple stages",
+   "page": "18"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The fracture growth direction is consistent across stages and non-perpendicular to the wells",
+   "page": "20"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Further confirmation of this fracture growth direction is provided by the analysis of the perforation shots’ arrivals",
+   "page": "20"
+  }
+ ]
+}

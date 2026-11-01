@@ -1,0 +1,346 @@
+{
+ "key": "g22_W4310253034",
+ "doi": "10.1016/j.acags.2022.100106",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper, Applied Computing and Geosciences 16 (2022) 100106 (PDF, 10 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure and table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML holds the text (abstract §0 ¶1 and caption labels such as Fig. 3, Table 3). The XML text has no body sections, so body text is cited by printed journal pages (identical to PDF pages counted from 1). Steps read off figure content cite the figure with the PDF page in parentheses.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "These methods are reliable, but they are still time-consuming, expensive, and difficult to conduct.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF) with publisher XML text (abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem: core-, log- and seismic-inversion-based porosity estimation is costly, and inversion is nonlinear and non-unique, so a cheaper direct mapping from acoustic impedance and lithofacies to porosity is sought.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In addition, seismic inversion confronts problems of nonlinearity and has [...] ."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State that combining several DL models, weighted by each model's strength, will outperform single models and evenly weighted ensembles.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In contrast, using different algorithms combined together to solve a common problem will lead to a superior result."
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take a public, pre-processed 480-point dataset of spatially distributed lithofacies, acoustic impedance and porosity (Pyrcz, University of Texas at Austin, GitHub) and summarize it (Table 1, Fig. 1).",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study makes use of data obtained and pre-processed from the University of Texas at Austin"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build four DNNs (one hidden layer of 30 nodes, ReLU, 500 epochs) that differ only by optimizer (Adam, SGD, RMSProp, Nadam), plus RF, DT, kNN, SVM and gradient-boosting baselines, and combine the DNNs sequentially into an ensemble whose members are weighted by performance (Fig. 2); the weighting formula is not given.",
+     "page": "pp. 3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The contribution of each model is weighed proportionally to its performance"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the evaluation: 10-fold cross-validation with held-out test folds, MAE as the metric and MSE as the loss, plus Pearson correlation, pair plots and spatial maps of predictions.",
+     "page": "p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We defined k to have a value of 10, which allowed us to obtain 10 folds of different samples from the primary dataset"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Train the models and predict porosity on the test folds; training and test loss and error curves are reported for the Adam and Nadam networks.",
+     "page": "Fig. 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The training and testing losses and errors are decreasing with the number of epochs."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Vary the optimizer (Adam versus Nadam) and check the train-test gap for overfitting; Nadam gives the smallest loss and gap and is kept for the single DNN.",
+     "page": "Fig. 3 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] resulted in the smallest loss and kept the small gap between training and testing loss and error values."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare test-fold predictions with measured porosity across all models: test MSE 1.10 (weighted ensemble), 1.18 (simple ensemble), 1.41 (DNN Nadam), 2.57-3.35 (ML baselines) in Table 3; Pearson R 0.935, 0.930, 0.926 and 0.845 (RF) in Table 4; pair plots (Fig. 4), maps (Fig. 5) and fit plots (Fig. 6).",
+     "page": "§0 ¶1; Table 3; Table 4; Fig. 5 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The weighted ensemble resulted in a lower error than the simple ensemble and the single model."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compare their Pearson coefficients with those reported by Agbadze et al. (2021) on the same dataset (DNN 0.89, DT 0.85, RF 0.87; Table 5) as an external baseline.",
+     "page": "p. 5; Table 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this study used the same dataset as in the Agbadze et al. (2021) article"
+    },
+    {
+     "n": 10,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the weighted ensemble of DNNs is the best model and improves on the earlier study, while noting the small dataset and uncertain transfer to new data.",
+     "page": "p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The weighted ensemble, on the other hand, proved to be the best of the best models."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No new phenomenon; the target is a known regression task (porosity from acoustic impedance and lithofacies)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "Porosity is measured at the data points and used as the label; the predictions are model estimates",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Improve the accuracy of porosity prediction with a weighted ensemble of DNNs",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival models: single DNN, simple ensemble, RF, DT, kNN, SVM, gradient boosting, and Agbadze et al. (2021)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No predictions stated in advance; rivals are separated only by empirical test-fold error and correlation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally: fixed public dataset, 10-fold splits, chosen architectures and optimizers",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Only the optimizer and the folds vary; there is no new dataset and no uncertainty across folds; the authors say transfer is unknown",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Weighted ensemble kept as best, by small margins (test MSE 1.10 vs 1.18; R 0.935 vs 0.930)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "On the 480-point Pyrcz dataset, a performance-weighted ensemble of DNNs predicts porosity from acoustic impedance and lithofacies with lower 10-fold test error (MSE 1.10) and higher correlation (R 0.935) than a simple DNN ensemble, a single DNN, standard ML models, and the models of Agbadze et al. (2021).",
+  "page": "§0 ¶1; Table 3; Table 4; p. 6"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The claim rests on comparing test-fold errors and correlations of the weighted ensemble with the simple ensemble, the single DNN and the ML baselines (Tables 3-4); without this comparison there is no claim of superiority.",
+  "page": "Table 3; Table 4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data were a pre-existing public dataset, so no hypothesis directed data acquisition (p. 2). The weighted ensemble could have lost to the baselines on held-out folds (Table 3), but the margins are small (MSE 1.10 vs 1.18; R 0.935 vs 0.930) and no fold-wise spread or significance test is reported. Nothing is stated as fixed before the data were analysed; the optimizer was chosen from the results (Fig. 3)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Deep neural networks (multilayer perceptrons with ReLU activation)",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Adam, Nadam, SGD and RMSProp optimizers",
+   "kind": "method",
+   "page": "pp. 3-4"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "Ensemble learning (boosting, weighted combination of models)",
+   "kind": "method",
+   "page": "p. 4"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "k-fold cross-validation; random forest, decision tree, kNN, SVM and gradient boosting regressors",
+   "kind": "method",
+   "page": "pp. 2, 4"
+  },
+  {
+   "field": "statistics / software",
+   "item": "Pearson correlation and seaborn pair plots (Python)",
+   "kind": "method",
+   "page": "pp. 4-5"
+  },
+  {
+   "field": "geostatistics (public teaching dataset)",
+   "item": "Pyrcz GeoDataSets 12_sample_data.csv",
+   "kind": "data",
+   "page": "p. 2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "From similar research work reported in this article, we did not find one that uses exactly our approach.",
+   "page": "p. 5"
+  },
+  {
+   "quote": "Our method improved the prediction of the latter.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Our method improved on earlier predictions.",
+   "page": "p. 6"
+  }
+ ],
+ "limits": "The XML text holds only the abstract and captions, so all body steps are cited by PDF pages. Internal inconsistencies the document does not resolve: (1) Four DNNs are trained (Table 2), but the text says two optimizers were used (p. 4) and calls the method 'a combination of two neural networks' (p. 5). (2) The ensemble is described as boosting with weights proportional to performance, but also as using 'simple averaging' (p. 4), and it is contrasted with boosting on p. 2; no weighting formula is given. (3) The fold sizes (331 train + 37 test = 368) do not match the 480 data points (Table 1). (4) The porosity ranges disagree across Table 1 (11.76-26.11%), Fig. 1c (about 8-17%) and the Fig. 5 caption; the Fig. 5 caption's panel letters differ from the plotted labels, and the Fig. 4 caption is garbled. (5) No fold-wise variance, repeated runs or significance tests are reported, so the small margins between the ensembles and the single DNN may be within noise (inference). (6) The 'test on a previously published dataset' (abstract) uses the same dataset as the main analysis, so it is a comparison with reported numbers, not new data. The Agbadze et al. setup (splits, metrics) may differ, which the paper does not discuss. (7) The authors state they cannot say performance would hold on a new dataset (p. 5); generalization is untested. The held-out-fold 'replication' in v_checks uses folds of the same 480-point dataset. Composition none_fits: this is a method benchmark on a single fixed dataset with model rivals, not a test among physical explanations, and no capability-then-phenomenon sequence. Sub-claim 'the weighted-ensemble map shows the best connectivity with historical porosity' (p. 6) rests on visual map comparison (Fig. 5) and is at best a qualitative capability_characterized. Process details (hyperparameter search, the number of runs, how the 'best of all the results' were selected, p. 4) are not shown; the selection of the best results suggests post hoc choice (inference).",
+ "disagreements": [
+  {
+   "target": "Agbadze et al. (2021), J. Petrol. Sci. Eng., porosity prediction with traditional ML and DNN on the same dataset",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Pearson R of 0.935 for the weighted ensemble here (Table 4) is set against 0.89 (DNN), 0.85 (DT) and 0.87 (RF) reported by Agbadze et al. (Table 5); the setups are not harmonized.",
+   "page": "p. 5",
+   "quote": "resulted in more accurate and reliable results than the former."
+  },
+  {
+   "target": "Traditional ensemble techniques (bagging, stacking, boosting) that weight members evenly",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The weighted ensemble has a lower test MSE than the simple ensemble (1.10 vs 1.18, Table 3); no bagging or stacking implementation is tested.",
+   "page": "p. 2",
+   "quote": "as opposed to the traditional ensemble learning-related techniques including bagging, stacking, and boosting, which evenly incorporate predictions by voting or averaging"
+  },
+  {
+   "target": "Common practice in geoscience DL of using single models",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The ensembles outperform the single Nadam DNN in test error and correlation (Tables 3-4).",
+   "page": "p. 2",
+   "quote": "it has been observed that many researchers have been using single models individually to solve a target problem."
+  },
+  {
+   "target": "Core-, log- and seismic-inversion-based porosity estimation",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argued from cited costs and the non-uniqueness of inversion (Marfurt and Kirlin 2001; Pradhan and Mukerji 2018); no inversion result is compared here.",
+   "page": "§0 ¶1",
+   "quote": "[...] , deep learning (DL) can provide a more flexible, efficient, and accurate capability"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Nadam optimizer for the single DNN",
+   "alternatives": "Adam, SGD, RMSProp",
+   "reason": "Nadam gave the smallest loss and the smallest train-test gap",
+   "effect_reported": "yes",
+   "page": "Fig. 3 (p. 5); p. 3"
+  },
+  {
+   "node": "N",
+   "chosen": "Performance-weighted ensemble of DNNs",
+   "alternatives": "Simple (evenly weighted) ensemble; bagging, stacking, boosting by voting or averaging; single model",
+   "reason": "Stronger models should contribute more to the final prediction and weaker ones less",
+   "effect_reported": "yes",
+   "page": "p. 2; Table 3"
+  },
+  {
+   "node": "N",
+   "chosen": "Deep neural networks as the main algorithm",
+   "alternatives": "Random forest, decision tree, k-nearest neighbor, support vector machine, gradient boosting",
+   "reason": "The other algorithms are used to compare performances; the study is 'mainly concerned with' DNNs",
+   "effect_reported": "yes",
+   "page": "p. 2; Table 3"
+  },
+  {
+   "node": "D",
+   "chosen": "MAE as the metric and MSE as the loss",
+   "alternatives": "Each other (only these two named)",
+   "reason": "MAE 'does not consider the directions of variables' and weights the differences equally",
+   "effect_reported": "no",
+   "page": "p. 4"
+  },
+  {
+   "node": "D",
+   "chosen": "10-fold cross-validation",
+   "alternatives": "Single train-test split (implied)",
+   "reason": "Gives less biased estimation of skill, and every point is used in training and testing",
+   "effect_reported": "no",
+   "page": "pp. 3-4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "That means, in the training steps, the algorithm will not see or learn from testing data.",
+   "page": "p. 4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The two models are trained on Adam and Nadam optimization functions.",
+   "page": "Fig. 3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The other algorithms will be used to compare performances.",
+   "page": "p. 2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] used Pearson correlation coefficients of our results in Table 4 and those of Agbadze et al. (2021) in Table 5.",
+   "page": "p. 5"
+  }
+ ]
+}

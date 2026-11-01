@@ -1,0 +1,470 @@
+{
+ "key": "g22_W4281830498",
+ "doi": "10.1029/2021jb023570",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Korostelev et al. (2022), Images of the East African Rift System by Global Adaptive-Resolution Surface-Wave Tomography, JGR Solid Earth 127, e2021JB023570 (published PDF, 18 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 18)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The African continent, and more particularly its eastern part, has been widely studied in the last decades, but not thoroughly characterized.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Korostelev et al. 2022, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Framed the aim as increasing the resolution of seismic images of the whole EARS, between small-scale regional studies and coarse global models.",
+     "page": "2-3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The aim of this study is to enhance the resolution of the seismic images of the EARS."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Downloaded all publicly available seismograms from 54 networks (1296 stations, 1980-2017) across Africa.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We download publicly available seismograms from 54 seismic networks (Figure 2): 10 permanent and 44 temporary ones."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Measured inter-station Rayleigh-wave phase-velocity dispersion curves from ambient-noise cross-correlation and from a teleseismic two-station method with arrival-angle correction and IQR outlier rejection.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "obtain 38,469 inter-station phase velocities of AN generated Rayleigh waves"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared earthquake-based and noise-based dispersion curves averaged over pairs, with and without arrival-angle correction, to check their compatibility (Figure 3b).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which means that EQ and AN data are compatible."
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Added the global Rayleigh-wave phase-velocity anomaly data set of Ekström (2011) to fill regions of sparse coverage.",
+     "page": "5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "We make use of Rayleigh-wave phase-velocity measurements of 3,330 teleseisms by 258 seismographic stations"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "observation",
+     "action": "Compared the distributions of PREM-relative delays in the regional and global data sets to assess their coherence (Figure 5).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also compare delays obtained from regional and global datasets in order to assess the coherence of both datasets."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set up a ray-theory linearized joint inversion with roughness damping, solved by LSQR, on an adaptive grid refined in four levels by ray-path hitcount (3 degrees to 0.375 degrees).",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We define an adaptive grid depending on raypath density using a four-level stepwise refining process."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Ran synthetic checkerboard tests with the real path geometry: 15-degree global, 3-degree African, and 6- and 3-degree tests at 10 s (Figures 6-8).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Synthetic checkerboard tests are computed in order to investigate the robustness of the solution model"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverted the combined data for global and regional Rayleigh-wave phase-velocity maps at 25, 50, 75 and 100 s.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtained phase-velocity maps at different surface-wave periods at both global (Figure 9) scale and regional (Figure 10) scale"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checked the global maps against the prominent features of the Ekström (2011) maps, such as cratons and mid-ocean ridges.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] -velocity maps display all the prominent features of those of Ekström (2011) at the same periods"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared resolution tests over Africa using global data only and using global plus regional data (Supporting Information).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "using (a) the global data set and (b) the global and regional data set"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverted the regional data alone for a 10 s crustal phase-velocity map centred on the EARS (Figure 11).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This map has been computed without the addition of global data, and thus displays the inversion of only regional data."
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "theory",
+     "action": "Computed Rayleigh-wave depth sensitivity kernels at 10 and 50 s (disba package) to assign each period's maps to crust or upper mantle.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can use the sensitivity kernels as shown in Figure 12c to understand the depth range that can be resolved at each period."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared EARS low-velocity anomalies with earlier global and regional models and with mapped volcanic provinces (KQVP, KVVP, RVP, Afar, MER).",
+     "page": "11-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In our images (Figures 10 and 11b), we can better constrain these low-velocity anomalies."
+    },
+    {
+     "n": 15,
+     "node": "P",
+     "mode": "methods",
+     "action": "Attributed the weak anomaly beneath the very active Kivu-Virunga province to sparse data coverage rather than to a weak mantle anomaly.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The small amplitude of the retrieved anomaly could be due to relatively scarce data coverage in this region"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Kept the claim that low velocities along the EARS are discontinuous: a broad Afar anomaly and localized patches beneath the Quaternary volcanic provinces.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Finally, we observe the discontinuous nature of the EARS from north to south."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the low-velocity anomalies in the Mozambique Channel, Comoros and Madagascar with the volcanic seamounts from dredging, the LLSVP edges and thinned lithosphere from published studies.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "dredgings have demonstrated the volcanic nature of these seamounts (Courgeon et al., 2016)"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Kept the Bassas da India low-velocity anomaly as the first evidence of hot mantle material beneath the central Mozambique Channel, in continuation of the EARS.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our maps thus provide for the first time an evidence for the presence of hot mantellic material under the area"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the fast cratonic anomalies and the inferred internal Archean blocks (Tanzanian, Bangweulu, Congo, Zimbabwe-Kaapval) with earlier studies.",
+     "page": "14-15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "also imaged in the study of Celli et al. (2020)"
+    },
+    {
+     "n": 20,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed that the northern Tanzanian block has a shallower keel thinned by Kenya-rift plume material, while the southern blocks kept deeper keels.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This could mean that the northern block has a shallower lithospheric keel"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Concluded that the adaptive joint inversion gives enhanced-resolution maps showing discontinuous EARS magmatism, Archean blocks, and Mozambique Channel low velocities.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Owing to the adaptive parameterization criterion, we obtained enhanced resolution in comparison to previous studies."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Upper-mantle and crustal velocity structure beneath the EARS, poorly resolved at continental scale",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; inferred from dispersion data by tomographic inversion",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Enhance the resolution of EARS images by joint adaptive inversion",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals stated for the main claim; only an ad hoc coverage explanation for the weak KVVP anomaly",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: public passive-seismic data, natural noise and earthquakes",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Checkerboard tests, EQ-AN agreement, regional-global delay coherence, agreement with Ekström maps",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Maps kept with characterized resolution; anomalies interpreted",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "A joint adaptive-resolution inversion of regional and global Rayleigh-wave data gives phase-velocity maps with improved resolution over East Africa, showing discontinuous low-velocity patches along the EARS and a previously unreported low-velocity anomaly beneath Bassas da India in the Mozambique Channel.",
+  "page": "15"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The adaptive-parameterization joint inversion of dense regional and global dispersion data is what gives the resolution on which every interpreted anomaly rests.",
+  "page": "7"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All publicly available data were collected without a guiding hypothesis (p. 3). Checkerboard tests (p. 7) could have shown the features unresolved, but the geological interpretations (melt or hot mantle, Archean blocks) face no test against rivals. No parameters or hypotheses were fixed in advance; the hitcount threshold and damping weight are simply stated."
+ },
+ "imports": [
+  {
+   "field": "numerical linear algebra / computer science",
+   "item": "LSQR iterative solver for sparse least squares (Paige & Saunders 1982)",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "statistics",
+   "item": "Interquartile Range outlier rule (Tukey 1977)",
+   "kind": "method",
+   "page": "4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Our maps thus provide for the first time an evidence for the presence of hot mantellic material under the area",
+   "page": "14"
+  },
+  {
+   "quote": "However, no low-velocity anomaly have been imaged so far [...] .",
+   "page": "14"
+  },
+  {
+   "quote": "This feature is expected upon consideration of the geology of the region, but was not shown in previous studies.",
+   "page": "15"
+  },
+  {
+   "quote": "we see slow speeds in the Mozambique Channel, where no such feature was reported before.",
+   "page": "1"
+  },
+  {
+   "quote": "enables us to obtain a global model characterized by an improved resolution across Eastern Africa in comparison with previous studies",
+   "page": "3"
+  }
+ ],
+ "limits": "Only the published PDF was coded; there was no review file and no Supporting Information. The resolution comparison of global versus global-plus-regional data is reported only as existing in the SI, so its content is unseen. Resolution is characterized by checkerboard tests only; no formal velocity uncertainties are given, and no depth (3D) inversion is made (deferred to a future study). Inference: the hitcount threshold (4000), the damping weight mu and the finest cell size are stated but not varied, so their effect is unknown. Sub-claim statuses: the discontinuous EARS anomalies are estimate_with_resolution; reading the anomalies as hot mantle or melt, and the Mozambique Channel anomaly as a magmatic system continuing the EARS, are best_explanation with no stated rivals (e.g., compositional effects); the Archean sub-blocks within the cratons and the thinned northern Tanzanian keel are tentative best_explanation ('seems possible', 'could mean'). The weak KVVP anomaly is explained by poor coverage without a dedicated test. The consistency checks with Celli et al. 2020 and O'Donnell et al. 2013 use other groups' independent results, so they are coded as not performed here.",
+ "disagreements": [
+  {
+   "target": "Global tomographic studies (Auer et al. 2014; Celli et al. 2020; Ekström 2011; Ruan et al. 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The adaptive grid with dense regional data gives finer cells over East Africa (Figure 9) and checkerboard resolution down to 3 degrees there.",
+   "page": "2",
+   "quote": "global studies (e.g., Auer et al., 2014; Celli et al., 2020; Ekström, 2011; Ruan et al., 2019) can only afford a coarser resolution"
+  },
+  {
+   "target": "Previous global models showing Afar as the main African low-velocity feature (Auer et al. 2014; Ekström 2011)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The new maps resolve separate low-velocity patches beneath KQVP, KVVP and RVP in addition to the Afar anomaly, rather than one continuous anomaly.",
+   "page": "11",
+   "quote": "Further south, we do not observe a continuous low-velocity anomaly along the EARS, but several low-velocity zones."
+  },
+  {
+   "target": "Usual practice of limiting ambient-noise measurements to periods of 50-60 s (e.g., Magrini et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites studies showing longer periods are reliable and shows small EQ-AN differences up to 100 s (Figure 3b).",
+   "page": "4",
+   "quote": "Usually, AN is used for periods up to 50–60 s (e.g., Magrini et al., 2020). However, some studies showed that greater periods are also reliable"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Periods 10-100 s; joint inversion with global data only at periods of 25 s and above",
+   "alternatives": "Full measured range 3-200 s",
+   "reason": "The global data set of Ekström (2011) offers no data below 25 s",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "Earthquake dispersion curves with arrival-angle correction",
+   "alternatives": "Uncorrected earthquake dispersion curves",
+   "reason": "Accounts for deviations from the great-circle path; reduces the EQ-AN bias up to 60 s",
+   "effect_reported": "yes",
+   "page": "4-5"
+  },
+  {
+   "node": "N",
+   "chosen": "Infinite-frequency ray theory with first-order roughness damping",
+   "alternatives": "Finite-frequency kernels",
+   "reason": "Small-scale heterogeneities are not handled in ray theory, and smoothing plays the role of finite-frequency kernels; damping removes bias toward the initial model",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "Hitcount-based adaptive parameterization following Schaefer et al. (2011)",
+   "alternatives": "Other adaptive schemes (Bodin & Sambridge 2009; Curtis & Snieder 1997); a uniform grid implied",
+   "reason": "Matches the model grid to data density, important when integrating local and global tomography",
+   "effect_reported": "no",
+   "page": "6-7"
+  },
+  {
+   "node": "V",
+   "chosen": "Global plus regional data set",
+   "alternatives": "Global data set only",
+   "reason": "Improves coverage and resolution over Africa",
+   "effect_reported": "yes",
+   "page": "11"
+  },
+  {
+   "node": "P",
+   "chosen": "Weak KVVP anomaly attributed to scarce data coverage",
+   "alternatives": "A genuinely weak mantle anomaly beneath an active volcanic province (implied)",
+   "reason": "KVVP lies on the edge of the temporary networks",
+   "effect_reported": "no",
+   "page": "12"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the difference between EQ and AN is always small (less than 0.05 km/s), which means that EQ and AN data are compatible.",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] correction has the effect of reducing the bias until at least 60 s.",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "However, regional delays fall within the range of global delays.",
+   "page": "5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "At all periods, the 15° × 15° checkerboard pattern is retrieved well by our global data set.",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "where we can resolve structures of a lateral extent down to 3°.",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Figure 8 shows two checkerboard resolution tests at 10 s.",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] -velocity maps display all the prominent features of those of Ekström (2011) at the same periods",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "using (a) the global data set and (b) the global and regional data set",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This is consistent with previous studies (Celli et al., 2020; O’Donnell et al., 2013).",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "some studies showed that greater periods are also reliable ( [...] ).",
+   "page": "4"
+  }
+ ]
+}

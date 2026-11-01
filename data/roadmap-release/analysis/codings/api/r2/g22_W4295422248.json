@@ -1,0 +1,529 @@
+{
+ "key": "g22_W4295422248",
+ "doi": "10.1007/s10546-022-00727-4",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "McCandless et al. (2022) Machine Learning for Improving Surface-Layer-Flux Estimates, Boundary-Layer Meteorology 185:199-228 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the caption label with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, simple regression cannot capture the relationship between governing parameters and surface-layer structure under the wide range of conditions to which MOST is commonly applied.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML with section and paragraph locators (jats_text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Review field studies showing wide scatter in MOST stability functions, for example the R2 of about 0.5 for friction velocity under stable stratification (Newman and Klein).",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Even when extreme care is taken to control the quality of the data, the scatter is significant, in particular under stably stratified conditions."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "theory",
+     "action": "Cite proposed extensions and critiques of MOST: non-local dependence, multi-point MOST, a large-scale-motion parameter, a hockey-stick bulk formula, and anisotropy.",
+     "page": "§1 ¶4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Tong and Nguyen (54) argued that MOST is an incomplete similarity theory"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the aim: test machine learning as an alternative to simple-regression stability functions under homogeneous, flat-fetch conditions.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The goal is to explore machine-learning approaches as an alternative to simple regression focusing on the homogeneous, flat-fetch boundary layers"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "theory",
+     "action": "Set up the MOST baseline: compute u*, theta* and q* from profile differences using Dyer and Hicks stability functions with kappa = 0.41 (Appendix 1).",
+     "page": "§2 ¶12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are estimated using MOST by integrating Eqs. 2 and 3, and a corresponding equation for moisture using constants determined by Dyer and Hicks (11)"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "observation",
+     "action": "Choose two long-term flat, homogeneous-fetch tower sites (Cabauw 2013-2015 and Idaho INL 2015-2017), so that models trained at one site can be tested at the other.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using multiple sites allows us to compare a model trained with one site’s data and applied to the other."
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "observation",
+     "action": "Harmonize the archived tower data: match measurement heights across sites, average Idaho 5-min data to 10 min, and note the single humidity level at Idaho.",
+     "page": "§3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In the comparison, we match the 15 m reading at Idaho to the 20 m reading at Cabauw"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Characterize the distributions of u*, theta* and q*, and the stable/unstable fractions from the bulk Richardson number, at each site (Fig. 1).",
+     "page": "§3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "they represent clearly different climatologies with different distributions of our target variables"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare observed phi_m and phi_h against the Dyer-Hicks and Businger curves as functions of z/L; find large spread and possible bias at both sites (Figs. 2 and 3, pp. 206-207).",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is clear that there is significant spread at both sites and potentially bias associated with determination of surface roughness"
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build random-forest regressors (scikit-learn; 100 trees; at most 4096 leaf nodes), with separate models for each predictand and site.",
+     "page": "§4.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "so we chose 100 trees as a reasonable compromise that has been robust across many problem domains"
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build ANN regressors (Keras; two hidden layers of 128 SELU units; Adam optimizer at learning rate 1e-4; 20 epochs), noting that extra hidden layers gave no gain on validation data.",
+     "page": "§4.2 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We chose two hidden layers for our model and found that additional hidden layers did not result in any performance improvements on validation data."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check ANN training length against training and validation loss curves for all three predictands (Appendix 2, Fig. 17).",
+     "page": "§A1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The loss functions for all three scales level off after 20 epochs."
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "methods",
+     "action": "Define a common set of directly observed predictors at three levels above ground, plus surface and soil variables, for both sites (Table 1).",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use observations at three levels above the ground"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Train RF and ANN models on two years per site and predict u*, theta* and q* for the held-out year 2015 at each site.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Cabauw dataset was split into years 2013 to 2014 for training and year 2015 for testing"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Score the ML and MOST estimates against eddy-covariance observations with MAE and R2 on the test years (Tables 2 and 3).",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results highlight the generally superior performance of both the ANN and the RF models over MOST with lower MAEs, and higher R2"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Apply models trained at one site to the other site's test year to test generalization; skill degrades.",
+     "page": "§5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to evaluate whether a model trained in one climate could perform in another climate, and thus determine whether the models can be generalized"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Retrain on the merged Idaho and Cabauw training sets and test at each site.",
+     "page": "§5 ¶3",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the models trained using the combined dataset consisting of merged Idaho and Cabauw datasets outperform MOST"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare 2-D histograms of observed versus predicted u*, theta* and q* for RF, ANN and MOST (Figs. 4-6, pp. 212-213).",
+     "page": "§5 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results indicate that the machine-learning models are better capturing the real distribution of the virtual potential temperature and moisture scale"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare permutation feature importances (Figs. 7 and 8) with expected surface-layer physics: shear for momentum, stability and diurnal forcing for heat and moisture.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For friction velocity the most important RF predictors are wind speeds at different levels encoding the level of shear"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare partial dependence plots (Figs. 9-14) with physical expectations, for example u* decreasing with bulk Richardson number and an RF step at the change of stability regime.",
+     "page": "§6 ¶4",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the partial dependence results also highlight several physical behaviours that are expected given our knowledge of surface layer processes"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Split RF test results into stable and unstable regimes by bulk Richardson number and compare R2 (Figs. 15 and 16).",
+     "page": "§6 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we divided the results into these two stability regimes based on the bulk Richardson number"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the claim that RF and ANN improve on MOST flux estimates and can generalize across sites, with caveats on data availability.",
+     "page": "§7 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We have shown that both RF and ANN machine-learning models have the potential to improve upon traditional similarity theory model, i.e. MOST."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known phenomenon: wide scatter of observed surface-layer fluxes around the MOST stability functions",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; fluxes are measured directly by eddy covariance at the towers",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate u*, theta* and q* from near-surface observations more accurately than MOST",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "MOST with Dyer-Hicks functions versus RF versus ANN",
+   "mode_called": "theory"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; each model gives different flux estimates, scored by MAE and R2 on held-out data",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: archived multi-year records from two flat-fetch tower sites",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; thousands of averaging intervals over three years at two climatologically different sites",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; results hold for the merged-training models and both regimes, but skill degrades across sites",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "ML models kept as better flux estimators than MOST at these sites",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "RF and ANN models trained on Cabauw and Idaho tower observations estimate friction velocity, virtual potential temperature scale and moisture scale on a held-out year with lower MAE and higher R2 than MOST (Dyer-Hicks), with the largest gains for the heat and moisture scales.",
+  "page": "§5 ¶3"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "estimation",
+  "sentence": "The held-out-year comparison of ML and MOST estimates against eddy-covariance observations (Tables 2 and 3) is what establishes the claimed improvement.",
+  "page": "§5 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: archived long-term tower records were selected for flat fetch and long duration, not acquired under a hypothesis (§3 ¶1-2). Claim: the ML models could have failed to beat MOST on the held-out 2015 year and at the other site; at the other site they partly did on MAE (Tables 2 and 3). Registration: nothing is stated as fixed before the data were seen; hyperparameters were validated by hand on validation data (§4 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Random forest and CART regression trees (Breiman), via scikit-learn",
+   "kind": "method",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Feed-forward neural network with SELU activation and Adam optimizer, built in Keras-TensorFlow",
+   "kind": "method",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "field": "statistics / explainable machine learning",
+   "item": "Permutation feature importance and partial dependence plots (Friedman 2001; McGovern et al.)",
+   "kind": "method",
+   "page": "§6 ¶2"
+  },
+  {
+   "field": "engineering fluid mechanics",
+   "item": "Wind-tunnel and pipe/channel estimates of the von Kármán constant (Nagib and Chauhan)",
+   "kind": "data",
+   "page": "§2 ¶7"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "(1) Cross-site generalization is a sub-claim stated in the abstract and §7 ¶1 at a stronger status than the tables support. Inference from Tables 2 and 3: models trained at one site and tested at the other have higher MAE than MOST for most variables (e.g., Idaho test, theta*: 0.199 for the Cabauw-trained ANN vs 0.128 for MOST; Cabauw test, u*: 0.066 vs 0.038), though R2 is higher. The text itself says skill degrades (§5 ¶3). (2) Better skill in the unstable regime is a regularity_in_range sub-claim, but the Idaho theta* R2 values (0.43 stable, 0.42 unstable) do not support 'substantially better' (§6 ¶6). (3) Physical plausibility of the learned relationships (§6) rests on qualitative comparison with expectations, not a test that could fail; its status is at most best_explanation. (4) There are no uncertainty estimates or significance tests behind 'significantly improved'. There is a single test year per site, and the Idaho test year (2015) precedes its training years. (5) The MOST baseline uses only Dyer-Hicks constants; the roughness lengths and the treatment of z0T at each site are not reported, and the Businger alternative is not scored. (6) Reporting inconsistencies (inference): §5 ¶3 describes 30-min averaged sets while §6 ¶1 and the figure captions say 10-min; §5 ¶3 says MAE and R2 were computed for u* and theta* while the tables also give q*; the Fig. 6 caption names only RF and ANN although three columns are shown, and both rows are titled 'Evaluated on Idaho' (p. 213). (7) Hyperparameter choices other than hidden layers and epochs are justified by prior experience without reported tests. (8) No review file was supplied, so no review sequence is coded; the acknowledgements thank reviewers. (9) Code is public (§6 ¶7); data are available only on request. (10) The paper makes no explicit priority ('first') claim; it cites earlier ML surface-layer work (Pelliccioni et al.).",
+ "disagreements": [
+  {
+   "target": "MOST with simple-regression stability functions (Dyer and Hicks 1970; Businger et al. 1971) as used in atmospheric models",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "RF and ANN models give lower MAE and higher R2 than MOST on held-out years at both sites (Tables 2 and 3).",
+   "page": "§0 ¶1",
+   "quote": "The RF and ANN models outperform MOST."
+  },
+  {
+   "target": "Dyer-Hicks and Businger universal stability functions",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Observed phi_m and phi_h at Cabauw and Idaho show large spread and possible bias around both curves (Figs. 2 and 3).",
+   "page": "§3 ¶5",
+   "quote": "It is clear that there is significant spread at both sites and potentially bias associated with determination of surface roughness"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Both random forest and ANN",
+   "alternatives": "One algorithm only (RF is simpler; ANN is smoother and more compact)",
+   "reason": "Different training requirements and complexity",
+   "effect_reported": "yes",
+   "page": "§4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Manual validation of a subset of hyperparameters",
+   "alternatives": "Exhaustive hyperparameter search",
+   "reason": "Further gains could come from overfitting to the validation set",
+   "effect_reported": "no",
+   "page": "§4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Trees limited to 4096 leaf nodes",
+   "alternatives": "Fully grown trees",
+   "reason": "Less overfitting and lower storage",
+   "effect_reported": "yes",
+   "page": "§4.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "100 trees",
+   "alternatives": "More trees",
+   "reason": "Compromise between stability and computation",
+   "effect_reported": "no",
+   "page": "§4.1 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "128 perceptrons per hidden layer",
+   "alternatives": "More perceptrons",
+   "reason": "Compromise against risk of overfitting",
+   "effect_reported": "no",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Two hidden layers",
+   "alternatives": "Additional hidden layers",
+   "reason": "Additional layers gave no improvement on validation data",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Adam optimizer, learning rate 0.0001",
+   "alternatives": "Other optimizer algorithms",
+   "reason": "Fast and stable convergence; default choice",
+   "effect_reported": "no",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "No regularization",
+   "alternatives": "Additional regularization constraints",
+   "reason": "Validation set performance did not indicate a need",
+   "effect_reported": "no",
+   "page": "§4.2 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "20 epochs",
+   "alternatives": "Longer training",
+   "reason": "Training and validation loss level off",
+   "effect_reported": "yes",
+   "page": "§A1.2 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Long-term records from Cabauw and Idaho",
+   "alternatives": "Episodic field studies (CASES-97, CASES-99, SHEBA, BLLAST)",
+   "reason": "Quality-controlled long-term observations",
+   "effect_reported": "no",
+   "page": "§3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Predictors at three levels",
+   "alternatives": "Single-level MOST-style inputs",
+   "reason": "Atmospheric models provide multiple levels; Panofsky and Basu show three levels suffice",
+   "effect_reported": "no",
+   "page": "§5 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Different measurement heights treated as the same level",
+   "alternatives": "Height-specific treatment",
+   "reason": "none given; small differences expected",
+   "effect_reported": "no",
+   "page": "§5 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Only directly observed quantities as predictors",
+   "alternatives": "Derived or estimated quantities",
+   "reason": "Derived quantities can introduce additional uncertainties and errors",
+   "effect_reported": "no",
+   "page": "§7 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "Dyer and Hicks (1970) stability functions, kappa = 0.41",
+   "alternatives": "Businger et al. (1971) functions, kappa = 0.35",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2 ¶12"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The MAE and R2 results for the independent testing datasets are shown in Table 2 for the Idaho test dataset",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "were computed for the machine-learning model predictions and the MOST estimates with respect to observations",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "to evaluate whether a model trained in one climate could perform in another climate, and thus determine whether the models can be generalized",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the models trained using the combined dataset consisting of merged Idaho and Cabauw datasets outperform MOST",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] are no major differences in the performance between the ANN and RF.",
+   "page": "§5 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The same model applied to the Idaho and Cabauw data produces similar partial dependence results.",
+   "page": "§6 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we divided the results into these two stability regimes based on the bulk Richardson number",
+   "page": "§6 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "found that additional hidden layers did not result in any performance improvements on validation data",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The loss functions for all three scales level off after 20 epochs.",
+   "page": "§A1.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Hicks et al. (20) revisited MOST relationships using observations from an Ocotillo, Texas field study",
+   "page": "§1 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "[...] and Klein (34) analysed surface observations from the Southern Great Plains site",
+   "page": "§1 ¶4"
+  }
+ ]
+}

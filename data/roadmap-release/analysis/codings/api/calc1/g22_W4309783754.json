@@ -1,0 +1,613 @@
+{
+ "key": "g22_W4309783754",
+ "doi": "10.5194/acp-22-14751-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Christiansen et al. 2022, Atmos. Chem. Phys. 22, 14751–14782 (published PDF)",
+  "g22_W4309783754.xml.txt (publisher XML converted with tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Despite decades of effort, the drivers of global long-term trends in ozone are not well understood.",
+  "page": "§1 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4309783754.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of quantifying global multidecadal tropospheric ozone trends from sondes and surface sites, and whether two chemical transport models reproduce them.",
+     "page": "§1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Despite decades of effort, the drivers of global long-term trends in ozone are not well understood."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Take from TOAR and other literature the candidate causes of model–observation trend discrepancies: early-measurement uncertainty, spatiotemporal mismatch, free-running models, emission-inventory errors.",
+     "page": "§1 ¶9",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A range of common model issues or observational limitations have been suggested as the causes of these discrepancies"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble ozonesonde profiles 1980–2017 from WOUDC, NOAA and HEGIFTOM, using homogenized records where available and excluding SHADOZ sites that fail data requirements.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Where possible (12 of 25 sites), homogenized ozone profiles were used to ensure the most accurate ozone trends."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Check sensor premises: screen non-homogenized records for step changes (Figs. S1–S2), flag CI-to-ECC switches, and drop data after the ECC drop-off at five sites.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "at these impacted sites, we only used data from before the unexplained sharp drop-off in ozone concentrations"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Apply data-completeness criteria adapted from Lu et al. (2019), giving 25 sonde sites, and obtain rural background daytime surface ozone at 271 TOAR sites, with eight high-elevation sites treated separately.",
+     "page": "§2.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Surface daytime baseline ozone data from 1990–2014 were obtained from the TOAR Surface Ozone Database (Schultz et al., 2017)"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design trend estimation as quantile regression on deseasonalized individual profiles, significance at p < 0.1, rather than regression on monthly means.",
+     "page": "§2.1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Trends were calculated using deseasonalized data and quantile regression due to the intermittent nature of the ozonesonde launches"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run or obtain 1980–2017 simulations: GEOS-Chem v12.9.3 at 4×5 and 2×2.5 with UCX and CEDS, MERRA2-GMI replay with the STO3 tracer, and GEOS-Chem v10-01 (1980–2010) for comparison.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we analyzed a variety of model configurations comprising different emissions inventories, chemical schemes, and resolutions"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Sample each model at sonde launch locations and nearest 3-h times, and at TOAR sites at matching elevation with daytime hours, then compute trends with the same method as the observations.",
+     "page": "§2.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "each model was sampled to match ozonesonde launch locations and times as closely as possible"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test whether sondes launched three times per month capture trends by comparing 800 hPa sonde trends with co-located surface TOAR trends within 100 km, by season.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "trends between the surface and 800 hPa match in terms of direction, and the magnitude of trends differ by < 30 %"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate 1990–2017 trends at 25 sonde sites by pressure level and region (Fig. 3), plus relative trends and first-versus-last-5-year distribution shifts (Fig. 4).",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Of the 25 ozonesonde stations examined globally from 1990–2017, 14 show statistically significant increases from 800 to 400 hPa (Fig. 3)."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Compare trends from homogenized and non-homogenized data (Fig. S4), and check that the Japanese tropospheric step change is absent in the stratosphere.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "homogenization affecting trend magnitudes but rarely the sign of the trends compared to non-homogenized data"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Compare sonde free-tropospheric trends with published IAGOS aircraft and OMI/MLS satellite trends for Europe, the southeast US and eastern North America.",
+     "page": "§3.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our results show good agreement with previous analyses of FT ozone (700–300 hPa) since the 1990s using IAGOS flight data"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate 1990–2014 daytime surface trends at 271 rural background sites: decreases in the US and Europe, increases at most sites elsewhere (Fig. 5).",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At sites outside of the United States and Europe at low elevations, 73 % show increasing trends (24 of 33 sites)."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Compare surface trends with Cooper et al. (2020), and lower and free tropospheric sonde trends with published high-elevation and mountaintop trends (Mauna Loa, Zugspitze, Jungfraujoch, South Pole, others).",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We show that the trends measured by ozonesondes match those of high-elevation and mountaintop surface trends in most locations"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate trends in 5th-percentile ozone at sonde and surface sites (Fig. 6) and attribute part of the median increase to rising baseline ozone.",
+     "page": "§3.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "5th percentile ozone has increased in both ozonesonde and surface trends, averaging 1.8 ± 1.3 ppb per decade"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopt from prior studies the explanation that rural baseline increases come mainly from equatorward emission shifts and poleward transport, among other candidate drivers.",
+     "page": "§3.5 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "regional, baseline ozone increases observed in rural locations with little impact from local emissions are best explained by transport from the tropics"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare sampled model free-tropospheric trends and distribution shifts with sonde trends (Figs. 7–8): MERRA2-GMI captures about 75 % and GC under 20 %, with GC resolutions not differing.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Globally, MERRA2-GMI captures ∼ 75 % of the trend at 0.6 ± 0.7 ppb per decade, but both GC simulations drastically underestimate it"
+    },
+    {
+     "n": 18,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject emission inventories as the main cause of the GC versus MERRA2-GMI difference, because CEDS has larger NOx trends than MACCity yet GC gives smaller ozone trends (Fig. S7).",
+     "page": "§4.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is unlikely that the differences in trends between GEOS-Chem and MERRA2-GMI are primarily due to differences in the underlying emissions inventories."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare model surface trends, tail changes and median shifts with TOAR observations (Figs. 9–10), including the eight high-elevation sites.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The direction of trends at the surface is generally captured by MERRA2-GMI, with the model capturing increasing trends at 67 % of the surface sites"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare simulated ozone burdens and budget terms (Tables 3–4) with GEOS-Chem v10-01, ACCMIP, CMIP6 and TOAR multi-model estimates.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, each of our simulations shows a smaller ozone burden than previous analyses and model intercomparisons (Table 4)."
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose candidate causes of the low free-tropospheric bias in recent GEOS-Chem: halogen chemistry, NOy cloud uptake, neglected lightning oxidants, missing nitrate photolysis.",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These underestimates may be caused by recent model developments such as improved halogen chemistry (Wang et al., 2021) or NO y reactive uptake by clouds"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the trend underestimate with the earlier GEOS-Chem v10-01, which has a higher ozone burden but still yields under 10 % of observed 1990–2010 trends (Fig. S9).",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the earlier version of GEOS-Chem does not perform better than the more recent version in capturing long-term trends (Fig. S9)"
+    },
+    {
+     "n": 23,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set out rival sources of the trend underestimate: anthropogenic emission uncertainties (from contrast with Yeung et al. 2019), STE representation, and coarse resolution losing vertical transport.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result implies that a large issue in reproducing recent decadal trends may come from uncertainties in anthropogenic emissions"
+    },
+    {
+     "n": 24,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run GC 4×5 sensitivity simulations with constant anthropogenic emissions ('Meteorology') and constant 1980 meteorology ('Emissions'), and diagnose stratospheric influence with the MERRA2-GMI STO3 tracer.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we perform two sensitivity tests to examine the impact of emissions and meteorology on ozone trends from 1980–2017"
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare base, sensitivity and STO3 trends by region and level with observations (Figs. 11–12, S10): meteorology and STE dominate at 400 hPa in northern extratropics, emissions near the surface.",
+     "page": "§5.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the “Meteorology” simulation accounts for the majority of trends in the base simulation at 400 hPa"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the observed trend estimates and the sufficiency of three launches per month as conclusions.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we find increases in tropospheric ozone from 800–400 hPa at 15 sites average 1.8 ± 1.3 ppb per decade"
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the claim that current models underestimate long-term trends, with dynamics and STE important aloft and emissions near the surface.",
+     "page": "§6 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "models are not able to replicate long-term ozone trends throughout the troposphere, often underestimating the trend"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Multidecadal tropospheric ozone trends, already reported as increases by other platforms",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Ozone is measured directly; trends are inferred by quantile regression",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify trends by level and region and test whether CTMs reproduce them",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Drivers (emissions, STE and dynamics, transport from tropics) and model-error sources (emissions, resolution, chemistry); mostly cited",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Constant-emission and constant-meteorology runs and the STO3 tracer separate emission and dynamical contributions within the model",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: archival sonde and surface records, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats across 25 sonde and 271 surface sites in six regions",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Trends survive co-located surface, homogenization, IAGOS/satellite and mountaintop comparisons; model underestimate survives resolution and version changes",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Ozone increased widely; models underestimate the trends",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; the paper states three referees",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Tropospheric ozone increased at most of 25 sonde sites over 1990–2017 (about 1.8 ± 1.3 ppb per decade at increasing sites, 800–400 hPa) and at most rural surface sites outside the US and Europe, and three CTM simulations sampled at sonde times underestimate these trends.",
+  "page": "§6 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Estimating per-site, per-level trends from individual sonde profiles by deseasonalized quantile regression yields both the observed increase and the benchmark the models are scored against.",
+  "page": "§3.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Data are archival, selected by completeness criteria adapted from Lu et al. (2019), not by a hypothesis (§2.1 ¶3). The trend estimates could have disagreed with co-located surface sites, IAGOS and mountaintop records, and the models could have matched the observations (§3.1 ¶2, §3.2 ¶4, §4.1 ¶1). No pre-registration or analysis fixed before the data is reported; the p < 0.1 threshold is stated without a timing."
+ },
+ "imports": [
+  {
+   "field": "econometrics / statistics",
+   "item": "Quantile regression (Koenker and Bassett 1978)",
+   "kind": "method",
+   "page": "§2.1 ¶6"
+  },
+  {
+   "field": "statistical computing",
+   "item": "R statistical software",
+   "kind": "method",
+   "page": "§2.1 ¶6"
+  },
+  {
+   "field": "demography / remote sensing of human activity",
+   "item": "Population density and nighttime light index used in the TOAR rural classification",
+   "kind": "data",
+   "page": "§2.1 ¶4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we sample each model at ozonesonde launch times and locations, a step not often taken in ozone model–measurement comparisons",
+   "page": "§1 ¶10"
+  },
+  {
+   "quote": "we also consider a greater number of sites covering a larger geographical area than other studies attempting to characterize baseline ozone",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "quote": "Ozonesondes represent an underutilized dataset",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "we combine long-term continuous ozonesonde measurements from global sites across a consistent time frame",
+   "page": "§1 ¶7"
+  }
+ ],
+ "limits": "No review file or discussion was supplied, so no review sequence is coded, although the paper names three referees. The supplement (Figs. S1–S10) was not supplied, so the checks reported there (step changes, homogenization, Fig. S3 co-location) are coded from the main-text descriptions only. Data and code are available only on request.\n\nSite counts are internally inconsistent: 14 versus 15 increasing sites, 238 versus 271 surface sites, and 'three times per week' in §3.4 ¶1 where 'per month' is meant elsewhere. No seasonal analysis was done, and the authors note the trends may not be globally representative. Japanese and Syowa trends carry CI-to-ECC sensor-switch uncertainty, and MERRA2-GMI has a post-1998 step change above 450 hPa. Sensitivity runs were done only at 4×5.\n\nSub-claims and their statuses:\n- Three launches per month suffice to capture trends: capability_characterized.\n- Models underestimate trends: confirmed. This is a direct comparison that could have failed, but it is not against stated rivals.\n- Dynamics and STE dominate model trends aloft and emissions near the surface: best_explanation (model-internal attribution).\n- Baseline increases come from an equatorward emission shift: best_explanation, cited rather than tested.\n\nComposition is none_fits. The work is archival trend estimation plus a hindcast evaluation of models whose output was not frozen before the observations, so neither forecast_verification nor trace_series fits cleanly (inference).",
+ "disagreements": [
+  {
+   "target": "Yeung et al. (2019), GEOS-Chem and GISS-E2.1 reproducing preindustrial ozone",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their own sampled model trends fall short of observations, and they reconcile this with Yeung by pointing to anthropogenic emission uncertainties.",
+   "page": "§5.1 ¶1",
+   "quote": "contrast with an analysis of GEOS-Chem and GISS-E2.1 that found the model accurately reproduced preindustrial ozone concentrations"
+  },
+  {
+   "target": "Lu et al. (2019), Southern Hemisphere ozone changes attributed to large-scale dynamics",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "GC sensitivity runs and the MERRA2-GMI STO3 tracer show that transport does not explain Southern Hemisphere model trends at most levels; they note Lu et al. focused on austral autumn.",
+   "page": "§5.2 ¶4",
+   "quote": "in contrast with a recent analysis from Lu et al. (2019), which attributes observed Southern Hemisphere ozone changes primarily to changes in large-scale dynamics"
+  },
+  {
+   "target": "Saunois et al. (2012); Liu et al. (2016), on the suitability of sparse sondes for trend analysis",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Co-located surface comparisons and agreement with IAGOS and mountaintop trends support that three launches per month capture trends.",
+   "page": "§3.1 ¶1",
+   "quote": "concerns about the suitability of ozonesondes for long-term trend analyses have been raised previously (Saunois et al., 2012; Liu et al., 2016)"
+  },
+  {
+   "target": "Chang et al. (2020), 14 profiles per month needed",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Careful selection and treatment of sparse sonde data yields trends that agree with other platforms.",
+   "page": "§3.2 ¶5",
+   "quote": "recent studies have suggested that 14 profiles per month are needed (Chang et al., 2020)"
+  },
+  {
+   "target": "Lu et al. (2019), four launches per month requirement",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Relaxing to three launches keeps Southern Hemisphere and polar sites, and is validated against surface sites.",
+   "page": "§3.1 ¶2",
+   "quote": "Previous work has typically used ozonesonde data that launch four times per month (Lu et al., 2019)."
+  },
+  {
+   "target": "Cooper et al. (2020), Mauna Loa free-tropospheric trend",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The Hilo sonde free-tropospheric average is lower than the Mauna Loa trend but brackets it within its level-wise range.",
+   "page": "§3.4 ¶2",
+   "quote": "is higher than the average FT trends we calculated over Hilo from ozonesonde measurements from 1990–2017"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Original (non-homogenized) Payerne data",
+   "alternatives": "Homogenized Payerne data",
+   "reason": "Homogenized only since 2002, too short for the analysis",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "Mix of homogenized and non-homogenized records",
+   "alternatives": "Non-homogenized data throughout",
+   "reason": "Use the most accurate data where available",
+   "effect_reported": "yes",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Exclude SHADOZ tropical sites",
+   "alternatives": "Include SHADOZ data",
+   "reason": "Did not meet data requirements (too few profiles per month)",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Use both BM and ECC sensor data at switching sites",
+   "alternatives": "Use only one sensor type",
+   "reason": "Previous analyses showed good agreement between sensors",
+   "effect_reported": "no",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "Remove data after the ECC drop-off at five sites",
+   "alternatives": "Keep full records",
+   "reason": "Abundance of caution; drop-offs mostly above ~50 hPa",
+   "effect_reported": "no",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "At least three launches per month",
+   "alternatives": "Four launches per month (Lu et al., 2019)",
+   "reason": "Four per month would leave 15 sites and eliminate nearly all Southern Hemisphere and polar sites",
+   "effect_reported": "yes",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "Quantile regression on deseasonalized individual profiles",
+   "alternatives": "Regression on monthly means",
+   "reason": "Sparse launches make monthly means not statistically meaningful; robust to outliers and missing values",
+   "effect_reported": "no",
+   "page": "§2.1 ¶6"
+  },
+  {
+   "node": "S",
+   "chosen": "UCX stratospheric chemistry in GEOS-Chem",
+   "alternatives": "Linoz linearized stratospheric ozone",
+   "reason": "Linoz simplifications may affect STE; UCX gives a better stratosphere",
+   "effect_reported": "no",
+   "page": "§2.2.1 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "Sensitivity runs at 4×5",
+   "alternatives": "2×2.5 resolution",
+   "reason": "Computational constraints",
+   "effect_reported": "no",
+   "page": "§2.2.1 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Annual trend analysis",
+   "alternatives": "Seasonal or monthly trend analysis",
+   "reason": "Three to four launches per month may not support robust seasonal trends",
+   "effect_reported": "no",
+   "page": "§3.2 ¶6"
+  },
+  {
+   "node": "V",
+   "chosen": "Use previously reported mountaintop trends",
+   "alternatives": "Recalculate high-elevation trends",
+   "reason": "Did not seek to reiterate trends reported in previous studies",
+   "effect_reported": "no",
+   "page": "§2.1 ¶5"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "For data that are not homogenized, we ensure that they do not contain step changes (Figs. S1 and S2 in the Supplement).",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "at these impacted sites, we only used data from before the unexplained sharp drop-off in ozone concentrations",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "data from both sensors were used since previous analyses showed good agreement between measurements (De Backer et al., 1998; Stübi et al., 2008)",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compared the lowest reliably available pressure level (800 hPa) to co-located surface TOAR sites within a 100 km radius",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "homogenization affecting trend magnitudes but rarely the sign of the trends compared to non-homogenized data",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "these step changes are not visible in the stratosphere (Fig. S1)",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "our results show good agreement with previous analyses of FT ozone (700–300 hPa) since the 1990s using IAGOS flight data",
+   "page": "§3.2 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Our results are consistent with other global analyses of surface ozone data that have shown increases over varying time frames",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We show that the trends measured by ozonesondes match those of high-elevation and mountaintop surface trends in most locations",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] differ significantly between the different resolutions",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the earlier version of GEOS-Chem does not perform better than the more recent version in capturing long-term trends (Fig. S9)",
+   "page": "§4.3 ¶2"
+  }
+ ]
+}

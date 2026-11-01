@@ -1,0 +1,529 @@
+{
+ "key": "g22_W4282936459",
+ "doi": "10.1016/j.jastp.2022.105918",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Leppänen & Poluianov 2022, J. Atmos. Sol.-Terr. Phys. 236, 105918 (14 pages)",
+  "Publisher XML text converted with jats_text (abstract and figure/table captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (Fig. n, Table n). The XML contains no body text, so body steps cite printed journal pages, which equal the PDF pages counted from 1. Figure-content steps cite the caption label and the PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it is still unclear how different atmospheric phenomena influence the ground level",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (body) and publisher XML text (abstract, captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the open question of how atmospheric phenomena known to affect ground-level 7Be also affect the 22Na/7Be ratio, at weekly, seasonal and interannual scales.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is still unclear how different atmospheric phenomena influence the ground level"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Uses weekly high-volume aerosol filter samples from STUK's Kotka, Kajaani and Rovaniemi stations (1987–2020), measured by HPGe gamma spectrometry for 7Be (477.6 keV) and 22Na (1274.6 keV).",
+     "page": "2–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "regular particulate airborne radioactivity measurements are conducted as a civil protection measure"
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computes 22Na and 7Be production profiles and their ratio against atmospheric depth with the Poluianov et al. (2016) Geant4-based yield model at modulation potentials of 426, 650 and 1200 MV. The ratio is about 0.0007 at the tropopause and 0.00045 near the ground.",
+     "page": "Fig. 3 (p. 5); p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ratio is not constant over the atmospheric column"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Converts activities to number densities and applies the radioactive decay law to each sample, assuming a source at 250 g/cm2 with a ratio of 0.0007, to estimate bulk transport times. The resulting distributions are roughly Gaussian.",
+     "page": "Fig. 4 (p. 5); p. 6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the median residence time in Kotka was 91 days while in Rovaniemi it was 95 days"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compares the residence-time distributions from the two stations and attributes Rovaniemi's longer median to its lower mixing height and greater distance from the mid-latitude exchange region.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The longer median residence time in Rovaniemi maybe caused by the longer transport time"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Sets the 91–95-day estimate against published residence times (Ioannidou & Paatero; Yamagata et al.; Delaygue et al.; Długosz-Lisiecka & Bem) in Table 2 and explains the differences by method and latitude.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "results obtained in this study are mainly comparable to the studies by"
+    },
+    {
+     "n": 7,
+     "node": "F",
+     "mode": "observation",
+     "action": "Selects the February 2003 SSW, a known intrusion event (Brattich et al. 2021), and examines the weekly 7Be, 22Na and ratio values at the three stations.",
+     "page": "6; Fig. 5 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "when the SSW event took place during February 18–21, 2003."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compares the observed ratio change (about +30% at Kotka and Kajaani, a small drop at Rovaniemi) with the expected strong rise from stratospheric air. Concentrations rose 90–100% but the ratio did not rise strongly.",
+     "page": "6–8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Surprisingly, the expected clear and strong increases in the"
+    },
+    {
+     "n": 9,
+     "node": "P",
+     "mode": "hypothesis",
+     "action": "Keeps the ratio as a stratospheric indicator and invokes an auxiliary: horizontal transport of lower-altitude, high-concentration, low-ratio air from Central Europe pushed by descending stratospheric air.",
+     "page": "8",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "one possible explanation may be that the increase in cosmogenic isotope concentrations were caused by not only vertical but"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "observation",
+     "action": "Examines further SSWs from the Butler et al. (2017) compendium (2006 and 2009 at Rovaniemi, two events in 2010 at Kotka). Concentrations rose but the ratio mostly stayed steady, with one 9-fold 22Na rise in February 2006.",
+     "page": "8; Fig. 6 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Fig. 6 shows data from the winters of 2006, 2009 and 2010 when sharp increases"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Builds weekly box-plot climatologies of 7Be, 22Na and the ratio at Kotka and summarizes weekly mean ratio statistics per station.",
+     "page": "Fig. 7 (p. 8); p. 8–9; Table 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "higher ratios observed during summer and lower ones during winter"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Checks that Kajaani and Rovaniemi show the same seasonal distributions as Kotka (shown only as Table 3 statistics).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the distributions are practically similar to the Kotka data"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compares the ratio's seasonal cycle with independent records adopted from other studies: Sodankylä tropospheric ozone, counts of potential vorticity above 3 PVU, and mixing height with 210Pb.",
+     "page": "9; Fig. 8 (p. 10)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This seasonal cycle resembles that of"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Refines the cycle into dated phases: low and stratified to week 10, a rise to week 20, a plateau to week 30, a decline to week 40, then low.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A steady increase continued for about 10 weeks until the end of May"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compares the cycle with published 22Na/7Be cycles (including the four phases of Steinmann et al. 2013) and with 10Be/7Be seasonality. Concludes the cycle is driven by stratosphere-to-troposphere transport and that the two ratios are complementary.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The seasonal cycle observed here agrees well with the"
+    },
+    {
+     "n": 16,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Computes annual means of concentrations and the ratio at Kotka and Rovaniemi and a Kotka long-term mean of 1.19e-4 (1994–2020). The ratio is below the mean in 1994–2008 and above it in 2009–2015.",
+     "page": "9; Fig. 9 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "annual mean was typically below the long-term average"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Compares annual-mean ratios between Kotka and Rovaniemi and finds similar general behaviour.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "did not show significant variation between the southern station in Kotka and northernmost station in Rovaniemi"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "States two rival explanations for the multi-year departures: changed vertical mixing, or shifts in the cosmic-ray energy spectrum that favour 22Na production.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There are two possible reasons for below average values during 1994–2008"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Checks the annual ratios against Solar minima and maxima, as the Fig. 3 calculation predicts higher ratios at Solar maximum. No clear signal is found and neither rival is excluded.",
+     "page": "9–10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is difficult to spot any clear minima/maxima during these years"
+    },
+    {
+     "n": 20,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Applies a Morlet wavelet transform (Grinsted et al. 2004) to the Kotka weekly ratio series. Finds an intermittent 3–4-year periodicity from 2005 and an 11-year periodicity outside the cone of influence.",
+     "page": "10; Fig. 10 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an intermittent 3–4 -year periodicity could be observed from 2005 onwards"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Runs wavelet coherence of the Kotka ratio with the NAO, AO, SCAND, QBO and SOI indices. Finds weak anti-phase NAO and AO coherence at 4–6 years, SOI coherence at about 4 years from 2012, and none with SCAND or QBO. Proposes a pressure-system and air-mass mechanism.",
+     "page": "10–11; Fig. 10 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The NAO index (top right panel) has a weak anti-phase coherence at 4-6-year scale"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Sets the coherence results against the authors' earlier null result (Leppänen et al. 2012), explained by 10 more years of data, and against the SCAND correlation reported by Ajtić et al. (2018).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reason for this is the increased amount of data when the time series is now 10 years longer"
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Concludes that the ratio is affected by large-scale circulation and the Solar cycle, and can serve as a tracer of atmospheric dynamics complementary to 10Be/7Be.",
+     "page": "12; §0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is affected by the changes in the large-scale atmospheric circulation and the Solar cycle"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Ground-level 22Na/7Be variations at event, seasonal and interannual scales",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Ratio measured directly; residence time inferred via decay law",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "How atmospheric phenomena affect the ratio; ratio as dynamics tracer",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "SSW: vertical vs horizontal transport; interannual: mixing vs cosmic-ray spectrum shift",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: production model predicts higher ratio aloft and at Solar maximum",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: SSW events, seasons, years at fixed stations",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: several SSWs, ~27 annual cycles, three stations",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Replicated across stations and SSW events; residence-time assumptions not varied",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as tracer; interannual rivals not excluded",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The ground-level 22Na/7Be ratio in Finland varies with stratosphere-troposphere exchange and tropospheric mixing (seasonal cycle), large-scale circulation (NAO/AO and SO coherence) and the Solar cycle, so it can be used as a tracer of atmospheric dynamics complementary to 10Be/7Be.",
+  "page": "12; §0 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "regularities",
+  "sentence": "Without the comparison of the nearly three-decade weekly ratio record with mixing and circulation records (seasonal tracers and wavelet coherence with the teleconnection indices), there would be no claim that the ratio responds to atmospheric dynamics.",
+  "page": "9–11"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the data come from routine civil-protection monitoring (p. 2), not from acquisition directed by a hypothesis. Claim: partly. The SSW expectation could fail and did fail (p. 8), and the coherences were judged against 95% significance contours (p. 10–11). The headline tracer claim was not exposed to a test that could have refuted it, and the interannual rivals were left open (p. 9–10). Registration: nothing reported as fixed in advance; the 250 g/cm2 source assumption and the event selection are post hoc."
+ },
+ "imports": [
+  {
+   "field": "particle physics",
+   "item": "Geant4 Monte Carlo toolkit for cosmic-ray cascade and isotope production",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "nuclear physics",
+   "item": "HPGe gamma-ray spectrometry with true coincidence summing correction",
+   "kind": "instrument",
+   "page": "3"
+  },
+  {
+   "field": "nuclear physics",
+   "item": "Monte Carlo semi-empirical detector efficiency calibration",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "nuclear physics",
+   "item": "Radioactive decay law used as a chronometer for transport time",
+   "kind": "concept",
+   "page": "4–5"
+  },
+  {
+   "field": "astrophysics/heliophysics",
+   "item": "Local interstellar galactic cosmic-ray spectrum (Vos & Potgieter 2015) with force-field heliospheric modulation",
+   "kind": "data",
+   "page": "3"
+  },
+  {
+   "field": "signal processing/mathematics",
+   "item": "Morlet wavelet transform and wavelet coherence (Grinsted et al. 2004 implementation)",
+   "kind": "method",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "but it is not known if they change the",
+   "page": "2"
+  },
+  {
+   "quote": "have concentrated on showing the seasonal cycle on a monthly level",
+   "page": "2"
+  }
+ ],
+ "limits": "1. Sources: the XML holds only the abstract and captions, so body steps are located by printed page; quotes avoid isotope superscripts that the PDF text splits.\n\n2. Sub-claims at other statuses:\n- Residence time: estimate_with_resolution, a median of 91–95 days with ±19–20 days spread, which the authors call a very crude approximation. The source-depth and parcel assumptions were not varied.\n- Seasonal cycle: regularity_in_range, four phases at 60–66°N.\n- SSW effect on the ratio being small: an observation only, with no significance test.\n\n3. Internal inconsistencies:\n- Long-term mean: the abstract gives 1.1e-4 from 1993–2020; the body gives 1.19e-4 from 1994–2020; the conclusions give 1.2e-4.\n- Periods relative to the mean: the abstract says below in 1995–2009 and above in 2010–2020; the body says below in 1994–2008 and above in 2009–2015.\n- Periodicity: the abstract says 4–6 years; the body says an intermittent 3–4 years in the wavelet transform. Neither 4–6 years nor a fixed SOI period is stated consistently: the abstract gives 3–4 years for SOI coherence, the body about 4 years.\n- Causation: the abstract says periodicities were 'caused by' NAO/AO and the Solar cycle, yet the 11-year signal lies outside the cone of influence and the AO coherence is below 95% confidence.\n\n4. Not reported:\n- Treatment of non-detections of 22Na.\n- Homogeneity across the 2010 change in calibration method and across changes in detectors and measurement times.\n- Uncertainty propagation into the ratio and the residence time.\n- Why the SSW events were selected; the authors say only a few possible cases showed increases, which suggests (inference) selection of events with visible concentration peaks.\n\n5. Other coding notes:\n- Entry could alternatively be coded data_without_theory, since the data are routine monitoring that is mined here.\n- The reviewers are acknowledged, but no review file was supplied, so no review sequence is coded.",
+ "disagreements": [
+  {
+   "target": "Steinmann et al. (2013); Rodriguez-Perulero et al. (2019) ratios in Switzerland and Spain",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The Finnish ratios differ from the mid-latitude values, which the paper attributes to the latitudinal dependence linked to Hadley/Ferrel cell circulation (Hoffman et al. 2018).",
+   "page": "4",
+   "quote": "ratios found in this study are lower compared to ratios of 8000–13 000 observed in Switzerland [...]"
+  },
+  {
+   "target": "Ioannidou and Paatero (2014) residence time of 7Be aerosols in Sodankylä",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their 4–11 days is much shorter than 91–95 days; the paper attributes the gap to their growth-rate and size method.",
+   "page": "6",
+   "quote": "estimated a residence time of 4–11 days"
+  },
+  {
+   "target": "Yamagata et al. (2019) 10Be/7Be transport time of 55–58 days",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The paper argues the values differ because that study was in a different, mid-latitude climate region.",
+   "page": "6",
+   "quote": "this is not directly comparable to this study which was carried out in the polar region"
+  },
+  {
+   "target": "Expectation (from the production profile and SSW 7Be studies such as Brattich et al. 2021) that SSW intrusions raise the [...]",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "At three stations in 2003 and in later SSWs, concentrations rose 90–100% or more while the ratio changed little or dropped.",
+   "page": "8",
+   "quote": "Surprisingly, the expected clear and strong increases in the"
+  },
+  {
+   "target": "Leppänen et al. (2012), which found no coherence of the Kotka ratio with AO, NAO and SO",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Coherences now appear with ten more years of data, and the SO coherence began only after 2012.",
+   "page": "11",
+   "quote": "The reason for this is the increased amount of data when the time series is now 10 years longer"
+  },
+  {
+   "target": "Ajtić et al. (2018) correlation of Scandinavian 7Be with the SCAND index",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "No SCAND coherence was found with the ratio at interannual scale; the paper suggests SCAND acts only on short-term 7Be variations.",
+   "page": "11",
+   "quote": "The Scandinavian Pattern probably causes short-term variations in the"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "22Na/7Be ratio from routine gamma monitoring",
+   "alternatives": "10Be/7Be ratio",
+   "reason": "10Be needs expensive, time-consuming accelerator mass spectrometry; 22Na/7Be data are routinely available",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "I",
+   "chosen": "Bulk residence time from production to observation",
+   "alternatives": "Separate stratospheric and tropospheric components (as Tokuyama and Igarashi 1998)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Single source at 250 g/cm2 with initial ratio 0.0007, parcel transport",
+   "alternatives": "Production throughout the column, a variable tropopause, mixing rather than parcels; a coupled production-transport model suggested for future work",
+   "reason": "none given (acknowledged as a crude approximation)",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "O",
+   "chosen": "Kotka series for the seasonal box plots",
+   "alternatives": "Kajaani and Rovaniemi data",
+   "reason": "distributions practically similar to Kotka",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "O",
+   "chosen": "Kotka series for the wavelet and coherence analyses",
+   "alternatives": "Kajaani and Rovaniemi series",
+   "reason": "it was the longest time series available",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The first curve corresponds to the modulation potential of 426 MV",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] are some differences between the Kotka and Rovaniemi data",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "results obtained in this study are mainly comparable to the studies by",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Fig. 6 shows data from the winters of 2006, 2009 and 2010 when sharp increases",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the distributions are practically similar to the Kotka data",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This seasonal cycle resembles that of",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The seasonal cycle observed here agrees well with the",
+   "page": "9"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "both ratios increased approximately 50% from the wintertime to the summertime values",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "did not show significant variation between the southern station in Kotka and northernmost station in Rovaniemi",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "cycle is outside the U-shaped cone of influence which depicts the 95%",
+   "page": "10"
+  }
+ ]
+}

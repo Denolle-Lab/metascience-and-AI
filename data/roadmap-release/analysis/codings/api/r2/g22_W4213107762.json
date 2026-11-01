@@ -1,0 +1,495 @@
+{
+ "key": "g22_W4213107762",
+ "doi": "10.1029/2021ms002542",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Schneider, Zender & Price (2022), More realistic intermediate depth dry firn densification in the Energy Exascale Earth System Model (E3SM), JAMES 14, e2021MS002542, published PDF (21 pp.)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "If there exists a total FAC bias in CESM2, then it poses the problem of how to develop the firn in an Earth system model",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Schneider, Zender & Price (2022), published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Take from Stevens et al. (2020) the implication that the CESM2/CLM5 firn density parameterization (Vionnet et al. 2012 compaction) gives a total firn air content that is too high.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "results in a total FAC that [...]"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of which dry-snow compaction equation to put into an Earth system model so that firn densities and FAC at 10–60 m are realistic.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the principal question of which compaction equation to incorporate into an Earth system model remains difficult to address"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set up competing firn densification parameterizations as rivals: vK17 (CLM5 scheme ported into ELM), A10 (Arthern et al. 2010 two-stage model), and a follow-on tuned vK17+.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The following sections delineate three experimental firn densification configurations"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Modify ELM: raise the SWE cap from 1 m to 10,000 m, port the 12-layer vK17 grid and CLM5 compaction, expand to a 16-layer grid at 7.67 m resolution, and replace Eq. 1 with the Arthern et al. (2010) Eq. 8 driven by grain-load stress (Eq. 9).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Expanding to 16 layers, minimum and maximum layer thicknesses were modified to resolve firn densities at a vertical resolution of 7.67 m"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "estimation",
+     "action": "After finding vK17 biases, calibrate the vK17+ coefficients c3, f2 and an added constant c6 by least-squares fitting of vK17 strain rates to HL80-derived empirical strain rates from 10^4 random dry-snow-zone profiles (Appendix A, pp. 18–19). Also change rho_dm to 150 kg m−3 and add a dendritic-snow term.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "was tested in ELM to reduce biases found in vK17"
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Run each configuration as stand-alone ELM on the coarse 500 km ne11 grid with CRUNCEP forcing: a 260-year cold-start spin-up cycling 1901–1921 forcing, then 1901–2001 historical runs, 360 years in total.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We then simulate 260 years with repeating (from 1901 to 1921), quasi-steady atmospheric conditions"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute reference steady-state density profiles from the empirical HL80 model over a matrix of mean annual temperatures, accumulation rates and surface densities typical of warm dry-snow zones.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "steady-state density profiles were calculated from the empirical model of HL80"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the evaluation in three parts. (1) Mask melt-affected cells and sort ELM output by temperature and accumulation for comparison with HL80. (2) Match SUMup cores (1980–2010) to the nearest ELM node and layer and compute RMSE to 60 m, with Greenland cut off at 1970. (3) Compute FAC10 and FAC60 and their RMSD against V19.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This procedure is hence carried out to identify firn model biases that are independent from geographic errors in ELM"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the ELM profiles with the HL80 range. A10 agrees best at 20–60 m but has about 70 kg m−3 larger discrepancies at 0–10 m. vK17 stagnates at 550–600 kg m−3 (bias up to 180 kg m−3). vK17+ does not stagnate but stays outside the HL80 range.",
+     "page": "Figure 3 (p. 11); text p. 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Deeper than 20 m, the A10 experiment agrees better with HL80 compared to the vK17 experiment, which asymptotically stagnates at 550–600 kg m−3"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare the simulated Greenland profiles with SUMup in situ firn densities by grid cell. A10 has the lowest median RMSE, and vK17+ survives melt masking in only one cell.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Median RMSE is smallest in A10 (67 kg m−3), followed by vK17 (123 kg m−3)."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "observation",
+     "action": "Extend the SUMup comparison to the Antarctic Ice Sheet. All experiments are too light at 10–60 m, A10 diverges from the measurements below −30°C, and vK17+ has the lowest median RMSE (85 vs 100 kg m−3 for A10).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "On the AIS, we find that intermediate depth (10–60 m) densities simulated in all ELM experiments are too small"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare FAC10 with the V19 empirical model for the Greenland dry snow zone. vK17 and vK17+ have RMSD of about 0.7 m, while A10 is biased low with RMSD of 1 m.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In A10, however, FAC10 is biased low (not enough pore space)"
+    },
+    {
+     "n": 13,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Integrate FAC to 60 m across the experiments. A10 lowers FAC60 by at least 20% in warm regions, with the gap largest above −31°C, and all three converge below −37°C.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "for relatively warm regions a decrease in FAC60 of at least 20%"
+    },
+    {
+     "n": 14,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Apply a paired-difference t-test on grid-cell RMSE between A10 and vK17. The decrease is 41 kg m−3 (31%, p<0.01) in cells evaluated to 60 m and 22 kg m−3 (p=0.03) in all cells, so the null of equal errors is rejected.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results reject the null hypothesis that density errors (at depths of 0–60 m) are the same in the vK17 and A10 experiments"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "theory",
+     "action": "Explain the stronger temperature sensitivity of A10 (good in warm, poor in cold zones) by its calibration on upper-20 m strain rates from the warm Antarctic Peninsula.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We expect this divergent behavior for warm temperatures because the underlying compaction model, given in Equation 8, was originally calibrated"
+    },
+    {
+     "n": 16,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the idea that recalibrating the vK17 overburden coefficients, or raising the layer count from 12 to 16, fixes the intermediate-depth bias. vK17+ gave insignificant differences, consistent with Stevens et al. (2020).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "rejects the hypothesis that the spatial correlation (geographically) of densities versus depths can be improved by calibrating the overburden pressure compaction coefficients"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the claim that A10 below 20 m gives a more realistic total FAC than the CLM5 default vK17, while not claiming better spatial correlation.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the improved density profile of A10 for depths greater than 20 m likely results in a more realistic total FAC than in vK17"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "methods",
+     "action": "Propose refinements and leave them for a follow-on study: a hybrid vK17 first stage with an A10 second stage, a test for A10 compensating errors, and an increase of the Eq. 2 eta0 by about 50.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a hybrid vK17 (first stage)/A10 (second stage) density parameterization could potentially provide a model"
+    },
+    {
+     "n": 19,
+     "node": "H",
+     "mode": "theory",
+     "action": "Note an unexpected 39–78% more dry grid cells in A10 and conjecture that higher near-surface density raises thermal conductivity, keeping the top layer cooler.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This unexpected result indicates that the top (2 cm) layer of the snowpack with the A10 density parameterization is more resilient to warm surface temperatures"
+    },
+    {
+     "n": 20,
+     "node": "P",
+     "mode": "methods",
+     "action": "Attribute the mismatch between HL80 and SUMup within grid cells to coarse-resolution 'bulk weather' and HL80 accumulation-parameter uncertainty, and keep HL80 as an adequate evaluation standard.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This empirical mismatch, between measurements and HL80, indicates that our methodology is imperfect."
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that the 16-layer A10 two-stage formulation should be used where accurate total FAC is required, given the 31% RMSE decrease at 20–60 m and the FAC60 decrease of at least 20% in warm dry snow zones.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "its two-stage overburden compaction formulation should be used in studies that require an accurate total FAC"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known phenomenon: dry firn densification; ESM parameterization biased at 10–60 m",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Densities measured in cores (SUMup); model bias only via comparison",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Choose and characterize a compaction scheme for ELM",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Yes: vK17, A10, vK17+ parameterizations",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: differ at 20–60 m density and warm-zone FAC60",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in model runs (forcing, spin-up, grid)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: holds in warm dry zones, fails below about −30°C on AIS and near surface",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "A10 kept for intermediate depths; vK17 rejected at depth; vK17+ tuning rejected",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; acknowledgments say reviewers helped refine methods",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A 16-layer ELM snowpack with the Arthern et al. (2010) two-stage compaction (A10) simulates dry firn to 60 m. Compared with the CLM5 scheme (vK17), it cuts 0–60 m density RMSE by 41 kg m−3 (31%), improves 20–60 m densities, and lowers FAC60 by at least 20% where mean temperature exceeds −31°C; it should be used where accurate total FAC matters.",
+  "page": "18"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without expanding ELM's snowpack to 16 layers and replacing the overburden compaction with the grain-load-stress form of Arthern et al. (2010), there would be no A10 configuration to compare and no claim.",
+  "page": "5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: the suspected FAC bias in CLM5 (Stevens et al. 2020) motivated building and running the rival parameterizations, but the evaluation data (SUMup, HL80, V19) existed beforehand. Claim: the A10 vs vK17 RMSE paired t-test could have failed (p.13), and the analogous vK17+ tuning hypothesis did fail (pp.14–15). Registration: no thresholds or analyses are stated as fixed before the runs, and vK17+ was built after seeing vK17 biases (p.6)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "paired-difference t-test on grid-cell RMSE",
+   "kind": "method",
+   "page": "12"
+  },
+  {
+   "field": "computer science / statistics",
+   "item": "NumPy pseudo-random sampling and least-squares regression for parameter calibration",
+   "kind": "method",
+   "page": "18"
+  },
+  {
+   "field": "physical chemistry",
+   "item": "Arrhenius activation-energy dependence of compaction rate",
+   "kind": "concept",
+   "page": "4"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "implicit Crank-Nicolson finite-difference scheme for snow temperature",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "physics",
+   "item": "dependence of ice crystal habit on humidity (Libbrecht 2005), proposed for initial grain size",
+   "kind": "concept",
+   "page": "17"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Our results demonstrate a new capability in an Earth system model, that is, calculating firn density as deep as 60 m below the surface.",
+   "page": "1"
+  },
+  {
+   "quote": "Until now this fundamental process in glaciology has yet to be accounted for in the U.S. Department of Energy's Earth System Model (E3SM).",
+   "page": "1"
+  },
+  {
+   "quote": "this is the first study that tests the stress-based formulation of the semi-empirical firn densification model of Arthern et al. (2010)",
+   "page": "17"
+  },
+  {
+   "quote": "this study is the first that couples the model of Arthern et al. (2010) with an Earth system model's snow metamorphism routine",
+   "page": "17"
+  }
+ ],
+ "limits": "Process:\n- No review file was supplied. The acknowledgments say reviewers helped 'refine methods, clarify results', so some steps may be review-forced, but this cannot be coded (inference).\n- vK17+ was designed after seeing vK17 biases (p.6). Its place in the sequence follows the document, not necessarily the chronology.\n- The supplement (full Figure 5, Figure S1) was not supplied.\n\nEvidence base:\n- Few grid cells survive melt masking (Greenland: 5 for vK17, 7 for A10, 1 for vK17+). The Greenland comparison has a temporal mismatch, with ELM cut at 1970 against 1980–2010 cores (p.9).\n- Coarse 500 km resolution was forced by computing limits.\n- No rerun or seed variation of the simulations is reported.\n\nSub-claims and their statuses:\n- A10 has lower RMSE than vK17: confirmed (paired t-test, p<0.01 for cells to 60 m; p=0.03 for all cells).\n- FAC60 decreases by at least 20% for mean temperature above −31°C: regularity_in_range.\n- A10 is worse in the upper 10 m (FAC10 RMSD 1 m) and in cold Antarctic zones: a limit stated by the authors.\n- Tuning or re-layering vK17 does not fix the bias: rival excluded.\n- Conduction explanation for the extra dry cells: conjecture, status none.\n- A10 may be right at depth only through compensating near-surface errors: left untested (p.16).\n\nComposition: none_fits. This is a model intercomparison against empirical benchmarks. It resembles strong_inference (three rivals, one comparison excluding vK17 at depth), but there is no crucial test whose outcomes were fixed in advance, and the rivals are parameterizations rather than explanations.",
+ "disagreements": [
+  {
+   "target": "CLM5 firn density parameterization (van Kampenhout et al. 2017; Lawrence et al. 2019), vK17",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "In ELM, vK17 stagnates at 550–600 kg m−3 below 20 m, giving biases up to 180 kg m−3 versus HL80 and higher RMSE against SUMup, while its surface densities and critical depth are acknowledged as good.",
+   "page": "16",
+   "quote": "Our results confirm that the vK17 firn density parameterization does not adequately represent the second stage of densification"
+  },
+  {
+   "target": "Arthern et al. (2010) / Ligtenberg et al. (2011) semi-empirical model calibrated on Antarctic Peninsula sites",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "A10 matches HL80 and SUMup in warm dry zones but diverges below about −30°C on the AIS. The authors attribute this to calibration on warm, upper-20 m strain rates.",
+   "page": "4",
+   "quote": "it should not be applied in Earth system models to represent the cold interior regions of Greenland and Antarctica without further evaluation"
+  },
+  {
+   "target": "Community Firn Model framework firn densification models (Stevens et al. 2020)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue that the depth-integrated overburden load is a state variable that can be computed directly and is preferable in an ESM to an accumulation-rate proxy. No direct test is offered.",
+   "page": "17",
+   "quote": "most of the participating (individual) firn densification models use a mean mass accumulation rate as a proxy for overburden stress"
+  },
+  {
+   "target": "HL80 empirical model (Herron & Langway 1980) as evaluation standard",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Forced with ELM grid-cell climate, HL80 does not track SUMup measurements within cells. The authors attribute this to coarse 'bulk weather' and accumulation-parameter uncertainty, but keep HL80 as sufficient.",
+   "page": "16",
+   "quote": "the analytic form of HL80 fails to track through the center of SUMup density measurements within each [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "A10 two-stage compaction (Arthern et al. 2010)",
+   "alternatives": "vK17 (CLM5/Vionnet et al. 2012 viscosity); vK17+ (recalibrated vK17)",
+   "reason": "Empirical comparison against HL80, SUMup and V19",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "N",
+   "chosen": "16-layer grid with 7.67 m resolution at 10–60 m",
+   "alternatives": "12-layer grid of van Kampenhout et al. (2017)",
+   "reason": "Needed to resolve processes at intermediate depths while keeping fine near-surface spacing",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "N",
+   "chosen": "Grain-load stress computed from column density (Eq. 9) as overburden input",
+   "alternatives": "Mean accumulation rate as a proxy for overburden stress (CFM models)",
+   "reason": "Column density is a state variable that can be calculated directly, preferred where accumulation varies sub-daily",
+   "effect_reported": "no",
+   "page": "17"
+  },
+  {
+   "node": "F",
+   "chosen": "Coarse 500 km ne11 grid",
+   "alternatives": "Higher-resolution multi-century integrations",
+   "reason": "Limited computational resources; the coarse grid preserves mean temperature and accumulation in dry snow zones",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "D",
+   "chosen": "Greenland ELM results cut off after 1970",
+   "alternatives": "Temporally matched 1980–2010 comparison",
+   "reason": "Includes more dry-snow grid cells; acknowledged as possibly biasing the evaluation",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "S",
+   "chosen": "HL80 forced with a matrix of plausible climates and surface densities",
+   "alternatives": "Location-specific HL80 evaluation",
+   "reason": "Independent of biases in ELM atmospheric forcing, at the cost of site specificity",
+   "effect_reported": "no",
+   "page": "16"
+  },
+  {
+   "node": "R",
+   "chosen": "Dendritic-snow compaction term applied only for re < 0.08 mm",
+   "alternatives": "No dendritic term",
+   "reason": "ELM does not specify grain shape; small grains treated as dendritic",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "A10 as presented",
+   "alternatives": "Hybrid vK17 first stage/A10 second stage; Eq. 2 with eta0 increased by about 50",
+   "reason": "Untested; left for a follow-on study",
+   "effect_reported": "no",
+   "page": "16"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "results in densities that agree best with the empirical model of HL80 in the 20–60 m depth interval",
+   "page": "10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "evaluate RMSE in simulated density profiles against a comprehensive collection of in situ firn density measurements",
+   "page": "10"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "On the AIS, we find that intermediate depth (10–60 m) densities simulated in all ELM experiments are too small",
+   "page": "12"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we evaluate RMSD against the empirical model of V19",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "also significantly decreases RMSE by an average of 22 kg m−3 (19%; p-value = 0.03) in all grid-cells",
+   "page": "13"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "an attempt at tuning the vK17 parameterization in a vK17+ configuration lead to insignificant differences despite the improved vertical resolution",
+   "page": "14"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "a finding supported by results from Stevens et al. (2020), where the negative bias (densities too low) exists despite having a higher resolution vertical grid",
+   "page": "15"
+  }
+ ]
+}

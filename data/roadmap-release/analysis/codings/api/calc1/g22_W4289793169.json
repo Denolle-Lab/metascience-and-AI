@@ -1,0 +1,524 @@
+{
+ "key": "g22_W4289793169",
+ "doi": "10.1029/2021jb023726",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Li, Pranger & van Dinther (2022), Characteristics of Earthquake Cycles: A Cross-Dimensional Comparison of 0D to 3D Numerical Models, JGR Solid Earth 127, e2021JB023726 (published PDF, 26 pages; Supporting Information not supplied)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 26' page numbers)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "These questions have not yet been systematically addressed.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Li, Pranger & van Dinther (2022), published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how far, and why, lower-dimensional earthquake-cycle models reproduce 3D results, and when the simplification is justified.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore it becomes a common concern to what extent lower dimensional models can reproduce nature when compared to 3D models."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the dimension-independent finite-difference code library Garnet, developed in co-author Pranger's earlier work, for 0D to 3D quasi-dynamic rate-and-state simulations.",
+     "page": "3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "a recently developed code library for the parallel solution of coupled non-linear multi-physics problems in earth sciences (Pranger, 2020)"
+    },
+    {
+     "n": 3,
+     "node": "V",
+     "mode": "methods",
+     "action": "Verify the Garnet earthquake-cycle implementation against the SCEC SEAS benchmarks BP1-QD and BP4-QD (shown in Supporting Information S1 and in Jiang et al., 2022).",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use this benchmark initiative to successfully verify the earthquake cycle implementation in Garnet"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design the reference model on the SEAS BP4-QD setup: a vertical strike-slip fault with a VW patch surrounded by VS patches, a large nucleation size and a predefined nucleation zone.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we build our models based on the setup of SEAS benchmark problem BP4-QD"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test convergence of the simulated sequences as the domain extents X0, Y0 and Z0 are enlarged (Figure S1, Table 1).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the difference is negligible when X0 > 40 km"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design the progressive dimension reduction from 3D to 2D anti-plane, 1D (X0 set to (Wf - H)/2) and 0D spring-slider, choosing comparison locations (line EF, point Nc).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we take a structured approach to dimension reduction, eliminating first the lateral along-strike dimension, then the vertical dimension"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run 3D, 2D and 1D earthquake-sequence simulations and record slip rate, stress and slip time series.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Regardless of dimension, we observe quasi-periodic earthquake sequences (Figure 2)."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare interseismic behaviour across dimensions: earthquakes become more characteristic, and total slip and recurrence interval grow from 3D (4.5 m, 135 yr) to 2D and 1D.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "simulated earthquakes reach larger slip and longer recurrence interval by dimension reduction (Figure 3)"
+    },
+    {
+     "n": 9,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that removing the VS patches that load the VW patch lowers the interseismic stress rate, which lengthens recurrence and increases the slip deficit.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We contribute the larger earthquakes simulated in lower dimensional models largely to a lower interseismic stress rate."
+    },
+    {
+     "n": 10,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Report that the 1D choice X0 = (Wf - H)/2 failed to give a comparable stress rate; explain the failure with the VS-loading idea and decide that X0 must be revised rather than the explanation.",
+     "page": "10",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "but the actual stress rate proved to be inadequate"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the coseismic rupture of the first earthquake across dimensions: peak slip velocity and rupture speed rise with reduction, while stress drop and fracture energy stay comparable.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Accordingly, the rupture speed of the stable part is ∼2.55 km/s, almost twice higher than in 3D."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Repeat the comparison on the spontaneously nucleated sixth earthquake to test the findings under realistic, loading-shaped initial conditions.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To understand cross-dimensional differences under more realistic initial conditions prevalent after the first earthquake, we also analyze the sixth earthquake."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare nucleation and later coseismic behaviour: the 1D fault point mimics the nucleation rim of higher-dimensional models, but it is quantitatively dissimilar in later ruptures.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "such models mimic the rim of the nucleation zone in higher dimensional models"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive theoretical estimates of recurrence interval and total slip for each dimension from crack-model stress rates at distance h* inside the VW patch (Equations 14 to 18).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "by extending the 3D theoretical formulation in Chen and Lapusta (2019) to all other dimensions"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare theoretical and simulated recurrence and slip: theory underestimates them by about 30% but reproduces the relative trend across dimensions.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the theoretical prediction successfully captured the observed trend of increasing recurrence interval and coseismic slip"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "theory",
+     "action": "Test the rupture speed and peak slip velocity relation (Equation 19) and the average stress drop estimate (Equation 20) against the simulations.",
+     "page": "17",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "This positive correlation is confirmed by our simulations (Figure 7c)."
+    },
+    {
+     "n": 17,
+     "node": "O",
+     "mode": "methods",
+     "action": "Measure the average computational time per earthquake cycle for 0D to 3D models at the same resolution.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we measure the average computational time per earthquake cycle (Figure 8)"
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Vary the VW patch length from 150 to 15 km (aspect ratio 5:1 to 0.5:1) in 3D and compare recurrence and rupture with 2D.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "By varying the VW patch length from 150 to 15 km, we change the aspect ratio from 5:1 to 0.5:1"
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Refine the claim into aspect-ratio conditions under which 2D models can stand in for 3D, for long-term and for coseismic observations.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "2D models can better represent high aspect ratio faults in 3D for long-term observations"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive analytically that the 0D spring-slider is mathematically equivalent to the 1D model (Equation 21).",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Such a 0D model is mathematically equivalent to the 1D model."
+    },
+    {
+     "n": 21,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Drive the 0D model with the theoretical stress rate at h* (Equation 16), revising the failed X0 choice; recurrence intervals come within 1.5% (3D) and 16% (2D).",
+     "page": "21",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "recurrence intervals of about 133 and 250 years are obtained"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Support the inference that 1D models cannot produce slow slip with a parameter study from the authors' group (Diab-Montero et al., 2021).",
+     "page": "21",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "This inference is supported by a parameter study of hundreds of models in which no suitable frictional parameters could be found"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Vary auxiliaries: repeat with a fully dynamic approach (details deferred to a follow-up) and test three tectonic loading conditions in 2D over enlarged domains (Table S1).",
+     "page": "22",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our conclusions still largely hold with minor quantitative variations."
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the claim: lower-dimensional models are qualitatively similar, with systematic quantitative biases explained by the removal of VS patches, at a million-fold speed-up.",
+     "page": "23",
+     "move": "new",
+     "trigger": "author",
+     "quote": "lower dimensional models produce longer recurrence intervals and hence larger coseismic slip"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "systematic differences in earthquake-cycle behaviour between 0D-3D models of one setup",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "yes, read directly from simulation output",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "guidance on model design and interpretation of lower-dimensional models",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "no rival explanations stated; one mechanism (loss of VS-patch loading) proposed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "theory predicts the direction and relative size of the recurrence and slip changes",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "conditions set in silico (dimension, VW length, loading, domain size)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "mostly yes: domain size, loading type, VW length, sixth event, FD approach",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "kept: capability and limits of reduced-dimension models characterized",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Lower-dimensional (0D to 2D) quasi-dynamic earthquake-cycle models reproduce the qualitative behaviour, stress drop and fracture energy of 3D models but give larger recurrence intervals, slip, peak slip velocity and rupture speed, mainly because VS patches are eliminated, while running up to a million times faster.",
+  "page": "1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "The cross-dimensional comparison of the same BP4-QD setup run in 3D, 2D and 1D, quantifying slip and recurrence differences, is the step without which neither the characterization nor the VS-patch explanation would exist.",
+  "page": "8"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The main simulations were directed by the question, not by a stated hypothesis (p. 2-3). The VS-patch hypothesis then directed the VW-length runs (p. 20) and the 0D driving-force test (p. 21). The theory could have failed to capture the trend but underestimates absolute values by about 30% (p. 16). The 0D test gave 1.5% and 16% mismatches (p. 21). Nothing is reported as fixed before the runs."
+ },
+ "imports": [
+  {
+   "field": "computer science / high-performance computing",
+   "item": "PETSc solvers, MPI and Kokkos parallelism libraries",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "staggered-grid finite differences and linear multistep adaptive time stepping",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "mathematics (tensor analysis)",
+   "item": "differential operators in general curvilinear coordinates for static grid refinement (Simmonds, 1994)",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "engineering fracture mechanics",
+   "item": "stress intensity factors for different crack-front curvatures (Tada et al., 1973)",
+   "kind": "concept",
+   "page": "16"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We are the first to systematically study and quantify similarities and differences in how models in different dimensions simulate earthquake sequences.",
+   "page": "18"
+  },
+  {
+   "quote": "These questions have not yet been systematically addressed.",
+   "page": "2"
+  },
+  {
+   "quote": "its consequences are not systematically studied",
+   "page": "1"
+  }
+ ],
+ "limits": "Coded from the published PDF only; no review file or Supporting Information was supplied, so the benchmark verification (S1), the domain convergence tests (Figure S1) and the loading-condition tests (Table S1) are coded from the main-text descriptions. Sub-claims at other statuses: (a) the mechanism (loss of VS-patch loading lowers the stress rate) is best_explanation; no rival mechanism is stated, and the theory reproduces trends but underestimates absolute values by about 30%. (b) The aspect-ratio guidance for 2D substituting 3D is regularity_in_range, for aspect ratios 0.5 to 5. (c) The 0D/1D equivalence is derived analytically. (d) The claim that 1D cannot produce slow slip rests on an inherited parameter study. The results hold only for quasi-dynamic, quasi-periodic characteristic sequences in the BP4-QD setup with a large nucleation size; the authors argue, without showing, that the differences will persist in complex setups (p. 18). The fully dynamic check is asserted but its results are deferred to a follow-up (p. 22). Timings come from one hardware configuration without distributed memory (p. 18). Inference: the 1D X0 revision was made after seeing the mismatch, so the 0D driving-force test is post hoc. No composition fits: the walk is a question-led systematic simulation comparison with a post-hoc single explanation, not strong inference or capability-first.",
+ "disagreements": [
+  {
+   "target": "Earlier 2D versus 3D comparisons in the earthquake cycle community (e.g., Chen & Lapusta, 2009; Chen & Lapusta, 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues that prior comparisons were partial and lacked theory, and supplies a comparison over 0D to 3D and all cycle phases, with a theoretical framework.",
+   "page": "2",
+   "quote": "However, these findings are not systematic and occasionally lack necessary theoretical support."
+  },
+  {
+   "target": "Interpretation of 2D results in 3D via empirical scaling relations (Lapusta & Rice, 2003; Kaneko et al., 2010; Chen & [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The VW-length experiments show that 2D-to-3D correspondence depends on aspect ratio and on whether long-term or coseismic observables are compared.",
+   "page": "21",
+   "quote": "it is crucial to assume a suitable aspect ratio according to the corresponding research objective"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "vertical 2D anti-plane configuration",
+   "alternatives": "horizontal 2D plane with in-plane strain",
+   "reason": "keeps the top/bottom loading regions for better comparison; differences expected only as slightly modified loading and nucleation size",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "BP4-QD setup with large nucleation size, giving simple periodic earthquakes",
+   "alternatives": "setups with smaller, irregular earthquakes",
+   "reason": "facilitates benchmarking at low resolution and quantitative comparison over dimensions",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "D",
+   "chosen": "1D fault point at Nc inside the predefined nucleation zone",
+   "alternatives": "other fault locations",
+   "reason": "to facilitate coseismic comparison",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "0D driving force from theoretical stress rate at h* (Equation 16)",
+   "alternatives": "1D domain size X0 = (Wf - H)/2",
+   "reason": "X0 = (Wf - H)/2 gave inadequate interseismic stress rate because loading acts at the VW-VS transition",
+   "effect_reported": "yes",
+   "page": "21"
+  },
+  {
+   "node": "S",
+   "chosen": "0D models in place of 1D",
+   "alternatives": "1D models",
+   "reason": "mathematically equivalent and more computationally efficient; 1D preferred when heterogeneity, inelasticity or inertia are modeled",
+   "effect_reported": "yes",
+   "page": "21"
+  },
+  {
+   "node": "V",
+   "chosen": "tectonic loading at top/bottom of the fault (BP4-QD) in 2D and 3D",
+   "alternatives": "loading only at far-away boundary; both on-fault and far-away loading",
+   "reason": "follows BP4-QD; 1D restricted to far-away loading by dimension",
+   "effect_reported": "yes",
+   "page": "22"
+  },
+  {
+   "node": "D",
+   "chosen": "quasi-dynamic approximation with radiation damping",
+   "alternatives": "fully dynamic modeling",
+   "reason": "reduces computational costs",
+   "effect_reported": "yes",
+   "page": "22"
+  },
+  {
+   "node": "D",
+   "chosen": "predefined highly stressed nucleation zone as initial condition",
+   "alternatives": "spontaneous nucleation without predefined zone",
+   "reason": "forces the first earthquake to nucleate in the same region for coseismic comparison",
+   "effect_reported": "yes",
+   "page": "22"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We use this benchmark initiative to successfully verify the earthquake cycle implementation in Garnet",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We show that the simulated earthquake sequences are converging in both interseismic and coseismic phases upon enlarging the medium",
+   "page": "4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To understand cross-dimensional differences under more realistic initial conditions prevalent after the first earthquake, we also analyze the sixth earthquake.",
+   "page": "14"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "The theoretically predicted recurrence interval and maximum coseismic slip values systematically underestimate the numerical simulations by about 30%",
+   "page": "16"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "which is similar to what Hawthorne and Rubin (2013) measured (0.50–0.65) in their 2.5D simulations",
+   "page": "17"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "By varying the VW patch length from 150 to 15 km, we change the aspect ratio from 5:1 to 0.5:1",
+   "page": "20"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "recurrence intervals of about 133 and 250 years are obtained",
+   "page": "21"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "This inference is supported by a parameter study of hundreds of models in which no suitable frictional parameters could be found",
+   "page": "21"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Our conclusions still largely hold with minor quantitative variations.",
+   "page": "22"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "is hardly affected by the type of loading when the computational domain is large enough",
+   "page": "22"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "numerical results generally agreed with each other when computational domain was large enough",
+   "page": "22"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "It is suggested by some former studies that initial conditions have little effect on subsequent earthquakes",
+   "page": "22"
+  }
+ ]
+}

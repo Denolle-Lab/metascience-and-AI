@@ -1,0 +1,528 @@
+{
+ "key": "g22_W4291222803",
+ "doi": "10.1029/2022gc010453",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Feng, Mohanna & Meng (2022), EdgePhase: A Deep Learning Model for Multi-Station Seismic Phase Picking, Geochemistry, Geophysics, Geosystems 23, e2022GC010453 (published PDF, 14 pages; Supporting Information not supplied)"
+ ],
+ "pages_convention": "printed journal pages (n of 14); Supporting Information items cited by label (e.g. Text S1) because the supplement was not supplied",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "some phases are difficult to identify at a single station due to a low signal-to-noise ratio",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem that single-station deep-learning pickers miss low-SNR phases, which human analysts resolve by checking waveform consistency across stations.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "some phases are difficult to identify at a single station due to a low signal-to-noise ratio"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They state the working hypothesis that exploiting waveform consistency between neighbouring stations will improve DL phase picking, and argue that graph neural networks can carry it.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a multi-station approach utilizing the waveform consistency between neighboring stations should improve the performance of DL models in phase picking"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build EdgePhase: the pre-trained EQTransformer encoder and P/S decoders (STEAD weights, from Mousavi et al.) plus a new Edge Convolution module with CNN message functions, max aggregation, a self-loop, a 100 km distance threshold for edges and a single layer.",
+     "page": "2-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "EdgePhase defines neighbors with the fixed threshold of the geographic distance"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble the SCSN2021 graph data set from the 2021 Southern California network archive (12,718 earthquake and 15,813 noise samples), deliberately keeping single-label, noisier records, and split it 80/10/10.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we intentionally make our training data set noisy to test the performance of multi-station models"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "They design the comparison: EdgePhase and Baseline-A (EQTransformer without Edge Convolution) are both fine-tuned on SCSN2021 (binary cross-entropy, Adam, batch 16, up to 32 stations), and Baseline-B is the original STEAD-trained EQTransformer; they also define the pick-matching metrics (0.5 s tolerance).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To study the effect of fine-tuning, we also added Baseline-B to the comparison"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare precision-recall curves on the SCSN2021 test set, with thresholds set at each model's maximum F1: EdgePhase 0.88/0.86, Baseline-A 0.84/0.81, Baseline-B 0.66/0.62 (P/S). EdgePhase has about 0.01 s larger pick-time scatter.",
+     "page": "5 (Figure 2, p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The maximum F1 score in P-phases for EdgePhase, Baseline-A, and Baseline-B models are 0.88, 0.84, and 0.66, respectively."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "They run Baseline-B on the STEAD test set and recover the high F1 reported for EQTransformer, attributing its lower SCSN2021 score to region, station and noise differences.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Baseline-B model achieves the F1 score of 0.99 and 0.98 for P and S-phases on the STEAD test set"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They break down true positives, false negatives and false positives by SNR band (0, 10, 20 dB), finding EdgePhase detects more and misses fewer phases in all bands but has more false alarms at low SNR. The edge distance threshold is discussed in Text S1.",
+     "page": "6 (Figures S2-S3, Text S1 cited)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared with two baseline models, EdgePhase detects more and misses fewer phases at all three SNR bands."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare the probability functions of the three models on one M1.43 test event, where EdgePhase picks all 11 P and 9 S labels.",
+     "page": "6 (Figure 3, p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The EdgePhase model outperforms two baseline models by detecting all labeled P- (11) and S-phases (9)."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the premise that the module exchanges phase information by comparing latent (input) and enhanced (output) feature maps at three neighbouring stations.",
+     "page": "6 (Figure S4 cited)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the communication between stations effectively suppresses the noise before P-phases and after S-phases in the feature spaces"
+    },
+    {
+     "n": 11,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep two conclusions: fine-tuning is essential, and the Edge Convolution module adds further improvement.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] -tuning is essential to EQTransformer when applying to new data sets or applications"
+    },
+    {
+     "n": 12,
+     "node": "F",
+     "mode": "observation",
+     "action": "They take the 2020 M7.0 Samos aftershock sequence (first month, 72 Aegean stations, data outside the training sets) as found conditions for testing generalization.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These waveforms are not included in the STEAD and SCEC2020 data sets, so they are suitable for testing the generalization ability of EdgePhase."
+    },
+    {
+     "n": 13,
+     "node": "O",
+     "mode": "observation",
+     "action": "They run EdgePhase on 60 s sliding windows of the continuous data with low thresholds (0.18 for P, 0.15 for S), picking about one million P and one million S phases.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we were able to detect 979,218 P-phases and 1,000,341 S-phases with relatively low SNRs"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They associate and locate events with REAL, VELEST and HypoDD, giving 1,222 located and 687 relocated events.",
+     "page": "8 (Texts S2-S3 cited)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In total, we located 1,222 events with VELEST and relocated 687 events with HypoDD."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "They compare their catalog with the NKUA local catalog (421 events): 190% more detections, about 53% of NKUA events matched within 3 s and 30 km, and locations shifted somewhat north.",
+     "page": "8 (Figures S6-S8 cited; Figure 4, p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "increases the detections by 190% with a distribution more conformative to a linear fault trace"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They calibrate local magnitudes of the detected events by linear regression on matched NKUA event pairs.",
+     "page": "8 (Figure S9 cited)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calibrate the estimated local magnitude of our detected events using linear regression"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "They visually inspect waveforms of the 997 new detections and report clear earthquake signals in most traces.",
+     "page": "8 (Figures S10-S13 cited)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "find that earthquake signals are quite clear in most traces, especially at close stations"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They group the aftershocks into four clusters along strike with DBSCAN (distance <4.3 km, at least 43 samples) and link Clusters 2 and 3 to a 2009 swarm.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we group aftershocks of the M7 Samos Earthquake into four clusters along the fault strike direction"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "observation",
+     "action": "They compare cluster depths and cross-sections with the AFAD nodal planes: the south-dipping plane fits the lower bound of Clusters 1 and 4, while Clusters 2 and 3 fit poorly.",
+     "page": "8 (Figure 4, p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the south-dipping plane of the mainshock by AFAD (dashed lines in Figure 4c) seems to fit the lower bound of clusters 1 and 4 well"
+    },
+    {
+     "n": 20,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that the aftershocks involve activation of secondary splay faults, and speculate about a precursory slow unlocking of the fault; neither idea is tested.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "suggests that aftershocks may involve the triggering and activation of the secondary splay faults"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare EdgePhase qualitatively with EA2020, EQNet and S-EqT (aggregation design, message construction, training choices), without running those models.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The neural network, rather than simply calculating the similarity between two embeddings, is more expressive than the cross-correlation function."
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that EdgePhase improves picking at 0-20 dB SNR, generalizes regionally, detects 190% more events than NKUA, and performs comparably to human analysts.",
+     "page": "8; 12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The EdgePhase also shows a strong regional generalization ability, as it was trained with the Southern California data set"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Low-SNR phases are missed by single-station DL pickers",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: phase arrivals are seen in seismograms; detection quality is scored against catalog labels",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a multi-station picker (EdgePhase)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Single-station baselines (fine-tuned and original EQTransformer); other multi-station models discussed only",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "EdgePhase is expected to beat Baseline-A, especially at low SNR; both are expected to beat Baseline-B",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Found: archived SCSN 2021 data and the Samos 2020 aftershock sequence",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "A new region and event (Samos) serves as the repetition, compared with a local catalog",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Holds across SNR bands and on Samos data; no seed, threshold-on-dev or cross-model tests reported in the main text",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: capability characterized",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; the acknowledgment mentions one anonymous reviewer",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Adding an Edge Convolution module to a fine-tuned EQTransformer raises the maximum F1 on Southern California test data (P 0.88 vs 0.84; S 0.86 vs 0.81), especially at 0-20 dB SNR, and generalizes to the 2020 Samos aftershocks with 190% more events than the NKUA catalog.",
+  "page": "1; 5-6; 8; 11-12"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Integrating the Edge Convolution message-passing module, with its distance-threshold graph, into the pre-trained EQTransformer creates the multi-station picker whose gain over the fine-tuned single-station baseline is the claim.",
+  "page": "2-4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The multi-station hypothesis shaped the design (training set kept deliberately noisy 'to test the performance of multi-station models', p. 5), but all data were existing archives. The ablation against Baseline-A could have shown no gain, yet thresholds were set at the maximum F1 'in the test set' (p. 5) rather than on the development split. The Samos test has no ground truth beyond the NKUA catalog and visual inspection. The expectation that the fine-tuned models would beat Baseline-B is stated before the results (p. 5), but nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "computer science (geometric deep learning)",
+   "item": "Edge Convolution / DGCNN graph neural network (Y. Wang, Sun, et al., 2019)",
+   "kind": "method",
+   "page": "2-4"
+  },
+  {
+   "field": "machine learning / quantum chemistry",
+   "item": "Neural message passing framework (Gilmer et al., 2017)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "natural language processing",
+   "item": "Transformer and self-attention layers (Vaswani et al., 2017) inside EQTransformer",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "machine learning",
+   "item": "Fine-tuning / transfer learning of a pre-trained model",
+   "kind": "method",
+   "page": "2; 5"
+  },
+  {
+   "field": "machine learning",
+   "item": "GELU activation, dropout, Adam optimizer, binary cross-entropy loss, mini-batch gradient descent",
+   "kind": "method",
+   "page": "4-5; 11"
+  },
+  {
+   "field": "data mining",
+   "item": "DBSCAN clustering of aftershocks",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "computing hardware",
+   "item": "GeForce GTX 1070 8 GB GPU for continuous-data processing",
+   "kind": "instrument",
+   "page": "8"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The communication between stations through the Edge Convolutional module brings the phase-picking model into a new stage",
+   "page": "9"
+  },
+  {
+   "quote": "we build a multi-station phase-picking model named EdgePhase by integrating an Edge Convolutional module with a state-of-the-art single-station phase-picking model",
+   "page": "1"
+  }
+ ],
+ "limits": "Process gaps:\n- No review file, discussion or earlier version was supplied, so no review sequence is coded. The acknowledgment thanks one anonymous reviewer, but the changes made are unknown.\n- The Supporting Information was not supplied. The distance-threshold analysis (Text S1), SNR breakdowns (Figures S2-S3), feature maps (Figure S4), location and magnitude settings (Texts S2-S3) and new-detection examples (Figures S10-S13) are coded from their main-text descriptions only. Whether Text S1 reports the effect of other thresholds is therefore not verified.\n\nInferences on the evaluation:\n- The detection thresholds are chosen at the maximum F1 'in the test set' (p. 5), although a 10% development split exists. The reported F1 values may therefore be optimistic (inference).\n- Only one training run per model is reported, with no seed variation or uncertainty on the F1 differences.\n- The other multi-station models (S-EqT, EQNet, EA2020) are compared only by argument (Section 6.3), not run.\n- The Samos evaluation has no ground truth. It rests on a 190% count increase over NKUA, a 53% match rate, a visual check of new detections and geometric 'conformity' to a fault trace. The claimed 'higher fidelity of event locations' is not quantified.\n- The p. 5 claim that pre-processing matches STEAD conflicts with the p. 8 Samos description, which also names SCEC2020. Data-set naming is inconsistent (SCSN2021 vs SCEC2020).\n\nSub-claims and their statuses:\n- Seismotectonic interpretation: the south-dipping AFAD plane fits Clusters 1 and 4, and aftershocks activate secondary splay faults. Best_explanation at most; no rival fault models are tested.\n- Precursory slow unlocking: speculation (status none).\n- 'Comparable to human efforts' (p. 8): an assertion resting on the catalog comparison (status none beyond capability_characterized).\n\nComposition: none_fits. The walk is a capability benchmark: a question, then a new method, then a comparison against baselines and an out-of-region generalization test. capability_first does not fit because the question and the hypothesis precede the capability. No rival explanations are excluded, so strong_inference does not fit either.",
+ "disagreements": [
+  {
+   "target": "End-to-end multi-station models that jointly encode all stations (Kriegerowski et al., 2019; Yang et al., 2021; X. Zhang, Zhang, et [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues from architecture that training and testing on one station configuration limits generalization. It contrasts this with EdgePhase's distance-only neighbour rule, but runs no head-to-head test.",
+   "page": "2; 10",
+   "quote": "which limits their generalization capability to other station networks or tectonic settings"
+  },
+  {
+   "target": "Siamese Earthquake Transformer, S-EqT (Xiao et al., 2021)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper argues that pairwise cross-correlation messages, frozen EQTransformer weights and batch-size-one SGD under-use multi-station consistency. It gives no empirical comparison.",
+   "page": "2; 11",
+   "quote": "since the communication is limited between station pairs, the waveform consistency of multiple stations is not fully explored"
+  },
+  {
+   "target": "EQTransformer as a general-purpose picker (Mousavi et al., 2020)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The original STEAD-trained model reaches F1 0.99/0.98 on STEAD but only 0.66/0.62 on noisier SCSN2021 data, whereas fine-tuned versions reach 0.84-0.88.",
+   "page": "5-6",
+   "quote": "[...] -tuning is essential to EQTransformer when applying to new data sets or applications"
+  },
+  {
+   "target": "Regional aftershock catalogs for Samos (NKUA, GI-NOA, AFAD; Foumelis et al., 2021; Papadimitriou et al., 2020)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "The relocated EdgePhase catalog has 190% more events than NKUA and a distribution closer to a planar or linear fault. Its Clusters 1 and 4 fit the south-dipping AFAD plane. The paper does not discuss the north-dipping preference from coastal uplift cited earlier (inference).",
+   "page": "7-8",
+   "quote": "the distribution of aftershocks in regional catalogs (NKUA, GI-NOA, and AFAD) does not show any preference for [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "CNN (five conv1D blocks) to construct messages",
+   "alternatives": "Multilayer perceptron, as in the original DGCNN Edge Convolution",
+   "reason": "Station embeddings are large 2-D arrays; a CNN cuts trainable parameters and skips flattening",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "Neighbours defined by a fixed geographic distance threshold (<100 km)",
+   "alternatives": "k-nearest neighbours by relative distance; other thresholds (Text S1); distance-weighted edge features (future work)",
+   "reason": "Waveform coherence decays with absolute interstation distance and frequency",
+   "effect_reported": "no",
+   "page": "4; 6; 10"
+  },
+  {
+   "node": "N",
+   "chosen": "One Edge Convolution layer",
+   "alternatives": "Many stacked Edge Convolution layers, as in DGCNN",
+   "reason": "Seismic networks have only dozens to hundreds of stations",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "Maximum as the aggregation function",
+   "alternatives": "Sum, mean",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "3-4"
+  },
+  {
+   "node": "D",
+   "chosen": "Fine-tune the pre-trained EQTransformer, with all weights trainable",
+   "alternatives": "Training from scratch; frozen EQTransformer weights as in S-EqT",
+   "reason": "The small graph data set (28.5k samples) makes training from scratch difficult; trainable weights perform better after fine-tuning",
+   "effect_reported": "no",
+   "page": "5; 11"
+  },
+  {
+   "node": "D",
+   "chosen": "Mini-batch gradient descent with batch size 16",
+   "alternatives": "Stochastic gradient descent with batch size 1 (S-EqT)",
+   "reason": "SGD converges more slowly, with noisier updates",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "C",
+   "chosen": "Detection thresholds at the maximum F1 on the test set (P: 0.39/0.64/0.05; S: 0.28/0.4/0.03)",
+   "alternatives": "Other thresholds along the precision-recall curve",
+   "reason": "Maximum F1 used as the selection criterion",
+   "effect_reported": "yes",
+   "page": "5-6"
+  },
+  {
+   "node": "O",
+   "chosen": "Low detection thresholds for Samos (0.18 for P, 0.15 for S)",
+   "alternatives": "The test-set optimal thresholds",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "I",
+   "chosen": "DBSCAN with distance <4.3 km and at least 43 samples; catalog matching within 3 s and 30 km",
+   "alternatives": "none named",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "8"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we compared the EQTransformer model with Edge Convolutional module (EdgePhase) and the standard EQTransformer without Edge Convolution (Baseline-A)",
+   "page": "5"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "The Baseline-B model achieves the F1 score of 0.99 and 0.98 for P and S-phases on the STEAD test set",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we compare the number of TP, FN, and FP generated by the three models at low (0 db), medium (10 db), and high (20 db) [...]",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the geographic distance threshold for constructing edges is discussed in the supplementary materials",
+   "page": "6 (Text S1)"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we visualize the input (latent representations) and output (enhanced representations) of this module",
+   "page": "6 (Figure S4)"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "To evaluate its performance in regions of different tectonic settings, we applied EdgePhase to detect the early aftershocks following the 2020 M7.0 Samos",
+   "page": "1; 7-8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] local catalog (421 events, Figure S6 in Supporting Information S1) from the NKUA",
+   "page": "8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] then check the 997 new detections found by this study, and find that earthquake signals are quite clear in most traces",
+   "page": "8 (Figures S10-S13)"
+  }
+ ]
+}

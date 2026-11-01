@@ -1,0 +1,644 @@
+{
+ "key": "g22_W4226101750",
+ "doi": "10.26464/epp2022035",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Zhang, Tang & Niu (2022), Earth Planet. Phys. 6(4), 399–423, published PDF including Supplementary Materials (printed pp. 414–423)"
+ ],
+ "pages_convention": "printed journal pages (399–423); supplementary pages as S plus a number counted from the supplement's first page (S1 = printed p. 414), with the printed page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "What form of iron would produce the observed 3.5−8.8% seismic anisotropy in the western hemisphere of the inner core, given known conditions in the core?",
+  "page": "399"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Zhang, Tang & Niu (2022), Earth Planet. Phys. 6, 399–423 (published PDF with supplement)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take from seismological studies that inner-core P waves travel faster along the polar axis than in the equatorial plane, with a weak eastern and a strong western hemispherical anisotropy.",
+     "page": "399",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the eastern hemisphere has a relatively weak anisotropy, of about 0.5−1.5%, whereas the western hemisphere has a strong anisotropy"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors cite the earliest explanation, that crystalline iron is intrinsically anisotropic, as the standing account.",
+     "page": "399",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "crystalline iron, the main component of the Earth’s inner core, is intrinsically anisotropic"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of which form of iron could produce the observed 3.5–8.8% western-hemisphere anisotropy, noting that computed hcp-Fe anisotropies fall short.",
+     "page": "399",
+     "move": "new",
+     "trigger": "author",
+     "quote": "What form of iron would produce the observed 3.5−8.8% seismic anisotropy in the western hemisphere of the inner core"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors propose that alloying hcp iron with light elements alters its anisotropy, setting alloys with C, Si, O, S as rivals to pure hcp-Fe; other phases are deferred.",
+     "page": "400",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The effect of these light elements on the core’s anisotropy can be explored by assuming that core iron is alloyed with these different light elements."
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "The authors design the study around binary hcp Fe60X4 and Fe56X8 alloys (X = C, O, Si, S), restrict it to the hcp phase, and omit Ni because its effect is cited as negligible.",
+     "page": "400",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we focus on the thermoelasticity of hcp-iron alloyed with C, Si, O, and S under inner core conditions."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors set up DFT-based ab initio molecular dynamics in VASP (PAW, PBE, NVT, Nosé–Hoover thermostat, Mermin electron temperature, blocking-method errors) at 2000, 4000 and 6000 K.",
+     "page": "400",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The calculations in this work were performed using density functional theory (DFT) as implemented in the Vienna ab initio Simulation Package (VASP)"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors test supercell size (64 vs 128 atoms), k-point sampling and run length (up to 10 ps), and fix 64 atoms, 4 irreducible k-points and 8 ps runs.",
+     "page": "400",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We ran the AIMD simulations of several structures for up to 10 ps and found that results at higher ps agree"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors derive elastic constants from six finite strains via strain–stress fits, project triclinic tensors to hexagonal, average with Voigt–Reuss–Hill, solve the Christoffel equation, and optimize the finite-temperature c/a for each alloy.",
+     "page": "400–402",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The triclinic tensor can be projected to the hexagonal tensor using the following relationship"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors rely on Li YG et al. (2018), who found projected and directly computed hexagonal constants nearly identical, to support the projection approach.",
+     "page": "401",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "These results confirm the reliability of the projection approach."
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute c/a axial ratios for hcp-Fe and the eight alloys over inner-core pressures at 0–6000 K (Figure 1).",
+     "page": "402",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find that the c/a ratio changes with temperature"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "simulation",
+     "action": "The authors check the computed c/a of pure hcp-Fe against the Tateno et al. (2010) experiment and earlier calculations, and argue against Sha and Cohen's claim that hcp-Fe is elastically isotropic.",
+     "page": "402",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is in close agreement with the experiment of Tateno et al. (2010) (1.602 at 332 GPa and 4820 K)"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute densities of Fe and the alloys as functions of pressure and temperature (Figures 2 and 3).",
+     "page": "403",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 2 illustrates the changes of the densities of different binary alloys with temperature and pressure"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare computed densities with PREM, with the Sakai et al. (2014) experimental extrapolation and with Li YG et al. (2018), and discuss the disagreement on Fe-C melting.",
+     "page": "403–404",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The densities remain higher than PREM data for temperatures not exceeding 6000 K"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check with root-mean-square displacements and radial distribution functions that the simulated structures remain solid (supplement Text S1, Figure S1).",
+     "page": "404; S1 (p. 414)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both RMSDs and RDFs demonstrate that the simulated structures are solids."
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors estimate light-element contents from the density match to PREM: Si 3.23–6.67 wt.%, S at least 7.55 wt.%, C at most 2.97 wt.% and O at most 3.92 wt.%.",
+     "page": "405",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the content of Si in the inner core falls within 3.23−6.67 wt.%"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute aggregate compressional velocities of the alloys from 0 to 6000 K at core pressures (Figures 4 and 5).",
+     "page": "405",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 4 depicts the variation of the compressional sound velocity (vp) for different binary alloys from 0 K to 6000 K at core pressures."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare vp with PREM and previous AIMD studies, conclude that pure iron cannot match seismology, and attribute differences to averaging, linear fits and potentials.",
+     "page": "406",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which means that pure iron cannot alone account for the seismic observations."
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors compare vp from the VRH and Voigt averages (Table S7) and justify choosing VRH.",
+     "page": "406",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the vP results based on the VRH average are about 20−200 m/s lower than the vP results based on the Voigt average"
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors combine density and velocity results to bound O at 1.4 wt.% and C at 1.8 wt.%, inferring an oxygen-depleted inner core, with Si near 4 wt.% and S near 6 wt.%.",
+     "page": "406",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we speculate that the highest contents of oxygen and carbon will not exceed 1.4 wt.% and 1.8 wt.% in the Earth's inner core."
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "regularities",
+     "action": "The authors test for a relation between c/a and C33/C11 across alloys and temperatures (Figure 6) and find no significant linear relation.",
+     "page": "406–407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "But no significant linear relation exists between the two quantities, and the relation is likely not unique."
+    },
+    {
+     "n": 21,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute relative P-wave velocity versus angle for Fe and the alloys from their elastic constants, and also from Li YG et al. (2018) constants (Figures 7–9).",
+     "page": "407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 8 presents calculated relative normalized P-wave velocities of the various binary alloys"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare the relative-velocity curves with the IMIC model based on Wang et al.'s inner-core anisotropy model.",
+     "page": "407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Nevertheless, we all report values relatively close to the IMIC model based on Wang et al.’s OIC model at high temperatures."
+    },
+    {
+     "n": 23,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The authors compute the anisotropy strength of each alloy across core pressures and temperatures (Figure 10).",
+     "page": "407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The anisotropy strength of relative P-wave velocity at core pressures is presented in Figure [...]"
+    },
+    {
+     "n": 24,
+     "node": "P",
+     "mode": "simulation",
+     "action": "The authors attribute the non-monotonic temperature trend (a decrease, then an increase) to a possible artifact of using optimal versus time-averaged structures, not to the alloys.",
+     "page": "407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This phenomenon could be an artifact of the calculation methods"
+    },
+    {
+     "n": 25,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The authors compare anisotropy strengths with the 8.8% western-hemisphere maximum (Lythgoe et al., 2014); only Fe60S4 and Fe56S8 exceed it.",
+     "page": "407",
+     "move": "new",
+     "trigger": "author",
+     "quote": "only the anisotropy strength of Fe60S4 exceeds 8.8%, the maximum inner core anisotropy at the western region"
+    },
+    {
+     "n": 26,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors test anisotropy strength under the Voigt, Reuss and VRH averages for Fe60Si4 (Table S6), finding differences of at most 0.002.",
+     "page": "S1 (p. 414)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to exclude the influence of different average methods, the strength of anisotropy of acoustic velocity obtained with different average methods are tested."
+    },
+    {
+     "n": 27,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "The authors reject high C or O content as the source of the strong inner-core anisotropy, because these elements decrease anisotropy strength.",
+     "page": "411",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This means that high content of C and O elements may not be appropriate to explain the strong anisotropy of inner core."
+    },
+    {
+     "n": 28,
+     "node": "V",
+     "mode": "simulation",
+     "action": "The authors compare their anisotropy strengths at 360 GPa with independent AIMD results of Li YG et al. (2018) and Martorell et al. (Figure 11).",
+     "page": "411",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The computed strengths of the anisotropy of hcp-iron and its alloys at 360 GPa are illustrated in Figure 11, in comparison with different AIMD simulations."
+    },
+    {
+     "n": 29,
+     "node": "C",
+     "mode": "regularities",
+     "action": "The authors test the relation between anisotropy strength and c/a (Figure 12) and find only weak linearity, with the alloying element having a strong effect.",
+     "page": "411",
+     "move": "new",
+     "trigger": "author",
+     "quote": "only a weak linearity can be detected between elastic anisotropy strength and c/a axial ratio."
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "regularities",
+     "action": "The authors keep the claim that anisotropy depends jointly on temperature and alloying element: S raises it, C and O lower it relative to Fe at high temperature.",
+     "page": "412",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We therefore conclude that the anisotropy depends on combined effects of temperature and the type of alloying element."
+    },
+    {
+     "n": 31,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "The authors limit the explanatory claim: Fe-S reaches the required anisotropy but its velocities far exceed PREM, so no binary alloy alone is credited with explaining the anisotropy.",
+     "page": "412",
+     "move": "new",
+     "trigger": "author",
+     "quote": "caution is advised in attributing to them, singly or collectively, an explanation of the complex anisotropy of the inner core."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Inner-core seismic anisotropy, stronger in the west (3.5–8.8%), established by cited seismology",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; candidate alloy elasticity at core conditions is computed, not observed",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Find whether light-element hcp-Fe alloys can account for the anisotropy magnitude",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Pure hcp-Fe versus hcp Fe-X alloys with C, O, Si, S at two concentrations; other phases deferred",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; each alloy predicts different density, vp and anisotropy strength",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in silico (pressure, temperature, composition in AIMD)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: convergence and averaging tests, solidity check, comparison with other AIMD studies",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "C/O-rich alloys rejected as a strong-anisotropy source; Fe-S passes on anisotropy but fails on velocity; dependence on temperature and element kept",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "Across inner-core pressures and 0–6000 K, the P-wave anisotropy of binary hcp-Fe-X alloys depends on the combined effects of temperature and alloying element: C and O decrease it relative to pure Fe at high temperature, while S significantly increases it, and pressure is a minor factor.",
+  "page": "412"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The finite-temperature AIMD computation of elastic constants, and from them the anisotropy strengths of each hcp-Fe-X alloy at core pressures (Figures 10–11), is the step without which there is no temperature–element dependence to claim.",
+  "page": "407–411"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the light-element hypothesis chose which alloys to compute (p. 400), but no prediction was stated before the computations. Claim: the alloys' anisotropy strengths could have failed the 8.8% threshold and the PREM density and velocity bounds, and C/O and the Fe-S velocities did fail (pp. 407–412); the headline temperature–element dependence itself faced no test it could fail. Registration: nothing fixed in advance; settings were chosen by balancing cost and reliability (p. 400)."
+ },
+ "imports": [
+  {
+   "field": "condensed-matter physics",
+   "item": "Density functional theory (VASP, PAW potentials, PBE GGA)",
+   "kind": "method",
+   "page": "400"
+  },
+  {
+   "field": "statistical mechanics",
+   "item": "Nosé–Hoover thermostat NVT molecular dynamics; Mermin finite-temperature electron free energy",
+   "kind": "method",
+   "page": "400"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Blocking method for error estimates of correlated data (Flyvbjerg and Petersen 1989)",
+   "kind": "method",
+   "page": "400"
+  },
+  {
+   "field": "applied mechanics",
+   "item": "Projector to the closest hexagonal elastic tensor (Moakher and Norris 2006)",
+   "kind": "method",
+   "page": "401"
+  },
+  {
+   "field": "materials science",
+   "item": "Voigt, Reuss and Voigt–Reuss–Hill polycrystal averaging; strain–stress extraction of elastic constants (Page and Saxe 2002)",
+   "kind": "method",
+   "page": "400–401"
+  },
+  {
+   "field": "statistics",
+   "item": "Adjusted R-square and analysis of variance for linear fits of elastic constants",
+   "kind": "method",
+   "page": "401; S1 (p. 414)"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded; the acknowledgments say reviewers' comments improved the manuscript, but what changed is unknown. The paper makes no explicit 'first' or 'previously unknown' statement; it only states a gap ('a detailed investigation of the anisotropy of hcp-iron alloyed with light elements has been needed', p. 400). Convergence tests (supercell size, k-points, run length) are reported only qualitatively; the 128-atom and 8-k-point results are not shown. The ANOVA of the C44 fits (Text S2, Table S5) is a goodness-of-fit check, not coded as a V check. Only ordered binary alloys in the hcp phase were computed: disordered structures, ternary alloys, other phases and premelting are set aside (pp. 400, 405, 412). The wt.% content bounds carry no stated uncertainty. Sub-claims and their statuses: the light-element content bounds, O ≤ 1.4 wt.% and C ≤ 1.8 wt.% with an oxygen-depleted core (p. 406), are estimate_with_resolution, though weakly, since they are framed as speculation; the rejection of C/O-rich alloys as the source of strong anisotropy (p. 411) is best_explanation; the statement that Fe-S alone reaches 8.8% (p. 412) is offset by its excess velocity and left open. Composition is none_fits (inference): the paper is a computational survey of candidate compositions compared loosely with seismic thresholds (PREM, IMIC, Lythgoe 8.8%). It resembles strong inference in that C/O alloys are excluded, but no crucial test is stated and no single test separates the rivals. The non-monotonic temperature trend of anisotropy is attributed to a possible calculation artifact without a test (p. 407).",
+ "disagreements": [
+  {
+   "target": "Sha XW and Cohen (2010a, b): hcp-Fe becomes elastically isotropic under inner-core conditions",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "Their own AIMD c/a (~1.607 at 360 GPa, 6000 K) stays below the ideal 1.633, and hcp-Fe remains anisotropic.",
+   "page": "402",
+   "quote": "at which hcp-Fe is still substantially anisotropic"
+  },
+  {
+   "target": "Vočadlo et al. (2009) c/a calculation",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "Their computed c/a agrees with experiment and other calculations but is significantly lower than Vočadlo et al.'s; no resolution is offered.",
+   "page": "402",
+   "quote": "although it is significantly lower than the calculation of Vočadlo et al. (2009)"
+  },
+  {
+   "target": "Li YG et al. (2018): Fe60C4 melts at 5500 K",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "Their RDF/RMSD melting criterion shows Fe60C4 and Fe56C8 still solid at 6000 K; they attribute the difference to melting criteria and the NVT versus NPT ensemble.",
+   "page": "404",
+   "quote": "while we find that Fe60C4 and even Fe56C8 are still stable at 6000 K"
+  },
+  {
+   "target": "Li YG et al. (2018): use of the Voigt average",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "They argue the Voigt average overestimates moduli and choose VRH, quantifying the vP difference in Table S7.",
+   "page": "406",
+   "quote": "their calculations use the Voigt average, which calculates polycrystalline elastic moduli based on invariant strain and often overestimates the moduli"
+  },
+  {
+   "target": "Niu ZW et al. (2015): long-wave limit approximation",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "They suggest the long-wave limit approximation underestimates C33/C11 when phonons soften.",
+   "page": "406",
+   "quote": "one possible reason is the underestimation of the C33/C11 ratio, which was obtained on the base of long-wave limit approximation"
+  },
+  {
+   "target": "Li YG et al. (2018): vp of Fe-C alloys",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their velocity drops match Li et al. except for the carbon alloys.",
+   "page": "406",
+   "quote": "which is similar to the results of Li YG et al. (2018) with the exception of Fe60C4 and Fe56C8"
+  },
+  {
+   "target": "Lythgoe et al. (2014): binary hcp-Fe-S alloys have limitations in explaining the western anisotropy",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Their computed Fe-S anisotropy strengths at high temperature are close to or above the 8% maximum estimated by Wang T et al. (2015).",
+   "page": "408",
+   "quote": "Nevertheless, the anisotropy strength of these binary hcp-Fe alloys at high temperatures is close to or more than 8%"
+  },
+  {
+   "target": "Seismic models explaining inner-core anisotropy by lattice preferred orientation of pure iron",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "They argue pure iron cannot produce the observed complexity, citing their vp-PREM mismatch and the anisotropy comparisons.",
+   "page": "407",
+   "quote": "Pure iron alone does not have properties that could explain such complicated anisotropy"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "hcp phase only",
+   "alternatives": "fcc, bcc and other phases",
+   "reason": "a large number of experiments concluded hcp is the most likely structure; other phases deferred to future work",
+   "effect_reported": "no",
+   "page": "400"
+  },
+  {
+   "node": "D",
+   "chosen": "ignore Ni",
+   "alternatives": "include Ni as a core element",
+   "reason": "negligible effect of Ni on iron anisotropy at core conditions (Martorell et al., 2013a)",
+   "effect_reported": "no",
+   "page": "400"
+  },
+  {
+   "node": "N",
+   "chosen": "64-atom supercell",
+   "alternatives": "128-atom supercell",
+   "reason": "128-atom calculations too expensive",
+   "effect_reported": "no",
+   "page": "400"
+  },
+  {
+   "node": "N",
+   "chosen": "4 irreducible k-points",
+   "alternatives": "Gamma point; 8 irreducible k-points",
+   "reason": "balancing reliability of results against computational cost",
+   "effect_reported": "no",
+   "page": "400"
+  },
+  {
+   "node": "N",
+   "chosen": "8 ps AIMD runs",
+   "alternatives": "runs up to 10 ps (and 12 ps in supplement)",
+   "reason": "results at longer times agree with runs between 6 and 8 ps",
+   "effect_reported": "yes",
+   "page": "400"
+  },
+  {
+   "node": "N",
+   "chosen": "strain magnitudes ±0.6%, ±0.4%, ±0.2%",
+   "alternatives": "strains above 1% or at 0.1% and below",
+   "reason": "beyond 1% the crystal is likely beyond linear elasticity; 0.1% and below gives nearly identical structures",
+   "effect_reported": "no",
+   "page": "400"
+  },
+  {
+   "node": "N",
+   "chosen": "projection of the triclinic tensor to hexagonal symmetry",
+   "alternatives": "direct calculation following hexagonal symmetry",
+   "reason": "simulation box remains hexagonal; Li YG et al. (2018) found the difference insignificant except C44",
+   "effect_reported": "yes",
+   "page": "401"
+  },
+  {
+   "node": "N",
+   "chosen": "Voigt–Reuss–Hill average",
+   "alternatives": "Voigt average; Reuss average",
+   "reason": "Voigt often overestimates and Reuss underestimates moduli",
+   "effect_reported": "yes",
+   "page": "406"
+  },
+  {
+   "node": "N",
+   "chosen": "NVT ensemble",
+   "alternatives": "NPT ensemble as used by Li YG et al. (2018)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "404"
+  },
+  {
+   "node": "N",
+   "chosen": "melting criterion: loss of second RDF peak and continuously increasing RMSD",
+   "alternatives": "melting criteria of Li YG et al. (2018)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "404"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The supercells with both 64 and 128 atoms were tested",
+   "page": "400"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We ran the AIMD simulations of several structures for up to 10 ps and found that results at higher ps agree",
+   "page": "400"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "Li YG et al. (2018) compared elastic constants obtained from the projector matrix and directly calculated following the hexagonal symmetry",
+   "page": "401"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "is in close agreement with the experiment of Tateno et al. (2010) (1.602 at 332 GPa and 4820 K)",
+   "page": "402"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "it agrees well with the extrapolation from experimental data at high pressure and ambient temperature (Sakai et al., 2014)",
+   "page": "403"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Both RMSDs and RDFs demonstrate that the simulated structures are solids.",
+   "page": "S1 (p. 414)"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the vP results based on the VRH average are about 20−200 m/s lower than the vP results based on the Voigt average",
+   "page": "406"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In order to exclude the influence of different average methods, the strength of anisotropy of acoustic velocity obtained with different average methods are tested.",
+   "page": "S1 (p. 414)"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The computed strengths of the anisotropy of hcp-iron and its alloys at 360 GPa are illustrated in Figure 11, in comparison with different AIMD simulations.",
+   "page": "411"
+  }
+ ]
+}

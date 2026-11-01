@@ -1,0 +1,656 @@
+{
+ "_provenance": {
+  "script": "g33_handoff.py",
+  "commit": "d4404d1",
+  "date": "2026-10-28",
+  "private_root": "private",
+  "inputs": [
+   "private/data/roadmap/handoff/inquiry/handoff.json",
+   "private/data/roadmap/handoff/review/handoff.json",
+   "private/data/roadmap/handoff/inquiry-cop22/handoff.json",
+   "private/data/roadmap/handoff/advance/handoff.json"
+  ],
+  "params": {}
+ },
+ "data": {
+  "what": "OLMo hand-off: frozen paper sets and task definitions (tools/roadmap/g33_handoff.py). Paper texts, keys and DOIs stay in the private tree (private/data/roadmap/handoff/<task>/); this file carries versions and hashes.",
+  "tasks": {
+   "inquiry": {
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "564893a+uncommitted",
+    "codebook_version": "1.5.0",
+    "files": {
+     "agents/coder/CODEBOOK.md": {
+      "sha256": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/coding.schema.json": {
+      "sha256": "171b00fa6aa95792da21cf7da56e1b56202bcd7eeeb9a7fd5d926b78ef9a93ea",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/definitions.json": {
+      "sha256": "250d184cd561e97a84dab25c5b91f20f622d462ba96498ad47c9aeda4ef43bb8",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/check_coding.py": {
+      "sha256": "68eb90e8e69f3479605f60e7c6618418365a765612a489e221239ec742cb5864",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "44a4591a84f5c664f4d52f92ef106c38e125a5403f8b7131c77b095ecb9f607a",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers_open.py": {
+      "sha256": "7b8f36a779bbe5de097c5aaa5ddad5607b2fea1e44e071ff60b10ecf002989cc",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "9e8d9aad8c91f67b4ac1be8bc714153eea8387738be405e5e8cc9e4106dfc462",
+    "system_chars": 29568,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 32000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "high",
+     "max_tokens": 32000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the PDF as a document (text and page images), the located XML text when there is one"
+    },
+    "validator": "python tools/check_coding.py validate <coding.json>",
+    "compare": "python tools/check_coding.py agree-dir private/analysis/codings/api/<calc1|r2> private/analysis/codings/open/<tag>",
+    "n_papers": 581,
+    "text_source": {
+     "pdftotext": 260,
+     "xml": 321
+    },
+    "n_over_open_max_chars": 4,
+    "n_xml_for_open_model_not_for_claude": 16,
+    "est_input_tokens": {
+     "median": 32824,
+     "p90": 54323,
+     "max": 433993,
+     "over_65536": 20,
+     "over_131072": 1,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 20,
+    "n_excluded": 166,
+    "n_skipped": 0,
+    "claude_outputs": {
+     "calc1:invalid": 5,
+     "calc1:valid": 374,
+     "gold-r2:invalid": 1,
+     "gold-r2:valid": 50,
+     "r2:invalid": 4,
+     "r2:valid": 198
+    },
+    "batches": [
+     {
+      "id": "msgbatch_01BtXzDt6SBf7SJDANgKBQfB",
+      "tag": "calc1",
+      "n": 186,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "a8d4c59",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01RDctsFkwaz9SXYNZewbEpa",
+      "tag": "gold-r2",
+      "n": 46,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "a8d4c59",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_018uqx6USAHHpCdEX2Ai4A7A",
+      "tag": "calc1",
+      "n": 22,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "ed5b4f9",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01PHQfoxLwTToezZNdREjzEe",
+      "tag": "gold-r2",
+      "n": 6,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "ed5b4f9",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_0197qx46GLziQdUs9JRdZ9ca",
+      "tag": "calc1",
+      "n": 55,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "6bd57bf",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_013BZNSACS6u38AA8W9C43pj",
+      "tag": "gold-r2",
+      "n": 8,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "6bd57bf",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_012cZJeGophYMMZ1CcnfcsA9",
+      "tag": "r2",
+      "n": 154,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "7901bcd",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01HTgc7EkMN55Gd8gzUtQPjm",
+      "tag": "r2",
+      "n": 48,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "7901bcd",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01EsvmQCFDiY2ido76NMGZK3",
+      "tag": "calc1",
+      "n": 146,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "2798f89",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_013ZG3gufNPdiUFbVWpDQRwG",
+      "tag": "r2",
+      "n": 16,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "e3f58d4",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01EmbCm5vt45XfPoVVWJgBPP",
+      "tag": "calc1",
+      "n": 12,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "e3f58d4",
+      "system_same_as_frozen": true
+     }
+    ],
+    "papers_jsonl_sha256": "530686753f0b2c6c33e81c6383cc34c31b123ca00492b494b713aae0146fe2df",
+    "set_sha256": "336048ccb1dd45d127685f9f91471f64257d620dd6621eccd5eb0a4bb53231cd",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "a98e9571a3d1210cca05ec3d5ea9f27d094a17e32c3da03ea2841f4a4ff9209e"
+   },
+   "review": {
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "d4404d1",
+    "codebook_version": "1.5.0",
+    "files": {
+     "agents/coder/CODEBOOK.md": {
+      "sha256": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/coding.schema.json": {
+      "sha256": "171b00fa6aa95792da21cf7da56e1b56202bcd7eeeb9a7fd5d926b78ef9a93ea",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/definitions.json": {
+      "sha256": "250d184cd561e97a84dab25c5b91f20f622d462ba96498ad47c9aeda4ef43bb8",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "agents/coder/REVIEW_ADDENDUM.md": {
+      "sha256": "ed51ceb31cf32dbac87c8c55cc6fa77047f1cdc74c2c69942085f1950388dd78",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "agents/coder/review_addendum.schema.json": {
+      "sha256": "c5fadd7d048edec3d022672b577ee26ed6f9477d6c419c5e3cc5d220de93e91c",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/check_coding.py": {
+      "sha256": "68eb90e8e69f3479605f60e7c6618418365a765612a489e221239ec742cb5864",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "a49143ef30a6dffd10275ea789bf1b7725cac6b5247c5ff13778fad85feefef0",
+      "last_commit": "662ef5a",
+      "modified_since_commit": false
+     },
+     "tools/code_papers_open.py": {
+      "sha256": "7b8f36a779bbe5de097c5aaa5ddad5607b2fea1e44e071ff60b10ecf002989cc",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g15_open_review.py": {
+      "sha256": "1270f58d9832449cef90b473742dd7fef8126ace214c67ead11c6b3f6d59a3df",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g27_author_responses.py": {
+      "sha256": "ce1ffbb7ed3cf212d4c0702b93c6fe4a4a65d0786ea553ba93ec0485cedcd61e",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g34_reconstruction.py": {
+      "sha256": "7242c0d401b82cab4834639b26a6415d2181933bb5554035b6301e474c7423d8",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "4507a2f8929a1227fce2e01a6125072aa89856b0ea30c29e211d90d37da68676",
+    "system_chars": 38765,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 64000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "high",
+     "max_tokens": 64000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the PDF as a document (text and page images), the located XML text when there is one, the open-review record, the author-responses document (AR pages not in the record) and the review addendum in the system prompt"
+    },
+    "validator": "check_coding.validate(coding, review=True, texts=code_papers.review_texts(key), checks=check_coding.DISCLOSURE_CHECKS) with code_papers.REVIEW_DIR = private/data/roadmap/review; then check_coding.kept_disclosures(coding, texts) (rule item: a disclosure failing a quote check is dropped and counted, the coding stays valid); g34 adds the C2 checks (review_addendum_version 1.0.0, >= 1 review step by a referee, editor or commenter)",
+    "compare": "python tools/check_coding.py agree-dir private/analysis/codings/api/<review tag> private/analysis/codings/open/<tag>; disclosures: tools/roadmap/g30_disclosure_agreement.py --codings private/analysis/codings/open/<tag>; the plan: tools/roadmap/g34_reconstruction.py features --set NAME=<inquiry>,<tag>,plan,open",
+    "n_papers": 245,
+    "text_source": {
+     "xml": 244,
+     "pdftotext": 1
+    },
+    "n_over_open_max_chars": 0,
+    "n_xml_for_open_model_not_for_claude": 0,
+    "est_input_tokens": {
+     "median": 58436,
+     "p90": 93255,
+     "max": 257543,
+     "over_65536": 94,
+     "over_131072": 8,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 1,
+    "n_excluded": 11,
+    "n_skipped": 0,
+    "claude_outputs": {
+     "calc1-review-v2:invalid": 1,
+     "calc1-review-v2:valid": 4
+    },
+    "batches": [
+     {
+      "id": "msgbatch_01QhNfQMBJWQPgWb3ua81dFE",
+      "tag": "calc1-review-v2",
+      "n": 5,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_011KaWJ7a7t8UWd4UCVWSF24",
+      "tag": "calc1-review-v2",
+      "n": 2,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 64000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01A9k87igkJ54dCiy5Z3U7xW",
+      "tag": "calc1-review-v2",
+      "n": 56,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01HSFRKsZmkGEm86Dcuzipew",
+      "tag": "r2-review-v2",
+      "n": 36,
+      "codebook": "1.5.0",
+      "rubric": null,
+      "effort": "high",
+      "max_tokens": 48000,
+      "commit_before_submission": "4ab07cc",
+      "system_same_as_frozen": true
+     }
+    ],
+    "papers_jsonl_sha256": "86b7c0e71fdf60f8afc511367dc0df53a9c4ba190c5253826c7600f338536f02",
+    "set_sha256": "f3a0c92fb8e2aa2e21e953ff4fed882fa03c7c9de9eadcb70c1739a6a919de7b",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "d0e8e0a8bf41d64bf7473f78787054940a653246d2d2f5399af78496a0a3699a"
+   },
+   "inquiry-cop22": {
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "d4404d1",
+    "codebook_version": "1.5.0",
+    "files": {
+     "agents/coder/CODEBOOK.md": {
+      "sha256": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/coding.schema.json": {
+      "sha256": "171b00fa6aa95792da21cf7da56e1b56202bcd7eeeb9a7fd5d926b78ef9a93ea",
+      "last_commit": "01b7f78",
+      "modified_since_commit": false
+     },
+     "agents/coder/definitions.json": {
+      "sha256": "250d184cd561e97a84dab25c5b91f20f622d462ba96498ad47c9aeda4ef43bb8",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/check_coding.py": {
+      "sha256": "68eb90e8e69f3479605f60e7c6618418365a765612a489e221239ec742cb5864",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "a49143ef30a6dffd10275ea789bf1b7725cac6b5247c5ff13778fad85feefef0",
+      "last_commit": "662ef5a",
+      "modified_since_commit": false
+     },
+     "tools/code_papers_open.py": {
+      "sha256": "7b8f36a779bbe5de097c5aaa5ddad5607b2fea1e44e071ff60b10ecf002989cc",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "9e8d9aad8c91f67b4ac1be8bc714153eea8387738be405e5e8cc9e4106dfc462",
+    "system_chars": 29568,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 32000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "high",
+     "max_tokens": 32000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the PDF as a document (text and page images), the located XML text when there is one"
+    },
+    "validator": "python tools/check_coding.py validate <coding.json>",
+    "compare": "python tools/check_coding.py agree-dir private/analysis/codings/api/cop22 private/analysis/codings/open/<tag>",
+    "n_papers": 148,
+    "text_source": {
+     "xml": 147,
+     "pdftotext": 1
+    },
+    "n_over_open_max_chars": 0,
+    "n_xml_for_open_model_not_for_claude": 0,
+    "est_input_tokens": {
+     "median": 31633,
+     "p90": 41780,
+     "max": 51877,
+     "over_65536": 0,
+     "over_131072": 0,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 0,
+    "n_excluded": 4,
+    "n_skipped": 0,
+    "claude_outputs": {},
+    "batches": [],
+    "papers_jsonl_sha256": "462694cd7793856a5d9d03eda704d48f5438516ad14d606ddbc8ac30197f67f3",
+    "set_sha256": "4da262a185d2b694a9be988951027b5cfe34e1546a78e4f09c67ca888575d3d9",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "dded379a9d76d0002fcf629a5af417eaee13799288e370a18f05adb22767f079"
+   },
+   "advance": {
+    "status": "frozen",
+    "frozen": "2026-10-28",
+    "frozen_by_commit": "f7ca019",
+    "rubric_version": "1.1.0",
+    "blind_version": "1.2.1",
+    "files": {
+     "agents/advance/RUBRIC.md": {
+      "sha256": "9b303003d11d61afdf9db9e620e7612b442e12db4613354f2129fbee1eb60456",
+      "last_commit": "5795732",
+      "modified_since_commit": false
+     },
+     "agents/advance/advance.schema.json": {
+      "sha256": "4b66d3ffd1ae431ce2cdc1cfa2a5cb4412f781ddc856871514a543fbc48330a4",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/check_advance.py": {
+      "sha256": "81f600c257a2b80e4232ca83095870ff67185a29f7f807f5dbe8e1d3648437ff",
+      "last_commit": "5795732",
+      "modified_since_commit": false
+     },
+     "tools/blind_text.py": {
+      "sha256": "91dba23b0386d776579221ccff9c65f2f95b40dfdce24b49282ba76e5a230982",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/jats_text.py": {
+      "sha256": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+      "last_commit": "4f50c5e",
+      "modified_since_commit": false
+     },
+     "tools/code_papers.py": {
+      "sha256": "44a4591a84f5c664f4d52f92ef106c38e125a5403f8b7131c77b095ecb9f607a",
+      "last_commit": "d3ed24c",
+      "modified_since_commit": false
+     },
+     "tools/roadmap/g24_advance.py": {
+      "sha256": "b08f18ecca29706f9d9a4a68860d6631647653eb2bebb6b13c242c0748f8829e",
+      "last_commit": "3d767b0",
+      "modified_since_commit": false
+     }
+    },
+    "system_sha256": "b5dd93c0f2c0517fdf8a44a1ccacb95d06ddee1da16e206d9bc722070e259661",
+    "system_chars": 53895,
+    "open_request": {
+     "temperature": 0,
+     "max_tokens": 26000,
+     "response_format": {
+      "type": "json_object"
+     },
+     "messages": [
+      "system: system.txt",
+      "user: user/<key>.user.txt with coder = \"<model>\" replaced by the model name"
+     ]
+    },
+    "claude_request": {
+     "model": "claude-opus-5-5",
+     "api": "Message Batches",
+     "effort": "medium",
+     "max_tokens": 26000,
+     "retries_max_tokens": 64000,
+     "system_cache": "1 hour (from batch msgbatch_01HTgc7EkMN55Gd8gzUtQPjm on)",
+     "structured_output": false,
+     "reads": "the blinded text only (no PDF, no DOI), named by its opaque key"
+    },
+    "validator": "check_advance.normalize then check_advance.validate(coding, text=<blinded text>, key=<key>), after mapping the opaque key back (code_papers.write_advance with TASK = \"advance\")",
+    "compare": "python tools/roadmap/g24_advance.py pilot --tags <claude tag>,<open tag> (test-retest block: verdict and score alpha between the two tags)",
+    "n_papers": 572,
+    "text_source": {
+     "pdftotext": 259,
+     "xml": 313
+    },
+    "n_over_open_max_chars": 1,
+    "n_xml_for_open_model_not_for_claude": 0,
+    "est_input_tokens": {
+     "median": 43672,
+     "p90": 57164,
+     "max": 103206,
+     "over_65536": 17,
+     "over_131072": 0,
+     "note": "(system + user characters) / 2.7; add max_tokens for the context window"
+    },
+    "n_confirmatory_exclude": 20,
+    "n_excluded": 9,
+    "n_skipped": 0,
+    "claude_outputs": {
+     "pilot-a-advance:invalid": 8,
+     "pilot-a-advance:invalid JSON": 2,
+     "pilot-a-advance:valid as collected": 10,
+     "pilot-b-advance:invalid": 10,
+     "pilot-b-advance:valid as collected": 10,
+     "pilot2-a-advance:invalid": 1,
+     "pilot2-a-advance:valid as collected": 19,
+     "pilot2-b-advance:valid as collected": 20
+    },
+    "batches": [
+     {
+      "id": "msgbatch_01Xkva5oWrAjKtM3P5Zpakvt",
+      "tag": "pilot-a-advance",
+      "n": 20,
+      "codebook": "1.5.0",
+      "rubric": "1.0.1",
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "03a7d91",
+      "system_same_as_frozen": false
+     },
+     {
+      "id": "msgbatch_01UFLbKZcED3V17A7BvzkVyb",
+      "tag": "pilot-b-advance",
+      "n": 20,
+      "codebook": "1.5.0",
+      "rubric": "1.0.1",
+      "effort": "high",
+      "max_tokens": 32000,
+      "commit_before_submission": "03a7d91",
+      "system_same_as_frozen": false
+     },
+     {
+      "id": "msgbatch_013KSjrU1QGFvNRr52r5HtdU",
+      "tag": "pilot2-a-advance",
+      "n": 20,
+      "codebook": "1.5.0",
+      "rubric": "1.1.0",
+      "effort": "medium",
+      "max_tokens": 26000,
+      "commit_before_submission": "4f50c5e",
+      "system_same_as_frozen": false
+     },
+     {
+      "id": "msgbatch_01X7Zeczd9WBTC2NxHJSPJyV",
+      "tag": "pilot2-a-advance",
+      "n": 20,
+      "codebook": "1.5.0",
+      "rubric": "1.1.0",
+      "effort": "medium",
+      "max_tokens": 26000,
+      "commit_before_submission": "5795732",
+      "system_same_as_frozen": true
+     },
+     {
+      "id": "msgbatch_01HdHKMnML3FFSF2VgResnve",
+      "tag": "pilot2-b-advance",
+      "n": 20,
+      "codebook": "1.5.0",
+      "rubric": "1.1.0",
+      "effort": "medium",
+      "max_tokens": 26000,
+      "commit_before_submission": "5795732",
+      "system_same_as_frozen": true
+     }
+    ],
+    "papers_jsonl_sha256": "5fd7879832025f48cd55f938ebd76577d6ed32d94d77ff47d4cef6aab2dd1a07",
+    "set_sha256": "2e15ae2511fc51097ef266fd862b13ad5ce2a1614ea5b6d929353736698cfcb2",
+    "set_sha256_rule": "sha256 of the lines \"<key>\\t<user sha256>\\n\" sorted by key, followed by the system sha256 (hex)",
+    "sha256sums_sha256": "9150c0a4788b4f2318571b15159ff0b2af36119ad812f3cf525e62dbaf7586bd"
+   }
+  }
+ }
+}

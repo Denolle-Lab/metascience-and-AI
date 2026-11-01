@@ -1,0 +1,298 @@
+{
+ "key": "g22_W4296022999",
+ "doi": "10.1016/j.geog.2022.08.001",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4296022999.pdf (published paper, Geodesy and Geodynamics 14 (2023) 121-129)",
+  "g22_W4296022999.xml.txt (publisher XML via jats_text: abstract and figure/table captions only)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) where the XML holds the text: abstract §0 ¶1 and captions (Fig. 1 to Fig. 5, Table 1, Table 2). The XML lacks the body text, so body steps cite printed journal pages (121-129). Figure-content steps cite the figure plus the printed page, e.g. Fig. 5 (p. 127).",
+ "entry": {
+  "state": "hypothesis",
+  "node": "H",
+  "evidence": "Thereby, proving the potentiality of the lineament extraction as a seismic precursor.",
+  "page": "122"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4296022999.pdf with g22_W4296022999.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopt from prior work (Bondur & Kuznetsova) the hypothesis that cross-cutting and transverse lineaments increase during earthquake preparation and decrease afterwards, making them a geodynamic precursor.",
+     "page": "121",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "During the earthquake preparation, there is an increase in the number of cross-cutting and transverse lineaments."
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "regularities",
+     "action": "Take the expected timeline from Sichugova & Fazilova: lineament formation starts 2-3 months before a large earthquake, peaks about 20 days before, ends about 20 days after, and the system recovers 2-3 months later.",
+     "page": "122",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "reaching a maximum of about 20 days before the earthquake and ending just about 20 days after."
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "State the aim: identify precursor patterns in lineament trend distribution, density and rose diagrams from Landsat images for the 2010 El Mayor Cucapah earthquake.",
+     "page": "122",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the research aims to analyze the El Mayor Cucapah earthquake with Landsat images and to identify the precursor patterns"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compile the tectonic setting and the USGS catalogue of Mw>5 earthquakes in the region for 2000-2010 (Table 1, Fig. 1).",
+     "page": "122",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "there have been 40 earthquakes greater than MW5.0 from 01-01-2000 to 04-04-2010"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Choose Landsat 5 TM NIR (30 m) scenes over Landsat 7 because of its SLC failure, discard cloudy scenes, and keep five dates: 63, 47 and 15 days before and 33 and 97 days after the earthquake (Table 2).",
+     "page": "123",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our study ignored images with cloud coverage, while the acquisition of the images was limited by the availability, quality and temporal resolution"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Size the earthquake preparation zone with empirical rupture-length, area and energy-class relations (Eqs. 1-3, K = 17.26, ΔS = 5116 km²) and select a 20.52 km × 20.52 km area over the Sierra de Cucapah.",
+     "page": "124",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These calculations allow the proper area coverage of the earthquake formation."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Extract lineaments with ADALGEO (a circular-mask directional detector, plus Canny edge detection and the Hough transform) and map lineaments, density fields and rose diagrams for the five dates.",
+     "page": "124; Fig. 3 (p. 125)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "ADALGEO software uses two algorithms for lineament detection."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the pre-earthquake extractions with the hypothesis: read an increase in extracted lineaments and rose-diagram accumulation before the event as stress accumulation tied to the earthquake date.",
+     "page": "125",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hence we can establish a direct relationship between the found lineaments and the earthquake occurrence day"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "theory",
+     "action": "Compare lineament orientations with the tectonic model and stress regime: dominant NW trend along the San Andreas extension, orientation unchanged 33 and 97 days after.",
+     "page": "126",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "thereby agreeing with the model exposed by Ref. [7] and across to the stress regime [38]"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check the density-field concentration of lineaments before and after the earthquake by visual inspection.",
+     "page": "126",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is corroborated by visual inspection"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Re-extract lineaments from the same images with a second program, LESSA (stripe statistics and density, Fig. 4), and report similar pre-earthquake behaviour and similar pixel percentages; attribute the visual differences to the different algorithms.",
+     "page": "126; Fig. 4 (p. 126)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "These are related to stress accumulation with similar behavior found in lineament extraction made using ADALGEO software."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Express the extraction as percentage of lineament pixels per image over time (Fig. 5) and read it as stress accumulation and release. The plotted values fall monotonically, from 0.0693% on day 31 to 0.0433% on day 191, with the largest drop across the earthquake.",
+     "page": "126; Fig. 5 (p. 127)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the accumulation and release of the stress corresponding to the major earthquake can be seen (Fig. 5)"
+    },
+    {
+     "n": 13,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Assert, without a reported test, that earlier regional earthquakes did not affect the extracted lineaments, appealing to 'time-energy formation'.",
+     "page": "126",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The extracted lineaments were not affected by any previous earthquakes or the Cucapah earthquake"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the claim that changes in rose diagrams and oriented elongation lines in satellite images could serve as mid- and/or short-term earthquake precursors, corroborated by two algorithms.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "could be identified as a mid-term and/or short-term precursors of the earthquake"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Hypothesized pre-seismic change in the number and pattern of image lineaments",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; lineaments are extracted algorithmically from Landsat NIR images",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Identify precursor patterns and show lineament extraction is a usable precursor",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals stated (no seasonal, illumination, vegetation or processing alternatives); only an untested assertion that earlier quakes had no effect",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "None derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: one natural event, five archived images limited by availability",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Not used; a single earthquake, no other event or quiet-period baseline",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Second software (LESSA) on the same images gives similar results; visual inspection",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept as a potential mid- and short-term precursor",
+   "mode_called": "hypothesis"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "Changes in lineament number, density and rose-diagram pattern extracted from Landsat 5 TM images around the 2010 Mw7.2 El Mayor Cucapah earthquake reflect stress accumulation and release and could be identified as mid- and/or short-term seismic precursors.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "O",
+  "mode": "observation",
+  "sentence": "The claim rests on the ADALGEO and LESSA lineament extractions from five archived Landsat 5 TM images bracketing the earthquake, summarized as pixel percentages over time.",
+  "page": "124; Fig. 3 (p. 125); Fig. 5 (p. 127)"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The cited precursor hypothesis (pp. 121-122) directed the choice of images bracketing the event, but the authors say acquisition was limited by availability (p. 123). The time series could in principle have shown no change, but no criterion, threshold, baseline period or control region was set. Fig. 5's monotonic decline is read as 'accumulation and release' (p. 126), while the text elsewhere reports an increase before the event (p. 125) and a 'rapid decrease ... before the earthquake' (p. 126), so the reading was not constrained by a fixed prediction. Nothing was fixed before the data."
+ },
+ "imports": [
+  {
+   "field": "computer science / image processing",
+   "item": "Canny edge detection and Hough transform for line extraction (in ADALGEO)",
+   "kind": "method",
+   "page": "124"
+  },
+  {
+   "field": "computer science / image processing",
+   "item": "Circular-mask convolution directional detector for linear features (Karnieli et al.)",
+   "kind": "method",
+   "page": "124"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "it was observed for the first time in the case of a big earthquake presented in the strike-slip fault",
+   "page": "126"
+  },
+  {
+   "quote": "the methodology shows the similarity of the obtained results using ADALGEO and LESSA software for the first time in the state-of-art",
+   "page": "127"
+  }
+ ],
+ "limits": "The XML holds only the abstract and captions, so body steps cite printed pages from the PDF. No review file was supplied, so there is no review sequence; the acknowledgement says reviewers' comments 'refined the present work' but not how.\n\nInternal inconsistencies:\n- Section 4 reports an increase in extracted lineaments before the earthquake (p. 125).\n- Fig. 5 shows a monotonic decline from day 31 to day 191 (p. 127).\n- The Conclusion speaks of a 'rapid decrease of lineaments presented before the earthquake' (p. 126).\n- The abstract's '23 months' is, by inference, a garbled '2-3 months', since the images span only 63 days before to 97 days after.\n- The selected area of 20.52 km × 20.52 km (about 421 km²) does not match the computed ΔS = 5116 km² (p. 124), and no reconciliation is given.\n- Fig. 5 plots one curve although the text says the two programs' percentages are 'equal'.\n\nWhat the paper does not show (inference):\n- No control period without earthquakes, no control region, and no test of seasonal sun-angle, vegetation or illumination effects across January-July scenes.\n- Only five images; no uncertainty or statistics, although the abstract claims a 'statistical analysis'.\n- The user decides the structure indicators in both programs (p. 125).\n- The exclusion of effects from earlier earthquakes (step 13) is asserted, not tested.\n- The LESSA check reuses the same images, so it is a method check, not a replication.\n\nSub-claims and their status:\n- The dominant NW orientation agrees with the San Andreas trend and the stress regime: best_explanation, by agreement only.\n- ADALGEO and LESSA give similar results: capability_characterized, weakly, by qualitative similarity.\n\nComposition is none_fits: one found event, a cited hypothesis, no stated rivals and no repetition across events, so it is neither trace_series nor natures_repetition.",
+ "disagreements": [
+  {
+   "target": "The existing assumption that lineament structure changes only at the geological time scale",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Cites Soto-Pinto et al. [10] and offers its own five-date lineament time series showing changes over months around the earthquake.",
+   "page": "122",
+   "quote": "Concerning the existing rule that was assumed as the lineament structure changes only at the geological time scale"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "F",
+   "chosen": "Landsat 5 TM images",
+   "alternatives": "Landsat 7 images, with SLC-off gap correction (Storey et al.)",
+   "reason": "Landsat 7 scan line corrector failure; correction is possible but results could be affected",
+   "effect_reported": "no",
+   "page": "123"
+  },
+  {
+   "node": "F",
+   "chosen": "Cloud-free images only",
+   "alternatives": "Images with cloud coverage",
+   "reason": "Image quality; acquisition limited by availability, quality and temporal resolution",
+   "effect_reported": "no",
+   "page": "123"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the results were similar in the percentage of pixels extracted from LESSA and ADALGEO software",
+   "page": "126"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "is corroborated by visual inspection",
+   "page": "126"
+  }
+ ]
+}

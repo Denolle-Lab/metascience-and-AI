@@ -1,0 +1,550 @@
+{
+ "key": "g22_W4307648544",
+ "doi": "10.1007/s00269-022-01219-0",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Posner & Steinle-Neumann 2022, Physics and Chemistry of Minerals 49:43, published PDF (14 pages)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the influence of Ni on the transport properties of liquid Fe–LE alloys has not been investigated",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the open question of how Ni affects the structural and transport properties of liquid Fe–light-element alloys at high pressure.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the influence of Ni on the transport properties of liquid Fe–LE alloys has not been investigated"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They take two rival positions from the literature: the community view that Ni is Fe's 'geochemical twin' (no Ni effect), and the suggestion, from comparing Fe–C experiments with Fe–Ni–C simulations, that Ni changes carbon diffusivity.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Ni has been suggested to potentially affect the diffusion coefficient (D) of carbon in liquid Fe alloys"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "They sharpen the question: published Fe–C experiments and Fe–Ni–C simulations cannot be compared directly, because temperature, the unknown T dependence of D_C and the C contents all differ; Rebaza et al.'s explanation of their small pressure effect was never tested.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the T dependence of DC in liquid Fe–Ni–C required for extrapolation is unknown"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They design a systematic DFT-MD study at 3000 K: pure Fe and Ni, binary and ternary Fe–Ni–C compositions, three volumes for the pressure effect, and a subset at 1675 and 2350 K for the temperature effect.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The Ni (XNi) and C (XC) contents were varied between 1 and 90 at% and 1 and 20 at%, respectively."
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "simulation",
+     "action": "They set the simulation conditions: VASP with PAW and GGA, non-spin-polarized 150-atom cells, Gamma-point sampling and 550 eV cutoff (settings from their earlier studies), three cell volumes, a Nosé–Hoover thermostat at 3000 K, and runs of at least 29 ps with 2 ps discarded; the 1675 and 2350 K runs use Wang et al.'s composition.",
+     "page": "§2 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We consider three cell volumes Vx (7.121 cm3/mol = 1173 Å3/cell), 0.9Vx, and 0.8Vx for all compositions."
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "simulation",
+     "action": "For the 20 at% C compositions, they replace the largest-volume runs with 0.7Vx because the Vx runs gave negative pressures.",
+     "page": "§2 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "runs at Vx were replaced with 0.7Vx because the Vx simulations yielded negative P values"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the non-spin-polarized premise against one spin-polarized run for Fe–50%Ni–20%C at low pressure and find no significant difference.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we performed and analyzed one run for Fe–50%Ni–20%C at low P, and found that results do not differ in any significant way"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They compute partial RDFs and coordination numbers, sort atom pairs into three distance classes, and find that r_Fe–Fe decreases with X_Ni but increases with X_C, with lower compression rates in the alloys than in pure Fe.",
+     "page": "§3.1 ¶1; §3.1.1 ¶1–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "rFe–Fe decreases with XNi but increases with XC (Fig. 3a)"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the r_Fe–Ni results with their own earlier Fe–4%Ni computations over a wider temperature range and find them similar.",
+     "page": "§3.1.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is similar with the results of our previous computational study involving Fe–4%Ni over a wider T range"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They find that r_Fe–C and r_Ni–C decrease with X_Ni, and that r_Fe–C stays constant between the two lowest pressures while carbon coordination rises from about 6.8 to 8.0, then decreases.",
+     "page": "§3.1.2 ¶1–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "rFe–C values (Fig. 3d) remain constant over the two lowest-P simulations (i.e., drFe–C/dP = 0)"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare this plateau-then-decrease behaviour with published results for oxygen in liquid Fe–O.",
+     "page": "§3.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A similar observation was previously reported for oxygen in liquid Fe–O over a larger P range"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "simulation",
+     "action": "They observe short-range C–C clustering at graphite- or diamond-like distances, consistent with Ohmura et al. (2020); the clustering is strongest in Ni-rich compositions and r_C–C′ mostly increases with pressure.",
+     "page": "§3.1.3 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "most compositions show short-range C–C clustering (Fig. 2) with peak positions (referred to as rC-C′) on the order of ~ 1.29–1.57 Å"
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose Ni–C repulsion, which lowers carbon solubility, as the cause of the stronger clustering with X_Ni, and state that chemical-potential calculations would be needed to test it.",
+     "page": "§3.1.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We interpret the general increase of IC-C′ with XNi to result from Ni–C repulsion"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "hypothesis",
+     "action": "They derive what the geochemical-twin assumption predicts: the deviation f of Fe's share of neighbours from its atomic fraction should be about zero.",
+     "page": "§3.1.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "If true, the following deviation f (in %) would be expected to be approximately zero"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "They compare the computed f values with zero and find large deviations for C (strong preference for Fe) and opposite deviations for Fe and Ni, which grow with X_Ni.",
+     "page": "§3.1.4 ¶2; Figure 6 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tested this hypothesis and found that it generally does not hold in liquid Fe–Ni and Fe–Ni–C"
+    },
+    {
+     "n": 16,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They reject the geochemical-twin assumption, combining the non-ideal mixing found here with the published excess volume of mixing (Watanabe et al. 2016).",
+     "page": "§3.1.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Combined, these two observations negate the assumption that Fe and Ni are “geochemical twins”."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check, from the quasi-linear mean-square-displacement curves, that all cells (including the 1675 K runs) are liquid and that the Einstein relation can be used, while noting that small cells can be undercooled.",
+     "page": "§3.2 ¶1; §2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which indicates that these are in the liquid state and that the MSD can be used reliably to determine a diffusion constant"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate self-diffusion coefficients from the mean-square displacement and fit Arrhenius activation volumes at 3000 K (about 0.5 cm3/mol for Fe, Ni and C), finding D_Fe ≈ D_Ni ≈ D_C/2–3 in all compositions.",
+     "page": "§3.2.1 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The pressure dependence (ΔV) at 3000 K was determined using a least-squares best fitting to Eq. (4)"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare D_C with the Rebaza et al. (2021) and Dobson & Wiedenbeck (2002) experiments extrapolated to 3000 K, and conclude that an intermediate ΔV of about 0.5 cm3/mol fits best.",
+     "page": "§3.2.1 ¶3; Figure 7 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the mismatch increases with P owing to their very small reported ΔV"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They rerun Wang et al.'s Fe–7%Ni–20%C composition at 1675 K without spin polarization and recover their diffusivities and post-5 GPa activation volumes; they attribute Wang's ΔV change to the onset of loss of magnetic moments.",
+     "page": "§3.2.2 ¶1; Figure 8 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our 1675-K diffusion results (Fig. 8) are in good agreement with those of Wang et al. (38) despite the different treatment on spin-polarization"
+    },
+    {
+     "n": 21,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They fit a global Arrhenius model to their own and Wang et al.'s data at three temperatures to estimate D0, ΔH and ΔV for Fe/Ni and for C.",
+     "page": "§3.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Combining our results with those of Wang et al. (38) to fit Eq. (4)"
+    },
+    {
+     "n": 22,
+     "node": "P",
+     "mode": "estimation",
+     "action": "The global model's pressure slope at 1675 K is about a factor of two too shallow; they attribute this to a metastable liquid in the 1675 K runs, not to the model, and advise caution with the low-T results.",
+     "page": "§3.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A possible explanation for this discrepancy is that the 1675-K runs may actually involve a metastable liquid"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They refit with the 1675 K results left out and find comparable model fits.",
+     "page": "§3.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the model fits to Eq. (4) are comparable regardless of whether the 1675-K results are in- or excluded"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare ΔH and ΔV with published values for Fe–Si and Fe–Cr liquids, find them consistent, and extend the parameters to all compositions studied.",
+     "page": "§3.2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] of ΔH and ΔV are consistent with those previously reported for self-diffusion in binary Fe–Si and Fe–Cr liquids"
+    },
+    {
+     "n": 25,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Because diffusion is insensitive to composition, they reject Rebaza et al.'s hypothesis that Ni affects carbon diffusivity, explaining the discrepancy by Rebaza's small pressure effect and by metastability of Wang's 1675 K liquid.",
+     "page": "§3.2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which does not support the hypothesis proposed by Rebaza et al. (33) that the addition of Ni to liquid Fe–C affects carbon diffusivity"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "regularities",
+     "action": "They keep the claims that Ni and C have opposite structural effects on liquid Fe, that Fe and Ni each pack preferentially around their own kind and Fe around C, and that composition has a negligible effect on diffusion.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The effect of composition on the transport properties of the investigated alloys is essentially negligible, by contrast."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Whether Ni (and C) change the structure and diffusion of liquid Fe alloys; not established, Ni usually omitted",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; liquid core alloys at high P studied in silico by DFT-MD",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Systematic composition, pressure and temperature dependence, and a test of the suggested Ni effect on D_C",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Geochemical twin (no Ni effect) versus a Ni effect on structure and carbon diffusivity",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: the twin view predicts coordination deviation f ≈ 0 and composition-independent D",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Set in silico: compositions, cell volumes and temperatures chosen",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives the spin-polarization test, replication of Wang et al. at 1675 K, and refitting with the 1675 K results left out",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Twin assumption negated for structure; no compositional effect on diffusion; Rebaza Ni hypothesis not supported",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable: no review file supplied (acknowledgements mention an editor and two reviewers)",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In liquid Fe–Ni–C at 3000 K up to ~83 GPa (X_Ni 0.01–0.9, X_C 0.01–0.2), Ni and C have opposite structural effects (r_Fe–Fe decreases with X_Ni and increases with X_C), and Fe and Ni mix non-ideally with Fe preferentially coordinating C, while self-diffusion is essentially insensitive to composition.",
+  "page": "§4 ¶1"
+ },
+ "decisive_move": {
+  "node": "F",
+  "mode": "simulation",
+  "sentence": "The systematic grid of DFT-MD runs across pure, binary and ternary compositions at three volumes is what lets the compositional trends and the composition-independence of diffusion be stated over a range.",
+  "page": "§2 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The 1675/2350 K runs on Fe–7%Ni–20%C were chosen to test Wang et al.'s results and the T dependence needed to compare published data (§2 ¶2), but the main composition sweep is systematic rather than hypothesis-directed (§1 ¶4). The twin assumption faced a test it could fail, with f predicted ≈ 0 (§3.1.4 ¶1–¶2), and the Ni effect on D could have appeared in the D results (§3.2.3 ¶1). Nothing is stated to have been fixed before the simulations were run."
+ },
+ "imports": [
+  {
+   "field": "condensed-matter physics / quantum chemistry",
+   "item": "Kohn–Sham density functional theory with VASP, the projector augmented wave method and the GGA exchange-correlation functional",
+   "kind": "method",
+   "page": "§2 ¶1"
+  },
+  {
+   "field": "statistical mechanics / molecular simulation",
+   "item": "Nosé–Hoover thermostat; Einstein relation for self-diffusion from mean-square displacement",
+   "kind": "method",
+   "page": "§2 ¶2; §2 ¶4"
+  },
+  {
+   "field": "metallurgy (steelmaking)",
+   "item": "Documented non-negligible influence of Ni on commercial steel properties, used to question the twin assumption",
+   "kind": "concept",
+   "page": "§1 ¶2"
+  },
+  {
+   "field": "metallurgy",
+   "item": "Composition dependence of carbon diffusivity in carbon steel (Liu et al. 1991)",
+   "kind": "data",
+   "page": "§1 ¶3"
+  },
+  {
+   "field": "materials science",
+   "item": "Excess volume of mixing in Fe–Ni melts (Watanabe et al. 2016)",
+   "kind": "data",
+   "page": "§1 ¶2; §3.1.4 ¶2"
+  },
+  {
+   "field": "solid-state physics",
+   "item": "C–C bond lengths in graphite and diamond (Harrison 1980) as references for the clustering distances",
+   "kind": "data",
+   "page": "§3.1.3 ¶1"
+  },
+  {
+   "field": "condensed-matter physics",
+   "item": "Paramagnetic-to-diamagnetic transition in liquid Fe (Korell et al. 2019), used to argue magnetism does not matter at high T",
+   "kind": "concept",
+   "page": "§3.2.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the influence of Ni on the transport properties of liquid Fe–LE alloys has not been investigated",
+   "page": "§1 ¶2"
+  },
+  {
+   "quote": "Nickel has been excluded from all previous high-P diffusion experiments involving liquid iron alloys, as well as the majority of computational studies.",
+   "page": "§4 ¶1"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded, although the acknowledgements say comments by the associate editor and two reviewers 'significantly improved the manuscript'. The supplement (Tables SM1–SM2, Figs. SM1–SM6) was not supplied; the coordination numbers, D values and fitted ΔV are cited from it but not checked. Sub-claims at other statuses: (a) rejection of the geochemical-twin assumption, a rival excluded on the f-deviation test plus the cited excess-volume data (best_explanation); (b) ΔH ≈ 56/50 kJ/mol and ΔV ≈ 0.49/0.47 cm3/mol for Fe/Ni and C (estimate_with_resolution), with the T effect tested for one composition only and the 1675 K runs possibly metastable; (c) Ni–C repulsion as the cause of carbon clustering, an untested interpretation (none); (d) Rebaza et al.'s Ni-effect hypothesis 'not supported' (excluded). Only one spin-polarized test run was done. The paper reports no finite-size test beyond 150 atoms, no test of run-length convergence, and no test with fewer or more than three volumes; it acknowledges that small cells undercool. Inference: 'negligible effect of composition' is judged by visual consistency within 2σ, with no stated statistical criterion. The composition is coded none_fits because the walk is a systematic in-silico parameter sweep that also tests two cited rivals; it is neither strong inference with a crucial test nor exploration before any question.",
+ "disagreements": [
+  {
+   "target": "The geoscience community's treatment of Ni as the 'geochemical twin' of Fe",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "Coordination-share deviations f differ systematically from zero and grow with X_Ni, which the authors combine with the published excess volume of mixing in Fe–Ni melts.",
+   "page": "§3.1.4 ¶2",
+   "quote": "Combined, these two observations negate the assumption that Fe and Ni are “geochemical twins”."
+  },
+  {
+   "target": "Rebaza et al. (2021): hypothesis that adding Ni to liquid Fe–C affects carbon diffusivity",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Diffusion coefficients computed across the full Fe–Ni–C composition range are insensitive to composition.",
+   "page": "§3.2.3 ¶1",
+   "quote": "which does not support the hypothesis proposed by Rebaza et al. (33) that the addition of Ni to liquid Fe–C affects carbon diffusivity"
+  },
+  {
+   "target": "Rebaza et al. (2021): practically negligible pressure effect on D_C",
+   "kind": "result",
+   "stance": "fails_to_replicate",
+   "support": "The simulated D_C decreases with pressure (ΔV ≈ 0.46 cm3/mol), and the mismatch with Rebaza's extrapolation grows with pressure.",
+   "page": "§3.2.3 ¶1",
+   "quote": "The negligible pressure effect on DC reported by the experiments by Rebaza et al. (33) is not reproduced here"
+  },
+  {
+   "target": "Rebaza et al. (2021): attribution of the small pressure effect to differing C contents",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The authors note the attribution was untested; their composition sweep varies X_C and shows little compositional effect on D.",
+   "page": "§1 ¶3",
+   "quote": "which they attributed to differing C contents but did not test."
+  },
+  {
+   "target": "Dobson and Wiedenbeck (2002): large activation volume for C diffusion",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Their extrapolated curve lies above and below the simulated D_C at low and high pressure, overlapping only near 30 GPa; an intermediate ΔV fits best.",
+   "page": "§3.2.1 ¶3",
+   "quote": "Our findings indicate that an intermediate value between the two studies of ΔV ~ 0.5 cm3/mol best represents the diffusion"
+  },
+  {
+   "target": "Wang et al. (2019): Fe–Ni–C diffusivities at 1675 K and their interpretation",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors reproduce Wang's values without spin polarization, but suggest the 1675 K liquid may be metastable and the ΔV change at ~5 GPa may reflect loss of magnetic moments, which Wang reports to persist.",
+   "page": "§3.2.3 ¶1",
+   "quote": "the relatively low D values reported by Wang et al. (38) are well reproduced here and may reflect liquid [...] at 1675 K"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "F",
+   "chosen": "Non-spin-polarized simulations",
+   "alternatives": "Spin-polarized simulations (as in Wang et al. 2019)",
+   "reason": "Following previous studies; one spin-polarized test run showed no significant difference",
+   "effect_reported": "yes",
+   "page": "§2 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "0.7Vx cell volume for the 20 at% C compositions",
+   "alternatives": "Vx cell volume",
+   "reason": "Vx simulations yielded negative pressures",
+   "effect_reported": "no",
+   "page": "§2 ¶2"
+  },
+  {
+   "node": "F",
+   "chosen": "Fe–7%Ni–20%C for the 1675 and 2350 K runs",
+   "alternatives": "Other compositions (not named)",
+   "reason": "Same composition as Wang et al. (2019), for direct comparison and reproduction",
+   "effect_reported": "no",
+   "page": "§2 ¶2; §3.2.2 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Three simulation volumes",
+   "alternatives": "A denser pressure grid (implied)",
+   "reason": "The study's primary focus is compositional effects",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "Exclude g_Ni–Ni curves without a well-defined peak (X_Ni ≤ 0.02) from the summary plots",
+   "alternatives": "Include them",
+   "reason": "No well-defined Ni–Ni peak within the typical substitutional range",
+   "effect_reported": "no",
+   "page": "§3.1.1 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Global Arrhenius fit including the 1675 K results",
+   "alternatives": "Fit excluding the 1675 K results",
+   "reason": "The 1675 K runs may involve a metastable liquid",
+   "effect_reported": "yes",
+   "page": "§3.2.2 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "we performed and analyzed one run for Fe–50%Ni–20%C at low P, and found that results do not differ in any significant way",
+   "page": "§2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] quasi-linear behavior, which indicates that these are in the liquid state",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Our 1675-K diffusion results (Fig. 8) are in good agreement with those of Wang et al. (38) despite the different treatment on spin-polarization",
+   "page": "§3.2.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the model fits to Eq. (4) are comparable regardless of whether the 1675-K results are in- or excluded",
+   "page": "§3.2.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Figure 7c compares our DC results with the diffusion data from high-P experiments involving binary Fe–C liquid alloys",
+   "page": "§3.2.1 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "a result that is consistent with the observation of an excess volume of mixing in the Fe–Ni binary liquid at ambient P",
+   "page": "§3.1.4 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "which agrees with previous studies of both binary Fe–Ni and Fe–C (Posner and Steinle-Neumann 29) and ternary Fe–Ni–C liquids",
+   "page": "§3.2.1 ¶1"
+  }
+ ]
+}

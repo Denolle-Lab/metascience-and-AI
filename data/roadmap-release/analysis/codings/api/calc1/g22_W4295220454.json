@@ -1,0 +1,348 @@
+{
+ "key": "g22_W4295220454",
+ "doi": "10.1016/j.geoderma.2022.116154",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Luo et al. 2022, Geoderma 428, 116154 (9 pages)",
+  "Publisher XML converted to located text (jats_text); it contains only the DOI, title, an empty §0 Abstract header, and figure and table captions"
+ ],
+ "pages_convention": "PDF pages counted from 1 (these equal the printed article pages 1-9). The supplied XML text holds no body paragraphs, only captions. Captions are therefore cited by their printed labels ('Fig. 3', 'Table 2'), with the PDF page in parentheses. Body text is cited by PDF page, and its quotes are copied from the PDF text, with words broken at line ends rejoined. Supplementary material was not supplied.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "due to a lack of observation data, only a little attention is paid to the dynamics and factors driving groundwater",
+  "page": "p. 2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (Geoderma 428, 116154); XML captions",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question: groundwater is poorly monitored, and the long-term changes in shallow groundwater level on the densely populated southeastern coast of China, and their drivers, are unknown.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "long-term changes in groundwater levels are still elusive"
+    },
+    {
+     "node": "N",
+     "n": 2,
+     "mode": "reconstruction",
+     "action": "Take from the soil literature the premise that the gleization layer forms over hundreds of years and records the shallow groundwater table, so it can serve as a proxy for the historical level.",
+     "page": "p. 2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The shallow groundwater level directly determines the depth of the soil gleization layer in the profile"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State one joint-influence hypothesis: agriculture, climate, parent material and local economic development act together through land use on groundwater dynamics. No rival hypotheses are stated.",
+     "page": "p. 2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "tests the hypothesis that agricultural activities, climate, parent material, and local economic development jointly influence the land-use"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Extract 249 soil profiles from the 'Soil Series of China' provincial monographs. The profiles were dug by the monograph authors in winter and spring of 2010-2012, and each record gives the current water table read from profile photos and records.",
+     "page": "p. 3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "We finally extracted 249 samples from those monographs"
+    },
+    {
+     "n": 5,
+     "node": "I",
+     "mode": "reconstruction",
+     "action": "Infer the historical groundwater level as the upper boundary of the gleization layer. The layer is identified by colour criteria, a K3Fe(CN)6 test, and thresholds on active reducing substances, Fe2+ and Eh, meant to exclude short-term stagnation. The level is assigned to 'the recent century' on the grounds of the layer's formation time.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The critical upper layer of the soil gleization section is considered the historical shallow groundwater level"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "regularities",
+     "action": "Design the factor analysis. Sites are classed by climate zone (6), parent material (4), economic belt (4, from yearbook statistics), land use (5) and elevation (from a 30 m DEM). The classes are then tested with ANOVA/Tukey and with regression on dummy variables.",
+     "page": "p. 3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We selected different climates, parent materials, economic belts, land uses, and elevation to identify the possible factors"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compare current with reconstructed historical levels across the 249 sites: mean -104.7 cm against -65.7 cm, a 59.6% drop, with the CV of each level reported (Table 2).",
+     "page": "p. 4; Table 2 (p. 4)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which showed a 59.6 % drop compared to the historical shallow groundwater level"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the premises of the statistics: Kolmogorov-Smirnov and Bartlett tests for normality and equal variances, and a Q-Q plot of regression residuals (Fig. 1S, supplement not supplied).",
+     "page": "p. 4 (methods p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Kolmogorov–Smirnov test (K-S test) and Bartlett’s test showed the different shallow groundwater levels had an approximately normal distribution"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Interpolate historical level, current level and level change with ordinary kriging in ArcGIS, and describe the spatial patterns (deep current levels in the north and south, large changes in most areas).",
+     "page": "Fig. 3 (p. 5); text p. 4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Deep current shallow groundwater level areas were mainly found in the north and south areas."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare mean historical and current levels across climate zones, parent materials, economic belts and land uses with one-way ANOVA and Tukey post hoc tests (Fig. 4).",
+     "page": "p. 4; Fig. 4 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In economic belts, historical shallow groundwater level and current [...] are the deepest in Pearl River Delta"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Estimate the 'influence power' (R2) of each factor on historical level, current level and change by regression on dummy variables. Climate leads for historical level and change, the economic belt leads for current level, and elevation is not significant (Table 3).",
+     "page": "p. 4; Table 3 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we calculated the influence power of those factors by regression analysis"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare level change across land uses within each climate zone, parent material and economic belt. Land-use differences are significant only in subtropical climates, in sediments and alluvial deposits, and in the Yangtze and Pearl River deltas (Fig. 5).",
+     "page": "p. 5-6; Fig. 5 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] is no significant difference in shallow groundwater level change across different land uses under northern tropical and warm temperate climates"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the regional historical and 2010s means against published regional groundwater levels (Fan et al. 2010; Li et al. 2019; Huang et al. 2021; Lu 1993; Li et al. 2020) to infer the timing of declines (Table 4).",
+     "page": "p. 6; Table 4 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Combined with related research in similar areas (Table 4), the historical shallow groundwater level of the Huanghuai plain declined."
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "reconstruction",
+     "action": "Propose post hoc causes for each region's trend from the literature: the Yellow River course changes, well drilling, the South-to-North water diversion, the Three Gorges Project, groundwater policies, reclamation, demand, and upstream reservoirs. None is tested.",
+     "page": "p. 6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Three Gorges Project of the Yangtze River is also a fundamental reason for aggravating the sustainable decline trend"
+    },
+    {
+     "n": 15,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Project future trends by reasoning, with no model and no frozen forecast: the decline slows in the Huanghuai plain and the Yangtze River Delta and continues in the Pearl River Delta.",
+     "page": "p. 7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the shallow groundwater level in Pearl River Delta will steadily drop due to the emerging economic and demographic"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Set the land-use result against a cited assumption (Lu 1993) that paddy ditching and drainage shape level dynamics, and report that the deeper drop in upland supports it.",
+     "page": "p. 7; Fig. 4 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the upland where the original shallow groundwater level is the deepest has dropped more severely than the paddy field"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "theory",
+     "action": "Explain the interaction patterns with process arguments taken from the literature: rain-fed against leakage recharge by climate zone, urbanisation in the deltas, and slower hydraulics in clay-rich sediments and alluvium than in diluvial deposits.",
+     "page": "p. 7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating the advantage of tropical climate on rain-fed recharge"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep three claims: a century-scale decline from -65.7 to -104.7 cm; climate dominant for historical level and change; the economic belt dominant for current level.",
+     "page": "p. 8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the shallow groundwater level across the southeastern coast declined from − 65.7 cm to − 104.7 cm over a century"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: a century-scale drop in shallow groundwater level along the SE China coast",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "2",
+   "answer": "Current level observed in pits; historical level not observed, inferred from the gleization layer",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify the change and attribute it to climate, parent material, economy and land use",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals; a single joint-influence hypothesis",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions derived",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing profiles across natural and economic gradients",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: 249 profiles repeat across climate zones, parent materials, belts and land uses",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Only distributional assumptions checked; no robustness test or proxy validation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: decline estimated, factor contributions fitted",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Shallow groundwater level on the southeastern coast of [...] dropped by about 60% (from -65.7 to -104.7 cm on average) over roughly a century, as reconstructed from the upper boundary of the soil gleization layer.",
+  "page": "p. 4; p. 8; Table 2 (p. 4)"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "reconstruction",
+  "sentence": "Reading the historical groundwater level from the upper boundary of the gleization layer, and dating it to 'the recent century', creates the historical series without which no drop could be computed.",
+  "page": "p. 3"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data come from monographs compiled for soil classification in 2010-2012 (p. 3), not gathered under the stated hypothesis. Significance tests could have failed, and elevation did fail (Table 3). However, the proxy-based drop and its century timing face no independent test. Nothing is said to have been fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "One-way ANOVA with Tukey post hoc tests; Kolmogorov-Smirnov and Bartlett tests; Q-Q plots",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "statistics / econometrics",
+   "item": "Regression on dummy ('virtual') variables to quantify qualitative factors",
+   "kind": "method",
+   "page": "p. 3"
+  },
+  {
+   "field": "economics / official statistics",
+   "item": "Provincial statistical yearbooks (2020) for GDP, population density, urbanisation rate and economic density used to define economic belts",
+   "kind": "data",
+   "page": "Table 1 (p. 3)"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this work is the first to investigate the coastal centurial drop in shallow groundwater level through the gleization soil layer",
+   "page": "p. 1"
+  },
+  {
+   "quote": "provides a new perspective to reveal shallow groundwater level changes for a century accurately",
+   "page": "p. 2"
+  },
+  {
+   "quote": "This study provides a new perspective on the long-term drops in shallow groundwater based on the soil gleization layer.",
+   "page": "p. 8"
+  }
+ ],
+ "limits": "Sources and their limits:\n- The supplied XML holds only captions, so body text is cited by PDF page.\n- The supplement (Fig. 1S) and any review file were not supplied, so no review sequence is coded.\n- The acknowledgments thank reviewers, but the changes they asked for are not visible.\n\nUntested premises:\n- The gleization proxy is never checked against instrumental or dated records.\n- The 'century' timing rests only on the cited statement that gleization takes hundreds of years. Inference: the age of the historical level is unconstrained, and the reasoning is in tension, since a feature that takes centuries to form is assigned to the last century.\n- The thresholds that separate groundwater gley from short-term stagnation are adopted from the literature, not tested here.\n\nThe V check:\n- V is coded full only because of the distributional-assumption tests (K-S, Bartlett, Q-Q plot).\n- No robustness, replication or method check of the drop or of the factor attribution is reported.\n- The Table 4 comparisons with published levels are used for interpretation, not as validation.\n\nSub-claim statuses:\n- The factor attributions (climate 34.0% of change; economic belt 26.1% of current level) are regularity_in_range. Inference: they appear to come from separate single-factor regressions with R2 reported per factor.\n- The regional causal explanations (diversion projects, Three Gorges, policies) are cited conjecture with no status.\n- The projections for the Huanghuai plain, the Yangtze River Delta and the Pearl River Delta are unscored expectations with no status.\n\nInternal inconsistencies:\n- The CV of level change is 37.6% in Table 2 but 36.7% in the text.\n- The climate share is 32.2% (Table 3) but 32.3% (Conclusions).\n- On p. 5, the parent material and land use percentages are swapped relative to Table 3.\n- Table 2 medians are printed without sign.\n- The Fig. 4 caption lists 'land-use patterns (n = 44)', probably meaning paddy field.\n- On p. 4, a 'significantly larger' land-use difference is reported with p > 0.05.\n\nData provenance: the field data were collected by the monograph authors, not by this study. Data are available only on request.",
+ "disagreements": [
+  {
+   "target": "Taylor et al. 2013; Famiglietti 2014: long-term groundwater response to climate forcing largely independent of human activity (semi-arid and arid [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper argues that in humid monsoon coastal zones the effect of climate on level change depends on land use, delta development and economic belt (Fig. 5).",
+   "page": "p. 7",
+   "quote": "research rarely found such largely independent climate forcing on shallow groundwater level change in humid monsoon climate zones"
+  },
+  {
+   "target": "Hydrological models and remote sensing as mainstream approaches to estimating groundwater change",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper offers only cited assertions (Taylor et al. 2013; Shirzaei et al. 2021) that these methods are less accurate than site observations; no comparison is made here.",
+   "page": "p. 1",
+   "quote": "The accuracy of groundwater tables evaluated by hydrological models and remote sensing data is far lower than that of [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Count as groundwater gleization only layers that meet the colour and K3Fe(CN)6 criteria and also have active reducing substances > 0.7 cmolc/kg, Fe2+ > 0.5 cmolc/kg and Eh < 200 mV (at least medium gley)",
+   "alternatives": "Gleying caused by short-term soil stagnation rather than long-term groundwater immersion",
+   "reason": "to ensure the layer is more likely caused by long-term groundwater immersion rather than short-term soil stagnation",
+   "effect_reported": "no",
+   "page": "p. 3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Kolmogorov–Smirnov test (K-S test) and Bartlett’s test showed the different shallow groundwater levels had an approximately normal distribution",
+   "page": "p. 4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Quantile-quantile plot (Q-Q plot) was used to test the validity of regression assumptions",
+   "page": "p. 3 (Fig. 1S, supplement not supplied)"
+  }
+ ]
+}

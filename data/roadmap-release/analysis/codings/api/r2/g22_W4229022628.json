@@ -1,0 +1,497 @@
+{
+ "key": "g22_W4229022628",
+ "doi": "10.1186/s40623-022-01606-5",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Maeda and Watanabe (2022), Earth, Planets and Space 74:48",
+  "Publisher XML full text with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Separating true signals from false signals remains a challenge.",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML full text (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem of telling true reflectors from noise-generated false peaks in ACF-derived reflection responses, and limit the scope to noise in horizontally stratified media.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Separating true signals from false signals remains a challenge."
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take from prior drilling studies that a sediment-basement velocity discontinuity exists in the study area, which makes the area a known-answer test region.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The existence of this boundary has been confirmed by drilling down to the basement layer at several sites"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors assemble MeSO-net vertical accelerograms (200 Hz) for M>=2 JMA-catalog earthquakes from 2008 to 2021, deeper than 80 km and with incidence angles of 5 degrees or less.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we selected earthquakes at depths greater than 80 km"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors build the error-estimation method: narrow-band whitening, noise-window sigma, 1000 normally distributed noise traces subtracted from the P-window trace, an ACF ensemble mean and SD per event, and an inverse-variance weighted stack with its SD.",
+     "page": "§2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Based on this assumption, we obtained 1000 candidates for the earthquake signal"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take borehole well logs at Hi-net N.SHMH (velocity, density, resistivity, basement at 1.514 km) from earlier studies as the reference two-layer structure for nearby station E.STHM.",
+     "page": "§2.3 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The sound velocity and density measured in the well logs indicate that the subsurface can be adequately modeled with a two-layer model."
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design the test: E.STHM is expected to show a single reflector at 1.5 km and no other significant ones. They add 2D transect profiles with J-SHIS depth conversion and a comparison with the conventional unweighted procedure (§2.3 ¶2).",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we applied our method to data from Station E.STHM to test whether the reflector at 1.5 km could be identified"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors compute the 1000-member ACF ensemble, its mean and 3-sigma for the largest (M4.5) event at E.STHM, and find a significant negative peak at a lag of 1.450 s apart from the near-zero-lag artifact.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The amplitudes of the ensemble average are less than or only slightly greater than three times the standard deviation"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors vary the number of random traces (100, 1000, 10,000) and the assumed noise level (2x and 3x) to check the behaviour of the error estimate.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The standard deviations vary little with the number of traces"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors convert the ACFs to reflection responses and depth with the well-log velocity profile, then stack events by weight in decreasing order of magnitude up to 33 events, tracking the amplitude-to-sigma ratio.",
+     "page": "§3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The prominence of the positive peak at 1.5 km increases with an increasing number of stacks."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "The authors compare the stacked significance profile with the borehole-known structure: only the 1.5 km peak is significant below 0.5 km, as expected.",
+     "page": "§3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] that the peak at 1.5 km is the only significant reflector at depths greater than 0.5 km"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors vary the frequency band (1-5 Hz up to 15-20 Hz) and the earthquake depth limit (60, 80, 100 km; §3 ¶6). The reflector is clear below 10 Hz, the 60 km limit yields false peaks above 3, and the 80 km limit gives the clearest image.",
+     "page": "§3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Below 10 Hz, the prominence of the positive peak at 1.5 km is high."
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The authors apply the method to all stations along the ENE-WSW and ESE-WNW transects and map significance-colored 2D reflection profiles, finding west-dipping and weak east-dipping reflectors.",
+     "page": "§3 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There are clear west-dipping reflectors from 139° 45′ E (depth: 3 km) to 140° 20′ E (1 km) along the ENE–WSW transect"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors process the same transect data with the conventional unweighted, max-normalized procedure: the same reflectors appear, but among many false peaks.",
+     "page": "§3 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, in Fig. 4c, there are many other positive and negative peaks; most of them are deemed false signals"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors test the method on synthetic waveforms (Additional file 1, Text S2), giving detectable reflection coefficients of 0.03 to 0.1 and showing that random noise yields false reflectors below 3 sigma.",
+     "page": "§3 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The simulation also showed that random noise causes false reflectors with amplitudes less than three times the standard deviation"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "estimation",
+     "action": "The authors overlay the J-SHIS velocity-layer boundaries on the transect profiles: reflectors are clear where the medium is close to two layers and less prominent where it has three layers.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The reflectors are clearly imaged at the sites where the intermediate (Miura) layer is thin enough to be negligible"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors propose explanations for missing reflectors: an intermediate Miura layer that reduces the impedance contrast, a gradual velocity increase (after Yoshimoto and Takemura 2014), and few earthquakes in the east.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These three-layer or gradually increasing velocity structures are possible explanations for the absence of prominent reflectors"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors check the premise of white Gaussian noise: the noise amplitude distribution is tested against a normal distribution (Fig. 5a,b; Text S4) and the covariance is shown small for lags above 0.075 s (Text S3, Fig. S4).",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our statistical tests showed that the assumption of the normal distribution is not dismissed at 5% significance level"
+    },
+    {
+     "n": 18,
+     "node": "S",
+     "mode": "theory",
+     "action": "The authors derive analytically, decomposing the ACF and invoking the central limit theorem, that the candidate ACFs should be normally distributed, so that 3 sigma corresponds to 99% confidence.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This threshold is consistent with the 99% confidence level if the ACFs obey a normal distribution."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "methods",
+     "action": "The authors compare the empirical distributions of ACF deviations at several lags with the normal distribution for the largest and the smallest events (Fig. 5c,d; Text S4).",
+     "page": "§4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The excellent fit between the two distributions and our statistical tests"
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors retain the method as giving a quantitative single-station reliability measure for each reflector, with frequency and medium-type limits stated.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The method gives a quantitative measure for the reliability of each reflector from the observations at a single station"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Many ACF reflection-response peaks may be noise-generated false signals",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "No; reflectors are inferred from ACFs through the daylight-imaging relation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize an error-estimation method for ACF reflection responses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "True structural reflector versus a noise artifact below 3 sigma",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "5",
+   "answer": "A true reflector grows in significance with stacking; noise peaks stay at or below about 3 sigma",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural deep earthquakes at a station next to a drilled borehole of known structure",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 33 events stacked at E.STHM and many stations along two transects",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes; trace count, noise level, frequency band, depth limit, synthetics, normality and covariance checks, conventional comparison",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method characterized: the known 1.5 km reflector is significant and other peaks are not",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; the acknowledgments mention two anonymous reviewers",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The noise-subtraction Monte Carlo method yields error estimates for earthquake ACF reflection responses that image the borehole-known sediment-basement discontinuity well above 3 sigma, while peaks at other depths stay below or near 3 sigma, with the signal clear below 10 Hz.",
+  "page": "§5 ¶2"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The comparison of the stacked significance profile at E.STHM with the borehole-known two-layer structure, in which only the 1.5 km peak is significant, is what turns the procedure into a characterized capability.",
+  "page": "§3 ¶4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "Action: the data come from an existing archive, but station E.STHM was chosen because its expected single 1.5 km reflector was known from well logs (§2.3 ¶1). Claim: the method could have failed to raise the 1.5 km peak above 3 sigma, or could have passed false peaks; the 60 km depth limit did produce false peaks above 3 (§3 ¶6). Registration: the expected reflector depth and the 3-sigma threshold were set from prior knowledge, but the 80 km depth limit was judged the clearest after comparing results at this station (§3 ¶6)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Monte Carlo simulation of Gaussian noise realizations to propagate noise into ACF uncertainty",
+   "kind": "method",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "field": "statistics",
+   "item": "Inverse-variance weighted averaging and its standard deviation",
+   "kind": "method",
+   "page": "§2.2 ¶6"
+  },
+  {
+   "field": "signal processing",
+   "item": "Spectral whitening and two-pole zero-phase Butterworth bandpass filter",
+   "kind": "method",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Central limit theorem to argue that the ACFs are normally distributed",
+   "kind": "concept",
+   "page": "§4 ¶5"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "We present a method to quantify the errors in ACFs and extract true reflectors with high reliability.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Our method realizes an evaluation of the amplitude",
+   "page": "§4 ¶7"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so no review sequence is coded. Additional file 1 (Texts S1-S4, Figs. S1-S4) was not supplied; the synthetic test, normality tests and covariance check are coded from the main-text summaries only. The decisive test is a single station (E.STHM) with known structure, and the same well-log velocity used to define the expected reflector also converts lag to depth. The transect results have no independent ground truth beyond the J-SHIS model. The 80 km earthquake depth limit was chosen after comparing images at the test station (inference: an analysis choice made after seeing the result). The 3-sigma threshold is justified by an assumed normal distribution. Sub-claims: frequency dependence of detectability (clear below 10 Hz) is regularity_in_range; the reflector geometries along the transects and the explanations for missing reflectors (Miura layer, gradual velocity) are best_explanation; detectable reflection coefficients of 0.03-0.1 from synthetics are capability_characterized. Composition: capability_first is the nearest fit, but the walk is method construction followed by a known-answer validation rather than exploration of a new phenomenon.",
+ "disagreements": [
+  {
+   "target": "Conventional ACF procedure (unweighted stacking, amplitudes normalized to the maximum)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Fig. 4c shows that the conventional procedure yields many positive and negative peaks deemed false that obscure the reflectors, while the weighted, error-scaled profiles suppress them.",
+   "page": "§4 ¶7",
+   "quote": "In the conventional method, the meaning of the amplitudes of reflection responses from ACFs was unclear."
+  },
+  {
+   "target": "Whitening bandwidth used in previous studies (e.g., Oren and Nowack 2017; Chimoto and Yamanaka 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A narrower 0.0305 Hz bandwidth gives flatter spectra, more consistent with the white-noise assumption the method needs.",
+   "page": "§2.2 ¶1",
+   "quote": "[...] bandwidth for the whitening (0.0305 Hz) was narrower than that used in previous studies"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Whitening bandwidth of 0.0305 Hz (11 samples)",
+   "alternatives": "Wider bandwidths used in previous studies",
+   "reason": "Flatter spectra, more consistent with independent normally distributed (white) noise samples",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "1000 random noise traces",
+   "alternatives": "100 and 10,000 random traces",
+   "reason": "none given (the SDs vary little with the number of traces)",
+   "effect_reported": "yes",
+   "page": "§3 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "1-10 Hz bandpass",
+   "alternatives": "1-5, 5-10, 5-15, 10-15, 10-20, 15-20 Hz bands",
+   "reason": "The 1.5 km reflector is prominent below 10 Hz and fades at higher frequencies",
+   "effect_reported": "yes",
+   "page": "§3 ¶5"
+  },
+  {
+   "node": "V",
+   "chosen": "Earthquakes deeper than 80 km (33 events)",
+   "alternatives": "Deeper than 60 km (113 events) or 100 km (20 events)",
+   "reason": "80 km showed the clearest image; 60 km produced false reflectors, 100 km a weaker peak from fewer stacks",
+   "effect_reported": "yes",
+   "page": "§3 ¶6"
+  },
+  {
+   "node": "D",
+   "chosen": "Error-weighted stacking with display scaled by significance",
+   "alternatives": "Conventional procedure without error weighting, normalized to maximum amplitude",
+   "reason": "Highlight reflected signals that are statistically significantly larger than the errors",
+   "effect_reported": "yes",
+   "page": "§3 ¶7"
+  },
+  {
+   "node": "K",
+   "chosen": "Threshold of three standard deviations",
+   "alternatives": "Two standard deviations",
+   "reason": "A trade-off between false and minor reflectors; a high threshold suits poorly studied areas",
+   "effect_reported": "no",
+   "page": "§4 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "White Gaussian synthetic noise",
+   "alternatives": "Noise designed with the same covariance as the data",
+   "reason": "The covariance is small for lags above 0.075 s, which are the lags interpreted",
+   "effect_reported": "no",
+   "page": "§4 ¶2"
+  },
+  {
+   "node": "D",
+   "chosen": "ACFs of natural earthquakes",
+   "alternatives": "ACFs of ambient noise",
+   "reason": "Ambient noise requires a different approach, left to future studies",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The standard deviations vary little with the number of traces",
+   "page": "§3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The results show that the standard deviations are approximately proportional to the square root of the noise level",
+   "page": "§3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] with the likely subsurface structure in this region",
+   "page": "§3 ¶4"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The prominence decreases with increasing frequency.",
+   "page": "§3 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In conclusion, the depth limit of 80 km showed the clearest image at this station.",
+   "page": "§3 ¶6"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We investigated the reflection responses at all stations along the ENE–WSW and ESE–WNW transects",
+   "page": "§3 ¶7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "These reflectors are also visible in the results from the conventional [...]",
+   "page": "§3 ¶7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We also evaluated the proposed method using synthetic waveforms",
+   "page": "§3 ¶8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Our statistical tests showed that the assumption of the normal distribution is not dismissed at 5% significance level",
+   "page": "§4 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "indicate that the covariance was indeed small",
+   "page": "§4 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The excellent fit between the two distributions and our statistical tests",
+   "page": "§4 ¶5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Maeda et al. (21) indicated that the normal distribution was a good approximation for the noise waveforms in a different region.",
+   "page": "§4 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "a reflector at a depth of approximately 1.5 km has been identified in this region",
+   "page": "§2.3 ¶1"
+  }
+ ]
+}

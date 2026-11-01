@@ -1,0 +1,106 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Review addendum v1.0.0: top-level fields added to a paper coding when an open review record is attached",
+ "type": "object",
+ "properties": {
+  "review_addendum_version": {
+   "type": "string",
+   "enum": [
+    "1.0.0"
+   ]
+  },
+  "disclosures": {
+   "type": "array",
+   "description": "Author statements in the open review that disclose workflow information (agents/coder/REVIEW_ADDENDUM.md)",
+   "items": {
+    "type": "object",
+    "properties": {
+     "unit": {
+      "type": "string",
+      "description": "AC or AR locator, e.g. AC1 ¶3, AC2 p.1, AC2-S p.1, AR1 p.2"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "tried_dropped",
+       "order_of_work",
+       "constraint",
+       "unstated_reason",
+       "added_for_review",
+       "claim_narrowed",
+       "writing_process"
+      ]
+     },
+     "quote": {
+      "type": "string",
+      "description": "At most 25 words, verbatim from the unit, the authors' own words"
+     },
+     "content": {
+      "type": "string",
+      "description": "At most 25 words: what exactly was disclosed"
+     },
+     "final_paper_status": {
+      "type": "string",
+      "enum": [
+       "present",
+       "partly",
+       "absent"
+      ]
+     },
+     "final_loc": {
+      "type": "string",
+      "description": "Locator in the published paper; empty when absent"
+     },
+     "final_quote": {
+      "type": "string",
+      "description": "At most 25 words, verbatim from the published paper; empty when absent or removed"
+     },
+     "removed": {
+      "type": "boolean"
+     },
+     "node": {
+      "type": "string",
+      "enum": [
+       "N",
+       "E",
+       "O",
+       "I",
+       "Q",
+       "H",
+       "S",
+       "D",
+       "F",
+       "C",
+       "V",
+       "X",
+       "K",
+       "P",
+       "R",
+       "none"
+      ]
+     },
+     "loop": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "unit",
+     "kind",
+     "quote",
+     "content",
+     "final_paper_status",
+     "final_loc",
+     "final_quote",
+     "removed",
+     "node",
+     "loop"
+    ],
+    "additionalProperties": false
+   }
+  }
+ },
+ "required": [
+  "review_addendum_version",
+  "disclosures"
+ ]
+}

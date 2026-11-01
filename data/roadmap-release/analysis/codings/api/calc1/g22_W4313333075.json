@@ -1,0 +1,501 @@
+{
+ "key": "g22_W4313333075",
+ "doi": "10.1029/2022jd037590",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Loeb, N. A., & Kennedy, A. (2023). Blowing snow at McMurdo Station, Antarctica during the AWARE field campaign: Multi-instrument observations of blowing snow. JGR Atmospheres 128, e2022JD037590 (published PDF, 17 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (identical to the printed 'n of 17' article pages)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "While BLSN could be detected effectively, estimations of BLSN layer depth were more uncertain.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Loeb & Kennedy 2023, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors' earlier paper built a BLSN climatology at McMurdo from human observations and a ceilometer algorithm; it detected BLSN well but its depths were uncertain.",
+     "page": "1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "While BLSN could be detected effectively, estimations of BLSN layer depth were more uncertain."
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem: BLSN layer depth matters for radiation and model verification, the literature is sparse, and single-instrument estimates fail in precipitating events.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These studies generally use a single instrument to characterize the plume, which can become problematic during intense events"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "instruments",
+     "action": "The authors describe the AMF2 ceilometer, MPL, HSRL and KAZR (resolution, accuracy, overlap heights, data gaps) from ARM handbooks and earlier literature.",
+     "page": "2-3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The uncertainty associated with reflectivity observations is ±3 dBZ"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build the MI framework: all data are averaged to a 5-min, 30 m grid; per-instrument binary detections are combined as a fraction; backscatter algorithms follow Gossart et al. (2017) with 95th-percentile clear-sky thresholds; KAZR reflectivity is kept only for color ratio.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "individual algorithms were treated as separate binary results, then combined to yield a fractional amount of algorithms that detected the process"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "They take expectations from published microphysics: BLSN particles are spheroidal and small, so LDR and color ratio should be lower in BLSN than in falling snow.",
+     "page": "4, 6",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "BLSN particles are small and spheroidal, meaning the LDR should be lower for BLSN than for falling snow"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "They define the LDR algorithms (reference layer 1,200-1,440 m, averaging layers of 210 and 300 m set by manual inspection) and the HSRL/KAZR color-ratio algorithm (valid range 1e-8 to 1e-5).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this study, CR was calculated using KAZR reflectivity factor and HSRL backscatter coefficient."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They vary the height of the LDR reference layer and the CR threshold range and report only minor changes in depths.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Sensitivity testing showed only minor differences in results if the height of this layer was altered."
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "The layer top is set where the fraction of valid algorithms flagging BLSN drops below 0.5, smoothed with a 25-min running mean.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the altitude at which the fraction falls below 0.5 for each period of BLSN was determined"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They vary the thresholds and the smoothing window length and find depths are insensitive to slightly shorter or longer windows (Figure S2).",
+     "page": "7, S2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It was found that results do not change substantially for slightly shorter/longer averaging periods"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They apply the MI algorithm to the intense mixed event of 12 June 2016 and estimate a mean depth of 213.7 m against 295.3 m from the ceilometer-only algorithm; fallstreaks corrupt the backscatter-only tops.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The average depth of BLSN during this event was 213.7 m"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare the MI and ceilometer-only tops with radiosonde PBL depths (Heffter method) on 12 June; MI is near the PBL top and the ceilometer top is about 100 m above it. The acknowledgments credit Stephen Palm's feedback for adding sounding data.",
+     "page": "7-8, 16",
+     "move": "new",
+     "trigger": "commenter",
+     "quote": "The depth of the Planetary Boundary Layer (PBL) at 0926 UTC is only ∼50 m shallower than the depth of the BLSN plume."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Noting that event heights may still be biased high, they raise the required agreement to 60% or 70%; event means fall to 179.3 and 164.1 m, but campaign heights barely change (Figure S3).",
+     "page": "9, S3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This can be reduced by requiring at least 60% or 70% of the algorithms"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They apply the MI algorithm to the clear-sky event of 4-5 July 2016: mean depth 87.1 m, close to the ceilometer-only result (mean absolute difference 38.1 m).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The mean depth during the event was 87.1 m, with a maximum depth of 216.0 m."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare the clear-sky depths with a radiosonde PBL depth (165 m) launched shortly before the event.",
+     "page": "9",
+     "move": "new",
+     "trigger": "commenter",
+     "quote": "the depth of the PBL at the time of the launch (165 m) is comparable to the deepest BLSN plumes during the event"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They apply the MI algorithm to all 649.2 h of detected BLSN and tabulate mean depths by category (overall 168.2 m).",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The mean depth of BLSN detected for each category by both the MI and 5-min + MET algorithms"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare MI and ceilometer-only depth distributions and 2D histograms by category: near 1:1 for clear sky, Category 2 deepened, and Category 3 regulated (deep plumes shallower, shallow plumes deeper).",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the MI algorithm acted to regulate the depths suggested by 5-min + MET"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They explain the discrepancies: ceilometer overlap artifacts create spurious 50-100 m tops, and fallstreaks create falsely deep plumes.",
+     "page": "11, S7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This agrees well with the hypothesis that this contains erroneous depths due to ceilometer artifacts"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare each contributing algorithm's top with the final MI depth (Figure 9); backscatter algorithms dominate, while LDR and CR often fail at their lowest usable bin.",
+     "page": "11-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The MI depth is most closely related to the results of the 30 m CEIL and MPL backscatter algorithms"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare MI depths with Mahesh et al. (2003), Gossart et al. (2017) and the Palm et al. (2011) satellite climatology. The extinction underestimate is confirmed but offset by fallstreaks, and they infer the capping inversion may not differ between clear and cloudy scenes.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "mean layer depth for all BLSN events (168 m) is remarkably close to the satellite-based climatology"
+    },
+    {
+     "n": 20,
+     "node": "O",
+     "mode": "regularities",
+     "action": "They examine 2D histograms of MI depth against 10 m wind speed and direction; there is no clear wind speed relation, and the deepest plumes occur near 10 m/s with northeasterly winds.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Relationships between meteorological variables and the BLSN depth calculated by the MI algorithm were investigated using two-dimensional histograms"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the wind speed result against earlier studies: consistent with the ground-based studies, and distinct from Palm et al.'s relation of wind to optical depth.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "no clear relationship between BLSN depth and wind speed was found in previous studies"
+    },
+    {
+     "n": 22,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that the deepest layers come from northeasterly flow interacting with Ross Island topography; this is not tested.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is hypothesized that the deepest layers are associated with these winds interacting with the topography of Ross Island and the Hut Point Peninsula."
+    },
+    {
+     "n": 23,
+     "node": "O",
+     "mode": "regularities",
+     "action": "They find depth decreases with increasing 2 m visibility (deepest plumes at near-zero visibility) and shows no relation to temperature.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The deepest detected plumes were primarily associated with near-zero visibility."
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They keep the MI depth estimates (mean 168.2 m, about 60% below 200 m) explicitly as experimental, for lack of in situ ground truth, and call for replication at other ARM sites.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is stressed that this should be considered experimental given the lack of in situ observations throughout the boundary layer"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "BLSN at McMurdo during AWARE, established in the authors' 2021 paper",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; layer depth is inferred from remote-sensing profiles, with no in situ truth",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Better constrain BLSN depth with a multi-instrument algorithm",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; the competitor is the ceilometer-only algorithm",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Not formulated as distinct predictions",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural BLSN events during the campaign (case days and the full year)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes, within sensitivity tests of thresholds, reference layer and smoothing window; radiosonde PBL checks",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Depth estimates kept as experimental",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; informal pre-submission feedback (Palm) led to the sounding data being added",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "The multi-instrument algorithm gives a mean BLSN depth at McMurdo of 168.2 m (5-min, 30 m resolution), with about 60% of plumes below 200 m, and corrects compensating fallstreak and extinction errors in ceilometer-only depths.",
+  "page": "15"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Combining per-instrument backscatter, LDR and color-ratio detections into a fractional agreement field, with a 0.5 threshold, is what produces the MI depth estimates and their contrast with the ceilometer-only depths.",
+  "page": "4, 7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data are routine ARM AMF2 campaign streams, not acquired under a stated hypothesis. The depths face partial tests that could have failed (radiosonde PBL depths for three soundings, the published satellite climatology), but no ground truth exists and the authors say performance is unknown (p. 7). Thresholds and averaging layers were set by manual inspection of the same data (p. 6), and nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "optics",
+   "item": "Polarization-sensitive micropulse lidar technique (Flynn et al. 2007, Optics Express)",
+   "kind": "instrument",
+   "page": "2-3"
+  },
+  {
+   "field": "optics / spectroscopy",
+   "item": "High spectral resolution lidar separating molecular from particle backscatter (Shipley et al. 1983, Applied Optics)",
+   "kind": "instrument",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Observations from AWARE provide a unique data set to investigate the occurrence and properties of blowing snow (BLSN).",
+   "page": "1"
+  }
+ ],
+ "limits": "No review file, open discussion or earlier version was supplied, so there is no review sequence. The acknowledgments state that informal feedback from Stephen Palm led to the sounding data being included (coded trigger commenter on steps 11 and 14), and that Alexandra Gossart reviewed the paper; what else changed is not shown. There is no ground truth above the surface, so algorithm performance is unknown (p. 7). The headline depths carry no quantified uncertainty beyond grid resolution; 'estimate_with_resolution' is therefore generous. Sub-claims: (a) the MI algorithm as a method is capability_characterized only partially, without an accuracy reference; (b) ceilometer-only agreement with earlier studies arising from compensating extinction and fallstreak errors is best_explanation; (c) the depth-visibility relation and the absence of wind and temperature relations are qualitative regularity_in_range (McMurdo, 2016, -10 to -35 °C); (d) the topographic origin of deep plumes is an untested hypothesis. Inference: the order in which thresholds were tuned and sensitivity tests run is not documented, and the clear-sky thresholds rest on subjectively selected periods. The case days were chosen from the earlier paper and are, by the authors' own account, more intense events.",
+ "disagreements": [
+  {
+   "target": "Mahesh et al. (2003) mean BLSN depth of 416 m at South Pole",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "The sample of only 40 events is argued to be unrepresentative.",
+   "page": "2",
+   "quote": "only 40 events were included in the analysis, so it is likely not representative of all BLSN events [...]"
+  },
+  {
+   "target": "Ceilometer-only depth algorithms (Loeb & Kennedy 2021; Gossart et al. 2017)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "MI-versus-ceilometer histograms and case studies show spurious 50-100 m tops from overlap artifacts and falsely deep tops from fallstreaks.",
+   "page": "11",
+   "quote": "it may also suggest that 50–100 m is a height where the ceilometer algorithm commonly fails due to noise in the profiles"
+  },
+  {
+   "target": "Mahesh et al. (2003) and Gossart et al. (2017) hypothesis that mixed-event depths are underestimated by extinction",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "MI results confirm the extinction bias but show it is largely offset by fallstreaks.",
+   "page": "12",
+   "quote": "This analysis confirms this issue but the bias is offset in large part by fallstreaks."
+  },
+  {
+   "target": "Palm et al. (2011) satellite clear-sky BLSN depths of 100-200 m near McMurdo",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The Category 1 mean of 91.1 m is lower, attributed to remaining ceilometer extinction; the all-event mean agrees.",
+   "page": "12",
+   "quote": "While this value is lower, these shallow layers are only detected by the ceilometer even in this study"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "30 m vertical grid",
+   "alternatives": "finer native resolutions of the individual instruments",
+   "reason": "to match the coarsest data set (KAZR)",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "KAZR used only in color-ratio calculations",
+   "alternatives": "KAZR reflectivity for plume depth",
+   "reason": "manual inspection showed reflectivity did not help; reflectivity scales with diameter to the sixth power and BLSN particles are small",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "HSRL backscatter for color ratio",
+   "alternatives": "MPL backscatter",
+   "reason": "HSRL less noisy and used by Bourdages et al. (2009)",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "LDR averaging layers of 210 m (HSRL) and 300 m (MPL)",
+   "alternatives": "other averaging depths",
+   "reason": "manual inspection; MPL LDR noisier",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "LDR reference layer 1,200-1,440 m",
+   "alternatives": "other reference layer heights",
+   "reason": "above physically possible BLSN heights (Palm et al. 2017)",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "CR valid range 1e-8 to 1e-5",
+   "alternatives": "varied threshold ranges",
+   "reason": "range for boundary-layer ice from Bourdages et al. (2009)",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "25-min (five-profile) running mean",
+   "alternatives": "slightly shorter or longer windows",
+   "reason": "reduce noise while keeping the unsteady nature of the phenomenon",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "V",
+   "chosen": "agreement fraction threshold 0.5",
+   "alternatives": "60% or 70% agreement",
+   "reason": "none given for 0.5; higher thresholds reduce event heights but not campaign heights",
+   "effect_reported": "yes",
+   "page": "9"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Sensitivity testing showed only minor differences in results if the height of this layer was altered.",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The range of valid values (10−8–10−5) were varied, and it was determined that depths did not vary substantially change based on these thresholds.",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Sensitivity testing for the MI algorithm was conducted by varying the thresholds used and the length of the smoothing window",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The depth of the Planetary Boundary Layer (PBL) at 0926 UTC is only ∼50 m shallower than the depth of the BLSN plume.",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This can be reduced by requiring at least 60% or 70% of the algorithms",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the depth of the PBL at the time of the launch (165 m) is comparable to the deepest BLSN plumes during the event",
+   "page": "9"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the distribution of depths detected by the MI algorithm was compared to that of the 5- [...]",
+   "page": "10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "mean layer depth for all BLSN events (168 m) is remarkably close to the satellite-based climatology",
+   "page": "12"
+  }
+ ]
+}

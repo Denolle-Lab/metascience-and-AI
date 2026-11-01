@@ -1,0 +1,425 @@
+{
+ "key": "g22_W4308695711",
+ "doi": "10.5194/se-13-1721-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chakraborty et al. 2022, Solid Earth 13, 1721–1729, published PDF",
+  "Publisher XML full text converted with jats_text (section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure locators add printed journal pages in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it becomes important to find an optimum duration for the input data that can provide a reliable and statistically significant estimate",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chakraborty et al. 2022, Solid Earth (XML text with PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "S",
+     "mode": "regularities",
+     "action": "Took from the EEW literature the expectation that magnitude-estimate accuracy rises with the duration of P-wave data used.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The accuracy of such estimates has been shown to increase with the duration of data used to calculate them (Ziv, 2014)."
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the question of the optimum input duration for rapid magnitude characterisation from minimal P-wave data.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it becomes important to find an optimum duration for the input data"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Proposed a single-station deep-learning classifier sorting waveforms into noise, low-magnitude and high-magnitude (ML ≥ 5.0) classes.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we present a deep learning model to perform time series multiclass classification"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Tried magnitude 3 and 4 as alternative decision boundaries and reported similar accuracy, precision and recall; no numbers are given.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Magnitudes of 3 and 4 were also experimented with as decision boundaries"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed the test on STEAD: kept ML-scale traces with SNR ≥ 10 dB, split 60:10:30 into non-overlapping sets by event and station, and cut five P-wave durations (1, 3, 10, 20, 30 s).",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we investigate the effect of using different lengths of data after the first P arrival (1, 3, 10, 20 and 30 s)"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Balanced the classes by augmenting high-magnitude events (shifted windows, polarity flips), undersampling low-magnitude and noise traces, and applying a 1:1:10 class weight chosen experimentally.",
+     "page": "§2.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To tackle this imbalance problem, we apply resampling of the data (Krawczyk, 2016) as follows."
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopted the CNN plus bi-LSTM architecture from the authors' earlier abstract and trained it with Adam, cross-entropy loss, early stopping and learning-rate decay.",
+     "page": "§2.2 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The model architecture (Chakraborty et al., 2021) consists of two sets of 1D convolution"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Fixed accuracy, precision and recall as the performance metrics for comparing durations.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use the metrics listed below to evaluate the model performance"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared softmax probabilities for one waveform across durations (Fig. 5) and metrics across the five durations (Fig. 6a), finding no dependence on input length.",
+     "page": "§3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the predicted probabilities are different and show no dependence on the length of input data"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Retrained the 3 s model five times on the same data with untuned random seeds to measure initialisation randomness (Fig. 6b).",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also looked at the randomness in the performance when the model is trained on the same data five times"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared the spread across durations with the spread across retrainings and judged the two comparable.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the variation in the results caused by changing the length of data is comparable to the randomness in the results"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "methods",
+     "action": "Read the confusion matrix and misclassification by magnitude for one 3 s model: errors concentrate near ML 5.0 and lean toward false high-magnitude alarms because of the class weights.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the misclassification of low-magnitude events as high-magnitude and vice versa is most pronounced at the decision boundary of 5.0"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked classification across hypocentral distance and SNR (Fig. 8) and inferred that the model is not simply mapping amplitude or SNR to magnitude.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there are instances of correct classification across a wide-range of hypocentral distances and signal-to-noise ratios"
+    },
+    {
+     "n": 14,
+     "node": "P",
+     "mode": "methods",
+     "action": "Attributed the residual errors within 5.0 ± 0.5 to label uncertainty (inter-agency magnitude scatter of up to 0.5 units) rather than to the model.",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "even magnitudes of the same scale reported by different agencies can vary by as much as 0.5 magnitude units"
+    },
+    {
+     "n": 15,
+     "node": "R",
+     "mode": "methods",
+     "action": "Proposed, without doing it, recasting the task as regression in a future version.",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it might be helpful to treat this as a regression problem instead of classification"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compared the overall accuracy (90.04–93.86 %) with the 93.67 % reported by Saad et al. (2020) using three stations.",
+     "page": "§4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is comparable to the magnitude classification accuracy of 93.67 % achieved by Saad et al. (2020)"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the claim that input length has no significant effect on performance and that accuracy reaches 93.86 %.",
+     "page": "§5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "changing the length of the waveform (1, 3, 10, 20 or 30 s after P arrival) has no significant effect on the model performance"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "How input P-wave duration affects a deep-learning magnitude classifier",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; performance is measured on a held-out test set",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize a single-station classifier and the effect of input length",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Implicit only: performance rises with length (traditional EEW) versus no effect",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not derived; no prediction or threshold is computed for either case",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Set computationally: five durations, five retrainings, alternative boundaries",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Duration spread falls within retraining spread; boundary, distance and SNR checks do not change the picture",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: no significant length effect; accuracy 90–94 %",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A single-station CNN plus bi-LSTM classifier separates noise, low-magnitude and high-magnitude (ML ≥ 5.0) STEAD waveforms with 90.04–93.86 % accuracy, and changing the input length from 1 to 30 s after P arrival changes performance no more than retraining randomness does.",
+  "page": "§5 ¶1"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "methods",
+  "sentence": "Retraining the same model five times on the same data supplied the randomness baseline; without it, the spread across durations could not have been read as no significant effect.",
+  "page": "§4 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the cited expectation that accuracy rises with data length (§1 ¶1) motivated the five-duration design (§2.1 ¶2), but no hypothesis is stated. Claim: performance could have risen with length, but the verdict is a visual judgement of comparability (§4 ¶1, Fig. 6), with no statistical test or threshold. Registration: nothing is reported as fixed before the data; the class weight was chosen experimentally (§2.1 ¶3)."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Deep learning for time series multiclass classification",
+   "kind": "method",
+   "page": "§1 ¶3"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "1D convolution, dropout, max-pooling, bi-directional LSTM and softmax layers",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Adam optimiser, categorical cross-entropy loss, early stopping",
+   "kind": "method",
+   "page": "§2.2 ¶2"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Resampling and class weighting for imbalanced data; data augmentation carried over from images",
+   "kind": "method",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "field": "computer science / machine learning",
+   "item": "Accuracy, precision, recall and confusion-matrix evaluation",
+   "kind": "concept",
+   "page": "§3 ¶1"
+  },
+  {
+   "field": "computer engineering",
+   "item": "Graphics processing units (GPUs)",
+   "kind": "instrument",
+   "page": "§1 ¶2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No review file, open discussion or earlier version was supplied, so there is no review sequence, although the PDF records a public discussion. The verdict of no significant effect rests on a visual comparison: there is no statistical test, and the retraining baseline uses only five runs on the 3 s data, not on each duration. Inference: in Fig. 6b (p. 1726) iterations 4 and 5 show identical values, which may mean a duplicated run; the paper does not say. The retraining check is coded as a reproduction under codebook 3a, although it serves as the null baseline for the duration comparison. The decision-boundary checks (M3, M4) are reported without numbers. The class weight was chosen experimentally, and the text does not say on which split; inference: validation data. The comparison with Saad et al. (2020) uses different data and stations. Sub-claims at other statuses: the model learns frequency characteristics rather than amplitude or SNR (best_explanation, weakly supported by Fig. 8); errors near ML 5.0 reflect label uncertainty (best_explanation, argued from the literature, not tested). Composition is none_fits because the walk is a method characterization with a parameter sweep against a reproduction baseline, posed as a question before the capability; neither capability_first nor strong_inference describes it.",
+ "disagreements": [
+  {
+   "target": "Traditional EEW methods; Ziv (2014): accuracy of magnitude estimates increases with data duration",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Five input durations give a performance spread comparable to five retrainings on the same data, so for this classifier length shows no effect.",
+   "page": "§0 ¶1",
+   "quote": "the variation in the results produced by changing the length of the data is no more than the inherent randomness in the trained models"
+  },
+  {
+   "target": "Saad et al. (2020), three-station magnitude classification",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A single-station model reaches 90.04–93.86 % accuracy against the 93.67 % reported for three stations, on different data.",
+   "page": "§1 ¶3",
+   "quote": "Unlike Saad et al. (2020), who use data from three seismic stations to characterise different earthquake parameters"
+  },
+  {
+   "target": "Lomax et al. (2019), normalised single-station input",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "None offered; the paper states it does not normalise and does not compare the two choices.",
+   "page": "§2.1 ¶3",
+   "quote": "Unlike Lomax et al. (2019) we do not normalise the data."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Local magnitude 5.0 as the class boundary",
+   "alternatives": "Magnitudes 3 and 4 as decision boundaries",
+   "reason": "Boundary is arbitrary; can depend on the model's purpose and local geology",
+   "effect_reported": "yes",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Three-component data from a single station",
+   "alternatives": "Data from three stations (Saad et al., 2020)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Only traces with magnitude in the ml scale",
+   "alternatives": "Other magnitude scales in STEAD",
+   "reason": "Consistency in magnitude; ml is the most common scale in the dataset",
+   "effect_reported": "no",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Resampling (augmentation and undersampling) plus a 1:1:10 class weight",
+   "alternatives": "The original imbalanced distribution; other class weights (unspecified)",
+   "reason": "Imbalance hinders classifiers and misleads accuracy evaluation; weight chosen experimentally",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "No instrument response removal and no normalisation",
+   "alternatives": "Normalised data (Lomax et al., 2019); instrument response removal",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Data from all instrument types",
+   "alternatives": "A single instrument type",
+   "reason": "A single type would significantly reduce the training data and limit learning",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "V",
+   "chosen": "Random seed not tuned",
+   "alternatives": "Tuning a random seed",
+   "reason": "Cites Bengio (2012) and Madhyastha and Jain (2019)",
+   "effect_reported": "yes",
+   "page": "§4 ¶1"
+  },
+  {
+   "node": "R",
+   "chosen": "Classification",
+   "alternatives": "Regression on magnitude value",
+   "reason": "Regression would give the model more information about the exact magnitude (proposed for future work)",
+   "effect_reported": "no",
+   "page": "§4 ¶4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Magnitudes of 3 and 4 were also experimented with as decision boundaries",
+   "page": "§1 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Care is taken to make sure that the three aforementioned datasets are non-overlapping.",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "reproduction",
+   "performed_here": true,
+   "quote": "we also looked at the randomness in the performance when the model is trained on the same data five times",
+   "page": "§4 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "there are instances of correct classification across a wide-range of hypocentral distances and signal-to-noise ratios",
+   "page": "§4 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is comparable to the magnitude classification accuracy of 93.67 % achieved by Saad et al. (2020)",
+   "page": "§4 ¶4"
+  }
+ ]
+}

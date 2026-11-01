@@ -1,0 +1,407 @@
+{
+ "key": "g22_W4290667674",
+ "doi": "10.1029/2021wr031006",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Chen, Wang & Sivapalan (2022), Data-guided exploration of the energy partitioning at land surface in the contiguous US, Water Resources Research 58, e2021WR031006 (published PDF, 16 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This study explores the climatic controls of the long-term energy partitioning of net radiation into sensible heat and latent heat at watershed scale",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Chen, Wang & Sivapalan (2022), published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "E",
+     "mode": "regularities",
+     "action": "Takes from Yin et al. (2019) the Budyko-type relationship between evaporative fraction and aridity index, which sets up the energy-side problem.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Yin et al. (2019) proposed a relationship between evaporative fraction and aridity index, as an extension of the Budyko curve"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Takes from the authors' earlier work the idea that equilibrium soil moisture mediates between climate and water partitioning.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Chen and Sivapalan (2020) investigated the mediating role of soil moisture in watershed systems"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses the aim: find the physical basis of the energy-side Budyko relationship as something embedded in empirical relationships with mediating factors.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we seek a Budyko-type relationship between energy partitioning and climate that is fundamentally embedded in the observed empirical relationships"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposes two candidate mediating factors, equilibrium root zone soil moisture and land-air temperature difference, chosen on prior hydrological knowledge.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The equilibrium soil moisture is one potential connecting factor"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "theory",
+     "action": "Converts the E/Ep versus humidity index Budyko relation into energy terms and assumes an MCY-type equation for EF versus HIo (Equation 4, v = 2).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We assume that the relationship between EF and HIo can also be described by a MCY-type equation"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Plots L/Rn against λP/Rn for the 219 watersheds and compares it with Equation 4 (R2 = 0.70, Figure 1).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the data points follow the MCY-type equation (Equation 4)"
+    },
+    {
+     "n": 7,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Retains the Budyko-type form of the energy partitioning versus climate relationship.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result confirms that both water and energy partitioning in watersheds are closely related to climatic conditions"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "regularities",
+     "action": "Fixes the MCY-type equation as the baseline against which the newly derived equations will be scored.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "will be used as the baseline equation in this study to evaluate the performance of new Budyko-type equations"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembles 1983-2003 NARR fluxes and temperatures, GLEAM root zone soil moisture, Zhang et al. (2010) evaporation and MOPEX precipitation and streamflow, averaged over 219 MOPEX watersheds.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two Hundred Nineteen watersheds in the United States are fully covered by all the selected datasets"
+    },
+    {
+     "n": 10,
+     "node": "E",
+     "mode": "regularities",
+     "action": "Extracts a positive power-law relation between EF and S/Sb across the watersheds (a = 1.82, α = 0.9, R2 = 0.56, Figure 4), choosing a power law over a linear form.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the relationship of EF and S/Sb shows a clear positive correlation (Figure 4)"
+    },
+    {
+     "n": 11,
+     "node": "E",
+     "mode": "regularities",
+     "action": "Reuses the Q/P versus S/Sb power law from the authors' earlier study (b = 6, β = 2.7).",
+     "page": "6",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Equation 6 was presented in Chen and Sivapalan (2020), with a b value of 6 and a β value of 2.7"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "theory",
+     "action": "Analytically derives a cubic Budyko-type equation for L/Rn versus HIo (Equation 7, γ = a/b^1/3 ≈ 1) from the two power laws and the water balance (Appendix A).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "With these two extracted relationships, we can derive a Budyko-type equation."
+    },
+    {
+     "n": 13,
+     "node": "E",
+     "mode": "regularities",
+     "action": "Computes long-term land-air temperature difference from NARR and extracts its relations with H/Rn and E/P, shifting dT by 0.74 (dTp) to fit a linear H/Rn law (R2 0.79) and an inverse-square E/P law (R2 0.46) (Figures 5 and 6).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find two empirical relationships from the collected data (Figure 5)."
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "theory",
+     "action": "Analytically derives a second cubic Budyko-type equation (Equation 12, μ = k/c^-2) from the dTp relations and the energy balance (Appendix B).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "with these three equations, we can derive another Budyko-type equation for energy partitioning"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compares Equation 7 with the data and the MCY baseline (R2 0.71 versus 0.70, Figure 7).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Equation 7 has a slightly better performance than the MCY-type equation (Equation 4)"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Concludes that the energy Budyko relationship emerges from the soil-moisture relationships, with soil moisture as mediator.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Budyko-type relationship is an emergent pattern generated from these empirically obtained relationships"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compares Equation 12 (μ = 0.04) with the data and the MCY baseline (R2 0.79 versus 0.70, Figure 8).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "has a better performance than the MCY-type equation (Equation 4)"
+    },
+    {
+     "n": 18,
+     "node": "R",
+     "mode": "regularities",
+     "action": "Refines the claim by aridity range: the soil-moisture equation fits arid watersheds better and the temperature-difference equation fits humid watersheds better.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Equation 7 follows the data points better when HIo is between 0 and 1 (i.e., arid conditions)"
+    },
+    {
+     "n": 19,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derives L/Rn = AIo^-1 f(AIo), linking energy partitioning to any water-partitioning Budyko function (Appendix C).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we derive an energy partitioning equation based on the Budyko function for water partitioning"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varies γ and μ to see how Equations 7 and 12 shift relative to the data (Figure 9), finding that γ 0.6-1 and μ 0.01-0.1 bound most points.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To explore the sensitivity of γ and μ, the energy partitioning curves (Equations 7 and 12) with different parameter values are compared"
+    },
+    {
+     "n": 21,
+     "node": "E",
+     "mode": "regularities",
+     "action": "Shows that both mediators correlate with AIo (Figure 10) and are negatively correlated with each other (Figure 11).",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "both factors are clearly correlated with AIo, representing climate"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keeps soil moisture and land-air temperature difference as mediating factors between climate and energy partitioning.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating that soil moisture is an important mediating factor between climate and energy partitioning"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Budyko-type relation between long-term EF and original humidity index across 219 US watersheds",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "2",
+   "answer": "No; fluxes come from reanalysis and remote-sensing products, and sensible heat is model output",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Explain the energy-side Budyko curve through mediating state variables",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Two candidate mediators (soil moisture, land-air dT), treated as complementary rather than exclusive",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly; the derived equations differ by aridity range, but no rival is set to be excluded",
+   "mode_called": "theory"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found across existing watersheds, none set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats across 219 watersheds with different climates",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Parameter sensitivity only; no independent data or held-out watersheds",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Both mediating factors kept; the derived equations match or exceed the MCY baseline in R2",
+   "mode_called": "regularities"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "The long-term Budyko-type relation between evaporative fraction and climate in 219 US watersheds can be derived from empirical relations with equilibrium root zone soil moisture (better in arid conditions) and land-air temperature difference (better in humid conditions), so both act as mediating factors.",
+  "page": "11"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "theory",
+  "sentence": "The analytic derivation of Budyko-type equations from the extracted empirical relationships (Equations 7 and 12) is what turns the correlations into the claim that the energy Budyko curve is embedded in the mediating relations.",
+  "page": "6"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data come from existing reanalysis, remote-sensing and MOPEX datasets; the hypothesis guided only which variables were extracted (p. 4). The derived equations were scored against the same data used to fit their parameters, with an R2 comparison to the MCY baseline (pp. 8-9), so the test could fail only weakly. The baseline equation was fixed before the derived equations were compared (p. 4), but there is no pre-registration of hypotheses or thresholds, and the dT offset of 0.74 was chosen to ease fitting (p. 7)."
+ },
+ "imports": [
+  {
+   "field": "mathematics",
+   "item": "Closed-form solution of cubic equations used to obtain Equations 7, 12 and A10/B10",
+   "kind": "method",
+   "page": "12"
+  },
+  {
+   "field": "evolutionary biology / ecology",
+   "item": "Co-evolution of soil, vegetation and climate as the explanatory frame",
+   "kind": "concept",
+   "page": "2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...] as thoroughly studied, as much as water partitioning, due to high measurement uncertainty of energy fluxes and limited amount of available data",
+   "page": "2"
+  },
+  {
+   "quote": "In this study, we explore these connections at long-term time scale.",
+   "page": "5"
+  }
+ ],
+ "limits": "No review file was supplied (the acknowledgments thank four anonymous referees), so the review sequence is not coded. All R2 comparisons are in-sample: parameters a, b, c, k (hence γ and μ) are fitted on the same 219 watersheds used to evaluate the derived equations. No held-out watersheds or independent datasets are used; the authors defer cross-validation with other data sources and regions to future work (pp. 4, 11). Sensible heat in NARR is reanalysis output, not observation (p. 7). Negative dT values are handled by an ad hoc +0.74 shift (p. 7). The two mediators are not set as exclusive rivals, and no test discriminates between them beyond the arid/humid difference in fit. Sub-claims: the arid/humid split is regularity_in_range (p. 9); Equation 13 is a mathematical identity derived from the balance equations, not tested (p. 9); the correlations of the mediators with climate and with each other are exploratory regularities, with the vegetation-buffering explanation offered without a test (p. 11). Inference: the choice of soil moisture as mediator reflects the authors' earlier work (Chen & Sivapalan 2020), and the derivation is built to parallel it.",
+ "disagreements": [
+  {
+   "target": "Previous studies of soil moisture, temperature and energy flux relationships (e.g., Ashktorab et al., 1989; Todd et al., 2000)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper moves the analysis from hourly or daily scales to long-term watershed averages and derives Budyko-type relations at that scale.",
+   "page": "5",
+   "quote": "mainly focusing on shorter time scales of [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "Mezentsev-Choudhury-Yang (MCY) equation with v = 2",
+   "alternatives": "Budyko (1974), Fu, Turc, Pike, Porporato, Wang & Tang, Yang et al., Zhang et al. equations",
+   "reason": "because of its parsimonious form",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "O",
+   "chosen": "Zhang et al. (2010) actual and potential evaporation",
+   "alternatives": "GLEAM evaporation",
+   "reason": "finer spatial resolution and extensively validated in the United States",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "E",
+   "chosen": "Power-law relation between EF and S/Sb",
+   "alternatives": "Linear relationship",
+   "reason": "to make it consistent with the form of Equation 6",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "E",
+   "chosen": "Surrogate dTp = dT + 0.74",
+   "alternatives": "Using (dT + 0.74) directly as a term in the derivations",
+   "reason": "to simplify the curve fitting, giving a linear H/Rn fit without intercept and all positive values",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "H",
+   "chosen": "Equilibrium root zone soil moisture and land-air temperature difference as mediators",
+   "alternatives": "Other watershed factors such as vegetation and topography, or other possible mediating factors",
+   "reason": "based on hydrological knowledge",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Most of the data points are included between the two lines of γ = 1 and γ = 0.6.",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "will be used as the baseline equation in this study to evaluate the performance of new Budyko-type equations",
+   "page": "4"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "This data set has been validated against field observations at over 1,000 sites globally (Miralles et al., 2016)",
+   "page": "4"
+  }
+ ]
+}

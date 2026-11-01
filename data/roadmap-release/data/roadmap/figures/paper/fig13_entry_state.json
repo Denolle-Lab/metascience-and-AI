@@ -1,0 +1,1117 @@
+{
+ "figure": "fig13_entry_state",
+ "script": "tools/roadmap/figures/fig13_entry_state.py",
+ "date": "2026-10-27",
+ "private_root": "private",
+ "commit_public": "f155302+uncommitted",
+ "commit_private": "bb870d1",
+ "inputs": [
+  {
+   "file": "private/data/roadmap/derived/entry/entry_state.json",
+   "sha256_16": "ab03039496733e8f",
+   "provenance": {
+    "script": "g21_entry_state.py",
+    "commit": "f155302+uncommitted",
+    "date": "2026-10-27",
+    "private_root": "private",
+    "inputs": [
+     "private/analysis/codings/api/{calc1,r2,gold-r2}",
+     "derived/{gold,r2}/metrics.json",
+     "derived/topics/topics_journals.json",
+     "private/download-queue.json",
+     "private/data/roadmap/derived/entry/audit_sample.json",
+     "private/data/roadmap/derived/entry/blind_audit.json"
+    ],
+    "params": {
+     "codebook": "1.5.0",
+     "seed": 2026,
+     "nboot": 2000
+    }
+   }
+  },
+  {
+   "file": "private/data/roadmap/derived/entry/blind_audit.json",
+   "sha256_16": "cf1b29a50aa5172e",
+   "provenance": {
+    "workflow": "entry-state-evaluation",
+    "date": "2026-10-27",
+    "source": "outputs of two blind coders, copied verbatim from the workflow's task text into this file; not edited",
+    "coders": {
+     "A": "Claude agent in Claude Code (no API cost), same model family as the batch coder (claude-opus-5-5), blind to the batch coding",
+     "B": "Claude agent in Claude Code (no API cost), same model family as the batch coder (claude-opus-5-5), blind to the batch coding and to A"
+    },
+    "inputs": [
+     "private/data/roadmap/derived/entry/audit_packets/<key>.json (key, DOI, title, PDF and XML text paths; no coding)",
+     "agents/coder/CODEBOOK.md 1.5.0 section 2 and section 8; agents/coder/definitions.json"
+    ],
+    "sample": "private/data/roadmap/derived/entry/audit_sample.json (60 calc1 codings, g21_entry_state.py, numpy default_rng(2026), problem 36 and 4 of each other state)",
+    "fields": {
+     "state": "entry state under codebook 1.5.0",
+     "node": "graph v0.4.2 entry node",
+     "evidence": "quote establishing the coded state",
+     "evidence_location": "abstract, introduction, background, ...",
+     "rhetorical_gap": "true when the evidence quote is a gap statement (Swales move 2: names what is unknown, unclear, debated, lacking)",
+     "operational_start": "what started the work operationally: data_in_hand, event_occurred, new_instrument_or_deployment, new_method_or_model, mandate_or_project_goal, prior_result_to_test, surprising_observation, stated_hypothesis, literature_gap_only",
+     "operational_evidence": "quote supporting operational_start",
+     "problem_subtype": "free text, filled when state is problem",
+     "confidence": "low, medium, high"
+    },
+    "note": "Coders share the model family with the batch coder, so their agreement with it is not independent evidence. Human gold coding pending."
+   }
+  },
+  {
+   "file": "private/analysis/codings/api/calc1",
+   "sha256_16": null,
+   "provenance": null
+  },
+  {
+   "file": "private/analysis/codings/api/r2",
+   "sha256_16": null,
+   "provenance": null
+  }
+ ],
+ "numbers": {
+  "source": "private/data/roadmap/derived/entry/entry_state.json",
+  "source_provenance": {
+   "script": "g21_entry_state.py",
+   "commit": "f155302+uncommitted",
+   "date": "2026-10-27",
+   "private_root": "private",
+   "inputs": [
+    "private/analysis/codings/api/{calc1,r2,gold-r2}",
+    "derived/{gold,r2}/metrics.json",
+    "derived/topics/topics_journals.json",
+    "private/download-queue.json",
+    "private/data/roadmap/derived/entry/audit_sample.json",
+    "private/data/roadmap/derived/entry/blind_audit.json"
+   ],
+   "params": {
+    "codebook": "1.5.0",
+    "seed": 2026,
+    "nboot": 2000
+   }
+  },
+  "valid_codings_now": {
+   "calc1": 374,
+   "r2": 198
+  },
+  "invalid_files": {
+   "calc1": 5,
+   "r2": 4
+  },
+  "a_shares": {
+   "batch": {
+    "calc1": {
+     "problem": [
+      296,
+      0.791
+     ],
+     "capability": [
+      33,
+      0.088
+     ],
+     "anomaly": [
+      11,
+      0.029
+     ],
+     "hypothesis": [
+      10,
+      0.027
+     ],
+     "data_without_theory": [
+      10,
+      0.027
+     ],
+     "challenged_result": [
+      8,
+      0.021
+     ],
+     "external_goal": [
+      6,
+      0.016
+     ]
+    },
+    "r2": {
+     "problem": [
+      139,
+      0.702
+     ],
+     "capability": [
+      21,
+      0.106
+     ],
+     "anomaly": [
+      15,
+      0.076
+     ],
+     "hypothesis": [
+      12,
+      0.061
+     ],
+     "challenged_result": [
+      7,
+      0.035
+     ],
+     "data_without_theory": [
+      3,
+      0.015
+     ],
+     "external_goal": [
+      1,
+      0.005
+     ]
+    }
+   },
+   "blind_consensus_weighted": {
+    "problem": {
+     "share": 0.437,
+     "ci95": [
+      0.307,
+      0.566
+     ]
+    },
+    "capability": {
+     "share": 0.215,
+     "ci95": [
+      0.129,
+      0.302
+     ]
+    },
+    "split": {
+     "share": 0.164,
+     "ci95": [
+      0.071,
+      0.265
+     ]
+    },
+    "data_without_theory": {
+     "share": 0.081,
+     "ci95": [
+      0.016,
+      0.162
+     ]
+    },
+    "anomaly": {
+     "share": 0.048,
+     "ci95": [
+      0.021,
+      0.097
+     ]
+    },
+    "challenged_result": {
+     "share": 0.026,
+     "ci95": [
+      0.026,
+      0.026
+     ]
+    },
+    "external_goal": {
+     "share": 0.016,
+     "ci95": [
+      0.005,
+      0.021
+     ]
+    },
+    "hypothesis": {
+     "share": 0.013,
+     "ci95": [
+      0.0,
+      0.026
+     ]
+    }
+   },
+   "blind_A_weighted": {
+    "problem": {
+     "share": 0.523,
+     "ci95": [
+      0.399,
+      0.637
+     ]
+    },
+    "capability": {
+     "share": 0.237,
+     "ci95": [
+      0.15,
+      0.345
+     ]
+    },
+    "data_without_theory": {
+     "share": 0.081,
+     "ci95": [
+      0.016,
+      0.162
+     ]
+    },
+    "anomaly": {
+     "share": 0.07,
+     "ci95": [
+      0.021,
+      0.135
+     ]
+    },
+    "hypothesis": {
+     "share": 0.047,
+     "ci95": [
+      0.026,
+      0.09
+     ]
+    },
+    "challenged_result": {
+     "share": 0.026,
+     "ci95": [
+      0.026,
+      0.026
+     ]
+    },
+    "external_goal": {
+     "share": 0.016,
+     "ci95": [
+      0.005,
+      0.021
+     ]
+    }
+   },
+   "blind_B_weighted": {
+    "problem": {
+     "share": 0.502,
+     "ci95": [
+      0.367,
+      0.626
+     ]
+    },
+    "capability": {
+     "share": 0.237,
+     "ci95": [
+      0.15,
+      0.345
+     ]
+    },
+    "data_without_theory": {
+     "share": 0.102,
+     "ci95": [
+      0.032,
+      0.194
+     ]
+    },
+    "hypothesis": {
+     "share": 0.056,
+     "ci95": [
+      0.006,
+      0.121
+     ]
+    },
+    "anomaly": {
+     "share": 0.048,
+     "ci95": [
+      0.021,
+      0.097
+     ]
+    },
+    "challenged_result": {
+     "share": 0.032,
+     "ci95": [
+      0.026,
+      0.045
+     ]
+    },
+    "external_goal": {
+     "share": 0.023,
+     "ci95": [
+      0.011,
+      0.035
+     ]
+    }
+   },
+   "strata": {
+    "problem": {
+     "population": 181,
+     "sampled": 36,
+     "weight": 5.028
+    },
+    "capability": {
+     "population": 25,
+     "sampled": 4,
+     "weight": 6.25
+    },
+    "anomaly": {
+     "population": 5,
+     "sampled": 4,
+     "weight": 1.25
+    },
+    "challenged_result": {
+     "population": 6,
+     "sampled": 4,
+     "weight": 1.5
+    },
+    "hypothesis": {
+     "population": 6,
+     "sampled": 4,
+     "weight": 1.5
+    },
+    "data_without_theory": {
+     "population": 5,
+     "sampled": 4,
+     "weight": 1.25
+    },
+    "external_goal": {
+     "population": 5,
+     "sampled": 4,
+     "weight": 1.25
+    }
+   }
+  },
+  "b_agreement": {
+   "Batch run 1 vs run 2": {
+    "state": {
+     "n": null,
+     "papers": 50,
+     "observed_agreement": 0.92,
+     "expected_agreement_krippendorff": 0.655,
+     "alpha": 0.768,
+     "alpha_ci95": [
+      0.504,
+      0.945
+     ]
+    },
+    "node": {
+     "n": null,
+     "papers": 50,
+     "observed_agreement": 0.9,
+     "expected_agreement_krippendorff": 0.642,
+     "alpha": 0.721,
+     "alpha_ci95": [
+      0.483,
+      0.909
+     ]
+    }
+   },
+   "Blind A vs blind B": {
+    "state": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.85,
+     "expected_agreement_krippendorff": 0.226,
+     "alpha": 0.806,
+     "alpha_ci95": [
+      0.675,
+      0.915
+     ]
+    },
+    "node": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.833,
+     "expected_agreement_krippendorff": 0.261,
+     "alpha": 0.775,
+     "alpha_ci95": [
+      0.636,
+      0.889
+     ]
+    }
+   },
+   "Blind A vs batch": {
+    "state": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.767,
+     "expected_agreement_krippendorff": 0.295,
+     "alpha": 0.669,
+     "alpha_ci95": [
+      0.5,
+      0.819
+     ]
+    },
+    "node": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.683,
+     "expected_agreement_krippendorff": 0.358,
+     "alpha": 0.507,
+     "alpha_ci95": [
+      0.291,
+      0.68
+     ]
+    }
+   },
+   "Blind B vs batch": {
+    "state": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.717,
+     "expected_agreement_krippendorff": 0.288,
+     "alpha": 0.602,
+     "alpha_ci95": [
+      0.427,
+      0.76
+     ]
+    },
+    "node": {
+     "n": 60,
+     "papers": null,
+     "observed_agreement": 0.617,
+     "expected_agreement_krippendorff": 0.366,
+     "alpha": 0.395,
+     "alpha_ci95": [
+      0.189,
+      0.571
+     ]
+    }
+   }
+  },
+  "b_retest_state_confusion": {
+   "categories": [
+    "problem",
+    "capability",
+    "hypothesis",
+    "data_without_theory",
+    "external_goal"
+   ],
+   "rows_calc1_cols_gold_r2": [
+    [
+     38,
+     2,
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     5,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   ]
+  },
+  "c_operational_start_by_batch_state": {
+   "problem": {
+    "Literature gap only": 3,
+    "Prior result to test": 3,
+    "Stated hypothesis": 1,
+    "Data in hand": 8,
+    "New method, model or instrument": 10,
+    "Event, surprise or mandate": 4,
+    "Coders split": 7
+   },
+   "capability": {
+    "Literature gap only": 0,
+    "Prior result to test": 0,
+    "Stated hypothesis": 0,
+    "Data in hand": 0,
+    "New method, model or instrument": 2,
+    "Event, surprise or mandate": 1,
+    "Coders split": 1
+   },
+   "anomaly": {
+    "Literature gap only": 0,
+    "Prior result to test": 0,
+    "Stated hypothesis": 0,
+    "Data in hand": 0,
+    "New method, model or instrument": 0,
+    "Event, surprise or mandate": 4,
+    "Coders split": 0
+   },
+   "challenged_result": {
+    "Literature gap only": 0,
+    "Prior result to test": 4,
+    "Stated hypothesis": 0,
+    "Data in hand": 0,
+    "New method, model or instrument": 0,
+    "Event, surprise or mandate": 0,
+    "Coders split": 0
+   },
+   "hypothesis": {
+    "Literature gap only": 0,
+    "Prior result to test": 1,
+    "Stated hypothesis": 1,
+    "Data in hand": 0,
+    "New method, model or instrument": 0,
+    "Event, surprise or mandate": 1,
+    "Coders split": 1
+   },
+   "data_without_theory": {
+    "Literature gap only": 0,
+    "Prior result to test": 0,
+    "Stated hypothesis": 0,
+    "Data in hand": 2,
+    "New method, model or instrument": 0,
+    "Event, surprise or mandate": 1,
+    "Coders split": 1
+   },
+   "external_goal": {
+    "Literature gap only": 0,
+    "Prior result to test": 0,
+    "Stated hypothesis": 0,
+    "Data in hand": 0,
+    "New method, model or instrument": 1,
+    "Event, surprise or mandate": 3,
+    "Coders split": 0
+   },
+   "all": {
+    "Literature gap only": 3,
+    "Prior result to test": 8,
+    "Stated hypothesis": 2,
+    "Data in hand": 10,
+    "New method, model or instrument": 13,
+    "Event, surprise or mandate": 14,
+    "Coders split": 10
+   }
+  },
+  "c_groups": {
+   "Literature gap only": [
+    "literature_gap_only"
+   ],
+   "Prior result to test": [
+    "prior_result_to_test"
+   ],
+   "Stated hypothesis": [
+    "stated_hypothesis"
+   ],
+   "Data in hand": [
+    "data_in_hand"
+   ],
+   "New method, model or instrument": [
+    "new_method_or_model",
+    "new_instrument_or_deployment"
+   ],
+   "Event, surprise or mandate": [
+    "event_occurred",
+    "surprising_observation",
+    "mandate_or_project_goal"
+   ],
+   "Coders split": [
+    "split"
+   ]
+  },
+  "c_batch_problem": {
+   "n": 36,
+   "agreed_group": {
+    "concrete object": 22,
+    "split": 7,
+    "prior result": 3,
+    "literature gap only": 3,
+    "stated hypothesis": 1
+   },
+   "agreed_literature_gap_only": [
+    3,
+    36
+   ],
+   "either_literature_gap_only": [
+    7,
+    36
+   ],
+   "agreed_concrete_object": [
+    22,
+    36
+   ],
+   "both_coders_concrete_object": [
+    23,
+    36
+   ],
+   "agreed_prior_result": [
+    3,
+    36
+   ],
+   "consensus_problem_and_agreed_literature_gap_only": [
+    3,
+    36
+   ],
+   "consensus_problem_with_a_gap_quote_and_concrete_start": [
+    8,
+    36
+   ],
+   "literature_gap_only_ci95": [
+    0.029,
+    0.218
+   ],
+   "concrete_object_ci95": [
+    0.449,
+    0.752
+   ],
+   "agreed_start_by_consensus_state": {
+    "anomaly": {
+     "data_in_hand": 1
+    },
+    "capability": {
+     "new_method_or_model": 3,
+     "split": 1,
+     "new_instrument_or_deployment": 1
+    },
+    "data_without_theory": {
+     "data_in_hand": 3
+    },
+    "problem": {
+     "split": 5,
+     "new_method_or_model": 3,
+     "data_in_hand": 3,
+     "literature_gap_only": 3,
+     "prior_result_to_test": 2,
+     "mandate_or_project_goal": 2,
+     "new_instrument_or_deployment": 1,
+     "event_occurred": 1
+    },
+    "split": {
+     "split": 1,
+     "stated_hypothesis": 1,
+     "new_method_or_model": 1,
+     "surprising_observation": 1,
+     "data_in_hand": 1,
+     "prior_result_to_test": 1,
+     "new_instrument_or_deployment": 1
+    }
+   }
+  },
+  "d_gap_flag": {
+   "A_problem": {
+    "k": 21,
+    "n": 25,
+    "wilson95": [
+     0.653,
+     0.936
+    ]
+   },
+   "B_problem": {
+    "k": 21,
+    "n": 24,
+    "wilson95": [
+     0.69,
+     0.957
+    ]
+   },
+   "A_capability": {
+    "k": 0,
+    "n": 10,
+    "wilson95": [
+     -0.0,
+     0.278
+    ]
+   },
+   "B_capability": {
+    "k": 0,
+    "n": 10,
+    "wilson95": [
+     -0.0,
+     0.278
+    ]
+   },
+   "A_anomaly": {
+    "k": 0,
+    "n": 7,
+    "wilson95": [
+     0.0,
+     0.354
+    ]
+   },
+   "B_anomaly": {
+    "k": 0,
+    "n": 6,
+    "wilson95": [
+     0.0,
+     0.39
+    ]
+   },
+   "A_challenged_result": {
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+     0.0,
+     0.49
+    ]
+   },
+   "B_challenged_result": {
+    "k": 0,
+    "n": 5,
+    "wilson95": [
+     -0.0,
+     0.434
+    ]
+   },
+   "A_hypothesis": {
+    "k": 0,
+    "n": 5,
+    "wilson95": [
+     -0.0,
+     0.434
+    ]
+   },
+   "B_hypothesis": {
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+     0.0,
+     0.49
+    ]
+   },
+   "A_data_without_theory": {
+    "k": 0,
+    "n": 6,
+    "wilson95": [
+     0.0,
+     0.39
+    ]
+   },
+   "B_data_without_theory": {
+    "k": 0,
+    "n": 7,
+    "wilson95": [
+     0.0,
+     0.354
+    ]
+   },
+   "A_external_goal": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.562
+    ]
+   },
+   "B_external_goal": {
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+     0.0,
+     0.49
+    ]
+   },
+   "A_all": {
+    "k": 21,
+    "n": 60,
+    "wilson95": [
+     0.242,
+     0.476
+    ]
+   },
+   "B_all": {
+    "k": 21,
+    "n": 60,
+    "wilson95": [
+     0.242,
+     0.476
+    ]
+   }
+  },
+  "d_regex_vs_coder_flag": {
+   "units": 120,
+   "both": 32,
+   "regex_only": 7,
+   "flag_only": 10,
+   "neither": 71,
+   "agreement": 0.858
+  },
+  "e_walk": {
+   "first_problem": {
+    "k": 317,
+    "n": 435,
+    "wilson95": [
+     0.685,
+     0.768
+    ]
+   },
+   "revisited_problem": {
+    "k": 89,
+    "n": 435,
+    "wilson95": [
+     0.169,
+     0.245
+    ]
+   },
+   "first_capability": {
+    "k": 23,
+    "n": 54,
+    "wilson95": [
+     0.303,
+     0.558
+    ]
+   },
+   "revisited_capability": {
+    "k": 38,
+    "n": 54,
+    "wilson95": [
+     0.572,
+     0.809
+    ]
+   },
+   "first_anomaly": {
+    "k": 11,
+    "n": 26,
+    "wilson95": [
+     0.255,
+     0.611
+    ]
+   },
+   "revisited_anomaly": {
+    "k": 18,
+    "n": 26,
+    "wilson95": [
+     0.5,
+     0.835
+    ]
+   },
+   "first_challenged_result": {
+    "k": 7,
+    "n": 15,
+    "wilson95": [
+     0.248,
+     0.699
+    ]
+   },
+   "revisited_challenged_result": {
+    "k": 6,
+    "n": 15,
+    "wilson95": [
+     0.198,
+     0.643
+    ]
+   },
+   "first_hypothesis": {
+    "k": 4,
+    "n": 22,
+    "wilson95": [
+     0.073,
+     0.385
+    ]
+   },
+   "revisited_hypothesis": {
+    "k": 14,
+    "n": 22,
+    "wilson95": [
+     0.43,
+     0.803
+    ]
+   },
+   "first_data_without_theory": {
+    "k": 5,
+    "n": 13,
+    "wilson95": [
+     0.177,
+     0.645
+    ]
+   },
+   "revisited_data_without_theory": {
+    "k": 11,
+    "n": 13,
+    "wilson95": [
+     0.578,
+     0.957
+    ]
+   },
+   "first_external_goal": {
+    "k": 5,
+    "n": 7,
+    "wilson95": [
+     0.359,
+     0.918
+    ]
+   },
+   "revisited_external_goal": {
+    "k": 3,
+    "n": 7,
+    "wilson95": [
+     0.158,
+     0.75
+    ]
+   },
+   "first_all": {
+    "k": 372,
+    "n": 572,
+    "wilson95": [
+     0.61,
+     0.688
+    ]
+   },
+   "revisited_all": {
+    "k": 179,
+    "n": 572,
+    "wilson95": [
+     0.276,
+     0.352
+    ]
+   }
+  },
+  "e_entry_node_Q": {
+   "n": 445,
+   "later_Q_step_raw": [
+    91,
+    0.204
+   ],
+   "Q_revisited_collapsed": [
+    87,
+    0.196
+   ],
+   "later_Q_step_moves": {
+    "new": 94,
+    "cited": 3,
+    "repeat": 2
+   }
+  },
+  "e_return_after_failure_steps": {
+   "n": 235,
+   "at_node": {
+    "P": 86,
+    "R": 78,
+    "I": 22,
+    "N": 16,
+    "V": 13,
+    "H": 6,
+    "C": 3,
+    "D": 3,
+    "S": 3,
+    "O": 2,
+    "F": 2,
+    "X": 1
+   },
+   "next_node": {
+    "C": 56,
+    "V": 41,
+    "I": 35,
+    "K": 25,
+    "O": 14,
+    "H": 13,
+    "S": 11,
+    "X": 10,
+    "R": 8,
+    "P": 5,
+    "N": 5,
+    "D": 5,
+    "F": 3,
+    "E": 3,
+    "end": 1
+   }
+  },
+  "e_reframe_after_failure_all": [
+   0,
+   0.0
+  ],
+  "per_batch_state_confirmation": {
+   "problem": {
+    "n": 36,
+    "A_confirms": 24,
+    "B_confirms": 23,
+    "both_confirm": 20,
+    "share_both_confirm": 0.556,
+    "share_both_confirm_ci95": [
+     0.396,
+     0.705
+    ],
+    "neither_confirms": 9,
+    "consensus_other_state": {
+     "capability": 5,
+     "data_without_theory": 3,
+     "anomaly": 1
+    },
+    "split": 7
+   },
+   "capability": {
+    "n": 4,
+    "A_confirms": 4,
+    "B_confirms": 4,
+    "both_confirm": 4,
+    "share_both_confirm": 1.0,
+    "share_both_confirm_ci95": [
+     0.51,
+     1.0
+    ],
+    "neither_confirms": 0,
+    "consensus_other_state": {},
+    "split": 0
+   },
+   "anomaly": {
+    "n": 4,
+    "A_confirms": 4,
+    "B_confirms": 4,
+    "both_confirm": 4,
+    "share_both_confirm": 1.0,
+    "share_both_confirm_ci95": [
+     0.51,
+     1.0
+    ],
+    "neither_confirms": 0,
+    "consensus_other_state": {},
+    "split": 0
+   },
+   "challenged_result": {
+    "n": 4,
+    "A_confirms": 4,
+    "B_confirms": 4,
+    "both_confirm": 4,
+    "share_both_confirm": 1.0,
+    "share_both_confirm_ci95": [
+     0.51,
+     1.0
+    ],
+    "neither_confirms": 0,
+    "consensus_other_state": {},
+    "split": 0
+   },
+   "hypothesis": {
+    "n": 4,
+    "A_confirms": 4,
+    "B_confirms": 2,
+    "both_confirm": 2,
+    "share_both_confirm": 0.5,
+    "share_both_confirm_ci95": [
+     0.15,
+     0.85
+    ],
+    "neither_confirms": 0,
+    "consensus_other_state": {},
+    "split": 2
+   },
+   "data_without_theory": {
+    "n": 4,
+    "A_confirms": 3,
+    "B_confirms": 3,
+    "both_confirm": 3,
+    "share_both_confirm": 0.75,
+    "share_both_confirm_ci95": [
+     0.301,
+     0.954
+    ],
+    "neither_confirms": 1,
+    "consensus_other_state": {
+     "anomaly": 1
+    },
+    "split": 0
+   },
+   "external_goal": {
+    "n": 4,
+    "A_confirms": 3,
+    "B_confirms": 3,
+    "both_confirm": 3,
+    "share_both_confirm": 0.75,
+    "share_both_confirm_ci95": [
+     0.301,
+     0.954
+    ],
+    "neither_confirms": 1,
+    "consensus_other_state": {
+     "problem": 1
+    },
+    "split": 0
+   }
+  }
+ },
+ "caption": "The batch coder repeats its own entry state (92% agreement between two runs, alpha 0.77, in the tentative band, 0.667 to 0.8), but its most common state, problem, mostly records the introduction's gap statement rather than what started the work; the other six states (4 audited papers each) mostly match what started it. Entry state: one label per coded paper for how the research began, chosen from seven states defined in codebook 1.5.0 (problem: an unsolved question the literature names; capability: a new instrument, method or archive; anomaly: a surprising observation; challenged result: a published finding the paper checks; hypothesis: stated in advance; data without theory: data collected without a guiding question; external goal: a mandate, benchmark or mission), with a supporting quote. Batch coder: claude-opus-5-5 through the Batch API, round 1 (calc1, 374 valid codings) and round 2 (r2, 198 valid codings). Blind coders A and B: two Claude agents of the same model family that re-coded the entry of 60 round-1 papers from the full text, blind to the batch label and to each other; the sample is stratified, 36 of the 181 problem papers and 4 of each other state. Consensus: the value A and B both gave. (a) Share of papers in each entry state. Filled: batch coder. Open with bar: blind consensus weighted back to the 233 round-1 papers of the first analysis, from which the audit was drawn (weight = papers with that batch state among those 233 / sampled papers with it), with a stratified bootstrap 95% interval (2000 draws); 'coders split' is the weighted share where A and B disagree. Problem falls from 78% to 44% [31, 57] (79% of all 374 round-1 papers; the audit has not been extended to the later round-1 codings); single blind coders give 52% (A) and 50% (B). (b) Agreement on entry state (top) and entry node (bottom: the node of the project's research-workflow graph, v0.4.2, where the paper enters, e.g. Q question, N new capability) for four pairs of codings, number of papers in brackets. Batch run 1 vs run 2: the same coder twice on 50 gold-set papers (the frozen set held for human coding; tags calc1 and gold-r2). Left: observed agreement (filled) against the agreement expected by chance from how often each label is used (open). Right: Krippendorff's alpha (nominal) = (observed - chance) / (1 - chance); 1 is perfect agreement, 0 is chance; dashed lines at 0.667 (floor for tentative conclusions) and 0.8 (reliable); bars are 95% bootstrap intervals over papers (2000 resamples). State alpha: run 1 vs run 2 0.77 [0.50, 0.95], A vs B 0.81 [0.68, 0.92], A vs batch 0.67 [0.50, 0.82], B vs batch 0.60 [0.43, 0.76]. With one label holding most papers, chance agreement is high and a 92% match gives alpha 0.77. Blind pairs are unweighted over the stratified sample, which holds fewer problem papers than round 1; weighted to round 1, state agreement is 84% (A vs B), 73% (A vs batch) and 70% (B vs batch). (c) Audit sample, one bar per batch entry state, numbers in the bars are papers (bottom bar: all 60 audited papers, unweighted): what started the work, as both blind coders named it (operational start: what the study could not have begun without, one of nine classes, drawn in six colour groups); grey where they named different classes. Of the 36 batch problem papers, both coders said 'literature gap only' for 3 and named a concrete object (data in hand, an event, an instrument or deployment, a method or model, a mandate, a surprising observation) for 22; 10 of these are a new method, model or instrument, which can be the paper's product as much as its start. Both kept the problem label for 20 of 36 (56%, Wilson 95% interval for a proportion 40 to 71%); consensus moved 5 to capability, 3 to data without theory, 1 to anomaly, and 7 were split. The other states were confirmed by both for 20 of 24. (d) Share of each blind coder's entry quotes that the coder itself flagged as a gap statement (a sentence naming what is unknown, unclear, debated or lacking: the second move of the introduction in Swales 1990), by the state that coder gave (bottom row: all 60 quotes of each coder); flagged/total at right (A, B); bars are Wilson 95% intervals. A word-pattern detector (g21 gap markers) agrees with the coders' flag on 86% of 120 quotes. (e) Batch codings (572 papers), by entry state: share whose walk (the coded sequence of steps in document order) opens at the entry node (filled) and share that returns to the entry node after at least one other node (open), Wilson 95% intervals; papers per state at right. The entry state itself is one label per paper and cannot recur; only its node can. Of the 445 papers entering at Q, 91 have a later Q step (87 after another node); of those 99 later Q steps, 94 are coded as new, 3 as cited and 2 as a repeat (new: a step forward in the work), so the coder records them as further questions, not as the entry question asked again. None of the 235 steps coded as a return after failure sits at Q or is followed by Q: no paper reframes its question after a failed test. All coders are Claude models, so agreement among them is an upper bound. Source: private/data/roadmap/derived/entry/entry_state.json (tools/roadmap/g21_entry_state.py, steps 1-4 and 9), blind codings in private/data/roadmap/derived/entry/blind_audit.json; (e) recomputed from private/analysis/codings/api and checked against the json."
+}

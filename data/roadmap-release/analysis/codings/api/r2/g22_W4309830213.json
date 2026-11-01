@@ -1,0 +1,421 @@
+{
+ "key": "g22_W4309830213",
+ "doi": "10.1029/2021wr031778",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Vionnet et al. 2022, Water Resources Research 58, e2021WR031778 (published paper, PDF, 25 pages)"
+ ],
+ "pages_convention": "printed journal pages (printed 'n of 25', identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, the benefit of using the precipitation phase derived from these atmospheric models for snowpack simulations have been rarely assessed.",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Vionnet et al. 2022, published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed two questions: do atmospheric-based PPMs improve on ground-based PPMs for snowfall and snowpack, and is post-processed phase better than raw microphysics phase?",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To what extent do atmospheric-based PPMs improve upon ground-based PPMs for snowfall estimation and snowpack prediction in mountainous terrain?"
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set four rival precipitation-phase partitioning methods: two ground-based (GrdT0, GrdTW) and two atmospheric-based (AtmMP from P3 microphysics, AtmSL from snow level).",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two types of PPMs were tested: (a) ground-based PPMs, which only rely on near-surface variables used as benchmarks"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Designed the test with lower and upper benchmarks after Seibert et al. (2018) and a relative performance measure Rrel scaling atmospheric PPMs between them.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These two PPMs were chosen to provide estimates of typical minimal and maximal performances of ground-based PPMs"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Used the Latent Heat Method, an ECCC post-processing algorithm that derives snow level and precipitation type from HRDPS wet-bulb profiles and precipitation rate (Appendix A).",
+     "page": "7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "the Latent Heat Method (LHM) recently developed at ECCC in support of the forecasting of high-impact winter events"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran Crocus in GEM-Hydro at 2.5 km over September 2019 to June 2020 with four forcing sets identical except for the rain-snow partitioning, computing each rival's snowfall and SWE.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Four different atmospheric forcing data sets have been generated and used to drive distributed snowpack simulations with Crocus."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "Extracted hourly manual precipitation-type reports (METAR/SPECI) and kept 49 stations within 200 m of grid elevation.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Only the stations with elevations within ±200 m from the elevation of the 2.5 km grid were kept for the analysis"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Obtained quality-controlled daily SWE and snow depth from CanSWE and SNOTEL, plus SNOTEL precipitation, with elevation-based station selection.",
+     "page": "8",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Daily co-located automatic measurements of SWE and snow depth were obtained from the CanSWE database in Canada"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared seasonal snowfall fraction among the PPMs by region and elevation, finding the largest sensitivity in coastal ranges between 500 and 2,000 m.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The GrdT0 method systematically reduced the snowfall fraction (Figure 2b)."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Scored predicted hourly rain and snow occurrence against observed precipitation type with contingency metrics (POD, FAR, FBI, HSS); AtmSL had the best snowfall HSS, and AtmMP fell between the benchmarks.",
+     "page": "9-11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The best HSS was obtained with the AtmSL method"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varied the precipitation-intensity threshold for the phase scores, and recomputed US SWE metrics on a station subset whose simulated precipitation agreed with observations, to remove compensating errors.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For all PPMs, this selection of stations improved the distributions of error metrics and reduced their spread"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compared simulated SWE in the accumulation season (bias, RMSE, Rrel) by subregion; GrdTW beat GrdT0, AtmMP fell between the benchmarks, and AtmSL was comparable to GrdTW.",
+     "page": "12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the snow accumulation season, the atmospheric-based PPM based on the snow level (AtmSL) led to results comparable to the upper benchmark (GrdTW)."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "hypothesis",
+     "action": "Checked the SWE results with process-targeted contingency scores on daily positive SWE changes at several thresholds.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This SWE overestimation was associated with an overestimation of the occurrence of positive daily changes in SWE (ΔSWE) larger than 25 mm"
+    },
+    {
+     "n": 13,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attributed the interior-region SWE overestimation to the CaPA precipitation forcing rather than to the PPM.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests that the overestimation was associated with the CaPA precipitation forcing rather than the choice of the PPM."
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compared melt-season SWE and melt during heavy-precipitation days; AtmSL improved on GrdTW at 76% of stations, while AtmMP improved at only 6%.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the method AtmSL (based on the snow level) presented distributions of the relative performance measure with median values larger than 1 for all subregions"
+    },
+    {
+     "n": 15,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Rejected the expectation that raw microphysics phase (AtmMP) improves on the humidity-based ground benchmark, since it degraded both phase and SWE.",
+     "page": "15-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, this study shows that these improvements are not systematic."
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "theory",
+     "action": "Explained the AtmMP deficit by P3's missing liquid fraction on mixed-phase particles, which sends meltwater straight to rain.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results are consistent with the absence of the modeling of the liquid fraction on mixed-phase particles in the version of P3 used in HRDPS"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Kept the snow-level PPM as the best: +5% snowfall HSS and −9% median melt-season SWE RMSE against the upper benchmark.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to the upper benchmark, the snow-level approach improved the detection of snowfall by 5%."
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the result beside Tobin et al. (2012), who found similar benefits of an NWP rain-snow line in the Swiss Alps.",
+     "page": "17",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Tobin et al. (2012) showed similar results when using the rain-snow line from a NWP system in the Swiss Alps."
+    },
+    {
+     "n": 19,
+     "node": "R",
+     "mode": "methods",
+     "action": "Bounded the method: atmospheric PPMs are valid only at the atmospheric grid elevation, so downscaling approaches are needed for slope-scale snowpack models.",
+     "page": "17-18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a snowpack model needs to run over the same grid as the atmospheric model"
+    },
+    {
+     "n": 20,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attributed residual errors (underestimated snowmelt during precipitation, non-systematic benchmark gains) to forcing biases (longwave, CaPA) and to Crocus parameterization uncertainty.",
+     "page": "18-19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a bias in the HRDPS incoming longwave radiation may explain the underestimation of snowmelt during precipitation events"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known: precipitation phase controls snowpack; ground-based PPMs ignore conditions aloft",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Partly: phase observed only at sparse manual stations, SWE at automatic stations; continuous phase needs models",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Assess whether atmospheric-based PPMs improve snowfall and snowpack prediction",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "4",
+   "answer": "Four PPMs: GrdT0, GrdTW (benchmarks), AtmMP, AtmSL",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: different snowfall fractions, phase occurrence and SWE by PPM",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: one winter season (2019-2020) observed at existing stations; PPM is the only varied input",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: robust across intensity thresholds, a US precipitation-agreement subset, ΔSWE metrics and subregions; no ensemble significance test",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "AtmSL kept as best; AtmMP rejected as an improvement over the upper benchmark",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "Peer reviewed (reviewers acknowledged); no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "confirmed",
+  "claim": "Precipitation phase from the post-processed snow level (LHM) of the HRDPS improved snowfall detection (+5% HSS) and melt-season SWE (−9% median RMSE, gains at 76% of stations) relative to a wet-bulb ground-based upper benchmark, whereas P3 microphysics phase degraded both.",
+  "page": "19"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "Scoring the four PPM-driven simulations against observed precipitation type and station SWE, scaled between the two benchmarks, is what separates AtmSL (better) from AtmMP (worse).",
+  "page": "10-14"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The question about atmospheric-based PPMs directed which forcing sets were built (p. 3, 7), but the evaluation data were existing operational archives (METAR, CanSWE, SNOTEL; p. 7-8). The AtmSL and AtmMP claims could fail against the upper benchmark, and AtmMP did (p. 15-16). No pre-specification of thresholds, metrics or hypotheses is reported."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "robust Mahalanobis distance for automatic outlier detection in snow data QC",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "statistics / forecast verification",
+   "item": "dichotomous contingency tables and Heidke Skill Score",
+   "kind": "method",
+   "page": "21"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However, the benefit of using the precipitation phase derived from these atmospheric models for snowpack simulations have been rarely assessed.",
+   "page": "3"
+  },
+  {
+   "quote": "The objective of this study is to conduct a systematic assessment of the abilities and limitations of atmospheric-based PPMs for snowpack modeling",
+   "page": "3"
+  }
+ ],
+ "limits": "Single season (Sept 2019 to June 2020) and one region; the paper calls for evaluation in other ranges (p. 17, 19). No statistical significance test of the PPM differences; the authors suggest, but do not run, a Crocus multiphysics ensemble (p. 18-19). Sub-claims at other statuses: in the accumulation season AtmSL is only comparable to GrdTW (median RMSE +2%, 59% of stations improved), regularity_in_range at most. The P3 liquid-fraction explanation of the AtmMP deficit is a best_explanation, not tested here (inference). The spatial sensitivity of snowfall fraction (coastal, 500-2,000 m) is a regularity_in_range. The LHM algorithm is an in-house ECCC method described only in Appendix A, with no independent prior validation cited (inference). The precipitation-agreement control was possible only for US SNOTEL stations, not for Canada (p. 18). Freezing rain and ice pellets are treated as snow. Phase stations sit mostly at low elevation (p. 18). Station filters (±200 m elevation, ±1°C temperature agreement, −5 to 5°C range) are not varied. No review file was supplied, so changes forced by review cannot be identified, although an editor and three reviewers are acknowledged (p. 22). Composition none_fits: this is a method-intercomparison benchmark study; the rivals are partitioning methods ranked on shared observations, not rival explanations of nature, and no survivor is refined, so strong_inference only partly applies.",
+ "disagreements": [
+  {
+   "target": "Wayand et al. (2016) and Currier et al. (2017): precipitation partitioning from a microphysics scheme improves snowpack simulation",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "P3 microphysics phase in HRDPS lowered phase HSS (−6% rain, −12% snow) and SWE skill against the wet-bulb benchmark, especially in coastal regions.",
+   "page": "15",
+   "quote": "However, this study shows that these improvements are not systematic."
+  },
+  {
+   "target": "Wang et al. (2019), Equation 1 for snowfall fraction",
+   "kind": "method",
+   "stance": "contradicts",
+   "support": "The authors state that the published expression is erroneous and use a corrected form with the same fitted parameters.",
+   "page": "6",
+   "quote": "Note that the expression for fs given in Equation 1 differs from the erroneous expression given in Equation 1 of the paper by Wang et [...]"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "Wang et al. (2019) wet-bulb PPM (GrdTW) as upper benchmark",
+   "alternatives": "other humidity-based PPMs (Harder & Pomeroy, 2013; Jennings et al., 2018)",
+   "reason": "good performances across the contiguous US",
+   "effect_reported": "no",
+   "page": "6, 15"
+  },
+  {
+   "node": "S",
+   "chosen": "maximum of 20 snow layers in Crocus",
+   "alternatives": "50 layers typically used in operational avalanche forecasting",
+   "reason": "test a viable operational configuration balancing accuracy and computational time",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "freezing rain and ice pellets treated as frozen precipitation",
+   "alternatives": "ice-layer formation module of Quéno et al. (2018)",
+   "reason": "module not yet merged in a stable and recent code version; freezing rain is rare in western Canada",
+   "effect_reported": "no",
+   "page": "7, 17"
+  },
+  {
+   "node": "S",
+   "chosen": "Crocus run on the HRDPS grid and orography without downscaling",
+   "alternatives": "downscaling the categorical precipitation type; downscaling temperature and humidity profiles then rerunning LHM (Haiden et al., 2011); direct use of the snow level at higher grid points (Tobin et al., 2012)",
+   "reason": "avoid additional uncertainties due to downscaling",
+   "effect_reported": "no",
+   "page": "5, 17-18"
+  },
+  {
+   "node": "O",
+   "chosen": "keep only stations within 200 m of model grid elevation",
+   "alternatives": "all available stations",
+   "reason": "limit errors in phase and amount from elevation differences",
+   "effect_reported": "no",
+   "page": "7-8"
+  },
+  {
+   "node": "V",
+   "chosen": "US SWE metrics analysed on the subset of stations with simulated precipitation within ±20% of observed",
+   "alternatives": "all US stations",
+   "reason": "reduce compensatory errors between precipitation phase and amount",
+   "effect_reported": "yes",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] lower and upper benchmarks against which to compare the performances of atmospheric-based PPMs",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "were also considered for the hourly HRDPS precipitation to investigate if the ability of the PPMs to discriminate precipitation type depends on precipitation intensity",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For the subregions located in the US, the error metrics (bias and RMSE) were also derived for a subset of stations with close agreement",
+   "page": "11"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "daily changes in SWE were considered to investigate in detail two processes impacted by the choice of the PPMs",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "Tobin et al. (2012) showed similar results when using the rain-snow line from a NWP system in the Swiss Alps.",
+   "page": "17"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "in agreement with previous studies",
+   "page": "15"
+  }
+ ]
+}

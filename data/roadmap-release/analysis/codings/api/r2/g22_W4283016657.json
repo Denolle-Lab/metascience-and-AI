@@ -1,0 +1,407 @@
+{
+ "key": "g22_W4283016657",
+ "doi": "10.1016/j.marpetgeo.2022.105776",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Faleide et al. 2022, Marine and Petroleum Geology 143, 105776 (published PDF)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (e.g. Fig. 8); the XML text omits the body, so body text is cited by printed journal pages (identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "The fundamental question addressed by this study is: to what degree detailed fault architectures and gas seeps can be detected and resolved in seismic data?",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Faleide et al. 2022, published PDF and XML text",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of how far detailed fault architecture and gas seeps can be detected and resolved in seismic data, framed by CO2 storage monitoring.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to what degree detailed fault architectures and gas seeps can be detected and resolved in seismic data?"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble existing high-resolution P-Cable and conventional 3D seismic volumes over fault F2 in the Hoop area, plus logs from well 7325/4-1, and characterize their frequency and resolution.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The dominant frequency is 150 Hz (P-Cable) and 40 Hz (conventional), corresponding to a vertical seismic resolution of about 5 m and 20 m"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take the baseline fault and horizon interpretation (scenario 2.4) from the authors' earlier study and depth-convert it into the 32-layer baseline model M1.",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The baseline model (Fig. 3) is adopted from Faleide et al. (2021)"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Classify the layers into four lithologies by placing sand and shale lines on the gamma-ray log, supported by PEF and density/neutron logs.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "therefore all layers with GR < 75 is defined as sandstone in this study"
+    },
+    {
+     "n": 5,
+     "node": "H",
+     "mode": "regularities",
+     "action": "Apply the outcrop-derived throw versus damage-zone-width scaling laws of Schueller et al. (2013) to all lithologies to size the inner and outer damage zones along F2.",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "have been utilized to make a damage zone for the F2 fault"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Design five alternative fault-architecture scenarios (M2-M6): a damage zone, CO2 in hanging-wall and/or footwall fractures, an isolated 5 m fracture corridor, and CO2 leaking from a reservoir.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In two models (M5 and M6), one isolated fracture corridor caused by fold-crest dilation or fault-tip process zone"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Assign Vp, Vs and density to each layer from well logs and Gardner's rule, then perturb them in the damage zones, fracture corridor and CO2-filled fractures using literature percentages (Botter; Sigernes; Agofack et al. 2018).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "deformation bands in sandstones cause a 30% increase in Vp and Vs for the inner damage zone and 15% for the outer damage zone"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute Zoeppritz reflectivity and convolve it with simplified, parameter-designed 2D point-spread functions to produce PSDM-like synthetic sections, with PSF-filtered coloured noise added.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a simplified and idealized version of the PSF-based convolution modelling is used by directly designing PSFs from a few key parameters"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Amplitude-calibrate all synthetics against a single unit horizontal reflector test so that input reflectivity and seismic amplitudes are directly comparable.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an input – single – horizontal reflector of strength +1 yields a flat reflection with a peak of amplitude +1"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Fix standard parameters (45° illumination, 0° incidence, 90 Hz P-Cable wavelet) for all models, plan wavelet/incidence and illumination variants for M2 and M5, and choose difference plots and wiggle traces as comparison tools.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two of the models, M2 and M5, are tested with both wavelets and different incident angles"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare each synthetic section (M1-M6) with its geological input model, noting which fault tips, segments, damage zones, the fracture corridor and the CO2 zones are imaged.",
+     "page": "9; Fig. 8 (p. 10); Fig. 9 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the upper fault tip of F2b cannot be identified, thereby deviating from the geological model"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the models with one another and against baseline M1 through difference plots and superposed wiggle traces, isolating the effect of damage zones and of CO2.",
+     "page": "10-12; Fig. 10 (p. 12)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the difference plots and the superposed seismic wiggle traces for the comparisons between two and two models document differences"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Rerun M2 and M5 with the conventional wavelet and a 20° incident angle; the fault block is unresolved but the damage zone and fracture corridor remain detectable.",
+     "page": "12; Fig. 11 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there is more interference of the reflections in the conventional synthetic section"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the illumination angle for M2 (30°, 45°, 90°); imaging is good at 45° and above and poor at 30°.",
+     "page": "13; Fig. 12 (p. 14)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "has problems imaging most of the fault segments"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare damage-zone widths suggested by the variance cube with outcrop-based global trend lines and with Alaei and Torabi (2017).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "yield conceivable damage zones that are wider than those predicted by outcrop-based global trend lines"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare the synthetic fracture-corridor signature with unexplained throw-free dipping features in real conventional seismic from the Fingerdjupet Subbasin and the Hoop Graben, and interpret those features as joint zones.",
+     "page": "15; Fig. 13 (p. 16)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "they appear strikingly similar to fracture corridors encountered in the synthetic seismic sections, suggesting they represent tabular zones of joints"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Keep the findings: damage zones strengthen and widen fault signals, high-resolution data can outline damage zones and a 5 m fracture corridor, CO2-filled fractures are detectable, and illumination of 45° or more is needed.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "CO2-filled fractures in the damage zone and in the fracture corridor give a stronger seismic response than models without CO2"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Seismic expression of fault damage zones, fracture corridors and gas seeps",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "No; the structures are sub-seismic, so they are imaged through synthetic forward modelling",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize detection and resolution thresholds of seismic imaging",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; six geological scenarios (M1-M6) serve as alternatives",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; the scenarios give distinguishable synthetic signatures in difference plots",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in silico (model content, wavelet, incident angle, illumination)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; features survive the conventional wavelet with reduced resolution, and imaging fails at 30° illumination",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the features are detectable in high-resolution synthetics under illumination of 45° or more",
+   "mode_called": "simulation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "In 2D PSF-based synthetic seismic, fault damage zones, a fracture corridor 5 m at its widest and CO2-filled fractures are detectable (resolved in high-resolution, mostly only detected in conventional data) when illumination is 45° or more, the average dip of the main fault.",
+  "page": "§0 ¶1; 16"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "The PSF-based convolution modelling of the conditioned fault scenarios produces the synthetic images on which every detectability statement rests.",
+  "page": "7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The seismic and well data pre-existed and no hypothesis directed their acquisition. Detectability is judged visually against the known input models and the M1 baseline; a feature could have failed to appear (e.g. the F2b tip in M1, imaging at 30° illumination), but no detection criterion or threshold was fixed in advance. The standard parameters in Table 3 were set before the results, but this is design, not registration."
+ },
+ "imports": [
+  {
+   "field": "optics / imaging science",
+   "item": "Point-spread function used to emulate PSDM resolution and illumination",
+   "kind": "concept",
+   "page": "7"
+  },
+  {
+   "field": "mathematics / signal processing",
+   "item": "Fourier transform of the PSDM filter to obtain the PSF, and convolution with reflectivity",
+   "kind": "method",
+   "page": "7"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The Hoop area was selected because of its unique database for such a [...]",
+   "page": "14"
+  },
+  {
+   "quote": "has the potential to narrow the gap between seismic and outcrop data",
+   "page": "13"
+  },
+  {
+   "quote": "provide a unique opportunity to investigate the use of high-resolution P-Cable data",
+   "page": "15"
+  }
+ ],
+ "limits": "The XML text contains only the abstract and captions, so body steps are cited by printed page. All results are synthetic and 2D. The damage-zone elastic perturbations and CO2 effects are literature-based conceptual percentages, not measured here, and their effect on the result is not varied: only the geophysical parameters are tested. Detection is judged visually from figures; no quantitative detection threshold or signal-to-noise level is reported, although noise scaling is mentioned. The M2-M6 synthetics are not compared with the real P-Cable image of F2, so the paper does not show whether the real fault resembles M1 or the damage-zone models (inference). No review file was supplied, although the acknowledgements name Charlotte Botter and two anonymous reviewers. Sub-claims at other statuses: the interpretation of real Fingerdjupet and Hoop Graben features as fracture corridors is a suggestive best_explanation with no rivals tested beyond minor faults; the inference that damage zones are wider than outcrop trends is a qualitative comparison; the CO2 monitoring guidance is an untested implication. Composition none_fits because the walk is a scenario forward-modelling study (question, conditioned scenarios, simulation, comparison, sensitivity tests) without rival exclusion, trace series, or capability-first sequence.",
+ "disagreements": [
+  {
+   "target": "outcrop-based global trend lines for damage-zone width",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Variance-cube discontinuities 60-80 m wide, read together with Alaei and Torabi (2017), suggest subsurface damage zones wider than outcrop scaling predicts.",
+   "page": "15",
+   "quote": "yield conceivable damage zones that are wider than those predicted by outcrop-based global trend lines"
+  },
+  {
+   "target": "routine interpretation of throw-free dipping features in conventional seismic (Fingerdjupet Subbasin, Hoop Graben)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The synthetic fracture-corridor signature resembles these features, which interpreters overlook or cannot explain, suggesting they are joint zones rather than minor faults.",
+   "page": "15",
+   "quote": "these features are overlooked as no obvious explanation is available; they are not minor faults as they lack evidence [...]"
+  },
+  {
+   "target": "common practice of displaying seismic sections with high vertical exaggeration",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that vertical exaggeration masks lateral resolution problems and display most of their sections at 1:1 scale.",
+   "page": "15",
+   "quote": "Seismic sections are indeed often displayed with a high vertical exaggeration, which actually masks the impact of lateral resolution issues"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "H",
+   "chosen": "Schueller et al. (2013) porous-sandstone damage-zone law applied to all lithologies",
+   "alternatives": "lithology-specific damage-zone scaling",
+   "reason": "simplification; follows Torabi et al. (2020), who find similar trends irrespective of lithology",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "H",
+   "chosen": "inner (W10) and outer (W1-W10) damage zones only",
+   "alternatives": "including the W5 zone",
+   "reason": "W5 zone appears narrow in field observations",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "simplified PSFs designed directly from a few key parameters with a generic illumination pattern",
+   "alternatives": "PSFs from detailed survey information and a velocity model",
+   "reason": "lack of detailed survey information and a velocity model",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "V",
+   "chosen": "high-resolution P-Cable wavelet with 0° incidence as standard",
+   "alternatives": "conventional wavelet with 20° incidence",
+   "reason": "to illustrate resolution differences between high-resolution and conventional data",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "V",
+   "chosen": "45° illumination as standard",
+   "alternatives": "30° and 90° (perfect) illumination",
+   "reason": "45° matches the average dip of the main fault segment",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "H",
+   "chosen": "model combining seismic and well data with outcrop-derived empirical laws",
+   "alternatives": "outcrop-conditioned models; analogue models; numerical discrete element models",
+   "reason": "outcrops rely on single locations and often lack measured petrophysical parameters",
+   "effect_reported": "no",
+   "page": "13"
+  },
+  {
+   "node": "H",
+   "chosen": "shallow CO2 in gaseous phase",
+   "alternatives": "supercritical CO2 as injected in deeper reservoirs",
+   "reason": "gas expected above c. 800 m depth along a shallow fault",
+   "effect_reported": "no",
+   "page": "7"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "an input – single – horizontal reflector of strength +1 yields a flat reflection with a peak of amplitude +1",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "creates a significant signal compared to the base case scenario",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "there is more interference of the reflections in the conventional synthetic section",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For 45◦ and 90◦ illumination the fault is well imaged.",
+   "page": "13"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "similar to the conclusions drawn by Alaei and Torabi (2017) from a study of conventional seismic data",
+   "page": "15"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "suggests P-Cable technologies can serve as a valuable monitoring tool in detecting even small (low percentage saturation) leakages",
+   "page": "16"
+  }
+ ]
+}

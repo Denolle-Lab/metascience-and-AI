@@ -1,0 +1,942 @@
+{
+ "frozen": "2026-10-27",
+ "decided_by": "Marine Denolle (PI), October 27, 2026",
+ "design": "round 1 exploratory; round 2 confirmatory for the associations below; both rounds also pooled for description with round as a stratum",
+ "family_size": 43,
+ "q_threshold": 0.1,
+ "seed": 2027,
+ "groupings": {
+  "subfield": [
+   "Geophysics",
+   "Artificial Intelligence",
+   "Geochemistry and Petrology",
+   "Earth-Surface Processes",
+   "Atmospheric Science",
+   "Water Science and Technology",
+   "Oceanography"
+  ],
+  "family": [
+   "AGU",
+   "EGU/Copernicus",
+   "Springer Nature (non-portfolio)",
+   "Wiley non-AGU",
+   "Nature portfolio"
+  ]
+ },
+ "round2_codings_at_freeze": 0,
+ "rule": "Reads the round-1 results and writes the plan, which is public and committed before any round-2 coding exists\n        (the script refuses to freeze if private/analysis/codings/api/r2/ holds a coding file).\n        Hypotheses\n          H01-H15  the g17 feature-outcome associations with q < 0.1 in round 1 (Spearman rho). Predicted: same sign.\n          H16-H43  the g20 field and venue associations with q < 0.1 in round 1 (workflow feature against OpenAlex\n                   subfield or journal family). Predicted direction:\n                     binary       the round-1 leading group (largest |rate minus rest| among named groups) has a\n                                  rate difference of the same sign in round 2;\n                     count        group medians in round 2 rank the shared named groups in the same order as round 1\n                                  (Spearman correlation of group medians > 0);\n                     categorical  no direction; association only.\n        Rule     one family of 43 tests; Benjamini-Hochberg q over the 43 round-2 p values. A hypothesis is confirmed\n                 when q < 0.1 and the predicted direction holds; reversed when q < 0.1 and the direction is opposite;\n                 otherwise not confirmed. Effect sizes are reported with 95% bootstrap intervals for every hypothesis.\n        Data     round-2 papers with a valid coding (tools/check_coding.py validate(), tag r2, codebook 1.5.0) and\n                 metrics in derived/r2/metrics.json; no other exclusion. Groups are the round-1 named groups; a\n                 round-2 paper in any other subfield or family goes to 'pooled small groups'. Same features (g17\n                 features()), same outcomes and citer rule (g17), same statistics code (g17 test(); g20 assoc() and\n                 numeric_by_group()), 2000 bootstrap resamples and 5000 permutations; g17 tests draw from\n                 np.random.default_rng(2027), g20 tests from g20's per-test generator named 'conf|<id>'.\n        Secondary (reported, not part of the rule): each H01-H15 estimate within subfield and within journal family\n                 (g20 stratified()); the pooled descriptive analysis of both rounds with round as a stratum.",
+ "inputs_sha256": {
+  "tools/roadmap/g17_outcomes.py": "097a22e60cd4b2af9dbe7071a7a17947ba9a143afefffa7bc2eeeb2d4c5a95ed",
+  "tools/roadmap/g20_topics_journals.py": "595a9af8e6d84b118297de8bc0307a10ed3624adac0cec72cd3e49fee37333c8",
+  "tools/roadmap/g23_confirmatory.py": "93b9b4a5e0be97dd270433f7c479e74dfd07815a75a27681ed91137d2332c6c9",
+  "tools/check_coding.py": "36db003248a7c99710303c01c4252a97cbc963fa6e8875399247073903b56aa7",
+  "agents/coder/CODEBOOK.md": "ade1d0c5749d381dfe07218c89c451a17ae94347890fb2cb110d10fe9e2b05cf",
+  "derived/outcomes/outcomes.json": "8771fb96e23c18b3d91be6b14f66c1a1a6f3db43fdeef8631ccd803499570e51",
+  "derived/topics/topics_journals.json": "c7b9884f2c2c939ae5cead272a6aaa2399f059f131e0533904fa4f3c26be7fab"
+ },
+ "hypotheses": [
+  {
+   "source": "g17",
+   "feature": "num:import fields",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": 0.512,
+    "ci": [
+     0.406,
+     0.611
+    ],
+    "p": 0.0002,
+    "q": 0.025,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H01"
+  },
+  {
+   "source": "g17",
+   "feature": "num:imports",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": 0.566,
+    "ci": [
+     0.463,
+     0.658
+    ],
+    "p": 0.0002,
+    "q": 0.025,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H02"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:composition capability_first",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": 0.217,
+    "ci": [
+     0.083,
+     0.347
+    ],
+    "p": 0.001,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H03"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:decisive methods",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": 0.223,
+    "ci": [
+     0.088,
+     0.356
+    ],
+    "p": 0.001,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H04"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:decisive simulation",
+   "outcome": "fwci",
+   "round1": {
+    "rho": 0.211,
+    "ci": [
+     0.078,
+     0.33
+    ],
+    "p": 0.001,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H05"
+  },
+  {
+   "source": "g17",
+   "feature": "num:distinct modes",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": -0.224,
+    "ci": [
+     -0.342,
+     -0.104
+    ],
+    "p": 0.001,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": -1,
+   "id": "H06"
+  },
+  {
+   "source": "g17",
+   "feature": "num:revisits",
+   "outcome": "cnp",
+   "round1": {
+    "rho": 0.211,
+    "ci": [
+     0.086,
+     0.335
+    ],
+    "p": 0.001,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H07"
+  },
+  {
+   "source": "g17",
+   "feature": "num:revisits",
+   "outcome": "fwci",
+   "round1": {
+    "rho": 0.217,
+    "ci": [
+     0.078,
+     0.336
+    ],
+    "p": 0.0008,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H08"
+  },
+  {
+   "source": "g17",
+   "feature": "num:steps",
+   "outcome": "fwci",
+   "round1": {
+    "rho": 0.23,
+    "ci": [
+     0.107,
+     0.349
+    ],
+    "p": 0.0006,
+    "q": 0.027,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H09"
+  },
+  {
+   "source": "g17",
+   "feature": "num:steps",
+   "outcome": "cnp",
+   "round1": {
+    "rho": 0.227,
+    "ci": [
+     0.085,
+     0.351
+    ],
+    "p": 0.0014,
+    "q": 0.034,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H10"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:mode synthesis",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": -0.222,
+    "ci": [
+     -0.349,
+     -0.091
+    ],
+    "p": 0.0018,
+    "q": 0.04,
+    "n": 233
+   },
+   "predicted_sign": -1,
+   "id": "H11"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:decisive simulation",
+   "outcome": "cnp",
+   "round1": {
+    "rho": 0.202,
+    "ci": [
+     0.074,
+     0.32
+    ],
+    "p": 0.002,
+    "q": 0.041,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H12"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:mode observation",
+   "outcome": "novelty_pair",
+   "round1": {
+    "rho": 0.207,
+    "ci": [
+     0.076,
+     0.334
+    ],
+    "p": 0.0026,
+    "q": 0.045,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H13"
+  },
+  {
+   "source": "g17",
+   "feature": "num:V check kinds",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": 0.201,
+    "ci": [
+     0.076,
+     0.328
+    ],
+    "p": 0.0024,
+    "q": 0.045,
+    "n": 233
+   },
+   "predicted_sign": 1,
+   "id": "H14"
+  },
+  {
+   "source": "g17",
+   "feature": "bin:node I infer",
+   "outcome": "breadth_refs",
+   "round1": {
+    "rho": -0.181,
+    "ci": [
+     -0.306,
+     -0.049
+    ],
+    "p": 0.0052,
+    "q": 0.085,
+    "n": 233
+   },
+   "predicted_sign": -1,
+   "id": "H15"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "composition capability_first",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.198,
+    "v_bc_ci": [
+     0.032,
+     0.4
+    ],
+    "p": 0.0168,
+    "q": 0.0647,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "AGU",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.264
+   },
+   "id": "H16"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "composition trace_series",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.203,
+    "v_bc_ci": [
+     0.107,
+     0.361
+    ],
+    "p": 0.0154,
+    "q": 0.0647,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "AGU",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.253
+   },
+   "id": "H17"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "decisive reconstruction",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.199,
+    "v_bc_ci": [
+     0.121,
+     0.336
+    ],
+    "p": 0.0162,
+    "q": 0.0647,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Wiley non-AGU",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.134
+   },
+   "id": "H18"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "mode methods",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.221,
+    "v_bc_ci": [
+     0.118,
+     0.371
+    ],
+    "p": 0.0072,
+    "q": 0.0374,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "AGU",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.267
+   },
+   "id": "H19"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "mode simulation",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.287,
+    "v_bc_ci": [
+     0.181,
+     0.429
+    ],
+    "p": 0.0004,
+    "q": 0.0052,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Springer Nature (non-portfolio)",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.328
+   },
+   "id": "H20"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "node N new capability",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.24,
+    "v_bc_ci": [
+     0.135,
+     0.384
+    ],
+    "p": 0.002,
+    "q": 0.013,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "AGU",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.322
+   },
+   "id": "H21"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "node P protect",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.238,
+    "v_bc_ci": [
+     0.115,
+     0.395
+    ],
+    "p": 0.0014,
+    "q": 0.0104,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "EGU/Copernicus",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.243
+   },
+   "id": "H22"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "V check kinds",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.093,
+    "epsilon2_ci": [
+     0.049,
+     0.194
+    ],
+    "p": 0.0008,
+    "q": 0.0069,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 3.0,
+     "EGU/Copernicus": 3.0,
+     "Nature portfolio": 3.0,
+     "Springer Nature (non-portfolio)": 3.0,
+     "Wiley non-AGU": 2.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H23"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "distinct modes",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.068,
+    "epsilon2_ci": [
+     0.031,
+     0.156
+    ],
+    "p": 0.006,
+    "q": 0.0328,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 8.5,
+     "EGU/Copernicus": 7.0,
+     "Nature portfolio": 8.5,
+     "Springer Nature (non-portfolio)": 7.0,
+     "Wiley non-AGU": 7.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H24"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "distinct nodes",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.081,
+    "epsilon2_ci": [
+     0.041,
+     0.182
+    ],
+    "p": 0.0016,
+    "q": 0.0111,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 11.0,
+     "EGU/Copernicus": 11.0,
+     "Nature portfolio": 10.0,
+     "Springer Nature (non-portfolio)": 10.0,
+     "Wiley non-AGU": 10.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H25"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "import fields",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.064,
+    "epsilon2_ci": [
+     0.028,
+     0.153
+    ],
+    "p": 0.0094,
+    "q": 0.0463,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 3.0,
+     "EGU/Copernicus": 3.0,
+     "Nature portfolio": 3.5,
+     "Springer Nature (non-portfolio)": 4.0,
+     "Wiley non-AGU": 3.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H26"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "imports",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.071,
+    "epsilon2_ci": [
+     0.034,
+     0.172
+    ],
+    "p": 0.0056,
+    "q": 0.0324,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 3.0,
+     "EGU/Copernicus": 4.0,
+     "Nature portfolio": 4.5,
+     "Springer Nature (non-portfolio)": 4.0,
+     "Wiley non-AGU": 3.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H27"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "revisits",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.114,
+    "epsilon2_ci": [
+     0.059,
+     0.221
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 14.0,
+     "EGU/Copernicus": 13.0,
+     "Nature portfolio": 12.0,
+     "Springer Nature (non-portfolio)": 12.0,
+     "Wiley non-AGU": 10.0
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H28"
+  },
+  {
+   "source": "g20",
+   "grouping": "family",
+   "feature": "steps",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.149,
+    "epsilon2_ci": [
+     0.082,
+     0.257
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "AGU": 24.5,
+     "EGU/Copernicus": 24.0,
+     "Nature portfolio": 22.5,
+     "Springer Nature (non-portfolio)": 22.0,
+     "Wiley non-AGU": 19.5
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H29"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "composition trace_series",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.309,
+    "v_bc_ci": [
+     0.217,
+     0.465
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Earth-Surface Processes",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.34
+   },
+   "id": "H30"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "decisive methods",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.294,
+    "v_bc_ci": [
+     0.191,
+     0.449
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Artificial Intelligence",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.51
+   },
+   "id": "H31"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "decisive reconstruction",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.355,
+    "v_bc_ci": [
+     0.206,
+     0.538
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Earth-Surface Processes",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.355
+   },
+   "id": "H32"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "mode estimation",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.241,
+    "v_bc_ci": [
+     0.124,
+     0.411
+    ],
+    "p": 0.0054,
+    "q": 0.0324,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Oceanography",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.265
+   },
+   "id": "H33"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "mode methods",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.323,
+    "v_bc_ci": [
+     0.212,
+     0.489
+    ],
+    "p": 0.0004,
+    "q": 0.0052,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Earth-Surface Processes",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.369
+   },
+   "id": "H34"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "mode reconstruction",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.332,
+    "v_bc_ci": [
+     0.242,
+     0.477
+    ],
+    "p": 0.0002,
+    "q": 0.0035,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Earth-Surface Processes",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.374
+   },
+   "id": "H35"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "mode simulation",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.213,
+    "v_bc_ci": [
+     0.118,
+     0.386
+    ],
+    "p": 0.0118,
+    "q": 0.0534,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Geochemistry and Petrology",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.243
+   },
+   "id": "H36"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "node D design",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.213,
+    "v_bc_ci": [
+     0.108,
+     0.399
+    ],
+    "p": 0.0158,
+    "q": 0.0647,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Geochemistry and Petrology",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.391
+   },
+   "id": "H37"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "node I infer",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.283,
+    "v_bc_ci": [
+     0.155,
+     0.448
+    ],
+    "p": 0.001,
+    "q": 0.008,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Oceanography",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.193
+   },
+   "id": "H38"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "node N new capability",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.278,
+    "v_bc_ci": [
+     0.188,
+     0.427
+    ],
+    "p": 0.0008,
+    "q": 0.0069,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Artificial Intelligence",
+    "sign_of_rate_minus_rest": 1,
+    "round1_rate_minus_rest": 0.331
+   },
+   "id": "H39"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "node P protect",
+   "kind": "binary",
+   "round1": {
+    "cramers_v_bc": 0.194,
+    "v_bc_ci": [
+     0.104,
+     0.371
+    ],
+    "p": 0.0246,
+    "q": 0.0914,
+    "n": 233
+   },
+   "predicted": {
+    "leading_group": "Water Science and Technology",
+    "sign_of_rate_minus_rest": -1,
+    "round1_rate_minus_rest": -0.285
+   },
+   "id": "H40"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "composition (whole variable)",
+   "kind": "categorical",
+   "round1": {
+    "cramers_v_bc": 0.153,
+    "v_bc_ci": [
+     0.146,
+     0.309
+    ],
+    "p": 0.0098,
+    "q": 0.0463,
+    "n": 233
+   },
+   "id": "H41"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "decisive (whole variable)",
+   "kind": "categorical",
+   "round1": {
+    "cramers_v_bc": 0.17,
+    "v_bc_ci": [
+     0.17,
+     0.297
+    ],
+    "p": 0.0008,
+    "q": 0.0069,
+    "n": 233
+   },
+   "id": "H42"
+  },
+  {
+   "source": "g20",
+   "grouping": "subfield",
+   "feature": "V check kinds",
+   "kind": "count",
+   "round1": {
+    "epsilon2": 0.113,
+    "epsilon2_ci": [
+     0.067,
+     0.22
+    ],
+    "p": 0.0006,
+    "q": 0.0069,
+    "n": 233
+   },
+   "predicted": {
+    "round1_group_medians": {
+     "Artificial Intelligence": 4.0,
+     "Atmospheric Science": 3.0,
+     "Earth-Surface Processes": 2.0,
+     "Geochemistry and Petrology": 2.0,
+     "Geophysics": 3.0,
+     "Oceanography": 3.0,
+     "Water Science and Technology": 2.5
+    },
+    "rule": "Spearman correlation of round-1 and round-2 group medians over shared named groups > 0"
+   },
+   "id": "H43"
+  }
+ ]
+}

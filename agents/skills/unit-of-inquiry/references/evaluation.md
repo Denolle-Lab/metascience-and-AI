@@ -3,8 +3,8 @@
 For the evaluator, not the agent. Planted-flaw items and historical items that test whether the procedure held. Kept apart from SKILL.md so the agent is not the holder of its own grading rubric.
 
 Planted-flaw items that test whether the procedure holds:
-- a forced single hypothesis at G;
-- a test all rivals pass at S;
+- a forced single hypothesis at H;
+- a test all rivals pass at D;
 - a claim leaving V after one run;
 - an exclusion that silently rejected A;
 - a smoking gun reported as an exclusion;

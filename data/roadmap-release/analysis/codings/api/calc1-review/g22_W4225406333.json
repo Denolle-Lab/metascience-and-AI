@@ -1,0 +1,554 @@
+{
+ "key": "g22_W4225406333",
+ "doi": "10.5194/tc-16-1597-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Clarkson, Eastoe and Leeson 2022, The Cryosphere 16, 1597-1607",
+  "Publisher full text from XML with section and paragraph locators (jats_text)",
+  "Open discussion record of preprint tc-2021-259 (RC1, AC1, RC2, AC2)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); review steps cite the review record's own locators (e.g. RC1 ¶2)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the magnitude, frequency, and melt contribution of these melt events are not clearly defined",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), checked against the published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of how to characterise the magnitude, frequency and melt contribution of Greenland melt events beyond case studies.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the magnitude, frequency, and melt contribution of these melt events are not clearly defined"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They propose a statistical, model-based approach to MODIS IST data, built on physical bounds, multimodality and ambiguity near 0 °C.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here, we propose a novel statistical approach applied to Moderate Resolution Imaging Spectroradiometer (MODIS) ice surface temperature (IST) data"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "They take the MOD29 IST layer of the multilayer Greenland MODIS product for 2001-2019, dropping the first ten months and subsampling 1 in 50 cells (1139 cells).",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we also subsample the data by taking 1 in every 50 cells in both x and y dimensions for a total of 1139 cells"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They check the cloud-mask premise of the cross-decade comparison by comparing the proportion of cloud-masked data between decades, spatially and by month (Figures 1-2).",
+     "page": "§2.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the magnitudes of the changes are relatively minor with a maximum absolute change of 0.060 and a mean absolute change of 0.010"
+    },
+    {
+     "n": 5,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Exploratory analysis of per-cell IST histograms establishes a bimodal distribution with a soft upper limit and a peak near -0.5 °C, and no clear quantile marking melt onset (Figure 3).",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Exploratory data analysis shows that there is no clear quantile in the temperature distribution that can be attributed as the onset of melting"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "methods",
+     "action": "They set out rival modelling approaches: a single (possibly transformed) distribution, a threshold-based extreme value analysis, a time-series model, and a multimodal mixture.",
+     "page": "§2.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The simplest statistical model would be to fit a single distribution to the full dataset, potentially after an initial transformation."
+    },
+    {
+     "n": 7,
+     "node": "X",
+     "mode": "methods",
+     "action": "They reject unimodal fits (poor tails), extreme value analysis (no consistent threshold across cells) and time-series models (poor capture of the 0 °C mode).",
+     "page": "§2.3 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each of the above-mentioned threshold types do not work universally across the ice sheet"
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "methods",
+     "action": "They specify a truncated Gaussian mixture model, with ice components truncated above at 0 °C and a melt component truncated below at -1.65 °C (the saline-ice melt minimum).",
+     "page": "§2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we model IST using a truncated Gaussian mixture model"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They fit the mixture per cell with an EM algorithm (Appendix A, convergence at 1e-5) and select three ice components and one melt component by BIC.",
+     "page": "§2.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "three ice components and one melt component fit the data best"
+    },
+    {
+     "n": 10,
+     "node": "N",
+     "mode": "methods",
+     "action": "They define a threshold-free melt probability rho(x) as the ratio of the melt-component density to the summed component densities (Figure 4).",
+     "page": "§2.5 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "can be quantified as the ratio of the densities of the ice and melt components"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate the expected annual number of melt days at each cell by summing rho over the observations in each year.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using our model, we calculate the expected number of melt days in each year at each sample cell."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare model-expected melt days with the empirical count of days at or above -1 °C on the same data, finding broad agreement and larger model melt at coastal cells (Figure 5).",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "89 % of cells have an absolute difference of less than 2 melt days"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare empirical and model-based MODIS melt proportions with PROMICE AWS melt proportions on common dates (Figure 6).",
+     "page": "§3.2 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "there is still reasonable agreement for a substantial number of AWS locations"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "From the fitted models they estimate the 10% and 90% IST quantiles and the 1-year return levels at each cell (Figure 7).",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We now use the model fit to calculate quantiles of the ISTs at each cell"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They compare the spatial pattern of quantiles and return levels with elevation and distance to the coast, finding lower values at higher, more inland cells.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are in reasonable agreement with the elevations and distance to the coast of each cell"
+    },
+    {
+     "n": 16,
+     "node": "D",
+     "mode": "estimation",
+     "action": "They design the trend test by fitting separate mixture models for 2001-2009 and 2010-2019 at each cell.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we fit mixture models at each cell for two separate decades: 2001 to 2009 and 2010 to 2019"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate decadal changes in 95% quantiles (up at 1100/1139 cells) and 1-year return levels (up at 849/1139 cells) (Figure 8).",
+     "page": "§3.4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For almost all cells ( 1100 / 1139 ), the 95 % quantile increased between the two decades."
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "estimation",
+     "action": "They attribute the smaller return-level increases at coastal cells to the soft 0 °C upper limit, an auxiliary, rather than to weaker warming.",
+     "page": "§3.4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "values already close to this limit can be partially constrained from further increases"
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate the mean summer daily melt probability per decade and its change, with more cells showing non-zero melt and 68.5% showing increases (Figure 9).",
+     "page": "§3.4.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "68.5 % of cells saw an increased probability of melt between the decades"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare the spatial melt patterns, the elevation link and the southern trends with prior SMB, satellite and MODIS studies.",
+     "page": "§4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The spatial melt trends are in keeping with previous work examining melt using surface mass balance data and satellite data"
+    },
+    {
+     "n": 21,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They keep the claim that melt became more frequent and high temperatures increased across much of the ice sheet in 2010-2019 relative to 2001-2009.",
+     "page": "§4 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The overall trends of the model suggest that melt has become more frequent in the most recent decade"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion record of preprint tc-2021-259 (RC1, AC1, RC2, AC2)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 1 asked what the mixture model adds over raw ISTs and IST trends. The authors promised a clearer rationale (AC1 ¶1); the published text gives the model's advantages over empirical analysis (§1 ¶4).",
+     "page": "RC1 ¶2",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Why not just use the ISTs and IST trends instead of the mixture model?"
+    },
+    {
+     "n": 2,
+     "node": "R",
+     "mode": "instruments",
+     "action": "Referee 1 asked that the ±1 °C IST accuracy be considered. The published modelling considerations cite the dataset's stated ±1 °C uncertainty (§2.3 ¶1).",
+     "page": "RC1 ¶21",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "there is also the +/- 1 deg C accuracy to consider"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Referee 1 corrected the data description (0.78 km resolution, near-daily coverage, clear-sky and cloud-cover qualifiers). The published text adopts these (§2.1 ¶1, §1 ¶2, §4 ¶1).",
+     "page": "RC1 ¶29",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "the spatial resolution of the product is 0.78 X 0.78 km, not 1 km as stated"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Referee 1 asked whether a reported difference was statistically significant. The published paper reports no significance test, and the record holds no specific reply (coded declined by inference from AC1's generic promise).",
+     "page": "RC1 ¶27",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "is this a statistically significant difference?"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Referee 2 questioned the interest of the complex method over a simple TS > 0 °C rule. The authors promised a clearer motivation (AC2 ¶1).",
+     "page": "RC2 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "I don’t see the interest of this complex method with respect to a simple one based on TS > 0°C"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Referee 2 asked for a comparison with an independent melt-extent dataset such as a microwave product. The published paper compares with PROMICE AWS data instead (§3.2 ¶1); that this section was added in revision is an inference.",
+     "page": "RC2 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "a comparison with a melt extent independent data set (like a microwave product) is needed to show the interest of this new method"
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "methods",
+     "action": "Referee 2 questioned the assumption of stable surface conditions (rocks, impurities, facies change). The authors promised more detail (AC2 ¶1); the published discussion states the assumption and possible regression or mixed-effects extensions (§4 ¶6).",
+     "page": "RC2 ¶1",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "But what occurs, if rock or impurities appear in surface after a summer with a huge melt?"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Surface melt on the Greenland ice sheet seen in MODIS IST, including rare extreme events",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; melt is inferred probabilistically from IST through a fitted mixture model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate per-cell melt probability, expected melt days, quantiles, return levels and decadal change",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Rivals are statistical models (unimodal, extreme value threshold, time series) and the fixed -1 °C threshold, not physical hypotheses",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed as distinct predictions; rival models rejected on fit and practicality",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: archived satellite record split into two decades",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; daily observations over 19 melt seasons at 1139 cells",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; agrees with the empirical threshold count and broadly with PROMICE AWS; no uncertainty on trends",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: melt probability and high-temperature quantiles increased in 2010-2019",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Published after two referees; motivation, data description and assumptions revised; no significance test or microwave comparison added",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "A truncated Gaussian mixture model fitted to MODIS IST gives cell-level melt probabilities at 0.78 km and daily resolution, which show melt becoming more frequent and high temperatures rising over much of the ice sheet in 2010-2019 versus 2001-2009.",
+  "page": "§4 ¶8"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The truncated mixture model with a separate melt component bounded below at -1.65 °C is what makes a threshold-free melt probability, and hence every downstream estimate, possible.",
+  "page": "§2.4 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the data are an existing MODIS archive, subsampled for computation (§2.1 ¶1); no hypothesis directed acquisition. Claim: the model estimates could have disagreed with the -1 °C threshold count (§3.1 ¶2) and with PROMICE AWS (§3.2 ¶1), but the decadal-increase claim faces no significance test or uncertainty bound (§4 ¶8; RC1 ¶27 unanswered). Registration: model structure, component number (BIC) and decade split were all chosen after the data were seen (§2.3, §2.4 ¶3, §3.4 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Truncated Gaussian mixture model",
+   "kind": "method",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Expectation-maximisation algorithm for truncated normal mixtures",
+   "kind": "method",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Bayesian information criterion for model selection",
+   "kind": "method",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "field": "statistics (extreme value theory)",
+   "item": "Return levels and return periods",
+   "kind": "concept",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Missing-not-at-random concept for cloud-masked data and imputation",
+   "kind": "concept",
+   "page": "§4 ¶4"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Here, we propose a novel statistical approach applied to Moderate Resolution Imaging Spectroradiometer (MODIS) ice surface temperature (IST) data",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "Sub-claims at other statuses: (1) the method itself is capability_characterized, by agreement with the -1 °C threshold count (§3.1 ¶2) and PROMICE AWS (§3.2 ¶1); (2) the agreement of the spatial melt pattern with prior studies and with elevation is a best_explanation-level consistency, not a test (§3.3 ¶2, §4 ¶3).\n\nThe estimates carry no uncertainty intervals, and the decadal changes have no significance test, so 'estimate_with_resolution' is met only for spatial and temporal resolution, not uncertainty. The paper does not report multiple EM random initialisations or sensitivity of the results to the -1.65 °C truncation point or to the number of components beyond the BIC choice. Code is available only on request, so reproduction is not possible from the paper.\n\nThe PROMICE comparison is reported only as histograms of differences, with no summary statistic. One sentence (§2.4 ¶4) says the results 'validate the decision to use a fixed melt threshold', which sits oddly with the threshold-free design; the published text leaves this unresolved.\n\nReview: that the AWS section, the ±1 °C remark and the stationarity paragraph were added in revision is inferred from the published text matching the referee requests; the record holds only generic author replies (AC1, AC2), not the detailed response. Several requests are not visibly addressed: RC1 ¶14 (dataset end year; the paper still says 2019), RC1 ¶20 (salinity dependence of -1.65 °C), RC1 ¶25 and ¶7 (citation corrections; the reference list keeps Benson 1960 and 'Zhengming and Dozier'). Only RC1 ¶27 is coded, as declined, by inference.\n\nComposition is none_fits: the walk is question, then new statistical method, then estimation on an archive with baseline checks and a found two-decade split. It has no physical rivals, no crucial test and no fitted regularity across repetitions. It is closest to capability_first, but the method is motivated by a prior question and is chosen against rival methods.",
+ "disagreements": [
+  {
+   "target": "Fixed melt-threshold convention (IST at or above -1 °C taken as melt; Hall et al., 2018)",
+   "kind": "definition",
+   "stance": "qualifies",
+   "support": "The mixture model assigns non-zero melt probability between -1.65 and 0 °C and yields more melt days than the -1 °C count at coastal cells (§3.1 ¶2).",
+   "page": "§4 ¶3",
+   "quote": "there is a non-trivial probability of melt occurring [...]"
+  },
+  {
+   "target": "Common practice of analysing melt events with summary statistics and case studies",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors offer a full distributional model giving quantiles, return levels and melt probabilities at all cells, rather than case studies of isolated events.",
+   "page": "§0 ¶1",
+   "quote": "Melt events are typically analysed using summary statistics, but the nature and characteristics of the events themselves are less frequently analysed."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "X",
+   "chosen": "Multimodal truncated Gaussian mixture",
+   "alternatives": "Single distribution fitted to the full dataset, possibly after transformation",
+   "reason": "Data are bimodal at all cells; unimodal fits are poor in the tails where melt lies",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶3"
+  },
+  {
+   "node": "X",
+   "chosen": "Multimodal truncated Gaussian mixture",
+   "alternatives": "Extreme value analysis of the highest temperatures above a threshold set by quantiles, gradient analysis or a fixed temperature",
+   "reason": "No consistent threshold works across the varied tail shapes; in many cases the fits are much worse",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶4"
+  },
+  {
+   "node": "X",
+   "chosen": "Multimodal truncated Gaussian mixture",
+   "alternatives": "Time-series model capturing seasonal behaviour",
+   "reason": "Less able to capture the mode around 0 °C and the truncation of temperatures",
+   "effect_reported": "no",
+   "page": "§2.3 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "Melt-component lower truncation at -1.65 °C",
+   "alternatives": "A bound at 0 °C (implied)",
+   "reason": "Accounts for data uncertainty and surface impurities; -1.65 °C is the theoretical minimum melt temperature of saline ice",
+   "effect_reported": "no",
+   "page": "§2.4 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Three ice components and one melt component",
+   "alternatives": "Other numbers of ice and melt components",
+   "reason": "Best fit by BIC",
+   "effect_reported": "no",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "node": "O",
+   "chosen": "Subsample 1 in 50 cells in x and y (1139 cells)",
+   "alternatives": "Full-resolution dataset",
+   "reason": "To reduce computational burden",
+   "effect_reported": "no",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "Analyse clear-sky days only",
+   "alternatives": "Impute missing values from clear-day data; impute cloudy-day data from a second data source",
+   "reason": "Cloudy-day data are not missing at random, so the bias cannot be estimated; external data raise further problems beyond the project's scope",
+   "effect_reported": "no",
+   "page": "§4 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "Two decadal fits (2001-2009, 2010-2019)",
+   "alternatives": "Sub-decadal fits",
+   "reason": "Too few ISTs above -1.65 and 0 °C to fit the melt component accurately",
+   "effect_reported": "no",
+   "page": "§4 ¶8"
+  },
+  {
+   "node": "N",
+   "chosen": "Independent per-cell fits assuming stationary surface conditions",
+   "alternatives": "Regression-based or mixed-effects model representing changing surface conditions",
+   "reason": "Alternatives are harder to fit and interpret because of more parameters",
+   "effect_reported": "no",
+   "page": "§4 ¶6"
+  },
+  {
+   "node": "N",
+   "chosen": "Independent frequentist fits per cell",
+   "alternatives": "Bayesian framework with priors, with melt components sharing information across cells",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4 ¶7"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the proportion of data missing due to cloudiness is compared between decades",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We then compare our modelled estimates to a simple threshold-based approach to defining melt",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we compare the estimates of melt found using our method to those estimated using data from the Programme for Monitoring of the Greenland Ice Sheet",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "previous validation carried out independently for both datasets suggests it is reasonable to consider both datasets representative of the true surface temperatures",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "The spatial melt trends are in keeping with previous work examining melt using surface mass balance data and satellite data",
+   "page": "§4 ¶3"
+  }
+ ]
+}

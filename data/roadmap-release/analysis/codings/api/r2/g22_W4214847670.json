@@ -1,0 +1,396 @@
+{
+ "key": "g22_W4214847670",
+ "doi": "10.1016/j.geog.2022.02.001",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF: Wang, Zhou, Xu, Wen, Liu 2022, Geodesy and Geodynamics 13, 301-310",
+  "Publisher XML text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "Mixed. The XML text holds only the abstract (§0 ¶1) and the figure and table captions, so those are cited by XML locator (§0 ¶1, Fig. N, Table N, labels as printed). The XML has no body text, so body text is cited by printed journal page (p. 301-310). Steps read off figure content cite the figure and the printed page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "on the active fault segmentations where no major earthquakes have been observed, how to identify the asperities is still a hot issue",
+  "page": "p. 301"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper PDF (body) and publisher XML text (abstract, captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of how to locate asperities on active fault segments that have no recorded major earthquakes.",
+     "page": "p. 301",
+     "move": "new",
+     "trigger": "author",
+     "quote": "how to identify the asperities is still a hot issue of people's [...]"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "They take from the literature two existing methods: the geodetic slip deficit (SD) method and the low b-value (BV) method of Wiemer and Wyss.",
+     "page": "p. 301",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] two main methods to determine the distribution of asperities on faults during the inter-seismic period."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They propose a dual threshold search method that combines SD and BV by minimizing the difference between the asperity boundaries each method gives.",
+     "page": "p. 302",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This research proposes a dual threshold search method to determine the distribution of asperities by combining the SD method and the BV method."
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They assemble existing data: 586 GPS stations taken from Wang et al. [15] and a seismic catalog running from 1920 to May 2021.",
+     "page": "p. 302",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The data used in this study includes GPS data and earthquake catalog data."
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "They specify the five-step algorithm (Fig. 3): set initial thresholds, iterate over search ranges for slip deficit and b-value, and take the pair that minimizes the summed squared east-west boundary differences.",
+     "page": "p. 303; Fig. 3 (p. 304)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This method is mainly divided into 5 steps"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Using a linear spherical block model, they fit the GPS data for an average locking depth of 20 km and then for optimal locking depths fault by fault (Fig. 4).",
+     "page": "p. 304; Fig. 4 (p. 304)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the average locking depth of the major faults on the northeastern margin of the Tibet Plateau was first determined to be 20 km"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They check the fitted locking depths against the published result of Li et al. [29].",
+     "page": "p. 304",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is consistent with the result given by Li et al. [29]"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They choose the smoothing factor β=1 by matching the Tuolaishan slip rate to an earlier block-model rate, set the fault model depth to 24 km, and invert for the slip deficit, finding five slip deficit areas with a maximum of 7.8 mm/yr.",
+     "page": "p. 304-305; Fig. 5; Fig. 6 (p. 305)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Geodetic inversion (Fig. 6) shows that there are mainly five obvious slip deficit areas on Qilian-Haiyuan fault"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "They use simulation experiments to justify starting the slip deficit threshold at 30% of the maximum, then set initial thresholds of 2.0 to 2.4 mm/yr for each asperity.",
+     "page": "p. 305",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we had done some simulation experiments and found that for a single asperity, taking 30% of the maximum slip deficit as the initial threshold"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "estimation",
+     "action": "They compare modeled with observed GPS velocities and report the residual statistics (Fig. 7).",
+     "page": "p. 305; Fig. 7 (p. 306)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "about 82% of the GPS data have residuals less than 1 mm/yr"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute b-values by linear regression at 20 km spacing along the surface fault trace (10 km radius) using a magnitude of completeness per segment; they leave out the eastern segments for lack of events and identify low b-value regions A1, A2, B and C with initial thresholds (Table 1).",
+     "page": "p. 305-306; Fig. 8 (p. 306); Fig. 9 (p. 307); Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the linear regression method was employed to calculate the b-values"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "estimation",
+     "action": "They compare the SD and BV results segment by segment: both find asperities on the Tuolaishan, Lenglongling and Jinqianghe segments, while BV cannot assess Laohushan.",
+     "page": "p. 306",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it can be found that asperities can be determined by both two methods on Tuolaishan, Lenglongling and Jinqianghe segments"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They run the dual threshold search to obtain optimal BV and SD thresholds and the boundaries, lengths and lower depths of four asperities (Table 2, Fig. 10).",
+     "page": "p. 307; Table 2; Fig. 10 (p. 307)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "two asperities (A1 and A2) were determinted on the Tuolaishan segment"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They test the resolution of the slip deficit inversion with checkerboard tests of 40x12, 40x10 and 40x5 km at slip deficit rates of 6 and 8 mm/yr (Fig. 11).",
+     "page": "p. 307; Fig. 11 (p. 308)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To ensure the accuracy of the slip deficit model inversion result, a checkerboard test was played in this study."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They compare their slip deficit pattern with previous studies, noting agreement on the strong slip deficit near the epicenter of the 2022 Menyuan earthquake.",
+     "page": "p. 307",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the slip deficit near the epicenter of the 2022 Menyuan earthquake is obvious, which is consistent with the results of previous studies"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Their results do not show the 35 km InSAR creep zone in the Tianzhu gap; they attribute this to the coarse resolution of the GPS data rather than revising their model.",
+     "page": "p. 307",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we did not detect a shallow creep in this area"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose that the lack of slip deficit on the Haiyuan segment reflects stress released in the 1920 Haiyuan earthquake.",
+     "page": "p. 308",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the slower stress accumulation in this segment may be due to the influence of the Haiyuan earthquake"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They retain the claim of four potential asperities with stated lengths and lower boundaries, and of no potential asperity on the Haiyuan segment.",
+     "page": "p. 309",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is found that there are four potential asperities on the Qilian-Haiyuan fault"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Interseismic asperities (high-stress locked patches) on the Qilian-Haiyuan fault",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "No; inferred from GPS slip deficit and catalog b-values through models",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Delineate asperity boundaries with a combined threshold-search method",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: existing interseismic GPS field and historical catalog",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: checkerboard resolution test and variation of the slip-rate input; boundaries not varied",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Four asperities kept as estimates without boundary uncertainties",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "The Qilian-Haiyuan fault carries four potential asperities (A1 and A2 on Tuolaishan, 17.0 and 64.8 km long; B on Lenglongling, 70.7 km; C on Jinqianghe, 42.3 km) with lower boundaries of 5.5, 15.5, 10.2 and 8.3 km.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The dual threshold search, which picks the slip deficit and b-value thresholds whose asperity boundaries agree best, produces the asperity boundaries that make up the claim.",
+  "page": "p. 307; Table 2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data were pre-existing: GPS velocities from Wang et al. [15] and a historical catalog (p. 302). No hypothesis directed their acquisition. The boundaries are found by minimizing the SD-BV boundary mismatch, so the two methods are made to agree by construction. Only the qualitative co-occurrence of asperities on three segments (p. 306) and the checkerboard resolution test (p. 307) could have failed. Thresholds, β and the per-segment magnitude of completeness were chosen after the data were seen, and nothing was fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "outside seismology (tribology/contact mechanics, implied; the paper does not name the source field)",
+   "item": "concept of asperities, introduced into seismology by Kanamori and Stewart",
+   "kind": "concept",
+   "page": "p. 301"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "this paper combines geodetic method and b-value method to propose a multi-source observation data fusion detection method that accurately determines the asperity boundary",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Previous studies did not give the precise boundaries of the asperities on the Qilian-Haiyuan fault",
+   "page": "p. 307"
+  },
+  {
+   "quote": "Compared with single SD method or BV method, this method not only effectively improves the reliability of the determination of asperities",
+   "page": "p. 302"
+  }
+ ],
+ "limits": "The XML text holds only the abstract and captions, so body text is coded from the PDF printed pages.\n\nThe method is never tested on a fault with known asperities, for example one that ruptured with a known slip distribution. The sub-claim that the method 'accurately determines' boundaries is therefore at most capability_characterized and, on inference, unvalidated.\n\nThe headline status estimate_with_resolution is generous. Resolution comes only from the checkerboard test of the slip deficit inversion. No uncertainty is given for the boundaries, thresholds or b-values beyond the segment-level GR fits (Fig. 8).\n\nThe simulation experiments behind the 30% initial threshold are described but not shown. The search ranges and step sizes (ΔSd, Δbm) are never reported.\n\nThe absence of an asperity on Haiyuan rests on geodesy alone, and its attribution to the 1920 event is a best-explanation sub-claim with no stated rival test.\n\nThe mismatch with the InSAR creep zone is handled by protecting the result (GPS resolution), not by testing.\n\nThe 2022 Menyuan earthquake near the Tuolaishan-Lenglongling junction is mentioned but not used as a test of the boundaries.\n\nComposition is none_fits: the walk is method proposal followed by a single-case estimation, with no rivals and no repeated cases.\n\nNo review file was supplied.",
+ "disagreements": [
+  {
+   "target": "Cavalié et al. [33] and Jolivet et al. [34,35]: InSAR 35 km shallow creep zone in the Tianzhu earthquake gap",
+   "kind": "result",
+   "stance": "fails_to_replicate",
+   "support": "The GPS-based slip deficit inversion shows no shallow creep there; the authors attribute the difference to sparse near-field GPS and the lower resolution of GPS compared with InSAR.",
+   "page": "p. 307",
+   "quote": "found a 35 km long creep zone in the “Tianzhu Earthquake Gap”, but we did not detect a shallow creep in this area"
+  },
+  {
+   "target": "Previous studies of asperities on the Qilian-Haiyuan fault [24,33-35]",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The authors claim to give precise boundaries where earlier work did not, using the optimal threshold combination.",
+   "page": "p. 307",
+   "quote": "Previous studies did not give the precise boundaries of the asperities on the Qilian-Haiyuan fault"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "3D interseismic block model (linear spherical block model)",
+   "alternatives": "2D inter-seismic model",
+   "reason": "3D allows variable fault strike, block translation and rotation, and secondary faults, and is widely used",
+   "effect_reported": "no",
+   "page": "p. 303"
+  },
+  {
+   "node": "I",
+   "chosen": "smoothing factor β = 1",
+   "alternatives": "a range of β values (Fig. 5)",
+   "reason": "at β = 1 the Tuolaishan slip rates flatten and approach the earlier block-model rate",
+   "effect_reported": "yes",
+   "page": "p. 305; Fig. 5"
+  },
+  {
+   "node": "I",
+   "chosen": "b-values only along the surface fault trace",
+   "alternatives": "b-values in planar space",
+   "reason": "the large fault dip means planar b-values give limited constraint on the fault plane",
+   "effect_reported": "no",
+   "page": "p. 305"
+  },
+  {
+   "node": "I",
+   "chosen": "magnitude of completeness per fault segment",
+   "alternatives": "magnitude of completeness per sampling point",
+   "reason": "relatively small amount of seismic data",
+   "effect_reported": "no",
+   "page": "p. 305"
+  },
+  {
+   "node": "I",
+   "chosen": "no b-value calculation for eastern Maomaoshan to Haiyuan; asperities there taken from geodesy only",
+   "alternatives": "computing b-values there",
+   "reason": "fewer than 30 earthquakes within 10 km of most sampling points, so b-values are unreliable",
+   "effect_reported": "no",
+   "page": "p. 305"
+  },
+  {
+   "node": "I",
+   "chosen": "fault-specific optimal locking depths",
+   "alternatives": "a single average locking depth of 20 km",
+   "reason": "none given beyond fitting GPS data",
+   "effect_reported": "yes",
+   "page": "p. 304; Fig. 4"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is consistent with the result given by Li et al. [29]",
+   "page": "p. 304"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "A full block model was run using a variety of values of β , with all other parameters held constant.",
+   "page": "Fig. 5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we had done some simulation experiments and found that for a single asperity, taking 30% of the maximum slip deficit as the initial threshold",
+   "page": "p. 305"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "it can be found that asperities can be determined by both two methods on Tuolaishan, Lenglongling and Jinqianghe segments",
+   "page": "p. 306"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "To ensure the accuracy of the slip deficit model inversion result, a checkerboard test was played in this study.",
+   "page": "p. 307"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the difference in slip deficit rate between 6 mm/yr and 8 mm/yr had no effect on the checkerboard test results",
+   "page": "p. 307"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "the slip deficit near the epicenter of the 2022 Menyuan earthquake is obvious, which is consistent with the results of previous studies",
+   "page": "p. 307"
+  }
+ ]
+}

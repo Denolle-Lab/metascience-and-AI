@@ -1,0 +1,582 @@
+{
+ "key": "g22_W4206615852",
+ "doi": "10.1029/2021ea002008",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Grigorieva, Badulin & Gulev (2022), Global Validation of SWIM/CFOSAT Wind Waves Against Voluntary Observing Ship Data, Earth and Space Science 9, e2021EA002008 (published PDF, 16 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 16), identical to PDF pages counted from 1",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "An entirely new concept of space observations is implemented with the real aperture Ku-band radar SWIM (Surface Waves Investigation and Monitoring).",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Grigorieva et al. 2022, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Introduce the new Ku-band SWIM radar on CFOSAT, which measures directional wave spectra and partitions up to three wave systems (built and described by others).",
+     "page": "1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] global measurements of the directional spectra of ocean waves"
+    },
+    {
+     "n": 2,
+     "node": "C",
+     "mode": "instruments",
+     "action": "Cite earlier validations of SWIM against buoys, CMEMS products and model simulations.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The SWIM data was carefully validated against ocean buoy measurements (Jiang et al., 2021)"
+    },
+    {
+     "n": 3,
+     "node": "C",
+     "mode": "observation",
+     "action": "Recall the authors' own earlier use of VOS data to validate altimetry and wave-model hindcasts, with good agreement on SWH and period but differences for wind sea and swell.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "VOS data was successfully used for validating satellite altimetry (Grigorieva & Badulin, 2016)"
+    },
+    {
+     "n": 4,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the aim: validate SWIM wave and wind products globally against VOS visual observations, focusing on wave-system partitioning.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "visual observations from VOS were used for global validation of the SWIM data from CFOSAT"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble SWIM L2 V5.1.2 nadir and box data for 2019-2021 with good quality flags, and visual-only ICOADS VOS records with complete wind sea, swell and wind fields after multistage quality control.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used the SWIM/CFOSAT data (version V5.1.2) for the period of 25.04.2019–31.03.2021"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Fix the test design: treat VOS visually separated wind sea and swell as ground truth, with VOS code figures taken as accuracies equal to SWIM's.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "consider visual wave observations as the “ground truth” for the verification and validation of wave systems"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate VOS significant wave height two ways (SWH1 root-sum-square, SWH2 maximum component) plus dominant period, and SWIM integral height Hint from the partitions.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "SWH1 is calculated as the square root of the sum of squares of wind sea and swell heights"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare histograms of VOS dominant wavelengths and periods (ranges checked against 1970-2020 VOS) with those of SWIM partitions 1 and 2; the agreement is poor because SWIM misses short waves and VOS misses long swells.",
+     "page": "4; Figure 1 (p. 5)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In general, the histograms demonstrate a poor agreement for the whole waveband."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "observation",
+     "action": "Since wavelengths could not relate partitions to wave systems, cross-compare partition heights with VOS wind sea and swell heights in histograms and annual maps; partition 1 matches wind sea globally but looks like a sea and swell mix in maps.",
+     "page": "4-5; Figure 2 (p. 6); Figure 3 (p. 7)",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "So we attempted to perform a cross-comparison of wave heights of the two wave partitions from SWIM and two wave systems from VOS."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Recall the earlier VOS versus WAVEWATCH III comparison of directional steadiness as support for the quality of VOS directions.",
+     "page": "5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The ship-based and model directional steadiness of wind sea and swell have shown a perfect consistency"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Provisionally attribute partition 1 to VOS wind sea and partition 2 to VOS swell for a prefatory directional experiment.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The first partition was related to VOS wind-driven seas based on the similarity of their global statistics"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "methods",
+     "action": "Resolve the ±180° SWIM direction ambiguity by taking the VOS sign of the zonal and meridional components in each 2° box; signs changed in about 50% of cases.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "VOS sign was taken as the primary one"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare directional steadiness maps; SWIM gives trivial patterns against richer VOS patterns, attributed to the wavelength limits and processing of SWIM.",
+     "page": "6; Figure 3 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The estimates of directional steadiness obtained from SWIM show rather trivial distributions"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "instruments",
+     "action": "Keep an interim claim that SWIM partitioning is less reliable than visual wind sea and swell separation.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "SWIM wave partitioning is less reliable than the separation of wind sea and swell by the experienced observers in VOS"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare significant wave heights (nadir Hs vs SWH1, Hint vs SWH2) in global histograms and annual 2° maps; differences mostly within 0.5 m, largest in the Southern Ocean and coastal areas.",
+     "page": "6-8; Figure 4 (p. 7); Figure 5 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In general, the differences in the annual significant wave height fields do not exceed 0.5 m"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offer two rival explanations of coastal SWH1 > Hs differences (better VOS accuracy from dense coastal sampling, poor near-shore nadir SWIM accuracy) and leave them unresolved.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can tentatively suppose that these differences might stem from the better accuracy of significant wave height estimates in VOS"
+    },
+    {
+     "n": 17,
+     "node": "S",
+     "mode": "synthesis",
+     "action": "Note that SWH consistency was expected from the authors' earlier VOS comparisons with other altimeters and models.",
+     "page": "8-9",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "the consistency between significant wave heights in VOS and SWIM in terms of statistical and geographical distributions was expected"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare collocated VOS-SWIM wave heights within 50 km and 30 min (801 pairs, 2020) using 2D kernel PDFs; means agree but dispersion is high and correlation is 0.5-0.7.",
+     "page": "9; Figure 6 (p. 9)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All compared parameters demonstrate high dispersion and quite low correlation coefficients of about 0.5–0.7."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeat the collocation with a 25 km radius; the result does not change much (not shown).",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] radius of collocation (25 km) does not dramatically change this result"
+    },
+    {
+     "n": 20,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude the direct attribution of SWIM partitions to wind sea or swell, while all integral SWH estimates agree.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "wave partitions of SWIM cannot be directly attributed to wind sea or swell"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare VOS anemometer wind speed with SWIM nadir and box winds in histograms and annual maps; differences are within SWIM accuracy except in the Southern Ocean.",
+     "page": "10; Figure 7 (p. 10); Figure 8 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the distributions are similar and the differences are well within the accuracy of SWIM measurements"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the VOS-nadir wind result against the ECMWF-SWIM comparison of Hauser et al. (2020): similar at low winds, opposite at high winds.",
+     "page": "10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A similar underestimation of low nadir winds by the ECMWF"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare collocated wind speeds; correlations are 0.57 (nadir) and 0.75 (box), and box winds show lower dispersion.",
+     "page": "11; Figure 9 (p. 12)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The comparison of wind speed in collocated points (50 and 25 km radii) also shows a good agreement in terms of mean statistics."
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Recompute wind correlations for a 25 km radius (0.59 and 0.77).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "(0.59 and 0.77 for a 25 km radius)"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "instruments",
+     "action": "Keep the claim that VOS and SWIM wind speeds are consistent, supporting the accuracy of both.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "convincing evidence of a satisfactory accuracy of these types of measurements"
+    },
+    {
+     "n": 26,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check the reliability of the 2-year statistics against 40-year VOS climatology (1982-2021), which also adds secondary swell.",
+     "page": "12; Figure 10 (p. 13); Figure 11 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we have supplemented the performed validation of 2-year data with a comparison of the SWIM measurements and climatological VOS statistics for 40 years (1982–2021)"
+    },
+    {
+     "n": 27,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare climatological VOS wind sea, first and secondary swell, and winds with SWIM partitions and winds; partition 1 matches climatological first swell, while partitions 2 and 3 match nothing.",
+     "page": "12; Figure 10 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "No similarity was found for the second partition heights and visually observed secondary swell (Figure 10d)"
+    },
+    {
+     "n": 28,
+     "node": "K",
+     "mode": "robustness",
+     "action": "Keep the claim that SWH statistics are robust to VOS data features and time scale.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this experiment clearly shows the robustness of significant wave height statistics regardless of VOS data features and time scales"
+    },
+    {
+     "n": 29,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Refine the interpretation: partition 1 aggregates swells and mature wind seas within the SWIM wavelength range, supported by the Hint-SWH2 coincidence.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We believe the first partition aggregates both swells and mature wind seas which fall into the SWIM operational wavelength range."
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "instruments",
+     "action": "Keep the headline: CFOSAT waves and winds validated against VOS, with SWH and winds consistent in the mean, partitions not attributable, and directions inconclusive.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the first time ever wave and wind parameters derived from CFOSAT measurements have been validated against visual observations from VOS."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Correspondence between SWIM products (SWH, partitions, wind) and visually observed sea state",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "2",
+   "answer": "Yes, both data sets are direct observations; SWH and Hint are derived",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Global validation of SWIM against VOS, focused on wave partitions",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "4",
+   "answer": "Partitions equal wind sea/swell vs partitions aggregate systems or are residuals; coastal-difference rivals",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: matching vs mismatching height and wavelength distributions; no criteria fixed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: archived 2019-2021 satellite and ship data, collocations",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes, many global collocations and a 40-year VOS climatology",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes for SWH and wind (25 km radius, climatology); partition results unchanged",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "SWH and wind consistent in the mean; partitions not attributable; directions inconclusive",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "SWIM significant wave height and wind speed agree with VOS in mean global statistics but scatter widely in collocated pairs, and the three SWIM partitions cannot be attributed to wind sea, first and secondary swell.",
+  "page": "1; 14"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "observation",
+  "sentence": "The cross-comparison of SWIM partition heights with separately observed VOS wind sea and swell heights (Figures 2, 3, 10) is the step without which the headline claim about partitions would not exist.",
+  "page": "4-5; 12"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data are archived SWIM and ICOADS records chosen for availability, not acquired under a hypothesis (pp. 3-4). The attribution of partitions to wind sea/swell was provisionally assumed (p. 5) and could have been borne out by matching distributions; it was rejected (p. 10). However, no agreement thresholds or criteria were set in advance; 'agreement' is judged qualitatively against stated accuracies (p. 8, p. 10). Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "information theory / signal processing",
+   "item": "Kotel'nikov (Nyquist-Shannon) sampling theorem used to set histogram bin widths",
+   "kind": "concept",
+   "page": "4"
+  },
+  {
+   "field": "statistics",
+   "item": "Two-dimensional Gaussian kernel density estimation of joint PDFs",
+   "kind": "method",
+   "page": "9"
+  },
+  {
+   "field": "probability theory",
+   "item": "Law of Large Numbers invoked to justify robust statistics",
+   "kind": "concept",
+   "page": "12"
+  },
+  {
+   "field": "image processing",
+   "item": "Watershed method for spectral partitioning (via Hanson & Phillips 2001)",
+   "kind": "method",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "For the first time ever two independent sea state data sources: visual observations and CFOSAT measurements are compared on equal terms",
+   "page": "1"
+  },
+  {
+   "quote": "an alternative data set that has not yet been considered for comparison with the CFOSAT products",
+   "page": "2"
+  },
+  {
+   "quote": "For the first time ever wave and wind parameters derived from CFOSAT measurements have been validated against visual observations from VOS.",
+   "page": "14"
+  },
+  {
+   "quote": "CFOSAT is the first satellite mission providing information on three wave partitions due to the novel SWIM instrument.",
+   "page": "14"
+  }
+ ],
+ "limits": "Sub-claims sit at different statuses. The view that partition 1 aggregates swells and mature wind seas is best_explanation, resting on the Hint-SWH2 coincidence and not singled out by a test (p. 14). The wind speed consistency is capability_characterized (p. 11). Directional steadiness is inconclusive, status none (p. 14). The coastal SWH1 > Hs difference has two stated rivals, left unresolved (p. 8). No agreement criteria or significance tests are given; 'good agreement' is judged by eye from histograms and maps and against nominal accuracies. Collocation statistics rest on 801 pairs for 2020 only (p. 9). The 25 km radius and third-partition results are 'not shown'. Wind data were not adjusted for anemometer height or type, and the effect of that choice is not reported (p. 10). The direction ambiguity was resolved by imposing VOS signs (pp. 5-6), which makes the directional comparison partly circular; this reading is the coder's inference. No review file was supplied, so the paper's process before publication is not visible. Inference: the walk is a descriptive instrument validation against a reference data set; it does not fit capability_first, because the question is posed up front, nor strong_inference, because no crucial test is designed, hence none_fits.",
+ "disagreements": [
+  {
+   "target": "Reading of the three SWIM partitions as wind sea, first swell and secondary swell systems",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Partition heights and wavelengths compared with visually separated wind sea and swell (2-year and 40-year VOS) match no single system for partitions 2 and 3, and partition 1 mixes both.",
+   "page": "1; 10; 14",
+   "quote": "three wave partitions from SWIM cannot be clearly attributed to wind sea, first, and secondary swell systems"
+  },
+  {
+   "target": "Hauser et al. (2020) comparison of ECMWF with SWIM nadir winds",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "VOS, like ECMWF, underestimates low nadir winds, but unlike ECMWF it underestimates rather than overestimates high winds.",
+   "page": "10",
+   "quote": "But contrary to VOS, ECMWF tends to overestimate high nadir winds (Hauser et al., 2020)."
+  },
+  {
+   "target": "Community position that VOS winds are not a reliable validation source",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "VOS winds show reasonable global agreement with SWIM nadir and box winds and the highest collocated correlations (0.75-0.77).",
+   "page": "14",
+   "quote": "VOS winds have never been considered as a reliable data source for validation"
+  },
+  {
+   "target": "Use of buoys, models and altimeters as references for wave-system separation",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Argued from principle: VOS separates systems directly, whereas the others derive them by spectral decomposition, so VOS should be the ground truth.",
+   "page": "3",
+   "quote": "which are, in a sense, merely a secondary product yielded by wave spectra decomposition"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "O",
+   "chosen": "Visual ship-based VOS observations only",
+   "alternatives": "ICOADS wave measurements from buoys, rigs, light vessels",
+   "reason": "to guarantee the homogeneity of each compared data set",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "Both SWH1 (root-sum-square, Hogben 1988) and SWH2 (maximum component, Wilkerson & Earle 1990)",
+   "alternatives": "Either single estimator",
+   "reason": "SWH1 is theoretically grounded; SWH2 is less substantiated but least biased offshore and in the subtropics",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "C",
+   "chosen": "VOS dominant period for the wavelength/period histograms",
+   "alternatives": "Separate wind sea or swell periods",
+   "reason": "dominant period accumulates all observed wave systems",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "V",
+   "chosen": "50 km collocation radius (30 min lag)",
+   "alternatives": "25 km radius",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "9; 11"
+  },
+  {
+   "node": "C",
+   "chosen": "Both SWIM nadir and box wind speeds",
+   "alternatives": "Either product alone",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "10-11"
+  },
+  {
+   "node": "O",
+   "chosen": "VOS wind speeds without special adjustment",
+   "alternatives": "Adjustment for anemometer type, calibration and location",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "V",
+   "chosen": "VOS 2019-2021 matched to SWIM period, supplemented by 1982-2021 climatology",
+   "alternatives": "Matched period only or climatology only",
+   "reason": "to check the reliability of statistical estimates and add secondary swell",
+   "effect_reported": "yes",
+   "page": "12"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "consider visual wave observations as the “ground truth” for the verification and validation of wave systems",
+   "page": "3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Statistical distributions are confirmed by annual global maps",
+   "page": "7"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "For a more detailed validation, we considered VOS and SWIM data in collocated points",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] radius of collocation (25 km) does not dramatically change this result",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "(0.59 and 0.77 for a 25 km radius)",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we have supplemented the performed validation of 2-year data with a comparison of the SWIM measurements and climatological VOS statistics for 40 years (1982–2021)",
+   "page": "12"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "The SWIM data was carefully validated against ocean buoy measurements (Jiang et al., 2021)",
+   "page": "2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Similar tendencies were also revealed when comparing VOS observations with other satellite missions",
+   "page": "8"
+  }
+ ]
+}

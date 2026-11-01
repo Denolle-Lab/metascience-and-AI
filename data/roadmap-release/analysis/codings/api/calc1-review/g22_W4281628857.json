@@ -1,0 +1,702 @@
+{
+ "key": "g22_W4281628857",
+ "doi": "10.5194/hess-26-2779-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Kiewiet et al. 2022, Hydrol. Earth Syst. Sci. 26, 2779-2796 (published PDF)",
+  "Publisher XML full text with section and paragraph locators (jats_text)",
+  "Open discussion of preprint hess-2021-362 (RC1, AC1, RC2, AC2 with supplements)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page; review steps cite the review record's own locators ([ID ¶n], [ID-S p.n])",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the overarching goal of this work is to improve our understanding of discharge responses to year-to-year variations in precipitation phase and magnitude",
+  "page": "§1 ¶6"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (publisher XML text, PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "The authors take from the literature the expectation that a lower snowfall fraction decreases stream discharge (Berghuijs et al., 2014), and note that the western US record has not yet borne it out.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "a decrease in the fraction of precipitation falling as snow (snowfall fraction hereinafter) is expected to decrease stream discharge (Berghuijs et al., 2014)"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose three research questions: how SWI varies in space and time between wet, dry, rainy and snowy years; how discharge responds to it; and whether discharge tracks yearly snowfall fraction.",
+     "page": "§1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Are variations in stream discharge related to variations in yearly snowfall fractions?"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "They use the hourly hydrometeorological, snow depth and weir discharge record from 11 Johnston Draw stations, published earlier by co-author Godsey and colleagues (2018a).",
+     "page": "§3.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We used hourly hydrometeorological data recorded at 11 weather stations throughout the catchment"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "They compute a 1 m lidar snow depth map from a 2007 snow-off flight and an 18 March 2009 snow-on flight, with about 14 cm uncertainty, and exclude negative pixels.",
+     "page": "§3.2 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "a 1 m resolution snow depth product was calculated as the difference between a snow-off lidar flight"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They check lidar snow depths against station snow depths: lidar reads higher, but the two agree linearly (r2 = 0.88, Fig. S1).",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "resulting in a strong linear relation between the two individual sets of snow depth measurements"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build a 3 m snow-covered-area product from 41 PlanetScope images of WY2019, using a principal component layer, manually trained maximum likelihood classification and a shaded-snow class, chosen over coarser Landsat or MODIS products.",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the Maximum Likelihood Classification tool in ArcMap (Esri Inc., 2020) to identify the SCA"
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "They determine snowpack melt-out dates for 2016-2019 by visual review of the imagery, with an estimated error of about 2 d.",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also used the surface reflectance imagery to determine the melt-out date of the snowpack"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They force AWSM (SMRF distribution plus the iSnobal energy balance) with station data to estimate hourly 10 m precipitation phase, snowpack and SWI, excluding the undercatching jd124 gauge; SWI on snow-free pixels counts as rain and on snow-covered pixels as snowmelt (Sect. 3.4).",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used the Automated Water Supply Model (AWSM; Havens et al., 2020) to obtain spatially continuous estimates"
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "observation",
+     "action": "They select naturally contrasting water years from the 11-year record (rainy 2005, snowy 2010, wet 2011, dry 2014) plus lidar year 2009, preferring later years with more stations.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these strongly contrasting years were selected from 11 potential years of record"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They rescale snowfall with the 2009 lidar snow distribution for all years, following Vögeli et al. (2016) and Trujillo et al. (2019), to represent wind redistribution.",
+     "page": "§3.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used the spatial distribution of snow depth from the 2009 survey around peak snow accumulation to inform the snowfall rescaling to all years"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the premise of interannual consistency in snow distribution, which the rescaling needs, by comparing the 2009 lidar pattern with the 2019 satellite snow cover.",
+     "page": "§3.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "verification of the interannual consistency in the snow distribution in this catchment by comparing the lidar snow depth and the satellite imagery"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "regularities",
+     "action": "They design the comparison of precipitation and SWI metrics with annual discharge and stream dry-out date: seasonal definitions, SWI before dry-out, no lags, a flashiness index, and a 40% SCA melt-rate threshold.",
+     "page": "§3.6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The phase and magnitude of precipitation and the magnitude and temporal distribution of SWI were compared to annual discharge and the stream dry-out date"
+    },
+    {
+     "n": 13,
+     "node": "O",
+     "mode": "observation",
+     "action": "They describe the observed snowpack: an aspect contrast, wind scour at some stations, large drifts up to 5.3 m in the western parts, and consistent southwesterly storm winds.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Large snowdrifts formed in some western parts of the watershed, up to a maximum depth of 5.3 m"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They evaluate the model against lidar snow depth (r2 = 0.88), against the independent 2019 satellite snow cover, and against station snow depths over five years (median NSE 0.22-0.86; NSEnorm 0.65-0.94).",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Simulated snow depths on the day of the lidar survey agreed well with the lidar snow depth"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They report the estimated SWI fields: a consistent spatial pattern dominated by drifts and northeast aspects, and a seasonal timing that differs between years, with snowy 2010 the least variable.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The spatial pattern of SWI was similar for all years, with the highest SWI occurring in the snowdrifts"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They compare SWI with discharge: low response early in the water year, about twice the discharge in 2010 as in 2005 at similar SWI, no relation with snowfall fraction, and a strong relation with jd125 precipitation over 2004-2014 (r2 = 0.83).",
+     "page": "§4.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there was no relation between annual discharge and the annual snowfall fraction"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "regularities",
+     "action": "In the supplement (Fig. S14), they compare station jd125 precipitation with simulated catchment-mean precipitation to support using the station record.",
+     "page": "Figure 6 (p. 2790)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "see Fig. S14 in the Supplement for a comparison with simulated mean catchment precipitation"
+    },
+    {
+     "n": 18,
+     "node": "X",
+     "mode": "regularities",
+     "action": "They test a storage memory effect by adding the previous year's precipitation; the correlation drops, so they judge memory small, consistent with frequent drying and high evapotranspiration.",
+     "page": "§4.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This indicates that any memory effect is likely to be small in this catchment."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They correlate many precipitation and snowpack metrics with annual discharge and dry-out date (Fig. 7, α = 0.1): precipitation totals, spring snowfall and melt-out date are significant; snowfall fraction is not.",
+     "page": "§4.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "No significant correlation was found between the annual, winter, and spring snowfall fraction and annual discharge and the stream dry-out date"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set drift SWI and SWE shares against Reynolds Mountain East (Marks et al., 2002) and Upper Sheep Creek (Chauvin et al., 2011): drifts are proportionally more important in the rain–snow zone.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "they were proportionally even more important in the rain–snow transition zone"
+    },
+    {
+     "n": 21,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "They propose explanations without testing them: persistent drifts sustain streamflow, given the dry-out versus melt-out correlation, and steadier snowmelt inputs and deeper flow paths explain the 2010 versus 2005 difference and flow lasting 59 d after melt-out.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The steadier water inputs in the snowmelt period might explain why annual discharge in snowy 2010 was double that of rainy 2005"
+    },
+    {
+     "n": 22,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "They reject, for this catchment, the hypothesis that snowfall fraction controls annual discharge or dry-out date, and qualify Berghuijs et al. (2014) by catchment size and humidity.",
+     "page": "§5.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In contrast with our hypothesis and what has been suggested in the literature"
+    },
+    {
+     "n": 23,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the result beside Bilish et al. (2020) in the Australian Alps and Dry Creek observations (personal communication; McNamara et al., 2005), which report similar absences of a snowfall fraction control.",
+     "page": "§5.2 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Bilish et al. (2020) similarly found that streamflow was not correlated with the snowfall fraction"
+    },
+    {
+     "n": 24,
+     "node": "P",
+     "mode": "methods",
+     "action": "To explain poor snow depth fits in 2011 and at some stations, they invoke auxiliaries (higher snow density and lower wind giving less redistribution than the 2009-based rescaling, precipitation-phase errors, footprint mismatch, depth versus SWE) rather than revising the SWI claims.",
+     "page": "§5.3 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "might have led to less wind redistribution of snow in that year and correspondingly resulted in underpredictions of snow depths"
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "regularities",
+     "action": "They keep the conclusions: consistent drift-driven SWI heterogeneity; discharge insensitive to snowfall fraction and dependent on total and spring precipitation; dry-out tied to snowpack melt-out.",
+     "page": "§6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Over the 2004–2014 data record, annual discharge was insensitive to snowfall fraction and depended more on total and spring precipitation."
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion of hess-2021-362 (RC1, AC1, RC2, AC2 and supplements)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Referee 1 asked for the novelty and research gap to be stated; the authors added a justification after the research questions (rain–snow zone, hourly 10 m SWI, SWI rather than SWE).",
+     "page": "RC1 ¶6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "the novelty of the study should be better described"
+    },
+    {
+     "n": 2,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 1 asked how iSnobal computes snowmelt, rain-on-snow, refreezing, sublimation and interception; the authors added Sect. 3.4 describing the SWI calculation.",
+     "page": "RC1 ¶7",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "it would be good to provide the reader with more specific information about generating snowmelt runoff"
+    },
+    {
+     "n": 3,
+     "node": "P",
+     "mode": "methods",
+     "action": "Asked about the single lidar survey and poor 2011 performance, the authors computed event wind speeds, directions and snow densities per year (Table S12) and attributed the 2011 misfit to less redistribution.",
+     "page": "AC1-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "we now calculated the average wind directions, wind speeds and snow densities for all events during which the snowfall fraction was higher than 0.2"
+    },
+    {
+     "n": 4,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Referee 1 suggested more snow metrics in a correlation heat map; the authors added the Fig. 7 heat plot with seasonal snowfall, melt rate, SCA duration and flashiness.",
+     "page": "AC1-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Including several metrics might indeed be efficiently shown in a heat map"
+    },
+    {
+     "n": 5,
+     "node": "X",
+     "mode": "regularities",
+     "action": "Referee 1 asked for more on the memory effect; the authors extended the text on frequent drying and evapotranspiration limiting shallow storage memory.",
+     "page": "AC1-S p.7",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We appreciate this suggestion and will include more information about the (lack of) memory effect we found in Johnston Draw."
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Referee 1 suggested SWI before the dry-out date instead of annual SWI; the authors adopted the metric (in Fig. 7), noting that the conclusions did not change.",
+     "page": "AC1-S p.8",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We will adapt the metric in the revised manuscript."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Referee 1 asked why station rather than catchment-mean precipitation was used; the authors showed the two are linearly related (R2 0.93) and added Fig. S14.",
+     "page": "AC1-S p.9",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Catchment-average precipitation for the years that we did model was linearly related (R2: 0.93) to the precipitation at jdt125"
+    },
+    {
+     "n": 8,
+     "node": "F",
+     "mode": "observation",
+     "action": "Referee 2 asked why only four years were analysed and suggested more; the authors kept four, citing the modelling effort.",
+     "page": "AC2-S p.3",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We selected four years because setting up and running the model was a non-trivial task."
+    },
+    {
+     "n": 9,
+     "node": "F",
+     "mode": "observation",
+     "action": "The authors added the year-selection rationale and each year's deviation from the 2004-2014 mean (Table S3, Fig. S4, Sect. 3.3).",
+     "page": "AC2-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We will describe this rationale in the revised manuscript, and highlight how the selected years differed from the long-term average"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Referee 2 spotted implausible SWIsnow and SWIrain values in Table 1; the authors acknowledged that the values were swapped and corrected the table.",
+     "page": "AC2-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Thank you for pointing out the mistake in Table 1."
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Referee 2 asked about separate spatial distributions of rainfall and snowmelt; the authors declined to simulate the snowpack with and without wind redistribution.",
+     "page": "AC2-S p.7",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "we think this is outside of the scope of the manuscript presented here"
+    },
+    {
+     "n": 12,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Referee 2 asked whether increased evapotranspiration drove the streamflow trends; the authors added a Seyfried et al. (2011) based argument to Sect. 2 that plant water use is unlikely to be responsible.",
+     "page": "AC2-S p.7",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "we suspect that it might not strongly affect stream discharge in this region"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Referee 2 asked for evapotranspiration estimates; the authors did not estimate them but added Upper Sheep Creek evapotranspiration figures from the literature.",
+     "page": "AC2-S p.8",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "we will include the information about Upper Sheep Creek in the discussion"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Prompted by Referee 2, the authors correlated runoff efficiency with annual and seasonal air temperature and added the result to Sect. 5.2 (Figs. S10, S11).",
+     "page": "AC2-S p.9",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Plotting runoff efficiency as discharge/precipitation vs. mean air temperature shows that they are weakly and not significantly correlated"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Referee 2 suggested also stressing total water input; the authors added the importance of precipitation magnitude to the kept conclusions and abstract.",
+     "page": "AC2-S p.10",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "we agree that this can be added as a conclusion"
+    },
+    {
+     "n": 16,
+     "node": "P",
+     "mode": "methods",
+     "action": "Referee 2 queried the mismatch between simulated (2009) and satellite (2019) snow cover in Fig. 2e; the authors attributed it to a temperature difference between the years, added in Sect. 3.2.",
+     "page": "AC2-S p.12",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "This difference might be due to a small difference in the mean annual air temperature"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Spatially heterogeneous SWI and discharge response to varying precipitation phase in a rain–snow transition catchment",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; SWI is latent and inferred with iSnobal/AWSM",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Relate discharge and dry-out date to SWI timing and snowfall fraction",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "4",
+   "answer": "Snowfall fraction vs total and spring precipitation vs storage memory",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly; rivals predict different correlations across years",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "6",
+   "answer": "Found; naturally contrasting water years selected from the record",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 11 years (2004-2014) of natural variation",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Model checked against lidar, satellite SCA and station depths; station vs catchment precipitation compared",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Snowfall fraction not correlated; total and spring precipitation and melt-out date are",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "9",
+   "answer": "Yes, with added heat plot, wind and density analysis, and year-selection rationale",
+   "mode_called": "robustness"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "regularity_in_range",
+  "claim": "In the 1.8 km2 Johnston Draw catchment over 2004-2014, annual discharge and stream dry-out were insensitive to snowfall fraction and depended on total and spring precipitation; dry-out also tracked the melt-out of persistent snowdrifts.",
+  "page": "§6 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "regularities",
+  "sentence": "Correlating annual discharge and dry-out date with precipitation, snowfall fraction and snowpack metrics over the multi-year record (Fig. 7) produces the headline claim.",
+  "page": "§4.4 ¶3"
+ },
+ "composition": "natures_repetition",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Years were chosen for contrasting snowfall fraction and precipitation (§3.3 ¶2), so the snowfall fraction question shaped which years were simulated, though the station data predate the study. The snowfall fraction hypothesis could have been supported by the correlations but was not (§5.2 ¶2); the test is weak (n = 11, α = 0.1, n = 5-9 for some metrics). The hypothesis is named only in the Discussion, and no analysis plan or threshold is shown as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "principal component analysis to condense four spectral bands (RStoolbox)",
+   "kind": "method",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "statistics / pattern recognition",
+   "item": "supervised maximum likelihood classification of snow-covered area",
+   "kind": "method",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "optics / surveying engineering",
+   "item": "airborne lidar differencing for snow depth",
+   "kind": "instrument",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "field": "commercial satellite industry",
+   "item": "PlanetScope 3 m four-band imagery (Planet API)",
+   "kind": "data",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "field": "statistics",
+   "item": "Pearson correlation heat map with α = 0.1",
+   "kind": "method",
+   "page": "Figure 7"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "[...] in snowfall fractions in the rain–snow transition zone contrasts [...] studies on snow-related processes that focus on seasonally snow-covered catchments.",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "[...] of snowmelt runoff examine seasonal responses at the landscape scale, here we focus on hourly responses at a fine spatial resolution.",
+   "page": "§1 ¶6"
+  },
+  {
+   "quote": "Our method differs from other satellite-derived snow products that combine both visible and infrared light",
+   "page": "§3.2 ¶2"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: (1) the consistent drift-dominated spatial SWI pattern is an estimate without stated uncertainty, closest to estimate_with_resolution but with no resolution given. The paper concedes that interannual spatial consistency is predetermined by rescaling every year with the 2009 lidar (§5.1 ¶1), so the cross-year similarity is partly built in. (2) That persistent snowdrifts sustain streamflow is a best_explanation from a correlation with n = 9 that mixes simulated and satellite melt-out dates; the mechanism is untested (§5.1 ¶2). (3) That deeper flow paths and steadier snowmelt explain the 2010 vs 2005 difference is a best_explanation without a test (§5.2 ¶1). Process limits: the lidar used to rescale snowfall is also the validation target (r2 = 0.88), so that check is not independent (inference). The 'hypothesis' rejected in §5.2 ¶2 is not stated in the Introduction, so its prior status cannot be verified. Inconsistencies in the text: drifts receive 'up to 6 times' (abstract, conclusions) vs 'up to 7 times' (§5.1 ¶1) vs 1.7-2.7 times (SWI98, §4.3 ¶1); SWIavg 2005 is 573 mm in §5.1 ¶1 vs 557 mm in Table 1; §4.4 ¶2 lists 553 and 557 mm in the reverse order to Table 1; negative r2 values are reported (§5.2 ¶1). AC2 (p.12) gives 2009 at 8.0 °C and 2019 at 6.7 °C, whereas §3.2 ¶2 gives the reverse (inference: one is a transposition). The Table 1 SWIsnow/SWIrain swap flagged in review was corrected. Some promised review additions do not appear in the final text, such as how poorly simulated years could bias the melt-out vs dry-out relation (AC2 p.11). Subsurface flow and discharge generation were neither measured nor modelled.",
+ "disagreements": [
+  {
+   "target": "Berghuijs et al. (2014): a shift from snow to rain decreases streamflow (420 US catchments, Budyko framework)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "In the 2004-2014 Johnston Draw record, neither annual discharge nor dry-out date correlated with snowfall fraction; the authors suggest the control may hold in larger or more humid catchments.",
+   "page": "§5.2 ¶2",
+   "quote": "In contrast with our hypothesis and what has been suggested in the literature"
+  },
+  {
+   "target": "Common use of SWE as the summarizing winter-precipitation variable in precipitation-discharge comparisons",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that SWI is more directly related to the timing and amount of water inputs and model it at hourly 10 m resolution.",
+   "page": "§1 ¶6",
+   "quote": "SWI is more directly related to the timing and amount of water resources"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "F",
+   "chosen": "Water years 2005, 2010, 2011, 2014 (plus 2009 for lidar)",
+   "alternatives": "Other years among 11 potential years of record",
+   "reason": "Strongly contrasting snowfall fraction and precipitation; later years had more stations for forcing and validation",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Precipitation from jd125, jd124b, jd144 and jd153",
+   "alternatives": "Including the wind-exposed jd124 gauge",
+   "reason": "Precipitation undercatch at jd124",
+   "effect_reported": "no",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "3 m PlanetScope visible-band maximum likelihood classification",
+   "alternatives": "Visible plus infrared snow products; Landsat 8 (30 m); MODIS (500 m)",
+   "reason": "Higher resolution needed to capture small snowdrifts",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Snowfall rescaled with the 2009 lidar distribution for all years",
+   "alternatives": "Year-specific snow distributions (implied, unavailable)",
+   "reason": "Interannual consistency of snow patterns, verified against satellite imagery",
+   "effect_reported": "no",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Comparison of SWI and discharge without lags",
+   "alternatives": "Lagged comparison (implied)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§3.6 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "40% snow-cover threshold for melt rate",
+   "alternatives": "Other thresholds (not named)",
+   "reason": "Gives an approximately linear melt rate for all years",
+   "effect_reported": "no",
+   "page": "§3.6 ¶1"
+  },
+  {
+   "node": "C",
+   "chosen": "Station jd125 precipitation",
+   "alternatives": "Simulated catchment-mean precipitation (Fig. S14)",
+   "reason": "Allows inclusion of additional years for which SWI was not simulated",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "node": "X",
+   "chosen": "Same-year precipitation as predictor of annual discharge",
+   "alternatives": "Same-year precipitation plus 0.5 times previous-year precipitation",
+   "reason": "Correlation decreased with the previous year included",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "Model evaluation with snow depth",
+   "alternatives": "Evaluation with SWE",
+   "reason": "Snow depth measurements were available and SWE measurements were not",
+   "effect_reported": "no",
+   "page": "§5.3 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "resulting in a strong linear relation between the two individual sets of snow depth measurements",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "verification of the interannual consistency in the snow distribution in this catchment by comparing the lidar snow depth and the satellite imagery",
+   "page": "§3.3 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Simulated snow depths on the day of the lidar survey agreed well with the lidar snow depth",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "there was a strong agreement between the simulated snow-covered area for 2009 (Fig. 2e) and the snow-covered area determined from satellite imagery for 2019",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The median NSE for the hourly simulated snow depths compared to observations at the weather stations ranged from 0.22 (wet 2011) to 0.86 (snowy 2010)",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "see Fig. S14 in the Supplement for a comparison with simulated mean catchment precipitation",
+   "page": "Figure 6"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "Bilish et al. (2020) similarly found that streamflow was not correlated with the snowfall fraction for a small catchment",
+   "page": "§5.2 ¶3"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "the snowfall fraction was not related to annual discharge for a small sub-catchment at the rain–snow transition zone",
+   "page": "§5.2 ¶3"
+  }
+ ]
+}

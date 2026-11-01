@@ -1,0 +1,468 @@
+{
+ "key": "g22_W4225524231",
+ "doi": "10.1007/s11001-022-09475-z",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4225524231.pdf (published paper, Marine Geophysical Research 43:11)",
+  "g22_W4225524231.xml.txt (publisher XML converted to located text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the PDF page counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it is necessary to implement modelling approaches that can produce large-scale geologically representative models using sparse data",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4225524231.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the need for a shelf-scale 3D model of flow-property heterogeneity for offshore freshened groundwater studies built from sparse data.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is necessary to implement modelling approaches that can produce large-scale geologically representative models using sparse data"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "Take the wave-dominated characterization of the New Jersey margin and its shore-parallel depocentres from earlier studies (Pekar, Proust, Monteverde).",
+     "page": "§2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The isopachs show evidence of nearly linear shoreline-parallel depositional centres indicative of along-shore sediment re-working by wave activity."
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Postulate that porosity has longer correlation lengths along strike (along-shore) than down dip.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we postulate that the porosity distribution would also display similar geometric trend, with longer correlation lengths in the strike direction"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "Use existing core porosity from IODP Expedition 313 wells M27, M28 and M29 and legacy 2D seismic surveys Oc270 and CH0698.",
+     "page": "§3.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The primary porosity data for the model was obtained from three boreholes M27, M28 and M29"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Use the depth-migrated seismic profiles and tomographic velocity model from the group's earlier work (Riedel et al. 2018, co-author Reiche).",
+     "page": "§3.1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The interval velocity model used for depth migration was computed by several iterations of geologically-constrained reflection tomography"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "reconstruction",
+     "action": "Interpret seven sequence boundaries on the 2D depth profiles, interpolate the surfaces in Petrel and build an implicit 3D structural model in GemPy (500 m x 500 m x 20 m).",
+     "page": "§3.2 ¶1–¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We performed a sequence stratigraphic seismic interpretation on 2D depth migrated seismic profiles."
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit an exponential compaction trend and a linear offshore porosity trend, normal-score transform the residuals, and fit Gaussian, spherical and exponential vertical variograms to M28 data.",
+     "page": "§3.3.1 ¶1–§3.3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two trends were detected: (a) A vertical compaction trend modelled using an exponential regression and (b) a trend of increasing average porosity"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the premise that a relative acoustic-impedance attribute tracks porosity by Spearman rank correlation of grayscale pixel amplitude with core porosity at the three wells.",
+     "page": "§3.3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The absolute values range between 0.41 to 0.47, which can be ranked as a moderate correlation in stochastic reservoir modeling applications"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Randomly sample the attribute per sequence and scan rotation angles in directional variograms on one dip and one strike line to estimate horizontal correlation lengths and anisotropy.",
+     "page": "§3.3.3 ¶3–¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a rotational dip angle (compare Fig. 7) of highest continuity was determined per sequence by iteratively computing directional variograms"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Generate conditioned Gaussian random fields per sequence with the Randomization method in GSTools, back-transform them and restore the trends to give a porosity realization.",
+     "page": "§3.3.4 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the de-trended and normal-score transformed porosity data from wells M27, M28 and M29 was used as conditioning data to constrain random field realizations"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "estimation",
+     "action": "Design a blind test in which M28 is left out of the conditioning data, to assess predictive capability.",
+     "page": "§3.3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "M28 was chosen as the blind well."
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fit a log-linear porosity–permeability regression to ten published core measurements (Lofi et al. 2013), with r2 = 0.71, to convert porosity to permeability.",
+     "page": "§3.3.5 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this study, we use the following linear regression to determine a relationship between porosity"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "reconstruction",
+     "action": "Compare the isopach (true stratigraphic thickness) maps of the structural model with the wave-dominated depositional model.",
+     "page": "§4.1 ¶2; Fig. 10 (p. 11)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These maps are consistent with wave-dominated system, in which sediments were laterally redistributed toward the South-West as the delta prograded across the shelf."
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Where horizontal variograms failed (m1, low signal-to-noise; m5, too few point pairs), assign the underlying sequence's correlation length and set beta to 0.",
+     "page": "§4.2 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "A robust variogram could not be estimated for sequence m1, due to a low signal-to-noise ratio of the seismic data."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare along-shore with down-dip correlation lengths across the sequences to test the postulated anisotropy.",
+     "page": "§4.2 ¶4; Table 2 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Along-shore correlation lengths are consistently higher than the dip direction, with a range between 3076 m and 7426 m."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the modelled porosity range with field measurements, and compare the fully conditioned and blind (M28 withheld) realizations with measured porosity at the wells.",
+     "page": "§4.3 ¶1–¶2; Fig. 13 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This shows that both the blind and fully conditioned models capture the overall trend of the porosity at the well locations."
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Check the converted permeability range and low-permeability features against expected values and field observations from earlier studies.",
+     "page": "§4.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This fits the range of expected permeability values for the New Jersey shelf facies"
+    },
+    {
+     "n": 18,
+     "node": "P",
+     "mode": "methods",
+     "action": "Keep the attribute–porosity auxiliary despite the moderate correlations, citing a comparable carbonate case (Coburn et al.) and using the attribute only for variogram properties.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, we tolerate the moderate correlation coefficient values observed between core-sampled porosity values and the relative acoustic impedance attribute"
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the elongated along-shore anisotropy as consistent with a wave-dominated setting, noting anisotropy ratios within the expected deltaic range (about 100:1).",
+     "page": "§5.2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests elongated reservoir units, consistent with a wave-dominated depositional environment."
+    },
+    {
+     "n": 20,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that the integrated workflow gives a geologically representative 3D heterogeneity model and that the attribute approach effectively overcomes sparse data.",
+     "page": "§6 ¶1–¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "results in a geologically representative model that captures the heterogeneity of the shelf sediments in 3D, despite the limited well log data available"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "3D heterogeneity of flow properties hosting offshore freshened groundwater, New Jersey shelf; phenomenon established by others",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "No; porosity known only at three wells, lateral structure inferred from a seismic attribute proxy",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build and characterize a stochastic 3D porosity/permeability modelling workflow",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rivals; one postulate (longer along-shore correlation lengths)",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct rival predictions; only the expected direction of anisotropy",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: legacy IODP 313 cores and 1995/1998 seismic surveys recording past deposition",
+   "mode_called": "reconstruction"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: one blind-well test and range checks; no sensitivity analysis, single realization",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: workflow and model judged geologically representative",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "An open-source workflow combining seismic sequence stratigraphy, a seismic-attribute variogram analysis and conditioned Gaussian fields gives a geologically representative 3D porosity/permeability model of the New Jersey shelf despite sparse well data.",
+  "page": "§6 ¶1–¶2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Estimating horizontal correlation lengths and rotation angles from directional variograms of the relative acoustic-impedance attribute supplies the lateral structure that three wells cannot give; without it there is no 3D anisotropic model.",
+  "page": "§3.3.3 ¶4; §4.2 ¶4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data are legacy (IODP 313 cores, 1995/1998 seismic, Lofi et al. 2013 permeabilities), so no hypothesis directed acquisition; the wave-dominated prior did direct the strike/dip variogram design (§2 ¶2, §3.3.3 ¶1). The along-shore anisotropy postulate could have failed in Table 2, and the M28 blind test could have failed, but both are judged qualitatively (§4.3 ¶2, §5.3 ¶1). Nothing is reported as fixed before the data were seen; the point-pair threshold was set by visual inspection of the variograms (§5.2 ¶6)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Spearman's rank correlation coefficient",
+   "kind": "method",
+   "page": "§3.3.3 ¶2"
+  },
+  {
+   "field": "image processing / computer science",
+   "item": "Luminosity RGB-to-grayscale conversion to digitize attribute sections",
+   "kind": "method",
+   "page": "§3.3.3 ¶2"
+  },
+  {
+   "field": "computational physics / applied mathematics",
+   "item": "Randomization method for Gaussian random field generation (Kramer et al. 2007; GSTools)",
+   "kind": "method",
+   "page": "§3.3.4 ¶1"
+  },
+  {
+   "field": "petroleum reservoir engineering",
+   "item": "Wave-dominated reservoirs having high lateral continuity along strike",
+   "kind": "concept",
+   "page": "§2 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This study presents an innovative workflow for characterizing the 3D heterogeneity of flow properties on the New Jersey shelf",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "Checks are qualitative: one stochastic realization is shown, the blind test withholds a single well (M28), and the authors state that a quantitative assessment would need flow simulation (§5.3 ¶1). No sensitivity analysis of the variogram parameters is done (§5.2 ¶6). Away from the wells the model cannot be cross-checked (§5.3 ¶2). The attribute–porosity correlation is moderate, and its sign differs between wells: it is negative at M27, given as -0.41 in the Fig. 6 caption and -0.40 on the plot (p. 7); the paper uses absolute values without discussing the sign (inference). Internal inconsistencies: §3 ¶1 names Sequential Gaussian Simulation while §3.3.4 uses the Randomization method; the text gives log(k)=3.5+9.3φ while the Fig. 8 legend shows -3.5 (p. 9); §5.3 ¶2 gives permeability as 10^12–10^18 m2, apparently sign-dropped relative to §4.4 ¶1; §4.1 ¶2 cites Fig. 4 for line Oc270.529, which appears in Fig. 3. The acknowledgements mention anonymous reviewers, but no review file was supplied, so there is no review sequence. Sub-claim statuses: along-shore anisotropy consistent with a wave-dominated setting, best_explanation (no rival tested); vertical correlation range of 14 m and horizontal correlation lengths, estimate_with_resolution but without uncertainty bounds; porosity–permeability relation, regularity_in_range (ten mostly sandy samples, r2 = 0.71).",
+ "disagreements": [
+  {
+   "target": "2D models widely used for offshore fresh groundwater systems (Thomas et al. 2019; Person et al. 2003; Marksamer et al. [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites Siegel et al. (2014) and new parallel computing to argue that 3D models capture factors 2D models miss; this study's own 3D model is offered as the response.",
+   "page": "§1 ¶2",
+   "quote": "However, 3D models can account for additional factors influencing freshwater distribution, such as seafloor topography"
+  },
+  {
+   "target": "Applications that rely on very strong attribute–well correlations to invert attribute amplitude directly to porosity",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues that moderate correlations suffice when the attribute is used only to derive variogram properties, citing Coburn et al. (2006), where correlations of 0.41–0.43 were used.",
+   "page": "§5 ¶2",
+   "quote": "Some applications rely on very strong correlation between attributes and well log data to directly invert attribute amplitude to obtain porosity."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Exponential vertical variogram model with nugget",
+   "alternatives": "Gaussian and spherical models",
+   "reason": "Best coefficient of determination (r2 0.32 vs 0.29 and 0.23)",
+   "effect_reported": "yes",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Single vertical variogram from well M28 for all sequences",
+   "alternatives": "Using the other wells (M27, M29), implied",
+   "reason": "M28's position penetrates topsets, bottomsets and rollover sediments",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Dip line OC270.529 and strike line CH068.22 for horizontal variograms",
+   "alternatives": "Other seismic lines in the domain (implied)",
+   "reason": "Central location in the model domain and proximity to the IODP wells",
+   "effect_reported": "no",
+   "page": "§3.3.3 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "A single rotational angle per direction per sequence (linear approximation of the clinoforms)",
+   "alternatives": "Locally varying anisotropy, spatial transformation, non-Euclidean distance approaches, cross-well variograms",
+   "reason": "Very low dip angle of the shelf; cross-well variograms would need more borehole data and detailed manual interpretation",
+   "effect_reported": "no",
+   "page": "§5.2 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Simple exponential variogram with nugget for all directions",
+   "alternatives": "Nested directional structures such as a hole-effect model",
+   "reason": "Avoid over-fitting to a small part of the domain; more data or expert knowledge would be needed",
+   "effect_reported": "no",
+   "page": "§5.2 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "Attribute variograms as secondary data",
+   "alternatives": "Cokriging or collocated cokriging",
+   "reason": "Secondary data are available only along a few seismic sections",
+   "effect_reported": "no",
+   "page": "§5.2 ¶6"
+  },
+  {
+   "node": "I",
+   "chosen": "Attribute used only to derive variogram properties",
+   "alternatives": "Direct inversion of attribute amplitude to porosity",
+   "reason": "Only moderate correlation between attribute and porosity",
+   "effect_reported": "no",
+   "page": "§5 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "Variogram parameters taken from literature suggestions",
+   "alternatives": "Sensitivity analysis (left to further studies)",
+   "reason": "Literature suggestions (Deutsch and Pyrcz; Gringarten and Deutsch)",
+   "effect_reported": "no",
+   "page": "§5.2 ¶6"
+  },
+  {
+   "node": "I",
+   "chosen": "Randomization method for random field generation",
+   "alternatives": "Other random field generation methods",
+   "reason": "Quality proven in theoretical comparisons; suited to reproducing small-scale variability",
+   "effect_reported": "no",
+   "page": "§5.2 ¶7"
+  },
+  {
+   "node": "I",
+   "chosen": "Linear log-permeability vs porosity regression",
+   "alternatives": "Grain-size based models such as Kozeny-Carman",
+   "reason": "Only ten laboratory measurements, mostly in sandy samples",
+   "effect_reported": "no",
+   "page": "§5.3 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The absolute values range between 0.41 to 0.47, which can be ranked as a moderate correlation in stochastic reservoir modeling applications",
+   "page": "§3.3.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "It features a range of 14 m, reasonably corresponding to the thickness of lithologic units described based on core sample analysis",
+   "page": "§4.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we generated a realization in which only two of the three wells were assigned as conditioning data",
+   "page": "§3.3.4 ¶1; §4.3 ¶2; Fig. 13 (p. 13)"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The range of porosity values captured in the stochastic model is consistent with the values that have been observed in the field measurements.",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This fits the range of expected permeability values for the New Jersey shelf facies",
+   "page": "§4.4 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The resulting anisotropy ratios between the two horizontal- and the vertical directional variogram are within the expected range for deltaic environments",
+   "page": "§5.2 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "The predicted depths deviated within 5 m of the true core depth reported in IODP Expedition 313 wells M27, M28 and M29.",
+   "page": "§3.2 ¶2"
+  }
+ ]
+}

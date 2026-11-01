@@ -1,0 +1,346 @@
+{
+ "_provenance": {
+  "script": "g14_papers_vs_agents.py",
+  "commit": "f155302",
+  "date": "2026-10-27",
+  "private_root": "private",
+  "inputs": [
+   "private/analysis/codings/api/calc1",
+   "private/analysis/reliability/codings/agents/opus-b",
+   "private/analysis/reliability/codings/agents/sonnet-c"
+  ],
+  "params": {
+   "bootstrap": 2000,
+   "seed": 2026,
+   "agent_node_mark": "full"
+  }
+ },
+ "data": {
+  "n_papers": 374,
+  "n_agents": 31,
+  "agent_coders": [
+   "opus-b",
+   "sonnet-c"
+  ],
+  "loop_codebook_versions": [
+   "0.1.2"
+  ],
+  "distinct_nodes_median": {
+   "papers": [
+    10,
+    10,
+    11
+   ],
+   "agents": [
+    3.5,
+    2.0,
+    4.5
+   ]
+  },
+  "node_use": {
+   "N": {
+    "name": "new capability",
+    "papers": [
+     0.54,
+     0.49,
+     0.59
+    ],
+    "agents": [
+     0.06,
+     0.0,
+     0.16
+    ]
+   },
+   "E": {
+    "name": "explore",
+    "papers": [
+     0.18,
+     0.14,
+     0.21
+    ],
+    "agents": [
+     0.05,
+     0.0,
+     0.13
+    ]
+   },
+   "O": {
+    "name": "observe",
+    "papers": [
+     0.93,
+     0.9,
+     0.95
+    ],
+    "agents": [
+     0.69,
+     0.53,
+     0.84
+    ]
+   },
+   "I": {
+    "name": "infer a latent quantity",
+    "papers": [
+     0.84,
+     0.8,
+     0.88
+    ],
+    "agents": [
+     0.05,
+     0.0,
+     0.13
+    ]
+   },
+   "Q": {
+    "name": "question",
+    "papers": [
+     0.98,
+     0.97,
+     0.99
+    ],
+    "agents": [
+     0.1,
+     0.02,
+     0.21
+    ]
+   },
+   "H": {
+    "name": "hypothesize rivals",
+    "papers": [
+     0.84,
+     0.8,
+     0.87
+    ],
+    "agents": [
+     0.06,
+     0.0,
+     0.16
+    ]
+   },
+   "S": {
+    "name": "simulate or derive",
+    "papers": [
+     0.66,
+     0.61,
+     0.71
+    ],
+    "agents": [
+     0.1,
+     0.02,
+     0.21
+    ]
+   },
+   "D": {
+    "name": "design the test",
+    "papers": [
+     0.65,
+     0.6,
+     0.7
+    ],
+    "agents": [
+     0.4,
+     0.24,
+     0.56
+    ]
+   },
+   "F": {
+    "name": "find or set conditions",
+    "papers": [
+     0.41,
+     0.36,
+     0.46
+    ],
+    "agents": [
+     0.21,
+     0.1,
+     0.32
+    ]
+   },
+   "C": {
+    "name": "compare",
+    "papers": [
+     0.99,
+     0.99,
+     1.0
+    ],
+    "agents": [
+     0.6,
+     0.44,
+     0.74
+    ]
+   },
+   "V": {
+    "name": "vary and replicate",
+    "papers": [
+     0.98,
+     0.96,
+     0.99
+    ],
+    "agents": [
+     0.1,
+     0.0,
+     0.23
+    ]
+   },
+   "X": {
+    "name": "exclude a rival",
+    "papers": [
+     0.51,
+     0.46,
+     0.56
+    ],
+    "agents": [
+     0.05,
+     0.0,
+     0.13
+    ]
+   },
+   "K": {
+    "name": "keep the claim",
+    "papers": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "agents": [
+     0.32,
+     0.18,
+     0.47
+    ]
+   },
+   "P": {
+    "name": "protect",
+    "papers": [
+     0.32,
+     0.28,
+     0.37
+    ],
+    "agents": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "R": {
+    "name": "refine",
+    "papers": [
+     0.55,
+     0.49,
+     0.6
+    ],
+    "agents": [
+     0.68,
+     0.53,
+     0.81
+    ]
+   }
+  },
+  "edges": {
+   "researcher_edges_in_10pct_of_papers": 55,
+   "of_those_run_by_any_agent": {
+    "opus-b": 31,
+    "sonnet-c": 23
+   },
+   "agent_edges_never_in_papers": {
+    "opus-b": [
+     "DR",
+     "RF"
+    ],
+    "sonnet-c": [
+     "DR",
+     "ER"
+    ]
+   },
+   "top_researcher_edges_no_agent_runs": [
+    [
+     "VC",
+     0.48
+    ],
+    [
+     "IV",
+     0.48
+    ],
+    [
+     "VI",
+     0.37
+    ],
+    [
+     "OV",
+     0.35
+    ],
+    [
+     "CI",
+     0.32
+    ],
+    [
+     "VO",
+     0.3
+    ],
+    [
+     "QN",
+     0.21
+    ],
+    [
+     "KC",
+     0.18
+    ],
+    [
+     "NV",
+     0.17
+    ],
+    [
+     "IO",
+     0.17
+    ]
+   ]
+  },
+  "v": {
+   "controls_count_full": {
+    "papers_full": [
+     0.98,
+     0.96,
+     0.99
+    ],
+    "papers_partial": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "agents_full": [
+     0.1,
+     0.0,
+     0.23
+    ]
+   },
+   "controls_count_partial": {
+    "papers_full": [
+     0.94,
+     0.91,
+     0.96
+    ],
+    "papers_partial": [
+     0.04,
+     0.02,
+     0.06
+    ],
+    "agents_full": [
+     0.05,
+     0.0,
+     0.13
+    ]
+   },
+   "triangulation": {
+    "papers": [
+     0.37,
+     0.32,
+     0.42
+    ],
+    "agents": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "note": "Each cell is [estimate, 2.5%, 97.5%] from 2000 bootstrap resamples of papers or of agent systems. Agent shares average the two blind coders."
+ }
+}

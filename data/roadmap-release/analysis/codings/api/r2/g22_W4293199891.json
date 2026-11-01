@@ -1,0 +1,413 @@
+{
+ "key": "g22_W4293199891",
+ "doi": "10.5194/hess-26-4379-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Meena et al. 2022, Hydrol. Earth Syst. Sci. 26, 4379-4390, published PDF (12 pages)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with the printed journal page of the PDF in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "Most of the time, RS cannot simulate spatio-temporal variability of rainfall like natural rainfall events",
+  "page": "§1 ¶5"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML with section and paragraph locators (jats_text)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Framed the gap from the literature: most hydrological experiments assume a stationary, instantaneous storm and so ignore storm movement, which may bias runoff peak estimates.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus, such hydrological studies ignore the effect of storm movement on catchment runoff response."
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "hypothesis",
+     "action": "Stated two qualitative expected behaviours as evaluation criteria for the simulator: a downstream-moving storm should give higher Qp and lower tp than an upstream-moving storm. Later text attributes the same result to de Lima and Singh (2003) and others.",
+     "page": "§1 ¶5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Time to peak ( t p ) of the downstream directional storm should be lower than the upstream directional storm"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Built the programmable moving-storm rainfall simulator. Components: a 3 m x 2 m frame with 11 full-cone nozzles in four clusters; servo-operated valves driven by an Arduino Mega through a Bluetooth module and an Android app; a PID-controlled bypass globe valve to hold constant line pressure; and a tiltable 2.5 m x 1.44 m soil flume with surface, subsurface and deep outlets (detail in §2.1 to §2.5, Tables 1, Figures 1 to 7).",
+     "page": "§2.2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These clusters were activated and deactivated with a specific time gap to simulate the moving storm over the plot area."
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Designed the test: 12 scenarios (2 slopes x 3 velocities x 2 directions), three replications each, on a fully saturated bed. Planned a multiple regression of tp and Qp on direction (indicator), velocity and slope, testing null coefficients at the 5 % level (§2.7 ¶2).",
+     "page": "§2.7 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Experiments were performed under fully saturated soil bed conditions to reduce the variability among scenarios and replications."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Checked rainfall uniformity with 66 beakers on a 250 mm grid (Christiansen UC, §2.6 ¶1), giving UC 84.2 % and edge deficits. Compared this with published simulators (UC 75 % to 94 %), and compared the 40 mm/h intensity with natural 5 min maxima in the Aglar watershed.",
+     "page": "§3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, the overall UC was found to be 84.2 %."
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "hypothesis",
+     "action": "Ran the moving-storm scenarios at 2.5 % slope. The 6 m/min velocity produced non-detectable runoff and was dropped from the results.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the velocity of 6 m min - 1 , non-detectable runoff was generated and, therefore, it was not included in the result."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Recorded overland-flow hydrographs at the flume outlet for 2 and 3 m/min storms moving in both directions at 2.5 % slope.",
+     "page": "Figure 10 (p. 4388)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Hydrograph for velocity 2 m min - 1 (a) and 3 m min - 1 (b) at 2.5 % slope."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compared the hydrographs with the expected behaviour: tp was shorter for the downstream-moving storm at both velocities. Explained this by runoff travelling with the storm toward the outlet.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "storm was less than the downstream to the upstream storm irrespective of their velocities"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Observed a 110 s longer recession for the upstream-moving storm at 2 m/min, a negligible difference at 3 m/min, and 150 s longer recession at 2 m/min than at 3 m/min for upstream storms. Noted the similarity with de Lima and Singh (2003).",
+     "page": "§3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "displays a 110 s longer recession time compared to the opposite storm movement especially during low storm velocity"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeated the scenarios at 5 % slope with 2, 3 and 6 m/min storms and found the same recession, tp and Qp trends as at 2.5 %.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "followed the same trend as the hydrographs generated at 2.5 % slope"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "Observed that at 6 m/min and 5 % slope the recession curve and Qp of the upstream and downstream storms coincided, with only tp differing slightly.",
+     "page": "§3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the recession curve and Q p of both hydrographs completely matched with each other"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compared scenario values (Table 3). Qp was 42.8 % to 59 % higher at 5 % than at 2.5 % slope and fell with storm velocity; discharge volume followed the same pattern (§3.2 ¶3).",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These analyses concluded that the Q p value increases significantly with an increase in soil flume slope and decreases with increased storm velocity."
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Set the results against published moving-storm experiments: smaller runoff at high velocity, no direction effect at high velocity, runoff rising with slope, and higher Qp for downstream storms (de Lima and Singh 2003; de Lima et al. 2011; Isidoro et al. 2012; Seo and Schmidt 2013). Reported agreement.",
+     "page": "§3.2 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "They concluded that the downstream storm produces higher Q p than the upstream directional storm."
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Fitted two multiple regression models (tp and Qp) on storm direction (indicator, upstream = 1), velocity and slope, giving coefficients with standard errors (Table 4).",
+     "page": "§3.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "multiple regression analysis was performed."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Tested the coefficients against the null of zero effect at the 5 % level. Direction raised tp by 10 s and lowered Qp by 0.00256 L/s, both significant; R2 was 0.89 and 0.94; the coefficient signs agreed with the empirical trends.",
+     "page": "§3.2 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These values are significant at 5 % level of significance, thus, providing a satisfactory hydrological verification for the moving storm rainfall simulator."
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "instruments",
+     "action": "Kept the claim that the simulator generates moving-storm conditions satisfactorily. Stated the limits: a single storm pattern, two slopes, two directions and three velocities.",
+     "page": "§3.2 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is evident that the tool could generate the moving storm condition satisfactorily"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Kept four hydrological conclusions: downstream storms give a higher, sharper peak and shorter recession; upstream storms give a lower peak and prolonged recession; the direction effect becomes negligible at high velocity; and steeper slope reduces the direction effect.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The hydrograph generated from the downstream moving storms yielded a higher peak with a sharp rise and short recession limb"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Storm movement direction and velocity alter runoff hydrographs; already reported in the literature",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Hydrographs are measured directly at the flume outlet, but only once a moving-storm simulator exists",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "3",
+   "answer": "Build a programmable simulator that reproduces moving storms and show that it works",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "4",
+   "answer": "No substantive rivals; only the regression null of no effect of direction, velocity or slope",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Expected direction effects (higher Qp, lower tp downstream) against the null of no effect",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in the laboratory: slope, storm velocity and direction on a saturated bed",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "7",
+   "answer": "Same trends at a second slope; three replications per scenario; agreement with published experiments",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Simulator judged to generate moving storms satisfactorily; direction coefficients significant at 5 %",
+   "mode_called": "instruments"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; review history not documented",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The programmable multi-nozzle simulator generates moving-storm rainfall (UC 84.2 %, 40 mm/h) that reproduces the expected hydrograph response: higher Qp and shorter tp for downstream-moving storms, significant at 5 %.",
+  "page": "§3.2 ¶8"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "instruments",
+  "sentence": "Without the automated, sequentially switched nozzle clusters and constant-pressure control there would be no moving-storm experiments to evaluate.",
+  "page": "§2.2.1 ¶2"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the two expected behaviours (§1 ¶5) shaped the upstream/downstream scenario design, but the data were collected to show the instrument works, not to test a hydrological hypothesis. Claim: the simulator could have failed to reproduce the expected direction effect, and the regression null could have stood (§3.2 ¶7). However, the criteria are qualitative with no tolerances, and a no-runoff case (6 m/min, 2.5 %) was dropped (§3.1 ¶1). Registration: criteria and the 5 % level are stated in the paper, but nothing shows they were fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "electronics / embedded systems",
+   "item": "Arduino Mega microcontroller with SoftwareSerial and Servo libraries",
+   "kind": "instrument",
+   "page": "§2.3.2 ¶1"
+  },
+  {
+   "field": "electronics / telecommunications",
+   "item": "HC-05 Bluetooth module for wireless valve control",
+   "kind": "instrument",
+   "page": "§2.3.3 ¶1"
+  },
+  {
+   "field": "control engineering",
+   "item": "PID controller (Selec PID500) with pressure transmitter and motorised bypass globe valve",
+   "kind": "instrument",
+   "page": "§2.4.3 ¶1"
+  },
+  {
+   "field": "software engineering",
+   "item": "Android app built with MIT App Inventor ('MIT app developer')",
+   "kind": "method",
+   "page": "§2.5 ¶2"
+  },
+  {
+   "field": "irrigation engineering",
+   "item": "Christiansen's Uniformity Coefficient",
+   "kind": "method",
+   "page": "§2.6 ¶1"
+  },
+  {
+   "field": "statistics",
+   "item": "Multiple regression with an indicator variable and t-tests of coefficients",
+   "kind": "method",
+   "page": "§2.7 ¶2"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "1. Sources. No review file or discussion was supplied, so only the final-paper sequence is coded. The paper makes no explicit 'first' or 'previously unknown' claim, so novelty_claims is empty.\n\n2. Unreported checks of the apparatus.\n- The pressure-regulating system is meant to keep intensity constant while clusters switch (§2.2.1 ¶3), but no pressure or intensity record during switching is reported. Inference: this premise is untested in the text.\n- Uniformity was measured only for a static spray (§2.6, §3 ¶1), not for the moving storm.\n- There is no stationary-storm control, although the introduction argues that the stationary assumption biases results (§1 ¶4-5).\n\n3. Replication and statistics.\n- Three replications are stated (§2.7 ¶1), but Table 3 gives single values per scenario and no between-replicate spread is reported.\n- It is unclear whether the regression used 10 scenario values or 30 runs.\n- The '±4.776 s' in §3.2 ¶7 against a standard error of 2.32 in Table 4 suggests a 95 % interval half-width. This is inference.\n\n4. Conclusions not tested by the analysis.\n- Conclusions 3 and 4 (§4 ¶2) concern how the direction effect changes with velocity and slope. The additive regression has no interaction terms, so it does not test them.\n- Conclusion 3 rests on one 6 m/min case at 5 % slope.\n- For conclusion 4, Table 3 shows the absolute Qp difference between directions growing with slope (2.1 and 1.7 at 2.5 % vs 5.0 and 4.0 at 5 %), while tp differences shrink. Inference: Qp partly contradicts the conclusion.\n\n5. Inconsistencies in the text.\n- Flume dimensions differ between the abstract and §2.2 ¶1.\n- The abstract says 'varying spatial and temporal resolutions', but a single intensity was used.\n\n6. Sub-claims and their statuses.\n- The hydrological regularities (direction, slope and velocity effects on tp, Qp and recession) are regularity_in_range: 2.5-5 % slope, 2-6 m/min, saturated sandy loam, 40 mm/h, a single storm pattern.\n- The regression coefficients are estimate_with_resolution.\n\n7. Coding choices.\n- Composition capability_first fits only loosely: the expected behaviours were taken from prior work before the data and serve as calibration targets for the instrument, not as rivals. Because of this, step 2 is coded 'cited'; the published text attributes the same result to others only later (§3.2 ¶5).\n- The robustness check (5 % slope) varies an experimental factor rather than an auxiliary.",
+ "disagreements": [
+  {
+   "target": "Most hydrological experimental methods that assume the rainstorm reaches the catchment instantaneously and stays steady (Singh, 1998)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue from Wilson et al. (1979) that ignoring storm movement can misestimate runoff peaks, and show direction effects in their flume. They include no stationary-storm comparison.",
+   "page": "§1 ¶4",
+   "quote": "An important assumption underlying most hydrological experimental methods is that the rainstorm reaches instantaneously over the catchment and remains [...]"
+  },
+  {
+   "target": "Rainfall simulation studies that treat rainfall intensity as constant in space and time",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors assert that such inferences may be unrepresentative and offer the moving-storm simulator as the remedy. They show no direct comparison with constant-intensity runs.",
+   "page": "§1 ¶5",
+   "quote": "Inferences from such studies may not be representative of the actual process underway."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Nozzles grouped into four clusters (3, 3, 3, 2) switched in sequence",
+   "alternatives": "Full individual control of each nozzle",
+   "reason": "to ease the flow regulation operation",
+   "effect_reported": "no",
+   "page": "§2.2.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Bluetooth module used as slave",
+   "alternatives": "Master setting",
+   "reason": "default configuration",
+   "effect_reported": "no",
+   "page": "§2.3.3 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Surface runoff data only",
+   "alternatives": "Subsurface and deep subsurface flow outlets available on the flume",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "Fully saturated soil bed",
+   "alternatives": "none named (other antecedent moisture states implied)",
+   "reason": "to reduce the variability among scenarios and replications",
+   "effect_reported": "no",
+   "page": "§2.7 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Indicator coding upstream = 1, downstream = 0",
+   "alternatives": "Opposite coding (implied)",
+   "reason": "coefficient then gives the difference in mean response of the upstream storm",
+   "effect_reported": "no",
+   "page": "§2.7 ¶2"
+  },
+  {
+   "node": "O",
+   "chosen": "Exclude the 6 m/min, 2.5 % slope scenario from results",
+   "alternatives": "Include it",
+   "reason": "non-detectable runoff was generated",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "However, the overall UC was found to be 84.2 %.",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Thus, the selected intensity is reasonable while considering the natural rainfall phenomena.",
+   "page": "§3 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Experiments were performed under fully saturated soil bed conditions to reduce the variability among scenarios and replications.",
+   "page": "§2.7 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "followed the same trend as the hydrographs generated at 2.5 % slope",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Similar results were also obtained in the current study",
+   "page": "§3.2 ¶5"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "These values are significant at 5 % level of significance",
+   "page": "§3.2 ¶7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "observed that high storm velocity did not result in significant changes in hydrographs during upstream and downstream storm movement",
+   "page": "§3.2 ¶4"
+  }
+ ]
+}

@@ -1,0 +1,643 @@
+{
+ "key": "g22_W4308936193",
+ "doi": "10.5194/tc-16-4679-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Hillebrand et al. 2022, The Cryosphere 16, 4679–4700, published PDF",
+  "Publisher XML full text converted to located text (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Humboldt Glacier, northern Greenland, has retreated and accelerated through the 21st century, raising concerns that it could be a significant contributor to future sea-level rise.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Hillebrand et al. 2022, The Cryosphere 16, 4679–4700 (XML text, PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Took from other groups' work the observed retreat, grounded-ice loss and deep inland-deepening trough of Humboldt Glacier, and the new bathymetry showing a deeper bed.",
+     "page": "§1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Humboldt has lost the greatest area of grounded ice since 1992 of any GrIS outlet glacier"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed the aim: estimate Humboldt Glacier's sea-level contribution for 2007–2100 and its sources of uncertainty, using hindcast calibration against the observed changes.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to estimate the SLR contribution from Humboldt Glacier from 2007–2100 and assess sources of uncertainty"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "simulation",
+     "action": "Used the authors' own MALI higher-order thermomechanical ice sheet model on a 1–10 km regional mesh, with a Budd-type effective-pressure power-law friction law.",
+     "page": "§2.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "using the MPAS-Albany Land Ice (MALI; Model for Prediction Across Scales) model (Hoffman et al., 2018)"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverted the 2007–2008 winter velocities, with BedMachine v4 geometry, for the spatially varying basal friction parameter μ, using a PDE-constrained adjoint optimization with q = 1/3.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We use a PDE-constrained (partial differential equation) adjoint optimization method to solve for the basal friction parameter μ"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked that recomputing μ for each assumed exponent q reproduces the optimized initial velocity field (Fig. S2).",
+     "page": "§2.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This relation yields very nearly the same velocity as the optimization for the initial condition (Fig. S2)"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrated the friction exponent q (1/10 to 1) in decade-long hindcasts with an imposed observed retreat rate. Each run was scored by RMS velocity misfit to the 2017–2018 velocities in four speed bands, and the range 1/7–1/5 was selected (Fig. 3).",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "yields reasonable agreement to the 2017–2018 velocities in the fastest-flowing parts of the glacier"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varied the velocity-band definitions (Fig. S3) and repeated the calibration against the independent 2015–2016 velocities and margin (Fig. S4); both corroborate q = 1/7–1/5.",
+     "page": "§2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we tested the sensitivity of the calibration to our choice of velocity bands and found it to be relatively insensitive"
+    },
+    {
+     "n": 8,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Preliminary runs grew a sizable ice shelf, so the authors added a quadratic sub-shelf melt parameterization taken from Antarctic practice (Jourdain et al. 2020).",
+     "page": "§2.4 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "In preliminary model runs, we found that the modeled glacier develops a sizable ice shelf by the middle of the 21st century"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Built 3-D thermal forcing fields from Oceans Melting Greenland CTD/AXCTD profiles and tuned γ0 for each forcing to give a mean sub-shelf melt of 20 m/yr.",
+     "page": "§2.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We then tune γ 0 in the TF–melt relationship to obtain mean melt rates of 20 m yr - 1 beneath floating ice"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Removing all floating ice gave too-rapid retreat over the observed period, so the authors dropped that rule and used calving laws that treat grounded and floating ice the same.",
+     "page": "§2.5 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We find that removing all floating ice leads to too rapid retreat over the observed period"
+    },
+    {
+     "n": 11,
+     "node": "P",
+     "mode": "simulation",
+     "action": "The low σmax needed for retreat gave a runaway velocity–calving feedback in preliminary runs, so the authors imposed an ad hoc 3 km/yr calving-rate cap (an auxiliary) rather than abandoning the calving law.",
+     "page": "§2.5 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We found it necessary to impose a 3 km yr - 1 upper limit on the calving rate following Choi et al. (2018)"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Tuned the von Mises threshold σmax (150–200 kPa) in 2007–2018 hindcasts against the observed 2017–2018 margin and velocity, and kept three values per forcing–exponent pair (Fig. S5, Table 1).",
+     "page": "§2.5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Values of σ max that minimized the misfit to observed surface velocities and ice front positions are in the range of 160–190 kPa"
+    },
+    {
+     "n": 13,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Designed minimum mass-loss runs that hold the terminus at its 2017 position as a lower bound, independent of the calving parameterization.",
+     "page": "§2.5 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we view it as a good estimate of a lower bound on mass loss"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Ran control simulations with 1960–1989 mean surface mass balance and subtracted them from the ensemble, to remove model drift and adjustment to past climate.",
+     "page": "§2.6.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This serves to quantify the mass loss and equivalent sea-level contribution from our model without climate forcing"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Ran the 24-member perturbed-parameter ensemble (3 forcings × 2 exponents × 4 calving scenarios) to 2100. Minimum-loss runs give 5.2–6.1 mm and von Mises runs give 6.2–8.7 mm of SLR relative to control.",
+     "page": "§3.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our von Mises calving scenarios predict 6.2–8.7 mm SLR from 2007–2100 relative to our control simulations"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Computed what the rival linear friction law (q = 1) predicts, with low and high σmax, for comparison with the calibrated exponents.",
+     "page": "§3.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When compared with the linear basal friction law, our runs with tuned basal friction exponents predict up to twice as much SLR by 2100"
+    },
+    {
+     "n": 17,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Reported the emergent growth of a sizable floating ice shelf by mid-century in the ensemble, and its loss under HadGEM2 ocean warming in the 2070s.",
+     "page": "§3.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find that a significant amount of floating ice grows by the mid-century in all ensemble members using von Mises stress calving"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Partitioned cumulative mass budgets of grounded and floating ice by process (grounding-line flux, calving, undercutting, sub-shelf melt, surface mass balance).",
+     "page": "§3.1.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 6 shows the cumulative mass budgets for grounded (top row) and floating (bottom row) ice"
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Switched off undercutting in six 2007–2021 runs; calving flux fell markedly, showing that undercutting controls calving even though its direct mass contribution is small (Fig. S9).",
+     "page": "§3.1.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We ran a set of six simulations from 2007–2021 with undercutting deactivated"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ran sensitivity experiments on the estimate: ice-shelf removal in 2055 (+1–2 mm), sub-shelf melt tuning of 10/30 m/yr (≤0.7 mm), and calving caps of 1, 5, 7 km/yr and none (§3.2.1–§3.2.3; Figs. 7–9).",
+     "page": "§3.2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find that the presence of floating ice significantly reduces mass loss from Humboldt Glacier"
+    },
+    {
+     "n": 21,
+     "node": "R",
+     "mode": "estimation",
+     "action": "Recognized that the 3 km/yr cap may be conservative and added an upper-bound set (q = 1/7, low σmax, 5 km/yr cap) giving about 11–12 mm (Fig. S10).",
+     "page": "§3.2.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find an upper bound of ∼ 11–12 mm SLR, depending on climate forcing"
+    },
+    {
+     "n": 22,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Repeated the optimization, q calibration and projections with BedMachine v3. This required q = 1/10–1/25 and gave higher SLR by 2100 (Fig. 10).",
+     "page": "§3.2.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We find that for the version 3 bed, the model requires a considerably more plastic basal friction law to match the observed speedup"
+    },
+    {
+     "n": 23,
+     "node": "P",
+     "mode": "synthesis",
+     "action": "Explained the mismatch with Rignot et al. (2021), who found submarine melt dominant, by auxiliaries: ISMIP6 forcing fields, early floating ice, and the missing calving multiplier effect.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This discrepancy could be due to the fact that we use model-based thermal forcing fields provided by ISMIP6 to calculate melt"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compared the estimate with Choi et al. (2021, ~3.5 mm) and with ISMIP6 whole-GrIS projections, and attributed the difference to the transient calibration of the friction law.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We attribute this primarily to our calibration of the basal friction law to match observed surface velocity changes"
+    },
+    {
+     "n": 25,
+     "node": "P",
+     "mode": "synthesis",
+     "action": "Reconciled their σmax ≤ 200 kPa with Amaral et al.'s ~2 MPa through differences in calibration window, seasonal cycle and missing physics, and recast σmax as a tuning parameter without much physical significance.",
+     "page": "§4.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we find this a sufficient reconciliation of the discrepancy in σ max"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Kept the ensemble estimate of Humboldt's 2100 SLR contribution with its spread and stated sensitivities (calving cap, bed topography).",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Humboldt Glacier is likely to contribute 6.2–8.7 mm to global mean sea level by 2100 under warm climate scenarios"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: observed retreat and tripling of speed at Humboldt's northern terminus, 2007–2018",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No: future SLR and basal parameters are latent and inferred through an ice flow model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the 2007–2100 SLR contribution and its uncertainty sources",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Partly: linear (q = 1) versus semi-plastic friction exponents; calving law forms discussed but not tested",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Yes for friction: q = 1 cannot match the speedup and predicts up to half the SLR",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: the 2007–2018 observed retreat and speedup are used as hindcast targets",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Partly: an independent 2015–2016 calibration window corroborates the q range",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "7",
+   "answer": "Largely, but sensitive to the calving-rate cap (up to ~30%) and the bed product (up to 25%)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: 5.2–8.7 mm by 2100, higher than prior estimates",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "9",
+   "answer": "Not assessable: no review file or discussion supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Calibrated against observed 2007–2018 speedup and retreat, Humboldt Glacier is projected to contribute 5.2–8.7 mm of sea-level rise by 2100 under RCP8.5/SSP5-8.5, significantly more than a previous ~3.5 mm estimate.",
+  "page": "§0 ¶1"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Without the transient hindcast calibration of the friction exponent q, which rejects the linear and q = 1/3 laws and selects 1/7–1/5, the higher SLR estimate would not exist; the authors attribute their larger projection to it.",
+  "page": "§2.3 ¶2"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "All data were pre-existing archives (velocity mosaics, BedMachine, OMG CTDs, ISMIP6 forcings); no stated hypothesis directed acquisition. The friction-law calibration could have failed: q = 1 and q = 1/4 visibly misfit the 2017–2018 speeds (§2.3 ¶2, Fig. 3), and an independent 2015–2016 window was used. The 2100 projection itself faces no test it could fail. Calibration criteria (band choice, σmax selection) were chosen after seeing the misfits, and the authors call them 'somewhat subjective' (§2.3 ¶2)."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / computational science",
+   "item": "PDE-constrained adjoint optimization with regularization (Perego et al. 2014 framework)",
+   "kind": "method",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "finite-element / finite-volume solution of the first-order Stokes approximation (MALI, Albany)",
+   "kind": "method",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "field": "solid mechanics / materials science",
+   "item": "von Mises stress yield criterion used as a calving threshold",
+   "kind": "concept",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "field": "materials science",
+   "item": "tensile strength of ice, 700 kPa–3.1 MPa (Petrovic 2003)",
+   "kind": "data",
+   "page": "§2.5 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "transient calibration of these parameterizations, which has not typically been performed, is necessary to reproduce observed behavior",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Humboldt Glacier is likely to make a significant contribution to SLR this century and that, to date, its potential contribution has been underestimated",
+   "page": "§5 ¶6"
+  }
+ ],
+ "limits": "Review history: the paper went through open discussion (TCD, discussion started 23 March 2022) and two anonymous referees, but no review file or discussion was supplied, so no review sequence is coded. The supplement (Figs. S1–S10) was not supplied; the checks it holds (Figs. S2–S5, S9, S10) are coded from main-text statements only. Composition is none_fits: the walk is a calibrate-by-hindcast-then-project ensemble. That is not a forecast frozen and scored (forecast_verification), not a trace series over independent traces, and not strong inference, since only the friction exponent faces a discriminating hindcast. Projection uncertainty is a spread over a perturbed-parameter ensemble, not a probabilistic estimate. The spread does not include uncertainty in μ, the friction law's structural form, or calving-law form; the authors say so (§4.3 ¶2–¶3, §4.4 ¶1). Sub-claims and their statuses: q = 1/7–1/5 for BMv4 (estimate_with_resolution, corroborated by a second window); BMv3 requires q = 1/10–1/25 (estimate_with_resolution); undercutting controls historical calving in the model (best_explanation within the model, from one ablation); mid-century ice-shelf growth (a model feature, which the authors themselves say may be an artifact of the 3 km/yr cap, §3.2.3 ¶1); upper bound ~11–12 mm with a 5 km/yr cap (estimate, three runs); ice dynamics may dominate the mass budget (best_explanation). The reconciliations with Rignot et al. 2021 and Amaral et al. 2020 explain away discrepancies through auxiliaries without testing them (inference). Several revisions came from undocumented preliminary runs (§2.4 ¶2, §2.5 ¶1); how many were tried is not reported.",
+ "disagreements": [
+  {
+   "target": "Choi et al. (2021) projection of ~3.5 mm from Humboldt Glacier",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "The calibrated ensemble gives 5.2–8.7 mm; the authors' own q = 1 runs give 4–5 mm, and they attribute the gap to Choi's linear-viscous friction and lack of hindcast calibration.",
+   "page": "§4.2 ¶1",
+   "quote": "Our estimated SLR contribution of 5.2–8.7 mm by 2100 is considerably higher than a recent estimate of ∼ 3.5 mm"
+  },
+  {
+   "target": "Community use of linear-viscous and Weertman (q = 1/3) basal friction laws in ice-sheet-scale models (ABUMIP, ISMIP6)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The hindcast calibration shows that q = 1/3–1 cannot reproduce the observed speedup, while 1/7–1/5 can (Fig. 3).",
+   "page": "§4.3 ¶3",
+   "quote": "both the linear-viscous and Weertman laws are still widely used for ice-sheet-scale simulations, despite being largely inappropriate for representing fast ice flow"
+  },
+  {
+   "target": "ISMIP6 Greenland projections (Goelzer et al., 2020)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "By analogy with the factor-of-two difference between tuned and linear friction runs at Humboldt, the authors suggest ISMIP6 models with linear or Weertman friction may underestimate mass loss; this is stated as a suspicion.",
+   "page": "§4.2 ¶2",
+   "quote": "the ISMIP6 projections from models using linear or Weertman basal friction relationships may systematically underestimate 21st century retreat and mass loss"
+  },
+  {
+   "target": "Rignot et al. (2021): retreat of Humboldt driven by submarine melt undercutting",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Model mass budgets and the undercutting-off ablation show undercutting matters through its control on calving rather than directly dominating retreat.",
+   "page": "§4.1 ¶1",
+   "quote": "However, the amount of submarine melt does not directly dominate the retreat as found by Rignot [...] )."
+  },
+  {
+   "target": "Carr et al. (2015): submarine melting a small contribution; q = 1/3",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Mass budgets and the undercutting ablation (Figs. 6, S9) indicate submarine melt is an important factor, and calibration requires 1/7 ≤ q ≤ 1/5.",
+   "page": "§4.1 ¶3",
+   "quote": "we have found that submarine melt is in fact an important factor in the retreat of Humboldt Glacier"
+  },
+  {
+   "target": "Amaral et al. (2020) calibrated σmax of ~2 MPa at Humboldt Glacier",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The authors' calibration needs σmax ≤ 200 kPa; they reconcile this through differences in calibration window, the seasonal cycle and the missing calving multiplier.",
+   "page": "§4.4 ¶3",
+   "quote": "Our simulations using the von Mises stress calving law require σ max ≤ 200 kPa in order for Humboldt Glacier to retreat"
+  },
+  {
+   "target": "Reading σmax as ice tensile strength (Petrovic, 2003 range)",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "Calibrated σmax values sit far below laboratory tensile strengths, which the authors attribute to missing physics in the model.",
+   "page": "§4.4 ¶3",
+   "quote": "we posit that σ max should be seen as a tuning parameter without much physical significance"
+  },
+  {
+   "target": "Modeling practice of calving ice as soon as it goes afloat (e.g., Morlighem [...] )",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "In hindcasts, removing all floating ice produced too-rapid retreat compared with observations.",
+   "page": "§2.5 ¶1",
+   "quote": "We find that removing all floating ice leads to too rapid retreat over the observed period"
+  },
+  {
+   "target": "Expectation that Greenland ice shelves are lost rather than grown (Mottram et al., 2019; Åkesson et al., 2021)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Most ensemble members grow a sizable ice shelf by mid-century, though the authors note this may depend on the calving cap.",
+   "page": "§3.1.2 ¶1",
+   "quote": "This is not generally anticipated for Greenland"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "RMS misfit in multiple velocity bands, giving 1/7 ≤ q ≤ 1/5",
+   "alternatives": "global misfit only (would suggest q = 1/4)",
+   "reason": "Global misfit gives a very poor fit near the terminus where velocities and changes are large",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "decade-long calibration, 2007–2008 to 2017–2018",
+   "alternatives": "shorter interannual intervals; 2015–2016 window",
+   "reason": "Largest signal of velocity change; avoids noisy interannual variability and aliasing to data gaps",
+   "effect_reported": "yes",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "node": "F",
+   "chosen": "MIROC5 RCP8.5, HadGEM2 RCP8.5, CNRM-CM6 SSP5-8.5 forcings",
+   "alternatives": "other ISMIP6 CMIP5/CMIP6 forcings",
+   "reason": "ISMIP6 recommendations for medium and strong forcing; CNRM-CM6 as midrange of the few CMIP6 forcings",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "quadratic dependence of sub-shelf melt on thermal forcing (Jourdain et al., 2020)",
+   "alternatives": "linear (Choi et al., 2021) or weakly non-linear (Cai et al., 2017) melt formulations",
+   "reason": "Quadratic is the currently accepted theoretical formulation (Holland et al., 2008)",
+   "effect_reported": "no",
+   "page": "§2.4 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "sub-shelf melt tuned to 20 m/yr",
+   "alternatives": "10 and 30 m/yr",
+   "reason": "Representative of Petermann Glacier near the grounding line; best available estimate",
+   "effect_reported": "yes",
+   "page": "§2.4 ¶3"
+  },
+  {
+   "node": "R",
+   "chosen": "calving laws treating floating and grounded ice the same",
+   "alternatives": "calving all ice as soon as it goes afloat",
+   "reason": "Removing all floating ice gives too rapid retreat over the observed period",
+   "effect_reported": "yes",
+   "page": "§2.5 ¶1"
+  },
+  {
+   "node": "P",
+   "chosen": "3 km/yr maximum calving rate",
+   "alternatives": "1, 5, 7 km/yr and no limit",
+   "reason": "Used in previous work (Choi et al., 2018); mitigates the positive feedback between calving rate and ice speed",
+   "effect_reported": "yes",
+   "page": "§3.2.3 ¶2"
+  },
+  {
+   "node": "S",
+   "chosen": "von Mises stress calving law",
+   "alternatives": "crevasse depth model; calving front position parameterizations (height or thickness above floatation)",
+   "reason": "Amaral et al. found the crevasse depth model worse at Humboldt; its water-depth parameter's evolution is unclear; position laws lack a physical basis",
+   "effect_reported": "no",
+   "page": "§4.4 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "single spatially uniform σmax",
+   "alternatives": "separate σmax for grounded and floating ice (Choi et al., 2017)",
+   "reason": "Calving from the grounded margin is a small mass-budget term; separate values would greatly complicate calibration",
+   "effect_reported": "no",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "winter velocities for initialization and calibration",
+   "alternatives": "mean annual or summer velocities",
+   "reason": "More representative and more conservative in the absence of a modeled seasonal cycle",
+   "effect_reported": "no",
+   "page": "§4.1 ¶2"
+  },
+  {
+   "node": "H",
+   "chosen": "effective-pressure-dependent Budd-type power law with calibrated q",
+   "alternatives": "linear-viscous; Weertman power law; Coulomb till; regularized Coulomb; Tsai et al. combined law",
+   "reason": "Needed to match the observed tripling of speed, for which linear-viscous friction is not suitable",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "effective pressure assuming perfect connectivity with the ocean",
+   "alternatives": "effective pressure from a coupled subglacial hydrology model or lower-gradient parameterizations",
+   "reason": "Better treatments not readily available without a coupled hydrology model",
+   "effect_reported": "no",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "node": "V",
+   "chosen": "BedMachine v4 bed topography",
+   "alternatives": "BedMachine v3",
+   "reason": "v4 integrates new bathymetry; v3 used as a bounding case given the 20–25% thickness uncertainty",
+   "effect_reported": "yes",
+   "page": "§2.6.3 ¶5"
+  },
+  {
+   "node": "D",
+   "chosen": "ice-shelf removal from 2055",
+   "alternatives": "earlier or later hydrofracture timing",
+   "reason": "About when surface mass balance becomes persistently negative (Noël et al., 2021); still allows matching early observations",
+   "effect_reported": "no",
+   "page": "§2.6.3 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "This relation yields very nearly the same velocity as the optimization for the initial condition (Fig. S2), which validates our recalculation of μ",
+   "page": "§2.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we tested the sensitivity of the calibration to our choice of velocity bands and found it to be relatively insensitive",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "[...] also performed a separate set of calibration runs following the same methodology with the 2015–2016 velocities and margin",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We later subtract this mass loss from the simulations in the perturbed parameter ensemble",
+   "page": "§2.6.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We also include a set of six runs with a linear basal friction law ( q = 1 )",
+   "page": "§3.1.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We ran a set of six simulations from 2007–2021 with undercutting deactivated",
+   "page": "§3.1.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Simulations with floating ice removed in 2055 and prevented from regrowth predict 1–2 mm (up to ∼ 25 %) more SLR by 2100",
+   "page": "§3.2.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We find that our assumptions about melt rates over the historical period have a small effect on our retreat projections",
+   "page": "§3.2.2 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We find that removing this upper limit leads to unreasonably high sustained glacier velocities of 35–40 km yr - 1",
+   "page": "§3.2.3 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We find that for the version 3 bed, the model requires a considerably more plastic basal friction law to match the observed speedup",
+   "page": "§3.2.4 ¶1"
+  }
+ ]
+}

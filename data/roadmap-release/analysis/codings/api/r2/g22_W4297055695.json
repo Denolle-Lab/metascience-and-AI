@@ -1,0 +1,472 @@
+{
+ "key": "g22_W4297055695",
+ "doi": "10.1029/2021jd036174",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper: Moiz et al. (2022), JGR Atmospheres 127, e2021JD036174 (PDF, 25 pages); supporting information not supplied"
+ ],
+ "pages_convention": "printed journal pages (printed as 'N of 25', identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "challenged_result",
+  "node": "Q",
+  "evidence": "Keeping these limitations in mind, we further apply the method developed by Naseer et al. (2019).",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed three aims: how the choice of offset station changes the VTP method's snowfall correction factors and snowmelt simulations; how VTP compares with linear-regression lapse rates, and whether a hybrid helps; whether VTP can downscale reanalysis 2 m temperature.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] to determine (a) how the use of individual station observations with VTP affects snowfall correction factors"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "simulation",
+     "action": "Adopted the group's distributed hydrological model WEB-DHM-S at 250 m grid resolution, with a dam function for reservoir releases.",
+     "page": "3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "In this study, WEB-DHM-S was utilized to analyze the impact of different air temperature correction methods on the performance of snow-process modeling."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Set out the two air temperature correction methods: station linear-regression lapse rates on elevation only, and the Naseer et al. (2019) JRA55 VTP method offset by a single station, reformulated as Equations 2-3.",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Corrections to air temperature were applied using VTP and a single observation station as proposed by Naseer et al. (2019)."
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Adopted the Shrestha et al. (2014) inverse-modelling framework. Two Radar-AMeDAS snowfall correction factors (below and above the 2 km CAPPI) are optimized with SCE-UA to minimize combined discharge and MODIS snow-cover errors, with a 0 °C phase threshold.",
+     "page": "5",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Our study optimized two snowfall correction factors for Radar-AMeDAS as suggested by Naseer et al. (2019)"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designed three experiment sets over 2011-2014: set 1 varies the VTP offset station; set 2A (KEPCO stations) and set 2B (AMeDAS stations) compare VTP, regression lapse rates and a hybrid, plus a phase-partitioning ablation; set 3 corrects JRA55 2 m temperature with VTP.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Table 1 shows the experimental runs conducted in this study to determine the effect of using different elevation correction methods for air temperature"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrated land-soil parameters on the snow-free summer of 2011 (NS 0.68). Fixed the phase threshold and snow albedo through unshown sensitivity runs. Optimized the snowfall correction factors independently for each experiment (Table 1).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The land-soil parameters were calibrated for the summer season of 2011, when MODIS exhibited no snow cover in the entire basin."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Varied the offset station in the VTP method (Kurobe, Sennindani, Koyadaira, Dashidaira). Corrected snowfall differed by up to 18%. KR-VTP gave the best discharge NS and PBIAS but underestimated snow depth at low-elevation stations.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The basin average corrected annual snowfall differed significantly among the different experimental runs, by up to 18%."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared KR-VTP, HLR [K] and HYBRID [K] on discharge NS/PBIAS, snow depth RMSE and snow-cover error. VTP gave slightly better discharge, regression gave better snow depth, and the hybrid combined both.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "HYBRID [K] still exhibits significantly better point snow depth simulations than KR-VTP"
+    },
+    {
+     "n": 9,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed, without testing, that radar beam blockage in the valley causes the large snow depth underestimation at Koyadaira and Dashidaira in all experiments.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The large underestimation at low elevations is peculiar and we think it may be caused by radar beam blockage in the valley."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeated the VTP / regression / hybrid comparison with an independent, open AMeDAS network outside the basin (highest station Omachi, 784 m). HYBRID [A] again improved discharge over HLR [A] and snow depth over OM-VTP.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used air temperature stations from AMeDAS, all of which are located outside the river basin boundaries"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Ran two checks on HYBRID [A]. An ablation (HYBRID [A]Snowfall: HLR [A] temperature with HYBRID [A] snowfall) attributed most of the gain to phase partitioning. A sensitivity test raising the phase threshold to 1 and 2 °C increased all errors.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This additional experiment was conducted to determine the contribution of precipitation phase partitioning to the overall improvements in simulations based on HYBRID [A]."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compared the station-free JRA55 [R] run (JRA55 2 m temperature corrected by VTP) with HLR [K]. It gave better discharge but poorer low-elevation snow depth.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "JRA55 [R] showed improved discharge simulations compared with HLR [K]"
+    },
+    {
+     "n": 13,
+     "node": "K",
+     "mode": "methods",
+     "action": "Kept the sub-claim that the Naseer et al. (2019) VTP method is highly sensitive to the offset station and should be used with caution in snowfall-correction optimization.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This result clearly shows that the methodology proposed by Naseer et al. (2019) is highly sensitive to the individual station observation used with VTP"
+    },
+    {
+     "n": 14,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Offered untested explanations: free-air gradients dominate at high elevations and near-surface effects at low elevations; cold-air drainage; stations lying below JRA55 orography; KEPCO stations not assimilated.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We think that KR-VTP performs better at high elevations, because free air flow conditions are more dominant at high elevations"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Cited Gao et al. (2012, 2017, 2018) as reporting a similar low-elevation behaviour of reanalysis-based lapse rates.",
+     "page": "21",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "A similar observation has also been made in the study by Gao et al. (2012, 2017, 2018)."
+    },
+    {
+     "n": 16,
+     "node": "R",
+     "mode": "methods",
+     "action": "Framed the hybrid product (regression below the highest station, VTP above) as a refinement motivated by the two methods' complementary strengths.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Keeping this in mind, we proposed a hybrid product which incorporated VTP-based temperatures at high elevations"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "Concluded that the hybrid improves discharge and low-elevation snow depth simulations for both station networks and is useful where stations are few and low-lying. The JRA55-only approach is useful where no stations exist.",
+     "page": "22",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the hybrid of the two products in general resulted in improved discharge simulations as well as improved point snow depth simulations"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Snow-process simulations depend on how station temperature is extrapolated to high elevations",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; high-elevation temperature and snowfall are unobserved and inferred through model and optimization",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Compare and enhance air temperature extrapolation methods for hydrological modelling",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "VTP with different offset stations, regression lapse rates, hybrid, reanalysis-only VTP",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Differing discharge NS/PBIAS, snow depth RMSE and snow-cover errors per method",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Set in model experiments with fixed parameters and per-run optimized snowfall factors",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Four hydrological years and four dam/snow stations provide repeated evaluations",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Hybrid advantage holds across two station networks; threshold sensitivity and ablation checked",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Hybrid kept as best overall; Naseer method flagged as station-sensitive",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A hybrid of station linear-regression lapse rates below the highest station and JRA55 VTP above it improved discharge and low-elevation point snow depth simulations relative to either method alone, for both a local (KEPCO) and an open (AMeDAS) station network in the Kurobe basin.",
+  "page": "22"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The side-by-side comparison of VTP, regression and hybrid runs on discharge, snow depth and snow cover (sets 2A and 2B) is what establishes the hybrid's advantage.",
+  "page": "15"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The stated aims (p. 3) directed the design of the model experiments, but all observational data were pre-existing archives (KEPCO, AMeDAS, JRA55, MODIS). The hybrid could have failed against the single-method runs on stated metrics, and it partly did (NS deteriorated at Koyadaira and Dashidaira, p. 15). No significance tests are reported. Nothing was fixed before the data: the phase threshold and snow albedo were set by sensitivity runs, the albedo runs not shown (p. 12)."
+ },
+ "imports": [
+  {
+   "field": "operations research / optimization theory",
+   "item": "Shuffled complex evolution (SCE-UA) global optimization algorithm",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "statistics / classification",
+   "item": "Confusion-matrix pixel counts for snow-cover over- and underestimation errors",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "computer science",
+   "item": "Parallel programming for grid-based model processes",
+   "kind": "method",
+   "page": "3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "a comparative analysis of the performance of hydrological simulations using lapse rates based on VTP with lapse rates derived by linear regression",
+   "page": "2"
+  },
+  {
+   "quote": "the major difference lies in the usage of the entire VTP instead of using only specific pressure levels to derive lapse rates",
+   "page": "9"
+  },
+  {
+   "quote": "The study advances the application of snow-process models in data-scarce regions by enhancing our understanding about the usage of VTP.",
+   "page": "1"
+  }
+ ],
+ "limits": "Scope: one basin, one reanalysis (JRA55) and four years. Differences are called 'significant' without statistical tests, and many NS differences are in the third decimal. The sensitivity runs that fixed snow albedo are not shown (p. 12). Supporting information was not supplied, so seasonal figures S1-S7 could not be checked. Inconsistencies: HYBRID [A] NS at Kurobe is 0.852 in text (p. 16) but 0.850 in Table 3 and the Conclusion. The Conclusion's 0.824 to 0.850 figure compares HYBRID [A] with HLR [A], although OM-VTP alone also reaches 0.850. HYBRID [K] deteriorated NS at Koyadaira and Dashidaira (p. 15) and snow depth RMSE at Kurobe, yet the Conclusion states general improvement. The snowfall correction factors are optimized separately per run, so method differences are confounded with recalibrated snowfall. Untested sub-claims, each at best_explanation: free-air versus near-surface lapse-rate behaviour, cold-air drainage, radar beam blockage (inference: no test reported). Other sub-claims: the Naseer method's station sensitivity (capability_characterized, from one basin); phase partitioning dominates over snowpack effects (best_explanation, from a single ablation); JRA55 [R] reasonable without stations (capability_characterized, weaker). Context: no review file was supplied. KEPCO funded the study and its data are not shareable (p. 23).",
+ "disagreements": [
+  {
+   "target": "Naseer et al. (2019) VTP method with a single offset station",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Four runs with different offset stations changed corrected snowfall by up to 18% and changed discharge and snow depth performance.",
+   "page": "19",
+   "quote": "the methodology proposed by Naseer et al. (2019) is highly sensitive to the individual station observation used with VTP and [...]"
+  },
+  {
+   "target": "Wang et al. (2016), MODIS nighttime LST lapse rates in the upper Yellow River Basin",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The HYBRID [A]Snowfall ablation found phase partitioning, not snowpack processes, dominant for spatial snow depth in the Kurobe basin.",
+   "page": "21",
+   "quote": "This is in contrast to the results of similar experiments conducted by Wang et al. (2016) using MODIS nighttime LSTs"
+  },
+  {
+   "target": "MODIS nighttime LST-derived lapse-rate techniques",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites Zhang et al. (2018) on cloud contamination and mixed pixels, and notes a dependence on snow depth observations; no test is performed here.",
+   "page": "21",
+   "quote": "they often suffer from cloud contamination and mixed pixel effects (Zhang et al., 2018)"
+  },
+  {
+   "target": "Reanalysis-based elevation correction studies (Gruber 2012; Gao et al. 2012, 2017, 2018; Tang et al. 2018; Dutra et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues these were validated only against stations, not in hydrological modelling, and tests VTP corrections within a distributed hydrological model instead.",
+   "page": "2",
+   "quote": "elevation-corrected air temperatures were only cross-validated against other station observations and were not assessed for hydrological modeling applications"
+  },
+  {
+   "target": "Gao et al. (2012, 2017, 2018) choice of pressure levels",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Notes inconsistent pressure-level combinations across study areas and uses the entire VTP instead.",
+   "page": "2",
+   "quote": "they used different combinations of pressure levels for different study areas to estimate lapse rates"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "V",
+   "chosen": "Phase partitioning threshold of 0 °C",
+   "alternatives": "1 °C and 2 °C",
+   "reason": "Higher thresholds raised discharge, snow-cover and objective-function errors; consistent with Shrestha et al. (2014)",
+   "effect_reported": "yes",
+   "page": "17"
+  },
+  {
+   "node": "N",
+   "chosen": "Regression lapse rate on station elevation only",
+   "alternatives": "Including station longitude and latitude (Y. Li et al., 2015)",
+   "reason": "Small size of the river basin",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "V",
+   "chosen": "Kurobe (highest) station to offset the VTP",
+   "alternatives": "Sennindani, Koyadaira, Dashidaira stations",
+   "reason": "Best discharge NS and PBIAS",
+   "effect_reported": "yes",
+   "page": "12"
+  },
+  {
+   "node": "D",
+   "chosen": "Both the KEPCO local network and the AMeDAS open network",
+   "alternatives": "KEPCO only",
+   "reason": "KEPCO data are not open or real-time; AMeDAS needed for general and operational applicability",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "C",
+   "chosen": "Hybrid of regression (below highest station) and VTP (above)",
+   "alternatives": "Regression only (HLR), VTP only, JRA55-only VTP correction",
+   "reason": "Best combined discharge and low-elevation snow depth performance",
+   "effect_reported": "yes",
+   "page": "22"
+  },
+  {
+   "node": "I",
+   "chosen": "Fresh-snow visible albedo 0.75",
+   "alternatives": "Default value 0.85",
+   "reason": "Series of sensitivity experiments (not shown)",
+   "effect_reported": "no",
+   "page": "12"
+  },
+  {
+   "node": "N",
+   "chosen": "JRA55 pressure levels 1,000-650 hPa",
+   "alternatives": "All 37 levels to 1 hPa",
+   "reason": "To cover the full elevation range of the basin",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "I",
+   "chosen": "No correction to liquid precipitation",
+   "alternatives": "Correcting liquid precipitation",
+   "reason": "Radar-AMeDAS already calibrated with AMeDAS",
+   "effect_reported": "no",
+   "page": "12"
+  },
+  {
+   "node": "N",
+   "chosen": "JRA55 reanalysis",
+   "alternatives": "Higher-resolution reanalyses such as ERA5",
+   "reason": "none given (left for future work)",
+   "effect_reported": "no",
+   "page": "22"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The basin average corrected annual snowfall differed significantly among the different experimental runs, by up to 18%.",
+   "page": "12"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we further compared the performance of KR-VTP with HLR [K]",
+   "page": "15"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we used air temperature stations from AMeDAS, all of which are located outside the river basin boundaries",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This additional experiment was conducted to determine the contribution of precipitation phase partitioning to the overall improvements in simulations based on HYBRID [A].",
+   "page": "16"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "led to higher errors in both the discharge and snow cover simulation, consequently producing a higher value of the objective function",
+   "page": "17"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "These values were determined through a series of sensitivity experiments (not shown here)",
+   "page": "12"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "the discharge and snow-process simulations in JRA55 [R] are reasonably comparable, especially at high elevations, even though no station observations were used",
+   "page": "19"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "A similar observation has also been made in the study by Gao et al. (2012, 2017, 2018).",
+   "page": "21"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "similar to the findings of Shrestha, Koike, et al. (2014) and Shrestha, Wang et al. (2014)",
+   "page": "22"
+  }
+ ]
+}

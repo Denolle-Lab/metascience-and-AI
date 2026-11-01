@@ -1,0 +1,486 @@
+{
+ "key": "g22_W4225149223",
+ "doi": "10.1016/j.pepi.2022.106879",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Gentili & Di Giovambattista 2022, Physics of the Earth and Planetary Interiors 327:106879, published PDF (16 printed pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract (§0 ¶1) and captions (labels as printed, e.g. Fig. 6); printed journal pages for body text, which the XML extract omits (printed pages coincide with PDF pages counted from 1)",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "The results in literature indicate the need to develop a fast forecasting method that can be applied for a large number of clusters",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Gentili & Di Giovambattista 2022, PEPI 327:106879 (PDF body text; XML abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question of forecasting, within hours to days of a strong earthquake, the probability that a strong subsequent earthquake (type A cluster) will follow.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "analyses seismic clusters to forecast strong earthquakes of magnitudes similar or greater to those of the mainshock"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take over the NESTORE machine-learning classifier (per-feature one-level decision trees combined by a Bayesian rule) from the authors' 2017 and 2020 papers.",
+     "page": "2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "of the previous machine learning method, named NESTORE (Next STrOng Related Earthquake)"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Revise NESTORE_M2 for California: nine features on events with M ≥ Mm-2, time-dependent completeness from the Helmstetter et al. (2006) equation, start time 1 min, and intervals from 6 h to 7 days.",
+     "page": "2–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In this paper, we applied a revised version of the NESTORE_M2 method to California seismicity"
+    },
+    {
+     "n": 4,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revise the inherit-and-validation block. The earlier version kept inherited thresholds and blamed their performance drop on small samples; the new version re-checks hit rate against false-alarm rate by leave-one-out (LOO) because of a cluster selection effect.",
+     "page": "4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "Further tests demonstrated that this is not always correct because there is a selection effect on the clusters."
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Select SCSN catalog data from 1981 onward and an onshore study polygon, using local completeness (maximum curvature plus 0.2 for clusters of at least 80 events, otherwise Mc = 3), CompletenessWeb and published completeness maps.",
+     "page": "5–6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For our analysis, we selected data from 1981 to the present"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the cluster identification: a window-based method with the Gardner-Knopoff time window and the Kagan (2002) space window, chosen by comparing the window areas with Zaliapin & Ben-Zion nearest-neighbour cluster areas.",
+     "page": "6–7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For this reason, we adopted the Kagan (2002) equation for space-window evaluation."
+    },
+    {
+     "n": 7,
+     "node": "O",
+     "mode": "observation",
+     "action": "Extract clusters with o-mainshock M ≥ 4, excluding Dm in [0.8–1.2]: 79 clusters, of which 50 (21 A, 29 B) remain after 6 h; the class balance shifts with time (Fig. 5a).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The algorithm for cluster identification extracted 79 (50 A and 29 B) clusters inside the selected area."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare cluster class with o-mainshock magnitude, depth and rake: no relation found; the rake data are too few to be statistically relevant.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For California, we did not find any relationship between the o-mainshock magnitude or depth and the cluster class"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Train feature thresholds, validity intervals and probability vectors on each leave-one-out training set of the 50 clusters.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "testing each cluster after training obtained by all other clusters"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare LOO performance with random guessing in ROC and precision-recall graphs: reliable at all intervals, best at 12 h, with recall and precision falling for T > 3 days.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For all time periods, NESTORE’s performance is always in the upper left triangle for ROC graphs"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test eight well-known M ≥ 5.8 clusters individually (Fig. 7). All A clusters, including the retrospective Ridgecrest 2019 forecast, are correct; Hector Mine becomes correct after 1 day; North Palm Springs fails as an outlier.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Ridgecrest 2019, a cluster correctly classified as A, can be considered a retrospective forecast"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Examine how feature thresholds and their reliability vary across the LOO training sets (Table 2, Fig. 9) to locate unstable features and intervals.",
+     "page": "9–10",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "We investigated differences in the thresholds found by different training sets in the training phase of the LOO method."
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "methods",
+     "action": "Build rNESTORE: keep only intervals where at least 95% of training sets find a threshold, use jackknife-mean thresholds, and recompute probability vectors; this drops SLcum and QLcum2 and the Q feature for Ti < 5 days.",
+     "page": "10",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We developed a more stable classifier for future classification, called rNESTORE"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "methods",
+     "action": "Self-test rNESTORE on the full training dataset (Fig. 8): performance is stable and improved for Q and Z, flagged as a test of internal coherence only.",
+     "page": "10–11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "in this case, the training set and test set are coincident"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test NESTORE and rNESTORE on an independent set of 11 clusters (3 A, 8 B) from ComCat for northern California and from SCEC 2020 onward, with completeness estimated for this test set.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To test rNESTORE on an independent database, we used for northern California the Comprehensive Earthquake Catalog"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the two classifiers on the independent set (Fig. 11): both are perfect at 0.5–1 day; rNESTORE correctly classifies Ocotillo Wells at 2–3 days where NESTORE fails; one A cluster is misclassified at 6 h.",
+     "page": "11–12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both methods correctly classify all clusters for time intervals 0.5–1 day"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare which features succeed in California with the authors' earlier results for Italy and NE Italy-W Slovenia: N2, Vm and Z work at short times in all three; Q and QLcum are region-dependent.",
+     "page": "12, 15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The N2, Vm, and Z features showed good short-term performance after o-mainshock for all three studies."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that NESTORE and rNESTORE forecast type A clusters reliably, best at 0.5–1 day, and name productivity, magnitude irregularity and event concentration as SSLE precursors, pending a larger database.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both algorithms provide the best performances for intervals of 0.5–1 day."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Strong earthquakes often followed by a comparable or larger subsequent earthquake (type A clusters)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; the class is known only afterwards and must be forecast from early-seismicity features",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Near-real-time probability of a type A cluster from the first hours or days of seismicity",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses tested; alternative forecasting approaches (Båth, b-value, Vorobieva) are discussed only",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "Not posed",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: catalog clusters, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes; 50 training clusters plus 11 independent clusters",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "LOO tests, case studies, threshold variation across training sets, and an independent test set; mostly survives, with outliers and weakness at longer times",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: classifier performs better than random, best at 12 h",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "NESTORE, trained on 50 southern California clusters, forecasts type A clusters better than random at all intervals (best at 12 h: FPR 0.17, TPR 0.80, precision 0.76 in LOO tests), and its jackknife version rNESTORE classifies all 11 independent clusters correctly at 0.5–1 day.",
+  "page": "15"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The leave-one-out comparison of NESTORE's ROC and precision-recall performance against random guessing on the 50 clusters is what establishes the classifier's characterized skill.",
+  "page": "9"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "Action: the data are an existing catalog, selected for completeness, not acquired to test a hypothesis. Claim: LOO tests and the 11-cluster independent test could have placed the classifier at or below random guessing (p. 9, 11–12). Registration: feature definitions, time intervals (inherited from 2017) and reliability rules were fixed before the independent test, but ThMc = 80 was chosen by trial and error and rNESTORE was built after the LOO results were seen (p. 6, 10)."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "one-level binary decision trees (Matlab fitctree)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "statistics",
+   "item": "Bayesian combination of per-feature probabilities",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "leave-one-out cross-validation",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "signal detection theory / psychology",
+   "item": "ROC analysis (Egan 1975; Fawcett 2006)",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "machine learning / bioinformatics",
+   "item": "precision-recall graphs for imbalanced classes (Saito & Rehmsmeier 2015)",
+   "kind": "method",
+   "page": "8–9"
+  },
+  {
+   "field": "statistics",
+   "item": "jackknife resampling (Efron & Stein 1981)",
+   "kind": "method",
+   "page": "10"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we propose an innovative machine learning approach [...]",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "In addition, we propose a new, more robust approach, called rNESTORE, that can reduce overfitting problems",
+   "page": "2"
+  }
+ ],
+ "limits": "The XML extract contains only the abstract and captions, so body steps are located by printed pages. No peer-review file was supplied (the paper only thanks anonymous reviewers), so no review sequence is coded. The rNESTORE self-test (Fig. 8) is not counted as a V check because training and test sets coincide. The independent test set is small (11 clusters, 3 A, none A after 3 days), so its results depend on few cases. Sub-claims and their statuses: (1) rNESTORE outperforms NESTORE at 2–3 days, estimate_with_resolution at best, resting on one cluster (Ocotillo Wells) (inference); (2) high productivity, magnitude irregularity and event concentration are SSLE precursors, best_explanation without stated rivals and supported by cross-region consistency with the authors' own earlier studies; (3) the Ridgecrest 2019 retrospective forecast is a single case. No rival hypotheses are tested, and the composition is coded capability_first as the closest fit for a method-characterization walk (inference). Feature and interval choices were partly made by trial and error and after seeing LOO results; the effect of alternative choices (ThMc, Dm exclusion band, minimum magnitude) is not reported. The sequence order follows the text; the actual order of work is not documented (inference).",
+ "disagreements": [
+  {
+   "target": "Vorobieva and Panza (1993); Vorobieva (1999) voting-based SSLE prediction",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues from the literature that a 10–40-day window misses many SSLEs (71% in Italy) and that voting gives only a binary output; no new test is run against the method.",
+   "page": "2",
+   "quote": "The main drawback of the Vorobieva and Panza (1993) and Vorobieva (1999) methods is that forecasting requires a long time span T"
+  },
+  {
+   "target": "Gulia and Wiemer (2019) b-value-based foreshock/aftershock discrimination",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites the ongoing debate (Brodsky; Dascher-Cousineau et al.; van der Elst) and argues that reliable b-values need more events than catalogs usually provide; no own test.",
+   "page": "2",
+   "quote": "the main problem in the applicability of the method for real clusters of seismicity is the need, for correct estimation of the b-value"
+  },
+  {
+   "target": "Gentili and Di Giovambattista (2020): inherited thresholds and the reading of later performance drops",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Further tests showed a selection effect among late-SSLE A clusters, so the drop is not only a small-sample effect; the validation block is revised accordingly.",
+   "page": "4",
+   "quote": "Further tests demonstrated that this is not always correct because there is a selection effect on the clusters."
+  },
+  {
+   "target": "Gentili and Di Giovambattista (2017, 2020): reliability of the Q feature at short intervals",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "rNESTORE's threshold-stability analysis shows Q is unstable in California at short times, so it is used only at longer intervals.",
+   "page": "15",
+   "quote": "in previous works was considered reliable even for small time intervals"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "window-based cluster identification",
+   "alternatives": "Reasenberg (1985) link-based method; Zhuang et al. (2002) ETAS stochastic declustering; Zaliapin & Ben-Zion (2013) nearest-neighbour method",
+   "reason": "a method is needed that, given an o-mainshock, supplies the space and time interval in which the SSLE is expected",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "D",
+   "chosen": "Kagan (2002) space window",
+   "alternatives": "Gardner and Knopoff (1974) space window",
+   "reason": "Kagan area matches the upper limit of nearest-neighbour cluster areas and scales with γ = 1",
+   "effect_reported": "no",
+   "page": "6–7"
+  },
+  {
+   "node": "D",
+   "chosen": "ThMc = 80 events for computing local completeness",
+   "alternatives": "smaller or larger thresholds",
+   "reason": "compromise between more clusters and accurate completeness estimates, found by trial and error",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "O",
+   "chosen": "SCSN catalog from 1981 onward",
+   "alternatives": "full catalog from 1932",
+   "reason": "large increase in stations in 1981 improved sensitivity and accuracy",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "o-mainshock minimum magnitude 4; exclude clusters with Dm in [0.8–1.2]",
+   "alternatives": "smaller minimum magnitude; keeping uncertain-class clusters",
+   "reason": "dataset size versus noisy background; uncertain class because of magnitude uncertainty",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "decision tree depth 1 (single threshold)",
+   "alternatives": "deeper decision trees",
+   "reason": "avoid overfitting with small training sets",
+   "effect_reported": "no",
+   "page": "2, 4"
+  },
+  {
+   "node": "N",
+   "chosen": "Vm computed on [Mm-2, Mm]",
+   "alternatives": "[Mm-3, Mm] as in previous versions",
+   "reason": "this version analyses events with M ≥ Mm-2",
+   "effect_reported": "yes",
+   "page": "3, 15"
+  },
+  {
+   "node": "R",
+   "chosen": "re-validate inherited thresholds by LOO in each interval",
+   "alternatives": "fixed inherited thresholds as in the 2020 version",
+   "reason": "selection effect on late-SSLE A clusters",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "R",
+   "chosen": "two-class classifier with jackknife-mean thresholds (rNESTORE)",
+   "alternatives": "single-training NESTORE thresholds; a three-class classifier (A, B, unknown)",
+   "reason": "stability and outlier effects; three classes beyond scope given the small number of clusters",
+   "effect_reported": "yes",
+   "page": "10–12"
+  },
+  {
+   "node": "C",
+   "chosen": "report both ROC and precision-recall graphs",
+   "alternatives": "ROC only",
+   "reason": "ROC is insensitive to class imbalance, and the classes here are imbalanced",
+   "effect_reported": "yes",
+   "page": "9, 11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "To test NESTORE on an independent test set, we applied Leave One Out (LOO) method to the 50 cluster dataset",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "(see Fig. 6a, b) represents random guessing",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Accuracy should be greater than or equal to the one we can obtain by a constant response corresponding to the most populated class",
+   "page": "4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Ridgecrest 2019, a cluster correctly classified as A, can be considered a retrospective forecast",
+   "page": "9"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We investigated differences in the thresholds found by different training sets in the training phase of the LOO method.",
+   "page": "9–10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "To test rNESTORE on an independent database, we used for northern California the Comprehensive Earthquake Catalog",
+   "page": "11"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Fig. 11 shows the comparison of the performance of NESTORE (Fig. 11a, c, e) and rNESTORE (Fig. 11b, d, f) for the 11 clusters.",
+   "page": "11"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "This result for California can be compared with those for northeastern Italy-western Slovenia",
+   "page": "12"
+  }
+ ]
+}

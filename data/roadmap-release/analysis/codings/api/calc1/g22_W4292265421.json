@@ -1,0 +1,431 @@
+{
+ "key": "g22_W4292265421",
+ "doi": "10.1002/met.2090",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Jiang, Shan, Guo, Zhao, Wang & Zhao (2022), Tropical tropopause in Tibet: Insights from ground-based GNSS and space-based radio occultation observations, Meteorological Applications 29:e2090, published PDF (16 pp.)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Our aim is to address the problems of insufficient short-term single observation data in Tibet",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Jiang et al. 2022, Meteorological Applications 29:e2090 (published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "States the aim: overcome sparse radiosonde and RO coverage in Tibet by testing whether ground-based GNSS, alone and combined with RO, can retrieve and monitor the tropopause.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to verify the suitability of tropopause research based on [...]"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assembles daily GAMIT ZTD from 49 Tibetan GNSS stations (2017-2019), NCEP/DOE, ERA5 and JRA55 reanalysis profiles, and COSMIC and GRACE RO wetPrf profiles (948 and 204 events).",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We obtained daily zenith total delay (ZTD) data from 49 GNSS stations (Figure 1) in Tibet from 2017 to 2019 through GAMIT"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopts the published RO refractivity tropopause method (wavelet covariance transform, a = 25 km, Lewis 2009 / ROPP) with a 150 hPa split between LRT1 and LRT2.",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The RO tropopause height was determined directly from the refractivity profiles using covariance transforms"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the GNSS inversion on Astudillo et al. (2020): fits an exponential refractivity profile to ERA5-derived N, adds the Saastamoinen ZHD above the tropopause, and takes the height that minimizes the ZTD residual as TPH(GNSS).",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared with the method of Astudillo et al. (2020), we consider the influence of ZHD above the tropopause."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checks the premises against 2017 radiosondes at Lhasa, Qamdo and Nagqu: compares P, T and e from three reanalyses (ERA5 chosen), tests ERA5 P and N profile errors against literature thresholds (2.5 hPa, 4 N), and shows GNSS+ERA5 ZTD profiles beat ERA5 alone below 10 km at LHAZ.",
+     "page": "6-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "confirm that ERA5 has better applicability in Tibet compared with JRA55 and NCEP/DOE"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Inverts TPH(GNSS) for the 49 stations over 2017-2019 and interprets it as the second (tropical) tropopause.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The TPH(GNSS) obtained based on ground-based GNSS combined with reanalysis data inversion represents the second tropopause."
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Checks the plausibility of TPH(GNSS) patterns (negative latitude dependence in February, unimodal seasonal cycle at LHAZ with 0.8 km amplitude) against the published seasonal cycle.",
+     "page": "8-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is consistent with the results of Zhou et al. (2010)"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compares 19,548 TPH(GNSS) values with LRT2 from ERA5 temperature profiles: bias 0.17 km, RMS 0.89 km, over 90% within 2 km (Table 4).",
+     "page": "8-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the difference between TPH(GNSS) and LRT2 (ERA5) was within 2 km in more than 90% of the cases"
+    },
+    {
+     "n": 9,
+     "node": "P",
+     "mode": "estimation",
+     "action": "Attributes the larger winter-spring differences at LHAZ (Figure 6) to ERA5 temperature biases in the reference, not to the GNSS method.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which may be because the ERA5 mean temperature biases have a small"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "observation",
+     "action": "Because RO events in Tibet are too few per day (Figure 7), accumulates RO over one month to get even spatial coverage, and uses the refractivity tropopause rather than the RO LRT product.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtained a denser spatial resolution of sampling points that provided even coverage across Tibet"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compares TPH(RO) from COSMIC and GRACE with LRT2(ERA5) and, for colocated events (<2 degrees, <3 h), with TPH(GNSS); RMS about 1.3 km vs ERA5 and 1.19/1.31 km vs GNSS (Table 5).",
+     "page": "10-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] , we determined the relative accuracies of TPH(RO) and LRT2(ERA5) using 110 COSMIC and 55 GRACE occultation events"
+    },
+    {
+     "n": 12,
+     "node": "K",
+     "mode": "methods",
+     "action": "Concludes that TPH(RO) and TPH(GNSS) are at the same accuracy level and can be combined.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "these two technologies can be combined to analyse the tropopause in Tibet"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Maps seasonal mean tropopause heights from combined GNSS and RO (2017-2019), finding a south-to-north decrease and a tropopause break at 30-34 N (Figure 9).",
+     "page": "12-13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 9 shows seasonal average tropopause heights in the region and reveals a zonal distribution"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compares the regional tropopause break with the hemispheric average break latitude reported by Hoinka (1999).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which is slightly narrower than the average"
+    },
+    {
+     "n": 15,
+     "node": "H",
+     "mode": "theory",
+     "action": "Explains the seasonal changes with published mechanisms (solar heating and convection, South Asian monsoon, latent heat release), citing other groups.",
+     "page": "12-13",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the outbreak of the South Asian summer monsoon, which enhances deep convection"
+    },
+    {
+     "n": 16,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Removes the seasonal cycle from monthly combined tropopause heights and reports a slight downward trend for 2017-2019 (Figure 10).",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the tropopause height fluctuates around 0 but shows a slight downward trend"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Matches the anomaly series to Tibet climate bulletins: annual temperature decline, warm winter 2017, cold snowy winter 2019, summer 2019 precipitation.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a downward trend that is consistent with the change in the tropopause"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keeps the headline claim that ground-based GNSS, combined with RO, can detect and monitor the regional tropopause.",
+     "page": "14",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "our results confirm that GNSS data can be used to detect the height of the tropopause"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Tropopause height over Tibet: a known phenomenon, poorly sampled",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; inferred from GNSS ZTD through an ERA5 refractivity model",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize a GNSS retrieval method and describe regional patterns",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; alternative data sources (reanalyses, RO, radiosonde) compared",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: archived GNSS, reanalysis and RO data, 2017-2019",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Agreement with ERA5 LRT2 (RMS 0.89 km) and RO (RMS about 1.25 km)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method usable, accuracy comparable to RO",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Ground-based GNSS ZTD combined with ERA5 retrieves the second tropopause in Tibet within 2 km of ERA5 LRT2 in over 90% of cases and with accuracy comparable to RO (RMS about 1.25 km), so GNSS and RO can be combined for regional tropopause monitoring.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The inversion that fits an ERA5 refractivity profile to station ZTD, with ZHD above the tropopause added, produces TPH(GNSS); without it there is no GNSS tropopause to validate or combine with RO.",
+  "page": "5-6"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data are archived GNSS, reanalysis and RO products, collected without a hypothesis directing acquisition. The method could have failed against ERA5 LRT2 and RO, but the acceptance criterion ('within 2 km in more than 90% of cases', 'same accuracy level') is stated only after the results, and ERA5 enters both the retrieval and the reference. The reanalysis thresholds (2.5 hPa, 4 N) come from earlier literature, but the paper does not say any analysis or threshold was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "radio engineering",
+   "item": "Exponential model of atmospheric radio refractivity with height (Bean & Thayer 1959, Proceedings of the IRE)",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "signal processing",
+   "item": "Wavelet covariance transform for detecting step changes in signals (Gamage & Hagelberg 1993)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "physical chemistry",
+   "item": "Thomson (1946) on the Antoine vapor-pressure equation, cited for the definition of tropospheric delay",
+   "kind": "concept",
+   "page": "6"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "there are few studies on the use of ground-based GNSS to study the tropopause",
+   "page": "2"
+  },
+  {
+   "quote": "an improved method has been developed for the inversion of the tropical tropopause",
+   "page": "1"
+  },
+  {
+   "quote": "Compared with the method of Astudillo et al. (2020), we consider the influence of ZHD above the tropopause.",
+   "page": "6"
+  }
+ ],
+ "limits": "No review file or earlier version was supplied, so only the final_paper sequence is coded.\n\nReference not independent: ERA5 supplies the refractivity and pressure profiles in the GNSS retrieval and is also the main validation reference (LRT2(ERA5)). The ERA5 comparison is therefore only partly independent, and the effect of this shared input is not assessed.\n\nNarrow premise checks: the radiosonde checks cover only three stations in 2017. The ZTD-profile test covers one station (LHAZ, 2017), and the improvement is small (1.88 vs 1.78 cm mean RMS).\n\nUnquantified modification: the effect of adding ZHD above the tropopause (the stated improvement over Astudillo et al.) is never quantified against the original method.\n\nInconsistent RMS: the GNSS-ERA5 RMS is 0.89 km on p. 9 but ±0.87 km in the Conclusions (p. 14).\n\nDiscrepancy not tested: the winter discrepancy is attributed to ERA5 temperature bias, citing Betts et al. 2019 for the Canadian prairies, without a test in Tibet (protective move).\n\nSub-claims at other statuses:\n- Latitude-zoned distribution, unimodal seasonal cycle and 30-34 N break: regularity_in_range (Tibet, 2017-2019).\n- Slight downward trend and its links to warm or cold winters and precipitation: at most best_explanation. These rest on three years, no significance test or uncertainty, and post hoc qualitative matching to climate bulletins, with mechanisms cited rather than tested.\n\nUnexplained choices: the RO colocation criteria (<2 degrees, <3 h) and the a = 25 km wavelet scale are adopted without stated alternatives.\n\nData not public: GNSS data are available only on request.\n\nInference: the Thomson (1946) citation for tropospheric delay appears to be a mis-citation.",
+ "disagreements": [
+  {
+   "target": "Astudillo et al. (2020) GNSS tropopause method",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argues that the delay above the tropopause (about 20%) is not negligible and adds a Saastamoinen ZHD term, but reports no comparison with the original method.",
+   "page": "6",
+   "quote": "the remaining 20% is non-negligible"
+  },
+  {
+   "target": "Hoinka (1999) average 30-45 N tropopause break for the northern hemisphere",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Combined GNSS and RO seasonal maps place the break over Tibet at 30-34 N, narrower than the hemispheric average.",
+   "page": "12",
+   "quote": "which is slightly narrower than the average"
+  },
+  {
+   "target": "Temperature-profile (WMO lapse-rate) tropopause and the RO LRT product",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Citing Xia et al. (2021) and the hydrostatic and ideal-gas assumptions of RO temperature retrieval, the paper uses the refractivity tropopause instead.",
+   "page": "4",
+   "quote": "it is somewhat difficult to identify the tropopause height"
+  },
+  {
+   "target": "ERA5 LRT2 as a reference in winter and spring (ERA5 temperature biases, Betts et al. 2019)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Larger winter-spring differences at LHAZ are attributed to seasonal ERA5 temperature bias.",
+   "page": "10",
+   "quote": "which may be because the ERA5 mean temperature biases have a small"
+  },
+  {
+   "target": "Radiosonde as the standard data source for tropopause studies in Tibet",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Table 1 shows mean detection heights of 12.5-13.2 km at the three stations, below the tropopause; only three stations exist.",
+   "page": "5",
+   "quote": "radiosonde data detection height of approximately 15 km (Table 1) does not reach the tropopause height"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "V",
+   "chosen": "ERA5 reanalysis",
+   "alternatives": "NCEP/DOE, JRA55",
+   "reason": "Smallest differences from radiosonde P, T and e at Lhasa, Qamdo and Nagqu, attributed to higher resolution",
+   "effect_reported": "yes",
+   "page": "6-8"
+  },
+  {
+   "node": "O",
+   "chosen": "Reanalysis profiles interpolated to GNSS stations",
+   "alternatives": "Radiosonde profiles, RO profiles",
+   "reason": "Only three radiosonde stations, detection height about 15 km below the tropopause, and RO events poorly matched to stations",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "V",
+   "chosen": "ZTD vertical profile fitted with GNSS ZTD and ERA5",
+   "alternatives": "ERA5 only",
+   "reason": "Lower RMS against radiosonde ZTD within 10 km of the surface",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "N",
+   "chosen": "Include ZHD above the tropopause (Saastamoinen)",
+   "alternatives": "Original Astudillo et al. (2020) formulation without it",
+   "reason": "About 20% of the delay is above the troposphere and is non-negligible",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "RO refractivity tropopause (wavelet covariance transform)",
+   "alternatives": "RO LRT height product from temperature profiles",
+   "reason": "LRT is sometimes hard to determine, the temperature retrieval assumes hydrostatic and ideal-gas conditions, and refractivity is directly comparable with TPH(GNSS)",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "D",
+   "chosen": "Monthly accumulation of RO events",
+   "alternatives": "Daily RO analysis",
+   "reason": "Fewer than four COSMIC events per day and some days with none",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Data from the Lhasa, Qamdo, and Nagqu radiosonde stations in 2017 were compared with the NCEP/DOE, ERA5, and JRA55 reanalysis data.",
+   "page": "6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "evaluated with reference to the vertical distribution of radiosonde data from the three radiosonde stations",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the ZTD vertical distribution obtained from the radiosonde data (ZTD_RS(h)) is used as the truth value",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is consistent with the results of Zhou et al. (2010)",
+   "page": "8"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "we verified all GNSS stations in Tibet by comparing the 2017–2019 TPH(GNSS) data with the corresponding LRT2(ERA5)",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "to further verify the effectiveness of TPH(GNSS), we compared it with tropopause values based on combining ground-based GNSS with space-based RO data",
+   "page": "10"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "The RO refractivity method shows good agreement with",
+   "page": "4"
+  }
+ ]
+}

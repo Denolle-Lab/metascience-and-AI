@@ -1,0 +1,529 @@
+{
+ "key": "g22_W4283779161",
+ "doi": "10.1007/s10950-022-10097-6",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Heuel & Friederich 2022, J Seismol 26:913-934, published PDF",
+  "Publisher XML converted to located text (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); steps read off a figure cite the caption label as printed in the XML text (e.g. Fig. 1) with the PDF page counted from 1 in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "WT noise and earthquake signals have overlapping frequency bands, and thus spectral filtering cannot be used.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML text (jats_text) with PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take from prior studies that wind-turbine noise degrades seismological station quality, which led to protection radii around stations.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "All mentioned studies come to the conclusion that the data quality is deteriorating due to the expansion of WTs."
+    },
+    {
+     "node": "Q",
+     "n": 2,
+     "mode": "question",
+     "action": "Pose the question of how to suppress WT noise that shares the earthquake frequency band and can fully cover events, where spectral filtering and published CWT examples fall short.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Sometimes, the earthquake signal is completely covered by noise and therefore not visible in either the time or the time-frequency domain."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt two published denoising methods as candidates: nonlinear thresholding of CWT coefficients (Langston and Mousavi) and the convolutional denoising autoencoder (Zhu et al., Tibi et al.).",
+     "page": "§1 ¶4–5",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] . (37), Mandelli et al. (18), and Tibi et al. (30) have developed a new approach that uses a convolutional denoising autoencoder (DAE)"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that a DAE using the CWT, with its different resolution, may suppress noise more accurately than the STFT used before.",
+     "page": "§1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "so CWT may be able to suppress noise more accurately, which was not tested in previous studies."
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Compute hourly wind-speed-binned PSD curves for several NRW stations and find at RN.BAVN wind-dependent peaks at 3.2 and 4.2 Hz and a 20 dB deterioration from 2012 to 2019.",
+     "page": "§2 ¶1–2; Fig. 1 (p. 3)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The comparison of the yellow PSD curves (Fig. 1) shows a deterioration of 20 dB between 2012 and 2019"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check against stations with fewer or no turbines, which show no similar wind dependence.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "PSD curves at other stations where fewer or no WT were installed do not show similar wind dependencies."
+    },
+    {
+     "n": 7,
+     "node": "F",
+     "mode": "observation",
+     "action": "Select the affected station RN.BAVN, near six turbines built 2009-2017, as the study site.",
+     "page": "§2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] , we selected the seismological station RN.BAVN for our study."
+    },
+    {
+     "n": 8,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Install short-period seismometers 50-80 m from each turbine and obtain turbine operation parameters, to record the noise at its source.",
+     "page": "§2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we installed short period seismometers (Raspberry Shakes RS3D and Mark L-4C3D) close to each WT (50 to 80 m away from the foundation)."
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Implement the Morlet CWT (Torrence and Compo) with soft thresholding and a scale-dependent threshold set as the 0.99 quantile of a noise estimate.",
+     "page": "§3.1 ¶1–2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "Alternatively, thresholding can also be done by shrinking all coefficients that exceed the threshold function."
+    },
+    {
+     "n": 10,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Hypothesise that noise similarity between time windows at the turbines carries over to the station, so a past station window can serve as a noise model.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "if the noise recorded close to a WT in the event window and a different time window are very similar, this also holds"
+    },
+    {
+     "n": 11,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Design the similarity search: normalised Euclidean distance between the pre-event master window at each turbine sensor and earlier windows of equal length.",
+     "page": "§3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To check this hypothesis, we took records form the sensors close to the WTs and calculated the Euclidean distance"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test the distance profile on a synthetic time series with hidden copies of the master signal at different amplitudes; local minima recover their locations.",
+     "page": "§3.1 ¶4; Fig. 4 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The resulting distance profile is zero (global minimum) at the timestamp of the master signal and has local minima at the timestamps of similar signals."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Average the distance profiles over turbines, take the second-smallest minimum, and extract a 60 s station waveform at that time as the noise model for the threshold.",
+     "page": "§3.1 ¶5–6; Fig. 6 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The final step is to extract the waveform at the seismological station at the time of the minimum in the average distance profile"
+    },
+    {
+     "n": 14,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a modified mask-based DAE (dropout, skip connections, CWT or STFT input) and train it on 100,000 high-SNR STEAD earthquakes mixed with more than 100,000 RN.BAVN noise windows.",
+     "page": "§3.2 ¶1–3; §3.3 ¶1–2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we add dropout to each convolutional layer to prevent the neural network from overfitting"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test both DAEs on 5000 held-out noisy waveforms with known clean signals; mean SNR rises from 6.0 to 26.6 dB but does not reach the original 42.8 dB.",
+     "page": "§4.1 ¶1; Fig. 10 (p. 12)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To evaluate the performance of the trained network, we create a test dataset from events and noise signals, which were not used for training."
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare CWT and STFT DAEs on the test set: equal mean gain, slightly wider distribution and more events at 35-45 dB for CWT.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Comparing the denoised histograms, CWT achieves a slightly better result than STFT"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply both DAEs to 2421 real M>1 events recorded at RN.BAVN in 2017-2020, with arrivals estimated from surrounding stations; mean SNR rises by about 4.4 dB, and many low-SNR events stay low.",
+     "page": "§4.1 ¶3–4; Fig. 11 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The histograms show clearly that many events with low SNR retained a low SNR after denoising."
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare raw data, a 5-20 Hz bandpass, thresholding with pre-noise, thresholding with the noise model, and both DAEs on four selected events of decreasing SNR.",
+     "page": "§4.2 ¶1–3; Figs. 12–14 (pp. 14–16)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We compared the performance of the DAE with both nonlinear thresholding and a bandpass filter between 5 and 20 Hz"
+    },
+    {
+     "n": 19,
+     "node": "X",
+     "mode": "methods",
+     "action": "Exclude bandpass filtering and both thresholding variants for an event fully covered by noise, where only the DAEs make the event visible.",
+     "page": "§4.2 ¶4; Fig. 15 (p. 17)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Nonlinear thresholding also fails (Fig. 15(III) and (IV)), no matter which method is used."
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "methods",
+     "action": "Apply the DAEs to a three-component seismogram; results hold on the horizontal components and the S-phase can be picked.",
+     "page": "§4.2 ¶5; Fig. 18 (p. 20)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The denoising results do not differ significantly when the horizontal components are included"
+    },
+    {
+     "n": 21,
+     "node": "X",
+     "mode": "methods",
+     "action": "Reject the turbine-based noise model in favour of pre-noise, which suppresses noise better, needs no extra sensors, and runs almost in real time.",
+     "page": "§5 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using pre-noise is therefore superior (to the noise-model determination) as it can almost be done in real time."
+    },
+    {
+     "n": 22,
+     "node": "R",
+     "mode": "hypothesis",
+     "action": "Refine the CWT hypothesis: CWT is at best slightly better than STFT, at a much higher training cost.",
+     "page": "§5 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In conclusion, there is no big difference when using CWT or STFT as time-frequency transformation."
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the DAE as the only tested method that separates WT noise from signal in a shared frequency band, with the limits of the mask approach noted.",
+     "page": "§5 ¶4–5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The DAE is the only one of the methods investigated that is capable of separating noise and signal well"
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run the DAE in real time on overlapping 60 s windows merged with ObsPy; no quantitative result is reported.",
+     "page": "§5 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We also tested the DAE on real time denoising."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "WT noise degrades station quality in the 1-10 Hz band (cited; confirmed at RN.BAVN)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: wind-binned PSD curves show a 20 dB increase and wind-dependent peaks",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Suppress WT noise; compare denoising techniques",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Bandpass filter, thresholding with pre-noise, thresholding with a turbine-derived noise model, DAE with CWT, DAE with STFT",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Only that CWT might outperform STFT; no explicit predictions for the other methods",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: an affected station selected; test mixtures constructed from held-out data",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "DAE gain holds on held-out mixtures, 2421 real events and three components, though smaller on real data",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "DAE kept as best; noise model and thresholding fail for buried events; CWT not clearly better",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A DAE trained on station noise and high-SNR earthquakes suppresses wind-turbine noise even when the event is fully covered, whereas thresholding works only when the event is already visible; mean real-data SNR gain is about 4.4 dB.",
+  "page": "§5 ¶4; §4.1 ¶3–4"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "methods",
+  "sentence": "The head-to-head comparison of bandpass, both thresholding variants and both DAEs on real events at the affected station is what ranks the DAE above the rivals.",
+  "page": "§4.2 ¶1–4"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the noise-transfer hypothesis (§3.1 ¶2) motivates using the turbine sensors, but the Fig. 2 caption says the sensors were installed 'for the development and testing of a denoising algorithm', so it is unclear whether the hypothesis preceded the installation. Claim: the DAE faced held-out and real-data SNR tests it could have failed (§4.1). The method ranking rests on four selected events (§4.2), and the full real dataset was run through the DAE only. Registration: no threshold, metric or test plan is stated as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "computer science / machine learning",
+   "item": "Convolutional denoising autoencoder with dropout, batch normalisation, softmax masks and Adam optimiser",
+   "kind": "method",
+   "page": "§3.2 ¶1–2; §3.3 ¶2"
+  },
+  {
+   "field": "biomedical image analysis",
+   "item": "U-net skip connections (Ronneberger et al.)",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "field": "music signal processing",
+   "item": "Skip connections in denoising auto-encoders for source separation (Liu and Yang)",
+   "kind": "method",
+   "page": "§3.2 ¶1"
+  },
+  {
+   "field": "statistics / signal processing",
+   "item": "Wavelet-shrinkage nonlinear thresholding (Donoho and Johnstone; Donoho)",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "medical imaging (MRI)",
+   "item": "Soft thresholding with wavelet transforms (Weaver et al.)",
+   "kind": "method",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "field": "data mining",
+   "item": "Matrix-profile normalised Euclidean distance similarity search (Yeh et al.; Zhu et al. 2016)",
+   "kind": "method",
+   "page": "§3.1 ¶5"
+  },
+  {
+   "field": "fluid mechanics",
+   "item": "Morlet wavelet parameterisation (Farge 1992)",
+   "kind": "concept",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "field": "computer science",
+   "item": "Keras and TensorFlow software",
+   "kind": "method",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "field": "computing hardware",
+   "item": "Nvidia Quadro RTX 6000 GPU",
+   "kind": "instrument",
+   "page": "§3.3 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "so CWT may be able to suppress noise more accurately, which was not tested in previous studies.",
+   "page": "§1 ¶5"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. The method comparison against bandpass and thresholding uses four selected events (§4.2), with no stated selection rule. Inference: the examples may favour visible contrasts. Thresholding was not run on the 2421-event dataset, so the ranking of rivals is not quantified at scale. The noise-transfer hypothesis (§3.1 ¶2) is never tested directly. Only a worked example is given (Fig. 6), and the noise model is rejected on performance, not because the transfer was shown false. Real-data SNR uses arrivals estimated from other stations, an untested auxiliary. The real-time test (§5 ¶7) reports no result. The DAE's failure limits are stated as unknown (§5 ¶3). The no-time-shift, no-polarity-change claim (§5 ¶5) rests on visual inspection of Figs. 16-17 and is not coded as a V check. Sub-claims and statuses: thresholding with pre-noise works when the event is visible (capability_characterized, consistent with Mousavi et al. and Langston and Mousavi); the turbine-based noise model does not improve on pre-noise (rival excluded, on four examples); CWT versus STFT shows no big difference, with CWT slightly better (best_explanation, weak); DAE applicable to three components (capability_characterized, one example). Composition is none_fits because the walk is a benchmark comparison of candidate methods on found data, not a trace series, a strong-inference test, or capability-first exploration.",
+ "disagreements": [
+  {
+   "target": "Mousavi et al. (2016); Langston and Mousavi (2019), CWT thresholding",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper shows thresholding works only when the event is visible and fails when the event is fully covered by WT noise (Figs. 14-15).",
+   "page": "§1 ¶4; §5 ¶2",
+   "quote": "the signal is always visible in the noisy raw data in the examples shown, which is not always true [...] ."
+  },
+  {
+   "target": "Zhu et al. (2019); Tibi et al. (2021), STFT-only DAE",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper tests a CWT-input DAE against an STFT-input DAE and finds only a slight advantage for CWT at higher cost, which largely supports the STFT choice.",
+   "page": "§5 ¶1; §5 ¶4",
+   "quote": "Zhu et al. (37) and Tibi et al. (30) only used the STFT which has a lower time-frequency resolution than [...] ."
+  },
+  {
+   "target": "Protection radii of 5-15 km around stations (Stammler and Ceranna 2016; Bavarian and NRW wind-energy decrees)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The paper frames denoising as a way to limit land loss from protection radii. Inference: it does not explicitly argue for smaller radii.",
+   "page": "§1 ¶3",
+   "quote": "Due to the large protection radii, a lot of potential area is lost that could be used for wind energy."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Both CWT and STFT as DAE input, compared",
+   "alternatives": "STFT only, as in Zhu et al. and Tibi et al.",
+   "reason": "STFT and CWT have different resolutions; CWT untested",
+   "effect_reported": "yes",
+   "page": "§1 ¶5; §4.1 ¶2–4"
+  },
+  {
+   "node": "N",
+   "chosen": "CWT for the thresholding representation",
+   "alternatives": "STFT",
+   "reason": "STFT is limited in time-frequency resolution",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "Soft thresholding",
+   "alternatives": "Hard thresholding",
+   "reason": "Hard thresholding results in lower SNR if noise outliers are above the threshold",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Pre-noise window for the threshold function",
+   "alternatives": "Noise model extracted via turbine similarity search",
+   "reason": "Pre-noise suppresses noise better, is simpler and can run almost in real time",
+   "effect_reported": "yes",
+   "page": "§5 ¶2"
+  },
+  {
+   "node": "I",
+   "chosen": "Normalised Euclidean distance for similarity search",
+   "alternatives": "Cross-correlation",
+   "reason": "Computationally more efficient for large datasets",
+   "effect_reported": "no",
+   "page": "§3.1 ¶5"
+  },
+  {
+   "node": "N",
+   "chosen": "CWT input downsampled by a factor of 2",
+   "alternatives": "Full-resolution CWT input",
+   "reason": "Otherwise the input layer would be too large for the memory",
+   "effect_reported": "no",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "Two mask functions for signal and noise",
+   "alternatives": "Real and imaginary output layers for the signal",
+   "reason": "none given (alternative proposed as future improvement)",
+   "effect_reported": "no",
+   "page": "§5 ¶6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "PSD curves at other stations where fewer or no WT were installed do not show similar wind dependencies.",
+   "page": "§2 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Figure 4a shows an example of a synthetic time series where the similar signals with different amplitudes",
+   "page": "§3.1 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we create a test dataset from events and noise signals, which were not used for training.",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Comparing the denoised histograms, CWT achieves a slightly better result than STFT",
+   "page": "§4.1 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We apply both networks on real data at station RN.BAVN.",
+   "page": "§4.1 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "We compared the performance of the DAE with both nonlinear thresholding and a bandpass filter between 5 and 20 Hz",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Nonlinear thresholding also fails (Fig. 15(III) and (IV)), no matter which method is used.",
+   "page": "§4.2 ¶4"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The denoising results do not differ significantly when the horizontal components are included",
+   "page": "§4.2 ¶5"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "We also tested the DAE on real time denoising.",
+   "page": "§5 ¶7"
+  }
+ ]
+}

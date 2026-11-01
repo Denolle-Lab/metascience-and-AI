@@ -1,0 +1,517 @@
+{
+ "key": "g22_W4295101135",
+ "doi": "10.1029/2021jb023317",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper: Yue, Wang, Xue, Shen & Sun (2022), JGR Solid Earth 127, e2021JB023317 (PDF, 21 pages; Supporting Information S1 not supplied)"
+ ],
+ "pages_convention": "printed journal pages (n of 21; identical to PDF pages counted from 1)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "we develop a full time-series inversion (FTI) technique, which jointly inverts for afterslip patterns using full time series",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "The FTI algorithm, a joint linear inversion of GNSS, InSAR and strainmeter time series, was built in the first author's earlier Ridgecrest study and is taken up here.",
+     "page": "3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Yue et al. (2021) developed a FTI algorithm, which jointly adopts full time series of GNSS, InSAR, and strainmeter observations"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of whether FTI can discriminate afterslip processes with different decay times, which the Ridgecrest data could not settle.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "one remaining question is whether the FTI can discriminate afterslip processes with different decaying characteristics"
+    },
+    {
+     "n": 3,
+     "node": "F",
+     "mode": "observation",
+     "action": "The authors select the 2017 Mw 7.3 Sarpol-e Zahab earthquake as a natural test case: simple rupture geometry and clear spatial and temporal variation of postseismic deformation.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The 2017 Mw 7.3 Sarpol-e Zahab (Iran-Iraq) earthquake appears to be such a case."
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The Bayesian inversion and RSF modeling of Wang and Bürgmann (2020), with coauthor K. Wang, are taken up: afterslip occurs updip and downdip, much larger updip, implying different frictional properties.",
+     "page": "4",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "the inferred afterslip updip of the coseismic rupture was much larger than that of the downdip region"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors derive the FTI theory and add InSAR corrections. Theory: quasi-static Poisson equation, separable Green's function times a prescribed logarithmic slip evolution function, linear system Gm=d, and a grid search over decay times. Corrections: initial-epoch error and orbital ramp terms, with sign-split matrices and damping, made compatible with non-negative least squares.",
+     "page": "5-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Assuming an analytical source evolution function is the key operation of the FTI method, which linearizes the inversion problem"
+    },
+    {
+     "n": 6,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design controlled synthetic tests: a 40 x 40 km fault dipping 5 degrees with a checkerboard slip and tau = 10 days, 24 GNSS stations and InSAR pixels, correlated noise up to 20% plus orbital ramps, and a static inversion as the comparison.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use controlled synthetic tests to check if FTI can resolve the spatial distribution of given sources and SEF"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "In the single-process synthetic test, FTI recovers the checkerboard better than static inversion and recovers the input decay time from the trade-off curve. A spatially correlated covariance gives no clear improvement over reduced smoothing.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "With such a high noise level, FTI clearly outperforms the static inversion."
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "The authors design a double-process synthetic test with tau = 5 days updip and tau = 100 days downdip, mimicking Sarpol-e Zahab. It is inverted both with shared two-process SEFs and with separated up/downdip SEFs, using a 2D grid search.",
+     "page": "11-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Such a fault geometry and slip configuration are chosen to mimic the fault geometry and [...]"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Both schemes recover the input slip and the distinct SEFs reasonably well. In the shared double-process scheme, however, the short-decay updip slip is smeared into the downdip patch.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For both cases, the FTI can recover both spatial and temporal distributions of the input slip reasonably well"
+    },
+    {
+     "n": 10,
+     "node": "R",
+     "mode": "methods",
+     "action": "Because of the smearing and the uncertain match to RSF predictions, the authors adopt the separated per-patch decay-time scheme for the real application.",
+     "page": "12",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "it may be more appropriate to invert for the decay time of each patch with variable SEFs"
+    },
+    {
+     "n": 11,
+     "node": "O",
+     "mode": "observation",
+     "action": "The authors take Sentinel-1 LOS time series processed by Wang and Bürgmann (2020): four tracks, about 60 epochs each over one year. They resample them, keep pixels with more than 3 cm of total displacement, and average within 1 km, giving 1331 pixels.",
+     "page": "12",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "InSAR data used here are from Wang and Bürgmann (2020), which include LOS displacement time series derived from Sentinel-1 data"
+    },
+    {
+     "n": 12,
+     "node": "D",
+     "mode": "estimation",
+     "action": "The authors set up the real-data model. It uses the Wang and Bürgmann fault geometry (dips of 5 and 17 degrees, 15 x 18 subfaults) and adds a Mw 6.0 aftershock plane with a step SEF and a GCMT-based geometry. Layered Green's functions come from CRUST1.0, and the ramp correction is omitted because no GNSS data are available.",
+     "page": "12-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the coseismic slip of this event needs to be simultaneously inverted along with the afterslip of the mainshock"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The one-process inversion with a uniform logarithmic SEF gives afterslip updip and downdip, a total of Mw 6.94, an aftershock of Mw 6.02, and an optimal tau of about 10 days, with similar residuals from 5 to 20 days.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similar to Wang and Bürgmann (2020), the model is characterized by afterslip both updip and downdip of the coseismic rupture"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "estimation",
+     "action": "The two-process inversion, with separate up- and downdip decay times split at the hypocenter, gives tau_up = 10 days and tau_down = 50 days as best fit. Moments are Mw 6.87 updip and 6.46 downdip.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We then test the inversion with two different relaxation times for slip in the up- and downdip portions of the coseismic rupture."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors check the downdip result three ways. Downdip pixels alone prefer 50-200 days. Variance reduction is 62%, with the second process adding at most 1% per orbit and DES6 worsening by 0.7%. A spatially correlated Cd gives similar magnitudes (6.87, 6.43, 6.01).",
+     "page": "14-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To further explore the data sensitivity to the downdip afterslip, we select the InSAR pixels above the downdip portion"
+    },
+    {
+     "n": 16,
+     "node": "S",
+     "mode": "simulation",
+     "action": "The stress-driven afterslip model with rate-strengthening friction from Wang and Bürgmann (2020) is taken as the comparison expectation; it predicts fast-decaying downdip afterslip released largely before the first SAR image.",
+     "page": "16-17",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "We also compare the double process inversion results with the stress-driven afterslip model assuming a RSF that is explored in Wang and Bürgmann (2020)"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "estimation",
+     "action": "The authors rerun the separated double-process FTI on the finer Wang and Bürgmann fault grid; the result resembles the coarse-grid model.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The fine sub-fault FTI result still resembles that of the coarse grid, demonstrating the stability of FTI with respect to subfault sizes."
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Comparing FTI with the RSF model, FTI prefers a slower downdip evolution and fits the InSAR data better, which is expected given its many more free parameters. The discrepancy is attributed to missing early postseismic data and model assumptions.",
+     "page": "16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] result is different from that obtained by RSF modeling."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "estimation",
+     "action": "The authors compare their result with the LogSIM inversion of Liu and Xu (2019), which uses a similar strategy and finds updip afterslip with little to no downdip slip.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "They adopt a similar strategy as FTI"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "theory",
+     "action": "Using steady-state RSF and the Wang and Bürgmann parameters, the authors define a velocity sensitivity factor V0/(sigma(a-b)), which is about 60% larger downdip and so implies faster downdip stress release.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "find the downdip factor is about 60% larger than that of the updip"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "theory",
+     "action": "The FTI result implies higher sensitivity updip, which contradicts the RSF-based expectation. The authors leave the discrepancy unresolved without V0 data and note it may reflect low downdip SNR.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The FTI result presented by this study, however, indicates a higher sensitivity in the updip portion"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "methods",
+     "action": "The authors keep the claim that FTI combines data of different resolutions and discriminates afterslip patches with distinct evolution functions, giving a different, more stable downdip estimate than RSF modeling.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It can also discriminate distinct afterslip patches with different evolution functions."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Afterslip following the 2017 Sarpol-e Zahab earthquake, updip and downdip of the rupture, already reported by Wang and Bürgmann (2020)",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "No; afterslip and its decay times are inferred from InSAR surface displacement through elastic Green's functions",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Characterize whether FTI resolves distinct afterslip decay processes",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rivals are single- versus two-process SEF, FTI versus static inversion, and FTI versus the RSF model (fast downdip decay)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "RSF modeling predicts faster downdip decay; FTI resolves a slower downdip decay (50 days)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions are set in synthetic tests and found in one natural event",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6b",
+   "answer": "No; a single event, with no repetition by nature",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: robust to noise, covariance choice and subfault size, but the downdip second process improves fits by at most 1%",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Capability characterized; the downdip frictional discrepancy with RSF modeling is left unresolved",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "FTI can jointly invert geodetic time series of different sampling and discriminate spatially separated afterslip with distinct evolution functions; demonstrated in synthetic tests and resolving tau_up of about 10 days and tau_down of about 50 days for the 2017 Sarpol-e Zahab afterslip.",
+  "page": "19"
+ },
+ "decisive_move": {
+  "node": "V",
+  "mode": "methods",
+  "sentence": "Without the double-process synthetic test showing that FTI recovers patches with distinct decay times (and reveals smearing in the shared scheme), the claim that FTI discriminates distinct afterslip processes would not exist.",
+  "page": "12"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The event and the synthetic configuration were chosen because Wang and Bürgmann (2020) had reported distinct updip and downdip afterslip (pp. 4, 12), but the InSAR data were acquired and processed beforehand (p. 12). The synthetic tests could have failed and partly did, since the shared two-process scheme smeared slip (p. 12). No hypothesis, threshold or analysis plan was fixed before the data were seen; the 3 cm pixel threshold and the decay-time grids were chosen during the analysis (pp. 12, 14)."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / numerical analysis",
+   "item": "non-negative least-squares inversion (Lawson & Hanson 1995)",
+   "kind": "method",
+   "page": "9"
+  },
+  {
+   "field": "inverse theory / tomography regularization",
+   "item": "damping with L-curve selection of damping parameters",
+   "kind": "method",
+   "page": "10"
+  },
+  {
+   "field": "continuum mechanics / physics",
+   "item": "quasi-static reduction of the elastic wave equation to a Poisson equation with time-varying source",
+   "kind": "concept",
+   "page": "5"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Joint inversion incorporating three types of data is rare in previous studies.",
+   "page": "3"
+  },
+  {
+   "quote": "This conclusion draws physical significance which is different from some previous works.",
+   "page": "1"
+  },
+  {
+   "quote": "the FTI reveals a different, yet more stable estimation of afterslip downdip of the coseismic rupture",
+   "page": "19"
+  }
+ ],
+ "limits": "No review file, discussion or earlier version was supplied, so there is no review sequence. Supporting Information (Figures S1, S2, S5, S10, S11) is referenced but not supplied; those checks are coded from the main-text descriptions. The FTI code is described as Matlab, but no code repository is given (inference: the method cannot be reproduced from the published materials). The InSAR data and the RSF comparison model come from Wang and Bürgmann (2020), whose first author is coauthor K. Wang, so these steps are coded as inherited. FTI itself is inherited from Yue et al. (2021). Sub-claims: tau_up of about 10 days is estimate_with_resolution, with no formal uncertainty and residuals similar from 5 to 20 days. tau_down of about 50 days is weaker than estimate_with_resolution: the downdip pixels allow 50-200 days, the improvement is at most 1% per orbit, and DES6 fits worse. The frictional implication (slower downdip decay than the RSF model) gets no conclusion; the authors say it may reflect low SNR and need V0. The synthetic tests use a single noise realization each (inference: no ensemble of noise realizations is reported). Only InSAR is used for the real case, so the GNSS and strainmeter joint capability is tested only synthetically. Composition is coded capability_first as the closest fit, but the walk departs from it: the question about the method precedes the application, and no phenomenon is established from scratch. It is a method characterization followed by a single natural test case.",
+ "disagreements": [
+  {
+   "target": "Wang and Bürgmann (2020) stress-driven RSF afterslip model",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "The separated double-process FTI on the same InSAR data prefers a slower downdip decay (tau_down of about 50 days) and fits the data better, whereas the RSF model implies fast downdip decay before the first SAR image.",
+   "page": "17",
+   "quote": "The FTI in this study, however, prefers a slower evolution function for afterslip downdip of the coseismic rupture."
+  },
+  {
+   "target": "Wang and Bürgmann (2020) inferred frictional contrast (V0 and sigma(a-b))",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "A velocity sensitivity factor derived from their parameters implies faster downdip release, while FTI implies higher sensitivity updip; the authors leave this unresolved without pre-seismic creep data.",
+   "page": "18",
+   "quote": "The FTI result presented by this study, however, indicates a higher sensitivity in the updip portion"
+  },
+  {
+   "target": "Most previous studies, including Liu and Xu (2019), that found little or no downdip afterslip",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "FTI resolves downdip afterslip of about Mw 6.46, but the authors concede that its SNR is low.",
+   "page": "18",
+   "quote": "In fact, most previous studies did not resolve any afterslip downdip of the coseismic rupture."
+  },
+  {
+   "target": "Data-driven time-series methods (PCA, ICA, NIF)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from method design: their components or temporal functions depend on data quality and lack clear physical interpretation; no comparison is run.",
+   "page": "4",
+   "quote": "it is sometimes difficult to find clear physical interpretations for the corresponding"
+  },
+  {
+   "target": "Static (segmented) afterslip inversion",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "In a high-noise synthetic test, FTI using full time series recovers the checkerboard better than a static first-to-last-epoch inversion.",
+   "page": "10",
+   "quote": "With such a high noise level, FTI clearly outperforms the static inversion."
+  },
+  {
+   "target": "Yue et al. (2021) Ridgecrest FTI double-process result",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The authors note that the second-process parameter in their earlier study depended on a single near-fault strainmeter, so double-process performance was not demonstrated there.",
+   "page": "12",
+   "quote": "the performance for double slip processes is not well demonstrated in that study"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "FTI with a prescribed physical slip evolution function",
+   "alternatives": "PCA, ICA, NIF, NSF",
+   "reason": "Prescribed SEFs suit low-SNR, sparse postseismic data and give physically interpretable results; FTI accommodates non-overlapping data sampling",
+   "effect_reported": "no",
+   "page": "4, 8"
+  },
+  {
+   "node": "R",
+   "chosen": "Separated double-process parameterization (per-patch decay times)",
+   "alternatives": "Single process; shared double process on all subfaults",
+   "reason": "The shared scheme smears updip slip into the downdip patch, and it is unclear whether summed logarithmic functions match RSF",
+   "effect_reported": "yes",
+   "page": "12"
+  },
+  {
+   "node": "D",
+   "chosen": "Diagonal data covariance Cd",
+   "alternatives": "Spatially correlated Cd with exponential correlation",
+   "reason": "Similar inversion results and residuals; the data dimension greatly exceeds the number of parameters",
+   "effect_reported": "yes",
+   "page": "11, 16"
+  },
+  {
+   "node": "D",
+   "chosen": "No orbital ramp estimation for Sarpol-e Zahab",
+   "alternatives": "Constant, linear or quadratic ramp correction",
+   "reason": "No GNSS data to constrain absolute displacements, so ramp terms may destabilize the SEF parameters; ramps are not obvious in the data",
+   "effect_reported": "no",
+   "page": "14"
+  },
+  {
+   "node": "N",
+   "chosen": "Damping of the correction parameters within non-negative least squares",
+   "alternatives": "Bounded least squares with a priori constraints (Matsu'ura & Hasegawa 1987; scipy.optimize)",
+   "reason": "A compromise with the existing NNLS code; reconstructing the framework is non-trivial",
+   "effect_reported": "no",
+   "page": "19"
+  },
+  {
+   "node": "I",
+   "chosen": "Decay-time grid with about factor-of-two increments (1, 2, 5, 10, 20 days)",
+   "alternatives": "Finer search interval",
+   "reason": "Computational efficiency; the trade-off curve is smooth and residuals are similar between 5 and 20 days",
+   "effect_reported": "yes",
+   "page": "14"
+  },
+  {
+   "node": "I",
+   "chosen": "Downdip decay time determined from all pixels (50 days)",
+   "alternatives": "Downdip pixels only, which partly indicate 100 days",
+   "reason": "Reduces bias from spuriously high noise at individual locations",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "R",
+   "chosen": "Coarse discretization of the aftershock fault plane",
+   "alternatives": "Finer subfault discretization",
+   "reason": "Its impact on the displacement fit is limited to local scales",
+   "effect_reported": "no",
+   "page": "15"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we use controlled synthetic tests to check if FTI can resolve the spatial distribution of given sources and SEF",
+   "page": "10"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Both FTI and static inversion are performed, whereas the static inversion only uses displacements between the last and first SAR acquisitions",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We tested FTI with synthetic InSAR data with and without spatial correlation",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "For both cases, the FTI can recover both spatial and temporal distributions of the input slip reasonably well",
+   "page": "12"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which is in good agreement with the CGMT solution",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "To further explore the data sensitivity to the downdip afterslip, we select the InSAR pixels above the downdip portion",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We also perform an FTI considering the spatial correlation in the InSAR data",
+   "page": "16"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The fine sub-fault FTI result still resembles that of the coarse grid, demonstrating the stability of FTI with respect to subfault sizes.",
+   "page": "16"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] result is different from that obtained by RSF modeling.",
+   "page": "16"
+  }
+ ]
+}

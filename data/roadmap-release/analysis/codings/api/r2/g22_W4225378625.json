@@ -1,0 +1,572 @@
+{
+ "key": "g22_W4225378625",
+ "doi": "10.1029/2021je007015",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Li, Xian, Zhang, Sun & Vočadlo (2022), Thermal properties of liquid iron at conditions of planetary cores, JGR Planets 127, e2021JE007015 (published PDF, 13 pages)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Such large discrepancies undermine a proper understanding of the thermal evolution of planetary cores (Buffett et al., 1992) and need to be resolved.",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Li et al. 2022, JGR Planets, published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the problem as large discrepancies among published liquid-iron properties: the shock-reduced EoS against the DAC extrapolation, and Wagle & Steinle-Neumann's Cp about 50% above earlier values.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Such large discrepancies undermine a proper understanding of the thermal evolution of planetary cores"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take the DAC P-ρ-T measurements of Kuwayama et al. (20-135 GPa) and the shock-wave EoS reductions from the literature as the observational baseline and record the conflict between them.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "differs considerably from the extrapolation of DAC"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a thermodynamically self-consistent Helmholtz free-energy model, a polynomial in t and the finite strain f fitted to AIMD energies and pressures, with the entropy constant d0 fixed by ab initio thermodynamic integration.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To proceed from discrete (Un, Pn, Vn, Tn) to continuous F(V, T), some form of thermodynamic modeling is essential."
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run NVT AIMD (VASP, PBE, 16-valence-electron PAW, 108 atoms, 10 ps) on a density-temperature grid up to about 3 TPa and 25000 K, plus a TI from a WCA reference gas to fix the absolute entropy.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we chose a projector augmented-wave (PAW) pseudopotential (Blöchl, 1994) containing 16 valence electrons"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check convergence by recomputing 20 snapshots at an 850 eV cutoff with a 2x2x2 k-mesh and adding the differences (Table S1); cite the authors' earlier pseudopotential (all-electron, smaller core radius) and 216-atom cell-size tests.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we randomly selected 20 snapshots along AIMD trajectories and recalculated their energies and pressures using a higher kinetic energy cutoff of 850 eV"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare the ab initio static EoS of hcp iron and the liquid pressure at the ambient melting point with experiment, and find a pressure offset of about 17 GPa at low density.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our calculated pressure is about ∼17 GPa, whereas the experimental pressure is zero"
+    },
+    {
+     "n": 7,
+     "node": "P",
+     "mode": "methods",
+     "action": "Revise the auxiliary rather than the DFT result: introduce a temperature-independent sigmoid pressure shift ΔPc(ρ), fitted to the hcp static EoS data (D06, F16) and the ambient-melting liquid density, with the matching energy correction.",
+     "page": "6",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "We thus determine ΔPc by comparing the theoretical static EoS of hcp iron with that of experiments"
+    },
+    {
+     "n": 8,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Fit F(V,T) to the corrected and the uncorrected AIMD data (Table 1), with fitting errors shown in Figure 2c-d and reported as an order of magnitude smaller than W19's.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The small fitting errors indicate that our AIMD calculations are well-converged and thermodynamic modeling based on Equation 2 is appropriate."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "estimation",
+     "action": "Compare the derived thermal EoS with the K20 DAC data: it agrees within the measured range, departs from K20's high-P-T extrapolation, and agrees with the A94 shock reduction (Figure 3).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the EoS after pressure shift (labeled as “cor.”) agrees very well with the DAC measurements"
+    },
+    {
+     "n": 10,
+     "node": "H",
+     "mode": "synthesis",
+     "action": "State the rival explanation of the DAC-shock discrepancy: Kuwayama et al. proposed that the A94 Hugoniot temperatures were overestimated.",
+     "page": "7",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Kuwayama et al. (2020) had postulated that temperatures in Anderson and Ahrens (1994) were substantially overestimated"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute the shock Hugoniot from their EoS with the Rankine-Hugoniot equation, starting from bcc iron through the liquid ambient-melting energy plus the measured enthalpy difference.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To clarify this issue, we calculate the shock Hugoniot using the Rankin-Hugoniot equation"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the computed Hugoniot pressure and temperature with shock experiments up to 1 TPa and 25000 K (Figure 4); at 12.64 g/cm3 the result is 5877 K against 5871 K (A94) and 6922 K (Brown & McQueen).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The theoretical Hugoniot agree well with experiments up to 1 TPa and 25000 K"
+    },
+    {
+     "n": 13,
+     "node": "X",
+     "mode": "synthesis",
+     "action": "Reject the overestimated-A94-temperature explanation, attribute the discrepancy to the DAC extrapolation, and confirm that Brown & McQueen's temperatures were overestimated.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is mainly due to the uncertainties associated with extrapolation of DAC data, rather than overestimation of Hugoniot temperature"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare with the W19 DFT EoS, which agrees at low P-T and departs at high P-T; attribute the gap to a modeling flaw in W19 (supplement) and to W19's 14-valence-electron potential.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The discrepancy is partly due to a flaw"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Derive higher-order properties (density isobars, thermal expansivity, entropy, Cp, Grüneisen parameter) from the free-energy function across the full P-T range (Figures 5-7).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After considering the first order derivative of free energy, P(V, T), we now inspect higher order properties."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the derived properties against low-P-T references: α against K14, A94 and V03; entropy at the ambient melting point against NIST-JANAF; the mild T-dependence of Cp against Savvatimskiy & Onufriev.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The good agreement with these relatively low P-T studies validates our approach"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "synthesis",
+     "action": "Set out the rival views on the temperature dependence of γ: A94 found it T-dependent, Ichikawa et al. found no apparent T-dependence, and K20 followed Ichikawa.",
+     "page": "10",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This view was challenged by Ichikawa et al. (2014), who calculated γ via AIMD and found no apparent T-dependence."
+    },
+    {
+     "n": 18,
+     "node": "X",
+     "mode": "estimation",
+     "action": "Use the wider ρ-T range to show that γ depends on T at low densities and becomes negligibly T-dependent only at very high densities, approaching 1.1 in the TPa regime.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the U-P curve is strongly non-linear at low densities, indicating γ depends on T."
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Compute outer-core properties along isentropes for TICB of 6000 K and 5000 K and compare with PREM, S08, W19, K20 and A94 (Figure 8): Cp and α are close to S08 and about 50% below W19 and K20.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our results are close to the thermal model by Stacey and Davis (2008)"
+    },
+    {
+     "n": 20,
+     "node": "S",
+     "mode": "theory",
+     "action": "Derive the consequence for inner-core growth from the Buffett et al. (1992) relation, in which growth scales with one over the square root of Cp.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a 50% difference in Cp will cause a 20% change in the rate of inner core growth"
+    },
+    {
+     "n": 21,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Model Kepler-36b with ExoPlex for two limiting cases, a completely frozen core (hcp, H18) and a completely molten core (this study), and compare the P-T-ρ profiles (Figure 9).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the temperature of a completely molten core can be twice that of a frozen core, whereas the core pressures are similar"
+    },
+    {
+     "n": 22,
+     "node": "S",
+     "mode": "theory",
+     "action": "Compute the ratio of adiabatic to melting slope along the Bouchet et al. iron melting curve: it falls below 1 above about 100 GPa and stays near 0.8, implying bottom-up crystallization in massive planets (Figure 10).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "crystallizations of massive planetary cores are expected to proceed from the bottom-up, instead of the top-down"
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "estimation",
+     "action": "Keep the thermal EoS and properties of liquid iron, with lower Cp and α than recent reports, and the planetary implications.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These results lay the foundation for more comprehensive studies of the thermal structure and evolution of planetary cores."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Thermal properties of liquid iron at core P-T, where published values disagree",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Only partly: DAC to 135 GPa and shock data; TPa conditions are not observable",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate a self-consistent thermal EoS and derived properties up to 3 TPa and 25000 K",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Rival published EoS (K20 DAC extrapolation, A94 shock, W19 DFT) and rival accounts of the discrepancy and of γ's T-dependence",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "5",
+   "answer": "Hugoniot temperature distinguishes the overestimated-shock-temperature account from the DAC-extrapolation account",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally on a V-T grid",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Agrees with DAC data, shock Hugoniots, ambient entropy and low-P-T α; convergence checked; limited parameter variation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Estimates kept; DAC extrapolation questioned; W19 Cp and α attributed to a modeling flaw",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "Ab initio thermodynamic integration with a pressure shift gives a thermal EoS of liquid iron up to 3 TPa and 25000 K that matches DAC and shock data, with heat capacity and thermal expansivity substantially lower than recent reports.",
+  "page": "11"
+ },
+ "decisive_move": {
+  "node": "S",
+  "mode": "simulation",
+  "sentence": "Without the AIMD and thermodynamic-integration runs with 16 valence electrons over the 3 TPa / 25000 K grid there would be no free-energy function and hence no thermal properties to compare or apply.",
+  "page": "5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The simulation grid was chosen to span planetary-core conditions, not directed by a stated hypothesis (p. 2, 5). The EoS could have failed the comparisons with the K20 DAC data and the shock Hugoniots (pp. 7, Figure 4). However, the pressure shift was calibrated on experimental hcp and ambient-liquid data (p. 6), so the low-pressure agreement is not fully independent; the Hugoniot comparison up to 1 TPa is the cleaner test. Nothing is stated as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "condensed-matter physics",
+   "item": "Density functional theory ab initio molecular dynamics (VASP, PBE GGA, Mermin finite-temperature functional)",
+   "kind": "method",
+   "page": "4"
+  },
+  {
+   "field": "condensed-matter physics",
+   "item": "Projector augmented-wave pseudopotential with 3s semicore electrons; Quantum-Espresso all-electron comparison",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Thermodynamic integration from a Weeks-Chandler-Andersen gas reference system",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "statistical physics",
+   "item": "Nosé thermostat",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "shock physics",
+   "item": "Rankine-Hugoniot relation and shock Hugoniot data",
+   "kind": "concept",
+   "page": "7"
+  },
+  {
+   "field": "chemistry",
+   "item": "NIST-JANAF experimental entropy of liquid iron at the melting point",
+   "kind": "data",
+   "page": "8"
+  },
+  {
+   "field": "astronomy",
+   "item": "Kepler-36b mass and radius (Carter et al., 2012)",
+   "kind": "data",
+   "page": "11"
+  },
+  {
+   "field": "astronomy",
+   "item": "ExoPlex interior-structure software",
+   "kind": "method",
+   "page": "11"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "The iron 3s electrons were treated as valence electrons, allowing us to extend the pressure range to 3 TPa.",
+   "page": "2"
+  },
+  {
+   "quote": "[...] the effect of 3s electrons increases with T and needs to be taken into account even at relatively low pressures.",
+   "page": "2"
+  },
+  {
+   "quote": "Here we take a different approach.",
+   "page": "6"
+  },
+  {
+   "quote": "we propose that [...] cores of massive planets proceeds from the bottom-up rather than the top-down",
+   "page": "1"
+  }
+ ],
+ "limits": "Coded from the published PDF only; the Supporting Information is not supplied. Two pieces of content cited in the paper are therefore not examined: the uncorrected-fit results and the demonstration of W19's modeling flaw. The derived properties carry no uncertainty bounds beyond the fitting errors in Figure 2, so 'estimate_with_resolution' rests on a weak resolution statement.\n\nInference: the pressure shift is calibrated on experimental data, so agreement with the low-pressure DAC data is partly built in. The paper does not report how sensitive the TPa results are to the choice of shift.\n\nSub-claims at other statuses:\n- The A94 shock reduction is valid and the K20 extrapolation is in error: best_explanation.\n- W19's high Cp and α come from incorrect internal-energy modeling: contradicted, with the evidence in the supplement.\n- γ is T-dependent at low density, against Ichikawa et al.: contradicted within the explored range.\n- A molten core of Kepler-36b is twice as hot as a frozen one at similar pressure: model-dependent estimate resting on ExoPlex, an Earth-like composition and the hcp melting anchor.\n- Massive-planet cores crystallize bottom-up: best_explanation for pure iron with the Bouchet melting curve. The claim that light elements will not change this is an untested assertion.\n\nComposition is none_fits: this is a computational estimation followed by cross-study comparison and applications. There are no rivals tested by one crucial experiment, no trace series, and no new instrument. Fork choices such as T0/V0 and the grid layout are not discussed.",
+ "disagreements": [
+  {
+   "target": "Kuwayama et al. (2020) extrapolation of DAC measurements",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "Their EoS matches K20 inside the measured range but departs at higher P-T, where it agrees with A94 shock data and computed Hugoniots.",
+   "page": "1",
+   "quote": "deviates considerably from the extrapolations of DAC measurements, indicating the latter may require further examinations"
+  },
+  {
+   "target": "Kuwayama et al. (2020) postulate that Anderson and Ahrens (1994) temperatures were overestimated",
+   "kind": "interpretation",
+   "stance": "contradicts",
+   "support": "The computed Hugoniot temperature at 12.64 g/cm3 (5877 K) matches A94 (5871 K).",
+   "page": "7",
+   "quote": "Kuwayama et al. (2020) had postulated that temperatures in Anderson and Ahrens (1994) were substantially overestimated; the present [...] ."
+  },
+  {
+   "target": "Brown and Mcqueen (1986) Hugoniot temperatures",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "The computed Hugoniot gives 5877 K against their 6922 K at 12.64 g/cm3, confirming Vočadlo et al. (2003).",
+   "page": "7",
+   "quote": "the Hugoniot temperature in Brown and Mcqueen (1986) was overestimated"
+  },
+  {
+   "target": "Wagle and Steinle-Neumann (2019) thermodynamic modeling",
+   "kind": "method",
+   "stance": "contradicts",
+   "support": "The supplement is said to show that W19 incorrectly modeled the internal energy; the paper also points to W19's 14-valence-electron potential.",
+   "page": "10",
+   "quote": "Wagle and Steinle-Neumann (2019) incorrectly modeled the internal energy of the system, leading to abnormally high α and Cp."
+  },
+  {
+   "target": "Wagle and Steinle-Neumann (2019) heat capacity and thermal expansivity",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "Calculated Cp, α and entropy are much lower than W19's and agree with A94, K14, V03, NIST-JANAF and Savvatimskiy & Onufriev.",
+   "page": "9",
+   "quote": "those from Wagle and Steinle-Neumann (2019) depend strongly on temperature and at high T can exceed 1500 J/kg/K"
+  },
+  {
+   "target": "Wagle and Steinle-Neumann (2019) pressure-shift determination",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "A shift based on the triple point and α is called indeterminate because of the uncertainty in α; the paper calibrates on the hcp static EoS instead.",
+   "page": "6",
+   "quote": "However due to the large uncertainties associated with α, ΔPc remains somewhat indeterminate."
+  },
+  {
+   "target": "Ichikawa et al. (2014) temperature-independent Grüneisen parameter, adopted by Kuwayama et al. (2020)",
+   "kind": "result",
+   "stance": "disputes",
+   "support": "Over a wider ρ-T range, the U-P curves are non-linear at low density, so γ depends on T.",
+   "page": "10",
+   "quote": "conducted their simulations in a rather narrow ρ-T range (9.34–13.01 g/cm3, 4000–7000 K), which may not be adequate"
+  },
+  {
+   "target": "Unterborn and Panero (2019) P-T limits of rocky exoplanets computed with hcp iron",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "For Kepler-36b, a molten core can double the core temperature at similar pressure.",
+   "page": "11",
+   "quote": "This study was conducted with the EoS of hcp iron, and it is unclear how a completely molten core may affect these limits."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "P",
+   "chosen": "Temperature-independent pressure shift calibrated on the hcp static EoS (D06, F16) plus the ambient-melting liquid density",
+   "alternatives": "Shift from the experimental triple point and ambient thermal expansivity (Wagle & Steinle-Neumann 2019)",
+   "reason": "Large uncertainties in α make the W19-style shift indeterminate; liquid and hcp iron are both close-packed with similar coordination",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Fit to pressure-shifted data",
+   "alternatives": "Fit to the original uncorrected AIMD data",
+   "reason": "The corrected version compensates ab initio uncertainties and can be applied directly",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "PAW pseudopotential with 16 valence electrons (3s semicore)",
+   "alternatives": "14-valence-electron potential as in W19; smaller core radius (1.5 a.u.) and all-electron calculations",
+   "reason": "High pressure and temperature; the effect of 3s electrons becomes non-negligible as density or temperature rises",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "Coarse setting (650 eV, Gamma point) plus corrections from 20 snapshots",
+   "alternatives": "850 eV cutoff with a 2x2x2 k-mesh throughout",
+   "reason": "none given (implicitly cost)",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "108-atom cell",
+   "alternatives": "216-atom cell",
+   "reason": "Size effects are negligible (Li et al., 2021)",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "Hugoniot start from the liquid internal energy at the ambient melting point plus the measured enthalpy difference",
+   "alternatives": "Dealing with bcc iron directly",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "7"
+  },
+  {
+   "node": "I",
+   "chosen": "TICB = 6000 K, with 5000 K as a lower bound",
+   "alternatives": "Other TICB values (the exact value is uncertain)",
+   "reason": "6000 K assumes light elements do not strongly suppress melting",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "S",
+   "chosen": "Kepler-36b as prototype, with completely frozen and completely molten limiting cases",
+   "alternatives": "Other exoplanets",
+   "reason": "Its mass and radius are more tightly constrained than most other exoplanets'",
+   "effect_reported": "yes",
+   "page": "11"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we randomly selected 20 snapshots along AIMD trajectories and recalculated their energies and pressures using a higher kinetic energy cutoff of 850 eV",
+   "page": "5"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "The predictions it makes agree well with those from all electron simulations as well as a PAW pseudo-potential with a smaller core-radius",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "Tests on a larger cell with 216 atoms indicate that the size effects on thermal properties are negligible (Li et al., 2021).",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We perform two sets of fitting: one with the original AIMD data",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the EoS after pressure shift (labeled as “cor.”) agrees very well with the DAC measurements",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The theoretical Hugoniot agree well with experiments up to 1 TPa and 25000 K",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The good agreement with these relatively low P-T studies validates our approach",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the entropy we get is 100.9 J/mol/K (1804.9 J/kg/K), in excellent agreement with the experimental value 99.8 J/mol/K (Chase, 1998)",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For completeness we also consider TICB = 5000 K as a lower bound",
+   "page": "10"
+  }
+ ]
+}

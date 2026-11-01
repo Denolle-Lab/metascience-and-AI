@@ -1,0 +1,552 @@
+{
+ "key": "g22_W4200633001",
+ "doi": "10.1029/2021jb023830",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Ding, Li, Yang, Ren & Tong, Deep Neural Networks for Creating Reliable PmP Database with a Case Study in Southern California, arXiv:2112.07655v2 manuscript submitted to JGR: Solid Earth (PDF, 26 pages, supporting information on pp. 20-26)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (they equal the printed manuscript page numbers; the supporting information continues in the same file on pp. 20-26 and is cited by those page numbers)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "it is still a challenge for machines to match the performance of experienced analysts in the identification of local and regional seismic reflected waves",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Ding et al. arXiv:2112.07655v2 (published-paper text supplied)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the problem that automatic identification of later phases such as PmP, unlike P and S picking, lags behind analysts because labeled PmP data are scarce and unbalanced.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is still a challenge for machines to match the performance of experienced analysts"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "synthesis",
+     "action": "They take from earlier PmP studies the rarity of identifiable PmP waves (100-10,000 picks, about 1-27% of records; Table 2) as the premise of an unbalanced classification problem.",
+     "page": "3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the identifiable high-quality PmP waves are extremely rare in the amount of 100-10,000"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build PmPNet, a convolutional residual autoencoder whose encoder, decoder and predictor have ResNet blocks; it takes an envelope plus distance and depth and outputs the reconstructed input, a PmP probability and a PmP travel time.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we implemented PmPNet as a convolutional residual autoencoder (RAE) with an additional prediction module"
+    },
+    {
+     "n": 4,
+     "node": "O",
+     "mode": "observation",
+     "action": "As labeled data they use the 10,192-pick southern California PmP database built with their own two-stage semiautomatic workflow (Li et al., 2022).",
+     "page": "7",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we have built the first PmP database with 10,192 PmP waves"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "methods",
+     "action": "They design the training set: 5,000 PmP and 100,000 non-PmP envelopes (1:20) from 2000-2010, with selection criteria, 1-7 Hz filtering, a 7 s window, and non-PmP travel times computed from the HK 1D model with the Moho at 30 km.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Thus our training data contain those labeled with either PmP or non-PmP with the data amount ratio of 1:20"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "They specify how the imbalance is handled: precision, recall and F1 replace accuracy, a weighted binary cross-entropy uses ω = 20, and the combined L1/cross-entropy/travel-time loss is trained with Adam under stated hyperparameters.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we set ω = 20 to be the unbalance coefficient of the dataset"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "They state that results barely change when ω is varied slightly or when the number of duplicated distance and depth entries changes (Methods-only checks).",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The training and validation results do not change much when we slightly change ω."
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "On a random 20% held-out validation set they build the precision-recall curve across probability thresholds (Table 1). At p = 0.8 precision is 96.6% and recall 85.3%; the mean travel-time error is about 0.33 s.",
+     "page": "11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The proposed PmPNet can reach high precision(96.6%) and recall(85.3%) simultaneously"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "They apply the trained network to the 2000-2018 broadband archive and compare its detections with the two-stage workflow picks. Recall is above 96% before 2011 and above 85% for post-2010 data not used in training (Figure 4f).",
+     "page": "11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "for the seismic data after 2010 which are not involved in training the PmPNet, there is also a high recall value"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "From the PmPNet detections not already in the database, they keep 570 new broadband PmP picks after visually checking three-component waveforms.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "newly picked 570 high-quality PmP waves"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "observation",
+     "action": "They check that the new broadband picks match the original database in coverage and in the linear travel-time versus distance relation (Figure 5b, 5e).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which have a similar data coverage (Figure 5b) and a linear relationship between the PmP travel time and epicentral distance"
+    },
+    {
+     "n": 12,
+     "node": "O",
+     "mode": "observation",
+     "action": "They apply PmPNet to 1990-1999 short-period data (STA/LTA alignment, p > 0.8, then a visual check and a manual onset pick near the predicted time) and obtain more than 27,000 PmP picks.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we obtain a total of more than 27,000 PmP picks"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "observation",
+     "action": "They check that the short-period picks show linear moveout with distance and waveform character similar to the broadband PmP (Figure 5f, 5i).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "their travel times increase linearly with respect to the epicentral distance"
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "observation",
+     "action": "They refine the database by grouping picks into common reflection gathers of 30 km. Moho depth is computed with Vp = 6.3 km/s, and picks deviating by more than 3 km are discarded, leaving more than 28,000 picks.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "discard the outliers which deviate largely in Moho depth prediction (> 3.0 km)"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "observation",
+     "action": "They test self-consistency: Moho-depth spread within each reflection gather, and cross-correlation waveform similarity within groups of similar ray paths (Figure 7d, 7e).",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "show that the newly updated PmP database are of high quality and self-consistent"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "They report one-at-a-time hyperparameter tests (ResNet block counts, number of PmP labels, class ratio, learning rate, batch size) on loss, the precision-recall curve and travel-time residuals (Figure 14, supporting information).",
+     "page": "14",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "we only vary one hyperparameter with others fixed"
+    },
+    {
+     "n": 17,
+     "node": "V",
+     "mode": "methods",
+     "action": "By manual checking they compare detection quality across instruments. About 24.3% of short-period detections are good PmP candidates, against about 95.4% of broadband detections (Figure 8a).",
+     "page": "15",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "while we find that only about 24.3% are good PmP candidates through our manual check"
+    },
+    {
+     "n": 18,
+     "node": "H",
+     "mode": "instruments",
+     "action": "They attribute the weaker short-period performance to higher noise in short-period records and to broadband-only training data (Figures 8b, 8c, 15). They propose adding short-period labels in future work.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is likely caused by the higher noise level"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "methods",
+     "action": "They compare PmPNet travel times with HK-model times and with manual picks (Figure 9): predictions resemble the HK model, but only 47% of predictions fall within 0.5 s of the manual picks.",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there are only 47% of picks with traveltime residuals no larger than 0.5 s"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "methods",
+     "action": "Because the absolute travel-time predictions were poor, they train a separate PmP-traveltime-Net that predicts the PmP minus first-P differential time (Text S1).",
+     "page": "16",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "To solve this problem, we further train a separate model [...]"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "methods",
+     "action": "They validate PmP-traveltime-Net against all manual picks from 1990-2018: 95% of residuals are within 0.5 s and 88% within 0.1 s (Figures 9c, 9f, 16).",
+     "page": "16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there are 95% of picks with traveltime residuals no larger than 0.5 s"
+    },
+    {
+     "n": 22,
+     "node": "I",
+     "mode": "estimation",
+     "action": "From the new database they estimate Moho depth at each node of a 30 km grid, averaging over each reflection gather with Vp = 6.3 km/s (Figure 7b).",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For the Moho geometry constrained by the newly built PmP database (Figure 7b)"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare the Moho map with CMM-1.0. It agrees beneath the Salton Trough, eastern Transverse Ranges and southern Sierra Nevada, and departs beneath the Mojave Desert and western Peninsular Ranges.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which are consistent with the California Moho Model 1.0"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "methods",
+     "action": "They conclude that PmPNet reaches high precision and recall on unbalanced data and that applying it nearly tripled the southern California PmP database to 28,093 picks.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we have nearly tripled the volume of the PmP database in southern California (28,093 picks)"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "PmP Moho reflections, a known phase that is rare in local earthquake records",
+   "mode_called": "synthesis"
+  },
+  {
+   "question": "2",
+   "answer": "Yes: visible in seismograms, but costly to pick by hand",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Automatic PmP identification despite class imbalance, and an enlarged PmP database",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; only method choices and hyperparameters",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: archived SCEDC earthquake records",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Yes: thousands of local earthquakes repeat the source-station geometry",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Survives held-out data, post-2010 data and hyperparameter variation; weaker on short-period data",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: picker performance characterized and database built",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "PmPNet, a ResNet-autoencoder with weighted loss, identifies PmP waves with high precision (96.6%) and recall (85.3%) on unbalanced data; applied to 1990-2018 southern California records, it yields a quality-controlled database of 28,093 PmP picks.",
+  "page": "18"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without building PmPNet, with its residual autoencoder, predictor head and imbalance-weighted loss, there would be neither the characterized picker nor the 27,000-plus new short-period picks.",
+  "page": "4"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The data were archived SCEDC records and an existing pick database; no hypothesis directed their acquisition. The picker faced tests it could have failed: held-out validation (p. 11), recall on post-2010 data not used in training (p. 11), and manual checking of short-period detections (p. 15). No success threshold was set in advance, and every final pick passed a human visual check. The threshold 0.8, ω and the block counts were chosen by benchmarking on the same data (pp. 6, 11, 14); nothing was fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "autoencoder framework (Rumelhart & McClelland 1987)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "machine learning / computer vision",
+   "item": "residual network (ResNet) connections (He et al. 2016)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "machine learning",
+   "item": "convolutional layers, batch normalization, ReLU and pooling layers",
+   "kind": "method",
+   "page": "6"
+  },
+  {
+   "field": "machine learning",
+   "item": "class-imbalance learning: precision, recall, F1 and weighted binary cross-entropy (Johnson & Khoshgoftaar 2019; Haixiang et al. 2017)",
+   "kind": "method",
+   "page": "7"
+  },
+  {
+   "field": "machine learning / optimization",
+   "item": "Adam stochastic optimizer (Kingma & Ba 2017)",
+   "kind": "method",
+   "page": "9"
+  },
+  {
+   "field": "computing hardware",
+   "item": "NVIDIA GeForce RTX 2080 GPU",
+   "kind": "instrument",
+   "page": "15"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we have built the first PmP database with 10,192 PmP waves",
+   "page": "7"
+  }
+ ],
+ "limits": "No review file was supplied. The acknowledgments name an editor and two reviewers, but no review sequence could be coded. The abstract says the picks nearly doubled ('nearly twice more PmP picks'), while the Plain Language Summary and Conclusions say the database tripled. The training learning rate is 0.0001 in Section 2.5 (p. 9) but fixed at 0.001 in the Figure 14 tests (p. 24). Inference: PmP-traveltime-Net is trained on 10,000 workflow picks and validated on all manual picks from 1990-2018, which likely include those training picks, so its 95% figure is not a clean held-out test. Inference: the recall above 96% before 2011 includes the training period. Every retained pick passed a human visual check and, for short-period data, a manual onset pick, so the database quality is not PmPNet's alone; precision on new data was scored only by that check (24.3% short-period, 95.4% broadband). The threshold 0.8 was chosen from the validation curve with no stated reason. Sub-claims: the Moho geometry map (Figure 7b) is an estimate, but its resolution is not given beyond the per-gather standard deviation (closest status estimate_with_resolution, partial). The interpretation of a deeper Mojave Moho as a lower-crust low-velocity anomaly is offered as best_explanation without a test. The weaker short-period performance is explained by noise as a hypothesis without a test. Composition: capability_first is the closest fit, but the walk starts from a named problem (Q), not from the capability, and it has no E step and no later question with rivals.",
+ "disagreements": [
+  {
+   "target": "California Moho Model 1.0 (CMM-1.0, Tape et al., 2012), beneath the Mojave Desert",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The Moho depths from the new PmP gathers come out slightly deeper than CMM-1.0 beneath the Mojave; the authors attribute this to a lower-crust low-velocity anomaly reported by Shaw et al. (2015) and Lee et al. (2014).",
+   "page": "17",
+   "quote": "[...] the Moho beneath the Mojave Desert is slightly deeper compared to the CMM-1.0"
+  },
+  {
+   "target": "California Moho Model 1.0 (CMM-1.0, Tape et al., 2012), in the western Peninsular Ranges",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The sparse PmP data give a much shallower Moho than CMM-1.0; the authors suggest this may reflect their oversimplified one-layer crust model and/or a gradual crust-mantle transition.",
+   "page": "17",
+   "quote": "the Moho depth estimated by sparse PmP data is much shallower compared to the"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "precision, recall and F1 as the evaluation metrics",
+   "alternatives": "predictive accuracy",
+   "reason": "accuracy is not sensible for unbalanced data: a naive classifier labelling everything non-PmP would score 99.9%",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "N",
+   "chosen": "L1 reconstruction loss for the autoencoder",
+   "alternatives": "the usual L2 loss 'or any alternative'",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "N",
+   "chosen": "distance and depth each repeated 8 times in the input",
+   "alternatives": "other numbers of duplication",
+   "reason": "chosen according to experiments",
+   "effect_reported": "yes",
+   "page": "6"
+  },
+  {
+   "node": "N",
+   "chosen": "class weight ω = 20",
+   "alternatives": "slightly different ω (large ω favours recall, small ω favours precision)",
+   "reason": "equals the unbalance coefficient of the dataset, to balance precision and recall",
+   "effect_reported": "yes",
+   "page": "8"
+  },
+  {
+   "node": "N",
+   "chosen": "ResNet blocks n1 = 2, n2 = 4, n3 = 1",
+   "alternatives": "more complicated block configurations (3/6/1 up to 9/18/1)",
+   "reason": "the simple configuration performs as well as the more complicated ones",
+   "effect_reported": "yes",
+   "page": "14"
+  },
+  {
+   "node": "D",
+   "chosen": "5,000 PmP-labeled training waveforms",
+   "alternatives": "500 to 4,000 PmP-labeled waveforms",
+   "reason": "more PmP labels give better performance; more than 2,000 already perform well",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "D",
+   "chosen": "PmP:non-PmP ratio of 1:20",
+   "alternatives": "ratios of 1:10, 1:30 and 1:40",
+   "reason": "to mimic the rarity of PmP; the ratio has little influence with 5,000 PmP labels",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "N",
+   "chosen": "small initial learning rate (0.0001)",
+   "alternatives": "learning rates from 0.001 to 0.1",
+   "reason": "small rates (< 0.001) are vitally important for good performance",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "N",
+   "chosen": "batch size 200",
+   "alternatives": "batch sizes of 50, 100, 300 and 500",
+   "reason": "various batch sizes give good performance",
+   "effect_reported": "yes",
+   "page": "15"
+  },
+  {
+   "node": "C",
+   "chosen": "probability threshold p = 0.8",
+   "alternatives": "thresholds from 0.0001 to 0.999 (Table 1)",
+   "reason": "none given beyond the precision-recall curve helping 'choose the optimal value'",
+   "effect_reported": "yes",
+   "page": "11"
+  },
+  {
+   "node": "R",
+   "chosen": "separate PmP-traveltime-Net predicting the PmP minus first-P differential time",
+   "alternatives": "PmPNet's absolute travel-time output; HK-model travel times",
+   "reason": "PmPNet residuals were too large (only 47% within 0.5 s)",
+   "effect_reported": "yes",
+   "page": "16"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the final results presented in this paper are not sensitive to this selection",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The training and validation results do not change much when we slightly change ω.",
+   "page": "8"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The training set and the validation set have no intersection",
+   "page": "10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "for the seismic data after 2010 which are not involved in training the PmPNet, there is also a high recall value",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "which have a similar data coverage (Figure 5b) and a linear relationship between the PmP travel time and epicentral distance",
+   "page": "12"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "we also apply the trained network to the short-period",
+   "page": "12"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "using a time-domain cross-correlation technique (Schaff & Waldhauser, 2005)",
+   "page": "14"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we only vary one hyperparameter with others fixed",
+   "page": "14"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "while we find that only about 24.3% are good PmP candidates through our manual check",
+   "page": "15"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "there are only 47% of picks with traveltime residuals no larger than 0.5 s",
+   "page": "16"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "there are 95% of picks with traveltime residuals no larger than 0.5 s",
+   "page": "16"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "which are consistent with the California Moho Model 1.0",
+   "page": "17"
+  }
+ ]
+}

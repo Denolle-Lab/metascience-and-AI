@@ -1,0 +1,396 @@
+{
+ "key": "g22_W4313256786",
+ "doi": "10.1002/hyp.14796",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Pelak et al. 2023, Hydrological Processes 37:e14796, published paper (PDF, 16 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 16), which match PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Our ability to predict snowpack evolution is hampered by the low density of precipitation gauges in high mountain regions",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Pelak et al. 2023, published paper",
+   "steps": [
+    {
+     "n": 1,
+     "node": "E",
+     "mode": "observation",
+     "action": "Cite Lundquist et al. (2015), who used snow pillow SWE to show that gridded precipitation products underestimate high-elevation storms in the Sierra Nevada.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "observed biases exceeding 50% for some individual storms"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Ask how far simulated SWE and SWI can be improved by blending snow pillow and gauge measurements, and how the choice of forcing affects warming projections.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We examine the extent to which simulated SWE and SWI can be improved through the blending of these measurements"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble archival data for the Kings River Basin: 40 weather stations, 10 snow pillows, 12 snow courses, full natural flow, and MODIS-NDVI-based ET estimates.",
+     "page": "3-4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "there are 10 snow pillows across the KRB that record daily SWE"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Set up and run SnowModel (MicroMet, EnBal with albedo decay, SnowPack; SnowTran-3D disabled) at 100 m and daily resolution for WY2000-2019, with monthly lapse rates regressed on station elevation.",
+     "page": "4-5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used a spatially distributed and process-based snow model, SnowModel"
+    },
+    {
+     "n": 5,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Design three forcing scenarios (Gauge, PRISM downscaled to 100 m, Blended) run with identical parameters and non-precipitation inputs, so that SWE differences can be attributed to precipitation.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we designed three scenarios: the Gauge, PRISM, and Blended scenarios"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the Blended forcing: at each pillow cell, take the daily maximum of Gauge precipitation and the positive SWE change, gap-filling missing pillow years (supporting information).",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used daily positive changes in SWE to infer daily incremental precipitation"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Calibrate the rain/snow thresholds Tsnow and Train by a grid search maximizing median annual NSE at 8 pillows under the Blended scenario, choosing Tsnow = -0.5 C and Train = 3 C.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We ran the model using all possible combinations of Tsnow and Train"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Validate the calibrated parameters on 5 held-out water years matched in precipitation, and report that varying cloud factor and maximum snow density had minimal impact.",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Each water year in the 20-year study period was assigned to belong to either the calibration or validation sets"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare simulated with observed SWE at the snow pillows: median NSE is 0.85 for Blended, 0.81 for PRISM and 0.37 for Gauge, and the gaps are larger at high elevations.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Blended scenario outperformed the Gauge and PRISM scenarios, which tended to underestimate SWE"
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check against 12 independent snow courses using regression slopes through the origin: 0.73 for Blended, 0.63 for PRISM, 0.46 for Gauge.",
+     "page": "7-9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which, while providing only monthly rather than daily resolution, are completely independent"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare spatial maps of mean peak SWE and the elevation dependence across scenarios, including the February 2017 precipitation grids, and locate the largest differences above 2500 m.",
+     "page": "9-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The underestimations in the mean SWEpeak at an individual grid cell were as large as 636 mm for the Gauge scenario"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Check basin SWI against an independent lower bound, full natural flow plus ET, year by year.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Blended scenario provided enough SWI to meet the estimated basin water output in all years"
+    },
+    {
+     "n": 13,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Run uniform warming experiments (+1 to +5 C) for each scenario and compute peak SWE, snow fraction by elevation, and the timing of SWI.",
+     "page": "6, 10-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the similar rate of decline of SWEpeak with increasing temperature"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the claim that blending pillow SWE increases into the precipitation forcing improves basin SWE and SWI simulation, and use Blended as a benchmark.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This approach not only improved the model performance at snow pillows where SWE increases were added"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Gauge-based gridded precipitation underestimates high-elevation snowfall (cited)",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; basin SWE is simulated from forcing and checked at points",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Improve basin SWE/SWI simulation by blending pillow SWE increases into precipitation",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Three forcings: Gauge, PRISM, Blended",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; different SWE at sites, especially at high elevation, and different basin SWI",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural water years 2000-2019 at existing stations",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: held-out years, independent snow courses, FNF+ET water-balance bound",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Blended performs best; kept as benchmark",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Blending snow pillow SWE increases with gauge precipitation gives better basin SWE simulations (NSE 0.85 vs 0.81 PRISM and 0.37 Gauge; snow course slope 0.73 vs 0.63 and 0.46) and is the only forcing whose SWI meets FNF+ET in every year.",
+  "page": "13-14"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The Blended forcing, built by taking the daily maximum of gauge-interpolated precipitation and positive pillow SWE changes, supplies the high-elevation precipitation on which every result depends.",
+  "page": "5"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "All data are archival; the idea that pillows capture high-elevation precipitation selected which data to use but directed no new acquisition. The Blended scenario could have failed against independent snow courses and the FNF+ET bound (pp. 7-10). Nothing was fixed in advance: the MTM pillow was found after the parameters were chosen (p. 7), and the validation split was set by the authors with no stated pre-specification (p. 6)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "least-squares linear regression (lapse rates) and regression through the origin (snow course evaluation)",
+   "kind": "method",
+   "page": "4, 7-8"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "Only the published paper was supplied; there is no review file, so no review sequence is coded. Data are available only on request (p. 14). The pillow comparison is circular because pillow data drive the Blended forcing and also calibrate the model, so independence rests on the snow courses and the water-balance bound. Calibration was done under Blended only, and the claim that the thresholds do not depend on forcing is argued, not tested (p. 6). No uncertainty or significance is given for the NSE or slope differences. BIM was excluded from calibration and MTM was found late (pp. 6-7). Composition none_fits: the paper is a method intercomparison, in which a new forcing method is scored against two baseline forcings on shared observations; it does not fit capability_first or strong_inference, since no rival is excluded and the forcings are ranked. Sub-claims at other statuses: (1) the Gauge and PRISM scenarios underestimate basin SWI by 25% and 20% relative to Blended, an estimate relative to a model benchmark with no stated uncertainty (estimate_with_resolution, weak; p. 10); (2) snowpack sensitivity to warming is similar across forcings over +1 to +5 C with the other inputs held fixed (regularity_in_range; p. 11); (3) explanations for PRISM's spatial pattern and for poor low-elevation performance are offered as possibilities (best_explanation at most; pp. 11-12). The paper makes no explicit 'first' claim; its novelty is implied by contrast with the NRCS and Avanzi methods (p. 5). The supporting-information gap-filling method was not available to the coder.",
+ "disagreements": [
+  {
+   "target": "Gutmann et al. 2012; Silverman et al. 2013 (PRISM underestimates high-elevation precipitation)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Relative to Blended, PRISM peak SWE is overestimated along the highest ridgeline of the KRB.",
+   "page": "11",
+   "quote": "The underestimation at the highest elevations contrasts somewhat with previous comparisons of PRISM"
+  },
+  {
+   "target": "Lundquist et al. 2019 (atmospheric models rival the observation network)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The authors argue that in situ observations remain needed and show that they improve simulated SWE.",
+   "page": "2",
+   "quote": "there is value in maximizing the utility of all available measurements"
+  },
+  {
+   "target": "PRISM precipitation product (Daly et al. 2008), a widely used high-quality dataset",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "PRISM-forced SWE underestimates pillow and snow course SWE, and PRISM gives 336 mm against 502 mm (Blended) in February 2017.",
+   "page": "10",
+   "quote": "The PRISM scenario (not shown) similarly underestimated the monthly precipitation"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "S",
+   "chosen": "SnowModel",
+   "alternatives": "iSnobal",
+   "reason": "Promising results in Mediterranean climates; required daily data readily available",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "S",
+   "chosen": "SnowTran-3D wind redistribution disabled",
+   "alternatives": "running SnowTran-3D",
+   "reason": "Simplify the analysis and focus on precipitation; redistribution is negligible under forest",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "S",
+   "chosen": "100 m resolution",
+   "alternatives": "none named",
+   "reason": "Fine enough to capture snowpack spatial variability",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "N",
+   "chosen": "Gauge-network lapse rates with direct pillow adjustment of precipitation",
+   "alternatives": "snow-course-enhanced lapse rates (Avanzi et al. 2021)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "N",
+   "chosen": "Blending Gauge-scenario grid-cell precipitation with pillow SWE increases",
+   "alternatives": "NRCS snow-adjusted method with co-located gauges and pillows",
+   "reason": "Most pillows lack co-located precipitation gauges",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "I",
+   "chosen": "Median annual NSE, using only days with nonzero observed or modelled SWE",
+   "alternatives": "mean NSE; NSE including zero-SWE days",
+   "reason": "Median a better indicator of site performance; zero days inflate NSE",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Calibrate under the Blended scenario only",
+   "alternatives": "calibrating each scenario",
+   "reason": "Temperature thresholds should not depend strongly on precipitation forcing",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "I",
+   "chosen": "Prior-study values for cloud factor (0.1) and maximum snow density (400 kg/m3)",
+   "alternatives": "calibrated values",
+   "reason": "Adjustment had minimal impact on performance",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "I",
+   "chosen": "Exclude BIM from calibration",
+   "alternatives": "including BIM",
+   "reason": "Site on basin edge, possibly unrepresentative",
+   "effect_reported": "no",
+   "page": "6-7"
+  },
+  {
+   "node": "V",
+   "chosen": "Regression slope through origin for snow courses",
+   "alternatives": "NSE",
+   "reason": "Low temporal resolution of snow course surveys",
+   "effect_reported": "no",
+   "page": "7-8"
+  },
+  {
+   "node": "S",
+   "chosen": "Uniform +1 to +5 C warming with other inputs fixed",
+   "alternatives": "downscaled climate projections",
+   "reason": "Isolates temperature sensitivity; disadvantage that other inputs do not co-vary",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "No precipitation change in warming runs",
+   "alternatives": "projected precipitation changes (Dettinger et al. 2018)",
+   "reason": "Projected changes smaller and uncertain in direction",
+   "effect_reported": "no",
+   "page": "6"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Each water year in the 20-year study period was assigned to belong to either the calibration or validation sets",
+   "page": "6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "adjustment of two other parameters, the cloud factor and maximum snow density, had minimal impact on the model performance",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "which, while providing only monthly rather than daily resolution, are completely independent",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the Blended scenario provided enough SWI to meet the estimated basin water output in all years",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "is included here to provide a comparison to a high-quality, large scale, and widely used dataset",
+   "page": "5"
+  }
+ ]
+}

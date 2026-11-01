@@ -1,0 +1,414 @@
+{
+ "key": "g22_W4306828745",
+ "doi": "10.1029/2022jb024496",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Su et al. 2022, Journal of Geophysical Research: Solid Earth 127, e2022JB024496 (published paper, PDF, 16 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 16), which coincide with PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "a key problem is to know the electrical conductivity distribution that should be used to calculate the source current distribution from the SP data",
+  "page": "2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Su et al. 2022, JGR Solid Earth, published version",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "methods",
+     "action": "The authors pose the methodological problem that SP inversion needs a subseafloor conductivity distribution, which is unknown in most marine SP surveys.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a key problem is to know the electrical conductivity distribution that should be used to calculate the source current distribution from the SP data"
+    },
+    {
+     "n": 2,
+     "node": "S",
+     "mode": "theory",
+     "action": "From published SP physics (Sill 1983, Rittgers et al. 2013, Patella 1997), the authors write the forward equation. It splits the SP field into primary sources (the ore body) and secondary sources (conductivity gradients).",
+     "page": "2-4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Only the primary source is associated with the shape of the ore body."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build a two-step workflow: invert TEM data for conductivity, compute the SP sensitivity kernel from that conductivity with finite volumes and depth weighting, then invert for the source current density.",
+     "page": "4-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we propose that the interpretation of the multi-geophysical data to assess SMS deposits should be performed in two steps"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "They test the workflow on a synthetic 3D conductivity and current-density model with topography, using 2.5D inversion along one line; the recovered source shape matches the designed model.",
+     "page": "6-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to illustrate the concept of joint interpretation of TEM and SP data, we first use a synthetic case."
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "They pick the TAG mound as the field test site because it is well studied (drillholes, CSEM, magnetics) and has active and inactive deposits; dual-tow TEM and SP data come from the 26th COMRA cruise.",
+     "page": "2, 5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is therefore a suitable natural laboratory to develop and test a combined approach between electrical conductivity and SP data tomography."
+    },
+    {
+     "n": 6,
+     "node": "O",
+     "mode": "observation",
+     "action": "They acquire coincident-loop TEM data, resample them into 21 gates, keep the first nine gates (3-20 ms), apply median and Savitzky-Golay filters, and normalize by coil area and current.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we consider only the early observation data for the inversion"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They calibrate the TEM response near the seafloor against the response in pure seawater and check the calibrated data against the ultra-short baseline positions.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the transient response near the seafloor is calibrated using the transient response in pure seawater"
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "They record potential differences between electrode pairs of the deep-towed SP system, convert them to along-line electric field, remove the static offsets between electrodes, and choose E13 for its signal-to-noise ratio (0.12 mV/m anomaly).",
+     "page": "8-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we choose the E13 component as input data for the inversion of the SP current source"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "instruments",
+     "action": "They check that the electric fields from different electrode pairs agree, that the field is near zero away from the mound, and that drift is negligible within an hour.",
+     "page": "9",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The calculated E are in good agreement (Figure 5b)"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "RBR sensors on the tow cable record temperature and turbidity anomalies about 80 m above the seafloor, near the centre of the TAG mound.",
+     "page": "5, 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The RBR turbidity sensors recorded obvious high temperature anomalies and turbidity anomalies around TAG mound center"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "observation",
+     "action": "They compare the location of the water-column plume anomaly with the location of the SP anomaly and find the two consistent.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the location of the water column anomaly is consistent with the location of the SP anomaly"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They invert the TEM data in 2.5D with SimPEG (5% noise, 15 iterations, final RMS 2.5) and find an arc-shaped conductor of about 100-150 S/m, about 40 m thick, at the mound centre.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The 2.5D inversion exhibits a high conductor (red part, arc-shaped) at the center of the TAG mound with a thickness of ∼40 m."
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They invert the E13 SP data for source current density using a kernel built from the TEM conductivity (25 iterations, RMS 1.1) and find two main sources, at x = -30 m and x = 50 m.",
+     "page": "11",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The results display two main sources"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They compare the SP inversion that uses the TEM-derived conductivity with one that uses a homogeneous 0.1 S/m conductivity. The TEM-based inversion avoids ghost sources tied to conductivity gradients.",
+     "page": "11-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this procedure avoids the presence of ghost sources"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They check the inverted source distribution against published ODP drilling results (Teagle et al. 1998) and debris accumulation at the mound edges (Rona et al. 1993).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These observations are fully consistent with the source distribution inverted from the SP data."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "They run 2.5D synthetic models in which the true and assumed ore-body conductivity are varied (homogeneous, resistive, conductive) to show how a wrong conductivity biases the amplitude and shape of the inverted source current.",
+     "page": "12-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In order to study the effect of conductivity on SP inversion, we designed two different models"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "methods",
+     "action": "They keep the claim that combining TEM and SP improves SMS imaging by separating primary from secondary SP sources, shown on synthetic and real data.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We demonstrate using both synthetic and real data that combining the two methods improves our ability to better image SMS deposits"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Negative SP anomalies over SMS deposits, documented in earlier surveys",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; the source current distribution is inferred by inversion",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a method that separates primary from secondary SP sources, using TEM conductivity",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Inverted sources are true primary sources, or ghost (secondary) sources from conductivity contrasts; homogeneous versus TEM-derived conductivity",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Synthetic models show that a homogeneous or wrong conductivity reduces or distorts the inverted sources and produces ghosts",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found at a natural test site (TAG mound) during a single towed survey",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: synthetic tests, a homogeneous-conductivity comparison, and qualitative agreement with plume and drilling data",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the combined method characterized as improving SMS imaging",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Using TEM-derived conductivity in SP inversion separates primary from secondary (ghost) sources and so better images SMS deposits, shown on synthetic data and at the TAG mound.",
+  "page": "14"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "The two-step workflow, which builds the SP sensitivity kernel from a TEM-inverted conductivity model, is the capability the claim rests on; without it there is no primary-versus-ghost separation to demonstrate.",
+  "page": "6"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The joint TEM-SP data were acquired in 2012 (Tao et al., 2012) on a survey designed to combine the two methods, but the paper does not say that a stated hypothesis directed the acquisition. The synthetic test could have failed to recover the designed source (pp. 7-8). The field result is checked only qualitatively against plume and published drilling data (pp. 10, 12). Nothing is reported as fixed before the data were seen; the stopping criteria (RMS 1.0 or a maximum iteration count) are stated without saying when they were set."
+ },
+ "imports": [
+  {
+   "field": "applied mathematics / numerical analysis",
+   "item": "finite volume discretization, adjoint-based sensitivity computation, and Tikhonov-type regularization (cooling strategy, L-curve)",
+   "kind": "method",
+   "page": "4-5"
+  },
+  {
+   "field": "signal processing",
+   "item": "median and Savitzky-Golay filtering of TEM decay data",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "electrochemistry",
+   "item": "redox-driven source current density (j_s = -σ0∇Eh) and the Butler-Volmer alternative for energy barriers",
+   "kind": "concept",
+   "page": "2-3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This study presents the first joint interpretation of transient electromagnetic and SP surveys.",
+   "page": "1"
+  },
+  {
+   "quote": "Combined TEM and SP data are used for the first time in concert for the exploration of SMS deposits below the seafloor.",
+   "page": "13"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded; the acknowledgments thank two referees (p. 15), but what they changed is unknown. The headline claim is a method claim (capability_characterized). The sub-claim that SMS deposits at TAG lie mainly at the mound centre with small amounts at its edges is at best best_explanation: it has no stated resolution or uncertainty and is compared only qualitatively with drilling and plume data (pp. 10, 12). The TEM inversion stopped at the iteration limit with RMS 2.5, not the target 1.0 (p. 11), and the effect of this misfit on the SP kernel is not assessed. Figure 9 caption gives SP RMS = 1 while the text gives 1.1 (pp. 11, 13). Figure 1b shows separate SP and TEM tracks, yet the SP inversion used the TEM mesh and conductivity (p. 11); how the lines were reconciled is not stated (inference from the figure). The paper says an adjoint test 'must be performed' (p. 5) but does not report one. The synthetic test notes that depth is 'not perfectly recovered' (p. 7). Only a single profile is inverted, and no uncertainty or resolution analysis of the source current is given.",
+ "disagreements": [
+  {
+   "target": "Earlier combined marine surveys (Kasaya et al., 2020; Szitkar et al., 2021)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper states that these surveys only delineated deposits at the seafloor and did not invert the combined data for subseafloor geometry.",
+   "page": "2",
+   "quote": "The distribution of these deposits has not been obtained by the inversion of these combined data."
+  },
+  {
+   "target": "Common practice of using a uniform conductivity in SP inversion",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Synthetic models (Figure 10) and the field comparison (Figure 8) show that a homogeneous conductivity produces underestimated or misshapen sources and ghosts.",
+   "page": "13",
+   "quote": "in this case the inverted shape of the ore body from SP data is smaller than the actual [...] ."
+  },
+  {
+   "target": "Conductivity tomography used alone to characterize SMS deposits",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues that sulfide and host-rock conductivities can be similar, so the SP source distribution adds information; no direct test is offered.",
+   "page": "12",
+   "quote": "Conductivity tomography alone cannot characterize the sophisticated distribution of SMS deposits"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "conductivity from TEM inversion as input to SP inversion",
+   "alternatives": "homogeneous conductivity below the seafloor (0.1 S/m)",
+   "reason": "the TEM-based inversion distinguishes primary sources from secondary sources tied to conductivity contrasts",
+   "effect_reported": "yes",
+   "page": "11-12"
+  },
+  {
+   "node": "I",
+   "chosen": "cooling strategy for the regularization parameter β (Oldenburg & Li 2005)",
+   "alternatives": "L-curve criterion",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "4"
+  },
+  {
+   "node": "O",
+   "chosen": "first nine TEM time gates (3-20 ms)",
+   "alternatives": "all 21 time gates (3-300 ms)",
+   "reason": "the decay curve approaches the noise level after 50 ms",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "O",
+   "chosen": "E13 electric field component",
+   "alternatives": "E14, E23, E24 (and the short-baseline pairs 12 and 34)",
+   "reason": "the large electrode distance and central position on the cable give E13 a relatively high signal-to-noise ratio",
+   "effect_reported": "no",
+   "page": "9-10"
+  },
+  {
+   "node": "N",
+   "chosen": "TEM for the conductivity step",
+   "alternatives": "CSEM method",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "S",
+   "chosen": "linear source current relation j_s = -σ0∇Eh",
+   "alternatives": "Butler-Volmer equation accounting for energy barriers at the ore body interface",
+   "reason": "assumes biotic or abiotic catalysts lower the energy barriers at the ore body surface",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "2.5D inversion of a slice along the survey line",
+   "alternatives": "inversion of the full 3D model",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "7"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "of the designed model validating our approach",
+   "page": "8"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the transient response near the seafloor is calibrated using the transient response in pure seawater",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The calculated E are in good agreement (Figure 5b)",
+   "page": "9"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the location of the water column anomaly is consistent with the location of the SP anomaly",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "this procedure avoids the presence of ghost sources",
+   "page": "12"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "These observations are fully consistent with the source distribution inverted from the SP data.",
+   "page": "12"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we use different conductivity distributions to invert the source current density distributions of the two models",
+   "page": "13"
+  }
+ ]
+}

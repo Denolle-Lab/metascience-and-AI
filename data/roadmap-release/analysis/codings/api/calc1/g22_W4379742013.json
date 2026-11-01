@@ -1,0 +1,376 @@
+{
+ "key": "g22_W4379742013",
+ "doi": "10.1016/j.aiig.2023.05.002",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Tan & Haber 2023, Artificial Intelligence in Geosciences 4, 76-83, published PDF",
+  "g22_W4379742013.xml.txt (publisher XML via jats_text; contains only the abstract and figure/table captions)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions; printed journal pages (pp. 76-83) for body text, because the supplied XML text contains no body sections",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "they are still faced with two challenges: conditioning to point data and the occurrence of verbatim copy.",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Tan & Haber 2023, published PDF and XML text",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the two limits of patch-based MPS (hard-data conditioning, verbatim copy) as consequences of finite training-image size, and ask how to enlarge the pattern database from one training image.",
+     "page": "p. 76",
+     "move": "new",
+     "trigger": "author",
+     "quote": "How to increase the size of TI if only one TI of finite size is available?"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Cite the earlier enrichment of pattern databases by simulating realizations (Rezaee et al. 2015) and prior GAN geomodels that replace MPS, as the methods this work departs from.",
+     "page": "p. 77",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Rezaee et al. (2015) enriches the pattern database by generating many independent realizations from which more patches can be extracted"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Design GPSim: extract patches from the TI with a template, train a GAN by the min-max objective to generate new patches, merge original and generated patches into an enriched database, and run a standard patch-based simulation with it.",
+     "page": "pp. 77-78",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a new pattern database Q is created and can be used to generate realizations"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Set the test case: one 2D binary channel training image (101 x 101, Strebelle 2002), scanned with a 21 x 21 template to give 6561 training patches.",
+     "page": "p. 78",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We start with a two-dimensional binary training image of size 101 × 101 (Strebelle, 2002)"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build and train a DCGAN-style generator and discriminator (Tables 1-2; Adam, batch 32, 500 epochs, about 23 min), then generate new patches (3000 in about 10 s).",
+     "page": "p. 79",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We trained our models using the Adam optimizer with a batch size of 32 patches"
+    },
+    {
+     "n": 6,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare generated and original patches visually (Fig. 2).",
+     "page": "p. 79",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Visually, the new and original patches have the similar channelized structures."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test whether generated and original patches share one distribution with an energy-statistic two-sample test, using a 2000-resample permutation null (epsilon = 14.16, p = 0.3965, null not rejected).",
+     "page": "pp. 79-80",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is 0.3965, which is large enough (> 0.05) to fail to reject the null hypothesis."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare hard-data conditioning: for randomly generated 21 x 21 hard-data patterns, the best TI patch mismatches 20% of nodes, while generator patches filtered by acceptance-rejection match exactly (Fig. 4).",
+     "page": "p. 80; Figure 4 (p. 81)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Given these data patterns, we cannot find from TI any patches that exactly matches these data patterns."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare verbatim copy with coherence maps of 301 x 301 realizations made from original patches versus original plus GAN patches (Fig. 5).",
+     "page": "p. 80; Figure 5 (p. 81)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the white pixels indicate these nodes of the realization come from new patches and not from the training image"
+    },
+    {
+     "n": 10,
+     "node": "Q",
+     "mode": "question",
+     "action": "Note that verbatim copy could be fully avoided only if generated patches differ from every part of the TI, and leave the choice of distance function open.",
+     "page": "p. 80",
+     "move": "new",
+     "trigger": "author",
+     "quote": "How to properly choose distance functions to meet the condition (b) deserves further study."
+    },
+    {
+     "n": 11,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the authors' earlier analysis-of-distance criteria (multiple-point histograms with Jensen-Shannon divergence; between- and within-realization variability and their ratio) from Tan et al. (2014).",
+     "page": "p. 80",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "we use the distance function, as defined in Tan et al. (2014) to provide a measure of similarity between any two images"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare two sets of 50 realizations (enriched versus original database) by between-realization variability (0.9058:1), within-realization variability (0.9823:1) and ratio (0.9221:1) (Table 3).",
+     "page": "p. 80; Table 3 (p. 82)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our proposed method is better in terms of the spatial uncertainty"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Visualize the same distances by multidimensional scaling and read a wider spread for the proposed method with similar closeness to the TI (Fig. 7).",
+     "page": "p. 82; Figure 7 (p. 82)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "a wider spread of (blue) points for our proposed method, indicating a larger space of uncertainty"
+    },
+    {
+     "n": 14,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that GPSim outperforms its patch-based counterpart on hard-data conditioning and verbatim copy.",
+     "page": "p. 82",
+     "move": "new",
+     "trigger": "author",
+     "quote": "models generated by our method are better than its patch-based counterpart in terms of the two above issues"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Method deficits of patch-based MPS: poor hard-data reproduction and verbatim copy, attributed to finite TI size",
+   "mode_called": "question"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; performance is measured directly on synthetic realizations (mismatch, coherence maps, distance scores)",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Improve a simulation method by enriching its pattern database with GAN-generated patches",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Only the original patch-based database as baseline; Rezaee et al. 2015 enrichment is discussed but not tested",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions stated in advance; expectations are invoked after the results",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set computationally: one 2D binary training image, one template size, chosen patch counts",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Only a distributional check of the generated patches (energy-statistic permutation test); no variation of TI, template, or GAN run",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: GPSim better than the original patch-based method on both issues",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "On one 2D binary training image, GAN-generated patches are statistically indistinguishable from the original patches, allow exact matches to hard-data patterns that the TI cannot supply, and raise between-realization variability with similar reproduction of TI statistics.",
+  "page": "p. 82"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Training a generator on the patches of a single training image to produce new patches is what makes the enriched database, and so every later comparison, possible.",
+  "page": "p. 79"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "No stated hypothesis directed data acquisition; the test case is a standard benchmark training image. The energy-statistic test could have rejected equality of distributions (p = 0.3965, p. 80), and the comparisons could have shown no gain. However, the Table 3 ratios carry no uncertainty or significance test, and the expectations are stated only after the results ('This result is consistent with the expectation', p. 80). Nothing is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "machine learning",
+   "item": "Generative Adversarial Networks (Goodfellow et al. 2014)",
+   "kind": "method",
+   "page": "p. 77"
+  },
+  {
+   "field": "machine learning",
+   "item": "DCGAN architecture and hyperparameters (Radford et al. 2015), Adam optimizer",
+   "kind": "method",
+   "page": "pp. 78-79"
+  },
+  {
+   "field": "computer vision / texture synthesis",
+   "item": "Argument that patch-based synthesis reorders input rather than learning a model (Jetchev et al. 2016)",
+   "kind": "concept",
+   "page": "p. 77"
+  },
+  {
+   "field": "pattern recognition / psychology",
+   "item": "Similarity and distance functions (Ashby and Ennis 2007)",
+   "kind": "concept",
+   "page": "p. 78"
+  },
+  {
+   "field": "statistics",
+   "item": "Energy (epsilon) statistic two-sample test for multivariate distributions (Székely 2003; Székely et al. 2004)",
+   "kind": "method",
+   "page": "p. 79"
+  },
+  {
+   "field": "statistics",
+   "item": "Permutation test (Efron and Tibshirani 1994)",
+   "kind": "method",
+   "page": "pp. 79-80"
+  },
+  {
+   "field": "information theory",
+   "item": "Jensen-Shannon divergence (Endres and Schindelin 2003)",
+   "kind": "method",
+   "page": "p. 80"
+  },
+  {
+   "field": "statistics",
+   "item": "Multidimensional scaling",
+   "kind": "method",
+   "page": "p. 82"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "we propose a novel approach that we call Generative-Patched-Simulation (GPSim), which is based on Generative Adversarial Networks (GAN)",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "to our knowledge, all these methods require a relatively large data set as input and have difficulties in generating new data when there is a [...]",
+   "page": "p. 77"
+  },
+  {
+   "quote": "[...] method is, by design, geared towards such scenarios",
+   "page": "p. 77"
+  },
+  {
+   "quote": "Our work is focused on using GAN to improve patch-based algorithms.",
+   "page": "p. 77"
+  }
+ ],
+ "limits": "Locations: the supplied XML text holds only the abstract and the figure and table captions, so all body quotes are copied from the PDF and located by printed page; figure-content steps also cite the figure. Evidence base: one 2D binary training image, one template size (21 x 21), one GAN training run, and an unspecified number of randomly generated hard-data patterns (only examples shown). No acceptance-rejection rate is reported. Table 3 gives normalized ratios without uncertainty or significance; Fig. 5 and Fig. 6 each show a single realization. Patch counts are inconsistent: 6561 patches are extracted (p. 78), but Figs. 5-6 use 1681 original patches; this is unexplained. The rival enrichment method (Rezaee et al. 2015) is argued against but never run. Whether generated patches merely copy TI patches is left open (p. 80). Inferences: (i) Eq. 3.2 as printed, t = (√b + ω − 1)^2, does not give 6561 for b = 101^2 and ω = 21 (√b − ω + 1 does), so it looks like a typographical sign error; (ii) the GAN formulation is cited to Goodfellow et al. 2014b, which is the adversarial-examples paper, apparently a citation slip; (iii) the 'expectations' invoked in §4.5 appear to be stated after the results, not frozen beforehand. Sub-claim statuses: the 'same distribution' sub-claim rests on failing to reject a null (a non-rejection, not a confirmation), status capability_characterized at most; the hard-data and verbatim-copy sub-claims are capability_characterized on a single demonstration case. Composition none_fits: the walk is problem, then method construction, then benchmark comparison against a baseline. It is not capability_first (the question precedes the capability) and not strong_inference (no rivals with distinct predictions). No review file was supplied, so no review sequence is coded.",
+ "disagreements": [
+  {
+   "target": "GAN geomodelling studies (Chan and Elsheikh 2017; Mosser et al. 2017; Laloy et al. 2018; Dupont et al. 2018; Song [...]",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The paper argues from the literature that these methods need many training images and replace MPS rather than improve it; it runs no test of them.",
+   "page": "p. 77",
+   "quote": "all these methods require a relatively large data set as input and have difficulties in generating new data when there is a [...]"
+  },
+  {
+   "target": "Rezaee et al. (2015), enriched pattern databases from simulated realizations",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The paper argues, citing Jetchev et al. (2016), that patch-based realizations only reorder the TI and so do not learn new patches; it offers no empirical comparison and also calls the two methods compatible.",
+   "page": "p. 77",
+   "quote": "it is argued that Rezaee et al. (2015) does not ‘‘learn’’ new patches but generate patches from reordered TI"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Enrich the pattern database with GAN-generated patches",
+   "alternatives": "Enrich it with patches from simulated realizations (Rezaee et al. 2015); or a combination of both",
+   "reason": "GAN learns a distribution of images, whereas patch-based realizations only reorder the TI",
+   "effect_reported": "no",
+   "page": "p. 77"
+  },
+  {
+   "node": "N",
+   "chosen": "Use GAN to improve patch-based MPS with one training image",
+   "alternatives": "Substitute GAN for MPS to generate geological models directly",
+   "reason": "Substitution requires many training images; a single image is common in realistic settings",
+   "effect_reported": "no",
+   "page": "p. 77"
+  },
+  {
+   "node": "N",
+   "chosen": "Distance function matched to variable type (Euclidean for continuous, fraction of mismatched nodes for categorical)",
+   "alternatives": "Other distance functions from the pattern recognition literature",
+   "reason": "should be selected properly according to the property of our variables",
+   "effect_reported": "no",
+   "page": "p. 78"
+  },
+  {
+   "node": "N",
+   "chosen": "Not stated",
+   "alternatives": "Random or unilateral simulation path",
+   "reason": "Either one of them can be employed",
+   "effect_reported": "no",
+   "page": "p. 78"
+  },
+  {
+   "node": "N",
+   "chosen": "Not stated",
+   "alternatives": "Compare the data event with every patch, or with class prototypes after classifying patches",
+   "reason": "Prototypes reduce the number of comparisons",
+   "effect_reported": "no",
+   "page": "p. 78"
+  },
+  {
+   "node": "D",
+   "chosen": "Combine original and GAN-generated patches",
+   "alternatives": "Discard all original TI patches and use only GAN-generated patches",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "p. 80"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we conduct 2000 resamples to conduct an approximate permutation test",
+   "page": "p. 80"
+  }
+ ]
+}

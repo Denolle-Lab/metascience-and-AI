@@ -1,0 +1,25 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Review addendum, Nature-family variant v1.0.0: top-level fields added to a review coding whose record is a Nature-family peer review file",
+ "type": "object",
+ "properties": {
+  "review_source": {
+   "type": "string",
+   "enum": [
+    "nature_review_file"
+   ],
+   "description": "The review record is a Nature-family peer review file split into R, E and A units (agents/coder/REVIEW_ADDENDUM_NATURE.md)"
+  },
+  "nature_addendum_version": {
+   "type": "string",
+   "enum": [
+    "1.0.0"
+   ]
+  }
+ },
+ "required": [
+  "review_source",
+  "nature_addendum_version"
+ ],
+ "x-disclosure-unit": "A-round<k> ¶<m> (the authors' response letter to round k, paragraph m); R<n>-round<k> ¶<m> and E-round<k> ¶<m> are referee and editor units, never a disclosure's unit"
+}

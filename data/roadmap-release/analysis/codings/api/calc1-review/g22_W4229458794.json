@@ -1,0 +1,750 @@
+{
+ "key": "g22_W4229458794",
+ "doi": "10.5194/gmd-15-3691-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Xie et al. 2022, Geosci. Model Dev. 15, 3691-3719 (published PDF)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)",
+  "Open discussion of preprint gmd-2021-204: RC1, RC2 (with supplement), AC1 (with supplement)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure with printed journal page; review steps cite the review record's own locators",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "In this study, we introduce a fully coupled ice-sheet–climate model as a tool for paleo-climate research.",
+  "page": "§1 ¶5"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (gmd-15-3691-2022)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the gap: ice-age cycles need global, long coupled ice-sheet–climate simulations, which the authors say do not yet exist.",
+     "page": "§1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "However, as far as we know, there are currently no global, million-year, coupled ice-sheet– [...] ."
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take the existing GREB energy balance climate model, with its hydrological cycle and flux corrections, as the climate component.",
+     "page": "§3.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "The GREB model is developed and fully described in Dommenget and Flöter (2011)"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build a new global thermomechanical ice sheet model on the GREB grid: 4 vertical layers, SIA for grounded ice, SSA for shelves, glacier mask, mass balance, calving diagnosed as transport, Greve sliding law, and uniform geothermal flux.",
+     "page": "§3.2 ¶1",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "The ice sheet model is a global thermomechanical ice flow model that comprises momentum balance, mass balance and energy balance modules"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the simulated seasonal snow and sea ice cycle against observed snow cover and sea ice extent.",
+     "page": "§3.2.3 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The overall snow cover (land) distribution and seasonal cycle resemble observations (Robinson et al., 2012)."
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Couple the ice sheet model to GREB through ice latent heat, prognostic sea ice, ice-thickness albedo, variable topography with a lapse-rate sensible heat flux, and sea level with a land–sea mask.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The introduction of an ice sheet model requires a number of changes to the original GREB model."
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run a 4-year response experiment that adds 10 m of ice over Europe and compare it with a control run to check the coupled ice latent-heat term.",
+     "page": "§3.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The effect of F ice can best be illustrated by a simple response experiment in which we add a 10 m ice cover"
+    },
+    {
+     "n": 7,
+     "node": "R",
+     "mode": "methods",
+     "action": "Revise the inherited precipitation scheme, which has limited skill over high-latitude land, by adding a land flux correction scaled to zonal-mean humidity.",
+     "page": "§3.3.3 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "To allow the ice sheet mass balance to receive unbiased mean precipitation forcing under present-day conditions, we introduced a land precipitation correction"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Run a 1000 m topography-lifting response experiment against a control run to check the lapse-rate sensible heat coupling and the precipitation response.",
+     "page": "§3.3.7 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "T surf decreases in response to the topographic perturbation, approximately linearly to the moist adiabatic lapse rate."
+    },
+    {
+     "n": 9,
+     "node": "R",
+     "mode": "methods",
+     "action": "Enhance the atmospheric diffusion coefficient fivefold to correct the too-weak meridional heat transport reported for GREB.",
+     "page": "§3.3.9 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we enhance this diffusion coefficient by a factor of 5"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design the stand-alone benchmark around the EISMINT I and II intercomparison experiments, a forced present-day equilibrium, and a 250 kyr transition run.",
+     "page": "§4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Section 4.1 and 4.2 use standard experiments from the European Ice Sheet Modelling Initiative (EISMINT) model intercomparison"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare EISMINT I steady-state divide thickness, mass flux and basal temperature with the H96 ensemble (Table 4); the moving-margin mass flux is too large.",
+     "page": "§4.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The GREB-ISM simulations of the ice thickness at divide and mass flux at midpoint are mostly similar to those found in H96"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Rerun in Cartesian coordinates (not shown) to test whether the mass-flux mismatch depends on mesh shape.",
+     "page": "§4.1 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "with the GREB-ISM in Cartesian coordinates as used in the EISMINT I simulation finds the ice mass flux close to H96"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare EISMINT I oscillating-forcing transition runs (20 and 40 kyr) with H96; ice thickness matches and basal temperature is 1–2 °C too cold.",
+     "page": "§4.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The GREB-ISM ice thickness simulation is similar to those of H96 for both fixed and moving margin experiments (Fig. 6)."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "methods",
+     "action": "Increase the vertical resolution to 10 layers (not shown) to test the basal temperature mismatch.",
+     "page": "§4.1 ¶4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "This mismatch disappears if we increase the vertical resolution to 10 layers (not shown)."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare EISMINT II experiments A, B and C with the P2000 ensemble; volume, area, divide thickness and divide temperature fall within range, and melt fraction is biased.",
+     "page": "§4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "are all within the range of the models in P2000, indicating a fairly good agreement"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the ice dynamics as adequate for global simulations despite the basal temperature bias.",
+     "page": "§4.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which suggests the model is appropriate for global climate and ice evolution simulations"
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "methods",
+     "action": "Run a 200 kyr stand-alone equilibrium under present-day climatology and compare ice volume and calving with observations (Table 6); Greenland agrees, and West Antarctica gains too much ice.",
+     "page": "§4.3 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The West Antarctic ice sheet thickness increase is inconsistent with the observed values, suggesting a model limitation."
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary precipitation forcing, shelf viscosity, sliding coefficient (6e3 to 6e5 per yr) and a Martin et al. basal melt scheme to remove the West Antarctic bias; none improves it.",
+     "page": "§4.3 ¶4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we could not find any reasonable precipitation forcing that would result in significantly improved simulations of the West Antarctic Ice Sheet"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare simulated surface velocities with MEaSUREs for pattern and mean (Antarctica 109 vs 80 m/yr; Greenland 57 vs 56 m/yr).",
+     "page": "§4.3 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Similarly, Greenland ice velocities are also in good agreement with observations"
+    },
+    {
+     "n": 20,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design a global 250 kyr transition experiment that scales an AWI-ESM LGM anomaly pattern by the GRIP δ18O index, following Niu et al. (2019).",
+     "page": "§4.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We therefore design an experiment, in which we force the GREB-ISM with surface temperature and precipitation over the past 250 kyr"
+    },
+    {
+     "n": 21,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare simulated sea level with the marine δ18O proxy (correlation −0.67, about 120 m range) and LGM ice-sheet geography with published reconstructions.",
+     "page": "§4.4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The two curves show similar time series variations"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare LIG, LGM and Late Holocene Greenland and Antarctic volumes with Fyke et al. (2011) (Table 7); Antarctica differs, and the authors attribute this to setup.",
+     "page": "§4.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, our simulation of the Greenland Ice Sheet is similar to Fyke et al. (2011) but with larger time variations."
+    },
+    {
+     "n": 23,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the stand-alone ice sheet model as responding realistically to time-varying forcing.",
+     "page": "§4.4 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the results of this experiment indicate that the GREB-ISM ice sheet model does have realistic responses to time-varying boundary conditions"
+    },
+    {
+     "n": 24,
+     "node": "C",
+     "mode": "methods",
+     "action": "Run a 200 kyr fully coupled present-day equilibrium and compare Tsurf, precipitation, ice volume and sea level with observations and with the stand-alone run.",
+     "page": "§5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "this control run simulation shows that the coupled GREB-ISM system converges towards an equilibrium state close to the observed one"
+    },
+    {
+     "n": 25,
+     "node": "F",
+     "mode": "simulation",
+     "action": "Set idealized Northern Hemisphere shortwave oscillations with 20, 50 and 100 kyr periods in the coupled model.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allow the Northern Hemisphere shortwave radiation, sw, to oscillate"
+    },
+    {
+     "n": 26,
+     "node": "O",
+     "mode": "simulation",
+     "action": "Describe the 20 kyr run: a net mean cooling and ice growth, ice volume lagging ice cover, slow buildup and fast decay, and a Southern Hemisphere response through transport and sea level (Figs 14–17).",
+     "page": "§5.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggests that the oscillating shortwave radiation has a mean cooling effect."
+    },
+    {
+     "n": 27,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose, without testing, that the asymmetric ice-cover response (ice–albedo effect) causes the mean cooling.",
+     "page": "§5.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is likely to be related to the ice–albedo effect"
+    },
+    {
+     "n": 28,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Compare the 50 and 100 kyr runs with the 20 kyr run: volume amplitude grows and the phase lag shrinks but persists, which the authors read as an intrinsic NH ice-sheet timescale longer than 100 kyr.",
+     "page": "§5.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This illustrates that the intrinsic timescales of the northern hemispheric ice sheets are longer than 100 kyr"
+    },
+    {
+     "n": 29,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Attribute the unexplained West Antarctic bias tentatively to coarse grid resolution of complex topography and land–sea distribution.",
+     "page": "§6 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the coarse grid resolution of this model is likely to play a role in this limitation"
+    },
+    {
+     "n": 30,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep GREB-ISM as a fast tool characterized for global 100 kyr-scale ice–climate simulation, with stated limits on West Antarctica and short timescales.",
+     "page": "§6 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we presented a new model that is suited for the simulations of global-scale climate variability on timescales of 100 kyr and longer"
+    }
+   ]
+  },
+  {
+   "kind": "review",
+   "source_document": "Open discussion of preprint gmd-2021-204 (RC1, RC2, AC1)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "V",
+     "mode": "methods",
+     "action": "Following RC1's request for a vertical-resolution sensitivity test, rerun EISMINT I and II with 10 layers; basal temperature and melt fraction move closer to the ensembles.",
+     "page": "RC1 ¶3; AC1-S p.3",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "In order to verify our assumptions that the basal temperature bias comes from vertical resolution, we rerun the EISMINT experiments with 10 layers."
+    },
+    {
+     "n": 2,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test the horizontal grid and Cartesian mesh to explain the higher EISMINT I mass flux, which RC1 queried.",
+     "page": "RC1 ¶35; AC1-S p.13",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "a Cartesian gid similar to those of the EISMINT simulations, then the mass flux in the GREB- ISM is the same as in H96"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "methods",
+     "action": "Decline RC1's request to run EISMINT at the coarse global GREB resolution.",
+     "page": "RC1 ¶3; AC1-S p.4",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "If we use GREB resolution setting, we have only two grid cells in the EISMINT domain"
+    },
+    {
+     "n": 4,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "In response to both referees, add discussion that coarse resolution and complex topography may cause the West Antarctic bias, while declining high-resolution tests as outside the model's aim.",
+     "page": "RC1 ¶4; RC2-S p.3; AC1-S p.5; AC1-S p.27",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We added a sentence explaining that the complex topography may play a role here."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Justify the Greve sliding law and run equilibrium experiments varying Csl; stronger sliding thins East Antarctica too much and does not fix West Antarctica.",
+     "page": "RC1 ¶5; RC1 ¶39; AC1-S p.6",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "To test the model sensitivity to sliding law, we run dynamic equilibrium experiments by varying sliding law coefficient"
+    },
+    {
+     "n": 6,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Decline RC1's suggestion that ice over shallow seas may be a resolution effect; no change made.",
+     "page": "RC1 ¶48; AC1-S p.15",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We made no changes in response to this comment."
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Test a Martin et al. (2011) shelf basal melt scheme with offsets of 0–2 K, as RC2 asked; it thins the Ronne and Ross shelves but barely changes West Antarctica, so it is not adopted.",
+     "page": "RC2-S p.1; AC1-S p.21",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Fig. R2 shows the dynamic equilibrium simulation after including basal melting scheme with temperature offset"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Replace the transition-experiment forcing, a GRIP temperature applied uniformly, with the Niu et al. (2019) index method using an AWI-ESM LGM pattern, as RC2 requested.",
+     "page": "RC2-S p.1-2; AC1-S p.23",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "As suggested by the reviewer, we have adopted the forcing from Niu et al., (2019) and rerun the transition experiment."
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Re-compare the new transition run with observations: the spurious Siberian ice sheet disappears and the sea-level range reaches about 120 m.",
+     "page": "RC2-S p.3; AC1-S p.20; AC1-S p.26",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "After changing the setup of this transition experiment substantially, the new sea level change is around 120 m, which is very close to the literature."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Add an explicit discussion of how simulated velocities match observed ones, after RC2 called the metrics vague.",
+     "page": "RC2-S p.2; AC1-S p.23",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We have now provided a better discussion of how the simulated velocities match the observed in Section 4.3."
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "methods",
+     "action": "Add a comparison of the seasonal snow and sea ice cover with observations, as RC2 asked.",
+     "page": "RC2-S p.2; AC1-S p.24",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "Both the land snow cover and ocean sea ice distribution compare well with observed values (Rayner et al., 2003; Robinson et al., 2012)."
+    },
+    {
+     "n": 12,
+     "node": "P",
+     "mode": "methods",
+     "action": "Decline RC2's suggestion to tune calving in West Antarctica to remove the bias.",
+     "page": "RC2-S p.2; AC1-S p.25",
+     "move": "declined",
+     "trigger": "referee",
+     "quote": "We may be able to “fine tune” this for West Antarctica, but we have not done this."
+    },
+    {
+     "n": 13,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Add the ice–albedo asymmetry explanation for the increase in mean ice volume after the first cycle, which RC2 asked about.",
+     "page": "RC2-S p.3; RC1 ¶45; AC1-S p.26",
+     "move": "review_forced",
+     "trigger": "referee",
+     "quote": "We added another paragraph to further explain this effect."
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "Fix several minor code bugs that affected the coupled simulations (author-initiated revision).",
+     "page": "AC1 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we fixed several minor bugs in the model code that did have a minor effect on the coupled model simulations"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Behaviour of a new global coupled ice-sheet–climate model, aimed at ice-age cycles",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; 100 kyr ice–climate evolution is reached only through simulation, checked against present-day data and proxies",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "aim": "",
+   "answer": "Build and characterize a fast model tool",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival hypotheses; other models (EISMINT ensembles, Fyke et al.) serve as references",
+   "mode_called": "none"
+  },
+  {
+   "question": "5",
+   "answer": "None stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in model experiments (EISMINT, forced equilibrium, proxy-indexed transition, shortwave oscillations)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: benchmarks mostly pass; the West Antarctic bias survives every auxiliary variation",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Model kept as suited for global 100 kyr-scale simulations, with stated limits",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Yes, after the transition forcing was replaced and sensitivity tests were added",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "GREB-ISM is a computationally cheap, fully coupled global ice-sheet–climate model whose benchmarked performance makes it suitable for global simulations on 100 kyr and longer timescales, despite a West Antarctic thickness bias.",
+  "page": "§6 ¶8"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Building the global ice sheet model on the GREB grid and coupling it to GREB creates the capability whose performance all later benchmarks characterize.",
+  "page": "§3.2 ¶1"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "No hypothesis directed any experiment; the work is model building followed by benchmarking. The benchmarks could fail, and one partly did: West Antarctica gains too much ice. Even so, the headline claim is phrased qualitatively ('similar', 'reasonable') with no pass threshold. The EISMINT I/II protocols and reference ensembles were fixed in advance by others (Huybrechts et al. 1996; Payne et al. 2000), but no analysis or threshold was registered by the authors."
+ },
+ "imports": [
+  {
+   "field": "mathematics (numerical analysis)",
+   "item": "Gauss–Jacobi quadrature and Gaussian nodes for vertical integration (Hildebrand 1987)",
+   "kind": "method",
+   "page": "§3.2.1 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "However, as far as we know, there are currently no global, million-year, coupled ice-sheet– [...] .",
+   "page": "§1 ¶4"
+  },
+  {
+   "quote": "We introduce a newly developed global ice sheet model coupled to the Globally Resolved Energy Balance (GREB) climate model",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "Most previous studies only simulate Northern or Southern Hemisphere ice sheets and take the others as prescribed boundary conditions",
+   "page": "§6 ¶7"
+  }
+ ],
+ "limits": "Sub-claims and their statuses: EISMINT agreement is capability_characterized, with a basal temperature bias. The present-day equilibrium is capability_characterized except for West Antarctica, whose bias is unexplained and attributed only by inference to resolution (no status). The transition run's realism rests on one correlation (−0.67) and the sea-level range (capability_characterized, qualitative). The oscillation findings carry no status: mean cooling via ice–albedo, slow buildup and fast decay, and an intrinsic NH timescale longer than 100 kyr are reported as illustrations, and the authors call the explanation 'likely' without testing it. Several checks are 'not shown' (Cartesian grid, 10 layers). The sensitivity tests for West Antarctica are described without figures in the final paper, though figures appear in the response (Fig. R1, R2). No quantitative skill metrics or pass thresholds are given. The supplement was not supplied. The review record shows the transition-experiment forcing was replaced during review: a spurious Siberian ice sheet existed in the preprint. The final paper does not mention this, so the published transition setup was not the first one tried (inference from AC1). Composition coded capability_first because model building opens the work and the questions (ice–albedo, timescales) come only after the experiments; there is no phenomenon-establishing stage in the strict sense.",
+ "disagreements": [
+  {
+   "target": "Bueler and Brown (2009) and other models' ice shelf viscosity",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors use a larger, tuned SSA viscosity to fit observed shelf thickness and argue that it implicitly absorbs basal melting.",
+   "page": "§3.2.4 ¶2",
+   "quote": "The viscosity ( η SSA ) in our model is larger than in other models (Bueler and Brown, 2009)."
+  },
+  {
+   "target": "Original GREB diffusion coefficient (Dommenget et al., 2019)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Building on Dommenget et al.'s finding of too-weak meridional transport, the authors argue the coefficient is weakly constrained and raise it fivefold, reporting reduced Tsurf bias.",
+   "page": "§3.3.9 ¶1",
+   "quote": "This value is not strongly constrained by observations and may effectively be different by an order of magnitude."
+  },
+  {
+   "target": "H96 EISMINT I ensemble (moving-margin mass flux)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "GREB-ISM mass flux exceeds H96; a Cartesian-grid rerun (not shown) recovers H96, so the difference is attributed to mesh shape.",
+   "page": "§4.1 ¶3",
+   "quote": "The ice mass flux in the GREB-ISM is larger than in H96 for the moving margin experiment."
+  },
+  {
+   "target": "P2000 EISMINT II ensemble (basal melt fraction)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Melt fraction is about 30% low, attributed to a cold basal bias tied to vertical resolution.",
+   "page": "§4.2 ¶1",
+   "quote": "The basal melt fraction is underestimated by the GREB-ISM [...] %"
+  },
+  {
+   "target": "Fyke et al. (2011) Antarctic ice volumes for LIG, LGM and Holocene",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "GREB-ISM Antarctic volume barely varies, unlike Fyke et al.; the difference is ascribed to Fyke et al.'s changing shelf parameterization.",
+   "page": "§4.4 ¶5",
+   "quote": "The difference between the GREB-ISM model and Fyke et al. (2011) in Antarctica ice sheet may be due to different experimental setups."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "4 vertical layers",
+   "alternatives": "10 layers",
+   "reason": "close to the minimal number that resolves vertical velocity",
+   "effect_reported": "yes",
+   "page": "§3.2.1 ¶2; §4.1 ¶4"
+  },
+  {
+   "node": "D",
+   "chosen": "spherical grid refined to 3.75° × 1.25° for EISMINT",
+   "alternatives": "Cartesian coordinates as in EISMINT",
+   "reason": "better comparison of numerical schemes",
+   "effect_reported": "yes",
+   "page": "§4.1 ¶1; §4.1 ¶3"
+  },
+  {
+   "node": "N",
+   "chosen": "no explicit ocean basal melting; tuned shelf viscosity",
+   "alternatives": "Martin et al. (2011) basal melting scheme with different strength",
+   "reason": "viscosity tuning partly contains basal melt effects; the scheme gives no significant improvement",
+   "effect_reported": "yes",
+   "page": "§3.2.3 ¶5; §4.3 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "sliding coefficient Csl as in Greve (1997)",
+   "alternatives": "Csl from 6 × 10^3 to 6 × 10^5 per yr",
+   "reason": "varying values bring no fundamental improvement",
+   "effect_reported": "yes",
+   "page": "§3.2.4 ¶7; §4.3 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "constant shelf viscosity η_SSA tuned to observed velocity and calving",
+   "alternatives": "other viscosity values",
+   "reason": "no reasonable value significantly reduces the West Antarctic bias",
+   "effect_reported": "yes",
+   "page": "§3.2.4 ¶5; §4.3 ¶4"
+  },
+  {
+   "node": "N",
+   "chosen": "globally uniform geothermal heat flux",
+   "alternatives": "non-uniform geothermal flux (implied)",
+   "reason": "previous studies reproduce paleo ice sheets with uniform flux; consistency",
+   "effect_reported": "no",
+   "page": "§3.2.5 ¶3"
+  },
+  {
+   "node": "R",
+   "chosen": "land precipitation correction proportional to zonal-mean humidity",
+   "alternatives": "local humidity as in the Stassen et al. (2019) scheme",
+   "reason": "no clear local relationship between humidity and precipitation at high latitudes",
+   "effect_reported": "no",
+   "page": "§3.3.3 ¶4"
+  },
+  {
+   "node": "R",
+   "chosen": "diffusion coefficient enhanced by a factor of 5",
+   "alternatives": "original κa = 8 × 10^5 m2/s",
+   "reason": "meridional heat transport too weak; value weakly constrained",
+   "effect_reported": "yes",
+   "page": "§3.3.9 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The overall snow cover (land) distribution and seasonal cycle resemble observations (Robinson et al., 2012).",
+   "page": "§3.2.3 ¶6"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The black, red and blue curve represent control run surface temperature (without adding 10 m ice), scenario run surface temperature",
+   "page": "Figure 4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The response is defined as the scenario run (1000 m topography lifting) minus control run (no lifting) at the end of the first simulation year.",
+   "page": "Figure 5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Table 4 shows the comparison between the new ice sheet model GREB-ISM and model [...] .",
+   "page": "§4.1 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "with the GREB-ISM in Cartesian coordinates as used in the EISMINT I simulation finds the ice mass flux close to H96",
+   "page": "§4.1 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "This mismatch disappears if we increase the vertical resolution to 10 layers (not shown).",
+   "page": "§4.1 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "are all within the range of the models in P2000, indicating a fairly good agreement",
+   "page": "§4.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Table 6 compares the simulation values of total ice volume boundary calving with observed values from the literature.",
+   "page": "§4.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Similarly, a basal melting scheme (Martin et al., 2011) with different strength has also been tested, but improvement could not be found.",
+   "page": "§4.3 ¶4"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Similarly, Greenland ice velocities are also in good agreement with observations",
+   "page": "§4.3 ¶5"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The two curves show similar time series variations",
+   "page": "§4.4 ¶3"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Overall, our simulation of the Greenland Ice Sheet is similar to Fyke et al. (2011) but with larger time variations.",
+   "page": "§4.4 ¶5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "The ice thickness spatial pattern in the coupled experiment is comparable to the stand-alone experiment (Figs. 13 [...] ).",
+   "page": "§5.1 ¶2"
+  }
+ ]
+}

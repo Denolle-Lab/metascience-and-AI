@@ -1,0 +1,223 @@
+{
+ "frozen": "2026-10-28",
+ "decided_by": "Marine Denolle (PI), October 27, 2026",
+ "construct": "reported warrant (RUBRIC.md header); results are the model judgment of reported warrant until the validation gate passes",
+ "rubric_version": "1.1.0",
+ "files_sha256": {
+  "agents/advance/RUBRIC.md": "9b303003d11d61afdf9db9e620e7612b442e12db4613354f2129fbee1eb60456",
+  "agents/advance/advance.schema.json": "4b66d3ffd1ae431ce2cdc1cfa2a5cb4412f781ddc856871514a543fbc48330a4",
+  "tools/check_advance.py": "81f600c257a2b80e4232ca83095870ff67185a29f7f807f5dbe8e1d3648437ff",
+  "tools/blind_text.py": "91dba23b0386d776579221ccff9c65f2f95b40dfdce24b49282ba76e5a230982",
+  "tools/jats_text.py": "cca865e379213b7272dfa9f439edd1fad5ff140e3876271c4ea04940729e0bfe",
+  "tools/code_papers.py": "44a4591a84f5c664f4d52f92ef106c38e125a5403f8b7131c77b095ecb9f607a",
+  "tools/roadmap/g24_advance.py": "b08f18ecca29706f9d9a4a68860d6631647653eb2bebb6b13c242c0748f8829e"
+ },
+ "rubric_sha256_at_pilot": "9b303003d11d61afdf9db9e620e7612b442e12db4613354f2129fbee1eb60456",
+ "rubric_version_at_pilot": "1.1.0",
+ "blind_version": "1.2.1",
+ "blind_versions_read_in_pilot": {
+  "1.2.1": 39
+ },
+ "pilot_versions": {
+  "pilot2-a-advance": {
+   "rubric_versions": [
+    "1.1.0"
+   ],
+   "blind_versions": [
+    "1.2.1"
+   ],
+   "batches": {
+    "usd": 2.81,
+    "attempts": 40,
+    "valid": 19,
+    "invalid": 1,
+    "usd_per_paper_attempted": 0.141,
+    "usd_per_valid": 0.148,
+    "effort": [
+     "medium"
+    ],
+    "max_tokens": [
+     26000
+    ],
+    "rubric": [
+     "1.1.0"
+    ]
+   }
+  },
+  "pilot2-b-advance": {
+   "rubric_versions": [
+    "1.1.0"
+   ],
+   "blind_versions": [
+    "1.2.1"
+   ],
+   "batches": {
+    "usd": 2.78,
+    "attempts": 20,
+    "valid": 20,
+    "invalid": 0,
+    "usd_per_paper_attempted": 0.139,
+    "usd_per_valid": 0.139,
+    "effort": [
+     "medium"
+    ],
+    "max_tokens": [
+     26000
+    ],
+    "rubric": [
+     "1.1.0"
+    ]
+   }
+  }
+ },
+ "pilot_sha256": "777dedc5ed5616b9fed8f3b868ddedd2249089bbb1e0c1cba7971898fd6e9dcf",
+ "pilot_keys": [
+  "g22_W4205292752",
+  "g22_W4205648916",
+  "g22_W4205830859",
+  "g22_W4214809885",
+  "g22_W4223595027",
+  "g22_W4282839350",
+  "g22_W4290667674",
+  "g22_W4292722101",
+  "g22_W4293367304",
+  "g22_W4297093781",
+  "g22_W4297883802",
+  "g22_W4307126197",
+  "g22_W4307648544",
+  "g22_W4308562635",
+  "g22_W4309333314",
+  "g22_W4309491694",
+  "g22_W4309890751",
+  "g22_W4310253034",
+  "g22_W4310437831",
+  "g22_W4313303918"
+ ],
+ "full_run_tag": "full-advance",
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "structured_output": false,
+ "leak_probes": {
+  "sha256": "4a43d827035f8d1d51e0e6572daef716f5872a4007cc23977d72c3a20fa47ecd",
+  "blind_version": "1.2.1",
+  "venue_from_blinded_text": {
+   "journal_top1": 0.833,
+   "family": 0.983,
+   "journal_base_rate": 0.083,
+   "n": 60
+  },
+  "from_title_and_abstract": {
+   "journal": 0.838,
+   "family": 0.938,
+   "recognized_yes": 2,
+   "author_hit": 0.275,
+   "citations_rho": 0.511,
+   "n": 80
+  },
+  "reading": "venue is inferable from content (topic, style, structure), not only from scrubbable strings; the coder rarely claims to recognize a paper, but its citation guesses from title and abstract track real citations, so C1 and C2 cannot separate judgment from recall or topic priors"
+ },
+ "max_tokens": 26000,
+ "secondary_descriptive": "headline components warranted (every criterion met) over headline components, assessable papers; outside the H family",
+ "success_fraction": "achieved / (achieved + not_demonstrated + unassessable U1, U2, U3, U5); U4 reported separately; all three verdict counts reported",
+ "expected_achieved_rate": {
+  "pilot": "24 of 39 codings",
+  "wilson_95": [
+   0.459,
+   0.751
+  ]
+ },
+ "pilot_degenerate_distributions": [],
+ "hypotheses": [
+  {
+   "id": "H1",
+   "feature": "bin:triangulation",
+   "outcome": "achieved_noW3",
+   "sign": 1,
+   "basis": "rubrics.qmd W3 and the seminar claim that independent checks of more than one kind raise warrant"
+  },
+  {
+   "id": "H2",
+   "feature": "num:V check kinds",
+   "outcome": "achieved_noW3",
+   "sign": 1,
+   "basis": "NASEM (2019) V: more kinds of check performed, more warrant"
+  },
+  {
+   "id": "H3",
+   "feature": "bin:claim gate yes",
+   "outcome": "achieved",
+   "sign": 1,
+   "basis": "codebook claim gate: a claim that faced a test it could fail is better warranted"
+  },
+  {
+   "id": "H4",
+   "feature": "bin:claim gate yes",
+   "outcome": "score",
+   "sign": 1,
+   "basis": "as H3, on the size of the warranted gain"
+  },
+  {
+   "id": "H5",
+   "feature": "bin:action gate yes or partly",
+   "outcome": "achieved",
+   "sign": 1,
+   "basis": "seminar: hypothesis-directed acquisition (the hypothesis-testing planner) yields warranted gains"
+  },
+  {
+   "id": "H6",
+   "feature": "bin:outcome contradicted",
+   "outcome": "role:corrective",
+   "sign": 1,
+   "basis": "rubrics.qmd: a correction can be a major gain; a contradicted outcome is the inquiry record of one"
+  },
+  {
+   "id": "H7",
+   "feature": "bin:composition capability_first",
+   "outcome": "role:enabling",
+   "sign": 1,
+   "basis": "a capability-first workflow builds the method, data or instrument that the enabling role names"
+  },
+  {
+   "id": "H8",
+   "feature": "num:import fields",
+   "outcome": "role:integrative",
+   "sign": 1,
+   "basis": "rubrics.qmd interdisciplinary transfer profile: integration across fields"
+  },
+  {
+   "id": "H9",
+   "feature": "bin:any return after failure",
+   "outcome": "score",
+   "sign": 1,
+   "basis": "seminar: returning after a failed step is iteration under test, which should enlarge the warranted gain"
+  }
+ ],
+ "family_size": 9,
+ "q_threshold": 0.1,
+ "min_feature_papers": 10,
+ "calibration_checks": [
+  {
+   "id": "C1",
+   "x": "impact_forecast (1-4)",
+   "y": "cnp",
+   "sign": 1
+  },
+  {
+   "id": "C2",
+   "x": "advance_score",
+   "y": "cnp",
+   "sign": 1
+  }
+ ],
+ "rule": "Refuses when no pilot coding exists under the current RUBRIC.md version (--allow-version-mismatch overrides),\n        and when any full-run advance coding exists (a folder <tag>-advance under private/analysis/codings/api/\n        whose tag does not start with 'pilot' holding a coding, valid or invalid). Writes the public plan\n        preregistration/advance-plan.{json,md}: rubric version and sha256 (with schema, validator, blinding and this\n        script), the rubric and blind versions of every pilot tag and the current BLIND_VERSION, pilot.json sha256\n        and the pilot keys, the full-run tag, model, effort and max_tokens (from the current-version pilot's\n        batches, else tools/code_papers.py ADVANCE_EFFORT and ADVANCE_MAX_TOKENS), outcome\n        definitions, the hypotheses H1-H9 below with predicted directions, the test rule, exclusions, covariates,\n        the shared-method statement, the expected achieved rate (pilot rate with a Wilson 95% interval), and the\n        validation gate. Run by the parent after the pilot, then commit and push before the full run.\n        Outcomes\n          primary     achieved (1) versus not (0): not_demonstrated and unassessable U1, U2, U3, U5 count as 0 and stay\n                      in the denominator; U4 (screen failure) is excluded and reported\n          primary-W3  achieved with W3 ignored (some gain meets M1, M2, W1, W2, W4): the outcome for predictors built\n                      from validation checks, so a V-check feature is never tested against W3, which measures the same\n                      construct in the same text\n          secondary   advance_score 1-5 (ordinal; papers with a score, i.e. achieved or not_demonstrated);\n                      novelty_score 1-5; roles (presence of each role among assessable papers); headline components\n                      warranted over headline components (assessable papers), descriptive, outside the H family\n        Hypotheses (feature from the round's inquiry coding, tools/roadmap/g17_outcomes.py features(); predicted sign)\n          H1  triangulation (checks of two or more of replication, method, generalization performed here) -> primary-W3, +\n          H2  number of kinds of V check performed here -> primary-W3, +\n          H3  claim gate yes (the claim faced a test it could fail) -> primary, +\n          H4  claim gate yes -> advance_score, +\n          H5  action gate yes or partly (a stated hypothesis directed the key data acquisition) -> primary, +\n          H6  outcome contradicted -> role corrective, +\n          H7  composition capability_first -> role enabling, +\n          H8  number of fields imported from -> role integrative, +\n          H9  any return after failure -> advance_score, +\n        Calibration checks (reported, outside the family): C1 impact_forecast (1-4, no_forecast excluded) against the\n        OpenAlex citation percentile cnp, +; C2 advance_score against cnp, + (advance and impact are distinct, so a\n        weak positive association is expected and a strong one would suggest the coder reads impact).\n        Rule  one family of 9 tests. Spearman rho within strata (round x OpenAlex subfield; subfields with fewer than\n              10 papers in the test population pooled within round), two-sided permutation p with the outcome shuffled\n              within strata (tools/roadmap/g20_topics_journals.py stratified(): 5000 permutations, 2000 bootstrap\n              resamples, generator named 'advance|<id>'); Benjamini-Hochberg q over the 9 p values. Supported when\n              q < 0.1 and the sign is the predicted one; reversed when q < 0.1 and the sign is opposite; otherwise not\n              supported. A binary feature present in fewer than 10 or more than n - 10 papers of the test population\n              is not testable (p = 1, kept in the family).\n        Exclusions  the pilot papers; papers without a valid advance coding under the full-run tag, a valid inquiry\n              coding (calc1 or r2) or round metrics; U4 papers (reported). Unassessable U1-U3, U5 are kept as 0 in the\n              primary outcomes and reported.\n        Sensitivity (reported, not part of the rule): plain Spearman; partial Spearman controlling for log paper\n              words, text route and the number of reported checks; primary with out-of-taxonomy awards removed; every\n              hypothesis against primary-W3; every hypothesis within round x journal family (g20 family(), families\n              with fewer than 10 papers pooled within round), because the leak probes (g25, October 28, 2026) show\n              the coder can name the journal from the blinded text in 83% of papers (and from title and abstract\n              alone in 84%), so venue cannot be hidden and a venue halo cannot be ruled out by blinding.\n        Venue check (reported, outside the family): success fraction and median score by journal family, with the\n              stratified association of verdict with family (bias-corrected Cramer's V within round, permutation p);\n              a family difference mixes real differences in reported warrant with a possible halo, and the report\n              says so.\n        Validation gate (40 human-rated gold papers, two raters each, tools/roadmap/g11_human_agreement.py layout):\n              (1) human-human alpha (ordinal) on advance score >= 0.667, and alpha (nominal) on the verdict once the\n              human instrument records one (ratings v1.1.0); (2) model-human alpha, with the model swapped in for each\n              human in turn, at least the human-human alpha minus 0.10; (3) mean model-minus-human score within +/- 0.5\n              (Wilcoxon signed-rank, sign-flip permutation); (4) with human verdicts, the model's sensitivity and\n              specificity for achieved and a Rogan-Gladen corrected success fraction. Until (1)-(3) pass, results are\n              labelled model judgment of reported warrant.",
+ "shared_method_variance": "The inquiry coding (codebook 1.5.0) and the advance coding are made by the same model from the same paper text. An association between a workflow feature and advance is a same-model, same-text estimate that includes method variance: both codings respond to how richly the paper reports its checks. V-check features are tested only against the primary outcome with W3 removed; covariates (log paper words, text route, number of reported checks) are reported as a sensitivity; the same associations are reported on the 40 human-rated papers when the gate data exist. An optional second-coder replication with a different model on a random 60-paper subsample (about $8) would show how much the associations shrink.",
+ "validation_gate": {
+  "human_human_alpha_ordinal_score_min": 0.667,
+  "human_human_alpha_nominal_verdict_min": 0.667,
+  "model_swap_alpha_min": "human-human alpha minus 0.10",
+  "mean_offset_max": 0.5,
+  "verdict_validation": "ratings v1.1.0 (agents/coder/ratings.schema.json, October 28, 2026) records advance.verdict, verdict_criteria and unassessable_condition under the same criteria; gate (4) uses the papers whose two raters agree on achieved or not_demonstrated as the reference",
+  "human_raters_saw_venue": "partly: the coder app hides journal and DOI (ratings v1.1.0), but the PDF the raters read prints them",
+  "note": "n = 40 gives roughly +/- 0.15 to 0.25 on alpha"
+ }
+}

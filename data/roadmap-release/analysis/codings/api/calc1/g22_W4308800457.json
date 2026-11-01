@@ -1,0 +1,564 @@
+{
+ "key": "g22_W4308800457",
+ "doi": "10.1029/2022je007503",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Dahmen et al. (2022), MarsQuakeNet: A More Complete Marsquake Catalog Obtained by Deep Learning Techniques, JGR Planets 127, e2022JE007503 (published PDF, 23 pages); supporting information not supplied"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "N",
+  "evidence": "Due to typically low signal-to-noise ratios (SNR) of marsquakes, their detection and analysis remain challenging",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem: the MQS catalog relies on manual inspection because conventional single-station detectors fail in InSight's fluctuating noise, so weak events may be missed and practices may drift.",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "conventional event detectors such as the STA/LTA (e.g., Allen, 1982) perform poorly on the single-station records due to high noise fluctuations"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Characterize the VBB noise field (diurnal wind noise, lander modes, 1 Hz artifact, 2.4 Hz resonance, glitches, seasonal repetition) using Sol 923 and seasonal spectrograms.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Sol 923 shows a division of the day into periods with moderate noise levels during the night"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build MQNet, a UNet that predicts event and noise segmentation masks on normalized three-component STFT coefficients, for detection and denoising.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we use the UNet architecture to detect marsquakes by casting the problem as a segmentation task"
+    },
+    {
+     "n": 4,
+     "node": "N",
+     "mode": "simulation",
+     "action": "Generate about 50k training samples per model by simulating event waveforms with a modified Boore stochastic method (real envelopes, Instaseis envelopes, Lorentz spectra) superimposed on recorded VBB noise from even or odd sols.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we build a data set based on synthetic event waveforms replicating features of real marsquake waveforms"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "Vary down-sampling layers, network sizes, optimizer, learning rate and batch normalization on a subset, and keep the best-performing architecture.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We test several modifications of the model on a smaller subset"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Cross-test the even-sol and odd-sol models on each other's validation sets and find test losses similar to training and validation losses.",
+     "page": "10",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "indicates that the models performs equally well on unseen data"
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Apply MQNet to cataloged MQS events of all types and qualities and compare the extracted energy with the known event-type signatures; one QD BB event (S1033a) is misrepresented.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we test MQNet on known events from the MQS catalog to verify that the synthetics-trained model can indeed detect the real marsquake recordings"
+    },
+    {
+     "n": 8,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check detection of outlier events whose characteristics were absent from the synthetics (S1094b, S1073d, S1048f).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "their successful detection indicates the model's ability to generalize and find unusual events"
+    },
+    {
+     "n": 9,
+     "node": "O",
+     "mode": "observation",
+     "action": "Run MQNet over the continuous 20 sps record (Sol 182-1224) in overlapping 27-min windows, alternating models to avoid training data, and derive detections and a detection score D from summed mask values.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We now apply MQNet to the full 20 sps waveform data set, spanning 1,043 sols."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Manually review all detections above D = 100 for Sol 182-600, label them correct, false or unclear, and compute precision-recall and F1 curves for LF and HF families.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "manually review all 1,071 detections with a detection value above the initial threshold score of 100"
+    },
+    {
+     "n": 11,
+     "node": "R",
+     "mode": "methods",
+     "action": "Replace the arbitrary initial threshold with family-specific thresholds chosen from the F1 curves (HF 450, LF 319).",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Based on the F1 score, we decide to select a detections threshold"
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare all 2,187 above-threshold detections with the MQS catalog by type and quality: recall ~88% (HF) and ~92% (LF), with all QA and QB events detected.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We detect all high quality (QA&B) and the majority of low quality events (QC&D)."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "observation",
+     "action": "Manually review every detection not in the MQS catalog and confirm 632 new above-threshold events (precision 86% LF, 81% HF), plus 147 below threshold.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We detect 632 additional, correct events that were missing in the MQS catalog"
+    },
+    {
+     "n": 14,
+     "node": "O",
+     "mode": "regularities",
+     "action": "Map new and MQS events against sol and local time with the noise background to show the temporal distribution and its seasonal modulation.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The cumulative event count shows substantive changes throughout the mission, which are clearly influenced by the seasonal noise pattern."
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare cumulative HF event counts between the first and second Martian years and find a substantial rate increase in the second year.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a substantial rate increase in the second year (+66% during Sol 850–1224 compared to Sol 182–556)"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "regularities",
+     "action": "Recompute the rates with and without gap correction by linear interpolation, and check that the seasonality and the increase also appear in the new detections (+88%).",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both of these observations are corroborated by [...]"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate denoised 90th-percentile spectral amplitudes of MQS and new events in the LF and HF bands from the predicted masks and set them against the noise percentiles.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Detected MQS events and our new events are given with their denoised spectral amplitudes."
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "observation",
+     "action": "Retain the extended, automatically generated and manually reviewed catalog, which adds 779 events to the 1,297 MQS events.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The product of this study is the first automatically generated, but manually reviewed marsquake catalog"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Check the 47 LF detections reported by Sun and Tkalčić (2022) with MQNet and with manual review; the large majority are not confirmed.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Neither MQNet nor a manual review, using the same criteria used to confirm MQNet detections"
+    },
+    {
+     "n": 20,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test whether MQS LF S-wave templates separate the new LF events from noise by cross-correlation; correlation values are not distinct from template-noise values.",
+     "page": "20",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we compared S-wave segments from all significant LF events in the MQS catalog"
+    },
+    {
+     "n": 21,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Take the HF rate forecast to Sol 1200 from Knapmeyer et al. (2021) as the expectation for the extended catalog.",
+     "page": "21",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "includes a forecast until Sol 1200 that is generally consistent with our observations on the onset and cease of HF activity"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Compare the observed second-year HF rate with the forecast; onset and cease match, but the increase was not predicted.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] increase in HF rate in the second season is not predicted (Figure 12)"
+    },
+    {
+     "n": 23,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude two rivals: changing MQS review practice (the detection is fully automated) and a redistribution between event sizes (second-year magnitudes are similar).",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "our analysis shows that the rate increase is not caused by different practices in the manual data review by MQS over time"
+    },
+    {
+     "n": 24,
+     "node": "K",
+     "mode": "regularities",
+     "action": "Keep the second-year HF rate increase as a real feature of Martian seismicity.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] real feature of the data set that is a significant and unexpected observation about Mars"
+    },
+    {
+     "n": 25,
+     "node": "Q",
+     "mode": "question",
+     "action": "Leave the mechanism of the interannual rate change open, noting that the seasonal mechanisms tested by Knapmeyer et al. should not vary between years.",
+     "page": "21",
+     "move": "new",
+     "trigger": "author",
+     "quote": "no explanation for such a mechanism on Mars is conclusive for us so far"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Marsquakes recorded by InSight in strongly fluctuating noise; many are weak",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Only partly; low-SNR events are hidden in noise and need a dedicated detector",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build an automatic detector and denoiser and produce a more complete, consistent catalog",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "For detections: event versus noise. For the rate increase: a review-practice artifact or size redistribution versus a real change",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Partly: a consistent automated detector would not show an increase caused by drifting manual practice",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found, not set: the mission record, with held-out sols and the MQS catalog as reference",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Nature repeats seasons over two Martian years, which allows a year-to-year rate comparison",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: architecture variants, held-out sols, known-event tests, recall against MQS, manual review of new detections",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Detector kept as characterized and catalog extended; rate increase kept as real, mechanism open",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied; two new detections were later added to the MQS catalog (Figure 10 caption)",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "MQNet, a UNet trained on synthetic marsquakes combined with recorded InSight noise, reproduces all high-quality and most low-quality MQS events (recall ~88% HF, ~92% LF) and extends the catalog by ~60%, with stated precision from manual review.",
+  "page": "1"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "simulation",
+  "sentence": "Without the synthetic training set (stochastic event waveforms superimposed on real VBB noise), no network could have been trained on the small MQS catalog, and neither the detector nor the extended catalog would exist.",
+  "page": "8"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "Action: the data are the full mission record, and no hypothesis directed their acquisition. Claim: the detector could have failed the recall test against the independent manual MQS catalog and the known-event tests (p. 10, 14). Registration: the even/odd train-predict split was fixed before prediction (p. 9, 12), and the thresholds were fixed on Sol 182-600 before the rest was scored (p. 14). The initial threshold was 'somewhat arbitrarily selected' (p. 12), and the review criteria were applied by the authors after seeing the detections."
+ },
+ "imports": [
+  {
+   "field": "medical image analysis / computer vision",
+   "item": "UNet encoder-decoder segmentation architecture (Ronneberger et al., 2015)",
+   "kind": "method",
+   "page": "2"
+  },
+  {
+   "field": "audio signal processing",
+   "item": "Source separation of audio spectrograms into instruments and vocals as an analogy for separating seismic signal and noise",
+   "kind": "concept",
+   "page": "2"
+  },
+  {
+   "field": "machine learning / computer science",
+   "item": "TensorFlow library",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "machine learning / computer science",
+   "item": "Adam optimizer, binary cross-entropy loss, data augmentation",
+   "kind": "method",
+   "page": "10"
+  },
+  {
+   "field": "machine learning / information retrieval",
+   "item": "Precision-recall curves and F1 score for threshold selection",
+   "kind": "method",
+   "page": "14"
+  },
+  {
+   "field": "computing hardware",
+   "item": "GPU training (Tesla T4)",
+   "kind": "instrument",
+   "page": "10"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "MQNet detects ∼60% additional events that were previously unknown with mostly low SNR",
+   "page": "1"
+  },
+  {
+   "quote": "The product of this study is the first automatically generated marsquake catalog",
+   "page": "3"
+  },
+  {
+   "quote": "the first automatically generated, but manually reviewed marsquake catalog over the complete 20 sps waveform data set",
+   "page": "20"
+  },
+  {
+   "quote": "[...] real feature of the data set that is a significant and unexpected observation about Mars",
+   "page": "21"
+  }
+ ],
+ "limits": "Only the published paper was supplied; the supporting information (Figures S1-S28) and the review history were not, so the architecture tests, review examples and template analysis are coded from main-text descriptions, and no review sequence is coded. The correct, false and unclear labels come from the authors' own manual review; the paper reports no blind or independent reviewer and no inter-rater agreement (inference from the text). The 383 unclear detections are counted as false positives, so precision depends on this conservative choice. Noise windows outside MQS events are labeled noise in training even though they may contain undetected events. There is no quantitative benchmark against another automatic detector (STA/LTA or template matching) on the same data, apart from the template cross-correlation check for LF events. Sub-claims at other statuses: (a) the second-year HF rate increase (+66% MQS, +88% with new detections) is a regularity_in_range over two Martian years, kept as a real feature by excluding a review-practice artifact and size redistribution, with its mechanism open; (b) denoised event amplitudes are estimates reported without stated uncertainty (estimate_with_resolution, weak); (c) most Sun and Tkalčić (2022) detections are not confirmed (a failure to replicate, not the headline outcome); (d) the LF event rate seems modulated by noise alone (claimed, with no stated test). The Knapmeyer et al. (2021) forecast is cited, not frozen by these authors, so the comparison is not a forecast verification of this paper.",
+ "disagreements": [
+  {
+   "target": "Sun and Tkalčić (2022), 47 new LF marsquakes from template matching",
+   "kind": "result",
+   "stance": "fails_to_replicate",
+   "support": "Neither MQNet nor manual review confirms most of the reported events: two are read as surface reflections of S0173a, and template cross-correlations of MQS LF events do not separate events from noise.",
+   "page": "20",
+   "quote": "can confirm the large majority of these reported detections"
+  },
+  {
+   "target": "Knapmeyer et al. (2021), seasonal HF event-rate model and forecast to Sol 1200",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The extended catalog agrees with the forecast onset and cease of HF activity but shows a second-year increase the forecast did not predict, which the authors argue the proposed mechanisms cannot vary to produce.",
+   "page": "21",
+   "quote": "[...] increase in HF rate in the second season is not predicted (Figure 12)."
+  },
+  {
+   "target": "MQS manually curated marsquake catalog (Ceylan et al., 2022; Clinton et al., 2021)",
+   "kind": "data",
+   "stance": "qualifies",
+   "support": "Automatic detection with manual review adds 779 mostly low-SNR events and suggests the MQS catalog is nearly complete only for high-SNR events.",
+   "page": "20",
+   "quote": "Despite this careful data review by MQS, we can still add a substantial amount of low SNR events to the catalog"
+  },
+  {
+   "target": "Ceylan et al. (2022), Figure 4 event amplitudes",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors report denoised 90th-percentile spectral amplitudes instead of manually selected time-domain bandpass peaks, and explain why their values are lower.",
+   "page": "18",
+   "quote": "our reported values are lower"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Training on synthetic event waveforms combined with recorded noise",
+   "alternatives": "Training on labeled recorded events, as in terrestrial CNN detectors",
+   "reason": "MQS catalog contains only about 1,300 mostly low-SNR events, whereas earthquake CNNs use over 100k recordings",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "Time-frequency (STFT) representation for scaling the synthetic waveforms",
+   "alternatives": "Amplitude and phase spectra as in Boore (2003)",
+   "reason": "simpler for further processing",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "N",
+   "chosen": "Synthetic catalog of 40% LF/BB, 30% VF, 30% HF/2.4 Hz",
+   "alternatives": "The MQS catalog distribution (7%, 5%, 88%)",
+   "reason": "much higher variability of LF, BB and VF events in frequency content, duration and S-P time",
+   "effect_reported": "no",
+   "page": "9"
+  },
+  {
+   "node": "V",
+   "chosen": "Five-block UNet with max pooling, Adam optimizer, learning rate 0.001",
+   "alternatives": "Different down-sampling layers (e.g., average pooling), network sizes, optimizers, learning rates, batch normalization",
+   "reason": "the described architecture led to the best results",
+   "effect_reported": "yes",
+   "page": "10"
+  },
+  {
+   "node": "R",
+   "chosen": "HF threshold of 450 and LF threshold of 319",
+   "alternatives": "HF threshold at the F1 maximum (403) or at other F1 peaks at higher thresholds",
+   "reason": "450 lies between the maximum and other peaks with similar F1 scores; the LF threshold is at the F1 maximum",
+   "effect_reported": "yes",
+   "page": "14"
+  },
+  {
+   "node": "C",
+   "chosen": "Gap-corrected event rates (linear interpolation)",
+   "alternatives": "Uncorrected rates including the data gaps",
+   "reason": "two periods with significant data gaps in each year; both versions are shown",
+   "effect_reported": "yes",
+   "page": "18"
+  },
+  {
+   "node": "I",
+   "chosen": "Denoised 90th-percentile spectral amplitude",
+   "alternatives": "Time-domain peak of bandpass-filtered data, as in Ceylan et al. (2022)",
+   "reason": "less affected by remnants of extreme-amplitude glitches, giving more stable values",
+   "effect_reported": "yes",
+   "page": "18"
+  },
+  {
+   "node": "O",
+   "chosen": "Detection from summed event-mask values",
+   "alternatives": "Detection on denoised time series; a UNet modified to output an event/noise label time series",
+   "reason": "faster and more stable given the wide noise dynamic range; the same model serves detection and denoising",
+   "effect_reported": "no",
+   "page": "19"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "We test several modifications of the model on a smaller subset",
+   "page": "10"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The final models have a test loss of 0.087 for even-sol (computed on odd-sol validation set)",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we test MQNet on known events from the MQS catalog to verify that the synthetics-trained model can indeed detect the real marsquake recordings",
+   "page": "10"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "their successful detection indicates the model's ability to generalize and find unusual events",
+   "page": "12"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Across all quality classes, the recall is ∼88% for HF family events, and ∼92% for [...] .",
+   "page": "14"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "We then review all other detections not matching cataloged MQS events and classify them as correct, unclear and false",
+   "page": "15"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the rates are given both including and correcting for the gap by linear interpolation of the event rate",
+   "page": "18"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "Both of these observations are corroborated by [...]",
+   "page": "18"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "their cross-correlation values are typically not distinctly different from a high number of cross-correlation values collected when event templates and noise recordings are compared",
+   "page": "20"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "This is in agreement with the results of Knapmeyer et al. (2021)",
+   "page": "21"
+  }
+ ]
+}

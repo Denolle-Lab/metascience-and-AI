@@ -1,0 +1,529 @@
+{
+ "key": "g22_W4281568939",
+ "doi": "10.1186/s40623-022-01650-1",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4281568939.pdf (published paper, Earth Planets Space 74:77, 2022)",
+  "g22_W4281568939.xml.txt (publisher XML converted by tools/jats_text.py)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content items cite the figure with PDF pages counted from 1 in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the ground-motion prediction equation (GMPE) with the PS model underestimates the shaking at stations around the fault but far away from the hypocenter",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4281568939.xml.txt (checked against the published PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem that point-source GMPE estimates in earthquake early warning underestimate shaking far from the hypocenter for large ruptures, so fault distance is needed in real time.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ground-motion prediction equation (GMPE) with the PS model underestimates the shaking at stations around the fault but far away from the hypocenter"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Review existing real-time finite-fault and source-free methods (Yamada et al. 2007, Convertito et al. 2012, FinDer, PLUM, data assimilation) as the prior capability.",
+     "page": "§1 ¶3",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Several techniques for capturing the fault finiteness in real time and incorporating it into shaking estimation have been developed."
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Propose XYtracker, which fits point-, line- and rectangle-source models to observed real-time JMA seismic intensity and selects among them with AIC.",
+     "page": "§1 ¶5",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "This study proposes a new methodology, XYtracker, which estimates the surface projection of the fault extent"
+    },
+    {
+     "n": 4,
+     "node": "F",
+     "mode": "observation",
+     "action": "Choose three recorded earthquakes as test cases: Tohoku and Wenchuan for long ruptures and good coverage, and Kumamoto as a smaller inland event.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "since they feature a long rupture and good station coverage along the fault"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Assemble the K-NET/KiK-net and China Digital Strong Motion Network accelerograms (831, 71 and 390 stations within distance cut-offs) and correct the Wenchuan clocks with theoretical P arrivals; subtract the pre-event mean and apply a recursive intensity filter.",
+     "page": "§2.1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we subtracted the pre-event mean from the acceleration records"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Define the fault distance as sqrt(h^2 + RJB^2), with the fault depth fixed at the hypocenter depth, on the grounds that high-frequency motion depends little on dip.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we presume the depth of the fault is constant at the hypocenter depth (h)"
+    },
+    {
+     "n": 7,
+     "node": "N",
+     "mode": "methods",
+     "action": "Adopt the Kunugi et al. (2013) recursive filter for real-time JMA intensity and the Yamamoto et al. (2008) intensity-magnitude GMPE, taking the median MI of the five closest stations.",
+     "page": "§3.1 ¶2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Kunugi et al. (19) proposed a recursive filter to calculate the seismic intensity."
+    },
+    {
+     "n": 8,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Set up the rival source models: a point source, a line source (L, strike, rL) and a rectangle source (adding width W), each constrained to contain the epicenter.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We considered fault finiteness by assuming two types of fault models: LS and RS models."
+    },
+    {
+     "n": 9,
+     "node": "N",
+     "mode": "methods",
+     "action": "Define the weighted RSS misfit (stations with intensity above 2.5, down-weighting distant stations not yet at peak) and minimise it with Matlab Nelder-Mead within bounded ranges, assuming Vr = 2.5 km/s and bilateral rupture.",
+     "page": "§3.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We searched the most probable model parameters by minimizing the misfit function, defined by the residual sum of squares (RSS)"
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "hypothesis",
+     "action": "Design the model-selection test as AIC = 2k + n ln(RSS), with k = 0, 3 and 4 for the PS, LS and RS models.",
+     "page": "§3.4 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We employed the AIC to select the most relevant source model among the PS, LS, and RS models"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "For Tohoku, estimate the time histories of MI (which saturates below Mw 9.0) and of the LS/RS length, strike and width; the strike stabilises after about 140 s.",
+     "page": "§4.1.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The fault length keeps increasing as the rupture propagates."
+    },
+    {
+     "n": 12,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compare the models for Tohoku: the AIC separates finite-source from PS after 120 s, and accuracy within ±1 intensity is 71% (PS) against 91% (LS) and 94% (RS).",
+     "page": "§4.1.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the accuracy for the PS model was 71%, and that for the LS and RS models were 91% and 94%, respectively"
+    },
+    {
+     "n": 13,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Track the RS-model snapshots for Tohoku at 40 to 160 s; directivity appears at about 120 s and a bilateral NNE-SSW rupture is captured at 160 s.",
+     "page": "§4.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At 160 s, the estimated model was almost converged, and the bilateral rupture in the NNE–SSW direction was captured."
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Map the RSS residual surface over pairs of parameters for Tohoku: length, strike and rL·L are well constrained, but width is poorly resolved because coverage is one-sided.",
+     "page": "§4.1.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] sensitivity of the model parameters to the misfit function."
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Apply the same procedure to Wenchuan: MI converges to 7.8 and the fault length grows from 70 s.",
+     "page": "§4.2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The length started increasing at 70 s after the origin time, and the fault finiteness became important."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the Wenchuan estimate against the independent Wang et al. (2008) inversion: the final length is similar and the minimal width is consistent with the narrow fault projection.",
+     "page": "§4.2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] is very similar to the fault model from the waveform inversion (Wang et al. 27)."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Run the AIC comparison for Wenchuan: LS and RS give similar fits, so the AIC selects LS for its fewer parameters.",
+     "page": "§4.2.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Therefore, the AIC selected the LS model, because it had fewer parameters than the RS model."
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Track the LS snapshots for Wenchuan at 35 to 125 s; the solution is PS-like early and directivity is captured from 95 s.",
+     "page": "§4.2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At 35 s, the observed intensity distribution was isotropic, and the estimated model was similar to the PS model."
+    },
+    {
+     "n": 19,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Map the Wenchuan RS residual surface: rL and strike are better resolved than L and W, attributed to the heterogeneous station distribution.",
+     "page": "§4.2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 12 shows the residual surface of the model parameters for the 2008 Wenchuan earthquake."
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Apply the procedure to Kumamoto: MI tracks the JMA EEW magnitude and converges within 10 s, and the strike is estimated early.",
+     "page": "§4.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We can estimate the strike for the LS and RS models at the early rupture stage."
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the Kumamoto estimate against the Asano and Iwata (2016) inversion: the RS length is slightly longer, explained by a triggered M5 event in Oita being included.",
+     "page": "§4.3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] the RS model is slightly larger than that of the source model in Asano and Iwata (5)."
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Run the AIC comparison for Kumamoto: LS is selected, but intensity differences between models are tiny because the event is too small to resolve rupture dimension.",
+     "page": "§4.3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Although the LS model was selected as the best model by the AIC, the differences in the estimated intensities were tiny."
+    },
+    {
+     "n": 23,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Track the LS snapshots for Kumamoto at 10 to 70 s; at 10 s the estimate already resembles the final observed intensity field.",
+     "page": "§4.3.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "At 10 s, the estimated intensity distribution (Fig. 15e) is similar to the final observed intensity distribution (Fig. 15d)."
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Map the Kumamoto RS residual surface; all parameters are well constrained.",
+     "page": "§4.3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "All parameters were well-constrained."
+    },
+    {
+     "n": 25,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that finite-source modelling with AIC selection improves real-time intensity estimation for large earthquakes.",
+     "page": "§5.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Using a simple finite-source model, the accuracy of seismic intensity estimation was improved (Figs. 6 and 10)."
+    },
+    {
+     "n": 26,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare XYtracker with published FinDer applications to Tohoku and Wenchuan: both work for narrow faults, while XYtracker adds fault width for wide subduction ruptures.",
+     "page": "§5.1 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The major difference between our approach and the FinDer algorithm is the consideration of the fault width."
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "methods",
+     "action": "Conclude that the AIC switches from PS to finite-source as rupture grows, selecting RS for Tohoku and LS for Wenchuan and Kumamoto.",
+     "page": "§6 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The AIC selected the PS model at the start of the rupture and then switched to the finite-source model as the rupture propagated."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known phenomenon: point-source GMPE underestimates distant near-fault shaking for long ruptures",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; fault extent is inferred from observed intensities through a GMPE",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Build a real-time method to estimate fault extent and shaking",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Yes; point-, line- and rectangle-source models",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; different intensity fields, scored by RSS and AIC",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "6",
+   "answer": "Found: three past recorded earthquakes, chosen for rupture length and coverage",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Partly; three events, not a systematic set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; residual surfaces, reference inversions and three events, but no parameter sensitivity tests",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Method kept: finite-source selected for large events and accuracy improved",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "Not documented; no review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "XYtracker tracks the surface projection of an ongoing rupture from real-time seismic intensity, and its AIC-selected finite-source models improve intensity estimates for large earthquakes (Tohoku accuracy 71% for PS against 94% for RS).",
+  "page": "§5.1 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "hypothesis",
+  "sentence": "Without the Tohoku comparison of PS against finite-source intensity predictions (AIC plus accuracy within ±1, 71% against 91 to 94%), there would be no evidence that the method improves shaking estimates.",
+  "page": "§4.1.1 ¶3"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Action: the events were chosen because they 'feature a long rupture and good station coverage' (§2.1 ¶1), i.e. the expectation that finiteness matters guided the choice, but the data are archival. Claim: the AIC could have retained the point source and the accuracy comparison could have failed (§4.1.1 ¶3). However, the tests are offline and retrospective on three events, and tuning choices (weights, 2.5 intensity threshold, Vr) were set by the authors. Registration: the GMPE was fixed before the events ('The equation was derived before the three earthquakes', §5.2 ¶1); nothing else was pre-specified."
+ },
+ "imports": [
+  {
+   "field": "statistics / information theory",
+   "item": "Akaike Information Criterion for model selection (Akaike 1974, IEEE Trans Autom Control)",
+   "kind": "method",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "field": "numerical optimization (applied mathematics)",
+   "item": "Nelder-Mead simplex optimisation as implemented in Matlab",
+   "kind": "method",
+   "page": "§3.3 ¶3"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This study proposes a novel methodology, XYtracker, to estimate the surface projection of the fault extent and real-time seismic intensity.",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "The XYtracker is a new approach that considers the two-dimensional rupture for the seismic intensity estimation.",
+   "page": "§3 ¶1"
+  },
+  {
+   "quote": "[...] our novel source estimation algorithm to the 2011 Tohoku earthquake (Mw 9.0)",
+   "page": "§4 ¶1"
+  }
+ ],
+ "limits": "No peer-review file was supplied, so no review sequence is coded. The tests are offline simulations on only three events; the authors say more earthquakes are needed to confirm robustness (§5.2 ¶2). The GMPE (Yamamoto et al. 2008) was fit to MJMA 3.5 to 7.9, so applying it to Tohoku is an extrapolation (§5.2 ¶1). No site correction is applied. Several processing choices are fixed and not varied: the station weighting scheme, the intensity >2.5 threshold, Vr = 2.5 km/s, bilateral rupture, the epicenter at the center of the width, the parameter bounds, and the median MI of five stations. Only the parameter-misfit surfaces are explored. Sub-claims at other statuses: fault length and strike for Tohoku and Wenchuan are estimate_with_resolution, but Tohoku width is poorly resolved (§4.1.2 ¶2). The model selection per event is best_explanation among PS/LS/RS; for Kumamoto it rests on tiny intensity differences (§4.3.1 ¶3). The Kumamoto length is inflated by a triggered event (§4.3.1 ¶2). The comparison with FinDer is qualitative and uses others' published runs, not a side-by-side run (inference). Warning-time benefits are stated qualitatively only (§4.1.2 ¶1, §4.2.2 ¶1). Neither dead ends nor revised attempts are reported, so the linear sequence may hide iteration (inference). The Wenchuan clock correction assumes theoretical P arrivals, and its effect is not assessed.",
+ "disagreements": [
+  {
+   "target": "Conventional point-source GMPE approach of current EEW systems (e.g., JMA EEW; Odaka et al. 2003)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "For Tohoku the PS model reaches 71% accuracy against 91 to 94% for the finite-source models, and it underestimates intensity in the Tokyo region; the PS model is still selected early and for small events.",
+   "page": "§1 ¶2",
+   "quote": "This approach performs well in estimating shaking intensity for small-to-moderate earthquakes. However, the fault rupture length can be tens to hundreds of kilometers for large [...]"
+  },
+  {
+   "target": "FinDer algorithm (Böse et al. 2012, 2015, 2018; Li et al. 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Both methods work for narrow faults (Wenchuan, Kumamoto), but XYtracker's rectangle model with width was selected by AIC for the wide Tohoku rupture.",
+   "page": "§5.1 ¶4",
+   "quote": "However, for large earthquakes with a wide fault, such as subduction earthquakes, consideration of the fault width will improve the shaking estimation."
+  },
+  {
+   "target": "PLUM method (Kodera et al. 2018) and data assimilation (Hoshiba and Aoki 2015)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from the design of the methods only (source-free prediction gives shorter warning); no comparison is performed.",
+   "page": "§1 ¶4",
+   "quote": "These methods do not require source estimation, but the warning time tends to be short compared with source- [...] ."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "AIC-selected source model at each time step",
+   "alternatives": "point-source, line-source, rectangle-source models",
+   "reason": "AIC balances model complexity against goodness of fit",
+   "effect_reported": "yes",
+   "page": "§3.4 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "sqrt(h^2 + RJB^2) with fault depth fixed at hypocenter depth",
+   "alternatives": "rupture distance RRUP to the three-dimensional rupture plane",
+   "reason": "high-frequency ground motion is sensitive to RJB but less sensitive to the dip of the fault plane (Yamada et [...] )",
+   "effect_reported": "no",
+   "page": "§2.2 ¶1"
+  },
+  {
+   "node": "N",
+   "chosen": "JMA seismic intensity as the high-frequency ground-motion measure",
+   "alternatives": "PGA and PGV (used by Yamada et al. 2007 and Convertito et al. 2012)",
+   "reason": "it is used to express the level of shaking in Japanese EEW",
+   "effect_reported": "no",
+   "page": "§3.1 ¶2"
+  },
+  {
+   "node": "N",
+   "chosen": "intensity magnitude MI",
+   "alternatives": "moment magnitude and other conventional magnitudes",
+   "reason": "intensity uncertainty from MI is significantly lower than from other conventional magnitudes (Yamamoto et al. 2008)",
+   "effect_reported": "no",
+   "page": "§5.1 ¶2"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Although the definition of the magnitude was slightly different (JMA EEW magnitude is computed from the high-pass filtered displacement), their trends were similar.",
+   "page": "§4.1.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The broken line shows the source model in Shao et al. (24)",
+   "page": "Fig. 5 (p. 4)"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] consistent with the model selection by the AIC (Fig. 5e).",
+   "page": "§4.1.1 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] sensitivity of the model parameters to the misfit function.",
+   "page": "§4.1.2 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "We performed the same simulation with the data set of the 2008 Wenchuan earthquake.",
+   "page": "§4.2.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] is very similar to the fault model from the waveform inversion (Wang et al. 27).",
+   "page": "§4.2.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Figure 12 shows the residual surface of the model parameters for the 2008 Wenchuan earthquake.",
+   "page": "§4.2.2 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "[...] the simulation with the 2016 Kumamoto earthquake (MJMA 7.1) as an example of a more minor inland earthquake.",
+   "page": "§2.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "MI is similar to the JMA EEW magnitude and converges within the first 10 s after the first P-wave arrival.",
+   "page": "§4.3.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "[...] the RS model is slightly larger than that of the source model in Asano and Iwata (5).",
+   "page": "§4.3.1 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "All parameters were well-constrained.",
+   "page": "§4.3.2 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": false,
+   "quote": "[...] fault earthquakes, such as Kumamoto [...] ).",
+   "page": "§5.1 ¶4"
+  }
+ ]
+}

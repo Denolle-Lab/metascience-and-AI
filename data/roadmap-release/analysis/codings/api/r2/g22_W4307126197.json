@@ -1,0 +1,512 @@
+{
+ "key": "g22_W4307126197",
+ "doi": "10.1029/2022ea002346",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Gusman, Roger, Power, Fry & Kaneko (2022), Earth and Space Science 9, e2022EA002346, published PDF (22 pages)"
+ ],
+ "pages_convention": "printed journal pages (article pages 'n of 22')",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Ways to improve the use of those databases, and the accuracy of impact forecasting, especially for scenarios whose magnitude or location lie outside",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "F",
+     "mode": "observation",
+     "action": "The authors take the live 10 February 2021 Mw 7.7 Loyalty Islands thrust earthquake and its tsunami, recorded by coastal gauges and the new NZ DART network, as the found conditions.",
+     "page": "1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "On the 10th of February 2021, a magnitude (Mw) 7.7 earthquake occurred in this subduction zone and generated a tsunami"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "They compile tsunami records from 24 coastal gauges (IOC) and 4 DART stations, remove tides with a 7th-degree polynomial, low-pass filter the DART data, and tabulate amplitudes and travel times.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We first approximated the tides by fitting a 7th degree polynomial to the original record"
+    },
+    {
+     "n": 3,
+     "node": "Q",
+     "mode": "question",
+     "action": "They pose the aims: estimate the non-uniform slip from the tsunami waveforms, check it with seismic data, and use it as ground truth to evaluate the scenario-based forecasts for New Zealand.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "was used as a reference map (ground truth) to evaluate our tsunami forecasting approach"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "They design the inversion: GCMT fault geometry chosen among GCMT, USGS and GA strikes, 6x3 subfaults of 20 km, Okada displacement, linear long-wave Green's functions with phase correction, DART weight 50, Laplacian smoothing set by ABIC, and NNLS.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A unit slip amount of 1 m was used to construct the tsunami Green's functions."
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "methods",
+     "action": "A checkerboard test with 1% Gaussian noise shows that the station geometry resolves the shallow subfaults but not the deepest row.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the checkerboard pattern on the shallower part of the fault can be well reproduced by the inversion"
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "estimation",
+     "action": "An initial inversion using only coastal gauges gives large slip errors, which they attribute to arrival-time shifts from poorly represented bathymetry and gauge effects.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "An initial slip distribution estimated using only tsunami waveforms recorded at the coastal gauges is not so reliable"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They run a DART-only inversion as a timing reference, manually set coastal time shifts of up to 5.5 min, use extra wave cycles at some stations, and obtain the final joint slip model (maximum 4.1 m near the trench, Mw 7.65).",
+     "page": "6-7",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The final slip distribution was obtained from tsunami waveforms at both coastal gauge and DART stations with the optimum time shift"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "estimation",
+     "action": "They compare the model with the USGS finite fault model (consistent near-trench slip) and with the GCMT and USGS moments (16-23% smaller), and report waveform fits station by station (Figure 5).",
+     "page": "6-7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The estimated slip distribution has a major slip region near the trench (Figure 4a). This is consistent with the USGS finite fault model"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Thirty inversions on random 20-of-28 station subsets give slip errors of about ±0.2 m on the peak subfault, with higher errors on the eastern and deep subfaults.",
+     "page": "7-8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Overall, the reliability of the estimated major slip region is high with very low slip errors."
+    },
+    {
+     "n": 10,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Specfem3D_Globe simulations at 21 GSN stations (50-500 s) test the tsunami-derived model against independent seismic data at rupture velocities of 1.0, 1.5 and 2.0 km/s, with GCMT and USGS models as baselines; 1.0 km/s fits best.",
+     "page": "8-10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The seismic waves can be best reproduced with the estimated slip distribution using an assumed rupture velocity of 1.0 km/s"
+    },
+    {
+     "n": 11,
+     "node": "P",
+     "mode": "estimation",
+     "action": "They raise deep-subfault slip until the moment matches GCMT and find a similar seismic misfit, so they attribute the moment deficit to deep slip the tsunami data cannot see rather than revising the shallow-slip claim.",
+     "page": "10-11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "discrepancy in the seismic moment between the tsunami source model and GCMT is due to the slip on the deep subfaults"
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "simulation",
+     "action": "They run COMCOT nonlinear simulations (30 hr, nested grids, NeSI HPC) from the slip model to build the reference threat-level map for 43 NZ warning regions from 99th-percentile shoreline amplitudes.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the threat level map from the estimated source model is used purely as reference to evaluate the forecast"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They check the reference map against the observed maximum amplitude at Jackson Bay (35 cm), which supports the Beach and Marine threat on the South Island west coast.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the maximum amplitude is 35 cm which validates the tsunami threat level from the estimated fault slip distribution"
+    },
+    {
+     "n": 14,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Propagation snapshots are used to explain the high South Island west-coast amplitudes by refraction over the Challenger Plateau and Bellona Basin and focusing by seamounts and canyons.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "allow the tsunami to focus part of its energy on the West Coast of the South Island"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The threat map from the nearest pre-computed Mw 7.7 uniform-slip scenario (about 70 km west) is compared with the reference map: 38 of 43 regions match.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The predicted threat levels at most of the coastal regions (38 out of 43 regions) matched the reference ones"
+    },
+    {
+     "n": 16,
+     "node": "N",
+     "mode": "methods",
+     "action": "They build an inverse-distance-weighting interpolation of threat levels between the West and East Mw 7.7 scenarios.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Here we interpolated the threat level maps from these two scenarios with the inverse distance weighting method (Shepard, 1968)."
+    },
+    {
+     "n": 17,
+     "node": "C",
+     "mode": "simulation",
+     "action": "The interpolated threat map is compared with the reference: 36 of 43 regions match, with overestimation attributed to the reference model's smaller moment and energy.",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The interpolated threat levels (Figure 10a) at most of the coastal regions (36 out of 43 regions) matched the reference ones"
+    },
+    {
+     "n": 18,
+     "node": "N",
+     "mode": "methods",
+     "action": "They resimulate both scenarios on high-resolution gauge grids and interpolate arrival times and waveforms with a Huygens-Fresnel-based method (Equations 6-7).",
+     "page": "16-17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We used a waveform interpolation method (Wang et al., 2019) which is based on the Huygens-Fresnel principle."
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "observation",
+     "action": "They score interpolated, West and East scenario waveforms against the observed records as stations accumulate over time; the interpolation is best after more than 2.2 hr, the nearest scenario best on amplitude in the first 1.5 hr.",
+     "page": "17",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The interpolated tsunami waveforms fit better the observations in term of both amplitude and arrival time"
+    },
+    {
+     "n": 20,
+     "node": "R",
+     "mode": "methods",
+     "action": "They recommend refining the scenario database: tsunami-earthquake and normal-faulting scenarios, spacing of half the typical fault length (50 km for Mw 7.5-7.9), and heterogeneous slip above Mw 8.0.",
+     "page": "17-18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These suggest that the earthquake scenarios around the source region are not dense enough for those two countries."
+    },
+    {
+     "n": 21,
+     "node": "R",
+     "mode": "simulation",
+     "action": "They report that during the event the NZ Tsunami Expert Panel raised the ComMIT unit-source slip from 2 m to about 4 m after forecasts fell below gauge and DART records, which matches the 4.1 m inverted maximum.",
+     "page": "18",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "a precautionary approach was taken and the modeled slip was adjusted to ∼4 m"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They keep the near-trench slip model and conclude that both nearest-scenario and interpolated maps forecast most warning zones accurately up to Mw 7.7.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The major slip region of the estimated fault slip distribution is located near the trench with maximum slip amount of 4.1 m."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Tsunami from the 2021 Mw 7.7 Loyalty Islands earthquake, recorded regionally",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No; slip is latent and is inferred from tsunami waveforms",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Estimate the slip distribution and use it to evaluate scenario-based threat forecasts for New Zealand",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No physical rivals; competing source models (GCMT, USGS) and competing forecast approaches (nearest scenario versus interpolation)",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "5",
+   "answer": "Yes; each approach gives different threat maps, waveforms and seismic misfits",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: a single live event",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No repetition used; one event",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Yes: checkerboard, station-subset resampling, independent seismic waveforms, rupture-velocity variation, deep-slip test",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Near-trench slip estimate kept; both forecast approaches match the reference in most regions",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "The 2021 Loyalty Islands earthquake ruptured the plate interface with major slip near the trench (maximum 4.1 ± 0.2 m, Mw 7.65), well resolved in the shallow part, and with a 1.0 km/s rupture velocity it reproduces the observed seismic waves.",
+  "page": "7-8, 10, 19"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The joint coastal-plus-DART inversion with DART-referenced time shifts produced the slip model; it underlies both the seismic check and the reference threat map against which the forecasts were scored.",
+  "page": "6-7"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "yes",
+  "registration": "partly",
+  "evidence": "The data came from operational gauge and DART networks, not acquisition directed by a hypothesis. The slip model faced independent seismic waveforms against GCMT and USGS baselines and could have fitted worse (p. 10). The forecast scenarios and the threat thresholds (Table 3) were fixed before the event (pp. 2, 11, 13), but the inversion settings (DART weight, time shifts, wave cycles) were tuned after seeing the data (pp. 5-6)."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Akaike's Bayesian Information Criterion for choosing the smoothing factor",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "applied mathematics",
+   "item": "Non-negative least squares (Lawson & Hanson 1995)",
+   "kind": "method",
+   "page": "5"
+  },
+  {
+   "field": "signal processing",
+   "item": "4th-order low-pass Butterworth filter",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "computer science / spatial interpolation",
+   "item": "Inverse distance weighting (Shepard 1968)",
+   "kind": "method",
+   "page": "14"
+  },
+  {
+   "field": "physics (optics)",
+   "item": "Huygens-Fresnel principle underlying the waveform interpolation",
+   "kind": "concept",
+   "page": "16"
+  },
+  {
+   "field": "high-performance computing",
+   "item": "NeSI HPC facility for COMCOT and Specfem3D runs",
+   "kind": "instrument",
+   "page": "11"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No peer-review file was supplied, although the acknowledgments name an editor and reviewers, so no review sequence is coded. Composition is none_fits because the walk is a hybrid: a single-event inversion with a check against independent seismic data (estimation), followed by a forecast verification in which scenarios frozen before the event are scored against a model-derived reference map rather than against observations alone. Sub-claims and their statuses: (1) nearest-scenario and interpolated threat maps forecast most NZ warning zones accurately (38/43 and 36/43) - capability_characterized; (2) the South Island west coast was enhanced by refraction over the Challenger Plateau and Bellona Basin - best_explanation, from simulation only, with one gauge as support; (3) deep slip is possibly underestimated - unresolved, inferred from the moment deficit. The reference map is itself a model output, so the forecast evaluation is not independent of the inversion choices; the paper does not report how the 38/43 score would change under alternative slip models (inference). The coastal time shifts were found manually and the DART weight was tuned (1-100), but their effect on the slip is not reported. Whether the forecast evaluation design was fixed before analysis is not stated. The real-time NZTEP adjustment is reported, not performed in this paper.",
+ "disagreements": [
+  {
+   "target": "GCMT and USGS seismic moment estimates",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "The tsunami-derived moment is 16-23% smaller; a test raising deep-subfault slip to the GCMT moment gives similar seismic misfit, so the deficit is attributed to deep slip the tsunami data cannot see.",
+   "page": "7, 10-11",
+   "quote": "This estimated seismic moment is smaller than the values from the GCMT solution"
+  },
+  {
+   "target": "GCMT solution and USGS finite fault model as descriptions of the rupture",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "In 50-500 s seismic simulations both have larger full and peak misfits (21/8.2 and 15/2.7) than the tsunami model at 1.0 km/s (6.2/2.0).",
+   "page": "10",
+   "quote": "are larger than the ones for the best tsunami source model"
+  },
+  {
+   "target": "Previous studies finding that homogeneous slip models underestimate peak tsunami amplitudes (Davies & Griffin 2020; Melgar et al. 2019; Mueller [...]",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "For this Mw 7.7 far-field case, uniform-slip scenarios reproduced the reference threat levels; the paper limits the concern to events above Mw 8.0.",
+   "page": "18-19",
+   "quote": "rupture details are not critical for guiding tsunami warning in locations far away from the source"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "GCMT fault geometry (strike 279°, dip 23°, rake 101°)",
+   "alternatives": "USGS W-phase (246°) and Geoscience Australia (284°) strikes",
+   "reason": "GCMT strike lies in the middle of the estimates; single-fault simulations from GCMT and USGS were comparable",
+   "effect_reported": "yes",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "DART data weight of 50",
+   "alternatives": "weights tested between 1 and 100",
+   "reason": "best value obtained after testing",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "I",
+   "chosen": "Joint coastal plus DART inversion with DART-referenced coastal time shifts",
+   "alternatives": "coastal-only inversion; DART-only inversion",
+   "reason": "coastal-only has large slip errors from arrival-time shifts; DART-only has narrow azimuth coverage and a smaller moment",
+   "effect_reported": "yes",
+   "page": "6-7"
+  },
+  {
+   "node": "I",
+   "chosen": "Two or three wave cycles at some stations, and a wave envelope at OUVE",
+   "alternatives": "first wave cycle only",
+   "reason": "first cycle too small or unclear at those stations; included only if fits elsewhere do not deteriorate significantly",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "V",
+   "chosen": "Rupture velocity of 1.0 km/s",
+   "alternatives": "1.5 and 2.0 km/s; 0.5 km/s excluded",
+   "reason": "lowest misfit; 0.5 km/s gives a source duration above 200 s, inconsistent with GCMT and USGS",
+   "effect_reported": "yes",
+   "page": "9-10"
+  },
+  {
+   "node": "V",
+   "chosen": "Full-waveform misfit",
+   "alternatives": "peak-amplitude misfit",
+   "reason": "to consider an alternative misfit quantification; both reported",
+   "effect_reported": "yes",
+   "page": "9-10"
+  },
+  {
+   "node": "S",
+   "chosen": "99th percentile of shoreline amplitudes per warning region",
+   "alternatives": "maximum value",
+   "reason": "to avoid outliers",
+   "effect_reported": "no",
+   "page": "11"
+  },
+  {
+   "node": "C",
+   "chosen": "Both the nearest scenario and the interpolation, with the higher threat level taken for a conservative forecast",
+   "alternatives": "nearest pre-computed scenario alone; interpolation of two scenarios alone",
+   "reason": "nearest gives 38/43 matches, interpolation 36/43; interpolation better on arrival times after more than 2.2 hr",
+   "effect_reported": "yes",
+   "page": "15, 17"
+  },
+  {
+   "node": "R",
+   "chosen": "Interpolation between scenarios generally, with denser scenarios where fault strike varies by more than 20°",
+   "alternatives": "adding more scenarios everywhere",
+   "reason": "interpolation is computationally more efficient; adding scenarios is preferred where strike angles vary strongly",
+   "effect_reported": "no",
+   "page": "18"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "To evaluate the source model resolution, we applied a checkerboard test",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we ran 30 tsunami waveforms inversions with different randomly selected tsunami waveform sets at 20 out of 28 stations",
+   "page": "5"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "An inversion using only DART data which are relatively far away from the source",
+   "page": "7"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "estimated from 17 teleseismic broadband P waveforms, 7 broadband SH waveforms, and 29 long period surface waves (USGS, 2021)",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "we compare observed and synthetic seismograms at Global Seismographic Network stations using Specfem3D_Globe",
+   "page": "8"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we ran simulations with assumed constant rupture velocities of 1.0, 1.5 and 2.0 km/s",
+   "page": "9"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "For comparison, we also simulated the seismic waves using the GCMT solution and the USGS finite fault models.",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "we increase the slip amount on these sub-faults to make the calculated seismic moment match the GCMT one",
+   "page": "10"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the maximum amplitude is 35 cm which validates the tsunami threat level from the estimated fault slip distribution",
+   "page": "12"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The interpolated tsunami waveforms fit better the observations in term of both amplitude and arrival time",
+   "page": "17"
+  }
+ ]
+}

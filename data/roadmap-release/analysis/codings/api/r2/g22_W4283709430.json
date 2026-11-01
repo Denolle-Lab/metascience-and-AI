@@ -1,0 +1,427 @@
+{
+ "key": "g22_W4283709430",
+ "doi": "10.1007/s11869-022-01213-z",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Son et al. 2022, Air Quality, Atmosphere & Health 15:1729-1744, published PDF",
+  "Publisher XML full text converted with jats_text (section and paragraph locators)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text); figure-content steps cite the figure label with the printed journal page in parentheses",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "few studies have investigated the effects of long-range transport of EC emissions in northeast Asia as well as domestic contributions in detail",
+  "page": "§1 ¶3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (XML text, PDF for figures)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors name a gap: foreign and domestic EC contributions have not been resolved by sub-region and source category together with population exposure. They set the aim of quantifying annual and quarterly contributions and population-weighted exposure.",
+     "page": "§1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "few studies have investigated the effects of long-range transport of EC emissions in northeast Asia as well as domestic contributions in detail"
+    },
+    {
+     "n": 2,
+     "node": "D",
+     "mode": "simulation",
+     "action": "They configure CMAQ 4.7.1 on nested 27/9-km domains for 2016, driven by WRF 3.4.1 with analysis nudging, using the CAPSS 2016 and CREATE 2015 inventories processed through SMOKE.",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "hourly gridded concentrations for the study period were produced using the Community Multiscale Air Quality (CMAQ) version 4.7.1"
+    },
+    {
+     "n": 3,
+     "node": "D",
+     "mode": "methods",
+     "action": "They design the attribution. CMAQ Primary Carbon Apportionment tags 15 sources (3 categories x 5 sub-regions), splitting contributions into self, other-sub-region and foreign (residual) parts. They define the population-weighted exposure contribution (PWEC).",
+     "page": "§2.3 ¶2; §2.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The total number of tagged emission sources was 15"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "methods",
+     "action": "They check the meteorological driver: simulated 10-m wind and 2-m temperature are compared with 72 ASOS and 59 MADIS sites using RMSE and IOA against the Emery et al. (2001) benchmarks.",
+     "page": "§3.1.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the result of the meteorological model performance evaluations at the MADIS sites over South Korea and China met the benchmarking goal"
+    },
+    {
+     "n": 5,
+     "node": "V",
+     "mode": "simulation",
+     "action": "They evaluate simulated daily EC against observations at six supersites using NMB, NME and r with the Emery et al. (2017) goals. The model is too high at SD and YN and too low at BR, JB, HN and JJ.",
+     "page": "§3.1.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The NMB and NME for daily mean EC concentrations at the six supersites during the study period ranged from"
+    },
+    {
+     "n": 6,
+     "node": "P",
+     "mode": "estimation",
+     "action": "They attribute the EC mismatch to the emission inventory rather than to the model or meteorology. In two steps they rescale the foreign contribution by the BR simulated/observed ratio (0.64) and set the domestic contribution as the residual to observations, inferring sub-regional inventory biases.",
+     "page": "§3.1.3 ¶1",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "we assumed that the uncertainty of the simulated EC concentrations mainly originated from the uncertainty of EC emission inventory"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "From the tagged simulation they estimate annual mean domestic and foreign EC contributions and their spatial distribution by sub-region. Domestic contributions vary across sub-regions while foreign contributions vary little.",
+     "page": "§3.2 ¶1; Fig. 5 (p. 1736)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the annual mean foreign EC contribution showed marginal variations"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "regularities",
+     "action": "They fit a linear relation between sub-regional simulated EC concentration and emission density (r = 0.94). A t-test is run against a zero-slope null, and the trend line is used to roughly estimate local contributions.",
+     "page": "§3.2 ¶3; Fig. 6 (p. 1737)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The EC concentrations and the EC emission densities across sub-regions show a linear trend with a high correlation coefficient (0.94)"
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "regularities",
+     "action": "They repeat the concentration and emission-density correlation at the finer level of 17 provincial authorities (r = 0.82).",
+     "page": "§3.2 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the EC concentration and emission density of 17 provincial authorities that is one jurisdictional level lower than sub-regions also showed a high correlation coefficient (0.82)"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "They set the correlation and the smaller spread of foreign contributions against earlier studies that reported the same patterns.",
+     "page": "§3.2 ¶3–4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "[...] correlation between primary air pollutant concentration and its emission density was reported by previous studies"
+    },
+    {
+     "n": 11,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They examine diurnal cycles at four supersites (Figure S3): foreign contributions are flat through the day while domestic contributions rise at rush hour. This supports local emissions as the cause of sub-regional differences.",
+     "page": "§3.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the foreign contributions were uniform during the whole day, but the domestic contributions increased during rush hour"
+    },
+    {
+     "n": 12,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate quarterly domestic and foreign contributions. Foreign contributions range 0.1–0.6 µg/m3 (Q3 to Q1), while domestic contributions vary by only 0.1 µg/m3.",
+     "page": "§3.2 ¶6; Fig. 7 (p. 1738)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Differences in minimum and maximum quarterly EC contributions were 0.1 μg/m3 for domestic sources and 0.5 μg/m3 for foreign sources"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "estimation",
+     "action": "They support the seasonal foreign signal with prevailing monsoon wind fields (Figures S1, S4) and HYSPLIT backward trajectories (Figure S5), which trace Q1/Q4 air masses to Liaoning and BTH.",
+     "page": "§3.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the backward trajectory analysis with Hybrid Single-Particle Lagrangian Integrated Trajectory indicated that air masses reaching South Korea likely originated from Liaoning and BTH"
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They estimate self versus other-sub-region contributions (self about 70% of domestic; Gangwon the exception) and the area:mobile:point contribution ratio (20:10:1).",
+     "page": "§3.3 ¶1; Fig. 8 (p. 1739)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "managing EC emissions from a sub-region by itself is more important than managing those from the other sub-regions"
+    },
+    {
+     "n": 15,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute contributions and PWEC with base and adjusted emissions for four sub-regions, excluding Gangwon for lack of observations. Domestic PWEC falls from 0.41 to 0.28 µg/m3 after adjustment.",
+     "page": "§3.4 ¶1–2; Fig. 9 (p. 1740)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "the fluctuation of domestic PWEC is heavily influenced by emission uncertainties of these sub-regions"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "robustness",
+     "action": "They compare base and adjusted results and find that PWEC exceeds contribution in both cases.",
+     "page": "§3.4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] from domestic and foreign emissions was higher irrespective of emission adjustment when expressed in terms of PWEC rather than contribution"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "They compute contribution rates (adjusted contribution and PWEC per unit emission) for 12 source categories. Rates differ up to tenfold between sub-regions but little between categories within a sub-region.",
+     "page": "§3.4 ¶3–4; Fig. 10 (p. 1741)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "contribution rates for EC contribution or PWEC can differ up to 10 times by sub-regions"
+    },
+    {
+     "n": 18,
+     "node": "K",
+     "mode": "estimation",
+     "action": "They retain the apportionment: foreign 54% of the 0.6 µg/m3 annual mean, domestic PWEC about 20% above domestic contribution, and region-first management. They note that inventory uncertainty must still be reduced.",
+     "page": "§4 ¶1–3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This suggested that the management of domestic EC emissions is important to improve not only air quality but also population exposure"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Source contributions to ambient EC and to population exposure in South Korea, 2016",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "2",
+   "answer": "No; contributions are latent and inferred through tagged CMAQ simulation",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Quantify foreign/domestic and sub-region/category contributions and PWEC to prioritise emission control",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations stated",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: one year (2016) of real meteorology and emissions, simulated",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6b",
+   "answer": "Repetition across sub-regions, provincial authorities and quarters used for a concentration and emission-density relation and seasonal contrast",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: met and EC benchmarks against observations, provincial-level repeat, diurnal and trajectory support, base versus adjusted emissions",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Estimates kept, adjusted with observations; inventory uncertainty flagged",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "estimate_with_resolution",
+  "claim": "In 2016, foreign sources contributed about 54% of the modeled 0.6 µg/m3 annual mean EC over South Korea, with quarterly foreign contributions varying up to fivefold. Adjusted domestic PWEC was about 20% higher than the domestic concentration contribution, and contribution rates vary more between sub-regions than between source categories.",
+  "page": "§4 ¶1–2"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "The tagged CMAQ Primary Carbon Apportionment simulation of 15 domestic sources plus a foreign residual produces every contribution, PWEC and contribution rate; without it no claim exists.",
+  "page": "§2.3 ¶1; §3.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "No hypothesis directed data acquisition. The study is a model-based apportionment using existing inventories and monitoring data. The simulated EC faced observations at six supersites against the pre-set Emery et al. (2017) NMB/NME goals and could have failed; it was then adjusted to observations rather than rejected. The sub-region regression faced a t-test (p about 0.05). Benchmark thresholds (Emery et al. 2001, 2017) and the significance level p<0.05 were fixed externally before the data; nothing else was registered."
+ },
+ "imports": [
+  {
+   "field": "epidemiology / exposure science",
+   "item": "Population-weighted exposure as an exposure metric, justified by EC mortality findings (Krall et al. 2013)",
+   "kind": "concept",
+   "page": "§2.4 ¶1–2"
+  },
+  {
+   "field": "statistics",
+   "item": "t-test of regression slope against zero with 95% confidence intervals",
+   "kind": "method",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "field": "economics / policy analysis",
+   "item": "Cost-effectiveness reasoning via contribution rate per unit emission",
+   "kind": "concept",
+   "page": "§3.4 ¶3"
+  },
+  {
+   "field": "demography",
+   "item": "Sub-regional population counts used as weights",
+   "kind": "data",
+   "page": "§2.4 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Studies in northeast Asia have evaluated the health effects of EC only regarding regional or categorical contributors, and not both",
+   "page": "§1 ¶3"
+  },
+  {
+   "quote": "We believe the overall analysis approach taken in this study can be applied to any region that requires efficient EC management strategies",
+   "page": "§1 ¶4"
+  }
+ ],
+ "limits": "No review file was supplied, so only a final_paper sequence is coded. The supplement (Figures S1–S7, Tables S1–S3) was not supplied; steps 11 and 13 rest on the main-text description of supplementary figures.\n\nThe estimates carry no formal uncertainty bounds. 'Resolution' is only the 9-km grid and the base-versus-adjusted spread, so estimate_with_resolution is generous.\n\nThe adjustment (step 6) assumes meteorological error is negligible because benchmarks were met. It treats the BR ratio as representing all foreign error and the residual as domestic inventory error. These assumptions are not tested, so coding this step as P (protecting the model by revising the emission auxiliary) is an inference. Gangwon could not be adjusted. Table 3 shows several supersites (BR, JB, JJ) outside the NMB goal of plus or minus 20%; the paper nonetheless states BR met the performance goal. Bold marking is not recoverable from the text.\n\nThe sub-region regression has n=5 and p about 0.05. Coding the diurnal-cycle check as kind 'method' is a judgement: it mixes observed and modeled diurnal profiles.\n\nComposition is none_fits. The walk is a single-model, single-year apportionment with no stated rivals and no frozen forecast. Its repetition over sub-regions and quarters is descriptive rather than a fitted regularity with stated range, so neither natures_repetition nor trace_series fits.\n\nSub-claims at other statuses:\n- the concentration and emission-density linear relation is regularity_in_range (sub-regions and provincial authorities, 2016);\n- the monsoon-driven seasonality of foreign contribution is best_explanation, supported by winds and trajectories;\n- the policy recommendations (prioritise area/mobile sources; region-first management) are inferences beyond the estimates.",
+ "disagreements": [
+  {
+   "target": "CAPSS 2016 national emissions inventory (Choi et al. 2020)",
+   "kind": "data",
+   "stance": "disputes",
+   "support": "Ratios of observed to simulated EC at supersites, after a foreign-contribution correction at BR, imply large sub-regional inventory biases.",
+   "page": "§3.1.3 ¶1",
+   "quote": "EC emissions in SMA and Youngnam were overestimated at 49% and 59%, respectively, whereas those in Chungcheong and Honam were underestimated at 55% and 13%"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "CREATE 2015 for Chinese/Northeast Asian EC emissions (1.0 × 10^6 tons/year)",
+   "alternatives": "REASv2 (1.1 × 10^6 tons/year)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "CAPSS 2016 for South Korea",
+   "alternatives": "CAPSS 2017, an updated inventory 5% smaller",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§2.1 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "Exclude Jeju and other islands from the domestic tags (counted as foreign)",
+   "alternatives": "Include Jeju as domestic",
+   "reason": "Jeju accounts for only 2% of BC emissions and is geographically far from the mainland; simplicity",
+   "effect_reported": "no",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "node": "P",
+   "chosen": "Attribute simulation error to the emission inventory",
+   "alternatives": "Error from meteorological or other input data",
+   "reason": "Meteorological evaluation met the Emery et al. (2001) benchmarks",
+   "effect_reported": "no",
+   "page": "§3.1.3 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Simple observation-based adjustment of contributions",
+   "alternatives": "A more robust method to correct domestic and foreign regional emission inventories",
+   "reason": "Contributions are subject to inventory uncertainty; the more robust method is left for future work",
+   "effect_reported": "no",
+   "page": "§3.2 ¶2"
+  },
+  {
+   "node": "V",
+   "chosen": "Report both base and adjusted contributions and PWEC",
+   "alternatives": "Base-only or adjusted-only results",
+   "reason": "To show the effect of emission uncertainty",
+   "effect_reported": "yes",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "node": "C",
+   "chosen": "Sub-region aggregation for the concentration and emission-density relation",
+   "alternatives": "17 provincial authorities",
+   "reason": "none given",
+   "effect_reported": "yes",
+   "page": "§3.2 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the result of the meteorological model performance evaluations at the MADIS sites over South Korea and China met the benchmarking goal",
+   "page": "§3.1.1 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The NMB and NME for daily mean EC concentrations at the six supersites during the study period ranged from",
+   "page": "§3.1.2 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "A statistical significance test was performed to prove that the linear relationship between sub-regional EC concentrations and the EC emission densities are not by chance",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] sub-regions [...] )",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the foreign contributions were uniform during the whole day, but the domestic contributions increased during rush hour",
+   "page": "§3.2 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the backward trajectory analysis with Hybrid Single-Particle Lagrangian Integrated Trajectory indicated that air masses reaching South Korea likely originated from Liaoning and BTH",
+   "page": "§3.2 ¶6"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "[...] from domestic and foreign emissions was higher irrespective of emission adjustment when expressed in terms of PWEC rather than contribution",
+   "page": "§3.4 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "[...] correlation between primary air pollutant concentration and its emission density was reported by previous studies",
+   "page": "§3.2 ¶3"
+  },
+  {
+   "kind": "replication",
+   "performed_here": false,
+   "quote": "the deviation of the sub-regional EC contributions from foreign emissions was smaller than that from local EC emissions in previous studies",
+   "page": "§3.2 ¶4"
+  }
+ ]
+}

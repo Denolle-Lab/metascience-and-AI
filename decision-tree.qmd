@@ -1,0 +1,253 @@
+# From graph to decision tree {.unnumbered}
+
+[Adopted]{.status .adopted} [controller v0.5.1 · adopted by the convenor on October 21, 2026 · room discussion pending · graph v0.4.2 is the vocabulary · source `agents/controller/decision-tree.json`]{.status-line}
+
+- **The controller in three lines.** Cleland's schema, $H + A + C \Rightarrow E$, is the record a project fills. The thirteen [modes](modes.qmd) are the units that fill it, each with its own inner loop and stopping rule. A decision tree reads the record and calls the next mode; the project ends in a paper when the record carries the evidence its claim owes.
+- **Why a tree.** The seminar's aim is a procedure that a scientist or an agent can follow during a project, not only a map for coding finished papers. A tree states, at each point, the question to ask, the answer that sends the work elsewhere, and the mode that does the work.
+- The node graph (v0.4.2, on [the unit page](unit.qmd#the-graph)) stays as the vocabulary inside the modes. The tree is the level above it.
+
+## 1. What the eight walks say about v0.4
+
+- **Nodes held, edges did not.** Every coded step (91 of 91) landed on a v0.4 node, but only 24 of the 83 transitions between steps follow an edge the graph draws ([walks](walks.qmd)).
+- **The loops are between modes, for coder 1.** At the node level the papers return to a node already visited 11 times. At the mode level they return to a mode already used 27 times, in all eight papers; Xu et al. return eight times. Counts are from the coded steps in `private/analysis/success-set/build/steps.py`, consecutive repeats merged.
+- **The blind coders disagree on where the loops sit.** Two blind model coders (Opus 5.5 and Sonnet 5.5, paper codebook 1.3.0, October 25, 2026) cut finer steps: 169 and 108 against 91. They find 83 and 33 node returns against 78 and 38 mode returns. The between-modes reading is not yet coder-independent (final-paper sequences in `private/analysis/reliability/codings/papers/`, consecutive repeats merged).
+- **Hypothesis assessment is a hub.** The most frequent two-way hand-offs:
+
+| Pair of modes | Hand-offs, both directions | Papers |
+|:--|:--|:--|
+| Hypothesis assessment ↔ theory | 6 | 4 |
+| Hypothesis assessment ↔ simulation | 5 | 3 |
+| Simulation ↔ robustness | 5 | 2 |
+| Hypothesis assessment ↔ robustness | 4 | 4 |
+| Hypothesis assessment ↔ estimation | 4 | 4 |
+| Hypothesis assessment ↔ observation | 4 | 3 |
+| Methods ↔ observation | 4 | 2 |
+
+- Hypothesis assessment is one side of five of the seven most frequent pairs, for coder 1. For both blind coders the most frequent pair is estimation ↔ observation (17 and 13 hand-offs, in 6 of 8 papers each).
+- **Shape, for coder 1.** Every paper enters through a capability or record mode (methods 2, instruments 2, observation 3, estimation 1). The middle is a loop around hypothesis assessment. Four of eight leave through synthesis.
+- **Shape, for the blind coders.** They open 5 (Opus 5.5) and 6 (Sonnet 5.5) of 8 papers with a question step; after it, a capability or record mode comes first in 7 and 5 of 8. The last step is in synthesis for 2 and 0 of 8; hypothesis assessment is their most common last mode (3 of 8 each). Codebook 1.3.0 has no rule for the mode of a K step, so exit modes are soft.
+- **What this cannot show.** The order is the order of the paper's account; the table and the walks are one reader's coding (coder 1); supplements were not read for four papers. Section 6 tests that limit on nine papers with [process documents](#what-process-documents-show).
+
+## 2. Cleland's schema is the record
+
+- The schema [@cleland2001, pp. 987--988]: a hypothesis $H$, with auxiliary assumptions $A$ and conditions $C$, implies an expected observation $E$. A mismatch refutes the conjunction, not $H$ alone [@duhem1954].
+- A project's record holds each term, the observations $O$ that $E$ is compared with, and the status of the claim. Every mode is defined by what it reads from the record and what it writes. [the figure on the modes page](modes.qmd#fig-mode-map) draws the same table.
+
+| Term | What it holds | Modes that write it | Nodes |
+|:--|:--|:--|:--|
+| $Q$ | The target: a question, an anomaly, a goal | Question-driven inquiry; exploration; observation | Q, E |
+| $O$ | Observations with their provenance | Observation; instruments; reconstruction (independent traces); cross-study synthesis (pooled results) | N, O, E |
+| $O^*$ | A latent quantity inferred from $O$ through a forward model | Estimation | I |
+| $A$ | Auxiliaries: instrument theory, forward model, processing, background laws | Instruments; methods; theory; revised only at P | N, I, P |
+| $H$ | Rival explanations, with how each was generated | Theory; hypothesis assessment; regularities (a relation proposed as a law) | H, R |
+| $C$ | Conditions, set by the investigator or found in nature | Hypothesis assessment (set); reconstruction and regularities (found) | D, F |
+| $E$ | The expectation from each rival | Theory (derivation); simulation (computation) | S |
+| Verdict | Comparison, robustness, decision, status | Hypothesis assessment; replication and robustness | C, V, X, K |
+
+- **What the schema adds to the modes.** It names what a mode may not do. Estimation writes $O^*$ and cannot write $H$; a resolved parameter is not a mechanism. Simulation writes $E$ and cannot write $O$. Robustness varies $A$ and $C$; when it revises one instead, that is P and is logged.
+- **What the modes add to the schema.** Cleland's schema has no term for the capability to observe or for whether a phenomenon exists. Instruments, methods, and exploration produce those, and most of the coded advances began there ([modes](modes.qmd#how-the-modes-have-been-studied), 13 of 18 episodes).
+
+## 3. Three levels
+
+1. **The record**: the schema terms above, with provenance.
+2. **The modes**: each runs an inner loop over graph nodes until its stopping rule holds, then hands back what it wrote.
+3. **The controller**: the decision tree in section 4, which reads the record and calls the next mode.
+
+| Mode | Inner loop (nodes) | Stops when | Hands back |
+|:--|:--|:--|:--|
+| [Observation](modes/observation.qmd) | O, E, O | The record repeats across sessions or sensors; coverage limits stated | $O$ |
+| [Exploration](modes/exploration.qmd) | E, O, E, varying conditions and representations | A phenomenon repeats and survives a check of the chain [@bogen1988; @steinle1997] | $Q$ |
+| [Instruments](modes/instruments.qmd) | N, O, V | Response known; an independent sensor agrees | $A$ and new $O$ |
+| [Methods](modes/methods.qmd) | N, I, V on synthetic data | Recovers synthetics; failure cases known | $A$ |
+| [Estimation](modes/estimation.qmd) | I, C, I | Misfit at noise level; resolution and uncertainty stated [@backus1968; @tarantola2005] | $O^*$ |
+| [Theory](modes/theory.qmd) | H, S | A valid derivation; a distinct expectation per rival | $H$, $E$ |
+| [Simulation](modes/simulation.qmd) | S, C, S | Converged; verified against a reference; forecasts frozen before the outcome [@charney1950] | $E$ |
+| [Regularities](modes/regularities.qmd) | C, K, C out of sample | Holds out of sample; range stated | $H$ as a relation |
+| [Hypothesis assessment](modes/hypothesis.qmd) | H, S, D, F, O, C, X or K, R | One rival left, or abstention naming the deciding observation [@platt1964; @chamberlin1965] | Verdict |
+| [Cross-study synthesis](modes/synthesis.qmd) | O over many studies, C, K | The pooled estimate is stable to removing any one study; dependence stated [@gurevitch2018] | $O$ pooled |
+| [Reconstruction from traces](modes/reconstruction.qmd) | F found, O over independent traces, C | Independent traces converge on one account [@cleland2002] | Verdict |
+| [Question-driven inquiry](modes/question.qmd) | Q, then back to the start | The reframed question names what would answer it | $Q$ |
+| [Robustness](modes/robustness.qmd) | V over $A$ and $C$ | Survives variation; or scope revised [@wimsatt2012; @lloyd2010] | Status |
+
+- The stopping rules are the "evidence owed" sections of the mode pages, shortened. Each is a hypothesis for the room.
+
+## 4. The decision tree
+
+<!-- tree:begin (generated by tools/build_tree.py) -->
+::: {#fig-tree .column-body-outset}
+
+```{=html}
+<div class="dtree">
+<div class="dt-start">Start: a question, an anomaly, data, a capability, or a goal</div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">1</span><div><b>Is there a phenomenon?</b><br/><span class="dt-sub">It repeats, and it is not an artifact of the measurement chain.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no: the chain is suspect</span><div class="dt-mode"><b>Instruments · methods</b> <span class="dt-nodes">N</span><br/>characterize the chain<span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no: not yet stable</span><div class="dt-mode"><b>Exploration</b> <span class="dt-nodes">E, O</span><br/>vary conditions until it repeats<span class="dt-ret">↺ back to 1</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">2</span><div><b>Is the target observed directly?</b><br/><span class="dt-sub">Or is it a latent quantity behind the data?</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Estimation</b> <span class="dt-nodes">I</span><br/>invert through a forward model; state resolution<span class="dt-ret">→ then 3</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">3</span><div><b>What is the aim?</b><br/><span class="dt-sub">A mechanism, a relation, a forecast, or a pooled estimate.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">a relation</span><div class="dt-mode"><b>Regularities</b> <span class="dt-nodes">C, K</span><br/>fit across repetitions; test out of sample<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">a forecast</span><div class="dt-mode"><b>Simulation</b> <span class="dt-nodes">S, C</span><br/>freeze the forecast; compare when the outcome arrives<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">a pooled estimate</span><div class="dt-mode"><b>Cross-study synthesis</b> <span class="dt-nodes">O, C, K</span><br/>state the inclusion rule; model dependence between studies<span class="dt-ret">→ to 7</span></div></div></div>
+</div>
+<div class="dt-down"><span>a mechanism</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">4</span><div><b>Two or more rivals?</b><br/><span class="dt-sub">Incompatible explanations, with "artifact" kept as one.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Theory · hypothesis</b> <span class="dt-nodes">H</span><br/>generate rivals; record how each was generated<span class="dt-ret">↺ back to 4</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">5</span><div><b>Does each rival predict something different?</b><br/><span class="dt-sub">An expectation for each rival, from H + A + C.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no</span><div class="dt-mode"><b>Theory · simulation</b> <span class="dt-nodes">S</span><br/>derive or compute each expectation<span class="dt-ret">↺ back to 5</span></div></div><div class="dt-br"><span class="dt-lab">still identical</span><div class="dt-mode"><b>A new observable</b> <span class="dt-nodes">N</span><br/>a capability that separates the rivals<span class="dt-ret">↺ back to 1</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">6</span><div><b>Can you set the conditions?</b><br/><span class="dt-sub">Experiment, or conditions found in nature.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">yes</span><div class="dt-mode"><b>Hypothesis assessment</b> <span class="dt-nodes">D, F, O, C</span><br/>design the test, set the conditions, observe, compare<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">no: nature repeats it</span><div class="dt-mode"><b>Regularities</b> <span class="dt-nodes">F, O, C</span><br/>nature's repetition<span class="dt-ret">→ to 7</span></div></div><div class="dt-br"><span class="dt-lab">no: one event</span><div class="dt-mode"><b>Reconstruction from traces</b> <span class="dt-nodes">F, O, C</span><br/>independent traces of the same event; rival histories<span class="dt-ret">→ to 7</span></div></div></div>
+</div>
+<div class="dt-down"><span>evidence in hand</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">7</span><div><b>Does the result survive variation?</b><br/><span class="dt-sub">Replication and robustness (V): vary the auxiliaries A and the conditions C; independent data, methods, models.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">no: an artifact?</span><div class="dt-mode dt-back"><span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no: an auxiliary is wrong</span><div class="dt-mode dt-esc"><b>Protect</b> <span class="dt-nodes">P</span><br/>revise A instead of H; logged; must predict something new (cap: open)<span class="dt-ret">↺ back to 5</span></div></div></div>
+</div>
+<div class="dt-down"><span>yes</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">8</span><div><b>Verdict</b><br/><span class="dt-sub">Keep, exclude, contradict: each is a conclusion.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">survivors remain</span><div class="dt-mode"><b>Refine</b> <span class="dt-nodes">R</span><br/>split the survivors into subhypotheses<span class="dt-ret">↺ back to 4</span></div></div><div class="dt-br"><span class="dt-lab">no rival fits</span><div class="dt-mode"><b>Surprise</b> <span class="dt-nodes">E</span><br/>an outcome no rival predicted: explore it<span class="dt-ret">↺ back to 1</span></div></div><div class="dt-br"><span class="dt-lab">no conclusion</span><div class="dt-mode"><b>Question-driven inquiry</b> <span class="dt-nodes">Q</span><br/>reframe the question; record why the first framing could not be answered<span class="dt-ret">↺ back to start</span></div></div><div class="dt-br"><span class="dt-lab">still none after reframing</span><div class="dt-mode dt-end"><b>Failure, recorded</b><br/>name the observation that would decide</div></div></div>
+</div>
+<div class="dt-down"><span>a conclusion: draft the paper</span></div>
+<div class="dt-row">
+<div class="dt-q"><span class="dt-n">9</span><div><b>Does the claim survive review?</b><br/><span class="dt-sub">Co-authors, referees, editors, readers.</span></div></div>
+<div class="dt-branches"><div class="dt-br"><span class="dt-lab">a new control asked for</span><div class="dt-mode"><b>Robustness</b> <span class="dt-nodes">V</span><br/>run it; it usually enters as a planned-looking figure<span class="dt-ret">↺ back to 7</span></div></div><div class="dt-br"><span class="dt-lab">a new rival named</span><div class="dt-mode"><b>Hypothesis assessment</b> <span class="dt-nodes">H</span><br/>test it, or state why it is excluded<span class="dt-ret">↺ back to 4</span></div></div><div class="dt-br"><span class="dt-lab">the claim is too broad</span><div class="dt-mode"><b>Refine the claim</b> <span class="dt-nodes">R</span><br/>narrow it to what the evidence carries<span class="dt-ret">→ to Keep</span></div></div><div class="dt-br"><span class="dt-lab">the request is declined</span><div class="dt-mode dt-back"><b>Argue and log</b><br/>keep the design; record the reason<span class="dt-ret">→ to Keep</span></div></div></div>
+</div>
+<div class="dt-down"><span>accepted</span></div>
+<div class="dt-keep"><b>Conclusion</b>: keep, exclude, or contradict the claim, with its status, and publish the record, the path including its loops, and the evidence the mode owes.</div>
+</div>
+```
+
+The research decision tree, v0.5.1 (adopted by the convenor; room discussion pending). Questions about the record run down the left; each answer that sends the work elsewhere calls a mode (right, with the graph nodes it runs) and returns to the question marked ↺. Every route that produces evidence reaches question 7, robustness, before the verdict. A project fails only when no conclusion is reached after the question has been reframed. Source: `agents/controller/decision-tree.json`, v0.5.1.
+:::
+<!-- tree:end -->
+
+| Question | Reads from the record | If the answer sends work elsewhere | Source of the rule |
+|:--|:--|:--|:--|
+| 1. Is there a phenomenon? | $O$ and the chain in $A$ | Instruments or methods if the chain is suspect; exploration if the record does not yet repeat | @bogen1988; @steinle1997; @hacking1983 |
+| 2. Is the target observed directly? | $O$ | Estimation, which needs a forward model in $A$ | @backus1968; @tarantola2005; @bokulich2020 |
+| 3. What is the aim? | $Q$ | A relation goes to regularities; a forecast to simulation; a pooled estimate to cross-study synthesis; a mechanism to question 4 | @charney1950; @cleland2002, p. 485; @gurevitch2018 |
+| 4. Two or more rivals? | $H$ | Theory and hypothesis generation, artifact kept as a rival | @chamberlin1965; @platt1964 |
+| 5. Distinct predictions? | $E$ for each $H$ | Derivation or simulation; if still identical, a new observable, hence a new capability | @platt1964; @mayo1996 |
+| 6. Can you set the conditions? | $C$ | Experiment if yes; if not, regularities when nature repeats, reconstruction from traces when it does not | @cleland2001; @cleland2002; @turner2007 |
+| 7. Does it survive variation? | Verdict, $A$, $C$ | Back to question 1 if it may be an artifact; protection of an auxiliary, logged, and acceptable only if the revision predicts something new | @mill2011; @wimsatt2012; @duhem1954; @lakatos1970 (the novel-prediction test; any numeric cap is the seminar's) |
+| 8. Verdict | Verdict | Refine survivors and return to question 4; a surprise returns to exploration; no conclusion sends the question to question-driven inquiry for reframing, then back to the start; still none is a failure, recorded | @klahr1999, p. 537; @cleland2002, pp. 481--482; @omalley2010 |
+| 9. Does the claim survive review? | The draft and its record | A new control returns to 7; a new rival to 4; an over-broad claim is narrowed; a declined request is argued and logged | The nine process documents in section 6 |
+
+- **Success and failure** (convenor, October 21, 2026). A project **succeeds** when it reaches a conclusion: a claim kept with its status, a rival excluded, or a claim contradicted. A contradicted claim is a successful result. A project **fails** when no conclusion is reached after the question has been reframed.
+- **Stopping.** A project ends at a conclusion or at a recorded failure. A kept claim carries a status the mode page defines: confirmed, best explanation among stated rivals, regularity within a range, estimate with resolution, capability with its characterization.
+- **A paper is the record plus the path.** The tree gives a paper's outline: the question, the gates passed, the loops taken, and the claim's status.
+- **Reframing** is question-driven inquiry [@omalley2010; @elliott2012], called after question 8 finds no conclusion, not before the tree starts.
+- **What the tree leaves out**: the choice of project, and resource limits, which decide in practice when a loop stops.
+
+## 5. The eight papers on the tree
+
+- Mode sequences from the coded steps, consecutive repeats merged; "replication" in one Shapiro step is read as robustness.
+
+| Paper | Mode sequence | Where it loops | Reading on the tree |
+|:--|:--|:--|:--|
+| @shapiro2005 | Methods, robustness, observation, estimation, robustness, observation, methods | Robustness, observation, methods each twice | Question 1 by method and robustness, question 2 by estimation, then Keep a capability; never reaches question 4 |
+| @sun2026 | Instruments, observation, hypothesis, robustness, estimation, theory, simulation, robustness, theory, hypothesis, estimation, synthesis | Theory, robustness, hypothesis, estimation | Question 1 loops on drift versus signal; question 2 by estimation; questions 4 to 7 with forward models; ends in synthesis |
+| @normandeau2025 | Observation, hypothesis, estimation, theory, hypothesis, synthesis | Hypothesis | Coder 1 enters at the change seen between surveys (O); question 5 by theory; a protective move at question 7 (the ice lasts several years). Both blind coders enter at a question (Q); Opus 5.5 codes the multi-year-ice move as P, Sonnet 5.5 as R |
+| @vine1963 | Observation, estimation, hypothesis, simulation, hypothesis, theory, synthesis, simulation, synthesis, hypothesis | Hypothesis with simulation, synthesis | Questions 4 and 5 loop twice through block-model simulations |
+| @rodell2009 | Estimation, instruments, observation, estimation, hypothesis, simulation, hypothesis, robustness, estimation, synthesis | Estimation three times; hypothesis | Question 2 dominates; rivals (rainfall, soil water) excluded at questions 5 to 7 |
+| @lam2023 | Methods, robustness, simulation, hypothesis, robustness, simulation, robustness, simulation | Simulation and robustness, three times | The forecast branch of question 3: verify, vary, verify |
+| @graff2025 | Instruments, observation, exploration, estimation, theory, synthesis, theory | Theory | Question 1 by a new instrument and exploration; the melt-amplifier claim stops at theory without question 7 |
+| @xu2025 | Observation, methods, observation, methods, robustness, hypothesis, observation, theory, hypothesis, observation, theory, hypothesis, theory, synthesis | Observation and methods twice; hypothesis and theory three times | Question 1 loops on back-projection calibration; questions 4 and 5 loop without an exclusion |
+
+- **Reading.** The tree places all eight, and their loops are its loops: six papers trade between hypothesis assessment and theory or simulation (questions 4 and 5); three return among capability and record modes before any hypothesis (question 1: Shapiro, Rodell, Xu). The test that matters is whether unsuccessful papers walk it differently (section 6).
+
+## 6. What process documents show
+
+- **The test.** Peer-review files, open review discussions, and version histories record changes made after a manuscript first reached a claim. Nine Earth-science papers with such records were coded on graph v0.4.2: four Nature papers with peer-review files [@graff2025; @bi2025; @isken2025; @licciardi2022], four EGU papers with open discussions [@kratzert2018; @kratzert2019; @ryan2015; @vandenende2021], and GraphCast's two arXiv versions [@lam2023].
+- A **loop** is a change that sends a manuscript already at K back to an earlier node. **Real**: new analysis, data, or runs. **Textual**: argument, caveat, deletion.
+
+| Count, nine papers | Loops |
+|:--|:--|
+| Loops in the process documents | 126 (61 real, 65 textual) |
+| Returns in the final papers' own sequences | 7, all repeated C or V steps |
+| Loops readable as loops in the final paper | 4 (3%) |
+| Content kept but written as if planned | 70 (56%) |
+| No trace in the final paper | 52 (41%) |
+| Requests declined and argued | 30 |
+
+| Node the loop returns to | Loops | Real |
+|:--|:--|:--|
+| V, a new control or robustness check | 29 | 22 |
+| R, a claim narrowed | 24 | 1 |
+| H, a new rival named | 17 | 2 |
+| D, a redesigned test | 11 | 5 |
+| C, a new comparison | 10 | 6 |
+
+- **What the final paper hides is order and failure, more than work.** A reviewer-forced control usually survives as an Extended Data figure that reads as planned. Rivals named in review are rarely tested: 15 of 17 are argued away or become caveats. Narrowed claims leave no trace.
+- **Earlier attempts leak only by accident.** At least eight pre-submission loops surface in rebuttals and nowhere else, for example a first liquid-core hypothesis for Mars [@bi2025] and a deformation inversion rerun once pressure data arrived [@isken2025].
+- **The literature agrees.** Between protocol and paper, 62% of randomized trials changed, added, or dropped a primary outcome [@chan2004]. 96% of standard psychology reports supported their first hypothesis against 44% of registered reports [@scheel2021]. Preprint text changes little before publication, so preprints do not recover loops either [@klein2019].
+- **For the tree.** The loops are question 9 (review) and question 7 (robustness), the two places the published sequence flattens. Codings should be labelled "final-paper sequence"; where a review file exists, a second "review sequence" is coded, with the trigger (author, referee, editor) and the kind (real, textual) on each return.
+- Source: `private/analysis/success-set/loops/`; one coder per paper; papers chosen because their reviews were substantive, which raises the counts.
+
+## 7. Loops in automated science
+
+- The automated systems loop too, but almost always inside one mode, holding $H$ and $A$ fixed and changing the conditions.
+
+| System | Loop, in node letters | Returns when | Level |
+|:--|:--|:--|:--|
+| Strong inference [@platt1964] | H, D, F, O, C, X, R, back to H | a rival is excluded | inside hypothesis assessment |
+| Robot Scientist [@king2004; @king2009] | H, S, D, F, O, C, X, back to H (Sonnet 5.5 adds K; Opus 5.5 codes the 2009 loop with I and K) | each cycle; a falsification | inside hypothesis assessment; the model $A$ fixed |
+| Bayesian adaptive design [@rainforth2024] | S, D, F, O, I, back to S (Opus 5.5) or to D (Sonnet 5.5) | every observation, until the budget is spent | inside one mode; $H$ and $A$ fixed |
+| Coscientist [@boiko2023] | optimization loop: D, F, O, C, R, back to D (Sonnet 5.5: H, F, O, C, back to H; its planner loop D, F, O, R); neither codes S | a software error; the yield | inside one mode |
+| Co-Scientist [@gottweis2026] | H, D, S, C, X, R, back to H, with no O (Opus 5.5 adds P and K, in another order) | tournament results | inside hypothesis generation, without new data; compares against the literature |
+| Robin [@ghareeb2026] | Q, F, H, D, humans run F and O, I, C, K | data return from the laboratory | across modes, with humans at F and O |
+| The AI Scientist [@lu2026] | D, F, O, C, R per step; H to K across runs | an error trace or a critique | inner and outer |
+| FunSearch [@romeraparedes2024] | H, R, S, C, K or X, back to H | every evaluation | inside one mode |
+
+- **Sources.** The Robot Scientist (recoded from the 2004 and 2009 full texts), adaptive design, Coscientist, and Co-Scientist rows are from the two blind loop codings of October 25, 2026 (`private/analysis/reliability/codings/agents/`, loop codebook 0.1.0); the other rows are from the literature report `private/analysis/modes-literature/07-loops.md`.
+- **What they rarely do by themselves.** Only Co-Scientist revises an auxiliary (P), and only for one of two blind coders (Opus 5.5: deep verification keeps the core hypothesis when an error is not fundamental). None of the five coded systems here answers question 1 (is there a phenomenon); of all 31 coded systems, SWE-agent does for both coders, by reproducing the bug first. None is described revising the set of rivals after a surprise. Adaptive design "only capture[s] uncertainty within the model" [@rainforth2024, preprint p. 9].
+- **Practice in laboratories**: scientists faced with inconsistent data first protect the method, then repeat, and only then revise the hypothesis [@fugelsang2004]. That is the path C, P, V, then H, which the tree's question 7 allows.
+- **For agents.** A mode agent can run its inner loop as these systems do. The controller, which these systems lack, is what the tree adds: it decides when to leave a mode, when to doubt the phenomenon, and when to protect or exclude.
+
+## 8. What would show the tree is wrong
+
+- **Same route, different outcomes.** If the matched controls and the low-cited Nature and Science papers pass the same questions in the same order as the successes, the tree describes papers, not success.
+- **Missing questions.** If peer-review files, preprint versions, or lab records show loops returning to a point the tree lacks, the tree needs that question. Reframing was added this way, at question 8, on October 21, 2026.
+- **No gain for agents.** If agents that follow the tree do no better on held-out cases than agents that choose modes freely, the tree adds nothing for agents.
+- **Unobservable gates.** If two coders agree on which question a step answers less often than κ = 0.6, the questions are not observable in papers.
+- **Limits of the present evidence**, from the [walks](walks.qmd#what-the-walks-cannot-show) and section 6:
+  - Order is the paper's narrative, not the work's; 3% of recorded loops are visible in the final paper.
+  - The walks are one coder's, coding against the graph it tests. Two blind model coders agree on node use at alpha 0.63, below the 0.67 gate (`private/analysis/reliability/RESULTS.md`); no person has coded yet.
+  - The walks' coding (codebook v0) had no field for a failed attempt, so a return and a next step look alike. Codebook 1.0.0 added a move on every step.
+  - Supplements unread for four papers.
+  - Mode labels inconsistent in one case.
+  - Eight successes as walks; five matched controls coded since; no failures.
+
+## 9. Decisions and change log
+
+| Date | Decision | By |
+|:--|:--|:--|
+| October 21, 2026 | Graph v0.4.2 is the vocabulary; this tree is the controller | Convenor |
+| October 21, 2026 | Reframing the question comes after a failure to conclude | Convenor |
+| October 21, 2026 | Failure means no conclusion; a contradicted claim is a success | Convenor |
+| October 21, 2026 | Synthesis split; question-driven inquiry added as a mode | Convenor |
+| Open | A numeric cap on protective revisions | Undecided |
+
+| Version | Date | Change |
+|:--|:--|:--|
+| 0.5.0 | October 21, 2026 | First tree: eight questions over the record; review added as question 9 after the process-document test |
+| 0.5.1 | October 21, 2026 | Adopted as controller; reframing after no conclusion; outcomes defined; synthesis split across questions 3 and 6b; protection cap left open |
+
+- The tree's source is `agents/controller/decision-tree.json`; `tools/build_tree.py` writes the figure, and the validator fails if the page and the file differ. Every change gets a version and a row here.
+
+## 10. For the room
+
+1. Is question 3 (the aim) asked before question 4, or does a mechanism question come first and the aim follow?
+2. Does the seminar want a numeric cap on protective revisions, beyond Lakatos's novel-prediction test?
+3. Which stopping rule in section 3 is wrong for your own last paper?

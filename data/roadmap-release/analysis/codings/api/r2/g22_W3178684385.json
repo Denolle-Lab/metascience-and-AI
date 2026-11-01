@@ -1,0 +1,315 @@
+{
+ "key": "g22_W3178684385",
+ "doi": "10.1093/gji/ggac037",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper (supplied as preprint PDF dated July 1, 2021; 30 pages)"
+ ],
+ "pages_convention": "PDF pages counted from 1 (they coincide with the printed preprint page numbers)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "However, these methods suffer from numerical inaccuracy in anisotropic media with sharp heterogeneity, irregular surface topography and complex phase velocity fields.",
+  "page": "1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (preprint PDF)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "methods",
+     "action": "Reviews ray tracing and the fast marching and fast sweeping methods (FMM, FSM) developed by other groups for solving the Eikonal equation, including their anisotropic extensions.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "The fast marching method (FMM) and the fast sweeping method (FSM) have emerged as the most commonly accepted techniques"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Poses the problem that FMM/FSM become complex, costly and inaccurate in anisotropic media with sharp heterogeneity and irregular topography.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "they also introduce considerable complexity to the original algorithm by requiring higher-order approximation of the derivatives"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Takes the peridynamic differential operator from the corresponding author's earlier work as the basis for a nonlocal solver.",
+     "page": "3",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "A recent class of numerical methods, known as Peridynamic Differential Operator (PDDO) (Madenci et al. 2016; Madenci et al. 2017;"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "theory",
+     "action": "Adopts published forms of the Eikonal equation: TTI, VTI, elliptically isotropic and isotropic P-wave forms, plus the coupled qP/qSV quartic slowness surface of Han et al. (2017).",
+     "page": "4",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "For P waves in a medium with tilted transverse isotropy (TTI), the Eikonal equation, under the acoustic assumption, is expressed as"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "methods",
+     "action": "Builds the PDDO Eikonal solver: PD functions from orthogonality conditions, meshless quadrature, horizon of 2 grid spacings, a directional (upwind) weight function, Newton-Raphson with automatic-differentiation Jacobian and GMRES/ILU, a KD-tree for families, and an analytical constant-gradient initial guess with Gaussian smoothing.",
+     "page": "5-12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the PD functions are constructed by employing a weight function with directional nonlocality"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checks stability by comparing the Jacobian eigen-spectrum with and without directional nonlocality, on a 2% randomly perturbed analytical solution for a constant-gradient velocity field.",
+     "page": "13",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The weight function with directional nonlocality results in eigenvalues with only negative real parts."
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "methods",
+     "action": "Designs the benchmark: picks models for which FSM solutions exist, matches the PD grid spacing to FSM, and uses second-order FSM on a fine mesh as the reference solution.",
+     "page": "13-14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For a meaningful comparison, the PD discretization is set to the same grid spacing as that of FSM."
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compares PD and FSM traveltime contours and absolute-error maps against the reference for the isotropic Marmousi model.",
+     "page": "14-16",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is clear that the PD solution is closer to the reference solution than that of FSM."
+    },
+    {
+     "n": 9,
+     "node": "V",
+     "mode": "methods",
+     "action": "Repeats the reference comparison on the elliptically isotropic Marmousi, Hess VTI and BP TTI models (the last with irregular surface topography), with absolute-error maps for PD and FSM.",
+     "page": "16-25",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The error is relatively uniform and smaller than that of FSM as shown in Fig. 24."
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "methods",
+     "action": "Solves the qSV-wave TTI Eikonal equation in a constant-gradient medium and compares the traveltime contour visually with a low-rank wavefield extrapolation at t = 0.63 s.",
+     "page": "28",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The PD solution recovers the main branch of the solution due its nonlocality and numerical dissipation."
+    },
+    {
+     "n": 11,
+     "node": "K",
+     "mode": "methods",
+     "action": "Concludes that the PDDO solver gives stable, accurate solutions for all equation types, and notes that its computational cost was not investigated.",
+     "page": "28",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The PDDO successfully provides accurate solutions to different types of challenging Eikonal equations with complex velocity fields"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "No natural phenomenon; the problem is numerical inaccuracy of FMM/FSM traveltime solvers in anisotropic, heterogeneous media",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; traveltimes are computed on synthetic benchmark models, not observed",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build a new, stable and more accurate nonlocal Eikonal solver",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival methods: FSM and FMM at the same grid spacing",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Different error against a fine-mesh second-order FSM reference",
+   "mode_called": "methods"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set: chosen benchmark velocity and anisotropy models, matched grid spacing",
+   "mode_called": "methods"
+  },
+  {
+   "question": "7",
+   "answer": "Yes across five equation types and models; stability ablation on the weight function",
+   "mode_called": "methods"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: method characterized as stable and more accurate than FSM on the benchmarks",
+   "mode_called": "methods"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The PDDO-based solver with a directional nonlocal weight function solves isotropic, elliptic, VTI, TTI (with irregular topography) and qSV Eikonal equations stably, with smaller error than FSM at equal grid spacing relative to a fine-mesh reference.",
+  "page": "28"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Constructing the PD functions with a directional (upwind) nonlocal weight function is what makes the solver stable; the eigenvalue check shows that the symmetric weight gives eigenvalues with positive real parts.",
+  "page": "10"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action: benchmark models were chosen 'due to the availability of FSM solutions for comparison' (p. 14), to test the stated aim that PDDO is more accurate than FSM, but no hypothesis was fixed before the computations. Claim: the PD error against the fine-mesh reference could have exceeded FSM's (pp. 14-25), and the symmetric-weight eigen-spectrum could have shown stability too (p. 13). Registration: nothing is reported as fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "solid mechanics (peridynamics)",
+   "item": "Peridynamic theory and the peridynamic differential operator (Silling 2000; Madenci et al.)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "continuum mechanics",
+   "item": "Nonlocal integro-differential operators / nonlocal continuum field theory (Eringen 2002)",
+   "kind": "concept",
+   "page": "3"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Newton-Raphson iteration with automatic-differentiation Jacobian, GMRES with ILU preconditioner",
+   "kind": "method",
+   "page": "12"
+  },
+  {
+   "field": "computer science",
+   "item": "KD-tree algorithm for family construction (Bentley 1975)",
+   "kind": "method",
+   "page": "12"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "While this is the first study in the use of nonlocal PDDO for solving Eikonal equations",
+   "page": "3"
+  },
+  {
+   "quote": "[...] a new method to solving the Eikonal equation by employing the peridynamic differential operator (PDDO).",
+   "page": "1"
+  }
+ ],
+ "limits": "Only the paper is supplied (no review file), so there is no review sequence. Composition is coded none_fits: the walk is build a method, then benchmark it against an incumbent method on synthetic models. capability_first does not fit, because a rival (FSM) exists from the start, and no phenomenon is established. The reference solution is itself FSM (second-order, fine mesh), so the accuracy comparison is not against an independent method. Who ran the FSM solutions (the authors or the cited groups) is not stated; inference: they may be taken from earlier studies. Errors are reported as colour maps and contour plots, with no summary error norms or tables. The qSV check is a visual comparison with a low-rank wavefield at a single time. Horizon size and weight-function parameters (kappa = 0.1/1.0, Gaussian width) are fixed and not varied. The stability sub-claim (capability_characterized) rests on one eigen-spectrum test case. Computational cost is explicitly 'not investigated'. The parallelization advantage is asserted but not demonstrated. In section 5.4 the TTI equation is described as 'the discrete form of the VTI Eikonal equation' (likely a text error).",
+ "disagreements": [
+  {
+   "target": "Fast sweeping and fast marching methods (FSM/FMM) for anisotropic Eikonal equations",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "PD and FSM absolute-error maps against a fine-mesh second-order FSM reference on four benchmark models show smaller and more uniform PD error.",
+   "page": "3",
+   "quote": "We will demonstrate that these solutions are more accurate than [...] ."
+  },
+  {
+   "target": "FSM/FMM extensions requiring modification for anisotropy and topography",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The same PDDO procedure is applied without special treatment to all equation types, including irregular topography in the BP TTI model.",
+   "page": "28",
+   "quote": "Unlike FSM or FMM, the PDDO does not require any modification."
+  },
+  {
+   "target": "Ray-tracing approach to traveltime computation",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argued from cited limitations (interpolation gaps, multivalued traveltimes); no new test is performed here.",
+   "page": "2",
+   "quote": "it exhibits several limitations for practical applications such as the need for traveltime interpolation onto a regular grid"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Weight function with directional nonlocality (upwind kappa)",
+   "alternatives": "Symmetric weight function without directional nonlocality",
+   "reason": "Symmetric weight yields eigenvalues with positive real parts (unstable); directional weight ensures stability",
+   "effect_reported": "yes",
+   "page": "13"
+  },
+  {
+   "node": "N",
+   "chosen": "Horizon size delta = (N+1) grid spacings = 2 grid spacings",
+   "alternatives": "Horizon m in the range N <= m <= N+2",
+   "reason": "Mean value of the admissible range",
+   "effect_reported": "no",
+   "page": "8"
+  },
+  {
+   "node": "N",
+   "chosen": "Meshless quadrature for spatial integration",
+   "alternatives": "none named",
+   "reason": "due to its simplicity",
+   "effect_reported": "no",
+   "page": "8"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "However, the symmetric weight function without directional nonlocality results in eigenvalues [...] .",
+   "page": "13"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the PD predictions are closer to the reference solution (second-order FSM with fine mesh) than those of FSM",
+   "page": "14"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "The PD solution is closer to the reference solution than that of FSM.",
+   "page": "20"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "However, the predictions are compared with the wave field extrapolation using the low-rank approximation.",
+   "page": "14"
+  }
+ ]
+}

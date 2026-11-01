@@ -1,0 +1,526 @@
+{
+ "key": "g22_W4297022402",
+ "doi": "10.1029/2022ms003141",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Abolafia-Rosenzweig et al. (2022), JAMES 14, e2022MS003141, published PDF (21 pages)"
+ ],
+ "pages_convention": "printed journal pages (n of 21), which equal PDF pages counted from 1",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "This study addresses known uncertainties in BATS simulated ground snow albedo to improve accuracy of LSM simulated snowpack evolution",
+  "page": "3"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Abolafia-Rosenzweig et al. 2022 published PDF",
+   "steps": [
+    {
+     "n": 1,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Reviewed prior evaluations reporting systematic BATS overestimation of snow albedo with default and calibrated parameters.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "BATS has suffered from systematic overestimation of snow albedo relative to observations when using default and optimized (minimized RMSE) parameters"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "Posed three questions: how sensitive BATS is to its parameters, how far optimization improves agreement, and whether optimized parameters transfer in space and time.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "How sensitive is the Noah-MP BATS snow albedo scheme to its input parameters"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Used tower pyranometer pairs (broadband and NIR) at Irwin, Senator Beck and East River, with visible albedo derived by subtraction.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Pairs of Huskeflux SR-11 upward-looking and downward-looking broadband solar radiation"
+    },
+    {
+     "n": 4,
+     "node": "D",
+     "mode": "methods",
+     "action": "Restricted the albedo data to ±1 hr of solar noon and to snow depth thresholds (0.2 m, or 0.5 m at East River) to avoid shading, dome effects and vegetation.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "measurements of snow albedo used in this study are limited to 1 hr before and after local solar noon"
+    },
+    {
+     "n": 5,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran reference Noah-MP simulations with default BATS parameters, with spin-up and AORC forcing replaced by in situ forcing where available.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Simulations are driven by hourly atmospheric forcing from the 1 km observation-constrained Analysis of Record for Calibration"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Built a MATLAB box model of the BATS snow age and albedo subroutines, driven by inputs from the reference simulation, so that tens of thousands of runs are cheap.",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We created a box model comprised of snow age and snow albedo subroutines from the Noah-MP BATS snow albedo scheme"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "methods",
+     "action": "Checked the box model against full Noah-MP and against an ensemble of dynamic inputs from runs with altered parameters (Figs S1, S2).",
+     "page": "7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We tested the adequacy of this step by finding that 5,000 box model simulations reproduce nearly identical results"
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Ran a one-at-a-time sensitivity test at Irwin (10 runs per parameter) and ranked parameters by ensemble range of mean and variance.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "We test the sensitivity of the BATS scheme to each parameter by varying one parameter at a time"
+    },
+    {
+     "n": 9,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Generated a 15,000-member Latin hypercube ensemble over nine sensitive parameters; daily ensemble ranges exceeded 0.45.",
+     "page": "10",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "daily average ensemble ranges of simulated visible and NIR albedo are 0.49 and 0.47, respectively"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared the ensemble range with the observed albedo range and concluded that reported BATS biases lie within parameter uncertainty.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] is quite large considering the observed range of daily visible and NIR albedo is less than 0.38"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Selected the NSE-maximizing parameter sets for visible and NIR albedo from the ensemble (Table 1).",
+     "page": "8; 10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "BATS visible and NIR ground snow albedo parameters are optimized at the Irwin study site by choosing the parameter set"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Checked the optimized fresh-snow albedo values against the observed median fresh-snow albedo (0.90 visible, 0.75 NIR).",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "thus the parameter optimization methodology (i.e., maximizing NSE) results in physically realistic parameter selection for fresh-snow albedo"
+    },
+    {
+     "n": 13,
+     "node": "R",
+     "mode": "simulation",
+     "action": "Revised the model structure so that visible and NIR aging are computed separately, because the optimal τ0 and SWEMX differ by band.",
+     "page": "10",
+     "move": "new",
+     "trigger": "author",
+     "quote": "all optimized results presented herein compute visible and NIR albedo aging effects separately"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Examined the spread of the top 20 parameter sets and found equifinality: NSE is similar while parameter values vary widely (Fig S4).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This indicates that the optimal parameter set selection is not robust because equifinality may play a role"
+    },
+    {
+     "n": 15,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared reference and optimized simulations with observations at Irwin on r, bias, variance bias, NSE and Taylor score (Table 2).",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Parameter optimization improves agreement between simulated and observed visible, NIR and broadband albedo across all evaluation metrics"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Split the results by season and found that both runs fail to capture winter variability while melt-period skill improves strongly.",
+     "page": "11",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Over winter months, both optimized and reference BATS albedo fail to capture the temporal variability"
+    },
+    {
+     "n": 17,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Proposed two explanations for observed fresh-snow albedo variability: time-varying grain size at deposition, or rapid decay before the midday observation.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two processes may be responsible for the observed fresh-snow variability"
+    },
+    {
+     "n": 18,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Correlated fresh-snow albedo with SW↓ (NIR r = −0.47; visible not significant); both rival explanations are consistent with the result.",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Both explanations are consistent with the observed correlation between"
+    },
+    {
+     "n": 19,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared observed and simulated albedo decay curves after snowfall events (Fig 6).",
+     "page": "12",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Parameter optimization results in better agreement with observed visible, NIR, and broadband albedo decay"
+    },
+    {
+     "n": 20,
+     "node": "C",
+     "mode": "regularities",
+     "action": "Correlated observed and simulated albedo, grouped by days since snowfall, with SW↓ and air temperature at Irwin and Senator Beck.",
+     "page": "14",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "support that the BATS snow albedo scheme correctly represents directional controls"
+    },
+    {
+     "n": 21,
+     "node": "P",
+     "mode": "simulation",
+     "action": "Attributed the remaining errors partly to the AORC forcing (an auxiliary) rather than to the scheme.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "remaining errors after parameter optimization are likely at least partially attributable to discrepancies between the 1 km AORC atmospheric forcing"
+    },
+    {
+     "n": 22,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compared the snow age factor fage with simulated and observed decay curves; it matches mean decay but not fresh-snow variability.",
+     "page": "14",
+     "move": "new",
+     "trigger": "author",
+     "quote": "successfully simulates average observed decay dynamics"
+    },
+    {
+     "n": 23,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Transferred the Irwin parameters to Senator Beck for water years 2013–2020, including years before the Irwin record (Table 3, Table S1, Fig 11).",
+     "page": "15",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to test the spatial and temporal transferability of the optimized parameters"
+    },
+    {
+     "n": 24,
+     "node": "V",
+     "mode": "simulation",
+     "action": "Transferred the parameters to the East River broadband-only site (Table 4, Fig 12).",
+     "page": "17",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "to further test the spatial transferability of the optimized parameters"
+    },
+    {
+     "n": 25,
+     "node": "X",
+     "mode": "synthesis",
+     "action": "Rejected misrepresented process physics as the cause of the reported BATS biases, in favour of parameter uncertainty.",
+     "page": "18",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reported BATS biases are largely attributable to parameter uncertainty rather than a misrepresentation of processes in the BATS formulation"
+    },
+    {
+     "n": 26,
+     "node": "K",
+     "mode": "simulation",
+     "action": "Retained the claims that BATS is highly sensitive to its parameters, that optimization improves agreement, and that the parameters transfer to sites with similar climate.",
+     "page": "19",
+     "move": "new",
+     "trigger": "author",
+     "quote": "parameter optimization in this study improves agreement between simulated and in situ observed ground snow albedo"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Known BATS snow albedo biases and unknown sensitivity to parameters",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "2",
+   "answer": "Yes; two-band albedo measured by tower pyranometers",
+   "mode_called": "observation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate and optimize BATS parameters, then test transferability",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "4",
+   "answer": "Parameter error vs process misrepresentation; grain size at deposition vs rapid early decay",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Not for the fresh-snow rivals; both are consistent with the SW↓ correlation",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Found: natural snowfall and decay events at field sites",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "5–47 decay events and multiple water years at Senator Beck",
+   "mode_called": "regularities"
+  },
+  {
+   "question": "7",
+   "answer": "Non-degraded to improved skill at two other sites and in earlier years; equifinality among top parameter sets",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Biases largely due to parameters; optimized set kept, regionally",
+   "mode_called": "estimation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Optimizing BATS parameters against in situ spectral albedo markedly improves simulated ground snow albedo (broadband NSE −2.03 to 0.66 at Irwin), and the optimized parameters transfer without degradation to other central-southern Rocky Mountain sites and years.",
+  "page": "19"
+ },
+ "decisive_move": {
+  "node": "I",
+  "mode": "estimation",
+  "sentence": "Selecting NSE-maximizing parameter sets from the 15,000-member Latin hypercube box-model ensemble against two-band in situ albedo produces the optimized parameters on which every later comparison and transfer test depends.",
+  "page": "8"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "partly",
+  "evidence": "Data come from existing towers that were not sited to test a hypothesis. In-sample improvement at Irwin is guaranteed by the optimization. The transfer tests at Senator Beck (including water years 2013–2018, before the Irwin record) and at East River could have shown degradation. The split into one training site and two assessment sites, the parameter ranges, and the insensitivity criterion were set before optimization, but nothing is described as pre-registered."
+ },
+ "imports": [
+  {
+   "field": "statistics",
+   "item": "Latin hypercube sampling of the parameter space",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "statistics",
+   "item": "Pearson correlation coefficient (Pearson & Henrici 1896)",
+   "kind": "method",
+   "page": "8"
+  },
+  {
+   "field": "computing",
+   "item": "MATLAB R2020b box-model implementation",
+   "kind": "method",
+   "page": "7"
+  }
+ ],
+ "novelty_claims": [],
+ "limits": "No explicit priority claims. Headline status is capability_characterized. Sub-claims: (1) that reported BATS biases stem from parameters rather than process misrepresentation is a best_explanation, inferred from the ensemble range and one calibration site. (2) Correlations of fresh-snow albedo and decay with SW↓ and temperature are regularity_in_range (central-southern Rockies, midday, snow depth >0.2 m). (3) Separate visible and NIR aging is a proposed refinement that is implemented, not tested against the alternative. The optimized set itself has no stated uncertainty; the authors report equifinality among the top 20 sets. The two fresh-snow rivals are never discriminated. Composition is none_fits: the walk is calibration followed by out-of-sample transfer, which matches none of the listed compositions; inference. Parameter ranges are based on 'expert opinion' of the authors. No review file was supplied, so changes made in revision are unknown. Attributing remaining errors to AORC forcing and model physics is asserted, not tested (P).",
+ "disagreements": [
+  {
+   "target": "Prior BATS evaluations reporting overestimates (Malik et al., 2014; Molotch & Bales, 2006; Niu et al., 2011; Zhou, 2003)",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "The parameter ensemble spans more than the observed range, and optimization removes the biases at Irwin and the transfer sites.",
+   "page": "18",
+   "quote": "reported BATS biases are largely attributable to parameter uncertainty rather than a misrepresentation of processes in the BATS formulation"
+  },
+  {
+   "target": "Malik et al. (2014) BATS calibration",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Sensitivity tests show that the fresh-snow albedo parameters, which Malik did not tune, control the mean albedo state.",
+   "page": "18",
+   "quote": "likely failed to resolve systematic biases because only two tunable parameters were considered in that analysis"
+  },
+  {
+   "target": "Default BATS parameters of Yang et al. (1997)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Optimized fresh-snow, aging and dirt-soot values differ from the defaults and match the observed fresh-snow albedo medians.",
+   "page": "10",
+   "quote": "substantially lower than the default setting (0.3)"
+  },
+  {
+   "target": "Noah-MP's shared snow-aging parameters for visible and NIR bands",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Optimal τ0 and SWEMX differ between bands, and the fage curves differ (Fig 9a).",
+   "page": "10",
+   "quote": "Noah-MP currently considers this parameter equivalent in computations of visible and NIR albedo"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "BATS snow albedo scheme",
+   "alternatives": "CLASS scheme used in the reference WRF/Noah-MP configuration",
+   "reason": "BATS is the most sophisticated snow albedo option in Noah-MP and the object of study",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "N",
+   "chosen": "Offline box model of BATS subroutines",
+   "alternatives": "Full Noah-MP simulations",
+   "reason": "Reduce computation time for tens of thousands of runs",
+   "effect_reported": "yes",
+   "page": "7"
+  },
+  {
+   "node": "D",
+   "chosen": "Hold b, Extragrowth and VDIR at defaults",
+   "alternatives": "Tune all twelve parameters",
+   "reason": "Low sensitivity of simulated albedo mean and variability",
+   "effect_reported": "no",
+   "page": "10"
+  },
+  {
+   "node": "D",
+   "chosen": "Midday window (±1 hr of solar noon)",
+   "alternatives": "Full daylight record including low sun angles",
+   "reason": "Avoid topographic shading and sensor dome contamination",
+   "effect_reported": "no",
+   "page": "5"
+  },
+  {
+   "node": "D",
+   "chosen": "No slope correction for local solar zenith angle",
+   "alternatives": "Slope-corrected albedo (Painter et al., 2012)",
+   "reason": "Snow surface slope not characterized at the site",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "D",
+   "chosen": "In situ forcing where available",
+   "alternatives": "AORC forcing throughout",
+   "reason": "Minimize simulation uncertainty from uncertain forcing",
+   "effect_reported": "no",
+   "page": "6"
+  },
+  {
+   "node": "R",
+   "chosen": "Separate visible and NIR aging computation",
+   "alternatives": "Shared τ0 and SWEMX as in current Noah-MP",
+   "reason": "Optimal values differ between bands",
+   "effect_reported": "no",
+   "page": "10"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The box model effectively simulates visible and NIR albedo nearly identical to the full Noah-MP simulations",
+   "page": "7"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "5,000 box model simulations reproduce nearly identical results when inputting default parameters and an [...]",
+   "page": "7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "These optimal settings for fresh-snow albedo closely correspond with the median of observed fresh-snow albedo",
+   "page": "10"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the parameter set variability in the top 20 sets for some tunable parameters",
+   "page": "11"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The reference BATS simulation systematically overestimates visible albedo (mean bias = 0.08) but underestimates NIR albedo",
+   "page": "11"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "BATS simulated ground snow albedo is much more accurate over warm months, relative to winter months",
+   "page": "11"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "and the Senator Beck sites (Figures S6 and S7 in Supporting Information S1) support that the",
+   "page": "14"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "to test the spatial and temporal transferability of the optimized parameters",
+   "page": "15"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "Summary statistics calculated from the period (water years 2013–2018) before available observations at the",
+   "page": "16"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "to further test the spatial transferability of the optimized parameters",
+   "page": "17"
+  }
+ ]
+}

@@ -1,0 +1,466 @@
+{
+ "key": "g22_W4306167517",
+ "doi": "10.1111/1365-2478.13275",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Zhang, Li, Wang, Cheng & Tang (2023) Q estimation based on the centroid frequency and standard deviation of frequency-weighted-exponential function. Geophysical Prospecting 71, 48-62 (published PDF)"
+ ],
+ "pages_convention": "printed journal pages",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Unfortunately, the constant symmetry index assumption of it reduces the accuracy of Q values under the non-standard FWE shape.",
+  "page": "48"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Zhang et al. 2023, Geophysical Prospecting 71, 48-62",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "methods",
+     "action": "Pose the problem that the FWE method's constant symmetry index assumption degrades Q accuracy for non-standard FWE wavelet shapes, after reviewing the LSR, PFS, CFS and FWE methods.",
+     "page": "49",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Unfortunately, the constant symmetry index assumption reduces the accuracy of the FWE method when the wavelet shape is not a standard FWE wavelet."
+    },
+    {
+     "n": 2,
+     "node": "H",
+     "mode": "methods",
+     "action": "Name the published rival remedies: recalculating the symmetry index by average and least-squares methods, and the synthetic CFS (SCFS) method of Li et al. (2020).",
+     "page": "49",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Li et al. (2020) form a synthetic wavelet and replace the symmetry index with the centroid frequency and variation of this wavelet."
+    },
+    {
+     "n": 3,
+     "node": "S",
+     "mode": "theory",
+     "action": "Restate the derivations of the CFS (Eq. 4) and FWE (Eqs 6-7) Q formulas and their assumptions (Appendices A and B).",
+     "page": "50",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "the Q estimation formula of the CFS method can be written as"
+    },
+    {
+     "n": 4,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Propagate Gaussian and Butterworth high-pass filtered Gaussian wavelets through a Q = 80 medium for travel times of 0.1-1 s and tabulate centroid frequency, variance and symmetry index (Table 1).",
+     "page": "52",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The original and filtered wavelets are then used to propagate in a media, of which the Q value is 80."
+    },
+    {
+     "n": 5,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare CFS and FWE relative Q errors: CFS wins for the Gaussian wavelet and FWE for the filtered Gaussian, and Eq. 7 fails to hold.",
+     "page": "52",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 3b demonstrates that the FWE method is more suitable for the asymmetry wavelet than the CFS method."
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "Derive the IFWE formula (Eq. 12), which replaces the symmetry index with the standard deviations of the source and attenuated spectra, computed directly from the spectra.",
+     "page": "52",
+     "move": "new",
+     "trigger": "author",
+     "quote": "substituting the symmetry index with the standard deviations of the spectrums"
+    },
+    {
+     "n": 7,
+     "node": "S",
+     "mode": "theory",
+     "action": "Show analytically that Eq. 12 reduces to the CFS formula for Gaussian wavelets and to the FWE formula for standard FWE wavelets; set out the workflow (Figure 4).",
+     "page": "54",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Besides, for the Gaussian wavelet, Equation (12) is the same as Equation (4)."
+    },
+    {
+     "n": 8,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Propagate an FWE wavelet (fc = 50 Hz, n = 3) and a Butterworth low-pass filtered FWE wavelet through the same attenuating medium.",
+     "page": "54",
+     "move": "new",
+     "trigger": "author",
+     "quote": "A Butterworth low-pass filter (blue dotted line) is applied here to obtain a non-standard FWE shape wavelet"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare CFS, FWE and IFWE errors (Figure 3c,d): IFWE has the lowest error, especially for the filtered FWE wavelet.",
+     "page": "55",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Q values estimated by the proposed method are more accurate than those calculated by the CFS and FWE methods for various wavelets."
+    },
+    {
+     "n": 10,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design noise-free synthetic tests with Gaussian, Ricker and FWE wavelets, varying Q from 15 to 135 at 0.2 s and travel time from 0.1 to 1 s at Q = 80, and compare against CFS, FWE and SCFS.",
+     "page": "55",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we first use noise-free synthetic records consisting of different wavelets in Figure 5."
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "methods",
+     "action": "Gaussian wavelet case (Figure 6): IFWE is most accurate, FWE is worst, and errors grow with attenuation.",
+     "page": "56",
+     "move": "new",
+     "trigger": "author",
+     "quote": "In Figure 6b, the IFWE method still has the most accurate results, while the FWE method performs worst among the three methods."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Vary the source wavelet to Ricker and FWE shapes (Figures 7-9): SCFS beats IFWE for Ricker, the two are nearly equal for FWE, and both beat CFS and FWE.",
+     "page": "57",
+     "move": "new",
+     "trigger": "author",
+     "quote": "When the shape of the wavelet spectrum is a Ricker wavelet, the SCFS method performs better than the IFWE method."
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Noise analysis on the Ricker case with 100 random-noise realizations per level, varying the upper frequency limit, the SNR (5-17.5 dB) and the travel time (Figure 10).",
+     "page": "57",
+     "move": "new",
+     "trigger": "author",
+     "quote": "For each SNR level, we conduct 100 independent experiments."
+    },
+    {
+     "n": 14,
+     "node": "R",
+     "mode": "methods",
+     "action": "Fix the upper frequency limit at 90 Hz for later tests and state the operating range: SNR above 12.5 dB with a suitable upper frequency limit.",
+     "page": "59",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the IFWE method can obtain accurate and relatively stable results when the SNR is greater than 12.5 dB"
+    },
+    {
+     "n": 15,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take a 2D poststack field profile (800-1600 ms, 2 ms sampling) with two horizons and four wells (one productive, two oil-bearing water layers, one dry), and extract windowed spectra above and below the target, smoothed by quadratic spectrum simulation.",
+     "page": "59",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Figure 11 is the profile of the real seismic poststack record from an oil field."
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "methods",
+     "action": "Check the method's premise by fitting Gaussian, Ricker and FWE functions to the field wavelet spectra at wells 1 and 4 (Figure 12): FWE fits best but not exactly.",
+     "page": "59",
+     "move": "new",
+     "trigger": "author",
+     "quote": "FWE function matches the wavelet spectrums better than other functions"
+    },
+    {
+     "n": 17,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Estimate eight Q values per trace (upper frequency 80 Hz), remove high-SD results, average, and spline-interpolate into Q curves for all four methods (Figure 13).",
+     "page": "59",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we can get eight Q values in each trace from the corresponding source and attenuated wavelet spectrums."
+    },
+    {
+     "n": 18,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Compare the Q curves with well interpretations (low Q at oil wells, high Q at the dry well): IFWE agrees best.",
+     "page": "60",
+     "move": "new",
+     "trigger": "author",
+     "quote": "makes the results of the IFWE method the closest to the well interpretations."
+    },
+    {
+     "n": 19,
+     "node": "K",
+     "mode": "methods",
+     "action": "Keep the claim that IFWE improves Q estimation over CFS and FWE, is comparable to or better than SCFS in stated conditions, and works on field data.",
+     "page": "60",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the field data demonstrate the effectiveness and accuracy of the IFWE method in the fluid indication."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Bias in FWE-based Q estimates when the wavelet is not a standard FWE shape",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; Q is latent and inferred from spectral shifts",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "A more accurate and robust Q estimation formula",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "Rival methods CFS, FWE and SCFS",
+   "mode_called": "methods"
+  },
+  {
+   "question": "5",
+   "answer": "Different relative Q errors depending on wavelet shape and attenuation",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions set in synthetic records with known Q; field data found",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "7",
+   "answer": "Mostly; holds across wavelets, Q, time and noise, but SCFS is better for noise-free Ricker",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "IFWE kept, characterized for SNR above 12.5 dB",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "The IFWE formula, using the standard deviations of the source and attenuated spectra, gives more accurate Q than CFS and FWE across wavelet shapes, matches or beats SCFS in Gaussian and noisy Ricker cases, is stable for SNR above 12.5 dB with a suitable upper frequency limit, and gives field Q curves consistent with well interpretations.",
+  "page": "60"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Deriving Eq. 12, which replaces the constant symmetry index with spectral standard deviations, creates the method whose performance everything else characterizes.",
+  "page": "52"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "The synthetic tests (filtered wavelets, Ricker, noise) were designed to probe where the constant symmetry index assumption fails, but the field data were existing poststack data. The claim could have failed against known Q, and partly did: SCFS beats IFWE for the noise-free Ricker case (p. 57). No pre-registration is reported, and thresholds such as the 90 Hz and 80 Hz upper limits were set after seeing results (p. 57, 59)."
+ },
+ "imports": [
+  {
+   "field": "signal processing / electrical engineering",
+   "item": "Butterworth high-pass and low-pass filters to build non-standard wavelets",
+   "kind": "method",
+   "page": "52"
+  },
+  {
+   "field": "signal processing / mathematics",
+   "item": "Fast Fourier transform for spectrum extraction",
+   "kind": "method",
+   "page": "52"
+  },
+  {
+   "field": "statistics",
+   "item": "Centroid (mean) and standard deviation of a spectrum treated as a distribution",
+   "kind": "concept",
+   "page": "49"
+  },
+  {
+   "field": "numerical analysis",
+   "item": "Spline interpolation of trace Q values",
+   "kind": "method",
+   "page": "60"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the basic idea of a novel Q estimation method is to substitute the symmetry index with the standard deviation of the source and attenuated wavelet [...]",
+   "page": "48"
+  },
+  {
+   "quote": "a novel formula is derived by the centroid frequency and the standard deviations",
+   "page": "49"
+  }
+ ],
+ "limits": "No review file was supplied, so no review sequence is coded. The field data are available only on request (p. 60). Field validation is qualitative: well classes (oil, water, dry) serve as the reference, with no independent Q measurement. Sub-claims at other statuses: SCFS outperforms IFWE for noise-free Ricker wavelets, a qualification of the headline (p. 57). The claim that IFWE beats SCFS under noise holds only for SNR above 12.5 dB and a chosen upper frequency, which is regularity_in_range (p. 59). Small advantages of IFWE over CFS (Gaussian) and FWE (FWE wavelet) are attributed to 'numerical error' (p. 54, 56); this is inference by the authors, not tested. Upper frequency limits (90 Hz synthetic, 80 Hz field) and the filtering of high-SD field results were chosen without stated pre-specification. Composition is none_fits: the rivals are estimation methods benchmarked on synthetic data with known truth plus one field profile. That is not a crucial test excluding hypotheses, a trace series, or capability-first exploration (coder inference). The text has inconsistencies, such as 'Equation (9)' for Eq. 7 on p. 52 and Eq. 8 calling f0 the symmetry index, and the noise-test travel times differ between text (0.2-0.5 s) and Figure 10c (0.3-0.6 s).",
+ "disagreements": [
+  {
+   "target": "FWE method (Hu et al., 2011)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Synthetic tests with known Q show FWE errors are large when the wavelet is Gaussian or filtered FWE, because the symmetry index varies with attenuation (Table 1, Figures 3, 6).",
+   "page": "49",
+   "quote": "Unfortunately, the constant symmetry index assumption reduces the accuracy of the FWE method when the wavelet shape is not a standard FWE wavelet."
+  },
+  {
+   "target": "CFS method (Quan & Harris, 1997)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Synthetic tests show CFS errors grow for filtered Gaussian, Ricker and FWE wavelets, whose variance changes with attenuation (Figures 3, 7, 8).",
+   "page": "49",
+   "quote": "the CFS method presumes the symmetric wavelet shape"
+  },
+  {
+   "target": "Recalculated symmetry indexes (Jiang et al., 2018; Li & Liu, 2015, 2016; Li et al., 2020; Zheng et al., 2018)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "Asserted without a direct test of these recalculation schemes.",
+   "page": "49",
+   "quote": "Even so, the obtained symmetry indexes are [...] ."
+  },
+  {
+   "target": "SCFS method (Li et al., 2020)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "In synthetic tests SCFS is less accurate than IFWE for Gaussian wavelets and noisy Ricker data, attributed to its added synthetic parameters; it is better for noise-free Ricker.",
+   "page": "56",
+   "quote": "The added parameters bring certain errors so that the accuracy of the SCFS method cannot reach that of the CFS method."
+  },
+  {
+   "target": "PFS method (Zhang & Ulrych, 2002)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Cites Hu et al. (2013) for instability under noise; not tested here.",
+   "page": "49",
+   "quote": "Once the data contain the noise, the result of this method would be unstable (Hu et al., 2013)."
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Replace the symmetry index with the standard deviations of the source and attenuated spectra",
+   "alternatives": "Recalculating the symmetry index by average and least-squares methods; SCFS synthetic wavelet (Li et al., 2020)",
+   "reason": "Parameters obtained directly from the spectra without additional methods; reduces the constant-index limitation",
+   "effect_reported": "yes",
+   "page": "49"
+  },
+  {
+   "node": "R",
+   "chosen": "Upper frequency limit of 90 Hz in synthetic noise tests",
+   "alternatives": "Upper frequency limits from 120 to 40 Hz",
+   "reason": "To show the detailed differences between them",
+   "effect_reported": "yes",
+   "page": "57"
+  },
+  {
+   "node": "V",
+   "chosen": "FWE function as the best match to the field wavelet spectra, so SCFS and IFWE are applied",
+   "alternatives": "Gaussian and Ricker functions",
+   "reason": "The modelled FWE function matches the spectra better",
+   "effect_reported": "yes",
+   "page": "59"
+  },
+  {
+   "node": "I",
+   "chosen": "Upper frequency 80 Hz for field data",
+   "alternatives": "none named",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "59"
+  },
+  {
+   "node": "O",
+   "chosen": "Eight overlapping windows above the target and one window below",
+   "alternatives": "A single source window (implied)",
+   "reason": "Large variation in the upper segment of the record; stable performance below the target",
+   "effect_reported": "no",
+   "page": "59"
+  },
+  {
+   "node": "D",
+   "chosen": "FWE symmetry index n from f_cS and sigma_S^2 of the source spectrum (Eq. 7)",
+   "alternatives": "n from the attenuated spectrum (f_cR, sigma_R) in Eq. 7",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "55"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "The original and filtered wavelets are then used to propagate in a media, of which the Q value is 80.",
+   "page": "52"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Relative Q errors of the CFS, FWE, SCFS and IFWE methods in the assumption of the Gaussian shape.",
+   "page": "54"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "whose Q value increases from 15 to 135, and the time is fixed at 0.2 s.",
+   "page": "55"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Next, we choose the Ricker wavelet as the source wavelet in the synthetic record",
+   "page": "56"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "For each SNR level, we conduct 100 independent experiments.",
+   "page": "57"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "all methods are influenced by the upper frequency limits.",
+   "page": "57"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the SNR of the synthetic record is fixed at 12.5 dB and travel time varies from 0.2 to 0.5 s",
+   "page": "57"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "FWE function matches the wavelet spectrums better than other functions",
+   "page": "59"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "further demonstrate the validity of the IFWE method.",
+   "page": "59"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "it is reasonable that Q values are low at the oil wells and high at the nonproductive well",
+   "page": "60"
+  }
+ ]
+}

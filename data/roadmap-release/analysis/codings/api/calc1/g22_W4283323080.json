@@ -1,0 +1,390 @@
+{
+ "key": "g22_W4283323080",
+ "doi": "10.1016/j.jvolgeores.2022.107616",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Published paper PDF (Journal of Volcanology and Geothermal Research 429 (2022) 107616, 9 pages)",
+  "Publisher XML converted to located text (jats_text): abstract and figure/table captions only"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text) for the abstract and captions. The XML contains no body text, so body passages are cited by PDF pages counted from 1, which match the printed pages 1-9. Figure-content steps cite the figure with the PDF page.",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "Automating the classification with artificial intelligence (AI) techniques is a current issue but many AI techniques are not directly applicable to waveforms",
+  "page": "§0 ¶1"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Published paper (PDF) with publisher XML text (abstract and captions)",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the problem of classifying volcano-seismic events automatically and without supervision, directly from waveforms of unequal length rather than from derived features or labelled training sets.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "many AI techniques are not directly applicable to waveforms because they consist [...]"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take from other groups' work the use of DTW on volcano-seismic data at Cotopaxi and the unsupervised classifiers (PCA, SOM, HMM, Gaussian mixtures), and note that the DTW advantage for unequal durations was not exploited.",
+     "page": "2",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Anzieta et al. (2019) applied DTW to seismic events at Cotopaxi volcano, Ecuador, but did not focus on the advantage of DTW"
+    },
+    {
+     "n": 3,
+     "node": "N",
+     "mode": "methods",
+     "action": "Build the method: DTW distances for all waveform pairs; k-means with medoid-like 'prototypes' drawn from the members; runs from every possible combination of initial prototypes; candidate classifications scored by NIC (number of initial sets converging) and TSD (total sum of distances).",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This study develops a simple method in which the distance between waveforms with different lengths is evaluated by dynamic time warping"
+    },
+    {
+     "n": 4,
+     "node": "F",
+     "mode": "observation",
+     "action": "Choose as the test case one day at Sakurajima (15 August 2015) with a live dike intrusion, whose timing (10:30-12:00) comes from published seismicity and deformation studies (Koike and Nakamichi 2021; Hotta et al. 2016).",
+     "page": "2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "examined by applying it to the data of Sakurajima volcano during a day on which a magma ascent event happened"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Extract 90 events (402-1424 samples, about 2-7 s) from 06-16 h vertical-component 200 Hz velocity records at station SKN5, about 1 km from the active crater, and normalize each event by its maximum amplitude.",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "From the original continuous records, 90 seismic events were detected by the authors."
+    },
+    {
+     "n": 6,
+     "node": "I",
+     "mode": "methods",
+     "action": "Run the classification for k = 2 (4005 initial combinations, 36 distinct classifications), k = 3 (117,480 combinations, 841 classifications) and k = 1, recording NIC and TSD for each (Tables 1 and 2).",
+     "page": "3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The classification has been made for all possible combinations of the waveform members for the initial set of prototypes."
+    },
+    {
+     "n": 7,
+     "node": "C",
+     "mode": "methods",
+     "action": "Rank classifications by high NIC (generality) and low TSD (fit), find that the two criteria agree, and select three good classifications (prototypes 59/85, 59/75 and 59/75/85), naming the groups A, B and C.",
+     "page": "4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a classification may be better as it has a greater NIC and smaller TSD"
+    },
+    {
+     "n": 8,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Plot members in the space of DTW distances to the prototypes (Figs. 4 and 5) and find a near-continuous distribution, so the group boundaries are forced rather than natural.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "groups are separated not naturally but rather forcibly near the boundary by small differences of the distances"
+    },
+    {
+     "n": 9,
+     "node": "C",
+     "mode": "methods",
+     "action": "Compare group memberships across classifications (Table 3): group A of the two-group runs mixes A with B or C of the three-group run, so the three-group classification is preferred.",
+     "page": "5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the classification into three groups may give a better representation of the original nature of the waveforms"
+    },
+    {
+     "n": 10,
+     "node": "O",
+     "mode": "observation",
+     "action": "Display the prototype waveforms and members at increasing DTW distance for each group (Fig. 6), observing that shapes change gradually within each group.",
+     "page": "Figure 6 (p. 7)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "seems to collect members with overall similar shapes in making groups"
+    },
+    {
+     "n": 11,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Interpret the groups by source type: A (event 59) as volcano-tectonic fracture with P and S phases; C (event 85) as long-period events; B (event 75) as tremor-like, with a resonance source because of its long duration.",
+     "page": "5-6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Judging from its long duration the source of event 75 may not be a pulse but something like the resonance that repeats vibrations."
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Compute FFT amplitude spectra of the three prototypes (first 1024 samples, zero-filled for event 85) as an independent representation: 59 and 85 show a dominant peak, while 75 has no dominant peak and nearly equally spaced peaks, consistent with resonance.",
+     "page": "6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the spectrum of event 75 is gentler without a single dominant peak"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare cumulative event counts per group with the dike-intrusion window (Fig. 8): in the three-group classification, group B rises sharply during the magma ascent, while the two-group classification separates the groups less clearly.",
+     "page": "Figure 8 (p. 8)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the cumulative number of group B sharply rises during the period of the underground magma ascent"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check the B-magma link against an independent data set: hypocentres located by Koike and Nakamichi (2021) for some of the classified events, plotted against the inferred fissure (Fig. 9). B events lie closer to the fissure, but location uncertainty (200-250 m) prevents a firm conclusion.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the events of group B tend to distribute closer to the magmatic fissure"
+    },
+    {
+     "n": 15,
+     "node": "K",
+     "mode": "observation",
+     "action": "Retain the claim that the tremor-like group B is intimately connected with the magma ascent beneath the active crater, qualified as not conclusive.",
+     "page": "§0 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "It is revealed that one of the groups consisting of tremor-like waveforms has an intimate connection with a magma ascent event"
+    },
+    {
+     "n": 16,
+     "node": "K",
+     "mode": "methods",
+     "action": "Retain the method as applicable to waveforms of unequal length and useful for relating seismic to magmatic activity; propose application to other periods and volcanoes.",
+     "page": "8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This method is applicable to the classification of waveforms with mutually different numbers of data points."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Volcano-seismic events of varied waveform types during a dike intrusion day; whether the types separate is explored",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "2",
+   "answer": "Waveforms observed directly; group structure not, so it is computed by clustering",
+   "mode_called": "methods"
+  },
+  {
+   "question": "3",
+   "answer": "Build an unsupervised waveform classification method and show it relates seismic groups to magma ascent",
+   "mode_called": "methods"
+  },
+  {
+   "question": "4",
+   "answer": "No rival explanations stated; only alternative classifications (k = 2 vs k = 3)",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: a live dike intrusion on 15 August 2015, timed by published studies",
+   "mode_called": "observation"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: the spectra and independent hypocentres are consistent, but uncertainties keep it inconclusive",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: the method works on unequal-length waveforms; tremor-like group B is linked to magma ascent",
+   "mode_called": "methods"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "A k-means clustering method using DTW distances classifies volcano-seismic waveforms of unequal length into groups (at Sakurajima: VT-like, LP-like and tremor-like) and is useful for relating seismic to magmatic activity.",
+  "page": "9"
+ },
+ "decisive_move": {
+  "node": "N",
+  "mode": "methods",
+  "sentence": "Without the DTW-plus-prototype k-means method, run over all initial prototype sets and scored by NIC and TSD, no waveform groups and no group-B link to the dike would exist.",
+  "page": "§0 ¶1"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "partly",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Action: the day was chosen because a magma ascent was known (p. 2), but no hypothesis about which group would track it was stated before the data were acquired; the data are archival records from one station. Claim: the group-B timing (Fig. 8) and hypocentres (Fig. 9) could have failed to line up with the dike, but no test criterion was stated, k = 3 was preferred after inspection, and the authors call the hypocentre evidence not conclusive (p. 8). Registration: k = 2 and 3 were 'tentatively assumed' (p. 3) and the NIC/TSD criteria are defined in the Methods, but nothing is shown to have been fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "computer science / time-series data mining",
+   "item": "Dynamic time warping distance (Berndt and Clifford 1994, AAAI)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "statistics / machine learning",
+   "item": "k-means clustering (Mohamad and Usman 2013), with selection of k (Pham et al. 2004) and initial centroids (Bradley and Fayyad 1998)",
+   "kind": "method",
+   "page": "3"
+  },
+  {
+   "field": "signal processing",
+   "item": "Fast Fourier transform amplitude spectra",
+   "kind": "method",
+   "page": "6"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "Anzieta et al. (2019) applied DTW to seismic events at Cotopaxi volcano, Ecuador, but did not focus on the advantage of DTW",
+   "page": "2"
+  },
+  {
+   "quote": "This method of classification would be preferred to others in the point that it is directly applied to waveforms",
+   "page": "8"
+  }
+ ],
+ "limits": "Sources: the supplied XML holds only the abstract and the figure and table captions, so all body text is cited by PDF page. Scope of the test: the method is applied to one day, one station (SKN5, vertical component) and 90 events. No analyst-labelled catalogue or other method is used as a benchmark, so classification accuracy is not quantified; 'capability_characterized' is therefore qualitative. Sub-claims: the link of tremor-like group B to the magma ascent is at best 'best_explanation' without stated rivals, and the authors call it not conclusive because of hypocentre and fissure uncertainties (p. 8). The interpretation of groups as VT, LP and tremor rests on the prototype waveforms and spectra only, at status best_explanation. Group separation is described as forced, with a near-continuous distribution (p. 5). The choice of k = 3 over k = 2 is made after inspection. Generalization is proposed, not done: 'It is interesting to apply this method to waveforms of other periods and other volcanoes.' (p. 9). Event detection thresholds are described only qualitatively. Entry node: Q was chosen because the abstract opens with the problem; N would also be defensible (inference). No explicit 'first' statement appears; the novelty claims coded are implied priority and preference statements. No review file was supplied, so no review sequence is coded.",
+ "disagreements": [
+  {
+   "target": "Anzieta et al. (2019), DTW applied to Cotopaxi seismic events",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors argue that the earlier study did not exploit DTW's ability to compare waveforms of different durations, which their method uses; no direct comparison is run.",
+   "page": "2",
+   "quote": "Anzieta et al. (2019) applied DTW to seismic events at Cotopaxi volcano, Ecuador, but did not focus on the advantage of DTW"
+  },
+  {
+   "target": "Supervised ANN classification of volcano-seismic events (Langer et al. 2006; Ibs-von Seht 2008; Curilem et al. 2009)",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "Argument only: supervised methods need labelled datasets that are often unavailable and tend to be volcano-specific (citing Cortés et al. 2019); no comparison is performed.",
+   "page": "1",
+   "quote": "The classification using a supervised AI technique like ANN needs a reliable labeled dataset for training but it is not always available."
+  },
+  {
+   "target": "Feature-based classification using characteristic quantities (dominant frequency, amplitude ratios, duration)",
+   "kind": "method",
+   "stance": "disputes",
+   "support": "The authors argue that classifying waveforms directly is preferable to using indirect quantities, without testing a feature-based classifier on the same data.",
+   "page": "2",
+   "quote": "it would be more desirable to directly use their waveforms instead of some indirect quantities like characteristic frequencies"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "Unsupervised learning",
+   "alternatives": "Supervised ANN trained on labelled examples",
+   "reason": "Labelled datasets are not always available and tend to be strongly volcano oriented",
+   "effect_reported": "no",
+   "page": "1"
+  },
+  {
+   "node": "N",
+   "chosen": "Waveforms used directly",
+   "alternatives": "Characteristic quantities such as dominant frequency, max/mean amplitude ratio, duration",
+   "reason": "More desirable to use waveforms instead of indirect quantities",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "N",
+   "chosen": "DTW distance",
+   "alternatives": "Sum of square differences between corresponding components (Euclidean)",
+   "reason": "Not available for waveforms with different numbers of components",
+   "effect_reported": "no",
+   "page": "3"
+  },
+  {
+   "node": "N",
+   "chosen": "Prototypes selected from the members",
+   "alternatives": "Arithmetic mean centroids",
+   "reason": "Arithmetic means are not available for waveforms with different numbers of components",
+   "effect_reported": "no",
+   "page": "2"
+  },
+  {
+   "node": "I",
+   "chosen": "All possible combinations of initial prototypes",
+   "alternatives": "Fixing suitable initial centroids (Bradley and Fayyad 1998)",
+   "reason": "The result depends on the initial set of prototypes",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "I",
+   "chosen": "k = 2 and k = 3 (k = 1 also run)",
+   "alternatives": "Other numbers of groups; how to fix k is discussed by Pham et al. (2004)",
+   "reason": "The waveform data are not very abundant",
+   "effect_reported": "yes",
+   "page": "3"
+  },
+  {
+   "node": "C",
+   "chosen": "Select by greater NIC together with smaller TSD",
+   "alternatives": "Selecting by NIC alone or by TSD alone",
+   "reason": "A greater NIC tends to go with a smaller [...] , so the two principles are generally consistent",
+   "effect_reported": "yes",
+   "page": "4"
+  },
+  {
+   "node": "O",
+   "chosen": "Each waveform normalized by its maximum amplitude",
+   "alternatives": "Unnormalized amplitudes (implied)",
+   "reason": "So that the classification represents waveform features independent of amplitude",
+   "effect_reported": "no",
+   "page": "3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "In the present study, classification is made for all possible choices of initial prototypes.",
+   "page": "3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "the relatively small numbers of groups as k = 2 and 3 are assumed [...]",
+   "page": "3"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "the spectrum of event 75 is gentler without a single dominant peak",
+   "page": "6"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "the events of group B tend to distribute closer to the magmatic fissure",
+   "page": "8"
+  }
+ ]
+}

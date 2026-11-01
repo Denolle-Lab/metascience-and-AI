@@ -1,0 +1,334 @@
+{
+ "key": "g22_W4285040839",
+ "doi": "10.5194/gmd-15-5287-2022",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Li et al. 2022, Geosci. Model Dev. 15, 5287-5308 (published PDF)",
+  "Publisher XML text with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "capability",
+  "node": "N",
+  "evidence": "The ICE-POP 2018 campaign provided a unique opportunity with near real-time passive microwave estimates of surface meteorology",
+  "page": "§1 ¶8"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher XML text (jats_text) of Li et al. 2022, GMD 15, 5287-5308",
+   "steps": [
+    {
+     "n": 1,
+     "node": "N",
+     "mode": "instruments",
+     "action": "A near-real-time GPM passive-microwave retrieval of ocean 2 m temperature, 2 m specific humidity and 10 m wind speed was generated for ICE-POP 2018 with the neural-network algorithm of Roberts et al. (2010).",
+     "page": "§1 ¶8; §2.1 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "special efforts were made to generate a set of near-surface ocean meteorology conditions"
+    },
+    {
+     "n": 2,
+     "node": "Q",
+     "mode": "question",
+     "action": "The authors pose the question of whether assimilating the retrieved surface data improves forecasts of heavy snowstorms over the Korean Peninsula.",
+     "page": "§1 ¶8",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to examine whether or not the assimilation of this dataset is able to improve the forecasts of heavy snowstorms"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "The South Korean Surface Analysis, a 1 km and 10 min gridded AWS product from Ryu et al. (2020), is adopted as the independent observational reference for verification.",
+     "page": "§2.1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "This dataset was used in this study to evaluate the model performance and the impact of the data assimilation."
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "The retrievals are checked against a held-out set of collocated buoy observations, giving RMS uncertainties of 1.1 g/kg, 0.9 K and 1.2 m/s with essentially no bias.",
+     "page": "§2.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Compared to the independent validation data, the root mean square (RMS) uncertainties are assessed at"
+    },
+    {
+     "n": 5,
+     "node": "F",
+     "mode": "observation",
+     "action": "Two heavy snowfall events during the campaign (27-28 February and 7-8 March 2018) are chosen as natural test cases, and their synoptic evolution is described from KMA analyses.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two heavy snowstorms affecting the Korean Peninsula and the ICE-POP field domain on 27–28 February and 7–8 March 2018"
+    },
+    {
+     "n": 6,
+     "node": "N",
+     "mode": "methods",
+     "action": "The authors configure a 9/3/1 km nested WRF ARW model with GSI v3.6 3DVAR and compute a domain-specific background error covariance with gen_be (NMC method) in place of the pre-computed B.",
+     "page": "§2.2 ¶3; §2.2 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we used the “gen_be” package in the WRF Data Assimilation (WRFDA) system to compute a domain-specific B"
+    },
+    {
+     "n": 7,
+     "node": "D",
+     "mode": "simulation",
+     "action": "Paired experiments are designed for each event: a control assimilating conventional PREPBUFR data every 6 h, and a DA run that also cycles the GPM retrievals at the times they are available (Table 1).",
+     "page": "§2.2 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Two different numerical experiments were conducted for each snowstorm event."
+    },
+    {
+     "n": 8,
+     "node": "O",
+     "mode": "observation",
+     "action": "Observation-minus-background departures are characterized with scatterplots and PDFs (Fig. 5); outliers beyond fixed departure thresholds are removed before assimilation.",
+     "page": "§3.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "As a pre-process step before data assimilation, outliers with a magnitude of surface temperature departure"
+    },
+    {
+     "n": 9,
+     "node": "I",
+     "mode": "estimation",
+     "action": "3DVAR analyses estimate the initial surface state for the March case; analysis increments (A-B) are compared with O-B, and RMSD falls from 2.35 to 1.36 C, 8.12 to 4.01 %, and 4.16 to 1.83 m/s.",
+     "page": "§3.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "indicating an effective assimilation of the observational data was made to the WRF initial condition"
+    },
+    {
+     "n": 10,
+     "node": "S",
+     "mode": "simulation",
+     "action": "DA_Mar-CTRL_Mar RMSD is tracked over the first 6 h forecast and in vertical profiles, showing rapid adjustment in the first hour and upward spreading of the impact (Fig. 7).",
+     "page": "§3.1 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is important to understand how long and by how much the data impact will last in the model forecast"
+    },
+    {
+     "n": 11,
+     "node": "C",
+     "mode": "simulation",
+     "action": "March forecasts are scored against the surface analysis: 2 m temperature RMSE every 6 h (Table 2, Fig. 8) and threat scores for hourly precipitation at 1, 2 and 3 mm/h (Fig. 9); DA_Mar scores better after the seventh cycle and on threat score.",
+     "page": "§3.1 ¶4; §3.1 ¶5",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After the seventh cycle of data assimilation at 06:00 UTC 8 March, RMSEs in DA_Mar were consistently smaller than CTRL_Mar."
+    },
+    {
+     "n": 12,
+     "node": "S",
+     "mode": "simulation",
+     "action": "925 hPa moisture flux divergence and moisture transport are compared between CTRL_Mar and DA_Mar to diagnose why DA_Mar produced less precipitation (Fig. 10).",
+     "page": "§3.1 ¶6",
+     "move": "new",
+     "trigger": "author",
+     "quote": "To better understand the mechanisms that lead to the improved precipitation forecast"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "24 h accumulated precipitation and its areal PDF are compared with the surface analysis (Fig. 11); both runs overpredict, and DA_Mar overpredicts less.",
+     "page": "§3.1 ¶7",
+     "move": "new",
+     "trigger": "author",
+     "quote": "DA_Mar performed better than CTRL_Mar with an overall lower precipitation amount."
+    },
+    {
+     "n": 14,
+     "node": "I",
+     "mode": "estimation",
+     "action": "The same assimilation is applied to the February case, and the resulting O-B and A-B surface increments are mapped (Fig. 12).",
+     "page": "§3.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "After data assimilation, positive increments in surface temperature were produced over the Bohai Sea, Sea of Japan, and the western North Pacific Ocean."
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "simulation",
+     "action": "The CTRL-versus-DA verification is repeated on the second, independent event (temperature RMSE in Table 2 and Fig. 13; 24 h precipitation PDF in Fig. 14); the improvement is smaller, and DA_Feb has a higher RMSE at the final time.",
+     "page": "§3.2 ¶3; §3.2 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "it is found that the surface temperature forecast was also improved for the 27–28 February event with data assimilation"
+    },
+    {
+     "n": 16,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Candidate explanations are proposed for the smaller February impact (larger background-observation difference, different synoptic configuration, undersampling by swath coverage); none is tested.",
+     "page": "§4 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "which may partially explain the smaller improvement in the forecast of the February event"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "simulation",
+     "action": "The claim of a positive short-term forecast impact in both cases, larger in March, is kept and qualified as resting on only two case studies.",
+     "page": "§4 ¶2; §4 ¶3",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The positive impact of the data on short-term forecasts of precipitation and temperature was found for both cases"
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Forecast impact of assimilating a new satellite ocean-surface meteorology dataset",
+   "mode_called": "methods"
+  },
+  {
+   "question": "2",
+   "answer": "No; impact is seen only through paired model experiments verified against the surface analysis",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "3",
+   "answer": "Demonstrate the dataset and test whether it improves snowstorm forecasts",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "4",
+   "answer": "No stated rivals; the implicit null is no improvement over a conventional-data control",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: two live snowstorm events during the campaign",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Only two events; no fitting across repetitions",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Partly; the second event shows a smaller, mixed improvement (worse temperature RMSE at the final time)",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Positive impact kept at case-study level",
+   "mode_called": "simulation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "capability_characterized",
+  "claim": "Cycled assimilation of the GPM-retrieved ocean surface meteorology strongly modifies the surface initial conditions and gives a positive short-term impact on temperature and precipitation forecasts; the impact is larger for the 7-8 March case and slightly smaller for the 27-28 February case.",
+  "page": "§0 ¶1; §4 ¶2"
+ },
+ "decisive_move": {
+  "node": "D",
+  "mode": "simulation",
+  "sentence": "Without the paired control-versus-DA experiment design for each event, verified against the independent South Korean Surface Analysis, no impact of the dataset could be attributed.",
+  "page": "§2.2 ¶7"
+ },
+ "composition": "capability_first",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "The retrievals were produced operationally for ICE-POP, not under a hypothesis (§2.1 ¶2). The DA runs were scored against a control and an independent analysis and could have shown no gain (§3.1 ¶4-7; §3.2 ¶3-4). However, only two cases were run, no significance test was done, and the February final-time RMSE was worse (§4 ¶3). No analysis, threshold, or hypothesis is reported as fixed before the data were seen."
+ },
+ "imports": [
+  {
+   "field": "machine learning / computer science",
+   "item": "single-layer neural network retrieval trained on collocated buoy data with train/cross-validation/held-out splits",
+   "kind": "method",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "field": "applied mathematics / estimation theory",
+   "item": "3DVAR variational cost function minimization with background and observation error covariances",
+   "kind": "method",
+   "page": "§2.2 ¶5"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "there has been little effort focused on assimilating the surface retrievals",
+   "page": "§1 ¶8"
+  },
+  {
+   "quote": "In this research, we introduced this particular surface meteorology dataset retrieved from the GPM microwave observation",
+   "page": "§1 ¶8"
+  }
+ ],
+ "limits": "Only two cases spanning about two days each were run, and no statistical significance testing was done; the authors acknowledge this (§4 ¶3). Forecasts are retrospective hindcasts rather than frozen real-time forecasts, so forecast_skill was not coded. The status capability_characterized (dataset and DA impact characterized) is a coder judgement; a positive verified impact against a control could arguably be coded as confirmed, but no rivals are stated. The XML text of §3.2 ¶3 says 'the RMSE in DA_Mar equals that in CTRL_Feb', apparently a typo for DA_Feb. In the February case DA_Feb has a higher temperature RMSE than CTRL_Feb at the final time (2.64 vs 2.59, Table 2); the claim of improvement there rests on the 06:00-18:00 UTC 28 February times and the precipitation PDF. It is unclear whether the buoy hold-out validation of the retrievals was done for this paper or in the retrieval's development (Roberts et al. 2010; Roberts 2020); coding it as performed here is an inference. The explanations for the smaller February impact are hypotheses only and are untested. The moisture-flux diagnosis is offered as mechanism but does not test a rival. The outlier thresholds are fixed without justification, and no sensitivity to them is reported. The paper went through open discussion (Discussion started 20 September 2021), but no review file was supplied, so no review sequence is coded. No disagreements with published work are stated; the paper only notes a gap (flux-oriented, high-latency retrieval efforts).",
+ "disagreements": [],
+ "alternatives_considered": [
+  {
+   "node": "N",
+   "chosen": "domain-specific background error covariance B computed with gen_be (NMC method) from 1 month of WRF 24 and 12 h forecasts",
+   "alternatives": "pre-computed B files supplied with the GSI package",
+   "reason": "To obtain a more accurate regional [...]",
+   "effect_reported": "no",
+   "page": "§2.2 ¶6"
+  },
+  {
+   "node": "O",
+   "chosen": "simple gross check removing departures above 6 C, 4 g/kg, 9 m/s; no bias correction",
+   "alternatives": "a more rigorous gross check and data validation; adding a bias correction to the retrievals",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§3.1 ¶1; §4 ¶3"
+  },
+  {
+   "node": "D",
+   "chosen": "assimilating GPM retrievals together with conventional PREPBUFR data only",
+   "alternatives": "assimilating together with other ICE-POP observations (radiosondes, radar observations, wind profilers)",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "These data were broken into a training and set-aside independent validation dataset with a 60 % and 40 % split",
+   "page": "§2.1 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the control experiment (CTRL_Mar) assimilates the conventional PREPBUFR observations every 6 h",
+   "page": "§2.2 ¶7"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "using the South Korean Surface Analysis as the reference dataset",
+   "page": "§3.1 ¶4"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "The assessment of the data assimilation results for the February case will be discussed in this section.",
+   "page": "§3.2 ¶1"
+  }
+ ]
+}

@@ -1,0 +1,368 @@
+{
+ "key": "g22_W4312065620",
+ "doi": "10.1038/s41612-022-00322-x",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "g22_W4312065620.pdf (published paper, npj Climate and Atmospheric Science 5:99, 2022)",
+  "g22_W4312065620.xml.txt (publisher XML converted with jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "the effectiveness of this policy, named staggered-peak production (SP), in mitigating PM pollution is yet to be evaluated",
+  "page": "§1 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "g22_W4312065620.xml.txt",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Pose the question whether the staggered-peak production (SP) halt of cement production reduces PM pollution in Beijing, framed as an unevaluated policy.",
+     "page": "§1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the effectiveness of this policy, named staggered-peak production (SP), in mitigating PM pollution is yet to be evaluated"
+    },
+    {
+     "n": 2,
+     "node": "N",
+     "mode": "methods",
+     "action": "Take up the random-forest meteorological normalization technique developed by other groups (Grange et al., Vu et al., Shi et al.) as the tool to separate weather from emission effects.",
+     "page": "§1 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Grange et al. applied a meteorological normalization technique based on the RF algorithm to control changes in meteorology"
+    },
+    {
+     "n": 3,
+     "node": "O",
+     "mode": "observation",
+     "action": "Measure PM1 composition with a quadrupole ACSM and an aethalometer, plus trace-gas analyzers and a weather station, at a rooftop site in urban Beijing from January to April 2016.",
+     "page": "§1 ¶2; §4.1 ¶1; §4.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "an aerosol chemical speciation monitor (ACSM) and an aethalometer were deployed to measure the composition of PM1"
+    },
+    {
+     "n": 4,
+     "node": "V",
+     "mode": "instruments",
+     "action": "Calibrate ACSM ionization efficiency and relative ionization efficiencies with an atomizer, DMA and CPC, and apply a composition-dependent collection efficiency (Methods only).",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "calibrations were conducted to ensure that the instrument was in good condition during the whole observation period"
+    },
+    {
+     "n": 5,
+     "node": "O",
+     "mode": "observation",
+     "action": "Reuse the 2014-2015 winter (normal-production) data from the corresponding author's earlier study as the heating-season comparison period.",
+     "page": "§4.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Data in 2015 was used for comparison cited by Huang et al.52."
+    },
+    {
+     "n": 6,
+     "node": "F",
+     "mode": "observation",
+     "action": "Define the conditions found in the record by splitting the campaign into three periods using the policy dates: normal production in the heating season (NPhs), SP in the heating season (SPhs), and normal production in the non-heating season (NPnhs).",
+     "page": "§2.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the entire campaign was split into three periods"
+    },
+    {
+     "n": 7,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Apportion OA sources with PMF and ME-2: examine 2 to 8 unconstrained factors, then constrain to resolve HOA, COA, CCOA, BBOA and local and regional secondary OA, and average 33 solutions.",
+     "page": "§2.1 ¶1; §4.4 ¶1-2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Source apportionment was performed on the OA data using PMF with a multilinear engine (ME-2)"
+    },
+    {
+     "n": 8,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare observed NPhs and SPhs means. PM1 and primary species (chloride, BC, HOA, COA, CCOA) fall, while the nitrate fraction and the OOA fraction rise despite lower NOx.",
+     "page": "§2.2 ¶1; Table 1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "These variations suggest reduced primary emissions and enhanced secondary aerosol contributions in SPhs after the implementation of the SP measure."
+    },
+    {
+     "n": 9,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Propose that the nitrate increase under lower NOx reflects stronger atmospheric oxidation capacity and a higher nitrogen oxidation ratio during SP.",
+     "page": "§2.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This phenomenon may be due to stronger atmospheric oxidation capacity and higher nitrogen oxidation ratio in SPhs"
+    },
+    {
+     "n": 10,
+     "node": "C",
+     "mode": "observation",
+     "action": "Compare SPhs with NPnhs. PM1 loading is similar, but gases and composition differ, so seasonal and central-heating effects are noted alongside SP.",
+     "page": "§2.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the effects of seasonal variations and central heating were nonnegligible"
+    },
+    {
+     "n": 11,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Build per-species, per-year random-forest models on time variables, observed and ERA5 meteorology, and HYSPLIT trajectory clusters, then resample weather 1000 times to obtain deweathered concentrations.",
+     "page": "§2.2 ¶3; §4.5 ¶1; §4.6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "to obtain the deweathered concentrations of PM1 species, OA factors, and gaseous parameters"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Evaluate random-forest model performance against observations with R, RMSE, FAC2, MB, MGE, NMB, NMGE, COE and IOA; results are reported only in the supplement (Methods only).",
+     "page": "§4.6 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Model performance for each pollutant during the whole study period was evaluated via Pearson’s R-value"
+    },
+    {
+     "n": 13,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Recompare periods with the deweathered concentrations. The NPhs-to-SPhs reduction and the primary-down, secondary-up pattern persist, although the change ratios shift somewhat.",
+     "page": "§2.2 ¶3; Table 2; Figure 2 (p. 4); Figure 3 (p. 5)",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "After the weather normalization, the mass concentrations of PM1 still reduced largely from NPhs to SPhs"
+    },
+    {
+     "n": 14,
+     "node": "C",
+     "mode": "hypothesis",
+     "action": "Compute sulfur and nitrogen oxidation ratios and O3 for data with RH > 50%. Higher O3 and NOR in SPhs than NPhs fit the oxidation-capacity explanation, while lower sulfate tracks lower SO2.",
+     "page": "§2.3 ¶1; Figure 4 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a higher NOR in SPhs (0.13 ± 0.07) compared to that in NPhs (0.09 ± 0.02)"
+    },
+    {
+     "n": 15,
+     "node": "V",
+     "mode": "robustness",
+     "action": "Check SOR and NOR after weather normalization. Deweathered ratios are lower, but their trends across the periods match the observed trends.",
+     "page": "§2.3 ¶2; Figure 4 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "reaffirming secondary processes were stronger during the staggering peak production period in the heating season"
+    },
+    {
+     "n": 16,
+     "node": "C",
+     "mode": "observation",
+     "action": "Split days into clean, average-pollution and heavy-pollution stages by daily PM1, and compare composition across stages and periods. The secondary contribution to haze is larger in SPhs than in NPhs.",
+     "page": "§2.4 ¶1; Figure 5 (p. 6)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the secondary formation in SPhs was stronger than that in NPhs"
+    },
+    {
+     "n": 17,
+     "node": "K",
+     "mode": "observation",
+     "action": "Keep the claim that SP reduces primary emissions and PM1 in the heating season but promotes secondary formation, and call for further precursor control.",
+     "page": "§0 ¶1; §3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "Our study indicates that the SP policy is effective in reducing primary emissions but promotes the formation of secondary species."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "A change in PM1 level and composition in Beijing coinciding with the SP policy period",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "Species measured directly by ACSM and aethalometer; OA sources inferred by PMF/ME-2",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Evaluate the effectiveness of a policy intervention on PM pollution",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Meteorology, named implicitly as the rival account of period differences; seasonal and central-heating effects noted",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "5",
+   "answer": "No distinct predictions are derived for rivals",
+   "mode_called": "none"
+  },
+  {
+   "question": "6",
+   "answer": "Conditions found: policy-defined periods in a time series, not set",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "No; one SP period is compared with one earlier winter and one spring",
+   "mode_called": "none"
+  },
+  {
+   "question": "7",
+   "answer": "Trends survive random-forest weather normalization; ratios shift somewhat",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Kept: SP lowers primary PM but enhances secondary formation",
+   "mode_called": "observation"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The staggered-peak production policy lowered PM1 in Beijing's heating season (about 24.3% below NPhs) by reducing primary emissions, but it promoted secondary nitrate and OOA formation; the pattern persisted after random-forest weather normalization.",
+  "page": "§0 ¶1; §3 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "observation",
+  "sentence": "The comparison of observed PM1 composition between the 2015 normal-production winter and the 2016 SP winter, showing primary species down and nitrate and OOA fractions up, is the claim's basis; the deweathering only confirms it.",
+  "page": "§2.2 ¶1"
+ },
+ "composition": "none_fits",
+ "gates": {
+  "action": "no",
+  "claim": "partly",
+  "registration": "no",
+  "evidence": "Data acquisition was a monitoring campaign, and the 2015 comparison data were reused from an earlier study (§4.1 ¶1), so no stated hypothesis directed acquisition. The headline claim faced one test it could have failed: the weather-normalized comparison (§2.2 ¶3, §2.3 ¶2). Interannual emission trends and season were not tested as rivals. The oxidation-capacity hypothesis (§2.2 ¶1) was checked against SOR, NOR and O3 (§2.3 ¶1), but no thresholds or analyses were fixed in advance."
+ },
+ "imports": [
+  {
+   "field": "statistics / machine learning",
+   "item": "Random forest regression for meteorological normalization",
+   "kind": "method",
+   "page": "§1 ¶1; §4.6 ¶1"
+  },
+  {
+   "field": "chemometrics / statistics",
+   "item": "Positive matrix factorization with the multilinear engine (ME-2)",
+   "kind": "method",
+   "page": "§4.4 ¶1"
+  },
+  {
+   "field": "analytical chemistry",
+   "item": "Quadrupole aerosol chemical speciation monitor (mass spectrometry) and aethalometer",
+   "kind": "instrument",
+   "page": "§4.2 ¶1"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "the effectiveness of this policy, named staggered-peak production (SP), in mitigating PM pollution is yet to be evaluated",
+   "page": "§1 ¶2"
+  },
+  {
+   "quote": "variations of oxygenated organic aerosol and influences of meteorological parameters were not considered in those two studies",
+   "page": "§2.2 ¶1"
+  }
+ ],
+ "limits": "The NPhs comparison period is short (17 days, December 29, 2014 to January 14, 2015) and comes from a different winter, taken from the corresponding author's earlier study. Interannual emission trends under the clean air action plan, which the introduction itself cites, are not separated from the SP effect; this weakens attribution to SP (inference). No significance tests are reported, and the standard deviations overlap widely. OA factors differ between periods (five factors in NPhs, six in SPhs and NPnhs), so OOA is compared as a sum. Random-forest performance metrics are only in the supplement, which was not supplied; the paper cites Supplementary Fig. 5 both for LSOA/RSOA and for model performance. SP concerns the cement industry, yet reductions in CCOA and other primary species are attributed to SP only as 'likely'. Composition is none_fits: this is a single before/after policy comparison with one treatment period and two reference periods, plus weather normalization; there is no repetition by nature, no rival with a crucial test, and no trace series. Sub-claims and their statuses: the 24.3% PM1 reduction is a point difference with no uncertainty on the difference (estimate without resolution); the reduced heating versus non-heating contrast after SP is best_explanation, with seasonal and central-heating effects acknowledged; the oxidation-capacity explanation for the nitrate increase is best_explanation, supported by NOR and O3 at RH > 50%; the pollution-stage results are descriptive. No review file was supplied, so no review sequence is coded.",
+ "disagreements": [
+  {
+   "target": "Previous studies reporting PM1 much higher in the heating than the non-heating season (refs 43, 44)",
+   "kind": "result",
+   "stance": "qualifies",
+   "support": "Observed SPhs and NPnhs PM1 loadings are similar (53.0 versus 50.7 μg m−3), which the authors attribute to SP reducing the seasonal contrast.",
+   "page": "§2.2 ¶2",
+   "quote": "This is different from previous studies in that PM1 in the heating season was much higher than that in the non-heating season"
+  },
+  {
+   "target": "Huang et al. (ref 30) and Wang et al. (ref 42) on enhanced secondary formation under emission reductions",
+   "kind": "method",
+   "stance": "qualifies",
+   "support": "The authors find similar results but add OOA variations and weather normalization, which those studies did not consider.",
+   "page": "§2.2 ¶1",
+   "quote": "variations of oxygenated organic aerosol and influences of meteorological parameters were not considered in those two studies"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "I",
+   "chosen": "Machine-learning random forest weather normalization",
+   "alternatives": "Regression models, chemical transport models, other machine learning models",
+   "reason": "High prediction accuracy by reducing variance and error in high-dimensional data, and an interpretable learning process",
+   "effect_reported": "no",
+   "page": "§1 ¶1"
+  },
+  {
+   "node": "I",
+   "chosen": "Six OA factors from ME-2 constrained PMF (average of 33 solutions)",
+   "alternatives": "Unconstrained PMF solutions with 2 to 8 factors, including the five-factor free solution",
+   "reason": "In the free solution COA and HOA were mixed, and BBOA tracers (m/z 60, 73) appeared in the HOA and CCOA factors",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶1-2"
+  },
+  {
+   "node": "C",
+   "chosen": "Data with RH > 50% for the SOR/NOR comparison",
+   "alternatives": "All data (implied)",
+   "reason": "Secondary formation was more pronounced under high RH conditions",
+   "effect_reported": "no",
+   "page": "§2.3 ¶1"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "calibrations were conducted to ensure that the instrument was in good condition during the whole observation period",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "Model performance for each pollutant during the whole study period was evaluated via Pearson’s R-value",
+   "page": "§4.6 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "After the weather normalization, the mass concentrations of PM1 still reduced largely from NPhs to SPhs",
+   "page": "§2.2 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "deweathered SOR and NOR increased from NPhs to SPhs and increased from SPhs to NPnhs, which were similar to the variational [...]",
+   "page": "§2.3 ¶2"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": false,
+   "quote": "[...] al.30 and Wang et al.42",
+   "page": "§2.2 ¶1"
+  }
+ ]
+}

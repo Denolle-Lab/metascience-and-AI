@@ -1,0 +1,663 @@
+{
+ "key": "g22_W4205399996",
+ "doi": "10.1186/s00015-021-00400-x",
+ "codebook_version": "1.5.0",
+ "coder": "claude-opus-5-5",
+ "documents": [
+  "Lanza et al. 2022, Swiss Journal of Geosciences 115:2, published PDF (24 pages)",
+  "Publisher full text from XML with section and paragraph locators (jats_text)"
+ ],
+ "pages_convention": "XML section and paragraph locators (jats_text)",
+ "entry": {
+  "state": "problem",
+  "node": "Q",
+  "evidence": "remaining uncertainty in focal depth accuracy related to insufficient knowledge of the local seismic velocity structure so far hampered a discrimination",
+  "page": "§2 ¶2"
+ },
+ "sequences": [
+  {
+   "kind": "final_paper",
+   "source_document": "Publisher full text from XML (jats_text), with the PDF for figures",
+   "steps": [
+    {
+     "n": 1,
+     "node": "Q",
+     "mode": "question",
+     "action": "Frame the unresolved thin- versus thick-skinned controversy and ask whether shallow seismicity (absolute depth, focal mechanism) of the Saint-Ursanne 2000 sequence can say whether present deformation affects the sedimentary cover or the basement.",
+     "page": "§1 ¶1; §1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "There is no agreement on whether the deformation in the northwestern Alpine foreland still predominantly affects the sedimentary cover"
+    },
+    {
+     "n": 2,
+     "node": "O",
+     "mode": "observation",
+     "action": "Take the routine SED locations of the five 2000 events, which put the sources at 6-7 km in the crystalline basement.",
+     "page": "§2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "Initial routine location results computed by the Swiss Seismological Service (SED) pointed to focal depths of 6–7 km"
+    },
+    {
+     "n": 3,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "Adopt the rival reading of Baer et al. (2001) that the strong surface waves point to a shallow source in the Mesozoic sedimentary cover rather than in the basement.",
+     "page": "§2 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "it is more likely that a rather shallow source, within the Mesozoic sedimentary cover of the Jura FTB, is responsible for the observed signals"
+    },
+    {
+     "n": 4,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Report an earlier relocation (merged French and German data, re-picked arrivals, NonLinLoc with a 3-D P model) that improved epicentres but could not resolve focal depth.",
+     "page": "§2 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "Judging from the consistent clustering of events with similar waveforms, the epicentral locations were improved significantly by this procedure"
+    },
+    {
+     "n": 5,
+     "node": "N",
+     "mode": "instruments",
+     "action": "Use the dense local network (MTI stations and four SNS mini-arrays) installed around the Mont Terri rock laboratory in 2014-2015, plus the permanent station BOURR.",
+     "page": "§3.1 ¶1",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "an ad-hoc dense seismic network was installed in 2014–2015 and is still operated continuously to date"
+    },
+    {
+     "n": 6,
+     "node": "V",
+     "mode": "methods",
+     "action": "Re-evaluate every event in the nanoseismic catalogues (Stuttgart 2014-2015, Seismic Solutions 2017-2018) against blasting times, quarry locations and cross-correlation with known blasts; 24 of 225 events are retained as local earthquakes.",
+     "page": "§3.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we conducted a re-evaluation of each event"
+    },
+    {
+     "n": 7,
+     "node": "V",
+     "mode": "observation",
+     "action": "Cross-correlate 16 known quarry blasts with the five 2000 events; CC is below 0.3 in all but four cases, so the sequence is not blast-like despite its shared surface-wave content.",
+     "page": "§3.3 ¶2",
+     "move": "repeat",
+     "trigger": "author",
+     "quote": "their overall waveform similarity is not significant"
+    },
+    {
+     "n": 8,
+     "node": "D",
+     "mode": "methods",
+     "action": "Design a multi-template, single-station template-matching scan (seismatch, six stations, 2-30 Hz, CC at least 0.40 on all components, template-specific thresholds), expecting that post-2014 repeats recorded by close stations would constrain depth and mechanism.",
+     "page": "§4.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "The motivation to use a cross-correlation detector lies in the hypothesis that"
+    },
+    {
+     "n": 9,
+     "node": "E",
+     "mode": "exploration",
+     "action": "Scan 20 years of data; find 43 correlated events at BOURR but only one after 2014 (2017-08-30, MLX 0.7), so the source has stayed nearly inactive and no fault-plane constraint results.",
+     "page": "§4.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the activity of the seismic sequence observed in 2000 remained very low since then"
+    },
+    {
+     "n": 10,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Relocate all events within 10 km using the new Pg+Sg 3-D model (NonLinLoc, 1-2 km uncertainty), then refine with hypoDD double-difference relocation; the sequence lies at less than 1 km BSL, but the dip direction stays ambiguous.",
+     "page": "§4.2 ¶1; §4.2 ¶2",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "The events from the Saint-Ursanne sequence are relocated at very shallow depth, < 1 km Below Sea Level (BSL)"
+    },
+    {
+     "n": 11,
+     "node": "S",
+     "mode": "simulation",
+     "action": "Compute reflectivity synthetics (REFMET, 12-layer local 1-D model, Braunmiller moment tensor as source) for focal depths of 0-6 km, giving the predicted sPmP-PmP separation for each depth.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we searched the recorded seismograms for additional later-arriving seismic phases, which, when compared to synthetic seismograms, could help to discriminate"
+    },
+    {
+     "n": 12,
+     "node": "V",
+     "mode": "methods",
+     "action": "Test smooth regional against detailed local layering and the inclusion of a low-velocity zone in the synthetic velocity model; the number of layers matters little and the low-velocity zone improves the S waves.",
+     "page": "§4.3 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "including a low-velocity zone is effective in better reproducing the S waves signal observed in the data"
+    },
+    {
+     "n": 13,
+     "node": "C",
+     "mode": "simulation",
+     "action": "Compare the synthetics with ML 3.2 mainshock records at CHE and FELD; no sPmP is seen, which matches only depths shallower than 1 km.",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "a distinct second phase following the PmP cannot be identified either at station FELD or at station CHE"
+    },
+    {
+     "n": 14,
+     "node": "V",
+     "mode": "observation",
+     "action": "Check that the missing sPmP is not a site-noise artifact by restricting attention to the low-noise station FELD on outcropping crystalline basement, and cite Kastrup et al. (2007) for a 2 km event in which sPmP is visible.",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "if we consider only stations that are located on outcropping crystalline basement and that have low background noise (i.e., FELD)"
+    },
+    {
+     "n": 15,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Reject the crystalline-basement source for the ML 3.2 event in favour of a source in the overlying sediments.",
+     "page": "§4.3 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the ML 3.2 event of 2000 was most likely not located in the Paleozoic crystalline basement, but rather in the overlying sediments"
+    },
+    {
+     "n": 16,
+     "node": "V",
+     "mode": "observation",
+     "action": "Compare BOURR waveforms of deeper basement events (2009, 2015), which show higher frequencies, weaker surface waves and Sp precursors, with those of the shallow 2000 and 2005 events.",
+     "page": "§4.3 ¶2; Fig. 8 (p. 13)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the waveforms of deeper events (and thus in the Paleozoic crystalline basement) in 2009 and 2015 show very different waveform characteristics"
+    },
+    {
+     "n": 17,
+     "node": "P",
+     "mode": "simulation",
+     "action": "After REFMET fails to reproduce the near-station surface waves despite a wider slowness range and alternative velocity models, attribute the misfit to the 1-D reflectivity assumptions and to 3-D resonance effects (Permo-Carboniferous troughs), not to the depth hypothesis.",
+     "page": "§4.3 ¶3",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "our computations of synthetic seismograms with the REFMET algorithm failed to reproduce the pronounced surface waves"
+    },
+    {
+     "n": 18,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Take a full-waveform moment tensor by J. Braunmiller (reverse mechanism, Mw 3.3, 2 km best-fit depth) and judge it to be of low quality because it rests on few stations at low signal-to-noise ratio.",
+     "page": "§4.4 ¶1",
+     "move": "cited",
+     "trigger": "author",
+     "quote": "We therefore consider the MT solution to be of low quality."
+    },
+    {
+     "n": 19,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Report earlier first-motion solutions for different depths and velocity models (Fig. 10a-c) that could not constrain focal depth.",
+     "page": "§4.4 ¶2",
+     "move": "inherited",
+     "trigger": "author",
+     "quote": "previous attempts to better constrain the focal depth by comparing the fit of fault-plane solutions"
+    },
+    {
+     "n": 20,
+     "node": "I",
+     "mode": "estimation",
+     "action": "Recompute the first-motion mechanism with HASH, using take-off angles from NonLinLoc and the Pg+Sg 3-D model at 0.7 km BSL; the result is 080/58/098 and 262/32/092, a steep SSE-dipping reverse plane or a low-angle NNW-dipping thrust plane.",
+     "page": "§4.4 ¶3; §4.4 ¶4",
+     "move": "return_after_failure",
+     "trigger": "author",
+     "quote": "the solution represents either an SSE-dipping steep reverse fault or an NNW-dipping low-angle thrust fault"
+    },
+    {
+     "n": 21,
+     "node": "V",
+     "mode": "estimation",
+     "action": "Check the first-motion solution against the independent moment-tensor solution; both show a dominant thrust component.",
+     "page": "§4.4 ¶4",
+     "move": "new",
+     "trigger": "author",
+     "quote": "[...] agreement with the solution from the moment tensor inversion"
+    },
+    {
+     "n": 22,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep the shallow sedimentary-cover source on three combined lines of evidence: surface waves, relocations and the missing sPmP.",
+     "page": "§5.1 ¶1; §5.1 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "together they constitute three independent and consistent pieces of evidence for an exceptionally shallow source"
+    },
+    {
+     "n": 23,
+     "node": "H",
+     "mode": "hypothesis",
+     "action": "State the two rival active planes: 58 degrees SSE-dipping (tempting to link to the Mont Russelin fault) and 32 degrees NNW-dipping.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "we can choose between an active fault plane dipping with 58° towards the SSE and a fault plane dipping with 32° towards the NNW"
+    },
+    {
+     "n": 24,
+     "node": "S",
+     "mode": "theory",
+     "action": "Apply Sibson's (1990) reactivation analysis (vertical least stress, hydrostatic fluid pressure, friction about 0.75) to predict which plane dips could slip.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "faults with a dip greater than about 53° are so unfavorably oriented that they are essentially locked"
+    },
+    {
+     "n": 25,
+     "node": "X",
+     "mode": "hypothesis",
+     "action": "Exclude the steep SSE plane and conclude that slip occurred on a gently NNW-dipping fault; the alignment of the 2005 event also favours this plane.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the earthquake sequence of Saint-Ursanne occurred as SSE directed slip of the hanging wall on a fault that dips gently to the NNW"
+    },
+    {
+     "n": 26,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the NNW-dipping thrust with the SSE-dipping décollement and with the kinematic forward model of Nussbaum et al. (2017), which contains a backthrust at the top of the Lias Group.",
+     "page": "§5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This scenario is in agreement with the kinematic forward modelling from Nussbaum et al. (69)"
+    },
+    {
+     "n": 27,
+     "node": "K",
+     "mode": "hypothesis",
+     "action": "Keep a backthrust within the sedimentary cover as the likely active plane; a duplex-ramp alternative also fits but lacks field evidence.",
+     "page": "Fig. 11; §5.2 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "is more likely to be the active plane of the 2000 seismic sequence"
+    },
+    {
+     "n": 28,
+     "node": "V",
+     "mode": "synthesis",
+     "action": "Compile focal mechanisms from 1984 to 2021 and extend the result to the shallow 2017 Grenchen and 2021 Neuchâtel events, both near-surface with low-angle reverse or thrust planes.",
+     "page": "§6.1 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the Saint-Ursanne, the Grenchen and the Neuchâtel earthquakes bear witness of active thrust faulting within the Jura FTB"
+    },
+    {
+     "n": 29,
+     "node": "C",
+     "mode": "synthesis",
+     "action": "Compare the URS P-axis with in-situ stress (Becker 2000), paleostress fault-slip data, the BDS-5 hydraulic-fracturing stress, the stress inversion of Rabin et al. (2018) and Nagra drill-site data; it is rotated N-S like the near-surface stress, unlike the NW-SE basement orientation.",
+     "page": "§6.2 ¶2",
+     "move": "new",
+     "trigger": "author",
+     "quote": "the P-axis derived from our analysis shows a slight rotation in the N-S direction"
+    },
+    {
+     "n": 30,
+     "node": "I",
+     "mode": "regularities",
+     "action": "Convert rakes to a scalar S value, weight by magnitude and interpolate over 0-5 km and 5-15 km depth; compression dominates shallow and extension or transtension dominates the basement.",
+     "page": "§6.2 ¶3; Fig. 14 (p. 20)",
+     "move": "new",
+     "trigger": "author",
+     "quote": "compression is the dominant style of deformation for the shallow crust (0 to 5 km)"
+    },
+    {
+     "n": 31,
+     "node": "K",
+     "mode": "synthesis",
+     "action": "Keep the claims that the stress field is inhomogeneous with depth (N-S in the cover, NW-SE in the basement), that the shallow Jura FTB is still under thrust-faulting contraction, and that the cover is mechanically decoupled in the northernmost Jura FTB.",
+     "page": "§6.2 ¶4; §7 ¶1",
+     "move": "new",
+     "trigger": "author",
+     "quote": "This constitutes a rare piece of evidence that the shallow portion of the Jura FTB is still in a compressional (thrust faulting) regime."
+    }
+   ]
+  }
+ ],
+ "tree": [
+  {
+   "question": "1",
+   "answer": "Yes: a felt ML 3.2 sequence in 2000 with strong surface waves near Mont Terri",
+   "mode_called": "observation"
+  },
+  {
+   "question": "2",
+   "answer": "No: focal depth and fault plane are latent and must be inferred from locations and waveforms",
+   "mode_called": "estimation"
+  },
+  {
+   "question": "3",
+   "answer": "Source depth, host lithology and kinematics, and their bearing on cover-basement coupling",
+   "mode_called": "question"
+  },
+  {
+   "question": "4",
+   "answer": "Sediment cover vs basement source; SSE-steep vs NNW-low-angle plane; backthrust vs décollement vs duplex",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "5",
+   "answer": "Yes: the sPmP-PmP delay grows with depth; Sibson mechanics lock planes dipping more than 53 degrees",
+   "mode_called": "simulation"
+  },
+  {
+   "question": "6",
+   "answer": "Found: a natural past event analysed from archived records",
+   "mode_called": "observation"
+  },
+  {
+   "question": "6b",
+   "answer": "Barely: the source stayed nearly inactive after 2000; analogues at Grenchen and Neuchâtel",
+   "mode_called": "exploration"
+  },
+  {
+   "question": "7",
+   "answer": "Partly: three independent depth lines, MT agreement and a low-noise station check, but surface waves are not reproduced",
+   "mode_called": "robustness"
+  },
+  {
+   "question": "8",
+   "answer": "Shallow backthrust in the sedimentary cover kept as best explanation",
+   "mode_called": "hypothesis"
+  },
+  {
+   "question": "9",
+   "answer": "No review file supplied",
+   "mode_called": "none"
+  }
+ ],
+ "end": {
+  "outcome": "kept",
+  "claim_status": "best_explanation",
+  "claim": "The 2000 Saint-Ursanne sequence ruptured a gently NNW-dipping backthrust in the sedimentary cover at less than 1 km depth, which is evidence that the shallow Jura FTB is still undergoing active thrust-faulting contraction.",
+  "page": "§0 ¶1; §5.2 ¶1; §7 ¶1"
+ },
+ "decisive_move": {
+  "node": "C",
+  "mode": "simulation",
+  "sentence": "Comparing reflectivity synthetics for 0-6 km depths with the missing sPmP at CHE and FELD is what moves the depth from 'shallow' to 'within the sediments'; relocation alone left the source ambiguous near the top of the basement.",
+  "page": "§4.3 ¶2"
+ },
+ "composition": "trace_series",
+ "gates": {
+  "action": "partly",
+  "claim": "yes",
+  "registration": "no",
+  "evidence": "Action, partly: the template-matching scan was motivated by a stated hypothesis (§4.1 ¶1), but the depth and mechanism analyses use archived records collected without it. Claim, yes: the sPmP test could have failed, since synthetics predict a visible sPmP at 1 km or deeper and Kastrup et al. show one at 2 km (§4.3 ¶2); the Sibson analysis could also have favoured the steep plane. Registration, no: nothing is reported as fixed in advance; template-specific CC thresholds were set after visual inspection (§4.1 ¶1)."
+ },
+ "imports": [
+  {
+   "field": "signal processing",
+   "item": "normalized cross-correlation and matched-filter (template) detection",
+   "kind": "method",
+   "page": "§3.3 ¶1; §4.1 ¶1"
+  },
+  {
+   "field": "signal processing / electrical engineering",
+   "item": "causal 4th-order Butterworth band-pass filter",
+   "kind": "method",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "field": "signal processing",
+   "item": "sonograms (noise-adapted spectrograms) for low-SNR detection",
+   "kind": "method",
+   "page": "§3.2.2 ¶1"
+  },
+  {
+   "field": "numerical linear algebra",
+   "item": "singular value decomposition inversion in hypoDD",
+   "kind": "method",
+   "page": "Fig. 5"
+  },
+  {
+   "field": "rock engineering",
+   "item": "hydraulic fracturing stress measurements in borehole BDS-5",
+   "kind": "data",
+   "page": "§6.2 ¶2"
+  }
+ ],
+ "novelty_claims": [
+  {
+   "quote": "This analysis provides new seismological testimony of active shallow reverse (thrusting) deformation in the northern portion of the Jura FTB.",
+   "page": "§1 ¶2"
+  },
+  {
+   "quote": "shed new light on the hosting lithology and source kinematics of the Saint-Ursanne sequence",
+   "page": "§0 ¶1"
+  },
+  {
+   "quote": "[...] -Ursanne sequence of the year 2000 represents a relatively rare case of ongoing seismicity in the sedimentary cover of the northern Jura FTB",
+   "page": "§5.1 ¶2"
+  },
+  {
+   "quote": "our work provides new reliable evidence that the present-day stress field in our study area is inhomogeneous",
+   "page": "§6.2 ¶4"
+  },
+  {
+   "quote": "This constitutes a rare piece of evidence that the shallow portion of the Jura FTB is still in a compressional (thrust faulting) regime.",
+   "page": "§7 ¶1"
+  }
+ ],
+ "limits": "No review file, discussion or earlier version was supplied; the acknowledgements mention two anonymous reviewers and N. Vouillamoz, but which analyses they prompted cannot be known. Sub-claims and their statuses: a focal depth below 1 km BSL is an estimate_with_resolution, but the depth stays ambiguous relative to a top of basement estimated at 0.55-1.3 km BSL (§4.2 ¶2; §4.3 ¶1). The thrust mechanism is an estimate_with_resolution from first motions, backed by a moment tensor the authors judge low quality. The NNW-dipping plane is a best_explanation that rests on Sibson's assumptions (friction 0.75, hydrostatic pressure). The backthrust is a best_explanation, with a duplex ramp not excluded. The stress rotation and cover-basement decoupling are a best_explanation that the authors call poorly constrained, given three small events (§6.2 ¶5). The rate below 0.5 mm/yr is taken from cited geodesy, not derived here. Two goals of the template matching (constraining the fault plane and the mechanical behaviour) were not met (§4.1 ¶2), and the surface waves were never reproduced by synthetics (§4.3 ¶3). Template trust thresholds were set by visual inspection, and their effect is not reported. Coding the dense network as 'inherited' is an inference from institutional overlap (swisstopo and SED authors); the paper does not say who among the authors built it. The 2005-event support for the NNW plane is conditional ('if one would assume'). The Fig. 10a-c attempts are coded as inherited on the inference that they are the authors' earlier unpublished work (cf. Deichmann et al. 2012). The decoupling comparison relies heavily on others' stress data (Becker 2000; Rabin et al. 2018; Jaeggi & Bossart 2016).",
+ "disagreements": [
+  {
+   "target": "Routine SED locations of the 2000 sequence (Baer et al., 2001), at focal depths of 6-7 km in the crystalline [...]",
+   "kind": "result",
+   "stance": "contradicts",
+   "support": "Pg+Sg 3-D and double-difference relocations place the sequence at less than 1 km BSL, and the missing sPmP compared with synthetics argues against a basement source.",
+   "page": "§2 ¶1; §4.2 ¶2; §4.3 ¶2",
+   "quote": "The events from the Saint-Ursanne sequence are relocated at very shallow depth, < 1 km Below Sea Level (BSL)"
+  },
+  {
+   "target": "Rabin et al. (2018): a rather homogeneous stress tensor with depth and NW-SE compression affecting both cover and basement",
+   "kind": "interpretation",
+   "stance": "disputes",
+   "support": "The P-axes of the newly located shallow thrust events (URS) are rotated N-S, against NW-SE in the basement; the authors note these events were unavailable to Rabin et al. and that their own P-axis estimates are poorly constrained.",
+   "page": "§6.2 ¶5",
+   "quote": "Thus, our conclusion differs from the study of Rabin et al. (74)"
+  },
+  {
+   "target": "Becker (2000) and Ustaszewski & Schmid (2007), who reject thin-skinned tectonics as the neotectonic style of the Jura FTB",
+   "kind": "interpretation",
+   "stance": "qualifies",
+   "support": "Shallow thrust events and the cover-basement stress rotation suggest that shallow shortening is likely driven by thin-skinned mechanisms, superposed on transtension in the basement, though the authors decline to enter the debate fully.",
+   "page": "§6.2 ¶3; §7 ¶2",
+   "quote": "a remaining reverse-thrust regime partly accommodating ongoing shortening of the Jura FTB in the shallow part likely imposed by classic thin-skinned mechanisms"
+  }
+ ],
+ "alternatives_considered": [
+  {
+   "node": "D",
+   "chosen": "2-30 Hz causal 4th-order Butterworth band-pass",
+   "alternatives": "different passbands",
+   "reason": "reduces false detections without substantially degrading waveform similarity of closely spaced hypocenters",
+   "effect_reported": "no",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "10 km template radius for nanoseismic-catalogue events (5 km for SED events)",
+   "alternatives": "the stricter 5 km radius",
+   "reason": "their locations have higher uncertainties",
+   "effect_reported": "no",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "node": "D",
+   "chosen": "minimum CC 0.40 on all components, then template-specific trust thresholds set by visual inspection",
+   "alternatives": "none named",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "node": "O",
+   "chosen": "SED events after 2000 only",
+   "alternatives": "including events before 2000",
+   "reason": "very poor location quality before 2000 and the network change from short-period to broad-band in 1998-2002",
+   "effect_reported": "no",
+   "page": "§3.2.1 ¶1"
+  },
+  {
+   "node": "S",
+   "chosen": "12-layer local 1-D velocity model with a low-velocity zone, from NAGRA borehole logs",
+   "alternatives": "smooth average regional model; different layering; excluding the low-velocity zone",
+   "reason": "number of layers has little influence; the low-velocity zone better reproduces the observed S waves",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "node": "P",
+   "chosen": "attribute the unreproduced surface waves to the limits of the 1-D reflectivity method or to 3-D resonance",
+   "alternatives": "increased slowness range; other velocity models; future 3-D simulation (SW4)",
+   "reason": "increasing slowness merely increases numerical artifacts; the other models still failed",
+   "effect_reported": "yes",
+   "page": "§4.3 ¶3"
+  },
+  {
+   "node": "I",
+   "chosen": "take-off angles from NonLinLoc with the new Pg+Sg 3-D model at 0.7 km BSL (HASH)",
+   "alternatives": "NonLinLoc with the Husen et al. (2003) 3-D model; 2-D ray tracing at 2 km (basement) and 1 km (sediments)",
+   "reason": "depth from the absolute relocation, consistent with the synthetic modelling",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶2; §4.4 ¶3; Fig. 10"
+  },
+  {
+   "node": "I",
+   "chosen": "first-motion (HASH) mechanism as the preferred solution",
+   "alternatives": "full-waveform moment-tensor solution",
+   "reason": "MT constrained by few stations at low signal-to-noise ratio, judged low quality",
+   "effect_reported": "yes",
+   "page": "§4.4 ¶1; §4.4 ¶4"
+  },
+  {
+   "node": "X",
+   "chosen": "NNW-dipping 32 degree plane",
+   "alternatives": "SSE-dipping 58 degree plane (Mont Russelin fault)",
+   "reason": "Sibson (1990) reactivation mechanics: planes steeper than about 53 degrees are essentially locked",
+   "effect_reported": "yes",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "node": "K",
+   "chosen": "backthrust rooting at the top of the Lias Group",
+   "alternatives": "slip on the basal décollement; duplex ramp geometry",
+   "reason": "the sense of motion disagrees with the SSE-dipping décollement; no field evidence of duplexes (Nussbaum et al. 2017)",
+   "effect_reported": "yes",
+   "page": "§5.2 ¶1; Fig. 11"
+  },
+  {
+   "node": "I",
+   "chosen": "S value of the active plane when known from relative relocations, otherwise the mean S of both planes, magnitude-weighted",
+   "alternatives": "none named",
+   "reason": "none given",
+   "effect_reported": "no",
+   "page": "§6.2 ¶3"
+  }
+ ],
+ "v_checks": [
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "show high cross-correlation (CC) values with signals of known quarry blasts (0.52–0.90)",
+   "page": "§3.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "we also cross-correlated waveforms of 16 known quarry blasts with the five events of the 2000 Saint-Ursanne earthquake sequence",
+   "page": "§3.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "After assessing the influence of different passbands, waveforms were filtered between 2 and 30 Hz",
+   "page": "§4.1 ¶1"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "different layering was tested to investigate the effects of a smooth, average regional versus a more detailed, local velocity model",
+   "page": "§4.3 ¶1"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "if we consider only stations that are located on outcropping crystalline basement and that have low background noise (i.e., FELD)",
+   "page": "§4.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": false,
+   "quote": "an earthquake at a depth of 2 km with an observed signal in which the sPmP is clearly visible",
+   "page": "§4.3 ¶2"
+  },
+  {
+   "kind": "control",
+   "performed_here": true,
+   "quote": "the waveforms of deeper events (and thus in the Paleozoic crystalline basement) in 2009 and 2015 show very different waveform characteristics",
+   "page": "§4.3 ¶2"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": true,
+   "quote": "Increasing the slowness range when calculating the synthetic seismograms does not provide a solution as it merely increases numerical artifacts.",
+   "page": "§4.3 ¶3"
+  },
+  {
+   "kind": "robustness",
+   "performed_here": false,
+   "quote": "previous attempts to better constrain the focal depth by comparing the fit of fault-plane solutions",
+   "page": "§4.4 ¶2"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "[...] agreement with the solution from the moment tensor inversion",
+   "page": "§4.4 ¶4"
+  },
+  {
+   "kind": "method",
+   "performed_here": true,
+   "quote": "together they constitute three independent and consistent pieces of evidence for an exceptionally shallow source",
+   "page": "§5.1 ¶2"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "then the NNW low-angle fault would again provide a better match than the steep SSE dipping plane",
+   "page": "§5.2 ¶1"
+  },
+  {
+   "kind": "generalization",
+   "performed_here": true,
+   "quote": "the Saint-Ursanne, the Grenchen and the Neuchâtel earthquakes bear witness of active thrust faulting within the Jura FTB",
+   "page": "§6.1 ¶1"
+  },
+  {
+   "kind": "replication",
+   "performed_here": true,
+   "quote": "This is also consistent with the stress measurements carried out in borehole BDS-5 at Derrière Mont Terri by the method of hydraulic fracturing",
+   "page": "§6.2 ¶2"
+  }
+ ]
+}
